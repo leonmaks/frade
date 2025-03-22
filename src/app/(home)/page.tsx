@@ -1,9 +1,13 @@
 // import Image from "next/image"
 
-export default function Home() {
+import { getAppSession } from "@/features/auth/sa"
+
+export default async function Home() {
+  const session = await getAppSession()
+
   return (
     <div>
-      I will load videos in the future!
+      {JSON.stringify(session, null, 2)}
     </div>
   )
 }

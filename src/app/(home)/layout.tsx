@@ -1,25 +1,26 @@
-import { SidebarProvider } from "@/shared/shadcn-ui/sidebar"
+import { MainLayout } from "@/shared/ui/main-layout"
+import { ToggleTheme } from "@/shared/theme"
 
-import { HomeNavbar, HomeSidebar } from "./_home"
+import { GlobalSearchInput } from "@/features/global-search-input"
+import { GlobalSidebarContent } from "@/features/global-sidebar-content"
+import { Profile } from "@/features/auth"
+import { AuthButton } from "@/features/auth/ui/auth-button"
 
 type HomeLayoutProps = {
   children: React.ReactNode
 }
 
-export default function HomeLayout({
+export default async function HomeLayout({
   children
 }: HomeLayoutProps) {
   return (
-    <SidebarProvider>
-      <div className="w-full bg-blue-200">
-        <HomeNavbar />
-        <div className="flex min-h-screen pt-[4rem]">
-          <HomeSidebar />
-          <main className="flex-1 overflow-y-auto bg-amber-200">
-            {children}
-          </main>
-        </div>
-      </div>
-    </SidebarProvider>
+    <MainLayout
+      navbarContent={<GlobalSearchInput />}
+      sidebarContent={<GlobalSidebarContent />}
+      authButton={<AuthButton />}
+      actions={<ToggleTheme />}
+    >
+      {children}
+    </MainLayout>
   )
 }

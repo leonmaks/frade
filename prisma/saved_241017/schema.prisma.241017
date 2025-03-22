@@ -1,0 +1,187 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 
+// META
+// 
+
+// Perspective
+// 
+model RiPerspective {
+  id          String  @id
+  name        String  @unique
+  description String?
+
+  riPerspLinks RiPerspLink[]
+
+  @@map("ri_perspectives")
+}
+
+// RI Perspective Link Type
+// 
+model RiPerspLinkType {
+  id          String  @id
+  name        String  @unique
+  description String?
+
+  riPerspLinks RiPerspLink[]
+
+  @@map("ri_persp_link_types")
+}
+
+// RI Type
+//
+model RiType {
+  id          String  @id
+  name        String  @unique
+  description String?
+
+  isRoot Boolean? @map("is_root")
+  ord    String?
+
+  riPerspLinks  RiPerspLink[]
+  riType1Links1 RiTypeLink[]  @relation("riTypeLinks1")
+  riType2Links2 RiTypeLink[]  @relation("riTypeLinks2")
+
+  RiVers  RiVer[]
+  RiAttrs RiAttr[]
+
+  @@map("ri_types")
+}
+
+// RI Perspective RI Type Link
+// 
+model RiPerspLink {
+  id         String @id
+  linkTypeId String @map("link_type_id")
+  riPerspId  String @map("ri_persp_id")
+  riTypeId   String @map("ri_type_id")
+
+  linkType      RiPerspLinkType @relation(fields: [linkTypeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  riPerspective RiPerspective   @relation(fields: [riPerspId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  riType        RiType          @relation(fields: [riTypeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@map("ri_persp_links")
+}
+
+// RI Type Link Type
+// 
+model RiTypeLinkType {
+  id          String  @id
+  name        String  @unique
+  description String?
+
+  riTypeLinks RiTypeLink[]
+
+  @@map("ri_type_link_types")
+}
+
+// RI Type Link
+// 
+model RiTypeLink {
+  id         String @id
+  linkTypeId String @map("link_type_id")
+  riTypeId1  String @map("ri_type_id1")
+  riTypeId2  String @map("ri_type_id2")
+
+  linkType RiTypeLinkType @relation(fields: [linkTypeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  riType1  RiType         @relation(name: "riTypeLinks1", fields: [riTypeId1], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  riType2  RiType         @relation(name: "riTypeLinks2", fields: [riTypeId2], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@unique([riTypeId1, riTypeId2, linkTypeId])
+  @@index([riTypeId1, riTypeId2, linkTypeId])
+  @@map("ri_type_links")
+}
+
+//
+// Repo Item
+//
+model RepoItem {
+  id String @id @default(cuid())
+
+  riVers RiVer[]
+
+  @@map("repo_items")
+}
+
+// RI Attribute Type
+// 
+model RiAttrType {
+  id          String  @id
+  name        String  @unique
+  description String?
+
+  riAttrs RiAttr[]
+
+  @@map("ri_attr_types")
+}
+
+// RI Attribute
+//
+model RiAttr {
+  id           String   @id @default(cuid())
+  riTypeId     String   @map("ri_type_id")
+  riAttrTypeId String   @map("ri_attr_type_id")
+  name         String
+  isUK         Boolean? @map("is_uk")
+  isNotNull    Boolean? @map("is_not_null")
+  isEditable   Boolean? @map("is_editable")
+  isProp       Boolean? @map("is_prop")
+
+  ord String?
+
+  riType     RiType     @relation(fields: [riTypeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  riAttrType RiAttrType @relation(fields: [riAttrTypeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  riAttrVals RiAttrVal[]
+
+  @@unique([name, riTypeId])
+  @@map("ri_attrs")
+}
+
+// RI Version
+//
+model RiVer {
+  id       String @id @default(cuid())
+  riId     String @map("ri_id")
+  riTypeId String @map("ri_type_id")
+
+  name        String
+  description String?
+
+  fd DateTime?
+  td DateTime?
+
+  ri     RepoItem @relation(fields: [riId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  riType RiType   @relation(fields: [riTypeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  riAttrVals RiAttrVal[]
+
+  @@map("ri_vers")
+}
+
+// RI Attribute Value
+//
+model RiAttrVal {
+  id       String @id @default(cuid())
+  riVerId  String @map("ri_ver_id")
+  riAttrId String @map("ri_attr_id")
+  value    String
+
+  riVer  RiVer  @relation(fields: [riVerId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  riAttr RiAttr @relation(fields: [riAttrId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@map("ri_attr_vals")
+}

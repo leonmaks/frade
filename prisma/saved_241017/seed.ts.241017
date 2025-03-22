@@ -1,0 +1,153 @@
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+async function main() {
+
+  // DEL RiAttr
+  const riAttrDeleted = await prisma.riAttr.deleteMany()
+  console.log({ riAttrDeleted })
+
+  // DEL RiTypeLink
+  const riTypeLinkDeleted = await prisma.riTypeLink.deleteMany()
+  console.log({ riTypeLinkDeleted })
+
+  // DEL RiTypeLinkType
+  const riTypeLinkTypeDeleted = await prisma.riTypeLinkType.deleteMany()
+  console.log({ riTypeLinkTypeDeleted })
+
+  // DEL RiPerspCiTypeLink
+  const riPerspLinkDeleted = await prisma.riPerspLink.deleteMany()
+  console.log({ riPerspLinkDeleted })
+
+  // DEL RiPerspLinkType
+  const riPerspLinkTypeDeleted = await prisma.riPerspLinkType.deleteMany()
+  console.log({ riPerspLinkTypeDeleted })
+
+  // DEL RiType
+  const riTypeDeleted = await prisma.riType.deleteMany()
+  console.log({ riTypeDeleted })
+
+  // DEL CiPerspective
+  const riPerspectiveDeleted = await prisma.riPerspective.deleteMany()
+  console.log({ riPerspectiveDeleted })
+
+
+  // CRE RiPerspective
+  const riPerspectiveCreated = await prisma.riPerspective.createMany({
+    data: [
+      { id: "01", name: "Organization" },
+      { id: "02", name: "Application" },
+      { id: "03", name: "Info.Flows" },
+    ],
+    skipDuplicates: true,
+  })
+  console.log({ riPerspectiveCreated })
+
+  // CRE RiType
+  const riTypeCreated = await prisma.riType.createMany({
+    data: [
+      { id: "000", name: "Core Attrs" },
+      { id: "001", name: "Company", isRoot: true },
+      { id: "002", name: "Business Unit" },
+      { id: "003", name: "System" },
+      { id: "004", name: "Subsystem" },
+      { id: "005", name: "Info.Flow" },
+    ],
+    skipDuplicates: true,
+  })
+  console.log({ riTypeCreated })
+
+  // CRE RiPerspLinkType
+  const riPerspLinkTypeCreated = await prisma.riPerspLinkType.createMany({
+    data: [
+      { id: "01", name: "Reflects" },
+    ],
+    skipDuplicates: true,
+  })
+  console.log({ riPerspLinkTypeCreated })
+
+  // CRE RiPerspLink
+  const riPerspLinkCreated = await prisma.riPerspLink.createMany({
+    data: [
+      { id: "01-001-01", linkTypeId: "01", riPerspId: "01", riTypeId: "001" },
+      { id: "01-002-01", linkTypeId: "01", riPerspId: "01", riTypeId: "002" },
+
+      { id: "02-002-01", linkTypeId: "01", riPerspId: "02", riTypeId: "002" },
+      { id: "02-003-01", linkTypeId: "01", riPerspId: "02", riTypeId: "003" },
+      { id: "02-004-01", linkTypeId: "01", riPerspId: "02", riTypeId: "004" },
+
+      { id: "03-003-01", linkTypeId: "01", riPerspId: "03", riTypeId: "003" },
+      { id: "03-004-01", linkTypeId: "01", riPerspId: "03", riTypeId: "004" },
+      { id: "03-005-01", linkTypeId: "01", riPerspId: "03", riTypeId: "005" },
+    ],
+    skipDuplicates: true,
+  })
+  console.log({ riPerspLinkCreated })
+
+  // CRE RiTypeLinkType
+  const riTypeLinkTypeCreated = await prisma.riTypeLinkType.createMany({
+    data: [
+      { id: "01", name: "Contains" },
+      { id: "02", name: "Side A" },
+      { id: "03", name: "Side B" },
+    ],
+    skipDuplicates: true,
+  })
+  console.log({ riTypeLinkTypeCreated })
+
+  // CRE RiTypeLink
+  const riTypeLinkCreated = await prisma.riTypeLink.createMany({
+    data: [
+      { id: "001-002-01", riTypeId1: "001", riTypeId2: "002", linkTypeId: "01" },
+
+      { id: "001-003-01", riTypeId1: "001", riTypeId2: "003", linkTypeId: "01" },
+      { id: "002-003-01", riTypeId1: "002", riTypeId2: "003", linkTypeId: "01" },
+      { id: "003-004-01", riTypeId1: "003", riTypeId2: "004", linkTypeId: "01" },
+
+      { id: "003-005-02", riTypeId1: "003", riTypeId2: "005", linkTypeId: "02" },
+      { id: "003-005-03", riTypeId1: "003", riTypeId2: "005", linkTypeId: "03" },
+      { id: "004-005-02", riTypeId1: "004", riTypeId2: "005", linkTypeId: "02" },
+      { id: "004-005-03", riTypeId1: "004", riTypeId2: "005", linkTypeId: "03" },
+    ],
+    skipDuplicates: true,
+  })
+  console.log({ riTypeLinkCreated })
+
+  // CRE RiAttrType
+  const riAttrTypeCreated = await prisma.riAttrType.createMany({
+    data: [
+      { id: "01", name: "Text", description: "Text Field" },
+      { id: "02", name: "TextArea", description: "Text Field Area" },
+      { id: "03", name: "LoV", description: "List of Values" },
+    ],
+    skipDuplicates: true,
+  })
+  console.log({ riAttrTypeCreated })
+
+  // CRE RiAttr
+  const riAttrCreated = await prisma.riAttr.createMany({
+    data: [
+      { riTypeId: "000", riAttrTypeId: "03", name: "company", isUK: true, isNotNull: true, isEditable: true, isProp: false, ord: "A.01" },
+      { riTypeId: "000", riAttrTypeId: "01", name: "name", isUK: true, isNotNull: true, isEditable: true, isProp: false, ord: "A.02" },
+      { riTypeId: "000", riAttrTypeId: "02", name: "description", isUK: false, isNotNull: false, isEditable: true, isProp: false, ord: "A.03" },
+
+      { riTypeId: "000", riAttrTypeId: "01", name: "typeId", isUK: false, isNotNull: true, isEditable: false, isProp: true, ord: "Z.50" },
+      { riTypeId: "000", riAttrTypeId: "01", name: "id", isUK: false, isNotNull: true, isEditable: false, isProp: true, ord: "Z.60" },
+      { riTypeId: "000", riAttrTypeId: "01", name: "verId", isUK: false, isNotNull: true, isEditable: false, isProp: true, ord: "Z.70" },
+      { riTypeId: "000", riAttrTypeId: "01", name: "fd", isUK: false, isNotNull: false, isEditable: false, isProp: true, ord: "Z.80" },
+      { riTypeId: "000", riAttrTypeId: "01", name: "td", isUK: false, isNotNull: false, isEditable: false, isProp: true, ord: "Z.90" },
+    ],
+    skipDuplicates: true,
+  })
+  console.log({ riAttrCreated })
+}
+
+main().then(async () => {
+  await prisma.$disconnect()
+
+}).catch(async (e) => {
+  console.error(e)
+  await prisma.$disconnect()
+  process.exit(1)
+})

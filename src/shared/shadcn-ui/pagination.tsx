@@ -5,7 +5,7 @@ import {
   MoreHorizontalIcon,
 } from "lucide-react"
 
-import { cn } from "../lib/utils"
+import { cn } from "../lib/shadcn-ui-utils"
 import { Button, buttonVariants } from "@/shared/shadcn-ui/button"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {

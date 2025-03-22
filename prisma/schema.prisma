@@ -1,0 +1,312 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins", "driverAdapters"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_NON_POOLING")
+}
+
+//
+// AUTH
+//
+
+// User Role
+enum UserRole {
+  User
+  Admin
+}
+
+// User
+//
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime? @map("email_verified")
+  password      String?
+  salt          String?
+  role          UserRole  @default(User)
+  image         String?
+
+  accounts Account[]
+  sessions Session[]
+  wsps     Wsp[]
+  members  WspMember[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+// Account
+//
+model Account {
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([provider, providerAccountId])
+  @@map("accounts")
+}
+
+// Session
+//
+model Session {
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("sessions")
+}
+
+// Verification Token
+//
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+  @@map("verification_tokens")
+}
+
+//
+// META
+//
+
+// MI Type
+//
+model MiType {
+  id          String  @id
+  name        String  @unique
+  description String?
+
+  metaItems MetaItem[]
+
+  @@map("mi_types")
+}
+
+// Meta Item (MI)
+//
+model MetaItem {
+  id          String  @id
+  miTypeId    String  @map("mi_type_id")
+  name        String
+  description String?
+
+  miType MiType @relation(fields: [miTypeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  riVers   RiVer[]
+  miLinks1 MiLink[] @relation("miLinks1")
+  miLinks2 MiLink[] @relation("miLinks2")
+  miAttrs  MiAttr[]
+
+  @@map("meta_items")
+}
+
+// MI Link Type
+//
+model MiLinkType {
+  id          String  @id
+  name        String  @unique
+  description String?
+
+  miLinks MiLink[]
+
+  @@map("mi_link_types")
+}
+
+// MI Link
+//
+model MiLink {
+  id           String @id
+  miLinkTypeId String @map("mi_link_type_id")
+  miId1        String @map("mi_id1")
+  miId2        String @map("mi_id2")
+
+  miLinkType MiLinkType @relation(fields: [miLinkTypeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  mi1        MetaItem   @relation(name: "miLinks1", fields: [miId1], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  mi2        MetaItem   @relation(name: "miLinks2", fields: [miId2], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  riLinks RiLink[]
+
+  @@map("mi_links")
+}
+
+//
+// REPO
+//
+
+// Repo Item
+//
+model RepoItem {
+  id String @id @default(cuid())
+
+  riVers   RiVer[]
+  riLinks1 RiLink[] @relation("ri1")
+  riLinks2 RiLink[] @relation("ri2")
+
+  @@map("repo_items")
+}
+
+// RI Link
+//
+model RiLink {
+  id       String @id @default(cuid())
+  miLinkId String @map("mi_link_id")
+  riId1    String @map("ri_id1")
+  riId2    String @map("ri_id2")
+
+  miLink MiLink   @relation(fields: [miLinkId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  ri1    RepoItem @relation(name: "ri1", fields: [riId1], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  ri2    RepoItem @relation(name: "ri2", fields: [riId2], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@unique([riId1, riId2, miLinkId])
+  @@index([riId1, riId2, miLinkId])
+  @@map("ri_links")
+}
+
+// RI Version
+//
+model RiVer {
+  id   String @id @default(cuid())
+  riId String @map("ri_id")
+  miId String @map("mi_id")
+
+  name        String
+  description String?
+
+  fd DateTime?
+  td DateTime?
+
+  ri RepoItem @relation(fields: [riId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  mi MetaItem @relation(fields: [miId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@map("ri_vers")
+}
+
+// MI Attribute Type
+//
+model MiAttrType {
+  id          String  @id
+  name        String  @unique
+  description String?
+
+  miAttrs MiAttr[]
+
+  @@map("mi_attr_types")
+}
+
+// MI Attribute
+//
+model MiAttr {
+  id           String   @id @default(cuid())
+  miId         String   @map("mi_id")
+  miAttrTypeId String   @map("mi_attr_type_id")
+  name         String
+  isUK         Boolean? @map("is_uk")
+  isNotNull    Boolean? @map("is_not_null")
+  isEditable   Boolean? @map("is_editable")
+  isProp       Boolean? @map("is_prop")
+
+  ord String?
+
+  mi         MetaItem   @relation(fields: [miId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  miAttrType MiAttrType @relation(fields: [miAttrTypeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@unique([name, miId])
+  @@map("mi_attrs")
+}
+
+//
+// Tasks
+//
+
+// Workspace
+model Wsp {
+  id          String  @id @default(cuid())
+  name        String
+  userId      String  @map("user_id")
+  image       String?
+  description String?
+  inviteCode  String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  members  WspMember[]
+  projects Project[]
+
+  @@unique([name, userId])
+  @@index([name, userId])
+  @@map("wsps")
+}
+
+// User Role
+enum WspMemberRole {
+  Member
+  Admin
+}
+
+// Member
+model WspMember {
+  id     String        @id @default(cuid())
+  wspId  String        @map("wsp_id")
+  userId String        @map("user_id")
+  role   WspMemberRole @default(Member)
+
+  wsp  Wsp  @relation(fields: [wspId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("wsp_members")
+}
+
+// Project
+model Project {
+  id    String  @id @default(cuid())
+  wspId String  @map("wsp_id")
+  name  String
+  image String?
+
+  wsp Wsp @relation(fields: [wspId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([name, wspId])
+  @@index([name, wspId])
+  @@map("projects")
+}
