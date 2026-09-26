@@ -1,0 +1,28 @@
+# Known limitations and remaining work
+
+This change is active, not release-complete. Successful tests below prove the covered bounded slice, not every clause of the master prompt or the original RE/RP/RC plan.
+
+## Critical before archive
+
+1. **Capacity/performance (CORE-006/012/016):** native v1 still rejects Medium/Large at its original limits. User-approved native v2 now opens all three datasets through immutable pages and a private disk catalog without raising DTO limits. Large cold open/index/validation improved from 33.7 to 7.8 minutes in the separate optimized run; sampled peak RSS was about 313 MiB. Calibrated follow-up budgets are recorded, but these observations do not establish an interactive deployment SLA. Later safety fixes differ from the captured measurement hashes. See `benchmark-v2-analysis.md`; historical v1 failures remain valid for v1.
+2. **Metamodel semantics (CORE-002/017):** declarative readonly/computed rules, creation/deletion denial, lifecycle field selection and directed cycle checks now execute. Policy inheritance, comprehensive native lifecycle revalidation and policy combinations still need acceptance. Explicit configuration migration preview/authorized apply is NOT implemented. Do not infer that configuration reload performs a migration.
+3. **Port conformance (RP-1/3/4/5):** the capability-shaped factory and negative type fixtures cover writer/watch/history/query. `RepositoryReaderSession` now supports optional query/snapshot services; the former full-session convenience interface remains compatible. Point-only operation and unsupported-service responses pass tests. Throwing cancellation registration/cleanup, hostile result proxies and malformed event invalidation now have focused regression tests. History cursor conformance and the broader boundary matrix still need final acceptance; native capabilities are not proof for future backends.
+4. **Completion traceability:** all 112 original expanded BDD scenarios now execute through awaited assertion-bearing bindings, with negative harness tests. CORE links remain broader than the tested slices; extend links for remaining detailed clauses rather than interpreting a CORE tag as full acceptance.
+
+## Functional gaps and risk boundaries
+
+- Traversal now compares the starting/final repository revision and each adjacency page, returning REVISION_CONFLICT rather than mixed success; cancellation reaches adjacency reads. This relies on adapter revisions changing for every relevant state mutation, not an immutable database transaction.
+- Actual asynchronous native watch tests cover source corruption/repair, model/profile changes, read-only transitions and close. A reproduced delayed rebuild/incremental update race is now serialized and tested against real SQLite. The full external-change concurrency matrix still needs final acceptance. No durable event outbox exists.
+- The index is derived and incrementally updated after commits. Native v1 ordinary queries use its bounded source catalog; v2 uses its private disk catalog. A 200-run seeded SQLite rebuild/pagination/adjacency equivalence property now passes. General v1 index filters scan bounded SQLite rows; v2 narrows supported point/type/status/adjacency candidates with indexes.
+- Only one native source file is transactionally replaced. Multi-file repository writes, arbitrary external write mappings, noncooperating-writer exclusion and hostile local TOCTOU protection are not supported.
+- Profile secret-shaped keys, URL userinfo and common credential query/fragment parameters are rejected. This is not a general secret detector: host-owned adapter configuration must enforce its own closed schema, resolve authenticationRef separately and never inject credentials into exported profiles.
+- Bridge functionality, actual Draw codec round-trip and automatic presentation controller now exist. No pre-existing Designer shell was available to wire; no separate Navigator/Inspector UI is claimed. Stronger concurrent/same-revision conflict controller tests remain advisable.
+- Session idempotency is bounded/non-durable; it is not an exactly-once distributed protocol. Batch import MERGE reconstructs commands and does not supply durable import-job replay semantics.
+- PostgreSQL/remote are restricted contracts, not storage implementations. No local DB/migration infrastructure was found. Federation is read-only in-process resolution; search has no backend. No distributed mutation transaction is claimed.
+- Seeded properties (200 runs each) cover identity, JSON round-trip/copy isolation, rejected/failed commits, valid directed cyclic graphs, replay suppression, streaming/full validation equivalence, paged query equivalence and SQLite rebuild queries. The expanded detached-diagram/fuzz matrix is still incomplete.
+- Explicit recovery is implemented and actual writer-process kills before/after replacement pass. Power-loss/directory durability and interruption during recovery itself are not certified. Preserved evidence is never automatically discarded; stranded recovery locks require operator inspection.
+- ES2022 consumers and negative writer/history/watch/query capability fixtures exist. Individual package publishing remains unconfigured; the full-query convenience contract is retained for existing consumers.
+
+## External information still needed
+
+Real external YAML schemas and stable-key rules; authentication/authorization deployment policy; PostgreSQL instance and migration lifecycle if required; acceptable performance budgets and target hardware; approved operator recovery policy. No external schema or credentials were fabricated.

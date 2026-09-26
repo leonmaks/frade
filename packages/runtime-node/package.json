@@ -1,0 +1,34 @@
+{
+  "name": "@frade/runtime-node",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc --outDir dist --declaration",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@frade/adapter-sberea-yaml": "workspace:*",
+    "@frade/adapter-yaml": "workspace:*",
+    "@frade/local-index": "workspace:*",
+    "@frade/metamodel-config": "workspace:*",
+    "@frade/metamodel-domain": "workspace:*",
+    "@frade/repository-api": "workspace:*",
+    "@frade/repository-application": "workspace:*",
+    "@frade/repository-domain": "workspace:*",
+    "@frade/repository-ports": "workspace:*",
+    "@frade/runtime-contracts": "workspace:*",
+    "saxes": "6.0.0",
+    "@frade/draw": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}

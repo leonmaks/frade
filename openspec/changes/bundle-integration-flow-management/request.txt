@@ -1,0 +1,2465 @@
+Ты работаешь над проектом Frade — Flexible Repository for Architecture Design & Execution.
+
+Необходимо реализовать управление Integration Flows, входящими в состав Bundle/«жгута» между двумя системами/подсистемами на архитектурной диаграмме.
+
+Работа ведется строго по SDD + BDD + TDD и существующим правилам OpenSpec проекта.
+
+============================================================
+0. ОБЯЗАТЕЛЬНЫЙ PRE-FLIGHT
+============================================================
+
+До изменения кода:
+
+1. Проанализируй monorepo Frade:
+   - AGENTS.md и локальные AGENTS.md;
+   - package.json / workspace config;
+   - openspec/config.yaml;
+   - существующие OpenSpec changes/specs;
+   - Frade Draw;
+   - Frade Repo Core;
+   - domain/metamodel layer;
+   - diagram persistence;
+   - repository adapters;
+   - command/undo-redo infrastructure;
+   - существующие LOV/reference selectors;
+   - существующий UI kit;
+   - существующие tests и test conventions.
+
+2. Найди существующие abstractions для:
+   - RepoObjectRef / EntityRef;
+   - Repository Query;
+   - Repository Mutation;
+   - Diagram Node;
+   - Diagram Edge;
+   - binding diagram element -> repository object;
+   - command stack;
+   - undo/redo;
+   - dirty state;
+   - metamodel/schema-driven forms;
+   - search/filter infrastructure.
+
+3. НЕ создавай параллельные abstractions, если соответствующая концепция уже существует.
+
+4. НЕ связывай UI непосредственно:
+   - с YAML;
+   - с файловой системой;
+   - с Git;
+   - с конкретным KA/Kadzo repository format.
+
+Вся работа с digital repository должна проходить через Frade Repo Core.
+
+Архитектура должна работать одинаково для будущих:
+- YAML/JSON repositories;
+- Git-backed repositories;
+- relational repositories;
+- graph/object repositories;
+- remote repositories.
+
+5. Создай OpenSpec change.
+
+Рекомендуемый change-id:
+
+bundle-integration-flow-management
+
+Следуй фактической структуре OpenSpec данного проекта.
+Если аналогичной структуры пока нет, используй:
+
+openspec/changes/bundle-integration-flow-management/
+  proposal.md
+  design.md
+  tasks.md
+  specs/
+    bundle-integration-flow-management/
+      spec.md
+  bdd/
+    bundle-integration-flow-management.feature
+
+Сначала спецификация и тест-дизайн.
+После этого implementation.
+
+============================================================
+1. BUSINESS CONTEXT
+============================================================
+
+UI Frade состоит как минимум из:
+
+LEFT:
+Repository Navigator — дерево объектов Digital Repository.
+
+RIGHT:
+Diagram Editor — архитектурная диаграмма.
+
+На диаграмме могут присутствовать две системы или подсистемы:
+
+System A
+System B
+
+Между ними создается специальная Diagram Edge типа:
+
+Integration Bundle
+далее: Bundle / Жгут.
+
+Bundle сам по себе НЕ является Integration Flow.
+
+Bundle является diagram-level representation, содержащим 0..N ссылок на Integration Flow objects из Digital Repository.
+
+Пример:
+
+Repository:
+
+Flow F1: A -> B
+Flow F2: A -> B
+Flow F3: B -> A
+Flow F4: A -> B
+Flow F5: C -> D
+
+Diagram D1:
+
+Bundle A-B:
+  F1
+  F3
+
+Diagram D2:
+
+Bundle A-B:
+  F2
+  F3
+  F4
+
+F1-F4 существуют независимо от диаграмм.
+
+Удаление F1 из Bundle D1 не удаляет F1 из Repository.
+
+============================================================
+2. ГЛАВНЫЙ DOMAIN INVARIANT
+============================================================
+
+Строго разделить:
+
+A. Repository object existence
+
+и
+
+B. Diagram membership.
+
+IntegrationFlow является canonical repository entity.
+
+Bundle содержит только references на canonical IntegrationFlow entities.
+
+Запрещается копировать IntegrationFlow attributes внутрь Bundle как source of truth.
+
+Conceptually:
+
+IntegrationFlow
+    1
+    |
+    | referenced by
+    |
+    0..N
+BundleMembership
+
+Diagram Bundle:
+
+BundleEdge
+  sourceNodeRef
+  targetNodeRef
+  integrationFlowRefs: RepoObjectRef[]
+
+Используй существующий RepoObjectRef/EntityRef Frade.
+
+Если такого abstraction нет, спроектируй canonical ref, достаточный минимум:
+
+repositoryId
+entityTypeId
+objectId
+
+Не используй bare YAML path как domain identity.
+
+============================================================
+3. ELIGIBILITY RULE
+============================================================
+
+Пусть endpoints Bundle:
+
+A
+B
+
+Integration Flow может быть включен в Bundle тогда и только тогда, когда:
+
+(source == A AND consumer == B)
+
+OR
+
+(source == B AND consumer == A)
+
+Порядок endpoint'ов Bundle не определяет направление Integration Flow.
+
+Bundle является недирекционным контейнером для directed flows.
+
+Функция:
+
+isFlowEligibleForBundle(flow, A, B)
+
+должна сравнивать canonical repository object refs.
+
+Она должна быть pure domain function и иметь полное unit-test покрытие.
+
+============================================================
+4. SYSTEM/SUBSYSTEM SEMANTICS
+============================================================
+
+MVP использует EXACT endpoint matching.
+
+Если Bundle соединяет:
+
+System A
+Subsystem B1
+
+eligible только flows, у которых source/consumer прямо ссылаются именно на эти objects.
+
+НЕ делать автоматически:
+
+"System A включает все child subsystems".
+
+Иерархическое descendant expansion не входит в текущий scope.
+
+Архитектура query API при этом не должна запрещать добавить такой режим в будущем.
+
+============================================================
+5. ОСНОВНОЙ CX
+============================================================
+
+Основной UX должен быть ориентирован на работу непосредственно с Bundle.
+
+ENTRY POINTS:
+
+1. Double-click по Bundle.
+2. Context menu:
+   "Интеграционные потоки..."
+3. Action в inspector/properties selected Bundle.
+4. После создания нового Bundle показать ненавязчивый contextual hint:
+   "Найдено N потоков между A и B"
+   actions:
+   - Выбрать потоки
+   - Создать новый
+
+Не открывать modal автоматически после каждого создания Bundle.
+
+Пользователь может рисовать несколько Bundle подряд.
+
+============================================================
+6. BUNDLE BADGE
+============================================================
+
+Для selected/hover Bundle показывать:
+
+N / M потоков
+
+где:
+
+N = количество Integration Flows, включенных в Bundle;
+M = количество eligible Integration Flows в Repository между endpoints.
+
+Пример:
+
+3 / 8 потоков
+
+Для обычного unselected состояния допускается показывать только:
+
+3
+
+чтобы не перегружать диаграмму.
+
+Если selected flows имеют разные directions, НЕ пытаться представлять направление всего Bundle одной стрелкой.
+
+Bundle может одновременно содержать:
+
+A -> B
+B -> A
+
+flows.
+
+============================================================
+7. FLOW MANAGER
+============================================================
+
+Основной interface:
+
+Integration Flow Manager.
+
+Это НЕ маленький modal.
+
+Desktop layout:
+
+right-side docked/resizable panel внутри Diagram workspace.
+
+LEFT Repository Navigator должен продолжить отображаться.
+
+Diagram должен оставаться видимым.
+
+Panel header:
+
+Интеграционные потоки
+
+System A ↔ System B
+
+В репозитории: M
+В жгуте: N
+
+Toolbar:
+
+[Search........................]
+
+[ ] Искать во всем репозитории
+
+Filters
+
+[+ Новый поток]
+
+Quick filter:
+
+Все
+В жгуте
+Не в жгуте
+
+Optional filters:
+
+Direction:
+- Any
+- A -> B
+- B -> A
+
+Status
+
+Technology
+
+Technical-use
+
+Использовать существующие filter components Frade.
+
+============================================================
+8. TABLE
+============================================================
+
+Основное представление — Data Table.
+
+Default columns:
+
+1. "В жгуте"
+2. Direction
+3. Integration Flow display name / description
+4. Data objects
+5. Technologies
+6. Technical use
+7. Async
+8. Status
+9. Row actions
+
+Если domain metamodel содержит другие поля, пользователь должен иметь возможность увидеть их через details view.
+
+Не требуется помещать все attributes одновременно в table columns.
+
+Для каждой строки:
+
+checkbox "В жгуте"
+
+Direction:
+
+A -> B
+или
+B -> A
+
+Не использовать одну стрелку без textual accessible label.
+
+Flow name:
+
+Использовать display-name rule из metamodel.
+
+Если отдельного title/name нет:
+использовать repository display-name mechanism.
+
+Нельзя hardcode'ить assumption, что description всегда является name.
+
+============================================================
+9. MEMBERSHIP CHECKBOX
+============================================================
+
+Checkbox в первой колонке — это НЕ generic table row selection.
+
+Это domain property:
+
+"показывать данный repository Integration Flow внутри данного Bundle на данной Diagram".
+
+Checked:
+
+flow ref существует в bundle.integrationFlowRefs.
+
+Unchecked:
+
+flow ref отсутствует.
+
+Click checked -> unchecked:
+
+remove membership only.
+
+НЕ удалять Integration Flow из Repository.
+
+Click unchecked -> checked:
+
+добавить RepoObjectRef в Bundle.
+
+Duplicate references запрещены.
+
+Membership mutation должна:
+
+- использовать Diagram command stack;
+- быть undoable;
+- быть redoable;
+- mark diagram dirty;
+- корректно сериализоваться;
+- корректно восстанавливаться после reload.
+
+НЕ нужен отдельный Apply button.
+
+Membership checkbox изменяет diagram state сразу через command.
+
+============================================================
+10. UNDO / REDO
+============================================================
+
+Обязательные commands:
+
+AddFlowToBundleCommand
+RemoveFlowFromBundleCommand
+
+или equivalent existing generic commands.
+
+Поведение:
+
+check F1
+=> F1 появляется в Bundle.
+
+Undo
+=> F1 исключается.
+
+Redo
+=> F1 снова включается.
+
+Все membership mutations должны быть atomic diagram commands.
+
+============================================================
+11. ROW DETAILS
+============================================================
+
+Single click по строке:
+
+выбирает flow и показывает all attributes read-only.
+
+Допускается:
+
+- expandable row;
+или
+- details area в Flow Manager.
+
+Выбери pattern, наиболее согласованный с существующим UI Frade.
+
+User должен иметь возможность увидеть ВСЕ attributes объекта, а не только columns.
+
+Attributes должны строиться metamodel/schema-driven способом.
+
+Reference attributes должны показывать human-readable object labels.
+
+Array fields должны корректно отображаться.
+
+Enum fields — canonical display labels.
+
+============================================================
+12. ROW ACTIONS
+============================================================
+
+Для каждого Integration Flow:
+
+Открыть / Подробнее
+Редактировать
+Поменять направление
+Клонировать
+
+Если actions > 3, использовать overflow menu `...`.
+
+Actions должны иметь accessible labels.
+
+============================================================
+13. DEFAULT REPOSITORY QUERY
+============================================================
+
+При открытии Flow Manager default query:
+
+scope = ENDPOINT_PAIR
+
+Predicate:
+
+(flow.source == endpointA &&
+ flow.consumer == endpointB)
+
+OR
+
+(flow.source == endpointB &&
+ flow.consumer == endpointA)
+
+Поиск должен включать flows обоих направлений.
+
+Нельзя выполнять прямой scan YAML из React component.
+
+Запрос выполняется через Repo Core.
+
+Предусмотреть API уровня domain/repository service, например:
+
+searchIntegrationFlows({
+    endpointA,
+    endpointB,
+    scope,
+    text,
+    filters,
+    pagination
+})
+
+Названия адаптировать к существующей архитектуре.
+
+============================================================
+14. REPOSITORY INDEXING
+============================================================
+
+Если Repo Core уже имеет indexes/search service — использовать его.
+
+Если отсутствует эффективный pair lookup, реализовать индекс на уровне Repo Core, а НЕ UI.
+
+Conceptual pair key:
+
+unorderedPair(A, B)
+
+например:
+
+PairKey(min(A,B), max(A,B))
+
+Index:
+
+PairKey -> IntegrationFlow refs
+
+При repository mutations индекс должен обновляться.
+
+Не перечитывать и не парсить весь YAML repository при каждом изменении search string.
+
+============================================================
+15. SEARCH
+============================================================
+
+Search работает минимум по:
+
+- canonical/display ID;
+- display name;
+- description;
+- source name/id;
+- consumer name/id;
+- data objects;
+- technologies;
+- status;
+
+но конкретные searchable attributes должны уважать metamodel/search configuration.
+
+Debounce text input.
+
+Esc очищает search, если search имеет focus.
+
+Search results должны сохранять membership state.
+
+============================================================
+16. EXTENDED SEARCH
+============================================================
+
+Требуется checkbox:
+
+[ ] Искать во всем репозитории
+
+Default:
+
+false.
+
+FALSE:
+
+ищем только flows между A и B.
+
+TRUE:
+
+ищем все Integration Flows в Repository.
+
+При TRUE table дополнительно показывает Source и Consumer для flows, не относящихся к текущей паре.
+
+Current-pair flows должны визуально отличаться:
+
+badge:
+
+"Между текущими системами"
+
+или equivalent.
+
+Результаты current pair рекомендуется rank/sort выше остальных при равной search relevance.
+
+============================================================
+17. CRITICAL RULE ДЛЯ EXTENDED SEARCH
+============================================================
+
+Flow C -> D нельзя включить в Bundle A-B.
+
+Для non-eligible flow:
+
+membership checkbox = disabled.
+
+Tooltip/accessibility description:
+
+"Нельзя включить в этот жгут: поток связывает C → D"
+
+Остаются доступны:
+
+- просмотр;
+- редактирование;
+- клонирование.
+
+Особенно важное действие:
+
+"Клонировать для A ↔ B"
+
+см. раздел Clone.
+
+============================================================
+18. EMPTY STATES
+============================================================
+
+CASE 1:
+
+Между A и B flows отсутствуют.
+
+Показывать:
+
+"Между System A и System B интеграционных потоков в репозитории нет."
+
+Actions:
+
++ Создать поток
+
+[ ] Искать во всем репозитории
+
+CASE 2:
+
+Search ничего не нашел:
+
+"По заданным условиям потоки не найдены."
+
+CASE 3:
+
+Repository unavailable:
+
+отдельный error state.
+
+Не путать empty repository result с connection/query error.
+
+============================================================
+19. CREATE INTEGRATION FLOW
+============================================================
+
+Action:
+
++ Новый поток
+
+Открывает Flow Editor внутри Flow Manager.
+
+Не использовать tiny modal для большой metamodel-driven формы.
+
+Так как create вызван из Bundle A-B:
+
+Source и Consumer предварительно определены A и B.
+
+В верхней части editor:
+
+Направление:
+
+(A -> B)
+(B -> A)
+
+Default направление можно определить:
+
+bundle source node -> bundle target node
+
+но пользователь должен явно видеть и иметь возможность переключить его.
+
+При переключении:
+
+Source и Consumer меняются местами.
+
+============================================================
+20. CREATE FORM
+============================================================
+
+Форма генерируется из metamodel/schema.
+
+Не hardcode'ить attributes IntegrationFlow в React component.
+
+Schema должна определять:
+
+- label;
+- type;
+- required;
+- enum;
+- reference;
+- array;
+- validation;
+- editor;
+- searchable;
+- display.
+
+При наличии текущей модели Integration Flow форма должна поддерживать, в частности:
+
+- description;
+- source;
+- consumer;
+- endpoint;
+- data objects;
+- agreement;
+- comments;
+- technologies;
+- technical use;
+- async;
+- protected;
+- status;
+- changes;
+
+НО эти поля не являются основанием hardcode'ить KA v2023 format.
+
+Frade должен работать с configurable metamodel.
+
+============================================================
+21. CREATE ID
+============================================================
+
+Использовать существующую Repository object creation strategy.
+
+Если ID генерируется Repo Core:
+
+не заставлять пользователя вводить его.
+
+Если domain/repository policy требует user-defined ID:
+
+показать ID field и обеспечить:
+
+- validation;
+- uniqueness check;
+- namespace rules;
+- conflict message.
+
+UI не должен самостоятельно определять YAML key/path.
+
+============================================================
+22. ADD CREATED FLOW TO BUNDLE
+============================================================
+
+В create form:
+
+[x] Добавить в текущий жгут
+
+Default = true.
+
+После successful repository create:
+
+1. получить canonical RepoObjectRef;
+2. если checkbox enabled:
+   добавить ref в Bundle через diagram command.
+
+Если Repository create succeeded,
+но membership update failed:
+
+НЕ удалять автоматически только что созданный repository object.
+
+Показать:
+
+"Поток создан, но не удалось добавить его в текущий жгут."
+
+Action:
+
+"Повторить добавление"
+
+Operation должен быть idempotent.
+
+============================================================
+23. EDIT INTEGRATION FLOW
+============================================================
+
+Edit изменяет canonical repository object.
+
+Это НЕ diagram-only edit.
+
+Все diagrams, которые ссылаются на данный flow, впоследствии должны видеть обновленные attributes.
+
+Использовать Repository Mutation API.
+
+Никакого direct file write из diagram package.
+
+Form снова schema-driven.
+
+============================================================
+24. GLOBAL IMPACT OF EDIT
+============================================================
+
+UI должен явно различать:
+
+"Исключить из жгута"
+
+и
+
+"Редактировать поток".
+
+Редактирование меняет global repository object.
+
+В editor показать ненавязчивый message:
+
+"Изменения будут сохранены в цифровом репозитории и будут видны во всех представлениях этого потока."
+
+Не показывать warning dialog для каждого обычного attribute edit.
+
+Но endpoint changes имеют отдельное правило.
+
+============================================================
+25. EDIT SOURCE / CONSUMER
+============================================================
+
+Пользователь может редактировать attributes, включая Source и Consumer, если repository permissions это позволяют.
+
+Если после edit flow по-прежнему связывает A и B:
+
+membership остается.
+
+Например:
+
+A -> B
+
+reverse:
+
+B -> A
+
+=> membership valid.
+
+Если flow становится:
+
+A -> C
+
+и он входил в Bundle A-B:
+
+перед Save показать inline/high-impact warning:
+
+"После изменения поток больше не будет связывать System A и System B и будет исключен из текущего жгута."
+
+Require explicit confirmation.
+
+После successful Repository save:
+
+remove flow from current Bundle through Diagram command.
+
+Не удалять сам Integration Flow.
+
+============================================================
+26. OTHER DIAGRAMS AFTER ENDPOINT EDIT
+============================================================
+
+Не выполнять неявные массовые изменения закрытых diagrams.
+
+Если endpoint change делает existing membership другого diagram Bundle invalid:
+
+при следующей загрузке/валидации такого diagram должна обнаруживаться invalid membership.
+
+Если в Frade существует Diagram Index / usage index:
+
+можно показать impact count:
+
+"Поток используется в N диаграммах."
+
+Но implementation не должна становиться зависимой от наличия такого index.
+
+============================================================
+27. REVERSE DIRECTION
+============================================================
+
+Action:
+
+"Поменять направление"
+
+Semantics:
+
+old.source -> new.consumer
+old.consumer -> new.source
+
+Все остальные attributes сохраняются.
+
+Рекомендуемый UX:
+
+action открывает Edit Flow state и сразу swaps Source/Consumer в draft.
+
+Пользователь видит:
+
+A -> B
+становится
+B -> A
+
+Repository не изменяется до Save.
+
+После Save:
+
+- Repository object update;
+- membership текущего Bundle сохраняется;
+- canonical object ID сохраняется;
+- flow НЕ клонируется;
+- никакого delete/create.
+
+Reverse должен быть pure transformation с unit tests.
+
+============================================================
+28. CLONE
+============================================================
+
+Clone создает НОВЫЙ Integration Flow object.
+
+Новый object получает новый repository identity.
+
+Копируются domain attributes, кроме:
+
+- object ID;
+- revision/version metadata;
+- timestamps/audit fields;
+- generated technical fields;
+- fields, помеченных в schema как non-cloneable.
+
+Clone policy должна быть centralized/domain-driven.
+
+============================================================
+29. CLONE ELIGIBLE FLOW
+============================================================
+
+Если original flow:
+
+A -> B
+или
+B -> A
+
+и текущий Bundle A-B:
+
+Clone открывает Create Form:
+
+- attributes copied;
+- source/consumer preserved;
+- new ID;
+- "Добавить в текущий жгут" = true.
+
+============================================================
+30. CLONE FROM EXTENDED SEARCH
+============================================================
+
+Если найден:
+
+C -> D
+
+в Flow Manager A-B:
+
+primary clone action:
+
+"Клонировать для A ↔ B"
+
+Открывает Create Form:
+
+- business/technical attributes скопированы;
+- source/consumer заменены current endpoints A/B;
+- пользователь выбирает direction:
+    A -> B
+    B -> A;
+- new ID;
+- Add to current Bundle = true.
+
+Дополнительно, если UX проекта это допускает:
+
+"Клонировать как есть"
+
+создает C -> D и не может автоматически добавить его в A-B.
+
+Primary path в контексте Bundle — Clone for current Bundle.
+
+============================================================
+31. DELETE НЕ ВХОДИТ В SCOPE
+============================================================
+
+Данная задача НЕ реализует удаление Integration Flow из Repository.
+
+"Исключить из жгута" != "Удалить".
+
+Если delete functionality уже существует в global object editor, не переносить ее автоматически в Flow Manager.
+
+============================================================
+32. BROKEN REFERENCES
+============================================================
+
+Diagram может содержать RepoObjectRef, который больше не разрешается Repository.
+
+Например object был удален внешним Git commit.
+
+Flow Manager должен показывать:
+
+"Недоступный поток"
+
+с object ID/ref.
+
+Status:
+
+Broken reference.
+
+Action:
+
+"Исключить из жгута"
+
+должно работать.
+
+UI не должен падать.
+
+Diagram validation должна фиксировать broken reference.
+
+============================================================
+33. REPOSITORY EVENTS / REFRESH
+============================================================
+
+Если Repo Core имеет event model, реагировать на:
+
+ObjectCreated
+ObjectUpdated
+ObjectDeleted
+RepositoryReloaded
+RepositoryChanged
+
+или соответствующие существующие events.
+
+Flow Manager должен обновлять query/cache.
+
+Если object update меняет eligibility:
+
+recompute row eligibility.
+
+Не плодить собственную event infrastructure, если она уже существует.
+
+============================================================
+34. READ-ONLY REPOSITORY
+============================================================
+
+Если Repository read-only, но Diagram writable:
+
+разрешить:
+
+- просматривать flows;
+- search/filter;
+- добавлять existing eligible refs в Bundle;
+- исключать refs из Bundle.
+
+Запретить:
+
+- Create;
+- Edit;
+- Reverse;
+- Clone.
+
+Disabled controls должны объяснять причину.
+
+============================================================
+35. READ-ONLY DIAGRAM
+============================================================
+
+Если Diagram read-only:
+
+membership checkbox disabled.
+
+Но при writable Repository могут быть доступны global View/Edit операции согласно permission model приложения.
+
+Использовать существующий permission model.
+
+============================================================
+36. REPOSITORY DISCONNECTED
+============================================================
+
+Connected-repository mode является основным scope.
+
+Но Flow Manager не должен crash в disconnected mode.
+
+Если repository connection отсутствует:
+
+- показать понятное состояние;
+- показать известные bundle refs, если diagram format содержит refs;
+- repository search/create/edit disabled.
+
+Не внедрять в рамках этой задачи полноценную offline snapshot model, если ее еще нет.
+
+============================================================
+37. RECONNECTING BUNDLE ENDPOINT
+============================================================
+
+Учесть изменение endpoint самого Diagram Bundle.
+
+Пример:
+
+Bundle A-B содержит:
+
+F1 A -> B
+F2 B -> A
+
+Пользователь reconnect edge:
+
+A-B
+->
+A-C
+
+Перед завершением операции определить incompatible memberships.
+
+Если существуют incompatible flows:
+
+показать confirmation:
+
+"При изменении конца жгута 2 потока перестанут соответствовать его системам и будут исключены из этого представления."
+
+Continue:
+
+- reconnect Bundle;
+- удалить incompatible refs;
+- сохранить eligible refs, если такие есть;
+- всё сделать одной logical undoable operation.
+
+Cancel:
+
+- оставить старый endpoint;
+- memberships unchanged.
+
+Undo:
+
+полностью восстановить old endpoint + refs.
+
+============================================================
+38. DELETING BUNDLE
+============================================================
+
+Удаление Bundle с diagram:
+
+удаляет только Diagram Edge и его memberships.
+
+НЕ удаляет Integration Flows из Repository.
+
+============================================================
+39. SORTING
+============================================================
+
+Default pair-scope sorting:
+
+1. Included flows first;
+2. Direction;
+3. display name.
+
+Extended search:
+
+1. exact current-pair matches;
+2. normal relevance;
+3. display name.
+
+Пользователь может менять sort по поддерживаемым columns.
+
+============================================================
+40. HEADER CHECKBOX / BULK MEMBERSHIP
+============================================================
+
+Если используется header checkbox в колонке "В жгуте":
+
+он должен относиться только к:
+
+- currently filtered;
+- visible/query result;
+- ELIGIBLE flows.
+
+Non-eligible extended-search results исключаются.
+
+Tri-state:
+
+unchecked
+checked
+indeterminate
+
+Accessible label:
+
+"Включить все подходящие потоки из текущей выборки"
+
+Для большой выборки операция должна быть одним compound Diagram command,
+а не сотнями независимых undo entries.
+
+============================================================
+41. PERFORMANCE
+============================================================
+
+Нельзя зависеть линейно от полного YAML repository на каждый render.
+
+Требования:
+
+- debounced search;
+- cancellation/stale query protection;
+- pagination или virtualization для больших result sets;
+- stable row keys = canonical RepoObjectRef;
+- no N+1 repository lookups per row;
+- reference display labels получать batch/bulk способом или через existing cache.
+
+Reference performance fixture:
+
+100 000 Integration Flows.
+
+Flow Manager не должен пытаться materialize/render все строки одновременно.
+
+Pair query должен использовать Repo Core index/query capability.
+
+============================================================
+42. CONCURRENCY
+============================================================
+
+Если Repo Core поддерживает revision/version/etag:
+
+Update должен быть optimistic-concurrency aware.
+
+Если object изменился после начала edit:
+
+не silently overwrite.
+
+Показать conflict state:
+
+"Поток был изменен в репозитории."
+
+Actions:
+
+- загрузить актуальную версию;
+- повторить изменения;
+- использовать существующий conflict resolution mechanism Frade.
+
+Не создавать второй conflict framework.
+
+============================================================
+43. ACCESSIBILITY
+============================================================
+
+Обязательно:
+
+- keyboard navigation;
+- visible focus;
+- semantic buttons;
+- checkbox labels;
+- screen-reader labels для direction;
+- status announcement для membership changes;
+- error association с fields;
+- нельзя передавать direction только цветом/иконкой.
+
+Keyboard minimum:
+
+Tab / Shift+Tab
+Enter
+Space
+Escape
+
+Space на focused membership checkbox:
+toggle membership.
+
+Enter на focused row:
+открыть details.
+
+Esc:
+закрыть details/editor или очистить текущий transient layer согласно обычной hierarchy приложения.
+
+============================================================
+44. VISUAL DESIGN
+============================================================
+
+Соблюдать существующий Frade design system.
+
+Не вводить отдельную библиотеку UI без необходимости.
+
+Panel должен быть resizable.
+
+Desktop wide viewport:
+
+Diagram остается видимым.
+
+Для узких viewport допускается overlay/full-width panel.
+
+Не использовать giant blocking modal для основной таблицы.
+
+============================================================
+45. METAMODEL DRIVEN CONFIGURATION
+============================================================
+
+Это критическое архитектурное требование Frade.
+
+Не привязывать feature к:
+
+kadzo.v2023.integrations
+
+на уровне UI/domain core.
+
+Должна существовать configuration/capability, позволяющая определить:
+
+Integration Flow entity type;
+
+semantic roles:
+- source;
+- consumer;
+
+display attributes;
+
+search attributes;
+
+table default columns;
+
+cloneable fields;
+
+editable fields.
+
+Conceptual configuration:
+
+integrationFlowCapability:
+  entityType: <entityTypeId>
+
+  roles:
+    source: <attributeId>
+    consumer: <attributeId>
+
+  display:
+    primary: <displayExpression>
+    columns:
+      - ...
+      
+  search:
+    attributes:
+      - ...
+
+Не создавать именно этот YAML, если Frade уже имеет другой metamodel mechanism.
+
+Интегрироваться с ним.
+
+============================================================
+46. DOMAIN API
+============================================================
+
+Сформировать domain service/API примерно следующего уровня:
+
+IntegrationFlowService
+
+searchForBundle(bundleEndpoints, query)
+searchAll(query)
+
+get(flowRef)
+
+create(draft)
+
+update(flowRef, patch/replacement)
+
+clone(flowRef, options)
+
+reverse(flowRef)
+
+isEligible(flow, bundleEndpoints)
+
+Названия должны соответствовать actual code conventions.
+
+Важно:
+
+reverse может быть implemented как update transformation,
+а clone как create from sanitized copy.
+
+============================================================
+47. DIAGRAM API
+============================================================
+
+Отдельно domain operations diagram:
+
+getBundleMembers(bundleId)
+
+addBundleMember(bundleId, flowRef)
+
+removeBundleMember(bundleId, flowRef)
+
+replaceBundleMembers(...)
+
+validateBundleMembers(bundleId)
+
+reconnectBundle(...)
+
+Нельзя смешивать Repository Mutation и Diagram Mutation в один storage abstraction.
+
+============================================================
+48. STATE MODEL FLOW MANAGER
+============================================================
+
+Минимальные logical states:
+
+CLOSED
+
+LOADING
+
+READY
+
+SEARCHING
+
+VIEWING_DETAILS
+
+CREATING
+
+EDITING
+
+CLONING
+
+SAVING
+
+QUERY_ERROR
+
+SAVE_ERROR
+
+CONFLICT
+
+Nested form states:
+
+PRISTINE
+DIRTY
+VALIDATING
+INVALID
+VALID
+SAVING
+
+Не обязательно использовать state machine library.
+
+Но переходы должны быть детерминированными и тестируемыми.
+
+============================================================
+49. SDD — DESIGN DOCUMENT
+============================================================
+
+design.md обязан описать:
+
+1. Problem statement.
+2. Context.
+3. Repository object vs Diagram view distinction.
+4. Domain invariants.
+5. Entity/reference model.
+6. Metamodel integration.
+7. Repo Core integration.
+8. Diagram persistence.
+9. Query strategy.
+10. Indexing strategy.
+11. Membership command model.
+12. Undo/redo.
+13. Create workflow.
+14. Edit workflow.
+15. Reverse workflow.
+16. Clone workflow.
+17. Extended search.
+18. Permissions.
+19. Broken refs.
+20. Concurrency.
+21. Error handling.
+22. Performance.
+23. Accessibility.
+24. Migration/backward compatibility.
+25. Alternatives considered.
+
+В Alternatives обязательно сравнить:
+
+A. Copy Flow attributes into Bundle
+vs
+B. Store RepoObjectRefs.
+
+Выбрать B.
+
+Сравнить:
+
+A. Separate modal dialogs
+vs
+B. unified Flow Manager.
+
+Выбрать B.
+
+Сравнить:
+
+A. full repository scan in UI
+vs
+B. Repo Core query/index.
+
+Выбрать B.
+
+============================================================
+50. BDD
+============================================================
+
+Создай executable/readable Gherkin feature.
+
+Feature:
+Manage Integration Flows inside a Diagram Bundle
+
+Ниже минимальный обязательный набор сценариев.
+
+------------------------------------------------------------
+Scenario 01 — Open empty Bundle
+------------------------------------------------------------
+
+Given a diagram contains System A and System B
+And an empty Bundle connects A and B
+And Repository contains three Integration Flows between A and B
+When the user opens Integration Flow Manager
+Then all three flows are listed
+And all membership checkboxes are unchecked
+And the header shows "0" flows in the Bundle.
+
+------------------------------------------------------------
+Scenario 02 — Find both directions
+------------------------------------------------------------
+
+Given Repository contains Flow F1 from A to B
+And Repository contains Flow F2 from B to A
+When Flow Manager is opened for Bundle A-B
+Then F1 is shown as A -> B
+And F2 is shown as B -> A.
+
+------------------------------------------------------------
+Scenario 03 — Exclude unrelated flows by default
+------------------------------------------------------------
+
+Given Repository contains Flow F1 A -> B
+And Flow F2 A -> C
+When Flow Manager is opened for Bundle A-B
+Then F1 is shown
+And F2 is not shown.
+
+------------------------------------------------------------
+Scenario 04 — Existing membership
+------------------------------------------------------------
+
+Given Bundle A-B already contains F2
+When Flow Manager is opened
+Then F2 membership checkbox is checked.
+
+------------------------------------------------------------
+Scenario 05 — Include a flow
+------------------------------------------------------------
+
+Given eligible F1 is not included
+When the user checks "В жгуте" for F1
+Then F1 reference is added to the Bundle
+And F1 Repository object is unchanged
+And the Diagram becomes dirty.
+
+------------------------------------------------------------
+Scenario 06 — Exclude a flow
+------------------------------------------------------------
+
+Given F1 is included
+When the user unchecks "В жгуте"
+Then F1 is removed from the Bundle
+And F1 still exists in Repository.
+
+------------------------------------------------------------
+Scenario 07 — Prevent duplicate membership
+------------------------------------------------------------
+
+Given F1 is already included
+When an add operation for F1 is executed again
+Then Bundle contains exactly one reference to F1.
+
+------------------------------------------------------------
+Scenario 08 — Undo inclusion
+------------------------------------------------------------
+
+Given F1 was just added
+When the user executes Undo
+Then F1 is no longer included.
+
+------------------------------------------------------------
+Scenario 09 — Redo inclusion
+------------------------------------------------------------
+
+Given inclusion of F1 was undone
+When the user executes Redo
+Then F1 is included again.
+
+------------------------------------------------------------
+Scenario 10 — Persist membership
+------------------------------------------------------------
+
+Given F1 and F3 are included
+When the diagram is saved and reopened
+Then F1 and F3 remain included
+And no Integration Flow attributes are duplicated into the Bundle.
+
+------------------------------------------------------------
+Scenario 11 — View all attributes
+------------------------------------------------------------
+
+Given F1 is visible in Flow Manager
+When the user opens F1 details
+Then all readable metamodel attributes of F1 are visible.
+
+------------------------------------------------------------
+Scenario 12 — Search inside current pair
+------------------------------------------------------------
+
+Given several flows exist between A and B
+When the user searches for "customer"
+Then only matching A-B flows are displayed
+And membership state remains correct.
+
+------------------------------------------------------------
+Scenario 13 — Filter by direction
+------------------------------------------------------------
+
+Given A -> B and B -> A flows exist
+When Direction filter is set to A -> B
+Then only A -> B flows are displayed.
+
+------------------------------------------------------------
+Scenario 14 — Extended search
+------------------------------------------------------------
+
+Given Flow F5 connects C -> D
+When "Искать во всем репозитории" is checked
+And the user searches for F5
+Then F5 is displayed
+And its Source and Consumer are visible.
+
+------------------------------------------------------------
+Scenario 15 — Non-eligible extended result
+------------------------------------------------------------
+
+Given F5 connects C -> D
+And current Bundle is A-B
+When F5 is displayed through extended search
+Then its membership checkbox is disabled
+And an explanation says F5 cannot be included in A-B.
+
+------------------------------------------------------------
+Scenario 16 — Return to pair scope
+------------------------------------------------------------
+
+Given extended search is enabled
+When the user unchecks "Искать во всем репозитории"
+Then only eligible A-B flows remain in the result set.
+
+------------------------------------------------------------
+Scenario 17 — Empty pair
+------------------------------------------------------------
+
+Given Repository has no flow between A and B
+When Flow Manager opens
+Then an empty state is shown
+And "Создать поток" is available
+And extended search can be enabled.
+
+------------------------------------------------------------
+Scenario 18 — Create A -> B
+------------------------------------------------------------
+
+Given Bundle A-B is open
+When the user chooses "Новый поток"
+And selects direction A -> B
+And supplies all required attributes
+And saves
+Then a new Integration Flow is created in Repository
+And its source is A
+And consumer is B.
+
+------------------------------------------------------------
+Scenario 19 — Create B -> A
+------------------------------------------------------------
+
+Given Bundle A-B is open
+When the user creates a flow with direction B -> A
+Then source is B
+And consumer is A.
+
+------------------------------------------------------------
+Scenario 20 — Create and automatically include
+------------------------------------------------------------
+
+Given "Добавить в текущий жгут" is checked
+When the new flow is successfully created
+Then its canonical RepoObjectRef is added to the current Bundle.
+
+------------------------------------------------------------
+Scenario 21 — Create validation
+------------------------------------------------------------
+
+Given required attributes are missing
+When the user attempts to save
+Then Repository create is not called
+And validation errors are displayed.
+
+------------------------------------------------------------
+Scenario 22 — Duplicate user-defined ID
+------------------------------------------------------------
+
+Given Repository requires user-defined IDs
+And the entered ID already exists
+When the form is saved
+Then create fails with an ID conflict
+And no Bundle membership is added.
+
+------------------------------------------------------------
+Scenario 23 — Repository create succeeds but membership fails
+------------------------------------------------------------
+
+Given a valid new flow
+And Repository create succeeds
+And Diagram membership mutation fails
+Then the new Repository object remains
+And the UI reports that it was not added to the Bundle
+And "Retry adding" is offered.
+
+------------------------------------------------------------
+Scenario 24 — Edit normal attribute
+------------------------------------------------------------
+
+Given F1 is included in Bundle A-B
+When its description is edited
+Then canonical F1 is updated
+And membership remains unchanged.
+
+------------------------------------------------------------
+Scenario 25 — Reverse direction
+------------------------------------------------------------
+
+Given F1 is A -> B
+And F1 belongs to Bundle A-B
+When the user chooses Reverse Direction
+And saves
+Then F1 becomes B -> A
+And F1 retains the same canonical ID
+And all non-endpoint attributes are preserved
+And F1 remains in Bundle A-B.
+
+------------------------------------------------------------
+Scenario 26 — Endpoint change makes membership invalid
+------------------------------------------------------------
+
+Given F1 A -> B belongs to Bundle A-B
+When F1 consumer is changed from B to C
+Then the user is warned that F1 will be excluded
+When the user confirms and saves
+Then F1 becomes A -> C in Repository
+And F1 is removed from Bundle A-B.
+
+------------------------------------------------------------
+Scenario 27 — Cancel invalidating endpoint edit
+------------------------------------------------------------
+
+Given F1 belongs to Bundle A-B
+When the user changes an endpoint to C
+And declines the warning
+Then Repository F1 remains unchanged
+And Bundle membership remains unchanged.
+
+------------------------------------------------------------
+Scenario 28 — Clone eligible flow
+------------------------------------------------------------
+
+Given F1 A -> B exists
+When the user clones F1
+Then a new object F2 is created
+And F2 has a different canonical ID
+And cloneable attributes equal F1
+And source/consumer remain A/B.
+
+------------------------------------------------------------
+Scenario 29 — Clone extended-search flow for current Bundle
+------------------------------------------------------------
+
+Given current Bundle is A-B
+And search result F5 is C -> D
+When the user selects "Клонировать для A ↔ B"
+Then the create form copies cloneable F5 attributes
+And uses A and B as endpoints
+And allows choosing A -> B or B -> A.
+
+------------------------------------------------------------
+Scenario 30 — Broken reference
+------------------------------------------------------------
+
+Given Bundle contains reference F1
+And F1 no longer exists in Repository
+When the diagram is opened
+Then Flow Manager shows a broken reference
+And the user can exclude the broken reference
+And the application does not crash.
+
+------------------------------------------------------------
+Scenario 31 — Read-only Repository
+------------------------------------------------------------
+
+Given Repository is read-only
+And Diagram is writable
+When Flow Manager opens
+Then existing eligible flows can be included/excluded
+And Create is disabled
+And Edit is disabled
+And Reverse is disabled
+And Clone is disabled.
+
+------------------------------------------------------------
+Scenario 32 — Read-only Diagram
+------------------------------------------------------------
+
+Given Diagram is read-only
+When Flow Manager opens
+Then membership controls are disabled.
+
+------------------------------------------------------------
+Scenario 33 — Repository query failure
+------------------------------------------------------------
+
+Given Repository query fails
+When Flow Manager opens
+Then an error state is shown
+And the state is not presented as "no flows found"
+And Retry is available.
+
+------------------------------------------------------------
+Scenario 34 — Repository refresh
+------------------------------------------------------------
+
+Given Flow Manager is open
+And another operation creates eligible F4
+When Repo Core publishes repository change
+Then F4 can appear after query/cache refresh
+Without reopening the diagram.
+
+------------------------------------------------------------
+Scenario 35 — Reconnect Bundle and remove incompatible flows
+------------------------------------------------------------
+
+Given Bundle A-B contains F1 A -> B
+When the user reconnects endpoint B to System C
+Then the user is warned that F1 becomes incompatible
+When the user confirms
+Then Bundle becomes A-C
+And F1 is removed from Bundle membership
+And F1 remains in Repository.
+
+------------------------------------------------------------
+Scenario 36 — Undo Bundle reconnect
+------------------------------------------------------------
+
+Given Bundle A-B with F1 was reconnected to A-C
+And incompatible F1 was removed
+When Undo is executed
+Then Bundle endpoints return to A-B
+And F1 membership is restored.
+
+------------------------------------------------------------
+Scenario 37 — Delete Bundle
+------------------------------------------------------------
+
+Given Bundle A-B contains F1 and F2
+When Bundle is deleted from Diagram
+Then Diagram Bundle is removed
+And F1 remains in Repository
+And F2 remains in Repository.
+
+------------------------------------------------------------
+Scenario 38 — Keyboard membership
+------------------------------------------------------------
+
+Given focus is on F1 membership checkbox
+When Space is pressed
+Then membership toggles
+And focus remains predictable.
+
+------------------------------------------------------------
+Scenario 39 — Accessible direction
+------------------------------------------------------------
+
+Given a screen reader is active
+When F1 A -> B is focused
+Then direction is announced as textual Source -> Consumer information
+And is not represented by icon alone.
+
+------------------------------------------------------------
+Scenario 40 — Large repository
+------------------------------------------------------------
+
+Given Repository contains 100000 Integration Flows
+When Flow Manager opens for Bundle A-B
+Then UI does not render 100000 table rows
+And query uses Repo Core filtering/indexing
+And results use paging or virtualization.
+
+------------------------------------------------------------
+Scenario 41 — Filtered bulk include
+------------------------------------------------------------
+
+Given a filter produces five eligible flows
+When the user invokes bulk include
+Then exactly those five flows are included
+And Undo restores all five memberships in one logical operation.
+
+------------------------------------------------------------
+Scenario 42 — Non-eligible flows ignored by bulk include
+------------------------------------------------------------
+
+Given extended search results contain eligible and non-eligible flows
+When bulk include is executed
+Then only eligible flows are included.
+
+============================================================
+51. TDD — DOMAIN TESTS FIRST
+============================================================
+
+Перед production implementation написать unit tests.
+
+Минимальный suite:
+
+isFlowEligibleForBundle.test.ts
+
+Tests:
+
+A->B matches bundle A-B
+B->A matches bundle A-B
+A->C does not match
+C->B does not match
+same source only does not match
+same consumer only does not match
+canonical refs compare correctly
+
+------------------------------------------------------------
+
+classifyFlowDirection.test.ts
+
+A->B => A_TO_B
+B->A => B_TO_A
+C->D => OTHER
+
+------------------------------------------------------------
+
+bundleMembership.test.ts
+
+add member
+remove member
+prevent duplicates
+remove missing member is idempotent
+preserve canonical ref
+serialization
+deserialization
+
+------------------------------------------------------------
+
+reverseIntegrationFlow.test.ts
+
+swap source/consumer
+preserve ID
+preserve description
+preserve data objects
+preserve technologies
+preserve status
+preserve arbitrary clone-independent fields
+
+------------------------------------------------------------
+
+cloneIntegrationFlow.test.ts
+
+new identity
+copy cloneable attributes
+remove revision
+remove audit metadata
+preserve eligible endpoints
+rebind endpoints for clone-for-current-bundle
+
+------------------------------------------------------------
+
+validateBundleMembership.test.ts
+
+valid refs
+non-matching endpoints
+missing Repository object
+mixed valid/invalid refs
+
+============================================================
+52. TDD — QUERY TESTS
+============================================================
+
+IntegrationFlowQueryService tests:
+
+pair query includes both directions
+pair query excludes unrelated flows
+text query
+filter query
+direction query
+status query
+extended full repository query
+pagination
+stable sorting
+current-pair boost in extended mode
+query cancellation/stale-response protection where applicable
+
+============================================================
+53. TDD — REPOSITORY CONTRACT TESTS
+============================================================
+
+Добавить contract tests, применимые к repository adapters:
+
+search flows by pair
+search all flows
+resolve flow
+create flow
+update flow
+version conflict
+read-only behavior
+
+Если YAML adapter является текущим reference adapter:
+
+проверить его теми же contract tests.
+
+Но domain/UI не должны знать, что adapter YAML.
+
+============================================================
+54. TDD — DIAGRAM COMMAND TESTS
+============================================================
+
+Tests:
+
+AddFlowToBundleCommand execute
+AddFlowToBundleCommand undo
+AddFlowToBundleCommand redo
+
+RemoveFlowFromBundleCommand execute
+undo
+redo
+
+BulkSetBundleMembershipCommand
+single undo entry
+
+ReconnectBundleCommand:
+endpoint mutation
+remove incompatible refs
+undo restores endpoint + refs
+redo
+
+Delete Bundle:
+does not call Repository delete.
+
+============================================================
+55. TDD — COMPONENT TESTS
+============================================================
+
+Использовать фактически установленный React test stack.
+
+Если стек отсутствует:
+предпочтительно Vitest + React Testing Library.
+
+Component tests:
+
+FlowManager loading
+FlowManager empty
+FlowManager query error
+FlowManager rows
+included checkbox
+unincluded checkbox
+disabled incompatible checkbox
+search
+extended search
+filters
+details
+Create button permissions
+Edit permissions
+Reverse
+Clone
+broken ref
+keyboard navigation
+focus handling
+form validation
+dirty form protection
+
+============================================================
+56. TDD — E2E
+============================================================
+
+Использовать существующий E2E framework.
+Если отсутствует — Playwright.
+
+Минимальные E2E journeys:
+
+E2E-01:
+create Bundle
+discover Repository flows
+include two
+save
+reload
+verify membership
+
+E2E-02:
+exclude an existing flow
+undo
+redo
+
+E2E-03:
+create new Integration Flow from Bundle
+automatically include
+reload Repository and Diagram
+
+E2E-04:
+edit flow
+verify same canonical object is reflected
+
+E2E-05:
+reverse flow
+verify source/consumer swapped
+membership retained
+
+E2E-06:
+enable extended search
+find C->D flow
+verify cannot include
+clone for A-B
+include clone
+
+E2E-07:
+external deletion/broken ref
+open diagram
+remove broken membership
+
+E2E-08:
+reconnect Bundle endpoint
+confirm invalid membership removal
+undo
+verify complete restore
+
+============================================================
+57. TEST FIXTURES
+============================================================
+
+Создать deterministic fixtures минимум:
+
+Systems:
+
+A
+B
+C
+D
+
+Flows:
+
+F1 A -> B
+F2 B -> A
+F3 A -> B
+F4 A -> C
+F5 C -> D
+
+Bundle1:
+A-B
+members:
+F1
+
+Fixture fields должны включать:
+
+data objects
+technology
+technical use
+async/status
+description
+
+чтобы проверить rendering и clone preservation.
+
+Не использовать production repository files как единственную test fixture.
+
+============================================================
+58. COVERAGE
+============================================================
+
+Critical domain logic:
+
+eligibility
+membership
+reverse
+clone
+reconnect validation
+
+должна иметь практически полное branch coverage.
+
+Не гонись за artificial 100% coverage React markup.
+
+Приоритет — domain behavior и regression protection.
+
+============================================================
+59. OBSERVABILITY
+============================================================
+
+Использовать existing logging/telemetry infrastructure.
+
+Не логировать весь Repository object с потенциально чувствительными attributes.
+
+Полезные technical events:
+
+flow-manager-query-failed
+flow-create-failed
+flow-update-conflict
+broken-flow-reference
+
+Если product analytics уже существует, допускаются anonymous UX events:
+
+bundle-flow-manager-opened
+bundle-flow-included
+bundle-flow-created
+bundle-flow-cloned
+
+Не добавлять новую analytics dependency.
+
+============================================================
+60. SECURITY
+============================================================
+
+Любая create/update операция должна уважать Repository permissions.
+
+Нельзя обходить Repo Core authorization путем прямой записи YAML.
+
+Reference selectors также должны возвращать только разрешенные пользователю objects согласно существующей security model.
+
+============================================================
+61. MIGRATION / BACKWARD COMPATIBILITY
+============================================================
+
+Существующие diagrams без integrationFlowRefs должны продолжать открываться.
+
+Для старого Bundle:
+
+integrationFlowRefs = []
+
+по default.
+
+Не выполнять destructive migration.
+
+Если diagram schema versioning существует:
+добавить соответствующую version/migration.
+
+============================================================
+62. NON-GOALS
+============================================================
+
+Не реализовывать в этой change:
+
+- Repository deletion of Integration Flow;
+- AI search;
+- automatic hierarchical subsystem expansion;
+- automatic creation of endpoints;
+- automatic generation of integration flows;
+- synchronization с внешними CMDB;
+- separate relationship matrix for whole repository;
+- offline repository snapshots;
+- reimplementation Repository Navigator.
+
+============================================================
+63. IMPLEMENTATION ORDER
+============================================================
+
+Выполнять строго:
+
+PHASE 1
+Repository/code analysis.
+
+PHASE 2
+OpenSpec proposal + requirements.
+
+PHASE 3
+design.md.
+
+PHASE 4
+BDD feature.
+
+PHASE 5
+domain unit tests — RED.
+
+PHASE 6
+minimal domain implementation — GREEN.
+
+PHASE 7
+Repo Core query/mutation contracts.
+
+PHASE 8
+Diagram membership commands.
+
+PHASE 9
+Flow Manager UI.
+
+PHASE 10
+Create/Edit/Reverse/Clone.
+
+PHASE 11
+component tests.
+
+PHASE 12
+E2E.
+
+PHASE 13
+refactor.
+
+PHASE 14
+OpenSpec validation.
+
+PHASE 15
+full lint/typecheck/test/build.
+
+============================================================
+64. REQUIRED FINAL VERIFICATION
+============================================================
+
+Перед завершением выполнить все существующие project commands:
+
+format/check
+lint
+typecheck
+unit tests
+component tests
+BDD tests, если executable
+E2E relevant subset
+build
+OpenSpec validation
+
+Используй фактические команды package.json.
+
+Не придумывай альтернативные команды, если repository уже определяет scripts.
+
+============================================================
+65. DEFINITION OF DONE
+============================================================
+
+Change считается завершенной только если:
+
+1. Bundle может существовать пустым.
+
+2. Flow Manager показывает все Integration Flows между его endpoint systems/subsystems.
+
+3. Оба направления A->B и B->A поддерживаются.
+
+4. Пользователь может включить существующий flow.
+
+5. Пользователь может исключить flow только из данной Diagram.
+
+6. Repository flow при исключении не удаляется.
+
+7. Пользователь видит все attributes flow.
+
+8. Работает поиск.
+
+9. Работают filters.
+
+10. Работает checkbox "Искать во всем репозитории".
+
+11. Flow из другой пары нельзя ошибочно включить в Bundle.
+
+12. Можно создать новый flow.
+
+13. Новый flow сохраняется через Repo Core.
+
+14. Новый flow можно автоматически добавить в Bundle.
+
+15. Можно отредактировать canonical flow.
+
+16. Можно поменять direction source <-> consumer.
+
+17. Reverse не меняет object identity.
+
+18. Можно клонировать flow.
+
+19. Clone имеет новую identity.
+
+20. Clone from full-repository search может быть адаптирован к A-B.
+
+21. Membership поддерживает Undo/Redo.
+
+22. Reconnect Bundle корректно валидирует memberships.
+
+23. Broken references не ломают Diagram.
+
+24. UI не зависит от YAML.
+
+25. Feature metamodel-driven.
+
+26. Feature repository-adapter independent.
+
+27. Existing diagrams backward compatible.
+
+28. BDD scenarios реализованы.
+
+29. Unit/component/E2E tests проходят.
+
+30. OpenSpec validation проходит.
+
+============================================================
+66. IMPORTANT ARCHITECTURAL RULE
+============================================================
+
+Если во время реализации обнаружится конфликт между:
+
+быстрым локальным UI hack
+
+и
+
+правильным разделением:
+
+Diagram
+Domain Model
+Repo Core
+Repository Adapter
+
+выбирай правильную архитектуру.
+
+Особенно запрещено:
+
+React Component
+    -> parse YAML
+    -> modify YAML
+
+Правильный dependency flow:
+
+UI
+  ->
+Application/Domain service
+  ->
+Repo Core Port
+  ->
+Repository Adapter
+
+и независимо:
+
+UI
+  ->
+Diagram Command
+  ->
+Diagram Model/Persistence.
+
+Repository Integration Flow и Diagram Bundle Membership —
+разные агрегаты и разные lifecycle.
+
+============================================================
+67. OUTPUT CODEX
+============================================================
+
+После выполнения дай отчет:
+
+1. Какие существующие Frade abstractions были переиспользованы.
+2. Какие новые abstractions добавлены.
+3. Какие OpenSpec files созданы.
+4. Какие domain invariants реализованы.
+5. Как реализован pair search.
+6. Где хранится bundle membership.
+7. Как реализованы Undo/Redo.
+8. Как реализованы Create/Edit/Reverse/Clone.
+9. Как работает extended repository search.
+10. Какие tests добавлены.
+11. Результаты lint/typecheck/test/build.
+12. Какие assumptions пришлось сделать.
+13. Какие вопросы/риски остались.
+
+Не ограничивайся mock UI.
+Функциональность должна быть полностью проведена через UI -> Domain -> Repo Core -> persistence и покрыта тестами.

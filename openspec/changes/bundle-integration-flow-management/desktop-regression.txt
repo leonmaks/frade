@@ -1,0 +1,69 @@
+$ pnpm build && playwright test
+$ node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility
+Draw.io 31.5.2: 2851 pinned resources verified
+$ tsc --noEmit
+vite v6.1.0 building SSR bundle for production...
+transforming...
+✓ 28 modules transformed.
+rendering chunks...
+out/main/index.cjs  69.76 kB
+✓ built in 361ms
+vite v6.1.0 building SSR bundle for production...
+transforming...
+✓ 23 modules transformed.
+rendering chunks...
+out/preload/index.cjs  21.56 kB
+✓ built in 130ms
+vite v6.1.0 building for production...
+transforming...
+✓ 1051 modules transformed.
+rendering chunks...
+../../out/renderer/index.html                       0.39 kB
+../../out/renderer/assets/codicon-BP8tsb4Y.ttf    152.28 kB
+../../out/renderer/assets/index-O63lNljB.css       23.62 kB
+../../out/renderer/assets/index-fF8dvdZH.js     1,875.58 kB
+✓ built in 5.22s
+$ vite build --config vite.utility.config.ts
+vite v6.1.0 building for production...
+transforming...
+✓ 148 modules transformed.
+rendering chunks...
+computing gzip size...
+out/utility/index.cjs             0.05 kB │ gzip:  0.07 kB
+out/utility/paged-Dk4YYuyw.cjs   35.79 kB │ gzip: 11.22 kB
+out/utility/index-DkCDmthQ.cjs  287.46 kB │ gzip: 88.75 kB
+✓ built in 2.27s
+
+Running 21 tests using 1 worker
+
+(node:48652) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:48652) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:48652) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok  1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade (17.0s)
+  ok  2 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (26.6s)
+  ok  3 tests\e2e\desktop.spec.ts:7:1 › built desktop: isolation, document lifecycle, real backend recovery and shutdown (4.5s)
+Port 5173 is in use, trying another one...
+  ok  4 tests\e2e\development.spec.ts:10:1 › development desktop loads the local Vite renderer and connects to the backend (5.2s)
+HTTP [33m404[39m frade://drawio/null
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+  ok  5 tests\e2e\diagrams.spec.ts:41:1 › repository diagram opens in ordinary tabs, edits native XML and saves (10.3s)
+  ok  6 tests\e2e\diagrams.spec.ts:180:1 › Frade native diagram preserves bindings and responds to repository events in NRT (8.2s)
+  ok  7 tests\e2e\diagrams.spec.ts:358:1 › native Draw.io compressed pages, layers, groups and custom cell metadata survive an actual editor roundtrip (10.5s)
+  ok  8 tests\e2e\diagrams.spec.ts:462:1 › mixed diagram tabs share Save All, keep live editor state, reorder, discard and restore (12.3s)
+  ok  9 tests\e2e\diagrams.spec.ts:579:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (14.9s)
+  ok 10 tests\e2e\diagrams.spec.ts:579:3 › frade navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (12.2s)
+  ok 11 tests\e2e\diagrams.spec.ts:754:3 › system notation, card NRT and persisted settings: frade (19.2s)
+  ok 12 tests\e2e\diagrams.spec.ts:754:3 › system notation, card NRT and persisted settings: drawio (26.8s)
+  ok 13 tests\e2e\diagrams.spec.ts:977:3 › empty bundle native gesture, undo and persistence: frade (10.7s)
+  ok 14 tests\e2e\diagrams.spec.ts:977:3 › empty bundle native gesture, undo and persistence: drawio (22.7s)
+  ok 15 tests\e2e\repository.spec.ts:11:3 › repository IPC native-v1: host-selected files and authorized commands through sandboxed preload (4.9s)
+  ok 16 tests\e2e\repository.spec.ts:11:3 › repository IPC native-v2: host-selected files and authorized commands through sandboxed preload (4.0s)
+  ok 17 tests\e2e\workbench-editing.spec.ts:6:1 › INS-001/004 real KA typed scalar, nested, reference edits; shared groups, external conflict, keyboard cancel and geometry (31.2s)
+  ok 18 tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel (26.0s)
+  ok 19 tests\e2e\workbench-multiroot.spec.ts:193:1 › KM-006 real KA metadata relocation, dirty cancel, incompatible/missing candidates, preview cancellation and restart (12.1s)
+  ok 20 tests\e2e\workbench-paths.spec.ts:18:1 › KA rejects swapped folders before persistence and repairs a restored metadata path through settings (5.0s)
+  ok 21 tests\e2e\workbench.spec.ts:9:1 › KA opens through UI, edits a card, saves original YAML and restores workspace (9.6s)
+
+  21 passed (5.0m)

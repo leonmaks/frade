@@ -1,0 +1,11 @@
+# Configuring metamodels
+
+Use the existing public `ModelSource` from `@frade/metamodel-compiler`, not a parallel Repo Core type system. Native format stores it in `metamodel.json`; profile version must match the compiled model. Unsupported format/schema versions fail before a writable session is returned. Native imported model files are currently unsupported without an explicitly implemented loader.
+
+The [sample model](../../packages/adapter-yaml/src/sample.ts) defines `sample:ApplicationSystem`, `sample:BusinessProcess` and relation type `sample:IntegrationFlow`. It is a fixture, not a corporate ontology. Type IDs use the established qualified `namespace:Type` syntax. Applications can supply a different validated vocabulary without changing repository packages.
+
+Existing compiler/domain validation handles inheritance, enum/scalar/structured/reference attributes, defaults, endpoint restrictions, duplicate relations, self-reference and cardinality. Repo Core projects canonical entities into those validators and validates the complete prospective snapshot. Attribute omission is distinct from null. Defaults are applied to changed entities, never silently to unrelated stored values.
+
+An optional profile `policyPath` loads a version-one JSON document with `objectTypes` and `relationTypes` maps keyed by configured type ID. Type rules support creation/deletion denial, `lifecycleAttribute`, readonly attributes, computed attributes and directed relation cycle restrictions. Computations use only `{kind:'literal',value:...}` and `{kind:'attribute',key:...}`; invalid references, defaults, unknown operators and computed dependency cycles are rejected. Attribute computation is deterministic and changed-entity only. The native writer rechecks policy constraints. Policy inheritance, undirected cycle semantics and comprehensive migration/policy combinations still need acceptance; no universal metamodel feature completeness is claimed.
+
+No external configuration executes JavaScript. Incompatible configurations are refused rather than rewritten. A previewed, separately authorized model migration API is still required; do not edit a live model and expect automatic destructive conversions or recovery.

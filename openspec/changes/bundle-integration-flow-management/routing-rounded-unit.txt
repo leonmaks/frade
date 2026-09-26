@@ -1,0 +1,29 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/draw
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/rounded-connector.test.ts [ tests/unit/rounded-connector.test.ts ]
+ReferenceError: exports is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and '\\?\E:\dev\codex\frade\node_modules\.pnpm\@antv+x6@3.1.8\node_modules\@antv\x6\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+ ❯ ../../node_modules/.pnpm/@antv+x6@3.1.8/node_modules/@antv/x6/lib/index.js:2:23
+      1| "use strict";
+      2| Object.defineProperty(exports, "__esModule", { value: true });
+       |                       ^
+      3| exports.Shape = void 0;
+      4| const tslib_1 = require("tslib");
+ ❯ tests/unit/rounded-connector.test.ts:2:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  17:28:20
+   Duration  1.33s (transform 46ms, setup 14ms, collect 0ms, tests 0ms, environment 678ms, prepare 261ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\packages\draw
+

@@ -1,0 +1,38 @@
+$ vitest run
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/repository-domain
+
+ ✓ tests/integration-flows.test.ts (12 tests) 12ms
+ ✓ tests/snapshot.test.ts (2 tests) 6ms
+ ✓ tests/repair.test.ts (7 tests) 6ms
+ ✓ tests/query.engine.test.ts (3 tests) 27ms
+ ✓ tests/domain.identity.test.ts (11 tests) 245ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/flow-labels.test.ts [ tests/flow-labels.test.ts ]
+Error: Cannot find module '../src/flow-labels' imported from 'E:/dev/codex/frade/packages/repository-domain/tests/flow-labels.test.ts'
+ ❯ tests/flow-labels.test.ts:2:1
+      1| import { it, expect } from 'vitest'
+      2| import { flowStatusMarker, formatBundleFlowLabel } from '../src/flow-l…
+       | ^
+      3| it('renders all four lifecycle markers without misclassifying unknown …
+      4|  expect(['Используется','Создается','Создаётся','Дорабатывается','Удал…
+
+Caused by: Error: Failed to load url ../src/flow-labels (resolved id: ../src/flow-labels) in E:/dev/codex/frade/packages/repository-domain/tests/flow-labels.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:41295:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 5 passed (6)
+      Tests  35 passed (35)
+   Start at  11:42:02
+   Duration  1.29s (transform 648ms, setup 0ms, collect 1.75s, tests 296ms, environment 2ms, prepare 1.65s)
+
+[ELIFECYCLE] Test failed. See above for more details.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in E:\dev\codex\frade\packages\repository-
+  │ domain
+

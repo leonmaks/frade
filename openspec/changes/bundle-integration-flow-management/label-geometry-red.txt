@@ -1,0 +1,17 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/draw
+
+ ❯ tests/unit/document-bundle.test.ts (6 tests | 1 failed) 17ms
+   ✓ loads and encodes empty bundles without changing ordinary edges or geometry 6ms
+   ✓ rejects unsupported bundle data instead of losing it: {"kind":"filled"} 1ms
+   ✓ rejects unsupported bundle data instead of losing it: {"kind":"empty","flows":["f"]} 0ms
+   ✓ rejects unsupported bundle data instead of losing it: null 0ms
+   ✓ preserves canonical members and rejects duplicate/malformed references 1ms
+   × roundtrips free label geometry without derived descriptions 8ms
+     → expected { Object (id, source, ...) } to have property "labelPosition" with value { distance: 0.75, …(1) }
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  12:27:27
+   Duration  1.26s (transform 78ms, setup 14ms, collect 75ms, tests 17ms, environment 592ms, prepare 228ms)
+

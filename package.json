@@ -1,0 +1,39 @@
+{
+  "name": "frade",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.6.0",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "dev:draw": "pnpm --filter @frade/draw dev",
+    "dev:desktop": "pnpm --filter @frade/desktop dev",
+    "start:desktop": "pnpm --filter @frade/desktop start",
+    "test:desktop": "pnpm --filter @frade/desktop test:e2e",
+    "routing:v2:arch-gate": "node scripts/routing-v2-architecture-gate.mjs",
+    "build": "turbo build",
+    "typecheck": "turbo typecheck",
+    "lint": "turbo lint",
+    "format:check": "prettier --check .",
+    "test": "turbo test --concurrency=2",
+    "test:bdd": "pnpm --filter @frade/draw test:bdd && pnpm --filter @frade/metamodel-domain test:bdd && pnpm --filter @frade/metamodel-compiler test:bdd && node scripts/check-repo-traceability.mjs && pnpm --filter @frade/repository-application test:bdd && node scripts/check-ka-traceability.mjs && pnpm --filter @frade/ui-workspace test:bdd",
+    "test:e2e": "pnpm --filter @frade/draw test:visual",
+    "test:visual:update": "pnpm --filter @frade/draw test:visual:update",
+    "test:boundaries": "node --test tests/contract/*.test.mjs",
+    "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries",
+    "check:all": "pnpm check && pnpm test:e2e && pnpm test:desktop"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "eslint": "9.39.1",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "globals": "16.5.0",
+    "prettier": "3.9.8",
+    "turbo": "2.11.2",
+    "typescript-eslint": "8.46.3"
+  }
+}

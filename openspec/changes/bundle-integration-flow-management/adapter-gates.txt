@@ -1,0 +1,28 @@
+$ vitest run
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/adapter-sberea-yaml
+
+ ✓ tests/preserve.test.ts (19 tests) 125ms
+ ✓ tests/flow-create.test.ts (2 tests) 503ms
+   ✓ creates canonical flows through core and preserves source bytes, identity/revisions and permissions  404ms
+ ✓ tests/loading.test.ts (10 tests) 1210ms
+   ✓ KA-001 refuses excessive import depth explicitly  814ms
+ ✓ tests/contracts.test.ts (12 tests) 1370ms
+   ✓ KA-005 permits existing diagnostics and repairs but rejects changed invalid values and references  386ms
+ ✓ tests/real-data.test.ts (1 test) 1492ms
+   ✓ KA isolated real-data baseline > loads every record through Core-shaped pages, metadata and derived graph without changing source bytes  1489ms
+ ✓ tests/write.test.ts (1 test) 3699ms
+   ✓ saves via Core, preserves untouched bytes, rejects new invalid values and reconciles a repeated operation  3698ms
+ ✓ tests/watch.test.ts (1 test) 5768ms
+   ✓ KA-004/KM-004 watches replacement, new imports, malformed repair and metadata with independent subscriptions  5766ms
+ ✓ tests/recovery.test.ts (4 tests) 7219ms
+   ✓ KA-004 real process interruption at staged preserves source and evidence without replay  3268ms
+   ✓ KA-004 real process interruption at replaced preserves source and evidence without replay  2143ms
+   ✓ KA-004 lost acknowledgement at staged reconciles without repeating mutation  895ms
+   ✓ KA-004 lost acknowledgement at replaced reconciles without repeating mutation  911ms
+
+ Test Files  8 passed (8)
+      Tests  50 passed (50)
+   Start at  10:34:54
+   Duration  9.18s (transform 1.80s, setup 0ms, collect 7.79s, tests 21.39s, environment 3ms, prepare 2.91s)
+

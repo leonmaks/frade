@@ -1,0 +1,42 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/repository-application
+
+ ❯ tests/integration-flows.test.ts (6 tests | 1 failed | 5 skipped) 25ms
+   ↓ indexes both directions; pair/full text filters paging sorting and events
+   ↓ reports errors separately from empty and limits 100000-flow pages
+   ↓ guards cached queries, cancellation, malformed refs, and missing/incompatible members
+   ↓ portable paged reader pins revision and performs no per-object label reads
+   ↓ 100000-flow fixture crosses real authenticated Core pages without snapshot or label N+1
+   × configured column sorting and full-scope relevance are bounded and stable 23ms
+     → expected false to deeply equal [ 'F2', 'F1' ]
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration-flows.test.ts > configured column sorting and full-scope relevance are bounded and stable
+AssertionError: expected false to deeply equal [ 'F2', 'F1' ]
+
+- Expected: 
+[
+  "F2",
+  "F1",
+]
+
++ Received: 
+false
+
+ ❯ tests/integration-flows.test.ts:207:127
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 skipped (6)
+   Start at  10:47:15
+   Duration  2.60s (transform 915ms, setup 0ms, collect 1.11s, tests 25ms, environment 0ms, prepare 371ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\packages\repository-
+  │ application
+

@@ -1,0 +1,384 @@
+[
+  {
+    "id": "DS-001 / Reject renderer path injection",
+    "spec": "desktop-repository-session",
+    "tests": [
+      "packages/repository-api/tests/workbench.test.ts",
+      "apps/desktop/tests/unit/workbench.test.ts",
+      "apps/desktop/tests/e2e/repository.spec.ts"
+    ]
+  },
+  {
+    "id": "DS-002 / Metadata and objects from different sessions",
+    "spec": "desktop-repository-session",
+    "tests": [
+      "packages/runtime-node/tests/repositories.test.ts",
+      "apps/desktop/tests/unit/workbench.test.ts",
+      "packages/repository-api/tests/workbench.test.ts"
+    ]
+  },
+  {
+    "id": "DS-003 / Backend crashes with unsaved changes",
+    "spec": "desktop-repository-session",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts",
+      "apps/desktop/tests/unit/workbench.test.ts"
+    ]
+  },
+  {
+    "id": "DS-004 / Remove one of several roots",
+    "spec": "desktop-repository-session",
+    "tests": [
+      "packages/runtime-node/tests/repositories.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "DS-004 / Cross-repository request mismatch",
+    "spec": "desktop-repository-session",
+    "tests": [
+      "packages/runtime-node/tests/repositories.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "DS-004 / Shared metadata folder",
+    "spec": "desktop-repository-session",
+    "tests": [
+      "packages/runtime-node/tests/repositories.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "KM-001 / Complete supplied vocabulary",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/real-data.test.ts",
+      "packages/metamodel-config/tests/import.test.ts"
+    ]
+  },
+  {
+    "id": "KM-002 / Conditional required field",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/metamodel-domain/tests/unit/constraints.test.ts",
+      "packages/metamodel-config/tests/import.test.ts",
+      "packages/ui-inspector/tests/inspector.test.tsx"
+    ]
+  },
+  {
+    "id": "KM-002 / Resolve shared definitions",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/metamodel-domain/tests/unit/constraints.test.ts",
+      "packages/metamodel-config/tests/import.test.ts",
+      "packages/ui-inspector/tests/inspector.test.tsx"
+    ]
+  },
+  {
+    "id": "KM-003 / Extra source property",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/preserve.test.ts",
+      "packages/ui-inspector/tests/inspector.test.tsx"
+    ]
+  },
+  {
+    "id": "KM-004 / Schema changes while editing",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/watch.test.ts",
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts"
+    ]
+  },
+  {
+    "id": "KM-005 / Relocate identical metadata",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/runtime-node/tests/repositories.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "KM-005 / Missing folder on restore",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/runtime-node/tests/repositories.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "KM-006 / Switch only one repository",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/runtime-node/tests/repositories.test.ts",
+      "apps/desktop/tests/unit/workbench.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "KM-006 / Failed or cancelled switch",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/runtime-node/tests/repositories.test.ts",
+      "apps/desktop/tests/unit/workbench.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "KM-006 / Write is still pending",
+    "spec": "ka-metamodel-import",
+    "tests": [
+      "packages/runtime-node/tests/repositories.test.ts",
+      "apps/desktop/tests/unit/workbench.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "INS-001 / Edit structured data",
+    "spec": "repository-inspector",
+    "tests": [
+      "packages/ui-inspector/tests/inspector.test.tsx",
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts"
+    ]
+  },
+  {
+    "id": "INS-002 / Switch between unsaved cards",
+    "spec": "repository-inspector",
+    "tests": [
+      "packages/ui-workspace/tests/state.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "INS-003 / Save and reopen",
+    "spec": "repository-inspector",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench.spec.ts",
+      "apps/desktop/tests/unit/workbench.test.ts",
+      "packages/runtime-node/tests/repositories.test.ts",
+      "packages/adapter-sberea-yaml/tests/recovery.test.ts"
+    ]
+  },
+  {
+    "id": "INS-003 / Lost acknowledgement",
+    "spec": "repository-inspector",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench.spec.ts",
+      "apps/desktop/tests/unit/workbench.test.ts",
+      "packages/runtime-node/tests/repositories.test.ts",
+      "packages/adapter-sberea-yaml/tests/recovery.test.ts"
+    ]
+  },
+  {
+    "id": "INS-004 / Cancel closing an edited tab",
+    "spec": "repository-inspector",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "INS-005 / Same object ID different models",
+    "spec": "repository-inspector",
+    "tests": ["apps/desktop/tests/e2e/workbench-multiroot.spec.ts"]
+  },
+  {
+    "id": "NAV-001 / Browse all baseline objects",
+    "spec": "repository-navigator",
+    "tests": [
+      "packages/ui-navigator/tests/projection.test.ts",
+      "apps/desktop/tests/e2e/workbench.spec.ts"
+    ]
+  },
+  {
+    "id": "NAV-001 / Parent cycle",
+    "spec": "repository-navigator",
+    "tests": [
+      "packages/ui-navigator/tests/projection.test.ts",
+      "apps/desktop/tests/e2e/workbench.spec.ts"
+    ]
+  },
+  {
+    "id": "NAV-002 / Keyboard-only navigation",
+    "spec": "repository-navigator",
+    "tests": ["apps/desktop/tests/e2e/workbench.spec.ts"]
+  },
+  {
+    "id": "NAV-003 / Refresh after save",
+    "spec": "repository-navigator",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench.spec.ts",
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts"
+    ]
+  },
+  {
+    "id": "NAV-004 / Colliding IDs in different roots",
+    "spec": "repository-navigator",
+    "tests": ["apps/desktop/tests/e2e/workbench-multiroot.spec.ts"]
+  },
+  {
+    "id": "NAV-004 / Unavailable root",
+    "spec": "repository-navigator",
+    "tests": ["apps/desktop/tests/e2e/workbench-multiroot.spec.ts"]
+  },
+  {
+    "id": "WB-001 / Compare the workbench reference",
+    "spec": "repository-workbench",
+    "tests": ["apps/desktop/tests/e2e/workbench-editing.spec.ts"]
+  },
+  {
+    "id": "WB-002 / Resize and restart",
+    "spec": "repository-workbench",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts",
+      "apps/desktop/tests/e2e/workbench.spec.ts",
+      "packages/ui-workspace/tests/state.test.ts"
+    ]
+  },
+  {
+    "id": "WB-003 / Preview becomes pinned",
+    "spec": "repository-workbench",
+    "tests": [
+      "packages/ui-workspace/tests/state.test.ts",
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts"
+    ]
+  },
+  {
+    "id": "WB-004 / Save by shortcut",
+    "spec": "repository-workbench",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "WB-005 / Complete user journey",
+    "spec": "repository-workbench",
+    "tests": ["apps/desktop/tests/e2e/workbench.spec.ts", "apps/desktop/tests/e2e/desktop.spec.ts"]
+  },
+  {
+    "id": "WB-006 / Save and restore roots",
+    "spec": "repository-workbench",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts",
+      "apps/desktop/tests/unit/workbench.test.ts"
+    ]
+  },
+  {
+    "id": "WB-006 / Remove dirty root",
+    "spec": "repository-workbench",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts",
+      "apps/desktop/tests/unit/workbench.test.ts"
+    ]
+  },
+  {
+    "id": "WB-006 / Save workspace at another location",
+    "spec": "repository-workbench",
+    "tests": [
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts",
+      "apps/desktop/tests/unit/workbench.test.ts"
+    ]
+  },
+  {
+    "id": "WB-007 / Save with another tree root selected",
+    "spec": "repository-workbench",
+    "tests": ["apps/desktop/tests/e2e/workbench-multiroot.spec.ts"]
+  },
+  {
+    "id": "KA-001 / Load supplied baseline",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/real-data.test.ts",
+      "packages/adapter-sberea-yaml/tests/loading.test.ts",
+      "apps/desktop/tests/e2e/workbench.spec.ts"
+    ]
+  },
+  {
+    "id": "KA-001 / Broken or unsafe import",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/real-data.test.ts",
+      "packages/adapter-sberea-yaml/tests/loading.test.ts",
+      "apps/desktop/tests/e2e/workbench.spec.ts"
+    ]
+  },
+  {
+    "id": "KA-002 / Rename and relocate",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/contracts.test.ts",
+      "packages/adapter-sberea-yaml/tests/preserve.test.ts",
+      "packages/runtime-node/tests/repositories.test.ts"
+    ]
+  },
+  {
+    "id": "KA-003 / Edit one nested value",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/preserve.test.ts",
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts"
+    ]
+  },
+  {
+    "id": "KA-003 / Unsupported alias mutation",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/preserve.test.ts",
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts"
+    ]
+  },
+  {
+    "id": "KA-004 / External concurrent edit",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/recovery.test.ts",
+      "packages/adapter-sberea-yaml/tests/write.test.ts",
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts"
+    ]
+  },
+  {
+    "id": "KA-004 / Interrupted save",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/adapter-sberea-yaml/tests/recovery.test.ts",
+      "packages/adapter-sberea-yaml/tests/write.test.ts",
+      "apps/desktop/tests/e2e/workbench-editing.spec.ts"
+    ]
+  },
+  {
+    "id": "KA-005 / Existing unresolved software reference",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/repository-domain/tests/repair.test.ts",
+      "packages/adapter-sberea-yaml/tests/write.test.ts",
+      "packages/adapter-sberea-yaml/tests/contracts.test.ts"
+    ]
+  },
+  {
+    "id": "KA-005 / Introduce an invalid reference",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/repository-domain/tests/repair.test.ts",
+      "packages/adapter-sberea-yaml/tests/write.test.ts",
+      "packages/adapter-sberea-yaml/tests/contracts.test.ts"
+    ]
+  },
+  {
+    "id": "SB-001 / Different formats in one workspace",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/runtime-node/tests/adapters.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  },
+  {
+    "id": "SB-001 / Unregistered adapter",
+    "spec": "sberea-yaml-repository",
+    "tests": [
+      "packages/runtime-node/tests/adapters.test.ts",
+      "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+    ]
+  }
+]

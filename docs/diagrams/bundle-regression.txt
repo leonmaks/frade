@@ -1,0 +1,31 @@
+
+Running 19 tests using 1 worker
+
+(node:45004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45004) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok  1 tests\e2e\desktop.spec.ts:7:1 › built desktop: isolation, document lifecycle, real backend recovery and shutdown (1.6s)
+  ok  2 tests\e2e\development.spec.ts:10:1 › development desktop loads the local Vite renderer and connects to the backend (2.7s)
+HTTP [33m404[39m frade://drawio/null
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+  ok  3 tests\e2e\diagrams.spec.ts:41:1 › repository diagram opens in ordinary tabs, edits native XML and saves (5.4s)
+  ok  4 tests\e2e\diagrams.spec.ts:180:1 › Frade native diagram preserves bindings and responds to repository events in NRT (5.8s)
+  ok  5 tests\e2e\diagrams.spec.ts:358:1 › native Draw.io compressed pages, layers, groups and custom cell metadata survive an actual editor roundtrip (7.2s)
+  ok  6 tests\e2e\diagrams.spec.ts:462:1 › mixed diagram tabs share Save All, keep live editor state, reorder, discard and restore (7.4s)
+  ok  7 tests\e2e\diagrams.spec.ts:579:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (9.3s)
+  ok  8 tests\e2e\diagrams.spec.ts:579:3 › frade navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (5.6s)
+  ok  9 tests\e2e\diagrams.spec.ts:754:3 › system notation, card NRT and persisted settings: frade (5.8s)
+  ok 10 tests\e2e\diagrams.spec.ts:754:3 › system notation, card NRT and persisted settings: drawio (12.4s)
+  ok 11 tests\e2e\diagrams.spec.ts:977:3 › empty bundle native gesture, undo and persistence: frade (5.4s)
+  ok 12 tests\e2e\diagrams.spec.ts:977:3 › empty bundle native gesture, undo and persistence: drawio (9.1s)
+  ok 13 tests\e2e\repository.spec.ts:11:3 › repository IPC native-v1: host-selected files and authorized commands through sandboxed preload (1.5s)
+  ok 14 tests\e2e\repository.spec.ts:11:3 › repository IPC native-v2: host-selected files and authorized commands through sandboxed preload (1.4s)
+  ok 15 tests\e2e\workbench-editing.spec.ts:6:1 › INS-001/004 real KA typed scalar, nested, reference edits; shared groups, external conflict, keyboard cancel and geometry (8.9s)
+  ok 16 tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel (11.1s)
+  ok 17 tests\e2e\workbench-multiroot.spec.ts:193:1 › KM-006 real KA metadata relocation, dirty cancel, incompatible/missing candidates, preview cancellation and restart (10.7s)
+  ok 18 tests\e2e\workbench-paths.spec.ts:18:1 › KA rejects swapped folders before persistence and repairs a restored metadata path through settings (4.4s)
+  ok 19 tests\e2e\workbench.spec.ts:9:1 › KA opens through UI, edits a card, saves original YAML and restores workspace (9.6s)
+
+  19 passed (2.2m)

@@ -1,0 +1,39 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/adapter-sberea-yaml
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/flow-create.test.ts [ tests/flow-create.test.ts ]
+Error: Transform failed with 1 error:
+E:/dev/codex/frade/packages/adapter-sberea-yaml/tests/flow-create.test.ts:11:2: ERROR: Expected "}" but found "await"
+  Plugin: vite:esbuild
+  File: E:/dev/codex/frade/packages/adapter-sberea-yaml/tests/flow-create.test.ts:11:2
+  
+  Expected "}" but found "await"
+  9  |   try{
+  10 |    const metadata=structuredClone(schema) as any;metadata.entities.flows={title:'Flows',integrationFlow:{source:'producer',consumer:'receiver',search:['title'],columns:[],nonCloneable:[]},schema:{patternProperties:{'^F[0-9]+$':{type:'object',required:['title','producer','receiver'],properties:{title:{type:'string'},producer:{$ref:'#/$rels/systems.systems'},receiver:{$ref:'#/$rels/systems.systems'}}}}}
+  11 |    await writeFile(join(f.metadataRoot,'schema.yaml'),JSON.stringify(metadata))
+     |    ^
+  12 |    core=unwrap(await openRepository(f.adapter(),{callerId:'test',repositoryIds:['test'],permissions:['read','write']},{authorize:()=>true}))
+  13 |    const flow={ref:{repositoryId:'test',objectId:'F1'},typeId:'sberea:flows',name:'Payload',attributes:{title:'Payload',producer:{repositoryId:'test',objectId:'a'},receiver:{repositoryId:'test',objectId:'b'}}}
+  
+ ❯ failureErrorWithLog ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:1476:15
+ ❯ ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:755:50
+ ❯ responseCallbacks.<computed> ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:622:9
+ ❯ handleIncomingPacket ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:677:12
+ ❯ Socket.readFromStdout ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:600:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  09:51:39
+   Duration  797ms (transform 29ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 359ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\packages\adapter-
+  │ sberea-yaml
+

@@ -1,0 +1,31 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/repository-domain
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration-flows.test.ts [ tests/integration-flows.test.ts ]
+Error: Cannot find module '../src/integration-flows' imported from 'E:/dev/codex/frade/packages/repository-domain/tests/integration-flows.test.ts'
+ ❯ tests/integration-flows.test.ts:2:1
+      1| import { describe, it, expect } from 'vitest'
+      2| import { classifyFlowDirection, isFlowEligibleForBundle, setBundleMemb…
+       | ^
+      3| import type { RepositoryObject, ObjectRef, Revision } from '../src/typ…
+      4| const ref=(id:string,repo='r'):ObjectRef=>({repositoryId:repo,objectId…
+
+Caused by: Error: Failed to load url ../src/integration-flows (resolved id: ../src/integration-flows) in E:/dev/codex/frade/packages/repository-domain/tests/integration-flows.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:41295:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  09:47:43
+   Duration  639ms (transform 82ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 270ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\packages\repository-
+  │ domain
+

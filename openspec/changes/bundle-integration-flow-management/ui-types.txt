@@ -1,0 +1,24 @@
+$ tsc --noEmit
+../draw/src/editor/createGraph.ts(48,116): error TS18047: 'args' is possibly 'null'.
+tests/bundle-flows.bdd.test.tsx(32,284): error TS2322: Type 'Mock<(op: string, p: any) => Promise<{ readonly ok: false; readonly error: ApplicationError; } | { readonly ok: true; readonly value: FlowPage; } | { readonly ok: true; readonly value: { ...; }; } | { ...; } | { ...; } | { ...; } | { ...; }>>' is not assignable to type '(operation: "presentation" | "capabilities" | "reload" | "getObject" | "getRelation" | "queryObjects" | "queryRelations" | "applyChanges" | "validate" | "getSubgraph" | "reconcile" | "diagram" | "integrationFlows", payload: Record<...>) => Promise<...>'.
+  Type 'Promise<{ readonly ok: false; readonly error: ApplicationError; } | { readonly ok: true; readonly value: FlowPage; } | { readonly ok: true; readonly value: { errors: { code: string; path: string[]; message: string; }[]; }; } | { ...; } | { ...; } | { ...; } | { ...; }>' is not assignable to type 'Promise<Result<unknown>>'.
+    Type '{ readonly ok: false; readonly error: ApplicationError; } | { readonly ok: true; readonly value: FlowPage; } | { readonly ok: true; readonly value: { errors: { code: string; path: string[]; message: string; }[]; }; } | { ...; } | { ...; } | { ...; } | { ...; }' is not assignable to type 'Result<unknown>'.
+      Type '{ ok: boolean; error: { code: string; issues?: undefined; }; }' is not assignable to type 'Result<unknown>'.
+        Type '{ ok: boolean; error: { code: string; issues?: undefined; }; }' is not assignable to type '{ readonly ok: false; readonly error: ApplicationError; }'.
+          Types of property 'ok' are incompatible.
+            Type 'boolean' is not assignable to type 'false'.
+tests/bundle-flows.bdd.test.tsx(37,227): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+  Overload 2 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+tests/bundle-flows.bdd.test.tsx(39,89): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+  Overload 2 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+[ELIFECYCLE] Command failed with exit code 2.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in E:\dev\codex\frade\packages\ui-workspace
+

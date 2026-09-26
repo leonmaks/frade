@@ -1,0 +1,46 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+.desktop {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.runtime-status {
+  padding: 6px 12px;
+  background: #e7eff4;
+  font: 13px system-ui;
+}
+.desktop-editor {
+  flex: 1;
+  min-height: 0;
+}
+.desktop-editor main {
+  height: 100%;
+  width: 100%;
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #0006;
+  display: grid;
+  place-items: center;
+}
+.modal-backdrop form {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  font: 16px system-ui;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.modal-backdrop input {
+  display: block;
+  margin-top: 8px;
+  padding: 8px;
+}

@@ -1,0 +1,7 @@
+# Shared adapter results
+
+`packages/repository-application/tests/contracts/adapter.contract.test.ts`: **15 passed** in the executed application suite. Three isolated harnesses (memory, actual native YAML, actual native JSON), five shared assertions each. The shared harness covers persisted stable references, stale-revision preservation, matching incoming/outgoing relation views, unsupported history refusal and source-preserving invalid changes. Unsupported atomic capability refusal is covered separately in application acceptance.
+
+This suite is reusable through `repositoryAdapterContract`; it does not certify PostgreSQL, remote storage or arbitrary external mappings. The additional application conflict tests verify operation deduplication, unknown outcomes, cancellation, exact 1024/1025 retention boundaries and copied results.
+
+Five additional independent memory-adapter tests now prove create-if-absent, snapshot guards, hidden candidate rejection, single-resource refusal, atomic staged failure and controlled races. The original 112 RE/RP/RC expanded scenarios execute through an awaited Gherkin harness; nine boundary tests cover capability/service mismatches, malformed errors and bounded history. Positive/negative ES2022 consumer fixtures cover writer/history/watch services. Optional query/snapshot combinations, full history cursor contracts and hostile event envelopes still prevent complete RP acceptance; see known-limitations.md.

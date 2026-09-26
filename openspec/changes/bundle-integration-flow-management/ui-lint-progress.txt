@@ -1,0 +1,14 @@
+$ eslint src tests
+
+E:\dev\codex\frade\packages\ui-workspace\src\FlowManager.tsx
+  30:4    warning  React Hook useEffect has missing dependencies: 'bundle.endpointA', 'bundle.endpointB', 'bundle.members', 'filters', and 'repo'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  30:100  warning  React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked                                            react-hooks/exhaustive-deps
+  30:165  warning  React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked                                            react-hooks/exhaustive-deps
+  48:59   warning  React Hook useEffect has missing dependencies: 'begin' and 'props.createInitially'. Either include them or remove the dependency array                                              react-hooks/exhaustive-deps
+
+E:\dev\codex\frade\packages\ui-workspace\src\useBundleManager.tsx
+  17:4   warning  React Hook useEffect has missing dependencies: 'badge', 'bundle', and 'props.flowRepository'. Either include them or remove the dependency array. If 'badge' changes too often, find the parent component that defines it and wrap that definition in useCallback  react-hooks/exhaustive-deps
+  17:72  warning  React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked                                                                                                                           react-hooks/exhaustive-deps
+
+✖ 6 problems (0 errors, 6 warnings)
+

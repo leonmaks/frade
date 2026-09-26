@@ -1,0 +1,85 @@
+
+Running 2 tests using 1 worker
+
+(node:26492) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26492) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26492) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade (24.7s)
+(node:45664) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45664) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45664) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  2 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (29.6s)
+
+
+  1) tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade ─────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/Найдено 3 потоков между A и B/)
+    Expected: visible
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 20000ms[22m
+    [2m  - waiting for getByText(/Найдено 3 потоков между A и B/)[22m
+
+
+       95 |       await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2, { steps: 20 })
+       96 |       await page.mouse.up()
+    >  97 |       await expect(page.getByText(/Найдено 3 потоков между A и B/)).toBeVisible({ timeout: 20000 })
+          |                                                                     ^
+       98 |       await page.getByRole('button', { name: 'Выбрать потоки', exact: true }).click()
+       99 |       const manager = page.getByRole('complementary', { name: 'Интеграционные потоки' })
+      100 |       await expect(manager.getByRole('checkbox', { name: 'В жгуте: Payload F1' })).toBeVisible()
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:97:69
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\bundle-flows-bundle-flow-management-full-lifecycle-frade\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\bundle-flows-bundle-flow-management-full-lifecycle-frade\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio › Filtered bulk include is one native history operation 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  getByRole('complementary', { name: 'Интеграционные потоки' }).getByRole('row', { name: /Поток:/ })
+    Expected: [32m5[39m
+    Received: [31m4[39m
+    Timeout:  10000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('complementary', { name: 'Интеграционные потоки' }).getByRole('row', { name: /Поток:/ })[22m
+    [2m    13 × locator resolved to 4 elements[22m
+    [2m       - unexpected value "4"[22m
+
+
+      249 |       await test.step('Filtered bulk include is one native history operation', async () => {
+      250 |         await manager.getByText('Фильтры', { exact: true }).click()
+    > 251 |         await manager.getByLabel('Фильтр: Технологии').fill('HTTP')
+          |                                                                    ^
+      252 |         await expect(manager.getByRole('row', { name: /Поток:/ })).toHaveCount(5)
+      253 |         await manager
+      254 |           .getByRole('checkbox', { name: 'Включить все подходящие потоки из текущей выборки' })
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:251:68
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:248:7
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade ──────────────
+    tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio ─────────────

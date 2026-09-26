@@ -1,0 +1,36 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/ui-workspace
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/FlowManager.test.tsx [ tests/FlowManager.test.tsx ]
+Error: Failed to resolve import "../src/FlowManager" from "tests/FlowManager.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: E:/dev/codex/frade/packages/ui-workspace/tests/FlowManager.test.tsx:4:26
+  2  |  import { it, expect, vi } from "vitest";
+  3  |  import { render, screen, fireEvent, waitFor, cleanup } from "@testing-library/react";
+  4  |  import { FlowManager } from "../src/FlowManager";
+     |                               ^
+  5  |  const ref = (objectId) => ({ repositoryId: "r", objectId });
+  6  |  const bundle = { id: "bundle", endpointA: ref("A"), endpointB: ref("B"), members: [] };
+ ❯ TransformPluginContext._formatLog ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:47802:41
+ ❯ TransformPluginContext.error ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:47799:16
+ ❯ normalizeUrl ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:45942:23
+ ❯ ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:46061:37
+ ❯ TransformPluginContext.transform ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:45988:7
+ ❯ EnvironmentPluginContainer.transform ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:47597:18
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:41305:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  09:54:09
+   Duration  1.51s (transform 24ms, setup 0ms, collect 0ms, tests 0ms, environment 793ms, prepare 285ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\packages\ui-workspace
+

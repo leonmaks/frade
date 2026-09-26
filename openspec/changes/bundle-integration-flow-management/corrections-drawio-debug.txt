@@ -1,0 +1,46 @@
+
+Running 1 test using 1 worker
+
+(node:29044) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:29044) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:29044) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (20.9s)
+
+
+  1) tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio › E2E-02 exclusion undo redo 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('complementary', { name: 'Интеграционные потоки' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('complementary', { name: 'Интеграционные потоки' })[22m
+
+
+      113 |           format === 'drawio' ? await page.locator('.diagram-slot iframe').boundingBox() : undefined
+      114 |         await page.mouse.dblclick(point.x + (box?.x ?? 0), point.y + (box?.y ?? 0))
+    > 115 |         try { await expect(manager).toBeVisible() } catch(error) { await page.screenshot({path: info.outputPath('open-failure.png')}); throw error }
+          |                                     ^
+      116 |       }
+      117 |       const save = () =>
+      118 |         page
+        at openActual (E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:115:37)
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:149:9
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:136:7
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio ─────────────

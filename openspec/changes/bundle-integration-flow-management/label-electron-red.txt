@@ -1,0 +1,84 @@
+
+Running 2 tests using 1 worker
+
+(node:52584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:52584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:52584) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade (17.8s)
+(node:42836) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42836) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42836) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  2 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (24.3s)
+
+
+  1) tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade › translucent label drags freely with one-step undo/redo and live persistence 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.diagram-slot .x6-graph').locator('rect[fill="#FFFFFFAA" i]').first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('.diagram-slot .x6-graph').locator('rect[fill="#FFFFFFAA" i]').first()[22m
+
+
+      264 |       await test.step('translucent label drags freely with one-step undo/redo and live persistence', async () => {
+      265 |         await manager.getByRole('button', { name: 'Закрыть менеджер потоков' }).click()
+    > 266 |         await expect(canvas().locator('rect[fill="#FFFFFFAA" i]').first()).toBeVisible()
+          |                                                                            ^
+      267 |         const before = await relativeLabel(), box = await flowLabel().boundingBox()
+      268 |         await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2)
+      269 |         await page.mouse.down()
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:266:76
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:264:7
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\bundle-flows-bundle-flow-management-full-lifecycle-frade\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\bundle-flows-bundle-flow-management-full-lifecycle-frade\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio › translucent label drags freely with one-step undo/redo and live persistence 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.diagram-slot iframe').contentFrame().locator('.geDiagramContainer').locator('rect[fill="#FFFFFFAA" i]').first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('.diagram-slot iframe').contentFrame().locator('.geDiagramContainer').locator('rect[fill="#FFFFFFAA" i]').first()[22m
+
+
+      264 |         expect(system).toBeTruthy()
+      265 |         return { x: text!.x - system!.x, y: text!.y - system!.y }
+    > 266 |       }
+          |        ^
+      267 |       await test.step('translucent label drags freely with one-step undo/redo and live persistence', async () => {
+      268 |         await manager.getByRole('button', { name: 'Закрыть менеджер потоков' }).click()
+      269 |         await expect(canvas().locator('rect[fill="#FFFFFFAA" i]').first()).toBeVisible()
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:266:76
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:264:7
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade ──────────────
+    tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio ─────────────

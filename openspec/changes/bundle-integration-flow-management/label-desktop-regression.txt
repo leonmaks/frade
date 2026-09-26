@@ -1,0 +1,70 @@
+
+Running 21 tests using 1 worker
+
+(node:45656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45656) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok  1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade (16.0s)
+  x   2 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (28.3s)
+(node:41668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:41668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:41668) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok  3 tests\e2e\desktop.spec.ts:7:1 › built desktop: isolation, document lifecycle, real backend recovery and shutdown (3.4s)
+Port 5173 is in use, trying another one...
+  ok  4 tests\e2e\development.spec.ts:10:1 › development desktop loads the local Vite renderer and connects to the backend (7.4s)
+HTTP [33m404[39m frade://drawio/null
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+  ok  5 tests\e2e\diagrams.spec.ts:41:1 › repository diagram opens in ordinary tabs, edits native XML and saves (13.6s)
+  ok  6 tests\e2e\diagrams.spec.ts:180:1 › Frade native diagram preserves bindings and responds to repository events in NRT (13.1s)
+  ok  7 tests\e2e\diagrams.spec.ts:358:1 › native Draw.io compressed pages, layers, groups and custom cell metadata survive an actual editor roundtrip (15.8s)
+  ok  8 tests\e2e\diagrams.spec.ts:462:1 › mixed diagram tabs share Save All, keep live editor state, reorder, discard and restore (19.2s)
+  ok  9 tests\e2e\diagrams.spec.ts:579:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (27.4s)
+  ok 10 tests\e2e\diagrams.spec.ts:579:3 › frade navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (13.5s)
+  ok 11 tests\e2e\diagrams.spec.ts:754:3 › system notation, card NRT and persisted settings: frade (12.5s)
+  ok 12 tests\e2e\diagrams.spec.ts:754:3 › system notation, card NRT and persisted settings: drawio (17.3s)
+  ok 13 tests\e2e\diagrams.spec.ts:977:3 › empty bundle native gesture, undo and persistence: frade (7.2s)
+  ok 14 tests\e2e\diagrams.spec.ts:977:3 › empty bundle native gesture, undo and persistence: drawio (10.6s)
+  ok 15 tests\e2e\repository.spec.ts:11:3 › repository IPC native-v1: host-selected files and authorized commands through sandboxed preload (1.4s)
+  ok 16 tests\e2e\repository.spec.ts:11:3 › repository IPC native-v2: host-selected files and authorized commands through sandboxed preload (1.8s)
+  ok 17 tests\e2e\workbench-editing.spec.ts:6:1 › INS-001/004 real KA typed scalar, nested, reference edits; shared groups, external conflict, keyboard cancel and geometry (12.9s)
+  ok 18 tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel (14.4s)
+  ok 19 tests\e2e\workbench-multiroot.spec.ts:193:1 › KM-006 real KA metadata relocation, dirty cancel, incompatible/missing candidates, preview cancellation and restart (11.3s)
+  ok 20 tests\e2e\workbench-paths.spec.ts:18:1 › KA rejects swapped folders before persistence and repairs a restored metadata path through settings (4.9s)
+  ok 21 tests\e2e\workbench.spec.ts:9:1 › KA opens through UI, edits a card, saves original YAML and restores workspace (9.7s)
+
+
+  1) tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio › translucent label drags freely with one-step undo/redo and live persistence 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: < [32m4[39m
+    Received:   [31m4[39m
+
+    Call Log:
+    - Timeout 10000ms exceeded while waiting on the predicate
+
+      280 |         expect(after.x - before.x).toBeGreaterThan(45)
+      281 |         await page.keyboard.press('Control+z')
+    > 282 |         await expect
+          |         ^
+      283 |           .poll(async () => Math.abs((await relativeLabel()).y - before.y))
+      284 |           .toBeLessThan(4)
+      285 |         await page.keyboard.press('Control+y')
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:282:9
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:267:7
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio ─────────────
+  20 passed (4.5m)

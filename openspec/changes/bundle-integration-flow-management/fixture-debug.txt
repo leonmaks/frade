@@ -1,0 +1,28 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/adapter-sberea-yaml
+
+ ❯ tests/flow-create.test.ts (2 tests | 1 failed) 190ms
+   ✓ creates canonical flows through core and preserves source bytes, identity/revisions and permissions 145ms
+   × opens deterministic flow fixture 44ms
+     → {"code":"REPOSITORY_UNAVAILABLE","message":"REPOSITORY_UNAVAILABLE","retriable":true,"issues":[{"code":"LOAD_FAILED","message":"#/$rels/kadzo.v2023.systems.systems","path":[]}]}
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/flow-create.test.ts > opens deterministic flow fixture
+Error: {"code":"REPOSITORY_UNAVAILABLE","message":"REPOSITORY_UNAVAILABLE","retriable":true,"issues":[{"code":"LOAD_FAILED","message":"#/$rels/kadzo.v2023.systems.systems","path":[]}]}
+ ❯ tests/flow-create.test.ts:26:344
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  10:07:33
+   Duration  1.46s (transform 401ms, setup 0ms, collect 601ms, tests 190ms, environment 0ms, prepare 204ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\packages\adapter-
+  │ sberea-yaml
+

@@ -1,0 +1,45 @@
+
+Running 2 tests using 1 worker
+
+(node:33804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:33804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:33804) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade (3.5s)
+(node:47592) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:47592) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:47592) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok 2 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (25.0s)
+
+
+  1) tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade › Workbench uses circular handles and crosses systems outside this bundle 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: < [32m0.05[39m
+    Received:   [31m0.5[39m
+
+      153 |           for (const offset of [1, 2, 50, 230]) {
+      154 |             await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2 + offset)
+    > 155 |             expect(Math.abs((await midpointY()) - initialY - offset)).toBeLessThan(0.05)
+          |                                                                       ^
+      156 |           }
+      157 |           await page.mouse.up()
+      158 |           await page.keyboard.press('Control+z')
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:155:71
+        at E:\dev\codex\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:122:9
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\bundle-flows-bundle-flow-management-full-lifecycle-frade\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\bundle-flows-bundle-flow-management-full-lifecycle-frade\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade ──────────────
+  1 passed (31.0s)
