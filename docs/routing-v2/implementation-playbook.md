@@ -422,7 +422,7 @@ Direction
 Orientation
 Segment
 epsilon comparison
-coordinate normalization
+opt-in scalar quantizeCoordinate (separate from point-sequence normalization)
 model/view/screen transforms
 duplicate point detection
 collinearity detection
@@ -479,7 +479,7 @@ Implement at minimum:
 - Manhattan distance helpers
 - rectangle relations
 - horizontal/vertical overlap
-- relative quadrant helpers
+- X/Y projections, horizontal/vertical separation, basic relative scalar/rectangle geometry
 - point translation
 - coordinate transforms required to distinguish model/view/screen spaces
 - adjacent duplicate point removal
@@ -499,6 +499,9 @@ Routing geometry code MUST NOT import:
 
 Geometry objects must either be immutable or treated as immutable.
 
+Routing quadrant classification, source/target quadrant logic, direction preference,
+and routing direction selection belong to R03 Direction Resolver, not R01.
+
 Do not implement routing yet.
 
 Do not implement terminal attachment yet.
@@ -511,7 +514,7 @@ Before completing implementation add tests covering:
 
 - horizontal segment
 - vertical segment
-- diagonal rejection
+- diagonal classification and non-repairing normalization (never quantize diagonals)
 - zero-length segment
 - duplicate points
 - collinear points
@@ -533,7 +536,27 @@ Required property:
 
 model -> view -> model
 
-must reproduce original model coordinate within EPSILON.
+must reproduce original model coordinate within EPSILON only for EPSILON-conditioned
+point/transform pairs using the active delta-spec error bound. Structurally valid,
+finite ill-conditioned pairs have no strict round-trip guarantee; keep A/B/C
+verification categories and at least 5000 accepted conditioned pairs.
+
+Scalar quantization is opt-in through quantizeCoordinate(value), with precision 0.1,
+half-step ties away from zero, positive-zero normalization, and separate idempotence.
+Structural normalizePointSequence only removes redundant duplicates/collinear points:
+never quantize, move survivors, invent points, or change diagonal/axis evidence.
+Test [(0,0),(1,0.04)] unchanged; explicit quantizeCoordinate(0.04) yields +0.
+Test exact coordinate preservation both without redundancies and after removal.
+
+Translation uses point + delta with finite input/result rejection. Metamorphic
+orientation, exact Manhattan distance, rectangle relations, and normalization modulo
+translation use only integer-lattice coordinates/rectangle dimensions/deltas within
+[-1_000_000,+1_000_000], SAFE_TRANSLATION_COORD_LIMIT = 1_000_000. Non-degenerate
+segments have significant differences above EPSILON; rectangle gaps are overlapping/
+zero or at least 4 * EPSILON away from the overlap threshold. Keep near-EPSILON
+boundary tests separate. Production APIs still accept arbitrary finite floats with
+finite outputs; test 0 and 1e-8 translated by 1e9 without a separation guarantee.
+This translation domain does not replace the separate transform conditioning model.
 
 Run:
 
@@ -563,7 +586,7 @@ geometry.property.spec.ts
 Architecture assertions:
 
 ```text
-routing/core/geometry
+packages/draw/src/routing/geometry/
 ```
 
 не должен иметь imports из:

@@ -1,39 +1,25 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { execFileSync } from 'node:child_process';
+import fs from 'node:fs'
+import path from 'node:path'
+import assert from 'node:assert/strict'
+import os from 'node:os'
+import { execFileSync } from 'node:child_process'
+import { createRequire } from 'node:module'
+import { fileURLToPath } from 'node:url'
 
-const ROOT = process.cwd();
-
-const ROUTING_ROOT = path.join(
-  ROOT,
-  'packages',
-  'draw',
-  'src',
-  'routing',
-);
-
-const DRAW_TESTS_ROOT = path.join(
-  ROOT,
-  'packages',
-  'draw',
-  'tests',
-);
-
-const CURRENT_CHANGE_FILE = path.join(
-  ROOT,
-  'docs',
-  'routing-v2',
-  'CURRENT_CHANGE.md',
-);
-
-const REQUIRED_DOCS = [
-  'docs/routing-v2/drawio-routing-master-spec.md',
-  'docs/routing-v2/implementation-playbook.md',
-  'docs/routing-v2/legacy-boundary.md',
-  'docs/routing-v2/CURRENT_CHANGE.md',
-];
-
-const V2_CORE_DIRS = new Set([
+const ROOT = process.cwd()
+const requireDraw = createRequire(path.join(ROOT, 'packages/draw/package.json'))
+const ts = requireDraw('typescript')
+const CURRENT = 'docs/routing-v2/CURRENT_CHANGE.md'
+const MASTER = 'docs/routing-v2/drawio-routing-master-spec.md'
+const PLAYBOOK = 'docs/routing-v2/implementation-playbook.md'
+const SCRIPT = 'scripts/routing-v2-architecture-gate.mjs'
+const LEGACY_DOC = 'docs/routing-v2/legacy-boundary.md'
+const R01 = 'routing-v2-01-geometry-kernel'
+const ROUTING = 'packages/draw/src/routing/'
+const V2_TESTS = 'packages/draw/tests/routing-v2/'
+const R01_IMPLEMENTATION = [ROUTING + 'model/**', ROUTING + 'geometry/**', V2_TESTS + 'geometry/**']
+const R01_CONTROL = ['openspec/changes/' + R01 + '/**', CURRENT, MASTER, PLAYBOOK, SCRIPT]
+const CORE = new Set([
   'model',
   'geometry',
   'terminal',
@@ -43,610 +29,566 @@ const V2_CORE_DIRS = new Set([
   'normalization',
   'validation',
   'interaction',
-]);
+])
+const SOURCE = /\.(?:[cm]?[jt]sx?)$/
+const FRAMEWORK = /^(?:react|react-dom|@antv\/x6|electron)(?:\/|$)/
+const BROWSER = new Set([
+  'window',
+  'document',
+  'devicePixelRatio',
+  'requestAnimationFrame',
+  'cancelAnimationFrame',
+  'navigator',
+  'screen',
+  'localStorage',
+  'sessionStorage',
+  'getComputedStyle',
+  'DOMPoint',
+  'DOMMatrix',
+  'HTMLElement',
+  'SVGElement',
+])
+const normalize = (value) => value.replaceAll('\\', '/')
+const relative = (file) => normalize(path.relative(ROOT, file))
+const inScope = (file, scope) =>
+  scope.some((entry) =>
+    entry.endsWith('/**') ? file.startsWith(entry.slice(0, -2)) : file === entry,
+  )
+const read = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8')
 
-const LEGACY_ALWAYS_PROTECTED = [
-  'packages/draw/src/routing/floatingAttachment.ts',
-  'packages/draw/src/routing/terminalPolicy.ts',
-  'packages/draw/src/routing/manhattanRoute.ts',
-  'packages/draw/src/routing/floatingRoute.ts',
-  'packages/draw/src/routing/movingRectangleRoute.ts',
-
-  'packages/draw/src/geometry/normalizeRoute.ts',
-  'packages/draw/src/geometry/validateManhattanRoute.ts',
-  'packages/draw/src/geometry/routeSnapshot.ts',
-
-  'packages/draw/src/segment-editing/segments.ts',
-  'packages/draw/src/segment-editing/dragSession.ts',
-  'packages/draw/src/segment-editing/segmentDragController.ts',
-  'packages/draw/src/segment-editing/resolveSegmentDrag.ts',
-  'packages/draw/src/segment-editing/floatingSegments.ts',
-
-  'packages/draw/src/connections/connectionStateMachine.ts',
-  'packages/draw/src/connections/connectionTool.ts',
-  'packages/draw/src/connections/previewRoute.ts',
-];
-
-const R10_INTEGRATION_BOUNDARY = [
-  'packages/draw/src/routing/x6RoutingAdapter.ts',
-  'packages/draw/src/routing/roundedConnector.ts',
-
-  'packages/draw/src/segment-editing/x6Adapter.ts',
-
-  'packages/draw/src/editor/createGraph.ts',
-  'packages/draw/src/editor/DiagramEditor.tsx',
-
-  'packages/draw/src/document/graphAdapter.ts',
-  'packages/draw/src/document/schema.ts',
-  'packages/draw/src/document/serialize.ts',
-  'packages/draw/src/document/fileAdapter.ts',
-
-  'packages/draw/src/visual/api.ts',
-
-  'packages/ui-workspace/src/FradeDiagramView.tsx',
-  'packages/ui-workspace/src/repositoryBundles.ts',
-  'packages/ui-workspace/src/DiagramView.tsx',
-];
-
-const DRAWIO_REFERENCE_PREFIX =
-  'apps/desktop/vendor/drawio/';
-
-const blockers = [];
-const warnings = [];
-
-main();
-
-function main() {
-  verifyRequiredFiles();
-
-  if (!fs.existsSync(ROUTING_ROOT)) {
-    block(
-      'Routing root not found',
-      relative(ROUTING_ROOT),
-    );
-  }
-
-  const current = readCurrentChange();
-  const changedFiles = getChangedFiles(current.baseCommit);
-
-  verifyLegacyQuarantine(current, changedFiles);
-  verifyDrawioReferenceUntouched(changedFiles);
-  verifyV2CoreArchitecture();
-  verifyChangedTests(changedFiles);
-  verifyChangedSourceEscapeHatches(changedFiles);
-
-  printResult(current);
+function field(content, name) {
+  return new RegExp('^' + name + ':[ \\t]*(.+?)[ \\t]*$', 'm').exec(content)?.[1].trim()
 }
 
-function verifyRequiredFiles() {
-  for (const rel of REQUIRED_DOCS) {
-    if (!fs.existsSync(path.join(ROOT, rel))) {
-      block('Required Routing V2 control file is missing', rel);
-    }
-  }
+function section(content, name) {
+  const heading = new RegExp('^## ' + name + '[^\\n]*\\n([\\s\\S]*?)(?=^## |$(?![\\s\\S]))', 'm')
+  const body = heading.exec(content)?.[1] ?? ''
+  return [...body.matchAll(/^(?:packages|openspec|docs|scripts)\/[^\s`]+$/gm)].map((match) =>
+    match[0].trim(),
+  )
 }
 
 function readCurrentChange() {
-  if (!fs.existsSync(CURRENT_CHANGE_FILE)) {
-    return {
-      activeChange: 'UNKNOWN',
-      baseCommit: 'NONE',
-      phaseNumber: null,
-    };
-  }
-
-  const content = fs.readFileSync(
-    CURRENT_CHANGE_FILE,
-    'utf8',
-  );
-
-  const activeChange =
-    readField(content, 'ACTIVE_CHANGE') ?? 'UNKNOWN';
-
-  const baseCommit =
-    readField(content, 'BASE_COMMIT') ?? 'NONE';
-
-  const match =
-    /^routing-v2-(\d{2})-/.exec(activeChange);
-
-  const phaseNumber =
-    match ? Number(match[1]) : null;
-
+  const content = read(CURRENT)
+  const activeChange = field(content, 'ACTIVE_CHANGE') ?? 'UNKNOWN'
   return {
     activeChange,
-    baseCommit,
-    phaseNumber,
-  };
-}
-
-function readField(content, field) {
-  const re = new RegExp(
-    `^${escapeRegex(field)}:\\s*(.+?)\\s*$`,
-    'm',
-  );
-
-  return re.exec(content)?.[1]?.trim();
-}
-
-function getChangedFiles(baseCommit) {
-  if (
-    !baseCommit ||
-    baseCommit === 'NONE'
-  ) {
-    return [];
-  }
-
-  if (!/^[0-9a-f]{7,40}$/i.test(baseCommit)) {
-    block(
-      'BASE_COMMIT is not a valid Git SHA',
-      baseCommit,
-    );
-
-    return [];
-  }
-
-  try {
-    const stdout = execFileSync(
-      'git',
-      [
-        'diff',
-        '--name-only',
-        baseCommit,
-        '--',
-      ],
-      {
-        cwd: ROOT,
-        encoding: 'utf8',
-      },
-    );
-
-    return stdout
-      .split(/\r?\n/)
-      .map((x) => normalizePath(x.trim()))
-      .filter(Boolean);
-  } catch (error) {
-    block(
-      'Unable to compute Git diff from BASE_COMMIT',
-      String(error),
-    );
-
-    return [];
+    phase: field(content, 'PHASE'),
+    baseCommit: field(content, 'BASE_COMMIT'),
+    sequence: field(content, 'SEQUENCE_POSITION'),
+    nextAllowed: field(content, 'NEXT_CHANGE_ALLOWED'),
+    previousGate: field(content, 'PREVIOUS_GATE'),
+    number: Number(/^routing-v2-(\d{2})-/.exec(activeChange)?.[1]) || null,
+    implementation: section(content, 'IMPLEMENTATION_SCOPE'),
+    control: section(content, 'PROCESS_CONTROL_SCOPE'),
   }
 }
 
-function verifyLegacyQuarantine(current, changedFiles) {
-  if (current.phaseNumber == null) {
-    return;
-  }
-
-  if (current.phaseNumber >= 1 &&
-      current.phaseNumber <= 9) {
-
-    const forbidden = new Set([
-      ...LEGACY_ALWAYS_PROTECTED,
-      ...R10_INTEGRATION_BOUNDARY,
-    ]);
-
-    for (const file of changedFiles) {
-      if (forbidden.has(file)) {
-        block(
-          `R${String(current.phaseNumber).padStart(2, '0')} modified legacy/integration boundary`,
-          file,
-        );
-      }
-    }
-
-    return;
-  }
-
-  if (current.phaseNumber === 10) {
-    const protectedSet =
-      new Set(LEGACY_ALWAYS_PROTECTED);
-
-    for (const file of changedFiles) {
-      if (protectedSet.has(file)) {
-        block(
-          'R10 modified protected legacy routing algorithm',
-          file,
-        );
-      }
-    }
-  }
+function protectedPaths() {
+  // The maintained boundary document, rather than a filename substring, owns quarantine.
+  const content = read(LEGACY_DOC)
+  const algorithmSection =
+    content
+      .split('## 1. Protected legacy routing algorithms')[1]
+      ?.split('## 2. Existing integration boundary')[0] ?? ''
+  const paths = (text) =>
+    [...text.matchAll(/^packages\/[^\s]+\.(?:ts|tsx)$/gm)].map((match) => match[0].trim())
+  return { algorithms: new Set(paths(algorithmSection)), all: new Set(paths(content)) }
 }
 
-function verifyDrawioReferenceUntouched(changedFiles) {
-  for (const file of changedFiles) {
-    if (file.startsWith(DRAWIO_REFERENCE_PREFIX)) {
-      block(
-        'Vendored draw.io reference code was modified',
-        file,
-      );
-    }
+export function changedFiles(baseCommit, gitRoot = ROOT) {
+  if (!/^[0-9a-f]{7,40}$/i.test(baseCommit ?? '')) {
+    throw new Error('BASE_COMMIT must be a resolvable Git SHA; an absent baseline cannot pass')
   }
+  const git = (args) =>
+    execFileSync('git', args, {
+      cwd: gitRoot,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+    })
+      .split('\0')
+      .filter(Boolean)
+      .map(normalize)
+  // Includes committed-since-baseline, staged, unstaged, deleted and untracked files.
+  return [
+    ...new Set([
+      ...git(['diff', '--no-renames', '--name-only', '-z', baseCommit, '--']),
+      ...git(['ls-files', '--others', '--exclude-standard', '-z']),
+    ]),
+  ].sort()
 }
 
-function verifyV2CoreArchitecture() {
-  if (!fs.existsSync(ROUTING_ROOT)) {
-    return;
-  }
-
-  walk(ROUTING_ROOT, (file) => {
-    if (!isSourceFile(file)) {
-      return;
-    }
-
-    const relFromRouting =
-      normalizePath(path.relative(ROUTING_ROOT, file));
-
-    const firstSegment =
-      relFromRouting.split('/')[0];
-
-    if (!V2_CORE_DIRS.has(firstSegment)) {
-      return;
-    }
-
-    const content = fs.readFileSync(
-      file,
-      'utf8',
-    );
-
-    const rel = relative(file);
-
-    const forbiddenFrameworkRules = [
-      [
-        /from\s+['"]react(?:\/[^'"]*)?['"]/,
-        'React import inside V2 routing core',
-      ],
-      [
-        /from\s+['"]react-dom(?:\/[^'"]*)?['"]/,
-        'React DOM import inside V2 routing core',
-      ],
-      [
-        /from\s+['"]@antv\/x6(?:\/[^'"]*)?['"]/,
-        'AntV X6 import inside V2 routing core',
-      ],
-      [
-        /from\s+['"]electron(?:\/[^'"]*)?['"]/,
-        'Electron import inside V2 routing core',
-      ],
-      [
-        /\bwindow\b/,
-        'window usage inside V2 routing core',
-      ],
-      [
-        /\bdocument\b/,
-        'document usage inside V2 routing core',
-      ],
-      [
-        /\bdevicePixelRatio\b/,
-        'devicePixelRatio usage inside V2 routing core',
-      ],
-      [
-        /\brequestAnimationFrame\b/,
-        'requestAnimationFrame usage inside V2 routing core',
-      ],
-      [
-        /\bMath\.random\s*\(/,
-        'Math.random usage inside deterministic V2 routing core',
-      ],
-    ];
-
-    for (const [re, reason] of forbiddenFrameworkRules) {
-      reportMatches(
-        content,
-        re,
-        reason,
-        rel,
-        blockers,
-      );
-    }
-
-    const forbiddenLegacyImports = [
-      'floatingAttachment',
-      'terminalPolicy',
-      'manhattanRoute',
-      'floatingRoute',
-      'movingRectangleRoute',
-      'x6RoutingAdapter',
-      'roundedConnector',
-      'segment-editing',
-      'connections/previewRoute',
-    ];
-
-    for (const legacyName of forbiddenLegacyImports) {
-      const re = new RegExp(
-        `from\\s+['"][^'"]*${escapeRegex(legacyName)}[^'"]*['"]`,
-      );
-
-      reportMatches(
-        content,
-        re,
-        `V2 routing core imports legacy implementation: ${legacyName}`,
-        rel,
-        blockers,
-      );
-    }
-
-    const adapterImport =
-      /from\s+['"][^'"]*adapters\/x6[^'"]*['"]/;
-
-    reportMatches(
-      content,
-      adapterImport,
-      'V2 routing core depends on X6 adapter layer',
-      rel,
-      blockers,
-    );
-
-    const directPointMutation =
-      /\.points\s*\[[^\]]+\]\s*=/g;
-
-    reportMatches(
-      content,
-      directPointMutation,
-      'Possible direct mutation of route points; review semantic-state contract',
-      rel,
-      warnings,
-    );
-  });
-}
-
-function verifyChangedTests(changedFiles) {
-  for (const rel of changedFiles) {
-    if (!isRoutingRelatedTest(rel)) {
-      continue;
-    }
-
-    const absolute = path.join(ROOT, rel);
-
-    if (!fs.existsSync(absolute)) {
-      continue;
-    }
-
-    const content = fs.readFileSync(
-      absolute,
-      'utf8',
-    );
-
-    const rules = [
-      [
-        /\b(?:test|it|describe)\.skip\s*\(/g,
-        'Skipped routing test',
-      ],
-      [
-        /\b(?:test|it|describe)\.only\s*\(/g,
-        'Focused .only routing test',
-      ],
-      [
-        /@ts-nocheck/g,
-        '@ts-nocheck in routing test',
-      ],
-      [
-        /@ts-ignore/g,
-        '@ts-ignore in routing test',
-      ],
-    ];
-
-    for (const [re, reason] of rules) {
-      reportMatches(
-        content,
-        re,
-        reason,
-        rel,
-        blockers,
-      );
-    }
-  }
-
-  const routingV2Tests =
-    path.join(DRAW_TESTS_ROOT, 'routing-v2');
-
-  if (fs.existsSync(routingV2Tests)) {
-    walk(routingV2Tests, (file) => {
-      if (!isSourceFile(file)) {
-        return;
-      }
-
-      const content =
-        fs.readFileSync(file, 'utf8');
-
-      const rel = relative(file);
-
-      for (const [re, reason] of [
-        [
-          /\b(?:test|it|describe)\.skip\s*\(/g,
-          'Skipped Routing V2 test',
-        ],
-        [
-          /\b(?:test|it|describe)\.only\s*\(/g,
-          'Focused .only Routing V2 test',
-        ],
-      ]) {
-        reportMatches(
-          content,
-          re,
-          reason,
-          rel,
-          blockers,
-        );
-      }
-    });
-  }
-}
-
-function verifyChangedSourceEscapeHatches(changedFiles) {
-  for (const rel of changedFiles) {
-    if (!isSourcePath(rel)) {
-      continue;
-    }
-
-    const absolute = path.join(ROOT, rel);
-
-    if (!fs.existsSync(absolute)) {
-      continue;
-    }
-
-    const content =
-      fs.readFileSync(absolute, 'utf8');
-
-    for (const [re, reason] of [
-      [
-        /@ts-nocheck/g,
-        '@ts-nocheck introduced in changed source',
-      ],
-      [
-        /@ts-ignore/g,
-        '@ts-ignore introduced in changed source',
-      ],
+export function scopeFindings(current, files, boundary) {
+  const findings = []
+  const fail = (file, reason) => findings.push({ file, reason })
+  if (!current.number || current.number > 10) fail(CURRENT, 'Unrecognized active Routing V2 change')
+  if (current.activeChange === R01) {
+    for (const [name, actual, expected] of [
+      ['IMPLEMENTATION_SCOPE', current.implementation, R01_IMPLEMENTATION],
+      ['PROCESS_CONTROL_SCOPE', current.control, R01_CONTROL],
     ]) {
-      reportMatches(
-        content,
-        re,
-        reason,
-        rel,
-        blockers,
-      );
+      if (JSON.stringify([...actual].sort()) !== JSON.stringify([...expected].sort())) {
+        fail(CURRENT, name + ' differs from the exact authorized R01 scope')
+      }
     }
-  }
-}
-
-function isRoutingRelatedTest(rel) {
-  const p = normalizePath(rel);
-
-  return (
-    p.startsWith('packages/draw/tests/') ||
-    p.startsWith('packages/ui-workspace/tests/') ||
-    p.startsWith('apps/desktop/tests/') ||
-    p.startsWith('tests/contract/')
-  );
-}
-
-function isSourcePath(rel) {
-  return /\.(?:ts|tsx|mts|cts)$/.test(rel);
-}
-
-function isSourceFile(file) {
-  return isSourcePath(file);
-}
-
-function walk(dir, visitor) {
-  for (
-    const entry of fs.readdirSync(
-      dir,
-      { withFileTypes: true },
-    )
-  ) {
     if (
-      entry.name === 'node_modules' ||
-      entry.name === 'dist' ||
-      entry.name === 'build' ||
-      entry.name === 'coverage' ||
-      entry.name === '.git'
+      current.sequence !== 'R01_OF_10' ||
+      current.nextAllowed !== 'false' ||
+      current.previousGate !== 'BOOTSTRAP PASS'
     ) {
-      continue;
+      fail(CURRENT, 'R01 sequence/previous-gate/next-change control fields are inconsistent')
     }
-
-    const full =
-      path.join(dir, entry.name);
-
-    if (entry.isDirectory()) {
-      walk(full, visitor);
-    } else {
-      visitor(full);
+    if (!['PLANNING', 'IMPLEMENTATION', 'VERIFICATION'].includes(current.phase)) {
+      fail(CURRENT, 'Unrecognized R01 phase')
+    }
+    for (const file of files) {
+      if (inScope(file, R01_CONTROL)) {
+        if ([MASTER, PLAYBOOK, SCRIPT].includes(file) && current.phase !== 'PLANNING') {
+          fail(
+            file,
+            'Master/gate repair is PLANNING process work, not a product implementation task',
+          )
+        }
+      } else if (inScope(file, R01_IMPLEMENTATION)) {
+        if (current.phase === 'PLANNING')
+          fail(file, 'Product implementation changed before PRE_IMPLEMENTATION PASS')
+      } else {
+        fail(file, 'Changed file is outside R01 implementation and process/control scopes')
+      }
     }
   }
+  for (const file of files) {
+    if (file.startsWith('apps/desktop/vendor/drawio/')) {
+      fail(file, 'Vendored draw.io reference modified')
+    }
+    if (boundary.algorithms.has(file) || (current.number <= 9 && boundary.all.has(file))) {
+      fail(file, 'Protected legacy algorithm/integration boundary modified')
+    }
+  }
+  return findings
 }
 
-function reportMatches(
-  content,
-  regex,
-  reason,
+function coreLayer(file) {
+  return file.startsWith(ROUTING) ? file.slice(ROUTING.length).split('/')[0] : null
+}
+
+function dependencyCategory(importer, specifier, boundary, tests = false) {
+  if (FRAMEWORK.test(specifier)) return { forbidden: 'Framework dependency: ' + specifier }
+  if (!specifier.startsWith('.')) {
+    return { forbidden: 'Non-local dependency outside pure V2 core: ' + specifier }
+  }
+  let target = path.resolve(ROOT, path.dirname(importer), specifier)
+  const candidates = [
+    target,
+    ...['.ts', '.tsx', '.mts', '.cts', '.js', '.mjs'].map((ext) => target + ext),
+    path.join(target, 'index.ts'),
+    path.join(target, 'index.js'),
+  ]
+  if (/\.[cm]?js$/.test(target)) candidates.push(target.replace(/\.[cm]?js$/, '.ts'))
+  const existing = candidates.find(
+    (candidate) => fs.existsSync(candidate) && fs.statSync(candidate).isFile(),
+  )
+  if (existing) target = fs.realpathSync(existing)
+  let rel = relative(target)
+  if (tests && (rel.startsWith(V2_TESTS) || rel === SCRIPT)) {
+    return { target: rel, layer: 'test/process tooling' }
+  }
+  // Canonicalize extensionless/JS import spelling for boundary matching.
+  const canonical = rel.replace(/\.(?:[cm]?js|tsx?|mts|cts)$/, '')
+  if ([...boundary.all].some((entry) => entry.replace(/\.tsx?$/, '') === canonical)) {
+    return { forbidden: 'Protected legacy/integration dependency: ' + rel }
+  }
+  if (
+    rel.startsWith('packages/draw/src/geometry/') ||
+    (rel.startsWith(ROUTING) && !CORE.has(coreLayer(rel)))
+  ) {
+    return { forbidden: 'Legacy geometry, top-level routing or adapter dependency: ' + rel }
+  }
+  if (!CORE.has(coreLayer(rel))) {
+    return { forbidden: 'Dependency outside V2 domain: ' + rel }
+  }
+  return { target: rel, layer: coreLayer(rel) }
+}
+
+export function inspectSource(
   file,
-  destination,
+  content,
+  current,
+  boundary,
+  { core = true, tests = false } = {},
 ) {
-  regex.lastIndex = 0;
-
-  let match;
-
-  while ((match = regex.exec(content)) !== null) {
-    destination.push({
+  const findings = []
+  const ast = ts.createSourceFile(file, content, ts.ScriptTarget.Latest, true)
+  const fail = (node, reason) =>
+    findings.push({
       file,
-      line: lineAt(content, match.index),
+      line: ast.getLineAndCharacterOfPosition(node.getStart(ast)).line + 1,
       reason,
-    });
-
-    if (!regex.global) {
-      break;
+    })
+  const testNames = new Set(['test', 'it', 'describe'])
+  for (const statement of ast.statements) {
+    if (
+      ts.isImportDeclaration(statement) &&
+      statement.importClause?.namedBindings &&
+      ts.isNamedImports(statement.importClause.namedBindings)
+    ) {
+      for (const binding of statement.importClause.namedBindings.elements) {
+        if (testNames.has(binding.propertyName?.text ?? binding.name.text))
+          testNames.add(binding.name.text)
+      }
     }
+  }
+  function checkImport(node, expression) {
+    if (!expression || !ts.isStringLiteralLike(expression)) {
+      fail(node, 'Non-literal module reference cannot prove V2 isolation')
+      return
+    }
+    const dependency = dependencyCategory(file, expression.text, boundary, tests)
+    // Product tests can use Vitest/Node tooling, but cannot construct legacy domain values.
+    if (
+      !core &&
+      !expression.text.startsWith('.') &&
+      !/^(?:@frade\/draw|frade-draw)(?:\/|$)/.test(expression.text)
+    )
+      return
+    if (dependency.forbidden) {
+      fail(node, dependency.forbidden)
+      return
+    }
+    if (core && current.number === 1 && !['model', 'geometry'].includes(dependency.layer)) {
+      fail(node, 'R01 depends on a later V2 layer: ' + dependency.layer)
+    }
+    if (core && coreLayer(file) === 'model' && dependency.layer !== 'model') {
+      fail(node, 'Model depends on geometry/higher layer')
+    }
+  }
+  function access(node) {
+    if (ts.isPropertyAccessExpression(node)) return [node.expression, node.name.text]
+    if (ts.isElementAccessExpression(node) && ts.isStringLiteralLike(node.argumentExpression)) {
+      return [node.expression, node.argumentExpression.text]
+    }
+    return null
+  }
+  function visit(node) {
+    if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) {
+      if (node.moduleSpecifier) checkImport(node, node.moduleSpecifier)
+    } else if (
+      ts.isImportEqualsDeclaration(node) &&
+      ts.isExternalModuleReference(node.moduleReference)
+    ) {
+      checkImport(node, node.moduleReference.expression)
+    } else if (ts.isImportTypeNode(node)) {
+      checkImport(node, ts.isLiteralTypeNode(node.argument) ? node.argument.literal : node.argument)
+    } else if (
+      ts.isCallExpression(node) &&
+      (node.expression.kind === ts.SyntaxKind.ImportKeyword ||
+        (ts.isIdentifier(node.expression) && node.expression.text === 'require'))
+    ) {
+      checkImport(node, node.arguments[0])
+    }
+    if (core && ts.isIdentifier(node) && BROWSER.has(node.text)) {
+      fail(node, 'Browser/display global in V2 core: ' + node.text)
+    }
+    const member = access(node)
+    if (member) {
+      const [owner, name] = member
+      const ownerName = ts.isIdentifier(owner) ? owner.text : owner.getText(ast)
+      if (
+        core &&
+        ((name === 'random' && /(?:^|\.)Math$/.test(ownerName)) ||
+          (name === 'now' && /(?:^|\.)(?:Date|performance)$/.test(ownerName)))
+      ) {
+        fail(node, 'Nondeterministic runtime dependency: ' + ownerName + '.' + name)
+      }
+      if (tests && ['skip', 'only'].includes(name)) {
+        // Includes .skip.each and computed access; Vitest import aliases are recognized.
+        const chain = owner.getText(ast)
+        if (
+          [...testNames].some(
+            (testName) => chain === testName || chain.startsWith(testName + '.'),
+          ) ||
+          /(?:^|\.)(?:test|it|describe)$/.test(chain)
+        ) {
+          fail(node, 'Skipped/focused routing test: ' + name)
+        }
+      }
+    }
+    ts.forEachChild(node, visit)
+  }
+  visit(ast)
+  // Scan actual comments only, avoiding false positives in fixture strings.
+  const scanner = ts.createScanner(
+    ts.ScriptTarget.Latest,
+    false,
+    ts.LanguageVariant.Standard,
+    content,
+  )
+  let token
+  while ((token = scanner.scan()) !== ts.SyntaxKind.EndOfFileToken) {
+    if (
+      [ts.SyntaxKind.SingleLineCommentTrivia, ts.SyntaxKind.MultiLineCommentTrivia].includes(
+        token,
+      ) &&
+      /@ts-(?:ignore|nocheck)\b/.test(scanner.getTokenText())
+    ) {
+      findings.push({
+        file,
+        line: ast.getLineAndCharacterOfPosition(scanner.getTokenPos()).line + 1,
+        reason: 'TypeScript suppression directive in routing source/test',
+      })
+    }
+  }
+  return findings
+}
+
+function walk(directory, visitor) {
+  if (!fs.existsSync(directory)) return
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    if (['node_modules', 'dist', 'build', 'coverage', '.git'].includes(entry.name)) continue
+    const absolute = path.join(directory, entry.name)
+    if (entry.isSymbolicLink()) throw new Error('Symlink in scanned V2 tree: ' + relative(absolute))
+    if (entry.isDirectory()) walk(absolute, visitor)
+    else if (SOURCE.test(entry.name)) visitor(relative(absolute))
   }
 }
 
-function lineAt(content, index) {
-  return content
-    .slice(0, index)
-    .split('\n')
-    .length;
-}
-
-function relative(file) {
-  return normalizePath(
-    path.relative(ROOT, file),
-  );
-}
-
-function normalizePath(value) {
-  return value.replaceAll('\\', '/');
-}
-
-function block(reason, file) {
-  blockers.push({
-    file,
-    line: null,
-    reason,
-  });
-}
-
-function escapeRegex(value) {
-  return value.replace(
-    /[.*+?^${}()|[\]\\]/g,
-    '\\$&',
-  );
-}
-
-function printResult(current) {
-  console.log(
-    `ACTIVE_CHANGE: ${current.activeChange}`,
-  );
-
-  if (warnings.length > 0) {
-    console.log('\nWARNINGS:\n');
-
-    for (const item of warnings) {
-      console.log(formatFinding('WARN', item));
+function main() {
+  const findings = []
+  let current
+  try {
+    for (const file of [
+      MASTER,
+      PLAYBOOK,
+      CURRENT,
+      LEGACY_DOC,
+      'docs/routing-v2/implementation-playbook.md',
+    ]) {
+      if (!fs.existsSync(path.join(ROOT, file)))
+        throw new Error('Required control file missing: ' + file)
     }
-  }
-
-  if (blockers.length > 0) {
-    console.error('\nGATE_STATUS: FAIL\n');
-
-    for (const item of blockers) {
-      console.error(formatFinding('FAIL', item));
+    current = readCurrentChange()
+    const boundary = protectedPaths()
+    if (boundary.algorithms.size === 0)
+      throw new Error('Protected legacy boundary could not be parsed')
+    const files = changedFiles(current.baseCommit)
+    findings.push(...scopeFindings(current, files, boundary))
+    const checked = new Set()
+    const inspect = (file, core, tests) => {
+      if (checked.has(file)) return
+      checked.add(file)
+      findings.push(...inspectSource(file, read(file), current, boundary, { core, tests }))
     }
-
-    process.exit(1);
+    walk(path.join(ROOT, ROUTING), (file) => {
+      if (CORE.has(coreLayer(file))) inspect(file, true, false)
+    })
+    walk(path.join(ROOT, V2_TESTS), (file) => inspect(file, false, true))
+    for (const file of files) {
+      if (!SOURCE.test(file) || !fs.existsSync(path.join(ROOT, file))) continue
+      const tests = /(?:^|\/)tests\//.test(file)
+      if (tests || file.startsWith('packages/draw/src/')) inspect(file, false, tests)
+    }
+    console.log('ACTIVE_CHANGE: ' + current.activeChange)
+    console.log('PHASE: ' + current.phase)
+    console.log('CHANGED_FILES_CHECKED: ' + files.length)
+    console.log('V2_SOURCE_TEST_FILES_CHECKED: ' + checked.size)
+  } catch (error) {
+    findings.push({ file: CURRENT, reason: String(error) })
   }
-
-  console.log('\nGATE_STATUS: PASS');
+  for (const finding of findings) {
+    console.error(
+      'FAIL ' + finding.file + (finding.line ? ':' + finding.line : '') + ' — ' + finding.reason,
+    )
+  }
+  console.log('GATE_STATUS: ' + (findings.length ? 'FAIL' : 'PASS'))
+  if (findings.length) process.exitCode = 1
 }
 
-function formatFinding(prefix, finding) {
-  const line =
-    finding.line == null
-      ? ''
-      : `:${finding.line}`;
+function selfTest() {
+  const boundary = protectedPaths()
+  const current = { ...readCurrentChange(), phase: 'PLANNING' }
+  const geometry = ROUTING + 'geometry/fixture.ts'
+  let count = 0
+  const check = (label, value) => {
+    assert.ok(value, label)
+    count++
+  }
+  check(
+    'control repairs allowed',
+    scopeFindings(
+      current,
+      R01_CONTROL.filter((x) => !x.endsWith('/**')).concat(
+        'openspec/changes/' + R01 + '/proposal.md',
+      ),
+      boundary,
+    ).length === 0,
+  )
+  for (const file of [
+    ROUTING + 'terminal/fixture.ts',
+    'packages/draw/src/index.ts',
+    V2_TESTS + 'other/fixture.test.ts',
+    'apps/desktop/vendor/drawio/new.js',
+    ...boundary.algorithms,
+  ])
+    check('reject scope/protection: ' + file, scopeFindings(current, [file], boundary).length > 0)
+  check(
+    'planning rejects premature product code',
+    scopeFindings(current, [geometry], boundary).length > 0,
+  )
+  const implementing = { ...current, phase: 'IMPLEMENTATION' }
+  check(
+    'implementation permits exact R01 trees',
+    scopeFindings(
+      implementing,
+      [geometry, ROUTING + 'model/Point.ts', V2_TESTS + 'geometry/fixture.test.ts'],
+      boundary,
+    ).length === 0,
+  )
+  check(
+    'implementation cannot rewrite gate',
+    scopeFindings(implementing, [SCRIPT], boundary).length > 0,
+  )
+  check(
+    'implementation cannot rewrite planning playbook',
+    scopeFindings(implementing, [PLAYBOOK], boundary).length > 0,
+  )
+  for (const legacy of boundary.all) {
+    const specifier = normalize(path.relative(path.dirname(geometry), legacy)).replace(
+      /\.tsx?$/,
+      '',
+    )
+    check(
+      'resolved legacy import: ' + legacy,
+      inspectSource(geometry, 'import type { X } from "' + specifier + '";', current, boundary)
+        .length > 0,
+    )
+  }
+  for (const content of [
+    'import "react";',
+    'export { X } from "react-dom";',
+    'const x = import("@antv/x6");',
+    'const x = require("electron");',
+    'type X = import("react").X;',
+    'const x = window;',
+    'document.querySelector("x");',
+    'devicePixelRatio;',
+    'requestAnimationFrame(() => {});',
+    'performance.now();',
+    'Math["random"]();',
+    'Date.now();',
+    'import { X } from "../terminal/new";',
+    '// @ts-ignore\nconst x = 1;',
+    '// @ts-nocheck\nconst x = 1;',
+  ])
+    check(
+      'reject core rule: ' + content,
+      inspectSource(geometry, content, current, boundary).length > 0,
+    )
+  check(
+    'model cannot import geometry',
+    inspectSource(
+      ROUTING + 'model/Point.ts',
+      'import { X } from "../geometry/x";',
+      current,
+      boundary,
+    ).length > 0,
+  )
+  check(
+    'geometry can import model',
+    inspectSource(geometry, 'import type { Point } from "../model/Point";', current, boundary)
+      .length === 0,
+  )
+  for (const content of [
+    'test.skip("x", () => {});',
+    'it.only("x", () => {});',
+    'describe.skip.each([])("x", () => {});',
+    'test["only"]("x", () => {});',
+    'import { test as t } from "vitest"; t.skip("x", () => {});',
+    '// @ts-nocheck\nconst x = 1;',
+  ])
+    check(
+      'reject test rule: ' + content,
+      inspectSource(V2_TESTS + 'geometry/fixture.test.ts', content, current, boundary, {
+        core: false,
+        tests: true,
+      }).length > 0,
+    )
+  check(
+    'comments/fixture strings are not imports or globals',
+    inspectSource(
+      geometry,
+      '// import "react"; window\nconst message = "Math.random()";',
+      current,
+      boundary,
+    ).length === 0,
+  )
+  check(
+    'test-local helper import is allowed',
+    inspectSource(
+      V2_TESTS + 'geometry/fixture.test.ts',
+      'import { seed } from "./seed";',
+      current,
+      boundary,
+      { core: false, tests: true },
+    ).length === 0,
+  )
+  check(
+    'product fixture may exercise installed process checker',
+    inspectSource(
+      V2_TESTS + 'geometry/fixture.test.ts',
+      'import { inspectSource } from "../../../../../scripts/routing-v2-architecture-gate.mjs";',
+      current,
+      boundary,
+      { core: false, tests: true },
+    ).length === 0,
+  )
+  // Exercise real Git discovery in a separate temporary repository, not product trees.
+  const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'frade-process-gate-'))
+  try {
+    const git = (args) =>
+      execFileSync('git', args, {
+        cwd: temporaryRoot,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
+      })
+    git(['init', '--quiet'])
+    fs.writeFileSync(path.join(temporaryRoot, 'baseline.txt'), 'baseline\n')
+    fs.writeFileSync(path.join(temporaryRoot, 'removed.txt'), 'temporary fixture\n')
+    git(['add', '--', 'baseline.txt', 'removed.txt'])
+    git([
+      '-c',
+      'user.name=Gate Self Test',
+      '-c',
+      'user.email=gate-self-test@example.invalid',
+      '-c',
+      'commit.gpgsign=false',
+      'commit',
+      '--quiet',
+      '-m',
+      'process-test baseline',
+    ])
+    const base = git(['rev-parse', 'HEAD']).trim()
+    fs.writeFileSync(path.join(temporaryRoot, 'staged.txt'), 'staged fixture\n')
+    git(['add', '--', 'staged.txt'])
+    fs.writeFileSync(path.join(temporaryRoot, 'baseline.txt'), 'unstaged fixture\n')
+    fs.writeFileSync(path.join(temporaryRoot, 'untracked with spaces.ts'), 'export {}\n')
+    fs.unlinkSync(path.join(temporaryRoot, 'removed.txt'))
+    check(
+      'Git tracks staged, unstaged, deleted and untracked paths',
+      JSON.stringify(changedFiles(base, temporaryRoot)) ===
+        JSON.stringify(['baseline.txt', 'removed.txt', 'staged.txt', 'untracked with spaces.ts']),
+    )
+    assert.throws(() => changedFiles('NONE', temporaryRoot))
+    count++
+  } finally {
+    const resolved = path.resolve(temporaryRoot)
+    assert.equal(path.dirname(resolved), path.resolve(os.tmpdir()))
+    assert.ok(path.basename(resolved).startsWith('frade-process-gate-'))
+    fs.rmSync(resolved, { recursive: true, force: true })
+  }
+  console.log('PROCESS_GATE_SELF_TESTS: PASS (' + count + ' assertions)')
+}
 
-  return (
-    `${prefix} ${finding.file}${line}` +
-    ` — ${finding.reason}`
-  );
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  if (process.argv.includes('--self-test')) selfTest()
+  else main()
 }

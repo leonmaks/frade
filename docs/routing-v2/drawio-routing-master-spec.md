@@ -237,7 +237,7 @@ Obstacle routing — отдельный milestone.
 Рекомендуемая структура:
 
 ```text
-packages/frade-draw/src/routing/
+packages/draw/src/routing/
 
   model/
     Point.ts
@@ -286,8 +286,9 @@ packages/frade-draw/src/routing/
     RouteInvariantValidator.ts
 
   adapters/
-    X6RoutingAdapter.ts
-    RepositoryEdgeAdapter.ts
+    x6/                         # R10 only
+      X6RoutingAdapter.ts
+      RepositoryEdgeAdapter.ts
 
   tests/
     fixtures/
@@ -642,6 +643,33 @@ const ROUTE_PRECISION = 0.1;
 ```
 
 Нельзя делать routing непосредственно в пикселях React/SVG.
+
+## R01 numerical and transform contract
+
+Coordinate approximate equality is `abs(a - b) <= EPSILON`, independently for X and Y. Manhattan distance is `abs(dx) + abs(dy)`; approximately equal points can have distance up to `2 * EPSILON`. `ROUTE_PRECISION = 0.1` uses half-step ties away from zero and negative zero becomes positive zero. Ordinary arithmetic and structural point-sequence normalization are not implicitly quantized. `quantizeCoordinate(value)` is a separate opt-in scalar API with its own idempotence contract. Structural `normalizePointSequence(...)` only removes adjacent EPSILON duplicates and redundant between-aware orthogonal collinear points, preserving order and every surviving original coordinate exactly; it never moves/invents points, projects diagonals, or interchanges horizontal/vertical geometry. `[(0,0),(1,0.04)]` remains DIAGONAL and unchanged; separately `quantizeCoordinate(0.04)` returns positive zero. Test coordinate preservation with no redundancy and after removal.
+
+TRANSLATION-STABLE generated geometry uses SAFE_TRANSLATION_COORD_LIMIT = 1_000_000: integer-valued point coordinates, rectangle origins/dimensions (non-negative dimensions), and delta coordinates within [-1_000_000, +1_000_000]. Rectangle edges and translated coordinates remain exact integers far below 2^53. Non-degenerate segment axis differences are zero or comfortably above EPSILON; rectangle axis gaps are exactly zero/overlapping or at least 4 * EPSILON away from the overlap threshold. This domain is only for translation metamorphic properties; production APIs accept arbitrary finite floating-point inputs with finite-result validation.
+
+Common translation follows `point + delta` and rejects non-finite inputs/results. Only TRANSLATION-STABLE geometry carries orientation, exact Manhattan-distance, rectangle-relation, and structural-normalization-modulo-translation guarantees. Keep near-EPSILON deterministic segment/rectangle tests separate from these metamorphic properties. Arbitrary finite production geometry may execute finite translation without preserving EPSILON-sensitive classifications: `0, 1e-8, delta=1e9` can collapse the separation without a kernel defect. This safe domain does not alter transform conditioning.
+
+A structurally valid view transform has finite `scale > 0` and finite translation X/Y. Operations execute only with finite computed outputs. Finite values alone do not imply EPSILON recovery.
+
+An EPSILON-CONDITIONED POINT/TRANSFORM PAIR requires the following finite bound to be `<= EPSILON` independently for X and Y:
+
+```text
+scaled = coordinate * scale
+view = scaled + translation
+estimatedRoundTripErrorBound =
+    8 * Number.EPSILON
+    * max(1, abs(translation), abs(scaled), abs(view))
+    / abs(scale)
+```
+
+Only conditioned pairs guarantee `abs(recovered.x - original.x) <= EPSILON` AND `abs(recovered.y - original.y) <= EPSILON` after model → view → model. Structurally valid ill-conditioned pairs permit finite one-way conversion without that strict guarantee. `x = 1`, `scale = 1e-6`, `translation.x = 1e9` is ill-conditioned; recovery of lost floating-point information is not required. Vector conditioning uses translation zero; screen conversions have no unconditional EPSILON recovery promise.
+
+R01 properties use seed `0xFAD001` and at least 5000 **accepted conditioned pairs**, not raw candidates mostly discarded. Separate structurally valid conditioned pairs (strict round trip), valid ill-conditioned pairs (finite one-way formulas without strict round-trip assertions), and structurally invalid transforms (deterministic rejection). Report accepted/rejected counts and reproducible seed/path/counterexample.
+
+For R01 this explicit contract qualifies the broad transform-round-trip example in the implementation playbook: its EPSILON property applies to conditioned pairs only. The active R01 delta spec defines the executable contract; the playbook example does not impose unconditional recovery for all finite inputs.
 
 ---
 
@@ -2032,7 +2060,7 @@ Tests:
 horizontal → true
 vertical → true
 diagonal → false
-zero length → invalid
+ZERO_LENGTH → false (separate classification category; finite zero-length geometry is representable)
 ```
 
 ### `removeDuplicatePoints`
@@ -2566,18 +2594,26 @@ Cache miss и hit обязаны вернуть идентичный route.
 
 ---
 
-## Phase R1 — Geometry Kernel
+## Phase R01 - Geometry Kernel
 
 Реализовать:
 
 ```text
 Point
+Vector
 Rect
+Segment
 Direction
-epsilon
+Orientation
+numerical policy
+geometry predicates
+Manhattan distance
+translation
+rectangle relations
 coordinate transforms
-perimeter
-normalization
+duplicate reduction
+collinear reduction
+normalization primitives
 ```
 
 Gate:
@@ -2589,16 +2625,20 @@ property tests green
 
 ---
 
-## Phase R2 — Terminal Resolver
+## Phase R02 - Terminal / Perimeter
 
 Реализовать:
 
 ```text
-floating terminal
-fixed terminal
-connection constraints
-perimeter intersection
-direction masks
+TerminalGeometry
+TerminalBinding
+ConnectionConstraint
+PortConstraint
+Perimeter abstraction
+RectanglePerimeter
+EllipsePerimeter
+FixedTerminalResolver
+FloatingTerminalResolver
 ```
 
 Gate:
@@ -2609,15 +2649,34 @@ all attachment BDD green
 
 ---
 
-## Phase R3 — Draw.io-compatible OrthogonalRouter
+## Phase R03 — Direction Resolver
+
+Реализовать:
+
+```text
+relative source/target quadrant classification
+constraint-aware source/target direction resolution
+direction preference and deterministic direction selection
+```
+
+R01 provides only X/Y projections, overlap, separation, and basic scalar/rectangle geometry. Routing quadrant policy belongs to R03, never Geometry Kernel.
+
+Gate:
+
+```text
+direction-resolution scenario matrix green
+```
+
+---
+
+## Phase R04 — Draw.io-compatible OrthogonalRouter
 
 Реализовать:
 
 ```text
 jetty
-quadrant
+consume R03 quadrant/direction decisions
 separation
-direction preference
 pattern table
 pattern executor
 normalization
@@ -2632,7 +2691,7 @@ draw.io parity fixtures green
 
 ---
 
-## Phase R4 — SegmentRouter
+## Phase R05 — SegmentRouter
 
 Реализовать:
 
@@ -2651,7 +2710,7 @@ manual geometry fixtures green
 
 ---
 
-## Phase R5 — SegmentEditor
+## Phase R06 — SegmentEditor
 
 Реализовать:
 
@@ -2670,7 +2729,7 @@ interaction BDD green
 
 ---
 
-## Phase R6 — Preview Transaction
+## Phase R07 — Preview / Commit
 
 Реализовать:
 
@@ -2690,7 +2749,7 @@ Escape never changes model
 
 ---
 
-## Phase R7 — Self-loop
+## Phase R08 — Self-loop
 
 Gate:
 
@@ -2700,19 +2759,7 @@ loop create/edit/move/reset
 
 ---
 
-## Phase R8 — X6 integration
-
-X6 должен стать:
-
-```text
-renderer + pointer/event adapter
-```
-
-а не владельцем routing semantics.
-
----
-
-## Phase R9 — Differential Draw.io Test Harness
+## Phase R09 — Draw.io Differential Harness
 
 Gate:
 
@@ -2722,9 +2769,17 @@ Gate:
 
 ---
 
-## Phase R10 — Visual regression
+## Phase R10 — X6 Integration
 
-Только после geometry parity.
+X6 должен стать:
+
+```text
+renderer + pointer/event adapter
+```
+
+а не владельцем routing semantics. Future adapter root: `packages/draw/src/routing/adapters/x6/`.
+
+Visual regression follows geometry parity as R10 integration evidence, not a separate numbered milestone.
 
 ---
 
