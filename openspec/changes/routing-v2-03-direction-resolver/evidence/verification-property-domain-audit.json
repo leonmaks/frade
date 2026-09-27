@@ -1,0 +1,54 @@
+{
+  "classification": "TEST",
+  "seed": "0xFAD003",
+  "testPath": "packages/draw/tests/routing-v2/direction/property/core.property.test.ts",
+  "testSha256": "110bbf47a4ee3eaba5752394e34bd1b954c2f76f0b7361592c93512e34d19a0d",
+  "raw": 5000,
+  "accepted": 5000,
+  "rejected": 0,
+  "acceptedCasesWithFixedCoordinateOutsideSpecifiedDomain": 28,
+  "firstCounterexample": {
+    "replayPath": "94",
+    "invalid": [
+      {
+        "field": "fixedSource",
+        "axis": "y",
+        "value": 100568
+      }
+    ],
+    "input": {
+      "source": {
+        "x": -64315,
+        "y": 99906,
+        "width": 1994,
+        "height": 1324
+      },
+      "target": {
+        "x": -13556,
+        "y": -10032,
+        "width": 880,
+        "height": 322
+      },
+      "sourceMask": {
+        "west": false,
+        "north": false,
+        "east": false,
+        "south": true
+      },
+      "targetMask": {
+        "west": false,
+        "north": false,
+        "east": true,
+        "south": false
+      },
+      "fixedSource": {
+        "x": -63318,
+        "y": 100568
+      },
+      "delta": {
+        "x": -66382,
+        "y": -826
+      }
+    }
+  }
+}

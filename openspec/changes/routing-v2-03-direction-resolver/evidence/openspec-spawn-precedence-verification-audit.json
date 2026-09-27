@@ -1,0 +1,133 @@
+{
+  "reviewType": "OPEN_SPEC_VERIFY",
+  "classifierControls": {
+    "controlsCount": 20,
+    "controls": [
+      {
+        "label": "test unknown + diagnostic, spawn=false",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "test unknown + diagnostic, spawn=true",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "suite unknown + diagnostic, spawn=false",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "suite unknown + diagnostic, spawn=true",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "module unknown + diagnostic, spawn=false",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "module unknown + diagnostic, spawn=true",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "global unknown + diagnostic, spawn=false",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "global unknown + diagnostic, spawn=true",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "ordinary spawn timeout absent",
+        "expected": "timeout",
+        "actual": "timeout"
+      },
+      {
+        "label": "ordinary spawn timeout empty",
+        "expected": "timeout",
+        "actual": "timeout"
+      },
+      {
+        "label": "ordinary spawn timeout partial",
+        "expected": "timeout",
+        "actual": "timeout"
+      },
+      {
+        "label": "ordinary spawn timeout known-complete",
+        "expected": "timeout",
+        "actual": "timeout"
+      },
+      {
+        "label": "partial test unknown + spawn",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "partial suite unknown + spawn",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "partial module unknown + spawn",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "partial global unknown + spawn",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "infrastructure + spawn: EPERM SSR directory",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "infrastructure + spawn: Unexpected worker exit",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "infrastructure + spawn: Failed to start worker",
+        "expected": "abort",
+        "actual": "abort"
+      },
+      {
+        "label": "retained assertion child",
+        "expected": "killed",
+        "actual": "killed"
+      }
+    ],
+    "productionFilesChecked": 29,
+    "productionMismatches": []
+  },
+  "retainedInventory": {
+    "reportPath": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-results-2026-09-27T21-42-21-542Z-8556.json",
+    "inventory": 85,
+    "exactAstInventory": true,
+    "hashLinksChecked": 86,
+    "executableReclassifications": 67,
+    "compilerInvalidDiagnosticsChecked": 18,
+    "baselineTests": 116,
+    "outcomes": {
+      "killed": 67,
+      "compiler-invalid": 18
+    },
+    "denominator": 67,
+    "score": 100,
+    "productionFilesChecked": 29,
+    "productionMismatches": [],
+    "changedSincePriorVerify": [
+      "packages/draw/tests/routing-v2/direction/mutation/run.mjs"
+    ]
+  },
+  "rawAggregateEqual": true,
+  "progressOutcomesChecked": 85,
+  "vendorSha256": "8608f4d1771db2307ce5a665a4ce9301da3ea4f759d932d381f057654c1e326d"
+}

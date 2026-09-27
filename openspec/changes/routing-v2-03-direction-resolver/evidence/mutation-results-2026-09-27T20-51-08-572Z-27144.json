@@ -1,0 +1,1170 @@
+{
+  "schemaVersion": 2,
+  "childAuditSchemaVersion": 2,
+  "command": "node packages/draw/tests/routing-v2/direction/mutation/run.mjs",
+  "childResultsDirectory": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144",
+  "baselineChildResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/000-baseline.json",
+  "baselineChildResultSha256": "74ed61d997341dc48da34d43f222c92e4dc37f847ddbd37e6a2531fe261f62bd",
+  "inventory": 85,
+  "categories": {
+    "cardinal-opposite": 20,
+    "comparison-operator": 44,
+    "logical-operator": 19,
+    "boolean-negation": 2
+  },
+  "killed": 67,
+  "denominator": 67,
+  "score": 100,
+  "survived": 0,
+  "timeouts": 0,
+  "compilerInvalid": 18,
+  "mutants": [
+    {
+      "file": "preferences.ts",
+      "start": 379,
+      "end": 383,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/001-preferences.ts-379.json",
+      "childResultSha256": "b0665c654cd9e9cc33309b252cf35416d4d37f30a8182d2d0db63ffd407c2549"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 397,
+      "end": 402,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/002-preferences.ts-397.json",
+      "childResultSha256": "79636331e07f263d2623d89f03d3467d45731d5be4fe179f1bdf56cfd5109092"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 416,
+      "end": 420,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/003-preferences.ts-416.json",
+      "childResultSha256": "46743bc342927b5b76c390009e338fbe910b974da5a1c85ca4a62a68688c10c0"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 434,
+      "end": 439,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/004-preferences.ts-434.json",
+      "childResultSha256": "0b7487e1244069d33c7ae51c378e77dea4c30a302a561782c7aee18f3ad48379"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 546,
+      "end": 550,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2366,
+          "message": "Function lacks ending return statement and return type does not include 'undefined'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/005-preferences.ts-546.json",
+      "childResultSha256": "24baefd6b470c5ec0e19a606466d043cededbd5bafd666a99a49b6a943adae17"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 575,
+      "end": 579,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/006-preferences.ts-575.json",
+      "childResultSha256": "051cbeeafb8513fc9f7a493833869263ff13708b07f745acfb6ddc87b36c24c9"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 599,
+      "end": 604,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2366,
+          "message": "Function lacks ending return statement and return type does not include 'undefined'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/007-preferences.ts-599.json",
+      "childResultSha256": "d869ba9182b73b7836d540275cf60218f83011c4149930af49f38a9e17021c4c"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 629,
+      "end": 634,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/008-preferences.ts-629.json",
+      "childResultSha256": "b9e033830c2e86fa9e6571ffabb52ac394c62f393d2e7f643287e200288b27a7"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 654,
+      "end": 658,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2366,
+          "message": "Function lacks ending return statement and return type does not include 'undefined'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/009-preferences.ts-654.json",
+      "childResultSha256": "7d3aec550166f6fa8a8793ace8241182f2b5cab097acbbb862e6e46690b69a98"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 683,
+      "end": 687,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/010-preferences.ts-683.json",
+      "childResultSha256": "3ace17e16a1668ca5de34854b2fe8d9d2974efadf4fd208aecf5825a5d4ad0d6"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 707,
+      "end": 712,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2366,
+          "message": "Function lacks ending return statement and return type does not include 'undefined'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/011-preferences.ts-707.json",
+      "childResultSha256": "4cd930415bd26554520c215550de285799cc3048e92146887b1a8d3b9bccbddb"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 737,
+      "end": 742,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/012-preferences.ts-737.json",
+      "childResultSha256": "38fcaa054203de9126b928784f99000acdb8276db55fc2275d638cee86f7881a"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 886,
+      "end": 889,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 18048,
+          "message": "'fixed' is possibly 'undefined'."
+        },
+        {
+          "code": 18048,
+          "message": "'fixed' is possibly 'undefined'."
+        },
+        {
+          "code": 18048,
+          "message": "'fixed' is possibly 'undefined'."
+        },
+        {
+          "code": 18048,
+          "message": "'fixed' is possibly 'undefined'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/013-preferences.ts-886.json",
+      "childResultSha256": "c9a92c0d758f9292cb236507f725b58b90bde52f31fd6e2387d251c1b6c4a256"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1350,
+      "end": 1352,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/014-preferences.ts-1350.json",
+      "childResultSha256": "64abebcb6a4fc643207c2be113f639727c599113adfcb90476c4a32758e762a0"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1330,
+      "end": 1332,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/015-preferences.ts-1330.json",
+      "childResultSha256": "6e52b4ce1e8f8fd4a5cc688139001e0182698eeb750d6ca645e00ac7baad1ab6"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1312,
+      "end": 1314,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/016-preferences.ts-1312.json",
+      "childResultSha256": "0740c9602587e9c1f9caa736a43eb9adbf40a90099acbc4e3b5449ac4fea9d87"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1301,
+      "end": 1302,
+      "before": "<",
+      "after": "<=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/017-preferences.ts-1301.json",
+      "childResultSha256": "0bf5a6f9345aca18f5591d50dbfdc0bb33e160f02e50de62f5768602a4bd4c11"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1320,
+      "end": 1321,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/018-preferences.ts-1320.json",
+      "childResultSha256": "fc6845a64dd995f9208c535ee92c2c08a89e228bc422ed1428fbfa3d7d42607e"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1339,
+      "end": 1340,
+      "before": "<",
+      "after": "<=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/019-preferences.ts-1339.json",
+      "childResultSha256": "9ec3bce312ef5ab43ccdf660f0d1f1deba8eb376c648782a15cf4ffe55aa3fcd"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1359,
+      "end": 1360,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/020-preferences.ts-1359.json",
+      "childResultSha256": "755356d5acf734edbf0616496cbad0fc6fd65bf87805466f6d8c8d7354c6c96b"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1447,
+      "end": 1449,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/021-preferences.ts-1447.json",
+      "childResultSha256": "78cb7f90e5580fd6a594fd82189363c81c717f37a963dc830c86ba0671174b72"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1481,
+      "end": 1485,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/022-preferences.ts-1481.json",
+      "childResultSha256": "72c5a5db6576ea51c618f24616d565b597f4335f995d8cd70f63b45c6956478b"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1512,
+      "end": 1514,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/023-preferences.ts-1512.json",
+      "childResultSha256": "4b93900c95f46fdae902832c2e2d3864b082c7273f3fc71de3ab08832441330a"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1546,
+      "end": 1550,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/024-preferences.ts-1546.json",
+      "childResultSha256": "5f6dbed50365c181492e13f1ad61c00d2826adfe6783ad5e6c3231f1b4796dc9"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1573,
+      "end": 1575,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/025-preferences.ts-1573.json",
+      "childResultSha256": "572c9955d2fb6a3c8b5f1581d5adf8a2d9c2a86ab8b3e27c89c1b2457cdde4e7"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1607,
+      "end": 1612,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/026-preferences.ts-1607.json",
+      "childResultSha256": "0b7cdb5d46e46d52ef23db5c2d06be14ad9af26c851ad996f73b6dd6689c196e"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1640,
+      "end": 1642,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/027-preferences.ts-1640.json",
+      "childResultSha256": "e7c23471bf6723ed47279b664bb0245a29b3d2ccf4ea3fa5629eced523dc7365"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1674,
+      "end": 1679,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/028-preferences.ts-1674.json",
+      "childResultSha256": "6b458156a63c640430a243570d6879efee66b835d2ed57914dbf5a64de1ee887"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2002,
+      "end": 2004,
+      "before": ">=",
+      "after": ">",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/029-preferences.ts-2002.json",
+      "childResultSha256": "f96046b09ac7623821b1acc91afda7af6f8b054b1f5eac15ef9fc53036ad2e42"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2027,
+      "end": 2031,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/030-preferences.ts-2027.json",
+      "childResultSha256": "a55447505af513b5b29f3ddfe5ce99c97cc30865fb113390850230f7357f3875"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2044,
+      "end": 2048,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/031-preferences.ts-2044.json",
+      "childResultSha256": "d5f9a31bb493d8899eb9a9674138c478ba46c5700a009cfcb49a9602a8da559c"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2079,
+      "end": 2081,
+      "before": ">=",
+      "after": ">",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/032-preferences.ts-2079.json",
+      "childResultSha256": "201ac42f4a59c6c2d4bc7f553f0b2b3b5adc6ae222af9561307a6ba18bb6e3a6"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2105,
+      "end": 2110,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/033-preferences.ts-2105.json",
+      "childResultSha256": "a63bc548d00092b4fe1f6582a6782aea16b51524388d38858026420948d97dc4"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2123,
+      "end": 2128,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/034-preferences.ts-2123.json",
+      "childResultSha256": "a23197d7c97941a68a0df38e75098aa2066836f3f3954bb297b7d1d876049211"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2442,
+      "end": 2444,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2538,
+          "message": "Type 'undefined' cannot be used as an index type."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/035-preferences.ts-2442.json",
+      "childResultSha256": "a3816020926e6d82f53bef34d013e743f742e0e38cc908126c809c1292538dda"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2415,
+      "end": 2417,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/036-preferences.ts-2415.json",
+      "childResultSha256": "b8f25d40ed6d40de554b3562ddbda05ed75fb5a925f334fa0d2300c9749c25fb"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2409,
+      "end": 2412,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/037-preferences.ts-2409.json",
+      "childResultSha256": "b420fce71cd4aedd12747972b0237e4f67d8736e0fa4d55224bc40db78f84991"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2428,
+      "end": 2431,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2538,
+          "message": "Type 'undefined' cannot be used as an index type."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/038-preferences.ts-2428.json",
+      "childResultSha256": "51b5e6754fe687576c987404dfda65b62a6b03fdfa335ed6a04a598e968ae8a4"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2523,
+      "end": 2525,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/039-preferences.ts-2523.json",
+      "childResultSha256": "dcc0c80cf086282d80b6ad3621711f2314aadddcebb74f26a5f4461a201f7501"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2638,
+      "end": 2640,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/040-preferences.ts-2638.json",
+      "childResultSha256": "fb7890a8ea88d0d8380a1a6e546456cd9643ab343c42eb0127b131ed4f3fa812"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2938,
+      "end": 2940,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/041-preferences.ts-2938.json",
+      "childResultSha256": "227a671df3c2d67374a171e62eb31221c976ba1407a5991eaab41d9094c83e26"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2920,
+      "end": 2922,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/042-preferences.ts-2920.json",
+      "childResultSha256": "41ca60e978bc39045a23183dae8c98ddf42757d3f060308152f1d6542887a5e0"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2908,
+      "end": 2910,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/043-preferences.ts-2908.json",
+      "childResultSha256": "58608a4a7ad1fad42dbd61f5680a249485a9e9b5ba7a2271dbd70a896d050de5"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2904,
+      "end": 2905,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/044-preferences.ts-2904.json",
+      "childResultSha256": "22a9daf8670f50d82d80e2440b8f0c03470c5cb2e8fa434797d3eabd42e19a80"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2916,
+      "end": 2917,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/045-preferences.ts-2916.json",
+      "childResultSha256": "165fb6e4a2b4874bfd4e9b709e5169d18b1fdde69297044eb0715ba19fcf8110"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3122,
+      "end": 3124,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/046-preferences.ts-3122.json",
+      "childResultSha256": "65141067aa86eda2bcda02622d580660d125d36596855e74840c7c04fede0607"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3104,
+      "end": 3106,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/047-preferences.ts-3104.json",
+      "childResultSha256": "565187d02099cf25c6c1b3f4a2fcb34b42c1ebd03af33e9f39b5df9c41f92cd7"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3092,
+      "end": 3094,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/048-preferences.ts-3092.json",
+      "childResultSha256": "837a444f9fa8adb067b194557221a8158cb5b8382457c20073b3b05103891145"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3088,
+      "end": 3089,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/049-preferences.ts-3088.json",
+      "childResultSha256": "9e71b1f2fb611c62ffbdde32cf953ba1eb01a9892307842e0ac436049da85ff7"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3100,
+      "end": 3101,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/050-preferences.ts-3100.json",
+      "childResultSha256": "5d62fae534ad9e1b3dec958f6255b11c8bc9e502a17b2760c82695fc70895494"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3272,
+      "end": 3273,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/051-preferences.ts-3272.json",
+      "childResultSha256": "af6e3453d252b5192f10c2202b8dc1478af7e82366f05a6294d9beed8d4f75f0"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3383,
+      "end": 3384,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/052-preferences.ts-3383.json",
+      "childResultSha256": "28cafb458ea4505b40c236e6d5e2a983130679eafa8e8cf4dac3594098389757"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3610,
+      "end": 3611,
+      "before": "!",
+      "after": "",
+      "category": "boolean-negation",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/053-preferences.ts-3610.json",
+      "childResultSha256": "b18f00056f0847a04333db1f951710edcad1b56d666ffccf9b6de23dd40f02be"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3662,
+      "end": 3665,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2538,
+          "message": "Type 'undefined' cannot be used as an index type."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/054-preferences.ts-3662.json",
+      "childResultSha256": "6738c01f1d2c79918d3642ad62f2d045bbdfdf729e38cba6796ce7f518b34098"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3966,
+      "end": 3968,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/055-preferences.ts-3966.json",
+      "childResultSha256": "5b6ac02c92d31b20876edae7c707d1d8bc43b29cab61ed071ad1a0ead038d279"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3952,
+      "end": 3955,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/056-preferences.ts-3952.json",
+      "childResultSha256": "7a82fbdcaa77d996b5b0cf20ed8fb903b398a31beca4e129703102adbeebcf15"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4066,
+      "end": 4069,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/057-preferences.ts-4066.json",
+      "childResultSha256": "45f976d7891ca8097e8fb4b626880c8bac05f4881f76106e95bcbbab42b2f666"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4170,
+      "end": 4173,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/058-preferences.ts-4170.json",
+      "childResultSha256": "8ce1ab7391b36d58245d30727003d0110b45e8e67e6feb4db45b15e8b3c0327a"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4268,
+      "end": 4270,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2322,
+          "message": "Type 'Direction | undefined' is not assignable to type 'Direction'.\n  Type 'undefined' is not assignable to type 'Direction'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/059-preferences.ts-4268.json",
+      "childResultSha256": "0e9b7c80cec0221663cc221078dc5c887cef70765fcf80fef7149adce9a76ded"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4281,
+      "end": 4284,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2322,
+          "message": "Type 'undefined' is not assignable to type 'Direction'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/060-preferences.ts-4281.json",
+      "childResultSha256": "897c6709518243417c1caee3c6c665ebf95220ca6348fd3b196066efa8cb88ce"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4363,
+      "end": 4366,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/061-preferences.ts-4363.json",
+      "childResultSha256": "0f5d158924e6fe84e85a1986660033fa8c0b715131268ccad813eb6d53c6802d"
+    },
+    {
+      "file": "relative.ts",
+      "start": 344,
+      "end": 346,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/062-relative.ts-344.json",
+      "childResultSha256": "f1c7cc42b7228e8c028986dd9470b0b5c394c242975cc4384a0272df86a8cf34"
+    },
+    {
+      "file": "relative.ts",
+      "start": 514,
+      "end": 516,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/063-relative.ts-514.json",
+      "childResultSha256": "27ec758a2d3785106ebf59d8a29c7c2a35651b1ff8d094b39804c317aec95280"
+    },
+    {
+      "file": "relative.ts",
+      "start": 505,
+      "end": 508,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'width' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'height' does not exist on type 'never'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/064-relative.ts-505.json",
+      "childResultSha256": "cbe3742c8fc9c5b26648f4ebce749f1aeb0b3b27828de8417ad62b072570140c"
+    },
+    {
+      "file": "relative.ts",
+      "start": 530,
+      "end": 533,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'width' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'height' does not exist on type 'never'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/065-relative.ts-530.json",
+      "childResultSha256": "c579bcce019ff900429183c0bce2cc4e3fe387f244a30f3d4826328318c69e3d"
+    },
+    {
+      "file": "relative.ts",
+      "start": 1595,
+      "end": 1596,
+      "before": "<",
+      "after": "<=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/066-relative.ts-1595.json",
+      "childResultSha256": "98eafe41dca3e1b69ee63c2107ac961bd1f421e0e0c8b81882193c7873bc015c"
+    },
+    {
+      "file": "relative.ts",
+      "start": 1605,
+      "end": 1606,
+      "before": "<",
+      "after": "<=",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/067-relative.ts-1605.json",
+      "childResultSha256": "c55999a97b2592f8daa34ec2e429faf51efaa7660f7342867ff7109b24893d95"
+    },
+    {
+      "file": "relative.ts",
+      "start": 1623,
+      "end": 1625,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/068-relative.ts-1623.json",
+      "childResultSha256": "d6b74b024caf3ddd43324a32828631483ed5740c187f83bd0231b62c0e5c1c6c"
+    },
+    {
+      "file": "relative.ts",
+      "start": 1634,
+      "end": 1637,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/069-relative.ts-1634.json",
+      "childResultSha256": "79eb88d29d4df8bca8d16958712b33041b2581381e5789fff029197de782e231"
+    },
+    {
+      "file": "relative.ts",
+      "start": 1702,
+      "end": 1705,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/070-relative.ts-1702.json",
+      "childResultSha256": "5c6f45d08b0933af505faf3424d892e02075f4ef199e0be4b67ca25cf398c6f3"
+    },
+    {
+      "file": "relative.ts",
+      "start": 2444,
+      "end": 2447,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/071-relative.ts-2444.json",
+      "childResultSha256": "4c3246f8a036b59062002d61a65e5e3bb686627e5aacc641989beda415388d51"
+    },
+    {
+      "file": "relative.ts",
+      "start": 2485,
+      "end": 2488,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/072-relative.ts-2485.json",
+      "childResultSha256": "1959c39f148e51d5559083b33b8bbed4ec624f055fdd0198ccfb6859ea39e2d6"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 559,
+      "end": 562,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/073-resolve.ts-559.json",
+      "childResultSha256": "640b4c04d16708700c78343bf23968c715ec280414456c0824b6af86eb7790ab"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 612,
+      "end": 614,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/074-resolve.ts-612.json",
+      "childResultSha256": "44f997196c5ee6535e8f83bf05ed14e679b8804ab253356052e8eee473d41f0d"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 603,
+      "end": 606,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/075-resolve.ts-603.json",
+      "childResultSha256": "897f5ed08021b0b581ea31ebed5b92a1d51debbab5d0b37b3afb53999153386b"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 628,
+      "end": 631,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/076-resolve.ts-628.json",
+      "childResultSha256": "900a31fbc066094e7e60b8a951f99d7dc346c5d429d6b434a516176cfa8c3fe3"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 952,
+      "end": 955,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2345,
+          "message": "Argument of type 'Readonly<Record<Direction, boolean>> | undefined' is not assignable to parameter of type 'Readonly<Record<Direction, boolean>>'.\n  Type 'undefined' is not assignable to type 'Readonly<Record<Direction, boolean>>'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/077-resolve.ts-952.json",
+      "childResultSha256": "0768eaa7f6a69ca53c54c36c71bcdddf29ab5009b6668b9e7a9a6c8089220a16"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 1423,
+      "end": 1425,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/078-resolve.ts-1423.json",
+      "childResultSha256": "ad4641b81b05620aff7d1c8e7216232c0533dd67d1130ec805a57d8a796aa6a2"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 1392,
+      "end": 1394,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/079-resolve.ts-1392.json",
+      "childResultSha256": "76eb87f12c75849e7c28160380dfacc001c6bdc00aaeca38c769cf51375dc5c4"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 1383,
+      "end": 1386,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'sourceMask' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'targetMask' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'fixedSource' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'fixedTarget' does not exist on type 'never'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Rect<S>' is not assignable to parameter of type 'Rect<CoordinateSpace<string>>'.\n  Types of property '[rectSpace]' are incompatible.\n    Type '((space: S) => S) | undefined' is not assignable to type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined'.\n      Type '(space: S) => S' is not assignable to type '(space: CoordinateSpace<string>) => CoordinateSpace<string>'.\n        Types of parameters 'space' and 'space' are incompatible.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Rect<NoInfer<S>>' is not assignable to parameter of type 'Rect<CoordinateSpace<string>>'.\n  Types of property '[rectSpace]' are incompatible.\n    Type '((space: NoInfer<S>) => NoInfer<S>) | undefined' is not assignable to type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined'.\n      Type '(space: NoInfer<S>) => NoInfer<S>' is not assignable to type '(space: CoordinateSpace<string>) => CoordinateSpace<string>'.\n        Types of parameters 'space' and 'space' are incompatible.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Point<CoordinateSpace<string>> | undefined' is not assignable to parameter of type 'Point<S> | undefined'.\n  Type 'Point<CoordinateSpace<string>>' is not assignable to type 'Point<S>'.\n    Types of property '[pointSpace]' are incompatible.\n      Type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined' is not assignable to type '((space: S) => S) | undefined'.\n        Type '(space: CoordinateSpace<string>) => CoordinateSpace<string>' is not assignable to type '(space: S) => S'.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Point<CoordinateSpace<string>> | undefined' is not assignable to parameter of type 'Point<S> | undefined'.\n  Type 'Point<CoordinateSpace<string>>' is not assignable to type 'Point<S>'.\n    Types of property '[pointSpace]' are incompatible.\n      Type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined' is not assignable to type '((space: S) => S) | undefined'.\n        Type '(space: CoordinateSpace<string>) => CoordinateSpace<string>' is not assignable to type '(space: S) => S'.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/080-resolve.ts-1383.json",
+      "childResultSha256": "d444e4bd34a210134150c1ec60a54ab2ddbef860c83c9f2fd72dfc60cc7b55c0"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 1410,
+      "end": 1413,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'sourceMask' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'targetMask' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'fixedSource' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'fixedTarget' does not exist on type 'never'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Rect<S>' is not assignable to parameter of type 'Rect<CoordinateSpace<string>>'.\n  Types of property '[rectSpace]' are incompatible.\n    Type '((space: S) => S) | undefined' is not assignable to type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined'.\n      Type '(space: S) => S' is not assignable to type '(space: CoordinateSpace<string>) => CoordinateSpace<string>'.\n        Types of parameters 'space' and 'space' are incompatible.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Rect<NoInfer<S>>' is not assignable to parameter of type 'Rect<CoordinateSpace<string>>'.\n  Types of property '[rectSpace]' are incompatible.\n    Type '((space: NoInfer<S>) => NoInfer<S>) | undefined' is not assignable to type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined'.\n      Type '(space: NoInfer<S>) => NoInfer<S>' is not assignable to type '(space: CoordinateSpace<string>) => CoordinateSpace<string>'.\n        Types of parameters 'space' and 'space' are incompatible.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Point<CoordinateSpace<string>> | undefined' is not assignable to parameter of type 'Point<S> | undefined'.\n  Type 'Point<CoordinateSpace<string>>' is not assignable to type 'Point<S>'.\n    Types of property '[pointSpace]' are incompatible.\n      Type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined' is not assignable to type '((space: S) => S) | undefined'.\n        Type '(space: CoordinateSpace<string>) => CoordinateSpace<string>' is not assignable to type '(space: S) => S'.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Point<CoordinateSpace<string>> | undefined' is not assignable to parameter of type 'Point<S> | undefined'.\n  Type 'Point<CoordinateSpace<string>>' is not assignable to type 'Point<S>'.\n    Types of property '[pointSpace]' are incompatible.\n      Type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined' is not assignable to type '((space: S) => S) | undefined'.\n        Type '(space: CoordinateSpace<string>) => CoordinateSpace<string>' is not assignable to type '(space: S) => S'.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        }
+      ],
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/081-resolve.ts-1410.json",
+      "childResultSha256": "40d7679c57bb1375f314c4e433df5770d8c65f076bdc0d51aa5362c0c259a47f"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 2192,
+      "end": 2195,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/082-resolve.ts-2192.json",
+      "childResultSha256": "d0a0f548d1b62b539f2c4fcac7e11f8b8ec93857cf2b3f03c2fb4f6f2d2593d7"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 2219,
+      "end": 2222,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/083-resolve.ts-2219.json",
+      "childResultSha256": "33b3d155d01572a7216463f047c7cd61eee59724f52b473d3604381facd60130"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 2433,
+      "end": 2434,
+      "before": "!",
+      "after": "",
+      "category": "boolean-negation",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/084-resolve.ts-2433.json",
+      "childResultSha256": "8689b517053418bd949778dcecf8325ed90305e7baba98c4210a033ff421b008"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 2611,
+      "end": 2614,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed",
+      "childResult": "openspec/changes/routing-v2-03-direction-resolver/evidence/mutation-child-results-2026-09-27T20-51-08-572Z-27144/085-resolve.ts-2611.json",
+      "childResultSha256": "a84b1ff7f4c11bb3264a888926baa30d2405a45bd578d9c64c63bd3afba7c7e9"
+    }
+  ]
+}

@@ -1,0 +1,2285 @@
+{
+  "outcome": "killed",
+  "child": {
+    "status": 1,
+    "signal": null,
+    "error": null,
+    "stdout": "\n RUN  v3.2.7 E:/dev/codex/frade/packages/draw\n\nstdout | tests/routing-v2/direction/unit/property-harness.test.ts > R03 conditioned property evidence controls > counts accepted and rejected candidates independently\n[R02_PROPERTY] {\"name\":\"R03/harness-accounting-control\",\"seed\":16437251,\"raw\":6,\"accepted\":3,\"rejected\":3}\n\n·····························································x··xx······x···x·x···x···x·····························\n\n Test Files  1 failed | 7 passed (8)\n      Tests  8 failed | 108 passed (116)\n   Start at  00:47:27\n   Duration  11.42s (transform 508ms, setup 0ms, collect 3.30s, tests 11.21s, environment 3ms, prepare 1.85s)\n\nJSON report written to C:/Users/NVISEN/AppData/Local/Temp/frade-r03-mutants-EpPfJK/028-preferences.ts-1674-vitest.json\n",
+    "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/routing-v2/direction/unit/fixed.test.ts > fixed-side direction evidence > detects edge/corner side without moving the fixed point 3\n FAIL  tests/routing-v2/direction/unit/fixed.test.ts > fixed-side direction evidence > detects edge/corner side without moving the fixed point 6\n FAIL  tests/routing-v2/direction/unit/fixed.test.ts > fixed-side direction evidence > detects edge/corner side without moving the fixed point 7\nAssertionError: expected 'north' to be 'south' // Object.is equality\n\nExpected: \"south\"\nReceived: \"north\"\n\n ❯ tests/routing-v2/direction/unit/fixed.test.ts:29:61\n     27|       fixedSource: frozen,\n     28|     })\n     29|     expect(result.preferenceEvidence.source.fixedCandidate).toBe(candi…\n       |                                                             ^\n     30|     expect(frozen).toEqual(fixedSource)\n     31|   })\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯\n\n FAIL  tests/routing-v2/direction/unit/fixed.test.ts > fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 3\n FAIL  tests/routing-v2/direction/unit/fixed.test.ts > fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 7\n FAIL  tests/routing-v2/direction/unit/fixed.test.ts > fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 9\nAssertionError: expected 'north' to be 'south' // Object.is equality\n\nExpected: \"south\"\nReceived: \"north\"\n\n ❯ tests/routing-v2/direction/unit/fixed.test.ts:58:63\n     56|     (bounds, fixedSource, expected) => {\n     57|       const result = resolveDirections(bounds, rect<ModelSpace>(30, 30…\n     58|       expect(result.preferenceEvidence.source.fixedCandidate).toBe(exp…\n       |                                                               ^\n     59|       expect(result.preferenceEvidence.source.fixedDisposition).toBe('…\n     60|       expect(result.preferenceEvidence.source.fixedPoint).toEqual(fixe…\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯\n\n FAIL  tests/routing-v2/direction/unit/fixed.test.ts > fixed-side direction evidence > applies fixed target evidence and preserves both supplied endpoint points\nAssertionError: expected 'north' to be 'south' // Object.is equality\n\nExpected: \"south\"\nReceived: \"north\"\n\n ❯ tests/routing-v2/direction/unit/fixed.test.ts:131:61\n    129|     expect(result.preferenceEvidence.source.fixedCandidate).toBe(Direc…\n    130|     expect(result.preferenceEvidence.source.fixedDisposition).toBe('al…\n    131|     expect(result.preferenceEvidence.target.fixedCandidate).toBe(Direc…\n       |                                                             ^\n    132|     expect(result.preferenceEvidence.target.fixedDisposition).toBe('al…\n    133|     expect(result.preferenceEvidence.source.fixedPoint).toEqual(fixedS…\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯\n\n FAIL  tests/routing-v2/direction/unit/fixed.test.ts > fixed-side direction evidence > detects a target fixed-side candidate without moving the point 3\nAssertionError: expected 'north' to be 'south' // Object.is equality\n\nExpected: \"south\"\nReceived: \"north\"\n\n ❯ tests/routing-v2/direction/unit/fixed.test.ts:151:63\n    149|         fixedTarget: frozen,\n    150|       })\n    151|       expect(result.preferenceEvidence.target.fixedCandidate).toBe(can…\n       |                                                               ^\n    152|       expect(frozen).toEqual(fixedTarget)\n    153|     },\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯\n\n",
+    "testReport": {
+      "numTotalTestSuites": 16,
+      "numPassedTestSuites": 14,
+      "numFailedTestSuites": 2,
+      "numPendingTestSuites": 0,
+      "numTotalTests": 116,
+      "numPassedTests": 108,
+      "numFailedTests": 8,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "snapshot": {
+        "added": 0,
+        "failure": false,
+        "filesAdded": 0,
+        "filesRemoved": 0,
+        "filesRemovedList": [],
+        "filesUnmatched": 0,
+        "filesUpdated": 0,
+        "matched": 0,
+        "total": 0,
+        "unchecked": 0,
+        "uncheckedKeysByFile": [],
+        "unmatched": 0,
+        "updated": 0,
+        "didUpdate": false
+      },
+      "startTime": 1790545647472,
+      "success": false,
+      "testResults": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract returns outward directions at both endpoints and no route geometry",
+              "status": "passed",
+              "title": "returns outward directions at both endpoints and no route geometry",
+              "duration": 7.573100000000068,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract defaults omitted masks to ALL while rejecting malformed options with context",
+              "status": "passed",
+              "title": "defaults omitted masks to ALL while rejecting malformed options with context",
+              "duration": 5.11629999999991,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects explicit null fixed points instead of treating them as omitted",
+              "status": "passed",
+              "title": "rejects explicit null fixed points instead of treating them as omitted",
+              "duration": 0.7359000000001288,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects null fixedSource with operation and field context",
+              "status": "passed",
+              "title": "rejects null fixedSource with operation and field context",
+              "duration": 0.6065000000000964,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects null fixedTarget with operation and field context",
+              "status": "passed",
+              "title": "rejects null fixedTarget with operation and field context",
+              "duration": 0.45479999999997744,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean west mask fields with field context",
+              "status": "passed",
+              "title": "rejects non-boolean west mask fields with field context",
+              "duration": 0.7066000000002077,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean north mask fields with field context",
+              "status": "passed",
+              "title": "rejects non-boolean north mask fields with field context",
+              "duration": 0.5280999999999949,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean east mask fields with field context",
+              "status": "passed",
+              "title": "rejects non-boolean east mask fields with field context",
+              "duration": 0.39650000000006,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean south mask fields with field context",
+              "status": "passed",
+              "title": "rejects non-boolean south mask fields with field context",
+              "duration": 0.3832999999999629,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects explicit null sourceMask rather than treating it as omitted",
+              "status": "passed",
+              "title": "rejects explicit null sourceMask rather than treating it as omitted",
+              "duration": 0.40850000000000364,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects explicit null targetMask rather than treating it as omitted",
+              "status": "passed",
+              "title": "rejects explicit null targetMask rather than treating it as omitted",
+              "duration": 0.21479999999996835,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean target mask field west with field context",
+              "status": "passed",
+              "title": "rejects non-boolean target mask field west with field context",
+              "duration": 0.4816000000000713,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean target mask field north with field context",
+              "status": "passed",
+              "title": "rejects non-boolean target mask field north with field context",
+              "duration": 0.35180000000013933,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean target mask field east with field context",
+              "status": "passed",
+              "title": "rejects non-boolean target mask field east with field context",
+              "duration": 0.3410999999998694,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean target mask field south with field context",
+              "status": "passed",
+              "title": "rejects non-boolean target mask field south with field context",
+              "duration": 0.32950000000005275,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects an empty direction mask",
+              "status": "passed",
+              "title": "rejects an empty direction mask",
+              "duration": 0.4592999999999847,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects an empty target direction mask",
+              "status": "passed",
+              "title": "rejects an empty target direction mask",
+              "duration": 0.459999999999809,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract accepts zero extents and rejects negative extents",
+              "status": "passed",
+              "title": "accepts zero extents and rejects negative extents",
+              "duration": 1.6010999999998603,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects every non-finite consumed rectangle and fixed-point field: NaN",
+              "status": "passed",
+              "title": "rejects every non-finite consumed rectangle and fixed-point field: NaN",
+              "duration": 3.6463000000001102,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects every non-finite consumed rectangle and fixed-point field: Infinity",
+              "status": "passed",
+              "title": "rejects every non-finite consumed rectangle and fixed-point field: Infinity",
+              "duration": 2.802699999999959,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects every non-finite consumed rectangle and fixed-point field: -Infinity",
+              "status": "passed",
+              "title": "rejects every non-finite consumed rectangle and fixed-point field: -Infinity",
+              "duration": 2.307900000000018,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-finite derived edges, centers and signed gaps",
+              "status": "passed",
+              "title": "rejects non-finite derived edges, centers and signed gaps",
+              "duration": 1.4126000000001113,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract does not invoke perimeter projection for point bounds",
+              "status": "passed",
+              "title": "does not invoke perimeter projection for point bounds",
+              "duration": 0.7789000000000215,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790545648616,
+          "endTime": 1790545648648.7788,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/contracts.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "direction evidence ownership and determinism"
+              ],
+              "fullName": "direction evidence ownership and determinism accepts deeply frozen inputs without mutating or aliasing them",
+              "status": "passed",
+              "title": "accepts deeply frozen inputs without mutating or aliasing them",
+              "duration": 9.072799999999916,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "direction evidence ownership and determinism"
+              ],
+              "fullName": "direction evidence ownership and determinism does not expose mutable aliases to masks, bounds or fixed points",
+              "status": "passed",
+              "title": "does not expose mutable aliases to masks, bounds or fixed points",
+              "duration": 1.2676999999999907,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "direction evidence ownership and determinism"
+              ],
+              "fullName": "direction evidence ownership and determinism owns result graphs independently across identical calls",
+              "status": "passed",
+              "title": "owns result graphs independently across identical calls",
+              "duration": 1.6412000000000262,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "direction evidence ownership and determinism"
+              ],
+              "fullName": "direction evidence ownership and determinism is history independent across unrelated calls and shared constants",
+              "status": "passed",
+              "title": "is history independent across unrelated calls and shared constants",
+              "duration": 1.5339999999999918,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790545648614,
+          "endTime": 1790545648627.534,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/evidence.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 0",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 0",
+              "duration": 8.24739999999997,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 1",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 1",
+              "duration": 0.9179999999998927,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 2",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 2",
+              "duration": 0.7436999999999898,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 3",
+              "status": "failed",
+              "title": "detects edge/corner side without moving the fixed point 3",
+              "duration": 13.9067,
+              "failureMessages": [
+                "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:29:61\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+              ],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 4",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 4",
+              "duration": 0.8420000000000982,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 5",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 5",
+              "duration": 0.8154999999999291,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 6",
+              "status": "failed",
+              "title": "detects edge/corner side without moving the fixed point 6",
+              "duration": 1.8116999999999734,
+              "failureMessages": [
+                "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:29:61\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+              ],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 7",
+              "status": "failed",
+              "title": "detects edge/corner side without moving the fixed point 7",
+              "duration": 1.2385999999999058,
+              "failureMessages": [
+                "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:29:61\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+              ],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence does not infer a candidate for { x: 5, y: 5 }",
+              "status": "passed",
+              "title": "does not infer a candidate for { x: 5, y: 5 }",
+              "duration": 0.8253000000001975,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence does not infer a candidate for { x: +0, y: -1.000001 }",
+              "status": "passed",
+              "title": "does not infer a candidate for { x: +0, y: -1.000001 }",
+              "duration": 0.5124000000000706,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence does not infer a candidate for { x: 20, y: +0 }",
+              "status": "passed",
+              "title": "does not infer a candidate for { x: 20, y: +0 }",
+              "duration": 0.21689999999989595,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 0",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 0",
+              "duration": 0.5,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 1",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 1",
+              "duration": 0.576799999999821,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 2",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 2",
+              "duration": 0.5887000000000171,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 3",
+              "status": "failed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 3",
+              "duration": 1.0149999999998727,
+              "failureMessages": [
+                "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:58:63\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+              ],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 4",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 4",
+              "duration": 0.327199999999948,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 5",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 5",
+              "duration": 0.3420000000000982,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 6",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 6",
+              "duration": 0.2817999999999756,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 7",
+              "status": "failed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 7",
+              "duration": 1.1636000000000877,
+              "failureMessages": [
+                "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:58:63\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+              ],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 8",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 8",
+              "duration": 0.3000999999999294,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 9",
+              "status": "failed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 9",
+              "duration": 0.7678999999998268,
+              "failureMessages": [
+                "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:58:63\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+              ],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence applies EPSILON edge and expanded-span boundaries without moving anchors",
+              "status": "passed",
+              "title": "applies EPSILON edge and expanded-span boundaries without moving anchors",
+              "duration": 1.055199999999786,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence treats an ellipse-like diagonal anchor as geometric evidence only",
+              "status": "passed",
+              "title": "treats an ellipse-like diagonal anchor as geometric evidence only",
+              "duration": 0.40390000000002146,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence keeps an allowed multi-mask fixed side first and deduplicates its evidence order",
+              "status": "passed",
+              "title": "keeps an allowed multi-mask fixed side first and deduplicates its evidence order",
+              "duration": 0.6731999999999516,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence applies fixed target evidence and preserves both supplied endpoint points",
+              "status": "failed",
+              "title": "applies fixed target evidence and preserves both supplied endpoint points",
+              "duration": 1.3132000000000517,
+              "failureMessages": [
+                "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:131:61\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+              ],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects a target fixed-side candidate without moving the point 0",
+              "status": "passed",
+              "title": "detects a target fixed-side candidate without moving the point 0",
+              "duration": 0.7182000000000244,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects a target fixed-side candidate without moving the point 1",
+              "status": "passed",
+              "title": "detects a target fixed-side candidate without moving the point 1",
+              "duration": 0.3792999999998301,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects a target fixed-side candidate without moving the point 2",
+              "status": "passed",
+              "title": "detects a target fixed-side candidate without moving the point 2",
+              "duration": 0.3432999999999993,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects a target fixed-side candidate without moving the point 3",
+              "status": "failed",
+              "title": "detects a target fixed-side candidate without moving the point 3",
+              "duration": 0.9179999999998927,
+              "failureMessages": [
+                "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:151:63\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+              ],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence filters a disallowed fixed candidate without moving it or escaping its mask",
+              "status": "passed",
+              "title": "filters a disallowed fixed candidate without moving it or escaping its mask",
+              "duration": 0.5662999999999556,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence singleton is the final override even when fixed-side evidence conflicts",
+              "status": "passed",
+              "title": "singleton is the final override even when fixed-side evidence conflicts",
+              "duration": 0.4578999999998814,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence applies final singleton override at both endpoints despite fixed-side evidence",
+              "status": "passed",
+              "title": "applies final singleton override at both endpoints despite fixed-side evidence",
+              "duration": 0.7813000000001011,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence regresses the independently reviewed 72/900 early-singleton-lock counterexample",
+              "status": "passed",
+              "title": "regresses the independently reviewed 72/900 early-singleton-lock counterexample",
+              "duration": 0.3753999999998996,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence uses vertical priority for degenerate coincident edges",
+              "status": "passed",
+              "title": "uses vertical priority for degenerate coincident edges",
+              "duration": 0.2660000000000764,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790545648619,
+          "endTime": 1790545648663.3755,
+          "status": "failed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/fixed.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "isolated DirectionResolver mutation harness"
+              ],
+              "fullName": "isolated DirectionResolver mutation harness checks its operator inventory, source redirection, score, survival, timeout and failure controls",
+              "status": "passed",
+              "title": "checks its operator inventory, source redirection, score, survival, timeout and failure controls",
+              "duration": 10747.6489,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790545648121,
+          "endTime": 1790545658868.649,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/mutation-runner.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy selects EAST/WEST for horizontal separation and SOUTH/NORTH below",
+              "status": "passed",
+              "title": "selects EAST/WEST for horizontal separation and SOUTH/NORTH below",
+              "duration": 9.244900000000143,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy honors pinned source-horizontal/target-vertical priority when both axes separate",
+              "status": "passed",
+              "title": "honors pinned source-horizontal/target-vertical priority when both axes separate",
+              "duration": 1.1003999999998086,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy returns NORTH/SOUTH and quadrant 2 for identical bounds",
+              "status": "passed",
+              "title": "returns NORTH/SOUTH and quadrant 2 for identical bounds",
+              "duration": 0.7671000000000276,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy keeps the NORTH/SOUTH tie policy for identical bounds after reflection",
+              "status": "passed",
+              "title": "keeps the NORTH/SOUTH tie policy for identical bounds after reflection",
+              "duration": 1.8478999999999814,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy produces an allowed pair for every non-axis quadrant (-30,-30)",
+              "status": "passed",
+              "title": "produces an allowed pair for every non-axis quadrant (-30,-30)",
+              "duration": 44.459699999999884,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy produces an allowed pair for every non-axis quadrant (30,-30)",
+              "status": "passed",
+              "title": "produces an allowed pair for every non-axis quadrant (30,-30)",
+              "duration": 28.895899999999983,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy produces an allowed pair for every non-axis quadrant (30,30)",
+              "status": "passed",
+              "title": "produces an allowed pair for every non-axis quadrant (30,30)",
+              "duration": 24.036200000000008,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy produces an allowed pair for every non-axis quadrant (-30,30)",
+              "status": "passed",
+              "title": "produces an allowed pair for every non-axis quadrant (-30,30)",
+              "duration": 22.722999999999956,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy selects the first allowed direction from the reported preference order",
+              "status": "passed",
+              "title": "selects the first allowed direction from the reported preference order",
+              "duration": 1.2048999999999523,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy keeps horizontal touch in the vertical-only preference branch",
+              "status": "passed",
+              "title": "keeps horizontal touch in the vertical-only preference branch",
+              "duration": 0.7425000000000637,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy does not enter paired vertical-horizontal ordering when horizontal gap is zero",
+              "status": "passed",
+              "title": "does not enter paired vertical-horizontal ordering when horizontal gap is zero",
+              "duration": 0.4712000000001808,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy reports WEST on an equal horizontal-gap tie even when vertical preference wins",
+              "status": "passed",
+              "title": "reports WEST on an equal horizontal-gap tie even when vertical preference wins",
+              "duration": 0.4477999999999156,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy keeps source-role priority explicit when endpoints are exchanged",
+              "status": "passed",
+              "title": "keeps source-role priority explicit when endpoints are exchanged",
+              "duration": 0.4750000000001364,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790545648613,
+          "endTime": 1790545648750.475,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/preferences.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "R03 conditioned property evidence controls"
+              ],
+              "fullName": "R03 conditioned property evidence controls counts accepted and rejected candidates independently",
+              "status": "passed",
+              "title": "counts accepted and rejected candidates independently",
+              "duration": 4.629199999999969,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "R03 conditioned property evidence controls"
+              ],
+              "fullName": "R03 conditioned property evidence controls reports and exactly replays a seeded concrete failure",
+              "status": "passed",
+              "title": "reports and exactly replays a seeded concrete failure",
+              "duration": 0.7894000000000005,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "R03 conditioned property evidence controls"
+              ],
+              "fullName": "R03 conditioned property evidence controls fails rather than accepting insufficient generated cases",
+              "status": "passed",
+              "title": "fails rather than accepting insufficient generated cases",
+              "duration": 1.4177000000000817,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790545648344,
+          "endTime": 1790545648351.4177,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/property-harness.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'single-axis-east'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'single-axis-east'",
+              "duration": 7.664199999999937,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'single-axis-south'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'single-axis-south'",
+              "duration": 0.9703000000001794,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'touching'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'touching'",
+              "duration": 1.013800000000174,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'overlap'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'overlap'",
+              "duration": 0.7782000000001972,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'containment'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'containment'",
+              "duration": 0.8912000000000262,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'asymmetric-sizes'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'asymmetric-sizes'",
+              "duration": 0.8103000000000975,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'diagonal-role-forward'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'diagonal-role-forward'",
+              "duration": 0.600800000000163,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'diagonal-role-reversed'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'diagonal-role-reversed'",
+              "duration": 0.5919000000001233,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'degenerate-zero-extents'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'degenerate-zero-extents'",
+              "duration": 0.626399999999876,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference compares each expected pair and endpoint membership in all 900 cases",
+              "status": "passed",
+              "title": "compares each expected pair and endpoint membership in all 900 cases",
+              "duration": 170.3019999999999,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790545648614,
+          "endTime": 1790545648798.302,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/reference.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned quadrant numbering for center delta (5,5)",
+              "status": "passed",
+              "title": "uses pinned quadrant numbering for center delta (5,5)",
+              "duration": 4.402900000000045,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned quadrant numbering for center delta (-5,5)",
+              "status": "passed",
+              "title": "uses pinned quadrant numbering for center delta (-5,5)",
+              "duration": 0.5543999999999869,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned quadrant numbering for center delta (-5,-5)",
+              "status": "passed",
+              "title": "uses pinned quadrant numbering for center delta (-5,-5)",
+              "duration": 0.36789999999996326,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned quadrant numbering for center delta (5,-5)",
+              "status": "passed",
+              "title": "uses pinned quadrant numbering for center delta (5,-5)",
+              "duration": 0.31380000000001473,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (0,1)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (0,1)",
+              "duration": 0.5333000000000538,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (1,0)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (1,0)",
+              "duration": 0.4237000000000535,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (-1,0)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (-1,0)",
+              "duration": 0.2931999999998425,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (0,-1)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (0,-1)",
+              "duration": 0.31500000000005457,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (0,0)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (0,0)",
+              "duration": 0.41970000000014807,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps only center differences with magnitude <= EPSILON: 9.990234375e-7",
+              "status": "passed",
+              "title": "snaps only center differences with magnitude <= EPSILON: 9.990234375e-7",
+              "duration": 0.5859000000000378,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps only center differences with magnitude <= EPSILON: 0.000001",
+              "status": "passed",
+              "title": "snaps only center differences with magnitude <= EPSILON: 0.000001",
+              "duration": 0.26769999999987704,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps only center differences with magnitude <= EPSILON: 0.0000010009765624999999",
+              "status": "passed",
+              "title": "snaps only center differences with magnitude <= EPSILON: 0.0000010009765624999999",
+              "duration": 0.1971000000000913,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps vertical center difference only inside the inclusive EPSILON band: 9.990234375e-7",
+              "status": "passed",
+              "title": "snaps vertical center difference only inside the inclusive EPSILON band: 9.990234375e-7",
+              "duration": 0.21890000000007603,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps vertical center difference only inside the inclusive EPSILON band: 0.000001",
+              "status": "passed",
+              "title": "snaps vertical center difference only inside the inclusive EPSILON band: 0.000001",
+              "duration": 0.11159999999995307,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps vertical center difference only inside the inclusive EPSILON band: 0.0000010009765624999999",
+              "status": "passed",
+              "title": "snaps vertical center difference only inside the inclusive EPSILON band: 0.0000010009765624999999",
+              "duration": 0.15419999999994616,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps -0.0000010009765624999999",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps -0.0000010009765624999999",
+              "duration": 0.7010000000000218,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps -0.000001",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps -0.000001",
+              "duration": 0.5898999999999432,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps 0",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps 0",
+              "duration": 0.555599999999913,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps 0.000001",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps 0.000001",
+              "duration": 0.5531000000000859,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps 0.0000010009765624999999",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps 0.0000010009765624999999",
+              "duration": 0.5442000000000462,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry retains signed axis gap and overlap relation for unequal bounds",
+              "status": "passed",
+              "title": "retains signed axis gap and overlap relation for unequal bounds",
+              "duration": 0.4169999999999163,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry retains signed axis gap and overlap relation for unequal bounds",
+              "status": "passed",
+              "title": "retains signed axis gap and overlap relation for unequal bounds",
+              "duration": 0.31999999999993634,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry retains signed axis gap and overlap relation for unequal bounds",
+              "status": "passed",
+              "title": "retains signed axis gap and overlap relation for unequal bounds",
+              "duration": 0.27899999999999636,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry rejects null source bounds with operation and field context",
+              "status": "passed",
+              "title": "rejects null source bounds with operation and field context",
+              "duration": 1.991700000000037,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry rejects null target bounds with operation and field context",
+              "status": "passed",
+              "title": "rejects null target bounds with operation and field context",
+              "duration": 0.43449999999984357,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry retains negative overlap evidence while exposing zero-banded policy gaps",
+              "status": "passed",
+              "title": "retains negative overlap evidence while exposing zero-banded policy gaps",
+              "duration": 0.5752999999999702,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry does not quantize sub-grid values and reports positive zero inside the zero band",
+              "status": "passed",
+              "title": "does not quantize sub-grid values and reports positive zero inside the zero band",
+              "duration": 4.546400000000176,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry documents finite IEEE-754 cancellation without imposing a false invariant",
+              "status": "passed",
+              "title": "documents finite IEEE-754 cancellation without imposing a false invariant",
+              "duration": 0.9072000000001026,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790545648613,
+          "endTime": 1790545648635.9072,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/relative.test.ts"
+        }
+      ]
+    },
+    "runAudit": {
+      "schemaVersion": 2,
+      "reason": "failed",
+      "unhandledErrors": [],
+      "modules": [
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/contracts.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1394560111_0",
+              "name": "DirectionResolver boundary contract",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1394560111_0_0",
+              "name": "DirectionResolver boundary contract > returns outward directions at both endpoints and no route geometry",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_1",
+              "name": "DirectionResolver boundary contract > defaults omitted masks to ALL while rejecting malformed options with context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_2",
+              "name": "DirectionResolver boundary contract > rejects explicit null fixed points instead of treating them as omitted",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_3",
+              "name": "DirectionResolver boundary contract > rejects null fixedSource with operation and field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_4",
+              "name": "DirectionResolver boundary contract > rejects null fixedTarget with operation and field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_5",
+              "name": "DirectionResolver boundary contract > rejects non-boolean west mask fields with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_6",
+              "name": "DirectionResolver boundary contract > rejects non-boolean north mask fields with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_7",
+              "name": "DirectionResolver boundary contract > rejects non-boolean east mask fields with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_8",
+              "name": "DirectionResolver boundary contract > rejects non-boolean south mask fields with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_9",
+              "name": "DirectionResolver boundary contract > rejects explicit null sourceMask rather than treating it as omitted",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_10",
+              "name": "DirectionResolver boundary contract > rejects explicit null targetMask rather than treating it as omitted",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_11",
+              "name": "DirectionResolver boundary contract > rejects non-boolean target mask field west with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_12",
+              "name": "DirectionResolver boundary contract > rejects non-boolean target mask field north with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_13",
+              "name": "DirectionResolver boundary contract > rejects non-boolean target mask field east with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_14",
+              "name": "DirectionResolver boundary contract > rejects non-boolean target mask field south with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_15",
+              "name": "DirectionResolver boundary contract > rejects an empty direction mask",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_16",
+              "name": "DirectionResolver boundary contract > rejects an empty target direction mask",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_17",
+              "name": "DirectionResolver boundary contract > accepts zero extents and rejects negative extents",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_18",
+              "name": "DirectionResolver boundary contract > rejects every non-finite consumed rectangle and fixed-point field: NaN",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_19",
+              "name": "DirectionResolver boundary contract > rejects every non-finite consumed rectangle and fixed-point field: Infinity",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_20",
+              "name": "DirectionResolver boundary contract > rejects every non-finite consumed rectangle and fixed-point field: -Infinity",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_21",
+              "name": "DirectionResolver boundary contract > rejects non-finite derived edges, centers and signed gaps",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_22",
+              "name": "DirectionResolver boundary contract > does not invoke perimeter projection for point bounds",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/evidence.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1385164063_0",
+              "name": "direction evidence ownership and determinism",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1385164063_0_0",
+              "name": "direction evidence ownership and determinism > accepts deeply frozen inputs without mutating or aliasing them",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1385164063_0_1",
+              "name": "direction evidence ownership and determinism > does not expose mutable aliases to masks, bounds or fixed points",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1385164063_0_2",
+              "name": "direction evidence ownership and determinism > owns result graphs independently across identical calls",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1385164063_0_3",
+              "name": "direction evidence ownership and determinism > is history independent across unrelated calls and shared constants",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/fixed.test.ts",
+          "state": "failed",
+          "ok": false,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1811529756_0",
+              "name": "fixed-side direction evidence",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1811529756_0_0",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 0",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_1",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 1",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_2",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 2",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_3",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 3",
+              "state": "failed",
+              "errors": [
+                {
+                  "type": "AssertionError",
+                  "name": "AssertionError",
+                  "message": "expected 'north' to be 'south' // Object.is equality",
+                  "stack": "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:29:61\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+                }
+              ]
+            },
+            {
+              "id": "-1811529756_0_4",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 4",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_5",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 5",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_6",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 6",
+              "state": "failed",
+              "errors": [
+                {
+                  "type": "AssertionError",
+                  "name": "AssertionError",
+                  "message": "expected 'north' to be 'south' // Object.is equality",
+                  "stack": "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:29:61\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+                }
+              ]
+            },
+            {
+              "id": "-1811529756_0_7",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 7",
+              "state": "failed",
+              "errors": [
+                {
+                  "type": "AssertionError",
+                  "name": "AssertionError",
+                  "message": "expected 'north' to be 'south' // Object.is equality",
+                  "stack": "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:29:61\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+                }
+              ]
+            },
+            {
+              "id": "-1811529756_0_8",
+              "name": "fixed-side direction evidence > does not infer a candidate for { x: 5, y: 5 }",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_9",
+              "name": "fixed-side direction evidence > does not infer a candidate for { x: +0, y: -1.000001 }",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_10",
+              "name": "fixed-side direction evidence > does not infer a candidate for { x: 20, y: +0 }",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_11",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 0",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_12",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 1",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_13",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 2",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_14",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 3",
+              "state": "failed",
+              "errors": [
+                {
+                  "type": "AssertionError",
+                  "name": "AssertionError",
+                  "message": "expected 'north' to be 'south' // Object.is equality",
+                  "stack": "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:58:63\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+                }
+              ]
+            },
+            {
+              "id": "-1811529756_0_15",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 4",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_16",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 5",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_17",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 6",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_18",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 7",
+              "state": "failed",
+              "errors": [
+                {
+                  "type": "AssertionError",
+                  "name": "AssertionError",
+                  "message": "expected 'north' to be 'south' // Object.is equality",
+                  "stack": "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:58:63\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+                }
+              ]
+            },
+            {
+              "id": "-1811529756_0_19",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 8",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_20",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 9",
+              "state": "failed",
+              "errors": [
+                {
+                  "type": "AssertionError",
+                  "name": "AssertionError",
+                  "message": "expected 'north' to be 'south' // Object.is equality",
+                  "stack": "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:58:63\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+                }
+              ]
+            },
+            {
+              "id": "-1811529756_0_21",
+              "name": "fixed-side direction evidence > applies EPSILON edge and expanded-span boundaries without moving anchors",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_22",
+              "name": "fixed-side direction evidence > treats an ellipse-like diagonal anchor as geometric evidence only",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_23",
+              "name": "fixed-side direction evidence > keeps an allowed multi-mask fixed side first and deduplicates its evidence order",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_24",
+              "name": "fixed-side direction evidence > applies fixed target evidence and preserves both supplied endpoint points",
+              "state": "failed",
+              "errors": [
+                {
+                  "type": "AssertionError",
+                  "name": "AssertionError",
+                  "message": "expected 'north' to be 'south' // Object.is equality",
+                  "stack": "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:131:61\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+                }
+              ]
+            },
+            {
+              "id": "-1811529756_0_25",
+              "name": "fixed-side direction evidence > detects a target fixed-side candidate without moving the point 0",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_26",
+              "name": "fixed-side direction evidence > detects a target fixed-side candidate without moving the point 1",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_27",
+              "name": "fixed-side direction evidence > detects a target fixed-side candidate without moving the point 2",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_28",
+              "name": "fixed-side direction evidence > detects a target fixed-side candidate without moving the point 3",
+              "state": "failed",
+              "errors": [
+                {
+                  "type": "AssertionError",
+                  "name": "AssertionError",
+                  "message": "expected 'north' to be 'south' // Object.is equality",
+                  "stack": "AssertionError: expected 'north' to be 'south' // Object.is equality\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\fixed.test.ts:151:63\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:861:59\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at runSuite (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)"
+                }
+              ]
+            },
+            {
+              "id": "-1811529756_0_29",
+              "name": "fixed-side direction evidence > filters a disallowed fixed candidate without moving it or escaping its mask",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_30",
+              "name": "fixed-side direction evidence > singleton is the final override even when fixed-side evidence conflicts",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_31",
+              "name": "fixed-side direction evidence > applies final singleton override at both endpoints despite fixed-side evidence",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_32",
+              "name": "fixed-side direction evidence > regresses the independently reviewed 72/900 early-singleton-lock counterexample",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_33",
+              "name": "fixed-side direction evidence > uses vertical priority for degenerate coincident edges",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/mutation-runner.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "655779716_0",
+              "name": "isolated DirectionResolver mutation harness",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "655779716_0_0",
+              "name": "isolated DirectionResolver mutation harness > checks its operator inventory, source redirection, score, survival, timeout and failure controls",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/preferences.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "273540392_0",
+              "name": "constrained direction preference policy",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "273540392_0_0",
+              "name": "constrained direction preference policy > selects EAST/WEST for horizontal separation and SOUTH/NORTH below",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_1",
+              "name": "constrained direction preference policy > honors pinned source-horizontal/target-vertical priority when both axes separate",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_2",
+              "name": "constrained direction preference policy > returns NORTH/SOUTH and quadrant 2 for identical bounds",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_3",
+              "name": "constrained direction preference policy > keeps the NORTH/SOUTH tie policy for identical bounds after reflection",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_4",
+              "name": "constrained direction preference policy > produces an allowed pair for every non-axis quadrant (-30,-30)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_5",
+              "name": "constrained direction preference policy > produces an allowed pair for every non-axis quadrant (30,-30)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_6",
+              "name": "constrained direction preference policy > produces an allowed pair for every non-axis quadrant (30,30)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_7",
+              "name": "constrained direction preference policy > produces an allowed pair for every non-axis quadrant (-30,30)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_8",
+              "name": "constrained direction preference policy > selects the first allowed direction from the reported preference order",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_9",
+              "name": "constrained direction preference policy > keeps horizontal touch in the vertical-only preference branch",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_10",
+              "name": "constrained direction preference policy > does not enter paired vertical-horizontal ordering when horizontal gap is zero",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_11",
+              "name": "constrained direction preference policy > reports WEST on an equal horizontal-gap tie even when vertical preference wins",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_12",
+              "name": "constrained direction preference policy > keeps source-role priority explicit when endpoints are exchanged",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/property-harness.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-81683710_0",
+              "name": "R03 conditioned property evidence controls",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-81683710_0_0",
+              "name": "R03 conditioned property evidence controls > counts accepted and rejected candidates independently",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-81683710_0_1",
+              "name": "R03 conditioned property evidence controls > reports and exactly replays a seeded concrete failure",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-81683710_0_2",
+              "name": "R03 conditioned property evidence controls > fails rather than accepting insufficient generated cases",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/reference.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1136421061_0",
+              "name": "pinned OrthConnector preference reference",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1136421061_0_0",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'single-axis-east'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_1",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'single-axis-south'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_2",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'touching'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_3",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'overlap'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_4",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'containment'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_5",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'asymmetric-sizes'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_6",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'diagonal-role-forward'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_7",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'diagonal-role-reversed'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_8",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'degenerate-zero-extents'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_9",
+              "name": "pinned OrthConnector preference reference > compares each expected pair and endpoint membership in all 900 cases",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/relative.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1329911210_0",
+              "name": "relative direction geometry",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1329911210_0_0",
+              "name": "relative direction geometry > uses pinned quadrant numbering for center delta (5,5)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_1",
+              "name": "relative direction geometry > uses pinned quadrant numbering for center delta (-5,5)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_2",
+              "name": "relative direction geometry > uses pinned quadrant numbering for center delta (-5,-5)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_3",
+              "name": "relative direction geometry > uses pinned quadrant numbering for center delta (5,-5)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_4",
+              "name": "relative direction geometry > uses pinned axis and center ties for (0,1)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_5",
+              "name": "relative direction geometry > uses pinned axis and center ties for (1,0)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_6",
+              "name": "relative direction geometry > uses pinned axis and center ties for (-1,0)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_7",
+              "name": "relative direction geometry > uses pinned axis and center ties for (0,-1)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_8",
+              "name": "relative direction geometry > uses pinned axis and center ties for (0,0)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_9",
+              "name": "relative direction geometry > snaps only center differences with magnitude <= EPSILON: 9.990234375e-7",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_10",
+              "name": "relative direction geometry > snaps only center differences with magnitude <= EPSILON: 0.000001",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_11",
+              "name": "relative direction geometry > snaps only center differences with magnitude <= EPSILON: 0.0000010009765624999999",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_12",
+              "name": "relative direction geometry > snaps vertical center difference only inside the inclusive EPSILON band: 9.990234375e-7",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_13",
+              "name": "relative direction geometry > snaps vertical center difference only inside the inclusive EPSILON band: 0.000001",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_14",
+              "name": "relative direction geometry > snaps vertical center difference only inside the inclusive EPSILON band: 0.0000010009765624999999",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_15",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps -0.0000010009765624999999",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_16",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps -0.000001",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_17",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps 0",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_18",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps 0.000001",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_19",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps 0.0000010009765624999999",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_20",
+              "name": "relative direction geometry > retains signed axis gap and overlap relation for unequal bounds",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_21",
+              "name": "relative direction geometry > retains signed axis gap and overlap relation for unequal bounds",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_22",
+              "name": "relative direction geometry > retains signed axis gap and overlap relation for unequal bounds",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_23",
+              "name": "relative direction geometry > rejects null source bounds with operation and field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_24",
+              "name": "relative direction geometry > rejects null target bounds with operation and field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_25",
+              "name": "relative direction geometry > retains negative overlap evidence while exposing zero-banded policy gaps",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_26",
+              "name": "relative direction geometry > does not quantize sub-grid values and reports positive zero inside the zero band",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_27",
+              "name": "relative direction geometry > documents finite IEEE-754 cancellation without imposing a false invariant",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    "mutantSourceRoot": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-r03-mutants-EpPfJK\\packages\\draw\\src\\routing\\orthogonal\\direction"
+  }
+}

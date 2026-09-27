@@ -1,0 +1,995 @@
+{
+  "command": "node packages/draw/tests/routing-v2/direction/mutation/run.mjs",
+  "inventory": 85,
+  "categories": {
+    "cardinal-opposite": 20,
+    "comparison-operator": 44,
+    "logical-operator": 19,
+    "boolean-negation": 2
+  },
+  "killed": 67,
+  "denominator": 67,
+  "score": 100,
+  "survived": 0,
+  "timeouts": 0,
+  "compilerInvalid": 18,
+  "mutants": [
+    {
+      "file": "preferences.ts",
+      "start": 379,
+      "end": 383,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 397,
+      "end": 402,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 416,
+      "end": 420,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 434,
+      "end": 439,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 546,
+      "end": 550,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2366,
+          "message": "Function lacks ending return statement and return type does not include 'undefined'."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 575,
+      "end": 579,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 599,
+      "end": 604,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2366,
+          "message": "Function lacks ending return statement and return type does not include 'undefined'."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 629,
+      "end": 634,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 654,
+      "end": 658,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2366,
+          "message": "Function lacks ending return statement and return type does not include 'undefined'."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 683,
+      "end": 687,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 707,
+      "end": 712,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2366,
+          "message": "Function lacks ending return statement and return type does not include 'undefined'."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 737,
+      "end": 742,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 886,
+      "end": 889,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 18048,
+          "message": "'fixed' is possibly 'undefined'."
+        },
+        {
+          "code": 18048,
+          "message": "'fixed' is possibly 'undefined'."
+        },
+        {
+          "code": 18048,
+          "message": "'fixed' is possibly 'undefined'."
+        },
+        {
+          "code": 18048,
+          "message": "'fixed' is possibly 'undefined'."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1350,
+      "end": 1352,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1330,
+      "end": 1332,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1312,
+      "end": 1314,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1301,
+      "end": 1302,
+      "before": "<",
+      "after": "<=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1320,
+      "end": 1321,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1339,
+      "end": 1340,
+      "before": "<",
+      "after": "<=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1359,
+      "end": 1360,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1447,
+      "end": 1449,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1481,
+      "end": 1485,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1512,
+      "end": 1514,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1546,
+      "end": 1550,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1573,
+      "end": 1575,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1607,
+      "end": 1612,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1640,
+      "end": 1642,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 1674,
+      "end": 1679,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2002,
+      "end": 2004,
+      "before": ">=",
+      "after": ">",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2027,
+      "end": 2031,
+      "before": "WEST",
+      "after": "EAST",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2044,
+      "end": 2048,
+      "before": "EAST",
+      "after": "WEST",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2079,
+      "end": 2081,
+      "before": ">=",
+      "after": ">",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2105,
+      "end": 2110,
+      "before": "NORTH",
+      "after": "SOUTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2123,
+      "end": 2128,
+      "before": "SOUTH",
+      "after": "NORTH",
+      "category": "cardinal-opposite",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2442,
+      "end": 2444,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2538,
+          "message": "Type 'undefined' cannot be used as an index type."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2415,
+      "end": 2417,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2409,
+      "end": 2412,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2428,
+      "end": 2431,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2538,
+          "message": "Type 'undefined' cannot be used as an index type."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2523,
+      "end": 2525,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2638,
+      "end": 2640,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2938,
+      "end": 2940,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2920,
+      "end": 2922,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2908,
+      "end": 2910,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2904,
+      "end": 2905,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 2916,
+      "end": 2917,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3122,
+      "end": 3124,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3104,
+      "end": 3106,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3092,
+      "end": 3094,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3088,
+      "end": 3089,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3100,
+      "end": 3101,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3272,
+      "end": 3273,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3383,
+      "end": 3384,
+      "before": ">",
+      "after": ">=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3610,
+      "end": 3611,
+      "before": "!",
+      "after": "",
+      "category": "boolean-negation",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3662,
+      "end": 3665,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2538,
+          "message": "Type 'undefined' cannot be used as an index type."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3966,
+      "end": 3968,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 3952,
+      "end": 3955,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4066,
+      "end": 4069,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4170,
+      "end": 4173,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4268,
+      "end": 4270,
+      "before": "&&",
+      "after": "||",
+      "category": "logical-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2322,
+          "message": "Type 'Direction | undefined' is not assignable to type 'Direction'.\n  Type 'undefined' is not assignable to type 'Direction'."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4281,
+      "end": 4284,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2322,
+          "message": "Type 'undefined' is not assignable to type 'Direction'."
+        }
+      ]
+    },
+    {
+      "file": "preferences.ts",
+      "start": 4363,
+      "end": 4366,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "relative.ts",
+      "start": 344,
+      "end": 346,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "relative.ts",
+      "start": 514,
+      "end": 516,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "relative.ts",
+      "start": 505,
+      "end": 508,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'width' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'height' does not exist on type 'never'."
+        }
+      ]
+    },
+    {
+      "file": "relative.ts",
+      "start": 530,
+      "end": 533,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'width' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'height' does not exist on type 'never'."
+        }
+      ]
+    },
+    {
+      "file": "relative.ts",
+      "start": 1595,
+      "end": 1596,
+      "before": "<",
+      "after": "<=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "relative.ts",
+      "start": 1605,
+      "end": 1606,
+      "before": "<",
+      "after": "<=",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "relative.ts",
+      "start": 1623,
+      "end": 1625,
+      "before": "<=",
+      "after": "<",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "relative.ts",
+      "start": 1634,
+      "end": 1637,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "relative.ts",
+      "start": 1702,
+      "end": 1705,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "relative.ts",
+      "start": 2444,
+      "end": 2447,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "relative.ts",
+      "start": 2485,
+      "end": 2488,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 559,
+      "end": 562,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        }
+      ]
+    },
+    {
+      "file": "resolve.ts",
+      "start": 612,
+      "end": 614,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 603,
+      "end": 606,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        }
+      ]
+    },
+    {
+      "file": "resolve.ts",
+      "start": 628,
+      "end": 631,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'x' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'y' does not exist on type 'never'."
+        }
+      ]
+    },
+    {
+      "file": "resolve.ts",
+      "start": 952,
+      "end": 955,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2345,
+          "message": "Argument of type 'Readonly<Record<Direction, boolean>> | undefined' is not assignable to parameter of type 'Readonly<Record<Direction, boolean>>'.\n  Type 'undefined' is not assignable to type 'Readonly<Record<Direction, boolean>>'."
+        }
+      ]
+    },
+    {
+      "file": "resolve.ts",
+      "start": 1423,
+      "end": 1425,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 1392,
+      "end": 1394,
+      "before": "||",
+      "after": "&&",
+      "category": "logical-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 1383,
+      "end": 1386,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'sourceMask' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'targetMask' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'fixedSource' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'fixedTarget' does not exist on type 'never'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Rect<S>' is not assignable to parameter of type 'Rect<CoordinateSpace<string>>'.\n  Types of property '[rectSpace]' are incompatible.\n    Type '((space: S) => S) | undefined' is not assignable to type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined'.\n      Type '(space: S) => S' is not assignable to type '(space: CoordinateSpace<string>) => CoordinateSpace<string>'.\n        Types of parameters 'space' and 'space' are incompatible.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Rect<NoInfer<S>>' is not assignable to parameter of type 'Rect<CoordinateSpace<string>>'.\n  Types of property '[rectSpace]' are incompatible.\n    Type '((space: NoInfer<S>) => NoInfer<S>) | undefined' is not assignable to type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined'.\n      Type '(space: NoInfer<S>) => NoInfer<S>' is not assignable to type '(space: CoordinateSpace<string>) => CoordinateSpace<string>'.\n        Types of parameters 'space' and 'space' are incompatible.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Point<CoordinateSpace<string>> | undefined' is not assignable to parameter of type 'Point<S> | undefined'.\n  Type 'Point<CoordinateSpace<string>>' is not assignable to type 'Point<S>'.\n    Types of property '[pointSpace]' are incompatible.\n      Type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined' is not assignable to type '((space: S) => S) | undefined'.\n        Type '(space: CoordinateSpace<string>) => CoordinateSpace<string>' is not assignable to type '(space: S) => S'.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Point<CoordinateSpace<string>> | undefined' is not assignable to parameter of type 'Point<S> | undefined'.\n  Type 'Point<CoordinateSpace<string>>' is not assignable to type 'Point<S>'.\n    Types of property '[pointSpace]' are incompatible.\n      Type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined' is not assignable to type '((space: S) => S) | undefined'.\n        Type '(space: CoordinateSpace<string>) => CoordinateSpace<string>' is not assignable to type '(space: S) => S'.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        }
+      ]
+    },
+    {
+      "file": "resolve.ts",
+      "start": 1410,
+      "end": 1413,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "compiler-invalid",
+      "diagnostics": [
+        {
+          "code": 2339,
+          "message": "Property 'sourceMask' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'targetMask' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'fixedSource' does not exist on type 'never'."
+        },
+        {
+          "code": 2339,
+          "message": "Property 'fixedTarget' does not exist on type 'never'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Rect<S>' is not assignable to parameter of type 'Rect<CoordinateSpace<string>>'.\n  Types of property '[rectSpace]' are incompatible.\n    Type '((space: S) => S) | undefined' is not assignable to type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined'.\n      Type '(space: S) => S' is not assignable to type '(space: CoordinateSpace<string>) => CoordinateSpace<string>'.\n        Types of parameters 'space' and 'space' are incompatible.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Rect<NoInfer<S>>' is not assignable to parameter of type 'Rect<CoordinateSpace<string>>'.\n  Types of property '[rectSpace]' are incompatible.\n    Type '((space: NoInfer<S>) => NoInfer<S>) | undefined' is not assignable to type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined'.\n      Type '(space: NoInfer<S>) => NoInfer<S>' is not assignable to type '(space: CoordinateSpace<string>) => CoordinateSpace<string>'.\n        Types of parameters 'space' and 'space' are incompatible.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Point<CoordinateSpace<string>> | undefined' is not assignable to parameter of type 'Point<S> | undefined'.\n  Type 'Point<CoordinateSpace<string>>' is not assignable to type 'Point<S>'.\n    Types of property '[pointSpace]' are incompatible.\n      Type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined' is not assignable to type '((space: S) => S) | undefined'.\n        Type '(space: CoordinateSpace<string>) => CoordinateSpace<string>' is not assignable to type '(space: S) => S'.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        },
+        {
+          "code": 2345,
+          "message": "Argument of type 'Point<CoordinateSpace<string>> | undefined' is not assignable to parameter of type 'Point<S> | undefined'.\n  Type 'Point<CoordinateSpace<string>>' is not assignable to type 'Point<S>'.\n    Types of property '[pointSpace]' are incompatible.\n      Type '((space: CoordinateSpace<string>) => CoordinateSpace<string>) | undefined' is not assignable to type '((space: S) => S) | undefined'.\n        Type '(space: CoordinateSpace<string>) => CoordinateSpace<string>' is not assignable to type '(space: S) => S'.\n          Type 'CoordinateSpace<string>' is not assignable to type 'S'.\n            'CoordinateSpace<string>' is assignable to the constraint of type 'S', but 'S' could be instantiated with a different subtype of constraint 'CoordinateSpace<string>'."
+        }
+      ]
+    },
+    {
+      "file": "resolve.ts",
+      "start": 2192,
+      "end": 2195,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 2219,
+      "end": 2222,
+      "before": "!==",
+      "after": "===",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 2433,
+      "end": 2434,
+      "before": "!",
+      "after": "",
+      "category": "boolean-negation",
+      "outcome": "killed"
+    },
+    {
+      "file": "resolve.ts",
+      "start": 2611,
+      "end": 2614,
+      "before": "===",
+      "after": "!==",
+      "category": "comparison-operator",
+      "outcome": "killed"
+    }
+  ]
+}

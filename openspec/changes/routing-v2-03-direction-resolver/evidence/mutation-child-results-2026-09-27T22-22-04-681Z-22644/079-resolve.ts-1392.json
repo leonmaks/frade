@@ -1,0 +1,2222 @@
+{
+  "outcome": "killed",
+  "child": {
+    "status": 1,
+    "signal": null,
+    "error": null,
+    "stdout": "\n RUN  v3.2.7 E:/dev/codex/frade/packages/draw\n\nstdout | tests/routing-v2/direction/unit/property-harness.test.ts > R03 conditioned property evidence controls > counts accepted and rejected candidates independently\n[R02_PROPERTY] {\"name\":\"R03/harness-accounting-control\",\"seed\":16437251,\"raw\":6,\"accepted\":3,\"rejected\":3}\n\n······································································x·············································\n\n Test Files  1 failed | 7 passed (8)\n      Tests  1 failed | 115 passed (116)\n   Start at  01:36:28\n   Duration  12.46s (transform 658ms, setup 0ms, collect 3.27s, tests 12.19s, environment 3ms, prepare 2.16s)\n\nJSON report written to C:/Users/NVISEN/AppData/Local/Temp/frade-r03-mutants-bhcvii/079-resolve.ts-1392-vitest.json\n",
+    "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/routing-v2/direction/unit/contracts.test.ts > DirectionResolver boundary contract > defaults omitted masks to ALL while rejecting malformed options with context\nAssertionError: expected [Function] to throw error matching /resolveDirections: options must be an…/ but got 'Cannot read properties of null (readi…'\n\n- Expected: \n/resolveDirections: options must be an object/\n\n+ Received: \n\"Cannot read properties of null (reading 'sourceMask')\"\n\n ❯ tests/routing-v2/direction/unit/contracts.test.ts:24:73\n     22|     })\n     23|     for (const invalid of [null, 1, 'options', []]) {\n     24|       expect(() => resolveDirections(bounds, bounds, invalid as never)…\n       |                                                                         ^\n     25|         /resolveDirections: options must be an object/,\n     26|       )\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n",
+    "testReport": {
+      "numTotalTestSuites": 16,
+      "numPassedTestSuites": 14,
+      "numFailedTestSuites": 2,
+      "numPendingTestSuites": 0,
+      "numTotalTests": 116,
+      "numPassedTests": 115,
+      "numFailedTests": 1,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "snapshot": {
+        "added": 0,
+        "failure": false,
+        "filesAdded": 0,
+        "filesRemoved": 0,
+        "filesRemovedList": [],
+        "filesUnmatched": 0,
+        "filesUpdated": 0,
+        "matched": 0,
+        "total": 0,
+        "unchecked": 0,
+        "uncheckedKeysByFile": [],
+        "unmatched": 0,
+        "updated": 0,
+        "didUpdate": false
+      },
+      "startTime": 1790548588230,
+      "success": false,
+      "testResults": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract returns outward directions at both endpoints and no route geometry",
+              "status": "passed",
+              "title": "returns outward directions at both endpoints and no route geometry",
+              "duration": 7.669300000000021,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract defaults omitted masks to ALL while rejecting malformed options with context",
+              "status": "failed",
+              "title": "defaults omitted masks to ALL while rejecting malformed options with context",
+              "duration": 20.866400000000112,
+              "failureMessages": [
+                "AssertionError: expected [Function] to throw error matching /resolveDirections: options must be an…/ but got 'Cannot read properties of null (readi…'\n    at Proxy.<anonymous> (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+expect@3.2.7/node_modules/@vitest/expect/dist/index.js:1420:16)\n    at Proxy.<anonymous> (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+expect@3.2.7/node_modules/@vitest/expect/dist/index.js:1029:14)\n    at Proxy.methodWrapper (file:///E:/dev/codex/frade/node_modules/.pnpm/chai@5.3.3/node_modules/chai/index.js:1686:25)\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\contracts.test.ts:24:73\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)"
+              ],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects explicit null fixed points instead of treating them as omitted",
+              "status": "passed",
+              "title": "rejects explicit null fixed points instead of treating them as omitted",
+              "duration": 0.9990999999999985,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects null fixedSource with operation and field context",
+              "status": "passed",
+              "title": "rejects null fixedSource with operation and field context",
+              "duration": 0.7215000000001055,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects null fixedTarget with operation and field context",
+              "status": "passed",
+              "title": "rejects null fixedTarget with operation and field context",
+              "duration": 0.6075000000000728,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean west mask fields with field context",
+              "status": "passed",
+              "title": "rejects non-boolean west mask fields with field context",
+              "duration": 0.6659000000001924,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean north mask fields with field context",
+              "status": "passed",
+              "title": "rejects non-boolean north mask fields with field context",
+              "duration": 0.5473999999999251,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean east mask fields with field context",
+              "status": "passed",
+              "title": "rejects non-boolean east mask fields with field context",
+              "duration": 0.40810000000010405,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean south mask fields with field context",
+              "status": "passed",
+              "title": "rejects non-boolean south mask fields with field context",
+              "duration": 0.6633999999999105,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects explicit null sourceMask rather than treating it as omitted",
+              "status": "passed",
+              "title": "rejects explicit null sourceMask rather than treating it as omitted",
+              "duration": 0.6074999999998454,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects explicit null targetMask rather than treating it as omitted",
+              "status": "passed",
+              "title": "rejects explicit null targetMask rather than treating it as omitted",
+              "duration": 0.4470000000001164,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean target mask field west with field context",
+              "status": "passed",
+              "title": "rejects non-boolean target mask field west with field context",
+              "duration": 0.45580000000018117,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean target mask field north with field context",
+              "status": "passed",
+              "title": "rejects non-boolean target mask field north with field context",
+              "duration": 0.37380000000007385,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean target mask field east with field context",
+              "status": "passed",
+              "title": "rejects non-boolean target mask field east with field context",
+              "duration": 0.2967999999998483,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-boolean target mask field south with field context",
+              "status": "passed",
+              "title": "rejects non-boolean target mask field south with field context",
+              "duration": 0.5186000000001059,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects an empty direction mask",
+              "status": "passed",
+              "title": "rejects an empty direction mask",
+              "duration": 0.8130999999998494,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects an empty target direction mask",
+              "status": "passed",
+              "title": "rejects an empty target direction mask",
+              "duration": 0.3630000000000564,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract accepts zero extents and rejects negative extents",
+              "status": "passed",
+              "title": "accepts zero extents and rejects negative extents",
+              "duration": 2.7210999999999785,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects every non-finite consumed rectangle and fixed-point field: NaN",
+              "status": "passed",
+              "title": "rejects every non-finite consumed rectangle and fixed-point field: NaN",
+              "duration": 6.222099999999955,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects every non-finite consumed rectangle and fixed-point field: Infinity",
+              "status": "passed",
+              "title": "rejects every non-finite consumed rectangle and fixed-point field: Infinity",
+              "duration": 6.4930000000001655,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects every non-finite consumed rectangle and fixed-point field: -Infinity",
+              "status": "passed",
+              "title": "rejects every non-finite consumed rectangle and fixed-point field: -Infinity",
+              "duration": 2.2379000000000815,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract rejects non-finite derived edges, centers and signed gaps",
+              "status": "passed",
+              "title": "rejects non-finite derived edges, centers and signed gaps",
+              "duration": 1.3297999999999774,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "DirectionResolver boundary contract"
+              ],
+              "fullName": "DirectionResolver boundary contract does not invoke perimeter projection for point bounds",
+              "status": "passed",
+              "title": "does not invoke perimeter projection for point bounds",
+              "duration": 0.7558000000001357,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790548589429,
+          "endTime": 1790548589486.7559,
+          "status": "failed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/contracts.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "direction evidence ownership and determinism"
+              ],
+              "fullName": "direction evidence ownership and determinism accepts deeply frozen inputs without mutating or aliasing them",
+              "status": "passed",
+              "title": "accepts deeply frozen inputs without mutating or aliasing them",
+              "duration": 10.07549999999992,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "direction evidence ownership and determinism"
+              ],
+              "fullName": "direction evidence ownership and determinism does not expose mutable aliases to masks, bounds or fixed points",
+              "status": "passed",
+              "title": "does not expose mutable aliases to masks, bounds or fixed points",
+              "duration": 1.2687000000000808,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "direction evidence ownership and determinism"
+              ],
+              "fullName": "direction evidence ownership and determinism owns result graphs independently across identical calls",
+              "status": "passed",
+              "title": "owns result graphs independently across identical calls",
+              "duration": 1.8395000000000437,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "direction evidence ownership and determinism"
+              ],
+              "fullName": "direction evidence ownership and determinism is history independent across unrelated calls and shared constants",
+              "status": "passed",
+              "title": "is history independent across unrelated calls and shared constants",
+              "duration": 1.5126000000000204,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790548589432,
+          "endTime": 1790548589446.5127,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/evidence.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 0",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 0",
+              "duration": 7.154999999999973,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 1",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 1",
+              "duration": 0.9257999999999811,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 2",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 2",
+              "duration": 0.7282000000000153,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 3",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 3",
+              "duration": 0.5827999999999065,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 4",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 4",
+              "duration": 0.6684999999999945,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 5",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 5",
+              "duration": 0.5624000000000251,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 6",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 6",
+              "duration": 0.600800000000163,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects edge/corner side without moving the fixed point 7",
+              "status": "passed",
+              "title": "detects edge/corner side without moving the fixed point 7",
+              "duration": 0.427599999999984,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence does not infer a candidate for { x: 5, y: 5 }",
+              "status": "passed",
+              "title": "does not infer a candidate for { x: 5, y: 5 }",
+              "duration": 0.8794000000000324,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence does not infer a candidate for { x: +0, y: -1.000001 }",
+              "status": "passed",
+              "title": "does not infer a candidate for { x: +0, y: -1.000001 }",
+              "duration": 0.6557999999999993,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence does not infer a candidate for { x: 20, y: +0 }",
+              "status": "passed",
+              "title": "does not infer a candidate for { x: 20, y: +0 }",
+              "duration": 0.43039999999996326,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 0",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 0",
+              "duration": 0.5981999999999061,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 1",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 1",
+              "duration": 0.3925000000001546,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 2",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 2",
+              "duration": 0.39990000000011605,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 3",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 3",
+              "duration": 0.3503000000000611,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 4",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 4",
+              "duration": 0.2540000000001328,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 5",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 5",
+              "duration": 0.3485000000000582,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 6",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 6",
+              "duration": 0.3329000000001088,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 7",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 7",
+              "duration": 0.44499999999993634,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 8",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 8",
+              "duration": 0.32519999999999527,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence includes the exact inclusive side/span EPSILON boundary 9",
+              "status": "passed",
+              "title": "includes the exact inclusive side/span EPSILON boundary 9",
+              "duration": 0.34120000000007167,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence applies EPSILON edge and expanded-span boundaries without moving anchors",
+              "status": "passed",
+              "title": "applies EPSILON edge and expanded-span boundaries without moving anchors",
+              "duration": 1.3044999999999618,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence treats an ellipse-like diagonal anchor as geometric evidence only",
+              "status": "passed",
+              "title": "treats an ellipse-like diagonal anchor as geometric evidence only",
+              "duration": 0.45259999999984757,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence keeps an allowed multi-mask fixed side first and deduplicates its evidence order",
+              "status": "passed",
+              "title": "keeps an allowed multi-mask fixed side first and deduplicates its evidence order",
+              "duration": 0.7733000000000629,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence applies fixed target evidence and preserves both supplied endpoint points",
+              "status": "passed",
+              "title": "applies fixed target evidence and preserves both supplied endpoint points",
+              "duration": 1.2480999999997948,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects a target fixed-side candidate without moving the point 0",
+              "status": "passed",
+              "title": "detects a target fixed-side candidate without moving the point 0",
+              "duration": 0.5214000000000851,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects a target fixed-side candidate without moving the point 1",
+              "status": "passed",
+              "title": "detects a target fixed-side candidate without moving the point 1",
+              "duration": 0.3287000000000262,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects a target fixed-side candidate without moving the point 2",
+              "status": "passed",
+              "title": "detects a target fixed-side candidate without moving the point 2",
+              "duration": 0.35619999999994434,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence detects a target fixed-side candidate without moving the point 3",
+              "status": "passed",
+              "title": "detects a target fixed-side candidate without moving the point 3",
+              "duration": 0.30140000000005784,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence filters a disallowed fixed candidate without moving it or escaping its mask",
+              "status": "passed",
+              "title": "filters a disallowed fixed candidate without moving it or escaping its mask",
+              "duration": 0.6650999999999385,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence singleton is the final override even when fixed-side evidence conflicts",
+              "status": "passed",
+              "title": "singleton is the final override even when fixed-side evidence conflicts",
+              "duration": 0.5379999999997835,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence applies final singleton override at both endpoints despite fixed-side evidence",
+              "status": "passed",
+              "title": "applies final singleton override at both endpoints despite fixed-side evidence",
+              "duration": 0.9565000000000055,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence regresses the independently reviewed 72/900 early-singleton-lock counterexample",
+              "status": "passed",
+              "title": "regresses the independently reviewed 72/900 early-singleton-lock counterexample",
+              "duration": 0.3002999999998792,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "fixed-side direction evidence"
+              ],
+              "fullName": "fixed-side direction evidence uses vertical priority for degenerate coincident edges",
+              "status": "passed",
+              "title": "uses vertical priority for degenerate coincident edges",
+              "duration": 0.35809999999992215,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790548589432,
+          "endTime": 1790548589458.3582,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/fixed.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "isolated DirectionResolver mutation harness"
+              ],
+              "fullName": "isolated DirectionResolver mutation harness checks its operator inventory, source redirection, score, survival, timeout and failure controls",
+              "status": "passed",
+              "title": "checks its operator inventory, source redirection, score, survival, timeout and failure controls",
+              "duration": 11668.4492,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790548588992,
+          "endTime": 1790548600660.4492,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/mutation-runner.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy selects EAST/WEST for horizontal separation and SOUTH/NORTH below",
+              "status": "passed",
+              "title": "selects EAST/WEST for horizontal separation and SOUTH/NORTH below",
+              "duration": 8.244900000000143,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy honors pinned source-horizontal/target-vertical priority when both axes separate",
+              "status": "passed",
+              "title": "honors pinned source-horizontal/target-vertical priority when both axes separate",
+              "duration": 1.0037999999999556,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy returns NORTH/SOUTH and quadrant 2 for identical bounds",
+              "status": "passed",
+              "title": "returns NORTH/SOUTH and quadrant 2 for identical bounds",
+              "duration": 0.6469999999999345,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy keeps the NORTH/SOUTH tie policy for identical bounds after reflection",
+              "status": "passed",
+              "title": "keeps the NORTH/SOUTH tie policy for identical bounds after reflection",
+              "duration": 1.5631000000000768,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy produces an allowed pair for every non-axis quadrant (-30,-30)",
+              "status": "passed",
+              "title": "produces an allowed pair for every non-axis quadrant (-30,-30)",
+              "duration": 53.33719999999994,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy produces an allowed pair for every non-axis quadrant (30,-30)",
+              "status": "passed",
+              "title": "produces an allowed pair for every non-axis quadrant (30,-30)",
+              "duration": 27.944999999999936,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy produces an allowed pair for every non-axis quadrant (30,30)",
+              "status": "passed",
+              "title": "produces an allowed pair for every non-axis quadrant (30,30)",
+              "duration": 26.919799999999896,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy produces an allowed pair for every non-axis quadrant (-30,30)",
+              "status": "passed",
+              "title": "produces an allowed pair for every non-axis quadrant (-30,30)",
+              "duration": 25.04209999999989,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy selects the first allowed direction from the reported preference order",
+              "status": "passed",
+              "title": "selects the first allowed direction from the reported preference order",
+              "duration": 1.1502000000000407,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy keeps horizontal touch in the vertical-only preference branch",
+              "status": "passed",
+              "title": "keeps horizontal touch in the vertical-only preference branch",
+              "duration": 0.6856999999999971,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy does not enter paired vertical-horizontal ordering when horizontal gap is zero",
+              "status": "passed",
+              "title": "does not enter paired vertical-horizontal ordering when horizontal gap is zero",
+              "duration": 0.45299999999997453,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy reports WEST on an equal horizontal-gap tie even when vertical preference wins",
+              "status": "passed",
+              "title": "reports WEST on an equal horizontal-gap tie even when vertical preference wins",
+              "duration": 0.422800000000052,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "constrained direction preference policy"
+              ],
+              "fullName": "constrained direction preference policy keeps source-role priority explicit when endpoints are exchanged",
+              "status": "passed",
+              "title": "keeps source-role priority explicit when endpoints are exchanged",
+              "duration": 0.4054000000000997,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790548589433,
+          "endTime": 1790548589582.4055,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/preferences.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "R03 conditioned property evidence controls"
+              ],
+              "fullName": "R03 conditioned property evidence controls counts accepted and rejected candidates independently",
+              "status": "passed",
+              "title": "counts accepted and rejected candidates independently",
+              "duration": 5.6527999999999565,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "R03 conditioned property evidence controls"
+              ],
+              "fullName": "R03 conditioned property evidence controls reports and exactly replays a seeded concrete failure",
+              "status": "passed",
+              "title": "reports and exactly replays a seeded concrete failure",
+              "duration": 0.7730999999999995,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "R03 conditioned property evidence controls"
+              ],
+              "fullName": "R03 conditioned property evidence controls fails rather than accepting insufficient generated cases",
+              "status": "passed",
+              "title": "fails rather than accepting insufficient generated cases",
+              "duration": 1.3295000000000528,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790548589160,
+          "endTime": 1790548589167.3296,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/property-harness.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'single-axis-east'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'single-axis-east'",
+              "duration": 8.041999999999916,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'single-axis-south'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'single-axis-south'",
+              "duration": 1.2214000000001306,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'touching'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'touching'",
+              "duration": 1.0466000000001259,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'overlap'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'overlap'",
+              "duration": 0.7762000000000171,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'containment'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'containment'",
+              "duration": 0.911600000000135,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'asymmetric-sizes'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'asymmetric-sizes'",
+              "duration": 0.9501000000000204,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'diagonal-role-forward'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'diagonal-role-forward'",
+              "duration": 0.7621000000001459,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'diagonal-role-reversed'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'diagonal-role-reversed'",
+              "duration": 0.8342000000000098,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference matches independent direct reference case 'degenerate-zero-extents'",
+              "status": "passed",
+              "title": "matches independent direct reference case 'degenerate-zero-extents'",
+              "duration": 0.8548000000000684,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "pinned OrthConnector preference reference"
+              ],
+              "fullName": "pinned OrthConnector preference reference compares each expected pair and endpoint membership in all 900 cases",
+              "status": "passed",
+              "title": "compares each expected pair and endpoint membership in all 900 cases",
+              "duration": 211.16790000000015,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790548589433,
+          "endTime": 1790548589660.168,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/reference.test.ts"
+        },
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned quadrant numbering for center delta (5,5)",
+              "status": "passed",
+              "title": "uses pinned quadrant numbering for center delta (5,5)",
+              "duration": 3.807600000000093,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned quadrant numbering for center delta (-5,5)",
+              "status": "passed",
+              "title": "uses pinned quadrant numbering for center delta (-5,5)",
+              "duration": 0.5041000000001077,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned quadrant numbering for center delta (-5,-5)",
+              "status": "passed",
+              "title": "uses pinned quadrant numbering for center delta (-5,-5)",
+              "duration": 0.31280000000015207,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned quadrant numbering for center delta (5,-5)",
+              "status": "passed",
+              "title": "uses pinned quadrant numbering for center delta (5,-5)",
+              "duration": 0.2819999999999254,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (0,1)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (0,1)",
+              "duration": 0.41800000000012005,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (1,0)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (1,0)",
+              "duration": 0.365099999999984,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (-1,0)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (-1,0)",
+              "duration": 0.2495000000001255,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (0,-1)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (0,-1)",
+              "duration": 0.3188000000000102,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry uses pinned axis and center ties for (0,0)",
+              "status": "passed",
+              "title": "uses pinned axis and center ties for (0,0)",
+              "duration": 0.3929000000000542,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps only center differences with magnitude <= EPSILON: 9.990234375e-7",
+              "status": "passed",
+              "title": "snaps only center differences with magnitude <= EPSILON: 9.990234375e-7",
+              "duration": 0.5363999999999578,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps only center differences with magnitude <= EPSILON: 0.000001",
+              "status": "passed",
+              "title": "snaps only center differences with magnitude <= EPSILON: 0.000001",
+              "duration": 0.3108999999999469,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps only center differences with magnitude <= EPSILON: 0.0000010009765624999999",
+              "status": "passed",
+              "title": "snaps only center differences with magnitude <= EPSILON: 0.0000010009765624999999",
+              "duration": 0.21080000000006294,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps vertical center difference only inside the inclusive EPSILON band: 9.990234375e-7",
+              "status": "passed",
+              "title": "snaps vertical center difference only inside the inclusive EPSILON band: 9.990234375e-7",
+              "duration": 0.2220999999999549,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps vertical center difference only inside the inclusive EPSILON band: 0.000001",
+              "status": "passed",
+              "title": "snaps vertical center difference only inside the inclusive EPSILON band: 0.000001",
+              "duration": 0.13720000000012078,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry snaps vertical center difference only inside the inclusive EPSILON band: 0.0000010009765624999999",
+              "status": "passed",
+              "title": "snaps vertical center difference only inside the inclusive EPSILON band: 0.0000010009765624999999",
+              "duration": 0.1348000000000411,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps -0.0000010009765624999999",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps -0.0000010009765624999999",
+              "duration": 0.4254000000000815,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps -0.000001",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps -0.000001",
+              "duration": 0.5368000000000848,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps 0",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps 0",
+              "duration": 0.28530000000000655,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps 0.000001",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps 0.000001",
+              "duration": 0.3341000000000349,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry applies the inclusive zero band to signed axis gaps 0.0000010009765624999999",
+              "status": "passed",
+              "title": "applies the inclusive zero band to signed axis gaps 0.0000010009765624999999",
+              "duration": 0.2481000000000222,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry retains signed axis gap and overlap relation for unequal bounds",
+              "status": "passed",
+              "title": "retains signed axis gap and overlap relation for unequal bounds",
+              "duration": 0.32989999999995234,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry retains signed axis gap and overlap relation for unequal bounds",
+              "status": "passed",
+              "title": "retains signed axis gap and overlap relation for unequal bounds",
+              "duration": 0.24090000000001055,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry retains signed axis gap and overlap relation for unequal bounds",
+              "status": "passed",
+              "title": "retains signed axis gap and overlap relation for unequal bounds",
+              "duration": 0.24060000000008586,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry rejects null source bounds with operation and field context",
+              "status": "passed",
+              "title": "rejects null source bounds with operation and field context",
+              "duration": 1.8579999999999472,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry rejects null target bounds with operation and field context",
+              "status": "passed",
+              "title": "rejects null target bounds with operation and field context",
+              "duration": 0.33140000000003056,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry retains negative overlap evidence while exposing zero-banded policy gaps",
+              "status": "passed",
+              "title": "retains negative overlap evidence while exposing zero-banded policy gaps",
+              "duration": 0.4438000000000102,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry does not quantize sub-grid values and reports positive zero inside the zero band",
+              "status": "passed",
+              "title": "does not quantize sub-grid values and reports positive zero inside the zero band",
+              "duration": 4.003300000000081,
+              "failureMessages": [],
+              "meta": {}
+            },
+            {
+              "ancestorTitles": [
+                "relative direction geometry"
+              ],
+              "fullName": "relative direction geometry documents finite IEEE-754 cancellation without imposing a false invariant",
+              "status": "passed",
+              "title": "documents finite IEEE-754 cancellation without imposing a false invariant",
+              "duration": 0.6765000000000327,
+              "failureMessages": [],
+              "meta": {}
+            }
+          ],
+          "startTime": 1790548589432,
+          "endTime": 1790548589450.6765,
+          "status": "passed",
+          "message": "",
+          "name": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/relative.test.ts"
+        }
+      ]
+    },
+    "runAudit": {
+      "schemaVersion": 2,
+      "reason": "failed",
+      "unhandledErrors": [],
+      "modules": [
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/contracts.test.ts",
+          "state": "failed",
+          "ok": false,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1394560111_0",
+              "name": "DirectionResolver boundary contract",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1394560111_0_0",
+              "name": "DirectionResolver boundary contract > returns outward directions at both endpoints and no route geometry",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_1",
+              "name": "DirectionResolver boundary contract > defaults omitted masks to ALL while rejecting malformed options with context",
+              "state": "failed",
+              "errors": [
+                {
+                  "type": "AssertionError",
+                  "name": "AssertionError",
+                  "message": "expected [Function] to throw error matching /resolveDirections: options must be an…/ but got 'Cannot read properties of null (readi…'",
+                  "stack": "AssertionError: expected [Function] to throw error matching /resolveDirections: options must be an…/ but got 'Cannot read properties of null (readi…'\n    at Proxy.<anonymous> (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+expect@3.2.7/node_modules/@vitest/expect/dist/index.js:1420:16)\n    at Proxy.<anonymous> (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+expect@3.2.7/node_modules/@vitest/expect/dist/index.js:1029:14)\n    at Proxy.methodWrapper (file:///E:/dev/codex/frade/node_modules/.pnpm/chai@5.3.3/node_modules/chai/index.js:1686:25)\n    at E:\\dev\\codex\\frade\\packages\\draw\\tests\\routing-v2\\direction\\unit\\contracts.test.ts:24:73\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///E:/dev/codex/frade/node_modules/.pnpm/@vitest+runner@3.2.7/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)"
+                }
+              ]
+            },
+            {
+              "id": "-1394560111_0_2",
+              "name": "DirectionResolver boundary contract > rejects explicit null fixed points instead of treating them as omitted",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_3",
+              "name": "DirectionResolver boundary contract > rejects null fixedSource with operation and field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_4",
+              "name": "DirectionResolver boundary contract > rejects null fixedTarget with operation and field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_5",
+              "name": "DirectionResolver boundary contract > rejects non-boolean west mask fields with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_6",
+              "name": "DirectionResolver boundary contract > rejects non-boolean north mask fields with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_7",
+              "name": "DirectionResolver boundary contract > rejects non-boolean east mask fields with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_8",
+              "name": "DirectionResolver boundary contract > rejects non-boolean south mask fields with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_9",
+              "name": "DirectionResolver boundary contract > rejects explicit null sourceMask rather than treating it as omitted",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_10",
+              "name": "DirectionResolver boundary contract > rejects explicit null targetMask rather than treating it as omitted",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_11",
+              "name": "DirectionResolver boundary contract > rejects non-boolean target mask field west with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_12",
+              "name": "DirectionResolver boundary contract > rejects non-boolean target mask field north with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_13",
+              "name": "DirectionResolver boundary contract > rejects non-boolean target mask field east with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_14",
+              "name": "DirectionResolver boundary contract > rejects non-boolean target mask field south with field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_15",
+              "name": "DirectionResolver boundary contract > rejects an empty direction mask",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_16",
+              "name": "DirectionResolver boundary contract > rejects an empty target direction mask",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_17",
+              "name": "DirectionResolver boundary contract > accepts zero extents and rejects negative extents",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_18",
+              "name": "DirectionResolver boundary contract > rejects every non-finite consumed rectangle and fixed-point field: NaN",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_19",
+              "name": "DirectionResolver boundary contract > rejects every non-finite consumed rectangle and fixed-point field: Infinity",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_20",
+              "name": "DirectionResolver boundary contract > rejects every non-finite consumed rectangle and fixed-point field: -Infinity",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_21",
+              "name": "DirectionResolver boundary contract > rejects non-finite derived edges, centers and signed gaps",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1394560111_0_22",
+              "name": "DirectionResolver boundary contract > does not invoke perimeter projection for point bounds",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/evidence.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1385164063_0",
+              "name": "direction evidence ownership and determinism",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1385164063_0_0",
+              "name": "direction evidence ownership and determinism > accepts deeply frozen inputs without mutating or aliasing them",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1385164063_0_1",
+              "name": "direction evidence ownership and determinism > does not expose mutable aliases to masks, bounds or fixed points",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1385164063_0_2",
+              "name": "direction evidence ownership and determinism > owns result graphs independently across identical calls",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1385164063_0_3",
+              "name": "direction evidence ownership and determinism > is history independent across unrelated calls and shared constants",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/fixed.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1811529756_0",
+              "name": "fixed-side direction evidence",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1811529756_0_0",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 0",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_1",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 1",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_2",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 2",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_3",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 3",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_4",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 4",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_5",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 5",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_6",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 6",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_7",
+              "name": "fixed-side direction evidence > detects edge/corner side without moving the fixed point 7",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_8",
+              "name": "fixed-side direction evidence > does not infer a candidate for { x: 5, y: 5 }",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_9",
+              "name": "fixed-side direction evidence > does not infer a candidate for { x: +0, y: -1.000001 }",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_10",
+              "name": "fixed-side direction evidence > does not infer a candidate for { x: 20, y: +0 }",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_11",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 0",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_12",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 1",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_13",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 2",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_14",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 3",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_15",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 4",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_16",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 5",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_17",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 6",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_18",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 7",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_19",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 8",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_20",
+              "name": "fixed-side direction evidence > includes the exact inclusive side/span EPSILON boundary 9",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_21",
+              "name": "fixed-side direction evidence > applies EPSILON edge and expanded-span boundaries without moving anchors",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_22",
+              "name": "fixed-side direction evidence > treats an ellipse-like diagonal anchor as geometric evidence only",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_23",
+              "name": "fixed-side direction evidence > keeps an allowed multi-mask fixed side first and deduplicates its evidence order",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_24",
+              "name": "fixed-side direction evidence > applies fixed target evidence and preserves both supplied endpoint points",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_25",
+              "name": "fixed-side direction evidence > detects a target fixed-side candidate without moving the point 0",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_26",
+              "name": "fixed-side direction evidence > detects a target fixed-side candidate without moving the point 1",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_27",
+              "name": "fixed-side direction evidence > detects a target fixed-side candidate without moving the point 2",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_28",
+              "name": "fixed-side direction evidence > detects a target fixed-side candidate without moving the point 3",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_29",
+              "name": "fixed-side direction evidence > filters a disallowed fixed candidate without moving it or escaping its mask",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_30",
+              "name": "fixed-side direction evidence > singleton is the final override even when fixed-side evidence conflicts",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_31",
+              "name": "fixed-side direction evidence > applies final singleton override at both endpoints despite fixed-side evidence",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_32",
+              "name": "fixed-side direction evidence > regresses the independently reviewed 72/900 early-singleton-lock counterexample",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1811529756_0_33",
+              "name": "fixed-side direction evidence > uses vertical priority for degenerate coincident edges",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/mutation-runner.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "655779716_0",
+              "name": "isolated DirectionResolver mutation harness",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "655779716_0_0",
+              "name": "isolated DirectionResolver mutation harness > checks its operator inventory, source redirection, score, survival, timeout and failure controls",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/preferences.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "273540392_0",
+              "name": "constrained direction preference policy",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "273540392_0_0",
+              "name": "constrained direction preference policy > selects EAST/WEST for horizontal separation and SOUTH/NORTH below",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_1",
+              "name": "constrained direction preference policy > honors pinned source-horizontal/target-vertical priority when both axes separate",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_2",
+              "name": "constrained direction preference policy > returns NORTH/SOUTH and quadrant 2 for identical bounds",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_3",
+              "name": "constrained direction preference policy > keeps the NORTH/SOUTH tie policy for identical bounds after reflection",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_4",
+              "name": "constrained direction preference policy > produces an allowed pair for every non-axis quadrant (-30,-30)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_5",
+              "name": "constrained direction preference policy > produces an allowed pair for every non-axis quadrant (30,-30)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_6",
+              "name": "constrained direction preference policy > produces an allowed pair for every non-axis quadrant (30,30)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_7",
+              "name": "constrained direction preference policy > produces an allowed pair for every non-axis quadrant (-30,30)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_8",
+              "name": "constrained direction preference policy > selects the first allowed direction from the reported preference order",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_9",
+              "name": "constrained direction preference policy > keeps horizontal touch in the vertical-only preference branch",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_10",
+              "name": "constrained direction preference policy > does not enter paired vertical-horizontal ordering when horizontal gap is zero",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_11",
+              "name": "constrained direction preference policy > reports WEST on an equal horizontal-gap tie even when vertical preference wins",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "273540392_0_12",
+              "name": "constrained direction preference policy > keeps source-role priority explicit when endpoints are exchanged",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/property-harness.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-81683710_0",
+              "name": "R03 conditioned property evidence controls",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-81683710_0_0",
+              "name": "R03 conditioned property evidence controls > counts accepted and rejected candidates independently",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-81683710_0_1",
+              "name": "R03 conditioned property evidence controls > reports and exactly replays a seeded concrete failure",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-81683710_0_2",
+              "name": "R03 conditioned property evidence controls > fails rather than accepting insufficient generated cases",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/reference.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1136421061_0",
+              "name": "pinned OrthConnector preference reference",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1136421061_0_0",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'single-axis-east'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_1",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'single-axis-south'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_2",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'touching'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_3",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'overlap'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_4",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'containment'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_5",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'asymmetric-sizes'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_6",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'diagonal-role-forward'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_7",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'diagonal-role-reversed'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_8",
+              "name": "pinned OrthConnector preference reference > matches independent direct reference case 'degenerate-zero-extents'",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1136421061_0_9",
+              "name": "pinned OrthConnector preference reference > compares each expected pair and endpoint membership in all 900 cases",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "moduleId": "E:/dev/codex/frade/packages/draw/tests/routing-v2/direction/unit/relative.test.ts",
+          "state": "passed",
+          "ok": true,
+          "errors": [],
+          "suites": [
+            {
+              "id": "-1329911210_0",
+              "name": "relative direction geometry",
+              "errors": []
+            }
+          ],
+          "tests": [
+            {
+              "id": "-1329911210_0_0",
+              "name": "relative direction geometry > uses pinned quadrant numbering for center delta (5,5)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_1",
+              "name": "relative direction geometry > uses pinned quadrant numbering for center delta (-5,5)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_2",
+              "name": "relative direction geometry > uses pinned quadrant numbering for center delta (-5,-5)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_3",
+              "name": "relative direction geometry > uses pinned quadrant numbering for center delta (5,-5)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_4",
+              "name": "relative direction geometry > uses pinned axis and center ties for (0,1)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_5",
+              "name": "relative direction geometry > uses pinned axis and center ties for (1,0)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_6",
+              "name": "relative direction geometry > uses pinned axis and center ties for (-1,0)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_7",
+              "name": "relative direction geometry > uses pinned axis and center ties for (0,-1)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_8",
+              "name": "relative direction geometry > uses pinned axis and center ties for (0,0)",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_9",
+              "name": "relative direction geometry > snaps only center differences with magnitude <= EPSILON: 9.990234375e-7",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_10",
+              "name": "relative direction geometry > snaps only center differences with magnitude <= EPSILON: 0.000001",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_11",
+              "name": "relative direction geometry > snaps only center differences with magnitude <= EPSILON: 0.0000010009765624999999",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_12",
+              "name": "relative direction geometry > snaps vertical center difference only inside the inclusive EPSILON band: 9.990234375e-7",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_13",
+              "name": "relative direction geometry > snaps vertical center difference only inside the inclusive EPSILON band: 0.000001",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_14",
+              "name": "relative direction geometry > snaps vertical center difference only inside the inclusive EPSILON band: 0.0000010009765624999999",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_15",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps -0.0000010009765624999999",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_16",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps -0.000001",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_17",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps 0",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_18",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps 0.000001",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_19",
+              "name": "relative direction geometry > applies the inclusive zero band to signed axis gaps 0.0000010009765624999999",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_20",
+              "name": "relative direction geometry > retains signed axis gap and overlap relation for unequal bounds",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_21",
+              "name": "relative direction geometry > retains signed axis gap and overlap relation for unequal bounds",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_22",
+              "name": "relative direction geometry > retains signed axis gap and overlap relation for unequal bounds",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_23",
+              "name": "relative direction geometry > rejects null source bounds with operation and field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_24",
+              "name": "relative direction geometry > rejects null target bounds with operation and field context",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_25",
+              "name": "relative direction geometry > retains negative overlap evidence while exposing zero-banded policy gaps",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_26",
+              "name": "relative direction geometry > does not quantize sub-grid values and reports positive zero inside the zero band",
+              "state": "passed",
+              "errors": []
+            },
+            {
+              "id": "-1329911210_0_27",
+              "name": "relative direction geometry > documents finite IEEE-754 cancellation without imposing a false invariant",
+              "state": "passed",
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    "mutantSourceRoot": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-r03-mutants-bhcvii\\packages\\draw\\src\\routing\\orthogonal\\direction"
+  }
+}
