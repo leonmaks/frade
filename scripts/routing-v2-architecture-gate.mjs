@@ -1,4 +1,6 @@
 import fs from 'node:fs'
+import vm from 'node:vm'
+import { createHash } from 'node:crypto'
 import path from 'node:path'
 import assert from 'node:assert/strict'
 import os from 'node:os'
@@ -16,6 +18,9 @@ const SCRIPT = 'scripts/routing-v2-architecture-gate.mjs'
 const LEGACY_DOC = 'docs/routing-v2/legacy-boundary.md'
 const R01 = 'routing-v2-01-geometry-kernel'
 const R02 = 'routing-v2-02-terminal-perimeter'
+const R03 = 'routing-v2-03-direction-resolver'
+const R03_BASE = '2b6619627e3e744007b06251a05dad86e7bce634'
+const WORKFLOW = 'docs/routing-v2/workflow-models.md'
 const R02_BASE = 'd6579321d13e5c423eb1f1523b1d4ce35bcae583'
 const ROUTING = 'packages/draw/src/routing/'
 const V2_TESTS = 'packages/draw/tests/routing-v2/'
@@ -28,6 +33,17 @@ const R02_IMPLEMENTATION = [
   V2_TESTS + 'perimeter/**',
 ]
 const R02_CONTROL = ['openspec/changes/' + R02 + '/**', CURRENT, SCRIPT]
+const R03_IMPLEMENTATION = [ROUTING + 'orthogonal/direction/**', V2_TESTS + 'direction/**']
+const R03_CONTROL = ['openspec/changes/' + R03 + '/**', CURRENT, SCRIPT, WORKFLOW]
+const R03_FROZEN = [
+  SCRIPT,
+  WORKFLOW,
+  MASTER,
+  PLAYBOOK,
+  LEGACY_DOC,
+  'AGENTS.md',
+  ROUTING + 'AGENTS.md',
+]
 const CORE = new Set([
   'model',
   'geometry',
@@ -112,6 +128,7 @@ function readCurrentChange() {
     previousPostGate: field(content, 'PREVIOUS_CHANGE_POST_IMPLEMENTATION_GATE'),
     planningCommit: field(content, 'APPROVED_PLANNING_COMMIT'),
     preImplementationGate: field(content, 'PRE_IMPLEMENTATION_GATE'),
+    preEvidence: field(content, 'PRE_IMPLEMENTATION_GATE_EVIDENCE'),
     number: Number(/^routing-v2-(\d{2})-/.exec(activeChange)?.[1]) || null,
     implementation: section(content, 'IMPLEMENTATION_SCOPE'),
     control: section(content, 'PROCESS_CONTROL_SCOPE'),
@@ -241,6 +258,55 @@ export function scopeFindings(current, files, boundary) {
       } else fail(file, 'Changed file is outside R02 implementation and process/control scopes')
     }
   }
+  if (current.activeChange === R03) {
+    for (const [name, actual, expected] of [
+      ['IMPLEMENTATION_SCOPE', current.implementation, R03_IMPLEMENTATION],
+      ['PROCESS_CONTROL_SCOPE', current.control, R03_CONTROL],
+    ]) {
+      if (JSON.stringify([...actual].sort()) !== JSON.stringify([...expected].sort()))
+        fail(CURRENT, name + ' differs from the exact authorized R03 scope')
+    }
+    if (
+      current.sequence !== 'R03_OF_10' ||
+      current.nextAllowed !== 'false' ||
+      current.previousChange !== R02 ||
+      current.previousStatus !== 'CLOSED' ||
+      current.previousArchived !== 'true' ||
+      current.previousPostGate !== 'PASS' ||
+      (current.phase === 'PLANNING'
+        ? current.baseCommit !== R03_BASE
+        : !/^[0-9a-f]{40}$/i.test(current.planningCommit ?? '') ||
+          current.baseCommit !== current.planningCommit)
+    )
+      fail(CURRENT, 'R03 baseline/previous-change/sequence/next-change fields are inconsistent')
+    if (!['PLANNING', 'IMPLEMENTATION', 'VERIFICATION'].includes(current.phase))
+      fail(CURRENT, 'Unrecognized R03 phase')
+    if (
+      current.phase !== 'PLANNING' &&
+      (current.preImplementationGate !== 'PASS' || !current.frozenGateVerified)
+    )
+      fail(CURRENT, 'R03 requires PRE_IMPLEMENTATION PASS and verified approved frozen controls')
+    for (const file of files) {
+      if (inScope(file, R03_IMPLEMENTATION)) {
+        if (current.phase === 'PLANNING')
+          fail(file, 'R03 product code/tests changed during PLANNING')
+      } else if (inScope(file, R03_CONTROL)) {
+        if (
+          [SCRIPT, WORKFLOW].includes(file) &&
+          current.phase !== 'PLANNING' &&
+          !current.frozenGateVerified
+        )
+          fail(file, 'R03 frozen control differs from the approved planning commit')
+      } else if (
+        inScope(file, R01_IMPLEMENTATION) ||
+        inScope(file, R02_IMPLEMENTATION) ||
+        file.startsWith('openspec/changes/archive/') ||
+        file.startsWith('openspec/specs/routing-')
+      ) {
+        fail(file, 'Archived routing dependencies are read-only; DEPENDENCY_EXTENSION_REQUIRED')
+      } else fail(file, 'Changed file is outside R03 implementation and process/control scopes')
+    }
+  }
   for (const file of files) {
     if (file.startsWith('apps/desktop/vendor/drawio/')) {
       fail(file, 'Vendored draw.io reference modified')
@@ -330,8 +396,8 @@ export function inspectSource(
       return
     }
     const dependency = dependencyCategory(file, expression.text, boundary, tests, snapshotFiles)
-    if (tests && current.number === 2 && FRAMEWORK.test(expression.text)) {
-      fail(node, 'Framework dependency in R02 tests: ' + expression.text)
+    if (tests && [2, 3].includes(current.number) && FRAMEWORK.test(expression.text)) {
+      fail(node, 'Framework dependency in R0' + current.number + ' tests: ' + expression.text)
       return
     }
     // Product tests can use Vitest/Node tooling, but cannot construct legacy domain values.
@@ -361,6 +427,24 @@ export function inspectSource(
           node,
           'R02 dependency direction violation: ' + coreLayer(file) + ' -> ' + dependency.layer,
         )
+    }
+    if (core && current.number === 3) {
+      const layer = coreLayer(file)
+      const allowed = {
+        model: ['model'],
+        geometry: ['model', 'geometry'],
+        perimeter: ['model', 'geometry', 'perimeter'],
+        terminal: ['model', 'geometry', 'perimeter', 'terminal'],
+        orthogonal: ['model', 'geometry', 'perimeter', 'terminal', 'orthogonal'],
+      }[layer]
+      if (
+        !allowed ||
+        !allowed.includes(dependency.layer) ||
+        (dependency.layer === 'orthogonal' &&
+          (!file.startsWith(ROUTING + 'orthogonal/direction/') ||
+            !dependency.target?.startsWith(ROUTING + 'orthogonal/direction/')))
+      )
+        fail(node, 'R03 dependency direction violation: ' + layer + ' -> ' + dependency.layer)
     }
     if (core && coreLayer(file) === 'model' && dependency.layer !== 'model') {
       fail(node, 'Model depends on geometry/higher layer')
@@ -456,52 +540,245 @@ function walk(directory, visitor) {
   }
 }
 
+const R03_PREFIX = 'openspec/changes/' + R03 + '/'
+const R03_APPROVAL = R03_PREFIX + 'evidence/pre-implementation-review.json'
+const R03_REVIEWED = [
+  ...R03_FROZEN,
+  CURRENT,
+  R03_PREFIX + '.openspec.yaml',
+  R03_PREFIX + 'proposal.md',
+  R03_PREFIX + 'design.md',
+  R03_PREFIX + 'tasks.md',
+  R03_PREFIX + 'specs/routing-direction-resolver/spec.md',
+  R03_PREFIX + 'evidence/pre-implementation-gate-prompt.md',
+]
+
+export function reviewCanonical(file, value) {
+  let text = canonicalText(value)
+  if (file === CURRENT)
+    text = text.replace(
+      /^(?:PRE_IMPLEMENTATION_GATE|PRE_IMPLEMENTATION_GATE_EVIDENCE|PRE_REVALIDATION_REQUIRED):[^\n]*\n/gm,
+      '',
+    )
+  if (file === R03_PREFIX + 'tasks.md') text = text.replace(/^(- \[)[ xX](\])/gm, '$1 $2')
+  return text
+}
+const textHash = (value) => createHash('sha256').update(value).digest('hex')
+
+export function planningReviewFingerprint(gitRoot = ROOT) {
+  return Object.fromEntries(
+    R03_REVIEWED.map((file) => [
+      file,
+      textHash(reviewCanonical(file, fs.readFileSync(path.join(gitRoot, file), 'utf8'))),
+    ]),
+  )
+}
+
+export function reviewReportFingerprint(value) {
+  const report = canonicalText(value)
+  const starts = [...report.matchAll(/^REVIEWED_ARTIFACTS_JSON_BEGIN\n/gm)]
+  const ends = [...report.matchAll(/^REVIEWED_ARTIFACTS_JSON_END(?:\n|$)/gm)]
+  if (starts.length !== 1 || ends.length !== 1) return null
+  const from = starts[0].index + starts[0][0].length
+  if (ends[0].index <= from) return null
+  const body = report.slice(from, ends[0].index).trim()
+  let fingerprint
+  try {
+    fingerprint = JSON.parse(body)
+  } catch {
+    return null
+  }
+  if (!fingerprint || Array.isArray(fingerprint) || typeof fingerprint !== 'object') return null
+  // The reviewer command emits this canonical JSON. Re-serialization rejects
+  // duplicate keys and other ambiguous encodings before values are trusted.
+  if (body !== JSON.stringify(fingerprint, null, 2)) return null
+  if (JSON.stringify(Object.keys(fingerprint).sort()) !== JSON.stringify([...R03_REVIEWED].sort()))
+    return null
+  if (R03_REVIEWED.some((file) => !/^[0-9a-f]{64}$/.test(fingerprint[file]))) return null
+  return fingerprint
+}
+
+function verifyR03Approval(current, approved, git, gitRoot) {
+  if (
+    field(approved, 'PRE_IMPLEMENTATION_GATE') !== 'PASS' ||
+    field(approved, 'PRE_IMPLEMENTATION_GATE_EVIDENCE') !== R03_APPROVAL ||
+    current.preEvidence !== R03_APPROVAL ||
+    field(approved, 'SEQUENCE_POSITION') !== 'R03_OF_10' ||
+    field(approved, 'PREVIOUS_CHANGE') !== R02 ||
+    field(approved, 'PREVIOUS_CHANGE_STATUS') !== 'CLOSED' ||
+    field(approved, 'PREVIOUS_CHANGE_ARCHIVED') !== 'true' ||
+    field(approved, 'PREVIOUS_CHANGE_POST_IMPLEMENTATION_GATE') !== 'PASS' ||
+    field(approved, 'IMPLEMENTATION_STATUS') !== 'NOT_STARTED' ||
+    field(approved, 'NEXT_CHANGE_ALLOWED') !== 'false'
+  )
+    return false
+  for (const [name, expected] of [
+    ['IMPLEMENTATION_SCOPE', R03_IMPLEMENTATION],
+    ['PROCESS_CONTROL_SCOPE', R03_CONTROL],
+  ]) {
+    if (JSON.stringify(section(approved, name).sort()) !== JSON.stringify([...expected].sort()))
+      return false
+  }
+  git(['merge-base', '--is-ancestor', R03_BASE, current.planningCommit])
+  // Inspect each commit: a forbidden edit later reverted is still forbidden.
+  const commits = git(['rev-list', '--parents', R03_BASE + '..' + current.planningCommit])
+    .trim()
+    .split('\n')
+    .filter(Boolean)
+  if (!commits.length) return false
+  for (const record of commits) {
+    const [commit, ...parents] = record.split(' ')
+    if (parents.length !== 1) return false
+    const paths = git(['diff', '--no-renames', '--name-only', '-z', parents[0], commit, '--'])
+      .split('\0')
+      .filter(Boolean)
+      .map(normalize)
+    if (paths.some((file) => !inScope(file, R03_CONTROL))) return false
+  }
+  const proof = JSON.parse(git(['show', current.planningCommit + ':' + R03_APPROVAL]))
+  if (
+    proof.schemaVersion !== 1 ||
+    proof.change !== R03 ||
+    proof.gateType !== 'PRE_IMPLEMENTATION' ||
+    proof.gateStatus !== 'PASS' ||
+    proof.baseline !== R03_BASE ||
+    proof.reviewerContext !== 'fresh-read-only' ||
+    proof.reportPath !== R03_PREFIX + 'evidence/pre-implementation-gate-pass.md'
+  )
+    return false
+  const report = canonicalText(git(['show', current.planningCommit + ':' + proof.reportPath]))
+  if (proof.reportSha256 !== textHash(report)) return false
+  for (const [name, expected] of [
+    ['CHANGE', R03],
+    ['GATE_TYPE', 'PRE_IMPLEMENTATION'],
+    ['GATE_STATUS', 'PASS'],
+    ['READY_FOR_IMPLEMENTATION', 'YES'],
+  ]) {
+    const entries = [...report.matchAll(new RegExp('^' + name + ':[ \\t]*(.+?)[ \\t]*$', 'gm'))]
+    if (entries.length !== 1 || entries[0][1] !== expected) return false
+  }
+  if (
+    !proof.artifacts ||
+    JSON.stringify(Object.keys(proof.artifacts).sort()) !== JSON.stringify([...R03_REVIEWED].sort())
+  )
+    return false
+  const reviewedFingerprint = reviewReportFingerprint(report)
+  if (
+    !reviewedFingerprint ||
+    R03_REVIEWED.some((file) => reviewedFingerprint[file] !== proof.artifacts[file])
+  )
+    return false
+  for (const file of R03_REVIEWED) {
+    if (
+      proof.artifacts[file] !==
+      textHash(reviewCanonical(file, git(['show', current.planningCommit + ':' + file])))
+    )
+      return false
+  }
+  return [...R03_REVIEWED.filter((file) => file !== CURRENT), R03_APPROVAL, proof.reportPath].every(
+    (file) =>
+      verifyFrozenFile(
+        file,
+        gitRoot,
+        current.planningCommit,
+        (text) => reviewCanonical(file, text),
+        git,
+      ),
+  )
+}
+
+export function frozenWorktreeModeMatches(approvedMode, stat, platform, gitFileMode) {
+  if (!stat.isFile()) return false
+  // NTFS lacks a POSIX executable bit: require Git's explicit mode policy,
+  // while approved tree, HEAD and INDEX still enforce the exact Git modes.
+  if (platform === 'win32') return gitFileMode === 'false'
+  return approvedMode === (stat.mode & 0o100 ? '100755' : '100644')
+}
+
 export function verifyFrozenGate(current, gitRoot = ROOT) {
+  const r03 = current.activeChange === R03
+  const active = r03 ? R03 : R02
+  const base = r03 ? R03_BASE : R02_BASE
   if (current.baseCommit !== current.planningCommit)
-    throw new Error('R02 BASE_COMMIT must equal APPROVED_PLANNING_COMMIT during implementation')
+    throw new Error('BASE_COMMIT must equal APPROVED_PLANNING_COMMIT during implementation')
   if (!/^[0-9a-f]{40}$/i.test(current.planningCommit ?? ''))
-    throw new Error('APPROVED_PLANNING_COMMIT must pin the frozen R02 planning gate')
-  const git = (args) =>
-    execFileSync('git', args, { cwd: gitRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] })
+    throw new Error('APPROVED_PLANNING_COMMIT must pin the frozen planning gate')
+  const cache = new Map()
+  const git = (args) => {
+    const key = JSON.stringify(args)
+    if (!cache.has(key))
+      cache.set(
+        key,
+        execFileSync('git', args, {
+          cwd: gitRoot,
+          encoding: 'utf8',
+          stdio: ['ignore', 'pipe', 'pipe'],
+        }),
+      )
+    return cache.get(key)
+  }
   git(['merge-base', '--is-ancestor', current.planningCommit, 'HEAD'])
   const approved = git(['show', current.planningCommit + ':' + CURRENT])
   if (
-    field(approved, 'ACTIVE_CHANGE') !== R02 ||
+    field(approved, 'ACTIVE_CHANGE') !== active ||
     field(approved, 'PHASE') !== 'PLANNING' ||
-    field(approved, 'BASE_COMMIT') !== R02_BASE
+    field(approved, 'BASE_COMMIT') !== base
   )
-    throw new Error('Approved planning commit is not the R02 planning checkpoint')
+    throw new Error('Approved planning commit is not the active change planning checkpoint')
+  if (r03) return verifyR03Approval(current, approved, git, gitRoot)
+  return [SCRIPT].every((frozenFile) =>
+    verifyFrozenFile(frozenFile, gitRoot, current.planningCommit),
+  )
+}
+
+function verifyFrozenFile(
+  frozenFile,
+  gitRoot,
+  planningCommit,
+  canonicalize = canonicalText,
+  runner,
+) {
+  const git =
+    runner ??
+    ((args) =>
+      execFileSync('git', args, {
+        cwd: gitRoot,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
+      }))
   const approvedEntries = gitSnapshotEntries(
-    git(['ls-tree', '-z', current.planningCommit, '--', SCRIPT]),
+    git(['ls-tree', '-z', planningCommit, '--', frozenFile]),
     'HEAD',
   )
   if (approvedEntries.length !== 1 || !['100644', '100755'].includes(approvedEntries[0].mode))
     return false
   const approvedMode = approvedEntries[0].mode
   for (const [snapshot, args] of [
-    ['HEAD', ['ls-tree', '-z', 'HEAD', '--', SCRIPT]],
-    ['INDEX', ['ls-files', '--stage', '-z', '--', SCRIPT]],
+    ['HEAD', ['ls-tree', '-z', 'HEAD', '--', frozenFile]],
+    ['INDEX', ['ls-files', '--stage', '-z', '--', frozenFile]],
   ]) {
     const entries = gitSnapshotEntries(git(args), snapshot)
     if (
       entries.length !== 1 ||
-      entries[0].file !== SCRIPT ||
+      entries[0].file !== frozenFile ||
       entries[0].stage !== '0' ||
       entries[0].mode !== approvedMode
     )
       return false
   }
-  if (!fs.lstatSync(path.join(gitRoot, SCRIPT)).isFile()) return false
+  const stat = fs.lstatSync(path.join(gitRoot, frozenFile))
+  const gitFileMode = git(['config', '--bool', 'core.filemode']).trim()
+  if (!frozenWorktreeModeMatches(approvedMode, stat, process.platform, gitFileMode)) return false
 
-  const frozen = git(['show', current.planningCommit + ':' + SCRIPT])
+  const frozen = git(['show', planningCommit + ':' + frozenFile])
   // No live Git layer may hide a frozen-control edit in another layer.
   // Missing or unmerged snapshots throw and make the installed gate fail closed.
   const snapshots = [
-    git(['show', 'HEAD:' + SCRIPT]),
-    git(['show', ':' + SCRIPT]),
-    fs.readFileSync(path.join(gitRoot, SCRIPT), 'utf8'),
+    git(['show', 'HEAD:' + frozenFile]),
+    git(['show', ':' + frozenFile]),
+    fs.readFileSync(path.join(gitRoot, frozenFile), 'utf8'),
   ]
-  return snapshots.every((snapshot) => canonicalText(snapshot) === canonicalText(frozen))
+  return snapshots.every((snapshot) => canonicalize(snapshot) === canonicalize(frozen))
 }
 export function cycleFindings(graph) {
   const findings = [],
@@ -614,7 +891,7 @@ function main() {
         throw new Error('Required control file missing: ' + file)
     }
     current = readCurrentChange()
-    if (current.activeChange === R02 && current.phase !== 'PLANNING')
+    if ([R02, R03].includes(current.activeChange) && current.phase !== 'PLANNING')
       current.frozenGateVerified = verifyFrozenGate(current)
     const boundary = protectedPaths()
     if (boundary.algorithms.size === 0)
@@ -662,6 +939,246 @@ function main() {
   if (findings.length) process.exitCode = 1
 }
 
+function r03ApprovalRegressions(check) {
+  const prefix = 'openspec/changes/' + R03 + '/'
+  const evidencePath = prefix + 'evidence/pre-implementation-review.json'
+  const reportPath = prefix + 'evidence/pre-implementation-gate-pass.md'
+  const artifacts = [
+    ...R03_FROZEN,
+    CURRENT,
+    prefix + '.openspec.yaml',
+    prefix + 'proposal.md',
+    prefix + 'design.md',
+    prefix + 'tasks.md',
+    prefix + 'specs/routing-direction-resolver/spec.md',
+    prefix + 'evidence/pre-implementation-gate-prompt.md',
+  ]
+  const sourceObjects = path.resolve(
+    ROOT,
+    execFileSync('git', ['rev-parse', '--git-path', 'objects'], {
+      cwd: ROOT,
+      encoding: 'utf8',
+    }).trim(),
+  )
+  const results = []
+  for (const kind of [
+    'valid',
+    'missing-fingerprint',
+    'duplicate-fingerprint',
+    'malformed-fingerprint',
+    'duplicate-fingerprint-key',
+    'changed-artifact-recomputed-manifest',
+    'pending',
+    'missing-pre',
+    'missing-evidence',
+    'fail-evidence',
+    'fail-report',
+    'bad-report-hash',
+    'bad-artifact-hash',
+    'forbidden-checkpoint',
+    'forbidden-history-restored',
+  ]) {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'frade-r03-approval-'))
+    try {
+      const git = (args) =>
+        execFileSync('git', args, {
+          cwd: root,
+          encoding: 'utf8',
+          stdio: ['ignore', 'pipe', 'pipe'],
+        }).trim()
+      const write = (file, value) => {
+        fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true })
+        fs.writeFileSync(path.join(root, file), value)
+      }
+      git(['init', '--quiet'])
+      git(['config', 'user.name', 'Routing approval fixture'])
+      git(['config', 'user.email', 'routing-gate@example.invalid'])
+      git(['config', 'core.autocrlf', 'false'])
+      git(['config', 'core.filemode', 'false'])
+      write('.git/objects/info/alternates', normalize(sourceObjects) + '\n')
+      git(['symbolic-ref', 'HEAD', 'refs/heads/main'])
+      git(['update-ref', 'refs/heads/main', R03_BASE])
+      git(['read-tree', R03_BASE])
+      const pre = kind === 'pending' ? 'PENDING' : 'PASS'
+      const state =
+        [
+          'ACTIVE_CHANGE: ' + R03,
+          'PREVIOUS_CHANGE: ' + R02,
+          'PHASE: PLANNING',
+          'BASE_COMMIT: ' + R03_BASE,
+          'SEQUENCE_POSITION: R03_OF_10',
+          'PREVIOUS_CHANGE_STATUS: CLOSED',
+          'PREVIOUS_CHANGE_ARCHIVED: true',
+          'PREVIOUS_CHANGE_POST_IMPLEMENTATION_GATE: PASS',
+          'NEXT_CHANGE_ALLOWED: false',
+          'IMPLEMENTATION_STATUS: NOT_STARTED',
+          ...(kind === 'missing-pre' ? [] : ['PRE_IMPLEMENTATION_GATE: ' + pre]),
+          'PRE_IMPLEMENTATION_GATE_EVIDENCE: ' + evidencePath,
+          '## IMPLEMENTATION_SCOPE',
+          ...R03_IMPLEMENTATION,
+          '## PROCESS_CONTROL_SCOPE',
+          ...R03_CONTROL,
+        ].join('\n') + '\n'
+      for (const file of artifacts) {
+        let content = 'reviewed fixture ' + file + '\n'
+        if (file === CURRENT) content = state
+        else if ([MASTER, PLAYBOOK, LEGACY_DOC, 'AGENTS.md', ROUTING + 'AGENTS.md'].includes(file))
+          content = execFileSync('git', ['show', R03_BASE + ':' + file], {
+            cwd: ROOT,
+            encoding: 'utf8',
+          })
+        write(file, content)
+      }
+      const hashes = Object.fromEntries(
+        artifacts.map((file) => {
+          let content = fs.readFileSync(path.join(root, file), 'utf8').replaceAll('\r\n', '\n')
+          if (file === CURRENT)
+            content = content.replace(
+              /^(?:PRE_IMPLEMENTATION_GATE|PRE_IMPLEMENTATION_GATE_EVIDENCE|PRE_REVALIDATION_REQUIRED):[^\n]*\n/gm,
+              '',
+            )
+          if (file.endsWith('/tasks.md')) content = content.replace(/^(- \[)[ xX](\])/gm, '$1 $2')
+          return [file, createHash('sha256').update(content).digest('hex')]
+        }),
+      )
+      const report =
+        'CHANGE: ' +
+        R03 +
+        '\nGATE_TYPE: PRE_IMPLEMENTATION\nGATE_STATUS: ' +
+        (kind === 'fail-report' ? 'FAIL' : 'PASS') +
+        '\nREADY_FOR_IMPLEMENTATION: YES\n'
+      let fingerprint = JSON.stringify(hashes, null, 2)
+      if (kind === 'malformed-fingerprint') fingerprint = '{invalid JSON'
+      if (kind === 'duplicate-fingerprint-key')
+        fingerprint = fingerprint.replace(
+          '{\n',
+          '{\n  "' + SCRIPT + '": "' + hashes[SCRIPT] + '",\n',
+        )
+      const fingerprintBlock =
+        '\nREVIEWED_ARTIFACTS_JSON_BEGIN\n' + fingerprint + '\nREVIEWED_ARTIFACTS_JSON_END\n'
+      let savedReport = report + (kind === 'missing-fingerprint' ? '' : fingerprintBlock)
+      if (kind === 'duplicate-fingerprint') savedReport += fingerprintBlock
+      write(reportPath, savedReport)
+      if (kind === 'changed-artifact-recomputed-manifest') {
+        const design = prefix + 'design.md'
+        write(design, 'unreviewed planning content\n')
+        hashes[design] = createHash('sha256').update('unreviewed planning content\n').digest('hex')
+        check(
+          'stale report attack preserves actual saved report bytes',
+          fs.readFileSync(path.join(root, reportPath), 'utf8') === savedReport,
+        )
+      }
+      const review = {
+        schemaVersion: 1,
+        change: R03,
+        gateType: 'PRE_IMPLEMENTATION',
+        gateStatus: kind === 'fail-evidence' ? 'FAIL' : 'PASS',
+        baseline: R03_BASE,
+        reviewerContext: 'fresh-read-only',
+        reportPath,
+        reportSha256: createHash('sha256').update(savedReport).digest('hex'),
+        artifacts: hashes,
+      }
+      if (kind === 'bad-report-hash') review.reportSha256 = '0'.repeat(64)
+      if (kind === 'bad-artifact-hash') review.artifacts[SCRIPT] = '0'.repeat(64)
+      if (kind !== 'missing-evidence') write(evidencePath, JSON.stringify(review, null, 2) + '\n')
+      git([
+        'add',
+        '--',
+        ...artifacts,
+        reportPath,
+        ...(kind === 'missing-evidence' ? [] : [evidencePath]),
+      ])
+      const forbidden = ROUTING + 'model/approval-laundering.ts'
+      if (kind === 'forbidden-checkpoint' || kind === 'forbidden-history-restored') {
+        write(forbidden, 'export const illegal = true\n')
+        git(['add', '--', forbidden])
+        if (kind === 'forbidden-history-restored') {
+          git(['commit', '--quiet', '-m', 'Illegal planning product fixture'])
+          git(['rm', '--quiet', '--', forbidden])
+        }
+      }
+      git(['commit', '--quiet', '-m', 'Approval checkpoint fixture'])
+      const sha = git(['rev-parse', 'HEAD'])
+      let accepted
+      try {
+        accepted = verifyFrozenGate(
+          { activeChange: R03, baseCommit: sha, planningCommit: sha, preEvidence: evidencePath },
+          root,
+        )
+      } catch {
+        accepted = false
+      }
+      results.push({ kind, accepted, expected: kind === 'valid' })
+    } finally {
+      const resolved = path.resolve(root)
+      assert.equal(path.dirname(resolved), path.resolve(os.tmpdir()))
+      assert.ok(path.basename(resolved).startsWith('frade-r03-approval-'))
+      fs.rmSync(resolved, { recursive: true, force: true })
+    }
+  }
+  const stat = { isFile: () => true, mode: 0o100755 }
+  const modeProbe = vm.runInNewContext('(' + verifyFrozenFile.toString() + ')', {
+    fs: { lstatSync: () => stat, readFileSync: () => 'original\n' },
+    path,
+    process: { platform: 'linux' },
+    gitSnapshotEntries,
+    canonicalText,
+    frozenWorktreeModeMatches:
+      typeof frozenWorktreeModeMatches === 'function' ? frozenWorktreeModeMatches : undefined,
+    execFileSync: (_command, args) =>
+      args.includes('ls-tree')
+        ? '100644 abc\t' + SCRIPT + '\0'
+        : args.includes('ls-files')
+          ? '100644 abc 0\t' + SCRIPT + '\0'
+          : args.includes('config')
+            ? 'false\n'
+            : 'original\n',
+  })
+  results.push({
+    kind: 'POSIX-worktree-executable-mismatch',
+    accepted: modeProbe(SCRIPT, '/fixture', 'a'.repeat(40)),
+    expected: false,
+  })
+  const regular = { isFile: () => true, mode: 0o100644 }
+  check(
+    'POSIX non-executable positive',
+    frozenWorktreeModeMatches('100644', regular, 'linux', 'false'),
+  )
+  check('POSIX executable positive', frozenWorktreeModeMatches('100755', stat, 'linux', 'true'))
+  check(
+    'POSIX removed execute bit fails',
+    !frozenWorktreeModeMatches('100755', regular, 'linux', 'false'),
+  )
+  check(
+    'Windows explicit mode policy positive',
+    frozenWorktreeModeMatches('100755', regular, 'win32', 'false'),
+  )
+  check(
+    'Windows unsupported mode policy fails',
+    !frozenWorktreeModeMatches('100644', regular, 'win32', 'true'),
+  )
+  check(
+    'WORKTREE symlink or directory fails',
+    !frozenWorktreeModeMatches('100644', { isFile: () => false }, 'win32', 'false'),
+  )
+  const unusual = 'packages/draw/tests/routing-v2/direction/tab\tline\nname.ts'
+  for (const snapshot of ['HEAD', 'INDEX']) {
+    const record = (snapshot === 'INDEX' ? '100644 abc 0\t' : '100644 blob abc\t') + unusual + '\0'
+    const entries = gitSnapshotEntries(record, snapshot)
+    check(
+      snapshot + ' NUL TAB/LF parser preserves full path',
+      entries.length === 1 && entries[0].file === unusual,
+    )
+  }
+  const failures = results.filter((x) => x.accepted !== x.expected)
+  if (failures.length)
+    console.error('R03_APPROVAL_REGRESSION_FAILURES: ' + JSON.stringify(failures))
+  check('R03 approval and mode regressions: ' + JSON.stringify(failures), failures.length === 0)
+  for (const result of results)
+    check('R03 approval regression ' + result.kind, result.accepted === result.expected)
+}
+
 function selfTest() {
   const boundary = protectedPaths()
   const current = {
@@ -681,6 +1198,7 @@ function selfTest() {
     assert.ok(value, label)
     count++
   }
+  r03ApprovalRegressions(check)
   check(
     'control repairs allowed',
     scopeFindings(
@@ -1796,6 +2314,248 @@ function selfTest() {
     'symlink',
   )
   sourceSnapshotCase('Unmerged INDEX with pure worktree fails closed', 'staged', true, 'unmerged')
+
+  const r03 = {
+    activeChange: R03,
+    number: 3,
+    phase: 'PLANNING',
+    sequence: 'R03_OF_10',
+    baseCommit: R03_BASE,
+    previousChange: R02,
+    previousStatus: 'CLOSED',
+    previousArchived: 'true',
+    previousPostGate: 'PASS',
+    nextAllowed: 'false',
+    implementation: R03_IMPLEMENTATION,
+    control: R03_CONTROL,
+  }
+  const direction = ROUTING + 'orthogonal/direction/fixture.ts'
+  const directionTest = V2_TESTS + 'direction/unit/fixture.test.ts'
+  const r03Impl = {
+    ...r03,
+    phase: 'IMPLEMENTATION',
+    planningCommit: 'a'.repeat(40),
+    baseCommit: 'a'.repeat(40),
+    preImplementationGate: 'PASS',
+    frozenGateVerified: true,
+  }
+  check(
+    'R03 planning controls pass',
+    scopeFindings(
+      r03,
+      [CURRENT, SCRIPT, WORKFLOW, 'openspec/changes/' + R03 + '/proposal.md'],
+      boundary,
+    ).length === 0,
+  )
+  for (const file of [direction, directionTest]) {
+    check('R03 planning rejects product ' + file, scopeFindings(r03, [file], boundary).length > 0)
+    check(
+      'R03 implementation accepts exact product ' + file,
+      scopeFindings(r03Impl, [file], boundary).length === 0,
+    )
+  }
+  for (const file of [
+    ROUTING + 'model/x.ts',
+    ROUTING + 'geometry/x.ts',
+    ROUTING + 'terminal/x.ts',
+    ROUTING + 'perimeter/x.ts',
+    V2_TESTS + 'geometry/x.test.ts',
+    V2_TESTS + 'terminal/x.test.ts',
+    V2_TESTS + 'perimeter/x.test.ts',
+    'openspec/specs/routing-terminal-perimeter/spec.md',
+    'openspec/changes/archive/old/tasks.md',
+    ROUTING + 'orthogonal/JettyResolver.ts',
+    ROUTING + 'orthogonal/direction-other/x.ts',
+    V2_TESTS + 'direction-other/x.test.ts',
+    ROUTING + 'segment/x.ts',
+    'packages/draw/src/index.ts',
+    MASTER,
+    PLAYBOOK,
+    LEGACY_DOC,
+    'AGENTS.md',
+    ROUTING + 'AGENTS.md',
+    'apps/desktop/vendor/drawio/x.js',
+  ]) {
+    check(
+      'R03 rejects readonly/outside ' + file,
+      scopeFindings(r03Impl, [file], boundary).some((x) => x.file === file),
+    )
+  }
+  for (const control of [SCRIPT, WORKFLOW]) {
+    check(
+      'R03 approved frozen diff accepted ' + control,
+      scopeFindings(r03Impl, [control], boundary).length === 0,
+    )
+    check(
+      'R03 unverified freeze rejected ' + control,
+      scopeFindings({ ...r03Impl, frozenGateVerified: false }, [control], boundary).length > 0,
+    )
+  }
+  for (const override of [
+    { sequence: 'R04_OF_10' },
+    { previousStatus: 'OPEN' },
+    { previousArchived: 'false' },
+    { previousPostGate: 'FAIL' },
+    { previousChange: R01 },
+    { nextAllowed: 'true' },
+    { phase: 'UNKNOWN' },
+    { baseCommit: R03_BASE },
+    { preImplementationGate: 'PENDING' },
+    { implementation: [...R03_IMPLEMENTATION, ROUTING + 'terminal/**'] },
+    { control: [...R03_CONTROL, MASTER] },
+  ])
+    check(
+      'R03 rejects invalid control ' + JSON.stringify(override),
+      scopeFindings({ ...r03Impl, ...override }, [], boundary).length > 0,
+    )
+
+  for (const [file, source, pass] of [
+    [direction, 'import type { Rect } from "../../model";', true],
+    [direction, 'import { EPSILON } from "../../geometry";', true],
+    [direction, 'import type { DirectionMask } from "../../terminal";', true],
+    [direction, 'import type { PerimeterGeometry } from "../../perimeter";', true],
+    [direction, 'import { X } from "./peer";', true],
+    [direction, 'import { X } from "../JettyResolver";', false],
+    [direction, 'import { X } from "../../segment/x";', false],
+    [direction, 'import { X } from "../../floatingAttachment";', false],
+    [ROUTING + 'terminal/x.ts', 'import { X } from "../orthogonal/direction/x";', false],
+    [ROUTING + 'perimeter/x.ts', 'import { X } from "../terminal/x";', false],
+    [ROUTING + 'geometry/x.ts', 'import { X } from "../terminal/x";', false],
+    [ROUTING + 'model/x.ts', 'import { X } from "../geometry/x";', false],
+    [direction, 'import React from "react";', false],
+    [direction, 'const x = window.devicePixelRatio;', false],
+  ])
+    check(
+      'R03 dependency/purity ' + source,
+      (inspectSource(file, source, r03, boundary).length === 0) === pass,
+    )
+  check(
+    'R03 test framework rejected',
+    inspectSource(directionTest, 'import React from "react";', r03, boundary, {
+      core: false,
+      tests: true,
+    }).length > 0,
+  )
+
+  const r03Root = fs.mkdtempSync(path.join(os.tmpdir(), 'frade-r03-freeze-'))
+  try {
+    const git = (args) =>
+      execFileSync('git', args, {
+        cwd: r03Root,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
+      }).trim()
+    git(['init', '--quiet'])
+    git(['config', 'user.name', 'Routing gate fixture'])
+    git(['config', 'user.email', 'routing-gate@example.invalid'])
+    git(['config', 'core.autocrlf', 'false'])
+    git(['config', 'core.filemode', 'false'])
+    const objects = path.resolve(
+      ROOT,
+      execFileSync('git', ['rev-parse', '--git-path', 'objects'], {
+        cwd: ROOT,
+        encoding: 'utf8',
+      }).trim(),
+    )
+    fs.writeFileSync(path.join(r03Root, '.git/objects/info/alternates'), normalize(objects) + '\n')
+    git(['symbolic-ref', 'HEAD', 'refs/heads/main'])
+    git(['update-ref', 'refs/heads/main', R03_BASE])
+    git(['read-tree', R03_BASE])
+    const originals = new Map()
+    for (const file of R03_REVIEWED) {
+      const text =
+        file === CURRENT
+          ? 'ACTIVE_CHANGE: ' +
+            R03 +
+            '\nPHASE: PLANNING\nBASE_COMMIT: ' +
+            R03_BASE +
+            '\nSEQUENCE_POSITION: R03_OF_10\nPREVIOUS_CHANGE: ' +
+            R02 +
+            '\nPREVIOUS_CHANGE_STATUS: CLOSED\nPREVIOUS_CHANGE_ARCHIVED: true\n' +
+            'PREVIOUS_CHANGE_POST_IMPLEMENTATION_GATE: PASS\nIMPLEMENTATION_STATUS: NOT_STARTED\n' +
+            'NEXT_CHANGE_ALLOWED: false\nPRE_IMPLEMENTATION_GATE: PASS\n' +
+            'PRE_IMPLEMENTATION_GATE_EVIDENCE: ' +
+            R03_APPROVAL +
+            '\n\n## IMPLEMENTATION_SCOPE\n' +
+            R03_IMPLEMENTATION.join('\n') +
+            '\n\n## PROCESS_CONTROL_SCOPE\n' +
+            R03_CONTROL.join('\n') +
+            '\n'
+          : [MASTER, PLAYBOOK, LEGACY_DOC, 'AGENTS.md', ROUTING + 'AGENTS.md'].includes(file)
+            ? execFileSync('git', ['show', R03_BASE + ':' + file], { cwd: ROOT, encoding: 'utf8' })
+            : 'approved original\n'
+      originals.set(file, text)
+      fs.mkdirSync(path.dirname(path.join(r03Root, file)), { recursive: true })
+      fs.writeFileSync(path.join(r03Root, file), text)
+    }
+    const reportPath = R03_PREFIX + 'evidence/pre-implementation-gate-pass.md'
+    const reviewed = planningReviewFingerprint(r03Root)
+    const report =
+      'CHANGE: ' +
+      R03 +
+      '\nGATE_TYPE: PRE_IMPLEMENTATION\n' +
+      'GATE_STATUS: PASS\nREADY_FOR_IMPLEMENTATION: YES\n' +
+      '\nREVIEWED_ARTIFACTS_JSON_BEGIN\n' +
+      JSON.stringify(reviewed, null, 2) +
+      '\nREVIEWED_ARTIFACTS_JSON_END\n'
+    fs.writeFileSync(path.join(r03Root, reportPath), report)
+    fs.writeFileSync(
+      path.join(r03Root, R03_APPROVAL),
+      JSON.stringify({
+        schemaVersion: 1,
+        change: R03,
+        gateType: 'PRE_IMPLEMENTATION',
+        gateStatus: 'PASS',
+        baseline: R03_BASE,
+        reviewerContext: 'fresh-read-only',
+        reportPath,
+        reportSha256: textHash(report),
+        artifacts: reviewed,
+      }),
+    )
+    git(['add', '--', ...R03_REVIEWED, R03_APPROVAL, reportPath])
+    git(['commit', '--quiet', '-m', 'R03 approved planning fixture'])
+    const approvedSha = git(['rev-parse', 'HEAD'])
+    const approved = {
+      ...r03Impl,
+      baseCommit: approvedSha,
+      planningCommit: approvedSha,
+      preEvidence: R03_APPROVAL,
+    }
+    check('R03 all frozen controls match approved checkpoint', verifyFrozenGate(approved, r03Root))
+    for (const file of R03_FROZEN) {
+      fs.writeFileSync(path.join(r03Root, file), 'illegal staged content\n')
+      git(['add', '--', file])
+      fs.writeFileSync(path.join(r03Root, file), originals.get(file))
+      check(
+        'R03 freeze staged/worktree cancellation discovers ' + file,
+        changedFiles(approvedSha, r03Root).includes(file),
+      )
+      check(
+        'R03 freeze staged/worktree cancellation fails ' + file,
+        !verifyFrozenGate(approved, r03Root),
+      )
+      git(['restore', '--staged', '--', file])
+      fs.writeFileSync(path.join(r03Root, file), 'illegal worktree content\n')
+      check('R03 freeze worktree change fails ' + file, !verifyFrozenGate(approved, r03Root))
+      fs.writeFileSync(path.join(r03Root, file), originals.get(file))
+      check('R03 freeze restored control passes ' + file, verifyFrozenGate(approved, r03Root))
+    }
+    fs.writeFileSync(path.join(r03Root, WORKFLOW), 'committed illegal\n')
+    git(['add', '--', WORKFLOW])
+    git(['commit', '--quiet', '-m', 'Forbidden frozen workflow fixture'])
+    fs.writeFileSync(path.join(r03Root, WORKFLOW), originals.get(WORKFLOW))
+    check('R03 committed inverse-worktree freeze fails', !verifyFrozenGate(approved, r03Root))
+    check(
+      'R03 committed inverse-worktree path discovered',
+      changedFiles(approvedSha, r03Root).includes(WORKFLOW),
+    )
+  } finally {
+    const resolved = path.resolve(r03Root)
+    assert.equal(path.dirname(resolved), path.resolve(os.tmpdir()))
+    assert.ok(path.basename(resolved).startsWith('frade-r03-freeze-'))
+    fs.rmSync(resolved, { recursive: true, force: true })
+  }
 
   console.log('PROCESS_GATE_SELF_TESTS: PASS (' + count + ' assertions)')
 }
