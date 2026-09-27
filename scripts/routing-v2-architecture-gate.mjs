@@ -15,14 +15,24 @@ const PLAYBOOK = 'docs/routing-v2/implementation-playbook.md'
 const SCRIPT = 'scripts/routing-v2-architecture-gate.mjs'
 const LEGACY_DOC = 'docs/routing-v2/legacy-boundary.md'
 const R01 = 'routing-v2-01-geometry-kernel'
+const R02 = 'routing-v2-02-terminal-perimeter'
+const R02_BASE = 'd6579321d13e5c423eb1f1523b1d4ce35bcae583'
 const ROUTING = 'packages/draw/src/routing/'
 const V2_TESTS = 'packages/draw/tests/routing-v2/'
 const R01_IMPLEMENTATION = [ROUTING + 'model/**', ROUTING + 'geometry/**', V2_TESTS + 'geometry/**']
 const R01_CONTROL = ['openspec/changes/' + R01 + '/**', CURRENT, MASTER, PLAYBOOK, SCRIPT]
+const R02_IMPLEMENTATION = [
+  ROUTING + 'terminal/**',
+  ROUTING + 'perimeter/**',
+  V2_TESTS + 'terminal/**',
+  V2_TESTS + 'perimeter/**',
+]
+const R02_CONTROL = ['openspec/changes/' + R02 + '/**', CURRENT, SCRIPT]
 const CORE = new Set([
   'model',
   'geometry',
   'terminal',
+  'perimeter',
   'orthogonal',
   'segment',
   'loop',
@@ -55,6 +65,7 @@ const inScope = (file, scope) =>
     entry.endsWith('/**') ? file.startsWith(entry.slice(0, -2)) : file === entry,
   )
 const read = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8')
+const canonicalText = (text) => text.replaceAll('\r\n', '\n')
 
 function field(content, name) {
   return new RegExp('^' + name + ':[ \\t]*(.+?)[ \\t]*$', 'm').exec(content)?.[1].trim()
@@ -78,6 +89,12 @@ function readCurrentChange() {
     sequence: field(content, 'SEQUENCE_POSITION'),
     nextAllowed: field(content, 'NEXT_CHANGE_ALLOWED'),
     previousGate: field(content, 'PREVIOUS_GATE'),
+    previousChange: field(content, 'PREVIOUS_CHANGE'),
+    previousStatus: field(content, 'PREVIOUS_CHANGE_STATUS'),
+    previousArchived: field(content, 'PREVIOUS_CHANGE_ARCHIVED'),
+    previousPostGate: field(content, 'PREVIOUS_CHANGE_POST_IMPLEMENTATION_GATE'),
+    planningCommit: field(content, 'APPROVED_PLANNING_COMMIT'),
+    preImplementationGate: field(content, 'PRE_IMPLEMENTATION_GATE'),
     number: Number(/^routing-v2-(\d{2})-/.exec(activeChange)?.[1]) || null,
     implementation: section(content, 'IMPLEMENTATION_SCOPE'),
     control: section(content, 'PROCESS_CONTROL_SCOPE'),
@@ -157,6 +174,53 @@ export function scopeFindings(current, files, boundary) {
       }
     }
   }
+  if (current.activeChange === R02) {
+    for (const [name, actual, expected] of [
+      ['IMPLEMENTATION_SCOPE', current.implementation, R02_IMPLEMENTATION],
+      ['PROCESS_CONTROL_SCOPE', current.control, R02_CONTROL],
+    ]) {
+      if (JSON.stringify([...actual].sort()) !== JSON.stringify([...expected].sort()))
+        fail(CURRENT, name + ' differs from the exact authorized R02 scope')
+    }
+    if (
+      current.sequence !== 'R02_OF_10' ||
+      current.nextAllowed !== 'false' ||
+      (current.phase === 'PLANNING'
+        ? current.baseCommit !== R02_BASE
+        : !/^[0-9a-f]{40}$/i.test(current.planningCommit ?? '') ||
+          current.baseCommit !== current.planningCommit) ||
+      current.previousChange !== R01 ||
+      current.previousStatus !== 'CLOSED' ||
+      current.previousArchived !== 'true' ||
+      current.previousPostGate !== 'PASS'
+    )
+      fail(CURRENT, 'R02 baseline/previous-change/sequence/next-change fields are inconsistent')
+    if (!['PLANNING', 'IMPLEMENTATION', 'VERIFICATION'].includes(current.phase))
+      fail(CURRENT, 'Unrecognized R02 phase')
+    if (
+      current.phase !== 'PLANNING' &&
+      (current.preImplementationGate !== 'PASS' || !current.frozenGateVerified)
+    )
+      fail(
+        CURRENT,
+        'Implementation requires PRE_IMPLEMENTATION PASS and a verified approved planning gate',
+      )
+    for (const file of files) {
+      if (inScope(file, R02_IMPLEMENTATION)) {
+        if (current.phase === 'PLANNING')
+          fail(file, 'R02 product code/tests changed during PLANNING')
+      } else if (inScope(file, R02_CONTROL)) {
+        if (file === SCRIPT && current.phase !== 'PLANNING' && !current.frozenGateVerified)
+          fail(file, 'Architecture gate differs from the approved planning commit')
+      } else if (
+        inScope(file, R01_IMPLEMENTATION) ||
+        file.startsWith('openspec/changes/archive/') ||
+        file.startsWith('openspec/specs/routing-geometry-kernel/')
+      ) {
+        fail(file, 'Archived R01 is read-only; R01_EXTENSION_REQUIRED')
+      } else fail(file, 'Changed file is outside R02 implementation and process/control scopes')
+    }
+  }
   for (const file of files) {
     if (file.startsWith('apps/desktop/vendor/drawio/')) {
       fail(file, 'Vendored draw.io reference modified')
@@ -215,7 +279,7 @@ export function inspectSource(
   content,
   current,
   boundary,
-  { core = true, tests = false } = {},
+  { core = true, tests = false, dependencies = [] } = {},
 ) {
   const findings = []
   const ast = ts.createSourceFile(file, content, ts.ScriptTarget.Latest, true)
@@ -244,6 +308,10 @@ export function inspectSource(
       return
     }
     const dependency = dependencyCategory(file, expression.text, boundary, tests)
+    if (tests && current.number === 2 && FRAMEWORK.test(expression.text)) {
+      fail(node, 'Framework dependency in R02 tests: ' + expression.text)
+      return
+    }
     // Product tests can use Vitest/Node tooling, but cannot construct legacy domain values.
     if (
       !core &&
@@ -255,8 +323,22 @@ export function inspectSource(
       fail(node, dependency.forbidden)
       return
     }
+    if (core && dependency.target) dependencies.push(dependency.target)
     if (core && current.number === 1 && !['model', 'geometry'].includes(dependency.layer)) {
       fail(node, 'R01 depends on a later V2 layer: ' + dependency.layer)
+    }
+    if (core && current.number === 2) {
+      const allowed = {
+        model: ['model'],
+        geometry: ['model', 'geometry'],
+        perimeter: ['model', 'geometry', 'perimeter'],
+        terminal: ['model', 'geometry', 'perimeter', 'terminal'],
+      }[coreLayer(file)]
+      if (!allowed || !allowed.includes(dependency.layer))
+        fail(
+          node,
+          'R02 dependency direction violation: ' + coreLayer(file) + ' -> ' + dependency.layer,
+        )
     }
     if (core && coreLayer(file) === 'model' && dependency.layer !== 'model') {
       fail(node, 'Model depends on geometry/higher layer')
@@ -352,6 +434,51 @@ function walk(directory, visitor) {
   }
 }
 
+export function verifyFrozenGate(current, gitRoot = ROOT) {
+  if (current.baseCommit !== current.planningCommit)
+    throw new Error('R02 BASE_COMMIT must equal APPROVED_PLANNING_COMMIT during implementation')
+  if (!/^[0-9a-f]{40}$/i.test(current.planningCommit ?? ''))
+    throw new Error('APPROVED_PLANNING_COMMIT must pin the frozen R02 planning gate')
+  const git = (args) =>
+    execFileSync('git', args, { cwd: gitRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] })
+  git(['merge-base', '--is-ancestor', current.planningCommit, 'HEAD'])
+  const approved = git(['show', current.planningCommit + ':' + CURRENT])
+  if (
+    field(approved, 'ACTIVE_CHANGE') !== R02 ||
+    field(approved, 'PHASE') !== 'PLANNING' ||
+    field(approved, 'BASE_COMMIT') !== R02_BASE
+  )
+    throw new Error('Approved planning commit is not the R02 planning checkpoint')
+  const frozen = git(['show', current.planningCommit + ':' + SCRIPT])
+  return (
+    canonicalText(frozen) === canonicalText(fs.readFileSync(path.join(gitRoot, SCRIPT), 'utf8'))
+  )
+}
+export function cycleFindings(graph) {
+  const findings = [],
+    visiting = new Set(),
+    visited = new Set(),
+    stack = []
+  function visit(file) {
+    if (visiting.has(file)) {
+      findings.push({
+        file,
+        reason:
+          'Circular V2 dependency: ' + [...stack.slice(stack.indexOf(file)), file].join(' -> '),
+      })
+      return
+    }
+    if (visited.has(file)) return
+    visiting.add(file)
+    stack.push(file)
+    for (const target of graph.get(file) ?? []) if (graph.has(target)) visit(target)
+    stack.pop()
+    visiting.delete(file)
+    visited.add(file)
+  }
+  for (const file of [...graph.keys()].sort()) visit(file)
+  return findings
+}
 function main() {
   const findings = []
   let current
@@ -367,16 +494,23 @@ function main() {
         throw new Error('Required control file missing: ' + file)
     }
     current = readCurrentChange()
+    if (current.activeChange === R02 && current.phase !== 'PLANNING')
+      current.frozenGateVerified = verifyFrozenGate(current)
     const boundary = protectedPaths()
     if (boundary.algorithms.size === 0)
       throw new Error('Protected legacy boundary could not be parsed')
     const files = changedFiles(current.baseCommit)
     findings.push(...scopeFindings(current, files, boundary))
     const checked = new Set()
+    const graph = new Map()
     const inspect = (file, core, tests) => {
       if (checked.has(file)) return
       checked.add(file)
-      findings.push(...inspectSource(file, read(file), current, boundary, { core, tests }))
+      const dependencies = []
+      findings.push(
+        ...inspectSource(file, read(file), current, boundary, { core, tests, dependencies }),
+      )
+      if (core) graph.set(file, dependencies)
     }
     walk(path.join(ROOT, ROUTING), (file) => {
       if (CORE.has(coreLayer(file))) inspect(file, true, false)
@@ -387,6 +521,7 @@ function main() {
       const tests = /(?:^|\/)tests\//.test(file)
       if (tests || file.startsWith('packages/draw/src/')) inspect(file, false, tests)
     }
+    findings.push(...cycleFindings(graph))
     console.log('ACTIVE_CHANGE: ' + current.activeChange)
     console.log('PHASE: ' + current.phase)
     console.log('CHANGED_FILES_CHECKED: ' + files.length)
@@ -405,7 +540,17 @@ function main() {
 
 function selfTest() {
   const boundary = protectedPaths()
-  const current = { ...readCurrentChange(), phase: 'PLANNING' }
+  const current = {
+    ...readCurrentChange(),
+    activeChange: R01,
+    number: 1,
+    phase: 'PLANNING',
+    sequence: 'R01_OF_10',
+    nextAllowed: 'false',
+    previousGate: 'BOOTSTRAP PASS',
+    implementation: R01_IMPLEMENTATION,
+    control: R01_CONTROL,
+  }
   const geometry = ROUTING + 'geometry/fixture.ts'
   let count = 0
   const check = (label, value) => {
@@ -541,6 +686,194 @@ function selfTest() {
       { core: false, tests: true },
     ).length === 0,
   )
+  check(
+    'freeze tolerates Git CRLF checkout only',
+    canonicalText('x\r\ny\r\n') === canonicalText('x\ny\n'),
+  )
+  check(
+    'freeze rejects actual content edits',
+    canonicalText('x\r\ny\r\n') !== canonicalText('x\ny-edited\n'),
+  )
+  const r02 = {
+    ...current,
+    activeChange: R02,
+    number: 2,
+    sequence: 'R02_OF_10',
+    baseCommit: R02_BASE,
+    previousChange: R01,
+    previousStatus: 'CLOSED',
+    previousArchived: 'true',
+    previousPostGate: 'PASS',
+    implementation: R02_IMPLEMENTATION,
+    control: R02_CONTROL,
+  }
+  const r02Impl = {
+    ...r02,
+    phase: 'IMPLEMENTATION',
+    baseCommit: 'a'.repeat(40),
+    planningCommit: 'a'.repeat(40),
+    preImplementationGate: 'PASS',
+    frozenGateVerified: true,
+  }
+  const terminal = ROUTING + 'terminal/fixture.ts'
+  const perimeter = ROUTING + 'perimeter/fixture.ts'
+  check(
+    'R02 planning permits authorized process repairs',
+    scopeFindings(r02, [SCRIPT, CURRENT, 'openspec/changes/' + R02 + '/design.md'], boundary)
+      .length === 0,
+  )
+  check(
+    'R02 implementation permits all four trees',
+    scopeFindings(
+      r02Impl,
+      [
+        terminal,
+        perimeter,
+        V2_TESTS + 'terminal/unit/x.test.ts',
+        V2_TESTS + 'perimeter/unit/x.test.ts',
+      ],
+      boundary,
+    ).length === 0,
+  )
+  check(
+    'R02 approved gate remains allowed in baseline diff',
+    scopeFindings(r02Impl, [SCRIPT], boundary).length === 0,
+  )
+  check(
+    'R02 edited frozen gate is rejected',
+    scopeFindings({ ...r02Impl, frozenGateVerified: false }, [SCRIPT], boundary).length > 0,
+  )
+  check(
+    'R02 missing pre-gate cannot implement',
+    scopeFindings({ ...r02Impl, preImplementationGate: 'FAIL' }, [terminal], boundary).length > 0,
+  )
+  for (const file of [
+    terminal,
+    perimeter,
+    V2_TESTS + 'terminal/unit/x.test.ts',
+    V2_TESTS + 'perimeter/unit/x.test.ts',
+  ])
+    check('R02 planning rejects product ' + file, scopeFindings(r02, [file], boundary).length > 0)
+  for (const file of [
+    geometry,
+    ROUTING + 'model/x.ts',
+    V2_TESTS + 'geometry/x.test.ts',
+    MASTER,
+    PLAYBOOK,
+    'AGENTS.md',
+    ROUTING + 'AGENTS.md',
+    LEGACY_DOC,
+    'packages/draw/src/index.ts',
+    ROUTING + 'orthogonal/x.ts',
+    'openspec/specs/routing-geometry-kernel/spec.md',
+    'openspec/changes/archive/2026-09-27-' + R01 + '/tasks.md',
+  ])
+    check(
+      'R02 rejects frozen/outside path ' + file,
+      scopeFindings(r02Impl, [file], boundary).length > 0,
+    )
+  check(
+    'R02 exact scope cannot be broadened',
+    scopeFindings(
+      { ...r02Impl, implementation: [...R02_IMPLEMENTATION, ROUTING + 'geometry/**'] },
+      [],
+      boundary,
+    ).length > 0,
+  )
+  check(
+    'R02 implementation rejects old R01 baseline',
+    scopeFindings({ ...r02Impl, baseCommit: R02_BASE }, [], boundary).length > 0,
+  )
+  check(
+    'R02 planning still uses closed R01 baseline',
+    scopeFindings(r02, [], boundary).length === 0,
+  )
+  check(
+    'R02 baseline cannot drift',
+    scopeFindings({ ...r02Impl, baseCommit: '1234567' }, [], boundary).length > 0,
+  )
+  for (const [file, source, allowed] of [
+    [terminal, 'import type { Point } from "../model";', true],
+    [terminal, 'import { EPSILON } from "../geometry";', true],
+    [terminal, 'import { X } from "../perimeter/x";', true],
+    [perimeter, 'import { EPSILON } from "../geometry";', true],
+    [perimeter, 'import type { Rect } from "../model";', true],
+    [perimeter, 'import { X } from "../terminal/x";', false],
+    [geometry, 'import { X } from "../perimeter/x";', false],
+    [geometry, 'import { X } from "../terminal/x";', false],
+    [terminal, 'import { X } from "../orthogonal/x";', false],
+    [terminal, 'import { X } from "../floatingAttachment";', false],
+    [terminal, 'import { X } from "../../document/schema";', false],
+    [terminal, 'import { X } from "../../../index";', false],
+    [
+      terminal,
+      'import { X } from "../../../../../../apps/desktop/vendor/drawio/mxgraph/src/view/mxPerimeter";',
+      false,
+    ],
+  ])
+    check(
+      'R02 dependency ' + file + source,
+      (inspectSource(file, source, r02, boundary).length === 0) === allowed,
+    )
+  for (const source of [
+    'import "react";',
+    'import "react-dom";',
+    'import "@antv/x6";',
+    'import "electron";',
+    'window;',
+    'document;',
+    'devicePixelRatio;',
+    'Math.random();',
+    'Date.now();',
+  ])
+    for (const file of [terminal, perimeter])
+      check('R02 purity ' + file + source, inspectSource(file, source, r02, boundary).length > 0)
+  for (const source of [
+    'import "react";',
+    'export { X } from "react-dom";',
+    'import "@antv/x6";',
+    'require("electron");',
+  ])
+    check(
+      'R02 tests reject framework ' + source,
+      inspectSource(V2_TESTS + 'terminal/unit/x.test.ts', source, r02, boundary, {
+        core: false,
+        tests: true,
+      }).length > 0,
+    )
+  check(
+    'R02 compiler negative cases allowed',
+    inspectSource(
+      V2_TESTS + 'terminal/types/x.type-test.ts',
+      '// @ts-expect-error mixed spaces\nconst x = 1;',
+      r02,
+      boundary,
+      { core: false, tests: true },
+    ).length === 0,
+  )
+  check(
+    'inward graph is acyclic',
+    cycleFindings(
+      new Map([
+        [terminal, [perimeter]],
+        [perimeter, [geometry]],
+        [geometry, []],
+      ]),
+    ).length === 0,
+  )
+  check(
+    'same-layer cycle is rejected',
+    cycleFindings(
+      new Map([
+        [terminal, [ROUTING + 'terminal/other.ts']],
+        [ROUTING + 'terminal/other.ts', [terminal]],
+      ]),
+    ).length > 0,
+  )
+  check(
+    'self import cycle is rejected',
+    cycleFindings(new Map([[perimeter, [perimeter]]])).length > 0,
+  )
   // Exercise real Git discovery in a separate temporary repository, not product trees.
   const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'frade-process-gate-'))
   try {
@@ -553,7 +886,14 @@ function selfTest() {
     git(['init', '--quiet'])
     fs.writeFileSync(path.join(temporaryRoot, 'baseline.txt'), 'baseline\n')
     fs.writeFileSync(path.join(temporaryRoot, 'removed.txt'), 'temporary fixture\n')
-    git(['add', '--', 'baseline.txt', 'removed.txt'])
+    fs.mkdirSync(path.join(temporaryRoot, path.dirname(CURRENT)), { recursive: true })
+    fs.mkdirSync(path.join(temporaryRoot, path.dirname(SCRIPT)), { recursive: true })
+    fs.writeFileSync(
+      path.join(temporaryRoot, CURRENT),
+      'ACTIVE_CHANGE: ' + R02 + '\nPHASE: PLANNING\nBASE_COMMIT: ' + R02_BASE + '\n',
+    )
+    fs.writeFileSync(path.join(temporaryRoot, SCRIPT), '// approved process gate\n')
+    git(['add', '--', 'baseline.txt', 'removed.txt', CURRENT, SCRIPT])
     git([
       '-c',
       'user.name=Gate Self Test',
@@ -577,6 +917,26 @@ function selfTest() {
       JSON.stringify(changedFiles(base, temporaryRoot)) ===
         JSON.stringify(['baseline.txt', 'removed.txt', 'staged.txt', 'untracked with spaces.ts']),
     )
+    const approvedCurrent = { ...r02Impl, baseCommit: base, planningCommit: base }
+    check(
+      'actual committed planning gate is frozen',
+      verifyFrozenGate(approvedCurrent, temporaryRoot),
+    )
+    fs.writeFileSync(path.join(temporaryRoot, SCRIPT), '// approved process gate\r\n')
+    check(
+      'actual CRLF checkout preserves frozen gate',
+      verifyFrozenGate(approvedCurrent, temporaryRoot),
+    )
+    fs.writeFileSync(path.join(temporaryRoot, SCRIPT), '// unauthorized process gate edit\n')
+    check('actual gate edit breaks freeze', !verifyFrozenGate(approvedCurrent, temporaryRoot))
+    assert.throws(() =>
+      verifyFrozenGate({ ...approvedCurrent, planningCommit: undefined }, temporaryRoot),
+    )
+    count++
+    assert.throws(() =>
+      verifyFrozenGate({ ...approvedCurrent, planningCommit: 'f'.repeat(40) }, temporaryRoot),
+    )
+    count++
     assert.throws(() => changedFiles('NONE', temporaryRoot))
     count++
   } finally {
