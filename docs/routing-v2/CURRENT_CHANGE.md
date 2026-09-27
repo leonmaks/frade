@@ -10,7 +10,26 @@ SEQUENCE_POSITION: R02_OF_10
 
 PHASE: PLANNING
 
+PROCESS_CONTROL_REPAIR:
+architecture-gate changed-path discovery, frozen controls and source snapshot integrity
+
+PROCESS_CONTROL_REPAIR_STATUS: COMPLETE
+
 BASE_COMMIT: d6579321d13e5c423eb1f1523b1d4ce35bcae583
+
+PRE_IMPLEMENTATION_REVALIDATION: PASS
+
+PRE_IMPLEMENTATION_GATE: PASS
+
+ACTIVE_PROCESS_CONTROL_BLOCKER: NONE
+
+R02_IMPLEMENTATION_STORAGE: STASH
+
+R02_IMPLEMENTATION_STASH_OID: 150af0254bd68cdb9f8c6d93f5b29d5d039b7215
+
+IMPLEMENTATION_BACKUP_BRANCH: backup/r02-terminal-perimeter-implementation
+
+RESTORE_ALLOWED: false
 
 PREVIOUS_CHANGE_STATUS: CLOSED
 
@@ -23,6 +42,10 @@ Specify and implement framework-independent terminal bindings,
 connection/port constraint vocabulary, perimeter geometry, fixed terminal
 resolution, and floating terminal resolution required by the Routing V2
 pipeline.
+
+POST_IMPLEMENTATION_GATE: FAIL
+
+ARCHIVE_ALLOWED: false
 
 NEXT_CHANGE: routing-v2-03-direction-resolver
 
@@ -68,3 +91,9 @@ The installed gate must exactly match that approved commit during implementation
 Master spec, playbook, legacy boundary, both AGENTS contracts, and archived R01
 source/tests/specs are frozen. If R01 needs an extension, STOP and report
 R01_EXTENSION_REQUIRED; do not modify it under R02 scope.
+
+## PROCESS_CONTROL_REPAIR_SCOPE
+
+This temporary PLANNING phase authorizes only process-control repair of
+architecture-gate changed-path discovery, frozen controls and source snapshot integrity. It does not reopen product planning
+or authorize changes to R02 production code or tests, proposal, delta spec, or design.
