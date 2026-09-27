@@ -42,7 +42,7 @@ All product tasks below are blocked until 1.2 and 1.3 complete. During current P
 
 - [x] 5.1 Mark IMPLEMENTATION complete only from evidence, transition to VERIFICATION and freeze production; run openspec-verify-change and resolve every required correctness/evidence gap before continuing, retaining the approved baseline.
 - [x] 5.2 Obtain fresh independent POST_IMPLEMENTATION PASS after OpenSpec Verify; record actual review evidence and archive permission, without treating the machine PASS as independent approval.
-- [ ] 5.3 Reconcile final tasks/process evidence and explicitly stage authorized implementation/process paths; run process checks and staged diff checks, commit implementation and save SHA.
+- [x] 5.3 Reconcile final tasks/process evidence and explicitly stage authorized implementation/process paths; run process checks and staged diff checks, commit implementation and save SHA.
 - [ ] 5.4 Archive only after required permission/PASS, verify main capability sync and openspec validate --all --strict plus diff/status checks; commit archive separately, then CLOSED transition separately, and STOP before R04.
 
 ## Command plan
