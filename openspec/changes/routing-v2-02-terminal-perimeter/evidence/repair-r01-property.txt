@@ -1,0 +1,31 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/draw
+
+stdout | tests/routing-v2/geometry/property/geometry.property.test.ts > R01 reproducible generated geometry verification > normalization is idempotent for at least 5000 generated sequences
+PROPERTY normalization-idempotence: seed=0xFAD001 executed=5000 accepted=5000 rejected=0
+
+stdout | tests/routing-v2/geometry/property/geometry.property.test.ts > R01 reproducible generated geometry verification > executes at least 5000 accepted EPSILON-conditioned point round trips
+PROPERTY conditioned-round-trip: seed=0xFAD001 executed=5313 accepted=5000 rejected=313
+
+stdout | tests/routing-v2/geometry/property/geometry.property.test.ts > R01 reproducible generated geometry verification > safe translation preserves orientation, exact distance, and normalization modulo translation
+PROPERTY translation-orientation-distance-normalization: seed=0xFAD001 executed=5000 accepted=5000 rejected=0
+
+stdout | tests/routing-v2/geometry/property/geometry.property.test.ts > R01 reproducible generated geometry verification > identical inputs produce identical semantic results repeatedly
+PROPERTY repeated-input-determinism: seed=0xFAD001 executed=5000 accepted=5000 rejected=0
+
+stdout | tests/routing-v2/geometry/property/geometry.property.test.ts > R01 reproducible generated geometry verification > Manhattan distance is symmetric across a broad finite domain
+PROPERTY manhattan-symmetry: seed=0xFAD001 executed=5000 accepted=5000 rejected=0
+
+stdout | tests/routing-v2/geometry/property/geometry.property.test.ts > R01 reproducible generated geometry verification > safe common translation preserves rectangle overlap and separation relations
+PROPERTY rectangle-relation-translation: seed=0xFAD001 executed=5000 accepted=5000 rejected=0
+
+ ✓ tests/routing-v2/geometry/property/geometry.property.test.ts (7 tests) 2705ms
+   ✓ R01 reproducible generated geometry verification > safe translation preserves orientation, exact distance, and normalization modulo translation  1602ms
+   ✓ R01 reproducible generated geometry verification > identical inputs produce identical semantic results repeatedly  318ms
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  13:24:40
+   Duration  3.54s (transform 159ms, setup 0ms, collect 208ms, tests 2.70s, environment 0ms, prepare 279ms)
+
+COMMAND: pnpm --filter @frade/draw exec vitest run --config tests/routing-v2/geometry/vitest.config.ts tests/routing-v2/geometry/property; EXIT_CODE: 0

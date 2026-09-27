@@ -1,0 +1,130 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/draw
+
+ ❯ tests/routing-v2/perimeter/unit/ellipse.test.ts (22 tests | 4 failed) 34ms
+   ✓ ellipse radial perimeter > projects cardinal toward (-5,10) to (0,10) 3ms
+   ✓ ellipse radial perimeter > projects cardinal toward (15,10) to (10,10) 0ms
+   ✓ ellipse radial perimeter > projects cardinal toward (5,-10) to (5,0) 0ms
+   ✓ ellipse radial perimeter > projects cardinal toward (5,30) to (5,20) 0ms
+   × ellipse radial perimeter > uses the exact represented east edge for a fractional radial axis 13ms
+     → expected { x: 0.3, y: 1 } to deeply equal { x: 0.30000000000000004, y: 1 }
+   × ellipse radial perimeter > uses the exact represented west edge for a fractional radial axis 3ms
+     → expected { x: 0.29999999999999993, y: 1 } to deeply equal { x: 0.3, y: 1 }
+   × ellipse radial perimeter > uses the exact represented south edge for a fractional radial axis 2ms
+     → expected { x: 1, y: 0.39999999999999997 } to deeply equal { x: 1, y: 0.4 }
+   × ellipse radial perimeter > uses the exact represented north edge for a fractional radial axis 1ms
+     → expected { x: 1, y: 0.29999999999999993 } to deeply equal { x: 1, y: 0.3 }
+   ✓ ellipse radial perimeter > projects a diagonal analytically 1ms
+   ✓ ellipse radial perimeter > extends an inside point to the ellipse and preserves a boundary point 1ms
+   ✓ ellipse radial perimeter > uses EAST midpoint for center and retains sub-unit ray direction 0ms
+   ✓ ellipse orthogonal hint > uses horizontal-band intersection for (20,16) 0ms
+   ✓ ellipse orthogonal hint > uses horizontal-band intersection for (-10,16) 0ms
+   ✓ ellipse orthogonal hint > uses vertical-band intersection for (8,30) 0ms
+   ✓ ellipse orthogonal hint > uses vertical-band intersection for (8,-10) 0ms
+   ✓ ellipse orthogonal hint > uses radial projection outside both exact bands 0ms
+   ✓ ellipse orthogonal hint > uses west horizontal intersection inside and exact band endpoints 1ms
+   ✓ ellipse orthogonal hint > applies center precedence under the orthogonal hint 0ms
+   ✓ ellipse rejection and dispatch > rejects each collapsed extent with orthogonal=false 1ms
+   ✓ ellipse rejection and dispatch > rejects each collapsed extent with orthogonal=true 0ms
+   ✓ ellipse rejection and dispatch > rejects unrepresentable subtraction and normalization 2ms
+   ✓ ellipse rejection and dispatch > dispatches by actual shape and rejects malformed kinds 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/routing-v2/perimeter/unit/ellipse.test.ts > ellipse radial perimeter > uses the exact represented east edge for a fractional radial axis
+AssertionError: expected { x: 0.3, y: 1 } to deeply equal { x: 0.30000000000000004, y: 1 }
+
+- Expected
++ Received
+
+  {
+-   "x": 0.30000000000000004,
++   "x": 0.3,
+    "y": 1,
+  }
+
+ ❯ tests/routing-v2/perimeter/unit/ellipse.test.ts:50:9
+     48|       expect(
+     49|         ellipsePerimeter(fractionalBounds, point<ModelSpace>(towardX, …
+     50|       ).toEqual(expected)
+       |         ^
+     51|     },
+     52|   )
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/routing-v2/perimeter/unit/ellipse.test.ts > ellipse radial perimeter > uses the exact represented west edge for a fractional radial axis
+AssertionError: expected { x: 0.29999999999999993, y: 1 } to deeply equal { x: 0.3, y: 1 }
+
+- Expected
++ Received
+
+  {
+-   "x": 0.3,
++   "x": 0.29999999999999993,
+    "y": 1,
+  }
+
+ ❯ tests/routing-v2/perimeter/unit/ellipse.test.ts:50:9
+     48|       expect(
+     49|         ellipsePerimeter(fractionalBounds, point<ModelSpace>(towardX, …
+     50|       ).toEqual(expected)
+       |         ^
+     51|     },
+     52|   )
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/routing-v2/perimeter/unit/ellipse.test.ts > ellipse radial perimeter > uses the exact represented south edge for a fractional radial axis
+AssertionError: expected { x: 1, y: 0.39999999999999997 } to deeply equal { x: 1, y: 0.4 }
+
+- Expected
++ Received
+
+  {
+    "x": 1,
+-   "y": 0.4,
++   "y": 0.39999999999999997,
+  }
+
+ ❯ tests/routing-v2/perimeter/unit/ellipse.test.ts:50:9
+     48|       expect(
+     49|         ellipsePerimeter(fractionalBounds, point<ModelSpace>(towardX, …
+     50|       ).toEqual(expected)
+       |         ^
+     51|     },
+     52|   )
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/routing-v2/perimeter/unit/ellipse.test.ts > ellipse radial perimeter > uses the exact represented north edge for a fractional radial axis
+AssertionError: expected { x: 1, y: 0.29999999999999993 } to deeply equal { x: 1, y: 0.3 }
+
+- Expected
++ Received
+
+  {
+    "x": 1,
+-   "y": 0.3,
++   "y": 0.29999999999999993,
+  }
+
+ ❯ tests/routing-v2/perimeter/unit/ellipse.test.ts:50:9
+     48|       expect(
+     49|         ellipsePerimeter(fractionalBounds, point<ModelSpace>(towardX, …
+     50|       ).toEqual(expected)
+       |         ^
+     51|     },
+     52|   )
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 18 passed (22)
+   Start at  13:23:45
+   Duration  970ms (transform 208ms, setup 0ms, collect 293ms, tests 34ms, environment 0ms, prepare 263ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\packages\draw

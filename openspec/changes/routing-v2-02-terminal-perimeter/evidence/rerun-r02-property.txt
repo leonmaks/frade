@@ -1,0 +1,56 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/draw
+
+stdout | tests/routing-v2/perimeter/property/ellipse.property.test.ts > ellipse generated evidence > returns an analytical ellipse member for both hint modes
+[R02_PROPERTY] {"name":"ellipse-equation","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+stdout | tests/routing-v2/perimeter/property/rectangle.property.test.ts > rectangle generated evidence > returns a boundary member for both hint modes
+[R02_PROPERTY] {"name":"rectangle-membership","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+stdout | tests/routing-v2/terminal/property/fixed.property.test.ts > fixed terminal generated evidence > is deterministic, immutable, and independent of unrelated target movement
+[R02_PROPERTY] {"name":"fixed-target-independence","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+ ✓ tests/routing-v2/terminal/property/fixed.property.test.ts (1 test) 520ms
+   ✓ fixed terminal generated evidence > is deterministic, immutable, and independent of unrelated target movement  517ms
+stdout | tests/routing-v2/perimeter/property/ellipse.property.test.ts > ellipse generated evidence > preserves safe common translation within EPSILON
+[R02_PROPERTY] {"name":"ellipse-safe-translation","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+stdout | tests/routing-v2/perimeter/property/rectangle.property.test.ts > rectangle generated evidence > preserves safe common translation within EPSILON
+[R02_PROPERTY] {"name":"rectangle-safe-translation","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+stdout | tests/routing-v2/terminal/property/floating.property.test.ts > floating terminal generated evidence > exchanges source/target endpoints under role and list reversal
+[R02_PROPERTY] {"name":"floating-source-target-reversal","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+stdout | tests/routing-v2/perimeter/property/rectangle.property.test.ts > rectangle generated evidence > is deterministic across unrelated calls
+[R02_PROPERTY] {"name":"rectangle-determinism","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+stdout | tests/routing-v2/perimeter/property/ellipse.property.test.ts > ellipse generated evidence > is deterministic across unrelated calls
+[R02_PROPERTY] {"name":"ellipse-determinism","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+stdout | tests/routing-v2/terminal/property/floating.property.test.ts > floating terminal generated evidence > preserves bounded common translation within EPSILON
+[R02_PROPERTY] {"name":"floating-safe-translation","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+stdout | tests/routing-v2/perimeter/property/rectangle.property.test.ts > rectangle generated evidence > does not mutate frozen inputs
+[R02_PROPERTY] {"name":"rectangle-non-mutation","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+ ✓ tests/routing-v2/perimeter/property/rectangle.property.test.ts (4 tests) 1077ms
+   ✓ rectangle generated evidence > preserves safe common translation within EPSILON  353ms
+   ✓ rectangle generated evidence > does not mutate frozen inputs  306ms
+stdout | tests/routing-v2/perimeter/property/ellipse.property.test.ts > ellipse generated evidence > does not mutate frozen inputs
+[R02_PROPERTY] {"name":"ellipse-non-mutation","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+ ✓ tests/routing-v2/perimeter/property/ellipse.property.test.ts (4 tests) 1110ms
+   ✓ ellipse generated evidence > preserves safe common translation within EPSILON  350ms
+   ✓ ellipse generated evidence > does not mutate frozen inputs  309ms
+stdout | tests/routing-v2/terminal/property/floating.property.test.ts > floating terminal generated evidence > is deterministic and does not mutate frozen inputs
+[R02_PROPERTY] {"name":"floating-determinism-non-mutation","seed":16437250,"raw":5000,"accepted":5000,"rejected":0}
+
+ ✓ tests/routing-v2/terminal/property/floating.property.test.ts (3 tests) 1302ms
+   ✓ floating terminal generated evidence > exchanges source/target endpoints under role and list reversal  541ms
+   ✓ floating terminal generated evidence > preserves bounded common translation within EPSILON  334ms
+   ✓ floating terminal generated evidence > is deterministic and does not mutate frozen inputs  424ms
+
+ Test Files  4 passed (4)
+      Tests  12 passed (12)
+   Start at  13:08:20
+   Duration  2.37s (transform 359ms, setup 0ms, collect 1.01s, tests 4.01s, environment 1ms, prepare 1.13s)
