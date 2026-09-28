@@ -5,23 +5,25 @@ BLOCKERS: NONE
 MACHINE_GATE_INTEGRITY: PASS
 READY_FOR_IMPLEMENTATION: YES
 
-SPEC_ALIGNMENT: PASS — B1/B2 contracts, minima checks, bounded channels, independent pre-V2 classification, and strict/divergence accounting agree across the reviewed artifacts.
+SPEC_ALIGNMENT: PASS — B1 validates both resolved minima; B2 preserves the unchanged input domain with independent native certification and divergence handling.
 
-SCOPE_ALIGNMENT: PASS — Retained snapshots, origin, protected layers, and repair-entry equality remain valid.
+SCOPE_ALIGNMENT: PASS — Origin remains `cf424e…`; immutable repair-entry and current HEAD/INDEX/WORKTREE retained-file checks pass through the exact gate profile.
 
-ARCHITECTURE_ALIGNMENT: PASS — R02/R03 authority, inward dependencies, bounded R04 construction, and R04/R05 isolation remain explicit.
+ARCHITECTURE_ALIGNMENT: PASS — R02/R03 authority, bounded R04 channels, inward dependencies, and R04/R05 isolation remain intact.
 
-TEST_COVERAGE_ALIGNMENT: PASS — 77 fixtures remain independently certified; task 2.8 correctly remains future implementation work.
+TEST_COVERAGE_ALIGNMENT: PASS — 77 reference cases and 7 instruction controls replay successfully. Task 1.7 remains open in the workspace; no implementation approval file was written.
 
-NUMERICAL_CONTRACT_ALIGNMENT: PASS — B1/B2 reproductions and channel witnesses agree with the revised minima, EPSILON, and strict fallback contracts.
+NUMERICAL_CONTRACT_ALIGNMENT: PASS — B1 and B2 counterexamples, jetty minima, EPSILON boundaries, strict too-short behavior, and channel witnesses agree with the revised contract.
 
 REFERENCE_PARITY_PLAN: PASS — Native certification precedes V2; certified cases require parity, finite native violations require valid channels, and V2 cannot reclassify inputs.
 
-The exact fingerprint command passed read-only. Standalone focused self-tests’ `mkdtemp EPERM` remains infrastructure evidence; the aggregate self-test includes both focused suites. All 31 fingerprint entries match, including the corrected `ordinary-direction-diagnostic.mjs` hash.
+Executed checks: `--review-fingerprint` PASS (31 live artifacts); `pnpm run routing:v2:arch-gate` PASS (HEAD, INDEX, WORKTREE); strict OpenSpec validation PASS; `git diff --check` PASS with line-ending warnings; full gate self-test PASS (989 assertions); reference replay PASS (77 ordinary cases and 7 instruction controls); B1 diagnostic/channel probes and B2 reference probe PASS. A focused repair self-test could not create its temporary directory because of sandbox `EPERM`; the full self-test passed the corresponding controls. The older supplemental entry script is pinned to the original entry commit and is inapplicable after the later control-only HEAD; the live integrated repair inspection returned no findings.
 
-LEGACY_ISOLATION: PASS — R01–R03, legacy/vendor, exports, and R05+ remain protected.
+LEGACY_ISOLATION: PASS — R01–R03, legacy/vendor, exports, and R05+ boundaries remain protected.
 
-R04_R05_BOUNDARY: PASS — Scope remains limited to R04 router, normalization, validation, and orthogonal tests.
+R04_R05_BOUNDARY: PASS — No segment-router, editing, loop, renderer, X6, or framework work is authorized.
+
+The current workspace remains PLANNING, PRE pending, implementation paused, archive disabled, and task 1.7 unchecked. No files were modified.
 REVIEWED_ARTIFACTS_JSON_BEGIN
 {
   "scripts/routing-v2-architecture-gate.mjs": "7b0216ecf5b2c27df87ef7c85c4821c47249a97452748e0007b639c8f0b9b721",
@@ -31,13 +33,13 @@ REVIEWED_ARTIFACTS_JSON_BEGIN
   "docs/routing-v2/legacy-boundary.md": "c81922a0699511786595a70fa240e33b7be00a1c18f98bab2d16b8b9a039ff47",
   "AGENTS.md": "5cf0b48fd99285c92da9f550374adbbb1d941531324e0f52357bf384165ef686",
   "packages/draw/src/routing/AGENTS.md": "622a37a293a55f3d38099a8582672e750a8bef686a64dabec62f63f82ec258b9",
-  "docs/routing-v2/CURRENT_CHANGE.md": "cad2821bfc05b9d81ab5584408507088ae02148689bb9931c246d0411580d612",
+  "docs/routing-v2/CURRENT_CHANGE.md": "fe337e791234bbe9d82ee631e9a60a80088c07ed949c6e1deb0cb75ea411b930",
   "packages/draw/package.json": "76b861f9acbd939d21a2cc22698d62f5d3cecec2d77e20cf7062949dfcf11539",
   "pnpm-lock.yaml": "fbf452f1af97b659a346f73076dc0316adace7dc610fb6e72a9ecd09c33e592d",
   "openspec/changes/routing-v2-04-orthogonal-router/.openspec.yaml": "d707823457f58b4f938a99bc049bddd9b937affec2d09c976c9a16a9dcd03f77",
   "openspec/changes/routing-v2-04-orthogonal-router/proposal.md": "6e259cab153fa77ac48f3b53cd9f68bc4dbfa18fd724eed9c80f05d6e4554ccc",
   "openspec/changes/routing-v2-04-orthogonal-router/design.md": "1468bff87037e0608a0a8a8299d826bd684ec533b139348bcdb15c62bc9edcf6",
-  "openspec/changes/routing-v2-04-orthogonal-router/tasks.md": "ee6946dd80e55e49babf145248a88a01582015dc02b46cf3aad9c1b23b2769cd",
+  "openspec/changes/routing-v2-04-orthogonal-router/tasks.md": "23450c5c8c2c1295d0feb8dc0382e3d6953addb16971f397e04ae0099ead7764",
   "openspec/changes/routing-v2-04-orthogonal-router/traceability.md": "6308a779a895afb6bba3824de1482df21f8625340d75ae539fd271574a52bde4",
   "openspec/changes/routing-v2-04-orthogonal-router/specs/routing-orthogonal-router/spec.md": "c42e8af9468644f8770f4405b0708b74e374e450ce8322f519c9bb29830e46c6",
   "openspec/changes/routing-v2-04-orthogonal-router/evidence/fallback-decision.md": "c4d3fcc01d11cee93c4bfcef743ea0a5c035e25d12508901739c41851c8cb6c2",

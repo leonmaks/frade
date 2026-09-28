@@ -1,0 +1,74 @@
+CHANGE: routing-v2-04-orthogonal-router
+GATE\_TYPE: PRE\_IMPLEMENTATION
+GATE\_STATUS: PASS
+BLOCKERS: NONE
+MACHINE\_GATE\_INTEGRITY: PASS
+READY\_FOR\_IMPLEMENTATION: YES
+
+Fresh read-only review completed. The previous report and stale schema-2 binding were not reused.
+
+SPEC\_ALIGNMENT: PASS — B1 validates both resolved minima; B2 preserves the unchanged input domain with independent native certification and divergence handling.
+
+SCOPE\_ALIGNMENT: PASS — Origin remains `cf424e…`; immutable repair-entry and current HEAD/INDEX/WORKTREE retained-file checks pass through the exact gate profile.
+
+ARCHITECTURE\_ALIGNMENT: PASS — R02/R03 authority, bounded R04 channels, inward dependencies, and R04/R05 isolation remain intact.
+
+TEST\_COVERAGE\_ALIGNMENT: PASS — 77 reference cases and 7 instruction controls replay successfully. Task 1.7 remains open in the workspace; no implementation approval file was written.
+
+NUMERICAL\_CONTRACT\_ALIGNMENT: PASS — B1 and B2 counterexamples, jetty minima, EPSILON boundaries, strict too-short behavior, and channel witnesses agree with the revised contract.
+
+REFERENCE\_PARITY\_PLAN: PASS — Native verdicts are frozen before V2; certified cases require parity, finite native violations require valid channels, and V2 cannot reclassify inputs.
+
+LEGACY\_ISOLATION: PASS — R01–R03, legacy/vendor, exports, and R05+ boundaries remain protected.
+
+R04\_R05\_BOUNDARY: PASS — No segment-router, editing, loop, renderer, X6, or framework work is authorized.
+
+Executed checks:
+
+- `--review-fingerprint`: PASS; 31 live artifacts.
+- `pnpm run routing:v2:arch-gate`: PASS; HEAD, INDEX, and WORKTREE inspected.
+- `openspec validate ... --strict`: PASS.
+- `git diff --check`: PASS; only line-ending warnings.
+- Full gate self-test: PASS, 989 assertions.
+- Reference replay: PASS, 77 ordinary cases and 7 instruction controls.
+- B1 diagnostic/channel probes and B2 reference probe: PASS.
+- Focused repair self-test could not create its temporary directory because of sandbox `EPERM`; the full self-test passed the corresponding controls.
+- The older supplemental entry script is pinned to the original entry commit and is inapplicable after the later control-only HEAD; the live integrated repair inspection returned no findings.
+
+The current workspace remains PLANNING, PRE pending, implementation paused, archive disabled, and task 1.7 unchecked. No files were modified.
+
+REVIEWED\_ARTIFACTS\_JSON\_BEGIN
+{
+"scripts/routing-v2-architecture-gate.mjs": "7b0216ecf5b2c27df87ef7c85c4821c47249a97452748e0007b639c8f0b9b721",
+"docs/routing-v2/workflow-models.md": "e74f9fff21deba8435bebfd940269efaadc93e6018dfcbc91ec8da2cb3929964",
+"docs/routing-v2/drawio-routing-master-spec.md": "07029b60e99bccddeb1671df84f0e2f6c8865c3c01eb5de923333294f3dd354b",
+"docs/routing-v2/implementation-playbook.md": "e59136bfb9d84cc5e3c4b149de9aba88527f574054dffb9704ab309213ac4eaf",
+"docs/routing-v2/legacy-boundary.md": "c81922a0699511786595a70fa240e33b7be00a1c18f98bab2d16b8b9a039ff47",
+"AGENTS.md": "5cf0b48fd99285c92da9f550374adbbb1d941531324e0f52357bf384165ef686",
+"packages/draw/src/routing/AGENTS.md": "622a37a293a55f3d38099a8582672e750a8bef686a64dabec62f63f82ec258b9",
+"docs/routing-v2/CURRENT\_CHANGE.md": "fe337e791234bbe9d82ee631e9a60a80088c07ed949c6e1deb0cb75ea411b930",
+"packages/draw/package.json": "76b861f9acbd939d21a2cc22698d62f5d3cecec2d77e20cf7062949dfcf11539",
+"pnpm-lock.yaml": "fbf452f1af97b659a346f73076dc0316adace7dc610fb6e72a9ecd09c33e592d",
+"openspec/changes/routing-v2-04-orthogonal-router/.openspec.yaml": "d707823457f58b4f938a99bc049bddd9b937affec2d09c976c9a16a9dcd03f77",
+"openspec/changes/routing-v2-04-orthogonal-router/proposal.md": "6e259cab153fa77ac48f3b53cd9f68bc4dbfa18fd724eed9c80f05d6e4554ccc",
+"openspec/changes/routing-v2-04-orthogonal-router/design.md": "1468bff87037e0608a0a8a8299d826bd684ec533b139348bcdb15c62bc9edcf6",
+"openspec/changes/routing-v2-04-orthogonal-router/tasks.md": "23450c5c8c2c1295d0feb8dc0382e3d6953addb16971f397e04ae0099ead7764",
+"openspec/changes/routing-v2-04-orthogonal-router/traceability.md": "6308a779a895afb6bba3824de1482df21f8625340d75ae539fd271574a52bde4",
+"openspec/changes/routing-v2-04-orthogonal-router/specs/routing-orthogonal-router/spec.md": "c42e8af9468644f8770f4405b0708b74e374e450ce8322f519c9bb29830e46c6",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/fallback-decision.md": "c4d3fcc01d11cee93c4bfcef743ea0a5c035e25d12508901739c41851c8cb6c2",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-gate-prompt.md": "89bea542d346bf7db63ea9a4e52b44005ac23feb6f50b28e3c41f87a5d0bf778",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/too-short-reference-probe.mjs": "562e0b915dff11f88d8476c11d509c369a7d52295ae885c1ccac57bb7d547400",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/gate-profile.md": "6a36a77f69b7f180fca31cf46e3f9ad34fe4761772dcc96f04fa31025c5d0130",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/planning-repair-process-protocol.md": "631d59ad561af585a3c7ee7c34bf37fbdbe24fbbfd8e659375e1cd1d357902d0",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/planning-repair-entry-snapshot.json": "1a306ca7ec1df199e41351e750fd74942cf8c2c98aa1f00de899eb320d1e3a71",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/planning-repair-decision.md": "6946c2f2b4da9067688bd07f40b871d96ed03111ce0c09b7c2764c442a46ee7f",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/check-planning-repair-entry.mjs": "b15c72b41d9f1f1f9503cdd1199b3f38ac492e1e2a00b86dfad97bc987f37633",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/ordinary-direction-spec-conflict.md": "5b19c87ca5a015bc79599fa0e077337c822b459b1ffded272707d273652fe4e0",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/ordinary-direction-diagnostic.mjs": "d0904112a3f217d180cda0136f6d6a5a374bb53e06f30f90912597a1f9b660f3",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/ordinary-direction-diagnostic.json": "2e2e44aecbe2a51e2c0825f38ba570a569bc8f409ba32e4df2c3ff964f0683f4",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/ordinary-channel-planning-probe.mjs": "70bf7380cc11e3205bd116a5bc9300c49f6d6960d18322aa9d82db163a37dd80",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/ordinary-channel-planning-probe.json": "f100b1f48d17fc7902787c3990790d70fbaa670e2ce6fc67a14b0de03964276b",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/planning-repair-fixture-files.json": "6514b317fd714497cf3b3bbb1efacbda7cded63882600735cccee55122c574d8",
+"openspec/changes/routing-v2-04-orthogonal-router/evidence/.gitattributes": "3bc131f6647768625132e0d89b5522384ff807cce72dc746cff1912ee42f28ba"
+}
+REVIEWED\_ARTIFACTS\_JSON\_END
