@@ -66,6 +66,50 @@ Ordinary routing SHALL select from the pinned draw.io 4-by-4 route pattern table
 - **WHEN** an instruction uses half-separation or its limit is behind the current movement direction
 - **THEN** the former SHALL retain its fractional coordinate and the latter SHALL not move backwards or leave a duplicate corner
 
+### Requirement: Ordinary direction preserving construction
+
+Outside the unchanged strict too-short branch, the router SHALL retain every geometrically certified table plan and SHALL construct an ordinary oriented-channel route when that finite plan fails the terminal certificate defined in design section 3a. The certificate SHALL cover exact fixed/perimeter attachment, nonzero orthogonality, both R03 directions/masks and BOTH resolved terminal jetty minima before route publication. After provisional R02 projection and endpoint-pinning canonicalization, source segment P1-P0 and target outward segment P[n-2]-P[n-1] SHALL each have checked finite Manhattan length L > EPSILON and L + EPSILON >= that role's resolved minimum. This comparison SHALL use resolved minima, not positive construction buffers; invalid numeric inputs or nonfinite derived arithmetic SHALL abort. Each finite under-minimum run SHALL be a named geometric incompatibility recording role, segment index, actual length and expected minimum; all deficient roles SHALL be reported. Geometric incompatibility SHALL be inspectable evidence, distinct from thrown numeric, input, executor or final invariant errors; those errors SHALL abort without selecting another strategy. Neither input conditioning nor strict-parity coverage SHALL be narrowed to exclude the incompatible input. Ordinary evidence SHALL identify REFERENCE_PATTERN or ORIENTED_CHANNEL, the original table plan and certificate reasons; ORIENTED_CHANNEL SHALL not claim FIXED_ENDPOINTS_TOO_SHORT or native geometry parity.
+
+The oriented-channel strategy SHALL protect both outward terminal runs using the positive ordinary construction buffers and exact fixed points or unchanged R02 floating projection. It SHALL enumerate the finite alternating-axis templates defined in design section 3a, with at most five connector segments and eight raw route points; use no empty connector for coincident stubs; and validate every eligible candidate. Selection SHALL use exact complete Manhattan length, canonical bend count, WEST<NORTH<EAST<SOUTH direction sequence and the stable channel-index template key. An invalid eligible candidate SHALL abort, not be silently discarded. Both final adapted terminal runs SHALL meet their construction buffers within EPSILON, without reducing requested minima. No R05 hints, legacy router, vendor production call, global obstacles or unbounded search SHALL participate.
+
+Preserving strict-parity coverage means retaining all 77 saved strict obligations
+and all independently native-certified comparisons. The unchanged input domain
+also admits finite native-invariant divergences under the explicit two-part
+reference requirement below; channel construction there SHALL NOT be treated as
+a parity blocker merely because the historical input predicate returned true.
+
+#### Scenario: Accepted constrained fixed and anchor regression
+- **WHEN** source bounds are (-8,-71166,692,1862), fixed source is (338,-71166), source mask is EAST-only, target is anchor (-15,-70862) with all directions, and jetties are 49 and 96
+- **THEN** R03 EAST/NORTH and both fixed points SHALL be preserved, and ordinary ORIENTED_CHANNEL SHALL produce [(338,-71166),(733,-71166),(733,-70958),(-15,-70958),(-15,-70862)]; fixed distance exceeds 145 so fallback SHALL not be selected
+
+#### Scenario: Compatible reference pattern is retained
+- **WHEN** an ordinary table plan passes the terminal certificate
+- **THEN** REFERENCE_PATTERN SHALL retain its original intermediate snapshot even if channel enumeration could produce a shorter route; all existing strict-parity fixtures SHALL continue to use and match the table strategy
+
+#### Scenario: Finite short source jetty selects ordinary channels
+- **WHEN** source bounds are (0,0,100,100), fixed source is (0,0) with perimeter=false and EAST-only mask, target is anchor (1,30) with all directions, and both resolved jetties are 10
+- **THEN** R03 EAST/NORTH SHALL remain authoritative; native table [2114,2561] and provisional route [(0,0),(1,0),(1,30)] SHALL fail the certificate with source actual length 1 versus minimum 10, and ordinary ORIENTED_CHANNEL SHALL construct a valid route preserving exact endpoints and both minima; distance sqrt(901)>20 SHALL keep the too-short fallback disabled
+
+#### Scenario: Independent terminal minimum checks
+- **WHEN** otherwise valid provisional canonical table plans have only a deficient source run, only a deficient target run, or both deficient runs
+- **THEN** the certificate SHALL report exactly the deficient roles using their own resolved minima and select ordinary channels, including asymmetric and auto-derived minima; final-validation rejection alone SHALL not satisfy the construction requirement
+
+#### Scenario: Minimum comparison preserves the existing tolerance
+- **WHEN** positive orthogonal canonical terminal runs are exactly at their minima, shorter within EPSILON, or shorter by more than EPSILON
+- **THEN** certificate acceptance SHALL follow the existing L + EPSILON >= minimum predicate independently at each end, with L > EPSILON still mandatory; deterministic boundary fixtures SHALL cover both sides and the exact comparison boundary
+
+#### Scenario: Resolved minimum is distinct from construction buffer
+- **WHEN** an otherwise certified ordinary table plan has a positive run greater than EPSILON but less than 10 and that endpoint's resolved minimum is zero or sub-EPSILON
+- **THEN** the certificate SHALL not reject that plan solely because its positive construction buffer is 10; ORIENTED_CHANNEL candidates SHALL still meet their stronger construction-buffer requirement whenever channels are selected
+
+#### Scenario: Coincident stubs and all direction pairs
+- **WHEN** ordinary construction needs channels, including equal stubs and all 16 R03 direction pairs
+- **THEN** an eligible finite connector SHALL preserve both outward rays and minima; empty connectors and terminal reversal shortcuts SHALL not be accepted, and complete candidate costs and stable tie keys SHALL be auditable
+
+#### Scenario: A thrown error cannot activate channels
+- **WHEN** raw execution, input arithmetic, perimeter projection, eligible candidate validation or final route validation throws
+- **THEN** the error SHALL propagate without switching to channels, exterior fallback or another router
+
 ### Requirement: Floating attachment after intermediates
 
 The router SHALL compute intermediates before resolving floating endpoints through R02 with orthogonal=true. Both endpoints SHALL use the same pre-floating snapshot, selecting the adjacent intermediate or the opposite fixed point/center exactly as R02 specifies. Fixed results SHALL bypass floating projection. Rectangle and ellipse endpoints SHALL lie on their actual perimeter; successful terminal segments SHALL remain orthogonal and preserve selected directions after projection. A radial/out-of-band result that breaks orthogonality SHALL be detected as a routing defect, not repaired by changing R02 or relocating an endpoint after validation.
@@ -124,15 +168,41 @@ Canonicalization SHALL be structural and idempotent, reusing R01 duplicate and b
 
 ### Requirement: Actionable invariant validation
 
-Every successful route SHALL satisfy INV-001 through INV-011 as applicable: finite coordinates, no adjacent EPSILON duplicates, orthogonal nonzero segments, valid fixed/perimeter attachment, required source/target direction membership, model-only authority, canonical idempotence and determinism. The route validator SHALL check local geometric/attachment invariants with named IDs and offending point/segment evidence; zoom independence and determinism SHALL additionally have executable metamorphic tests. Fallback jetty minima SHALL be checked after canonicalization. Zero/one-point routes SHALL not vacuously pass. Validation SHALL not alter its input.
+Every successful route SHALL satisfy INV-001 through INV-011 as applicable: finite coordinates, no adjacent EPSILON duplicates, orthogonal nonzero segments, valid fixed/perimeter attachment, required source/target direction membership, model-only authority, canonical idempotence and determinism. The route validator SHALL check local geometric/attachment invariants with named IDs and offending point/segment evidence; zoom independence and determinism SHALL additionally have executable metamorphic tests. Both resolved jetty minima SHALL be supplied to the independent validation context and checked after final R02 resolution and canonicalization for REFERENCE_PATTERN, ORIENTED_CHANNEL and fallback, using the certificate's checked L > EPSILON and L + EPSILON >= minimum predicate. Channels SHALL additionally satisfy their positive construction buffers. Source/target failures SHALL report INV-007/008 respectively, segment index, actual length and expected minimum. Zero/one-point routes SHALL not vacuously pass. Validation SHALL not alter its input or switch strategy.
 
 #### Scenario: Invalid route diagnostics
-- **WHEN** independent malformed-route fixtures violate finiteness, attachment, orthogonality, endpoint direction, duplication or fallback jetty minima
+- **WHEN** independent malformed-route fixtures violate finiteness, attachment, orthogonality, endpoint direction, duplication or either terminal jetty minimum on ordinary or fallback routes
 - **THEN** validation SHALL identify the violated invariant and relevant evidence without repairing the route
 
 ### Requirement: Reference parity and adaptation evidence remain separate
 
-Reference expectations SHALL come from hash-pinned vendor logic independently of R04 production. At least 64 ordinary topology fixtures plus aligned/overlap/fixed/floating/marker cases SHALL compare ordered semantic points, endpoint sides and bend counts on a predeclared parity domain. Only identical structural normalization and EPSILON coordinate comparison are allowed; meaningful bends/directions SHALL not be erased. Too-short fallback, inherited R01-R03 numerical/fixed-mask adaptations and zero/sub-EPSILON construction buffers SHALL have named V2-contract fixtures outside strict parity. The original counterexample's reference output [(5,0),(20,0)] SHALL be retained unchanged and explicitly shown to violate NORTH-only constraints; its Frade route SHALL never be labelled matching reference output.
+Reference expectations SHALL come from hash-pinned vendor logic independently of R04 production. The existing strictParityInput predicate SHALL remain unchanged as the full reference-comparison input-domain selector; admission SHALL NOT itself assert that native geometry satisfies hard constraints. This explicitly replaces the former unconditional parity promise over that domain. No admitted input SHALL be removed. Before V2 execution, a test-local checker independent of every R04 production certificate/validator/normalizer/router SHALL certify the complete independently normalized native route using expected endpoints, singleton directions/masks and resolved minima derived independently from reference input and pinned reference semantics. It SHALL check endpoint preservation/attachment, at least two points, finite nonzero orthogonality, both outward directions/masks and both checked L > EPSILON and L + EPSILON >= own minimum predicates, as specified in design section 6.
+
+The immutable pre-V2 verdict SHALL be NATIVE_CERTIFIED or NATIVE_INVARIANT_DIVERGENCE. For NATIVE_CERTIFIED, V2 SHALL select REFERENCE_PATTERN and match complete ordered semantic points, endpoint sides, signed segment directions and bend counts under the existing structural normalization and EPSILON coordinate comparison. For a proven finite native geometric violation, NATIVE_INVARIANT_DIVERGENCE SHALL retain unchanged raw/canonical native geometry and every violated invariant with role/segment/expected/actual evidence, and V2 SHALL construct ORIENTED_CHANNEL satisfying every hard constraint. Divergence SHALL never be labelled final geometry parity. Numeric, oracle, checker, instrumentation and unknown errors SHALL abort rather than authorize divergence. V2 output, strategy, certificate, exception or mismatch SHALL NOT influence or revise the reference verdict; failures SHALL remain failures in either class. Direct table/instruction reference comparisons SHALL continue for both classes.
+
+All 77 existing ordinary strict fixtures, including the 64-case direction/quadrant matrix and aligned/overlap/fixed/floating/marker cases, SHALL retain their exact expected routes and strict obligations. Each SHALL independently pass native certification; a failure SHALL stop investigation rather than relabel that fixture. New B2 coverage SHALL be additive. Completed-run accounting SHALL include every admitted comparison input as certified or finite-divergence, with separate strict results, divergence results and failed/aborted counts; divergences SHALL NOT inflate a parity-success percentage or become rejected property inputs. Property generators, conditioning, quotas and tolerances SHALL remain unchanged.
+
+Only identical structural normalization and EPSILON coordinate comparison are allowed; meaningful bends/directions SHALL not be erased. Too-short fallback, inherited R01-R03 numerical/fixed-mask adaptations and zero/sub-EPSILON construction buffers SHALL keep their named V2-contract fixtures outside strict parity. The original counterexample's reference output [(5,0),(20,0)] SHALL be retained unchanged and explicitly shown to violate NORTH-only constraints; its Frade route SHALL never be labelled matching reference output.
+
+#### Scenario: Admitted native route violates target direction and minimum
+- **WHEN** source rectangle (0,0,20,20) has fixed (20,10), EAST-only, target rectangle (11,30,20,20) has fixed (21,30), NORTH-only, distinct cells and minima 10/10
+- **THEN** the unchanged input-domain selector SHALL remain true; native table [513,2308,2561,1090,514,2568,2308] and canonical [(20,10),(30,10),(30,30),(21,30)] SHALL be retained, with target outward EAST versus NORTH and length 9 versus minimum 10 recorded before V2 execution; V2 SHALL construct ordinary ORIENTED_CHANNEL with exact endpoints, EAST/NORTH and both minima, while sqrt(401)>20 keeps fallback disabled
+
+#### Scenario: Certified native route cannot be reclassified by V2 failure
+- **WHEN** native certification passes before V2 runs but V2 throws, mismatches, selects channels or returns a contradictory certificate
+- **THEN** the comparison SHALL fail under its unchanged NATIVE_CERTIFIED verdict, even if channels could be shorter; no fixture or expected native result SHALL be rewritten
+
+#### Scenario: Divergence still requires valid V2 construction
+- **WHEN** native certification independently records a finite geometric violation before V2 runs
+- **THEN** the original native result and defect evidence SHALL remain immutable, and any V2 exception, missing required channel strategy or failed invariant SHALL fail the test rather than count as a successful adaptation
+
+#### Scenario: Reference failure is not geometric divergence
+- **WHEN** the reference oracle or independent checker encounters nonfinite arithmetic, an exception, instrumentation inconsistency or unknown failure
+- **THEN** the run SHALL abort and retain the error evidence without assigning a divergence verdict or skipping the input
+
+#### Scenario: Existing strict fixtures and comparison accounting remain intact
+- **WHEN** the revised comparison suite runs the 77 saved strict fixtures and new B2 coverage
+- **THEN** all 77 SHALL remain independently certified strict comparisons with unchanged expectations, B2 SHALL be a separately reported native-invariant divergence, and all 78 inputs SHALL be accounted for without rejection or V2-driven classification
 
 #### Scenario: Honest fallback comparison
 - **WHEN** the north-only too-short case is reported
@@ -140,7 +210,7 @@ Reference expectations SHALL come from hash-pinned vendor logic independently of
 
 ### Requirement: Reproducible core property coverage
 
-Each core property SHALL execute at least 10000 accepted cases using seed 0xFAD004: finiteness/orthogonality, direction membership and fixed/actual-perimeter attachment, determinism across unrelated calls, non-mutation, canonical idempotence, safe common translation, and independence from external zoom metadata. Raw, accepted and rejected counts, seed, replay path and concrete failing input SHALL be reported separately. Fallback SHALL also have at least 10000 accepted cases spanning all 16 selected-direction pairs with jetty minima checked. Translation generators SHALL use bounded integers, even extents, representable fixed coordinates and all relevant values/results within [-1000000,1000000], remaining 4*EPSILON away from non-exact decision thresholds; output coordinates compare within EPSILON with unchanged topology. Arbitrary finite translation invariance or universal reflection/source-target symmetry SHALL not be claimed. Rejection SHALL occur on input conditioning only, never because a produced route fails.
+Each core property SHALL execute at least 10000 accepted cases using seed 0xFAD004: finiteness/orthogonality, direction membership and fixed/actual-perimeter attachment with both resolved jetty minima on all branches, determinism across unrelated calls, non-mutation, canonical idempotence, safe common translation, and independence from external zoom metadata. Raw, accepted and rejected counts, seed, replay path and concrete failing input SHALL be reported separately. Fallback SHALL also have at least 10000 accepted cases spanning all 16 selected-direction pairs with jetty minima checked. Translation generators SHALL use bounded integers, even extents, representable fixed coordinates and all relevant values/results within [-1000000,1000000], remaining 4*EPSILON away from non-exact decision thresholds; output coordinates compare within EPSILON with unchanged topology. Arbitrary finite translation invariance or universal reflection/source-target symmetry SHALL not be claimed. Rejection SHALL occur on input conditioning only, never because a produced route fails.
 
 #### Scenario: Accepted quotas and failures
 - **WHEN** property execution completes or finds an invalid produced route

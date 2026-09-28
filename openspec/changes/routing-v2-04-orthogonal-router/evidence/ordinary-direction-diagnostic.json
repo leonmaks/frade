@@ -1,0 +1,314 @@
+{
+  "classification": "SPEC_CONFLICT",
+  "vendorSha256": "8608f4d1771db2307ce5a665a4ce9301da3ea4f759d932d381f057654c1e326d",
+  "description": "Pinned executor with required R03 EAST/NORTH loses source EAST; native selector is not a hard-mask substitute.",
+  "fixedDistance": 465.85942085569116,
+  "resolvedJettySum": 145,
+  "executorOnly": {
+    "injectedNativeDirections": [
+      8,
+      2
+    ],
+    "quadrant": 0,
+    "pattern": [
+      2114,
+      2561
+    ],
+    "intermediates": [
+      {
+        "x": -15,
+        "y": -71166
+      }
+    ],
+    "assembledPoints": [
+      [
+        338,
+        -71166
+      ],
+      [
+        -15,
+        -71166
+      ],
+      [
+        -15,
+        -70862
+      ]
+    ],
+    "actualSourceDirection": "west",
+    "requiredSourceDirection": "east"
+  },
+  "nativeOriginal": {
+    "points": [
+      {
+        "x": 338,
+        "y": -71166
+      },
+      {
+        "x": -15,
+        "y": -70862
+      }
+    ],
+    "intermediates": [],
+    "audit": {
+      "portConstraintReads": 2,
+      "segmentFallbackCalls": 0,
+      "floatingCalls": []
+    },
+    "jetty": {
+      "source": 49,
+      "target": 96
+    },
+    "trace": {
+      "instructions": []
+    }
+  },
+  "nativeNondegenerateControl": {
+    "points": [
+      {
+        "x": 338,
+        "y": -71166
+      },
+      {
+        "x": 338,
+        "y": -71215
+      },
+      {
+        "x": -15,
+        "y": -71215
+      },
+      {
+        "x": -15,
+        "y": -70862
+      }
+    ],
+    "intermediates": [
+      {
+        "x": 338,
+        "y": -71215
+      },
+      {
+        "x": -15,
+        "y": -71215
+      }
+    ],
+    "audit": {
+      "portConstraintReads": 2,
+      "segmentFallbackCalls": 0,
+      "floatingCalls": []
+    },
+    "jetty": {
+      "source": 49,
+      "target": 96
+    },
+    "trace": {
+      "instructions": [
+        {
+          "code": 514,
+          "directionIndex": 2,
+          "direction": [
+            0,
+            -1
+          ],
+          "terminal": null,
+          "side": 0,
+          "center": true,
+          "limit": null,
+          "before": {
+            "index": 0,
+            "position": [
+              338,
+              -71215
+            ],
+            "orientation": 1
+          },
+          "after": {
+            "index": 0,
+            "position": [
+              338,
+              -71215
+            ],
+            "orientation": 1
+          },
+          "rewound": false
+        },
+        {
+          "code": 2184,
+          "directionIndex": 3,
+          "direction": [
+            1,
+            0
+          ],
+          "terminal": "target",
+          "side": 4,
+          "center": false,
+          "limit": 82,
+          "before": {
+            "index": 0,
+            "position": [
+              338,
+              -71215
+            ],
+            "orientation": 1
+          },
+          "after": {
+            "index": 0,
+            "position": [
+              338,
+              -71215
+            ],
+            "orientation": 1
+          },
+          "rewound": true
+        },
+        {
+          "code": 2114,
+          "directionIndex": 2,
+          "direction": [
+            0,
+            -1
+          ],
+          "terminal": "target",
+          "side": 2,
+          "center": false,
+          "limit": -70958,
+          "before": {
+            "index": 0,
+            "position": [
+              338,
+              -71215
+            ],
+            "orientation": 1
+          },
+          "after": {
+            "index": 0,
+            "position": [
+              338,
+              -71215
+            ],
+            "orientation": 1
+          },
+          "rewound": false
+        },
+        {
+          "code": 2561,
+          "directionIndex": 1,
+          "direction": [
+            -1,
+            0
+          ],
+          "terminal": "target",
+          "side": 0,
+          "center": true,
+          "limit": -15,
+          "before": {
+            "index": 0,
+            "position": [
+              338,
+              -71215
+            ],
+            "orientation": 1
+          },
+          "after": {
+            "index": 1,
+            "position": [
+              -15,
+              -71215
+            ],
+            "orientation": 0
+          },
+          "rewound": false
+        }
+      ],
+      "selection": {
+        "directions": [
+          2,
+          2
+        ],
+        "quadrant": 0,
+        "sourceIndex": 2,
+        "targetIndex": 2,
+        "pattern": [
+          514,
+          2184,
+          2114,
+          2561
+        ],
+        "geo": [
+          [
+            -8,
+            -71166,
+            692,
+            1862
+          ],
+          [
+            -16,
+            -70862,
+            2,
+            2
+          ]
+        ],
+        "buffer": [
+          49,
+          96
+        ],
+        "constraint": [
+          [
+            0.5,
+            0
+          ],
+          [
+            0.5,
+            0
+          ]
+        ],
+        "limits": [
+          [
+            0,
+            -57,
+            -71215,
+            0,
+            733,
+            0,
+            0,
+            0,
+            -69255
+          ],
+          [
+            0,
+            -112,
+            -70958,
+            0,
+            82,
+            0,
+            0,
+            0,
+            -70764
+          ]
+        ],
+        "separations": [
+          null,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "final": {
+        "initialOrientation": 1,
+        "targetOrientation": 1,
+        "currentIndex": 1,
+        "parityDrop": false,
+        "intermediates": [
+          {
+            "x": 338,
+            "y": -71215
+          },
+          {
+            "x": -15,
+            "y": -71215
+          }
+        ]
+      }
+    }
+  }
+}

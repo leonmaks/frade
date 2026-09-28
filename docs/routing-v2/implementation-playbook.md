@@ -1093,6 +1093,58 @@ INV-009 zoom independence
 INV-010 canonicalization idempotence
 INV-011 routing determinism
 
+ORDINARY DIRECTION PROTECTION
+
+Follow master section 23a, BDD-006a/006b/006c and R04 design sections 3a/6. Preserve certified
+table plans only after checking BOTH resolved terminal minima on the provisionally
+projected, canonical route: checked finite L > EPSILON and L + EPSILON >= the
+role's resolved minimum. Use source P1-P0 and target P[n-2]-P[n-1]. Report finite
+under-minimum runs as geometric incompatibility with role/index/actual/minimum;
+invalid numeric input/arithmetic remains fatal. For a finite table plan whose terminal certificate is negative,
+construct ordinary ORIENTED_CHANNEL with protected stubs and the bounded
+one-to-five-segment alternating-axis template set. Validate every eligible
+candidate and rank exact length, canonical bends, cardinal sequence and stable
+channel-index key. Retain incompatibility/candidate evidence. Both adapted
+terminal runs must meet their positive construction buffers. Do not change
+R03 directions, fixed points, earlier layers or the existing comparison input predicate.
+Numeric/input/executor exceptions and failed eligible/final validation must
+propagate; never catch them to choose another strategy. Normalization cannot
+repair geometry by inserting bends. This ordinary policy is an explicit V2
+adaptation, not an additional too-short fallback trigger or native parity claim.
+Test all direction pairs, coincident/near-equal stubs, deterministic ties,
+rectangle/ellipse floating handoff and the original accepted EAST/NORTH failure
+before production repair. Add BDD-006b's short-source regression, source-only,
+target-only and both-minima failures, asymmetric/auto settings, exact/within/beyond
+EPSILON boundaries, zero/sub-EPSILON resolved minima versus positive construction
+buffers, and post-projection/canonicalization checks. Independently validate both
+resolved minima on ALL final branches; channels also meet construction buffers.
+A final rejection does not satisfy the requirement to construct the accepted
+representable case. Protect certificate omissions, swapped minima and incorrect
+strategy/error classification with mutation controls. Keep property quotas,
+conditioning and mutation rules; add all-branch minimum assertions without
+rejecting a generated input because its output failed.
+
+Apply the user-approved B2 reference contract: the historical strictParityInput
+function remains the unchanged comparison-domain selector, not a proof of native
+validity. Before V2 execution an independent reference-only checker certifies the
+native canonical route against input-derived attachment/direction/minimum context.
+It must import no R04 production certificate, validator, normalizer or router.
+NATIVE_CERTIFIED requires exact semantic parity and REFERENCE_PATTERN; V2 failures
+cannot change that verdict. NATIVE_INVARIANT_DIVERGENCE requires a concrete finite
+native violation and preserved raw/canonical native evidence, then valid V2 channels.
+Oracle/numeric/unknown errors abort. Keep all admitted inputs and direct raw-executor
+comparisons, with separate strict/divergence/failure accounting. A divergence is
+not a rejected property case or a parity success. All 77 existing strict fixtures
+must remain byte-identical and independently certified; stop if one fails.
+
+Before production repair, task 2.8 must add BDD-006c, independent checker controls
+for each invariant and both endpoints, pre-V2 ordering/immutable-verdict controls,
+wrong V2 output/strategy/exception controls, oracle-error aborts and complete
+accounting checks. Keep B2 inside the input domain. Update only R04 reference
+documentation/harness after renewed PRE and checkpoint to explain the changed
+meaning; do not narrow the predicate or regenerate/relabel saved expectations.
+The planning phase itself must preserve the frozen test/reference files.
+
 TOO-SHORT CASE
 
 Implement explicit fallback contract for fixed endpoints whose available

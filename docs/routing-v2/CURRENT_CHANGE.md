@@ -7,23 +7,36 @@ PREVIOUS_CHANGE: routing-v2-03-direction-resolver
 SEQUENCE_POSITION: R04_OF_10
 PHASE: PLANNING
 
-BASE_COMMIT: 0b2a9096ab42e431e6e56a7ece17a5f29c72cdb4
+APPROVED_PLANNING_COMMIT: cf424e247490fdfae2c4efc9f7e7377b6d5b6e11
+BASE_COMMIT: cf424e247490fdfae2c4efc9f7e7377b6d5b6e11
+IMPLEMENTATION_ORIGIN_COMMIT: cf424e247490fdfae2c4efc9f7e7377b6d5b6e11
 PREVIOUS_CHANGE_STATUS: CLOSED
 PREVIOUS_CHANGE_ARCHIVED: true
 PREVIOUS_CHANGE_POST_IMPLEMENTATION_GATE: PASS
 
-PLANNING_STATUS: READY_FOR_PRE_IMPLEMENTATION_REVIEW
-SPEC_CONFLICT: RESOLVED_BY_USER_DECISION
+PLANNING_STATUS: PRE_APPROVED_PENDING_REPAIR_CHECKPOINT
+SPEC_CONFLICT: RESOLVED_BY_USER_APPROVED_B2_DECISION
 FALLBACK_POLICY: CONSTRAINT_PRESERVING_LOCAL_EXTERIOR
+ORDINARY_POLICY: CERTIFIED_TABLE_OR_ORIENTED_CHANNEL
 FALLBACK_DECISION: openspec/changes/routing-v2-04-orthogonal-router/evidence/fallback-decision.md
-ACTIVE_PLANNING_BLOCKER: NONE
+ACTIVE_PLANNING_BLOCKER: CONTROL_ONLY_APPROVED_PLANNING_CHECKPOINT_REQUIRED
 READY_FOR_PRE_IMPLEMENTATION: true
 PRE_IMPLEMENTATION_GATE: PASS
-PRE_IMPLEMENTATION_GATE_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-review.json
+PRE_IMPLEMENTATION_GATE_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-review.json
+PRE_REVALIDATION_REPORT: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-pass.md
+PRE_REVALIDATION_BLOCKER_EVIDENCE: NONE
+B1_PLANNING_REPAIR_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/planning-repair-decision.md
 MACHINE_ARCHITECTURE_GATE: PASS
-PROCESS_CONTROL_STATUS: R04 exact gate profile, self-tests and approval binding complete
-PROCESS_CONTROL_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/process-control-validation.md
-IMPLEMENTATION_STATUS: NOT_STARTED
+PROCESS_CONTROL_STATUS: COMPLETE
+PROCESS_CONTROL_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/process-control-repair-validation.md
+IMPLEMENTATION_STATUS: IN_PROGRESS
+IMPLEMENTATION_TESTS: FAIL
+IMPLEMENTATION_PAUSED: true
+PLANNING_REPAIR: ORDINARY_DIRECTION_CONSTRUCTION
+REPAIR_ENTRY_SNAPSHOT: openspec/changes/routing-v2-04-orthogonal-router/evidence/planning-repair-entry-snapshot.json
+REPAIR_ENTRY_SNAPSHOT_SHA256: 1a306ca7ec1df199e41351e750fd74942cf8c2c98aa1f00de899eb320d1e3a71
+PREVIOUS_PRE_STATUS: HISTORICAL_PASS_SUPERSEDED_FOR_REVISED_CONTRACT
+POST_IMPLEMENTATION_GATE: NOT_RUN
 ARCHIVE_ALLOWED: false
 
 NEXT_CHANGE: routing-v2-05-segment-router
@@ -46,10 +59,14 @@ scripts/routing-v2-architecture-gate.mjs
 
 ## Implementation boundary
 
-No production, test or dependency edits are authorized during PLANNING. The gate
-script path above contains the exact R04 process-control profile and its
-self-tests completed in task 1.2.
-Do not treat generic later-change handling as a reviewed R04 gate profile.
+No production, test or dependency edits are authorized during PLANNING. Existing
+R04 files are retained as an immutable repair-entry snapshot; their presence is
+not new implementation authorization. The exact repair gate verifies this snapshot
+independently in HEAD, INDEX and complete WORKTREE. Task 1.6's executable controls
+are documented in PROCESS_CONTROL_EVIDENCE. Initial planning still forbids product
+work; this retained-file exception applies only to the pinned repair entry.
+Fresh independent PRE and a control-only repair checkpoint are prerequisites
+for resuming BDD/production changes. Machine PASS is not independent approval.
 
 ## IMPLEMENTATION_SCOPE (only after PRE and checkpoint)
 
@@ -108,13 +125,25 @@ openspec/changes/archive/**
 
 ## Next checkpoint
 
-The user resolved the fallback conflict in favor of hard direction constraints;
-proposal/spec/design/tasks now state the local fallback and reference divergence.
-Task 1.2 is complete: full machine self-tests passed 764 assertions.
-Request fresh independent PRE review using
-Astra xhigh. Do not mark PRE PASS, create an approved planning checkpoint or
-start BDD/TDD/implementation before that review passes.
+The user authorized this planning repair after the ordinary-route counterexample.
+See evidence/ordinary-direction-spec-conflict.md in the active change. Preserve
+hard masks, R03 authority and the strict too-short trigger. Ordinary direction
+protection and planning reconciliation are recorded by task 1.5; repair isolation
+and approval binding are recorded by task 1.6. Task 1.7's fresh independent PRE
+returned FAIL: the ordinary certificate omits terminal minima and can approve a
+finite run of 1 with resolved minimum 10. Preserve that review and counterexample.
+The independent PRE revalidation now PASSes B1/B2 and the user-approved two-part
+reference contract. The canonical report and schema-2 manifest bind all 31 current
+fingerprints, the repair-entry snapshot and the original cumulative origin. The
+received report is preserved separately byte-for-byte. Task 1.7 is complete;
+task 1.8 is the next control-only checkpoint. Do not edit product, tests or
+dependencies, and do not begin implementation until that checkpoint is committed.
+Production/tests/dependencies remain frozen during planning. Task 1.8's separately
+authorized control-only checkpoint follows actual PRE PASS; no archive or R05 work
+is authorized. Readiness here means readiness for PRE review, not implementation.
 
 Planning/implementation model: Astra high/xhigh, per workflow-models.md.
-The R03 approved baseline remains preserved in its closing commit and archive;
-BASE_COMMIT here deliberately selects the R03 closing commit for new R04 planning.
+BASE_COMMIT and APPROVED_PLANNING_COMMIT retain the original approved R04 SHA
+cf424e247490fdfae2c4efc9f7e7377b6d5b6e11 until a separately approved repair
+checkpoint. The replacement protocol must retain that origin for cumulative
+implementation-diff review, not hide existing work by moving the baseline.

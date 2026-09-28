@@ -230,6 +230,12 @@ LOOP
 
 Obstacle routing — отдельный milestone.
 
+Для R04 AUTO_ORTHOGONAL объём reference parity уточнён в разделе 23a:
+сохраняем все comparison inputs, требуем strict parity для независимо
+сертифицированного native route, а доказанные нарушения hard constraints
+показываем как явное расхождение с корректным V2 route. Эти расхождения не
+считаются parity successes и не ослабляют обязательные ограничения маршрута.
+
 ---
 
 # 7. Архитектура подсистемы
@@ -859,6 +865,63 @@ function executePattern(
 ```
 
 Draw.io при смене ориентации создаёт следующую waypoint; если движения фактически не произошло, лишний corner не создаётся.
+
+---
+
+# 23a. Ordinary terminal-direction protection (R04 planning repair)
+
+R03 directions and masks remain mandatory even when native fixed-side choices
+would differ. A decoded table is an intermediate plan, not a guarantee that its
+first/last ray survives corner removal. The raw executor remains reference-compatible.
+Before publishing an ordinary route, apply the terminal certificate defined in
+the active R04 design section 3a: provisionally project floating endpoints using
+unchanged R02, structurally canonicalize and check attachments, nonzero
+orthogonality, both selected directions and BOTH resolved jetty minima. Measure
+the canonical first/last segment's checked finite Manhattan length L using source
+P1-P0 and target P[n-2]-P[n-1]; require L > EPSILON and L + EPSILON >= that role's
+resolved minimum. Finite under-minimum runs are certificate incompatibilities with
+role/segment/actual/expected evidence, including both roles when deficient. Such
+plans select ordinary channels; final rejection alone is not valid construction.
+Use resolved minima here, not positive construction buffers: zero/sub-EPSILON
+minima do not impose a table minimum of 10. Finite geometric incompatibility is
+explicit data; thrown input/numeric/executor/final validation errors still abort.
+
+Keep a certified plan as REFERENCE_PATTERN, even if another path could be shorter.
+For a certificate-negative plan select ordinary ORIENTED_CHANNEL: protect each
+terminal with its positive construction buffer, enumerate alternating-axis channel
+templates of one through five connector segments and validate every eligible
+candidate. Use the exact finite channel rectangle, eligibility, ranking and
+evidence rules in R04 design section 3a. Protect both terminal runs and their
+construction-buffer minima; fixed points and R01-R03 remain unchanged. The
+bounded template set covers all direction pairs and coincident stubs without
+R05, legacy, global obstacles or an unbounded search.
+
+This is an explicit ordinary V2 adaptation. It does not change section 25's iff
+too-short trigger, call its two-perimeter-traversal fallback, or catch an invariant
+exception and detour. The user-approved B2 decision replaces unconditional parity
+over the existing input predicate with the two-part reference contract below.
+Keep all 77 existing strict fixtures, their native expectations and the unchanged
+comparison input predicate. Before V2 runs, an independent reference-only checker
+certifies native attachment, canonical endpoint preservation, nonzero orthogonality,
+both selected outward directions/masks and both resolved minima. Expected context
+comes from the input and pinned reference semantics, never R04 production output.
+Native-certified cases require REFERENCE_PATTERN and full semantic parity; a V2
+mismatch, exception or channel choice remains a failure. Proven finite native
+invariant violations instead require preserved native defect evidence and valid
+ORIENTED_CHANNEL. Such cases stay in the comparison domain and are reported as
+explicit divergences, not parity successes. Oracle/numeric/unknown errors abort.
+Freeze classification before V2 execution; V2 failures cannot reclassify inputs.
+Independently certify every existing strict fixture and stop if one fails; none
+may be relabelled. Keep direct raw-executor comparisons in both classes, account
+for every input, and leave property conditioning/quotas unchanged. R04 design
+section 6 defines the independent checker and its hostile regression controls.
+Ordinary evidence names the strategy, rejected table certificate,
+candidate costs and stable tie key; it never claims native parity for channels.
+Final R02 floating calls share one selected snapshot, and final route validation
+cannot switch strategies. Every final route (both ordinary strategies and fallback)
+must independently satisfy both resolved minima after projection/canonicalization;
+channels additionally satisfy their positive construction buffers. Normalization
+still cannot invent bends or move points.
 
 ---
 
@@ -1906,6 +1969,78 @@ And neither R05 SegmentRouter nor legacy routing shall be called
 Это сохраняет too-short trigger draw.io, но намеренно меняет fallback geometry
 для соблюдения constraints Frade. Нормативный алгоритм и пример NORTH/NORTH
 определены в разделе 25; равенство distance и суммы jetty не включает fallback.
+
+---
+
+## BDD-006a Ordinary route preserves inherited hard directions
+
+```gherkin
+Given source bounds (-8,-71166,692,1862) and fixed source (338,-71166)
+And the source mask is EAST-only
+And target is anchor (-15,-70862) with all directions
+And sourceJetty is 49 and targetJetty is 96
+When unchanged R03 selects EAST and NORTH
+Then the branch shall remain ordinary because fixed distance exceeds 145
+And ORIENTED_CHANNEL shall preserve both selected outward directions
+And the route shall be [(338,-71166),(733,-71166),(733,-70958),(-15,-70958),(-15,-70862)]
+And neither the fixed points nor the too-short trigger shall change
+And neither R05 nor legacy routing shall be called
+```
+
+BDD-006 remains unchanged. Native draw.io either returns early for a degenerate
+terminal or chooses a conflicting fixed-side direction in the nondegenerate
+control; neither behavior authorizes weakening Frade masks. Retain both native
+observations and the separately labelled ordinary adaptation evidence.
+
+---
+
+## BDD-006b Ordinary certificate checks both resolved jetty minima
+
+```gherkin
+Given source bounds (0,0,100,100) and fixed source (0,0) with perimeter=false
+And the source mask is EAST-only
+And target is anchor (1,30) with all directions
+And sourceJetty and targetJetty are both 10
+When unchanged R03 selects EAST and NORTH
+And table [2114,2561] produces provisional canonical [(0,0),(1,0),(1,30)]
+Then the certificate shall report source length 1 below resolved minimum 10
+And ordinary ORIENTED_CHANNEL shall construct a valid route with exact endpoints
+And both terminal directions and resolved minima shall survive final canonicalization
+And fixed distance sqrt(901)>20 shall keep the too-short fallback disabled
+And no final-validation exception, mask relaxation, R05 or legacy router shall replace construction
+```
+
+Test source-only, target-only and simultaneous deficits independently, including
+asymmetric/auto minima and the existing EPSILON boundary. Check minima after R02
+projection and structural reduction. Resolved zero/sub-EPSILON minima remain
+distinct from channels' positive construction buffers. This case already lies
+outside the existing strict-parity predicates (constrained fixed side and anchor);
+retain the raw table result and label the channel result as a V2 adaptation.
+Do not narrow the comparison input domain or generator conditioning. BDD-006 and
+BDD-006a remain intact.
+
+## BDD-006c Native invariant divergence inside the comparison domain
+
+```gherkin
+Given source rectangle (0,0,20,20), fixed source (20,10), EAST-only
+And target rectangle (11,30,20,20), fixed target (21,30), NORTH-only
+And distinct cell IDs and sourceJetty=targetJetty=10
+And the unchanged reference-comparison input predicate returns true
+When the pinned native oracle produces [(20,10),(30,10),(30,30),(21,30)]
+Then before V2 runs the independent checker shall record target EAST instead of NORTH
+And target length 9 below minimum 10 shall also be recorded
+And the native route shall remain unchanged as NATIVE_INVARIANT_DIVERGENCE evidence
+And V2 shall construct ordinary ORIENTED_CHANNEL with exact endpoints and both hard minima
+And distance sqrt(401)>20 shall keep the too-short fallback disabled
+And this input shall remain counted without claiming final native parity
+And all 77 existing strict fixtures shall retain their strict status and expectations
+```
+
+The bounded channel set admits [(20,10),(30,10),(30,20),(21,20),(21,30)], cost 39,
+with terminal runs 10/10; complete candidate ranking remains mandatory. The native
+pattern [513,2308,2561,1090,514,2568,2308] and raw executor comparison are retained.
+This explicit specification decision preserves hard constraints and changes the
+scope of the parity promise; it is not permission to classify from V2 failures.
 
 ---
 

@@ -23,6 +23,13 @@ const R03 = 'routing-v2-03-direction-resolver'
 const R03_BASE = '2b6619627e3e744007b06251a05dad86e7bce634'
 const R04 = 'routing-v2-04-orthogonal-router'
 const R04_BASE = '0b2a9096ab42e431e6e56a7ece17a5f29c72cdb4'
+const R04_REPAIR_ORIGIN = 'cf424e247490fdfae2c4efc9f7e7377b6d5b6e11'
+const R04_REPAIR_KIND = 'ORDINARY_DIRECTION_CONSTRUCTION'
+const R04_REPAIR_ENTRY = 'openspec/changes/' + R04 + '/evidence/planning-repair-entry-snapshot.json'
+const R04_REPAIR_HASH = '1a306ca7ec1df199e41351e750fd74942cf8c2c98aa1f00de899eb320d1e3a71'
+const R04_REPAIR_FIXTURE =
+  'openspec/changes/' + R04 + '/evidence/planning-repair-fixture-files.json'
+const R04_REPAIR_FIXTURE_HASH = '6514b317fd714497cf3b3bbb1efacbda7cded63882600735cccee55122c574d8'
 const WORKFLOW = 'docs/routing-v2/workflow-models.md'
 const R02_BASE = 'd6579321d13e5c423eb1f1523b1d4ce35bcae583'
 const ROUTING = 'packages/draw/src/routing/'
@@ -143,6 +150,12 @@ function readCurrentChange() {
     planningCommit: field(content, 'APPROVED_PLANNING_COMMIT'),
     preImplementationGate: field(content, 'PRE_IMPLEMENTATION_GATE'),
     preEvidence: field(content, 'PRE_IMPLEMENTATION_GATE_EVIDENCE'),
+    planningRepair: field(content, 'PLANNING_REPAIR'),
+    implementationOrigin: field(content, 'IMPLEMENTATION_ORIGIN_COMMIT'),
+    implementationPaused: field(content, 'IMPLEMENTATION_PAUSED'),
+    archiveAllowed: field(content, 'ARCHIVE_ALLOWED'),
+    repairEntry: field(content, 'REPAIR_ENTRY_SNAPSHOT'),
+    repairHash: field(content, 'REPAIR_ENTRY_SNAPSHOT_SHA256'),
     number: Number(/^routing-v2-(\d{2})-/.exec(activeChange)?.[1]) || null,
     implementation: section(content, 'IMPLEMENTATION_SCOPE'),
     control: section(content, 'PROCESS_CONTROL_SCOPE'),
@@ -325,6 +338,9 @@ export function scopeFindings(current, files, boundary) {
     }
   }
   if (current.activeChange === R04) {
+    const repair = current.planningRepair !== undefined
+    if (repair && !r04RepairFieldsMatch(current))
+      fail(CURRENT, 'R04 repair fields do not match the authorized immutable origin/snapshot')
     for (const [name, actual, expected] of [
       ['IMPLEMENTATION_SCOPE', current.implementation, R04_IMPLEMENTATION],
       ['PROCESS_CONTROL_SCOPE', current.control, R04_CONTROL],
@@ -341,16 +357,28 @@ export function scopeFindings(current, files, boundary) {
       current.previousArchived !== 'true' ||
       current.previousPostGate !== 'PASS' ||
       (current.phase === 'PLANNING'
-        ? current.baseCommit !== R04_BASE
-        : !/^[0-9a-f]{40}$/.test(current.planningCommit ?? '') ||
-          current.baseCommit !== current.planningCommit)
+        ? current.baseCommit !== (repair ? R04_REPAIR_ORIGIN : R04_BASE)
+        : repair
+          ? current.baseCommit !== R04_REPAIR_ORIGIN ||
+            !/^[0-9a-f]{40}$/.test(current.planningCommit ?? '') ||
+            current.planningCommit === R04_REPAIR_ORIGIN
+          : !/^[0-9a-f]{40}$/.test(current.planningCommit ?? '') ||
+            current.baseCommit !== current.planningCommit)
     )
       fail(CURRENT, 'R04 baseline/previous-change/sequence/next-change fields are inconsistent')
     if (!['PLANNING', 'IMPLEMENTATION', 'VERIFICATION'].includes(current.phase))
       fail(CURRENT, 'Unrecognized R04 phase')
     if (
       current.phase === 'PLANNING'
-        ? current.implementationStatus !== 'NOT_STARTED'
+        ? repair
+          ? current.implementationStatus !== 'IN_PROGRESS' ||
+            current.implementationPaused !== 'true' ||
+            current.planningCommit !== R04_REPAIR_ORIGIN ||
+            !['PENDING', 'FAIL', 'PASS'].includes(current.preImplementationGate) ||
+            ![R04_APPROVAL, R04_REPAIR_APPROVAL].includes(current.preEvidence) ||
+            current.archiveAllowed !== 'false' ||
+            !current.repairPlanningVerified
+          : current.implementationStatus !== 'NOT_STARTED'
         : !['IN_PROGRESS', 'COMPLETE'].includes(current.implementationStatus) ||
           current.preImplementationGate !== 'PASS' ||
           !current.frozenGateVerified
@@ -358,7 +386,7 @@ export function scopeFindings(current, files, boundary) {
       fail(CURRENT, 'R04 requires planning isolation or PRE PASS with verified approved controls')
     for (const file of files) {
       if (inScope(file, R04_IMPLEMENTATION) || R04_METADATA.includes(file)) {
-        if (current.phase === 'PLANNING')
+        if (current.phase === 'PLANNING' && !(repair && current.repairPlanningVerified))
           fail(file, 'R04 product/tests/dependencies changed during PLANNING')
       } else if (inScope(file, R04_CONTROL)) {
         if (
@@ -668,6 +696,8 @@ const R03_REVIEWED = [
 ]
 const R04_PREFIX = 'openspec/changes/' + R04 + '/'
 const R04_APPROVAL = R04_PREFIX + 'evidence/pre-implementation-review.json'
+const R04_REPAIR_APPROVAL = R04_PREFIX + 'evidence/pre-implementation-revalidation-review.json'
+const R04_REPAIR_REPORT = R04_PREFIX + 'evidence/pre-implementation-revalidation-pass.md'
 const R04_REVIEWED = [
   ...R03_FROZEN,
   CURRENT,
@@ -686,6 +716,485 @@ const R04_REVIEWED = [
   ].map((file) => R04_PREFIX + file),
 ]
 
+const R04_REPAIR_REVIEWED = [
+  ...R04_REVIEWED,
+  ...[
+    'planning-repair-process-protocol.md',
+    'planning-repair-entry-snapshot.json',
+    'planning-repair-decision.md',
+    'check-planning-repair-entry.mjs',
+    'ordinary-direction-spec-conflict.md',
+    'ordinary-direction-diagnostic.mjs',
+    'ordinary-direction-diagnostic.json',
+    'ordinary-channel-planning-probe.mjs',
+    'ordinary-channel-planning-probe.json',
+    'planning-repair-fixture-files.json',
+    '.gitattributes',
+  ].map((file) => R04_PREFIX + 'evidence/' + file),
+]
+
+function r04RepairFieldsMatch(current) {
+  return (
+    current.activeChange === R04 &&
+    current.planningRepair === R04_REPAIR_KIND &&
+    current.baseCommit === R04_REPAIR_ORIGIN &&
+    current.implementationOrigin === R04_REPAIR_ORIGIN &&
+    current.repairEntry === R04_REPAIR_ENTRY &&
+    current.repairHash === R04_REPAIR_HASH
+  )
+}
+
+function repairState(content) {
+  reviewCanonical(CURRENT, content, R04)
+  return {
+    activeChange: field(content, 'ACTIVE_CHANGE'),
+    planningRepair: field(content, 'PLANNING_REPAIR'),
+    baseCommit: field(content, 'BASE_COMMIT'),
+    planningCommit: field(content, 'APPROVED_PLANNING_COMMIT'),
+    implementationOrigin: field(content, 'IMPLEMENTATION_ORIGIN_COMMIT'),
+    repairEntry: field(content, 'REPAIR_ENTRY_SNAPSHOT'),
+    repairHash: field(content, 'REPAIR_ENTRY_SNAPSHOT_SHA256'),
+  }
+}
+
+const r04OriginalRecordCache = new Map()
+function verifyR04OriginalApproval(git, gitRoot) {
+  // Only the content-addressed historical record is cached. Live HEAD/INDEX/
+  // WORKTREE preservation below is rechecked independently on every invocation.
+  if (!r04OriginalRecordCache.has(gitRoot)) {
+    const original = git(['show', R04_REPAIR_ORIGIN + ':' + CURRENT])
+    const valid =
+      field(original, 'PHASE') === 'PLANNING' &&
+      field(original, 'BASE_COMMIT') === R04_BASE &&
+      verifyPlanningApproval(
+        { activeChange: R04, planningCommit: R04_REPAIR_ORIGIN, preEvidence: R04_APPROVAL },
+        original,
+        git,
+        gitRoot,
+        false,
+      )
+    r04OriginalRecordCache.set(gitRoot, valid)
+  }
+  if (!r04OriginalRecordCache.get(gitRoot)) return false
+  return [R04_APPROVAL, R04_PREFIX + 'evidence/pre-implementation-gate-pass.md'].every((file) =>
+    verifyFrozenFile(file, gitRoot, R04_REPAIR_ORIGIN, canonicalText, git),
+  )
+}
+
+function verifyR04RepairProof(get, git) {
+  const proof = canonicalJson(get(R04_REPAIR_APPROVAL), 'repair approval')
+  strictObjectKeys(
+    proof,
+    [
+      'schemaVersion',
+      'change',
+      'gateType',
+      'gateStatus',
+      'reviewerContext',
+      'baseline',
+      'originalApprovedPlanningCommit',
+      'repairEntrySnapshot',
+      'reportPath',
+      'reportSha256',
+      'artifacts',
+    ],
+    'repair approval',
+  )
+  strictObjectKeys(proof.repairEntrySnapshot, ['path', 'sha256'], 'approval snapshot')
+  if (
+    proof.schemaVersion !== 2 ||
+    proof.change !== R04 ||
+    proof.gateType !== 'PRE_IMPLEMENTATION' ||
+    proof.gateStatus !== 'PASS' ||
+    proof.reviewerContext !== 'fresh-read-only' ||
+    proof.baseline !== R04_REPAIR_ORIGIN ||
+    proof.originalApprovedPlanningCommit !== R04_REPAIR_ORIGIN ||
+    proof.reportPath !== R04_REPAIR_REPORT ||
+    proof.repairEntrySnapshot.path !== R04_REPAIR_ENTRY ||
+    proof.repairEntrySnapshot.sha256 !== R04_REPAIR_HASH ||
+    textHash(get(R04_REPAIR_ENTRY)) !== R04_REPAIR_HASH
+  )
+    return false
+  strictObjectKeys(proof.artifacts, R04_REPAIR_REVIEWED, 'repair fingerprints')
+  const report = canonicalText(get(proof.reportPath))
+  if (proof.reportSha256 !== textHash(report)) return false
+  for (const [name, expected] of [
+    ['CHANGE', R04],
+    ['GATE_TYPE', 'PRE_IMPLEMENTATION'],
+    ['GATE_STATUS', 'PASS'],
+    ['BLOCKERS', 'NONE'],
+    ['MACHINE_GATE_INTEGRITY', 'PASS'],
+    ['READY_FOR_IMPLEMENTATION', 'YES'],
+  ]) {
+    const entries = [...report.matchAll(new RegExp('^' + name + ':[ \\t]*(.+?)[ \\t]*$', 'gm'))]
+    if (entries.length !== 1 || entries[0][1] !== expected) return false
+  }
+  const embedded = reviewReportFingerprint(report, R04, true)
+  if (!embedded) return false
+  for (const file of R04_REPAIR_REVIEWED) {
+    // Metadata is excluded from the control-only repair commit. Its WORKTREE
+    // addition is independently pinned by the entry manifest, not smuggled into P.
+    const value = R04_METADATA.includes(file)
+      ? git(['show', R04_REPAIR_ORIGIN + ':' + file])
+      : get(file)
+    if (
+      !/^[0-9a-f]{64}$/.test(proof.artifacts[file]) ||
+      embedded[file] !== proof.artifacts[file] ||
+      textHash(reviewCanonical(file, value, R04)) !== proof.artifacts[file]
+    )
+      return false
+  }
+  return true
+}
+
+function verifyR04RepairGate(current, gitRoot) {
+  if (
+    !r04RepairFieldsMatch(current) ||
+    current.planningCommit === R04_REPAIR_ORIGIN ||
+    !/^[0-9a-f]{40}$/.test(current.planningCommit ?? '') ||
+    current.preEvidence !== R04_REPAIR_APPROVAL ||
+    current.preImplementationGate !== 'PASS' ||
+    current.implementationPaused !== 'false'
+  )
+    return false
+  const cache = new Map()
+  const git = (args) => {
+    const key = JSON.stringify(args)
+    if (!cache.has(key))
+      cache.set(
+        key,
+        execFileSync('git', args, {
+          cwd: gitRoot,
+          encoding: 'utf8',
+          maxBuffer: 16 * 1024 * 1024,
+          stdio: ['ignore', 'pipe', 'pipe'],
+        }),
+      )
+    return cache.get(key)
+  }
+  git(['merge-base', '--is-ancestor', R04_REPAIR_ORIGIN, current.planningCommit])
+  git(['merge-base', '--is-ancestor', current.planningCommit, 'HEAD'])
+  if (!verifyR04OriginalApproval(git, gitRoot)) return false
+  const approved = git(['show', current.planningCommit + ':' + CURRENT])
+  if (
+    !r04RepairFieldsMatch(repairState(approved)) ||
+    field(approved, 'APPROVED_PLANNING_COMMIT') !== R04_REPAIR_ORIGIN ||
+    field(approved, 'PHASE') !== 'PLANNING' ||
+    field(approved, 'IMPLEMENTATION_STATUS') !== 'IN_PROGRESS' ||
+    field(approved, 'IMPLEMENTATION_PAUSED') !== 'true' ||
+    field(approved, 'PRE_IMPLEMENTATION_GATE') !== 'PASS' ||
+    field(approved, 'PRE_IMPLEMENTATION_GATE_EVIDENCE') !== R04_REPAIR_APPROVAL ||
+    field(approved, 'SEQUENCE_POSITION') !== 'R04_OF_10' ||
+    field(approved, 'PREVIOUS_CHANGE') !== R03 ||
+    field(approved, 'PREVIOUS_CHANGE_STATUS') !== 'CLOSED' ||
+    field(approved, 'PREVIOUS_CHANGE_ARCHIVED') !== 'true' ||
+    field(approved, 'PREVIOUS_CHANGE_POST_IMPLEMENTATION_GATE') !== 'PASS' ||
+    field(approved, 'NEXT_CHANGE') !== 'routing-v2-05-segment-router' ||
+    field(approved, 'NEXT_CHANGE_ALLOWED') !== 'false' ||
+    field(approved, 'ARCHIVE_ALLOWED') !== 'false'
+  )
+    return false
+  for (const [name, expected] of [
+    ['IMPLEMENTATION_SCOPE', R04_IMPLEMENTATION],
+    ['PROCESS_CONTROL_SCOPE', R04_CONTROL],
+    ['TEST_TOOLING_SCOPE', R04_METADATA],
+  ])
+    if (!isDeepStrictEqual(section(approved, name).sort(), [...expected].sort())) return false
+  const commits = git(['rev-list', '--parents', R04_REPAIR_ORIGIN + '..' + current.planningCommit])
+    .trim()
+    .split('\n')
+    .filter(Boolean)
+  if (!commits.length) return false
+  for (const record of commits) {
+    const [commit, ...parents] = record.split(' ')
+    if (parents.length !== 1) return false
+    const files = git(['diff', '--no-renames', '--name-only', '-z', parents[0], commit, '--'])
+      .split('\0')
+      .filter(Boolean)
+    if (files.some((file) => !inScope(file, R04_CONTROL))) return false
+  }
+  if (!verifyR04RepairProof((file) => git(['show', current.planningCommit + ':' + file]), git))
+    return false
+  const saved = readRepairEntry(gitRoot)
+  if (
+    !isDeepStrictEqual(
+      repairGitEntries(git(['ls-tree', '-rz', '--full-tree', current.planningCommit]), 'HEAD'),
+      saved.headEntries,
+    )
+  )
+    return false
+  return R04_REPAIR_REVIEWED.filter((file) => !R04_METADATA.includes(file))
+    .concat(R04_REPAIR_APPROVAL, R04_REPAIR_REPORT)
+    .every((file) =>
+      verifyFrozenFile(
+        file,
+        gitRoot,
+        current.planningCommit,
+        file === R04_REPAIR_ENTRY ? (value) => value : (value) => reviewCanonical(file, value, R04),
+        git,
+      ),
+    )
+}
+
+function strictObjectKeys(value, keys, label) {
+  if (
+    !value ||
+    Array.isArray(value) ||
+    typeof value !== 'object' ||
+    !isDeepStrictEqual(Object.keys(value).sort(), [...keys].sort())
+  )
+    throw new Error('Invalid ' + label + ' keys')
+}
+
+function canonicalJson(value, label) {
+  const text = canonicalText(value)
+  const parsed = JSON.parse(text)
+  if (text !== JSON.stringify(parsed, null, 2) + '\n')
+    throw new Error('Noncanonical/duplicate-key ' + label)
+  return parsed
+}
+
+function repairPath(file) {
+  if (
+    typeof file !== 'string' ||
+    file.includes('\\') ||
+    file.includes('\0') ||
+    file.includes(':') ||
+    file.startsWith('/') ||
+    file.split('/').some((part) => !part || part === '.' || part === '..') ||
+    !(inScope(file, R04_IMPLEMENTATION) || R04_METADATA.includes(file))
+  )
+    throw new Error('Unsafe or out-of-scope repair path')
+  return file
+}
+
+function repairGitEntries(output, layer) {
+  const entries = output
+    .split('\0')
+    .filter(Boolean)
+    .map((record) => {
+      const i = record.indexOf('\t')
+      if (i < 0) throw new Error('Malformed repair Git record')
+      const fields = record.slice(0, i).split(' '),
+        file = record.slice(i + 1)
+      if (!(inScope(file, R04_IMPLEMENTATION) || R04_METADATA.includes(file))) return null
+      repairPath(file)
+      const entry =
+        layer === 'HEAD'
+          ? { path: file, mode: fields[0], type: fields[1], oid: fields[2] }
+          : { path: file, mode: fields[0], oid: fields[1], stage: fields[2] }
+      if (
+        fields.length !== 3 ||
+        !['100644', '100755'].includes(entry.mode) ||
+        !/^[0-9a-f]{40}$/.test(entry.oid) ||
+        (layer === 'HEAD' ? entry.type !== 'blob' : entry.stage !== '0')
+      )
+        throw new Error('Invalid repair ' + layer + ' type/mode/stage')
+      return entry
+    })
+    .filter(Boolean)
+  if (new Set(entries.map((e) => e.path)).size !== entries.length)
+    throw new Error('Duplicate repair Git path')
+  return entries
+}
+
+function readRepairEntry(gitRoot) {
+  if (!regularWorktreePath(gitRoot, R04_REPAIR_ENTRY)) throw new Error('Unsafe repair snapshot')
+  const gitFileMode = execFileSync('git', ['config', '--bool', 'core.filemode'], {
+    cwd: gitRoot,
+    encoding: 'utf8',
+  }).trim()
+  if (
+    !frozenWorktreeModeMatches(
+      '100644',
+      fs.lstatSync(path.join(gitRoot, R04_REPAIR_ENTRY)),
+      process.platform,
+      gitFileMode,
+    )
+  )
+    throw new Error('Invalid snapshot worktree mode')
+  const bytes = fs.readFileSync(path.join(gitRoot, R04_REPAIR_ENTRY))
+  if (textHash(bytes) !== R04_REPAIR_HASH)
+    throw new Error('Immutable repair snapshot hash mismatch')
+  const saved = canonicalJson(bytes.toString('utf8'), 'repair snapshot')
+  strictObjectKeys(
+    saved,
+    [
+      'schemaVersion',
+      'change',
+      'originalApprovedPlanningCommit',
+      'head',
+      'roots',
+      'metadata',
+      'headEntries',
+      'indexEntries',
+      'worktree',
+    ],
+    'repair snapshot',
+  )
+  if (
+    saved.schemaVersion !== 1 ||
+    saved.change !== R04 ||
+    saved.originalApprovedPlanningCommit !== R04_REPAIR_ORIGIN ||
+    saved.head !== R04_REPAIR_ORIGIN ||
+    !isDeepStrictEqual(
+      saved.roots,
+      R04_IMPLEMENTATION.map((r) => r.slice(0, -3)),
+    ) ||
+    !isDeepStrictEqual(saved.metadata, R04_METADATA)
+  )
+    throw new Error('Invalid repair snapshot authority')
+  for (const layer of ['headEntries', 'indexEntries']) {
+    const entries = saved[layer]
+    if (!Array.isArray(entries) || new Set(entries.map((e) => e.path)).size !== entries.length)
+      throw new Error('Invalid repair snapshot entry set')
+    for (const e of entries) {
+      strictObjectKeys(
+        e,
+        layer === 'headEntries'
+          ? ['path', 'mode', 'type', 'oid']
+          : ['path', 'mode', 'oid', 'stage'],
+        layer,
+      )
+      repairPath(e.path)
+      if (
+        !['100644', '100755'].includes(e.mode) ||
+        !/^[0-9a-f]{40}$/.test(e.oid) ||
+        (layer === 'headEntries' ? e.type !== 'blob' : e.stage !== '0')
+      )
+        throw new Error('Invalid saved Git entry')
+    }
+  }
+  if (!saved.worktree || Array.isArray(saved.worktree) || typeof saved.worktree !== 'object')
+    throw new Error('Invalid worktree manifest')
+  for (const [file, entry] of Object.entries(saved.worktree)) {
+    repairPath(file)
+    strictObjectKeys(entry, ['sha256', 'bytes'], 'worktree entry')
+    if (
+      !/^[0-9a-f]{64}$/.test(entry.sha256) ||
+      !Number.isSafeInteger(entry.bytes) ||
+      entry.bytes < 0
+    )
+      throw new Error('Invalid worktree digest/size')
+  }
+  return saved
+}
+
+export function r04RepairEntryFindings(current, gitRoot = ROOT) {
+  const findings = []
+  const fail = (layer, error) =>
+    findings.push({ file: R04_REPAIR_ENTRY, reason: '[' + layer + '] ' + error })
+  try {
+    if (!r04RepairFieldsMatch(current)) throw new Error('Unauthorized repair fields')
+    const saved = readRepairEntry(gitRoot)
+    const git = (args) =>
+      execFileSync('git', args, {
+        cwd: gitRoot,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
+      })
+    git(['merge-base', '--is-ancestor', R04_REPAIR_ORIGIN, 'HEAD'])
+    if (!verifyR04OriginalApproval(git, gitRoot))
+      throw new Error('Historical origin approval/report changed or invalid')
+    const commits = git(['rev-list', '--parents', R04_REPAIR_ORIGIN + '..HEAD'])
+      .trim()
+      .split('\n')
+      .filter(Boolean)
+    for (const record of commits) {
+      const [commit, ...parents] = record.split(' ')
+      if (
+        parents.length !== 1 ||
+        git(['diff', '--no-renames', '--name-only', '-z', parents[0], commit, '--'])
+          .split('\0')
+          .filter(Boolean)
+          .some((file) => !inScope(file, R04_CONTROL))
+      )
+        fail('HISTORY', 'Non-control change in repair planning history')
+    }
+    if (
+      current.preImplementationGate === 'PASS' &&
+      (current.preEvidence !== R04_REPAIR_APPROVAL ||
+        !verifyR04RepairProof((file) => fs.readFileSync(path.join(gitRoot, file), 'utf8'), git))
+    )
+      throw new Error('Stale/missing repair planning approval')
+    for (const [layer, args, expected] of [
+      ['HEAD', ['ls-tree', '-rz', '--full-tree', 'HEAD'], saved.headEntries],
+      ['INDEX', ['ls-files', '--stage', '-z'], saved.indexEntries],
+    ]) {
+      try {
+        if (!isDeepStrictEqual(repairGitEntries(git(args), layer), expected))
+          throw new Error('Retained file set/content/mode differs from repair entry')
+      } catch (error) {
+        fail(layer, error.message)
+      }
+    }
+    try {
+      const worktree = {},
+        modes = new Map(saved.indexEntries.map((e) => [e.path, e.mode]))
+      const fileMode = git(['config', '--bool', 'core.filemode']).trim()
+      function visit(file) {
+        const stat = fs.lstatSync(path.join(gitRoot, file))
+        if (stat.isSymbolicLink()) throw new Error('Retained symlink/junction: ' + file)
+        if (stat.isDirectory()) {
+          // Check ancestors too, including the fixed scope root's parents.
+          let cursor = gitRoot
+          for (const part of file.split('/')) {
+            cursor = path.join(cursor, part)
+            const s = fs.lstatSync(cursor)
+            if (s.isSymbolicLink() || !s.isDirectory())
+              throw new Error('Unsafe directory ancestor: ' + file)
+          }
+          for (const name of fs.readdirSync(path.join(gitRoot, file)).sort())
+            visit(file + '/' + name)
+        } else {
+          repairPath(file)
+          if (
+            !regularWorktreePath(gitRoot, file) ||
+            !frozenWorktreeModeMatches(
+              modes.get(file) ?? '100644',
+              stat,
+              process.platform,
+              fileMode,
+            )
+          )
+            throw new Error('Invalid retained worktree mode/type: ' + file)
+          const bytes = fs.readFileSync(path.join(gitRoot, file))
+          worktree[file] = { sha256: textHash(bytes), bytes: bytes.length }
+        }
+      }
+      saved.roots.concat(saved.metadata).forEach(visit)
+      if (!isDeepStrictEqual(worktree, saved.worktree))
+        throw new Error('Complete retained worktree file set/content differs from repair entry')
+    } catch (error) {
+      fail('WORKTREE', error.message)
+    }
+    for (const layer of ['HEAD', 'INDEX']) {
+      const output = git(
+        layer === 'HEAD'
+          ? ['ls-tree', '-z', 'HEAD', '--', R04_REPAIR_ENTRY]
+          : ['ls-files', '--stage', '-z', '--', R04_REPAIR_ENTRY],
+      )
+      const entries = gitSnapshotEntries(output, layer)
+      if (entries.length > 1) throw new Error('Unmerged repair snapshot')
+      if (entries.length) {
+        if (
+          entries[0].mode !== '100644' ||
+          entries[0].stage !== '0' ||
+          textHash(
+            execFileSync('git', ['show', (layer === 'HEAD' ? 'HEAD:' : ':') + R04_REPAIR_ENTRY], {
+              cwd: gitRoot,
+            }),
+          ) !== R04_REPAIR_HASH
+        )
+          fail(layer, 'Immutable snapshot differs in Git layer')
+      }
+    }
+  } catch (error) {
+    fail('REPAIR', error.message)
+  }
+  return findings
+}
+
 export function reviewCanonical(file, value, active = R03) {
   let text = canonicalText(value)
   if (active === R04 && file === CURRENT) {
@@ -701,7 +1210,7 @@ export function reviewCanonical(file, value, active = R03) {
     // Only named lifecycle fields are mutable; prose, scopes and all other keys
     // remain fingerprinted. Phase/baseline/approval are independently verified.
     return text.replace(
-      /^(?:PHASE|BASE_COMMIT|APPROVED_PLANNING_COMMIT|PRE_IMPLEMENTATION_GATE|PRE_IMPLEMENTATION_GATE_EVIDENCE|IMPLEMENTATION_STATUS|IMPLEMENTATION_TASKS|IMPLEMENTATION_TESTS|VERIFICATION_STATUS|POST_IMPLEMENTATION_GATE|MACHINE_ARCHITECTURE_GATE|ARCHIVE_ALLOWED):[^\n]*(?:\n|$)/gm,
+      /^(?:PHASE|BASE_COMMIT|APPROVED_PLANNING_COMMIT|PRE_IMPLEMENTATION_GATE|PRE_IMPLEMENTATION_GATE_EVIDENCE|IMPLEMENTATION_STATUS|IMPLEMENTATION_PAUSED|IMPLEMENTATION_TASKS|IMPLEMENTATION_TESTS|VERIFICATION_STATUS|POST_IMPLEMENTATION_GATE|MACHINE_ARCHITECTURE_GATE|ARCHIVE_ALLOWED):[^\n]*(?:\n|$)/gm,
       '',
     )
   }
@@ -717,15 +1226,29 @@ export function reviewCanonical(file, value, active = R03) {
 const textHash = (value) => createHash('sha256').update(value).digest('hex')
 
 export function planningReviewFingerprint(gitRoot = ROOT, active = R03) {
+  const repair =
+    active === R04 &&
+    field(fs.readFileSync(path.join(gitRoot, CURRENT), 'utf8'), 'PLANNING_REPAIR') !== undefined
   return Object.fromEntries(
-    (active === R04 ? R04_REVIEWED : R03_REVIEWED).map((file) => [
+    (active === R04 ? (repair ? R04_REPAIR_REVIEWED : R04_REVIEWED) : R03_REVIEWED).map((file) => [
       file,
-      textHash(reviewCanonical(file, fs.readFileSync(path.join(gitRoot, file), 'utf8'), active)),
+      textHash(
+        reviewCanonical(
+          file,
+          repair && R04_METADATA.includes(file)
+            ? execFileSync('git', ['show', R04_REPAIR_ORIGIN + ':' + file], {
+                cwd: gitRoot,
+                encoding: 'utf8',
+              })
+            : fs.readFileSync(path.join(gitRoot, file), 'utf8'),
+          active,
+        ),
+      ),
     ]),
   )
 }
 
-export function reviewReportFingerprint(value, active = R03) {
+export function reviewReportFingerprint(value, active = R03, repair = false) {
   const report = canonicalText(value)
   const starts = [...report.matchAll(/^REVIEWED_ARTIFACTS_JSON_BEGIN\n/gm)]
   const ends = [...report.matchAll(/^REVIEWED_ARTIFACTS_JSON_END(?:\n|$)/gm)]
@@ -743,14 +1266,14 @@ export function reviewReportFingerprint(value, active = R03) {
   // The reviewer command emits this canonical JSON. Re-serialization rejects
   // duplicate keys and other ambiguous encodings before values are trusted.
   if (body !== JSON.stringify(fingerprint, null, 2)) return null
-  const reviewed = active === R04 ? R04_REVIEWED : R03_REVIEWED
+  const reviewed = active === R04 ? (repair ? R04_REPAIR_REVIEWED : R04_REVIEWED) : R03_REVIEWED
   if (JSON.stringify(Object.keys(fingerprint).sort()) !== JSON.stringify([...reviewed].sort()))
     return null
   if (reviewed.some((file) => !/^[0-9a-f]{64}$/.test(fingerprint[file]))) return null
   return fingerprint
 }
 
-function verifyPlanningApproval(current, approved, git, gitRoot) {
+function verifyPlanningApproval(current, approved, git, gitRoot, freeze = true) {
   const r04 = current.activeChange === R04
   const active = r04 ? R04 : R03,
     base = r04 ? R04_BASE : R03_BASE
@@ -844,18 +1367,21 @@ function verifyPlanningApproval(current, approved, git, gitRoot) {
     )
       return false
   }
-  return [
-    ...reviewed.filter((file) => (r04 ? !R04_METADATA.includes(file) : file !== CURRENT)),
-    approval,
-    proof.reportPath,
-  ].every((file) =>
-    verifyFrozenFile(
-      file,
-      gitRoot,
-      current.planningCommit,
-      (text) => reviewCanonical(file, text, active),
-      git,
-    ),
+  return (
+    !freeze ||
+    [
+      ...reviewed.filter((file) => (r04 ? !R04_METADATA.includes(file) : file !== CURRENT)),
+      approval,
+      proof.reportPath,
+    ].every((file) =>
+      verifyFrozenFile(
+        file,
+        gitRoot,
+        current.planningCommit,
+        (text) => reviewCanonical(file, text, active),
+        git,
+      ),
+    )
   )
 }
 
@@ -1025,6 +1551,8 @@ function r04PathModeFindings(files, gitRoot = ROOT) {
 }
 
 export function verifyFrozenGate(current, gitRoot = ROOT) {
+  if (current.activeChange === R04 && current.planningRepair !== undefined)
+    return verifyR04RepairGate(current, gitRoot)
   const r03 = current.activeChange === R03
   const r04 = current.activeChange === R04
   const active = r04 ? R04 : r03 ? R03 : R02
@@ -1074,6 +1602,7 @@ function verifyFrozenFile(
       execFileSync('git', args, {
         cwd: gitRoot,
         encoding: 'utf8',
+        maxBuffer: 16 * 1024 * 1024,
         stdio: ['ignore', 'pipe', 'pipe'],
       }))
   const approvedEntries = gitSnapshotEntries(
@@ -1222,6 +1751,15 @@ function main() {
         throw new Error('Required control file missing: ' + file)
     }
     current = readCurrentChange()
+    if (
+      current.activeChange === R04 &&
+      current.phase === 'PLANNING' &&
+      current.planningRepair !== undefined
+    ) {
+      const repairFindings = r04RepairEntryFindings(current)
+      findings.push(...repairFindings)
+      current.repairPlanningVerified = repairFindings.length === 0
+    }
     if ([R02, R03, R04].includes(current.activeChange) && current.phase !== 'PLANNING')
       current.frozenGateVerified = verifyFrozenGate(current)
     const boundary = protectedPaths()
@@ -1230,7 +1768,10 @@ function main() {
     const files = changedFiles(current.baseCommit)
     findings.push(...scopeFindings(current, files, boundary))
     if (current.activeChange === R04) findings.push(...r04PathModeFindings(files))
-    if (current.activeChange === R04 && current.phase !== 'PLANNING')
+    if (
+      current.activeChange === R04 &&
+      (current.phase !== 'PLANNING' || current.planningRepair !== undefined)
+    )
       findings.push(...r04MetadataFindings(current))
     const checked = new Set()
     const graph = new Map()
@@ -1696,12 +2237,44 @@ function r04GitRegressions(check, planning, impl, boundary) {
     git(['symbolic-ref', 'HEAD', 'refs/heads/main'])
     git(['update-ref', 'refs/heads/main', R04_BASE])
     git(['read-tree', R04_BASE])
-    const approvedState =
-      read(CURRENT).replace(/^PRE_IMPLEMENTATION_GATE:.*$/m, 'PRE_IMPLEMENTATION_GATE: PASS') +
-      '\nPRE_IMPLEMENTATION_GATE_EVIDENCE: ' +
-      R04_APPROVAL +
-      '\n'
-    for (const file of R04_REVIEWED) write(file, file === CURRENT ? approvedState : read(file))
+    // Initial-profile fixtures must be independent of the live repair phase.
+    // Construct its real contract fields rather than inheriting/duplicating keys.
+    const approvedState = [
+      'ACTIVE_CHANGE: ' + R04,
+      'PHASE: PLANNING',
+      'BASE_COMMIT: ' + R04_BASE,
+      'SEQUENCE_POSITION: R04_OF_10',
+      'PREVIOUS_CHANGE: ' + R03,
+      'PREVIOUS_CHANGE_STATUS: CLOSED',
+      'PREVIOUS_CHANGE_ARCHIVED: true',
+      'PREVIOUS_CHANGE_POST_IMPLEMENTATION_GATE: PASS',
+      'IMPLEMENTATION_STATUS: NOT_STARTED',
+      'NEXT_CHANGE_ALLOWED: false',
+      'NEXT_CHANGE: routing-v2-05-segment-router',
+      'PRE_IMPLEMENTATION_GATE: PASS',
+      'PRE_IMPLEMENTATION_GATE_EVIDENCE: ' + R04_APPROVAL,
+      '',
+      '## IMPLEMENTATION_SCOPE',
+      ...R04_IMPLEMENTATION,
+      '',
+      '## PROCESS_CONTROL_SCOPE',
+      ...R04_CONTROL,
+      '',
+      '## TEST_TOOLING_SCOPE',
+      ...R04_METADATA,
+      '',
+    ].join('\n')
+    for (const file of R04_REVIEWED)
+      write(
+        file,
+        file === CURRENT
+          ? approvedState
+          : R04_METADATA.includes(file)
+            ? git(['show', R04_BASE + ':' + file])
+            : file.endsWith('/tasks.md')
+              ? read(file).replace(/^(- \[)[xX](\])/gm, '$1 $2')
+              : read(file),
+      )
     const artifacts = planningReviewFingerprint(root, R04)
     const reportPath = R04_PREFIX + 'evidence/pre-implementation-gate-pass.md'
     const report =
@@ -1881,6 +2454,577 @@ function r04GitRegressions(check, planning, impl, boundary) {
       r04MetadataFindings({ ...state, baseCommit: sha }, root).some((f) =>
         f.reason.includes('[HEAD]'),
       ),
+    )
+  })
+}
+
+function r04RepairFixture() {
+  const bytes = fs.readFileSync(path.join(ROOT, R04_REPAIR_FIXTURE))
+  assert.equal(textHash(bytes), R04_REPAIR_FIXTURE_HASH)
+  const bundle = canonicalJson(bytes.toString('utf8'), 'repair fixture bundle')
+  strictObjectKeys(bundle, ['schemaVersion', 'snapshot', 'files'], 'fixture bundle')
+  assert.equal(bundle.schemaVersion, 1)
+  assert.equal(textHash(bundle.snapshot), R04_REPAIR_HASH)
+  const saved = canonicalJson(bundle.snapshot, 'fixture entry')
+  strictObjectKeys(bundle.files, Object.keys(saved.worktree), 'fixture file set')
+  const files = new Map()
+  for (const [file, encoded] of Object.entries(bundle.files)) {
+    repairPath(file)
+    const content = Buffer.from(encoded, 'base64')
+    assert.equal(content.toString('base64'), encoded)
+    assert.equal(content.length, saved.worktree[file].bytes)
+    assert.equal(textHash(content), saved.worktree[file].sha256)
+    files.set(file, content)
+  }
+  return { saved, files, snapshot: bundle.snapshot }
+}
+
+function r04RepairRegressions(check) {
+  const boundary = protectedPaths()
+  const planning = {
+    ...readCurrentChange(),
+    phase: 'PLANNING',
+    baseCommit: R04_REPAIR_ORIGIN,
+    planningCommit: R04_REPAIR_ORIGIN,
+    planningRepair: R04_REPAIR_KIND,
+    implementationOrigin: R04_REPAIR_ORIGIN,
+    implementationPaused: 'true',
+    implementationStatus: 'IN_PROGRESS',
+    preImplementationGate: 'PENDING',
+    preEvidence: R04_APPROVAL,
+    repairEntry: R04_REPAIR_ENTRY,
+    repairHash: R04_REPAIR_HASH,
+    implementation: R04_IMPLEMENTATION,
+    control: R04_CONTROL,
+    testTooling: R04_METADATA,
+    archiveAllowed: 'false',
+    repairPlanningVerified: true,
+  }
+  const frozenFixture = r04RepairFixture(),
+    saved = frozenFixture.saved
+  const fixture = (label, run) => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'frade-r04-repair-'))
+    const git = (args, input) =>
+      execFileSync('git', args, {
+        cwd: root,
+        encoding: 'utf8',
+        maxBuffer: 16 * 1024 * 1024,
+        input,
+        stdio: [input === undefined ? 'ignore' : 'pipe', 'pipe', 'pipe'],
+      })
+    const write = (file, value) => {
+      fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true })
+      fs.writeFileSync(path.join(root, file), value)
+    }
+    try {
+      git(['init', '--quiet'])
+      git(['config', 'user.name', 'R04 repair fixture'])
+      git(['config', 'user.email', 'r04-repair@example.invalid'])
+      git(['config', 'commit.gpgsign', 'false'])
+      git(['config', 'core.autocrlf', 'false'])
+      git(['config', 'core.filemode', 'false'])
+      const objects = path.resolve(
+        ROOT,
+        execFileSync('git', ['rev-parse', '--git-path', 'objects'], {
+          cwd: ROOT,
+          encoding: 'utf8',
+        }).trim(),
+      )
+      write('.git/objects/info/alternates', normalize(objects) + '\n')
+      git(['symbolic-ref', 'HEAD', 'refs/heads/main'])
+      git(['update-ref', 'refs/heads/main', R04_REPAIR_ORIGIN])
+      git(['read-tree', R04_REPAIR_ORIGIN])
+      for (const [file, content] of frozenFixture.files) write(file, content)
+      for (const file of R04_REPAIR_REVIEWED.filter((f) => !R04_METADATA.includes(f)))
+        write(file, file === R04_REPAIR_ENTRY ? frozenFixture.snapshot : canonicalText(read(file)))
+      const current = canonicalText(read(CURRENT))
+        .replace(/^PHASE:.*$/m, 'PHASE: PLANNING')
+        .replace(/^BASE_COMMIT:.*$/m, 'BASE_COMMIT: ' + R04_REPAIR_ORIGIN)
+        .replace(/^APPROVED_PLANNING_COMMIT:.*$/m, 'APPROVED_PLANNING_COMMIT: ' + R04_REPAIR_ORIGIN)
+        .replace(/^PRE_IMPLEMENTATION_GATE:.*$/m, 'PRE_IMPLEMENTATION_GATE: PENDING')
+        .replace(
+          /^PRE_IMPLEMENTATION_GATE_EVIDENCE:.*$/m,
+          'PRE_IMPLEMENTATION_GATE_EVIDENCE: ' + R04_APPROVAL,
+        )
+        .replace(/^IMPLEMENTATION_STATUS:.*$/m, 'IMPLEMENTATION_STATUS: IN_PROGRESS')
+        .replace(/^IMPLEMENTATION_PAUSED:.*$/m, 'IMPLEMENTATION_PAUSED: true')
+        .replace(/^ARCHIVE_ALLOWED:.*$/m, 'ARCHIVE_ALLOWED: false')
+      write(CURRENT, current)
+      for (const file of [R04_APPROVAL, R04_PREFIX + 'evidence/pre-implementation-gate-pass.md'])
+        write(file, git(['show', R04_REPAIR_ORIGIN + ':' + file]))
+      run(root, git, write)
+    } finally {
+      const resolved = path.resolve(root)
+      assert.equal(path.dirname(resolved), path.resolve(os.tmpdir()))
+      assert.ok(path.basename(resolved).startsWith('frade-r04-repair-'))
+      fs.rmSync(resolved, { recursive: true, force: true })
+    }
+  }
+  const findings = (root, state = planning) => r04RepairEntryFindings(state, root)
+  const failsLayer = (root, layer) =>
+    findings(root).some((f) => f.reason.includes('[' + layer + ']'))
+  for (const patch of [
+    { planningRepair: 'ANY_REPAIR' },
+    { baseCommit: R04_BASE },
+    { implementationOrigin: R04_BASE },
+    { repairEntry: R04_PREFIX + 'evidence/replacement.json' },
+    { repairHash: '0'.repeat(64) },
+    { implementationPaused: 'false' },
+    { implementationStatus: 'NOT_STARTED' },
+    { planningCommit: 'a'.repeat(40) },
+    { preImplementationGate: 'NOT_RUN' },
+    { repairPlanningVerified: false },
+  ])
+    check(
+      'Repair scope rejects ' + JSON.stringify(patch),
+      scopeFindings({ ...planning, ...patch }, [], boundary).length > 0,
+    )
+  check(
+    'Repair scope accepts exact frozen state',
+    scopeFindings(planning, Object.keys(saved.worktree), boundary).length === 0,
+  )
+  for (const bad of [
+    '../outside.ts',
+    '/absolute.ts',
+    'packages\\draw\\evil.ts',
+    'C:/escape.ts',
+    ROUTING + 'orthogonal/router/../escape.ts',
+    ROUTING + 'model/forbidden.ts',
+  ]) {
+    let rejected = false
+    try {
+      repairPath(bad)
+    } catch {
+      rejected = true
+    }
+    check('Repair path safety ' + bad, rejected)
+  }
+  for (const json of ['{"x":1,"x":2}\n', '{"x":1}\n', '[1]\n']) {
+    let rejected = false
+    try {
+      strictObjectKeys(canonicalJson(json, 'control'), ['x'], 'control')
+    } catch {
+      rejected = true
+    }
+    check('Canonical schema rejects ' + json.trim(), rejected)
+  }
+  const unusual =
+    process.platform === 'win32'
+      ? ROUTING + 'orthogonal/router/данные with space.ts'
+      : ROUTING + 'orthogonal/router/данные\twith\nnewline.ts'
+  const parsed = repairGitEntries('100644 blob ' + 'a'.repeat(40) + '\t' + unusual + '\0', 'HEAD')
+  check(
+    'Repair NUL parser preserves unusual path',
+    parsed.length === 1 && parsed[0].path === unusual,
+  )
+  for (const record of ['120000 blob ', '160000 commit ', '100644 blob bad ']) {
+    let rejected = false
+    try {
+      repairGitEntries(record + 'a'.repeat(40) + '\t' + unusual + '\0', 'HEAD')
+    } catch {
+      rejected = true
+    }
+    check('Repair Git schema rejects ' + record, rejected)
+  }
+  fixture('isolation', (root, git, write) => {
+    const source = ROUTING + 'orthogonal/router/route.ts',
+      original = fs.readFileSync(path.join(root, source))
+    const meta = R04_METADATA[0],
+      metaBytes = fs.readFileSync(path.join(root, meta))
+    check('Repair entry positive all three layers', findings(root).length === 0)
+    const discovered = changedFiles(R04_REPAIR_ORIGIN, root)
+    check('Repair positive includes retained untracked path', discovered.includes(source))
+    check('Repair positive includes retained metadata path', discovered.includes(meta))
+    write(source, 'illegal staged content\n')
+    git(['add', '--', source])
+    write(source, original)
+    check(
+      'Repair cancellation actual staged source',
+      git(['diff', '--cached', '--name-only', '-z']).split('\0').includes(source),
+    )
+    check(
+      'Repair cancellation discovered source',
+      changedFiles(R04_REPAIR_ORIGIN, root).includes(source),
+    )
+    check('Repair staged cancellation fails INDEX', failsLayer(root, 'INDEX'))
+    check('Repair staged cancellation WORKTREE remains equal', !failsLayer(root, 'WORKTREE'))
+    git(['restore', '--staged', '--', source])
+    git(['add', '--', source])
+    check('Repair byte-identical untracked staging fails INDEX', failsLayer(root, 'INDEX'))
+    git(['restore', '--staged', '--', source])
+    write(source, 'illegal unstaged content\n')
+    check('Repair unstaged source detected WORKTREE', failsLayer(root, 'WORKTREE'))
+    write(source, original)
+    check('Repair restored positive', findings(root).length === 0)
+    fs.unlinkSync(path.join(root, source))
+    check('Repair missing retained untracked file detected', failsLayer(root, 'WORKTREE'))
+    write(source, original)
+    fs.unlinkSync(path.join(root, meta))
+    git(['add', '--', meta])
+    write(meta, metaBytes)
+    check(
+      'Repair staged deletion actual path source',
+      git(['diff', '--cached', '--name-only', '-z']).split('\0').includes(meta),
+    )
+    check(
+      'Repair deletion/recreation discovered',
+      changedFiles(R04_REPAIR_ORIGIN, root).includes(meta),
+    )
+    check('Repair deletion/recreation fails INDEX', failsLayer(root, 'INDEX'))
+    git(['restore', '--staged', '--', meta])
+    write(unusual, 'new file\n')
+    check(
+      'Repair unusual untracked source discovered',
+      changedFiles(R04_REPAIR_ORIGIN, root).includes(unusual),
+    )
+    check('Repair unusual addition detected WORKTREE', failsLayer(root, 'WORKTREE'))
+    fs.unlinkSync(path.join(root, unusual))
+    const ignored = ROUTING + 'orthogonal/router/ignored.new'
+    write('.git/info/exclude', 'ignored.new\n')
+    write(ignored, 'hidden\n')
+    check(
+      'Repair ignored addition absent normal untracked discovery',
+      !changedFiles(R04_REPAIR_ORIGIN, root).includes(ignored),
+    )
+    check('Repair complete-set check catches ignored addition', failsLayer(root, 'WORKTREE'))
+    fs.unlinkSync(path.join(root, ignored))
+    const copy = ROUTING + 'orthogonal/router/copy.ts'
+    write(copy, original)
+    git(['add', '--', copy])
+    check(
+      'Repair copy destination discovered',
+      changedFiles(R04_REPAIR_ORIGIN, root).includes(copy),
+    )
+    check(
+      'Repair copy destination INDEX/WORKTREE rejected',
+      failsLayer(root, 'INDEX') && failsLayer(root, 'WORKTREE'),
+    )
+    git(['restore', '--staged', '--', copy])
+    fs.unlinkSync(path.join(root, copy))
+    const moved = ROUTING + 'orthogonal/router/renamed-package.json'
+    git(['mv', '--', meta, moved])
+    const renames = changedFiles(R04_REPAIR_ORIGIN, root)
+    check(
+      'Repair rename discovers old and new names',
+      renames.includes(meta) && renames.includes(moved),
+    )
+    check(
+      'Repair rename rejected in independent layers',
+      failsLayer(root, 'INDEX') && failsLayer(root, 'WORKTREE'),
+    )
+    git(['restore', '--staged', '--', meta, moved])
+    fs.renameSync(path.join(root, moved), path.join(root, meta))
+    git(['update-index', '--chmod=+x', meta])
+    check('Repair Git executable mode rejected', failsLayer(root, 'INDEX'))
+    git(['update-index', '--chmod=-x', meta])
+    // update-index --chmod also refreshes this dirty metadata blob. Restore
+    // its original HEAD entry, not just its mode, before the next control.
+    git(['restore', '--staged', '--', meta])
+    const oid = git(['hash-object', '-w', '--stdin']).trim()
+    git(['update-index', '--add', '--cacheinfo', '120000,' + oid + ',' + source])
+    check('Repair staged symlink type rejected', failsLayer(root, 'INDEX'))
+    git(['restore', '--staged', '--', source])
+    git(['update-index', '--force-remove', meta])
+    const metaOid = saved.indexEntries.find((entry) => entry.path === meta).oid
+    git(
+      ['update-index', '--index-info'],
+      '100644 ' + metaOid + ' 1\t' + meta + '\n100644 ' + metaOid + ' 2\t' + meta + '\n',
+    )
+    check('Repair unmerged index rejected independently', failsLayer(root, 'INDEX'))
+    git(['restore', '--staged', '--', meta])
+    check('Repair original snapshot still valid before tampering', findings(root).length === 0)
+    const snapshot = fs.readFileSync(path.join(root, R04_REPAIR_ENTRY))
+    const replacement = JSON.parse(snapshot)
+    replacement.worktree[source].sha256 = textHash('tampered\n')
+    write(source, 'tampered\n')
+    write(R04_REPAIR_ENTRY, JSON.stringify(replacement, null, 2) + '\n')
+    check('Repair file plus snapshot replacement rejected', failsLayer(root, 'REPAIR'))
+    const selfClaim = textHash(fs.readFileSync(path.join(root, R04_REPAIR_ENTRY)))
+    check(
+      'Repair updated CURRENT hash cannot authorize replacement',
+      findings(root, { ...planning, repairHash: selfClaim }).length > 0,
+    )
+    write(source, original)
+    write(R04_REPAIR_ENTRY, snapshot)
+    const historical = R04_APPROVAL,
+      old = fs.readFileSync(path.join(root, historical))
+    write(historical, old.toString('utf8') + 'altered\n')
+    git(['add', '--', historical])
+    write(historical, old)
+    check('Repair historical staged cancellation rejected', failsLayer(root, 'REPAIR'))
+    git(['restore', '--staged', '--', historical])
+    check(
+      'Repair historical PASS is not renewed approval',
+      findings(root, { ...planning, preImplementationGate: 'PASS' }).length > 0,
+    )
+    check('Repair final restored isolation passes', findings(root).length === 0)
+    write('junction-target/owned.txt', 'owned fixture\n')
+    const link = ROUTING + 'orthogonal/router/junction'
+    fs.symlinkSync(
+      path.join(root, 'junction-target'),
+      path.join(root, link),
+      process.platform === 'win32' ? 'junction' : 'dir',
+    )
+    check('Repair worktree symlink/junction rejected', failsLayer(root, 'WORKTREE'))
+  })
+  fixture('committed', (root, git, write) => {
+    const source = ROUTING + 'orthogonal/router/route.ts',
+      original = fs.readFileSync(path.join(root, source))
+    write(source, 'committed illegal source\n')
+    git(['add', '--', source])
+    git(['commit', '--quiet', '-m', 'forbidden product during repair'])
+    write(source, original)
+    check(
+      'Repair committed cancellation baseline source discovered',
+      git(['diff', '--name-only', '-z', R04_REPAIR_ORIGIN, 'HEAD']).split('\0').includes(source),
+    )
+    check(
+      'Repair committed cancellation union discovered',
+      changedFiles(R04_REPAIR_ORIGIN, root).includes(source),
+    )
+    check('Repair committed cancellation HEAD rejected', failsLayer(root, 'HEAD'))
+    check('Repair committed cancellation history rejected', failsLayer(root, 'HISTORY'))
+    git(['rm', '--cached', '--', source])
+    git(['commit', '--quiet', '-m', 'revert product registration'])
+    write(source, original)
+    check('Repair reverted product history still fails', failsLayer(root, 'HISTORY'))
+    check(
+      'Repair restored net product layers do not hide history',
+      !failsLayer(root, 'HEAD') && !failsLayer(root, 'INDEX') && !failsLayer(root, 'WORKTREE'),
+    )
+  })
+  fixture('approval', (root, git, write) => {
+    let approved = canonicalText(fs.readFileSync(path.join(root, CURRENT), 'utf8'))
+      .replace(/^PRE_IMPLEMENTATION_GATE:.*$/m, 'PRE_IMPLEMENTATION_GATE: PASS')
+      .replace(
+        /^PRE_IMPLEMENTATION_GATE_EVIDENCE:.*$/m,
+        'PRE_IMPLEMENTATION_GATE_EVIDENCE: ' + R04_REPAIR_APPROVAL,
+      )
+    write(CURRENT, approved)
+    const artifacts = planningReviewFingerprint(root, R04)
+    check(
+      'Repair fingerprints retain original full set',
+      R04_REVIEWED.every((f) => Object.hasOwn(artifacts, f)),
+    )
+    check(
+      'Repair fingerprints include all new artifacts',
+      Object.keys(artifacts).length === R04_REPAIR_REVIEWED.length,
+    )
+    const report =
+      'CHANGE: ' +
+      R04 +
+      '\nGATE_TYPE: PRE_IMPLEMENTATION\nGATE_STATUS: PASS\nBLOCKERS: NONE\nMACHINE_GATE_INTEGRITY: PASS\nREADY_FOR_IMPLEMENTATION: YES\nREVIEWED_ARTIFACTS_JSON_BEGIN\n' +
+      JSON.stringify(artifacts, null, 2) +
+      '\nREVIEWED_ARTIFACTS_JSON_END\n'
+    const proof = {
+      schemaVersion: 2,
+      change: R04,
+      gateType: 'PRE_IMPLEMENTATION',
+      gateStatus: 'PASS',
+      reviewerContext: 'fresh-read-only',
+      baseline: R04_REPAIR_ORIGIN,
+      originalApprovedPlanningCommit: R04_REPAIR_ORIGIN,
+      repairEntrySnapshot: { path: R04_REPAIR_ENTRY, sha256: R04_REPAIR_HASH },
+      reportPath: R04_REPAIR_REPORT,
+      reportSha256: textHash(report),
+      artifacts,
+    }
+    write(R04_REPAIR_REPORT, report)
+    write(R04_REPAIR_APPROVAL, JSON.stringify(proof, null, 2) + '\n')
+    const pre = { ...planning, preImplementationGate: 'PASS', preEvidence: R04_REPAIR_APPROVAL }
+    check('Repair planning schema-2 proof accepted', findings(root, pre).length === 0)
+    for (const kind of [
+      'old-schema',
+      'extra-key',
+      'duplicate-key',
+      'wrong-origin',
+      'wrong-snapshot',
+      'missing-fingerprint',
+      'stale-report',
+      'duplicate-status',
+      'wrong-status',
+    ]) {
+      const bad = structuredClone(proof)
+      let badReport = report
+      if (kind === 'old-schema') bad.schemaVersion = 1
+      if (kind === 'extra-key') bad.extra = true
+      if (kind === 'wrong-origin') bad.baseline = R04_BASE
+      if (kind === 'wrong-snapshot') bad.repairEntrySnapshot.sha256 = '0'.repeat(64)
+      if (kind === 'missing-fingerprint') delete bad.artifacts[MASTER]
+      if (kind === 'stale-report') bad.reportSha256 = '0'.repeat(64)
+      if (kind === 'duplicate-status') badReport += 'GATE_STATUS: PASS\n'
+      if (kind === 'wrong-status')
+        badReport = report.replace('GATE_STATUS: PASS', 'GATE_STATUS: FAIL')
+      if (['duplicate-status', 'wrong-status'].includes(kind))
+        bad.reportSha256 = textHash(badReport)
+      write(R04_REPAIR_REPORT, badReport)
+      let badText = JSON.stringify(bad, null, 2) + '\n'
+      if (kind === 'duplicate-key') badText = badText.replace('{', '{\n  "schemaVersion": 2,')
+      write(R04_REPAIR_APPROVAL, badText)
+      check('Repair schema-2 attack ' + kind, findings(root, pre).length > 0)
+    }
+    write(R04_REPAIR_REPORT, report)
+    write(R04_REPAIR_APPROVAL, JSON.stringify(proof, null, 2) + '\n')
+    git([
+      'add',
+      '--',
+      ...R04_REPAIR_REVIEWED.filter((f) => !R04_METADATA.includes(f)),
+      R04_REPAIR_APPROVAL,
+      R04_REPAIR_REPORT,
+    ])
+    check(
+      'Repair checkpoint excludes retained product and metadata',
+      !git(['diff', '--cached', '--name-only', '-z'])
+        .split('\0')
+        .some((f) => inScope(f, R04_IMPLEMENTATION) || R04_METADATA.includes(f)),
+    )
+    git(['commit', '--quiet', '-m', 'synthetic independent repair approval'])
+    const checkpoint = git(['rev-parse', 'HEAD']).trim()
+    check(
+      'Repair checkpoint history is control-only',
+      git(['diff', '--no-renames', '--name-only', '-z', R04_REPAIR_ORIGIN, checkpoint])
+        .split('\0')
+        .filter(Boolean)
+        .every((file) => inScope(file, R04_CONTROL)),
+    )
+    const impl = {
+      ...pre,
+      phase: 'IMPLEMENTATION',
+      planningCommit: checkpoint,
+      implementationPaused: 'false',
+      frozenGateVerified: true,
+    }
+    const live = approved
+      .replace(/^PHASE:.*$/m, 'PHASE: IMPLEMENTATION')
+      .replace(/^APPROVED_PLANNING_COMMIT:.*$/m, 'APPROVED_PLANNING_COMMIT: ' + checkpoint)
+      .replace(/^IMPLEMENTATION_PAUSED:.*$/m, 'IMPLEMENTATION_PAUSED: false')
+    write(CURRENT, live)
+    const verifies = (state = impl) => {
+      try {
+        return verifyFrozenGate(state, root)
+      } catch {
+        return false
+      }
+    }
+    check(
+      'Repair checkpoint saved state matches authority',
+      r04RepairFieldsMatch(repairState(git(['show', checkpoint + ':' + CURRENT]))),
+    )
+    check(
+      'Repair checkpoint serialized schema-2 proof remains valid',
+      verifyR04RepairProof((file) => git(['show', checkpoint + ':' + file]), git),
+    )
+    check(
+      'Repair checkpoint product HEAD matches entry exactly',
+      isDeepStrictEqual(
+        repairGitEntries(git(['ls-tree', '-rz', '--full-tree', checkpoint]), 'HEAD'),
+        saved.headEntries,
+      ),
+    )
+    for (const file of R04_REPAIR_REVIEWED.filter((f) => !R04_METADATA.includes(f)).concat(
+      R04_REPAIR_APPROVAL,
+      R04_REPAIR_REPORT,
+    ))
+      check(
+        'Repair checkpoint frozen positive ' + file,
+        verifyFrozenFile(
+          file,
+          root,
+          checkpoint,
+          file === R04_REPAIR_ENTRY
+            ? (value) => value
+            : (value) => reviewCanonical(file, value, R04),
+          git,
+        ),
+      )
+    check('Repair implementation new checkpoint valid', verifies())
+    check(
+      'Repair scope new checkpoint valid',
+      scopeFindings(impl, [ROUTING + 'orthogonal/router/route.ts'], boundary).length === 0,
+    )
+    for (const patch of [
+      { baseCommit: checkpoint },
+      { planningCommit: R04_REPAIR_ORIGIN },
+      { planningCommit: R04_BASE },
+      { planningCommit: 'a'.repeat(40) },
+      { implementationPaused: 'true' },
+      { preEvidence: R04_APPROVAL },
+      { implementationOrigin: checkpoint },
+      { repairHash: '0'.repeat(64) },
+    ])
+      check(
+        'Repair approval state attack ' + JSON.stringify(patch),
+        !verifies({ ...impl, ...patch }),
+      )
+    const task = R04_PREFIX + 'tasks.md',
+      taskBytes = fs.readFileSync(path.join(root, task), 'utf8')
+    write(task, taskBytes.replace('- [ ] 1.6', '- [x] 1.6'))
+    check('Repair task checkbox remains mutable', verifies())
+    write(task, taskBytes)
+    for (const file of R04_REPAIR_REVIEWED.filter((f) => !R04_METADATA.includes(f)).concat(
+      R04_REPAIR_APPROVAL,
+      R04_REPAIR_REPORT,
+    )) {
+      const original = fs.readFileSync(path.join(root, file))
+      write(file, original.toString('utf8') + '\nunapproved wording\n')
+      git(['add', '--', file])
+      write(file, original)
+      check(
+        'Repair frozen staged path discovered ' + file,
+        changedFiles(R04_REPAIR_ORIGIN, root).includes(file),
+      )
+      check('Repair frozen staged cancellation ' + file, !verifies())
+      git(['restore', '--staged', '--', file])
+      write(file, original.toString('utf8') + '\nunapproved wording\n')
+      check('Repair frozen worktree edit ' + file, !verifies())
+      write(file, original)
+    }
+    check('Repair frozen controls restored', verifies())
+    for (const forbidden of [
+      ROUTING + 'model/illegal.ts',
+      ROUTING + 'orthogonal/direction/illegal.ts',
+      ROUTING + 'segment/illegal.ts',
+      'packages/draw/src/index.ts',
+      'apps/desktop/vendor/drawio/illegal.js',
+    ])
+      check(
+        'Repair implementation retains scope prohibition ' + forbidden,
+        scopeFindings(impl, [forbidden], boundary).some((f) => f.file === forbidden),
+      )
+    const source = ROUTING + 'orthogonal/router/route.ts'
+    git(['add', '--', source])
+    git(['commit', '--quiet', '-m', 'authorized implementation after P'])
+    check(
+      'Repair committed implementation still discovered from O',
+      changedFiles(R04_REPAIR_ORIGIN, root).includes(source),
+    )
+    check(
+      'Repair committed source absent from P origin net diff only after commit test',
+      git(['diff', '--name-only', '-z', checkpoint, 'HEAD']).split('\0').includes(source),
+    )
+    check('Repair implementation commit does not invalidate control checkpoint', verifies())
+    write(source, 'import React from "react"\n')
+    git(['add', '--', source])
+    git(['commit', '--quiet', '-m', 'bad implementation source'])
+    write(source, frozenFixture.files.get(source))
+    check(
+      'Repair source inspection catches committed inverse',
+      trackedSnapshotFindings(
+        impl,
+        changedFiles(R04_REPAIR_ORIGIN, root),
+        boundary,
+        root,
+      ).findings.some(
+        (f) => f.file === source && f.reason.includes('[HEAD]') && f.reason.includes('Framework'),
+      ),
+    )
+    // A new approval checkpoint after any product commit/revert cannot qualify.
+    git(['rm', '--cached', '--', source])
+    git(['commit', '--quiet', '-m', 'remove registered implementation'])
+    const taintedCheckpoint = git(['rev-parse', 'HEAD']).trim()
+    check(
+      'Repair control checkpoint cannot include product edit/revert',
+      !verifies({ ...impl, planningCommit: taintedCheckpoint }),
     )
   })
 }
@@ -2227,6 +3371,7 @@ function selfTest() {
   }
   r03ApprovalRegressions(check)
   r04Regressions(check)
+  r04RepairRegressions(check)
   check(
     'control repairs allowed',
     scopeFindings(
@@ -3594,6 +4739,13 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     if (![R03, R04].includes(active))
       throw new Error('No approval fingerprint profile for ' + active)
     console.log(JSON.stringify(planningReviewFingerprint(ROOT, active), null, 2))
+  } else if (process.argv.includes('--self-test-r04-repair')) {
+    let count = 0
+    r04RepairRegressions((label, value) => {
+      assert.ok(value, label)
+      count++
+    })
+    console.log('R04_REPAIR_GATE_SELF_TESTS: PASS (' + count + ' assertions)')
   } else if (process.argv.includes('--self-test-r04')) {
     let count = 0
     r04Regressions((label, value) => {

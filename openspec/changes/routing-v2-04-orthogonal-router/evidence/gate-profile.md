@@ -1,5 +1,13 @@
 # Exact R04 machine-gate and approval protocol
 
+REPAIR STATUS (2026-09-28): initial profile rules below remain applicable to
+initial planning. Task 1.6 adds the exact authorized repair profile described in
+planning-repair-process-protocol.md and the repair section below. Its validation
+evidence is separate from independent PRE. The initial PLANNING/NOT_STARTED and
+BASE==APPROVED assumptions do not authorize retained implementation or a renewed
+checkpoint. Keep the original report/manifest unchanged; fresh repair review
+uses separate schema-2 evidence and cannot reuse historical approval.
+
 This is process-control implementation for task 1.2, not a PRE review or approval.
 The active program remains PLANNING until fresh independent PRE passes and its
 approved planning checkpoint is committed.
@@ -108,17 +116,50 @@ result fields to change; scopes, other fields and prose remain fingerprinted.
 Do not rewrite its checkpoint prose during implementation. Frozen-file changes
 require a planning repair and new independent approval.
 
-## Commands and limits
+## Authorized repair profile (task 1.6)
+
+For PLANNING_REPAIR: ORDINARY_DIRECTION_CONSTRUCTION, follow
+planning-repair-process-protocol.md. This exact profile permits retained R04
+files only when HEAD, INDEX and complete WORKTREE match the pinned entry
+snapshot independently. Additions (including ignored files), omissions, modes,
+symlinks/junctions, unmerged stages and cancellation fail closed. The initial
+planning profile still prohibits product work.
+
+Original approved commit O remains cf424e247490fdfae2c4efc9f7e7377b6d5b6e11.
+The original schema-1 manifest/report stay frozen at O as historical evidence.
+Fresh independent PRE uses pre-implementation-revalidation-pass.md and
+pre-implementation-revalidation-review.json, schemaVersion 2, with baseline O,
+originalApprovedPlanningCommit O and repairEntrySnapshot {path, sha256}.
+All original reviewed paths plus the protocol's eleven repair artifacts are
+fingerprinted. Metadata paths fingerprint committed O blobs; retained worktree
+metadata is pinned separately by the immutable entry. The snapshot and fixture
+bundle preserve raw bytes through evidence/.gitattributes.
+
+Before P: BASE_COMMIT=APPROVED_PLANNING_COMMIT=O, PLANNING, IN_PROGRESS,
+IMPLEMENTATION_PAUSED=true, archive/next false. P is a real control-only repair
+checkpoint with actual schema-2 approval, no product/test/dependency staging and
+no product edit/revert anywhere O..P. After P, keep BASE_COMMIT and
+IMPLEMENTATION_ORIGIN_COMMIT at O, set APPROVED_PLANNING_COMMIT=P and
+IMPLEMENTATION_PAUSED=false only on authorized resumption. Freeze reviewed
+controls/report/manifest at P in HEAD/INDEX/WORKTREE. Discovery still starts at O,
+so committed implementation remains visible; P cannot hide cumulative work.
+
+The fixture bundle contains immutable entry bytes solely for disposable self-tests,
+not authorization for live edits. No synthetic approval is saved in the real change.
+
+## Validation commands
 
 ```powershell
 node scripts/routing-v2-architecture-gate.mjs --self-test-r04
+node scripts/routing-v2-architecture-gate.mjs --self-test-r04-repair
 node scripts/routing-v2-architecture-gate.mjs --self-test
 pnpm run routing:v2:arch-gate
 openspec validate routing-v2-04-orthogonal-router --strict
 git diff --check
 ```
 
-The R04-only command exercises the new controls; the full command also retains
+The focused repair command exercises isolation and schema-2 controls; the initial
+R04 command preserves its original controls. The full command retains both and
 all R01-R03 controls. Tests create isolated temporary repositories and delete
 only their verified temporary roots. A machine PASS is necessary process
 evidence, not formal OpenSpec Verify or an independent PRE/POST decision.
