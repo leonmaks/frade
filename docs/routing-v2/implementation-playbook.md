@@ -1098,6 +1098,21 @@ TOO-SHORT CASE
 Implement explicit fallback contract for fixed endpoints whose available
 distance cannot satisfy sourceJetty + targetJetty.
 
+Follow master-spec section 25 and BDD-006: retain the strict Euclidean
+too-short trigger, but use the R04 local exterior-rectangle fallback after
+R02 fixed resolution and R03 direction selection. Direction constraints have
+no exceptions. Preserve both fixed points and both resolved jetty minima;
+extend terminal runs when needed rather than shrinking jetty. Compare the
+clockwise and counterclockwise exterior paths by length, bends and explicit
+direction order. Coincident exits require a full circuit. Reject non-finite
+or unrepresentable geometry explicitly.
+
+This is an approved intentional difference from draw.io SegmentConnector,
+which bypasses port constraints in the too-short branch. Retain independent
+reference evidence and separate adaptation fixtures; do not claim exact
+draw.io geometry parity for fallback. Do not import, call or implement R05
+manual/hint routing, and never delegate to legacy or production vendor code.
+
 Do not silently create diagonal geometry.
 
 TESTS

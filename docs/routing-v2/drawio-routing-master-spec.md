@@ -892,17 +892,69 @@ Grid применяется к пользовательским control points, 
 
 # 25. Too-short fallback
 
-Draw.io проверяет расстояние между fixed endpoints.
+Draw.io проверяет евклидово расстояние между fixed endpoints и при
+`distance < sourceJetty + targetJetty` переключается на `SegmentConnector`
+до чтения port constraints. Это описание эталона, а не разрешение нарушать
+direction constraints Frade.
 
-Если:
+**Решение R04:** direction constraints и INV-007/INV-008 обязательны без
+исключений, включая too-short fallback. Frade сохраняет trigger, но использует
+собственный ограниченный автоматический fallback внутри R04. Он не вызывает
+R05 SegmentRouter, draw.io production code или legacy router. Manual hints
+по-прежнему относятся к R05.
 
-```text
-distance < sourceJetty + targetJetty
-```
+Trigger выполняется только при наличии обоих resolved fixed endpoints:
+`Math.hypot(target.x-source.x, target.y-source.y) < sourceJetty+targetJetty`.
+При равенстве используется обычный pattern pipeline. Все разности, расстояние,
+сумма jetty и результаты должны быть конечными; EPSILON не сдвигает threshold.
+R02 сначала разрешает fixed points и effective masks, R03 выбирает направления,
+после чего R04 строит fallback с этими направлениями. Fixed points не двигаются.
 
-`OrthConnector` переключается на `SegmentConnector`.
+### R04 local exterior fallback
 
-Frade обязан повторить этот contract.
+1. Построить axis-aligned bounding rectangle обоих routing bounds и обоих
+   fixed points. Для explicit anchor без geometry используются нулевые bounds
+   в его точке; perimeter projection при этом не выполняется.
+2. Расширить этот rectangle на `C = max(10, sourceJetty, targetJetty)` с каждой
+   стороны. Число 10 — model-space orthBuffer, не новая geometry tolerance.
+3. Продлить луч из каждого fixed point в выбранном R03 outward direction до
+   соответствующей стороны внешнего rectangle. Получить source/target exits.
+4. Построить ровно два connector-кандидата вдоль rectangle: clockwise и
+   counterclockwise от source exit до target exit. Если exits совпали, каждый
+   кандидат делает полный обход, а не разворот на месте.
+5. Добавить исходные endpoints, структурно canonicalize без quantization,
+   проверить invariants и выбрать по tuple: полная Manhattan length, число
+   bends, lexicographic direction sequence с порядком WEST,NORTH,EAST,SOUTH.
+   При полном равенстве выбрать clockwise. Сравнение стоимостей точное, без
+   дополнительного epsilon. Невалидный кандидат — defect/error, не повод
+   скрыто пропустить его или подменить алгоритм.
+
+Оба endpoint segments обязаны иметь положительную длину больше EPSILON,
+сохранять выбранные source/target outward directions и иметь длину не меньше
+соответствующего resolved jetty с обычной погрешностью EPSILON. Target outward
+direction проверяется от target endpoint к предыдущей точке, а не по направлению
+обхода route. Jetty никогда не уменьшается ради короткого расстояния. Внешний
+контур может удлинить оба segments; при zero jetty он всё равно обеспечивает
+положительный terminal segment. Уменьшение jetty, смена masks, перенос anchors,
+диагональный shortcut и превращение результата в manual route запрещены.
+
+Переполнение или невозможность представить внешний контур и положительные
+terminal segments завершается явным numeric error, без возврата invalid route.
+Это локальное соединение двух endpoints, не глобальный obstacle router. Для
+произвольных explicit fixed points R03 mask precedence сохраняется; из side
+evidence не выводится новое ограничение, отменяющее выбранное направление.
+
+### Intentional difference from draw.io
+
+Для source bounds `(0,0,10,10)`, target bounds `(15,0,10,10)`, fixed points
+`(5,0)` и `(20,0)`, обоих NORTH-only masks и jetty `10+10`, эталон возвращает
+`[(5,0),(20,0)]`, игнорируя masks. Frade обязан вернуть
+`[(5,0),(5,-10),(20,-10),(20,0)]`.
+
+Too-short fixtures проверяют этот явный Frade contract отдельно от strict
+draw.io geometry parity. Эталонный результат сохраняется как evidence отличия;
+его нельзя переписать в Frade output, скрыть canonicalization или считать
+паритетом. Обычный pattern path сохраняет отдельные reference parity checks.
 
 ---
 
@@ -1843,10 +1895,17 @@ And automatic routing shall not relocate it
 Given both terminal points are fixed
 And their distance is less than sourceJetty plus targetJetty
 When routing is performed
-Then SegmentRouter fallback shall be used
+Then the R04 local exterior fallback shall be used
+And both fixed endpoints shall remain unchanged
+And source and target direction constraints shall remain mandatory
+And neither resolved jetty minimum shall be reduced
+And the route shall be finite, orthogonal and canonical
+And neither R05 SegmentRouter nor legacy routing shall be called
 ```
 
-Это повторяет fallback draw.io.
+Это сохраняет too-short trigger draw.io, но намеренно меняет fallback geometry
+для соблюдения constraints Frade. Нормативный алгоритм и пример NORTH/NORTH
+определены в разделе 25; равенство distance и суммы jetty не включает fallback.
 
 ---
 

@@ -7,6 +7,7 @@ import os from 'node:os'
 import { execFileSync } from 'node:child_process'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
+import { isDeepStrictEqual } from 'node:util'
 
 const ROOT = process.cwd()
 const requireDraw = createRequire(path.join(ROOT, 'packages/draw/package.json'))
@@ -20,6 +21,8 @@ const R01 = 'routing-v2-01-geometry-kernel'
 const R02 = 'routing-v2-02-terminal-perimeter'
 const R03 = 'routing-v2-03-direction-resolver'
 const R03_BASE = '2b6619627e3e744007b06251a05dad86e7bce634'
+const R04 = 'routing-v2-04-orthogonal-router'
+const R04_BASE = '0b2a9096ab42e431e6e56a7ece17a5f29c72cdb4'
 const WORKFLOW = 'docs/routing-v2/workflow-models.md'
 const R02_BASE = 'd6579321d13e5c423eb1f1523b1d4ce35bcae583'
 const ROUTING = 'packages/draw/src/routing/'
@@ -44,6 +47,14 @@ const R03_FROZEN = [
   'AGENTS.md',
   ROUTING + 'AGENTS.md',
 ]
+const R04_IMPLEMENTATION = [
+  ROUTING + 'orthogonal/router/**',
+  ROUTING + 'normalization/**',
+  ROUTING + 'validation/**',
+  V2_TESTS + 'orthogonal/**',
+]
+const R04_CONTROL = ['openspec/changes/' + R04 + '/**', CURRENT, MASTER, PLAYBOOK, SCRIPT]
+const R04_METADATA = ['packages/draw/package.json', 'pnpm-lock.yaml']
 const CORE = new Set([
   'model',
   'geometry',
@@ -107,20 +118,23 @@ function field(content, name) {
 function section(content, name) {
   const heading = new RegExp('^## ' + name + '[^\\n]*\\n([\\s\\S]*?)(?=^## |$(?![\\s\\S]))', 'm')
   const body = heading.exec(content)?.[1] ?? ''
-  return [...body.matchAll(/^(?:packages|openspec|docs|scripts)\/[^\s`]+$/gm)].map((match) =>
-    match[0].trim(),
-  )
+  return [
+    ...body.matchAll(/^(?:(?:packages|openspec|docs|scripts)\/[^\s`]+|pnpm-lock\.yaml)$/gm),
+  ].map((match) => match[0].trim())
 }
 
 function readCurrentChange() {
   const content = read(CURRENT)
   const activeChange = field(content, 'ACTIVE_CHANGE') ?? 'UNKNOWN'
+  if (activeChange === R04) reviewCanonical(CURRENT, content, R04)
   return {
     activeChange,
     phase: field(content, 'PHASE'),
     baseCommit: field(content, 'BASE_COMMIT'),
     sequence: field(content, 'SEQUENCE_POSITION'),
     nextAllowed: field(content, 'NEXT_CHANGE_ALLOWED'),
+    nextChange: field(content, 'NEXT_CHANGE'),
+    implementationStatus: field(content, 'IMPLEMENTATION_STATUS'),
     previousGate: field(content, 'PREVIOUS_GATE'),
     previousChange: field(content, 'PREVIOUS_CHANGE'),
     previousStatus: field(content, 'PREVIOUS_CHANGE_STATUS'),
@@ -132,6 +146,7 @@ function readCurrentChange() {
     number: Number(/^routing-v2-(\d{2})-/.exec(activeChange)?.[1]) || null,
     implementation: section(content, 'IMPLEMENTATION_SCOPE'),
     control: section(content, 'PROCESS_CONTROL_SCOPE'),
+    testTooling: section(content, 'TEST_TOOLING_SCOPE'),
   }
 }
 
@@ -176,6 +191,8 @@ export function scopeFindings(current, files, boundary) {
   const findings = []
   const fail = (file, reason) => findings.push({ file, reason })
   if (!current.number || current.number > 10) fail(CURRENT, 'Unrecognized active Routing V2 change')
+  if (![R01, R02, R03, R04].includes(current.activeChange))
+    fail(CURRENT, 'No exact machine profile for this active change')
   if (current.activeChange === R01) {
     for (const [name, actual, expected] of [
       ['IMPLEMENTATION_SCOPE', current.implementation, R01_IMPLEMENTATION],
@@ -307,6 +324,56 @@ export function scopeFindings(current, files, boundary) {
       } else fail(file, 'Changed file is outside R03 implementation and process/control scopes')
     }
   }
+  if (current.activeChange === R04) {
+    for (const [name, actual, expected] of [
+      ['IMPLEMENTATION_SCOPE', current.implementation, R04_IMPLEMENTATION],
+      ['PROCESS_CONTROL_SCOPE', current.control, R04_CONTROL],
+      ['TEST_TOOLING_SCOPE', current.testTooling, R04_METADATA],
+    ])
+      if (!isDeepStrictEqual([...(actual ?? [])].sort(), [...expected].sort()))
+        fail(CURRENT, name + ' differs from the exact authorized R04 scope')
+    if (
+      current.sequence !== 'R04_OF_10' ||
+      current.nextAllowed !== 'false' ||
+      current.nextChange !== 'routing-v2-05-segment-router' ||
+      current.previousChange !== R03 ||
+      current.previousStatus !== 'CLOSED' ||
+      current.previousArchived !== 'true' ||
+      current.previousPostGate !== 'PASS' ||
+      (current.phase === 'PLANNING'
+        ? current.baseCommit !== R04_BASE
+        : !/^[0-9a-f]{40}$/.test(current.planningCommit ?? '') ||
+          current.baseCommit !== current.planningCommit)
+    )
+      fail(CURRENT, 'R04 baseline/previous-change/sequence/next-change fields are inconsistent')
+    if (!['PLANNING', 'IMPLEMENTATION', 'VERIFICATION'].includes(current.phase))
+      fail(CURRENT, 'Unrecognized R04 phase')
+    if (
+      current.phase === 'PLANNING'
+        ? current.implementationStatus !== 'NOT_STARTED'
+        : !['IN_PROGRESS', 'COMPLETE'].includes(current.implementationStatus) ||
+          current.preImplementationGate !== 'PASS' ||
+          !current.frozenGateVerified
+    )
+      fail(CURRENT, 'R04 requires planning isolation or PRE PASS with verified approved controls')
+    for (const file of files) {
+      if (inScope(file, R04_IMPLEMENTATION) || R04_METADATA.includes(file)) {
+        if (current.phase === 'PLANNING')
+          fail(file, 'R04 product/tests/dependencies changed during PLANNING')
+      } else if (inScope(file, R04_CONTROL)) {
+        if (
+          [MASTER, PLAYBOOK, SCRIPT].includes(file) &&
+          current.phase !== 'PLANNING' &&
+          !current.frozenGateVerified
+        )
+          fail(file, 'R04 frozen control differs from approved planning')
+      } else
+        fail(
+          file,
+          'Changed file is outside exact R04 scopes; earlier layers and R05+ are read-only',
+        )
+    }
+  }
   for (const file of files) {
     if (file.startsWith('apps/desktop/vendor/drawio/')) {
       fail(file, 'Vendored draw.io reference modified')
@@ -320,6 +387,12 @@ export function scopeFindings(current, files, boundary) {
 
 function coreLayer(file) {
   return file.startsWith(ROUTING) ? file.slice(ROUTING.length).split('/')[0] : null
+}
+
+function r04Layer(file) {
+  if (file.startsWith(ROUTING + 'orthogonal/direction/')) return 'direction'
+  if (file.startsWith(ROUTING + 'orthogonal/router/')) return 'router'
+  return coreLayer(file)
 }
 
 function dependencyCategory(importer, specifier, boundary, tests = false, snapshotFiles) {
@@ -396,7 +469,7 @@ export function inspectSource(
       return
     }
     const dependency = dependencyCategory(file, expression.text, boundary, tests, snapshotFiles)
-    if (tests && [2, 3].includes(current.number) && FRAMEWORK.test(expression.text)) {
+    if (tests && [2, 3, 4].includes(current.number) && FRAMEWORK.test(expression.text)) {
       fail(node, 'Framework dependency in R0' + current.number + ' tests: ' + expression.text)
       return
     }
@@ -446,6 +519,47 @@ export function inspectSource(
       )
         fail(node, 'R03 dependency direction violation: ' + layer + ' -> ' + dependency.layer)
     }
+    if (core && current.number === 4) {
+      const from = r04Layer(file),
+        to = r04Layer(dependency.target ?? '')
+      const allowed = {
+        model: ['model'],
+        geometry: ['model', 'geometry'],
+        perimeter: ['model', 'geometry', 'perimeter'],
+        terminal: ['model', 'geometry', 'perimeter', 'terminal'],
+        direction: ['model', 'geometry', 'perimeter', 'terminal', 'direction'],
+        normalization: ['model', 'geometry', 'normalization'],
+        validation: ['model', 'geometry', 'perimeter', 'terminal', 'normalization', 'validation'],
+        router: [
+          'model',
+          'geometry',
+          'perimeter',
+          'terminal',
+          'direction',
+          'normalization',
+          'validation',
+          'router',
+        ],
+      }[from]
+      if (!allowed?.includes(to))
+        fail(node, 'R04 dependency direction violation: ' + from + ' -> ' + to)
+    }
+    if (
+      tests &&
+      current.number === 4 &&
+      dependency.target?.startsWith(ROUTING) &&
+      ![
+        'model',
+        'geometry',
+        'perimeter',
+        'terminal',
+        'direction',
+        'normalization',
+        'validation',
+        'router',
+      ].includes(r04Layer(dependency.target))
+    )
+      fail(node, 'R04 tests depend on a later V2 layer: ' + dependency.target)
     if (core && coreLayer(file) === 'model' && dependency.layer !== 'model') {
       fail(node, 'Model depends on geometry/higher layer')
     }
@@ -552,29 +666,66 @@ const R03_REVIEWED = [
   R03_PREFIX + 'specs/routing-direction-resolver/spec.md',
   R03_PREFIX + 'evidence/pre-implementation-gate-prompt.md',
 ]
+const R04_PREFIX = 'openspec/changes/' + R04 + '/'
+const R04_APPROVAL = R04_PREFIX + 'evidence/pre-implementation-review.json'
+const R04_REVIEWED = [
+  ...R03_FROZEN,
+  CURRENT,
+  ...R04_METADATA,
+  ...[
+    '.openspec.yaml',
+    'proposal.md',
+    'design.md',
+    'tasks.md',
+    'traceability.md',
+    'specs/routing-orthogonal-router/spec.md',
+    'evidence/fallback-decision.md',
+    'evidence/pre-implementation-gate-prompt.md',
+    'evidence/too-short-reference-probe.mjs',
+    'evidence/gate-profile.md',
+  ].map((file) => R04_PREFIX + file),
+]
 
-export function reviewCanonical(file, value) {
+export function reviewCanonical(file, value, active = R03) {
   let text = canonicalText(value)
+  if (active === R04 && file === CURRENT) {
+    const names = [...text.matchAll(/^([A-Z][A-Z_0-9]*):/gm)].map((m) => m[1])
+    if (new Set(names).size !== names.length) throw new Error('Duplicate CURRENT_CHANGE field')
+    for (const [name, values] of [
+      ['PHASE', ['PLANNING', 'IMPLEMENTATION', 'VERIFICATION']],
+      ['PRE_IMPLEMENTATION_GATE', ['NOT_RUN', 'PENDING', 'PASS', 'FAIL']],
+      ['IMPLEMENTATION_STATUS', ['NOT_STARTED', 'IN_PROGRESS', 'COMPLETE']],
+      ['NEXT_CHANGE_ALLOWED', ['false']],
+    ])
+      if (!values.includes(field(text, name))) throw new Error('Invalid R04 process field ' + name)
+    // Only named lifecycle fields are mutable; prose, scopes and all other keys
+    // remain fingerprinted. Phase/baseline/approval are independently verified.
+    return text.replace(
+      /^(?:PHASE|BASE_COMMIT|APPROVED_PLANNING_COMMIT|PRE_IMPLEMENTATION_GATE|PRE_IMPLEMENTATION_GATE_EVIDENCE|IMPLEMENTATION_STATUS|IMPLEMENTATION_TASKS|IMPLEMENTATION_TESTS|VERIFICATION_STATUS|POST_IMPLEMENTATION_GATE|MACHINE_ARCHITECTURE_GATE|ARCHIVE_ALLOWED):[^\n]*(?:\n|$)/gm,
+      '',
+    )
+  }
   if (file === CURRENT)
     text = text.replace(
       /^(?:PRE_IMPLEMENTATION_GATE|PRE_IMPLEMENTATION_GATE_EVIDENCE|PRE_REVALIDATION_REQUIRED):[^\n]*\n/gm,
       '',
     )
-  if (file === R03_PREFIX + 'tasks.md') text = text.replace(/^(- \[)[ xX](\])/gm, '$1 $2')
+  if (file === (active === R04 ? R04_PREFIX : R03_PREFIX) + 'tasks.md')
+    text = text.replace(/^(- \[)[ xX](\])/gm, '$1 $2')
   return text
 }
 const textHash = (value) => createHash('sha256').update(value).digest('hex')
 
-export function planningReviewFingerprint(gitRoot = ROOT) {
+export function planningReviewFingerprint(gitRoot = ROOT, active = R03) {
   return Object.fromEntries(
-    R03_REVIEWED.map((file) => [
+    (active === R04 ? R04_REVIEWED : R03_REVIEWED).map((file) => [
       file,
-      textHash(reviewCanonical(file, fs.readFileSync(path.join(gitRoot, file), 'utf8'))),
+      textHash(reviewCanonical(file, fs.readFileSync(path.join(gitRoot, file), 'utf8'), active)),
     ]),
   )
 }
 
-export function reviewReportFingerprint(value) {
+export function reviewReportFingerprint(value, active = R03) {
   const report = canonicalText(value)
   const starts = [...report.matchAll(/^REVIEWED_ARTIFACTS_JSON_BEGIN\n/gm)]
   const ends = [...report.matchAll(/^REVIEWED_ARTIFACTS_JSON_END(?:\n|$)/gm)]
@@ -592,19 +743,28 @@ export function reviewReportFingerprint(value) {
   // The reviewer command emits this canonical JSON. Re-serialization rejects
   // duplicate keys and other ambiguous encodings before values are trusted.
   if (body !== JSON.stringify(fingerprint, null, 2)) return null
-  if (JSON.stringify(Object.keys(fingerprint).sort()) !== JSON.stringify([...R03_REVIEWED].sort()))
+  const reviewed = active === R04 ? R04_REVIEWED : R03_REVIEWED
+  if (JSON.stringify(Object.keys(fingerprint).sort()) !== JSON.stringify([...reviewed].sort()))
     return null
-  if (R03_REVIEWED.some((file) => !/^[0-9a-f]{64}$/.test(fingerprint[file]))) return null
+  if (reviewed.some((file) => !/^[0-9a-f]{64}$/.test(fingerprint[file]))) return null
   return fingerprint
 }
 
-function verifyR03Approval(current, approved, git, gitRoot) {
+function verifyPlanningApproval(current, approved, git, gitRoot) {
+  const r04 = current.activeChange === R04
+  const active = r04 ? R04 : R03,
+    base = r04 ? R04_BASE : R03_BASE
+  const approval = r04 ? R04_APPROVAL : R03_APPROVAL
+  const prefix = r04 ? R04_PREFIX : R03_PREFIX
+  const reviewed = r04 ? R04_REVIEWED : R03_REVIEWED
+  const control = r04 ? R04_CONTROL : R03_CONTROL
+  if (r04) reviewCanonical(CURRENT, approved, R04)
   if (
     field(approved, 'PRE_IMPLEMENTATION_GATE') !== 'PASS' ||
-    field(approved, 'PRE_IMPLEMENTATION_GATE_EVIDENCE') !== R03_APPROVAL ||
-    current.preEvidence !== R03_APPROVAL ||
-    field(approved, 'SEQUENCE_POSITION') !== 'R03_OF_10' ||
-    field(approved, 'PREVIOUS_CHANGE') !== R02 ||
+    field(approved, 'PRE_IMPLEMENTATION_GATE_EVIDENCE') !== approval ||
+    current.preEvidence !== approval ||
+    field(approved, 'SEQUENCE_POSITION') !== (r04 ? 'R04_OF_10' : 'R03_OF_10') ||
+    field(approved, 'PREVIOUS_CHANGE') !== (r04 ? R03 : R02) ||
     field(approved, 'PREVIOUS_CHANGE_STATUS') !== 'CLOSED' ||
     field(approved, 'PREVIOUS_CHANGE_ARCHIVED') !== 'true' ||
     field(approved, 'PREVIOUS_CHANGE_POST_IMPLEMENTATION_GATE') !== 'PASS' ||
@@ -613,15 +773,16 @@ function verifyR03Approval(current, approved, git, gitRoot) {
   )
     return false
   for (const [name, expected] of [
-    ['IMPLEMENTATION_SCOPE', R03_IMPLEMENTATION],
-    ['PROCESS_CONTROL_SCOPE', R03_CONTROL],
+    ['IMPLEMENTATION_SCOPE', r04 ? R04_IMPLEMENTATION : R03_IMPLEMENTATION],
+    ['PROCESS_CONTROL_SCOPE', control],
+    ...(r04 ? [['TEST_TOOLING_SCOPE', R04_METADATA]] : []),
   ]) {
     if (JSON.stringify(section(approved, name).sort()) !== JSON.stringify([...expected].sort()))
       return false
   }
-  git(['merge-base', '--is-ancestor', R03_BASE, current.planningCommit])
+  git(['merge-base', '--is-ancestor', base, current.planningCommit])
   // Inspect each commit: a forbidden edit later reverted is still forbidden.
-  const commits = git(['rev-list', '--parents', R03_BASE + '..' + current.planningCommit])
+  const commits = git(['rev-list', '--parents', base + '..' + current.planningCommit])
     .trim()
     .split('\n')
     .filter(Boolean)
@@ -633,57 +794,68 @@ function verifyR03Approval(current, approved, git, gitRoot) {
       .split('\0')
       .filter(Boolean)
       .map(normalize)
-    if (paths.some((file) => !inScope(file, R03_CONTROL))) return false
+    if (paths.some((file) => !inScope(file, control))) return false
   }
-  const proof = JSON.parse(git(['show', current.planningCommit + ':' + R03_APPROVAL]))
+  const proofText = git(['show', current.planningCommit + ':' + approval])
+  const proof = JSON.parse(proofText)
+  if (r04 && canonicalText(proofText).trim() !== JSON.stringify(proof, null, 2)) return false
   if (
     proof.schemaVersion !== 1 ||
-    proof.change !== R03 ||
+    proof.change !== active ||
     proof.gateType !== 'PRE_IMPLEMENTATION' ||
     proof.gateStatus !== 'PASS' ||
-    proof.baseline !== R03_BASE ||
+    proof.baseline !== base ||
     proof.reviewerContext !== 'fresh-read-only' ||
-    proof.reportPath !== R03_PREFIX + 'evidence/pre-implementation-gate-pass.md'
+    proof.reportPath !== prefix + 'evidence/pre-implementation-gate-pass.md'
   )
     return false
   const report = canonicalText(git(['show', current.planningCommit + ':' + proof.reportPath]))
   if (proof.reportSha256 !== textHash(report)) return false
   for (const [name, expected] of [
-    ['CHANGE', R03],
+    ['CHANGE', active],
     ['GATE_TYPE', 'PRE_IMPLEMENTATION'],
     ['GATE_STATUS', 'PASS'],
     ['READY_FOR_IMPLEMENTATION', 'YES'],
+    ...(r04
+      ? [
+          ['MACHINE_GATE_INTEGRITY', 'PASS'],
+          ['BLOCKERS', 'NONE'],
+        ]
+      : []),
   ]) {
     const entries = [...report.matchAll(new RegExp('^' + name + ':[ \\t]*(.+?)[ \\t]*$', 'gm'))]
     if (entries.length !== 1 || entries[0][1] !== expected) return false
   }
   if (
     !proof.artifacts ||
-    JSON.stringify(Object.keys(proof.artifacts).sort()) !== JSON.stringify([...R03_REVIEWED].sort())
+    JSON.stringify(Object.keys(proof.artifacts).sort()) !== JSON.stringify([...reviewed].sort())
   )
     return false
-  const reviewedFingerprint = reviewReportFingerprint(report)
+  const reviewedFingerprint = reviewReportFingerprint(report, active)
   if (
     !reviewedFingerprint ||
-    R03_REVIEWED.some((file) => reviewedFingerprint[file] !== proof.artifacts[file])
+    reviewed.some((file) => reviewedFingerprint[file] !== proof.artifacts[file])
   )
     return false
-  for (const file of R03_REVIEWED) {
+  for (const file of reviewed) {
     if (
       proof.artifacts[file] !==
-      textHash(reviewCanonical(file, git(['show', current.planningCommit + ':' + file])))
+      textHash(reviewCanonical(file, git(['show', current.planningCommit + ':' + file]), active))
     )
       return false
   }
-  return [...R03_REVIEWED.filter((file) => file !== CURRENT), R03_APPROVAL, proof.reportPath].every(
-    (file) =>
-      verifyFrozenFile(
-        file,
-        gitRoot,
-        current.planningCommit,
-        (text) => reviewCanonical(file, text),
-        git,
-      ),
+  return [
+    ...reviewed.filter((file) => (r04 ? !R04_METADATA.includes(file) : file !== CURRENT)),
+    approval,
+    proof.reportPath,
+  ].every((file) =>
+    verifyFrozenFile(
+      file,
+      gitRoot,
+      current.planningCommit,
+      (text) => reviewCanonical(file, text, active),
+      git,
+    ),
   )
 }
 
@@ -695,10 +867,168 @@ export function frozenWorktreeModeMatches(approvedMode, stat, platform, gitFileM
   return approvedMode === (stat.mode & 0o100 ? '100755' : '100644')
 }
 
+function regularWorktreePath(root, file) {
+  let cursor = root
+  const parts = file.split('/')
+  for (const [index, part] of parts.entries()) {
+    if (!part || part === '.' || part === '..') return false
+    cursor = path.join(cursor, part)
+    const stat = fs.lstatSync(cursor)
+    if (stat.isSymbolicLink() || (index < parts.length - 1 ? !stat.isDirectory() : !stat.isFile()))
+      return false
+  }
+  return true
+}
+
+// Use ESLint's already locked YAML parser; no dependency installation or
+// workspace metadata edit is needed to run the planning gate.
+function parseMetadata(file, value) {
+  const requireRoot = createRequire(path.join(ROOT, 'package.json'))
+  const yaml = createRequire(requireRoot.resolve('eslint/package.json'))('js-yaml')
+  const documents = yaml.loadAll(value, undefined, { schema: yaml.JSON_SCHEMA, json: false })
+  if (
+    !documents.length ||
+    documents.some((doc) => !doc || typeof doc !== 'object' || Array.isArray(doc))
+  )
+    throw new Error('Expected metadata mappings')
+  if (file.endsWith('.json')) {
+    if (documents.length !== 1 || !isDeepStrictEqual(documents[0], JSON.parse(value)))
+      throw new Error('Invalid package JSON')
+    return documents[0]
+  }
+  // pnpm 12 uses separate package-manager and workspace YAML documents.
+  // Preserve and compare every document; only one may own Draw's importer.
+  metadataDependencies(file, documents)
+  return documents
+}
+
+function metadataDependencies(file, parsed) {
+  if (file.endsWith('.json')) return parsed.devDependencies
+  const owners = parsed.filter((doc) => Object.hasOwn(doc.importers ?? {}, 'packages/draw'))
+  if (owners.length !== 1)
+    throw new Error('Expected exactly one Draw importer across lock documents')
+  return owners[0].importers['packages/draw'].devDependencies
+}
+
+export function r04MetadataAllowed(file, baseline, candidate) {
+  try {
+    if (!R04_METADATA.includes(file)) return false
+    const before = parseMetadata(file, baseline)
+    // YAML aliases can share maps across importers. Detach them before removing
+    // Draw's allowed key, otherwise deleting it could hide another importer edit.
+    // Cyclic aliases cannot represent package metadata and fail closed here.
+    const after = JSON.parse(JSON.stringify(parseMetadata(file, candidate)))
+    if (isDeepStrictEqual(before, after)) return true
+    const original = metadataDependencies(file, before)
+    const changed = metadataDependencies(file, after)
+    if (!original || !changed || Object.hasOwn(original, 'fast-check')) return false
+    const expected = file.endsWith('.json') ? '4.10.2' : { specifier: '4.10.2', version: '4.10.2' }
+    if (!isDeepStrictEqual(changed['fast-check'], expected)) return false
+    delete changed['fast-check']
+    return isDeepStrictEqual(before, after)
+  } catch {
+    return false
+  }
+}
+
+export function r04MetadataFindings(current, gitRoot = ROOT) {
+  const findings = []
+  const git = (args) =>
+    execFileSync('git', args, { cwd: gitRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] })
+  const fail = (file, snapshot, error) =>
+    findings.push({ file, reason: '[' + snapshot + '] R04 package metadata: ' + error })
+  const baselines = new Map()
+  try {
+    for (const file of R04_METADATA) {
+      const entries = gitSnapshotEntries(
+        git(['ls-tree', '-z', current.baseCommit, '--', file]),
+        'HEAD',
+      )
+      if (entries.length !== 1 || entries[0].mode !== '100644')
+        throw new Error('Baseline metadata must be regular nonexecutable files')
+      baselines.set(file, git(['show', current.baseCommit + ':' + file]))
+    }
+    for (const snapshot of ['HEAD', 'INDEX', 'WORKTREE']) {
+      const flags = []
+      for (const file of R04_METADATA) {
+        try {
+          let content
+          if (snapshot === 'WORKTREE') {
+            if (
+              !regularWorktreePath(gitRoot, file) ||
+              !frozenWorktreeModeMatches(
+                '100644',
+                fs.lstatSync(path.join(gitRoot, file)),
+                process.platform,
+                git(['config', '--bool', 'core.filemode']).trim(),
+              )
+            )
+              throw new Error('Invalid worktree file type/mode')
+            content = fs.readFileSync(path.join(gitRoot, file), 'utf8')
+          } else {
+            const entries = gitSnapshotEntries(
+              git(
+                snapshot === 'HEAD'
+                  ? ['ls-tree', '-z', 'HEAD', '--', file]
+                  : ['ls-files', '--stage', '-z', '--', file],
+              ),
+              snapshot,
+            )
+            if (entries.length !== 1 || entries[0].mode !== '100644' || entries[0].stage !== '0')
+              throw new Error('Missing/unmerged/invalid metadata mode')
+            content = git(['show', (snapshot === 'HEAD' ? 'HEAD:' : ':') + file])
+          }
+          if (!r04MetadataAllowed(file, baselines.get(file), content))
+            throw new Error('Only exact fast-check 4.10.2 addition is authorized')
+          const parsed = parseMetadata(file, content)
+          flags.push(Object.hasOwn(metadataDependencies(file, parsed), 'fast-check'))
+        } catch (error) {
+          fail(file, snapshot, error.message)
+        }
+      }
+      if (flags.length === 2 && flags[0] !== flags[1])
+        fail(R04_METADATA.join(' + '), snapshot, 'Package/lock importer mismatch')
+    }
+  } catch (error) {
+    fail(R04_METADATA.join(' + '), 'BASELINE', error.message)
+  }
+  return findings
+}
+
+function r04PathModeFindings(files, gitRoot = ROOT) {
+  const findings = []
+  const git = (args) =>
+    execFileSync('git', args, { cwd: gitRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] })
+  for (const file of files) {
+    for (const [snapshot, args] of [
+      ['HEAD', ['ls-tree', '-z', 'HEAD', '--', file]],
+      ['INDEX', ['ls-files', '--stage', '-z', '--', file]],
+    ])
+      for (const entry of gitSnapshotEntries(git(args), snapshot)) {
+        if (
+          entry.file !== file ||
+          entry.stage !== '0' ||
+          !['100644', '100755'].includes(entry.mode)
+        )
+          findings.push({ file, reason: '[' + snapshot + '] Invalid R04 path type/mode/stage' })
+      }
+    try {
+      // lstat catches dangling links too; do not test existsSync first.
+      fs.lstatSync(path.join(gitRoot, file))
+      if (!regularWorktreePath(gitRoot, file))
+        findings.push({ file, reason: '[WORKTREE] Invalid R04 path or symlink ancestor' })
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error
+    }
+  }
+  return findings
+}
+
 export function verifyFrozenGate(current, gitRoot = ROOT) {
   const r03 = current.activeChange === R03
-  const active = r03 ? R03 : R02
-  const base = r03 ? R03_BASE : R02_BASE
+  const r04 = current.activeChange === R04
+  const active = r04 ? R04 : r03 ? R03 : R02
+  const base = r04 ? R04_BASE : r03 ? R03_BASE : R02_BASE
   if (current.baseCommit !== current.planningCommit)
     throw new Error('BASE_COMMIT must equal APPROVED_PLANNING_COMMIT during implementation')
   if (!/^[0-9a-f]{40}$/i.test(current.planningCommit ?? ''))
@@ -725,7 +1055,7 @@ export function verifyFrozenGate(current, gitRoot = ROOT) {
     field(approved, 'BASE_COMMIT') !== base
   )
     throw new Error('Approved planning commit is not the active change planning checkpoint')
-  if (r03) return verifyR03Approval(current, approved, git, gitRoot)
+  if (r03 || r04) return verifyPlanningApproval(current, approved, git, gitRoot)
   return [SCRIPT].every((frozenFile) =>
     verifyFrozenFile(frozenFile, gitRoot, current.planningCommit),
   )
@@ -767,6 +1097,7 @@ function verifyFrozenFile(
       return false
   }
   const stat = fs.lstatSync(path.join(gitRoot, frozenFile))
+  if (!regularWorktreePath(gitRoot, frozenFile)) return false
   const gitFileMode = git(['config', '--bool', 'core.filemode']).trim()
   if (!frozenWorktreeModeMatches(approvedMode, stat, process.platform, gitFileMode)) return false
 
@@ -808,12 +1139,12 @@ export function cycleFindings(graph) {
 
 // Inspect each tracked snapshot independently; worktree restoration cannot hide
 // forbidden imports, globals or cycles that remain in HEAD or the index.
-function trackedSnapshotFindings(current, changed, boundary) {
+export function trackedSnapshotFindings(current, changed, boundary, gitRoot = ROOT) {
   const findings = []
   const checked = new Set()
   const git = (args) =>
     execFileSync('git', args, {
-      cwd: ROOT,
+      cwd: gitRoot,
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'pipe'],
     })
@@ -891,13 +1222,16 @@ function main() {
         throw new Error('Required control file missing: ' + file)
     }
     current = readCurrentChange()
-    if ([R02, R03].includes(current.activeChange) && current.phase !== 'PLANNING')
+    if ([R02, R03, R04].includes(current.activeChange) && current.phase !== 'PLANNING')
       current.frozenGateVerified = verifyFrozenGate(current)
     const boundary = protectedPaths()
     if (boundary.algorithms.size === 0)
       throw new Error('Protected legacy boundary could not be parsed')
     const files = changedFiles(current.baseCommit)
     findings.push(...scopeFindings(current, files, boundary))
+    if (current.activeChange === R04) findings.push(...r04PathModeFindings(files))
+    if (current.activeChange === R04 && current.phase !== 'PLANNING')
+      findings.push(...r04MetadataFindings(current))
     const checked = new Set()
     const graph = new Map()
     const inspect = (file, core, tests) => {
@@ -1124,6 +1458,7 @@ function r03ApprovalRegressions(check) {
     process: { platform: 'linux' },
     gitSnapshotEntries,
     canonicalText,
+    regularWorktreePath: () => true, // This probe isolates POSIX mode handling.
     frozenWorktreeModeMatches:
       typeof frozenWorktreeModeMatches === 'function' ? frozenWorktreeModeMatches : undefined,
     execFileSync: (_command, args) =>
@@ -1179,6 +1514,698 @@ function r03ApprovalRegressions(check) {
     check('R03 approval regression ' + result.kind, result.accepted === result.expected)
 }
 
+function r04GitRegressions(check, planning, impl, boundary) {
+  const temporary = (prefix, run) => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), prefix))
+    const git = (args) =>
+      execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] })
+    const write = (file, text) => {
+      fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true })
+      // The fixture disables autocrlf; reproduce repository blob line endings
+      // rather than inventing forbidden CRLF-only edits in inherited contracts.
+      fs.writeFileSync(path.join(root, file), canonicalText(text))
+    }
+    try {
+      git(['init', '--quiet'])
+      git(['config', 'user.name', 'R04 gate fixture'])
+      git(['config', 'user.email', 'r04@example.invalid'])
+      git(['config', 'commit.gpgsign', 'false'])
+      git(['config', 'core.autocrlf', 'false'])
+      git(['config', 'core.filemode', 'false'])
+      run(root, git, write)
+    } finally {
+      const resolved = path.resolve(root)
+      assert.equal(path.dirname(resolved), path.resolve(os.tmpdir()))
+      assert.ok(path.basename(resolved).startsWith(prefix))
+      fs.rmSync(resolved, { recursive: true, force: true })
+    }
+  }
+  temporary('frade-r04-discovery-', (root, git, write) => {
+    const forbidden = ROUTING + 'model/forbidden.ts',
+      allowed = ROUTING + 'orthogonal/router/allowed.ts'
+    const original = 'export const original = true\n'
+    for (const file of [forbidden, allowed]) write(file, original)
+    git(['add', '--', forbidden, allowed])
+    git(['commit', '--quiet', '-m', 'baseline'])
+    const base = git(['rev-parse', 'HEAD']).trim()
+    const expectPath = (label, file, sourceArgs, rejected) => {
+      check(label + ' exact source', git(sourceArgs).split('\0').includes(file))
+      const paths = changedFiles(base, root)
+      check(label + ' discovered', paths.includes(file))
+      check(
+        label + ' scope result',
+        scopeFindings(impl, paths, boundary).some((f) => f.file === file) === rejected,
+      )
+    }
+    for (const file of [forbidden, allowed]) {
+      write(file, 'export const changed=true\n')
+      git(['add', '--', file])
+      write(file, original)
+      check(
+        'R04 net diff cancellation ' + file,
+        git(['diff', '--name-only', base, '--', file]).trim() === '',
+      )
+      expectPath(
+        'R04 staged cancellation',
+        file,
+        ['diff', '--cached', '--no-renames', '--name-only', '-z'],
+        file === forbidden,
+      )
+      git(['restore', '--staged', '--', file])
+      fs.unlinkSync(path.join(root, file))
+      git(['add', '--', file])
+      write(file, original)
+      expectPath(
+        'R04 deletion/recreation',
+        file,
+        ['diff', '--cached', '--no-renames', '--name-only', '-z'],
+        file === forbidden,
+      )
+      check(
+        'R04 recreation untracked source',
+        git(['ls-files', '--others', '--exclude-standard', '-z']).split('\0').includes(file),
+      )
+      git(['add', '--', file])
+      write(file, 'export const changed=true\n')
+      expectPath(
+        'R04 unstaged',
+        file,
+        ['diff', '--no-renames', '--name-only', '-z'],
+        file === forbidden,
+      )
+      write(file, original)
+    }
+    write(forbidden, 'committed\n')
+    git(['add', '--', forbidden])
+    git(['commit', '--quiet', '-m', 'committed forbidden'])
+    write(forbidden, original)
+    expectPath(
+      'R04 committed cancellation',
+      forbidden,
+      ['diff', '--no-renames', '--name-only', '-z', base, 'HEAD'],
+      true,
+    )
+    const unusual =
+      process.platform === 'win32'
+        ? 'brand/данные with spaces.txt'
+        : 'brand/данные\twith\nnewline.txt'
+    write(unusual, 'unrelated\n')
+    expectPath(
+      'R04 NUL-safe untracked',
+      unusual,
+      ['ls-files', '--others', '--exclude-standard', '-z'],
+      true,
+    )
+    const destination = ROUTING + 'segment/copy.ts'
+    write(destination, original)
+    git(['add', '--', destination])
+    expectPath(
+      'R04 forbidden copy destination',
+      destination,
+      ['diff', '--cached', '--name-only', '--no-renames', '-z'],
+      true,
+    )
+    const moved = ROUTING + 'normalization/moved.ts'
+    fs.mkdirSync(path.dirname(path.join(root, moved)), { recursive: true })
+    fs.renameSync(path.join(root, allowed), path.join(root, moved))
+    git(['add', '--', allowed, moved])
+    for (const file of [allowed, moved])
+      expectPath(
+        'R04 rename old/new',
+        file,
+        ['diff', '--cached', '--no-renames', '--name-only', '-z'],
+        false,
+      )
+    const stagedRouter = ROUTING + 'orthogonal/router/staged.ts'
+    write(stagedRouter, 'import "react"\n')
+    git(['add', '--', stagedRouter])
+    write(stagedRouter, 'export {}\n')
+    const snapshots = trackedSnapshotFindings(impl, changedFiles(base, root), boundary, root)
+    check(
+      'R04 staged import retained',
+      snapshots.findings.some(
+        (f) =>
+          f.file === stagedRouter && f.reason.includes('[INDEX]') && f.reason.includes('Framework'),
+      ),
+    )
+    git(['commit', '--quiet', '-m', 'bad source snapshot'])
+    write(stagedRouter, 'export {}\n')
+    git(['add', '--', stagedRouter])
+    check(
+      'R04 committed import retained',
+      trackedSnapshotFindings(impl, changedFiles(base, root), boundary, root).findings.some(
+        (f) =>
+          f.file === stagedRouter && f.reason.includes('[HEAD]') && f.reason.includes('Framework'),
+      ),
+    )
+    const link = R04_PREFIX + 'evidence/link.md'
+    const blob = git(['hash-object', '-w', '--stdin']).trim()
+    // Empty blob is sufficient: Git mode, not target contents, must cause rejection.
+    git(['update-index', '--add', '--cacheinfo', '120000,' + blob + ',' + link])
+    check(
+      'R04 evidence staged symlink rejected',
+      r04PathModeFindings([link], root).some((f) => f.reason.includes('[INDEX]')),
+    )
+    check(
+      'R04 unusual path parser',
+      gitSnapshotEntries('100644 abc\tspace\tand\nnewline.md\0', 'HEAD')[0].file ===
+        'space\tand\nnewline.md',
+    )
+    write('target/item.md', 'fixture\n')
+    fs.symlinkSync(
+      path.join(root, 'target'),
+      path.join(root, 'linked'),
+      process.platform === 'win32' ? 'junction' : 'dir',
+    )
+    check(
+      'R04 symlink ancestor rejected',
+      r04PathModeFindings(['linked/item.md'], root).some((f) =>
+        f.reason.includes('symlink ancestor'),
+      ),
+    )
+  })
+  temporary('frade-r04-approval-', (root, git, write) => {
+    const objects = path.resolve(
+      ROOT,
+      execFileSync('git', ['rev-parse', '--git-path', 'objects'], {
+        cwd: ROOT,
+        encoding: 'utf8',
+      }).trim(),
+    )
+    write('.git/objects/info/alternates', normalize(objects) + '\n')
+    git(['symbolic-ref', 'HEAD', 'refs/heads/main'])
+    git(['update-ref', 'refs/heads/main', R04_BASE])
+    git(['read-tree', R04_BASE])
+    const approvedState =
+      read(CURRENT).replace(/^PRE_IMPLEMENTATION_GATE:.*$/m, 'PRE_IMPLEMENTATION_GATE: PASS') +
+      '\nPRE_IMPLEMENTATION_GATE_EVIDENCE: ' +
+      R04_APPROVAL +
+      '\n'
+    for (const file of R04_REVIEWED) write(file, file === CURRENT ? approvedState : read(file))
+    const artifacts = planningReviewFingerprint(root, R04)
+    const reportPath = R04_PREFIX + 'evidence/pre-implementation-gate-pass.md'
+    const report =
+      'CHANGE: ' +
+      R04 +
+      '\nGATE_TYPE: PRE_IMPLEMENTATION\nGATE_STATUS: PASS\nBLOCKERS: NONE\nMACHINE_GATE_INTEGRITY: PASS\nREADY_FOR_IMPLEMENTATION: YES\n' +
+      'REVIEWED_ARTIFACTS_JSON_BEGIN\n' +
+      JSON.stringify(artifacts, null, 2) +
+      '\nREVIEWED_ARTIFACTS_JSON_END\n'
+    const proof = {
+      schemaVersion: 1,
+      change: R04,
+      gateType: 'PRE_IMPLEMENTATION',
+      gateStatus: 'PASS',
+      baseline: R04_BASE,
+      reviewerContext: 'fresh-read-only',
+      reportPath,
+      reportSha256: textHash(report),
+      artifacts,
+    }
+    const proofText = JSON.stringify(proof, null, 2) + '\n'
+    write(reportPath, report)
+    write(R04_APPROVAL, proofText)
+    git(['add', '--', ...R04_REVIEWED, R04_APPROVAL, reportPath])
+    git(['commit', '--quiet', '-m', 'reviewed planning fixture'])
+    const sha = git(['rev-parse', 'HEAD']).trim()
+    const state = { ...impl, baseCommit: sha, planningCommit: sha, preEvidence: R04_APPROVAL }
+    const verify = () => {
+      try {
+        return verifyFrozenGate(state, root)
+      } catch {
+        return false
+      }
+    }
+    check('R04 approved checkpoint valid', verify())
+    check('R04 baseline metadata valid', r04MetadataFindings(state, root).length === 0)
+    const liveState =
+      approvedState
+        .replace(/^PHASE:.*$/m, 'PHASE: IMPLEMENTATION')
+        .replace(/^BASE_COMMIT:.*$/m, 'BASE_COMMIT: ' + sha)
+        .replace(/^IMPLEMENTATION_STATUS:.*$/m, 'IMPLEMENTATION_STATUS: IN_PROGRESS') +
+      '\nAPPROVED_PLANNING_COMMIT: ' +
+      sha +
+      '\n'
+    // Keep blank-line layout stable; only named lifecycle fields are mutable.
+    write(
+      CURRENT,
+      liveState.replace(/\n\nAPPROVED_PLANNING_COMMIT:/, '\nAPPROVED_PLANNING_COMMIT:'),
+    )
+    check('R04 lifecycle fields preserve fingerprint', verify())
+    write(CURRENT, approvedState)
+    for (const file of R04_REVIEWED.filter((f) => !R04_METADATA.includes(f)).concat(
+      R04_APPROVAL,
+      reportPath,
+    )) {
+      const original = fs.readFileSync(path.join(root, file), 'utf8')
+      write(file, original + 'unapproved contract edit\n')
+      git(['add', '--', file])
+      write(file, original)
+      check('R04 frozen staged path found ' + file, changedFiles(sha, root).includes(file))
+      check('R04 frozen staged cancellation ' + file, !verify())
+      git(['restore', '--staged', '--', file])
+      write(file, original + 'unapproved contract edit\n')
+      check('R04 frozen worktree ' + file, !verify())
+      write(file, original)
+    }
+    check('R04 restored controls valid', verify())
+    const task = R04_PREFIX + 'tasks.md',
+      taskText = fs.readFileSync(path.join(root, task), 'utf8')
+    write(task, taskText.replace('- [ ] 1.2', '- [x] 1.2'))
+    check('R04 checked tasks permitted', verify())
+    write(task, taskText)
+    write(CURRENT, approvedState + 'PHASE: IMPLEMENTATION\n')
+    check('R04 duplicate current key rejected', !verify())
+    write(CURRENT, approvedState)
+    git(['update-index', '--chmod=+x', SCRIPT])
+    check('R04 index executable mode rejected', !verify())
+    git(['update-index', '--chmod=-x', SCRIPT])
+    const originalPackage = fs.readFileSync(path.join(root, R04_METADATA[0]), 'utf8')
+    const originalLock = fs.readFileSync(path.join(root, R04_METADATA[1]), 'utf8')
+    const p = JSON.parse(originalPackage),
+      l = parseMetadata(R04_METADATA[1], originalLock)
+    p.devDependencies['fast-check'] = '4.10.2'
+    metadataDependencies(R04_METADATA[1], l)['fast-check'] = {
+      specifier: '4.10.2',
+      version: '4.10.2',
+    }
+    write(R04_METADATA[0], JSON.stringify(p))
+    write(R04_METADATA[1], l.map((doc) => JSON.stringify(doc)).join('\n---\n'))
+    check('R04 exact package pair accepted', r04MetadataFindings(state, root).length === 0)
+    git(['add', '--', ...R04_METADATA])
+    write(R04_METADATA[0], originalPackage)
+    write(R04_METADATA[1], originalLock)
+    check(
+      'R04 allowed staged inverse metadata accepted',
+      r04MetadataFindings(state, root).length === 0,
+    )
+    p.scripts.test = 'exit 0'
+    write(R04_METADATA[0], JSON.stringify(p))
+    git(['add', '--', R04_METADATA[0]])
+    write(R04_METADATA[0], originalPackage)
+    check(
+      'R04 forbidden staged inverse metadata rejected',
+      r04MetadataFindings(state, root).some((f) => f.reason.includes('[INDEX]')),
+    )
+    git(['restore', '--staged', '--', ...R04_METADATA])
+    write(
+      R04_METADATA[0],
+      JSON.stringify({
+        ...JSON.parse(originalPackage),
+        devDependencies: { ...JSON.parse(originalPackage).devDependencies, 'fast-check': '4.10.2' },
+      }),
+    )
+    check(
+      'R04 unmatched lock rejected',
+      r04MetadataFindings(state, root).some((f) => f.reason.includes('mismatch')),
+    )
+    write(R04_METADATA[0], originalPackage)
+    // Checkpoint attacks commit only planning controls; no product edits can
+    // be hidden by a later control-only checkpoint.
+    for (const kind of [
+      'missing-fingerprint',
+      'duplicate-fingerprint',
+      'wrong-status',
+      'stale-report',
+    ]) {
+      let badReport = report,
+        badProof = structuredClone(proof)
+      if (kind === 'missing-fingerprint')
+        badReport = report.split('REVIEWED_ARTIFACTS_JSON_BEGIN')[0]
+      if (kind === 'duplicate-fingerprint')
+        badReport += report.slice(report.indexOf('REVIEWED_ARTIFACTS_JSON_BEGIN'))
+      if (kind === 'wrong-status')
+        badReport = report.replace('GATE_STATUS: PASS', 'GATE_STATUS: FAIL')
+      if (kind === 'stale-report') {
+        write(R04_PREFIX + 'design.md', 'unreviewed design\n')
+        badProof.artifacts[R04_PREFIX + 'design.md'] = textHash('unreviewed design\n')
+      }
+      badProof.reportSha256 = textHash(badReport)
+      write(reportPath, badReport)
+      write(R04_APPROVAL, JSON.stringify(badProof, null, 2) + '\n')
+      git(['add', '--', reportPath, R04_APPROVAL, R04_PREFIX + 'design.md'])
+      git(['commit', '--quiet', '-m', 'invalid ' + kind])
+      state.baseCommit = state.planningCommit = git(['rev-parse', 'HEAD']).trim()
+      check('R04 checkpoint rejects ' + kind, !verify())
+      write(reportPath, report)
+      write(R04_APPROVAL, proofText)
+      write(R04_PREFIX + 'design.md', read(R04_PREFIX + 'design.md'))
+    }
+    git(['add', '--', reportPath, R04_APPROVAL, R04_PREFIX + 'design.md'])
+    git(['commit', '--quiet', '-m', 'restore valid approval'])
+    state.baseCommit = state.planningCommit = git(['rev-parse', 'HEAD']).trim()
+    check('R04 valid report restored', verify())
+    write(SCRIPT, read(SCRIPT) + '\n// unapproved committed content\n')
+    git(['add', '--', SCRIPT])
+    git(['commit', '--quiet', '-m', 'committed frozen edit'])
+    write(SCRIPT, read(SCRIPT))
+    git(['add', '--', SCRIPT])
+    check('R04 frozen HEAD hidden by index/worktree rejected', !verify())
+    git(['commit', '--quiet', '-m', 'restore frozen control'])
+    check('R04 same baseline valid after restoration', verify())
+    const forbidden = ROUTING + 'model/illegal-planning.ts'
+    write(forbidden, 'export {}\n')
+    git(['add', '--', forbidden])
+    git(['commit', '--quiet', '-m', 'illegal planning product'])
+    git(['rm', '--', forbidden])
+    git(['commit', '--quiet', '-m', 'remove illegal product'])
+    state.baseCommit = state.planningCommit = git(['rev-parse', 'HEAD']).trim()
+    check('R04 reverted forbidden planning history rejected', !verify())
+    write(R04_METADATA[0], JSON.stringify(p))
+    git(['add', '--', R04_METADATA[0]])
+    git(['commit', '--quiet', '-m', 'forbidden committed metadata'])
+    write(R04_METADATA[0], originalPackage)
+    git(['add', '--', R04_METADATA[0]])
+    check(
+      'R04 committed metadata cannot hide behind index/worktree',
+      r04MetadataFindings({ ...state, baseCommit: sha }, root).some((f) =>
+        f.reason.includes('[HEAD]'),
+      ),
+    )
+  })
+}
+
+function r04Regressions(check) {
+  const current = {
+    activeChange: 'routing-v2-04-orthogonal-router',
+    number: 4,
+    phase: 'PLANNING',
+    sequence: 'R04_OF_10',
+    baseCommit: '0b2a9096ab42e431e6e56a7ece17a5f29c72cdb4',
+    previousChange: R03,
+    previousStatus: 'CLOSED',
+    previousArchived: 'true',
+    previousPostGate: 'PASS',
+    nextAllowed: 'false',
+    nextChange: 'routing-v2-05-segment-router',
+    implementationStatus: 'NOT_STARTED',
+    implementation: [
+      ROUTING + 'orthogonal/router/**',
+      ROUTING + 'normalization/**',
+      ROUTING + 'validation/**',
+      V2_TESTS + 'orthogonal/**',
+    ],
+    control: [
+      'openspec/changes/routing-v2-04-orthogonal-router/**',
+      CURRENT,
+      MASTER,
+      PLAYBOOK,
+      SCRIPT,
+    ],
+    testTooling: ['packages/draw/package.json', 'pnpm-lock.yaml'],
+  }
+  const boundary = protectedPaths()
+  const router = ROUTING + 'orthogonal/router/fixture.ts'
+  check(
+    'R04 root lockfile scope parser',
+    isDeepStrictEqual(
+      section(
+        '## TEST_TOOLING_SCOPE\npackages/draw/package.json\npnpm-lock.yaml\n',
+        'TEST_TOOLING_SCOPE',
+      ),
+      R04_METADATA,
+    ),
+  )
+  check(
+    'Unimplemented profile fails closed',
+    scopeFindings(
+      { ...current, activeChange: 'routing-v2-05-segment-router', number: 5 },
+      [],
+      boundary,
+    ).length > 0,
+  )
+  check(
+    'R04 planning rejects premature router',
+    scopeFindings(current, [router], boundary).some((f) => f.file === router),
+  )
+  const impl = {
+    ...current,
+    phase: 'IMPLEMENTATION',
+    implementationStatus: 'IN_PROGRESS',
+    baseCommit: 'a'.repeat(40),
+    planningCommit: 'a'.repeat(40),
+    preImplementationGate: 'PASS',
+    frozenGateVerified: true,
+  }
+  for (const file of [
+    ...R04_IMPLEMENTATION.map((p) => p.replace('**', 'fixture.ts')),
+    ...R04_METADATA,
+  ]) {
+    check(
+      'R04 planning rejects ' + file,
+      scopeFindings(current, [file], boundary).some((f) => f.file === file),
+    )
+    check('R04 implementation permits ' + file, scopeFindings(impl, [file], boundary).length === 0)
+  }
+  for (const file of [CURRENT, SCRIPT, MASTER, PLAYBOOK, R04_PREFIX + 'evidence/check.md'])
+    check(
+      'R04 planning control positive ' + file,
+      scopeFindings(current, [file], boundary).length === 0,
+    )
+  for (const file of [...R01_IMPLEMENTATION, ...R02_IMPLEMENTATION, ...R03_IMPLEMENTATION]
+    .map((p) => p.replace('**', 'fixture.ts'))
+    .concat([
+      'AGENTS.md',
+      WORKFLOW,
+      LEGACY_DOC,
+      'packages/draw/src/index.ts',
+      ROUTING + 'segment/router.ts',
+      ROUTING + 'orthogonal/jetty.ts',
+      'openspec/specs/routing-direction-resolver/spec.md',
+      'openspec/changes/archive/closed/tasks.md',
+      'apps/desktop/vendor/drawio/new.js',
+      'unrelated.txt',
+    ]))
+    for (const state of [current, impl])
+      check(
+        'R04 outside scope ' + state.phase + file,
+        scopeFindings(state, [file], boundary).some((f) => f.file === file),
+      )
+  for (const patch of [
+    { phase: 'VERIFY' },
+    { nextAllowed: 'true' },
+    { baseCommit: R03_BASE },
+    { sequence: 'R03_OF_10' },
+    { previousChange: R02 },
+    { previousStatus: 'OPEN' },
+    { previousArchived: 'false' },
+    { previousPostGate: 'FAIL' },
+    { nextChange: 'routing-v2-06-segment-editor' },
+    { implementationStatus: 'COMPLETE' },
+    { implementation: [...current.implementation, ROUTING + 'model/**'] },
+    { control: [...current.control, WORKFLOW] },
+    { testTooling: [...current.testTooling, 'package.json'] },
+  ])
+    check(
+      'R04 planning fields ' + JSON.stringify(patch),
+      scopeFindings({ ...current, ...patch }, [], boundary).length > 0,
+    )
+  for (const patch of [
+    { preImplementationGate: 'FAIL' },
+    { frozenGateVerified: false },
+    { planningCommit: undefined },
+    { baseCommit: R04_BASE },
+  ])
+    check(
+      'R04 implementation approval ' + JSON.stringify(patch),
+      scopeFindings({ ...impl, ...patch }, [], boundary).length > 0,
+    )
+
+  const roots = {
+    model: 'model',
+    geometry: 'geometry',
+    perimeter: 'perimeter',
+    terminal: 'terminal',
+    direction: 'orthogonal/direction',
+    normalization: 'normalization',
+    validation: 'validation',
+    router: 'orthogonal/router',
+    segment: 'segment',
+  }
+  const permitted = {
+    model: 'model',
+    geometry: 'model geometry',
+    perimeter: 'model geometry perimeter',
+    terminal: 'model geometry perimeter terminal',
+    direction: 'model geometry perimeter terminal direction',
+    normalization: 'model geometry normalization',
+    validation: 'model geometry perimeter terminal normalization validation',
+    router: 'model geometry perimeter terminal direction normalization validation router',
+    segment: '',
+  }
+  for (const [from, a] of Object.entries(roots))
+    for (const [to, b] of Object.entries(roots)) {
+      const file = ROUTING + a + '/fixture.ts',
+        target = ROUTING + b + '/dependency.ts'
+      let specifier = normalize(path.relative(path.dirname(file), target))
+      if (!specifier.startsWith('.')) specifier = './' + specifier
+      check(
+        'R04 dependency ' + from + ' -> ' + to,
+        (inspectSource(file, 'import "' + specifier + '"', current, boundary).length === 0) ===
+          permitted[from].split(' ').includes(to),
+      )
+    }
+  for (const source of [
+    'import "react"',
+    'require("@antv/x6")',
+    'window',
+    'Math.random()',
+    'Date.now()',
+    'import "../../../geometry/normalizeRoute"',
+    'import "../../floatingAttachment"',
+  ])
+    check(
+      'R04 core forbidden ' + source,
+      inspectSource(router, source, current, boundary).length > 0,
+    )
+  for (const source of ['import "react"', 'test.only("x",()=>{})', '// @ts-ignore\nconst x=1'])
+    check(
+      'R04 test integrity ' + source,
+      inspectSource(V2_TESTS + 'orthogonal/unit/x.test.ts', source, current, boundary, {
+        core: false,
+        tests: true,
+      }).length > 0,
+    )
+  check(
+    'R04 tooling imports allowed',
+    inspectSource(
+      V2_TESTS + 'orthogonal/property/x.test.ts',
+      'import fc from "fast-check"; import {test} from "vitest"',
+      current,
+      boundary,
+      { core: false, tests: true },
+    ).length === 0,
+  )
+  const pkg = {
+    name: '@frade/draw',
+    exports: { '.': './src/index.ts' },
+    dependencies: { react: '18.3.1' },
+    devDependencies: { vitest: '3.2.7' },
+  }
+  const lock = {
+    lockfileVersion: '9.0',
+    importers: {
+      'packages/draw': { devDependencies: { vitest: { specifier: '3.2.7', version: '3.2.7' } } },
+      other: { devDependencies: {} },
+    },
+    packages: { 'fast-check@4.10.2': { resolution: { integrity: 'pinned' } } },
+    snapshots: { 'fast-check@4.10.2': {} },
+  }
+  for (const [file, base] of [
+    [R04_METADATA[0], pkg],
+    [R04_METADATA[1], lock],
+  ]) {
+    const candidate = structuredClone(base)
+    const entries = file.endsWith('.json')
+      ? candidate.devDependencies
+      : candidate.importers['packages/draw'].devDependencies
+    entries['fast-check'] = file.endsWith('.json')
+      ? '4.10.2'
+      : { specifier: '4.10.2', version: '4.10.2' }
+    const text = JSON.stringify(candidate)
+    check(
+      'R04 unchanged metadata ' + file,
+      r04MetadataAllowed(file, JSON.stringify(base), JSON.stringify(base)),
+    )
+    check('R04 exact metadata ' + file, r04MetadataAllowed(file, JSON.stringify(base), text))
+    check(
+      'R04 wrong fast-check version ' + file,
+      !r04MetadataAllowed(file, JSON.stringify(base), text.replaceAll('4.10.2', '4.10.3')),
+    )
+    check(
+      'R04 duplicate metadata key ' + file,
+      !r04MetadataAllowed(file, JSON.stringify(base), text.replace('{', '{"devDependencies":{},')),
+    )
+    const unrelated = structuredClone(candidate)
+    unrelated.unapproved = true
+    check(
+      'R04 unrelated metadata ' + file,
+      !r04MetadataAllowed(file, JSON.stringify(base), JSON.stringify(unrelated)),
+    )
+  }
+  for (const mutate of [
+    (p) => (p.exports['.'] = './illegal.ts'),
+    (p) => (p.dependencies['fast-check'] = '4.10.2'),
+    (p) => (p.scripts = { test: 'exit 0' }),
+    (p) => (p.version = '99'),
+    (p) => (p.devDependencies.vitest = '0'),
+  ]) {
+    const p = structuredClone(pkg)
+    p.devDependencies['fast-check'] = '4.10.2'
+    mutate(p)
+    check(
+      'R04 package edit rejected',
+      !r04MetadataAllowed(R04_METADATA[0], JSON.stringify(pkg), JSON.stringify(p)),
+    )
+  }
+  for (const mutate of [
+    (l) => (l.packages['fast-check@4.10.2'].resolution.integrity = 'changed'),
+    (l) => (l.importers.other.devDependencies.extra = { version: '1' }),
+    (l) => (l.snapshots.extra = {}),
+  ]) {
+    const l = structuredClone(lock)
+    l.importers['packages/draw'].devDependencies['fast-check'] = {
+      specifier: '4.10.2',
+      version: '4.10.2',
+    }
+    mutate(l)
+    check(
+      'R04 unrelated lock edit rejected',
+      !r04MetadataAllowed(R04_METADATA[1], JSON.stringify(lock), JSON.stringify(l)),
+    )
+  }
+  const manager = {
+    lockfileVersion: '9.0',
+    importers: { '.': { packageManagerDependencies: { pnpm: { version: '12.6.0' } } } },
+  }
+  const updated = structuredClone(lock)
+  updated.importers['packages/draw'].devDependencies['fast-check'] = {
+    specifier: '4.10.2',
+    version: '4.10.2',
+  }
+  const multi = JSON.stringify(manager) + '\n---\n' + JSON.stringify(lock)
+  const multiUpdated = JSON.stringify(manager) + '\n---\n' + JSON.stringify(updated)
+  check(
+    'R04 multi-document lock exact addition',
+    r04MetadataAllowed('pnpm-lock.yaml', multi, multiUpdated),
+  )
+  check(
+    'R04 package-manager document immutable',
+    !r04MetadataAllowed('pnpm-lock.yaml', multi, multiUpdated.replace('12.6.0', '12.7.0')),
+  )
+  check(
+    'R04 duplicate importer owner rejected',
+    !r04MetadataAllowed(
+      'pnpm-lock.yaml',
+      multi,
+      multiUpdated + '\n---\n' + JSON.stringify(updated),
+    ),
+  )
+  const aliasBase = {
+    importers: {
+      'packages/draw': { devDependencies: { vitest: '3.2.7' } },
+      other: { devDependencies: { vitest: '3.2.7' } },
+    },
+  }
+  const aliased =
+    'importers:\n  packages/draw:\n    devDependencies: &shared\n      vitest: 3.2.7\n      fast-check: {specifier: 4.10.2, version: 4.10.2}\n  other:\n    devDependencies: *shared\n'
+  check(
+    'R04 YAML alias cannot broaden another importer',
+    !r04MetadataAllowed('pnpm-lock.yaml', JSON.stringify(aliasBase), aliased),
+  )
+  const task = R04_PREFIX + 'tasks.md'
+  check(
+    'R04 checkbox normalization',
+    reviewCanonical(task, '- [ ] 1. test\n', R04) === reviewCanonical(task, '- [x] 1. test\n', R04),
+  )
+  check(
+    'R04 task wording frozen',
+    reviewCanonical(task, '- [x] 1. changed\n', R04) !==
+      reviewCanonical(task, '- [ ] 1. test\n', R04),
+  )
+  r04GitRegressions(check, current, impl, boundary)
+}
+
 function selfTest() {
   const boundary = protectedPaths()
   const current = {
@@ -1199,6 +2226,7 @@ function selfTest() {
     count++
   }
   r03ApprovalRegressions(check)
+  r04Regressions(check)
   check(
     'control repairs allowed',
     scopeFindings(
@@ -2561,6 +3589,18 @@ function selfTest() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  if (process.argv.includes('--self-test')) selfTest()
+  if (process.argv.includes('--review-fingerprint')) {
+    const active = readCurrentChange().activeChange
+    if (![R03, R04].includes(active))
+      throw new Error('No approval fingerprint profile for ' + active)
+    console.log(JSON.stringify(planningReviewFingerprint(ROOT, active), null, 2))
+  } else if (process.argv.includes('--self-test-r04')) {
+    let count = 0
+    r04Regressions((label, value) => {
+      assert.ok(value, label)
+      count++
+    })
+    console.log('R04_GATE_SELF_TESTS: PASS (' + count + ' assertions)')
+  } else if (process.argv.includes('--self-test')) selfTest()
   else main()
 }
