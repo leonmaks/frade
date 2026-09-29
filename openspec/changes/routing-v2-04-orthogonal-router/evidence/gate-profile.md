@@ -147,11 +147,63 @@ so committed implementation remains visible; P cannot hide cumulative work.
 The fixture bundle contains immutable entry bytes solely for disposable self-tests,
 not authorization for live edits. No synthetic approval is saved in the real change.
 
+## Active second repair epoch: mutation runtime-invalid outcome
+
+The preceding schema-2 protocol is historical. The current PLANNING_REPAIR is
+MUTATION_RUNTIME_INVALID_OUTCOME. Its cumulative origin remains O=cf424e247490fdfae2c4efc9f7e7377b6d5b6e11,
+the prior approved checkpoint is da22452d7e9c35f28f4004d9826432b12bf6a521,
+and the new retained entry HEAD is 4ff5c4deea4f5f6804bb01f92f955813c617d765.
+The proposed entry manifest and independent fixture bundle are separately pinned
+by raw SHA-256 constants in the gate. The bundle carries the 66 retained
+product/test/tooling file bytes and the planning evidence needed for disposable
+Git fixtures. It does not read live product or review files to construct them.
+Planning/control copies inside the bundle are fixed test inputs. They are not
+the current review evidence or an approval; fresh PRE fingerprints the live
+reviewed controls separately. The fixture gate script is an explicit synthetic
+stub, avoiding a circular bundle/script hash and never replacing the executed gate.
+The gate checks the manifest and bundle in WORKTREE and, when present, in HEAD
+and INDEX; a staged edit hidden by inverse worktree content fails.
+
+All four self-test modes remain executable. `--self-test-r04-runtime-repair`
+exercises the second epoch; `--self-test-r04-repair` runs both repair epochs;
+the common `--self-test` also runs both repair epochs along with R01–R04
+controls. The second-epoch fixture must still pass after a synthetic approved
+checkpoint, when its HEAD differs from the retained entry and the live checkout
+may have moved into implementation. Machine PASS alone is not an independent PRE.
+
+The fresh independent report is saved only after an actual read-only review at
+`evidence/pre-implementation-runtime-revalidation-pass.md`. It must contain
+exactly one each of CHANGE, GATE_TYPE: PRE_IMPLEMENTATION_REVALIDATION,
+GATE_STATUS: PASS, BLOCKERS: NONE, MACHINE_GATE_INTEGRITY: PASS,
+MACHINE_ARCHITECTURE_GATE: PASS and READY_FOR_IMPLEMENTATION: YES, plus one exact
+canonical JSON fingerprint block. The current producer emits all 38 reviewed
+artifacts, including this protocol, the runtime fixture bundle and updated
+process-control validation. Do not reuse the historical 31-artifact set.
+
+The calling workflow then creates
+`evidence/pre-implementation-runtime-revalidation-review.json` using canonical
+two-space JSON with final LF. Required schemaVersion is 3. Required fields are
+change, gateType, gateStatus, reviewerContext="fresh-read-only", baseline=O,
+previousApprovedPlanningCommit=da22452d7e9c35f28f4004d9826432b12bf6a521,
+repairEntryHead=4ff5c4deea4f5f6804bb01f92f955813c617d765,
+repairEntrySnapshot={path,sha256}, reportPath, reportSha256 and artifacts.
+The report hash uses UTF-8 with CRLF converted to LF. `artifacts` must exactly
+equal the embedded fingerprint object and the live reviewed artifact hashes.
+No synthetic PASS is written to the real repository.
+
+After independent PRE PASS, commit only approved process-control paths in a new
+linear checkpoint. Every commit from O through that checkpoint is inspected for
+non-control edits, including edits later reverted. Keep BASE_COMMIT and
+IMPLEMENTATION_ORIGIN_COMMIT at O. Only then set the live phase to IMPLEMENTATION,
+record the new APPROVED_PLANNING_COMMIT, unpause implementation and freeze all
+reviewed controls/report/manifest at the checkpoint in HEAD, INDEX and WORKTREE.
+
 ## Validation commands
 
 ```powershell
 node scripts/routing-v2-architecture-gate.mjs --self-test-r04
 node scripts/routing-v2-architecture-gate.mjs --self-test-r04-repair
+node scripts/routing-v2-architecture-gate.mjs --self-test-r04-runtime-repair
 node scripts/routing-v2-architecture-gate.mjs --self-test
 pnpm run routing:v2:arch-gate
 openspec validate routing-v2-04-orthogonal-router --strict

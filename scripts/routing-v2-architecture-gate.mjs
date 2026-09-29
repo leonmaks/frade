@@ -27,6 +27,25 @@ const R04_REPAIR_ORIGIN = 'cf424e247490fdfae2c4efc9f7e7377b6d5b6e11'
 const R04_REPAIR_KIND = 'ORDINARY_DIRECTION_CONSTRUCTION'
 const R04_REPAIR_ENTRY = 'openspec/changes/' + R04 + '/evidence/planning-repair-entry-snapshot.json'
 const R04_REPAIR_HASH = '1a306ca7ec1df199e41351e750fd74942cf8c2c98aa1f00de899eb320d1e3a71'
+// A second repair epoch is required after the retained implementation crossed
+// the first repair entry.  Keep the cumulative origin and the first epoch
+// immutable; this profile binds the current implementation entry separately.
+const R04_RUNTIME_REPAIR_KIND = 'MUTATION_RUNTIME_INVALID_OUTCOME'
+const R04_RUNTIME_REPAIR_CHECKPOINT = 'da22452d7e9c35f28f4004d9826432b12bf6a521'
+const R04_RUNTIME_REPAIR_HEAD = '4ff5c4deea4f5f6804bb01f92f955813c617d765'
+const R04_RUNTIME_REPAIR_ENTRY =
+  'openspec/changes/' + R04 + '/evidence/runtime-invalid-repair-entry-proposed-2026-09-29.json'
+const R04_RUNTIME_REPAIR_HASH = '9be484cc6589200d286d530c0ea8afe2fc0ab6c60e19dd55d4e364c1f8080da6'
+const R04_RUNTIME_REPAIR_FIXTURE =
+  'openspec/changes/' + R04 + '/evidence/runtime-invalid-repair-fixture-files.json'
+const R04_RUNTIME_REPAIR_FIXTURE_HASH =
+  '801dfe1c85e00d39affe4d38ed4c4effd122aef2aa8ec426ce78157512d0b5a8'
+const R04_RUNTIME_REPAIR_PROPOSAL =
+  'openspec/changes/' + R04 + '/evidence/runtime-invalid-process-repair-proposal-2026-09-29.md'
+const R04_RUNTIME_REPAIR_APPROVAL =
+  'openspec/changes/' + R04 + '/evidence/pre-implementation-runtime-revalidation-review.json'
+const R04_RUNTIME_REPAIR_REPORT =
+  'openspec/changes/' + R04 + '/evidence/pre-implementation-runtime-revalidation-pass.md'
 const R04_REPAIR_FIXTURE =
   'openspec/changes/' + R04 + '/evidence/planning-repair-fixture-files.json'
 const R04_REPAIR_FIXTURE_HASH = '6514b317fd714497cf3b3bbb1efacbda7cded63882600735cccee55122c574d8'
@@ -46,6 +65,15 @@ const R02_CONTROL = ['openspec/changes/' + R02 + '/**', CURRENT, SCRIPT]
 const R03_IMPLEMENTATION = [ROUTING + 'orthogonal/direction/**', V2_TESTS + 'direction/**']
 const R03_CONTROL = ['openspec/changes/' + R03 + '/**', CURRENT, SCRIPT, WORKFLOW]
 const R03_FROZEN = [
+  SCRIPT,
+  WORKFLOW,
+  MASTER,
+  PLAYBOOK,
+  LEGACY_DOC,
+  'AGENTS.md',
+  ROUTING + 'AGENTS.md',
+]
+const R04_RUNTIME_FROZEN = [
   SCRIPT,
   WORKFLOW,
   MASTER,
@@ -130,8 +158,7 @@ function section(content, name) {
   ].map((match) => match[0].trim())
 }
 
-function readCurrentChange() {
-  const content = read(CURRENT)
+function parseCurrentChange(content) {
   const activeChange = field(content, 'ACTIVE_CHANGE') ?? 'UNKNOWN'
   if (activeChange === R04) reviewCanonical(CURRENT, content, R04)
   return {
@@ -161,6 +188,10 @@ function readCurrentChange() {
     control: section(content, 'PROCESS_CONTROL_SCOPE'),
     testTooling: section(content, 'TEST_TOOLING_SCOPE'),
   }
+}
+
+function readCurrentChange() {
+  return parseCurrentChange(read(CURRENT))
 }
 
 function protectedPaths() {
@@ -339,6 +370,7 @@ export function scopeFindings(current, files, boundary) {
   }
   if (current.activeChange === R04) {
     const repair = current.planningRepair !== undefined
+    const runtimeRepair = isR04RuntimeRepair(current)
     if (repair && !r04RepairFieldsMatch(current))
       fail(CURRENT, 'R04 repair fields do not match the authorized immutable origin/snapshot')
     for (const [name, actual, expected] of [
@@ -371,13 +403,23 @@ export function scopeFindings(current, files, boundary) {
     if (
       current.phase === 'PLANNING'
         ? repair
-          ? current.implementationStatus !== 'IN_PROGRESS' ||
-            current.implementationPaused !== 'true' ||
-            current.planningCommit !== R04_REPAIR_ORIGIN ||
-            !['PENDING', 'FAIL', 'PASS'].includes(current.preImplementationGate) ||
-            ![R04_APPROVAL, R04_REPAIR_APPROVAL].includes(current.preEvidence) ||
-            current.archiveAllowed !== 'false' ||
-            !current.repairPlanningVerified
+          ? runtimeRepair
+            ? current.implementationStatus !== 'IN_PROGRESS' ||
+              current.implementationPaused !== 'true' ||
+              current.planningCommit !== R04_RUNTIME_REPAIR_CHECKPOINT ||
+              !['PENDING', 'FAIL', 'PASS'].includes(current.preImplementationGate) ||
+              (current.preImplementationGate === 'PASS' &&
+                (current.preEvidence !== R04_RUNTIME_REPAIR_APPROVAL ||
+                  !current.runtimeApprovalVerified)) ||
+              current.archiveAllowed !== 'false' ||
+              !current.repairPlanningVerified
+            : current.implementationStatus !== 'IN_PROGRESS' ||
+              current.implementationPaused !== 'true' ||
+              current.planningCommit !== R04_REPAIR_ORIGIN ||
+              !['PENDING', 'FAIL', 'PASS'].includes(current.preImplementationGate) ||
+              ![R04_APPROVAL, R04_REPAIR_APPROVAL].includes(current.preEvidence) ||
+              current.archiveAllowed !== 'false' ||
+              !current.repairPlanningVerified
           : current.implementationStatus !== 'NOT_STARTED'
         : !['IN_PROGRESS', 'COMPLETE'].includes(current.implementationStatus) ||
           current.preImplementationGate !== 'PASS' ||
@@ -733,15 +775,37 @@ const R04_REPAIR_REVIEWED = [
   ].map((file) => R04_PREFIX + 'evidence/' + file),
 ]
 
+const R04_RUNTIME_REPAIR_REVIEWED = [
+  ...R04_REPAIR_REVIEWED,
+  R04_RUNTIME_REPAIR_ENTRY,
+  R04_RUNTIME_REPAIR_FIXTURE,
+  R04_RUNTIME_REPAIR_PROPOSAL,
+  R04_PREFIX + 'evidence/process-control-repair-validation.md',
+  R04_PREFIX + 'evidence/planning-repair-runtime-invalid-2026-09-29.md',
+  R04_PREFIX + 'evidence/pre-implementation-revalidation-fail-runtime-invalid-2026-09-29.md',
+  R04_PREFIX + 'evidence/pre-implementation-revalidation-fail-process-control-2026-09-29.md',
+]
+
 function r04RepairFieldsMatch(current) {
-  return (
+  const legacy =
     current.activeChange === R04 &&
     current.planningRepair === R04_REPAIR_KIND &&
     current.baseCommit === R04_REPAIR_ORIGIN &&
     current.implementationOrigin === R04_REPAIR_ORIGIN &&
     current.repairEntry === R04_REPAIR_ENTRY &&
     current.repairHash === R04_REPAIR_HASH
-  )
+  const runtime =
+    current.activeChange === R04 &&
+    current.planningRepair === R04_RUNTIME_REPAIR_KIND &&
+    current.baseCommit === R04_REPAIR_ORIGIN &&
+    current.implementationOrigin === R04_REPAIR_ORIGIN &&
+    current.repairEntry === R04_RUNTIME_REPAIR_ENTRY &&
+    current.repairHash === R04_RUNTIME_REPAIR_HASH
+  return legacy || runtime
+}
+
+function isR04RuntimeRepair(current) {
+  return current.planningRepair === R04_RUNTIME_REPAIR_KIND
 }
 
 function repairState(content) {
@@ -754,6 +818,11 @@ function repairState(content) {
     implementationOrigin: field(content, 'IMPLEMENTATION_ORIGIN_COMMIT'),
     repairEntry: field(content, 'REPAIR_ENTRY_SNAPSHOT'),
     repairHash: field(content, 'REPAIR_ENTRY_SNAPSHOT_SHA256'),
+    phase: field(content, 'PHASE'),
+    implementationStatus: field(content, 'IMPLEMENTATION_STATUS'),
+    implementationPaused: field(content, 'IMPLEMENTATION_PAUSED'),
+    preImplementationGate: field(content, 'PRE_IMPLEMENTATION_GATE'),
+    preEvidence: field(content, 'PRE_IMPLEMENTATION_GATE_EVIDENCE'),
   }
 }
 
@@ -847,6 +916,77 @@ function verifyR04RepairProof(get, git) {
   return true
 }
 
+function verifyR04RuntimeRepairProof(get, git) {
+  let proof, report
+  try {
+    proof = canonicalJson(get(R04_RUNTIME_REPAIR_APPROVAL), 'runtime repair approval')
+    strictObjectKeys(
+      proof,
+      [
+        'schemaVersion',
+        'change',
+        'gateType',
+        'gateStatus',
+        'reviewerContext',
+        'baseline',
+        'previousApprovedPlanningCommit',
+        'repairEntryHead',
+        'repairEntrySnapshot',
+        'reportPath',
+        'reportSha256',
+        'artifacts',
+      ],
+      'runtime repair approval',
+    )
+    strictObjectKeys(proof.repairEntrySnapshot, ['path', 'sha256'], 'runtime approval snapshot')
+    strictObjectKeys(proof.artifacts, R04_RUNTIME_REPAIR_REVIEWED, 'runtime fingerprints')
+    if (
+      proof.schemaVersion !== 3 ||
+      proof.change !== R04 ||
+      proof.gateType !== 'PRE_IMPLEMENTATION_REVALIDATION' ||
+      proof.gateStatus !== 'PASS' ||
+      proof.reviewerContext !== 'fresh-read-only' ||
+      proof.baseline !== R04_REPAIR_ORIGIN ||
+      proof.previousApprovedPlanningCommit !== R04_RUNTIME_REPAIR_CHECKPOINT ||
+      proof.repairEntryHead !== R04_RUNTIME_REPAIR_HEAD ||
+      proof.repairEntrySnapshot.path !== R04_RUNTIME_REPAIR_ENTRY ||
+      proof.repairEntrySnapshot.sha256 !== R04_RUNTIME_REPAIR_HASH ||
+      proof.reportPath !== R04_RUNTIME_REPAIR_REPORT ||
+      textHash(get(R04_RUNTIME_REPAIR_ENTRY)) !== R04_RUNTIME_REPAIR_HASH
+    )
+      return false
+    report = canonicalText(get(R04_RUNTIME_REPAIR_REPORT))
+    if (proof.reportSha256 !== textHash(report)) return false
+    for (const [name, expected] of [
+      ['CHANGE', R04],
+      ['GATE_TYPE', 'PRE_IMPLEMENTATION_REVALIDATION'],
+      ['GATE_STATUS', 'PASS'],
+      ['BLOCKERS', 'NONE'],
+      ['MACHINE_GATE_INTEGRITY', 'PASS'],
+      ['MACHINE_ARCHITECTURE_GATE', 'PASS'],
+      ['READY_FOR_IMPLEMENTATION', 'YES'],
+    ]) {
+      const entries = [...report.matchAll(new RegExp('^' + name + ':[ \\t]*(.+?)[ \\t]*$', 'gm'))]
+      if (entries.length !== 1 || entries[0][1] !== expected) return false
+    }
+    const embedded = reviewReportFingerprint(report, R04, 'runtime')
+    if (!embedded) return false
+    for (const file of R04_RUNTIME_REPAIR_REVIEWED) {
+      const value = R04_METADATA.includes(file)
+        ? git(['show', R04_REPAIR_ORIGIN + ':' + file])
+        : get(file)
+      if (
+        embedded[file] !== proof.artifacts[file] ||
+        textHash(reviewCanonical(file, value, R04)) !== proof.artifacts[file]
+      )
+        return false
+    }
+    return true
+  } catch {
+    return false
+  }
+}
+
 function verifyR04RepairGate(current, gitRoot) {
   if (
     !r04RepairFieldsMatch(current) ||
@@ -934,6 +1074,106 @@ function verifyR04RepairGate(current, gitRoot) {
         git,
       ),
     )
+}
+
+function verifyR04RuntimeRepairGate(current, gitRoot) {
+  if (
+    !r04RepairFieldsMatch(current) ||
+    current.planningCommit === R04_RUNTIME_REPAIR_CHECKPOINT ||
+    !/^[0-9a-f]{40}$/.test(current.planningCommit ?? '') ||
+    current.preEvidence !== R04_RUNTIME_REPAIR_APPROVAL ||
+    current.preImplementationGate !== 'PASS' ||
+    current.implementationPaused !== 'false'
+  )
+    return false
+  const git = (args) =>
+    execFileSync('git', args, {
+      cwd: gitRoot,
+      encoding: 'utf8',
+      maxBuffer: 64 * 1024 * 1024,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    })
+  git(['merge-base', '--is-ancestor', R04_RUNTIME_REPAIR_HEAD, current.planningCommit])
+  git(['merge-base', '--is-ancestor', current.planningCommit, 'HEAD'])
+  if (!verifyR04OriginalApproval(git, gitRoot)) return false
+  if (
+    !verifyR04RepairProof((file) => git(['show', R04_RUNTIME_REPAIR_CHECKPOINT + ':' + file]), git)
+  )
+    return false
+  const approved = git(['show', current.planningCommit + ':' + CURRENT])
+  const saved = repairState(approved)
+  if (
+    !r04RepairFieldsMatch(saved) ||
+    saved.phase !== 'PLANNING' ||
+    saved.planningCommit !== R04_RUNTIME_REPAIR_CHECKPOINT ||
+    saved.implementationPaused !== 'true' ||
+    saved.implementationStatus !== 'IN_PROGRESS' ||
+    saved.preImplementationGate !== 'PASS' ||
+    saved.preEvidence !== R04_RUNTIME_REPAIR_APPROVAL ||
+    field(approved, 'NEXT_CHANGE_ALLOWED') !== 'false' ||
+    field(approved, 'ARCHIVE_ALLOWED') !== 'false'
+  )
+    return false
+  for (const [name, expected] of [
+    ['IMPLEMENTATION_SCOPE', R04_IMPLEMENTATION],
+    ['PROCESS_CONTROL_SCOPE', R04_CONTROL],
+    ['TEST_TOOLING_SCOPE', R04_METADATA],
+  ])
+    if (!isDeepStrictEqual(section(approved, name).sort(), [...expected].sort())) return false
+  const commits = git(['rev-list', '--parents', R04_REPAIR_ORIGIN + '..' + current.planningCommit])
+    .trim()
+    .split('\n')
+    .filter(Boolean)
+  if (
+    !commits.includes(
+      current.planningCommit + ' ' + git(['rev-parse', current.planningCommit + '^']).trim(),
+    )
+  )
+    return false
+  for (const record of commits) {
+    const [commit, ...parents] = record.split(' ')
+    if (
+      parents.length !== 1 ||
+      git(['diff', '--no-renames', '--name-only', '-z', parents[0], commit, '--'])
+        .split('\0')
+        .filter(Boolean)
+        .some((file) => !inScope(file, R04_CONTROL))
+    )
+      return false
+  }
+  if (
+    !verifyR04RuntimeRepairProof((file) => git(['show', current.planningCommit + ':' + file]), git)
+  )
+    return false
+  const entry = readRuntimeRepairEntry(gitRoot)
+  if (
+    !isDeepStrictEqual(
+      repairGitEntries(git(['ls-tree', '-rz', '--full-tree', current.planningCommit]), 'HEAD'),
+      entry.headEntries,
+    )
+  )
+    return false
+  for (const file of R04_RUNTIME_REPAIR_REVIEWED.filter(
+    (value) => !R04_METADATA.includes(value),
+  ).concat(
+    R04_REPAIR_APPROVAL,
+    R04_REPAIR_REPORT,
+    R04_RUNTIME_REPAIR_APPROVAL,
+    R04_RUNTIME_REPAIR_REPORT,
+  ))
+    if (
+      !verifyFrozenFile(
+        file,
+        gitRoot,
+        current.planningCommit,
+        file === R04_RUNTIME_REPAIR_ENTRY || file === R04_REPAIR_ENTRY
+          ? (value) => value
+          : (value) => reviewCanonical(file, value, R04),
+        git,
+      )
+    )
+      return false
+  return true
 }
 
 function strictObjectKeys(value, keys, label) {
@@ -1081,6 +1321,7 @@ function readRepairEntry(gitRoot) {
 }
 
 export function r04RepairEntryFindings(current, gitRoot = ROOT) {
+  if (isR04RuntimeRepair(current)) return r04RuntimeRepairEntryFindings(current, gitRoot)
   const findings = []
   const fail = (layer, error) =>
     findings.push({ file: R04_REPAIR_ENTRY, reason: '[' + layer + '] ' + error })
@@ -1091,6 +1332,7 @@ export function r04RepairEntryFindings(current, gitRoot = ROOT) {
       execFileSync('git', args, {
         cwd: gitRoot,
         encoding: 'utf8',
+        maxBuffer: 64 * 1024 * 1024,
         stdio: ['ignore', 'pipe', 'pipe'],
       })
     git(['merge-base', '--is-ancestor', R04_REPAIR_ORIGIN, 'HEAD'])
@@ -1195,6 +1437,243 @@ export function r04RepairEntryFindings(current, gitRoot = ROOT) {
   return findings
 }
 
+function readRuntimeRepairEntry(gitRoot) {
+  if (!regularWorktreePath(gitRoot, R04_RUNTIME_REPAIR_ENTRY))
+    throw new Error('Unsafe runtime repair manifest')
+  const bytes = fs.readFileSync(path.join(gitRoot, R04_RUNTIME_REPAIR_ENTRY))
+  if (textHash(bytes) !== R04_RUNTIME_REPAIR_HASH)
+    throw new Error('Runtime repair manifest hash mismatch')
+  const manifest = canonicalJson(bytes.toString('utf8'), 'runtime repair manifest')
+  strictObjectKeys(
+    manifest,
+    [
+      'schemaVersion',
+      'purpose',
+      'change',
+      'originalApprovedPlanningCommit',
+      'previousApprovedPlanningCommit',
+      'head',
+      'sourceWorkspace',
+      'roots',
+      'metadata',
+      'headEntries',
+      'indexEntries',
+      'worktree',
+      'originalEntrySnapshot',
+      'frozenControls',
+    ],
+    'runtime repair manifest',
+  )
+  if (
+    manifest.schemaVersion !== 1 ||
+    manifest.change !== R04 ||
+    manifest.originalApprovedPlanningCommit !== R04_REPAIR_ORIGIN ||
+    manifest.previousApprovedPlanningCommit !== R04_RUNTIME_REPAIR_CHECKPOINT ||
+    manifest.head !== R04_RUNTIME_REPAIR_HEAD ||
+    !isDeepStrictEqual(
+      manifest.roots,
+      R04_IMPLEMENTATION.map((value) => value.slice(0, -3)),
+    ) ||
+    !isDeepStrictEqual(manifest.metadata, R04_METADATA) ||
+    manifest.originalEntrySnapshot?.path !== R04_REPAIR_ENTRY ||
+    manifest.originalEntrySnapshot?.sha256 !== R04_REPAIR_HASH
+  )
+    throw new Error('Runtime repair manifest authority mismatch')
+  for (const entry of ['headEntries', 'indexEntries']) {
+    if (!Array.isArray(manifest[entry])) throw new Error('Invalid runtime ' + entry)
+    for (const record of manifest[entry]) repairPath(record.path)
+  }
+  if (!manifest.worktree || Array.isArray(manifest.worktree))
+    throw new Error('Invalid runtime worktree manifest')
+  for (const [file, record] of Object.entries(manifest.worktree)) {
+    repairPath(file)
+    strictObjectKeys(record, ['sha256', 'bytes'], 'runtime worktree entry')
+    if (!/^[0-9a-f]{64}$/.test(record.sha256) || !Number.isSafeInteger(record.bytes))
+      throw new Error('Invalid runtime worktree digest')
+  }
+  strictObjectKeys(manifest.frozenControls, R04_RUNTIME_FROZEN, 'R04 runtime frozen controls')
+  if (Object.values(manifest.frozenControls).some((digest) => !/^[0-9a-f]{64}$/.test(digest)))
+    throw new Error('Invalid R04 runtime frozen-control digest')
+  return manifest
+}
+
+function r04RuntimeControlHistoryFindings(git, end) {
+  const findings = []
+  const commits = git(['rev-list', '--parents', R04_REPAIR_ORIGIN + '..' + end])
+    .trim()
+    .split('\n')
+    .filter(Boolean)
+  for (const record of commits) {
+    const [commit, ...parents] = record.split(' ')
+    if (
+      parents.length !== 1 ||
+      git(['diff', '--no-renames', '--name-only', '-z', parents[0], commit, '--'])
+        .split('\0')
+        .filter(Boolean)
+        .some((file) => !inScope(file, R04_CONTROL))
+    )
+      findings.push(commit)
+  }
+  return findings
+}
+
+function r04RuntimeRepairEntryFindings(current, gitRoot = ROOT) {
+  const findings = []
+  const fail = (layer, error) =>
+    findings.push({ file: R04_RUNTIME_REPAIR_ENTRY, reason: '[' + layer + '] ' + error })
+  try {
+    if (!r04RepairFieldsMatch(current)) throw new Error('Unauthorized runtime repair fields')
+    const manifest = readRuntimeRepairEntry(gitRoot)
+    const git = (args) =>
+      execFileSync('git', args, {
+        cwd: gitRoot,
+        encoding: 'utf8',
+        maxBuffer: 64 * 1024 * 1024,
+        stdio: ['ignore', 'pipe', 'pipe'],
+      })
+    if (git(['rev-parse', 'HEAD']).trim() !== manifest.head)
+      throw new Error('Runtime repair HEAD differs from retained entry')
+    git(['merge-base', '--is-ancestor', R04_REPAIR_ORIGIN, R04_RUNTIME_REPAIR_CHECKPOINT])
+    git(['merge-base', '--is-ancestor', R04_RUNTIME_REPAIR_CHECKPOINT, manifest.head])
+    if (!verifyR04OriginalApproval(git, gitRoot))
+      throw new Error('Historical origin approval/report changed or invalid')
+    const checkpoint = git(['show', R04_RUNTIME_REPAIR_CHECKPOINT + ':' + CURRENT])
+    const checkpointState = repairState(checkpoint)
+    const checkpointEvidence =
+      checkpointState.preEvidence ??
+      checkpoint.match(/^PRE_IMPLEMENTATION_GATE_EVIDENCE:[ \t]*\n([^\n]+)/m)?.[1]?.trim()
+    if (
+      !r04RepairFieldsMatch(checkpointState) ||
+      checkpointState.planningCommit !== R04_REPAIR_ORIGIN ||
+      checkpointState.phase !== 'PLANNING' ||
+      checkpointState.implementationStatus !== 'IN_PROGRESS' ||
+      checkpointState.implementationPaused !== 'true' ||
+      checkpointState.preImplementationGate !== 'PASS' ||
+      checkpointEvidence !== R04_REPAIR_APPROVAL
+    )
+      throw new Error('Previous repair checkpoint is not an approved planning state')
+    if (
+      !verifyR04RepairProof(
+        (file) => git(['show', R04_RUNTIME_REPAIR_CHECKPOINT + ':' + file]),
+        git,
+      )
+    )
+      throw new Error('Previous repair approval/report is invalid at checkpoint')
+    for (const commit of r04RuntimeControlHistoryFindings(git, manifest.head))
+      fail('HISTORY', 'Non-control change between original checkpoint and runtime entry: ' + commit)
+    for (const file of [R04_REPAIR_ENTRY, R04_REPAIR_APPROVAL, R04_REPAIR_REPORT])
+      if (
+        !verifyFrozenFile(
+          file,
+          gitRoot,
+          R04_RUNTIME_REPAIR_CHECKPOINT,
+          file === R04_REPAIR_APPROVAL ? canonicalText : (value) => value,
+          git,
+        )
+      )
+        fail('FROZEN', 'Historical repair evidence differs across Git layers: ' + file)
+    for (const file of R04_RUNTIME_FROZEN) {
+      const original = git(['show', manifest.head + ':' + file])
+      // frozenControls hashes the retained WORKTREE bytes. Git blobs may have
+      // different CRLF normalization; pin HEAD/INDEX to the immutable entry
+      // commit independently, then pin WORKTREE to the manifest digest below.
+      if (file === SCRIPT) continue // The script itself is the authorized planning repair.
+      const expected = manifest.frozenControls[file]
+      const entry = gitSnapshotEntries(git(['ls-tree', '-z', manifest.head, '--', file]), 'HEAD')
+      for (const [layer, ref, args] of [
+        ['HEAD', 'HEAD:', ['ls-tree', '-z', 'HEAD', '--', file]],
+        ['INDEX', ':', ['ls-files', '--stage', '-z', '--', file]],
+      ]) {
+        const snapshot = gitSnapshotEntries(git(args), layer)
+        if (
+          entry.length !== 1 ||
+          snapshot.length !== 1 ||
+          snapshot[0].file !== file ||
+          snapshot[0].stage !== '0' ||
+          snapshot[0].mode !== entry[0].mode ||
+          git(['show', ref + file]) !== original
+        )
+          fail(layer, 'Frozen control changed: ' + file)
+      }
+      const live = path.join(gitRoot, file)
+      const stat = fs.lstatSync(live)
+      if (
+        entry.length !== 1 ||
+        !regularWorktreePath(gitRoot, file) ||
+        !frozenWorktreeModeMatches(
+          entry[0].mode,
+          stat,
+          process.platform,
+          git(['config', '--bool', 'core.filemode']).trim(),
+        ) ||
+        textHash(fs.readFileSync(live)) !== expected
+      )
+        fail('WORKTREE', 'Frozen control changed: ' + file)
+    }
+    for (const [file, digest] of [
+      [R04_RUNTIME_REPAIR_ENTRY, R04_RUNTIME_REPAIR_HASH],
+      [R04_RUNTIME_REPAIR_FIXTURE, R04_RUNTIME_REPAIR_FIXTURE_HASH],
+    ]) {
+      if (
+        !regularWorktreePath(gitRoot, file) ||
+        textHash(fs.readFileSync(path.join(gitRoot, file))) !== digest
+      )
+        fail('WORKTREE', 'Pinned runtime repair evidence changed: ' + file)
+      for (const [layer, args, ref] of [
+        ['HEAD', ['ls-tree', '-z', 'HEAD', '--', file], 'HEAD:'],
+        ['INDEX', ['ls-files', '--stage', '-z', '--', file], ':'],
+      ]) {
+        const entries = gitSnapshotEntries(git(args), layer)
+        if (entries.length > 1) fail(layer, 'Unmerged runtime repair evidence: ' + file)
+        if (
+          entries.length &&
+          (entries[0].file !== file ||
+            entries[0].mode !== '100644' ||
+            entries[0].stage !== '0' ||
+            textHash(git(['show', ref + file])) !== digest)
+        )
+          fail(layer, 'Pinned runtime repair evidence differs in Git layer: ' + file)
+      }
+    }
+    for (const [layer, args, expected] of [
+      ['HEAD', ['ls-tree', '-rz', '--full-tree', 'HEAD'], manifest.headEntries],
+      ['INDEX', ['ls-files', '--stage', '-z'], manifest.indexEntries],
+    ]) {
+      if (!isDeepStrictEqual(repairGitEntries(git(args), layer), expected))
+        fail(layer, 'Current Git layer differs from runtime repair entry')
+    }
+    const worktree = {}
+    const modes = new Map(manifest.indexEntries.map((entry) => [entry.path, entry.mode]))
+    const fileMode = git(['config', '--bool', 'core.filemode']).trim()
+    const visit = (file) => {
+      const stat = fs.lstatSync(path.join(gitRoot, file))
+      if (stat.isSymbolicLink()) throw new Error('Runtime retained symlink/junction: ' + file)
+      if (stat.isDirectory()) {
+        for (const name of fs.readdirSync(path.join(gitRoot, file)).sort()) visit(file + '/' + name)
+      } else {
+        repairPath(file)
+        if (
+          !regularWorktreePath(gitRoot, file) ||
+          !frozenWorktreeModeMatches(modes.get(file) ?? '100644', stat, process.platform, fileMode)
+        )
+          throw new Error('Invalid runtime retained worktree mode/type: ' + file)
+        const body = fs.readFileSync(path.join(gitRoot, file))
+        worktree[file] = { sha256: textHash(body), bytes: body.length }
+      }
+    }
+    try {
+      manifest.roots.concat(manifest.metadata).forEach(visit)
+      if (!isDeepStrictEqual(worktree, manifest.worktree))
+        fail('WORKTREE', 'Complete retained runtime worktree differs from entry')
+    } catch (error) {
+      fail('WORKTREE', error.message)
+    }
+  } catch (error) {
+    fail('RUNTIME_REPAIR', error.message)
+  }
+  return findings
+}
+
 export function reviewCanonical(file, value, active = R03) {
   let text = canonicalText(value)
   if (active === R04 && file === CURRENT) {
@@ -1226,11 +1705,19 @@ export function reviewCanonical(file, value, active = R03) {
 const textHash = (value) => createHash('sha256').update(value).digest('hex')
 
 export function planningReviewFingerprint(gitRoot = ROOT, active = R03) {
-  const repair =
-    active === R04 &&
-    field(fs.readFileSync(path.join(gitRoot, CURRENT), 'utf8'), 'PLANNING_REPAIR') !== undefined
+  const currentText = active === R04 ? fs.readFileSync(path.join(gitRoot, CURRENT), 'utf8') : ''
+  const repair = active === R04 && field(currentText, 'PLANNING_REPAIR') !== undefined
+  const runtimeRepair = repair && field(currentText, 'PLANNING_REPAIR') === R04_RUNTIME_REPAIR_KIND
+  const reviewed =
+    active === R04
+      ? runtimeRepair
+        ? R04_RUNTIME_REPAIR_REVIEWED
+        : repair
+          ? R04_REPAIR_REVIEWED
+          : R04_REVIEWED
+      : R03_REVIEWED
   return Object.fromEntries(
-    (active === R04 ? (repair ? R04_REPAIR_REVIEWED : R04_REVIEWED) : R03_REVIEWED).map((file) => [
+    reviewed.map((file) => [
       file,
       textHash(
         reviewCanonical(
@@ -1266,7 +1753,14 @@ export function reviewReportFingerprint(value, active = R03, repair = false) {
   // The reviewer command emits this canonical JSON. Re-serialization rejects
   // duplicate keys and other ambiguous encodings before values are trusted.
   if (body !== JSON.stringify(fingerprint, null, 2)) return null
-  const reviewed = active === R04 ? (repair ? R04_REPAIR_REVIEWED : R04_REVIEWED) : R03_REVIEWED
+  const reviewed =
+    active === R04
+      ? repair === 'runtime'
+        ? R04_RUNTIME_REPAIR_REVIEWED
+        : repair
+          ? R04_REPAIR_REVIEWED
+          : R04_REVIEWED
+      : R03_REVIEWED
   if (JSON.stringify(Object.keys(fingerprint).sort()) !== JSON.stringify([...reviewed].sort()))
     return null
   if (reviewed.some((file) => !/^[0-9a-f]{64}$/.test(fingerprint[file]))) return null
@@ -1551,6 +2045,8 @@ function r04PathModeFindings(files, gitRoot = ROOT) {
 }
 
 export function verifyFrozenGate(current, gitRoot = ROOT) {
+  if (current.activeChange === R04 && isR04RuntimeRepair(current))
+    return verifyR04RuntimeRepairGate(current, gitRoot)
   if (current.activeChange === R04 && current.planningRepair !== undefined)
     return verifyR04RepairGate(current, gitRoot)
   const r03 = current.activeChange === R03
@@ -1759,6 +2255,11 @@ function main() {
       const repairFindings = r04RepairEntryFindings(current)
       findings.push(...repairFindings)
       current.repairPlanningVerified = repairFindings.length === 0
+      if (isR04RuntimeRepair(current) && current.preImplementationGate === 'PASS') {
+        const git = (args) =>
+          execFileSync('git', args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
+        current.runtimeApprovalVerified = verifyR04RuntimeRepairProof(read, git)
+      }
     }
     if ([R02, R03, R04].includes(current.activeChange) && current.phase !== 'PLANNING')
       current.frozenGateVerified = verifyFrozenGate(current)
@@ -2539,6 +3040,12 @@ function r04RepairRegressions(check) {
         write(file, file === R04_REPAIR_ENTRY ? frozenFixture.snapshot : canonicalText(read(file)))
       const current = canonicalText(read(CURRENT))
         .replace(/^PHASE:.*$/m, 'PHASE: PLANNING')
+        .replace(/^PLANNING_REPAIR:.*$/m, 'PLANNING_REPAIR: ' + R04_REPAIR_KIND)
+        .replace(/^REPAIR_ENTRY_SNAPSHOT:.*$/m, 'REPAIR_ENTRY_SNAPSHOT: ' + R04_REPAIR_ENTRY)
+        .replace(
+          /^REPAIR_ENTRY_SNAPSHOT_SHA256:.*$/m,
+          'REPAIR_ENTRY_SNAPSHOT_SHA256: ' + R04_REPAIR_HASH,
+        )
         .replace(/^BASE_COMMIT:.*$/m, 'BASE_COMMIT: ' + R04_REPAIR_ORIGIN)
         .replace(/^APPROVED_PLANNING_COMMIT:.*$/m, 'APPROVED_PLANNING_COMMIT: ' + R04_REPAIR_ORIGIN)
         .replace(/^PRE_IMPLEMENTATION_GATE:.*$/m, 'PRE_IMPLEMENTATION_GATE: PENDING')
@@ -3029,6 +3536,464 @@ function r04RepairRegressions(check) {
   })
 }
 
+function r04RuntimeRepairFixtureBundle() {
+  if (!regularWorktreePath(ROOT, R04_RUNTIME_REPAIR_FIXTURE))
+    throw new Error('Unsafe R04 runtime fixture bundle')
+  const raw = fs.readFileSync(path.join(ROOT, R04_RUNTIME_REPAIR_FIXTURE))
+  assert.equal(textHash(raw), R04_RUNTIME_REPAIR_FIXTURE_HASH)
+  const bundle = canonicalJson(raw.toString('utf8'), 'R04 runtime fixture bundle')
+  strictObjectKeys(
+    bundle,
+    ['schemaVersion', 'change', 'head', 'snapshot', 'scriptFixture', 'files'],
+    'R04 runtime fixture bundle',
+  )
+  assert.equal(bundle.schemaVersion, 1)
+  assert.equal(bundle.change, R04)
+  assert.equal(bundle.head, R04_RUNTIME_REPAIR_HEAD)
+  assert.equal(textHash(bundle.snapshot), R04_RUNTIME_REPAIR_HASH)
+  assert.equal(bundle.scriptFixture, '// synthetic R04 second-epoch gate fixture\n')
+  const manifest = canonicalJson(bundle.snapshot, 'R04 runtime fixture entry')
+  const expected = new Set([
+    ...Object.keys(manifest.worktree),
+    ...R04_RUNTIME_REPAIR_REVIEWED.filter(
+      (file) => file !== SCRIPT && file !== R04_RUNTIME_REPAIR_FIXTURE,
+    ),
+    R04_REPAIR_APPROVAL,
+    R04_REPAIR_REPORT,
+    R04_APPROVAL,
+    R04_PREFIX + 'evidence/pre-implementation-gate-pass.md',
+  ])
+  strictObjectKeys(bundle.files, [...expected], 'R04 runtime fixture files')
+  const files = new Map()
+  for (const [file, encoded] of Object.entries(bundle.files)) {
+    if (
+      path.posix.isAbsolute(file) ||
+      file.includes('\\') ||
+      file.includes(':') ||
+      file.split('/').some((part) => !part || part === '.' || part === '..')
+    )
+      throw new Error('Unsafe R04 runtime fixture path')
+    const content = Buffer.from(encoded, 'base64')
+    assert.equal(content.toString('base64'), encoded)
+    if (manifest.worktree[file]) {
+      assert.equal(content.length, manifest.worktree[file].bytes)
+      assert.equal(textHash(content), manifest.worktree[file].sha256)
+    }
+    if (manifest.frozenControls[file])
+      assert.equal(textHash(content), manifest.frozenControls[file])
+    files.set(file, content)
+  }
+  assert.equal(textHash(files.get(R04_RUNTIME_REPAIR_ENTRY)), R04_RUNTIME_REPAIR_HASH)
+  files.set(SCRIPT, Buffer.from(bundle.scriptFixture))
+  files.set(R04_RUNTIME_REPAIR_FIXTURE, raw)
+  return { manifest, files, raw }
+}
+
+function r04RuntimeRepairFixture(run) {
+  const bundle = r04RuntimeRepairFixtureBundle()
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'frade-r04-runtime-repair-'))
+  const git = (args) =>
+    execFileSync('git', args, {
+      cwd: root,
+      encoding: 'utf8',
+      maxBuffer: 64 * 1024 * 1024,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    })
+  const write = (file, content) => {
+    fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true })
+    fs.writeFileSync(path.join(root, file), content)
+  }
+  try {
+    git(['init', '--quiet'])
+    git(['config', 'user.name', 'R04 runtime repair fixture'])
+    git(['config', 'user.email', 'r04-runtime-repair@example.invalid'])
+    git(['config', 'commit.gpgsign', 'false'])
+    git(['config', 'core.autocrlf', 'false'])
+    git(['config', 'core.filemode', 'false'])
+    const objects = path.resolve(
+      ROOT,
+      execFileSync('git', ['rev-parse', '--git-path', 'objects'], {
+        cwd: ROOT,
+        encoding: 'utf8',
+      }).trim(),
+    )
+    write('.git/objects/info/alternates', normalize(objects) + '\n')
+    git(['symbolic-ref', 'HEAD', 'refs/heads/main'])
+    git(['update-ref', 'refs/heads/main', R04_RUNTIME_REPAIR_HEAD])
+    git(['read-tree', R04_RUNTIME_REPAIR_HEAD])
+    for (const [file, value] of bundle.files) write(file, value)
+    run({ root, git, write, bytes: bundle.files, manifest: bundle.manifest })
+  } finally {
+    const resolved = path.resolve(root)
+    assert.equal(path.dirname(resolved), path.resolve(os.tmpdir()))
+    assert.ok(path.basename(resolved).startsWith('frade-r04-runtime-repair-'))
+    fs.rmSync(resolved, { recursive: true, force: true })
+  }
+}
+
+function r04RuntimeRepairRegressions(check) {
+  const bundled = r04RuntimeRepairFixtureBundle()
+  const current = parseCurrentChange(bundled.files.get(CURRENT).toString('utf8'))
+  check(
+    'Runtime repair profile is selected for the pinned fixture state',
+    isR04RuntimeRepair(current) && r04RepairFieldsMatch(current),
+  )
+  check(
+    'Runtime repair fixture manifest is independently hash-bound',
+    bundled.manifest.head === R04_RUNTIME_REPAIR_HEAD &&
+      bundled.manifest.originalApprovedPlanningCommit === R04_REPAIR_ORIGIN &&
+      bundled.manifest.previousApprovedPlanningCommit === R04_RUNTIME_REPAIR_CHECKPOINT,
+  )
+  check(
+    'Runtime repair manifest retains the bounded invalid candidate source',
+    bundled.manifest.worktree[ROUTING + 'orthogonal/router/channel.ts']?.sha256 ===
+      '8d989f0fb0db17b66afe144b9435b8795123f05563c33272aecf269d21f706cf',
+  )
+  r04RuntimeRepairFixture(({ root, git, write, bytes }) => {
+    const findings = () => r04RuntimeRepairEntryFindings(current, root)
+    const has = (layer) => findings().some((item) => item.reason.includes('[' + layer + ']'))
+    const resetIndex = () => git(['read-tree', 'HEAD'])
+    const source = ROUTING + 'orthogonal/router/channel.ts'
+    const metadata = R04_METADATA[0]
+    check(
+      'Second-epoch isolated fixture accepts exact entry in every layer',
+      findings().length === 0,
+    )
+    write(source, 'illegal staged product\n')
+    git(['add', '--', source])
+    write(source, bytes.get(source))
+    check('Second epoch detects staged/worktree cancellation', has('INDEX'))
+    check(
+      'Second epoch discovers cancelled staged product path',
+      changedFiles(R04_REPAIR_ORIGIN, root).includes(source),
+    )
+    resetIndex()
+    check('Second epoch restores after staged cancellation', findings().length === 0)
+
+    write(source, 'illegal worktree product\n')
+    check('Second epoch detects worktree edit', has('WORKTREE'))
+    write(source, bytes.get(source))
+    git(['rm', '--cached', '--', metadata])
+    write(metadata, bytes.get(metadata))
+    check('Second epoch detects staged deletion/worktree recreation', has('INDEX'))
+    resetIndex()
+
+    const newFile = ROUTING + 'orthogonal/router/added-after-entry.ts'
+    write(newFile, 'new product\n')
+    check('Second epoch rejects untracked product addition', has('WORKTREE'))
+    fs.unlinkSync(path.join(root, newFile))
+    const ignored = ROUTING + 'orthogonal/router/ignored.new'
+    write('.git/info/exclude', 'ignored.new\n')
+    write(ignored, 'hidden product\n')
+    check(
+      'Second epoch finds ignored product despite ordinary discovery omission',
+      !changedFiles(R04_REPAIR_ORIGIN, root).includes(ignored) && has('WORKTREE'),
+    )
+    fs.unlinkSync(path.join(root, ignored))
+    const copy = ROUTING + 'orthogonal/router/copied.ts'
+    write(copy, bytes.get(source))
+    git(['add', '--', copy])
+    check('Second epoch rejects copied destination in INDEX', has('INDEX'))
+    resetIndex()
+    fs.unlinkSync(path.join(root, copy))
+
+    const renamed = ROUTING + 'orthogonal/router/renamed-metadata.json'
+    git(['mv', '--', metadata, renamed])
+    const discovered = changedFiles(R04_REPAIR_ORIGIN, root)
+    check(
+      'Second epoch discovers both ends of rename',
+      discovered.includes(metadata) && discovered.includes(renamed),
+    )
+    check('Second epoch rejects renamed product/metadata', has('INDEX') && has('WORKTREE'))
+    resetIndex()
+    fs.unlinkSync(path.join(root, renamed))
+    write(metadata, bytes.get(metadata))
+
+    const unusual = ROUTING + 'orthogonal/router/данные with space.ts'
+    write(unusual, 'new path\n')
+    git(['add', '--', unusual])
+    check(
+      'Second epoch NUL-safe discovery keeps unusual path',
+      changedFiles(R04_REPAIR_ORIGIN, root).includes(unusual),
+    )
+    check('Second epoch rejects unusual staged path', has('INDEX'))
+    resetIndex()
+    fs.unlinkSync(path.join(root, unusual))
+
+    git(['update-index', '--chmod=+x', '--', metadata])
+    check('Second epoch rejects index mode change', has('INDEX'))
+    resetIndex()
+    const master = MASTER
+    write(master, 'illegal frozen master\n')
+    git(['add', '--', master])
+    write(master, bytes.get(master))
+    check('Second epoch rejects frozen staged/worktree cancellation', has('INDEX'))
+    resetIndex()
+    write(master, 'illegal frozen master\n')
+    check('Second epoch rejects frozen worktree edit', has('WORKTREE'))
+    write(master, bytes.get(master))
+
+    write(R04_REPAIR_REPORT, 'changed historical report\n')
+    check('Second epoch freezes historical approval report', has('FROZEN'))
+    write(R04_REPAIR_REPORT, bytes.get(R04_REPAIR_REPORT))
+    write(R04_REPAIR_ENTRY, 'changed historical snapshot\n')
+    check('Second epoch freezes historical entry snapshot', has('FROZEN'))
+    write(R04_REPAIR_ENTRY, bytes.get(R04_REPAIR_ENTRY))
+
+    write(R04_RUNTIME_REPAIR_ENTRY, 'changed staged runtime manifest\n')
+    git(['add', '--', R04_RUNTIME_REPAIR_ENTRY])
+    write(R04_RUNTIME_REPAIR_ENTRY, bytes.get(R04_RUNTIME_REPAIR_ENTRY))
+    check('Second epoch rejects staged manifest with original worktree bytes', has('INDEX'))
+    resetIndex()
+    write(R04_RUNTIME_REPAIR_FIXTURE, 'altered staged fixture bundle\n')
+    git(['add', '--', R04_RUNTIME_REPAIR_FIXTURE])
+    write(R04_RUNTIME_REPAIR_FIXTURE, bytes.get(R04_RUNTIME_REPAIR_FIXTURE))
+    check('Second epoch rejects staged bundle with original worktree bytes', has('INDEX'))
+    resetIndex()
+    write(R04_RUNTIME_REPAIR_FIXTURE, 'altered worktree fixture bundle\n')
+    check('Second epoch rejects altered worktree bundle', has('WORKTREE'))
+    write(R04_RUNTIME_REPAIR_FIXTURE, bytes.get(R04_RUNTIME_REPAIR_FIXTURE))
+    check('Second epoch isolated fixture returns to exact entry', findings().length === 0)
+
+    const junction = ROUTING + 'orthogonal/router/junction-after-entry'
+    const target = path.join(root, ROUTING, 'normalization')
+    assert.ok(path.resolve(target).startsWith(path.resolve(root) + path.sep))
+    fs.symlinkSync(target, path.join(root, junction), 'junction')
+    check('Second epoch rejects a junction in a retained product root', has('WORKTREE'))
+    fs.rmdirSync(path.join(root, junction))
+
+    check(
+      'Second epoch rejects swapped repair epoch fields',
+      r04RuntimeRepairEntryFindings(
+        { ...current, repairEntry: R04_REPAIR_ENTRY, repairHash: R04_REPAIR_HASH },
+        root,
+      ).length > 0,
+    )
+    check(
+      'Second epoch rejects altered CURRENT snapshot hash',
+      r04RuntimeRepairEntryFindings({ ...current, repairHash: '0'.repeat(64) }, root).length > 0,
+    )
+    let duplicateRejected = false
+    try {
+      canonicalJson('{\n  "schemaVersion": 1,\n  "schemaVersion": 1\n}\n', 'runtime manifest')
+    } catch {
+      duplicateRejected = true
+    }
+    check('Second epoch rejects duplicate manifest schema fields', duplicateRejected)
+
+    const allowed = R04_PREFIX + 'evidence/runtime-control-fixture.txt'
+    write(allowed, 'authorized planning evidence\n')
+    git(['add', '--', allowed])
+    git(['commit', '--quiet', '-m', 'authorized control-only interval'])
+    check(
+      'Second epoch accepts control-only history',
+      r04RuntimeControlHistoryFindings(git, git(['rev-parse', 'HEAD']).trim()).length === 0,
+    )
+    write(R04_RUNTIME_REPAIR_ENTRY, 'altered committed manifest\n')
+    git(['add', '--', R04_RUNTIME_REPAIR_ENTRY])
+    git(['commit', '--quiet', '-m', 'altered runtime manifest'])
+    write(R04_RUNTIME_REPAIR_ENTRY, bytes.get(R04_RUNTIME_REPAIR_ENTRY))
+    check('Second epoch rejects committed manifest with inverse worktree', findings().length > 0)
+    git(['add', '--', source])
+    git(['commit', '--quiet', '-m', 'forbidden product commit'])
+    git(['rm', '--cached', '--', source])
+    git(['commit', '--quiet', '-m', 'inverse product commit'])
+    check(
+      'Second epoch detects forbidden committed/reverted product history',
+      r04RuntimeControlHistoryFindings(git, git(['rev-parse', 'HEAD']).trim()).length > 0,
+    )
+  })
+  r04RuntimeRepairFixture(({ root, git, write }) => {
+    const fingerprints = planningReviewFingerprint(root, R04)
+    const report =
+      'CHANGE: ' +
+      R04 +
+      '\n' +
+      'GATE_TYPE: PRE_IMPLEMENTATION_REVALIDATION\n' +
+      'GATE_STATUS: PASS\n' +
+      'BLOCKERS: NONE\n' +
+      'MACHINE_GATE_INTEGRITY: PASS\n' +
+      'MACHINE_ARCHITECTURE_GATE: PASS\n' +
+      'READY_FOR_IMPLEMENTATION: YES\n' +
+      'REVIEWED_ARTIFACTS_JSON_BEGIN\n' +
+      JSON.stringify(fingerprints, null, 2) +
+      '\n' +
+      'REVIEWED_ARTIFACTS_JSON_END\n'
+    const approval = {
+      schemaVersion: 3,
+      change: R04,
+      gateType: 'PRE_IMPLEMENTATION_REVALIDATION',
+      gateStatus: 'PASS',
+      reviewerContext: 'fresh-read-only',
+      baseline: R04_REPAIR_ORIGIN,
+      previousApprovedPlanningCommit: R04_RUNTIME_REPAIR_CHECKPOINT,
+      repairEntryHead: R04_RUNTIME_REPAIR_HEAD,
+      repairEntrySnapshot: { path: R04_RUNTIME_REPAIR_ENTRY, sha256: R04_RUNTIME_REPAIR_HASH },
+      reportPath: R04_RUNTIME_REPAIR_REPORT,
+      reportSha256: textHash(report),
+      artifacts: fingerprints,
+    }
+    const verifiesApproval = (proof = approval, evidence = report) =>
+      verifyR04RuntimeRepairProof(
+        (file) =>
+          file === R04_RUNTIME_REPAIR_APPROVAL
+            ? typeof proof === 'string'
+              ? proof
+              : JSON.stringify(proof, null, 2) + '\n'
+            : file === R04_RUNTIME_REPAIR_REPORT
+              ? evidence
+              : fs.readFileSync(path.join(root, file), 'utf8'),
+        git,
+      )
+    check('Second-epoch canonical schema-3 approval binds fresh fingerprint', verifiesApproval())
+    check(
+      'First-epoch approval cannot authorize second epoch',
+      !verifiesApproval(fs.readFileSync(path.join(root, R04_REPAIR_APPROVAL), 'utf8')),
+    )
+    check(
+      'Second-epoch approval rejects substituted checkpoint',
+      !verifiesApproval({ ...approval, previousApprovedPlanningCommit: R04_REPAIR_ORIGIN }),
+    )
+    const wrongStatus = report.replace('GATE_STATUS: PASS', 'GATE_STATUS: FAIL')
+    check(
+      'Second-epoch approval rejects fresh report FAIL',
+      !verifiesApproval({ ...approval, reportSha256: textHash(wrongStatus) }, wrongStatus),
+    )
+    const oldArtifacts = Object.fromEntries(
+      Object.entries(fingerprints).filter(([file]) => R04_REPAIR_REVIEWED.includes(file)),
+    )
+    const oldReport = report.replace(
+      JSON.stringify(fingerprints, null, 2),
+      JSON.stringify(oldArtifacts, null, 2),
+    )
+    check(
+      'Second-epoch report parser rejects historical fingerprint set',
+      reviewReportFingerprint(oldReport, R04, 'runtime') === null,
+    )
+    check(
+      'Second-epoch approval rejects duplicate schema key',
+      !verifiesApproval(
+        (JSON.stringify(approval, null, 2) + '\n').replace('{', '{\n  "schemaVersion": 3,'),
+      ),
+    )
+    const spoofedPass = {
+      ...current,
+      preImplementationGate: 'PASS',
+      preEvidence: R04_RUNTIME_REPAIR_APPROVAL,
+      repairPlanningVerified: true,
+      runtimeApprovalVerified: false,
+    }
+    check(
+      'Second-epoch planning rejects PASS without verified new approval',
+      scopeFindings(spoofedPass, [], protectedPaths()).length > 0,
+    )
+    let implementationAccepted = false
+    try {
+      implementationAccepted = verifyFrozenGate(
+        { ...spoofedPass, phase: 'IMPLEMENTATION', implementationPaused: 'false' },
+        root,
+      )
+    } catch {
+      implementationAccepted = false
+    }
+    check('Second-epoch implementation rejects absent new checkpoint', !implementationAccepted)
+    // Synthetic approval exists only in this isolated, disposable Git fixture.
+    const fixtureCurrent = fs
+      .readFileSync(path.join(root, CURRENT), 'utf8')
+      .replace(/^PRE_IMPLEMENTATION_GATE:.*$/m, 'PRE_IMPLEMENTATION_GATE: PASS')
+      .replace(
+        /^PRE_IMPLEMENTATION_GATE_EVIDENCE:.*$/m,
+        'PRE_IMPLEMENTATION_GATE_EVIDENCE: ' + R04_RUNTIME_REPAIR_APPROVAL,
+      )
+    write(CURRENT, fixtureCurrent)
+    const fixtureArtifacts = planningReviewFingerprint(root, R04)
+    const fixtureReport = report.replace(
+      JSON.stringify(fingerprints, null, 2),
+      JSON.stringify(fixtureArtifacts, null, 2),
+    )
+    const fixtureApproval = {
+      ...approval,
+      reportSha256: textHash(fixtureReport),
+      artifacts: fixtureArtifacts,
+    }
+    write(R04_RUNTIME_REPAIR_REPORT, fixtureReport)
+    write(R04_RUNTIME_REPAIR_APPROVAL, JSON.stringify(fixtureApproval, null, 2) + '\n')
+    git([
+      'add',
+      '--',
+      ...R04_RUNTIME_REPAIR_REVIEWED.filter((value) => inScope(value, R04_CONTROL)),
+      R04_RUNTIME_REPAIR_REPORT,
+      R04_RUNTIME_REPAIR_APPROVAL,
+    ])
+    check(
+      'Second-epoch synthetic checkpoint stages control paths only',
+      git(['diff', '--cached', '--name-only', '-z'])
+        .split('\0')
+        .filter(Boolean)
+        .every((file) => inScope(file, R04_CONTROL)),
+    )
+    git(['commit', '--quiet', '-m', 'synthetic runtime repair approval'])
+    const checkpoint = git(['rev-parse', 'HEAD']).trim()
+    const implementation = {
+      ...current,
+      phase: 'IMPLEMENTATION',
+      planningCommit: checkpoint,
+      preImplementationGate: 'PASS',
+      preEvidence: R04_RUNTIME_REPAIR_APPROVAL,
+      implementationPaused: 'false',
+    }
+    const verifies = () => {
+      try {
+        return verifyFrozenGate(implementation, root)
+      } catch {
+        return false
+      }
+    }
+    check('Second-epoch approved control-only checkpoint opens frozen gate', verifies())
+    const master = fs.readFileSync(path.join(root, MASTER))
+    write(MASTER, 'illegal frozen control\n')
+    git(['add', '--', MASTER])
+    write(MASTER, master)
+    check('Second-epoch implementation rejects staged frozen inverse', !verifies())
+    check(
+      'Runtime profile does not accept the previous repair kind',
+      !isR04RuntimeRepair({ ...current, planningRepair: R04_REPAIR_KIND }),
+    )
+    check(
+      'Runtime review fingerprint selects runtime evidence',
+      (() => {
+        const keys = Object.keys(planningReviewFingerprint(root, R04)).sort()
+        return (
+          keys.length === R04_RUNTIME_REPAIR_REVIEWED.length &&
+          JSON.stringify(keys) === JSON.stringify([...R04_RUNTIME_REPAIR_REVIEWED].sort())
+        )
+      })(),
+    )
+  })
+
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'frade-r04-runtime-manifest-'))
+  try {
+    const relative = R04_RUNTIME_REPAIR_ENTRY
+    fs.mkdirSync(path.dirname(path.join(root, relative)), { recursive: true })
+    const original = bundled.files.get(relative)
+    const tampered = Buffer.from(original)
+    tampered[tampered.length - 2] = tampered[tampered.length - 2] === 0x0a ? 0x20 : 0x0a
+    fs.writeFileSync(path.join(root, relative), tampered)
+    let rejected = false
+    try {
+      readRuntimeRepairEntry(root)
+    } catch {
+      rejected = true
+    }
+    check('Runtime manifest tamper is rejected by its immutable hash', rejected)
+  } finally {
+    const resolved = path.resolve(root)
+    assert.equal(path.dirname(resolved), path.resolve(os.tmpdir()))
+    assert.ok(path.basename(resolved).startsWith('frade-r04-runtime-manifest-'))
+    fs.rmSync(resolved, { recursive: true, force: true })
+  }
+}
+
 function r04Regressions(check) {
   const current = {
     activeChange: 'routing-v2-04-orthogonal-router',
@@ -3369,9 +4334,15 @@ function selfTest() {
     assert.ok(value, label)
     count++
   }
-  r03ApprovalRegressions(check)
-  r04Regressions(check)
-  r04RepairRegressions(check)
+  const suite = (label, run) => {
+    const before = count
+    run(check)
+    console.log(label + ': PASS (' + (count - before) + ' assertions)')
+  }
+  suite('R03_APPROVAL_GATE_SELF_TESTS', r03ApprovalRegressions)
+  suite('R04_GATE_SELF_TESTS', r04Regressions)
+  suite('R04_FIRST_REPAIR_GATE_SELF_TESTS', r04RepairRegressions)
+  suite('R04_RUNTIME_REPAIR_GATE_SELF_TESTS', r04RuntimeRepairRegressions)
   check(
     'control repairs allowed',
     scopeFindings(
@@ -4745,7 +5716,18 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       assert.ok(value, label)
       count++
     })
+    r04RuntimeRepairRegressions((label, value) => {
+      assert.ok(value, label)
+      count++
+    })
     console.log('R04_REPAIR_GATE_SELF_TESTS: PASS (' + count + ' assertions)')
+  } else if (process.argv.includes('--self-test-r04-runtime-repair')) {
+    let count = 0
+    r04RuntimeRepairRegressions((label, value) => {
+      assert.ok(value, label)
+      count++
+    })
+    console.log('R04_RUNTIME_REPAIR_GATE_SELF_TESTS: PASS (' + count + ' assertions)')
   } else if (process.argv.includes('--self-test-r04')) {
     let count = 0
     r04Regressions((label, value) => {

@@ -1,15 +1,16 @@
-# Independent R04 PRE revalidation prompt (run only after repair task 1.6)
+# Independent R04 PRE revalidation prompt — second repair epoch
 
-This is PRE_IMPLEMENTATION REVALIDATION after an authorized ordinary-direction
-SPEC_CONFLICT repair. R04 product specification changed; old PRE approval is
-historical and superseded for this revision. Production/tests/dependencies were
-already present and are frozen at planning-repair-entry-snapshot.json, NOT new
-implementation during repair. Do not run this review before the repair isolation
-and schema-2 checkpoint controls in planning-repair-process-protocol.md are
-implemented and their self-tests/installed gate pass.
+This is PRE_IMPLEMENTATION_REVALIDATION after the second process-control repair.
+The first ordinary-direction repair and its schema-2 approval at da22452d are
+historical. The current R04 production, tests and tooling are retained at the
+separate runtime-invalid-repair-entry-proposed-2026-09-29.json snapshot (HEAD
+4ff5c4d); they are frozen during this review. The current approval must use the
+schema-3 protocol and new report/approval paths in gate-profile.md. Do not run
+this review before the second-epoch self-tests and installed gate pass.
 
 This renewed review follows B1 and B2 in their preserved FAIL reports.
-Task 1.6 is complete; its saved controls passed 225 focused / 989 full assertions.
+Task 1.6 and its 225 focused / 989 full assertions are historical first-epoch
+evidence, not evidence that the second-epoch controls executed.
 Read both preserved FAILs, b1-certificate-minimum-reproduction.json,
 b2-parity-conflict.md and the B1/B2 follow-ups in planning-repair-decision.md.
 The user explicitly approved B2's two-part reference contract: keep the unchanged
@@ -33,8 +34,8 @@ decision, evidence/gate-profile.md, original reference probe and saved planning 
 initial planning provenance to R03 closure 0b2a9096ab42e431e6e56a7ece17a5f29c72cdb4
 and the repair diff to cf424e247490fdfae2c4efc9f7e7377b6d5b6e11. Verify complete
 per-layer retained-file equality and the original baseline, not just net Git diff.
-Do not approve current product correctness in this planning review: the retained
-original ordinary regression is intentionally still red, pending authorized repair.
+Do not approve current product correctness in this planning review. The retained
+implementation and test bytes are entry evidence, not permission to resume work.
 
 Verify specifically:
 
@@ -89,6 +90,15 @@ Verify specifically:
   ignored additions, historical-approval rejection, new fingerprint binding and
   cumulative origin O distinct from revised control checkpoint P. No generic
   exemption for files already in the workspace is acceptable.
+- Inspect the second-epoch immutable fixture bundle, its raw hash and all 66
+  retained product/test/tooling bytes. Execute or inspect the common `--self-test`
+  as well as the focused runtime mode. The common mode must actually call the
+  second-epoch regressions. Run the isolated fixtures after a synthetic approved
+  checkpoint to prove they do not depend on the live HEAD or WORKTREE. Verify
+  staged/worktree cancellation for both the entry manifest and fixture bundle.
+- Verify original schema-1 and first-repair schema-2 approvals at their historical
+  commits. The new schema-3 approval must bind this entry, previous checkpoint,
+  full current fingerprint, exact report hash and separate control-only checkpoint.
 
 - Hard source/target constraints have no fallback exception. R02 fixed/mask
   ownership and R03 direction authority remain unchanged.
@@ -131,19 +141,22 @@ Verify specifically:
   REVIEWED_ARTIFACTS_JSON_END lines in the report. Follow gate-profile.md for the
   saved report/manifest protocol. Do not merely copy an earlier fingerprint list.
 
-Use the repaired gate-profile/protocol for schema-2 report/manifest paths. Keep
-the original report and schema-1 manifest byte-for-byte. Do not overwrite them
-with this revalidation, fabricate a new approval or merely copy old fingerprints.
+Use the second-epoch schema-3 paths in gate-profile.md:
+`evidence/pre-implementation-runtime-revalidation-pass.md` and
+`evidence/pre-implementation-runtime-revalidation-review.json`. Keep the
+schema-1 and schema-2 historical reports/manifests byte-for-byte. The calling
+workflow records a real independent PASS; the reviewer must not fabricate one.
 
 Run strict OpenSpec validation and read-only diff/status checks; distinguish
 fresh execution from inspected evidence and future planned tests. No implementation,
 commit, archive or R05 work is part of this review.
 
-Return CHANGE, GATE_TYPE: PRE_IMPLEMENTATION, exactly one GATE_STATUS: PASS|FAIL,
+Return CHANGE, GATE_TYPE: PRE_IMPLEMENTATION_REVALIDATION, exactly one GATE_STATUS: PASS|FAIL,
 BLOCKERS with file/line evidence, SPEC_ALIGNMENT, SCOPE_ALIGNMENT,
 ARCHITECTURE_ALIGNMENT, TEST_COVERAGE_ALIGNMENT, NUMERICAL_CONTRACT_ALIGNMENT,
-REFERENCE_PARITY_PLAN, MACHINE_GATE_INTEGRITY, LEGACY_ISOLATION,
+REFERENCE_PARITY_PLAN, MACHINE_GATE_INTEGRITY, MACHINE_ARCHITECTURE_GATE, LEGACY_ISOLATION,
 R04_R05_BOUNDARY and READY_FOR_IMPLEMENTATION: YES|NO. On PASS use BLOCKERS: NONE
-and MACHINE_GATE_INTEGRITY: PASS as single unambiguous field lines. Every correctness or
+and MACHINE_GATE_INTEGRITY: PASS and MACHINE_ARCHITECTURE_GATE: PASS as single
+unambiguous field lines. Every correctness or
 architecture blocker means FAIL. Save the independent report through the calling
 workflow after review; the reviewer must not mutate the repository to certify it.

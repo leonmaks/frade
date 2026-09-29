@@ -5,7 +5,7 @@ PROGRAM: Routing Engine V2
 ACTIVE_CHANGE: routing-v2-04-orthogonal-router
 PREVIOUS_CHANGE: routing-v2-03-direction-resolver
 SEQUENCE_POSITION: R04_OF_10
-PHASE: IMPLEMENTATION
+PHASE: PLANNING
 
 APPROVED_PLANNING_COMMIT: da22452d7e9c35f28f4004d9826432b12bf6a521
 BASE_COMMIT: cf424e247490fdfae2c4efc9f7e7377b6d5b6e11
@@ -19,22 +19,27 @@ SPEC_CONFLICT: RESOLVED_BY_USER_APPROVED_B2_DECISION
 FALLBACK_POLICY: CONSTRAINT_PRESERVING_LOCAL_EXTERIOR
 ORDINARY_POLICY: CERTIFIED_TABLE_OR_ORIENTED_CHANNEL
 FALLBACK_DECISION: openspec/changes/routing-v2-04-orthogonal-router/evidence/fallback-decision.md
-ACTIVE_PLANNING_BLOCKER: NONE
-READY_FOR_PRE_IMPLEMENTATION: true
+ACTIVE_PLANNING_BLOCKER: fresh independent PRE revalidation and a control-only planning checkpoint are pending; implementation remains paused
+READY_FOR_PRE_IMPLEMENTATION: false
 PRE_IMPLEMENTATION_GATE: PASS
-PRE_IMPLEMENTATION_GATE_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-review.json
+PRE_IMPLEMENTATION_GATE_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-runtime-revalidation-review.json
 PRE_REVALIDATION_REPORT: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-pass.md
-PRE_REVALIDATION_BLOCKER_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-binding-blocker.md
+PRE_REVALIDATION_BLOCKER_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-fail-runtime-invalid-2026-09-29.md
 B1_PLANNING_REPAIR_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/planning-repair-decision.md
 MACHINE_ARCHITECTURE_GATE: PASS
 PROCESS_CONTROL_STATUS: COMPLETE
 PROCESS_CONTROL_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/process-control-repair-validation.md
 IMPLEMENTATION_STATUS: IN_PROGRESS
 IMPLEMENTATION_TESTS: FAIL
-IMPLEMENTATION_PAUSED: false
-PLANNING_REPAIR: ORDINARY_DIRECTION_CONSTRUCTION
-REPAIR_ENTRY_SNAPSHOT: openspec/changes/routing-v2-04-orthogonal-router/evidence/planning-repair-entry-snapshot.json
-REPAIR_ENTRY_SNAPSHOT_SHA256: 1a306ca7ec1df199e41351e750fd74942cf8c2c98aa1f00de899eb320d1e3a71
+IMPLEMENTATION_PAUSED: true
+ACTIVE_IMPLEMENTATION_BLOCKER: fresh independent PRE PASS and a control-only planning checkpoint are required before implementation resumes
+IMPLEMENTATION_BLOCKER_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-fail-runtime-invalid-2026-09-29.md
+PLANNING_REPAIR: MUTATION_RUNTIME_INVALID_OUTCOME
+PLANNING_REPAIR_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/planning-repair-runtime-invalid-2026-09-29.md
+PRE_REVALIDATION_FAIL_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-fail-runtime-invalid-2026-09-29.md
+PROCESS_CONTROL_BLOCKER_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-fail-process-control-2026-09-29.md
+REPAIR_ENTRY_SNAPSHOT: openspec/changes/routing-v2-04-orthogonal-router/evidence/runtime-invalid-repair-entry-proposed-2026-09-29.json
+REPAIR_ENTRY_SNAPSHOT_SHA256: 9be484cc6589200d286d530c0ea8afe2fc0ab6c60e19dd55d4e364c1f8080da6
 PREVIOUS_PRE_STATUS: HISTORICAL_PASS_SUPERSEDED_FOR_REVISED_CONTRACT
 POST_IMPLEMENTATION_GATE: NOT_RUN
 ARCHIVE_ALLOWED: false
@@ -132,15 +137,19 @@ protection and planning reconciliation are recorded by task 1.5; repair isolatio
 and approval binding are recorded by task 1.6. Task 1.7's fresh independent PRE
 returned FAIL: the ordinary certificate omits terminal minima and can approve a
 finite run of 1 with resolved minimum 10. Preserve that review and counterexample.
-The independent PRE revalidation now PASSes B1/B2 and the user-approved two-part
-reference contract. The canonical report and schema-2 manifest bind all 31 current
-fingerprints, the repair-entry snapshot and the original cumulative origin. The
-received report is preserved separately byte-for-byte. Task 1.7 is complete;
-task 1.8 is the next control-only checkpoint. Do not edit product, tests or
-dependencies, and do not begin implementation until that checkpoint is committed.
-Production/tests/dependencies remain frozen during planning. Task 1.8's separately
-authorized control-only checkpoint follows actual PRE PASS; no archive or R05 work
-is authorized. Readiness here means readiness for PRE review, not implementation.
+The independent PRE revalidation passed B1/B2 and the user-approved two-part
+reference contract, but the later runtime-invalid revalidation failed. The
+failed report is preserved in
+`evidence/pre-implementation-revalidation-fail-runtime-invalid-2026-09-29.md`.
+The live planning contract now binds the single observed candidate, mixed
+test/domain evidence, fatal signal/timeout precedence and disjoint scoring;
+task 1.9 is required before any control-only checkpoint or implementation.
+Do not edit product, tests or dependencies, and do not begin implementation until
+the renewed independent PRE is committed and says READY_FOR_IMPLEMENTATION: YES.
+Production/tests/dependencies remain frozen during planning. The historical 1.8
+checkpoint is superseded for this repair; task 1.9 must pass before any new
+control-only checkpoint. No archive or R05 work is authorized. Readiness here
+means readiness for independent PRE review, not implementation.
 
 Planning/implementation model: Astra high/xhigh, per workflow-models.md.
 BASE_COMMIT and APPROVED_PLANNING_COMMIT retain the original approved R04 SHA

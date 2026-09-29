@@ -466,6 +466,103 @@ binding to the runner-owned isolated R04 root; absent that proof, abort. A numer
 score cannot override unclassified failures. Threshold >=90%, denominator includes
 all compiler-valid survivors/timeouts; neither counts as a kill.
 
+#### 6a. Bounded runtime-invalid mutation outcome
+
+The mutation harness has one additional auditable outcome, `runtime-invalid`,
+for a compiler-valid mutant that deterministically violates a known checked
+runtime boundary before a normal assertion can be produced. This is a
+harness-only mutation outcome, not a production routing result and not a
+general exception escape. The rule is intentionally bound to one observed
+candidate until an independently indexed site is approved.
+
+The only initially admitted candidate is the recorded `enumerateConnectors`
+site in `orthogonal/router/channel.ts`:
+
+```yaml
+file: orthogonal/router/channel.ts
+function: enumerateConnectors
+span: { start: 4808, end: 4809 }
+line: 152
+column: 31
+category: comparison-operator
+before: <
+after: <=
+candidateId: 8bd1221e9eef34a5d48b396f2d65f64e5f7b3b3e1928e6260f1ae8d17270fa73
+sourceSha256: 8d989f0fb0db17b66afe144b9435b8795123f05563c33272aecf269d21f706cf
+mutatedSourceSha256: 1bbcd2a7038eb5c9cc24a269bb7f070f32eba963d279068a004cf3e53d5bb22c
+```
+
+The candidate binding must also retain the approved lower-layer snapshot
+`model/validation.ts` with SHA-256
+`a2ce3a07ec87769c1503a3b009b5adfd73e4047dcb855327ec74cb8d9ed25b59` in the
+isolated source manifest. The runner passes the complete candidate record and
+binding to the classifier; checking only a candidate category or only an error
+message is invalid. The symmetric `>` to `>=` mutation and every other
+comparison site are outside this rule until their real indexed-loop site,
+span, source/mutated hashes and lower-layer binding are separately approved.
+
+For this site, the only admissible finite-validation messages are the two
+messages the ternary actually produces:
+
+```text
+OrthogonalRouter: channel horizontal step.x must be finite; received undefined
+OrthogonalRouter: channel vertical step.y must be finite; received undefined
+```
+
+Do not claim an unobserved horizontal-y or vertical-x cross-product. The
+structured error must be `RangeError/RangeError`, its first frame must be
+`assertFiniteNumber` in the runner-owned isolated `model/validation.ts`, and
+the lower-layer file must be present in the binding. The child must exit 1 and
+retain complete schema-3 audit plus JSON report with exact audit/report
+correspondence. A later stack frame, substring match, wrong file/function/span,
+wrong operator/category/hash, non-owned root, or any unbound source is a hard
+abort.
+
+The retained candidate may contain mixed affirmative test evidence: every
+failure must be either the exact bound runtime-invalid RangeError or a
+test-owned affirmative assertion whose failure, test path/name, message and
+stack are present consistently in both the complete audit and JSON report.
+Generic `AssertionError` text is not sufficient. Any suite/module/global
+failure, nested/aggregate unknown error, malformed or partial audit, missing
+test ownership, report/audit mismatch, infrastructure error, signal, spawn
+error, or additional non-whitelisted error aborts; assertions are never
+filtered to manufacture a kill. This permits the observed three exact domain
+errors plus four auditable test assertions while retaining all seven child
+failures.
+
+Fatal evidence is preflighted before outcome selection. A signal aborts before
+any spawn-timeout handling. `ETIMEDOUT` is a timeout only when the complete
+evidence set is known-only timeout evidence (including a normal Vitest timeout)
+and contains no signal, unknown, infrastructure, malformed, domain or
+runtime-invalid evidence. Runtime-invalid plus timeout therefore aborts. The
+same precedence applies to complete, partial and sparse audits.
+
+Scoring uses disjoint candidate sets in the retained report:
+
+```text
+rawKilled       = candidates with an affirmative assertion kill
+runtimeInvalid  = candidates with the exact bounded runtime-invalid evidence
+effectiveKilled = cardinality(rawKilled union runtimeInvalid)
+denominator     = compiler-valid candidates (including survivors and timeouts)
+```
+
+If a candidate has both evidence kinds it is counted once in
+`effectiveKilled`, while both evidence records remain visible. Compiler-invalid
+mutants are excluded from the denominator. An incomplete or aborted inventory
+has no score. The report exposes raw/runtime-invalid/effective counts, complete
+candidate IDs, child retention hashes and aggregate/progress correspondence;
+the >=90% threshold cannot override an abort or missing evidence.
+
+Before implementation resumes, permanent controls must exercise the authentic
+candidate and all binding fields (function/span/operator/category/source and
+mutated hashes/lower-layer hash), mixed domain-plus-assertion evidence, wrong
+metadata and first frame, non-owned origin, wrong message, extra unknown or
+aggregate errors, test/suite/module/global ownership, complete/partial/sparse
+audits, signal plus spawn-timeout, runtime-invalid plus timeout, infrastructure
+precedence, normal known-only timeouts, duplicate union scoring, and exact
+JSON/audit/child/progress correspondence. The full inventory is rerun only
+after those controls pass.
+
 ### 7. Process control before implementation
 
 The paragraphs below describe the initial checkpoint protocol. For the authorized

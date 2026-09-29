@@ -1,5 +1,12 @@
 # Required R04 repair isolation and approval protocol
 
+Applicability: historical first repair epoch, ORDINARY_DIRECTION_CONSTRUCTION,
+approved at da22452d7e9c35f28f4004d9826432b12bf6a521. The active second epoch is
+MUTATION_RUNTIME_INVALID_OUTCOME. Its normative entry, immutable fixture bundle,
+schema-3 approval/report paths and checkpoint rules are in gate-profile.md,
+"Active second repair epoch: mutation runtime-invalid outcome". The schema-2
+paths below remain historical and cannot authorize the second epoch.
+
 Status: normative protocol implemented by task 1.6's repair-specific gate profile.
 Actual validation results are recorded separately in process-control-repair-validation.md.
 Do not suppress a FAIL, temporarily pretend IMPLEMENTATION or lower existing
