@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-01T22:26:53.053Z",
+  "classification": "STATE_TRANSITION",
+  "status": "REPRODUCED_BEFORE_REPAIR",
+  "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-style-lifecycle-red-20261001T222052Z/result.json",
+  "failures": [
+    {
+      "id": "DETACHED_LOWER_GLYPH",
+      "cause": "Lower attribute reconciliation prunes removed nodes, but lower style reconciliation had no current-glyph keep set. Removed original nodes retained projected styles until entire adapter disposal.",
+      "repair": "Restore only owned lower style properties on nodes outside the actual current lower glyph set, including strip detach."
+    },
+    {
+      "id": "EMPTY_STYLE_ATTRIBUTE",
+      "cause": "Owned property restoration removed an empty style attribute unconditionally, losing the original distinction between absent style and style=\"\".",
+      "repair": "Capture initial style attribute presence on first property projection and restore that distinction without overwriting unrelated vendor properties."
+    }
+  ],
+  "scope": "Only existing drawio-theme-bridge.ts; two already failing permanent tests retain exact assertions; no vendor/domain/routing or fixture coordinate changes",
+  "priorFullRoot": "TERMINATED; remaining checks NOT_RUN"
+}

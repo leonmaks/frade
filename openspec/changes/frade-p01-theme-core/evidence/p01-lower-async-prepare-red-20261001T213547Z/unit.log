@@ -1,0 +1,54 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/drawio-theme.test.ts (18 tests | 1 failed) 1340ms
+   ✓ serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 74ms
+   ✓ bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 13ms
+   ✓ bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 27ms
+   ✓ bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 17ms
+   ✓ bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 13ms
+   ✓ bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 19ms
+   ✓ bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 8ms
+   ✓ separate presentation channel never reaches downstream vendor semantic handler, while unrelated actions still do 13ms
+   ✓ P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once 177ms
+   ✓ P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup  323ms
+   ✓ P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions 95ms
+   ✓ P01-LOWER real capability removal and restoration, hidden controls and regenerated DOM retain exact original handlers 87ms
+   ✓ P01-LOWER pointer registrations execute one original family only and menu DOM ownership restores exact prior values 93ms
+   ✓ P01-LOWER original action recreating the strip returns focus to a connected proven replacement 95ms
+   ✓ P01-LOWER original lower opening that recreates its opener binds only a unique connected DOM-identical replacement 73ms
+   ✓ P01-LOWER checkability comes from the original actual checkmark and is restored with its DOM unchanged 79ms
+   ✓ P01-LOWER Tab dismisses owned menu and permits native focus navigation without downstream vendor key activation 66ms
+   × P01-LOWER prepare keeps menu DOM untouched and applied new ownership cancels it through original UI hide lifecycle 66ms
+     → expected '<div class="mxPopupMenu"><table class…' to be '<div class="mxPopupMenu" data-frade-l…' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 passed (18)
+   Start at  00:35:48
+   Duration  3.51s (transform 234ms, setup 0ms, collect 276ms, tests 1.34s, environment 915ms, prepare 347ms)
+
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER prepare keeps menu DOM untouched and applied new ownership cancels it through original UI hide lifecycle
+AssertionError: expected '<div class="mxPopupMenu"><table class…' to be '<div class="mxPopupMenu" data-frade-l…' // Object.is equality
+
+Expected: "<div class="mxPopupMenu" data-frade-lower-menu="7" role="menu" aria-label="Pages"><table class="mxPopupMenu" role="presentation"><tbody role="presentation"><tr class="mxPopupMenuItem" role="menuitem" aria-label="Rename" aria-disabled="false" tabindex="0"><td class="mxPopupMenuIcon" role="presentation" aria-hidden="true"></td><td class="mxPopupMenuItem" role="presentation">Rename</td><td class="mxPopupMenuItem" role="presentation" aria-hidden="true"></td></tr><tr class="mxPopupMenuItem" role="menuitem" aria-label="Move" aria-disabled="false" tabindex="0" aria-haspopup="menu" aria-expanded="false"><td class="mxPopupMenuIcon" role="presentation" aria-hidden="true"></td><td class="mxPopupMenuItem" role="presentation">Move</td><td class="mxPopupMenuItem" role="presentation" aria-hidden="true"></td></tr><tr class="mxPopupMenuItem" role="menuitem" aria-label="Unavailable" aria-disabled="true" tabindex="-1"><td class="mxPopupMenuIcon" role="presentation" aria-hidden="true"></td><td class="mxPopupMenuItem mxDisabled" role="presentation">Unavailable</td><td class="mxPopupMenuItem" role="presentation" aria-hidden="true"></td></tr></tbody></table></div>"
+Received: "<div class="mxPopupMenu"><table class="mxPopupMenu"><tbody><tr class="mxPopupMenuItem"><td class="mxPopupMenuIcon"></td><td class="mxPopupMenuItem">Rename</td><td class="mxPopupMenuItem"></td></tr><tr class="mxPopupMenuItem"><td class="mxPopupMenuIcon"></td><td class="mxPopupMenuItem">Move</td><td class="mxPopupMenuItem"></td></tr><tr class="mxPopupMenuItem"><td class="mxPopupMenuIcon"></td><td class="mxPopupMenuItem mxDisabled">Unavailable</td><td class="mxPopupMenuItem"></td></tr></tbody></table></div>"
+
+ ❯ tests/unit/drawio-theme.test.ts:758:32
+    756|   await Promise.resolve()
+    757|   await Promise.resolve()
+    758|   expect(f.menu.div.outerHTML).toBe(originalMenuDOM)
+       |                                ^
+    759|   expect(f.menu.div.isConnected).toBe(true)
+    760|   f.send('apply', context('apply', 2, 2))
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

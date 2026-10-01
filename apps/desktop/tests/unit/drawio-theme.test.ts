@@ -183,6 +183,7 @@ function fixture(serialized = false) {
     view,
     listeners,
     assertSemantic,
+    ui,
   }
 }
 it('serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint', async () => {
@@ -351,4 +352,450 @@ it('separate presentation channel never reaches downstream vendor semantic handl
   } finally {
     window.removeEventListener('message', receive)
   }
+})
+
+function lowerFixture() {
+  const f = fixture(true)
+  const lower = document.createElement('div')
+  lower.className = 'geTabContainer'
+  lower.innerHTML =
+    '<div class="geTab geControlTab" title="Pages"><div class="geButton"></div></div><div class="geTabScroller"><div class="geTab gePageTab geActivePage"><span>Workshop</span><div class="geButton"></div></div><div class="geTab gePageTab"><span>Second</span><div class="geButton"></div></div></div>'
+  f.container.parentElement!.append(lower)
+  const pages = lower.firstElementChild as HTMLElement
+  const shim = document.createElement('textarea')
+  shim.className = 'mxTypingShim'
+  shim.tabIndex = -1
+  f.container.append(shim)
+  Object.assign(f.ui, {
+    tabContainer: lower,
+    tabScroller: lower.lastElementChild,
+    pageMenuTab: pages,
+    typingShim: shim,
+  })
+  Object.assign(f.graph, { isEnabled: () => true, isEditing: () => false, isMouseDown: false })
+  Object.assign(window, {
+    mxResources: {
+      get: (key: string) =>
+        ({ pages: 'Pages', previousPage: 'Previous page', nextPage: 'Next page' })[key],
+    },
+    mxClient: { IS_POINTER: false },
+  })
+  for (const group of Array.from(lower.querySelectorAll<HTMLElement>('.gePageTab'))) {
+    const down = vi.fn(),
+      up = vi.fn()
+    for (const node of [group, group.querySelector<HTMLElement>('.geButton')!]) {
+      node.addEventListener('mousedown', down)
+      node.addEventListener('mouseup', up)
+      Object.assign(node, {
+        mxListenerList: [
+          { name: 'mousedown', f: down },
+          { name: 'mouseup', f: up },
+        ],
+      })
+    }
+  }
+  const original = vi.fn()
+  pages.addEventListener('click', original)
+  Object.assign(pages, { mxListenerList: [{ name: 'click', f: original }] })
+  const key = (target: HTMLElement, key: string, extra: KeyboardEventInit = {}) =>
+    target.dispatchEvent(
+      new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true, ...extra }),
+    )
+  return { ...f, lower, pages, shim, original, key }
+}
+it('P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once', async () => {
+  const f = lowerFixture()
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.shim.focus()
+  f.key(f.shim, 'F6')
+  expect(f.lower.contains(document.activeElement)).toBe(true)
+  expect(document.activeElement?.getAttribute('role')).toBe('button')
+  f.key(document.activeElement as HTMLElement, 'End')
+  expect(document.activeElement?.getAttribute('aria-label')).toContain('Second')
+  expect(f.original).not.toHaveBeenCalled()
+  f.key(document.activeElement as HTMLElement, 'Home')
+  f.key(document.activeElement as HTMLElement, 'Enter')
+  expect(f.original).toHaveBeenCalledTimes(1)
+  f.assertSemantic()
+  f.dispose()
+  expect(f.pages.hasAttribute('role')).toBe(false)
+  expect(f.pages.hasAttribute('tabindex')).toBe(false)
+})
+
+function lowerMenuFixture() {
+  const f = lowerFixture(),
+    effects: string[] = []
+  type Row = HTMLTableRowElement & {
+    div?: HTMLDivElement
+    tbody?: HTMLTableSectionElement
+    activeRow?: Row
+  }
+  const div = document.createElement('div'),
+    table = document.createElement('table'),
+    tbody = document.createElement('tbody')
+  div.className = table.className = 'mxPopupMenu'
+  div.append(table)
+  table.append(tbody)
+  const menu = {
+    div,
+    tbody,
+    activeRow: undefined as Row | undefined,
+    eventReceiver: undefined as Row | undefined,
+    hideSubmenu(scope: { activeRow?: Row }) {
+      scope.activeRow?.div?.remove()
+      scope.activeRow = undefined
+    },
+    hideMenu() {
+      this.hideSubmenu(this)
+      div.remove()
+      Object.assign(f.ui, { currentMenu: null })
+    },
+  }
+  const listen = (node: HTMLElement, name: string, fn: EventListener) => {
+    node.addEventListener(name, fn)
+    const value = node as HTMLElement & { mxListenerList?: { name: string; f: EventListener }[] }
+    ;(value.mxListenerList ??= []).push({ name, f: fn })
+  }
+  const item = (
+    parent: typeof menu | Row,
+    label: string,
+    action?: () => void,
+    disabled = false,
+  ) => {
+    const row = document.createElement('tr') as Row
+    row.className = 'mxPopupMenuItem'
+    row.innerHTML =
+      '<td class="mxPopupMenuIcon"></td><td class="mxPopupMenuItem"></td><td class="mxPopupMenuItem"></td>'
+    row.cells[1].textContent = label
+    if (disabled) row.cells[1].classList.add('mxDisabled')
+    parent.tbody!.append(row)
+    if (!disabled) {
+      listen(row, 'mousedown', (event) => {
+        menu.eventReceiver = row
+        if (parent.activeRow !== row) {
+          menu.hideSubmenu(parent)
+          if (row.div) {
+            document.body.append(row.div)
+            parent.activeRow = row
+          }
+        }
+        event.stopPropagation()
+        event.preventDefault()
+      })
+      listen(row, 'mousemove', () => {
+        if (row.div) {
+          document.body.append(row.div)
+          parent.activeRow = row
+        }
+      })
+      listen(row, 'mouseup', (event) => {
+        if (menu.eventReceiver === row) {
+          if (parent.activeRow !== row) menu.hideMenu()
+          action?.()
+          menu.eventReceiver = undefined
+        }
+        event.stopPropagation()
+        event.preventDefault()
+      })
+    }
+    return row
+  }
+  const rename = item(menu, 'Rename', () => effects.push('rename'))
+  const move = item(menu, 'Move')
+  move.div = document.createElement('div')
+  move.div.className = 'mxPopupMenu'
+  move.tbody = document.createElement('tbody')
+  const subtable = document.createElement('table')
+  subtable.className = 'mxPopupMenu'
+  subtable.append(move.tbody)
+  move.div.append(subtable)
+  const first = item(move, 'First', () => effects.push('move-first'))
+  const disabled = item(menu, 'Unavailable', () => effects.push('forbidden'), true)
+  const open = () => {
+    document.body.append(div)
+    Object.assign(f.ui, { currentMenu: menu })
+  }
+  f.pages.addEventListener('click', open)
+  Object.assign(f.ui, { hideCurrentMenu: () => menu.hideMenu() })
+  Object.assign(window, { mxClient: { IS_POINTER: false } })
+  return { ...f, menu, rename, move, first, disabled, effects }
+}
+it('P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup', async () => {
+  const f = lowerMenuFixture()
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.shim.focus()
+  f.key(f.shim, 'F6')
+  f.key(document.activeElement as HTMLElement, 'Enter')
+  expect(f.menu.div.getAttribute('role')).toBe('menu')
+  expect(document.activeElement).toBe(f.rename)
+  expect(f.disabled.getAttribute('aria-disabled')).toBe('true')
+  f.key(f.rename, 'ArrowDown')
+  expect(document.activeElement).toBe(f.move)
+  expect(f.effects).toEqual([])
+  f.key(f.move, 'ArrowRight')
+  expect(document.activeElement).toBe(f.first)
+  expect(f.move.getAttribute('aria-expanded')).toBe('true')
+  f.key(f.first, 'ArrowLeft')
+  expect(document.activeElement).toBe(f.move)
+  expect(f.first.isConnected).toBe(false)
+  f.key(f.move, 'Home')
+  f.key(f.rename, 'Enter')
+  expect(f.effects).toEqual(['rename'])
+  await Promise.resolve()
+  expect(f.menu.div.hasAttribute('role')).toBe(false)
+  f.pages.focus()
+  f.key(f.pages, 'Enter')
+  f.key(f.rename, 'Escape')
+  expect(f.menu.div.isConnected).toBe(false)
+  expect(document.activeElement).toBe(f.pages)
+  f.key(f.pages, 'Enter')
+  const tab = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true })
+  f.rename.dispatchEvent(tab)
+  expect(tab.defaultPrevented).toBe(false)
+  expect(f.menu.div.isConnected).toBe(false)
+  f.assertSemantic()
+})
+it('P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions', async () => {
+  const f = lowerMenuFixture()
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  const input = document.createElement('input')
+  document.body.append(input)
+  input.focus()
+  f.key(input, 'F6')
+  expect(document.activeElement).toBe(input)
+  f.shim.focus()
+  f.key(f.shim, 'F6', { isComposing: true })
+  expect(document.activeElement).toBe(f.shim)
+  document.body.append(f.menu.div)
+  Object.assign(f.ui, { currentMenu: f.menu })
+  f.rename.tabIndex = 0
+  f.rename.focus()
+  f.key(f.rename, 'Enter')
+  expect(f.effects).toEqual([])
+  expect(f.menu.div.hasAttribute('role')).toBe(false)
+  f.menu.hideMenu()
+  f.shim.focus()
+  f.key(f.shim, 'F6')
+  f.key(document.activeElement as HTMLElement, 'Enter')
+  expect(f.menu.div.getAttribute('role')).toBe('menu')
+  f.send('prepare', context('prepare', 2, 2), snapshot('light', 2))
+  f.key(f.rename, 'Enter')
+  expect(f.effects).toEqual([])
+  expect(f.menu.div.hasAttribute('role')).toBe(false)
+  f.dispose()
+  expect(f.pages.hasAttribute('role')).toBe(false)
+  f.assertSemantic()
+})
+
+it('P01-LOWER real capability removal and restoration, hidden controls and regenerated DOM retain exact original handlers', async () => {
+  const f = lowerFixture()
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.pages.classList.add('mxDisabled')
+  await Promise.resolve()
+  expect(f.pages.getAttribute('aria-disabled')).toBe('true')
+  f.pages.classList.remove('mxDisabled')
+  await Promise.resolve()
+  expect(f.pages.getAttribute('aria-disabled')).toBe('false')
+  f.pages.style.display = 'none'
+  await Promise.resolve()
+  expect(f.pages.tabIndex).toBe(-1)
+  f.pages.style.display = ''
+  await Promise.resolve()
+  f.pages.focus()
+  f.key(f.pages, 'Enter', { repeat: true })
+  expect(f.original).not.toHaveBeenCalled()
+  f.pages.click()
+  expect(f.original).toHaveBeenCalledTimes(1)
+  f.pages.remove()
+  await Promise.resolve()
+  expect(f.pages.hasAttribute('role')).toBe(false)
+  expect(f.pages.hasAttribute('aria-disabled')).toBe(false)
+  f.assertSemantic()
+})
+it('P01-LOWER pointer registrations execute one original family only and menu DOM ownership restores exact prior values', async () => {
+  const f = lowerMenuFixture()
+  const rename = f.rename as unknown as HTMLElement & {
+    mxListenerList: { name: string; f: EventListener }[]
+  }
+  const calls: string[] = []
+  for (const registration of rename.mxListenerList) {
+    rename.removeEventListener(registration.name, registration.f)
+    registration.name = registration.name.replace('mouse', 'pointer')
+    const original = registration.f
+    registration.f = (event) => {
+      calls.push(event.type)
+      original(event)
+    }
+    rename.addEventListener(registration.name, registration.f)
+  }
+  Object.assign(window, { mxClient: { IS_POINTER: true }, PointerEvent: MouseEvent })
+  f.menu.div.setAttribute('role', 'prior-menu-owner')
+  f.rename.setAttribute('tabindex', '-1')
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.pages.focus()
+  f.key(f.pages, 'Enter')
+  f.key(f.rename, 'Enter')
+  expect(calls).toEqual(['pointerdown', 'pointerup'])
+  expect(f.effects).toEqual(['rename'])
+  await Promise.resolve()
+  expect(f.menu.div.getAttribute('role')).toBe('prior-menu-owner')
+  expect(f.rename.getAttribute('tabindex')).toBe('-1')
+  f.assertSemantic()
+})
+
+it('P01-LOWER original action recreating the strip returns focus to a connected proven replacement', async () => {
+  const f = lowerMenuFixture()
+  const replacement = document.createElement('div')
+  replacement.className = 'geTab geControlTab'
+  replacement.title = 'Pages'
+  replacement.addEventListener('click', f.original)
+  Object.assign(replacement, { mxListenerList: [{ name: 'click', f: f.original }] })
+  f.rename.addEventListener('mouseup', () => {
+    f.pages.replaceWith(replacement)
+    Object.assign(f.ui, { pageMenuTab: replacement })
+  })
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.pages.focus()
+  f.key(f.pages, 'Enter')
+  f.key(f.rename, 'Enter')
+  expect(f.effects).toEqual(['rename'])
+  expect(document.activeElement).toBe(replacement)
+  expect(f.pages.hasAttribute('role')).toBe(false)
+  f.assertSemantic()
+})
+
+it('P01-LOWER original lower opening that recreates its opener binds only a unique connected DOM-identical replacement', async () => {
+  const f = lowerMenuFixture()
+  const replacement = document.createElement('div')
+  replacement.className = 'geTab geControlTab'
+  replacement.title = 'Pages'
+  replacement.addEventListener('click', f.original)
+  Object.assign(replacement, { mxListenerList: [{ name: 'click', f: f.original }] })
+  f.pages.addEventListener('click', () => {
+    f.pages.replaceWith(replacement)
+    Object.assign(f.ui, { pageMenuTab: replacement })
+  })
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.pages.focus()
+  f.key(f.pages, 'Enter')
+  expect(f.pages.isConnected).toBe(false)
+  expect(f.menu.div.getAttribute('role')).toBe('menu')
+  expect(document.activeElement).toBe(f.rename)
+  f.key(f.rename, 'Escape')
+  expect(document.activeElement).toBe(replacement)
+  f.assertSemantic()
+})
+
+it('P01-LOWER checkability comes from the original actual checkmark and is restored with its DOM unchanged', async () => {
+  const f = lowerMenuFixture(),
+    mark = document.createElement('div')
+  Object.assign(window, { Editor: { checkmarkImage: 'data:original-checkmark' } })
+  mark.style.backgroundImage = 'url("data:original-checkmark")'
+  f.rename.children[1].append(mark)
+  const originalImage = mark.outerHTML
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.pages.focus()
+  f.key(f.pages, 'Enter')
+  await Promise.resolve()
+  await Promise.resolve()
+  expect(f.rename.getAttribute('role')).toBe('menuitemcheckbox')
+  expect(f.rename.getAttribute('aria-checked')).toBe('true')
+  expect(f.move.hasAttribute('aria-checked')).toBe(false)
+  f.key(f.rename, 'Escape')
+  expect(mark.outerHTML).toBe(originalImage)
+  expect(f.rename.hasAttribute('aria-checked')).toBe(false)
+  f.assertSemantic()
+})
+
+it('P01-LOWER Tab dismisses owned menu and permits native focus navigation without downstream vendor key activation', async () => {
+  const f = lowerMenuFixture(),
+    vendorKey = vi.fn()
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.pages.focus()
+  f.key(f.pages, 'Enter')
+  document.addEventListener('keydown', vendorKey)
+  try {
+    const event = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true })
+    f.rename.dispatchEvent(event)
+    expect(event.defaultPrevented).toBe(false)
+    expect(f.menu.div.isConnected).toBe(false)
+    expect(vendorKey).not.toHaveBeenCalled()
+    f.assertSemantic()
+  } finally {
+    document.removeEventListener('keydown', vendorKey)
+  }
+})
+it('P01-LOWER prepare keeps menu DOM untouched and applied new ownership cancels it through original UI hide lifecycle', async () => {
+  const f = lowerMenuFixture()
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.pages.focus()
+  f.key(f.pages, 'Enter')
+  const originalHide = f.menu.hideMenu
+  const originalMenuDOM = f.menu.div.outerHTML
+  f.send('prepare', context('prepare', 2, 2), snapshot('light', 2))
+  await Promise.resolve()
+  await Promise.resolve()
+  expect(f.menu.div.outerHTML).toBe(originalMenuDOM)
+  expect(f.menu.div.isConnected).toBe(true)
+  f.send('apply', context('apply', 2, 2))
+  await f.paint()
+  expect(f.menu.div.isConnected).toBe(false)
+  expect(f.menu.hideMenu).toBe(originalHide)
+  expect(f.menu.div.hasAttribute('role')).toBe(false)
+  expect(f.effects).toEqual([])
+  f.assertSemantic()
+})
+
+it('P01-LOWER detached original glyph restores exact prior style during lower recreation', async () => {
+  const f = lowerFixture()
+  const glyph = f.lower.querySelector('.gePageTab .geButton') as HTMLElement
+  glyph.style.backgroundImage = 'url("original-icon.svg")'
+  const original = glyph.getAttribute('style')
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  expect(glyph.style.backgroundImage).toBe('none')
+  glyph.parentElement!.remove()
+  await Promise.resolve()
+  await Promise.resolve()
+  expect(glyph.getAttribute('style')).toBe(original)
+  f.assertSemantic()
+})
+it('P01-LOWER owned menu glyph teardown preserves an originally present empty style attribute', async () => {
+  const f = lowerMenuFixture(),
+    cell = f.rename.children[0] as HTMLElement,
+    image = document.createElement('img')
+  image.src = 'original-icon.svg'
+  cell.append(image)
+  cell.setAttribute('style', '')
+  const originalStyle = cell.getAttribute('style')
+  f.send('prepare')
+  f.send('apply')
+  await f.paint()
+  f.pages.focus()
+  f.key(f.pages, 'Enter')
+  expect(cell.style.getPropertyValue('mask-image')).not.toBe('')
+  f.key(f.rename, 'Escape')
+  expect(cell.getAttribute('style')).toBe(originalStyle)
+  f.assertSemantic()
 })

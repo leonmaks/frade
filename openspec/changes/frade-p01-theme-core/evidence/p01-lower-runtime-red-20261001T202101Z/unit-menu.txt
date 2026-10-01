@@ -1,0 +1,89 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/drawio-theme.test.ts (11 tests | 3 failed) 231ms
+   ✓ serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 88ms
+   ✓ bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 13ms
+   ✓ bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 15ms
+   ✓ bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 12ms
+   ✓ bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 13ms
+   ✓ bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 18ms
+   ✓ bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 8ms
+   ✓ separate presentation channel never reaches downstream vendor semantic handler, while unrelated actions still do 7ms
+   × P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once 26ms
+     → expected false to be true // Object.is equality
+   × P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup 15ms
+     → expected null to be 'menu' // Object.is equality
+   × P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions 13ms
+     → expected null to be 'menu' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 8 passed (11)
+   Start at  23:23:13
+   Duration  2.20s (transform 207ms, setup 0ms, collect 256ms, tests 231ms, environment 790ms, prepare 344ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/drawio-theme.test.ts:383:52
+    381|   f.shim.focus()
+    382|   f.key(f.shim, 'F6')
+    383|   expect(f.lower.contains(document.activeElement)).toBe(true)
+       |                                                    ^
+    384|   expect(document.activeElement?.getAttribute('role')).toBe('button')
+    385|   f.key(document.activeElement as HTMLElement, 'End')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup
+AssertionError: expected null to be 'menu' // Object.is equality
+
+- Expected: 
+"menu"
+
++ Received: 
+null
+
+ ❯ tests/unit/drawio-theme.test.ts:457:43
+    455|   f.send('prepare'); f.send('apply'); await f.paint()
+    456|   f.shim.focus(); f.key(f.shim, 'F6'); f.key(document.activeElement as…
+    457|   expect(f.menu.div.getAttribute('role')).toBe('menu')
+       |                                           ^
+    458|   expect(document.activeElement).toBe(f.rename)
+    459|   expect(f.disabled.getAttribute('aria-disabled')).toBe('true')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions
+AssertionError: expected null to be 'menu' // Object.is equality
+
+- Expected: 
+"menu"
+
++ Received: 
+null
+
+ ❯ tests/unit/drawio-theme.test.ts:493:43
+    491|   expect(f.effects).toEqual([]); expect(f.menu.div.hasAttribute('role'…
+    492|   f.menu.hideMenu(); f.shim.focus(); f.key(f.shim, 'F6'); f.key(docume…
+    493|   expect(f.menu.div.getAttribute('role')).toBe('menu')
+       |                                           ^
+    494|   f.send('prepare', context('prepare', 2, 2), snapshot('light', 2))
+    495|   f.key(f.rename, 'Enter')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

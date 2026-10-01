@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-01T22:41:31.846Z",
+  "results": [
+    {
+      "name": "authored-diff-whitespace",
+      "args": [
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--check",
+        "--",
+        "apps/desktop/src/main/drawio-theme-bridge.ts",
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+        "apps/desktop/tests/e2e/workbench-multiroot.spec.ts",
+        "docs/ui/UI-DESIGN-CONTRACT-STATUS.md",
+        "docs/ui/decisions/p01-theme-traceability.json",
+        "openspec/changes/frade-p01-theme-core/execution-context.json"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "tracked-diff-whitespace",
+      "args": [
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--check"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "status",
+      "args": [
+        "-c",
+        "core.longpaths=true",
+        "status",
+        "--short"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "diff-stat",
+      "args": [
+        "diff",
+        "--stat"
+      ],
+      "exit": 0
+    }
+  ],
+  "note": "Only tracked diffs examined; untracked immutable raw evidence retains original whitespace. Full staged audit after checkpoint staging remains required."
+}

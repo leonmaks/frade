@@ -1,0 +1,66 @@
+
+Running 8 tests using 1 worker
+
+  ok 1 tests\e2e\ui-contract-theme.spec.ts:2414:1 › P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport (8.3s)
+  x  2 tests\e2e\ui-contract-theme.spec.ts:2465:1 › P01-LOWER original keyboard page menu duplicate rename move remove, submenu and cancellation (18.8s)
+  ok 3 tests\e2e\ui-contract-theme.spec.ts:2635:3 › P01-LOWER-matrix light compact actual lower and popup target focus contrast bounds (9.7s)
+  ok 4 tests\e2e\ui-contract-theme.spec.ts:2635:3 › P01-LOWER-matrix light comfortable actual lower and popup target focus contrast bounds (9.2s)
+  ok 5 tests\e2e\ui-contract-theme.spec.ts:2635:3 › P01-LOWER-matrix dark compact actual lower and popup target focus contrast bounds (9.1s)
+  ok 6 tests\e2e\ui-contract-theme.spec.ts:2635:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds (9.0s)
+  ok 7 tests\e2e\ui-contract-theme.spec.ts:2635:3 › P01-LOWER-matrix high-contrast compact actual lower and popup target focus contrast bounds (9.1s)
+  ok 8 tests\e2e\ui-contract-theme.spec.ts:2635:3 › P01-LOWER-matrix high-contrast comfortable actual lower and popup target focus contrast bounds (8.6s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:2465:1 › P01-LOWER original keyboard page menu duplicate rename move remove, submenu and cancellation 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveAttribute[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('iframe').contentFrame().getByRole('menuitemcheckbox')
+    Expected: [32m"true"[39m
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toHaveAttribute" with timeout 10000ms[22m
+    [2m  - waiting for locator('iframe').contentFrame().getByRole('menuitemcheckbox')[22m
+
+
+      2515 |       .focus()
+      2516 |     await f.page.keyboard.press('Enter')
+    > 2517 |     await expect(frame.getByRole('menuitemcheckbox')).toHaveAttribute('aria-checked', 'true')
+           |                                                       ^
+      2518 |     await f.page.keyboard.press('Home')
+      2519 |     await f.page.keyboard.press('ArrowRight')
+      2520 |     await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(2)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2517:55
+
+    attachment #6: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-six-state-20261001T210505Z\electron-artifacts\ui-contract-theme-P01-LOWE-ff035-ve-submenu-and-cancellation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-six-state-20261001T210505Z\electron-artifacts\ui-contract-theme-P01-LOWE-ff035-ve-submenu-and-cancellation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-six-state-20261001T210505Z\electron-artifacts\ui-contract-theme-P01-LOWE-ff035-ve-submenu-and-cancellation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:2465:1 › P01-LOWER original keyboard page menu duplicate rename move remove, submenu and cancellation 
+  7 passed (1.4m)
+(node:55064) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:55064) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:55064) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(node:39704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39704) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

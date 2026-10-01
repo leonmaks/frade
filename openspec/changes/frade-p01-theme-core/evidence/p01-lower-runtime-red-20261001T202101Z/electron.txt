@@ -1,0 +1,49 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\e2e\ui-contract-theme.spec.ts:2412:1 › P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport (16.2s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:2412:1 › P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+    Call Log:
+    - Timeout 10000ms exceeded while waiting on the predicate
+
+      2257 |     const before = await observe()
+      2258 |     await f.page.keyboard.press('F6')
+    > 2259 |     await expect.poll(() => frame.locator('body').evaluate(() => {
+           |     ^
+      2260 |       const active = document.activeElement
+      2261 |       return !!active && !!active.closest('.geTabContainer') && active.getAttribute('role') === 'button'
+      2262 |     })).toBe(true)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2259:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-runtime-red-20261001T202101Z\electron-artifacts\ui-contract-theme-P01-LOWE-54c9a-selection-undo-and-viewport\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-runtime-red-20261001T202101Z\electron-artifacts\ui-contract-theme-P01-LOWE-54c9a-selection-undo-and-viewport\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-runtime-red-20261001T202101Z\electron-artifacts\ui-contract-theme-P01-LOWE-54c9a-selection-undo-and-viewport\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:2412:1 › P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport 
+(node:63868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:63868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:63868) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

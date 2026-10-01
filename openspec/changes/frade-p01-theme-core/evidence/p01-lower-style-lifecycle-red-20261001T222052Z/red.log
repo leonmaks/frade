@@ -1,0 +1,76 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/drawio-theme.test.ts (20 tests | 2 failed) 1465ms
+   ✓ serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 77ms
+   ✓ bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 12ms
+   ✓ bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 23ms
+   ✓ bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 14ms
+   ✓ bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 13ms
+   ✓ bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 14ms
+   ✓ bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 8ms
+   ✓ separate presentation channel never reaches downstream vendor semantic handler, while unrelated actions still do 10ms
+   ✓ P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once 168ms
+   ✓ P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup 283ms
+   ✓ P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions 84ms
+   ✓ P01-LOWER real capability removal and restoration, hidden controls and regenerated DOM retain exact original handlers 76ms
+   ✓ P01-LOWER pointer registrations execute one original family only and menu DOM ownership restores exact prior values 80ms
+   ✓ P01-LOWER original action recreating the strip returns focus to a connected proven replacement 125ms
+   ✓ P01-LOWER original lower opening that recreates its opener binds only a unique connected DOM-identical replacement 84ms
+   ✓ P01-LOWER checkability comes from the original actual checkmark and is restored with its DOM unchanged 89ms
+   ✓ P01-LOWER Tab dismisses owned menu and permits native focus navigation without downstream vendor key activation 91ms
+   ✓ P01-LOWER prepare keeps menu DOM untouched and applied new ownership cancels it through original UI hide lifecycle 83ms
+   × P01-LOWER detached original glyph restores exact prior style during lower recreation 38ms
+     → expected 'background-image: none; --frade-lower…' to be 'background-image: url("original-icon.…' // Object.is equality
+   × P01-LOWER owned menu glyph teardown preserves an originally present empty style attribute 89ms
+     → expected null to be '' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 18 passed (20)
+   Start at  01:20:53
+   Duration  3.35s (transform 254ms, setup 0ms, collect 307ms, tests 1.46s, environment 861ms, prepare 285ms)
+
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER detached original glyph restores exact prior style during lower recreation
+AssertionError: expected 'background-image: none; --frade-lower…' to be 'background-image: url("original-icon.…' // Object.is equality
+
+Expected: "background-image: url("original-icon.svg");"
+Received: "background-image: none; --frade-lower-icon-image: url("original-icon.svg");"
+
+ ❯ tests/unit/drawio-theme.test.ts:774:38
+    772|  f.send('prepare');f.send('apply');await f.paint();expect(glyph.style.…
+    773|  glyph.parentElement!.remove();await Promise.resolve();await Promise.r…
+    774|  expect(glyph.getAttribute('style')).toBe(original);f.assertSemantic();
+       |                                      ^
+    775| })
+    776| it('P01-LOWER owned menu glyph teardown preserves an originally presen…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER owned menu glyph teardown preserves an originally present empty style attribute
+AssertionError: expected null to be '' // Object.is equality
+
+- Expected: 
+""
+
++ Received: 
+null
+
+ ❯ tests/unit/drawio-theme.test.ts:781:62
+    779|  f.send('prepare');f.send('apply');await f.paint();f.pages.focus();f.k…
+    780|  expect(cell.style.getPropertyValue('mask-image')).not.toBe('');
+    781|  f.key(f.rename,'Escape');expect(cell.getAttribute('style')).toBe(orig…
+       |                                                              ^
+    782| })
+    783| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

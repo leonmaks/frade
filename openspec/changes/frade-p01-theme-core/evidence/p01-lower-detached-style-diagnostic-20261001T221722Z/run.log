@@ -1,0 +1,55 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-lower-detached-style-diagnostic-20261001T221722Z
+
+ ❯ ownership.test.ts (19 tests | 1 failed) 2496ms
+   ✓ serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 186ms
+   ✓ bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 38ms
+   ✓ bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 40ms
+   ✓ bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 23ms
+   ✓ bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 18ms
+   ✓ bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 21ms
+   ✓ bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 14ms
+   ✓ separate presentation channel never reaches downstream vendor semantic handler, while unrelated actions still do 17ms
+   ✓ P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once 294ms
+   ✓ P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup  663ms
+   ✓ P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions 102ms
+   ✓ P01-LOWER real capability removal and restoration, hidden controls and regenerated DOM retain exact original handlers 155ms
+   ✓ P01-LOWER pointer registrations execute one original family only and menu DOM ownership restores exact prior values 185ms
+   ✓ P01-LOWER original action recreating the strip returns focus to a connected proven replacement 193ms
+   ✓ P01-LOWER original lower opening that recreates its opener binds only a unique connected DOM-identical replacement 145ms
+   ✓ P01-LOWER checkability comes from the original actual checkmark and is restored with its DOM unchanged 162ms
+   ✓ P01-LOWER Tab dismisses owned menu and permits native focus navigation without downstream vendor key activation 106ms
+   ✓ P01-LOWER prepare keeps menu DOM untouched and applied new ownership cancels it through original UI hide lifecycle 75ms
+   × P01-LOWER diagnostic detached original glyph restores exact prior style during recreation 58ms
+     → expected 'background-image: none; --frade-lower…' to be 'background-image: url("original-icon.…' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 18 passed (19)
+   Start at  01:17:23
+   Duration  5.10s (transform 303ms, setup 0ms, collect 371ms, tests 2.50s, environment 1.20s, prepare 557ms)
+
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  ownership.test.ts > P01-LOWER diagnostic detached original glyph restores exact prior style during recreation
+AssertionError: expected 'background-image: none; --frade-lower…' to be 'background-image: url("original-icon.…' // Object.is equality
+
+Expected: "background-image: url("original-icon.svg");"
+Received: "background-image: none; --frade-lower-icon-image: url("original-icon.svg");"
+
+ ❯ ownership.test.ts:774:38
+    772|  f.send('prepare');f.send('apply');await f.paint();expect(glyph.style.…
+    773|  glyph.parentElement!.remove();await Promise.resolve();await Promise.r…
+    774|  expect(glyph.getAttribute('style')).toBe(original);f.assertSemantic();
+       |                                      ^
+    775| })
+    776| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

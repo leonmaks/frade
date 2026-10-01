@@ -1,0 +1,51 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/drawio-theme.test.ts (16 tests | 1 failed) 1151ms
+   ✓ serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 87ms
+   ✓ bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 14ms
+   ✓ bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 24ms
+   ✓ bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 12ms
+   ✓ bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 12ms
+   ✓ bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 15ms
+   ✓ bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 9ms
+   ✓ separate presentation channel never reaches downstream vendor semantic handler, while unrelated actions still do 10ms
+   ✓ P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once 187ms
+   ✓ P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup  310ms
+   ✓ P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions 85ms
+   ✓ P01-LOWER real capability removal and restoration, hidden controls and regenerated DOM retain exact original handlers 85ms
+   ✓ P01-LOWER pointer registrations execute one original family only and menu DOM ownership restores exact prior values 80ms
+   ✓ P01-LOWER original action recreating the strip returns focus to a connected proven replacement 81ms
+   ✓ P01-LOWER original lower opening that recreates its opener binds only a unique connected DOM-identical replacement 71ms
+   × P01-LOWER checkability comes from the original actual checkmark and is restored with its DOM unchanged 68ms
+     → expected 'menuitem' to be 'menuitemcheckbox' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 passed (16)
+   Start at  00:02:14
+   Duration  3.57s (transform 244ms, setup 0ms, collect 285ms, tests 1.15s, environment 1.08s, prepare 490ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER checkability comes from the original actual checkmark and is restored with its DOM unchanged
+AssertionError: expected 'menuitem' to be 'menuitemcheckbox' // Object.is equality
+
+Expected: "menuitemcheckbox"
+Received: "menuitem"
+
+ ❯ tests/unit/drawio-theme.test.ts:715:41
+    713|   f.pages.focus()
+    714|   f.key(f.pages, 'Enter')
+    715|   expect(f.rename.getAttribute('role')).toBe('menuitemcheckbox')
+       |                                         ^
+    716|   expect(f.rename.getAttribute('aria-checked')).toBe('true')
+    717|   expect(f.move.hasAttribute('aria-checked')).toBe(false)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

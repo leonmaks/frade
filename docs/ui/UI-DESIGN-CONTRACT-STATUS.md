@@ -1,20 +1,30 @@
 # Frade UI Design Contract — статус этой ветки
 
-## Текущий этап — P01,5/10; popup scope USER_ACCEPTED / PRE2 PASS; meaningful RED next
+## Текущий этап — P01, 6/10; popup PRE2 PASS; fresh full root PASS; focused POST NOT_RUN
 
-Обновлено: 2026-10-01T19:30:45.585Z. Branch codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; original baseline98f387f; current planning checkpoint3d5927e. Human accepted exact popup amendment SHA 8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a; accepted file openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard-accepted-20261001T193045Z.json. Four-artifact/BDD/registry reconciliation completed; task count stays5/10. Общая policy v1.1 installed, модель/effort каждого review из approved P01 stage plan; независимые PRE/POST автоматические.
+Обновлено: 2026-10-01T22:55:57.161Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; baseline 98f387f; опубликованный checkpoint fb5a566. Guide v1.0 / tokens1.0.0. Последний точный popup scope USER_ACCEPTED; автоматический read-only PRE2 PASS. Model/effort — по approved P01 stage plan. Routing prerequisite отсутствует.
 
-| Active repair step | Status |
+| Текущая задача | Фактический статус |
 | --- | --- |
-| Exact popup scope human decision/raw-before | DONE: USER_ACCEPTED |
-| Coherent proposal/design/spec/tasks + pending BDD/registry | DONE; no production/test changes |
-| Strict/BDD/compliance, planning checkpoint | DONE: strict,BDD95/95,UI26/26/control;3d5927e committed/pushed, remote SHA verified |
-| Fresh independent read-only PRE | DONE: PRE2 PASS1448 hashes; candidate/packet unchanged; PRE1 input FAIL preserved |
-| Permanent unit/Electron RED → sole bridge repair → GREEN | NEXT: RED before production; exact scope now PRE PASS |
-| Complete six-state/media/zoom/viewport/preservation + full root | NOT_RUN for new delta |
-| Visual acceptance/verify/cumulative POST/archive | NOT_RUN / NOT_APPROVED |
+| Scope, coherent artifacts, strict, independent PRE | DONE; PRE2 PASS, прежние FAIL сохранены |
+| Original Grid occlusion RED → bridge repair → GREEN | PASS: unit18/18, Electron11/11 с исходными bundle/chord действиями |
+| Style teardown / detached lower glyph | PASS: unit20/20, lint/typecheck/build, Electron11/11. Исторические style RED и typecheck FAIL сохранены |
+| Полный текущий прогон | PASS: root exit0, Draw215/215, desktop79/79, source unchanged. BDD95/UI26/contrast102/controls/pinned2851 PASS; p95=118.2ms≤150ms. Прежние FAIL/TERMINATED сохранены |
+| Visual acceptance / verify / cumulative POST / archive | NOT_APPROVED; focused OpenSpec verification PASS (4 requirements/10 scenarios); полный15/35 mapping INCOMPLETE; cumulative POST/archive NOT_RUN; P01 6/10 |
+| Commit/push текущей реализации | PREPARING_CURRENT_UI_CHECKPOINT; последний опубликованный fb5a566 |
 
-Prior combined PRE FAIL and lower token/focus FAIL remain historical; human acceptance itself is not PASS. Routing prerequisite absent; no active Routing/product/domain/vendor writes. Common policy supplier ARCHIVED6/6,7fc4c9c/08981db published with remote SHA verified; historical details below. STOP before P02.
+Применимые lower/popup правила: FDS003/004/005/008/009, A11Y001–005/007–009. Сохраняются ровно три утверждённых legacy exceptions. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Следующий шаг: сохранить focused verification, commit/push UI checkpoint, автоматический read-only popup/lower/SaveAs POST по approved stage plan. STOP перед P02. Исторические записи ниже не являются текущим статусом.
+
+## Оставшиеся задачи P01
+
+| Task | Статус / необходимый результат |
+| --- | --- |
+| 2.4 runtime/BDD integration | PARTIAL: actual runtime PASS; полное связывание FUI005–009 и финальная сверка evidence открыты |
+| 2.5 visual/performance | Performance PASS; actual screens сохранены; human visual baseline NOT_APPROVED, полная visual/state closure открыта |
+| 3.2 verification/cumulative POST | OPEN; focused popup review не закрывает cumulative gate |
+| 3.3 sync/archive | OPEN; только после всех required gates и human visual acceptance |
+
+Evidence текущего полного прогона: openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T223210Z/final-check-summary.json.
 
 ## Предыдущие сохранённые checkpoint записи
 
@@ -90,9 +100,9 @@ Git checkpoints **257b3a3** и **c2fa3ba** committed/pushed, SHA обоих пр
 | 2.1 | BDD + meaningful resolver RED / properties | DONE | 31 role, 34 fixed pairs, precedence/repair/immutability; seed 20260930, ≥200 property runs |
 | 2.2 | Pure resolver / registry | DONE | Light и Dark одновременно; HC/System, независимая density, immutable snapshots и документация |
 | 2.3 | Transaction / host ownership | DONE | Preview/cancel, prepare/commit/persist/rollback, CAS/races/membership, unknown recovery и painted barrier |
-| 2.4 | Adapters, DTO, filesystem, bootstrap, keyboard, overlays, native / frame, B02 | IN_PROGRESS | Основной runtime и принятые readonly состояния проверены; три совместимых readiness fixture проверены целевым прогоном; Full regression PASS; завершить bottom chrome repair и final traceability. Save As scope утверждён; implementation BLOCKED: repeat PRE FAIL, keyboard scope USER_ACCEPTED; новый PRE pending |
-| 2.5 | Реальные screens, a11y/media/state matrix, benchmark, visual approval | IN_PROGRESS | Light/Dark/HC × compact/comfortable, viewport/media/readonly evidence и локальный benchmark сохранены; final coverage review и человеческое утверждение baseline ещё нужны |
-| 3.1 | Applicable package/root/compliance checks, status/diff | BLOCKED | Целевые проверки и fresh full root PASS; bottom chrome actual diagnostic FAIL6/6, repair scope утверждён; repeat PRE FAIL требует отдельного keyboard scope решения. Исторический Save As FAIL сохранён; repeat PRE FAIL (scope conflict) |
+| 2.4 | Adapters, DTO, filesystem, bootstrap, keyboard, overlays, native / frame, B02 | IN_PROGRESS | Current lower/menu18 unit +8 Electron, B02 native/frame and Save As PASS; full desktop has2 required canvas-focus FAIL. Preserve old fixtures until exact diagnosis/scope decision. |
+| 2.5 | Real screens, a11y/media/state matrix, benchmark, visual approval | IN_PROGRESS | Current six-state lower plus old consumer matrix PASS; actual p95=136.3ms <=150. Human baseline approval NOT_APPROVED; cumulative coverage verification open. |
+| 3.1 | Applicable package/root/compliance checks, status/diff | BLOCKED | Base checks and Draw215/215 PASS; desktop77/79 with2 canvas-focus FAIL. Raw source/hash/logs/screenshots/controls retained. No POST before applicable failures resolved. |
 | 3.2 | OpenSpec verify → freeze → независимый POST | NOT_RUN | После закрытия applicable blockers; requested gpt-6-astra / xhigh, read-only |
 | 3.3 | Visual acceptance + все required PASS → sync/archive → post-archive checks | NOT_RUN | После verify / POST; STOP перед P02 |
 

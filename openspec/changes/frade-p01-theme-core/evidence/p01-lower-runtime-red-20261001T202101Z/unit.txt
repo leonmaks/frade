@@ -1,0 +1,47 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/drawio-theme.test.ts (9 tests | 1 failed) 154ms
+   ✓ serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 58ms
+   ✓ bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 9ms
+   ✓ bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 16ms
+   ✓ bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 9ms
+   ✓ bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 12ms
+   ✓ bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 12ms
+   ✓ bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 8ms
+   ✓ separate presentation channel never reaches downstream vendor semantic handler, while unrelated actions still do 6ms
+   × P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once 23ms
+     → expected false to be true // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  23:21:05
+   Duration  13.25s (transform 733ms, setup 0ms, collect 762ms, tests 154ms, environment 10.90s, prepare 700ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/drawio-theme.test.ts:383:52
+    381|   f.shim.focus()
+    382|   f.key(f.shim, 'F6')
+    383|   expect(f.lower.contains(document.activeElement)).toBe(true)
+       |                                                    ^
+    384|   expect(document.activeElement?.getAttribute('role')).toBe('button')
+    385|   f.key(document.activeElement as HTMLElement, 'End')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

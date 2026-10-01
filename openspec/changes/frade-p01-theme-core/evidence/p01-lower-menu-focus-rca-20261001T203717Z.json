@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-01T20:37:17.373Z",
+  "classification": "STATE_TRANSITION",
+  "facts": "Real popup rows have pointerdown/up/move registrations, aria-disabled=false and tabindex=0. ActiveElement becomes body after keyboard open. Two unchanged source runs retained; no production fix was attempted between them.",
+  "cause": "Capture-phase lowerMouse queues adoption for synthetic original lower gesture, after synchronous keyboard adoption. Re-adopting same current menu restores/removes focusability on the focused TR and loses Chromium focus.",
+  "repair": "Identity guard retains already-valid same instance/opener/request ownership; queued mouse observer cannot re-adopt keyboard-owned menu. No callback replacement or forced action."
+}

@@ -1,0 +1,69 @@
+$ pnpm check && pnpm test:e2e && pnpm test:desktop
+$ pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries && pnpm ui:compliance
+$ turbo lint
+• turbo 2.11.2
+
+   • Packages in scope: @frade/adapter-sberea-yaml, @frade/adapter-yaml, @frade/desktop, @frade/draw, @frade/local-index, @frade/metamodel-compiler, @frade/metamodel-config, @frade/metamodel-domain, @frade/repository-api, @frade/repository-application, @frade/repository-bridge, @frade/repository-domain, @frade/repository-ports, @frade/runtime-contracts, @frade/runtime-electron, @frade/runtime-node, @frade/ui-inspector, @frade/ui-navigator, @frade/ui-workspace, @frade/versioning-git
+   • Running lint in 20 packages
+   • Remote caching disabled, using shared worktree cache
+
+@frade/runtime-contracts:lint: cache miss, executing 75e7bc90cd8b3d93
+@frade/metamodel-domain:lint: cache hit, replaying logs a9bcc5e59a576d5e
+@frade/draw:lint: cache hit, replaying logs 97c9b4c751f4c8ac
+@frade/draw:lint: $ eslint src tests *.ts
+@frade/metamodel-domain:lint: $ eslint src tests
+@frade/metamodel-compiler:lint: cache hit, replaying logs 39587f4ed8c827e3
+@frade/metamodel-compiler:lint: $ eslint src tests
+@frade/metamodel-config:lint: cache hit, replaying logs a10d2a0d08ba98c0
+@frade/repository-domain:lint: cache hit, replaying logs c0f583477b8405a2
+@frade/repository-domain:lint: $ eslint src tests
+@frade/metamodel-config:lint: $ eslint src tests
+@frade/repository-ports:lint: cache hit, replaying logs 9721f8d5f6f965de
+@frade/repository-ports:lint: $ eslint src tests
+@frade/repository-bridge:lint: cache hit, replaying logs b444e948147b0072
+@frade/versioning-git:lint: cache hit, replaying logs ac3bb6a57694f655
+@frade/local-index:lint: cache hit, replaying logs 77853c202f043f53
+@frade/repository-bridge:lint: $ eslint src tests
+@frade/versioning-git:lint: $ eslint src tests
+@frade/local-index:lint: $ eslint src tests
+@frade/repository-application:lint: cache hit, replaying logs 7f6da1556e6657e3
+@frade/repository-application:lint: $ eslint src tests
+@frade/repository-api:lint: cache hit, replaying logs eec38984e6060f4a
+@frade/repository-api:lint: $ eslint src tests
+@frade/ui-navigator:lint: cache hit, replaying logs b54895829359573c
+@frade/ui-inspector:lint: cache hit, replaying logs 6b2a5a2c5a6217c3
+@frade/ui-inspector:lint: $ eslint src tests
+@frade/ui-navigator:lint: $ eslint src tests
+@frade/adapter-yaml:lint: cache hit, replaying logs 66359b827a321ae5
+@frade/adapter-sberea-yaml:lint: cache hit, replaying logs ddc6df27eb80c412
+@frade/adapter-sberea-yaml:lint: $ eslint src tests
+@frade/adapter-yaml:lint: $ eslint src tests
+@frade/ui-workspace:lint: cache hit, replaying logs 9da6f5d1a0935414
+@frade/ui-workspace:lint: $ eslint src tests
+@frade/runtime-contracts:lint: $ eslint src tests
+@frade/runtime-electron:lint: cache miss, executing a63bead74acbda60
+@frade/runtime-node:lint: cache miss, executing d34a5eef92e208cc
+@frade/runtime-electron:lint: $ eslint src tests
+@frade/runtime-node:lint: $ eslint src tests
+@frade/desktop:lint: cache miss, executing 26ad6769ab68336c
+@frade/desktop:lint: $ eslint src tests *.ts
+@frade/desktop:lint: 
+@frade/desktop:lint: C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts
+@frade/desktop:lint:   2564:5   warning  Unused eslint-disable directive (no problems were reported from 'no-empty-pattern')
+@frade/desktop:lint:   2571:14  error    Unexpected empty object pattern                                                      no-empty-pattern
+@frade/desktop:lint: 
+@frade/desktop:lint: ✖ 2 problems (1 error, 1 warning)
+@frade/desktop:lint:   0 errors and 1 warning potentially fixable with the `--fix` option.
+@frade/desktop:lint: 
+@frade/desktop:lint: [ELIFECYCLE] Command failed with exit code 1.
+@frade/desktop#lint:  ERROR  command (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop) E:\Program Files\nodejs\pnpm.CMD run lint exited (1)
+
+ Tasks:    19 successful, 20 total
+Cached:    16 cached, 20 total
+  Time:    16.986s 
+Failed:    @frade/desktop#lint
+
+ ERROR  run failed: command  exited (1)
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.

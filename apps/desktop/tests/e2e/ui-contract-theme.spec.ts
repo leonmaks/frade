@@ -1,3 +1,4 @@
+import { inflateSync } from 'node:zlib'
 import { test, expect, _electron as electron } from '@playwright/test'
 import { mkdtemp, writeFile, readFile, mkdir, rmdir, readdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
@@ -622,7 +623,7 @@ async function readUiConsumers(body: ReturnType<Page['locator']>, scope: 'root' 
     const selectors =
       scope === 'root'
         ? 'button,input,select,textarea,[role="treeitem"],[role="option"],.field-help,.field-error,.wb-dialog p'
-        : '.geMenubarContainer a,.geToolbarContainer a,button,input,select,textarea,a.geButton,a.geItem'
+        : '.geMenubarContainer a,.geToolbarContainer a,button,input,select,textarea,a.geButton,a.geItem,.geTabContainer [role=button],[data-frade-lower-menu] [role^=menuitem]'
     return Array.from(root.querySelectorAll<HTMLElement>(selectors)).flatMap((node) => {
       const box = node.getBoundingClientRect(),
         style = getComputedStyle(node)
@@ -666,7 +667,9 @@ async function readUiConsumers(body: ReturnType<Page['locator']>, scope: 'root' 
           exception:
             scope === 'root' &&
             !!node.closest('.wb-titlebar,.wb-statusbar,.editor-tabs,.breadcrumbs'),
-          control: node.matches('button,input,select,textarea,a,[role=treeitem],[role=option]'),
+          control: node.matches(
+            'button,input,select,textarea,a,[role=treeitem],[role=option],[role=button],[role^=menuitem]',
+          ),
         },
       ]
     })
@@ -1119,8 +1122,12 @@ async function installActualRequestGate(app: ElectronApplication) {
       handlers.set(channel, async (event: any, value: any) => {
         const operation = value?.operation ?? value?.request?.operation
         let waited = false
-        if (operation === control.operation && control.mode === 'hold' &&
-          (operation !== 'diagram' || (value?.payload ?? value?.request?.payload)?.action === 'write')) {
+        if (
+          operation === control.operation &&
+          control.mode === 'hold' &&
+          (operation !== 'diagram' ||
+            (value?.payload ?? value?.request?.payload)?.action === 'write')
+        ) {
           waited = true
           control.pending++
           control.requests.push({ channel, value: JSON.parse(JSON.stringify(value)) })
@@ -1662,7 +1669,9 @@ for (const format of ['frade', 'drawio'] as const) {
             )
             await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
             await expect(
-              page.locator('.diagram-slot .editor-actions').getByRole('button', { name: 'Сохранить', exact: true }),
+              page
+                .locator('.diagram-slot .editor-actions')
+                .getByRole('button', { name: 'Сохранить', exact: true }),
             ).toBeEnabled()
             await canvas().evaluate(async () => {
               await document.fonts.ready
@@ -1670,7 +1679,9 @@ for (const format of ['frade', 'drawio'] as const) {
                 requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
               )
             })
-            await line.evaluate((node) => node.scrollIntoView({ block: 'nearest', inline: 'nearest' }))
+            await line.evaluate((node) =>
+              node.scrollIntoView({ block: 'nearest', inline: 'nearest' }),
+            )
             await canvas().evaluate(async () => {
               await new Promise<void>((resolve) =>
                 requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
@@ -1854,12 +1865,18 @@ for (const format of ['frade', 'drawio'] as const) {
         }
         // P01-RT-READONLY-001: real already-open manager, actual diagram write/DTO.
         if (format === 'drawio') {
-          await page.getByRole('treeitem').filter({ hasText: /^Flows[.]drawio$/ }).dblclick()
+          await page
+            .getByRole('treeitem')
+            .filter({ hasText: /^Flows[.]drawio$/ })
+            .dblclick()
           await expect(node('A')).toBeVisible({ timeout: 20000 })
           await openActual()
         }
         await expect(manager).toBeVisible()
-        const addedMember = manager.getByRole('checkbox', { name: 'В жгуте: Payload F2', exact: true })
+        const addedMember = manager.getByRole('checkbox', {
+          name: 'В жгуте: Payload F2',
+          exact: true,
+        })
         await addedMember.check()
         await expect(addedMember).toBeChecked()
         const readonlyDiskBefore = await readFile(file, 'utf8')
@@ -1868,10 +1885,17 @@ for (const format of ['frade', 'drawio'] as const) {
         await page.locator('.diagram-slot iframe,.diagram-slot .x6-graph').evaluate((node) => {
           ;(window as any).__p01ReadonlyCanvas = node
         })
-        await manager.evaluate((node) => { ;(window as any).__p01ReadonlyManager = node })
+        await manager.evaluate((node) => {
+          ;(window as any).__p01ReadonlyManager = node
+        })
         await gateActualRequest(app, 'diagram', 'hold')
-        await page.locator('.diagram-slot .editor-actions').getByRole('button', { name: 'Сохранить', exact: true }).click()
-        await expect.poll(() => app.evaluate(() => (globalThis as any).__p01IpcGate.pending)).toBe(1)
+        await page
+          .locator('.diagram-slot .editor-actions')
+          .getByRole('button', { name: 'Сохранить', exact: true })
+          .click()
+        await expect
+          .poll(() => app.evaluate(() => (globalThis as any).__p01IpcGate.pending))
+          .toBe(1)
         const held = await app.evaluate(() => (globalThis as any).__p01IpcGate.requests[0])
         const actualRequest = held.value.request ?? held.value
         expect(actualRequest.operation).toBe('diagram')
@@ -1886,43 +1910,97 @@ for (const format of ['frade', 'drawio'] as const) {
           expect(readonlyFrameBefore?.modelXml).toBe(readonlyFrameBeforeSave?.modelXml)
           expect(readonlyFrameBefore?.undo).toBe(readonlyFrameBeforeSave?.undo)
           expect(readonlyFrameBefore?.cursor).toBe(readonlyFrameBeforeSave?.cursor)
-          observations.push({ state: 'actual-Save-readonly-transition', before: readonlyFrameBeforeSave, after: readonlyFrameBefore,
-            note: 'The existing editor can clear selection when Save enters readOnly. Full semantic equality remains required across the following theme transactions.' })
+          observations.push({
+            state: 'actual-Save-readonly-transition',
+            before: readonlyFrameBeforeSave,
+            after: readonlyFrameBefore,
+            note: 'The existing editor can clear selection when Save enters readOnly. Full semantic equality remains required across the following theme transactions.',
+          })
         }
-        await expect(manager.getByRole('button', { name: '+ Новый поток', exact: true })).toBeEnabled()
-        await captureB02Matrix(page, info, 'flow-read-only-pending-' + format,
-          '.flow-manager input[aria-label="Поиск потоков"]', observations, violations)
+        await expect(
+          manager.getByRole('button', { name: '+ Новый поток', exact: true }),
+        ).toBeEnabled()
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-read-only-pending-' + format,
+          '.flow-manager input[aria-label="Поиск потоков"]',
+          observations,
+          violations,
+        )
         await expect(manager).toBeVisible()
         await expect(addedMember).toBeChecked()
         await expect(addedMember).toBeDisabled()
         expect(await readFile(file, 'utf8')).toBe(readonlyDiskBefore)
-        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(readonlyRepoBefore)
+        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(
+          readonlyRepoBefore,
+        )
         expect(await app.evaluate(() => (globalThis as any).__p01IpcGate.requests[0])).toEqual(held)
         await manager.getByRole('button', { name: '+ Новый поток', exact: true }).click()
         await manager.getByLabel('ID потока', { exact: true }).fill('F99')
-        await manager.getByLabel('description', { exact: true }).fill('Actual readonly diagram retains repository form draft')
+        await manager
+          .getByLabel('description', { exact: true })
+          .fill('Actual readonly diagram retains repository form draft')
         const readonlyDraft = await manager.getByLabel('description', { exact: true }).inputValue()
-        await captureB02Matrix(page, info, 'flow-read-only-draft-' + format,
-          '.flow-manager input', observations, violations)
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-read-only-draft-' + format,
+          '.flow-manager input',
+          observations,
+          violations,
+        )
         expect(await manager.getByLabel('ID потока', { exact: true }).inputValue()).toBe('F99')
-        expect(await manager.getByLabel('description', { exact: true }).inputValue()).toBe(readonlyDraft)
+        expect(await manager.getByLabel('description', { exact: true }).inputValue()).toBe(
+          readonlyDraft,
+        )
         expect(await readFile(file, 'utf8')).toBe(readonlyDiskBefore)
-        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(readonlyRepoBefore)
+        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(
+          readonlyRepoBefore,
+        )
         if (format === 'drawio') expect(await frameSemantic()).toEqual(readonlyFrameBefore)
-        expect(await page.locator('.diagram-slot iframe,.diagram-slot .x6-graph').evaluate((node) =>
-          node === (window as any).__p01ReadonlyCanvas)).toBe(true)
-        expect(await manager.evaluate((node) => node === (window as any).__p01ReadonlyManager)).toBe(true)
-        await expect(page.locator('.diagram-slot .editor-actions').getByRole('button', { name: 'Сохранить', exact: true })).toBeDisabled()
-        observations.push({ state: 'actual-diagram-readonly-pending-or-unknown', heldOriginalRequest: held,
-          membership: 'F2 checked and disabled; repository New Flow remains enabled', readonlyDraft,
-          readonlyDiskBefore, readonlyRepoBefore, frameSemantic: readonlyFrameBefore,
-          originalHandlerStatus: 'HELD_NOT_CALLED', note: 'Disk/model unchanged during theme transactions; one original Save write is allowed only after gate release.' })
-        expect(await app.evaluate(() => (globalThis as any).__p01IpcGate.originalCallsForHeld)).toBe(0)
+        expect(
+          await page
+            .locator('.diagram-slot iframe,.diagram-slot .x6-graph')
+            .evaluate((node) => node === (window as any).__p01ReadonlyCanvas),
+        ).toBe(true)
+        expect(
+          await manager.evaluate((node) => node === (window as any).__p01ReadonlyManager),
+        ).toBe(true)
+        await expect(
+          page
+            .locator('.diagram-slot .editor-actions')
+            .getByRole('button', { name: 'Сохранить', exact: true }),
+        ).toBeDisabled()
+        observations.push({
+          state: 'actual-diagram-readonly-pending-or-unknown',
+          heldOriginalRequest: held,
+          membership: 'F2 checked and disabled; repository New Flow remains enabled',
+          readonlyDraft,
+          readonlyDiskBefore,
+          readonlyRepoBefore,
+          frameSemantic: readonlyFrameBefore,
+          originalHandlerStatus: 'HELD_NOT_CALLED',
+          note: 'Disk/model unchanged during theme transactions; one original Save write is allowed only after gate release.',
+        })
+        expect(
+          await app.evaluate(() => (globalThis as any).__p01IpcGate.originalCallsForHeld),
+        ).toBe(0)
         await gateActualRequest(app, 'diagram', 'normal')
-        await expect.poll(() => readFile(file, 'utf8'), { timeout: 20000 }).toBe(actualRequest.payload.xml)
-        expect(await app.evaluate(() => (globalThis as any).__p01IpcGate.originalCallsForHeld)).toBe(1)
-        observations.push({ state: 'original-held-save-completed-once', originalCalls: 1, actualSavedXml: actualRequest.payload.xml })
-        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(readonlyRepoBefore)
+        await expect
+          .poll(() => readFile(file, 'utf8'), { timeout: 20000 })
+          .toBe(actualRequest.payload.xml)
+        expect(
+          await app.evaluate(() => (globalThis as any).__p01IpcGate.originalCallsForHeld),
+        ).toBe(1)
+        observations.push({
+          state: 'original-held-save-completed-once',
+          originalCalls: 1,
+          actualSavedXml: actualRequest.payload.xml,
+        })
+        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(
+          readonlyRepoBefore,
+        )
         // P01-RT-RESTORED-002 remains a separate real workspace permission test.
         await finishDiagramFixture(app)
         // Explicit temporary data fixture restoration after the one resumed original Save.
@@ -1979,7 +2057,9 @@ for (const format of ['frade', 'drawio'] as const) {
         if (!roA) throw Error('Actual readonly A input target unavailable')
         await roPage.mouse.move(roA.x + roA.width / 2, roA.y + roA.height / 2)
         await roPage.mouse.down()
-        await roPage.mouse.move(roA.x + roA.width / 2 + 50, roA.y + roA.height / 2 + 30, { steps: 12 })
+        await roPage.mouse.move(roA.x + roA.width / 2 + 50, roA.y + roA.height / 2 + 30, {
+          steps: 12,
+        })
         await roPage.mouse.up()
         expect(await readFile(file, 'utf8')).toBe(modified)
         expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(modifiedRepo)
@@ -2240,3 +2320,589 @@ test('P01 actual restored readonly frame refuses navigator drop after exact pres
     await finishDiagramFixture(app)
   }
 })
+
+// eslint-disable-next-line no-empty-pattern
+test('P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport', async ({}, info) => {
+  test.setTimeout(120000)
+  const f = await diagramFixture('frame', { mode: 'dark', density: 'comfortable' })
+  try {
+    const frame = f.page.frameLocator('iframe')
+    await expect
+      .poll(() => frame.locator('body').evaluate(() => !!(window as any).__p01Ui))
+      .toBe(true)
+    const layout = await frame.locator('body').evaluate(() => {
+      const canvas = document.querySelector('.geDiagramContainer')!.getBoundingClientRect()
+      const toolbar = document.querySelector('.geToolbarContainer')!.getBoundingClientRect()
+      const strip = document.querySelector('.geTabContainer')!.getBoundingClientRect()
+      return {
+        canvasTop: canvas.top,
+        toolbarBottom: toolbar.bottom,
+        canvasBottom: canvas.bottom,
+        stripTop: strip.top,
+      }
+    })
+    await info.attach('original-grid-layout', {
+      body: JSON.stringify(layout),
+      contentType: 'application/json',
+    })
+    expect(layout.canvasTop).toBeGreaterThanOrEqual(layout.toolbarBottom)
+    expect(layout.canvasBottom).toBeLessThanOrEqual(layout.stripTop)
+    const original = await readFile(f.file, 'utf8')
+    const observe = () =>
+      frame.locator('body').evaluate(() => {
+        const ui = (window as any).__p01Ui,
+          g = ui.editor.graph
+        const globals = window as any
+        return {
+          xml: globals.mxUtils.getXml(new globals.mxCodec().encode(g.getModel())),
+          selection: g.getSelectionCells().map((c: any) => c.id),
+          undo: ui.editor.undoManager.indexOfNextAdd,
+          scale: g.view.scale,
+          translate: { x: g.view.translate.x, y: g.view.translate.y },
+          prefs: localStorage.getItem('mxGraph'),
+        }
+      })
+    await frame.locator('.geDiagramContainer').click({ position: { x: 80, y: 200 } })
+    const before = await observe()
+    await f.page.keyboard.press('F6')
+    await expect
+      .poll(() =>
+        frame.locator('body').evaluate(() => {
+          const active = document.activeElement
+          return (
+            !!active &&
+            !!active.closest('.geTabContainer') &&
+            active.getAttribute('role') === 'button'
+          )
+        }),
+      )
+      .toBe(true)
+    await f.page.keyboard.press('End')
+    await f.page.keyboard.press('Home')
+    expect(await observe()).toEqual(before)
+    expect(await readFile(f.file, 'utf8')).toBe(original)
+    await f.page.screenshot({ path: info.outputPath('lower-f6-focus.png') })
+  } finally {
+    await finishDiagramFixture(f.app)
+  }
+})
+
+// eslint-disable-next-line no-empty-pattern
+test('P01-LOWER original keyboard page menu duplicate rename move remove, submenu and cancellation', async ({}, info) => {
+  test.setTimeout(180000)
+  const f = await diagramFixture('frame', { mode: 'dark', density: 'comfortable' })
+  try {
+    const frame = f.page.frameLocator('iframe')
+    await expect
+      .poll(() => frame.locator('body').evaluate(() => !!(window as any).__p01Ui))
+      .toBe(true)
+    const labels = await frame.locator('body').evaluate(() => {
+      const r = (window as any).mxResources
+      return {
+        duplicate: (window as any).__p01Ui.actions.get('duplicatePage').label,
+        rename: (window as any).__p01Ui.actions.get('renamePage').label,
+        move: r.get('move'),
+        remove: (window as any).__p01Ui.actions.get('removePage').label,
+        pages: r.get('pages'),
+      }
+    })
+    const state = () =>
+      frame.locator('body').evaluate(() => {
+        const ui = (window as any).__p01Ui
+        return {
+          pages: ui.pages.map((p: any) => ({
+            id: String(p.getId()),
+            name: String(p.getName()),
+          })) as { id: string; name: string }[],
+          current: ui.currentPage.getId(),
+          selection: ui.editor.graph.getSelectionCells().map((c: any) => c.id),
+          undo: ui.editor.undoManager.indexOfNextAdd,
+          history: ui.editor.undoManager.history.length,
+          scale: ui.editor.graph.view.scale,
+          translate: { x: ui.editor.graph.view.translate.x, y: ui.editor.graph.view.translate.y },
+        }
+      })
+    const openPageMenu = async () => {
+      await frame.locator('.geDiagramContainer').click({ position: { x: 80, y: 200 } })
+      await f.page.keyboard.press('F6')
+      await f.page.keyboard.press('End')
+      await f.page.keyboard.press('Enter')
+      await expect(frame.locator('[data-frade-lower-menu][role="menu"]').first()).toBeVisible()
+      await info.attach('menu-entry-diagnostic', {
+        body: JSON.stringify(
+          await frame.locator('body').evaluate(() => ({
+            active: document.activeElement?.outerHTML,
+            pointer: (window as any).mxClient.IS_POINTER,
+            rows: Array.from(document.querySelectorAll('[data-frade-lower-menu] tr')).map(
+              (r: any) => ({
+                html: r.outerHTML,
+                listeners: r.mxListenerList?.map((x: any) => ({
+                  name: x.name,
+                  function: typeof x.f,
+                })),
+                visible: getComputedStyle(r).display,
+              }),
+            ),
+          })),
+          null,
+          2,
+        ),
+        contentType: 'application/json',
+      })
+      await expect
+        .poll(() =>
+          frame.locator('body').evaluate(() => document.activeElement?.getAttribute('role')),
+        )
+        .toBe('menuitem')
+    }
+    const select = async (name: string, enter = true) => {
+      const menu = frame.locator('[data-frade-lower-menu][role="menu"]:visible').last()
+      const names = await menu
+        .locator('[role="menuitem"][aria-disabled="false"]')
+        .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('aria-label')))
+      const index = names.indexOf(name)
+      expect(index, 'actual original localized menu item: ' + name).toBeGreaterThanOrEqual(0)
+      await f.page.keyboard.press('Home')
+      for (let i = 0; i < index; i++) await f.page.keyboard.press('ArrowDown')
+      await expect
+        .poll(() =>
+          frame.locator('body').evaluate(() => document.activeElement?.getAttribute('aria-label')),
+        )
+        .toBe(name)
+      if (enter) await f.page.keyboard.press('Enter')
+    }
+    const original = await readFile(f.file, 'utf8'),
+      initial = await state()
+    await openPageMenu()
+    await f.page.keyboard.press('ArrowDown')
+    await f.page.keyboard.press('Home')
+    await f.page.keyboard.press('Escape')
+    expect(await state()).toEqual(initial)
+    await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+    await expect
+      .poll(() =>
+        frame.locator('body').evaluate(() => !!document.activeElement?.closest('.geTabContainer')),
+      )
+      .toBe(true)
+    await f.page.keyboard.press('Enter')
+    await f.page.keyboard.press('Tab')
+    await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+    expect(await state()).toEqual(initial)
+    await openPageMenu()
+    await select(labels.duplicate)
+    await expect.poll(async () => (await state()).pages.length).toBe(2)
+    await expect
+      .poll(() =>
+        frame.locator('body').evaluate(() => !!document.activeElement?.closest('.geTabContainer')),
+      )
+      .toBe(true)
+    await openPageMenu()
+    await select(labels.rename)
+    await expect(frame.locator('.geDialog input').first()).toBeFocused()
+    await f.page.keyboard.press('Control+A')
+    await f.page.keyboard.type('Keyboard renamed')
+    await f.page.keyboard.press('Enter')
+    await expect
+      .poll(async () => (await state()).pages.some((p) => p.name === 'Keyboard renamed'))
+      .toBe(true)
+    await openPageMenu()
+    await select(labels.move, false)
+    await f.page.keyboard.press('ArrowRight')
+    await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(2)
+    await expect
+      .poll(() =>
+        frame.locator('body').evaluate(() => document.activeElement?.getAttribute('role')),
+      )
+      .toBe('menuitem')
+    await f.page.keyboard.press('ArrowLeft')
+    await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(1)
+    await f.page.keyboard.press('ArrowRight')
+    const beforeMove = await state()
+    await f.page.keyboard.press('Enter')
+    await expect
+      .poll(async () => (await state()).pages.map((p) => p.id).join(','))
+      .toBe(
+        beforeMove.pages
+          .map((p) => p.id)
+          .reverse()
+          .join(','),
+      )
+    await openPageMenu()
+    await select(labels.remove)
+    await expect.poll(async () => (await state()).pages.length).toBe(1)
+    expect(await readFile(f.file, 'utf8')).toBe(original)
+    await frame
+      .locator('.geTabContainer')
+      .getByRole('button', { name: labels.pages, exact: true })
+      .focus()
+    await f.page.keyboard.press('Enter')
+    await expect(frame.getByRole('menuitemcheckbox')).toHaveAttribute('aria-checked', 'true')
+    await frame.locator('body').evaluate(async () => {
+      await new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      )
+    })
+    const mark = frame.locator('[data-frade-lower-menu] td.mxPopupMenuItem > div').first()
+    const ink = await mark.evaluate((node) => getComputedStyle(node).color)
+    expect(
+      pngColorCount(await mark.screenshot(), ink),
+      'Original checkmark has actual canonical foreground ink',
+    ).toBeGreaterThan(0)
+    const menuBox = await frame.locator('[data-frade-lower-menu][role="menu"]').boundingBox()
+    const frameBox = await f.page.locator('iframe').boundingBox()
+    expect(
+      menuBox!.x - frameBox!.x,
+      'Original lower click coordinates anchor Pages menu',
+    ).toBeGreaterThan(0)
+    await f.page.keyboard.press('Home')
+    await f.page.keyboard.press('ArrowDown')
+    await f.page.keyboard.press('ArrowRight')
+    await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(2)
+    await f.page.keyboard.press('ArrowLeft')
+    await f.page.keyboard.press('Escape')
+    await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+    await frame.locator('.geMenubarContainer a').first().click()
+    await expect(frame.locator('div.mxPopupMenu:visible').first()).toBeVisible()
+    await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+    await frame.locator('.geDiagramContainer').click({ position: { x: 80, y: 200 } })
+    expect(await readFile(f.file, 'utf8')).toBe(original)
+    await f.page.screenshot({ path: info.outputPath('lower-original-page-actions.png') })
+    await info.attach('original-page-workload', {
+      body: JSON.stringify({ labels, initial, final: await state() }, null, 2),
+      contentType: 'application/json',
+    })
+  } finally {
+    await finishDiagramFixture(f.app)
+  }
+})
+
+for (const mode of ['light', 'dark', 'high-contrast'] as const)
+  for (const density of ['compact', 'comfortable'] as const) {
+    test(
+      'P01-LOWER-matrix ' +
+        mode +
+        ' ' +
+        density +
+        ' actual lower and popup target focus contrast bounds',
+      // Playwright requires destructuring its unused fixture parameter.
+      // eslint-disable-next-line no-empty-pattern
+      async ({}, info) => {
+        test.setTimeout(180000)
+        const f = await diagramFixture('frame', { mode, density }),
+          observations: unknown[] = [],
+          violations: unknown[] = []
+        let popupFontSize = 0
+        try {
+          const frame = f.page.frameLocator('iframe')
+          await expect
+            .poll(() => frame.locator('body').evaluate(() => !!(window as any).__p01Ui))
+            .toBe(true)
+          const original = await readFile(f.file, 'utf8')
+          const semantics = () =>
+            frame.locator('body').evaluate(() => {
+              const ui = (window as any).__p01Ui,
+                g = ui.editor.graph
+              return {
+                xml: (window as any).mxUtils.getXml(ui.editor.getGraphXml()),
+                selection: g.getSelectionCells().map((c: any) => c.id),
+                undo: ui.editor.undoManager.indexOfNextAdd,
+                history: ui.editor.undoManager.history.length,
+                scale: g.view.scale,
+                translate: { x: g.view.translate.x, y: g.view.translate.y },
+                preferences: { ...localStorage },
+              }
+            })
+          const capture = async (label: string) => {
+            await frame.locator('body').evaluate(async () => {
+              await document.fonts.ready
+              await new Promise<void>((resolve) =>
+                requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+              )
+            })
+            await frame.locator('body').evaluate(async () => {
+              const signature = () => {
+                const g = (window as any).__p01Ui.editor.graph,
+                  b = g.container.getBoundingClientRect()
+                return JSON.stringify([
+                  g.view.scale,
+                  g.view.translate.x,
+                  g.view.translate.y,
+                  b.x,
+                  b.y,
+                  b.width,
+                  b.height,
+                ])
+              }
+              let previous = signature(),
+                stable = 0
+              for (let frame = 0; frame < 120 && stable < 6; frame++) {
+                await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
+                const next = signature()
+                stable = previous === next ? stable + 1 : 0
+                previous = next
+              }
+              if (stable < 6) throw Error('Actual original resize/view geometry did not settle')
+            })
+            await frame.locator('.geDiagramContainer').click({ position: { x: 80, y: 200 } })
+            const before = await semantics()
+            await f.page.keyboard.press('F6')
+            await f.page.keyboard.press('End')
+            const inspect = () =>
+              frame.locator('body').evaluate(() => {
+                const bg = (node: HTMLElement) => {
+                  for (let p: HTMLElement | null = node; p; p = p.parentElement) {
+                    const color = getComputedStyle(p).backgroundColor
+                    if (color !== 'rgba(0, 0, 0, 0)' && color !== 'transparent') return color
+                  }
+                  return ''
+                }
+                const controls = Array.from(
+                  document.querySelectorAll<HTMLElement>(
+                    '.geTabContainer [role="button"],[data-frade-lower-menu] [role^="menuitem"]',
+                  ),
+                ).filter((node) => {
+                  const b = node.getBoundingClientRect()
+                  return (
+                    b.width > 0 &&
+                    b.height > 0 &&
+                    getComputedStyle(node).visibility !== 'hidden' &&
+                    !node.closest('[hidden]')
+                  )
+                })
+                return {
+                  media: {
+                    forced: matchMedia('(forced-colors: active)').matches,
+                    coarse: matchMedia('(pointer:coarse)').matches,
+                    reduced: matchMedia('(prefers-reduced-motion:reduce)').matches,
+                  },
+                  viewport: { width: innerWidth, height: innerHeight },
+                  controls: controls.map((node) => {
+                    const b = node.getBoundingClientRect(),
+                      css = getComputedStyle(node),
+                      focus = node === document.activeElement
+                    const hit = document.elementFromPoint(
+                      b.left + b.width / 2,
+                      b.top + b.height / 2,
+                    )
+                    const clips: string[] = []
+                    for (
+                      let a = node.parentElement;
+                      a && a !== document.body;
+                      a = a.parentElement
+                    ) {
+                      const style = getComputedStyle(a),
+                        box = a.getBoundingClientRect()
+                      if (
+                        ['hidden', 'clip', 'auto', 'scroll'].includes(style.overflowX) &&
+                        (b.left - (focus ? 4 : 0) < box.left ||
+                          b.right + (focus ? 4 : 0) > box.right)
+                      )
+                        clips.push(a.className + ' horizontal')
+                      if (
+                        ['hidden', 'clip', 'auto', 'scroll'].includes(style.overflowY) &&
+                        (b.top - (focus ? 4 : 0) < box.top ||
+                          b.bottom + (focus ? 4 : 0) > box.bottom)
+                      )
+                        clips.push(a.className + ' vertical')
+                    }
+                    return {
+                      label: node.getAttribute('aria-label'),
+                      role: node.getAttribute('role'),
+                      layer: node.closest('[data-frade-lower-menu]') ? 'popup' : 'lower',
+                      disabled: node.getAttribute('aria-disabled'),
+                      box: b.toJSON(),
+                      color: css.color,
+                      background: bg(node),
+                      focused: focus,
+                      focusVisible: node.matches(':focus-visible'),
+                      outlineWidth: css.outlineWidth,
+                      outlineColor: css.outlineColor,
+                      mask: css.maskImage,
+                      hit: !!hit && (hit === node || node.contains(hit)),
+                      clips,
+                    }
+                  }),
+                }
+              })
+            const lower = await inspect()
+            observations.push({ label: label + '-lower', ...lower })
+            await f.page.screenshot({ path: info.outputPath(label + '-lower-focus.png') })
+            await f.page.keyboard.press('Enter')
+            await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(1)
+            await f.page.keyboard.press('End')
+            await f.page.keyboard.press('Home')
+            await frame.locator('body').evaluate(async () => {
+              await new Promise<void>((resolve) =>
+                requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+              )
+            })
+            if (!popupFontSize)
+              popupFontSize = await frame
+                .locator('[data-frade-lower-menu] td.mxPopupMenuItem')
+                .first()
+                .evaluate((node) => parseFloat(getComputedStyle(node).fontSize))
+            const actualFont = await frame
+              .locator('[data-frade-lower-menu] td.mxPopupMenuItem')
+              .first()
+              .evaluate((node) => parseFloat(getComputedStyle(node).fontSize))
+            if (label.includes('text200')) expect(actualFont).toBe(popupFontSize * 2)
+            observations.push({
+              label: label + '-actual-popup-font',
+              actualFont,
+              originalFont: popupFontSize,
+            })
+            const popup = await inspect()
+            observations.push({ label: label + '-popup', ...popup })
+            for (const record of [lower, popup]) {
+              expect(record.controls.length).toBeGreaterThan(0)
+              for (const control of record.controls) {
+                if (control.disabled === 'true' || (record === popup && control.layer === 'lower'))
+                  continue
+                if (
+                  control.box.height <
+                    (record.media.coarse ? 44 : density === 'compact' ? 28 : 36) ||
+                  control.box.width < (record.media.coarse ? 44 : 24)
+                )
+                  violations.push({ label, rule: 'A11Y-004/FDS-DENSITY', control })
+                if (
+                  !control.hit ||
+                  control.clips.length ||
+                  control.box.left < 0 ||
+                  control.box.right > record.viewport.width ||
+                  control.box.top < 0 ||
+                  control.box.bottom > record.viewport.height
+                )
+                  violations.push({ label, rule: 'VISIBLE_UNOCCLUDED_TARGET', control })
+                if (uiContrast(control.color, control.background) < 4.5)
+                  violations.push({ label, rule: 'A11Y-001', control })
+                if (
+                  control.focused &&
+                  (!control.focusVisible ||
+                    parseFloat(control.outlineWidth) < 2 ||
+                    control.mask !== 'none')
+                )
+                  violations.push({ label, rule: 'A11Y-003_UNCLIPPED_FOCUS', control })
+              }
+            }
+            await f.page.screenshot({ path: info.outputPath(label + '-popup-focus.png') })
+            await f.page.keyboard.press('Escape')
+            await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+            expect(await semantics()).toEqual(before)
+            expect(await readFile(f.file, 'utf8')).toBe(original)
+          }
+          for (const viewport of [
+            { width: 1280, height: 850 },
+            { width: 1600, height: 900 },
+            { width: 850, height: 650 },
+          ]) {
+            await f.page.setViewportSize(viewport)
+            await capture(viewport.width + 'x' + viewport.height)
+          }
+          await f.page.setViewportSize({ width: 1280, height: 850 })
+          await frame.locator('body').evaluate(() => {
+            const sizes = Array.from(
+              document.querySelectorAll<HTMLElement>('.geTabContainer,.geTabContainer *'),
+            ).map((node) => ({ node, size: parseFloat(getComputedStyle(node).fontSize) }))
+            for (const { node, size } of sizes)
+              node.style.setProperty('font-size', size * 2 + 'px', 'important')
+          })
+          await frame.locator('body').evaluate((_body, size: number) => {
+            const style = document.createElement('style')
+            style.setAttribute('data-p01-text-zoom', 'owned-popup')
+            style.textContent =
+              '[data-frade-lower-menu],[data-frade-lower-menu] table,[data-frade-lower-menu] tr,[data-frade-lower-menu] td{font-size:' +
+              size * 2 +
+              'px!important;line-height:normal!important;}'
+            document.head.append(style)
+          }, popupFontSize)
+          await capture('text200')
+          await f.page.emulateMedia({ forcedColors: 'active', reducedMotion: 'reduce' })
+          const child = f.page.frames().find((value) => value.url().startsWith('frade://drawio/'))!
+          const session = await f.page.context().newCDPSession(child)
+          await session.send('Emulation.setTouchEmulationEnabled', {
+            enabled: true,
+            maxTouchPoints: 1,
+          })
+          await capture('forced-coarse-reduced-text200')
+          const actual = await frame.locator('body').evaluate(() => ({
+            forced: matchMedia('(forced-colors:active)').matches,
+            coarse: matchMedia('(pointer:coarse)').matches,
+            reduced: matchMedia('(prefers-reduced-motion:reduce)').matches,
+          }))
+          expect(actual).toEqual({ forced: true, coarse: true, reduced: true })
+          await session.send('Emulation.setTouchEmulationEnabled', { enabled: false })
+          await session.detach()
+          expect(violations).toEqual([])
+        } finally {
+          await writeFile(
+            info.outputPath('lower-matrix-observations.json'),
+            JSON.stringify(
+              { mode, density, observations, violations, visualApproval: 'NOT_APPROVED' },
+              null,
+              2,
+            ),
+          )
+          await finishDiagramFixture(f.app)
+        }
+      },
+    )
+  }
+
+function pngColorCount(bytes: Buffer, css: string): number {
+  const expected = css
+    .match(/[0-9.]+/g)
+    ?.slice(0, 3)
+    .map(Number)
+  if (!expected || expected.length !== 3) throw Error('Unresolved glyph foreground ' + css)
+  let width = 0,
+    height = 0,
+    channels = 0
+  const blocks: Buffer[] = []
+  for (let at = 8; at < bytes.length;) {
+    const size = bytes.readUInt32BE(at),
+      type = bytes.toString('ascii', at + 4, at + 8),
+      data = bytes.subarray(at + 8, at + 8 + size)
+    if (type === 'IHDR') {
+      width = data.readUInt32BE(0)
+      height = data.readUInt32BE(4)
+      channels = data[9] === 6 ? 4 : data[9] === 2 ? 3 : 0
+      if (data[8] !== 8 || data[12] !== 0 || !channels)
+        throw Error('Unsupported screenshot PNG layout')
+    }
+    if (type === 'IDAT') blocks.push(data)
+    at += size + 12
+  }
+  const raw = inflateSync(Buffer.concat(blocks)),
+    stride = width * channels,
+    image = Buffer.alloc(stride * height)
+  let input = 0,
+    count = 0
+  for (let y = 0; y < height; y++) {
+    const filter = raw[input++]
+    for (let x = 0; x < stride; x++) {
+      const index = y * stride + x,
+        left = x >= channels ? image[index - channels] : 0,
+        up = y > 0 ? image[index - stride] : 0,
+        diagonal = y > 0 && x >= channels ? image[index - stride - channels] : 0
+      let predictor = 0
+      if (filter === 1) predictor = left
+      else if (filter === 2) predictor = up
+      else if (filter === 3) predictor = Math.floor((left + up) / 2)
+      else if (filter === 4) {
+        const p = left + up - diagonal,
+          a = Math.abs(p - left),
+          b = Math.abs(p - up),
+          c = Math.abs(p - diagonal)
+        predictor = a <= b && a <= c ? left : b <= c ? up : diagonal
+      } else if (filter !== 0) throw Error('Unsupported screenshot PNG filter')
+      image[index] = (raw[input++] + predictor) & 255
+    }
+  }
+  for (let i = 0; i < image.length; i += channels)
+    if (
+      (channels === 3 || image[i + 3] >= 200) &&
+      expected.every((value, channel) => Math.abs(image[i + channel] - value) <= 2)
+    )
+      count++
+  return count
+}

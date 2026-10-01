@@ -1,0 +1,51 @@
+
+Running 2 tests using 1 worker
+
+  ok 1 tests\e2e\ui-contract-theme.spec.ts:2412:1 › P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport (5.6s)
+  x  2 tests\e2e\ui-contract-theme.spec.ts:2461:1 › P01-LOWER original keyboard page menu duplicate rename move remove, submenu and cancellation (15.3s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:2461:1 › P01-LOWER original keyboard page menu duplicate rename move remove, submenu and cancellation 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+    Call Log:
+    - Timeout 10000ms exceeded while waiting on the predicate
+
+      2468 |     await select(labels.duplicate)
+      2469 |     await expect.poll(async () => (await state()).pages.length).toBe(2)
+    > 2470 |     await expect
+           |     ^
+      2471 |       .poll(() =>
+      2472 |         frame.locator('body').evaluate(() => !!document.activeElement?.closest('.geTabContainer')),
+      2473 |       )
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2470:5
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-actions-labels-20261001T204054Z\electron-artifacts\ui-contract-theme-P01-LOWE-ff035-ve-submenu-and-cancellation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-actions-labels-20261001T204054Z\electron-artifacts\ui-contract-theme-P01-LOWE-ff035-ve-submenu-and-cancellation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-actions-labels-20261001T204054Z\electron-artifacts\ui-contract-theme-P01-LOWE-ff035-ve-submenu-and-cancellation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:2461:1 › P01-LOWER original keyboard page menu duplicate rename move remove, submenu and cancellation 
+  1 passed (22.6s)
+(node:63844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:63844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:63844) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+
