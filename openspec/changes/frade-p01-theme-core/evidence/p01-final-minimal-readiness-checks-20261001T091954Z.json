@@ -1,0 +1,99 @@
+{
+  "atUtc": "2026-10-01T09:21:29.262Z",
+  "runs": [
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop typecheck"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-typecheck.txt"
+    },
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop lint"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-lint.txt"
+    },
+    {
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/bundle-flows.spec.ts",
+        "tests/e2e/diagrams.spec.ts",
+        "--grep",
+        "full lifecycle|drawio navigator drop",
+        "--output",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-final-minimal-readiness-checks-20261001T091954Z-artifacts",
+        "--reporter",
+        "list"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-compat.txt"
+    },
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "openspec validate frade-p01-theme-core --strict --json"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-openspec.txt"
+    },
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/ui-workspace test:bdd"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-bdd.txt"
+    },
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm ui:compliance"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-compliance.txt"
+    },
+    {
+      "cmd": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-diffcheck.txt"
+    }
+  ],
+  "status": "PASS",
+  "scope": "Final minimal approved E2E-07 readiness and accepted frame readiness before first input; no production changes",
+  "currentMinimalRootCheckAll": "NOT_RUN_BLOCKED_BY_PENDING_SAVEAS_SCOPE",
+  "humanVisual": "NOT_APPROVED",
+  "verify": "NOT_RUN",
+  "post": "NOT_RUN"
+}

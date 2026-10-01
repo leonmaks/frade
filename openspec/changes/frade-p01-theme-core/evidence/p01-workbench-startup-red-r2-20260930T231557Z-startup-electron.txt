@@ -1,0 +1,71 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\e2e\ui-contract-theme.spec.ts:6:1 › P01 real startup restores validated presentation before the visible window and keeps health API isolated (1.0s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:6:1 › P01 real startup restores validated presentation before the visible window and keeps health API isolated 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 10[39m
+    [31m+ Received  +  4[39m
+
+    [2m  Object {[22m
+    [2m    "api": Array [[22m
+    [2m      "runtime",[22m
+    [2m      "events",[22m
+    [2m    ],[22m
+    [32m-   "density": "comfortable",[39m
+    [31m+   "density": undefined,[39m
+    [2m    "node": "undefined",[22m
+    [32m-   "presentation": Array [[39m
+    [32m-     "getBoot",[39m
+    [32m-     "announceIntent",[39m
+    [32m-     "persist",[39m
+    [32m-     "reconcile",[39m
+    [32m-     "ready",[39m
+    [32m-   ],[39m
+    [32m-   "revision": "7",[39m
+    [31m+   "presentation": Array [],[39m
+    [31m+   "revision": undefined,[39m
+    [2m    "runtime": Array [[22m
+    [2m      "getHealth",[22m
+    [2m    ],[22m
+    [32m-   "theme": "dark",[39m
+    [31m+   "theme": undefined,[39m
+    [2m  }[22m
+
+      47 |       node: typeof (window as unknown as { require?: unknown }).require,
+      48 |     }))
+    > 49 |     expect(state).toEqual({
+         |                   ^
+      50 |       api: ['runtime', 'events'],
+      51 |       runtime: ['getHealth'],
+      52 |       presentation: ['getBoot', 'announceIntent', 'persist', 'reconcile', 'ready'],
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:49:19
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-real-57120-d-keeps-health-API-isolated\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-real-57120-d-keeps-health-API-isolated\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-real-57120-d-keeps-health-API-isolated\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:6:1 › P01 real startup restores validated presentation before the visible window and keeps health API isolated 
+(node:44608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:44608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:44608) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

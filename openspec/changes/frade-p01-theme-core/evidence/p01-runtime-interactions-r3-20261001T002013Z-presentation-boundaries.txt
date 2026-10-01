@@ -1,0 +1,33 @@
+✔ actual runtime policy permits three approved presentation leaves but rejects arbitrary deep UI and privileged renderer imports (35.2451ms)
+✖ portable theme layer keeps runtime-contracts, Electron and Node behind injected host ports (2.6775ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 114.1522
+
+✖ failing tests:
+
+test at tests\contract\presentation-boundaries.test.mjs:62:1
+✖ portable theme layer keeps runtime-contracts, Electron and Node behind injected host ports (2.6775ms)
+  AssertionError [ERR_ASSERTION]: C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\packages\ui-workspace\src\design\theme\contrast.ts
+  + actual - expected
+  
+  + [
+  +   'C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\packages\\ui-workspace\\src\\design\\theme\\contrast.ts: forbidden import ../generated/tokens'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/contract/presentation-boundaries.test.mjs:74:12)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\packages\\ui-workspace\\src\\design\\theme\\contrast.ts: forbidden import ../generated/tokens' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

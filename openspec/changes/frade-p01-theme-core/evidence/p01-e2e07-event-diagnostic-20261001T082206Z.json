@@ -1,0 +1,49 @@
+{
+  "atUtc": "2026-10-01T08:22:42.560Z",
+  "scope": "Actual DOM input events with original gesture/assertions; no pre-gesture screenshot pause; no readiness repair",
+  "runs": [
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop typecheck"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-event-diagnostic-20261001T082206Z-typecheck.txt"
+    },
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop lint"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-event-diagnostic-20261001T082206Z-lint.txt"
+    },
+    {
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/bundle-flows.spec.ts",
+        "--grep",
+        "full lifecycle: drawio",
+        "--output",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-e2e07-event-diagnostic-20261001T082206Z-artifacts",
+        "--reporter",
+        "list"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-event-diagnostic-20261001T082206Z-drawio.txt"
+    }
+  ],
+  "status": "PASS",
+  "productionChanged": false
+}

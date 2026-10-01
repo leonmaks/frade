@@ -1,0 +1,130 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/service.test.ts (27 tests | 7 failed) 67ms
+   ✓ P01 controlled transaction service > joins hidden, waits for current applied-paint ACK, previews without persistence and cancels to published state 10ms
+   ✓ P01 controlled transaction service > keeps curtain through apply ACK and durable publication; emits exactly one authoritative change 4ms
+   ✓ P01 controlled transaction service > refusal in prepare restores all view/durable snapshots, dirty draft, selection and undo 2ms
+   ✓ P01 controlled transaction service > refusal in apply restores all view/durable snapshots, dirty draft, selection and undo 1ms
+   ✓ P01 controlled transaction service > refusal in persist restores all view/durable snapshots, dirty draft, selection and undo 1ms
+   ✓ P01 controlled transaction service > unknown response reconciles already-renamed settings before restoring/revealing; no false Saved 1ms
+   ✓ P01 controlled transaction service > unprovable rollback retains recovery curtain and dirty editors with no success/reveal 1ms
+   ✓ P01 controlled transaction service > unprovable readback retains recovery curtain and dirty editors with no success/reveal 1ms
+   ✓ P01 controlled transaction service > A B C supersession during preparation ignores late A, never writes B and publishes C only 2ms
+   ✓ P01 controlled transaction service > C accepted during A rename reconciles A in the current ownership before any C write/ACK 2ms
+   ✓ P01 controlled transaction service > join during PREPARING invalidates membership and safely reprepares once 2ms
+   ✓ P01 controlled transaction service > join during BARRIER_AWAIT_PAINT invalidates membership and safely reprepares once 1ms
+   ✓ P01 controlled transaction service > join during APPLYING invalidates membership and safely reprepares once 2ms
+   ✓ P01 controlled transaction service > join during PERSISTING invalidates membership and safely reprepares once 1ms
+   ✓ P01 controlled transaction service > ongoing membership churn is bounded and cancels instead of retrying indefinitely 1ms
+   ✓ P01 controlled transaction service > leave and generation replacement reject a removed participant ACK 1ms
+   ✓ P01 controlled transaction service > paint barrier is mandatory before apply, and forged ACK cannot publish or reveal 1ms
+   ✓ P01 controlled transaction service > prepare deadline is 2s; a late handle is disposed and never applied 3ms
+   ✓ P01 controlled transaction service > commit paint deadline is 2s and host/readback deadlines are 5s; unknown host outcome remains safely covered 3ms
+   ✓ P01 controlled transaction service > cancel during persistence reconciles first, then permits close/dirty-guard continuation 2ms
+   × P01 controlled transaction service > curtain stays painted throughout BARRIER_AWAIT_PAINT membership compensation and reprepare 10ms
+     → expected 'REFUSED' to be 'COMMITTED' // Object.is equality
+   × P01 controlled transaction service > curtain stays painted throughout APPLYING membership compensation and reprepare 3ms
+     → expected 'REFUSED' to be 'COMMITTED' // Object.is equality
+   × P01 controlled transaction service > curtain stays painted throughout PERSISTING membership compensation and reprepare 2ms
+     → expected 'REFUSED' to be 'COMMITTED' // Object.is equality
+   × P01 controlled transaction service > membership change during compensation rejects obsolete rollback ACK and retains covered recovery 2ms
+     → expected 'REFUSED' to be 'RECOVERY_BLOCKED' // Object.is equality
+   × P01 controlled transaction service > membership change during reconciliation never reveals an incompletely acknowledged set 2ms
+     → expected 'REFUSED' to be 'RECOVERY_BLOCKED' // Object.is equality
+   × P01 controlled transaction service > recovery action proves current durable state and all participant paints before revealing 2ms
+     → f.service.recover is not a function
+   × P01 controlled transaction service > service owns queued selections and snapshot revisions instead of retaining mutable caller references 2ms
+     → expected 'light' to be 'dark' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 20 passed (27)
+   Start at  23:10:47
+   Duration  875ms (transform 149ms, setup 0ms, collect 176ms, tests 67ms, environment 0ms, prepare 244ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > curtain stays painted throughout BARRIER_AWAIT_PAINT membership compensation and reprepare
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > curtain stays painted throughout APPLYING membership compensation and reprepare
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > curtain stays painted throughout PERSISTING membership compensation and reprepare
+AssertionError: expected 'REFUSED' to be 'COMMITTED' // Object.is equality
+
+Expected: "COMMITTED"
+Received: "REFUSED"
+
+ ❯ tests/ui-contract/service.test.ts:546:37
+    544|         joined = f.service.register(b.p)
+    545|       wait.resolve()
+    546|       expect((await active).status).toBe('COMMITTED')
+       |                                     ^
+    547|       await joined.ready
+    548|       expect(preparations).toBe(2)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > membership change during compensation rejects obsolete rollback ACK and retains covered recovery
+AssertionError: expected 'REFUSED' to be 'RECOVERY_BLOCKED' // Object.is equality
+
+Expected: "RECOVERY_BLOCKED"
+Received: "REFUSED"
+
+ ❯ tests/ui-contract/service.test.ts:567:35
+    565|     const ready = joined.ready.catch((error) => error)
+    566|     wait.resolve()
+    567|     expect((await active).status).toBe('RECOVERY_BLOCKED')
+       |                                   ^
+    568|     expect(f.barrier.visible).toBe(true)
+    569|     expect(b.hidden()).toBe(true)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > membership change during reconciliation never reveals an incompletely acknowledged set
+AssertionError: expected 'REFUSED' to be 'RECOVERY_BLOCKED' // Object.is equality
+
+Expected: "RECOVERY_BLOCKED"
+Received: "REFUSED"
+
+ ❯ tests/ui-contract/service.test.ts:591:35
+    589|       ready = joined.ready.catch((error) => error)
+    590|     wait.resolve()
+    591|     expect((await active).status).toBe('RECOVERY_BLOCKED')
+       |                                   ^
+    592|     expect(f.barrier.visible).toBe(true)
+    593|     expect(b.hidden()).toBe(true)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > recovery action proves current durable state and all participant paints before revealing
+TypeError: f.service.recover is not a function
+ ❯ tests/ui-contract/service.test.ts:606:29
+    604|       'RECOVERY_BLOCKED',
+    605|     )
+    606|     expect((await f.service.recover()).status).toBe('CANCELED')
+       |                             ^
+    607|     expect(f.durable().selection.mode).toBe('light')
+    608|     expect(p.view().kind).toBe('light')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > service owns queued selections and snapshot revisions instead of retaining mutable caller references
+AssertionError: expected 'light' to be 'dark' // Object.is equality
+
+Expected: "dark"
+Received: "light"
+
+ ❯ tests/ui-contract/service.test.ts:626:40
+    624|     wait.resolve()
+    625|     expect((await active).status).toBe('COMMITTED')
+    626|     expect(f.durable().selection.mode).toBe('dark')
+       |                                        ^
+    627|     expect(f.service.state().snapshot.revision).toBeGreaterThan(0)
+    628|     expect(f.service.state().durable.selection.preferred.dark).toBe(BU…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

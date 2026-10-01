@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-01T09:12:35.676Z",
+  "affectedRecord": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-minimal-verify-20261001T090249Z.json",
+  "status": "CORRECTION_APPEND_ONLY",
+  "facts": "Previous cleanup guard stopped before writing source due to helper mixing UTF16 indices and byte offsets. Subsequent checks used d89b0960 diagnostic+readiness source, not minimal source. Their actual command PASS/FAIL remains unchanged; historical logs/record are not rewritten. Corrected cleanup compares string slices with original raw bytes; minimal source saved now.",
+  "sourceBeforeSha256": "d89b0960df5dbc82f89a7098e70b5741c6f907361a3717eb170ec808c45821a6",
+  "actualMinimalSha256": "80a3fe5af430da2b513ddc2f46b5dda8f8d568bea5976e9a9ce29d588eeb9711"
+}

@@ -1,0 +1,99 @@
+✖ UI-CHECKOUT:required-root-configuration (7.6049ms)
+✔ UI-CHECKOUT:closed-rule-scope (1.9637ms)
+✖ UI-CHECKOUT:physical-drift (628.6033ms)
+✖ UI-CHECKOUT:raw-lf-preservation (0.5942ms)
+✖ UI-CHECKOUT:unavailable-git-and-cleanup-failure (599.7463ms)
+✖ UI-CHECKOUT:refuse-unverified-or-replaced-root (3.5604ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 1
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1343.4806
+
+✖ failing tests:
+
+test at tests\ui-contract\checkout.test.mjs:19:1
+✖ UI-CHECKOUT:required-root-configuration (7.6049ms)
+  AssertionError [ERR_ASSERTION]: FOUNDATION-EOL-01: exact eight rules must exist before claiming checkout compliance
+  + actual - expected
+  
+  + ''
+  - 'docs/ui/Frade-UI-Style-Guide.md text eol=lf\n' +
+  -   'docs/ui/QA-Checklist.md text eol=lf\n' +
+  -   'docs/ui/Themes-and-Plugins-Spec.md text eol=lf\n' +
+  -   'packages/ui-workspace/tokens/tokens.json text eol=lf\n' +
+  -   'packages/ui-workspace/tokens/theme.schema.json text eol=lf\n' +
+  -   'tests/ui-contract/fixtures/upstream.tokens.css text eol=lf\n' +
+  -   'packages/ui-workspace/src/design/generated/tokens.css text eol=lf\n' +
+  -   'packages/ui-workspace/src/design/generated/tokens.ts text eol=lf\n'
+  
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/checkout.test.mjs:26:10)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'docs/ui/Frade-UI-Style-Guide.md text eol=lf\ndocs/ui/QA-Checklist.md text eol=lf\ndocs/ui/Themes-and-Plugins-Spec.md text eol=lf\npackages/ui-workspace/tokens/tokens.json text eol=lf\npackages/ui-workspace/tokens/theme.schema.json text eol=lf\ntests/ui-contract/fixtures/upstream.tokens.css text eol=lf\npackages/ui-workspace/src/design/generated/tokens.css text eol=lf\npackages/ui-workspace/src/design/generated/tokens.ts text eol=lf\n',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\ui-contract\checkout.test.mjs:63:1
+✖ UI-CHECKOUT:physical-drift (628.6033ms)
+  SyntaxError: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at inspect (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/scripts/ui/checkout.mjs:152:25)
+      at async runCheckoutControls (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/scripts/ui/checkout.mjs:175:22)
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/checkout.test.mjs:64:18)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\ui-contract\checkout.test.mjs:76:1
+✖ UI-CHECKOUT:raw-lf-preservation (0.5942ms)
+  SyntaxError: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at inspect (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/scripts/ui/checkout.mjs:152:25)
+      at async runCheckoutControls (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/scripts/ui/checkout.mjs:175:22)
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/checkout.test.mjs:64:18)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\ui-contract\checkout.test.mjs:100:1
+✖ UI-CHECKOUT:unavailable-git-and-cleanup-failure (599.7463ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Injected cleanup failure/. Input:
+  
+  'AggregateError: Checkout and cleanup failed'
+  
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/checkout.test.mjs:109:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: AggregateError: Checkout and cleanup failed
+        at runCheckoutControls (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/scripts/ui/checkout.mjs:202:11)
+        at async waitForActual (node:assert:646:5)
+        at async strict.rejects (node:assert:769:25)
+        at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/checkout.test.mjs:109:3)
+        at async Test.run (node:internal/test_runner/test:1332:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:911:7),
+    expected: /Injected cleanup failure/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at tests\ui-contract\checkout.test.mjs:138:1
+✖ UI-CHECKOUT:refuse-unverified-or-replaced-root (3.5604ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/checkout.test.mjs:143:5)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /identity changed/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

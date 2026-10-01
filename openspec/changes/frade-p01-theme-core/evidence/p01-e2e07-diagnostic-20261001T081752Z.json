@@ -1,0 +1,55 @@
+{
+  "atUtc": "2026-10-01T08:18:27.500Z",
+  "scope": "Original gesture/assertions with diagnostic only; readiness not repaired",
+  "runs": [
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop typecheck"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "startedAtUtc": "2026-10-01T08:17:52.883Z",
+      "endedAtUtc": "2026-10-01T08:17:59.494Z",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-diagnostic-20261001T081752Z-typecheck.txt"
+    },
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop lint"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "startedAtUtc": "2026-10-01T08:17:59.495Z",
+      "endedAtUtc": "2026-10-01T08:18:04.728Z",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-diagnostic-20261001T081752Z-lint.txt"
+    },
+    {
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/bundle-flows.spec.ts",
+        "--grep",
+        "full lifecycle: drawio",
+        "--output",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-e2e07-diagnostic-20261001T081752Z-artifacts",
+        "--reporter",
+        "list"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop",
+      "startedAtUtc": "2026-10-01T08:18:04.729Z",
+      "endedAtUtc": "2026-10-01T08:18:27.500Z",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-diagnostic-20261001T081752Z-drawio.txt"
+    }
+  ],
+  "status": "PASS",
+  "productionChanged": false
+}

@@ -1,5 +1,6 @@
 import { REPOSITORY_OBJECT_MIME } from '@frade/ui-navigator'
-import { useEffect, useRef, useState, useLayoutEffect } from 'react'
+import { useEffect, useRef, useState, useLayoutEffect, useId } from 'react'
+import { useThemeController, createFrameParticipant, afterPresentationPaint } from './design/theme'
 import { createPortal } from 'react-dom'
 import {
   defaultAppearance,
@@ -58,12 +59,23 @@ export interface DiagramViewProps {
   register(handle: DrawioHandle | undefined): void
 }
 export function DiagramView(props: DiagramViewProps) {
+  const presentation = useThemeController(),
+    presentationId = useId().replaceAll(':', ''),
+    presentationGeneration = useRef(0),
+    [themeDocumentLoaded, setThemeDocumentLoaded] = useState(false),
+    [themeReady, setThemeReady] = useState(false),
+    [themeError, setThemeError] = useState<string>(),
+    presentationBinding = useRef<{
+      participant: ReturnType<typeof createFrameParticipant>
+      registration: ReturnType<NonNullable<typeof presentation>['register']>
+    }>()
   const [container] = useState(() => {
     const node = document.createElement('div')
     node.className = 'repository-diagram'
     return node
   })
   const parking = useRef<HTMLDivElement>(null),
+    lastVisibleBounds = useRef<{ left: number; top: number; width: number; height: number }>(),
     frame = useRef<HTMLIFrameElement>(null)
   const latest = useRef(props)
   useLayoutEffect(() => {
@@ -124,6 +136,16 @@ export function DiagramView(props: DiagramViewProps) {
   useLayoutEffect(() => {
     const parent = props.target ? document.querySelector(props.target) : parking.current
     if (parent && container.parentElement !== parent) {
+      if (parent === parking.current && container.isConnected) {
+        const bounds = container.getBoundingClientRect()
+        if (bounds.width > 0 && bounds.height > 0)
+          lastVisibleBounds.current = {
+            left: bounds.left,
+            top: bounds.top,
+            width: bounds.width,
+            height: bounds.height,
+          }
+      }
       if (container.isConnected && 'moveBefore' in parent)
         (parent as Element & { moveBefore(node: Node, before: Node | null): void }).moveBefore(
           container,
@@ -131,6 +153,23 @@ export function DiagramView(props: DiagramViewProps) {
         )
       else parent.appendChild(container)
     }
+  }, [container, props.target])
+  useLayoutEffect(() => {
+    const capture = () => {
+      if (!container.isConnected || parking.current?.contains(container)) return
+      const bounds = container.getBoundingClientRect()
+      if (bounds.width > 0 && bounds.height > 0)
+        lastVisibleBounds.current = {
+          left: bounds.left,
+          top: bounds.top,
+          width: bounds.width,
+          height: bounds.height,
+        }
+    }
+    capture()
+    const observer = new ResizeObserver(capture)
+    observer.observe(container)
+    return () => observer.disconnect()
   }, [container, props.target])
   useEffect(() => () => container.remove(), [container])
   useEffect(() => {
@@ -276,6 +315,7 @@ export function DiagramView(props: DiagramViewProps) {
           .then((xml) => {
             latest.current.onBaseline(xml)
             setReady(true)
+            setThemeDocumentLoaded(true)
           })
           .catch((e) => latest.current.onError(String(e)))
       } else if (data.event === 'autosave' && typeof data.xml === 'string')
@@ -309,6 +349,107 @@ export function DiagramView(props: DiagramViewProps) {
       membershipWaiting.clear()
     }
   }, [])
+  useEffect(() => {
+    if (!presentation || !ready || !themeDocumentLoaded || !frame.current) return
+    // Keep an invalidated required member until its successor is ready to attach; navigation cannot silently opt out.
+    presentationBinding.current?.registration.dispose()
+    presentationBinding.current?.participant.dispose()
+    // Transfer the initial React concealment to the participant synchronously; it will
+    // become paintable only after the shared neutral cover is actually painted.
+    frame.current.style.removeProperty('visibility')
+    const participant = createFrameParticipant(frame.current, {
+      id: 'frame/' + presentationId,
+      generation: ++presentationGeneration.current,
+      sessionId: presentation.sessionId,
+      paintSurface: () => {
+        const node = parking.current
+        if (!node || !node.contains(container) || !node.hidden) return () => {}
+        const bounds = lastVisibleBounds.current
+        if (!bounds) throw Error('Inactive editor paint bounds unavailable')
+        const originalStyle = node.getAttribute('style'),
+          originalInert = node.hasAttribute('inert')
+        // Same connected iframe, same last visible geometry, rendered only beneath the painted curtain.
+        node.hidden = false
+        node.setAttribute('inert', '')
+        Object.assign(node.style, {
+          position: 'fixed',
+          left: bounds.left + 'px',
+          top: bounds.top + 'px',
+          width: bounds.width + 'px',
+          height: bounds.height + 'px',
+          zIndex: '2147482000',
+          pointerEvents: 'none',
+        })
+        return () => {
+          node.hidden = true
+          if (originalStyle === null) node.removeAttribute('style')
+          else node.setAttribute('style', originalStyle)
+          if (!originalInert) node.removeAttribute('inert')
+        }
+      },
+      surfacePaint: () => {
+        const node = parking.current
+        return node?.contains(container) && !node.hidden && node.style.position === 'fixed'
+          ? afterPresentationPaint(node)
+          : undefined
+      },
+      onInvalidated: () => {
+        setThemeReady(false)
+        setThemeDocumentLoaded(false)
+        setThemeError('Встроенный редактор ожидает восстановления темы')
+      },
+      onShortcut: (key) =>
+        window.dispatchEvent(
+          new KeyboardEvent('keydown', {
+            key,
+            ctrlKey: key !== 'Escape',
+            bubbles: true,
+            cancelable: true,
+          }),
+        ),
+    })
+    const registration = presentation.register(participant)
+    presentationBinding.current = { participant, registration }
+    let current = true
+    const published = () => {
+      const state = presentation.state()
+      if (
+        current &&
+        ['IDLE', 'PUBLISHED'].includes(state.phase) &&
+        frame.current?.getAttribute('data-frade-revision') === String(state.snapshot.revision)
+      ) {
+        setThemeReady(true)
+        setThemeError(undefined)
+      }
+    }
+    const off = presentation.subscribe(published)
+    void registration.ready.then(
+      () => {
+        if (current) {
+          setThemeReady(true)
+          setThemeError(undefined)
+        }
+      },
+      (error) => {
+        if (current) {
+          setThemeReady(false)
+          setThemeError(error instanceof Error ? error.message : String(error))
+        }
+      },
+    )
+    return () => {
+      current = false
+      off()
+    }
+  }, [presentation, ready, themeDocumentLoaded, presentationId, container])
+  useEffect(
+    () => () => {
+      presentationBinding.current?.registration.dispose()
+      presentationBinding.current?.participant.dispose()
+      presentationBinding.current = undefined
+    },
+    [],
+  )
   useEffect(() => {
     if (ready) send({ action: 'fradeFlow', kind: 'init', repositoryId: props.draft.repositoryId })
   }, [ready, props.draft.repositoryId])
@@ -437,11 +578,17 @@ export function DiagramView(props: DiagramViewProps) {
               {props.draft.error}
             </div>
           )}
+          {themeError && (
+            <div role="status" aria-live="polite">
+              {themeError}
+            </div>
+          )}
           {manager.controls}
           <div className="diagram-body">
             <div className={'diagram-frame ' + (props.readOnly ? 'readonly' : '')}>
               <iframe
                 ref={frame}
+                style={presentation && !themeReady ? { visibility: 'hidden' } : undefined}
                 title={props.draft.path}
                 src={url}
                 sandbox="allow-scripts allow-same-origin allow-downloads"

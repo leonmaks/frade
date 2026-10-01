@@ -69,6 +69,7 @@ test('WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, w
     await page.getByRole('menuitem', { name: 'Переименовать корень' }).click()
     await page.getByLabel('Название корня').fill('KA A')
     await page.getByRole('button', { name: 'Переименовать', exact: true }).click()
+    await expect(page.getByRole('dialog', { name: 'Переименовать корень', exact: true })).toBeHidden()
     await card(page, A)
     await description(page).fill('A isolated description')
     await page.locator(`[role=treeitem][aria-level="1"][data-repository-id="${B}"]`).click()

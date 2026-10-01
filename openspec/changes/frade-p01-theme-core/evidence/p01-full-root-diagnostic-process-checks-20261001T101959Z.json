@@ -1,0 +1,73 @@
+{
+  "atUtc": "2026-10-01T10:20:28.370Z",
+  "scope": "Current full-root/diagnostic process update and proposed documents only; six-case actual UI diagnostic FAIL is not waived",
+  "status": "PASS",
+  "runs": [
+    {
+      "name": "bdd",
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/ui-workspace test:bdd"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z-bdd.txt"
+    },
+    {
+      "name": "openspec",
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "openspec validate frade-p01-theme-core --strict --json"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z-openspec.txt"
+    },
+    {
+      "name": "compliance",
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm ui:compliance"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z-compliance.txt"
+    },
+    {
+      "name": "diffcheck",
+      "cmd": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z-diffcheck.txt"
+    },
+    {
+      "name": "status",
+      "cmd": "git",
+      "args": [
+        "status",
+        "--short"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z-status.txt"
+    },
+    {
+      "name": "diff",
+      "cmd": "git",
+      "args": [
+        "diff",
+        "--stat"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z-diff.txt"
+    }
+  ]
+}

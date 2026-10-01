@@ -1,0 +1,70 @@
+{
+  "recordedAtUtc": "2026-09-30T13:19:28.656Z",
+  "allowedPlanningEdits": [
+    "openspec/changes/frade-ui-design-contract/bdd/traceability-plan.md",
+    "openspec/changes/frade-ui-design-contract/design.md",
+    "openspec/changes/frade-ui-design-contract/execution-context.json",
+    "openspec/changes/frade-ui-design-contract/proposal.md",
+    "openspec/changes/frade-ui-design-contract/specs/ui-token-compliance/spec.md",
+    "openspec/changes/frade-ui-design-contract/tasks.md"
+  ],
+  "originalCount": 4913,
+  "unchangedOriginalArtifacts": 4907,
+  "productionUnchanged": true,
+  "oldEvidenceUnchanged": true,
+  "eightRawArtifactHashesVerified": true,
+  "approvedRequirementTextVerified": true,
+  "absenceConditions": [
+    {
+      "path": "docs/ui/bdd/ui-contracts.feature",
+      "absent": true
+    },
+    {
+      "path": "docs/ui/decisions/branch-protection.md",
+      "absent": true
+    },
+    {
+      "path": "tests/ui-contract/archive.test.mjs",
+      "absent": true
+    }
+  ],
+  "taskCounts": {
+    "total": 21,
+    "complete": 16,
+    "remaining": 5
+  },
+  "focusedArchivePreStatus": "NOT_RUN",
+  "archiveProductionImplementation": "NOT_IMPLEMENTED",
+  "readyForFocusedPre": true,
+  "logSha256": "fa7d0cd60c4229e83486b1b3f045749b28c5c4bbf1aee10a2b925423298ad790",
+  "commands": [
+    {
+      "exit": 0,
+      "command": "pnpm exec openspec validate frade-ui-design-contract --strict"
+    },
+    {
+      "exit": 0,
+      "command": "node scripts/ui/tokens.mjs"
+    },
+    {
+      "exit": 0,
+      "command": "node scripts/ui/colors.mjs"
+    },
+    {
+      "exit": 0,
+      "command": "node scripts/ui/traceability.mjs"
+    },
+    {
+      "exit": 0,
+      "command": "git --no-optional-locks diff --check"
+    },
+    {
+      "exit": 0,
+      "command": "git --no-optional-locks diff --exit-code -- pnpm-lock.yaml"
+    },
+    {
+      "exit": 0,
+      "command": "git --no-optional-locks diff --cached --stat"
+    }
+  ]
+}

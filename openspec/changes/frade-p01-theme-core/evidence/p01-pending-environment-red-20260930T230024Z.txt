@@ -1,0 +1,53 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/picker.test.tsx (6 tests | 1 failed) 392ms
+   ✓ P01-UI-001 picker arrows preview and Enter persists only the selected candidate while dirty editor identity survives 133ms
+   ✓ P01-UI-002 Escape and outside cancellation restore the current committed environment before dismissal 69ms
+   ✓ P01-UI-003 distinct presentation Settings preview named modes and independent density through the same controller 102ms
+   ✓ P01-UI-004 failed persistence remains truthful and keeps the dialog available with dirty context intact 53ms
+   ✓ P01-UI-005 controller follows System and forced environment while preserving explicit live preview and current cancellation baseline 15ms
+   × P01-UI-006 environment supersedes an unpublished candidate without losing explicit choice or writing it 18ms
+     → expected { mode: 'light', …(2) } to deeply equal { mode: 'dark', …(2) }
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  02:00:25
+   Duration  2.10s (transform 171ms, setup 0ms, collect 414ms, tests 392ms, environment 686ms, prepare 253ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/picker.test.tsx > P01-UI-006 environment supersedes an unpublished candidate without losing explicit choice or writing it
+AssertionError: expected { mode: 'light', …(2) } to deeply equal { mode: 'dark', …(2) }
+
+- Expected
++ Received
+
+@@ -1,8 +1,8 @@
+  {
+-   "density": "comfortable",
+-   "mode": "dark",
++   "density": "compact",
++   "mode": "light",
+    "preferred": {
+      "dark": "frade.builtin/dark",
+      "high-contrast": "frade.builtin/high-contrast",
+      "light": "frade.builtin/light",
+    },
+
+ ❯ tests/ui-contract/picker.test.tsx:301:46
+    299|       expect((await first).status).toBe('SUPERSEDED')
+    300|       expect((await refreshed).status).toBe('APPLIED')
+    301|       expect(f.controller.state().selection).toEqual(candidate)
+       |                                              ^
+    302|       expect(f.controller.state().preview).toBe(true)
+    303|       expect(f.root.dataset.fradeTheme).toBe('dark')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

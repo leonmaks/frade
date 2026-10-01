@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-10-01T00:22:56.060Z",
+  "results": [
+    {
+      "label": "presentation-boundaries",
+      "command": "node --test tests/contract/presentation-boundaries.test.mjs",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-runtime-interactions-r4-20261001T002143Z-presentation-boundaries.txt"
+    },
+    {
+      "label": "desktop-typecheck",
+      "command": "pnpm --filter @frade/desktop typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-runtime-interactions-r4-20261001T002143Z-desktop-typecheck.txt"
+    },
+    {
+      "label": "desktop-lint",
+      "command": "pnpm --filter @frade/desktop lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-runtime-interactions-r4-20261001T002143Z-desktop-lint.txt"
+    },
+    {
+      "label": "electron",
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme.spec.ts --output C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-runtime-interactions-r4-20261001T002143Z-artifacts",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-runtime-interactions-r4-20261001T002143Z-electron.txt"
+    }
+  ],
+  "assertionSha256": "f0224d0290eaba0196d9177441c880d7854f145bc033c559a7acdb1d17f44725"
+}

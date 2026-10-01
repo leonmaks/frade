@@ -1,0 +1,29 @@
+{
+  "scope": "supplied checker only, not Frade CI",
+  "results": [
+    {
+      "control": "positive",
+      "exitCode": 0,
+      "stdout": "{\"status\": \"PASS\", \"checks\": 102, \"errors\": []}",
+      "stderr": "",
+      "expectedExit": 0,
+      "fixtureRemoved": true
+    },
+    {
+      "control": "drift",
+      "exitCode": 1,
+      "stdout": "{\"status\": \"FAIL\", \"checks\": 102, \"errors\": [\"Generated CSS drift\"]}",
+      "stderr": "",
+      "expectedExit": 1,
+      "fixtureRemoved": true
+    },
+    {
+      "control": "contrast",
+      "exitCode": 1,
+      "stdout": "{\"status\": \"FAIL\", \"checks\": 102, \"errors\": [\"light: text.primary / surface.base = 1.000, needs 4.5\", \"light: text.primary / surface.panel = 1.081, needs 4.5\", \"light: text.primary / surface.rail = 1.174, needs 4.5\", \"light: text.primary / surface.hover = 1.195, needs 4.5\", \"light: text.primary / surface.overlay = 1.000, needs 4.5\", \"light: text.primary / diagram.nodeBg = 1.000, needs 4.5\"]}",
+      "stderr": "",
+      "expectedExit": 1,
+      "fixtureRemoved": true
+    }
+  ]
+}

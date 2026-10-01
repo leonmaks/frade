@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-09-30T21:29:41.073Z",
+  "results": [
+    {
+      "label": "participants",
+      "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/participants.test.ts",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-root-checks-20260930T212941Z-participants.txt"
+    },
+    {
+      "label": "typecheck",
+      "command": "pnpm --filter @frade/ui-workspace typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-root-checks-20260930T212941Z-typecheck.txt"
+    },
+    {
+      "label": "lint",
+      "command": "pnpm --filter @frade/ui-workspace lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-root-checks-20260930T212941Z-lint.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "packages/ui-workspace/src/design/theme/rootParticipant.ts",
+      "sha256": "0d84024340a435ea906ee6836bcfbbc3ddfa09ed1fe039ef47b9a5825cb99f0e"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+      "sha256": "a4e777714459dbe3be5583748db242ca7d4c7d7442e7654e859b1b285ddd226a"
+    }
+  ],
+  "runtimePaint": "NOT_RUN"
+}

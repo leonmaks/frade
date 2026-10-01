@@ -1,0 +1,33 @@
+$ pnpm ui:tokens:check && pnpm ui:colors:check && pnpm ui:traceability:check && pnpm test:ui-contract && pnpm ui:controls
+$ node scripts/ui/tokens.mjs
+{"status":"PASS","namedContrastChecks":102,"adoption":{"guideVersion":"1.0","tokenVersion":"1.0.0","cssAdoptionRevision":1},"errors":[]}
+$ node scripts/ui/colors.mjs
+{"status":"PASS","occurrences":124,"legacyExceptions":124,"errors":[]}
+$ node scripts/ui/traceability.mjs
+{"status":"PASS","foundationBindings":22,"futureBoundariesNotExecuted":23,"scope":"Binding integrity only; actual tests run separately","errors":[]}
+$ node --test tests/ui-contract/*.test.mjs
+✔ UI-LITERAL-SYNTAX: HEX rgb hsl named and inline values fail; comments and identifiers do not (37.346ms)
+✔ UI-LITERAL-LEGACY: adding new color beside an exact legacy occurrence fails (2.5461ms)
+✔ UI-LITERAL-EXCEPTIONS: moved/context-changed/duplicate or blanket exceptions fail (0.8993ms)
+✔ UI-LITERAL-DATA: validated theme/domain/generated boundaries are distinct (1.2275ms)
+✔ UI-CONTROLS: real CLI positives pass, negatives fail, and isolated root is removed (2823.1012ms)
+✔ UI-TOKEN-CLOSURE: complete palettes validate without mutation (8.5269ms)
+✔ UI-TOKEN-CLOSURE: missing and extra roles cannot be hidden by equal sets (36.7572ms)
+✔ UI-TOKEN-MALFORMED: invalid HEX/nonfinite/shape/version are rejected (7.192ms)
+✔ UI-CONTRAST: independent luminance boundaries and 102 named pairs (1.4253ms)
+✔ UI-TOKEN-EQUIVALENCE: only accepted selector changes; values/order stable (5.7013ms)
+✔ UI-TOKEN-DRIFT: CSS and typed registry mutation both fail without rewriting (16.1582ms)
+✔ UI-TRACE-CLOSURE: valid foundation binding; missing/unknown/duplicate fail (37.2482ms)
+✔ UI-TRACE-ASSERTIONS: removed/mutated assertions and skipped tests cannot count (4.6112ms)
+✔ UI-TRACE-EXAMPLES: every outline row maps; repeated example is invalid (13.245ms)
+✔ UI-TRACE-FUTURE: future phase is explicit and cannot disguise foundation (0.8989ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3877.2834
+$ node scripts/ui/controls.mjs
+{"status":"PASS","temporaryRoot":"C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-contract-j7w85P","removed":true,"controls":[{"name":"positive tokens","expectedExit":0,"actualExit":0,"fixtureHash":"b57a9e2b55abf96ac3caaf4beca7d6ce399a786277c478c0bdc6690e525f2814","stdout":"{\"status\":\"PASS\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[]}\n","stderr":""},{"name":"positive exact legacy occurrence","expectedExit":0,"actualExit":0,"fixtureHash":"ad5c3d4085563684e77a5c0e0b112155db1ea393f287fde57c79a5573822e4bb","stdout":"{\"status\":\"PASS\",\"occurrences\":1,\"legacyExceptions\":1,\"errors\":[]}\n","stderr":""},{"name":"negative generated drift","expectedExit":1,"actualExit":1,"fixtureHash":"3990e0f987e927091bffa10a7918ec8eaec59df2c5d566a5e393438468dd12a9","stdout":"{\"status\":\"FAIL\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[\"Generated CSS drift\"]}\n","stderr":""},{"name":"negative contrast","expectedExit":1,"actualExit":1,"fixtureHash":"d2f7d5e8243221bfc7b070053f04386bb85417a9523718b978467d577c662588","stdout":"{\"status\":\"FAIL\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[\"light: contrast text.primary/surface.base = 1 < 4.5\",\"light: contrast text.primary/surface.panel = 1.0813446936280224 < 4.5\",\"light: contrast text.primary/surface.rail = 1.174343318122725 < 4.5\",\"light: contrast text.primary/surface.hover = 1.1950322552091959 < 4.5\",\"light: contrast text.primary/surface.overlay = 1 < 4.5\",\"light: contrast text.primary/diagram.nodeBg = 1 < 4.5\"]}\n","stderr":""},{"name":"negative new literal beside legacy","expectedExit":1,"actualExit":1,"fixtureHash":"e387fb2ed90ac6466c730fb65634617ec339d56c51e430655c5f95a93eaff50b","stdout":"{\"status\":\"FAIL\",\"occurrences\":2,\"legacyExceptions\":1,\"errors\":[\"packages/ui-navigator/src/control.css:2: forbidden color red\"]}\n","stderr":""},{"name":"positive complete traceability","expectedExit":0,"actualExit":0,"fixtureHash":"8169ce268b88c38db1dcacf487b0c0fdf3a4140a41c48f8e8d4f3e5529b49101","stdout":"{\"status\":\"PASS\",\"foundationBindings\":22,\"futureBoundariesNotExecuted\":23,\"scope\":\"Binding integrity only; actual tests run separately\",\"errors\":[]}\n","stderr":""},{"name":"negative missing traceability","expectedExit":1,"actualExit":1,"fixtureHash":"1cbae6f7347d34fac522759f788edbb81c63f68fed2c141c21d35d5d50f6d5a3","stdout":"{\"status\":\"FAIL\",\"foundationBindings\":21,\"futureBoundariesNotExecuted\":23,\"scope\":\"Binding integrity only; actual tests run separately\",\"errors\":[\"Missing scenario/example FUI-001\"]}\n","stderr":""}]}

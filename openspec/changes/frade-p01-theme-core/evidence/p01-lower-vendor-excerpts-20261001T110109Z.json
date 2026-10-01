@@ -1,0 +1,43 @@
+{
+  "source": "apps/desktop/vendor/drawio/js/app.min.js",
+  "sourceSha256": "0a0152fccee4c6d826435f0dd5b14e38f17257e132918850f20ef45e6821a899",
+  "sourceBytes": 9754351,
+  "excerptPolicy": "Exact read-only selected constructor/layout snippets; full pinned vendor remains unchanged and is not transmitted wholesale",
+  "excerpts": [
+    {
+      "needle": "EditorUi.prototype.createTabContainer=function",
+      "utf16Offset": 1186191,
+      "text": "null!=this.format&&0<this.formatWidth?\"\":\"0\";(a||b!=this.sidebarContainer.style.width||d!=this.formatContainer.style.width)&&this.editor.graph.sizeDidChange()};EditorUi.prototype.createTabContainer=function(){return null};\nEditorUi.prototype.createDivs=function(){this.menubarContainer=this.createDiv(\"geMenubarContainer\");this.toolbarContainer=this.createDiv(\"geToolbarContainer\");this.sidebarContainer=this.createDiv(\"geSidebarContainer\");this.formatContainer=this.createDiv(\"geSidebarContainer geFormatContainer\");this.diagramContainer=this.createDiv(\"geDiagramContainer\");this.hsplit=this.createDiv(\"geHsplit\");this.editor.chromeless||(this.tabContainer=this.createTabContainer())};\nEditorUi.prototype.createSidebarContainer=function(){var a=document.createElement(\"div\");a.className=\"geSidebarContainer\";return a};\nEditorUi.prototype.createUi=function(){this.statusContainer=this.createStatusContainer();this.menubar=this.editor.chromeless?null:this.menus.createMenubar(this.createDiv(\"geMenubar\"));null!=this.menubar&&this.menubarContainer.appendChild(th"
+    },
+    {
+      "needle": "EditorUi.prototype.createTabContainer=function",
+      "utf16Offset": 9658475,
+      "text": "try{for(var m=0;m<b.length;m++){var f=mxUtils.indexOf(this.pages,b[m]);f!=m&&this.movePage(f,m)}}finally{g.endUpdate()}this.scrollToPage(this.currentPage,!0)};\nEditorUi.prototype.createTabContainer=function(){var b=document.createElement(\"div\");b.className=\"geTabContainer geTabItem\";return b};\nEditorUi.prototype.updateTabContainer=function(){if(null!=this.tabContainer&&!this.isTabContainerVisible())this.tabContainer.style.display=\"none\";else if(null!=this.tabContainer&&null!=this.pages){this.tabContainer.style.display=\"\";var b=this.editor.graph,g=document.createElement(\"div\");g.className=\"geTabScroller\";for(var m=null,f=null,p=null,r=this,u=null!=this.tabScroller?this.tabScroller.scrollLeft:0,x=!1,C=0;C<this.pages.length;C++){var J=this.pages[C];if(null!=J){var L=J.getId(),E=J.getName()||\nmxResources.get(\"untitled\"),I=L+\":\"+E;I=null!=this.btPageTabCache?this.btPageTabCache[I]:null;null!=I?I.setAttribute(\"title\",E+(null!=L?\" (\"+L+\")\":\"\")+\" [\"+(C+1)+\"]\"):(I=this.createTabForPage(J,C+1),x=!0);I.setAttribute(\"draggable\",\"true\");I.setAttribute(\"data"
+    },
+    {
+      "needle": "geControlTab",
+      "utf16Offset": 9665230,
+      "text": "e(),null!=g&&36<g.length&&(g=g.substring(0,34)+\"...\"));return g};\nEditorUi.prototype.createControlTab=function(b,g,m){var f=this.createTab();f.className=\"geTab geControlTab\";null!=b&&f.setAttribute(\"title\",b);b=document.createElement(\"div\");b.className=\"geButton\";b.style.backgroundImage=\"url(\"+g+\")\";f.appendChild(b);mxEvent.addListener(f,\"click\",m);return f};EditorUi.prototype.createPageInsertTab=function(){return this.createControlTab(mxResources.get(\"insertPage\"),Editor.plusImage,mxUtils.bind(this,function(b){this.actions.get(\"insertPage\").funct();mxEvent.consume(b)}))};\nEditorUi.prototype.createLeftScrollTab=function(){return this.createControlTab(null,Editor.chevronLeftImage,mxUtils.bind(this,function(b){var g=Math.max(60,this.tabScroller.clientWidth/2);null!=this.tabScroller.scrollBy?this.tabScroller.scrollBy({left:-g,top:0,behavior:\"smooth\"}):this.tabScroller.scrollLeft-=g;mxEvent.consume(b)}))};\nEditorUi.prototype.createRightScrollTab=function(){return this.createControlTab(null,Editor.chevronRightImage,mxUtils.bind(this,function(b){var "
+    },
+    {
+      "needle": "gePageTab",
+      "utf16Offset": 9644012,
+      "text": "ScrollPage||g)&&(this.tabScroller.children[m].scrollIntoView({block:\"nearest\",inline:null!=b?\"nearest\":\"center\"}),this.tabScroller.children[m].className=\"geTab gePageTab geActivePage\",this.lastScrollPage=f,this.btKnownTabScroll=this.tabScroller.scrollLeft)};\nEditorUi.prototype.restoreViewState=function(b,g,m){b=null!=b?this.getPageById(b.getId()):null;var f=this.editor.graph;null!=b&&null!=this.currentPage&&null!=this.pages&&(b!=this.currentPage?this.selectPage(b,!0,g):(f.setViewState(g),this.editor.updateGraphComponents(),f.view.revalidate(),f.sizeDidChange()),f.container.scrollLeft=f.view.translate.x*f.view.scale+g.scrollLeft,f.container.scrollTop=f.view.translate.y*f.view.scale+g.scrollTop,f.restoreSelection(m))};\nGraph.prototype.createViewState=function(b){var g=b.getAttribute(\"page\"),m=parseFloat(b.getAttribute(\"pageScale\")),f=parseFloat(b.getAttribute(\"pageWidth\")),p=parseFloat(b.getAttribute(\"pageHeight\")),r=b.getAttribute(\"background\"),u=this.parseBackgroundImage(b.getAttribute(\"backgroundImage\")),x=b.getAttribute(\"extFonts\");if(x)try{x"
+    },
+    {
+      "needle": "gePageTab",
+      "utf16Offset": 9659405,
+      "text": "ll!=L?\" (\"+L+\")\":\"\")+\" [\"+(C+1)+\"]\"):(I=this.createTabForPage(J,C+1),x=!0);I.setAttribute(\"draggable\",\"true\");I.setAttribute(\"data-index\",C);I.className=\"geTab gePageTab\";null==I.btDndInstalled&&(I.btDndInstalled=!0,mxEvent.addListener(I,\"dragstart\",mxUtils.bind(this,function(T){b.isEnabled()?(mxClient.IS_FF&&T.dataTransfer.setData(\"Text\",\"<diagram/>\"),m=parseInt(T.currentTarget.getAttribute(\"data-index\"),\n10),f=T.currentTarget,window.requestAnimationFrame(function(){null!=f&&f.classList.add(\"gePageTabDragPlaceholder\")}),r._pageTabDragOverHandler=function(U){U.dataTransfer.dropEffect=\"move\";U.preventDefault();U.target.classList&&U.target.classList.contains(\"gePageTab\")||U.stopPropagation()},r._pageTabDropHandler=function(U){U.preventDefault();U.stopPropagation()},document.addEventListener(\"dragover\",r._pageTabDragOverHandler,!0),document.addEventListener(\"drop\",r._pageTabDropHandler,!0)):mxEvent.consume(T)})),\nmxEvent.addListener(I,\"dragend\",mxUtils.bind(this,function(T){if(null!=f){f.classList.remove(\"gePageTabDragPlaceholder\");for(var U=f.par"
+    },
+    {
+      "needle": "gePageTab",
+      "utf16Offset": 9659743,
+      "text": "t\",\"<diagram/>\"),m=parseInt(T.currentTarget.getAttribute(\"data-index\"),\n10),f=T.currentTarget,window.requestAnimationFrame(function(){null!=f&&f.classList.add(\"gePageTabDragPlaceholder\")}),r._pageTabDragOverHandler=function(U){U.dataTransfer.dropEffect=\"move\";U.preventDefault();U.target.classList&&U.target.classList.contains(\"gePageTab\")||U.stopPropagation()},r._pageTabDropHandler=function(U){U.preventDefault();U.stopPropagation()},document.addEventListener(\"dragover\",r._pageTabDragOverHandler,!0),document.addEventListener(\"drop\",r._pageTabDropHandler,!0)):mxEvent.consume(T)})),\nmxEvent.addListener(I,\"dragend\",mxUtils.bind(this,function(T){if(null!=f){f.classList.remove(\"gePageTabDragPlaceholder\");for(var U=f.parentNode.querySelectorAll(\".gePageTab\"),S=0,Y=0;Y<U.length;Y++)if(U[Y]==f){S=Y;break}null!=m&&S!=m&&this.movePage(m,S)}null!=r._pageTabDragOverHandler&&(document.removeEventListener(\"dragover\",r._pageTabDragOverHandler,!0),document.removeEventListener(\"drop\",r._pageTabDropHandler,!0),r._pageTabDragOverHandler=null,r._pageTabDropHandler=n"
+    },
+    {
+      "needle": "geTabContainer",
+      "utf16Offset": 9658573,
+      "text": "inally{g.endUpdate()}this.scrollToPage(this.currentPage,!0)};\nEditorUi.prototype.createTabContainer=function(){var b=document.createElement(\"div\");b.className=\"geTabContainer geTabItem\";return b};\nEditorUi.prototype.updateTabContainer=function(){if(null!=this.tabContainer&&!this.isTabContainerVisible())this.tabContainer.style.display=\"none\";else if(null!=this.tabContainer&&null!=this.pages){this.tabContainer.style.display=\"\";var b=this.editor.graph,g=document.createElement(\"div\");g.className=\"geTabScroller\";for(var m=null,f=null,p=null,r=this,u=null!=this.tabScroller?this.tabScroller.scrollLeft:0,x=!1,C=0;C<this.pages.length;C++){var J=this.pages[C];if(null!=J){var L=J.getId(),E=J.getName()||\nmxResources.get(\"untitled\"),I=L+\":\"+E;I=null!=this.btPageTabCache?this.btPageTabCache[I]:null;null!=I?I.setAttribute(\"title\",E+(null!=L?\" (\"+L+\")\":\"\")+\" [\"+(C+1)+\"]\"):(I=this.createTabForPage(J,C+1),x=!0);I.setAttribute(\"draggable\",\"true\");I.setAttribute(\"data-index\",C);I.className=\"geTab gePageTab\";null==I.btDndInstalled&&(I.btDndInstalled=!0,mxEvent.addL"
+    }
+  ]
+}

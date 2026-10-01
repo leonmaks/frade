@@ -1,0 +1,18 @@
+{
+  "recordedAtUtc": "2026-09-30T12:38:07.015Z",
+  "log": "foundation-eol-controls-before-attributes-2026-09-30.txt",
+  "defects": [
+    {
+      "classification": "INTEGRATION",
+      "cause": "The unchanged negative token CLI throws immutable fixture drift to stderr and exits 1 without JSON stdout. Control incorrectly assumed JSON for negative results.",
+      "repair": "Preserve actual stdout/stderr/exit; parse only present JSON and require the exact immutable fixture diagnostic for the negative control."
+    },
+    {
+      "classification": "TEST",
+      "cause": "Windows directory inode exceeds safe integer precision, so ino + 1 equals ino as Number; identity must use bigint stats.",
+      "repair": "Use bigint fs.stat for identity and deterministic +1n mismatch assertions."
+    }
+  ],
+  "productionAttributesAbsent": true,
+  "testWeakening": false
+}

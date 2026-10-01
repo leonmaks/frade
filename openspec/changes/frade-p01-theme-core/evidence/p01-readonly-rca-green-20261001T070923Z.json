@@ -1,0 +1,37 @@
+{
+  "atUtc": "2026-10-01T07:14:31.203Z",
+  "runs": [
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop typecheck"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-rca-green-20261001T070923Z-typecheck.txt"
+    },
+    {
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/ui-contract-theme.spec.ts",
+        "--grep",
+        "P01-B02 actual flow manager states",
+        "--output",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-readonly-rca-green-20261001T070923Z-artifacts",
+        "--reporter",
+        "list"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-rca-green-20261001T070923Z-b02.txt"
+    }
+  ],
+  "status": "PASS",
+  "rootRegression": "NOT_RUN",
+  "post": "NOT_RUN"
+}

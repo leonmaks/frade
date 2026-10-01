@@ -427,6 +427,19 @@ for (const format of ['frade', 'drawio'] as const) {
           .dblclick()
         await expect(label('A')).toBeVisible()
         await expect(save()).toBeEnabled()
+        if (format === 'drawio') {
+          const frame = page.locator('.diagram-slot iframe'),
+            curtain = page.locator('.frade-theme-commit-barrier')
+          await expect(frame).toBeVisible()
+          await expect(frame).toHaveAttribute('data-frade-revision', (await page.locator('html').getAttribute('data-frade-revision')) as string)
+          await expect(curtain).toBeHidden()
+          await canvas().evaluate(async () => {
+            await document.fonts.ready
+            await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
+          })
+          await expect(frame).toHaveAttribute('data-frade-revision', (await page.locator('html').getAttribute('data-frade-revision')) as string)
+          await expect(curtain).toBeHidden()
+        }
         const path = canvas().locator('path[stroke="#404040" i]').first()
         const position = await path.evaluate((node) => {
           const path = node as SVGPathElement,

@@ -1,0 +1,154 @@
+{
+  "recordedAtUtc": "2026-09-30T10:54:12.215Z",
+  "change": "frade-ui-design-contract",
+  "scope": "foundation only",
+  "branch": "codex/frade-ui-design-contract",
+  "head": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "guideVersion": "1.0",
+  "tokenVersion": "1.0.0",
+  "cssAdoptionRevision": 1,
+  "formalTasks": {
+    "complete": 14,
+    "total": 17,
+    "remaining": {
+      "4.1": "BLOCKED_EOL_SCOPE",
+      "4.4": "NOT_RUN_VERIFY_POST",
+      "4.5": "NOT_RUN_ARCHIVE"
+    }
+  },
+  "checks": [
+    {
+      "command": "pnpm install --frozen-lockfile",
+      "exit": 0,
+      "log": "foundation-install-2026-09-30.txt",
+      "logSha256": "252780cffbb31145028ecdd7cfc14ffbb8f20c01ce7ac70d606aa40c16750cfa"
+    },
+    {
+      "command": "pnpm check:all",
+      "exit": 1,
+      "status": "FAIL",
+      "classification": "ENVIRONMENT",
+      "log": "foundation-check-all-2026-09-30.txt",
+      "logSha256": "374ab654aa9570311f33825665be7b7f9c360a5dc1bd6a5e6d42f56ab9b5cc0b"
+    },
+    {
+      "command": "pnpm --filter @frade/draw exec playwright test tests/spike/floating-placement.spec.ts",
+      "exit": 0,
+      "tests": 4,
+      "log": "foundation-draw-environment-recheck-2026-09-30.txt",
+      "logSha256": "c62f8f53bf30ca980f0440c6cd8a4c2dfadfda0030527fc37d89a10cb55118fa"
+    },
+    {
+      "command": "pnpm check:all",
+      "exit": 0,
+      "status": "PASS",
+      "environment": "fresh FRADE_DRAW_E2E_PORT",
+      "drawTests": 215,
+      "desktopTests": 41,
+      "log": "foundation-check-all-isolated-server-2026-09-30.txt",
+      "logSha256": "557ce5791ee4d0f515c51a531a37d07a98edf7f60f02040f44cc0bc757947bf2"
+    },
+    {
+      "command": "pnpm ui:compliance",
+      "exit": 0,
+      "tests": 15,
+      "log": "foundation-ci-compliance-2026-09-30.txt",
+      "logSha256": "f948d0efa3bb2d282eba984818c26d8abdb8b8d57db8d563dde98230bb6106b7"
+    },
+    {
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-token-cascade.spec.ts",
+      "exit": 0,
+      "tests": 20,
+      "log": "foundation-ci-cascade-2026-09-30.txt",
+      "logSha256": "5e3ff1333d46d6ecbf5d4db784c81c11357c846e6cb133c45df48d291fe88e8d"
+    },
+    {
+      "command": "pnpm exec eslint scripts/ui tests/ui-contract apps/desktop/tests/e2e/ui-contract-token-cascade.spec.ts",
+      "exit": 0,
+      "evidenceChunk": "84e9a1"
+    },
+    {
+      "command": "pnpm exec prettier --check <authored foundation paths>",
+      "exit": 0,
+      "evidenceChunk": "0ec47c"
+    },
+    {
+      "command": "git diff --check; git diff --exit-code -- pnpm-lock.yaml",
+      "exit": 0,
+      "evidenceChunk": "c26826"
+    },
+    {
+      "command": "openspec validate frade-ui-design-contract --strict",
+      "exit": 0,
+      "evidenceChunk": "d7da08"
+    }
+  ],
+  "tokenContrastPairs": 102,
+  "foundationTests": 15,
+  "legacyOccurrences": 124,
+  "bdd": {
+    "foundationBindings": 22,
+    "futureNotExecuted": 23
+  },
+  "runtimeTokenImportsAbsent": true,
+  "rootGitattributesAbsent": true,
+  "eolTemporaryRepositoryRemoved": true,
+  "implementationPaths": [
+    ".github/workflows/ci.yml",
+    "AGENTS.md",
+    "package.json",
+    "packages/ui-workspace/package.json",
+    "apps/desktop/tests/e2e/ui-contract-token-cascade.spec.ts",
+    "docs/ui/Frade-UI-Style-Guide.md",
+    "docs/ui/QA-Checklist.md",
+    "docs/ui/Themes-and-Plugins-Spec.md",
+    "docs/ui/adoption.md",
+    "docs/ui/components.md",
+    "docs/ui/decisions/legacy-colors.json",
+    "docs/ui/decisions/provenance.json",
+    "docs/ui/decisions/token-eol-scope-proposal.md",
+    "docs/ui/decisions/token-eol.gitattributes.proposed",
+    "docs/ui/decisions/ui-contract-traceability.json",
+    "docs/ui/migration.md",
+    "packages/ui-workspace/src/design/generated/tokens.css",
+    "packages/ui-workspace/src/design/generated/tokens.ts",
+    "packages/ui-workspace/tokens/theme.schema.json",
+    "packages/ui-workspace/tokens/tokens.json",
+    "scripts/ui/colors.mjs",
+    "scripts/ui/controls.mjs",
+    "scripts/ui/tokens.mjs",
+    "scripts/ui/traceability.mjs",
+    "tests/ui-contract/colors.test.mjs",
+    "tests/ui-contract/controls.test.mjs",
+    "tests/ui-contract/fixtures/upstream.tokens.css",
+    "tests/ui-contract/tokens.test.mjs",
+    "tests/ui-contract/traceability.test.mjs",
+    "openspec/changes/frade-ui-design-contract/bdd/ui-contracts.feature",
+    "openspec/changes/frade-ui-design-contract/tasks.md",
+    "openspec/changes/frade-ui-design-contract/execution-context.json"
+  ],
+  "branchProtection": "NOT_CONFIGURED_UNVERIFIED",
+  "remoteCi": "LOCAL_ONLY_NOT_OBSERVED",
+  "formalVerification": "NOT_RUN",
+  "independentPost": "NOT_RUN",
+  "archive": "NOT_RUN",
+  "readyForVerify": false,
+  "statusSnapshot": " M .github/workflows/ci.yml\n M AGENTS.md\n M package.json\n M packages/ui-workspace/package.json\n?? \" _input/\"\n?? apps/desktop/tests/e2e/ui-contract-token-cascade.spec.ts\n?? docs/engineering/\n?? docs/ui/\n?? openspec/changes/frade-p01-theme-core/\n?? openspec/changes/frade-p02-transactional-installer/\n?? openspec/changes/frade-p03-vscode-theme-import/\n?? openspec/changes/frade-p04-icon-registries/\n?? openspec/changes/frade-p05-isolated-browser-host/\n?? openspec/changes/frade-p06-native-contributions/\n?? openspec/changes/frade-p07-registry-profiles-policy/\n?? openspec/changes/frade-ui-design-contract/\n?? packages/ui-workspace/src/design/\n?? packages/ui-workspace/tokens/\n?? scripts/ui/\n?? tests/ui-contract/\n",
+  "blockers": [
+    {
+      "id": "FOUNDATION-EOL-01",
+      "classification": "ENVIRONMENT",
+      "status": "PROPOSED_SCOPE_ADDITION_NOT_ACCEPTED",
+      "draft": "docs/ui/decisions/token-eol.gitattributes.proposed",
+      "scopeProposal": "docs/ui/decisions/token-eol-scope-proposal.md",
+      "evidence": "evidence/foundation-eol-reproduction-2026-09-30.json",
+      "productionAttributesApplied": false
+    }
+  ],
+  "remainingUiNoncompliance": [
+    "Existing UI has 124 inventoried literal occurrences",
+    "Runtime theme/density/settings service belongs to P01",
+    "Real new-theme accessibility/keyboard/visual matrix and screen-reader checks not run",
+    "P02–P07 and migration stages planned only"
+  ]
+}

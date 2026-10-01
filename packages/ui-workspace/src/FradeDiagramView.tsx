@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, useId } from 'react'
+import { useThemeController, createNativeParticipant } from './design/theme'
 import { createPortal } from 'react-dom'
 import {
   DiagramEditor,
@@ -34,6 +35,12 @@ export interface FradeDiagramEvent {
 export function FradeDiagramView(
   props: DiagramViewProps & { onEvent?(event: FradeDiagramEvent): void },
 ) {
+  const presentation = useThemeController(),
+    presentationRef = useRef(presentation),
+    presentationId = useRef('native/' + useId().replaceAll(':', ''))
+  useLayoutEffect(() => {
+    presentationRef.current = presentation
+  }, [presentation])
   const latest = useRef(props)
   useLayoutEffect(() => {
     latest.current = props
@@ -357,6 +364,13 @@ export function FradeDiagramView(
       latest.current.onBaseline(snapshot())
       refs()
       annotate()
+      const themeOwner = presentationRef.current
+      const themeParticipant = themeOwner
+        ? createNativeParticipant(instance, { id: presentationId.current })
+        : undefined
+      const themeRegistration = themeParticipant
+        ? themeOwner!.register(themeParticipant)
+        : undefined
       setReady(true)
       latest.current.register({
         flush: async () => snapshot(),
@@ -367,6 +381,8 @@ export function FradeDiagramView(
         },
       })
       return () => {
+        themeRegistration?.dispose()
+        themeParticipant?.dispose()
         for (const event of ['cell:added', 'cell:removed', 'cell:changed'] as const)
           instance.off(event, changed)
         instance.off('node:dblclick', activated)

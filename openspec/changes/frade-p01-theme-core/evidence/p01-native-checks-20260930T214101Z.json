@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-09-30T21:41:01.253Z",
+  "results": [
+    {
+      "label": "target",
+      "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/participants.test.ts",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-native-checks-20260930T214101Z-target.txt"
+    },
+    {
+      "label": "typecheck",
+      "command": "pnpm --filter @frade/ui-workspace typecheck",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-native-checks-20260930T214101Z-typecheck.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+      "sha256": "6313f79eb675eeebf15e7e59c9d80054fd7a8f4798fbb5ea7eb87b48b1cd2b71"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/rootParticipant.ts",
+      "sha256": "ffc83e3cc8f95207a920d43edc9642ad21e5f7cb16b6fde07c6fb1014a3be1c7"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+      "sha256": "782d5b682a91cb6a1a1cbd193834cba1baa2612ebdb5ce90789d7f0e9f88a000"
+    }
+  ],
+  "electronModelOracle": "NOT_RUN"
+}

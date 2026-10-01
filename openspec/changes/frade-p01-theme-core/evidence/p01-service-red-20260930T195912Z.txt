@@ -1,0 +1,260 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/service.test.ts (20 tests | 20 failed) 32ms
+   × P01 controlled transaction service > joins hidden, waits for current applied-paint ACK, previews without persistence and cancels to published state 12ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > keeps curtain through apply ACK and durable publication; emits exactly one authoritative change 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > refusal in prepare restores all view/durable snapshots, dirty draft, selection and undo 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > refusal in apply restores all view/durable snapshots, dirty draft, selection and undo 2ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > refusal in persist restores all view/durable snapshots, dirty draft, selection and undo 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > unknown response reconciles already-renamed settings before restoring/revealing; no false Saved 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > unprovable rollback retains recovery curtain and dirty editors with no success/reveal 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > unprovable readback retains recovery curtain and dirty editors with no success/reveal 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > A B C supersession during preparation ignores late A, never writes B and publishes C only 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > C accepted during A rename reconciles A in the current ownership before any C write/ACK 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > join during PREPARING invalidates membership and safely reprepares once 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > join during BARRIER_AWAIT_PAINT invalidates membership and safely reprepares once 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > join during APPLYING invalidates membership and safely reprepares once 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > join during PERSISTING invalidates membership and safely reprepares once 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > ongoing membership churn is bounded and cancels instead of retrying indefinitely 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > leave and generation replacement reject a removed participant ACK 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > paint barrier is mandatory before apply, and forged ACK cannot publish or reveal 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > prepare deadline is 2s; a late handle is disposed and never applied 2ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > commit paint deadline is 2s and host/readback deadlines are 5s; unknown host outcome remains safely covered 1ms
+     → P01 transaction service not implemented
+   × P01 controlled transaction service > cancel during persistence reconciles first, then permits close/dirty-guard continuation 1ms
+     → P01 transaction service not implemented
+
+ Test Files  1 failed (1)
+      Tests  20 failed (20)
+   Start at  22:59:13
+   Duration  771ms (transform 137ms, setup 0ms, collect 170ms, tests 32ms, environment 0ms, prepare 235ms)
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 20 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > joins hidden, waits for current applied-paint ACK, previews without persistence and cancels to published state
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:183:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > keeps curtain through apply ACK and durable publication; emits exactly one authoritative change
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:205:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > refusal in prepare restores all view/durable snapshots, dirty draft, selection and undo
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > refusal in apply restores all view/durable snapshots, dirty draft, selection and undo
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > refusal in persist restores all view/durable snapshots, dirty draft, selection and undo
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:233:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > unknown response reconciles already-renamed settings before restoring/revealing; no false Saved
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:254:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > unprovable rollback retains recovery curtain and dirty editors with no success/reveal
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > unprovable readback retains recovery curtain and dirty editors with no success/reveal
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:277:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > A B C supersession during preparation ignores late A, never writes B and publishes C only
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:295:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > C accepted during A rename reconciles A in the current ownership before any C write/ACK
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:317:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > join during PREPARING invalidates membership and safely reprepares once
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > join during BARRIER_AWAIT_PAINT invalidates membership and safely reprepares once
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > join during APPLYING invalidates membership and safely reprepares once
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > join during PERSISTING invalidates membership and safely reprepares once
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:355:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > ongoing membership churn is bounded and cancels instead of retrying indefinitely
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:391:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > leave and generation replacement reject a removed participant ACK
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:409:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > paint barrier is mandatory before apply, and forged ACK cannot publish or reveal
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:430:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > prepare deadline is 2s; a late handle is disposed and never applied
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:452:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > commit paint deadline is 2s and host/readback deadlines are 5s; unknown host outcome remains safely covered
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:469:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/20]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > cancel during persistence reconciles first, then permits close/dirty-guard continuation
+Error: P01 transaction service not implemented
+ ❯ createPresentationService src/design/theme/service.ts:102:9
+    100| }
+    101| export function createPresentationService(_options: ServiceOptions): P…
+    102|   throw new Error('P01 transaction service not implemented')
+       |         ^
+    103| }
+    104| 
+ ❯ fixture tests/ui-contract/service.test.ts:91:19
+ ❯ tests/ui-contract/service.test.ts:491:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/20]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

@@ -1,0 +1,55 @@
+{
+  "atUtc": "2026-10-01T11:30:09.790Z",
+  "phase": "PRE_INPUT_REPAIR",
+  "scope": "Same accepted SaveAs + lower chrome scope; no additional implementation authority",
+  "previousPre": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-received-20261001T111840Z/result.md",
+  "previousStatus": "FAIL",
+  "additionalInputs": {
+    "fullPinnedVendor": "apps/desktop/vendor/drawio/js/app.min.js",
+    "vendorPolicy": "PASS: existing packet secrets/path policy; no credentials included",
+    "completeConstructors": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-vendor-full-functions-20261001T111912Z.json",
+    "completeLayout": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-vendor-layout-complete-20261001T112143Z.json",
+    "focus": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-focus-observation-20261001T112450Z/result.json",
+    "actualTabWitness": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-focus-observation-20261001T112240Z/dark-comfortable-raw.json",
+    "diagnosticRca": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-focus-diagnostic-rca-20261001T112437Z.json"
+  },
+  "facts": {
+    "sixCases": 6,
+    "lowerElements": 60,
+    "directFocusObtained": 0,
+    "allTabIndexMinusOne": true,
+    "attributesOnlyPreservation": true,
+    "sequentialTabScope": "30 actual Tab in earlier Dark/comfortable workload; none reached lower controls; original canvas navigation changed selection and diagnostic correctly FAIL; not a theme-repair regression"
+  },
+  "inference": "Existing lower controls have no demonstrated accessible focus. CSS-only scope feasibility must be assessed again with complete inputs; no implicit exemption or semantic behavior expansion.",
+  "witnesses": [
+    {
+      "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "bytes": 22358,
+      "sha256": "54beb8dee2e59937935de32f43d6f1d4f8b173e7228f3e098c4edab021b84a6a",
+      "unchanged": true
+    },
+    {
+      "path": "apps/desktop/tests/unit/drawio-theme.test.ts",
+      "bytes": 12768,
+      "sha256": "9bf5d645fbb8d01de625d9c49c2e366f7e785387724bb879f1a11ae2dbc0fec1",
+      "unchanged": true
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "bytes": 104210,
+      "sha256": "ca658de7150110d1bf985f0904c085e23ba1d09e71c2781c2a8478f1216fa64d",
+      "unchanged": true
+    },
+    {
+      "path": "apps/desktop/tests/e2e/workbench-multiroot.spec.ts",
+      "bytes": 16434,
+      "sha256": "6217bacf65c394ca7b6c240985383b17a2d0fcf31d6be54904884029d681e9b9",
+      "unchanged": true
+    }
+  ],
+  "permanentRed": "NOT_RUN",
+  "productionRepair": "NOT_RUN",
+  "visualApproval": "NOT_APPROVED",
+  "readyForVerify": false
+}

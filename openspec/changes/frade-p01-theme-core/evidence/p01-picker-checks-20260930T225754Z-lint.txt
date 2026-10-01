@@ -1,0 +1,36 @@
+
+C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\packages\ui-workspace\src\design\theme\ThemePicker.tsx
+   56:3  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\packages\ui-workspace\src\design\theme\ThemePicker.tsx:56:3
+  54 |     dialog = useRef<HTMLDivElement>(null),
+  55 |     latest = useRef(props)
+> 56 |   latest.current = props
+     |   ^^^^^^^^^^^^^^ Cannot update ref during render
+  57 |   const [focused, setFocused] = useState(() =>
+  58 |     Math.max(
+  59 |       0,                                                                                 react-hooks/refs
+  172:3  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\packages\ui-workspace\src\design\theme\ThemePicker.tsx:172:3
+  170 |     dialog = useRef<HTMLDivElement>(null),
+  171 |     latest = useRef(props)
+> 172 |   latest.current = props
+      |   ^^^^^^^^^^^^^^ Cannot update ref during render
+  173 |   const close = async () => {
+  174 |     const result = await latest.current.controller.cancel()
+  175 |     if (result.status !== 'CANCELED') return false  react-hooks/refs
+
+✖ 2 problems (2 errors, 0 warnings)
+
+$ eslint src tests
+[ELIFECYCLE] Command failed with exit code 1.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in C:\Users\NVISEN\.codex\worktrees\ui-design-
+  │ contract\frade\packages\ui-workspace
+

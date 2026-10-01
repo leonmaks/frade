@@ -1,0 +1,297 @@
+Проверка сохранённого browser evidence подтвердила media state во всех 21 запусках: source RED дал 62 несовпадения, candidate — 1240 assertions без несовпадений. Байты candidate и семь planning-поправок сверены независимо. Новых блокеров планирования не обнаружил; свежие browser-запуски остаются BLOCKED из-за среды. Завершаю отчёт с точным foundation scope и обязательными проверками перед POST.
+Повторный независимый PRE завершён. **Блокеров foundation-планирования не обнаружено. PRE-01 разрешён на уровне принятого контракта и test plan.** Исправленная production foundation ещё не реализована.
+
+Отчёт выдан в чате: среда разрешает только чтение, поэтому новый файл evidence не создавался. Reviewed artifacts, checkbox, input, vendor и baseline не изменялись.
+
+**Контекст review**
+
+| Поле | Значение |
+|---|---|
+| Reviewer | Codex, текущая независимая review-сессия; review выполнен самостоятельно |
+| Model / effort | Фактические backend и effort средой не раскрыты; GPT-6 Astra / xhigh не подтверждаю |
+| Review ID / UTC | `PRE-20260930T091121Z`, 2026-09-30 09:11:21 UTC |
+| Workspace | `C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade` |
+| Branch | `codex/frade-ui-design-contract` |
+| HEAD / base | `98f387f96b51b0ad139e3507c376ff1c3e8dec09` |
+| Active change | `frade-ui-design-contract` |
+| Фаза | Повторный PRE foundation; P01–P07 рассмотрены только как roadmap |
+
+Отдельный новый чат инструментами не создавался. Реализация из сессии исполнителя не продолжалась.
+
+Ветка, HEAD и workspace совпали. Последняя проверка подтвердила **145/145 SHA256** нового manifest. В дереве остаются прежние **143 untracked-файла** и additive изменение `AGENTS.md` — 43 строки §18. Staged diff пуст. Смешанный checkout `E:/dev/codex/frade` не использовался как baseline.
+
+**Результат по PRE-01**
+
+Принятый CSS adoption decision (C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/decisions/token-css-adoption-2026-09-30.md:9) устраняет прежнее противоречие:
+
+- Guide остаётся v1.0, tokens — 1.0.0; adoption revision 1 отделена от upstream version.
+- Oracle — исходный LF/UTF-8 CSS с **одной** заменой `:root:not([data-frade-theme])` на `:root:where(:not([data-frade-theme]))`.
+- Исходное вхождение действительно одно. Остальные байты, палитры, роли и media-правила не получают исключений.
+- Provenance/revision metadata находятся вне CSS.
+- CSS/TS drift и второе неразрешённое отклонение обязаны приводить к отказу проверки.
+- Design (C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/design.md:43), spec, BDD и tasks согласованно требуют browser matrix и её выполнения в Windows CI.
+
+Снижение специфичности автоматического Dark с `(0,2,0)` до `(0,1,0)` позволяет последнему forced-colors mapping победить на root без атрибута. Явные Light/Dark/HC и System сохраняют предусмотренный порядок.
+
+Независимо проверены сохранённые command results:
+
+| Исторический запуск | Проверенный результат |
+|---|---|
+| Source RED, 08:18:33 UTC | Exit 1; 62 несовпадения — 31 роль × root/child |
+| In-memory candidate, 08:18:54 UTC | Exit 0; 20 состояний, 1240 assertions, несовпадений нет |
+| Media evidence | Во всех 21 записанных состояниях фактические media соответствуют запросу |
+| Input integrity | Хеши из browser logs совпадают с текущими исходниками |
+
+Исходный Python generator также независимо воспроизводит исходный CSS побайтово. SHA256 принятого in-memory candidate:
+
+```
+6a6b47b12f5090a66231ee2541387ada31a2435d76f245c6631ad4285ac784a4
+```
+
+Это основание для готовности **плана исправления**, не production GREEN. Полученный ранее независимый report остаётся историческим FAIL.
+
+**Findings и ограничения**
+
+| ID | Severity / классификация | Результат |
+|---|---|---|
+| PRE-01 | Ранее HIGH · SPEC\_CONFLICT | Противоречие планирования разрешено принятой точной поправкой, согласованными артефактами и этим повторным review. Production fix остаётся NOT\_IMPLEMENTED. |
+| ENV-01 | ENVIRONMENT | Свежие browser probes заблокированы до assertions: `EPERM`, Playwright не может создать temp-каталог. Оба запуска дали exit 1, **0 assertions**. |
+| N-01 | LOW · неблокирующее замечание | Probe:45 (C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/evidence/pre01-readonly-probe-2026-09-30.mjs:45) записывает media state, но сам не включает его несоответствие в failure verdict. Сохранённые значения проверены отдельно; production test обязан иметь явные assertions, как уже требуют spec/design. |
+
+Повтор browser probe был дополнительной проверкой, допускаемой промптом «при необходимости». Его статус сохраняется **BLOCKED**. Обязательные PRE-проверки выполнены; browser evidence для оценки кандидата прочитано и проверено. Будущий обязательный запуск generated-CSS теста перед POST этим не заменяется.
+
+Stable scenario/example IDs пока относятся к реализации traceability. Частичная `theme.schema.json` внешней темы не заменяет проверку полного builtin role set. Оба ограничения отражены в плане и не представлены как выполненная реализация.
+
+**Команды и фактические результаты**
+
+Все команды выполнялись из указанного UI-worktree.
+
+| Команда / проверка | Exit / результат |
+|---|---|
+| `git branch --show-current`, `git rev-parse HEAD`, `git status --short --untracked-files=all` | 0; ожидаемый контекст |
+| `git diff -- AGENTS.md`, `git diff --cached --stat`, `git diff --check` | 0; прежний additive §18, staged diff пуст |
+| `openspec status --change frade-ui-design-contract --json` | 0; planning artifacts готовы |
+| `openspec validate frade-ui-design-contract --strict` | 0 |
+| `node openspec/changes/frade-ui-design-contract/evidence/pre01-planning-repair-check-2026-09-30.mjs` | 0 |
+| `node openspec/changes/frade-ui-design-contract/evidence/pre01-readonly-probe-2026-09-30.mjs source-red` | 1; ENVIRONMENT, не воспроизведённый RED |
+| Та же команда с `candidate` | 1; ENVIRONMENT, не candidate verdict |
+| `python -B ' _input/frade-ui-style-guide-v1/check-tokens.py'` | 0; 102 named contrast checks |
+| `pnpm check:boundaries` | 0; Draw/runtime/repository/workbench |
+| `node scripts/check-drawio-assets.mjs` | 0; 2851 pinned resources |
+| Read-only SHA256/transfer/isolation checks | 0; 145 manifest entries, 65 immutable transfer entries |
+| Проверка snapshot payloads | 0; process-before 12, WB acceptance-before 6, PRE-01-before 7 |
+| Проверка package graph/imports | 0; циклов нет, 64 workspace dependency links локальны |
+| Независимая проверка accepted operations/source bytes/browser logs | 0 |
+| Финальная проверка status/hash/imports | 0; review-изменений нет |
+
+Все семь planning-поправок соответствуют recorded operations; отдельно проверено сохранение предыдущего BDD. 123 остальных артефакта прежнего manifest неизменны. Foundation tasks остаются **3/17**.
+
+Исторические isolated-worktree логи подтверждают прежние typecheck/lint, desktop build и 83 теста. **Они не являются новым запуском и не означают выполнение `pnpm check:all`.** Полный gate, новые foundation tests и remote CI в этом PRE не запускались.
+
+**Архитектура, WB-001 и зависимости**
+
+Текущий граф подтверждает направление `ui-workspace → ui-navigator/ui-inspector`. Обратные зависимости запрещены. Наследование CSS variables позволяет сохранить эту границу; будущая leaf extraction требует своего scope. Native React controls и существующие Codicons остаются основой.
+
+Foundation поставляет данные, generated registry и проверки. Единственный runtime registry/resolver, preview, settings, prepaint initialization и atomic root/portal/X6/Draw.io adapters принадлежат P01. Подключения новой палитры к рабочему приложению в foundation нет.
+
+UI tokens отделены от `elementAppearance`, сохранённых diagram styles и domain visualization. Routing endpoints, constraints, алгоритмы, persistence и Repo Core contracts исключены.
+
+WB-001 ownership согласован:
+
+- Полный принятый текст и оба сценария сохранены; SHA256 блока — `6e96a420d5bcc7e9165d2992f5bca4ec7cbfc37778e4d8acd193d07dab66ca9e`.
+- Foundation владеет successor capability `workbench-visual-contract`.
+- Исходный `repository-workbench` находится в неархивированном pilot; соответствующий main spec отсутствует.
+- Pilot sync/archive owner потребляет acceptance record, сохраняет исторические assertions и связывает successor с конкретными одобренными migration scopes.
+- Untouched surfaces сохраняют прежний контракт. WB-002–WB-007 и Draw/domain behavior не меняются.
+
+Отдельного блокера supersession-механизма не найдено. Принятие текста не принимает новые screenshots или миграцию.
+
+По §18 UI не ожидает R04, routing repair или routing PRE. Будущее потребление UI-артефактов создаёт задачи у потребителя. Общий файл, ancestry и исторический fingerprint не создают product dependency.
+
+Последовательность foundation → P01 → … → P07 сохранена. Исполняемая VS Code API compatibility исключена; `.frade-extension` остаётся будущим P02 fixture с проверкой несовместимости исходного engines range. AI provider integration не заявлена.
+
+**FDS/A11Y и enforcement coverage**
+
+| Область | Оценка плана |
+|---|---|
+| FDS-003, 008, 010 | Foundation: semantic tokens, component contracts, literal/drift/traceability enforcement |
+| FDS-009 | Foundation: три палитры; P01: Light/Dark/HC/System и независимая density |
+| FDS-001, 002, 004–007, 011–014 | Отдельные runtime/migration checkpoints |
+| FDS-015–017 | P01–P07, без заявления реализации |
+| FDS-018 | UX parity, data import и executable compatibility разделены |
+| A11Y-001/002 | 34 named pairs × 3 темы; предусмотрены threshold-boundary tests |
+| A11Y-008 | Foundation: standalone forced-colors matrix; runtime zoom/reflow/coarse/reduced-motion — последующие этапы |
+| A11Y-003–007, 009–010 | Реальные focus, targets, keyboard, semantics, announcements и canvas alternative — P01/migration |
+
+План требует meaningful RED для role closure, malformed/nonfinite input, порогов контраста, equivalence/drift и cascade. Literal enforcement охватывает HEX/rgb/hsl/named/inline colors; исключения ограничены occurrence/hash/reason/stage и допустимыми data boundaries.
+
+Missing/unknown/duplicate traceability mappings, неполные examples и отсутствующие meaningful assertions должны падать. Future AI/LoV/Draw не считаются выполненными и не скрываются через skip.
+
+Negative/positive controls должны выполняться в проверенных isolated temp roots с ограниченным cleanup. Исторический `baseline/input-controls.py` пишет фиксированный старый report — повторно запускать его для новой evidence нельзя.
+
+CI-план сохраняет существующие jobs/checks, добавляет `ui-compliance` и standalone cascade test в Windows job. Remote protection остаётся **NOT\_CONFIGURED / unverified**.
+
+Семь baseline screenshots осмотрены. Они показывают прежний Dark workbench и отдельные светлые Draw surfaces; новых visual baselines этим review не принято. Token contrast не доказывает WCAG всего приложения.
+
+**Прочитанные артефакты и SHA256**
+
+Хеш-приложение этого отчёта — проверенный repeat PRE manifest (C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/evidence/pre01-repeat-pre-manifest-2026-09-30.json), содержащий точные `path / bytes / sha256` для 145 записей. Его собственный SHA256:
+
+```
+86fb40bb34695d3e3c7fc44fdf73f8a15964ead36b55020258e3a3a0a084e145
+```
+
+Из этого manifest прочитаны следующие группы; индивидуальные SHA256 привязаны к указанной неизменной версии manifest:
+
+- Root `AGENTS.md`, `docs/engineering/parallel-feature-workflow.md`, `openspec/config.yaml`, root/desktop manifests, CI и desktop Playwright config.
+- Foundation proposal/design/tasks/roadmap/execution-context; все три spec; семь decisions; BDD feature и traceability-plan.
+- PRE-01 decision/draft/report/probe/checker; before snapshot, accepted operations, investigation, preparation checks; полученный независимый report и прежний manifest.
+- Audit, REPORT, прежние PRE/process reports, transfer/isolation/bootstrap records, snapshot payloads; baseline manifests, command logs, input controls, capture results и семь PNG.
+- Input guide, checklist, AGENTS fragment, Themes-and-Plugins-Spec, README, tokens JSON/CSS, schema, generator/checker, supplied feature и содержимое sample ZIP.
+- Proposal/design/spec/tasks каждого P01–P07.
+- Исходный pilot `repository-workbench/spec.md` и `docs/ka-workbench/vscode-parity.md`.
+
+Ключевые reviewed planning hashes, относительно `openspec/changes/frade-ui-design-contract/`:
+
+```
+proposal.md
+e9ede9920639b465fb2d58dcf409177e5af2f2c06ee1b8f953268d852f3917ac
+design.md
+eafcc1c19d2d3916577eeb92eb118a6215a4028dcb69b4e33bd338e3687b36cb
+tasks.md
+ae03503e2a068559f128169d2c60d03b6571e97589b2accf6ec09c114dc6ac8f
+execution-context.json
+131283a9ad31028d2dec23286ea598e79190c3a45d4b04aab8111cf9dee76202
+roadmap.md
+301892a7b4b80c31c6ea0f2bf5933425846ed2ea443b98247047ec95dc71145d
+specs/ui-design-contract/spec.md
+c8a1231edb8a27460a0c3d7ee2e4def831b0552e3788d5bf569f18a719252b29
+specs/ui-token-compliance/spec.md
+5eae8511642260d99b7dfb9c66d8a56c499841b8fe149be3e864b4465b48d19a
+specs/workbench-visual-contract/spec.md
+c8e33822ff9363981f3ccf5eee951fd55d1e5fe3932656554b87dc83111be000
+decisions/token-css-adoption-2026-09-30.md
+90b66c3291a269aae8d8a78903d36efc16b57d75fb8258c3aa6eed66c8a8fc1c
+bdd/ui-contracts.feature
+c6854b6f501bc070ab141d4040b3a1f6d4eb33698b36604928cb4047272d7a0a
+bdd/traceability-plan.md
+0c7be5239629f8d12251f2262034fd629107c7df557f3f63b250b91b9b7354c8
+```
+
+Дополнительно прочитанные контракты и релевантные source excerpts вне manifest:
+
+```
+docs/adr/0003-isolated-desktop-runtime.md
+1f90716b6438180a80ee16d7e46d7184d28be44c9f7d0faf99169ecb834693c8
+docs/adr/repo-core.md
+68586aea0048d52fee72db6739dd3594d1b47e3ad40d0903abbfd8892fa78cf9
+docs/diagrams/system-appearance.md
+a43bde762451348e5c9ba4c761a0ac5b38c40c41cace1a4af0a56eda7e9a0bf2
+openspec/specs/reusable-draw-package/spec.md
+bf0b5cc60c9d3466a14755cabfd404c5ee4fdc8ea82f3b226e3457f54e0591a9
+openspec/specs/foundation-quality-gates/spec.md
+f908d7d75737dfaf4e4779eb0e3482325ca0bfec83401f9de87ffcd2f2420e1f
+packages/ui-workspace/THIRD-PARTY-NOTICES.md
+2f7124a057bc4bd8c18727198d9ff0458359322664c63e0d48274d8e7a74f85a
+packages/ui-workspace/src/styles.css
+6a156874f161d81bc5bd24fa05272b86c386aedd3c47f53ed636f909c585c2ee
+packages/ui-workspace/src/Workbench.tsx
+249f5d43705296f7869e81ec7a189c55838dcff11736b28a8f48f8a6d9999141
+packages/ui-workspace/src/FradeDiagramView.tsx
+e0babf77aa276dafd2787e5ab5086c173ec241b4781826adfa4d82702faaefba
+packages/ui-workspace/src/elementAppearance.ts
+5d32680c12eeae8c210b6471f45258fdc8ef87fdcd704dc79b498b02e74ee39c
+packages/ui-workspace/src/state.ts
+af4e1c8a753f79cffe9c29e8654b0d98bd68fcdbf8f914e052c37b6d02099a01
+packages/ui-workspace/src/index.ts
+d05f6dbade9e7d043d9f0c9c789b77221cb488eea0506e31f854d445d0b107d9
+packages/ui-navigator/src/Navigator.tsx
+8cffe9742a3c61d61e33174f674e9c5b14791bdf38ec19cdb56f01576ceff9e8
+packages/ui-inspector/src/Inspector.tsx
+7a1d975cb64f538a70c7bc39777829dc5c6a0d2e7fdf71ac948a06493baac616
+apps/desktop/src/renderer/main.tsx
+4b41ab13fa57c00dff44be866b07fbb1d35f6dc02ec92b092c6c1f326ab4f822
+apps/desktop/src/renderer/style.css
+d0fc4000f5e90075477ba2f1121475166a1a1ee9201a0dc861a7cfa6f8c803f7
+scripts/check-workbench-boundaries.mjs
+94e327b1645d0ed68f6c4310b3dac30aa96a1017f5eacc76e47d3b82b3e79ee1
+pnpm-workspace.yaml
+a60521c70d68098d0d25b9f5defce6267f246f1dfff2df59f9406c0664272e3f
+.prettierrc.json
+c1dccb468ed98842763f5dd6abaf80a61b8f2cab9a3a9acad5de8de3821b8933
+```
+
+Routing документы просмотрены в части границ, invariants и процесса, без review реализации routing:
+
+```
+packages/draw/src/routing/AGENTS.md
+d93eca39d515a9192ca7d1dfe763e200bb5a9017558d7ec8c8137ee52ad62150
+docs/routing-v2/drawio-routing-master-spec.md
+2ceebd3485e708e0bf919e748af1ba4d8bc78e5ac0b21e7ba1da95f1dd39c2e5
+docs/routing-v2/implementation-playbook.md
+caf90bc29626f09cff4f5ce284f86fce305db03fa1ffe10c4726bb166a5b51bb
+```
+
+Для package graph прочитаны текущие workspace manifests. Ниже SHA256 `packages/<name>/package.json`; Draw и desktop дополнительно связаны manifest:
+
+```
+adapter-sberea-yaml  1ca3dddf01b56340eb6cf41212cb132c87d0cc1212ce27b37adb9395c63758e2
+adapter-yaml        86d6cb6f551247c64eed4e238565b0d10bb38859009dfa62e454056d640c002f
+draw                9459494272b36b83fe3519480b26d5f66244e6fc973a3df9d540fa67cfa2af50
+local-index         24b85b81dcad17f18d92dcd067a4dfcc3603480fd8f9fcc1da0a14c9b28138e1
+metamodel-compiler  ba21bda5ec8df12fc5d687e3fe197307eb7c7782d7237bdfd8367e38ff2198d5
+metamodel-config    fa6472cf4d2345befa6b814e87114ae05c0d38c34b224d8c7435faf2b57c2902
+metamodel-domain    02e1b4dfd0013d2c865626992c65ae5b9b1f7f251cec9c23a9c089e01896aed1
+repository-api      389a05683887dd226e18fb04669a03a29a303744f594bf3e34b042524bf3707a
+repository-application 568315759f0a0a5670ce3fd43859f6b5ec3099bdb1e7e356fb12165f017c18ed
+repository-bridge   419d4a97049db7b16fbdef2b5fe7144a2672d04d492c0482f4702a90aa65eb19
+repository-domain   34d3c8f12350e9f93fcd872677d633c9812572baa4f96d4995da831a8f5d2c51
+repository-ports    f3a61fa61873f139f48d7e9736fbc365496e1633c67286000dd6b192361fb17e
+runtime-contracts   9c35764dc0cde8b0f122f3b2b275aad5e73642e2f2901b1a820966aea69780e4
+runtime-electron    04d3aad05d3068eacdcda8e422d978ffe55279d2f02ca52f6a630548ce58246d
+runtime-node        cb11f1a5813bd9369bfcdd2697f35ac58c165aeb5dc3fc59bc0113ba4b629050
+ui-inspector        1a97910932eb0c063c30fd44fd6c91b14d9de5f358bc080e07dcfe7f7e0ff5d2
+ui-navigator        215257e3d585b94cd893921175277d8070ba61c513218a37c46728ac561c60f6
+ui-workspace        7f7d7e0a030b8070251a8be6047a51783b9bfee5c2bcad2ff6d2ca80ed2f9457
+versioning-git      194c919a01761dfa28a1d2bb2e010bba507b358d45964f1df1938e5e955f4590
+```
+
+**Обязательные проверки перед POST**
+
+1. Сохранить meaningful RED до generator/checker implementation; выполнить GREEN для role closure, malformed/nonfinite input, contrast boundaries, single-exception equivalence, второго отклонения и CSS/TS drift.
+2. Выполнить production standalone browser test: все 20 состояний, подтверждение media, все 31 роли на root/child. Команда через существующий runner:  
+   `pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-token-cascade.spec.ts`
+3. Выполнить literal/traceability negative и positive controls, включая новые литералы рядом с legacy exception и неполные mappings/assertions.
+4. Подключить фактические новые scripts к `pnpm check`/CI; выполнить `pnpm check:all` и точные команды новых jobs без ослабления существующих проверок.
+5. Проверить provenance, input/history hashes, additive AGENTS, scope, package boundaries и отсутствие runtime/domain изменений.
+6. Выполнить OpenSpec verification, затем независимый POST. Обязательные BLOCKED/NOT\_RUN исключают POST PASS и archive.
+
+P01 и migration отдельно требуют runtime theme/density/a11y/keyboard/visual matrix, screenshots и принятия новых baseline.
+
+**Итоговый foundation checkpoint**
+
+```
+GATE_STATUS: PASS
+READY_FOR_IMPLEMENTATION: YES
+```
+
+Approved foundation scope ограничен следующими путями и операциями:
+
+| Пути относительно workspace | Разрешённые операции |
+|---|---|
+| `docs/ui/Frade-UI-Style-Guide.md`, `QA-Checklist.md`, `Themes-and-Plugins-Spec.md` | Каноническое принятие с provenance и отдельными adoption notes |
+| `docs/ui/components.md`, `docs/ui/migration.md`, `docs/ui/decisions/` | Component contracts, точный legacy inventory, foundation decisions |
+| `AGENTS.md` | Только additive UI section из reviewed proposal, сохраняя существующие правила |
+| `packages/ui-workspace/tokens/tokens.json`, `theme.schema.json` | Канонические token/schema данные и validation contract |
+| `packages/ui-workspace/src/design/generated/tokens.css`, `tokens.ts` | Детерминированные outputs; ровно принятое CSS-исключение |
+| `scripts/ui/*.mjs`, `tests/ui-contract/`, относящиеся к foundation файлы `tests/contract/` | Generator, contrast/drift/literal/traceability checks и meaningful tests |
+| `apps/desktop/tests/e2e/ui-contract-token-cascade.spec.ts` | Только standalone generated-CSS document и 20-state matrix |
+| `package.json`, `packages/ui-workspace/package.json` | Необходимые additive scripts/exports |
+| `.github/workflows/ci.yml`, `scripts/check-workbench-boundaries.mjs` | Additive enforcement с сохранением existing checks |
+| `openspec/changes/frade-ui-design-contract/evidence/` | Новые уникально датированные evidence; история неизменна |
+
+Каталоги не разрешают произвольных изменений внутри них.
+
+Исключены runtime theme service/интеграция P01, feature migration, новый UI package/logo/icon family, domain/persistence/routing/control изменения, package/lock updates, input/vendor/reference/baseline правки и изменение pilot/main specs.
+
+Review завершён. Implementation, P01, migration, verify и archive не начаты.

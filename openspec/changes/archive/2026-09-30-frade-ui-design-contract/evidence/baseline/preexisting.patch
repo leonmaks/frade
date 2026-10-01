@@ -1,0 +1,51 @@
+diff --git a/docs/routing-v2/CURRENT_CHANGE.md b/docs/routing-v2/CURRENT_CHANGE.md
+index eb5a430..a019429 100644
+--- a/docs/routing-v2/CURRENT_CHANGE.md
++++ b/docs/routing-v2/CURRENT_CHANGE.md
+@@ -5,9 +5,9 @@ PROGRAM: Routing Engine V2
+ ACTIVE_CHANGE: routing-v2-04-orthogonal-router
+ PREVIOUS_CHANGE: routing-v2-03-direction-resolver
+ SEQUENCE_POSITION: R04_OF_10
+-PHASE: PLANNING
++PHASE: IMPLEMENTATION
+ 
+-APPROVED_PLANNING_COMMIT: da22452d7e9c35f28f4004d9826432b12bf6a521
++APPROVED_PLANNING_COMMIT: 98f387f96b51b0ad139e3507c376ff1c3e8dec09
+ BASE_COMMIT: cf424e247490fdfae2c4efc9f7e7377b6d5b6e11
+ IMPLEMENTATION_ORIGIN_COMMIT: cf424e247490fdfae2c4efc9f7e7377b6d5b6e11
+ PREVIOUS_CHANGE_STATUS: CLOSED
+@@ -31,7 +31,7 @@ PROCESS_CONTROL_STATUS: COMPLETE
+ PROCESS_CONTROL_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/process-control-repair-validation.md
+ IMPLEMENTATION_STATUS: IN_PROGRESS
+ IMPLEMENTATION_TESTS: FAIL
+-IMPLEMENTATION_PAUSED: true
++IMPLEMENTATION_PAUSED: false
+ ACTIVE_IMPLEMENTATION_BLOCKER: fresh independent PRE PASS and a control-only planning checkpoint are required before implementation resumes
+ IMPLEMENTATION_BLOCKER_EVIDENCE: openspec/changes/routing-v2-04-orthogonal-router/evidence/pre-implementation-revalidation-fail-runtime-invalid-2026-09-29.md
+ PLANNING_REPAIR: MUTATION_RUNTIME_INVALID_OUTCOME
+diff --git a/packages/draw/package.json b/packages/draw/package.json
+index e14c4dc..5917a89 100644
+--- a/packages/draw/package.json
++++ b/packages/draw/package.json
+@@ -39,6 +39,7 @@
+     "@types/react": "18.3.27",
+     "@types/react-dom": "18.3.7",
+     "@vitejs/plugin-react": "4.7.0",
++    "fast-check": "4.10.2",
+     "jsdom": "26.1.0",
+     "typescript": "5.9.3",
+     "vite": "6.1.0",
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 9e401ea..62bf73a 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -371,6 +371,9 @@ importers:
+       '@vitejs/plugin-react':
+         specifier: 4.7.0
+         version: 4.7.0(supports-color@7.2.0)(vite@6.1.0(@types/node@24.10.1)(jiti@2.7.0)(lightningcss@1.33.0)(yaml@2.8.2))
++      fast-check:
++        specifier: 4.10.2
++        version: 4.10.2
+       jsdom:
+         specifier: 26.1.0
+         version: 26.1.0(supports-color@7.2.0)

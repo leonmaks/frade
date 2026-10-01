@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-01T07:06:52.617Z",
+  "runs": [
+    {
+      "command": "pnpm --filter @frade/desktop typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-targeted-20261001T070007Z-0.txt"
+    },
+    {
+      "command": "pnpm --filter @frade/desktop lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-targeted-20261001T070007Z-1.txt"
+    },
+    {
+      "command": "pnpm --filter @frade/ui-workspace test:bdd",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-targeted-20261001T070007Z-2.txt"
+    },
+    {
+      "command": "openspec validate frade-p01-theme-core --strict --json",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-targeted-20261001T070007Z-3.txt"
+    },
+    {
+      "command": "node Playwright CLI tests/e2e/workbench-multiroot.spec.ts tests/e2e/diagrams.spec.ts --grep WB-006/007|drawio navigator drop",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-targeted-20261001T070007Z-compat.txt",
+      "output": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-accepted-delta-targeted-20261001T070007Z-compat-artifacts"
+    },
+    {
+      "command": "node Playwright CLI tests/e2e/ui-contract-theme.spec.ts --grep P01-B02 actual flow manager states",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-targeted-20261001T070007Z-b02.txt",
+      "output": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-accepted-delta-targeted-20261001T070007Z-b02-artifacts"
+    }
+  ],
+  "post": "NOT_RUN",
+  "visualApproval": "NOT_APPROVED"
+}

@@ -1,0 +1,25 @@
+{
+  "recordedAtUtc": "2026-10-01T05:53:25.743Z",
+  "runs": [
+    {
+      "command": "openspec validate frade-p01-theme-core --strict --json",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-checks-20261001T055257Z-0.txt"
+    },
+    {
+      "command": "pnpm --filter @frade/ui-workspace test:bdd",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-checks-20261001T055257Z-1.txt"
+    },
+    {
+      "command": "pnpm ui:compliance",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-checks-20261001T055257Z-2.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-checks-20261001T055257Z-3.txt"
+    }
+  ]
+}

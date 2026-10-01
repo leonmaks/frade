@@ -1,0 +1,226 @@
+{
+  "changeName": "frade-ui-design-contract",
+  "schemaName": "spec-driven",
+  "planningHome": {
+    "kind": "repo",
+    "root": "E:\\dev\\codex\\frade",
+    "changesDir": "E:\\dev\\codex\\frade\\openspec\\changes",
+    "defaultSchema": "spec-driven"
+  },
+  "changeRoot": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract",
+  "artifactPaths": {
+    "proposal": {
+      "outputPath": "proposal.md",
+      "resolvedOutputPath": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\proposal.md",
+      "existingOutputPaths": [
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\proposal.md"
+      ]
+    },
+    "specs": {
+      "outputPath": "specs/**/*.md",
+      "resolvedOutputPath": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\specs\\**\\*.md",
+      "existingOutputPaths": [
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\specs\\ui-design-contract\\spec.md",
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\specs\\ui-token-compliance\\spec.md",
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\specs\\workbench-visual-contract\\spec.md"
+      ]
+    },
+    "design": {
+      "outputPath": "design.md",
+      "resolvedOutputPath": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\design.md",
+      "existingOutputPaths": [
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\design.md"
+      ]
+    },
+    "tasks": {
+      "outputPath": "tasks.md",
+      "resolvedOutputPath": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\tasks.md",
+      "existingOutputPaths": [
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\tasks.md"
+      ]
+    }
+  },
+  "isPlanningComplete": true,
+  "isComplete": true,
+  "applyRequires": [
+    "tasks"
+  ],
+  "nextSteps": [
+    "All planning artifacts are complete. Run openspec instructions apply --change \"frade-ui-design-contract\" --json to inspect implementation progress."
+  ],
+  "actionContext": {
+    "mode": "repo-local",
+    "sourceOfTruth": "repo",
+    "planningArtifacts": [
+      "proposal",
+      "specs",
+      "design",
+      "tasks"
+    ],
+    "linkedContext": [],
+    "allowedEditRoots": [
+      "E:\\dev\\codex\\frade"
+    ],
+    "requiresAffectedAreaSelection": false,
+    "constraints": [
+      "Repo-local change artifacts and implementation edits are scoped to this project."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "proposal",
+      "outputPath": "proposal.md",
+      "status": "done",
+      "requires": []
+    },
+    {
+      "id": "specs",
+      "outputPath": "specs/**/*.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "design",
+      "outputPath": "design.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "tasks",
+      "outputPath": "tasks.md",
+      "status": "done",
+      "requires": [
+        "specs",
+        "design"
+      ]
+    }
+  ],
+  "root": {
+    "path": "E:\\dev\\codex\\frade",
+    "source": "nearest"
+  }
+}
+{
+  "changeName": "frade-ui-design-contract",
+  "changeDir": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract",
+  "schemaName": "spec-driven",
+  "contextFiles": {
+    "proposal": [
+      "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\proposal.md"
+    ],
+    "specs": [
+      "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\specs\\ui-design-contract\\spec.md",
+      "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\specs\\ui-token-compliance\\spec.md",
+      "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\specs\\workbench-visual-contract\\spec.md"
+    ],
+    "design": [
+      "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\design.md"
+    ],
+    "tasks": [
+      "E:\\dev\\codex\\frade\\openspec\\changes\\frade-ui-design-contract\\tasks.md"
+    ]
+  },
+  "progress": {
+    "total": 17,
+    "complete": 1,
+    "remaining": 16
+  },
+  "tasks": [
+    {
+      "id": "1",
+      "description": "1.1 Inspect actual AGENTS, manifests, OpenSpec/CI, approved UI/domain/routing contracts and input package; preserve HEAD/worktree/hash/screenshots evidence and map FDS/A11Y to real modules in evidence/audit.md.",
+      "done": true
+    },
+    {
+      "id": "2",
+      "description": "1.2 Approve complete WB-001 visual successor/ownership decision in decisions/visual-contract.md; preserve old parity evidence and record explicit acceptance before production edits.",
+      "done": false
+    },
+    {
+      "id": "3",
+      "description": "1.3 Resolve root AGENTS/R04 freeze through its owning planning/revalidation protocol or R04 closure; verify control hashes, scope and independent review before any edit.",
+      "done": false
+    },
+    {
+      "id": "4",
+      "description": "1.4 Obtain independent PRE PASS for foundation scope/test plan after strict validation; record reviewer, artifact hashes, baseline and READY_FOR_IMPLEMENTATION. Executor cannot self-approve.",
+      "done": false
+    },
+    {
+      "id": "5",
+      "description": "2.1 Copy guide v1.0/checklist/themes specification to chosen docs/ui paths with provenance/hash and a separate current adoption note; verify actual links and do not claim source-package checks describe Frade runtime.",
+      "done": false
+    },
+    {
+      "id": "6",
+      "description": "2.2 Add adapted UI fragment to root AGENTS without deleting rules, only after task 1.3; verify additive diff and retained routing/core gates.",
+      "done": false
+    },
+    {
+      "id": "7",
+      "description": "2.3 Document native primitives/component anatomy/state/keyboard/token contracts and legacy exception inventory; verify narrow exports do not create navigator/inspector/workspace cycles through boundary tests.",
+      "done": false
+    },
+    {
+      "id": "8",
+      "description": "3.1 Add meaningful failing node:test fixtures for palette role closure, contrast boundaries, generation equivalence/drift and malformed tokens; retain RED before adapting generator/checker.",
+      "done": false
+    },
+    {
+      "id": "9",
+      "description": "3.2 Adapt JSON pipeline to Node, generate CSS/TS registry and expose checks via actual pnpm scripts; verify equivalence to source CSS and all 102 contrast pairs; document commands.",
+      "done": false
+    },
+    {
+      "id": "10",
+      "description": "3.3 Add failing feature-literal controls plus positive theme/domain/generated boundaries; implement exact occurrence exceptions and verify new/changed colors fail without whole-file exemptions.",
+      "done": false
+    },
+    {
+      "id": "11",
+      "description": "3.4 Implement traceability for adapted bdd/ui-contracts.feature: fail missing/unknown/duplicate mappings and assertions; preserve approved future AI/LoV/Draw boundaries without skipped tests masquerading as coverage.",
+      "done": false
+    },
+    {
+      "id": "12",
+      "description": "3.5 Run isolated OS-temp negative literal/drift/contrast controls and positive controls with actual exit results; remove only verified temporary roots and retain hashes/reports outside production.",
+      "done": false
+    },
+    {
+      "id": "13",
+      "description": "4.1 Add ui-compliance to existing CI and pnpm check, retaining original jobs/checks; execute its exact commands locally and document remote state separately.",
+      "done": false
+    },
+    {
+      "id": "14",
+      "description": "4.2 Deliver owner required-check instructions and verify actual GitHub rules if authenticated tooling is available; otherwise retain NOT_CONFIGURED/unverified enforcement.",
+      "done": false
+    },
+    {
+      "id": "15",
+      "description": "4.3 Run project typecheck/lint/unit/BDD/boundaries/build and applicable browser/Electron checks with logs; preserve baseline hashes and separate environment errors from UI defects.",
+      "done": false
+    },
+    {
+      "id": "16",
+      "description": "4.4 Perform OpenSpec verification then independent POST over diff/evidence and git status/diff; no code edits during review; required NOT_RUN/BLOCKED prohibits PASS/archive.",
+      "done": false
+    },
+    {
+      "id": "17",
+      "description": "4.5 Archive/close only after required checks and POST PASS using project workflow; stop at checkpoint. P01 owns runtime resolver, not a competing foundation service.",
+      "done": false
+    }
+  ],
+  "taskTrackingConfigured": true,
+  "state": "ready",
+  "instruction": "Read context files, work through pending tasks, mark complete as you go.\nPause if you hit blockers or need clarification.",
+  "root": {
+    "path": "E:\\dev\\codex\\frade",
+    "source": "nearest"
+  }
+}

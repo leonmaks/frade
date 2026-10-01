@@ -1,0 +1,472 @@
+{
+  "activeChange": "frade-p01-theme-core",
+  "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+  "branch": "codex/frade-ui-design-contract",
+  "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "phase": "LOWER_KEYBOARD_ACCEPTED_PLANNING_VALIDATION_CHECKPOINT_COMMIT_PENDING",
+  "taskCounts": {
+    "completed": 5,
+    "total": 10
+  },
+  "implementation": "CORE_AND_ACCEPTED_B02_RUNTIME_PASS_CURRENT_ROOT_PASS_COVERAGE_OPEN",
+  "preReview": "PRE-P01-B02-20260930T185730Z",
+  "preStatus": "PASS",
+  "readyForImplementation": true,
+  "independentReviewerThread": "01a0f3ae-b5cd-7b10-9400-a69bc5ed39bd",
+  "requestedModel": "gpt-6-astra",
+  "requestedEffort": "xhigh",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "reviewTransport": "AUTOMATIC_READ_ONLY_COMPLETED_UNCHANGED",
+  "currentScopeRepair": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-repair-v2.proposed.md",
+  "currentScopeRepairSha256": "5372993a796683ae34d350fd53264cf50fa1a0fa6320289d696a7c133bbe4d4f",
+  "scopeRepairAcceptance": "USER_ACCEPTED",
+  "repeatPre": "COMPLETED_PASS_CANDIDATE_UNCHANGED",
+  "foundationPrerequisite": "FULFILLED_ARCHIVED_21_OF_21_POST_PASS",
+  "routingPrerequisite": false,
+  "blockers": [
+    {
+      "id": "PRE-P01-B01",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "PRE-P01-B02",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "PRE-P01-B03",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "PRE-P01-B04",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "PRE-P01-B05",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "P01-FRAME-DETACH-01",
+      "status": "RESOLVED_GREEN",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-detached-frame-green-20261001T034121Z.json"
+    },
+    {
+      "id": "P01-ROOT-REGRESSION-01",
+      "status": "RESOLVED_CURRENT_FULL_ROOT_PASS_HISTORICAL_FAIL_PRESERVED",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-full-regression-20261001T034358Z.json",
+      "repeat": "openspec/changes/frade-p01-theme-core/evidence/p01-existing-regression-direct-20261001T040132Z.json",
+      "details": "Root pnpm check:all exit1: desktop64PASS5FAIL; unchanged existing retry1PASS2FAIL. Native segment FAIL did not recur in isolated retry; readonly drop and WB006/007 still FAIL.",
+      "currentEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json",
+      "currentDetails": "Current accepted minimal source: Draw215PASS desktop71PASS, exit0; all538 source hashes unchanged. Other coverage/visual/SaveAs decisions remain separately visible."
+    },
+    {
+      "id": "P01-READONLY-STATE-01",
+      "status": "ACCEPTED_DELTA_RUNTIME_PASS",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-read-only-state.proposed.md"
+    },
+    {
+      "id": "P01-FRAME-B02-FIXTURE-01",
+      "status": "RESOLVED_TEST_RCA_GREEN",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-readiness-checks-20261001T041334Z.json",
+      "details": "B02 current frame SVG detaches during scroll preparation; no production repair or correctness waiver.",
+      "currentEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-rca-green-20261001T070923Z.json"
+    },
+    {
+      "id": "P01-BUNDLE-FRAME-COMPAT-01",
+      "status": "RESOLVED_TARGETED_AND_FULL_ROOT_PASS",
+      "source": "apps/desktop/tests/e2e/bundle-flows.spec.ts",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-bundle-frame-readiness.proposed.md",
+      "reproduction": "openspec/changes/frade-p01-theme-core/evidence/p01-bundle-frame-unchanged-reproduction-20261001T073825Z.json",
+      "currentEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z.json"
+    },
+    {
+      "id": "P01-WORKSPACE-SAVEAS-READINESS-01",
+      "status": "REPEAT_PRE_FAIL_SCOPE_DECISION_REQUIRED",
+      "source": "apps/desktop/tests/e2e/workbench-multiroot.spec.ts",
+      "failedResult": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-readiness-targeted-20261001T085708Z.json",
+      "unchangedRetry": "PASS_openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-minimal-verify-20261001T090249Z.json",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-workspace-saveas-readiness.proposed.md",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json",
+      "preFailure": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-received-20261001T111840Z",
+      "inputRepair": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-input-repair-20261001T113009Z.json",
+      "repeatPre": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z"
+    },
+    {
+      "id": "P01-FRAME-BOTTOM-CHROME-01",
+      "status": "CONFLICT_ADDRESSED_BY_ACCEPTED_KEYBOARD_PLAN_NEW_PRE_PENDING",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-chrome-observation-20261001T101428Z/result.json",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md",
+      "sha256": "e829e59637b43929f35acfaec85cd869ff61c6a0ddb7992037dbf65abd1129b7",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json",
+      "preFailure": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-received-20261001T111840Z",
+      "inputRepair": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-input-repair-20261001T113009Z.json",
+      "repeatPre": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z",
+      "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard-accepted-20261001T115657Z.json"
+    }
+  ],
+  "humanDecisions": [
+    {
+      "id": "P01-READONLY-STATE-01",
+      "status": "USER_ACCEPTED",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-read-only-state.proposed.md",
+      "reason": "Accepted B02 prohibits feature behavior/source changes; AGENTS6 prohibits removing meaningful assertions without a specification decision.",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-readonly-readiness-accepted-20261001T055229Z.json"
+    },
+    {
+      "id": "P01-COMPAT-READINESS-01",
+      "status": "USER_ACCEPTED",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-existing-fixture-readiness.proposed.md",
+      "reason": "Accepted closed P01 paths exclude these two existing fixture files; exact stronger readiness addition requires a scope decision and focused PRE.",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-readonly-readiness-accepted-20261001T055229Z.json"
+    },
+    {
+      "id": "P01-CURRENT-CANDIDATE-EGRESS-01",
+      "status": "RESOLVED_BY_EXPLICIT_PACKET_AUTHORIZATION",
+      "reason": "Automatic approval review denied external reviewer launch twice; direct approval requested for current candidate.",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-readiness-pre-transport-blocked-20261001T055725Z.json",
+      "authorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-packet-authorization-20261001T061101Z.json"
+    },
+    {
+      "id": "P01-BUNDLE-FRAME-COMPAT-01",
+      "status": "USER_ACCEPTED",
+      "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-bundle-frame-readiness-accepted-20261001T075310Z.json"
+    },
+    {
+      "id": "P01-WORKSPACE-SAVEAS-READINESS-01",
+      "status": "USER_ACCEPTED",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-workspace-saveas-readiness.proposed.md",
+      "sha256": "b57e035fa8b104e62d9e14ecb952f0cadc2322d8e6040d10cef6660799a99dfa",
+      "reason": "Current accepted WB delta permits rename-dialog-hidden only; SaveAs existence preconditions require a separate exact scope decision.",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json"
+    },
+    {
+      "id": "P01-FRAME-BOTTOM-CHROME-01",
+      "status": "USER_ACCEPTED",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md",
+      "sha256": "e829e59637b43929f35acfaec85cd869ff61c6a0ddb7992037dbf65abd1129b7",
+      "reason": "The accepted closed matrix and private stylesheet omit the actual lower div chrome; exact additional targets/properties and coverage must be explicitly reviewed before production repair.",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json"
+    }
+  ],
+  "laterHumanDecision": "New per-surface visual baseline approval after actual implementation evidence",
+  "nextAction": "Validate coherent accepted artifacts/BDD; prepare immutable bounded packet and automatic focused PRE. No source edits before PASS; taskCounts5/10, visual/verify/POST/archive remain open; STOP before P02.",
+  "sourceAndOriginalPlanningUnchanged": false,
+  "scopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-v2-accepted-20260930T180721Z.json",
+  "scopeAcceptanceRecordedAtUtc": "2026-09-30T18:07:21.024Z",
+  "productionSourceUnchanged": false,
+  "originalPlanningRawPreserved": true,
+  "repeatPreReview": "PRE-P01-B02-20260930T185730Z",
+  "reviewTransportAuthorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-transport-authorization-20260930T182032Z.json",
+  "previousTransportBlocker": "Automatic approval reviewer denied two identical Codex CLI launch requests because source transmission to external model service needs explicit user egress approval.",
+  "previousPreReviews": [
+    {
+      "id": "PRE-P01-20260930T171207Z",
+      "status": "FAIL",
+      "reviewerThread": "01a0f34d-1598-7660-8cb5-eb31c492ccc0"
+    },
+    {
+      "id": "PRE-P01-R2-20260930T182032Z",
+      "status": "FAIL",
+      "reviewerThread": "01a0f38c-f890-7153-a467-2dfd3554747d",
+      "report": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-received-PRE-P01-R2-20260930T182032Z.md",
+      "reportSha256": "ba964d8cccc91f495b8ccac3f0bae715ceec0d8f242f85e1c073e70993d1b47c"
+    }
+  ],
+  "reviewReport": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-received-PRE-P01-B02-20260930T185730Z.md",
+  "reviewReportSha256": "444388837f4fdaa21d6bee5ea01ae2850e62f44919599e9bae698c290565a9d5",
+  "transportBlockerResolved": true,
+  "b02ScopeAcceptance": "USER_ACCEPTED",
+  "b02ScopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-b02-color-closure-accepted-20260930T185351Z.json",
+  "b02ScopeAcceptanceRecordedAtUtc": "2026-09-30T18:53:51.021Z",
+  "currentScopeAddition": "openspec/changes/frade-p01-theme-core/decisions/p01-b02-color-closure.proposed.md",
+  "currentScopeAdditionSha256": "cd12aef78aa19f38028c357d3622d34768d83d9c52f8f530f1dea283fa95d802",
+  "latestImplementationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-repair-status-20261001T041931Z.md",
+  "performance": {
+    "status": "PASS_REFERENCE_LOCAL_HARDWARE",
+    "p95Ms": 118.5,
+    "budgetMs": 150,
+    "warmups": 20,
+    "samples": 100,
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z-artifacts/apps/desktop/test-results/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/performance-result.json",
+    "hardwareWitness": "LIVE_LOCAL_NODE_OS_SAME_HOST_AS_LAUNCHED_ELECTRON",
+    "actualHardware": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz",
+    "remoteCiStatus": "NOT_RUN"
+  },
+  "visualBaselineApproval": "NOT_APPROVED",
+  "readyForVerify": false,
+  "postStatus": "NOT_RUN",
+  "remaining": [
+    "Task2.4 complete B02 consumer/lifecycle/adapter evidence and traceability",
+    "Task2.5 full applicable accessibility/state coverage and human visual baseline approval",
+    "Task3.1 root check:all and compliance",
+    "Task3.2 OpenSpec verify and independent automated POST",
+    "Task3.3 archive only after all required PASS; STOP before P02"
+  ],
+  "lastUpdatedAtUtc": "2026-10-01T11:01:09.997Z",
+  "currentDocsChecks": "openspec/changes/frade-p01-theme-core/evidence/p01-final-doc-checks-20261001T042047Z.json",
+  "focusedDeltaPre": {
+    "status": "PASS",
+    "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-readonly-readiness-accepted-20261001T055229Z.json",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "id": "PRE-P01-READONLY-READINESS-PACKET-20261001T061101Z",
+    "prompt": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-readiness-pre-20261001T055434Z-prompt.md",
+    "manifest": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-readiness-pre-20261001T055434Z-manifest.json",
+    "checks": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-checks-20261001T055257Z.json",
+    "gateStatus": "PASS",
+    "reviewStarted": true,
+    "transportEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-readiness-pre-transport-blocked-20261001T055725Z.json",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-received-PRE-P01-READONLY-READINESS-PACKET-20261001T061101Z.md",
+    "reportSha256": "1091202fb09fcdb2700df1ccc4f142400823dbd3d1dec86170805511e499b3cf",
+    "provenance": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-pre-provenance-20261001T064615Z.json",
+    "threadId": "01a0f62c-fbfa-7ab3-83fe-ce86b2fda327",
+    "candidateUnchanged": true,
+    "packetUnchanged": true
+  },
+  "readyForDeltaImplementation": false,
+  "packetAuthorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-packet-authorization-20261001T061101Z.json",
+  "reviewPacketTransport": {
+    "status": "PASS_LOCAL_FOCUSED_PRE",
+    "packetFiles": 1205,
+    "packetBytes": 29105916,
+    "localCandidateFiles": 9990,
+    "rootDenied": true,
+    "scope": "P01 relevant packet plus minimal public runtime; exact shell canary read/write confinement verified",
+    "proof": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-pre-provenance-20261001T064615Z.json"
+  },
+  "currentRootResult": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json",
+  "currentRootSummary": {
+    "status": "PASS",
+    "draw": {
+      "passed": 215,
+      "failed": 0
+    },
+    "desktop": {
+      "passed": 71,
+      "failed": 0
+    },
+    "sourceVariant": "final minimal approved readiness source",
+    "sourceUnchanged": true,
+    "currentMinimalSourceFullRoot": "PASS",
+    "artifactFiles": 1242
+  },
+  "acceptedDeltaRuntime": {
+    "readonlyNative": "PASS",
+    "readonlyFrame": "PASS",
+    "compatibilityTwoPaths": "PASS_TARGETED_AND_FULL",
+    "source": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+    "sha256": "ca658de7150110d1bf985f0904c085e23ba1d09e71c2781c2a8478f1216fa64d",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-rca-green-20261001T070923Z.json",
+    "rootArtifacts": "openspec/changes/frade-p01-theme-core/evidence/p01-current-root-artifacts-20261001T073825Z",
+    "readonlyCaptureCounts": {
+      "nativePending": 36,
+      "nativeDraft": 36,
+      "framePending": 36,
+      "frameDraft": 36
+    },
+    "benchmark": {
+      "p95Ms": 126.59999996423721,
+      "budgetMs": 150,
+      "status": "PASS",
+      "actualHardware": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz"
+    },
+    "humanVisualApproval": "NOT_APPROVED",
+    "fullFuiClosure": false
+  },
+  "reviewAutomationV3": {
+    "source": "openspec/changes/frade-p01-theme-core/evidence/p01-review-automation-v3-20261001T074223Z",
+    "tests": "15_OF_15_PASS",
+    "actualSandbox": "PASS_ALLOWED_PACKET_DENIED_SOURCE_ROUTING_AUTH_CONFIG_WRITE_SOCKET",
+    "phaseSupport": [
+      "PRE",
+      "POST"
+    ],
+    "focusedTransportPost": "NOT_RUN",
+    "productPost": "NOT_RUN"
+  },
+  "readyForThirdFixtureImplementation": true,
+  "thirdFixtureAcceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-bundle-frame-readiness-accepted-20261001T075310Z.json",
+  "thirdFixturePre": {
+    "status": "PASS",
+    "scope": "P01-BUNDLE-FRAME-COMPAT-01 accepted exact E2E-07 test-only diagnostic/readiness focused PRE; no P01 closure",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-third-fixture-pre-received-20261001T081700Z/result.md",
+    "sha256": "f03add63ddfeb74e46c8d3c0b18efc380194da5ff6b5bb2e4a0019fb9ea80153",
+    "provenance": "openspec/changes/frade-p01-theme-core/evidence/p01-third-fixture-pre-received-20261001T081700Z/PROVENANCE.json",
+    "threadId": "01a0f67f-adc2-7e70-beec-30687f1ca590",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED"
+  },
+  "thirdFixtureDiagnostics": {
+    "first": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-diagnostic-20261001T081752Z.json",
+    "event": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-event-diagnostic-20261001T082206Z.json",
+    "status": "FRAME_INPUT_BLOCKED_DURING_PRESENTATION_CURTAIN",
+    "repairStatus": "MINIMAL_TARGETED_AND_FULL_ROOT_PASS",
+    "classification": "INTEGRATION",
+    "rootCause": "UNESTABLISHED",
+    "scopePreserved": true,
+    "rca": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-failure-20261001T085452Z/RCA.json",
+    "source": "apps/desktop/tests/e2e/bundle-flows.spec.ts",
+    "sha256": "80a3fe5af430da2b513ddc2f46b5dda8f8d568bea5976e9a9ce29d588eeb9711",
+    "diagnosticsRemoved": true
+  },
+  "latestMinimalChecks": {
+    "status": "PASS",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z.json",
+    "completedAtUtc": "2026-10-01T09:21:29.262Z",
+    "targetedTests": "3_OF_3_PASS",
+    "fullRootCurrentSource": "NOT_RUN",
+    "doesNotCloseTasks": true
+  },
+  "progressDashboard": {
+    "path": "docs/ui/UI-DESIGN-CONTRACT-STATUS.md",
+    "ownerBranch": "codex/frade-ui-design-contract",
+    "updateEvents": [
+      "SCOPE_DECISION",
+      "PRE_RESULT",
+      "TASK_DONE_OR_BLOCKED",
+      "CHECK_BATCH_COMPLETED",
+      "BLOCKER_CHANGED",
+      "VISUAL_APPROVAL",
+      "VERIFY",
+      "POST_RESULT",
+      "ARCHIVE"
+    ],
+    "updateOnlyAfterFrozenReview": true,
+    "historicalEvidenceImmutable": true,
+    "latestChecks": {
+      "status": "PASS",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z.json"
+    }
+  },
+  "currentVerificationRun": {
+    "status": "PASS",
+    "command": "pnpm check:all",
+    "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.txt",
+    "startedAtUtc": "2026-10-01T09:55:45.158Z",
+    "drawPort": 56670,
+    "sourceManifest": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z-started.json",
+    "finishedAtUtc": "2026-10-01T10:12:25.958Z",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json"
+  },
+  "frameBottomCoverage": {
+    "atUtc": "2026-10-01T10:05:35.894Z",
+    "id": "P01-FRAME-BOTTOM-COVERAGE-01",
+    "status": "ACTUAL_SIX_OF_SIX_TOKEN_MISMATCH_FAIL",
+    "classification": "TEST_AND_PRESENTATION_COVERAGE",
+    "observed": [
+      "Real Dark/compact iframe screenshot has a light bottom page/status strip",
+      "Actual vendor creates div.geTabContainer.geTabItem; visible page/control tabs are div.geTab, not only a/button",
+      "Owned presentation bridge styles geFooterContainer but not geTabContainer; current measurement query omits geTabContainer/geTab controls"
+    ],
+    "notEstablished": [
+      "Current repaired lower chrome compliance (implementation NOT_RUN)",
+      "CSS-only keyboard/focus contract feasibility (repeat PRE pending)",
+      "Human visual approval"
+    ],
+    "diagnostic": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-chrome-diagnostic-20261001T100318Z.mjs",
+    "diagnosticStatus": "FAIL",
+    "witnesses": [
+      {
+        "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+        "bytes": 22358,
+        "sha256": "54beb8dee2e59937935de32f43d6f1d4f8b173e7228f3e098c4edab021b84a6a"
+      },
+      {
+        "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+        "bytes": 104210,
+        "sha256": "ca658de7150110d1bf985f0904c085e23ba1d09e71c2781c2a8478f1216fa64d"
+      },
+      {
+        "path": "apps/desktop/vendor/drawio/styles/grapheditor.css",
+        "bytes": 75954,
+        "sha256": "b660bcd355fdb3257635c95c23445e24a49b54875805b662f63a15354bba4989"
+      },
+      {
+        "path": "apps/desktop/vendor/drawio/js/app.min.js",
+        "bytes": 9754351,
+        "sha256": "0a0152fccee4c6d826435f0dd5b14e38f17257e132918850f20ef45e6821a899"
+      },
+      {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-current-root-artifacts-20261001T073825Z/ui-contract-theme-P01-matrix-dark-compact-frame/frame-diagram.png",
+        "bytes": 51078,
+        "sha256": "c7b463c073146bb66979b3fdb518c3dc399a775163b352c7068a2ac13cabb969"
+      }
+    ],
+    "productionChanged": false,
+    "visualApproval": "NOT_APPROVED",
+    "fullRootStatus": "PASS_PRE_DELTA",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-chrome-observation-20261001T101428Z/result.json",
+    "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md",
+    "proposalSha256": "e829e59637b43929f35acfaec85cd869ff61c6a0ddb7992037dbf65abd1129b7",
+    "currentFocusObservation": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-focus-observation-20261001T112450Z/result.json",
+    "currentFocusability": "0_OF_60_DIRECT_FOCUS"
+  },
+  "previousFullRootResult": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-owned-port-diagnostic-20261001T083513Z.json",
+  "scopeDecisionQuestion": {
+    "status": "BOTH_CONFIRMED_BY_HUMAN",
+    "ids": [
+      "P01-WORKSPACE-SAVEAS-READINESS-01",
+      "P01-FRAME-BOTTOM-CHROME-01"
+    ],
+    "atUtc": "2026-10-01T10:22:00.551Z",
+    "toolDispatchIsNotHumanAcceptance": true,
+    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json"
+  },
+  "saveAsBottomAcceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json",
+  "saveAsBottomPre": {
+    "status": "FAIL",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "scope": "P01-WORKSPACE-SAVEAS-READINESS-01 + P01-FRAME-BOTTOM-CHROME-01 focused PRE, not P01 closure",
+    "request": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-pre-20261001T110658Z-request.json",
+    "prepared": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-pre-20261001T110658Z-prepared",
+    "run": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-pre-20261001T110658Z-run",
+    "planChecks": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-plan-checks-20261001T105822Z.json",
+    "packagingProvenance": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-selected-runtime-20261001T110658Z/provenance.json",
+    "gateStatus": "FAIL",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-received-20261001T111840Z",
+    "blocker": "INPUT_COMPLETENESS: full pinned vendor constructors/layout plus actual lower-control keyboard/focus properties required",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "inputRepair": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-input-repair-20261001T113009Z.json",
+    "repeatStatus": "PENDING_PREPARATION",
+    "repeat": {
+      "status": "FAIL",
+      "request": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-repeat-pre-20261001T113202Z-request.json",
+      "prepared": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-repeat-pre-20261001T113202Z-prepared",
+      "run": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-repeat-pre-20261001T113202Z-run",
+      "requestedModel": "gpt-6-astra",
+      "requestedEffort": "xhigh",
+      "scopeUnchanged": true,
+      "checks": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-input-repair-checks-20261001T113035Z.json",
+      "gateStatus": "FAIL",
+      "received": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "blocker": "SPEC_CONFLICT / ABSTRACTION_BOUNDARY: keyboard/focus required, DOM semantics prohibited"
+    }
+  },
+  "lowerKeyboardDecision": {
+    "id": "P01-FRAME-LOWER-KEYBOARD-01",
+    "status": "USER_ACCEPTED_PRE_PENDING",
+    "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard.proposed.md",
+    "sha256": "458361c95f36f02a2f438082dd52befc825413b928266722c494b9580c9d0874",
+    "reason": "Repeat PRE confirms CSS-only focus/keyboard scope conflict",
+    "productionRepair": "NOT_RUN",
+    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard-accepted-20261001T115657Z.json"
+  },
+  "commitPolicy": {
+    "authority": "User: Делай коммиты и пуши по каждому этапу",
+    "branchOnly": "codex/frade-ui-design-contract",
+    "mode": "Commit/push each completed engineering checkpoint; failed/incomplete feature status remains explicit",
+    "initialCheckpoint": "Accumulated foundation + P01 work, P01 INCOMPLETE / prior PRE FAIL / accepted keyboard repair PRE pending",
+    "status": "STAGING_CHECKPOINT",
+    "initialRecord": "openspec/changes/frade-p01-theme-core/evidence/p01-ui-git-checkpoint-started-20261001T120237Z.json"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-01T01:20:39.257Z",
+  "classification": "DIAGNOSTIC_ONLY_NOT_PRODUCT_PASS",
+  "results": [
+    {
+      "command": "pnpm --filter @frade/desktop typecheck",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop lint",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme-performance.spec.ts --grep P01-diagnostic --output C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-viewport-diagnostic-20261001T012000Z-artifacts",
+      "exit": 1
+    }
+  ]
+}

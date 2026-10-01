@@ -1,0 +1,26 @@
+{
+  "recordedAtUtc": "2026-10-01T05:57:25.267Z",
+  "reviewId": "PRE-P01-READONLY-READINESS-20261001T055434Z",
+  "status": "BLOCKED",
+  "reviewStarted": false,
+  "gateStatus": "NOT_RUN",
+  "model": "gpt-6-astra",
+  "effort": "xhigh",
+  "manifest": {
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-readiness-pre-20261001T055434Z-manifest.json",
+    "sha256": "9502fec2afce013f510614da03e115fb36ed752ac3232f2e0276fada7583c168",
+    "artifacts": 9986
+  },
+  "rejections": [
+    {
+      "attempt": 1,
+      "reason": "This launches an external read-only review that may transmit the full workspace (9,986 files, potentially including sensitive source and metadata); the user authorized automatic PRE checks but did not explicitly authorize this complete payload to this external destination."
+    },
+    {
+      "attempt": 2,
+      "reason": "The retry still invokes an external Codex review over a workspace containing roughly 420 MB of source/evidence; assistant-created authorization records and claims about the runner cannot establish the user's specific approval for transmitting that payload to OpenAI."
+    }
+  ],
+  "pendingDecision": "Direct approval requested for relevant source/contracts/evidence access and transmission from current candidate to OpenAI Codex for automatic PRE/POST; no workaround or implementation.",
+  "codeChangedThisTurn": false
+}

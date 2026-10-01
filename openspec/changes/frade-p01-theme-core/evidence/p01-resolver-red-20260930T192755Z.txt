@@ -1,0 +1,313 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/p01.bdd.test.tsx (6 tests | 5 failed) 15ms
+   × P01-RES-001 Offline Light Dark and HC are complete together 5ms
+     → P01 registry not implemented
+   × P01-RES-002 Explicit Light keeps independent comfortable density under OS Dark 0ms
+     → P01 registry not implemented
+   × P01-RES-003 Workspace overrides require opt-in and unknown roles stay diagnostic 0ms
+     → P01 registry not implemented
+   × P01-RES-004 Low contrast repairs deterministically without mutating source data 0ms
+     → P01 registry not implemented
+   × P01-RES-005 Forced system colors override an explicit palette without replacing HEX data 0ms
+     → P01 registry not implemented
+   ✓ P01 traceability fails closed on missing IDs, stale assertion hashes or premature runtime claims 7ms
+ ❯ tests/ui-contract/resolver.test.ts (13 tests | 13 failed) 20ms
+   × P01 deterministic resolver / registry > ships three reserved offline IDs and complete matching palettes in both densities 7ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > matches the unchanged foundation role table, ordered 34 pairs and contrast math 6ms
+     → expected [] to deeply equal [ 'surface.base', …(30) ]
+   × P01 deterministic resolver / registry > follows System preferences while explicit Light survives OS Dark and HC events 0ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > applies builtin, selected, global, ThemeId and opt-in workspace precedence 0ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > validates data, diagnoses unknown roles and never exposes arbitrary CSS 0ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > refuses malformed descriptors, duplicate and reserved builtin replacement 0ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > repairs stale, disabled and wrong-kind selections to the matching builtin 0ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > keeps stable identity across a label change without installation/version machinery 0ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > repairs both roles of violating pairs without dropping unrelated valid roles 0ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > bounds nonconvergence at ten passes and returns a complete builtin fallback 1ms
+     → P01 repair not implemented
+   × P01 deterministic resolver / registry > gives final forced-color precedence using the unchanged generated keyword mapping 2ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > copies and deeply freezes outputs without freezing or mutating inputs 0ms
+     → P01 registry not implemented
+   × P01 deterministic resolver / registry > is deterministic, order-independent and idempotent for seed 20260930 / 200 palettes 0ms
+     → P01 registry not implemented
+
+ Test Files  2 failed (2)
+      Tests  18 failed | 1 passed (19)
+   Start at  22:27:59
+   Duration  2.04s (transform 1.33s, setup 0ms, collect 1.42s, tests 35ms, environment 0ms, prepare 1.36s)
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 18 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/p01.bdd.test.tsx > P01-RES-001 Offline Light Dark and HC are complete together
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/p01.bdd.test.tsx:20:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/18]⎯
+
+ FAIL  tests/ui-contract/p01.bdd.test.tsx > P01-RES-002 Explicit Light keeps independent comfortable density under OS Dark
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/p01.bdd.test.tsx:29:45
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/18]⎯
+
+ FAIL  tests/ui-contract/p01.bdd.test.tsx > P01-RES-003 Workspace overrides require opt-in and unknown roles stay diagnostic
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/p01.bdd.test.tsx:35:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/18]⎯
+
+ FAIL  tests/ui-contract/p01.bdd.test.tsx > P01-RES-004 Low contrast repairs deterministically without mutating source data
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/p01.bdd.test.tsx:43:166
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/18]⎯
+
+ FAIL  tests/ui-contract/p01.bdd.test.tsx > P01-RES-005 Forced system colors override an explicit palette without replacing HEX data
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/p01.bdd.test.tsx:54:45
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > ships three reserved offline IDs and complete matching palettes in both densities
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/resolver.test.ts:16:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > matches the unchanged foundation role table, ordered 34 pairs and contrast math
+AssertionError: expected [] to deeply equal [ 'surface.base', …(30) ]
+
+- Expected
++ Received
+
+- [
+-   "surface.base",
+-   "surface.panel",
+-   "surface.rail",
+-   "surface.hover",
+-   "surface.overlay",
+-   "text.primary",
+-   "text.secondary",
+-   "text.disabled",
+-   "border.subtle",
+-   "border.control",
+-   "action.primary",
+-   "action.primaryHover",
+-   "action.onPrimary",
+-   "selection.bg",
+-   "selection.fg",
+-   "selection.indicator",
+-   "focus.ring",
+-   "status.success",
+-   "status.successBg",
+-   "status.warning",
+-   "status.warningBg",
+-   "status.error",
+-   "status.errorBg",
+-   "status.info",
+-   "status.infoBg",
+-   "diagram.canvas",
+-   "diagram.grid",
+-   "diagram.nodeBg",
+-   "diagram.nodeStroke",
+-   "diagram.edge",
+-   "diagram.selection",
+- ]
++ []
+
+ ❯ tests/ui-contract/resolver.test.ts:28:24
+     26|   })
+     27|   it('matches the unchanged foundation role table, ordered 34 pairs an…
+     28|     expect(themeRoles).toEqual(authority.themeRoles)
+       |                        ^
+     29|     expect(contrastPairs).toEqual(authority.contrastPairs)
+     30|     expect(contrastPairs).toHaveLength(34)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > follows System preferences while explicit Light survives OS Dark and HC events
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ resolve tests/ui-contract/resolver.test.ts:10:96
+ ❯ tests/ui-contract/resolver.test.ts:41:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > applies builtin, selected, global, ThemeId and opt-in workspace precedence
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/resolver.test.ts:47:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > validates data, diagnoses unknown roles and never exposes arbitrary CSS
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/resolver.test.ts:56:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > refuses malformed descriptors, duplicate and reserved builtin replacement
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/resolver.test.ts:66:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > repairs stale, disabled and wrong-kind selections to the matching builtin
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/resolver.test.ts:72:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > keeps stable identity across a label change without installation/version machinery
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/resolver.test.ts:83:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > repairs both roles of violating pairs without dropping unrelated valid roles
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/resolver.test.ts:88:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > bounds nonconvergence at ten passes and returns a complete builtin fallback
+Error: P01 repair not implemented
+ ❯ repairContrast src/design/theme/contrast.ts:5:148
+      3| export const contrastPairs: readonly ContrastPair[] = Object.freeze([])
+      4| export function contrastRatio(_a: string, _b: string): number { throw …
+      5| export function repairContrast(_colors: ThemeColors, _builtin: ThemeCo…
+       |                                                                                                                                                    ^
+      6| 
+ ❯ tests/ui-contract/resolver.test.ts:101:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > gives final forced-color precedence using the unchanged generated keyword mapping
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ resolve tests/ui-contract/resolver.test.ts:10:96
+ ❯ tests/ui-contract/resolver.test.ts:111:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > copies and deeply freezes outputs without freezing or mutating inputs
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/resolver.test.ts:125:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/18]⎯
+
+ FAIL  tests/ui-contract/resolver.test.ts > P01 deterministic resolver / registry > is deterministic, order-independent and idempotent for seed 20260930 / 200 palettes
+Error: P01 registry not implemented
+ ❯ createThemeRegistry src/design/theme/registry.ts:3:99
+      1| import type { ThemeRegistry } from './types'
+      2| export const BUILTIN_IDS = Object.freeze({ light: 'frade.builtin/light…
+      3| export function createThemeRegistry(_descriptors: readonly unknown[] =…
+       |                                                                                                   ^
+      4| 
+ ❯ tests/ui-contract/resolver.test.ts:144:42
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/18]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

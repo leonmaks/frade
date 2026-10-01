@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-09-30T23:16:05.034Z",
+  "results": [
+    {
+      "label": "workbench",
+      "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/picker.test.tsx",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-workbench-startup-red-r2-20260930T231557Z-workbench.txt"
+    },
+    {
+      "label": "startup-electron",
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme.spec.ts",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-workbench-startup-red-r2-20260930T231557Z-startup-electron.txt"
+    }
+  ]
+}

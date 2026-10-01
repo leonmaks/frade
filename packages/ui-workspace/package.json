@@ -5,14 +5,24 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./styles.css": "./src/styles.css"
+    "./styles.css": "./src/styles.css",
+    "./design/tokens.css": "./src/design/generated/tokens.css",
+    "./design/tokens": "./src/design/generated/tokens.ts",
+    "./design/theme/types": "./src/design/theme/types.ts",
+    "./design/theme/registry": "./src/design/theme/registry.ts",
+    "./design/theme/contrast": "./src/design/theme/contrast.ts",
+    "./design/theme/resolver": "./src/design/theme/resolver.ts",
+    "./design/theme/service": "./src/design/theme/service.ts",
+    "./design/theme": "./src/design/theme/index.ts",
+    "./design/theme/ThemePicker": "./src/design/theme/ThemePicker.tsx",
+    "./design/theme/theme-consumers.css": "./src/design/theme/theme-consumers.css"
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src tests",
     "test": "vitest run",
-    "test:bdd": "vitest run tests/bundle-flows.bdd.test.tsx"
+    "test:bdd": "vitest run tests/bundle-flows.bdd.test.tsx tests/ui-contract/p01.bdd.test.tsx tests/ui-contract/service.test.ts tests/ui-contract/picker.test.tsx"
   },
   "dependencies": {
     "@frade/repository-api": "workspace:*",

@@ -1,6 +1,16 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { REQUEST_CHANNEL, EVENT_CHANNEL } from '@frade/runtime-contracts'
 import { createDesktopApi } from './bridge'
+import { createPresentationApi } from './presentation-bridge'
+import { PRESENTATION_BOOT_CHANNEL, PRESENTATION_CHANNEL } from '@frade/runtime-contracts'
+contextBridge.exposeInMainWorld(
+  'fradePresentation',
+  createPresentationApi(
+    ipcRenderer.sendSync(PRESENTATION_BOOT_CHANNEL),
+    (value) => ipcRenderer.invoke(PRESENTATION_CHANNEL, value),
+    () => crypto.randomUUID(),
+  ),
+)
 import {
   REPOSITORY_CHANNEL,
   REPOSITORY_OPEN_CHANNEL,

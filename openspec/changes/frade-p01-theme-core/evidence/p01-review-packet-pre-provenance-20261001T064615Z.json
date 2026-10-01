@@ -1,0 +1,143 @@
+{
+  "recordedAtUtc": "2026-10-01T06:46:15.550Z",
+  "reviewId": "PRE-P01-READONLY-READINESS-PACKET-20261001T061101Z",
+  "report": {
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-received-PRE-P01-READONLY-READINESS-PACKET-20261001T061101Z.md",
+    "bytes": 5339,
+    "sha256": "1091202fb09fcdb2700df1ccc4f142400823dbd3d1dec86170805511e499b3cf"
+  },
+  "record": {
+    "startedAtUtc": "2026-10-01T06:35:02.869Z",
+    "phase": "PRE",
+    "scope": "P01 focused readonly/readiness planning PRE only; no full P01 closure",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "sandbox": "Linux bubblewrap named profile extends :read-only; root denied, packet/runtime readable; network false for commands",
+    "approvalPolicy": "never",
+    "authorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-packet-authorization-20261001T061101Z.json",
+    "readConfinementProbe": "offline-linux-runtime-allowed-read-probe.json",
+    "candidate": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+    "packet": "C:\\Users\\NVISEN\\.codex\\review-automation\\packet-v1-20261001T061101Z\\candidate-packet-a\\packet",
+    "run": "C:\\Users\\NVISEN\\.codex\\review-automation\\packet-v1-20261001T061101Z\\pre-run-b",
+    "status": "PASS",
+    "gateStatus": "PASS",
+    "promptSha256": "5099f458d6725809fbb40b76dd00be52ede06f72b4e99468b239fc44671dd087",
+    "verifiedSourceFiles": 1205,
+    "packetManifestSha256": "c96dce77786347713600167b94afec10cbab170354b8d624bc3942fd7823175c",
+    "cli": {
+      "launcher": "wsl.exe",
+      "args": [
+        "-d",
+        "Ubuntu-22.04_E",
+        "--exec",
+        "/usr/bin/env",
+        "CODEX_HOME=/mnt/c/Users/NVISEN/.codex",
+        "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime/node_modules/.bin/codex",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--skip-git-repo-check",
+        "--model",
+        "gpt-6-astra",
+        "-c",
+        "default_permissions=\"frade-review\"",
+        "-c",
+        "permissions={frade-review={extends=\":read-only\",filesystem={\":root\"=\"deny\",\":minimal\"=\"read\",\":workspace_roots\"={\".\"=\"read\"},\"/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime\"=\"read\"},network={enabled=false}}}",
+        "-c",
+        "model_reasoning_effort=\"xhigh\"",
+        "-c",
+        "approval_policy=\"never\"",
+        "-c",
+        "web_search=\"disabled\"",
+        "-c",
+        "apps._default.enabled=false",
+        "-c",
+        "shell_environment_policy.inherit=\"none\"",
+        "-c",
+        "shell_environment_policy.include_only=[\"PATH\",\"HOME\",\"TMPDIR\",\"LANG\",\"LC_ALL\"]",
+        "-C",
+        "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/candidate-packet-a/packet",
+        "--json",
+        "--color",
+        "never",
+        "--output-last-message",
+        "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/pre-run-b/result.md",
+        "-"
+      ],
+      "version": "0.159.3"
+    },
+    "signal": null,
+    "exitCode": 0,
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "threadId": "01a0f62c-fbfa-7ab3-83fe-ce86b2fda327",
+    "resultSha256": "1091202fb09fcdb2700df1ccc4f142400823dbd3d1dec86170805511e499b3cf",
+    "endedAtUtc": "2026-10-01T06:44:20.055Z"
+  },
+  "artifacts": [
+    {
+      "origin": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/pre-run-a/record.json",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-20261001T064615Z-pre-run-a-record.json",
+      "bytes": 3113,
+      "sha256": "c8ed31a36f497ef91291394a15c6df05dbc129c98dcaafc60ac1fb1c968b905c"
+    },
+    {
+      "origin": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/pre-run-b/record.json",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-20261001T064615Z-pre-run-b-record.json",
+      "bytes": 2958,
+      "sha256": "5ebf9099f4cd716ea40252064794b09032ccce4088b26e48ac41c2fa3d2208ae"
+    },
+    {
+      "origin": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/pre-run-b/events.jsonl",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-20261001T064615Z-pre-run-b-events.jsonl",
+      "bytes": 905710,
+      "sha256": "4b01fa79fdaf0a1c235a77b83e839b52ac4a341781fa134c31cfc9955d3fa045"
+    },
+    {
+      "origin": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/pre-run-b/stderr.txt",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-20261001T064615Z-pre-run-b-stderr.txt",
+      "bytes": 621,
+      "sha256": "96ea826187518e2580a1d80fea923ffe6b2ab3a7f822c0e4cbee58712002219a"
+    },
+    {
+      "origin": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/offline-linux-runtime-allowed-read-probe.json",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-20261001T064615Z-offline-linux-runtime-allowed-read-probe.json",
+      "bytes": 2364,
+      "sha256": "708439cb1507fe1a94d6ad7758c38c10744d7cad9f28223cc198a17914a7532c"
+    },
+    {
+      "origin": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/offline-inline-profile-read-probe.json",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-20261001T064615Z-offline-inline-profile-read-probe.json",
+      "bytes": 2232,
+      "sha256": "bb38e778812476bab27bb89504dd2eed8902ae0d7182c69dbc4e9ce315cf0918"
+    },
+    {
+      "origin": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/packet-lib.mjs",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-20261001T064615Z-packet-lib.mjs",
+      "bytes": 6738,
+      "sha256": "9ed2802beeed4a27fb0e5edac54fd39bbb9a71d31c51123d53916e70414b552a"
+    },
+    {
+      "origin": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/packet-integrity.test.mjs",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-20261001T064615Z-packet-integrity.test.mjs",
+      "bytes": 2996,
+      "sha256": "85e55190a5fa298a4ecb21010c17b68d993d8547df0c28d4ea9cf8359e99aa18"
+    },
+    {
+      "origin": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/invoke-packet-pre-v2.mjs",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-20261001T064615Z-invoke-packet-pre-v2.mjs",
+      "bytes": 5517,
+      "sha256": "39aa868c7cfd5b899117fbfa70f616d55e9c8457b924df4890bdf32fdbfc6805"
+    }
+  ],
+  "adversarialTests": {
+    "command": "node --test C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/packet-integrity.test.mjs",
+    "exit": 0,
+    "tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "scope": "Actual transport fixtures only; not Frade runtime proof."
+  }
+}

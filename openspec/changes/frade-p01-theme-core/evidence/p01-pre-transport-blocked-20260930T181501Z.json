@@ -1,0 +1,60 @@
+{
+  "recordedAtUtc": "2026-09-30T18:15:01.940Z",
+  "status": "PRE_TRANSPORT_BLOCKED_NO_REVIEW_STARTED",
+  "reviewId": "PRE-P01-R2-20260930T181038Z",
+  "attempts": [
+    {
+      "outcome": "AUTOMATIC_APPROVAL_REJECTED",
+      "reason": "The review runner will transmit the full workspace context/manifest and prompt to an external Codex service; although automatic review was authorized, the user did not specifically authorize exporting this potentially sensitive repository payload to that destination."
+    },
+    {
+      "outcome": "AUTOMATIC_APPROVAL_REJECTED_AFTER_READ_ONLY_CHECKS",
+      "reason": "The action still sends relevant repository source to the external Codex model service; the user authorized automated read-only review but has not explicitly approved exporting that repository payload to this destination, so the sensitive-egress rule requires denial."
+    }
+  ],
+  "transportInspection": {
+    "runnerSha256": "94b94e223eeff2d562bdfacc4bd029a6eb7f06456a672029d559616a36c1e6f4",
+    "stdin": "Prepared prompt only; manifest verified locally",
+    "wholeRepositoryArchiveUploadedByRunner": false,
+    "sensitiveFilenameMatches": 0,
+    "limitation": "Relevant source read by reviewer is transmitted to Codex model service; filename scan does not prove absence of embedded secrets."
+  },
+  "requestedModel": "gpt-6-astra",
+  "requestedEffort": "xhigh",
+  "cliStarted": false,
+  "reviewReport": "NOT_RUN",
+  "newGateStatus": null,
+  "priorIndependentGateStatus": "FAIL_PRESERVED",
+  "strictValidation": "PASS",
+  "foundationNamedContrastPairs": 102,
+  "foundationColorOccurrences": 124,
+  "foundationBindings": 28,
+  "futureBoundariesNotExecuted": 23,
+  "taskCounts": {
+    "completed": 1,
+    "total": 10
+  },
+  "implementation": "NOT_STARTED",
+  "verifiedPriorArtifacts": 4991,
+  "authorizedChangedPaths": [
+    "openspec/changes/frade-p01-theme-core/design.md",
+    "openspec/changes/frade-p01-theme-core/execution-context.json",
+    "openspec/changes/frade-p01-theme-core/proposal.md",
+    "openspec/changes/frade-p01-theme-core/specs/theme-core/spec.md",
+    "openspec/changes/frade-p01-theme-core/tasks.md"
+  ],
+  "unexpectedChanges": [],
+  "gitStatus": " M .github/workflows/ci.yml\n M AGENTS.md\n M package.json\n M packages/ui-workspace/package.json\n?? \" _input/\"\n?? .gitattributes\n?? apps/desktop/tests/e2e/ui-contract-token-cascade.spec.ts\n?? docs/engineering/\n?? docs/ui/\n?? openspec/changes/archive/2026-09-30-frade-ui-design-contract/\n?? openspec/changes/frade-p01-theme-core/\n?? openspec/changes/frade-p02-transactional-installer/\n?? openspec/changes/frade-p03-vscode-theme-import/\n?? openspec/changes/frade-p04-icon-registries/\n?? openspec/changes/frade-p05-isolated-browser-host/\n?? openspec/changes/frade-p06-native-contributions/\n?? openspec/changes/frade-p07-registry-profiles-policy/\n?? openspec/specs/ui-design-contract/\n?? openspec/specs/ui-token-compliance/\n?? openspec/specs/workbench-visual-contract/\n?? packages/ui-workspace/src/design/\n?? packages/ui-workspace/tokens/\n?? scripts/ui/\n?? tests/ui-contract/\n",
+  "cachedDiffEmpty": true,
+  "diffCheck": "PASS",
+  "preparedPrompt": {
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-repeat-pre-prompt-20260930T181038Z.md",
+    "sha256": "9332f9c37eabe120a10a43178e35718bb175627217ebf5dfb674db100fb0f8cc"
+  },
+  "preparedManifest": {
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-repeat-pre-manifest-20260930T181038Z.json",
+    "sha256": "5e30818ee61735f477affe0a3cd9b19d2641394ac64c65fce58e4ccc38cb15d5",
+    "note": "Never reviewed; preserved unchanged. New approval/current context requires fresh manifest before launch."
+  },
+  "pendingHumanQuestion": "Approve sending prepared prompt and relevant Frade source/contracts to OpenAI Codex for gpt-6-astra/xhigh read-only PRE."
+}

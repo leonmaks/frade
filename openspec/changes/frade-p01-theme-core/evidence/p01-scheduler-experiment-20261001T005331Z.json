@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-10-01T00:57:48.350Z",
+  "classification": "DIAGNOSTIC_ONLY_NOT_PRODUCT_PASS",
+  "results": [
+    {
+      "label": "desktop-typecheck",
+      "command": "pnpm --filter @frade/desktop typecheck",
+      "diagnosticOverride": false,
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-scheduler-experiment-20261001T005331Z-desktop-typecheck.txt"
+    },
+    {
+      "label": "desktop-lint",
+      "command": "pnpm --filter @frade/desktop lint",
+      "diagnosticOverride": false,
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-scheduler-experiment-20261001T005331Z-desktop-lint.txt"
+    },
+    {
+      "label": "diagnostic-electron",
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme-performance.spec.ts --output C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-scheduler-experiment-20261001T005331Z-artifacts",
+      "diagnosticOverride": true,
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-scheduler-experiment-20261001T005331Z-diagnostic-electron.txt"
+    }
+  ],
+  "assertionSha256": "7b5b828a7c4f82f0997dfcca791e6c9f45975312a54ce7055f1cd9b358311123"
+}

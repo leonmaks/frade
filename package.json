@@ -24,8 +24,16 @@
     "test:visual:update": "pnpm --filter @frade/draw test:visual:update",
     "test:boundaries": "node --test tests/contract/*.test.mjs",
     "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries",
-    "check:all": "pnpm check && pnpm test:e2e && pnpm test:desktop"
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries && pnpm ui:compliance",
+    "check:all": "pnpm check && pnpm test:e2e && pnpm test:desktop",
+    "ui:tokens:generate": "node scripts/ui/tokens.mjs --write",
+    "ui:tokens:check": "node scripts/ui/tokens.mjs",
+    "ui:colors:check": "node scripts/ui/colors.mjs",
+    "ui:traceability:check": "node scripts/ui/traceability.mjs",
+    "test:ui-contract": "node --test tests/ui-contract/*.test.mjs",
+    "ui:controls": "node scripts/ui/controls.mjs",
+    "ui:compliance": "pnpm ui:tokens:check && pnpm ui:colors:check && pnpm ui:traceability:check && pnpm test:ui-contract && pnpm ui:controls && pnpm ui:checkout:check",
+    "ui:checkout:check": "node scripts/ui/checkout.mjs"
   },
   "devDependencies": {
     "@eslint/js": "9.39.1",

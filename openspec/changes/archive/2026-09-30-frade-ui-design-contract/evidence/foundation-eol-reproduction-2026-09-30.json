@@ -1,0 +1,112 @@
+{
+  "classification": "ENVIRONMENT",
+  "rootGitAutocrlf": true,
+  "temporaryRoot": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-eol-pWry2v",
+  "scopeAdditionNotApplied": ".gitattributes",
+  "proposedDraft": "docs/ui/decisions/token-eol.gitattributes.proposed",
+  "initialProbeLimit": "checkout-index kept existing files; this reproduction removes only fixed files under verified temp root to reproduce fresh checkout",
+  "fixtureShaBeforeFix": "bc3f83d111ab9164a24a9fc2d273a5094e5a3a4944de71313afd458c301e1a24",
+  "results": [
+    {
+      "command": "git",
+      "args": [
+        "init",
+        "--quiet"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git",
+      "args": [
+        "config",
+        "core.autocrlf",
+        "true"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git",
+      "args": [
+        "config",
+        "core.safecrlf",
+        "false"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git",
+      "args": [
+        "add",
+        "--",
+        "packages/ui-workspace/tokens/tokens.json",
+        "packages/ui-workspace/src/design/generated/tokens.css",
+        "packages/ui-workspace/src/design/generated/tokens.ts",
+        "tests/ui-contract/fixtures/upstream.tokens.css"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git",
+      "args": [
+        "checkout-index",
+        "--all",
+        "--force"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\scripts\\ui\\tokens.mjs",
+        "--root",
+        "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-eol-pWry2v"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Error: Immutable upstream CSS fixture drift\n"
+    },
+    {
+      "command": "git",
+      "args": [
+        "add",
+        ".gitattributes"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git",
+      "args": [
+        "checkout-index",
+        "--all",
+        "--force"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\scripts\\ui\\tokens.mjs",
+        "--root",
+        "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-eol-pWry2v"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\":\"PASS\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[]}\n",
+      "stderr": ""
+    }
+  ],
+  "status": "REPRODUCED_WITH_FIX_IN_ISOLATED_FIXTURE"
+}

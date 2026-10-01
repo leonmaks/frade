@@ -1,0 +1,541 @@
+[
+  {
+    "path": "packages\\local-index\\package.json",
+    "name": "@frade/local-index",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/metamodel-domain": "workspace:*",
+      "@frade/repository-domain": "workspace:*",
+      "@frade/repository-ports": "workspace:*"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\versioning-git\\package.json",
+    "name": "@frade/versioning-git",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/repository-domain": "workspace:*",
+      "@frade/repository-ports": "workspace:*"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\runtime-electron\\package.json",
+    "name": "@frade/runtime-electron",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc --outDir dist --declaration",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/runtime-contracts": "workspace:*"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\ui-inspector\\package.json",
+    "name": "@frade/ui-inspector",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/repository-api": "workspace:*",
+      "@frade/repository-domain": "workspace:*",
+      "@frade/metamodel-domain": "workspace:*",
+      "react": "18.3.1"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1",
+      "@types/react": "18.3.27",
+      "@types/react-dom": "18.3.7",
+      "react-dom": "18.3.1",
+      "@testing-library/react": "16.3.0",
+      "jsdom": "26.0.0"
+    }
+  },
+  {
+    "path": "packages\\runtime-contracts\\package.json",
+    "name": "@frade/runtime-contracts",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc --outDir dist --declaration",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "package.json",
+    "name": "frade",
+    "version": "0.1.0",
+    "scripts": {
+      "dev": "turbo dev",
+      "dev:draw": "pnpm --filter @frade/draw dev",
+      "dev:desktop": "pnpm --filter @frade/desktop dev",
+      "start:desktop": "pnpm --filter @frade/desktop start",
+      "test:desktop": "pnpm --filter @frade/desktop test:e2e",
+      "routing:v2:arch-gate": "node scripts/routing-v2-architecture-gate.mjs",
+      "build": "turbo build",
+      "typecheck": "turbo typecheck",
+      "lint": "turbo lint",
+      "format:check": "prettier --check .",
+      "test": "turbo test --concurrency=2",
+      "test:bdd": "pnpm --filter @frade/draw test:bdd && pnpm --filter @frade/metamodel-domain test:bdd && pnpm --filter @frade/metamodel-compiler test:bdd && node scripts/check-repo-traceability.mjs && pnpm --filter @frade/repository-application test:bdd && node scripts/check-ka-traceability.mjs && pnpm --filter @frade/ui-workspace test:bdd",
+      "test:e2e": "pnpm --filter @frade/draw test:visual",
+      "test:visual:update": "pnpm --filter @frade/draw test:visual:update",
+      "test:boundaries": "node --test tests/contract/*.test.mjs",
+      "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs",
+      "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries",
+      "check:all": "pnpm check && pnpm test:e2e && pnpm test:desktop"
+    },
+    "dependencies": null,
+    "devDependencies": {
+      "@eslint/js": "9.39.1",
+      "eslint": "9.39.1",
+      "eslint-plugin-react-hooks": "7.0.1",
+      "globals": "16.5.0",
+      "prettier": "3.9.8",
+      "turbo": "2.11.2",
+      "typescript-eslint": "8.46.3"
+    }
+  },
+  {
+    "path": "packages\\adapter-sberea-yaml\\package.json",
+    "name": "@frade/adapter-sberea-yaml",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/metamodel-config": "workspace:*",
+      "@frade/metamodel-domain": "workspace:*",
+      "@frade/metamodel-compiler": "workspace:*",
+      "@frade/repository-domain": "workspace:*",
+      "@frade/repository-ports": "workspace:*",
+      "yaml": "2.8.2"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1",
+      "@frade/repository-application": "workspace:*",
+      "esbuild": "0.24.2"
+    }
+  },
+  {
+    "path": "packages\\runtime-node\\package.json",
+    "name": "@frade/runtime-node",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc --outDir dist --declaration",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/adapter-sberea-yaml": "workspace:*",
+      "@frade/adapter-yaml": "workspace:*",
+      "@frade/local-index": "workspace:*",
+      "@frade/metamodel-config": "workspace:*",
+      "@frade/metamodel-domain": "workspace:*",
+      "@frade/repository-api": "workspace:*",
+      "@frade/repository-application": "workspace:*",
+      "@frade/repository-domain": "workspace:*",
+      "@frade/repository-ports": "workspace:*",
+      "@frade/runtime-contracts": "workspace:*",
+      "saxes": "6.0.0",
+      "@frade/draw": "workspace:*"
+    },
+    "devDependencies": {
+      "@types/node": "24.10.1",
+      "typescript": "5.9.3",
+      "vitest": "3.2.7"
+    }
+  },
+  {
+    "path": "packages\\ui-workspace\\package.json",
+    "name": "@frade/ui-workspace",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run",
+      "test:bdd": "vitest run tests/bundle-flows.bdd.test.tsx"
+    },
+    "dependencies": {
+      "@frade/repository-api": "workspace:*",
+      "@frade/repository-domain": "workspace:*",
+      "@frade/ui-navigator": "workspace:*",
+      "@frade/ui-inspector": "workspace:*",
+      "@frade/draw": "workspace:*",
+      "react": "18.3.1",
+      "react-dom": "18.3.1"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1",
+      "@types/react": "18.3.27",
+      "@types/react-dom": "18.3.7",
+      "@testing-library/react": "16.3.0",
+      "jsdom": "26.0.0"
+    }
+  },
+  {
+    "path": "packages\\adapter-yaml\\package.json",
+    "name": "@frade/adapter-yaml",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/local-index": "workspace:*",
+      "@frade/repository-domain": "workspace:*",
+      "@frade/repository-ports": "workspace:*",
+      "@frade/metamodel-domain": "workspace:*",
+      "@frade/metamodel-compiler": "workspace:*",
+      "yaml": "2.8.2"
+    },
+    "devDependencies": {
+      "@frade/repository-application": "workspace:*",
+      "esbuild": "0.24.2",
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\repository-ports\\package.json",
+    "name": "@frade/repository-ports",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run",
+      "test:bdd": "vitest run tests/bdd"
+    },
+    "dependencies": {
+      "@frade/repository-domain": "workspace:*"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "fast-check": "4.10.2",
+      "@cucumber/gherkin": "35.1.0",
+      "@cucumber/messages": "29.0.1",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\repository-bridge\\package.json",
+    "name": "@frade/repository-bridge",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/repository-domain": "workspace:*",
+      "@frade/repository-ports": "workspace:*"
+    },
+    "devDependencies": {
+      "@frade/draw": "workspace:*",
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\ui-navigator\\package.json",
+    "name": "@frade/ui-navigator",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/repository-api": "workspace:*",
+      "@frade/repository-domain": "workspace:*",
+      "react": "18.3.1"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1",
+      "@types/react": "18.3.27",
+      "@types/react-dom": "18.3.7",
+      "react-dom": "18.3.1",
+      "@testing-library/react": "16.3.0",
+      "jsdom": "26.0.0"
+    }
+  },
+  {
+    "path": "apps\\desktop\\package.json",
+    "name": "@frade/desktop",
+    "version": "0.1.0",
+    "scripts": {
+      "dev": "pnpm build:utility && electron-vite dev",
+      "start": "electron .",
+      "build": "node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility",
+      "build:utility": "vite build --config vite.utility.config.ts",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests *.ts",
+      "test": "vitest run tests/unit",
+      "test:e2e": "pnpm build && playwright test"
+    },
+    "dependencies": {
+      "@frade/adapter-yaml": "workspace:*",
+      "@frade/repository-api": "workspace:*",
+      "@frade/repository-application": "workspace:*",
+      "@frade/repository-domain": "workspace:*",
+      "@frade/repository-ports": "workspace:*",
+      "@frade/local-index": "workspace:*",
+      "@frade/draw": "workspace:*",
+      "@frade/runtime-contracts": "workspace:*",
+      "@frade/runtime-electron": "workspace:*",
+      "@frade/runtime-node": "workspace:*",
+      "react": "18.3.1",
+      "react-dom": "18.3.1",
+      "@frade/ui-workspace": "workspace:*"
+    },
+    "devDependencies": {
+      "electron": "44.4.5",
+      "electron-vite": "5.0.0",
+      "vite": "6.1.0",
+      "@vitejs/plugin-react": "4.7.0",
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@playwright/test": "1.57.0",
+      "@types/node": "24.10.1",
+      "@types/react": "18.3.27",
+      "@types/react-dom": "18.3.7"
+    }
+  },
+  {
+    "path": "packages\\repository-api\\package.json",
+    "name": "@frade/repository-api",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/repository-domain": "workspace:*",
+      "@frade/repository-ports": "workspace:*",
+      "@frade/repository-application": "workspace:*",
+      "@frade/metamodel-domain": "workspace:*"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\draw\\package.json",
+    "name": "@frade/draw",
+    "version": "0.1.0",
+    "scripts": {
+      "dev": "vite",
+      "build": "pnpm typecheck && vite build",
+      "preview": "vite preview",
+      "typecheck": "tsc --noEmit --pretty false",
+      "typecheck:consumer": "tsc -p tests/consumer/tsconfig.json --noEmit --pretty false",
+      "lint": "eslint src tests *.ts",
+      "test": "vitest run",
+      "test:watch": "vitest",
+      "test:bdd": "vitest run tests/unit/bdd-mapping.test.ts tests/unit/bdd-contract.test.ts",
+      "test:visual": "playwright test",
+      "test:visual:matrix": "playwright test tests/spike/floating-symmetry.spec.ts",
+      "test:visual:update": "playwright test --update-snapshots"
+    },
+    "dependencies": {
+      "@antv/x6": "3.1.8",
+      "react": "18.3.1",
+      "react-dom": "18.3.1",
+      "tslib": "2.8.1"
+    },
+    "devDependencies": {
+      "@cucumber/gherkin": "35.1.0",
+      "@cucumber/messages": "29.0.1",
+      "@playwright/test": "1.57.0",
+      "@types/node": "24.10.1",
+      "@types/react": "18.3.27",
+      "@types/react-dom": "18.3.7",
+      "@vitejs/plugin-react": "4.7.0",
+      "fast-check": "4.10.2",
+      "jsdom": "26.1.0",
+      "typescript": "5.9.3",
+      "vite": "6.1.0",
+      "vitest": "3.2.7"
+    }
+  },
+  {
+    "path": "packages\\repository-domain\\package.json",
+    "name": "@frade/repository-domain",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run",
+      "test:bdd": "vitest run tests/bdd"
+    },
+    "dependencies": {
+      "@frade/metamodel-domain": "workspace:*",
+      "@frade/metamodel-compiler": "workspace:*"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "fast-check": "4.10.2",
+      "@cucumber/gherkin": "35.1.0",
+      "@cucumber/messages": "29.0.1",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\metamodel-domain\\package.json",
+    "name": "@frade/metamodel-domain",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run",
+      "test:bdd": "vitest run tests/bdd"
+    },
+    "dependencies": null,
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "fast-check": "4.10.2",
+      "@cucumber/gherkin": "35.1.0",
+      "@cucumber/messages": "29.0.1",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\repository-application\\package.json",
+    "name": "@frade/repository-application",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run",
+      "test:bdd": "vitest run tests/acceptance tests/bdd",
+      "benchmark": "vitest run --config vitest.benchmark.config.ts"
+    },
+    "dependencies": {
+      "@frade/repository-domain": "workspace:*",
+      "@frade/repository-ports": "workspace:*",
+      "@frade/metamodel-domain": "workspace:*",
+      "@frade/metamodel-compiler": "workspace:*"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "fast-check": "4.10.2",
+      "@cucumber/gherkin": "35.1.0",
+      "@cucumber/messages": "29.0.1",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\metamodel-config\\package.json",
+    "name": "@frade/metamodel-config",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run"
+    },
+    "dependencies": {
+      "@frade/metamodel-domain": "workspace:*",
+      "@frade/metamodel-compiler": "workspace:*"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "@types/node": "24.10.1"
+    }
+  },
+  {
+    "path": "packages\\metamodel-compiler\\package.json",
+    "name": "@frade/metamodel-compiler",
+    "version": "0.1.0",
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+      "lint": "eslint src tests",
+      "test": "vitest run",
+      "test:bdd": "vitest run tests/bdd"
+    },
+    "dependencies": {
+      "@frade/metamodel-domain": "workspace:*"
+    },
+    "devDependencies": {
+      "typescript": "5.9.3",
+      "vitest": "3.2.7",
+      "fast-check": "4.10.2",
+      "@cucumber/gherkin": "35.1.0",
+      "@cucumber/messages": "29.0.1",
+      "@types/node": "24.10.1"
+    }
+  }
+]

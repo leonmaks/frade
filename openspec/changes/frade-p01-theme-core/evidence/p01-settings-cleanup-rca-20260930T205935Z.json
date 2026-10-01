@@ -1,0 +1,17 @@
+{
+  "createdAt": "2026-09-30T20:59:36.798Z",
+  "classification": "STATE_TRANSITION",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@frade/desktop",
+    "exec",
+    "vitest",
+    "run",
+    "tests/unit/presentation-settings.test.ts",
+    "-t",
+    "cleanup uncertainty"
+  ],
+  "exit": 1,
+  "reason": "no-unsafe-finally flags throwing during cleanup after a completed rename. The thrown finally replaces explicit ACK/UNKNOWN result. New regression requires UNKNOWN and owned reconciliation, not ignored errors or lint suppression."
+}

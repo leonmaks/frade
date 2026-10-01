@@ -1,0 +1,84 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/overlays.test.tsx (6 tests | 6 failed) 20ms
+   × managed modal owns initial focus, traps Tab, inerts background and restores exact opener/attributes on disposal 13ms
+     → P01 managed overlay host not implemented
+   × nested picker returns focus to its Settings opener; dirty guard outranks and pauses both 2ms
+     → P01 managed overlay host not implemented
+   × outside dismissal awaits successful cancellation and retains dirty editor DOM through pending/failed result 1ms
+     → P01 managed overlay host not implemented
+   × dirty guard outside click stays owned; Escape invokes only topmost cancellation 1ms
+     → P01 managed overlay host not implemented
+   × preexisting inert state remains after modal closes and disposed owner no longer handles events 1ms
+     → P01 managed overlay host not implemented
+   × visible transaction curtain pauses overlay key/outside/focus ownership so recovery remains reachable 1ms
+     → P01 managed overlay host not implemented
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  01:16:08
+   Duration  1.60s (transform 76ms, setup 0ms, collect 80ms, tests 20ms, environment 788ms, prepare 296ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/overlays.test.tsx > managed modal owns initial focus, traps Tab, inerts background and restores exact opener/attributes on disposal
+Error: P01 managed overlay host not implemented
+ ❯ createManagedOverlays src/design/theme/overlays.ts:3:101
+
+ ❯ fixture tests/ui-contract/overlays.test.tsx:5:271
+ ❯ tests/ui-contract/overlays.test.tsx:7:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/ui-contract/overlays.test.tsx > nested picker returns focus to its Settings opener; dirty guard outranks and pauses both
+Error: P01 managed overlay host not implemented
+ ❯ createManagedOverlays src/design/theme/overlays.ts:3:101
+
+ ❯ fixture tests/ui-contract/overlays.test.tsx:5:271
+ ❯ tests/ui-contract/overlays.test.tsx:13:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/ui-contract/overlays.test.tsx > outside dismissal awaits successful cancellation and retains dirty editor DOM through pending/failed result
+Error: P01 managed overlay host not implemented
+ ❯ createManagedOverlays src/design/theme/overlays.ts:3:101
+
+ ❯ fixture tests/ui-contract/overlays.test.tsx:5:271
+ ❯ tests/ui-contract/overlays.test.tsx:19:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/ui-contract/overlays.test.tsx > dirty guard outside click stays owned; Escape invokes only topmost cancellation
+Error: P01 managed overlay host not implemented
+ ❯ createManagedOverlays src/design/theme/overlays.ts:3:101
+
+ ❯ fixture tests/ui-contract/overlays.test.tsx:5:271
+ ❯ tests/ui-contract/overlays.test.tsx:25:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/ui-contract/overlays.test.tsx > preexisting inert state remains after modal closes and disposed owner no longer handles events
+Error: P01 managed overlay host not implemented
+ ❯ createManagedOverlays src/design/theme/overlays.ts:3:101
+
+ ❯ fixture tests/ui-contract/overlays.test.tsx:5:271
+ ❯ tests/ui-contract/overlays.test.tsx:30:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/ui-contract/overlays.test.tsx > visible transaction curtain pauses overlay key/outside/focus ownership so recovery remains reachable
+Error: P01 managed overlay host not implemented
+ ❯ createManagedOverlays src/design/theme/overlays.ts:3:101
+
+ ❯ fixture tests/ui-contract/overlays.test.tsx:5:271
+ ❯ tests/ui-contract/overlays.test.tsx:34:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

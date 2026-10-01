@@ -1,0 +1,80 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/service.test.ts (35 tests | 2 failed) 121ms
+   ✓ P01 controlled transaction service > P01-TX-001 joins hidden, waits for current applied-paint ACK, previews without persistence and cancels to published state 11ms
+   ✓ P01 controlled transaction service > P01-TX-002 keeps curtain through apply ACK and durable publication; emits exactly one authoritative change 5ms
+   ✓ P01 controlled transaction service > P01-TX-003 refusal in prepare restores all view/durable snapshots, dirty draft, selection and undo 2ms
+   ✓ P01 controlled transaction service > P01-TX-003 refusal in apply restores all view/durable snapshots, dirty draft, selection and undo 2ms
+   ✓ P01 controlled transaction service > P01-TX-003 refusal in persist restores all view/durable snapshots, dirty draft, selection and undo 2ms
+   ✓ P01 controlled transaction service > P01-TX-004 unknown response reconciles already-renamed settings before restoring/revealing; no false Saved 2ms
+   ✓ P01 controlled transaction service > P01-TX-005 unprovable rollback retains recovery curtain and dirty editors with no success/reveal 2ms
+   ✓ P01 controlled transaction service > P01-TX-005 unprovable readback retains recovery curtain and dirty editors with no success/reveal 1ms
+   ✓ P01 controlled transaction service > P01-TX-006 A B C supersession during preparation ignores late A, never writes B and publishes C only 3ms
+   ✓ P01 controlled transaction service > P01-TX-007 C accepted during A rename reconciles A in the current ownership before any C write/ACK 3ms
+   ✓ P01 controlled transaction service > P01-TX-008 join during PREPARING invalidates membership and safely reprepares once 2ms
+   ✓ P01 controlled transaction service > P01-TX-008 join during BARRIER_AWAIT_PAINT invalidates membership and safely reprepares once 3ms
+   ✓ P01 controlled transaction service > P01-TX-008 join during APPLYING invalidates membership and safely reprepares once 2ms
+   ✓ P01 controlled transaction service > P01-TX-008 join during PERSISTING invalidates membership and safely reprepares once 2ms
+   ✓ P01 controlled transaction service > P01-TX-009 ongoing membership churn is bounded and cancels instead of retrying indefinitely 2ms
+   ✓ P01 controlled transaction service > P01-TX-010 leave and generation replacement reject a removed participant ACK 2ms
+   ✓ P01 controlled transaction service > P01-TX-011 paint barrier is mandatory before apply, and forged ACK cannot publish or reveal 1ms
+   ✓ P01 controlled transaction service > P01-TX-012 prepare deadline is 2s; a late handle is disposed and never applied 5ms
+   ✓ P01 controlled transaction service > P01-TX-013 commit paint deadline is 2s and host/readback deadlines are 5s; unknown host outcome remains safely covered 7ms
+   ✓ P01 controlled transaction service > P01-TX-014 cancel during persistence reconciles first, then permits close/dirty-guard continuation 2ms
+   ✓ P01 controlled transaction service > P01-TX-015 curtain stays painted throughout BARRIER_AWAIT_PAINT membership compensation and reprepare 2ms
+   ✓ P01 controlled transaction service > P01-TX-015 curtain stays painted throughout APPLYING membership compensation and reprepare 2ms
+   ✓ P01 controlled transaction service > P01-TX-015 curtain stays painted throughout PERSISTING membership compensation and reprepare 2ms
+   ✓ P01 controlled transaction service > P01-TX-016 membership change during compensation rejects obsolete rollback ACK and retains covered recovery 2ms
+   ✓ P01 controlled transaction service > P01-TX-017 membership change during reconciliation never reveals an incompletely acknowledged set 2ms
+   ✓ P01 controlled transaction service > P01-TX-018 recovery action proves current durable state and all participant paints before revealing 2ms
+   ✓ P01 controlled transaction service > P01-TX-019 service owns queued selections and snapshot revisions instead of retaining mutable caller references 1ms
+   ✓ P01 controlled transaction service > P01-TX-020 join during published preview applies the visible revision hidden and cancellation restores every member 2ms
+   ✓ P01 controlled transaction service > P01-TX-021 membership during cancellation is bounded and restores published selection before guard continuation 2ms
+   ✓ P01 service BDD traceability rejects stale assertion source and missing cases 20ms
+   ✓ named theme lifecycle events carry immutable snapshots and disposable listeners 2ms
+   ✓ named failure lifecycle never emits a successful change for a refused candidate 1ms
+   ✓ observer exception is diagnosed without replacing durable publication or damaging dirty editors 2ms
+   × independent prepared consumers paint concurrently beneath one barrier; publish and persist wait for every exact ACK 13ms
+     → expected "spy" to be called 2 times, but got 1 times
+   × a concurrent refused consumer aborts peers and waits for in-flight settlement before compensation; late paints cannot escape rollback 3ms
+     → expected "spy" to be called 2 times, but got 1 times
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 33 passed (35)
+   Start at  04:32:52
+   Duration  919ms (transform 174ms, setup 0ms, collect 224ms, tests 121ms, environment 0ms, prepare 247ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/service.test.ts > independent prepared consumers paint concurrently beneath one barrier; publish and persist wait for every exact ACK
+AssertionError: expected "spy" to be called 2 times, but got 1 times
+ ❯ tests/ui-contract/service.test.ts:813:60
+    811|     try {
+    812|       await tick()
+    813|       members.forEach((member) => expect(member.applyHook).toHaveBeenC…
+       |                                                            ^
+    814|       expect(f.barrier.visible).toBe(true)
+    815|       expect(f.host.persist).not.toHaveBeenCalled()
+ ❯ tests/ui-contract/service.test.ts:813:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > a concurrent refused consumer aborts peers and waits for in-flight settlement before compensation; late paints cannot escape rollback
+AssertionError: expected "spy" to be called 2 times, but got 1 times
+ ❯ tests/ui-contract/service.test.ts:852:31
+    850|     try {
+    851|       await tick()
+    852|       expect(frame.applyHook).toHaveBeenCalledTimes(2)
+       |                               ^
+    853|       expect(root.rollbackHook).not.toHaveBeenCalled()
+    854|       expect(f.host.persist).not.toHaveBeenCalled()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

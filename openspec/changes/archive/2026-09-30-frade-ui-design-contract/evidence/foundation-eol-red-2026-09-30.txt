@@ -1,0 +1,37 @@
+✖ UI-CHECKOUT:required-root-configuration (7.4908ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 127.0432
+
+✖ failing tests:
+
+test at tests\ui-contract\checkout.test.mjs:19:1
+✖ UI-CHECKOUT:required-root-configuration (7.4908ms)
+  AssertionError [ERR_ASSERTION]: FOUNDATION-EOL-01: exact eight rules must exist before claiming checkout compliance
+  + actual - expected
+  
+  + ''
+  - 'docs/ui/Frade-UI-Style-Guide.md text eol=lf\n' +
+  -   'docs/ui/QA-Checklist.md text eol=lf\n' +
+  -   'docs/ui/Themes-and-Plugins-Spec.md text eol=lf\n' +
+  -   'packages/ui-workspace/tokens/tokens.json text eol=lf\n' +
+  -   'packages/ui-workspace/tokens/theme.schema.json text eol=lf\n' +
+  -   'tests/ui-contract/fixtures/upstream.tokens.css text eol=lf\n' +
+  -   'packages/ui-workspace/src/design/generated/tokens.css text eol=lf\n' +
+  -   'packages/ui-workspace/src/design/generated/tokens.ts text eol=lf\n'
+  
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/checkout.test.mjs:23:10)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'docs/ui/Frade-UI-Style-Guide.md text eol=lf\ndocs/ui/QA-Checklist.md text eol=lf\ndocs/ui/Themes-and-Plugins-Spec.md text eol=lf\npackages/ui-workspace/tokens/tokens.json text eol=lf\npackages/ui-workspace/tokens/theme.schema.json text eol=lf\ntests/ui-contract/fixtures/upstream.tokens.css text eol=lf\npackages/ui-workspace/src/design/generated/tokens.css text eol=lf\npackages/ui-workspace/src/design/generated/tokens.ts text eol=lf\n',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

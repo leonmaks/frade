@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-09-30T23:26:28.918Z",
+  "results": [
+    {
+      "label": "desktop-lint",
+      "command": "pnpm --filter @frade/desktop lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-startup-green-20260930T232606Z-desktop-lint.txt"
+    },
+    {
+      "label": "desktop-build",
+      "command": "pnpm --filter @frade/desktop build",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-startup-green-20260930T232606Z-desktop-build.txt"
+    },
+    {
+      "label": "startup-electron",
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme.spec.ts",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-startup-green-20260930T232606Z-startup-electron.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "apps/desktop/src/main/index.ts",
+      "sha256": "0dda036e508ed9e9f4f4cc86f9882d0e88be62778e23e32b2b5b12ddeb802ef2"
+    },
+    {
+      "path": "apps/desktop/src/preload/index.ts",
+      "sha256": "0e395618be2d193452b3fffa7a8cd19eb2f2f4a5bb041011a429412e0746950b"
+    },
+    {
+      "path": "apps/desktop/src/renderer/main.tsx",
+      "sha256": "801df9c2a435f067557e5fd3cd7fc9369f8af8db37d9a41daced1cc141914e71"
+    },
+    {
+      "path": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+      "sha256": "c3161f1b0ced4d2036e524c6ca9d779041ef41d6ceab8924cad11ce814f1227f"
+    },
+    {
+      "path": "packages/ui-workspace/src/Workbench.tsx",
+      "sha256": "7a9d9b4163e12f0e4d00db7bbd189b6b02b14a81b7187d48b5e0129e75a2517c"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "sha256": "23863b703a984ba31e844e4b6bbcb0a0a1a3558ab581eeb7ac19bde8daaa76a5"
+    }
+  ]
+}

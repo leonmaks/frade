@@ -1,0 +1,74 @@
+Блокеров focused PRE для точного EOL delta не обнаружено. План реализуем; существующая foundation implementation и исторические результаты этим review не получают POST-одобрения.
+
+| Поле | Значение |
+|---|---|
+| Review ID | `PRE-EOL-20260930T120821Z` |
+| UTC | `2026-09-30T12:08:21Z` |
+| Reviewer | Текущая независимая review-сессия Codex; implementation не выполнялась |
+| Выбранные настройки | `gpt-6-astra`, `xhigh` |
+| Фактический backend / effort | `NOT_CONFIRMED / NOT_CONFIRMED`; runtime-подтверждения нет |
+| Change / schema | `frade-ui-design-contract` / `spec-driven` |
+| Workspace | `C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade` |
+| Branch | `codex/frade-ui-design-contract` |
+| HEAD | `98f387f96b51b0ad139e3507c376ff1c3e8dec09` |
+| Среда | Windows `10.0.26200`, x64; Node `v24.18.0`; Git `2.53.0.windows.1` |
+
+Проверенный manifest (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/evidence/foundation-eol-focused-pre-manifest-2026-09-30.json) имеет SHA256:
+
+```
+1bc65feb12d16c9a2fe88ccb6a7aff7dedd8398bf8019c8c3fba93086a636133
+```
+
+Все **4 879/4 879** записей совпали по RAW SHA256 и размеру при начальной и заключительной проверках. Branch, HEAD и status совпали с manifest. Git перечисляет ровно эти файлы плюс сам manifest. `.gitattributes`, `scripts/ui/checkout.mjs`, `tests/ui-contract/checkout.test.mjs` отсутствуют — все absenceConditions выполнены.
+
+Прочитаны и проверены следующие материалы; пути change ниже относительны `openspec/changes/frade-ui-design-contract/`:
+
+- Root `AGENTS.md`, `openspec/config.yaml`, оба указанных `package.json`, `.github/workflows/ci.yml`. Поиск scoped AGENTS обнаружил только routing-specific файл вне применимого UI scope.
+- `proposal.md`, `design.md`, `tasks.md`, `execution-context.json`, все три `specs/*/spec.md`, `bdd/traceability-plan.md` и текущий `bdd/ui-contracts.feature`.
+- `decisions/token-eol-acceptance-2026-09-30.md`, scope proposal и принятый attributes draft.
+- Все указанные `foundation-eol-*` records: before snapshot, acceptance, coherence, reproduction, proposed artifacts, planning validation.
+- `foundation-implementation-report-2026-09-30.md`, `foundation-final-status-2026-09-30.json`, предыдущий PRE report; дополнительно scope/provenance record и прежний manifest.
+- Canonical guide, schema/JSON, generated CSS/TS, frozen upstream fixture, adoption/provenance, текущий traceability registry, четыре `scripts/ui/*.mjs`, все четыре существующих `tests/ui-contract/*.test.mjs` и standalone cascade test.
+
+По существу review:
+
+1. **Scope и история согласованы.** Draft SHA256 — `7aebd327f1c5a08490abc5ded3a7198db42e5ac7b34b35a7ad2f5197a8dbd960`. Дополнительный root path только `.gitattributes`, ровно восемь принятых logical entries. Шесть before-payloads проверены по хешам и сопоставлены с текущими diff; цепочка acceptance → coherence → current совпала. Переход **14/17 → 13/19** объясняется добавлением 3.6/3.7 и открытием 4.3. Старые FAIL и PASS сохранены.
+2. **Frozen footprint подтверждён в пределах доступных anchors.** Восемь artifact hashes совпали с pre-repair record; CRLF во всех восьми — ноль. Три tracked anchors из прежнего scope/provenance record совпали; четвёртый tracked файл, UI package manifest, проверен свежим manifest и additive diff. Из прежних 145 записей 135 неизменны; остальные десять относятся к документированным foundation/planning transitions. Шесть исторических command logs совпали с сохранёнными SHA256. Before snapshot не использовался как полный исторический production fingerprint.
+3. **Классификация ENVIRONMENT обоснована.** Сохранённая успешная reproduction удаляла фиксированные fixture-файлы перед checkout и получила настоящий token CLI exit **1**, затем **0 / 102 pairs** после четырёх token rules. Это отличается от первой probe с оставшимися файлами. Записанный CRLF hash fixture независимо совпал с вычисленным в памяти LF→CRLF hash. Четыре дополнительных правила защищают три canonical документа и schema; их checkout GREEN остаётся будущим доказательством.
+4. **Восемь правил достаточны для заявленной задачи.** `text eol=lf` задаёт LF checkout при `core.autocrlf=true` на Windows и Linux. CRLF самого `.gitattributes` не требует девятого self-rule: Git parser явно считает `\r` и `\n` разделителями. Это вывод из [документации Git](<https://git-scm.com/docs/gitattributes>) и [исходника Git 2.53.0](<https://github.com/git/git/blob/v2.53.0/attr.c>), а не новый Linux/Windows checkout test.
+5. **RAW oracle сохранён.** Generated CSS побайтно равен upstream fixture с единственной принятой заменой automatic-Dark selector; исходное вхождение ровно одно. Guide 1.0, tokens 1.0.0, adoption revision 1, палитры и роли не изменились. План не разрешает нормализовать восемь artifacts или token oracle.
+6. **TDD, temp safety и traceability выполнимы.** План требует содержательный RED на absent/missing/broadened configuration до production attributes, физический CRLF drift и CLI exit 1 без правил, затем восемь RAW hashes, ноль CRLF и exit 0/102 с правилами. Предусмотрены verified OS-temp root, fixed paths, только temporary-repository config/index, проверка identity перед cleanup и сохранение cleanup failures. Missing Git/cleanup failure не могут стать skip. Existing CSS/TS drift и mutation negatives остаются строгими. Новые EOL cases пока только planning; существующий checker допускает будущий `checkout.test.mjs` без ослабления правил и запрещает маскировать foundation cases как future.
+7. **Последовательность и применимость gates корректны.** PRE → RED → implementation → targeted/full checks → verify → independent POST → archive. Existing CI checks сохранены. Подключение checkout check к `ui:compliance` и существующим Linux/Windows jobs, полный post-repair `pnpm check:all` и exact CI commands остаются обязательной работой 3.7/4.1/4.3. Routing predecessor отсутствует; routing gate к этому delta неприменим. P01/runtime/migration не входят в разрешение.
+
+Фактически выполненные команды и проверки:
+
+| Команда / проверка | Результат |
+|---|---|
+| Inline `node -`: manifest hashes, inventory, branch/HEAD/status, absence checks; повтор в конце | Exit 0; совпадения полные |
+| `rg --files --hidden -g AGENTS.md …` | Exit 0; дополнительных UI scoped rules нет |
+| Inline `python -B -`: snapshot SHA256 и planning diff | Первый запуск exit 1: encoding stdout; повтор с UTF-8 exit 0 |
+| Inline `node -`: acceptance chain, provenance, historical anchors/logs, RAW oracle | Exit 0; расхождений нет |
+| `openspec validate frade-ui-design-contract --strict` | Exit 0 |
+| `node scripts/ui/tokens.mjs` | Exit 0; 102 named pairs |
+| `node scripts/ui/colors.mjs` | Exit 0; 124 occurrences / 124 exceptions |
+| `node scripts/ui/traceability.mjs` | Exit 0; 22 foundation bindings / 23 future |
+| `git --no-optional-locks diff --check` | Exit 0; предупреждения autocrlf |
+| `git --no-optional-locks diff --exit-code -- pnpm-lock.yaml` | Exit 0 |
+| `git --no-optional-locks diff --cached --stat` | Exit 0; staged diff пуст |
+| `git --no-optional-locks diff --` четырёх tracked files | Exit 0; existing additive changes |
+| `git config --get core.autocrlf`, `git --version` | Exit 0; `true`, версия указана выше |
+
+**Correctness blockers:** нет.
+
+**Environment:** ошибка Python относилась только к выводу кириллицы через CP1252; повторная read-only диагностика завершилась успешно. Неразрешённых environment blockers обязательных PRE-проверок нет.
+
+**NOT\_RUN:** новые checkout RED/GREEN, Linux/Windows execution, cleanup failure-path tests, полный suite, browser/Electron reruns и post-repair exact CI commands. Они относятся к будущей реализации; прошлые logs не представлены как результаты этого review. Temp-каталоги не создавались, cleanup не выполнялся. Remote branch protection остаётся `NOT_CONFIGURED / unverified`.
+
+Неблокирующие наблюдения: historical scope proposal сохраняет старое «awaiting acceptance»; актуальный acceptance record однозначно задаёт последующее решение. Успешный traceability check подтверждает bindings, а не повторное исполнение 22 cases.
+
+Review ничего не изменил; отчёт возвращён в чате. Разрешение ниже относится исключительно к точному принятому FOUNDATION-EOL-01 delta.
+
+```
+GATE_STATUS: PASS
+READY_FOR_IMPLEMENTATION: YES
+```

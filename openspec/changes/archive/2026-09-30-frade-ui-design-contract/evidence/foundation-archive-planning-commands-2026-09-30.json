@@ -1,0 +1,30 @@
+[
+  {
+    "exit": 0,
+    "command": "pnpm exec openspec validate frade-ui-design-contract --strict"
+  },
+  {
+    "exit": 0,
+    "command": "node scripts/ui/tokens.mjs"
+  },
+  {
+    "exit": 0,
+    "command": "node scripts/ui/colors.mjs"
+  },
+  {
+    "exit": 0,
+    "command": "node scripts/ui/traceability.mjs"
+  },
+  {
+    "exit": 0,
+    "command": "git --no-optional-locks diff --check"
+  },
+  {
+    "exit": 0,
+    "command": "git --no-optional-locks diff --exit-code -- pnpm-lock.yaml"
+  },
+  {
+    "exit": 0,
+    "command": "git --no-optional-locks diff --cached --stat"
+  }
+]

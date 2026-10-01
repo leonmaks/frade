@@ -1,0 +1,52 @@
+{
+  "recordedAtUtc": "2026-09-30T18:55:17.441Z",
+  "status": "PASS",
+  "results": [
+    {
+      "command": "openspec validate frade-p01-theme-core --strict --json",
+      "exitCode": 0,
+      "stdout": "{\n  \"items\": [\n    {\n      \"id\": \"frade-p01-theme-core\",\n      \"type\": \"change\",\n      \"valid\": true,\n      \"issues\": [],\n      \"durationMs\": 32\n    }\n  ],\n  \"summary\": {\n    \"totals\": {\n      \"items\": 1,\n      \"passed\": 1,\n      \"failed\": 0\n    },\n    \"byType\": {\n      \"change\": {\n        \"items\": 1,\n        \"passed\": 1,\n        \"failed\": 0\n      }\n    }\n  },\n  \"version\": \"1.0\",\n  \"root\": {\n    \"path\": \"C:\\\\Users\\\\NVISEN\\\\.codex\\\\worktrees\\\\ui-design-contract\\\\frade\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "node scripts/ui/tokens.mjs",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[]}\n",
+      "stderr": ""
+    },
+    {
+      "command": "node scripts/ui/colors.mjs",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"occurrences\":124,\"legacyExceptions\":124,\"errors\":[]}\n",
+      "stderr": ""
+    },
+    {
+      "command": "node scripts/ui/traceability.mjs",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"foundationBindings\":28,\"futureBoundariesNotExecuted\":23,\"scope\":\"Binding integrity only; actual tests run separately\",\"errors\":[]}\n",
+      "stderr": ""
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of '.github/workflows/ci.yml', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'AGENTS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'packages/ui-workspace/package.json', LF will be replaced by CRLF the next time Git touches it\n"
+    }
+  ],
+  "comparedManifestMembers": 5000,
+  "authorizedChangedPaths": [
+    "openspec/changes/frade-p01-theme-core/design.md",
+    "openspec/changes/frade-p01-theme-core/execution-context.json",
+    "openspec/changes/frade-p01-theme-core/proposal.md",
+    "openspec/changes/frade-p01-theme-core/specs/theme-core/spec.md",
+    "openspec/changes/frade-p01-theme-core/tasks.md"
+  ],
+  "unexpectedChanges": [],
+  "productionSourceUnchanged": true,
+  "taskCounts": {
+    "completed": 1,
+    "total": 10
+  },
+  "gitStatus": " M .github/workflows/ci.yml\n M AGENTS.md\n M package.json\n M packages/ui-workspace/package.json\n?? \" _input/\"\n?? .gitattributes\n?? apps/desktop/tests/e2e/ui-contract-token-cascade.spec.ts\n?? docs/engineering/\n?? docs/ui/\n?? openspec/changes/archive/2026-09-30-frade-ui-design-contract/\n?? openspec/changes/frade-p01-theme-core/\n?? openspec/changes/frade-p02-transactional-installer/\n?? openspec/changes/frade-p03-vscode-theme-import/\n?? openspec/changes/frade-p04-icon-registries/\n?? openspec/changes/frade-p05-isolated-browser-host/\n?? openspec/changes/frade-p06-native-contributions/\n?? openspec/changes/frade-p07-registry-profiles-policy/\n?? openspec/specs/ui-design-contract/\n?? openspec/specs/ui-token-compliance/\n?? openspec/specs/workbench-visual-contract/\n?? packages/ui-workspace/src/design/\n?? packages/ui-workspace/tokens/\n?? scripts/ui/\n?? tests/ui-contract/\n",
+  "note": "Planning and unchanged foundation checks only; P01 runtime implementation/visual/performance NOT_RUN."
+}

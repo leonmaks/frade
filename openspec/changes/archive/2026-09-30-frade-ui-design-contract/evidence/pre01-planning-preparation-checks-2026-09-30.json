@@ -1,0 +1,58 @@
+{
+  "event": "Accepted PRE-01 planning repair preparation",
+  "recordedAtUtc": "2026-09-30T08:40:10.3388158Z",
+  "workspace": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+  "base": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "branch": "codex/frade-ui-design-contract",
+  "acceptedDecision": "decisions/token-css-adoption-2026-09-30.md",
+  "guideVersion": "1.0",
+  "tokenVersion": "1.0.0",
+  "cssAdoptionRevision": 1,
+  "independentPre": "FAIL",
+  "repeatPre": "NOT_RUN",
+  "readyForImplementation": false,
+  "productionChanges": false,
+  "commands": [
+    {
+      "command": "openspec validate frade-ui-design-contract --strict",
+      "result": {
+        "chunk_id": "831c71",
+        "wall_time_seconds": 1.58E-05,
+        "exit_code": 0,
+        "original_token_count": 11,
+        "output": "Change 'frade-ui-design-contract' is valid\n"
+      }
+    },
+    {
+      "command": "pnpm exec prettier --check openspec/changes/frade-ui-design-contract/proposal.md openspec/changes/frade-ui-design-contract/design.md openspec/changes/frade-ui-design-contract/tasks.md openspec/changes/frade-ui-design-contract/execution-context.json openspec/changes/frade-ui-design-contract/specs/ui-token-compliance/spec.md openspec/changes/frade-ui-design-contract/bdd/traceability-plan.md openspec/changes/frade-ui-design-contract/decisions/token-css-adoption-2026-09-30.md openspec/changes/frade-ui-design-contract/evidence/pre-foundation-pre01-repeat-prompt-2026-09-30.md",
+      "result": {
+        "chunk_id": "7b96b6",
+        "wall_time_seconds": 0.8819404,
+        "exit_code": 0,
+        "original_token_count": 17,
+        "output": "Checking formatting...\nAll matched files use Prettier code style!\n"
+      }
+    },
+    {
+      "command": "Playwright config/context lookup and git diff/status inspection",
+      "result": {
+        "chunk_id": "1d7b48",
+        "wall_time_seconds": 0.5496411,
+        "exit_code": 0,
+        "original_token_count": 2877,
+        "output": "packages/draw/package.json:35:    \"@cucumber/gherkin\": \"35.1.0\",\r\npackages/draw/package.json:36:    \"@cucumber/messages\": \"29.0.1\",\r\n# Повторный независимый PRE — Frade UI Design Contract foundation\r\n\r\nМодель: GPT-6 Astra (`gpt-6-astra`). Reasoning effort: `xhigh`.\r\nОткрой отдельный review-чат и выполни review сам. Не продолжай реализацию из чата исполнителя.\r\nВыбор модели — рекомендация для этого review, не отдельное требование репозитория.\r\n\r\nРабочая директория — строго:\r\n`C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade`\r\n\r\nВетка: `codex/frade-ui-design-contract`.\r\nОжидаемый исходный HEAD/base: `98f387f96b51b0ad139e3507c376ff1c3e8dec09`.\r\nActive change: `frade-ui-design-contract`.\r\nФаза: независимый PRE foundation. P01–P07 и визуальная миграция рассматриваются только для проверки границ и согласованности roadmap.\r\n\r\nАвторизация пользователя:\r\n\r\n- Фича UI Contract независима от роутинга. Зависимости и интеграционные задачи принадлежат потребителю.\r\n- Пользователь явно подтвердил: «Подтверждаю proposed full replacement text for WB-001. Подготовь промпт для независимого PRE и укажи модель».\r\n- Полный replacement text принят; это не PRE PASS, не принятие новых screenshots и не разрешение массовой feature-миграции.\r\n\r\nДополнительная авторизация и текущая ревизия:\r\n\r\n- Пользователь подтвердил точную planning-поправку PRE-01 ответом «Подтверждаю». Прочитай `decisions/token-css-adoption-2026-09-30.md` и неизменённый `evidence/pre01-planning-repair-draft-2026-09-30.md`.\r\n- Guide v1.0/tokens 1.0.0 неизменны. Принята отдельная Frade CSS adoption revision 1. Единственное разрешённое CSS отличие: `:root:not([data-frade-theme])` → `:root:where(:not([data-frade-theme]))` в одной ветке автоматического Dark.\r\n- Эквивалентность означает оригинальный LF/UTF-8 CSS плюс ровно одно принятое изменение; количество исходных вхождений должно быть равно одному. Остальные байты/роли/палитры/media semantics должны совпадать. Revision/provenance metadata находятся отдельно от CSS и не дают второго исключения.\r\n- Foundation candidate scope дополнен лишь `apps/desktop/tests/e2e/ui-contract-token-cascade.spec.ts`: standalone generated-CSS document, существующий Playwright, без запуска/миграции workbench и runtime resolver. P01 scope не переносится.\r\n- Нужны meaningful RED source reproduction, 20-state matrix (OS Light/Dark × forced-colors on/off × absent/System/Light/Dark/HC), подтверждение media state и всех ролей root/child; проверки unapproved second deviation и CSS/TS drift должны падать.\r\n- Полученный независимый report `evidence/pre-independent-received-2026-09-30T080933Z.txt` остаётся FAIL. Model/effort того review не подтверждены. Его findings не закрываются одним подтверждением пользователя или локальным candidate PASS.\r\n- Прочитай `evidence/pre01-candidate-investigation-2026-09-30.json`, `evidence/pre01-readonly-probe-2026-09-30.mjs`, `evidence/pre01-planning-before-2026-09-30.json`, `evidence/pre01-accepted-planning-operations-2026-09-30.json` и новый preparation report. Старые manifest/лог/драфт не перезаписываются.\r\n- Текущий набор файлов сверяй по **новому** `evidence/pre01-repeat-pre-manifest-2026-09-30.json`. Старый `wb001-pre-review-manifest-2026-09-30.json` фиксирует предыдущую ревизию; семь явных planning изменений сопоставляются с before snapshot.\r\n- Проведи полный PRE foundation, а не только spot check селектора. Отдельно оцени устранение противоречия PRE-01, точность exception/provenance/version decision, совместимость root states, новый узкий allowed path и обязательность браузерной проверки в реальном CI.\r\n- При необходимости безопасно повтори source RED и in-memory candidate из указанного workspace командами `node openspec/changes/frade-ui-design-contract/evidence/pre01-readonly-probe-2026-09-30.mjs source-red` и аналогично с `candidate`. Expected source exit 1 доказывает defect и не является тестом исправленной production; candidate exit 0 не является готовой foundation.\r\n- Canonical generated CSS/Node generator/browser tests пока NOT_IMPLEMENTED. PRE оценивает готовность принятого scope/spec/test plan до реализации; не выдумывай GREEN новых production tests.\r\n- Повторный независимый PRE пока NOT_RUN. Implementation scope NONE до нового PASS. Не изменяй reviewed artifacts; новый report и command evidence — только с уникальным timestamp, при недоступной записи выдай полный отчёт в чате.\r\n\r\n1. Установи контекст и review identity\r\n\r\n- Перед любыми командами проверь cwd, git branch, HEAD и status, включая untracked файлы. Git HEAD не содержит незакоммиченные planning artifacts: обязательно сверяй SHA256 по текущему review manifest.\r\n- Не используй смешанный checkout `E:/dev/codex/frade` как implementation/review baseline UI. Там сохраняется чужая незакоммиченная работа. Для проверки ссылок на routing handoff допустимо только чтение.\r\n- Прочитай root AGENTS полностью, включая §18, и найди применимые nested AGENTS. Прочитай `docs/engineering/parallel-feature-workflow.md` и `openspec/config.yaml`.\r\n- Если фактическая ветка/base/review hashes отличаются, опиши различия. Смена содержимого reviewed artifacts требует нового manifest/review, а не переноса старого PASS.\r\n\r\n2. Прочитай исходники planning и evidence\r\n   Все пути ниже относительно указанного workspace:\r\n\r\n- `openspec/changes/frade-ui-design-contract/{proposal.md,design.md,tasks.md,roadmap.md,execution-context.json}` — прочитай каждый реальный файл, не используй Bash brace expansion в PowerShell.\r\n- Все три `specs/*/spec.md` этого change.\r\n- `decisions/visual-contract.md`, `decisions/wb001-acceptance-2026-09-30.md`, `decisions/AGENTS-UI.proposed.md`, `decisions/branch-protection.md`.\r\n- `bdd/ui-contracts.feature`, `bdd/traceability-plan.md`.\r\n- `evidence/pre01-repeat-pre-manifest-2026-09-30.json`, `evidence/pre01-planning-preparation-checks-2026-09-30.json`.\r\n- `evidence/audit.md`, `evidence/parallel-process-report-2026-09-30.md`, isolation/transfer/check logs и baseline screenshots, на которые они ссылаются.\r\n- Реальный input directory имеет ведущий пробел: ` _input/frade-ui-style-guide-v1/`. Прочитай guide, QA checklist, AGENTS fragment, Themes-and-Plugins-Spec, tokens/schema/generator/checker и supplied feature; сохрани distinction между source-package checks и runtime implementation.\r\n- Существующие manifests, CI, shared UI primitives/styles/brand/icon assets и утверждённые публичные Repo/Draw/desktop contracts в объёме, необходимом для scope review.\r\n- Исходный WB-001 в `openspec/changes/frade-ka-workbench-pilot/specs/repository-workbench/spec.md` и `docs/ka-workbench/vscode-parity.md`.\r\n- P01–P07 proposal/design/spec/tasks в объёме проверки последовательности, единственного runtime resolver и отсутствия скрытого внедрения зависимых этапов.\r\n\r\nСтарые evidence/pre-review.md, REPORT.md, pre-ui-independent-process-2026-09-30.md, process report и snapshots — исторические результаты на момент создания. Не редактируй их и не принимай старый NOT ACCEPTED за текущий статус после явного принятия. Прежний routing gate FAIL не является UI blocker. Текущий acceptance record и manifest фиксируют новую review-ревизию.\r\n\r\n3. Проверь foundation scope и архитектуру\r\n\r\n- Рассмотри paths в design.md как кандидаты: в отчёте перечисли точный разрешённый набор paths/операций для foundation и запрещённые границы.\r\n- Foundation: канонические docs/checklist/specification с provenance; additive UI AGENTS; component contracts/inventory; JSON tokens и deterministic Node generator → CSS/TS registry; drift/contrast/color literals/BDD traceability checks; реальный pnpm/CI.\r\n- P01 владеет единственным runtime registry/resolver/preview/settings/atomic adapters. Foundation не внедряет другой selector/service и не меняет массово feature UI. Light/Dark/HC/System и compact/comfortable принадлежат P01; Light и Dark появляются вместе.\r\n- Проверь текущий package graph, native primitives и отсутствие циклов. Navigator/Inspector не должны приобретать обратную зависимость от ui-workspace. Полная новая UI-библиотека и выдуманный logo не входят в scope.\r\n- Tokens состояния UI отделены от domain visualization/persisted semantics. Routing algorithm/endpoints/invariants, persistence, Repo Core gates, vendor/reference assets, routing controls и чужая работа исключены.\r\nwarning: in the working copy of 'AGENTS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'AGENTS.md', LF will be replaced by CRLF the next time Git touches it\n AGENTS.md | 43 +++++++++++++++++++++++++++++++++++++++++++\n 1 file changed, 43 insertions(+)\n## codex/frade-ui-design-contract\n M AGENTS.md\n"
+      }
+    },
+    {
+      "command": "Saved read-only planning repair verifier via node --input-type=module -",
+      "script": "pre01-planning-repair-check-2026-09-30.mjs",
+      "result": {
+        "chunk_id": "ec008e",
+        "wall_time_seconds": 1.250676,
+        "exit_code": 0,
+        "original_token_count": 139,
+        "output": "{\"status\":\"PASS\",\"unchangedHistoricalArtifacts\":123,\"acceptedPlanningChanges\":7,\"snapshotPayloadsVerified\":7,\"bddSyntax\":\"PASS\",\"newFoundationOutlines\":2,\"newExamples\":20,\"priorBddScenarios\":\"UNCHANGED\",\"wb001AcceptedText\":\"UNCHANGED\",\"sourceCssSha256\":\"11aac6f1c08ae67ef25415b220330d26bef9d0d805090ecc9626bb7ca6707d29\",\"candidateCssSha256\":\"6a6b47b12f5090a66231ee2541387ada31a2435d76f245c6631ad4285ac784a4\",\"candidateSelectorOccurrences\":1,\"tasks\":{\"checked\":3,\"total\":17},\"independentPre\":\"FAIL\",\"repeatPre\":\"NOT_RUN\",\"productionImplementation\":false}\n"
+      }
+    }
+  ]
+}

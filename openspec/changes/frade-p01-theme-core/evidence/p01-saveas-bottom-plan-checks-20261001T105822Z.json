@@ -1,0 +1,53 @@
+{
+  "atUtc": "2026-10-01T10:58:49.543Z",
+  "scope": "Accepted SaveAs/lower chrome coherent planning; not implementation or UI runtime PASS",
+  "status": "PASS",
+  "runs": [
+    {
+      "name": "openspec",
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "openspec validate frade-p01-theme-core --strict --json"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-plan-checks-20261001T105822Z-openspec.txt"
+    },
+    {
+      "name": "bdd",
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/ui-workspace test:bdd"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-plan-checks-20261001T105822Z-bdd.txt"
+    },
+    {
+      "name": "compliance",
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm ui:compliance"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-plan-checks-20261001T105822Z-compliance.txt"
+    },
+    {
+      "name": "diffcheck",
+      "cmd": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-plan-checks-20261001T105822Z-diffcheck.txt"
+    }
+  ]
+}

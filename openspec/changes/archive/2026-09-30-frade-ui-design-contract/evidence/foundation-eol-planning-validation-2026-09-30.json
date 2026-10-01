@@ -1,0 +1,171 @@
+{
+  "recordedAtUtc": "2026-09-30T11:53:09.152Z",
+  "scope": "Planning-only accepted FOUNDATION-EOL-01 repair",
+  "status": "PASS",
+  "focusedPre": "NOT_RUN",
+  "readyForFocusedPre": true,
+  "readyForImplementation": false,
+  "taskCounts": {
+    "complete": 13,
+    "total": 19
+  },
+  "commands": [
+    {
+      "command": "openspec",
+      "args": [
+        "validate",
+        "frade-ui-design-contract",
+        "--strict"
+      ],
+      "exit": 0,
+      "stdout": "Change 'frade-ui-design-contract' is valid\n",
+      "stderr": ""
+    },
+    {
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "scripts/ui/tokens.mjs"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\":\"PASS\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[]}\n",
+      "stderr": ""
+    },
+    {
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "scripts/ui/colors.mjs"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\":\"PASS\",\"occurrences\":124,\"legacyExceptions\":124,\"errors\":[]}\n",
+      "stderr": ""
+    },
+    {
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "scripts/ui/traceability.mjs"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\":\"PASS\",\"foundationBindings\":22,\"futureBoundariesNotExecuted\":23,\"scope\":\"Binding integrity only; actual tests run separately\",\"errors\":[]}\n",
+      "stderr": ""
+    },
+    {
+      "command": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of '.github/workflows/ci.yml', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'AGENTS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'packages/ui-workspace/package.json', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "command": "git",
+      "args": [
+        "diff",
+        "--exit-code",
+        "--",
+        "pnpm-lock.yaml"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "protectedArtifacts": [
+    {
+      "path": "docs/ui/Frade-UI-Style-Guide.md",
+      "expected": "6fe886be979a32d87c94f29f65ee3abdbc2acf86dd4c12fdfc4d00022139b109",
+      "actual": "6fe886be979a32d87c94f29f65ee3abdbc2acf86dd4c12fdfc4d00022139b109",
+      "pass": true
+    },
+    {
+      "path": "docs/ui/QA-Checklist.md",
+      "expected": "22fb9287d6740a2613dac07e5ef656aa6edcc9e6e1eb4be5bb5bff3f042b0f9b",
+      "actual": "22fb9287d6740a2613dac07e5ef656aa6edcc9e6e1eb4be5bb5bff3f042b0f9b",
+      "pass": true
+    },
+    {
+      "path": "docs/ui/Themes-and-Plugins-Spec.md",
+      "expected": "f8fb35e715dd7e0c420768b855e991c96244279b637e6d4db5eb061514ec3e81",
+      "actual": "f8fb35e715dd7e0c420768b855e991c96244279b637e6d4db5eb061514ec3e81",
+      "pass": true
+    },
+    {
+      "path": "packages/ui-workspace/tokens/tokens.json",
+      "expected": "d02e342cd54dc98807778fcdf10e386080f5b97a5c0a8dc1245b0ee9191e2764",
+      "actual": "d02e342cd54dc98807778fcdf10e386080f5b97a5c0a8dc1245b0ee9191e2764",
+      "pass": true
+    },
+    {
+      "path": "packages/ui-workspace/tokens/theme.schema.json",
+      "expected": "d0967fe506f13bbc506e48d92a8ff68c07cdcdcc119b6a15862c65b89d28d9f3",
+      "actual": "d0967fe506f13bbc506e48d92a8ff68c07cdcdcc119b6a15862c65b89d28d9f3",
+      "pass": true
+    },
+    {
+      "path": "tests/ui-contract/fixtures/upstream.tokens.css",
+      "expected": "11aac6f1c08ae67ef25415b220330d26bef9d0d805090ecc9626bb7ca6707d29",
+      "actual": "11aac6f1c08ae67ef25415b220330d26bef9d0d805090ecc9626bb7ca6707d29",
+      "pass": true
+    },
+    {
+      "path": "packages/ui-workspace/src/design/generated/tokens.css",
+      "expected": "6a6b47b12f5090a66231ee2541387ada31a2435d76f245c6631ad4285ac784a4",
+      "actual": "6a6b47b12f5090a66231ee2541387ada31a2435d76f245c6631ad4285ac784a4",
+      "pass": true
+    },
+    {
+      "path": "packages/ui-workspace/src/design/generated/tokens.ts",
+      "expected": "fbe1ced2cbb112f8073de4a5f8c612811ef087165514304f3820862c929fb63e",
+      "actual": "fbe1ced2cbb112f8073de4a5f8c612811ef087165514304f3820862c929fb63e",
+      "pass": true
+    }
+  ],
+  "trackedAnchors": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "expected": "e54b16e02f6174095e6354ad881bfa4941ef7c4885add5bb5b5a89f81de0ea91",
+      "actual": "e54b16e02f6174095e6354ad881bfa4941ef7c4885add5bb5b5a89f81de0ea91",
+      "pass": true
+    },
+    {
+      "path": "AGENTS.md",
+      "expected": "c164163e89110126e507d295b391e372304cd33163072963e50d7282f28fe94b",
+      "actual": "c164163e89110126e507d295b391e372304cd33163072963e50d7282f28fe94b",
+      "pass": true
+    },
+    {
+      "path": "package.json",
+      "expected": "cdef475340de72007292c14402c71feda4c74dca1285b7da358bb3680545de0a",
+      "actual": "cdef475340de72007292c14402c71feda4c74dca1285b7da358bb3680545de0a",
+      "pass": true
+    }
+  ],
+  "absenceChecks": [
+    {
+      "path": ".gitattributes",
+      "absent": true
+    },
+    {
+      "path": "scripts/ui/checkout.mjs",
+      "absent": true
+    },
+    {
+      "path": "tests/ui-contract/checkout.test.mjs",
+      "absent": true
+    }
+  ],
+  "beforeSnapshotSha256": "8f30a41b1ad620d0ea26165de38833e5fc4eabd148b39b00cb659d1b2ca13529",
+  "allowedPlanningEdits": [
+    "openspec/changes/frade-ui-design-contract/proposal.md",
+    "openspec/changes/frade-ui-design-contract/design.md",
+    "openspec/changes/frade-ui-design-contract/tasks.md",
+    "openspec/changes/frade-ui-design-contract/specs/ui-token-compliance/spec.md",
+    "openspec/changes/frade-ui-design-contract/bdd/traceability-plan.md",
+    "openspec/changes/frade-ui-design-contract/execution-context.json"
+  ],
+  "history": "Prior evidence reports preserved byte-for-byte; new records only",
+  "productionWrites": 0,
+  "fullRegression": "NOT_RUN in planning-only repair; existing pre-repair logs remain historical",
+  "note": "This validates planning/check preservation, not an independent architecture gate"
+}

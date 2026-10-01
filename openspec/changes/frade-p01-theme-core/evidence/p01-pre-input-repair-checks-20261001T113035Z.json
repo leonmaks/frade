@@ -1,0 +1,31 @@
+{
+  "scope": "PRE input/process repair only; production/tests unchanged",
+  "results": [
+    {
+      "name": "validate",
+      "command": "pnpm exec openspec validate frade-p01-theme-core --strict --json",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-input-repair-checks-20261001T113035Z-validate.txt"
+    },
+    {
+      "name": "bdd",
+      "command": "pnpm --filter @frade/ui-workspace test:bdd",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-input-repair-checks-20261001T113035Z-bdd.txt"
+    },
+    {
+      "name": "compliance",
+      "command": "pnpm ui:compliance",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-input-repair-checks-20261001T113035Z-compliance.txt"
+    },
+    {
+      "name": "diff",
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-input-repair-checks-20261001T113035Z-diff.txt"
+    }
+  ],
+  "status": "PASS",
+  "atUtc": "2026-10-01T11:31:09.149Z"
+}

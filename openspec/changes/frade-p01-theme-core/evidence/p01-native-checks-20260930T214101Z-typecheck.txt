@@ -1,0 +1,13 @@
+src/design/theme/nativeParticipant.ts(36,36): error TS2339: Property 'image' does not exist on type 'false | BackgroundManagerOptions'.
+  Property 'image' does not exist on type 'false'.
+src/design/theme/nativeParticipant.ts(45,31): error TS2322: Type 'KeyValue<any> | DotOptions | FixedDotOptions | MeshOptions | DoubleMeshOptions[]' is not assignable to type 'DotOptions | undefined'.
+  Type 'KeyValue<any>' is missing the following properties from type 'DotOptions': color, thickness
+src/design/theme/nativeParticipant.ts(100,49): error TS2322: Type 'any[] | { [key: string]: any; } | { color: string; thickness: number; } | undefined' is not assignable to type 'DotOptions | undefined'.
+  Type 'any[]' is missing the following properties from type 'DotOptions': color, thickness
+$ tsc --noEmit
+[ELIFECYCLE] Command failed with exit code 2.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in C:\Users\NVISEN\.codex\worktrees\ui-design-
+  │ contract\frade\packages\ui-workspace
+

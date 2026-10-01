@@ -1,5 +1,7 @@
 import { drawioRepositoryBridge } from './drawio-bridge'
 import { drawioFlowBridge } from './drawio-flow-bridge'
+import { drawioThemeBridge } from './drawio-theme-bridge'
+import { createPresentationSettings, createPresentationVisibility } from './presentation-settings'
 import {
   app,
   BrowserWindow,
@@ -9,6 +11,7 @@ import {
   session,
   utilityProcess,
   dialog,
+  nativeTheme,
 } from 'electron'
 import { join } from 'node:path'
 import { WorkbenchHost, WorkbenchRelay } from './workbench'
@@ -24,6 +27,8 @@ import { RepositoryDesktopController } from './repository'
 import { pathToFileURL } from 'node:url'
 import { BackendSupervisor } from '@frade/runtime-electron'
 import {
+  PRESENTATION_CHANNEL,
+  PRESENTATION_BOOT_CHANNEL,
   REQUEST_CHANNEL,
   EVENT_CHANNEL,
   parseRequest,
@@ -110,6 +115,11 @@ app
               drawioFlowBridge.toString() +
               ')(' +
               JSON.stringify(parentOrigin) +
+              ');' +
+              '(' +
+              drawioThemeBridge.toString() +
+              ')(' +
+              JSON.stringify(parentOrigin) +
               ');',
             {
               headers: {
@@ -169,6 +179,57 @@ app
       },
     })
     const wc = window.webContents
+    const presentationEnvironment = {
+      colorScheme: nativeTheme.shouldUseDarkColors ? ('dark' as const) : ('light' as const),
+      highContrast: nativeTheme.shouldUseHighContrastColors,
+      forcedColors: nativeTheme.inForcedColorsMode,
+    }
+    const updatePresentationEnvironment = () => {
+      presentationEnvironment.colorScheme = nativeTheme.shouldUseDarkColors ? 'dark' : 'light'
+      presentationEnvironment.highContrast = nativeTheme.shouldUseHighContrastColors
+      presentationEnvironment.forcedColors = nativeTheme.inForcedColorsMode
+    }
+    nativeTheme.on('updated', updatePresentationEnvironment)
+    const presentation = createPresentationSettings({
+      userData: app.getPath('userData'),
+      sessionId: crypto.randomUUID(),
+      windowId: wc.id,
+      devUrl,
+      environment: presentationEnvironment,
+      onReady: (bootRevision, rootRevision) =>
+        visibility?.presentationReady(bootRevision, rootRevision),
+    })
+    const presentationBoot = await presentation.initialize()
+    const visibility = createPresentationVisibility(
+      presentationBoot,
+      () => {
+        if (window && !window.isDestroyed()) window.show()
+      },
+      (reason) => {
+        console.error('Presentation startup blocked', reason)
+        app.exit(1)
+      },
+    )
+    const presentationSender = (event: Electron.IpcMainEvent | Electron.IpcMainInvokeEvent) => ({
+      senderId: event.sender.id,
+      mainFrame: event.senderFrame === wc.mainFrame,
+      url: event.senderFrame?.url ?? '',
+    })
+    const bootPresentation = (event: Electron.IpcMainEvent, ...args: unknown[]) => {
+      try {
+        if (args.length !== 0) throw Error('INVALID_PRESENTATION_BOOT')
+        event.returnValue = presentation.bootstrap(presentationSender(event))
+      } catch (error) {
+        event.returnValue = {
+          error: error instanceof Error ? error.message : 'Presentation bootstrap denied',
+        }
+      }
+    }
+    ipcMain.on(PRESENTATION_BOOT_CHANNEL, bootPresentation)
+    ipcMain.handle(PRESENTATION_CHANNEL, (event, ...args: unknown[]) => {
+      if (args.length !== 1) throw Error('INVALID_PRESENTATION')
+      return presentation.request(presentationSender(event), args[0])
+    })
     workbench = new WorkbenchHost({
       settingsFile: join(app.getPath('userData'), 'frade-workspace.json'),
       request: (command) => workbenchRelay.request(command),
@@ -281,12 +342,16 @@ app
     })
     window.on('closed', () => {
       unsubscribe()
+      visibility?.dispose()
+      nativeTheme.off('updated', updatePresentationEnvironment)
+      ipcMain.removeListener(PRESENTATION_BOOT_CHANNEL, bootPresentation)
+      ipcMain.removeHandler(PRESENTATION_CHANNEL)
       ipcMain.removeHandler(REPOSITORY_CHANNEL)
       ipcMain.removeHandler(REPOSITORY_OPEN_CHANNEL)
       void repository.close()
       window = undefined
     })
-    window.once('ready-to-show', () => window?.show())
+    window.once('ready-to-show', () => visibility?.nativeReady())
     backend.start()
     await window.loadURL(devUrl ?? 'frade://app/index.html')
   })

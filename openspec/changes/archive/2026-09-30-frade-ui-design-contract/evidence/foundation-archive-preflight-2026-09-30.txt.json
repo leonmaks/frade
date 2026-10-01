@@ -1,0 +1,14 @@
+{
+  "startedAtUtc": "2026-09-30T14:08:38.2132782Z",
+  "endedAtUtc": "2026-09-30T14:08:43.2362842Z",
+  "commands": [
+    "pnpm install --frozen-lockfile",
+    "git diff --exit-code -- pnpm-lock.yaml",
+    "pnpm exec eslint scripts/ui/controls.mjs scripts/ui/traceability.mjs tests/ui-contract/archive.test.mjs",
+    "pnpm exec prettier --check scripts/ui/controls.mjs scripts/ui/traceability.mjs tests/ui-contract/archive.test.mjs",
+    "openspec validate frade-ui-design-contract --strict --no-interactive"
+  ],
+  "exit": 0,
+  "log": "openspec/changes/frade-ui-design-contract/evidence/foundation-archive-preflight-2026-09-30.txt",
+  "sha256": "7113b401097f8678072808d80097efdeec324a3d4a11d325dad44a5ad9de8b64"
+}

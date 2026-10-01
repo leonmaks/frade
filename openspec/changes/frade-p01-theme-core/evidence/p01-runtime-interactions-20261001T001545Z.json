@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-01T00:16:31.895Z",
+  "results": [
+    {
+      "label": "desktop-typecheck",
+      "command": "pnpm --filter @frade/desktop typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-runtime-interactions-20261001T001545Z-desktop-typecheck.txt"
+    },
+    {
+      "label": "desktop-lint",
+      "command": "pnpm --filter @frade/desktop lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-runtime-interactions-20261001T001545Z-desktop-lint.txt"
+    },
+    {
+      "label": "electron",
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme.spec.ts --output C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-runtime-interactions-20261001T001545Z-artifacts",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-runtime-interactions-20261001T001545Z-electron.txt"
+    }
+  ],
+  "assertionSha256": "3295733232655db8e44fa1811fbab336fac9b948579f2d3f1328139c7507e230"
+}

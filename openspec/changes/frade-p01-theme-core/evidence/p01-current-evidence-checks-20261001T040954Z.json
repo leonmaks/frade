@@ -1,0 +1,52 @@
+{
+  "start": "2026-10-01T04:09:54.117Z",
+  "end": "2026-10-01T04:10:47.376Z",
+  "results": [
+    {
+      "exe": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop typecheck"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-current-evidence-checks-20261001T040954Z-0.txt",
+      "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+    },
+    {
+      "exe": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop lint"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-current-evidence-checks-20261001T040954Z-1.txt",
+      "sha256": "785b223160c30fda735920637fb1bfa85adcdae9e934f0483a3822ab1002f952"
+    },
+    {
+      "exe": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/ui-contract-theme-performance.spec.ts",
+        "tests/e2e/ui-contract-theme.spec.ts",
+        "--grep",
+        "P01 pinned real|P01 actual root rename",
+        "--output",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-current-evidence-checks-20261001T040954Z-artifacts",
+        "--reporter",
+        "list"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-current-evidence-checks-20261001T040954Z-2.txt",
+      "sha256": "c27ec4c01c44a909a2550a9b2fd120577f1d6cd4e5e3fb26d58af20d8ee0f180"
+    }
+  ],
+  "scope": "Affected test additions/living hardware evidence; does not supersede full root FAIL, B02 blockers or approve visual baselines."
+}

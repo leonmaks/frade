@@ -1,0 +1,95 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/participants.test.ts (17 tests | 6 failed) 126ms
+   ✓ boot root projection installs only the complete role data and theme/density/revision metadata 8ms
+   ✓ prepare is side-effect-free; apply waits for subsequent paint and rollback restores the committed snapshot 7ms
+   ✓ invalidated/disposed handles cannot mutate or acknowledge a later root revision 4ms
+   ✓ joining root is hidden until its accepted paint and restores preexisting visibility ownership 1ms
+   ✓ forced root projection installs final system keywords without persisting them into palette input 1ms
+   ✓ neutral curtain owns full client-area node, stays until reveal and exposes accessible recovery without discarding editor DOM 15ms
+   ✓ native prepare does not write view or document; painted apply and rollback change only UI canvas/grid 17ms
+   ✓ native projection retains authored image/options and keeps user grid visibility/size through palette rollback 3ms
+   ✓ native disposal restores owned view settings and visibility without changing semantic model or removing another owner state 2ms
+   ✓ native late/aborted handles and mismatched phase cannot mutate graph view 1ms
+   ✓ native forced projection uses trusted system colors and never writes them into semantic paint 1ms
+   × frame prepare waits for matching READY; apply waits for actual painted ACK and preserves semantic APIs 18ms
+     → P01 isolated frame participant not implemented
+   × frame rejects foreign source/origin, stale generation/membership/session and extra fields before satisfying prepare 9ms
+     → P01 isolated frame participant not implemented
+   × frame rollback carries previous snapshot with new owner and requires its painted ACK before revealing 7ms
+     → P01 isolated frame participant not implemented
+   × frame abort, disposal and navigation reject waiting work and invalidate old generation 12ms
+     → P01 isolated frame participant not implemented
+   × frame refusal remains an explicit error and join visibility is owned until ACK 9ms
+     → P01 isolated frame participant not implemented
+   × frame forwards only validated presentation keys for its current painted owner and never save/close 9ms
+     → P01 isolated frame participant not implemented
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 11 passed (17)
+   Start at  00:48:53
+   Duration  1.78s (transform 133ms, setup 0ms, collect 170ms, tests 126ms, environment 804ms, prepare 282ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > frame prepare waits for matching READY; apply waits for actual painted ACK and preserves semantic APIs
+Error: P01 isolated frame participant not implemented
+ ❯ createFrameParticipant src/design/theme/frameParticipant.ts:3:154
+
+ ❯ frameFixture tests/ui-contract/participants.test.ts:335:134
+ ❯ tests/ui-contract/participants.test.ts:341:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > frame rejects foreign source/origin, stale generation/membership/session and extra fields before satisfying prepare
+Error: P01 isolated frame participant not implemented
+ ❯ createFrameParticipant src/design/theme/frameParticipant.ts:3:154
+
+ ❯ frameFixture tests/ui-contract/participants.test.ts:335:134
+ ❯ tests/ui-contract/participants.test.ts:351:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > frame rollback carries previous snapshot with new owner and requires its painted ACK before revealing
+Error: P01 isolated frame participant not implemented
+ ❯ createFrameParticipant src/design/theme/frameParticipant.ts:3:154
+
+ ❯ frameFixture tests/ui-contract/participants.test.ts:335:134
+ ❯ tests/ui-contract/participants.test.ts:362:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > frame abort, disposal and navigation reject waiting work and invalidate old generation
+Error: P01 isolated frame participant not implemented
+ ❯ createFrameParticipant src/design/theme/frameParticipant.ts:3:154
+
+ ❯ frameFixture tests/ui-contract/participants.test.ts:335:134
+ ❯ tests/ui-contract/participants.test.ts:368:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > frame refusal remains an explicit error and join visibility is owned until ACK
+Error: P01 isolated frame participant not implemented
+ ❯ createFrameParticipant src/design/theme/frameParticipant.ts:3:154
+
+ ❯ frameFixture tests/ui-contract/participants.test.ts:335:134
+ ❯ tests/ui-contract/participants.test.ts:375:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > frame forwards only validated presentation keys for its current painted owner and never save/close
+Error: P01 isolated frame participant not implemented
+ ❯ createFrameParticipant src/design/theme/frameParticipant.ts:3:154
+
+ ❯ frameFixture tests/ui-contract/participants.test.ts:335:134
+ ❯ tests/ui-contract/participants.test.ts:381:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

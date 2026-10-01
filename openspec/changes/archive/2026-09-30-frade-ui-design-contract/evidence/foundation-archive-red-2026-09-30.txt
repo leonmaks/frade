@@ -1,0 +1,104 @@
+✖ UI-ARCHIVE:archived-change (497.5354ms)
+✖ UI-ARCHIVE:no-change-artifacts (446.9621ms)
+✖ UI-ARCHIVE:canonical-no-fallback (425.3122ms)
+✖ UI-ARCHIVE:fixture-base-is-respected (1678.4832ms)
+✖ UI-ARCHIVE:execution-and-cleanup-failures-preserved (1587.0784ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4925.4315
+
+✖ failing tests:
+
+test at tests\ui-contract\archive.test.mjs:133:1
+✖ UI-ARCHIVE:archived-change (497.5354ms)
+  AssertionError [ERR_ASSERTION]: Error: ENOENT: no such file or directory, open 'C:\Users\NVISEN\AppData\Local\Temp\frade-ui-checkout-ehqDrq\openspec\changes\frade-ui-design-contract\bdd\ui-contracts.feature'
+  
+  
+  1 !== 0
+  
+      at file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:139:12
+      at async withFixture (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:87:14)
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:134:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\ui-contract\archive.test.mjs:158:1
+✖ UI-ARCHIVE:no-change-artifacts (446.9621ms)
+  AssertionError [ERR_ASSERTION]: Error: ENOENT: no such file or directory, open 'C:\Users\NVISEN\AppData\Local\Temp\frade-ui-checkout-xVTDBX\openspec\changes\frade-ui-design-contract\bdd\ui-contracts.feature'
+  
+  
+  1 !== 0
+  
+      at file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:164:12
+      at async withFixture (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:87:14)
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:159:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\ui-contract\archive.test.mjs:179:1
+✖ UI-ARCHIVE:canonical-no-fallback (425.3122ms)
+  AssertionError [ERR_ASSERTION]: Missing canonical BDD must fail despite valid active/production copies
+  
+  0 !== 1
+  
+      at file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:184:12
+      at async withFixture (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:87:14)
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:180:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\ui-contract\archive.test.mjs:220:1
+✖ UI-ARCHIVE:fixture-base-is-respected (1678.4832ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:223:5
+      at async withFixture (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:87:14)
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:221:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /ENOENT/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at tests\ui-contract\archive.test.mjs:228:1
+✖ UI-ARCHIVE:execution-and-cleanup-failures-preserved (1587.0784ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:230:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Injected CLI execution failure/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

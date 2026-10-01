@@ -1,0 +1,78 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/runtime-contracts
+
+ ❯ tests/presentation.test.ts (18 tests | 3 failed) 14ms
+   × validates separate choice/record/phase/snapshot/bootstrap without mutating or freezing source 6ms
+     → P01 presentation snapshot schema not implemented
+   ✓ rejects malformed choice null 1ms
+   ✓ rejects malformed choice %j 0ms
+   ✓ rejects malformed choice {"mode":"automatic","density":"compact","preferred":{"light":"frade.builtin/light","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"}} 0ms
+   ✓ rejects malformed choice {"mode":"system","density":"dense","preferred":{"light":"frade.builtin/light","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"}} 0ms
+   ✓ rejects malformed choice {"mode":"system","density":"compact","preferred":{"light":"frade.builtin/light","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"},"path":"C:/arbitrary"} 0ms
+   ✓ rejects malformed choice {"mode":"system","density":"compact","preferred":{"light":"https://example.invalid/theme","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"}} 0ms
+   ✓ rejects malformed choice {"mode":"system","density":"compact","preferred":{"light":"frade.builtin/light"}} 0ms
+   ✓ rejects malformed persisted record {"version":2,"revision":0,"generation":0,"transactionId":"boot","selection":{"mode":"system","density":"compact","preferred":{"light":"frade.builtin/light","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"}}} 0ms
+   ✓ rejects malformed persisted record {"version":1,"revision":-1,"generation":0,"transactionId":"boot","selection":{"mode":"system","density":"compact","preferred":{"light":"frade.builtin/light","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"}}} 0ms
+   ✓ rejects malformed persisted record {"version":1,"revision":0,"generation":0.5,"transactionId":"boot","selection":{"mode":"system","density":"compact","preferred":{"light":"frade.builtin/light","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"}}} 0ms
+   ✓ rejects malformed persisted record {"version":1,"revision":0,"generation":0,"transactionId":"../file","selection":{"mode":"system","density":"compact","preferred":{"light":"frade.builtin/light","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"}}} 0ms
+   ✓ rejects malformed persisted record {"version":1,"revision":0,"generation":0,"transactionId":"boot","selection":{"mode":"system","density":"compact","preferred":{"light":"frade.builtin/light","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"}},"path":"outside"} 0ms
+   ✓ rejects malformed persisted record {"version":1,"revision":0,"generation":0,"transactionId":"boot","selection":{"mode":"system","density":"compact","preferred":{"light":"frade.builtin/light","dark":"frade.builtin/dark","high-contrast":"frade.builtin/high-contrast"},"workspaceEnabled":true}} 0ms
+   ✓ refuses CSS injection, unknown/missing roles, arbitrary fields and forged forced-color mappings 1ms
+   × accepts only canonical final forced mapping while retaining HEX6 palette 1ms
+     → P01 presentation snapshot schema not implemented
+   × bounded envelopes reject unknown fields, wrong phase/session and unsafe data before any mutation 0ms
+     → P01 presentation request schema not implemented
+   ✓ presentation exports preserve old health protocol request and channels 1ms
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 15 passed (18)
+   Start at  23:33:20
+   Duration  714ms (transform 98ms, setup 0ms, collect 114ms, tests 14ms, environment 0ms, prepare 239ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/presentation.test.ts > validates separate choice/record/phase/snapshot/bootstrap without mutating or freezing source
+Error: P01 presentation snapshot schema not implemented
+ ❯ parsePresentationSnapshot src/presentation.ts:130:9
+    128| }
+    129| export function parsePresentationSnapshot(_value: unknown): Presentati…
+    130|   throw Error('P01 presentation snapshot schema not implemented')
+       |         ^
+    131| }
+    132| export function parsePresentationBoot(_value: unknown): PresentationBo…
+ ❯ tests/presentation.test.ts:54:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/presentation.test.ts > accepts only canonical final forced mapping while retaining HEX6 palette
+Error: P01 presentation snapshot schema not implemented
+ ❯ parsePresentationSnapshot src/presentation.ts:130:9
+    128| }
+    129| export function parsePresentationSnapshot(_value: unknown): Presentati…
+    130|   throw Error('P01 presentation snapshot schema not implemented')
+       |         ^
+    131| }
+    132| export function parsePresentationBoot(_value: unknown): PresentationBo…
+ ❯ tests/presentation.test.ts:128:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/presentation.test.ts > bounded envelopes reject unknown fields, wrong phase/session and unsafe data before any mutation
+Error: P01 presentation request schema not implemented
+ ❯ parsePresentationRequest src/presentation.ts:136:9
+    134| }
+    135| export function parsePresentationRequest(_value: unknown): Presentatio…
+    136|   throw Error('P01 presentation request schema not implemented')
+       |         ^
+    137| }
+    138| 
+ ❯ tests/presentation.test.ts:139:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\runtime-contracts
+

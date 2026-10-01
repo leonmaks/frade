@@ -1,0 +1,106 @@
+Cumulative foundation POST завершён. Блокеров реализации, архитектуры или применимых проверок не обнаружено. Candidate готов к следующему archive checkpoint после сохранения этого независимого результата.
+
+| Поле | Значение |
+|---|---|
+| Review ID | `POST-FOUNDATION-20260930T145619Z` |
+| UTC | `2026-09-30T14:56:19Z` |
+| Reviewer | Независимая review-сессия Codex; implementation не выполнялась |
+| Selected model / effort | `gpt-6-astra` / `xhigh` |
+| actualBackend / actualEffort | `NOT_CONFIRMED` / `NOT_CONFIRMED` |
+| Workspace | `C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade` |
+| Branch | `codex/frade-ui-design-contract` |
+| HEAD / base | `98f387f96b51b0ad139e3507c376ff1c3e8dec09` |
+| Версии | Guide `1.0`; tokens `1.0.0`; CSS adoption revision `1` |
+
+Точный candidate — /C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/evidence/foundation-post-manifest-2026-09-30.json, размер **1 068 177 bytes**, SHA256:
+
+```
+cc5ca295fc3a2b897e89951e8eb7261e4e9f33c1b955e4d9b402a80c2a9511f2
+```
+
+| Проверка snapshot | Initial, 14:45:51Z | Final, 14:56:18Z |
+|---|---:|---:|
+| Raw SHA256 **и размер каждого artifact** | 4945/4945 | 4945/4945 |
+| Tracked inventory | 4671 | 4671 |
+| Non-ignored untracked, включая manifest | 275 | 275 |
+| Exact inventory = manifest + self | 4946 | 4946 |
+| Missing / extra / duplicate | 0 / 0 / 0 | 0 / 0 / 0 |
+| HEAD, branch, status соответствуют manifest | Да | Да |
+| Cached diff пуст | Да | Да |
+
+Прочитаны применимые AGENTS, OpenSpec config, proposal/design/tasks, execution-context, три delta specs, decisions, received reviews, cumulative tracked diff и новые foundation implementation/docs/tests/evidence. Реальные `openspec status` и `instructions apply` подтвердили `spec-driven`, конкретные artifact paths и **19/21** выполненных задач. `isComplete` означает planning completeness.
+
+Authority-цепочка подтверждена: `PRE-20260930T091121Z` → `PRE-EOL-20260930T120821Z` → `PRE-ARCHIVE-20260930T134029Z`. Хеши received reports и соответствующих manifests совпали с acceptance records. Проверены 35 сохранённых before-payloads; расхождений нет. Исторические FAIL сохранены.
+
+От archive PRE неизменны **4914/4923 artifacts**. Девять изменений точно соответствуют `approvedTransitions`; новых artifacts — 22, включая durable copies, lifecycle test и dated evidence. Package/CI/dependencies/lockfile, прежние tests, восемь raw anchors и generator относительно этого PRE сохранены. Из transfer inventory неизменны все 96 проверенных immutable input/baseline/P01–P07 artifacts. Неожиданного drift нет.
+
+Проверены все **12 ADDED требований и 24 spec-сценария** с разграничением foundation implementation и будущих runtime obligations:
+
+| Требование | Проверенное соответствие |
+|---|---|
+| Canonical mandatory UI contract | Канонические guide/checklist/themes specification byte-identical источникам; provenance совпадает. AGENTS §19 (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/AGENTS.md:463) добавлен без удаления прежних правил. |
+| Independent feature process and consumer dependencies | §18, execution-context и ownership records сохраняют независимость UI. R04 не является predecessor; routing integration принадлежит consumer. |
+| Shared component and workshop contract | `components.md`, migration и audit сопоставлены с найденными Workbench/Navigator/Inspector, native controls, Codicons и текстовым Frade mark. Выдуманных library/logo/provider нет. |
+| Checkpointed migration preserves semantics | Feature/domain/routing/vendor/brand sources и прежние assertions сохранены; applicable boundaries проходят. Foundation не мигрирует экраны. |
+| Deterministic token generation and contrast | Node pipeline, role closure, malformed input, threshold/drift negatives проверены. Три палитры по 31 роли; 102 named pairs. |
+| Forced-colors precedence and exact adoption exception | Generated CSS равен upstream bytes с единственной принятой заменой selector. Browser assertions (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/tests/e2e/ui-contract-token-cascade.spec.ts:64) проверяют media и все роли root/child во всех 20 состояниях. |
+| Feature literals and explicit exceptions | 124 точных occurrence exceptions: 98 LEGACY, 26 DOMAIN\_VISUALIZATION. Новые/изменённые literals не получают whole-file exemption. |
+| Existing CI integration and honest enforcement | Существующие jobs/checks сохранены; добавлены ui-compliance и Windows checkout/cascade. Remote enforcement не заявлен. |
+| Fresh Git checkout preserves canonical LF bytes | Ровно восемь принятых logical rules. Все восемь raw hashes и LF совпали; oracle не нормализует bytes. Actual fixture logs подтверждают CRLF/exit1 без attrs и raw-preserving exit0/102 с attrs. |
+| UI compliance survives specification archival | Единственный runtime path — `docs/ui/bdd/ui-contracts.feature`; lifecycle tests реально вызывают CLI и controls. Missing/malformed canonical приводит к failure. |
+| Explicit accepted visual transition | Полный WB-001 replacement принят; quote-block SHA256 совпал с `6e96a420…66ca9e`. Supersession ownership записан; pilot не изменён, фиктивного main MODIFIED spec нет. |
+| Measurable stage evidence | Семь исторических baseline screenshots сохранены. Token/cascade results не представлены как visual migration или whole-app WCAG. |
+
+Архивная независимость проверена по traceability reader (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/scripts/ui/traceability.mjs:166), controls (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/scripts/ui/controls.mjs:11) и lifecycle tests (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/ui-contract/archive.test.mjs:138). Ресурсы читаются из переданного fixture base, исполняемые scripts разрешаются из actual repo. Poison fixture scripts, explicit-base leakage negative, отсутствие fallback, realpath/absolute containment, bigint dev/ino identity и сохранение execution/cleanup причин через `AggregateError` проверены. Обычный compliance не зависит от active change через assertion-source fixtures; active path используется только явно включаемым историческим RED режимом.
+
+Сохранены прежние **48 cases и 48 registry entry objects**, включая 25 foundation + 23 future; реконструированный прежний registry совпал с PRE SHA256. Старые assertion-source hashes сохранены. Добавлены только **FUI-029/030/031**; итог — **51 cases, 28 foundation + 23 future**. Canonical и active adapted BDD byte-identical. Durable owner instructions byte-identical source copy; все десять adoption links существуют вне active change.
+
+В этой review-сессии реально выполнены:
+
+| Команды | Результат |
+|---|---|
+| `openspec status --change frade-ui-design-contract --json` | Exit 0 |
+| `openspec instructions apply --change frade-ui-design-contract --json` | Exit 0; 19/21 |
+| `openspec validate frade-ui-design-contract --strict` | Exit 0 |
+| `node scripts/ui/tokens.mjs` | Exit 0; 102 pairs |
+| `node scripts/ui/colors.mjs` | Exit 0; 124/124 |
+| `node scripts/ui/traceability.mjs` | Exit 0; 28 foundation / 23 future |
+| `node --test tests/ui-contract/tokens.test.mjs tests/ui-contract/colors.test.mjs tests/ui-contract/traceability.test.mjs` | Exit 0; **14/14**, без skipped |
+| Четыре `node scripts/check-{boundaries,runtime-boundaries,repository-boundaries,workbench-boundaries}.mjs` | Все exit 0 |
+| `python -B -X utf8 ' _input/frade-ui-style-guide-v1/check-tokens.py'` | Exit 0; 102 |
+| `node scripts/check-drawio-assets.mjs` | Exit 0; 2851 pinned resources |
+| Git status/inventory/diff; `diff --check`; lockfile и cached `diff --exit-code` | Exit 0; нарушений нет |
+| Read-only Node audits: raw manifests, provenance, transfers, snapshots, log hashes, BDD/registry preservation, durable links | Все проверки прошли |
+
+Существующие execution records проверены по raw hashes, командам, времени, actual exits и содержимому logs:
+
+| Evidence | Подтверждённый результат |
+|---|---|
+| `foundation-archive-red-2026-09-30.txt` \+ red-record | Запись `13:57:58Z`; actual exit1, **0 pass / 5 fail** до reader repair; reader hashes соответствуют PRE |
+| `foundation-archive-green-2026-09-30.txt` \+ provenance | Actual exit0, **5/5**; archived/no-artifacts CLI exit0 и controls `[0,0,1,1,1,0,1]`; strict canonical negatives fail |
+| `foundation-archive-preflight-2026-09-30.txt(.json)` | `14:08:38–14:08:43Z`; frozen install, lockfile diff, scoped eslint/Prettier, strict validation — exit0 |
+| `foundation-archive-check-all-2026-09-30.txt(.json)` | `14:09:12–14:15:09Z`; `pnpm check:all`, `FRADE_DRAW_E2E_PORT=51690`, exit0; UI **26/26**, Draw **215**, desktop **41 = 21 Electron + 20 CSS** |
+| `foundation-archive-cascade-2026-09-30.txt(.json)` | `14:16:20–14:16:27Z`; точная standalone Playwright command, exit0, **20/20** |
+| `foundation-archive-final-validation-2026-09-30.txt` | Strict validation и Git checks подтверждены; также повторены reviewer |
+| Исходные foundation/EOL RED/GREEN/full records | Проверены; исходные failures сохранены, последующие успешные прогоны имеют отдельные records |
+
+Package checks использовали заявленный Turbo cache; root UI tests и browser suites действительно выполнялись. Ожидаемые negative failures не считаются провалом suite. Исторический localhost failure остаётся `ENVIRONMENT`; DEP0190/Draw.io null404 warnings не отменяют passing assertions.
+
+**Findings:** correctness/architecture/applicable-check blockers отсутствуют; repair scope не требуется.
+
+**Ограничения и NOT\_RUN:**
+
+- Reviewer не повторял install, full suite, browser/Electron и OS-temp lifecycle/checkout suites: их оценка основана на проверенных execution logs и коде. Собственные reruns перечислены выше.
+- Remote Actions — `LOCAL_ONLY / unobserved`; Linux execution — `NOT_RUN`.
+- Branch protection — `NOT_CONFIGURED by task`; server state unverified. Durable instructions не доказывают merge protection.
+- Runtime resolver/preview/settings/density, actual token integration, P02–P07, visual migrations и AI provider не реализованы foundation.
+- Screen-reader, 200% zoom и migrated visual matrices — future-stage `NOT_RUN`.
+- Реальный archive и actual post-archive compliance/link checks — `NOT_RUN`.
+
+Задачи **4\.4 и 4.5 закономерно остаются `[ ]` в reviewed snapshot**. Исполнитель должен сохранить received POST, закрыть 4.4, затем выполнить project archive и actual post-archive `ui:compliance`/durable-link checks. Закрытие 4.5 допустимо только после успеха; warning о незавершённой archive-task обрабатывается по project/CLI rules без ложного checkbox. После checkpoint — STOP перед P01.
+
+Review не изменял файлы, index, production, tests, specs или evidence; commit/archive не выполнялись, в `E:/dev/codex/frade` записей не было.
+
+READY\_FOR\_ARCHIVE: YES — после recording POST; это не утверждение выполненного archive.
+
+GATE\_STATUS: PASS

@@ -1,0 +1,57 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states drawio across six themes and forced colors (1.8m)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveAttribute[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('.diagram-slot iframe').contentFrame().locator('.geDiagramContainer').locator('path[stroke="#404040" i]').first()
+    Expected: [32m"M [7m965[27m 672.5 L 1[7m085[27m 672.5"[39m
+    Received: [31m"M [7m1004[27m 672.5 L 1[7m124[27m 672.5"[39m
+    Timeout:  10000ms
+
+    Call log:
+    [2m  - Expect "toHaveAttribute" with timeout 10000ms[22m
+    [2m  - waiting for locator('.diagram-slot iframe').contentFrame().locator('.geDiagramContainer').locator('path[stroke="#404040" i]').first()[22m
+    [2m    2 × locator resolved to <path fill="none" stroke="#404040" stroke-miterlimit="10" pointer-events="stroke" d="M 1204 672.5 L 1324 672.5"></path>[22m
+    [2m      - unexpected value "M 1204 672.5 L 1324 672.5"[22m
+    [2m    11 × locator resolved to <path fill="none" stroke="#404040" stroke-miterlimit="10" pointer-events="stroke" d="M 1004 672.5 L 1124 672.5"></path>[22m
+    [2m       - unexpected value "M 1004 672.5 L 1124 672.5"[22m
+
+
+      1670 |         await warning.getByRole('button', { name: 'Отмена', exact: true }).click()
+      1671 |         await expect(warning).toBeHidden()
+    > 1672 |         await expect(line).toHaveAttribute('d', beforePath!)
+           |                            ^
+      1673 |         await openActual()
+      1674 |         await expect(manager.getByRole('checkbox', { name: 'В жгуте: Payload F1' })).toBeChecked()
+      1675 |         await manager.getByRole('button', { name: 'Закрыть менеджер потоков' }).click()
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1672:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-frame-live-diagnostic-20261001T032912Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-frame-live-diagnostic-20261001T032912Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-frame-live-diagnostic-20261001T032912Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+(node:25152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25152) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

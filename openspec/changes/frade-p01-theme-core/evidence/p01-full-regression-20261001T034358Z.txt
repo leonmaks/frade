@@ -1,0 +1,1408 @@
+$ pnpm check && pnpm test:e2e && pnpm test:desktop
+$ pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries && pnpm ui:compliance
+$ turbo lint
+• turbo 2.11.2
+
+   • Packages in scope: @frade/adapter-sberea-yaml, @frade/adapter-yaml, @frade/desktop, @frade/draw, @frade/local-index, @frade/metamodel-compiler, @frade/metamodel-config, @frade/metamodel-domain, @frade/repository-api, @frade/repository-application, @frade/repository-bridge, @frade/repository-domain, @frade/repository-ports, @frade/runtime-contracts, @frade/runtime-electron, @frade/runtime-node, @frade/ui-inspector, @frade/ui-navigator, @frade/ui-workspace, @frade/versioning-git
+   • Running lint in 20 packages
+   • Remote caching disabled, using shared worktree cache
+
+@frade/metamodel-domain:lint: cache hit, replaying logs a9bcc5e59a576d5e
+@frade/draw:lint: cache hit, replaying logs 97c9b4c751f4c8ac
+@frade/runtime-contracts:lint: cache hit, replaying logs d0db4521f87a1598
+@frade/metamodel-domain:lint: $ eslint src tests
+@frade/draw:lint: $ eslint src tests *.ts
+@frade/runtime-contracts:lint: $ eslint src tests
+@frade/metamodel-compiler:lint: cache hit, replaying logs 39587f4ed8c827e3
+@frade/runtime-electron:lint: cache hit, replaying logs a5b0f43b92610d13
+@frade/metamodel-compiler:lint: $ eslint src tests
+@frade/runtime-electron:lint: $ eslint src tests
+@frade/repository-domain:lint: cache hit, replaying logs c0f583477b8405a2
+@frade/metamodel-config:lint: cache hit, replaying logs a10d2a0d08ba98c0
+@frade/repository-domain:lint: $ eslint src tests
+@frade/metamodel-config:lint: $ eslint src tests
+@frade/repository-ports:lint: cache hit, replaying logs 9721f8d5f6f965de
+@frade/repository-ports:lint: $ eslint src tests
+@frade/local-index:lint: cache hit, replaying logs 77853c202f043f53
+@frade/versioning-git:lint: cache hit, replaying logs ac3bb6a57694f655
+@frade/local-index:lint: $ eslint src tests
+@frade/repository-bridge:lint: cache hit, replaying logs b444e948147b0072
+@frade/repository-application:lint: cache hit, replaying logs 7f6da1556e6657e3
+@frade/versioning-git:lint: $ eslint src tests
+@frade/repository-bridge:lint: $ eslint src tests
+@frade/repository-application:lint: $ eslint src tests
+@frade/repository-api:lint: cache hit, replaying logs eec38984e6060f4a
+@frade/adapter-yaml:lint: cache hit, replaying logs 66359b827a321ae5
+@frade/adapter-sberea-yaml:lint: cache hit, replaying logs ddc6df27eb80c412
+@frade/repository-api:lint: $ eslint src tests
+@frade/adapter-yaml:lint: $ eslint src tests
+@frade/adapter-sberea-yaml:lint: $ eslint src tests
+@frade/ui-inspector:lint: cache hit, replaying logs 6b2a5a2c5a6217c3
+@frade/ui-navigator:lint: cache hit, replaying logs b54895829359573c
+@frade/runtime-node:lint: cache hit, replaying logs b36686507a84d864
+@frade/ui-inspector:lint: $ eslint src tests
+@frade/ui-navigator:lint: $ eslint src tests
+@frade/runtime-node:lint: $ eslint src tests
+@frade/ui-workspace:lint: cache miss, executing 9da6f5d1a0935414
+@frade/ui-workspace:lint: $ eslint src tests
+@frade/desktop:lint: cache miss, executing 2b1d51d5ec7163be
+@frade/desktop:lint: $ eslint src tests *.ts
+
+ Tasks:    20 successful, 20 total
+Cached:    18 cached, 20 total
+  Time:    10.977s 
+
+$ turbo typecheck
+• turbo 2.11.2
+
+   • Packages in scope: @frade/adapter-sberea-yaml, @frade/adapter-yaml, @frade/desktop, @frade/draw, @frade/local-index, @frade/metamodel-compiler, @frade/metamodel-config, @frade/metamodel-domain, @frade/repository-api, @frade/repository-application, @frade/repository-bridge, @frade/repository-domain, @frade/repository-ports, @frade/runtime-contracts, @frade/runtime-electron, @frade/runtime-node, @frade/ui-inspector, @frade/ui-navigator, @frade/ui-workspace, @frade/versioning-git
+   • Running typecheck in 20 packages
+   • Remote caching disabled, using shared worktree cache
+
+@frade/runtime-contracts:typecheck: cache hit, replaying logs 3f1eea712714ec21
+@frade/metamodel-domain:typecheck: cache hit, replaying logs 397aceee845dd68b
+@frade/draw:typecheck: cache hit, replaying logs 850bf95246c44082
+@frade/runtime-contracts:typecheck: $ tsc --noEmit
+@frade/metamodel-domain:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/draw:typecheck: $ tsc --noEmit --pretty false
+@frade/runtime-electron:typecheck: cache hit, replaying logs 430ab4fcdaf4e7d4
+@frade/metamodel-compiler:typecheck: cache hit, replaying logs e0ceb6f441711bfd
+@frade/runtime-electron:typecheck: $ tsc --noEmit
+@frade/metamodel-compiler:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/repository-domain:typecheck: cache hit, replaying logs 165bbebeb74ab755
+@frade/metamodel-config:typecheck: cache hit, replaying logs e2b5673a78118147
+@frade/repository-domain:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/metamodel-config:typecheck: $ tsc --noEmit
+@frade/repository-ports:typecheck: cache hit, replaying logs d1e3151b8b39c8b3
+@frade/repository-ports:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/repository-bridge:typecheck: cache hit, replaying logs 955e9a0b2b9064b5
+@frade/repository-application:typecheck: cache hit, replaying logs 8655a91dbd1c9e7b
+@frade/local-index:typecheck: cache hit, replaying logs eaeab3bf146d13f3
+@frade/repository-bridge:typecheck: $ tsc --noEmit
+@frade/repository-application:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/versioning-git:typecheck: cache hit, replaying logs b76d95076bfc0f3a
+@frade/local-index:typecheck: $ tsc --noEmit
+@frade/versioning-git:typecheck: $ tsc --noEmit
+@frade/adapter-sberea-yaml:typecheck: cache hit, replaying logs ad148bfb64a37ec0
+@frade/repository-api:typecheck: cache hit, replaying logs c9d09b50524a1314
+@frade/adapter-yaml:typecheck: cache hit, replaying logs c2461fc9b7a5d834
+@frade/repository-api:typecheck: $ tsc --noEmit
+@frade/adapter-sberea-yaml:typecheck: $ tsc --noEmit
+@frade/adapter-yaml:typecheck: $ tsc --noEmit
+@frade/ui-navigator:typecheck: cache hit, replaying logs b6eae4e57617100e
+@frade/ui-inspector:typecheck: cache hit, replaying logs 727afa6da85bfc88
+@frade/ui-navigator:typecheck: $ tsc --noEmit
+@frade/runtime-node:typecheck: cache hit, replaying logs c5e71484c6c58d05
+@frade/ui-inspector:typecheck: $ tsc --noEmit
+@frade/runtime-node:typecheck: $ tsc --noEmit
+@frade/ui-workspace:typecheck: cache miss, executing dbccdb5d1c800cdc
+@frade/ui-workspace:typecheck: $ tsc --noEmit
+@frade/desktop:typecheck: cache miss, executing f525ea835eadac86
+@frade/desktop:typecheck: $ tsc --noEmit
+
+ Tasks:    20 successful, 20 total
+Cached:    18 cached, 20 total
+  Time:    11.425s 
+
+$ turbo test --concurrency=2
+• turbo 2.11.2
+
+   • Packages in scope: @frade/adapter-sberea-yaml, @frade/adapter-yaml, @frade/desktop, @frade/draw, @frade/local-index, @frade/metamodel-compiler, @frade/metamodel-config, @frade/metamodel-domain, @frade/repository-api, @frade/repository-application, @frade/repository-bridge, @frade/repository-domain, @frade/repository-ports, @frade/runtime-contracts, @frade/runtime-electron, @frade/runtime-node, @frade/ui-inspector, @frade/ui-navigator, @frade/ui-workspace, @frade/versioning-git
+   • Running test in 20 packages
+   • Remote caching disabled, using shared worktree cache
+
+@frade/metamodel-domain:test: cache hit, replaying logs 649a4d86b1d687f4
+@frade/draw:test: cache hit, replaying logs f64f0efd598ed415
+@frade/metamodel-domain:test: $ vitest run
+@frade/metamodel-domain:test: 
+@frade/metamodel-domain:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/metamodel-domain
+@frade/metamodel-domain:test: 
+@frade/metamodel-domain:test:  ✓ tests/unit/constraints.test.ts (5 tests) 20ms
+@frade/metamodel-domain:test:  ✓ tests/unit/robustness.test.ts (7 tests) 21ms
+@frade/metamodel-domain:test:  ✓ tests/unit/integration-flows.test.ts (2 tests) 24ms
+@frade/metamodel-domain:test:  ✓ tests/unit/edge-cases.test.ts (8 tests) 30ms
+@frade/metamodel-domain:test:  ✓ tests/unit/domain.test.ts (59 tests) 285ms
+@frade/metamodel-domain:test:  ✓ tests/bdd/features.test.ts (55 tests) 289ms
+@frade/metamodel-domain:test:  ✓ tests/property/invariants.test.ts (5 tests) 664ms
+@frade/metamodel-domain:test: 
+@frade/metamodel-domain:test:  Test Files  7 passed (7)
+@frade/metamodel-domain:test:       Tests  141 passed (141)
+@frade/metamodel-domain:test:    Start at  15:42:59
+@frade/metamodel-domain:test:    Duration  2.49s (transform 933ms, setup 0ms, collect 3.34s, tests 1.33s, environment 3ms, prepare 2.57s)
+@frade/metamodel-domain:test: 
+@frade/draw:test: $ vitest run
+@frade/draw:test: 
+@frade/draw:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/draw
+@frade/draw:test: 
+@frade/draw:test:  ✓ tests/unit/segment-adapter.test.ts (1 test) 16ms
+@frade/draw:test:  ✓ tests/unit/document-schema.test.ts (5 tests) 14ms
+@frade/draw:test:  ✓ tests/unit/document-fidelity.test.ts (8 tests) 17ms
+@frade/draw:test:  ✓ tests/unit/document-loading.test.ts (10 tests) 26ms
+@frade/draw:test:  ✓ tests/unit/document-bundle.test.ts (6 tests) 27ms
+@frade/draw:test:  ✓ tests/unit/floating-attachment.test.ts (16 tests) 14ms
+@frade/draw:test:  ✓ tests/unit/bdd-contract.test.ts (2 tests) 32ms
+@frade/draw:test:  ✓ tests/unit/create-graph.test.ts (1 test) 432ms
+@frade/draw:test:    ✓ createGraph > creates one graph with floating boundary connections and lifecycle plugins  429ms
+@frade/draw:test:  ✓ tests/unit/moving-rectangle-route.test.ts (4 tests) 94ms
+@frade/draw:test:  ✓ tests/unit/floating-route.test.ts (7 tests) 16ms
+@frade/draw:test:  ✓ tests/unit/floating-attachment-contract.test.ts (22 tests) 22ms
+@frade/draw:test:  ✓ tests/unit/diagram-editor-lifecycle.test.tsx (1 test) 270ms
+@frade/draw:test:  ✓ tests/unit/bdd-mapping.test.ts (1 test) 38ms
+@frade/draw:test:  ✓ tests/unit/routing-independence.test.ts (3 tests) 70ms
+@frade/draw:test:  ✓ tests/unit/segment-symmetry.test.ts (84 tests) 366ms
+@frade/draw:test:  ✓ tests/unit/document-shadow.test.ts (6 tests) 14ms
+@frade/draw:test:  ✓ tests/unit/graph-adapter.test.ts (2 tests) 12ms
+@frade/draw:test:  ✓ tests/unit/route-validation.test.ts (8 tests) 12ms
+@frade/draw:test:  ✓ tests/unit/repository-reference.test.ts (2 tests) 13ms
+@frade/draw:test:  ✓ tests/unit/file-adapter.test.ts (2 tests) 14ms
+@frade/draw:test:  ✓ tests/unit/manhattan-route.test.ts (4 tests) 12ms
+@frade/draw:test:  ✓ tests/unit/segment-persistence-history.test.ts (2 tests) 13ms
+@frade/draw:test:  ✓ tests/unit/terminal-policy.test.ts (3 tests) 7ms
+@frade/draw:test:  ✓ tests/unit/route-normalization.test.ts (3 tests) 9ms
+@frade/draw:test:  ✓ tests/unit/segment-drag-session.test.ts (2 tests) 8ms
+@frade/draw:test:  ✓ tests/unit/segment-extraction.test.ts (3 tests) 9ms
+@frade/draw:test:  ✓ tests/unit/segment-drag-controller.test.ts (3 tests) 10ms
+@frade/draw:test:  ✓ tests/unit/floating-routing-adapter.test.ts (1 test) 10ms
+@frade/draw:test:  ✓ tests/unit/connection-tool.test.ts (2 tests) 10ms
+@frade/draw:test:  ✓ tests/unit/connection-state-machine.test.ts (2 tests) 9ms
+@frade/draw:test:  ✓ tests/unit/preview-route.test.ts (1 test) 10ms
+@frade/draw:test:  ✓ tests/unit/route-snapshot.test.ts (1 test) 10ms
+@frade/draw:test: 
+@frade/draw:test:  Test Files  32 passed (32)
+@frade/draw:test:       Tests  218 passed (218)
+@frade/draw:test:    Start at  15:43:07
+@frade/draw:test:    Duration  12.43s (transform 6.67s, setup 2.92s, collect 10.95s, tests 1.63s, environment 97.04s, prepare 18.40s)
+@frade/draw:test: 
+@frade/draw:build: cache hit, replaying logs d523344726be09ae
+@frade/draw:build: $ pnpm typecheck && vite build
+@frade/draw:build: $ tsc --noEmit --pretty false
+@frade/draw:build: vite v6.1.0 building for production...
+@frade/draw:build: transforming...
+@frade/draw:build: ✓ 1014 modules transformed.
+@frade/draw:build: rendering chunks...
+@frade/draw:build: computing gzip size...
+@frade/draw:build: dist/index.html                   0.41 kB │ gzip:   0.27 kB
+@frade/draw:build: dist/assets/index-BMbdYGPl.css    0.82 kB │ gzip:   0.44 kB
+@frade/draw:build: dist/assets/index-C7RacItR.js   761.77 kB │ gzip: 226.44 kB
+@frade/draw:build: 
+@frade/draw:build: (!) Some chunks are larger than 500 kB after minification. Consider:
+@frade/draw:build: - Using dynamic import() to code-split the application
+@frade/draw:build: - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+@frade/draw:build: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+@frade/draw:build: ✓ built in 13.25s
+@frade/runtime-contracts:test: cache hit, replaying logs ceb1be62681ade90
+@frade/runtime-contracts:test: $ vitest run
+@frade/runtime-contracts:test: 
+@frade/runtime-contracts:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/runtime-contracts
+@frade/runtime-contracts:test: 
+@frade/runtime-contracts:test:  ✓ tests/contracts.test.ts (12 tests) 12ms
+@frade/runtime-contracts:test:  ✓ tests/presentation.test.ts (18 tests) 20ms
+@frade/runtime-contracts:test: 
+@frade/runtime-contracts:test:  Test Files  2 passed (2)
+@frade/runtime-contracts:test:       Tests  30 passed (30)
+@frade/runtime-contracts:test:    Start at  06:21:46
+@frade/runtime-contracts:test:    Duration  1.87s (transform 201ms, setup 0ms, collect 297ms, tests 32ms, environment 0ms, prepare 2.08s)
+@frade/runtime-contracts:test: 
+@frade/runtime-contracts:build: cache hit, replaying logs dc2f7adb968a28a2
+@frade/runtime-contracts:build: $ tsc --outDir dist --declaration
+@frade/runtime-electron:build: cache hit, replaying logs 6baf2c24fee9b48a
+@frade/runtime-electron:build: $ tsc --outDir dist --declaration
+@frade/runtime-electron:test: cache hit, replaying logs a25ee7fc0ff20003
+@frade/runtime-electron:test: $ vitest run
+@frade/runtime-electron:test: 
+@frade/runtime-electron:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/runtime-electron
+@frade/runtime-electron:test: 
+@frade/runtime-electron:test:  ✓ tests/supervisor.test.ts (11 tests) 29ms
+@frade/runtime-electron:test: 
+@frade/runtime-electron:test:  Test Files  1 passed (1)
+@frade/runtime-electron:test:       Tests  11 passed (11)
+@frade/runtime-electron:test:    Start at  06:21:46
+@frade/runtime-electron:test:    Duration  1.11s (transform 143ms, setup 0ms, collect 162ms, tests 29ms, environment 0ms, prepare 436ms)
+@frade/runtime-electron:test: 
+@frade/metamodel-domain:build: cache hit, replaying logs d86363a25c4d9313
+@frade/metamodel-domain:build: $ tsc -p tsconfig.build.json
+@frade/metamodel-compiler:test: cache hit, replaying logs 99d16ad24124f081
+@frade/metamodel-compiler:test: $ vitest run
+@frade/metamodel-compiler:test: 
+@frade/metamodel-compiler:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/metamodel-compiler
+@frade/metamodel-compiler:test: 
+@frade/metamodel-compiler:test:  ✓ tests/unit/determinism.test.ts (2 tests) 30ms
+@frade/metamodel-compiler:test:  ✓ tests/unit/compiler.test.ts (7 tests) 55ms
+@frade/metamodel-compiler:test:  ✓ tests/properties/compiler.test.ts (5 tests) 1823ms
+@frade/metamodel-compiler:test:    ✓ declaration permutations preserve fingerprints  523ms
+@frade/metamodel-compiler:test:    ✓ sources are unchanged for arbitrary valid default lists  318ms
+@frade/metamodel-compiler:test:    ✓ only the latest-started generation can publish for generated completion orders  489ms
+@frade/metamodel-compiler:test:  ✓ tests/bdd/compiler.test.ts (100 tests) 4575ms
+@frade/metamodel-compiler:test:    ✓ Metamodel source composition / Reject invalid imports #9  3881ms
+@frade/metamodel-compiler:test:  ✓ tests/unit/robustness.test.ts (17 tests) 7508ms
+@frade/metamodel-compiler:test:    ✓ enforces exact JSON text, traversal depth and value limits  422ms
+@frade/metamodel-compiler:test:    ✓ checks aggregate source values separately from flattened-model limits  6535ms
+@frade/metamodel-compiler:test: 
+@frade/metamodel-compiler:test:  Test Files  5 passed (5)
+@frade/metamodel-compiler:test:       Tests  131 passed (131)
+@frade/metamodel-compiler:test:    Start at  15:43:27
+@frade/metamodel-compiler:test:    Duration  9.17s (transform 818ms, setup 0ms, collect 2.77s, tests 13.99s, environment 2ms, prepare 2.40s)
+@frade/metamodel-compiler:test: 
+@frade/metamodel-compiler:build: cache hit, replaying logs 9dfff88677b1b483
+@frade/metamodel-compiler:build: $ tsc -p tsconfig.build.json
+@frade/metamodel-config:test: cache hit, replaying logs d78f2f2f1c67e98a
+@frade/metamodel-config:test: $ vitest run
+@frade/metamodel-config:test: 
+@frade/metamodel-config:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/metamodel-config
+@frade/metamodel-config:test: 
+@frade/metamodel-config:test:  ✓ tests/import.test.ts (4 tests) 31ms
+@frade/metamodel-config:test: 
+@frade/metamodel-config:test:  Test Files  1 passed (1)
+@frade/metamodel-config:test:       Tests  4 passed (4)
+@frade/metamodel-config:test:    Start at  15:43:30
+@frade/metamodel-config:test:    Duration  1.65s (transform 385ms, setup 0ms, collect 485ms, tests 31ms, environment 0ms, prepare 382ms)
+@frade/metamodel-config:test: 
+@frade/repository-domain:test: cache hit, replaying logs a58cafb746dae758
+@frade/repository-domain:test: $ vitest run
+@frade/repository-domain:test: 
+@frade/repository-domain:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/repository-domain
+@frade/repository-domain:test: 
+@frade/repository-domain:test:  ✓ tests/flow-labels.test.ts (2 tests) 6ms
+@frade/repository-domain:test:  ✓ tests/integration-flows.test.ts (12 tests) 17ms
+@frade/repository-domain:test:  ✓ tests/snapshot.test.ts (2 tests) 9ms
+@frade/repository-domain:test:  ✓ tests/repair.test.ts (7 tests) 12ms
+@frade/repository-domain:test:  ✓ tests/query.engine.test.ts (3 tests) 40ms
+@frade/repository-domain:test:  ✓ tests/domain.identity.test.ts (11 tests) 395ms
+@frade/repository-domain:test:    ✓ CORE-003 stable identity and RE-1 namespaces > RE-2 observes exact depth and value budgets  309ms
+@frade/repository-domain:test: 
+@frade/repository-domain:test:  Test Files  6 passed (6)
+@frade/repository-domain:test:       Tests  37 passed (37)
+@frade/repository-domain:test:    Start at  15:43:35
+@frade/repository-domain:test:    Duration  1.82s (transform 584ms, setup 0ms, collect 2.23s, tests 478ms, environment 2ms, prepare 2.10s)
+@frade/repository-domain:test: 
+@frade/repository-domain:build: cache hit, replaying logs c0d7096c384f7c63
+@frade/repository-domain:build: $ tsc -p tsconfig.build.json
+@frade/metamodel-config:build: cache hit, replaying logs 4b7377aaae2277f1
+@frade/metamodel-config:build: $ tsc -p tsconfig.build.json
+@frade/repository-ports:test: cache hit, replaying logs 35644611973ae571
+@frade/repository-ports:test: $ vitest run
+@frade/repository-ports:test: 
+@frade/repository-ports:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/repository-ports
+@frade/repository-ports:test: 
+@frade/repository-ports:test:  ✓ tests/extensions.test.ts (2 tests) 7ms
+@frade/repository-ports:test:  ✓ tests/contracts.test.ts (2 tests) 12ms
+@frade/repository-ports:test: 
+@frade/repository-ports:test:  Test Files  2 passed (2)
+@frade/repository-ports:test:       Tests  4 passed (4)
+@frade/repository-ports:test:    Start at  15:43:38
+@frade/repository-ports:test:    Duration  1.53s (transform 475ms, setup 0ms, collect 1.15s, tests 19ms, environment 1ms, prepare 878ms)
+@frade/repository-ports:test: 
+@frade/repository-ports:build: cache hit, replaying logs 7370f6430e6707b0
+@frade/repository-ports:build: $ tsc -p tsconfig.build.json
+@frade/local-index:test: cache hit, replaying logs 3bb8a21f8744ee9e
+@frade/local-index:test: $ vitest run
+@frade/local-index:test: 
+@frade/local-index:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/local-index
+@frade/local-index:test: 
+@frade/local-index:test:  ✓ tests/index.integration.test.ts (1 test) 56ms
+@frade/local-index:test: 
+@frade/local-index:test:  Test Files  1 passed (1)
+@frade/local-index:test:       Tests  1 passed (1)
+@frade/local-index:test:    Start at  15:43:44
+@frade/local-index:test:    Duration  3.70s (transform 2.01s, setup 0ms, collect 2.22s, tests 56ms, environment 1ms, prepare 452ms)
+@frade/local-index:test: 
+@frade/repository-bridge:test: cache hit, replaying logs a7e1b2009460cbc0
+@frade/repository-bridge:test: $ vitest run
+@frade/repository-bridge:test: 
+@frade/repository-bridge:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/repository-bridge
+@frade/repository-bridge:test: 
+@frade/repository-bridge:test:  ✓ tests/bridge.test.ts (1 test) 7ms
+@frade/repository-bridge:test:  ✓ tests/diagram.integration.test.ts (1 test) 11ms
+@frade/repository-bridge:test:  ✓ tests/controller.test.ts (2 tests) 15ms
+@frade/repository-bridge:test: 
+@frade/repository-bridge:test:  Test Files  3 passed (3)
+@frade/repository-bridge:test:       Tests  4 passed (4)
+@frade/repository-bridge:test:    Start at  15:43:56
+@frade/repository-bridge:test:    Duration  1.55s (transform 664ms, setup 0ms, collect 1.64s, tests 32ms, environment 1ms, prepare 1.11s)
+@frade/repository-bridge:test: 
+@frade/repository-application:build: cache hit, replaying logs 1d1632cdbfc07c88
+@frade/repository-application:build: $ tsc -p tsconfig.build.json
+@frade/repository-application:test: cache hit, replaying logs 05231cc6f025d18e
+@frade/repository-application:test: $ vitest run
+@frade/repository-application:test: 
+@frade/repository-application:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/repository-application
+@frade/repository-application:test: 
+@frade/repository-application:test:  ✓ tests/graph-consistency.test.ts (3 tests) 51ms
+@frade/repository-application:test:  ✓ tests/memory-adapter.conformance.test.ts (5 tests) 173ms
+@frade/repository-application:test:  ✓ tests/advanced-contracts.test.ts (5 tests) 63ms
+@frade/repository-application:test:  ✓ tests/policies.test.ts (3 tests) 99ms
+@frade/repository-application:test:  ✓ tests/adapter-boundary.test.ts (9 tests) 79ms
+@frade/repository-application:test:  ✓ tests/index-consistency.test.ts (2 tests) 105ms
+@frade/repository-application:test:  ✓ tests/hostile-boundaries.test.ts (4 tests) 33ms
+@frade/repository-application:test:  ✓ tests/extensions.test.ts (2 tests) 47ms
+@frade/repository-application:test:  ✓ tests/optional-ports.test.ts (2 tests) 34ms
+@frade/repository-application:test:  ✓ tests/watch.integration.test.ts (2 tests) 2421ms
+@frade/repository-application:test:    ✓ CORE-013 real watcher detects source corruption, blocks writes and recovers after correction  1681ms
+@frade/repository-application:test:    ✓ CORE-013 watches model/profile changes without an explicit reload  732ms
+@frade/repository-application:test:  ✓ tests/commands.conflicts.test.ts (10 tests) 2096ms
+@frade/repository-application:test:    ✓ RC-4 exact operation admission limit preserves earlier identities  523ms
+@frade/repository-application:test:    ✓ seed 20260924: rejected changes preserve state for 200 inputs  767ms
+@frade/repository-application:test:    ✓ seed 20260924: replay suppression and independent command copies for 200 inputs  715ms
+@frade/repository-application:test:  ✓ tests/index-equivalence.property.test.ts (2 tests) 2540ms
+@frade/repository-application:test:    ✓ CORE-012 seeded SQLite rebuilds preserve source query ordering and adjacency  2532ms
+@frade/repository-application:test:  ✓ tests/paged-equivalence.property.test.ts (4 tests) 3354ms
+@frade/repository-application:test:    ✓ v2-equivalence: seed 20260924 streaming graph validation agrees with complete snapshot validation  1463ms
+@frade/repository-application:test:    ✓ v2-query-equivalence: seed 20260924 paged index filtering and sorting preserve portable semantics  1433ms
+@frade/repository-application:test:    ✓ v2-cancellation: a portable sorted scan checks cancellation at bounded work checkpoints  437ms
+@frade/repository-application:test:  ✓ tests/bdd/repository.bdd.test.ts (113 tests) 1314ms
+@frade/repository-application:test:    ✓ Validated and reconcilable repository commands / Operation tracking does not silently evict #1  400ms
+@frade/repository-application:test:  ✓ tests/invariants.property.test.ts (3 tests) 3842ms
+@frade/repository-application:test:    ✓ RC-3 property seed 20260924: failed second-stage commits preserve authoritative state  855ms
+@frade/repository-application:test:    ✓ RC-2 CORE-006 property seed 20260924: both configured models retain valid directed cyclic graphs  2912ms
+@frade/repository-application:test:  ✓ tests/contracts/adapter.contract.test.ts (20 tests) 3946ms
+@frade/repository-application:test:    ✓ RepositoryAdapter: native yaml > reads a persisted object by stable ref  385ms
+@frade/repository-application:test:    ✓ RepositoryAdapter: native yaml > rejects a stale revision without overwriting the newer object  442ms
+@frade/repository-application:test:    ✓ RepositoryAdapter: native json > rejects a stale revision without overwriting the newer object  355ms
+@frade/repository-application:test:    ✓ RepositoryAdapter: native json > invalid final state leaves the authoritative snapshot unchanged  312ms
+@frade/repository-application:test:    ✓ RepositoryAdapter: native native-v2 > reads a persisted object by stable ref  314ms
+@frade/repository-application:test:    ✓ RepositoryAdapter: native native-v2 > rejects a stale revision without overwriting the newer object  386ms
+@frade/repository-application:test:    ✓ RepositoryAdapter: native native-v2 > returns equivalent incoming and outgoing relation identities  328ms
+@frade/repository-application:test:  ✓ tests/acceptance/repository.test.ts (25 tests) 5885ms
+@frade/repository-application:test:    ✓ AC-metamodel: new configured type requires no core changes  319ms
+@frade/repository-application:test:    ✓ AC-model-version: unsupported schema refuses opening without migration  312ms
+@frade/repository-application:test:    ✓ AC-identity: rename reload and source relocation preserve refs  537ms
+@frade/repository-application:test:    ✓ AC-object-crud: create update delete and stale revision rejection  669ms
+@frade/repository-application:test:    ✓ AC-relation-crud: canonical direction and restricted deletion  352ms
+@frade/repository-application:test:    ✓ AC-yaml: unknown metadata and comments survive a known attribute edit  319ms
+@frade/repository-application:test:    ✓ AC-index: rebuild and corruption recovery preserve authoritative entities  307ms
+@frade/repository-application:test:    ✓ AC-detached: detach retains cached entity and independent visual overrides  476ms
+@frade/repository-application:test:  ✓ tests/git-source.integration.test.ts (2 tests) 8714ms
+@frade/repository-application:test:    ✓ CORE-018 domain writes never commit or push a Git-backed native repository  4039ms
+@frade/versioning-git:test: cache hit, replaying logs 0799e3ac1db36a38
+@frade/repository-application:test:    ✓ CORE-020 Git conflict inspection is distinct from semantic revision conflicts and never resolves files  4672ms
+@frade/repository-application:test:  ✓ tests/integration-flows.test.ts (6 tests) 10022ms
+@frade/repository-application:test:    ✓ reports errors separately from empty and limits 100000-flow pages  2871ms
+@frade/repository-application:test:    ✓ 100000-flow fixture crosses real authenticated Core pages without snapshot or label N+1  7087ms
+@frade/repository-application:test: 
+@frade/repository-application:test:  Test Files  19 passed (19)
+@frade/repository-application:test:       Tests  222 passed (222)
+@frade/repository-application:test:    Start at  15:43:42
+@frade/repository-application:test:    Duration  12.77s (transform 5.75s, setup 0ms, collect 32.15s, tests 44.82s, environment 8ms, prepare 9.68s)
+@frade/repository-application:test: 
+@frade/versioning-git:test: $ vitest run
+@frade/versioning-git:test: 
+@frade/versioning-git:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/versioning-git
+@frade/versioning-git:test: 
+@frade/versioning-git:test:  ✓ tests/git.integration.test.ts (1 test) 1574ms
+@frade/versioning-git:test:    ✓ Git exposes status history and explicit path-scoped commits without push  1572ms
+@frade/versioning-git:test: 
+@frade/versioning-git:test:  Test Files  1 passed (1)
+@frade/versioning-git:test:       Tests  1 passed (1)
+@frade/versioning-git:test:    Start at  15:43:51
+@frade/versioning-git:test:    Duration  3.27s (transform 397ms, setup 0ms, collect 504ms, tests 1.57s, environment 0ms, prepare 339ms)
+@frade/versioning-git:test: 
+@frade/local-index:build: cache hit, replaying logs 7d28750295c6b9e6
+@frade/local-index:build: $ tsc -p tsconfig.build.json
+@frade/adapter-sberea-yaml:test: cache hit, replaying logs 5005e0a87486a58d
+@frade/adapter-sberea-yaml:test: $ vitest run
+@frade/adapter-sberea-yaml:test: 
+@frade/adapter-sberea-yaml:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/adapter-sberea-yaml
+@frade/adapter-sberea-yaml:test: 
+@frade/adapter-sberea-yaml:test:  ✓ tests/preserve.test.ts (19 tests) 124ms
+@frade/adapter-sberea-yaml:test:  ✓ tests/flow-create.test.ts (2 tests) 544ms
+@frade/adapter-sberea-yaml:test:    ✓ creates canonical flows through core and preserves source bytes, identity/revisions and permissions  445ms
+@frade/adapter-sberea-yaml:test:  ✓ tests/loading.test.ts (10 tests) 1610ms
+@frade/adapter-sberea-yaml:test:    ✓ KA-001 refuses excessive import depth explicitly  977ms
+@frade/adapter-sberea-yaml:test:  ✓ tests/real-data.test.ts (1 test) 2052ms
+@frade/adapter-sberea-yaml:test:    ✓ KA isolated real-data baseline > loads every record through Core-shaped pages, metadata and derived graph without changing source bytes  2049ms
+@frade/adapter-sberea-yaml:test:  ✓ tests/contracts.test.ts (12 tests) 1954ms
+@frade/adapter-sberea-yaml:test:    ✓ KA-005 permits existing diagnostics and repairs but rejects changed invalid values and references  510ms
+@frade/adapter-sberea-yaml:test:    ✓ KA-002 projects cycles and duplicate references with stable IDs across list reorder and atomic graph refresh  327ms
+@frade/adapter-sberea-yaml:test:  ✓ tests/write.test.ts (1 test) 5105ms
+@frade/adapter-sberea-yaml:test:    ✓ saves via Core, preserves untouched bytes, rejects new invalid values and reconciles a repeated operation  5102ms
+@frade/adapter-sberea-yaml:test:  ✓ tests/watch.test.ts (1 test) 10715ms
+@frade/adapter-sberea-yaml:test:    ✓ KA-004/KM-004 watches replacement, new imports, malformed repair and metadata with independent subscriptions  10712ms
+@frade/adapter-sberea-yaml:test:  ✓ tests/recovery.test.ts (4 tests) 15489ms
+@frade/adapter-sberea-yaml:test:    ✓ KA-004 real process interruption at staged preserves source and evidence without replay  5074ms
+@frade/adapter-sberea-yaml:test:    ✓ KA-004 real process interruption at replaced preserves source and evidence without replay  6270ms
+@frade/adapter-sberea-yaml:test:    ✓ KA-004 lost acknowledgement at staged reconciles without repeating mutation  2222ms
+@frade/adapter-sberea-yaml:test:    ✓ KA-004 lost acknowledgement at replaced reconciles without repeating mutation  1919ms
+@frade/adapter-sberea-yaml:test: 
+@frade/adapter-sberea-yaml:test:  Test Files  8 passed (8)
+@frade/adapter-sberea-yaml:test:       Tests  50 passed (50)
+@frade/adapter-sberea-yaml:test:    Start at  15:44:02
+@frade/adapter-sberea-yaml:test:    Duration  17.73s (transform 2.28s, setup 0ms, collect 9.58s, tests 37.59s, environment 3ms, prepare 3.18s)
+@frade/adapter-sberea-yaml:test: 
+@frade/adapter-sberea-yaml:build: cache hit, replaying logs 72667e24ff1a05ae
+@frade/adapter-sberea-yaml:build: $ tsc -p tsconfig.build.json
+@frade/repository-api:test: cache hit, replaying logs d2741cb077fc52ae
+@frade/repository-api:test: $ vitest run
+@frade/repository-api:test: 
+@frade/repository-api:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/repository-api
+@frade/repository-api:test: 
+@frade/repository-api:test:  ✓ tests/workbench.test.ts (2 tests) 32ms
+@frade/repository-api:test:  ✓ tests/api.test.ts (4 tests) 560ms
+@frade/repository-api:test:    ✓ unwired presentation returns an explicit unsupported result instead of undefined  544ms
+@frade/repository-api:test:  ✓ tests/http.integration.test.ts (1 test) 107ms
+@frade/repository-api:test:  ✓ tests/http.deadlines.test.ts (3 tests) 405ms
+@frade/repository-api:test: 
+@frade/repository-api:test:  Test Files  4 passed (4)
+@frade/repository-api:test:       Tests  10 passed (10)
+@frade/repository-api:test:    Start at  15:43:57
+@frade/repository-api:test:    Duration  2.68s (transform 1.21s, setup 0ms, collect 3.92s, tests 1.10s, environment 2ms, prepare 1.46s)
+@frade/repository-api:test: 
+@frade/adapter-yaml:test: cache hit, replaying logs 93b4a9192b43e484
+@frade/adapter-yaml:test: $ vitest run
+@frade/adapter-yaml:test: 
+@frade/adapter-yaml:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/adapter-yaml
+@frade/adapter-yaml:test: 
+@frade/adapter-yaml:test:  ✓ tests/schema-mapping.test.ts (1 test) 53ms
+@frade/adapter-yaml:test:  ✓ tests/identity.integration.test.ts (2 tests) 166ms
+@frade/adapter-yaml:test:  ✓ tests/adapter.yaml.recovery.test.ts (2 tests) 593ms
+@frade/adapter-yaml:test:    ✓ failed replacement retains staged recovery evidence and authoritative source bytes  338ms
+@frade/adapter-yaml:test:  ✓ tests/adapter.yaml.safety.test.ts (3 tests) 609ms
+@frade/adapter-yaml:test:  ✓ tests/adapter.yaml.integration.test.ts (4 tests) 727ms
+@frade/adapter-yaml:test:    ✓ native yaml roundtrip and stale snapshot guard  340ms
+@frade/adapter-yaml:test:  ✓ tests/native-v2-safety.test.ts (4 tests) 879ms
+@frade/adapter-yaml:test:    ✓ v2-boundaries: incompatible manifests, malformed profiles and cancelled opens never publish READY  543ms
+@frade/adapter-yaml:test:  ✓ tests/recovery.service.test.ts (2 tests) 1147ms
+@frade/adapter-yaml:test:    ✓ CORE-020 preview-bound recovery keeps source and preserves staged evidence without implicit replay  747ms
+@frade/adapter-yaml:test:    ✓ CORE-020 explicit completion validates stage and refuses a changed external source  397ms
+@frade/adapter-yaml:test:  ✓ tests/process-recovery.test.ts (2 tests) 2169ms
+@frade/adapter-yaml:test:    ✓ CORE-020 actual process termination at staged preserves a recoverable native repository  1333ms
+@frade/adapter-yaml:test:    ✓ CORE-020 actual process termination at replaced preserves a recoverable native repository  833ms
+@frade/adapter-yaml:test:  ✓ tests/native-v2-recovery.test.ts (4 tests) 3239ms
+@frade/adapter-yaml:test:    ✓ v2-orphan-lock: an inactive writer interrupted before journaling can preserve-source recover  548ms
+@frade/adapter-yaml:test:    ✓ v2-post-commit: acknowledgement failure never rolls back or replays the published source  628ms
+@frade/adapter-yaml:test:    ✓ v2-recovery: actual process interruption before and after publication has explicit recovery  1714ms
+@frade/adapter-yaml:test:    ✓ v2-recovery-conflict: a failed staged write preserves source and requires a matching explicit preview  345ms
+@frade/adapter-yaml:test:  ✓ tests/native-v2.test.ts (20 tests) 30786ms
+@frade/adapter-yaml:test:    ✓ v2-cross-page: immutable pages resolve targets and reuse portable query semantics  709ms
+@frade/adapter-yaml:test:    ✓ v2-capacity: a graph beyond the aggregate decoder budget opens with bounded point/adjacency reads  18900ms
+@frade/adapter-yaml:test:    ✓ v2-delta: commands use a pinned partial view without exporting the graph  7728ms
+@frade/adapter-yaml:test:    ✓ v2-events: confirmed changes precede notifications and external manifest changes support resync  440ms
+@frade/adapter-yaml:test:    ✓ v2-reload-cursor: external reload keeps session scope and diagnoses a stale revision  896ms
+@frade/adapter-yaml:test: 
+@frade/adapter-yaml:test:  Test Files  10 passed (10)
+@frade/adapter-yaml:test:       Tests  44 passed (44)
+@frade/adapter-yaml:test:    Start at  15:44:11
+@frade/adapter-yaml:test:    Duration  33.83s (transform 1.89s, setup 0ms, collect 14.59s, tests 40.37s, environment 4ms, prepare 4.79s)
+@frade/adapter-yaml:test: 
+@frade/repository-api:build: cache hit, replaying logs 5d83d78fa61caf69
+@frade/repository-api:build: $ tsc -p tsconfig.build.json
+@frade/ui-navigator:build: cache hit, replaying logs 9b64c665f244f74a
+@frade/ui-navigator:build: $ tsc -p tsconfig.build.json
+@frade/adapter-yaml:build: cache hit, replaying logs 86e3f63313194389
+@frade/adapter-yaml:build: $ tsc -p tsconfig.build.json
+@frade/ui-inspector:build: cache hit, replaying logs 6833ad68dead944b
+@frade/ui-navigator:test: cache hit, replaying logs 2c6f6405da607a0d
+@frade/ui-inspector:build: $ tsc -p tsconfig.build.json
+@frade/ui-navigator:test: $ vitest run
+@frade/ui-navigator:test: 
+@frade/ui-navigator:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-navigator
+@frade/ui-navigator:test: 
+@frade/ui-navigator:test:  ✓ tests/projection.test.ts (1 test) 8ms
+@frade/ui-navigator:test: 
+@frade/ui-navigator:test:  Test Files  1 passed (1)
+@frade/ui-navigator:test:       Tests  1 passed (1)
+@frade/ui-navigator:test:    Start at  15:44:24
+@frade/ui-navigator:test:    Duration  1.03s (transform 158ms, setup 0ms, collect 196ms, tests 8ms, environment 0ms, prepare 274ms)
+@frade/ui-navigator:test: 
+@frade/ui-inspector:test: cache hit, replaying logs ad6e311f9ddea901
+@frade/runtime-node:test: cache hit, replaying logs c62c46a262b1429b
+@frade/ui-inspector:test: $ vitest run
+@frade/ui-inspector:test: 
+@frade/ui-inspector:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-inspector
+@frade/ui-inspector:test: 
+@frade/ui-inspector:test:  ✓ tests/inspector.test.tsx (2 tests) 273ms
+@frade/ui-inspector:test: 
+@frade/ui-inspector:test:  Test Files  1 passed (1)
+@frade/ui-inspector:test:       Tests  2 passed (2)
+@frade/ui-inspector:test:    Start at  15:44:29
+@frade/ui-inspector:test:    Duration  2.63s (transform 232ms, setup 0ms, collect 550ms, tests 273ms, environment 941ms, prepare 215ms)
+@frade/ui-inspector:test: 
+@frade/runtime-node:test: $ vitest run
+@frade/runtime-node:test: 
+@frade/runtime-node:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/runtime-node
+@frade/runtime-node:test: 
+@frade/runtime-node:test:  ✓ tests/diagram-files.test.ts (5 tests) 105ms
+@frade/runtime-node:test:  ✓ tests/service.test.ts (2 tests) 5ms
+@frade/runtime-node:test:  ✓ tests/native-session.test.ts (2 tests) 227ms
+@frade/runtime-node:test:  ✓ tests/adapters.test.ts (5 tests) 250ms
+@frade/runtime-node:test:  ✓ tests/repositories.test.ts (6 tests) 973ms
+@frade/runtime-node:test:    ✓ DS-004 shared metadata watchers independently advance model generations and survive another root closing  471ms
+@frade/runtime-node:test: 
+@frade/runtime-node:test:  Test Files  5 passed (5)
+@frade/runtime-node:test:       Tests  20 passed (20)
+@frade/runtime-node:test:    Start at  06:21:51
+@frade/runtime-node:test:    Duration  3.00s (transform 1.73s, setup 0ms, collect 5.47s, tests 1.56s, environment 2ms, prepare 1.75s)
+@frade/runtime-node:test: 
+@frade/ui-workspace:test: cache miss, executing 1f87281bc5525fe8
+@frade/runtime-node:build: cache hit, replaying logs 490e6db6e6bd590f
+@frade/runtime-node:build: $ tsc --outDir dist --declaration
+@frade/ui-workspace:build: cache miss, executing ae18128d0e874bfd
+@frade/ui-workspace:test: $ vitest run
+@frade/ui-workspace:build: $ tsc -p tsconfig.build.json
+@frade/ui-workspace:test: 
+@frade/ui-workspace:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+@frade/ui-workspace:test: 
+@frade/ui-workspace:test:  ✓ tests/state.test.ts (3 tests) 12ms
+@frade/ui-workspace:test:  ✓ tests/elementAppearance.test.ts (16 tests) 18ms
+@frade/ui-workspace:test:  ✓ tests/ui-contract/p01.bdd.test.tsx (6 tests) 36ms
+@frade/ui-workspace:test:  ✓ tests/repositoryDrop.test.ts (1 test) 8ms
+@frade/ui-workspace:test:  ✓ tests/ui-contract/service.test.ts (35 tests) 272ms
+@frade/ui-workspace:test:  ✓ tests/ui-contract/resolver.test.ts (13 tests) 854ms
+@frade/ui-workspace:test:    ✓ P01 deterministic resolver / registry > is deterministic, order-independent and idempotent for seed 20260930 / 200 palettes  794ms
+@frade/ui-workspace:test:  ✓ tests/ui-contract/shortcuts.test.ts (6 tests) 40ms
+@frade/ui-workspace:test:  ✓ tests/pointerDrag.test.ts (1 test) 134ms
+@frade/ui-workspace:test:  ✓ tests/ui-contract/overlays.test.tsx (8 tests) 318ms
+@frade/ui-workspace:test:  ✓ tests/ui-contract/participants.test.ts (33 tests) 534ms
+@frade/ui-workspace:test:  ✓ tests/FlowManager.test.tsx (3 tests) 477ms
+@frade/ui-workspace:test:    ✓ membership uses immediate diagram command; details are separate and keyboard compatible  340ms
+@frade/ui-workspace:test:  ✓ tests/ui-contract/picker.test.tsx (9 tests) 1019ms
+@frade/desktop:test: cache miss, executing 9631808a1c3cd2de
+@frade/desktop:test: $ vitest run tests/unit
+@frade/desktop:test: 
+@frade/desktop:test:  RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+@frade/desktop:test: 
+@frade/desktop:test:  ✓ tests/unit/security.test.ts (3 tests) 21ms
+@frade/desktop:test:  ✓ tests/unit/drawio-appearance.test.ts (3 tests) 18ms
+@frade/desktop:test:  ✓ tests/unit/bridge.test.ts (2 tests) 10ms
+@frade/desktop:test:  ✓ tests/unit/presentation-settings.test.ts (19 tests) 248ms
+@frade/desktop:test:  ✓ tests/unit/drawio-theme.test.ts (8 tests) 157ms
+@frade/desktop:test:  ✓ tests/unit/presentation-bridge.test.ts (13 tests) 164ms
+@frade/desktop:test:  ✓ tests/unit/workbench.test.ts (3 tests) 218ms
+@frade/desktop:test: 
+@frade/desktop:test:  Test Files  7 passed (7)
+@frade/desktop:test:       Tests  51 passed (51)
+@frade/desktop:test:    Start at  06:44:30
+@frade/desktop:test:    Duration  2.66s (transform 2.03s, setup 0ms, collect 3.31s, tests 837ms, environment 2.04s, prepare 2.64s)
+@frade/desktop:test: 
+@frade/ui-workspace:test:  ✓ tests/bundle-flows.bdd.test.tsx (45 tests) 6933ms
+@frade/ui-workspace:test:    ✓ BF-01 Open empty Bundle  309ms
+@frade/ui-workspace:test:    ✓ BF-17 Empty pair  1015ms
+@frade/ui-workspace:test:    ✓ BF-33 Repository query failure  1037ms
+@frade/ui-workspace:test:    ✓ BF-40 Large repository  1329ms
+@frade/ui-workspace:test: 
+@frade/ui-workspace:test:  Test Files  13 passed (13)
+@frade/ui-workspace:test:       Tests  179 passed (179)
+@frade/ui-workspace:test:    Start at  06:44:23
+@frade/ui-workspace:test:    Duration  10.97s (transform 2.73s, setup 0ms, collect 7.15s, tests 10.66s, environment 13.25s, prepare 5.74s)
+@frade/ui-workspace:test: 
+
+ Tasks:    37 successful, 37 total
+Cached:    34 cached, 37 total
+  Time:    12.536s 
+
+ WARNING  no output files found for task @frade/desktop#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/ui-workspace#test. Please check your `outputs` key in `turbo.json`
+$ pnpm --filter @frade/draw test:bdd && pnpm --filter @frade/metamodel-domain test:bdd && pnpm --filter @frade/metamodel-compiler test:bdd && node scripts/check-repo-traceability.mjs && pnpm --filter @frade/repository-application test:bdd && node scripts/check-ka-traceability.mjs && pnpm --filter @frade/ui-workspace test:bdd
+$ vitest run tests/unit/bdd-mapping.test.ts tests/unit/bdd-contract.test.ts
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/draw
+
+ ✓ tests/unit/bdd-contract.test.ts (2 tests) 13ms
+ ✓ tests/unit/bdd-mapping.test.ts (1 test) 16ms
+
+ Test Files  2 passed (2)
+      Tests  3 passed (3)
+   Start at  06:44:35
+   Duration  1.71s (transform 145ms, setup 35ms, collect 311ms, tests 29ms, environment 1.63s, prepare 510ms)
+
+$ vitest run tests/bdd
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/metamodel-domain
+
+ ✓ tests/bdd/features.test.ts (55 tests) 116ms
+
+ Test Files  1 passed (1)
+      Tests  55 passed (55)
+   Start at  06:44:38
+   Duration  1.18s (transform 209ms, setup 0ms, collect 371ms, tests 116ms, environment 0ms, prepare 281ms)
+
+$ vitest run tests/bdd
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/metamodel-compiler
+
+ ✓ tests/bdd/compiler.test.ts (100 tests) 2325ms
+   ✓ Metamodel source composition / Reject invalid imports #9  1991ms
+
+ Test Files  1 passed (1)
+      Tests  100 passed (100)
+   Start at  06:44:40
+   Duration  3.56s (transform 301ms, setup 0ms, collect 504ms, tests 2.32s, environment 0ms, prepare 333ms)
+
+27 test-linked scenarios; 20 CORE requirements; 112 executable legacy cases; 13 RE/RP/RC requirements; 33 native v2 scenarios / 6 requirements. Structural traceability only: behavior acceptance requires executing linked tests.
+$ vitest run tests/acceptance tests/bdd
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/repository-application
+
+ ✓ tests/bdd/repository.bdd.test.ts (113 tests) 478ms
+ ✓ tests/acceptance/repository.test.ts (25 tests) 1460ms
+
+ Test Files  2 passed (2)
+      Tests  138 passed (138)
+   Start at  06:44:45
+   Duration  3.02s (transform 840ms, setup 0ms, collect 1.78s, tests 1.94s, environment 1ms, prepare 695ms)
+
+KA traceability: PASS (32 requirements, 48 scenarios)
+$ vitest run tests/bundle-flows.bdd.test.tsx tests/ui-contract/p01.bdd.test.tsx tests/ui-contract/service.test.ts tests/ui-contract/picker.test.tsx
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ✓ tests/ui-contract/p01.bdd.test.tsx (6 tests) 23ms
+ ✓ tests/ui-contract/service.test.ts (35 tests) 128ms
+ ✓ tests/ui-contract/picker.test.tsx (9 tests) 669ms
+ ✓ tests/bundle-flows.bdd.test.tsx (45 tests) 5581ms
+   ✓ BF-17 Empty pair  1019ms
+   ✓ BF-33 Repository query failure  1032ms
+   ✓ BF-40 Large repository  1018ms
+
+ Test Files  4 passed (4)
+      Tests  95 passed (95)
+   Start at  06:44:49
+   Duration  7.76s (transform 836ms, setup 0ms, collect 1.72s, tests 6.40s, environment 1.82s, prepare 1.33s)
+
+$ node --test tests/contract/*.test.mjs
+✔ compiler allows only public metamodel domain production dependencies (31.7369ms)
+✔ compiler rejects host imports, deep imports, source escapes and dynamic execution (0.9985ms)
+✔ compiler manifest cannot smuggle runtime dependencies (0.5396ms)
+✔ current Draw production dependencies and imports respect the boundary (51.8272ms)
+✔ boundary check rejects a privileged Electron import (37.4546ms)
+✔ metamodel production package is host-independent (36.2868ms)
+✔ metamodel rejects external imports, local escapes and dynamic execution (1.0118ms)
+✔ metamodel rejects production, optional and peer dependencies (0.5572ms)
+✔ actual runtime policy permits three approved presentation leaves but rejects arbitrary deep UI and privileged renderer imports (63.4886ms)
+✔ portable theme layer keeps runtime-contracts, Electron and Node behind injected host ports (8.2252ms)
+✔ repository packages retain portable inward-only boundaries (27.8543ms)
+✔ repository boundaries reject host, private, escaping and dynamic imports (0.9901ms)
+✔ runtime packages and renderer respect architecture boundaries (27.6117ms)
+✔ renderer rejects Node, privileged packages and local escapes (0.7498ms)
+✔ ordinary diagnostic text containing import is not an import declaration (0.1907ms)
+✔ pilot public exports and package boundaries exist and remain inward-only (39.8388ms)
+✔ adapter-sberea-yaml rejects privileged, private and escaping dependencies (1.2144ms)
+✔ metamodel-config rejects privileged, private and escaping dependencies (0.2615ms)
+✔ ui-navigator rejects privileged, private and escaping dependencies (0.2524ms)
+✔ ui-inspector rejects privileged, private and escaping dependencies (0.2542ms)
+✔ ui-workspace rejects privileged, private and escaping dependencies (0.2349ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 266.4451
+$ turbo build
+• turbo 2.11.2
+
+   • Packages in scope: @frade/adapter-sberea-yaml, @frade/adapter-yaml, @frade/desktop, @frade/draw, @frade/local-index, @frade/metamodel-compiler, @frade/metamodel-config, @frade/metamodel-domain, @frade/repository-api, @frade/repository-application, @frade/repository-bridge, @frade/repository-domain, @frade/repository-ports, @frade/runtime-contracts, @frade/runtime-electron, @frade/runtime-node, @frade/ui-inspector, @frade/ui-navigator, @frade/ui-workspace, @frade/versioning-git
+   • Running build in 20 packages
+   • Remote caching disabled, using shared worktree cache
+
+@frade/draw:build: cache hit, replaying logs d523344726be09ae
+@frade/draw:build: $ pnpm typecheck && vite build
+@frade/draw:build: $ tsc --noEmit --pretty false
+@frade/draw:build: vite v6.1.0 building for production...
+@frade/draw:build: transforming...
+@frade/draw:build: ✓ 1014 modules transformed.
+@frade/draw:build: rendering chunks...
+@frade/draw:build: computing gzip size...
+@frade/draw:build: dist/index.html                   0.41 kB │ gzip:   0.27 kB
+@frade/draw:build: dist/assets/index-BMbdYGPl.css    0.82 kB │ gzip:   0.44 kB
+@frade/draw:build: dist/assets/index-C7RacItR.js   761.77 kB │ gzip: 226.44 kB
+@frade/draw:build: 
+@frade/draw:build: (!) Some chunks are larger than 500 kB after minification. Consider:
+@frade/draw:build: - Using dynamic import() to code-split the application
+@frade/draw:build: - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+@frade/draw:build: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+@frade/draw:build: ✓ built in 13.25s
+@frade/metamodel-domain:build: cache hit, replaying logs d86363a25c4d9313
+@frade/metamodel-domain:build: $ tsc -p tsconfig.build.json
+@frade/runtime-contracts:build: cache hit, replaying logs dc2f7adb968a28a2
+@frade/runtime-contracts:build: $ tsc --outDir dist --declaration
+@frade/runtime-electron:build: cache hit, replaying logs 6baf2c24fee9b48a
+@frade/runtime-electron:build: $ tsc --outDir dist --declaration
+@frade/metamodel-compiler:build: cache hit, replaying logs 9dfff88677b1b483
+@frade/metamodel-compiler:build: $ tsc -p tsconfig.build.json
+@frade/metamodel-config:build: cache hit, replaying logs 4b7377aaae2277f1
+@frade/metamodel-config:build: $ tsc -p tsconfig.build.json
+@frade/repository-domain:build: cache hit, replaying logs c0d7096c384f7c63
+@frade/repository-domain:build: $ tsc -p tsconfig.build.json
+@frade/repository-ports:build: cache hit, replaying logs 7370f6430e6707b0
+@frade/repository-ports:build: $ tsc -p tsconfig.build.json
+@frade/local-index:build: cache hit, replaying logs 7d28750295c6b9e6
+@frade/repository-bridge:build: cache hit, replaying logs 803c5178bdcdec54
+@frade/versioning-git:build: cache hit, replaying logs 16d2fea1bc3da067
+@frade/local-index:build: $ tsc -p tsconfig.build.json
+@frade/repository-bridge:build: $ tsc -p tsconfig.build.json
+@frade/versioning-git:build: $ tsc -p tsconfig.build.json
+@frade/repository-application:build: cache hit, replaying logs 1d1632cdbfc07c88
+@frade/repository-application:build: $ tsc -p tsconfig.build.json
+@frade/repository-api:build: cache hit, replaying logs 5d83d78fa61caf69
+@frade/adapter-yaml:build: cache hit, replaying logs 86e3f63313194389
+@frade/adapter-sberea-yaml:build: cache hit, replaying logs 72667e24ff1a05ae
+@frade/repository-api:build: $ tsc -p tsconfig.build.json
+@frade/adapter-yaml:build: $ tsc -p tsconfig.build.json
+@frade/adapter-sberea-yaml:build: $ tsc -p tsconfig.build.json
+@frade/ui-inspector:build: cache hit, replaying logs 6833ad68dead944b
+@frade/ui-inspector:build: $ tsc -p tsconfig.build.json
+@frade/ui-navigator:build: cache hit, replaying logs 9b64c665f244f74a
+@frade/ui-navigator:build: $ tsc -p tsconfig.build.json
+@frade/runtime-node:build: cache hit, replaying logs 490e6db6e6bd590f
+@frade/runtime-node:build: $ tsc --outDir dist --declaration
+@frade/ui-workspace:build: cache hit, replaying logs ae18128d0e874bfd
+@frade/ui-workspace:build: $ tsc -p tsconfig.build.json
+@frade/desktop:build: cache miss, executing 4e955490ba5c6a9e
+@frade/desktop:build: $ node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility
+@frade/desktop:build: Draw.io 31.5.2: 2851 pinned resources verified
+@frade/desktop:build: $ tsc --noEmit
+@frade/desktop:build: vite v6.1.0 building SSR bundle for production...
+@frade/desktop:build: transforming...
+@frade/desktop:build: ✓ 37 modules transformed.
+@frade/desktop:build: rendering chunks...
+@frade/desktop:build: out/main/index.cjs  132.74 kB
+@frade/desktop:build: ✓ built in 519ms
+@frade/desktop:build: vite v6.1.0 building SSR bundle for production...
+@frade/desktop:build: transforming...
+@frade/desktop:build: ✓ 26 modules transformed.
+@frade/desktop:build: rendering chunks...
+@frade/desktop:build: out/preload/index.cjs  34.99 kB
+@frade/desktop:build: ✓ built in 125ms
+@frade/desktop:build: vite v6.1.0 building for production...
+@frade/desktop:build: transforming...
+@frade/desktop:build: ✓ 1072 modules transformed.
+@frade/desktop:build: rendering chunks...
+@frade/desktop:build: ../../out/renderer/index.html                       0.39 kB
+@frade/desktop:build: ../../out/renderer/assets/codicon-BP8tsb4Y.ttf    152.28 kB
+@frade/desktop:build: ../../out/renderer/assets/index-BL4WwfO_.css       43.18 kB
+@frade/desktop:build: ../../out/renderer/assets/index-CmcqJ59e.js     2,004.59 kB
+@frade/desktop:build: ✓ built in 4.26s
+@frade/desktop:build: $ vite build --config vite.utility.config.ts
+@frade/desktop:build: vite v6.1.0 building for production...
+@frade/desktop:build: transforming...
+@frade/desktop:build: ✓ 150 modules transformed.
+@frade/desktop:build: rendering chunks...
+@frade/desktop:build: computing gzip size...
+@frade/desktop:build: out/utility/index.cjs             0.05 kB │ gzip:  0.07 kB
+@frade/desktop:build: out/utility/paged-D9TBU87N.cjs   35.79 kB │ gzip: 11.22 kB
+@frade/desktop:build: out/utility/index-YDtQzKPC.cjs  288.97 kB │ gzip: 89.24 kB
+@frade/desktop:build: ✓ built in 1.33s
+
+ Tasks:    20 successful, 20 total
+Cached:    19 cached, 20 total
+  Time:    16.33s 
+
+$ node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs
+Draw architecture boundaries: PASS
+Runtime architecture boundaries: PASS
+Repository architecture boundaries: PASS
+Workbench architecture boundaries: PASS
+$ pnpm ui:tokens:check && pnpm ui:colors:check && pnpm ui:traceability:check && pnpm test:ui-contract && pnpm ui:controls && pnpm ui:checkout:check
+$ node scripts/ui/tokens.mjs
+{"status":"PASS","namedContrastChecks":102,"adoption":{"guideVersion":"1.0","tokenVersion":"1.0.0","cssAdoptionRevision":1},"errors":[]}
+$ node scripts/ui/colors.mjs
+{"status":"PASS","occurrences":124,"legacyExceptions":124,"errors":[]}
+$ node scripts/ui/traceability.mjs
+{"status":"PASS","foundationBindings":28,"futureBoundariesNotExecuted":23,"scope":"Binding integrity only; actual tests run separately","errors":[]}
+$ node --test tests/ui-contract/*.test.mjs
+{"lifecycle":"archived","traceExit":0,"controls":[0,0,1,1,1,0,1],"removed":true}
+✔ UI-ARCHIVE:archived-change (2430.2065ms)
+{"lifecycle":"no artifacts","traceExit":0,"controls":[0,0,1,1,1,0,1],"removed":true}
+✔ UI-ARCHIVE:no-change-artifacts (2194.5895ms)
+{"lifecycle":"canonical negative","missingExit":1,"malformedExit":1,"controlStatus":"FAIL","removed":true}
+✔ UI-ARCHIVE:canonical-no-fallback (2927.761ms)
+✔ UI-ARCHIVE:fixture-base-is-respected (809.5374ms)
+✔ UI-ARCHIVE:execution-and-cleanup-failures-preserved (1598.8533ms)
+✔ UI-CHECKOUT:required-root-configuration (12.1943ms)
+✔ UI-CHECKOUT:closed-rule-scope (3.2393ms)
+✔ UI-CHECKOUT:physical-drift (1080.8521ms)
+✔ UI-CHECKOUT:raw-lf-preservation (0.5025ms)
+✔ UI-CHECKOUT:unavailable-git-and-cleanup-failure (959.9867ms)
+✔ UI-CHECKOUT:refuse-unverified-or-replaced-root (3.1491ms)
+✔ UI-LITERAL-SYNTAX: HEX rgb hsl named and inline values fail; comments and identifiers do not (19.7704ms)
+✔ UI-LITERAL-LEGACY: adding new color beside an exact legacy occurrence fails (1.3195ms)
+✔ UI-LITERAL-EXCEPTIONS: moved/context-changed/duplicate or blanket exceptions fail (0.4077ms)
+✔ UI-LITERAL-DATA: validated theme/domain/generated boundaries are distinct (0.5888ms)
+✔ UI-CONTROLS: real CLI positives pass, negatives fail, and isolated root is removed (1959.0732ms)
+✔ UI-TOKEN-CLOSURE: complete palettes validate without mutation (6.9801ms)
+✔ UI-TOKEN-CLOSURE: missing and extra roles cannot be hidden by equal sets (6.1953ms)
+✔ UI-TOKEN-MALFORMED: invalid HEX/nonfinite/shape/version are rejected (4.3609ms)
+✔ UI-CONTRAST: independent luminance boundaries and 102 named pairs (0.8972ms)
+✔ UI-TOKEN-EQUIVALENCE: only accepted selector changes; values/order stable (5.4853ms)
+✔ UI-TOKEN-DRIFT: CSS and typed registry mutation both fail without rewriting (11.9947ms)
+✔ UI-TRACE-CLOSURE: valid foundation binding; missing/unknown/duplicate fail (22.2612ms)
+✔ UI-TRACE-ASSERTIONS: removed/mutated assertions and skipped tests cannot count (2.957ms)
+✔ UI-TRACE-EXAMPLES: every outline row maps; repeated example is invalid (4.7571ms)
+✔ UI-TRACE-FUTURE: future phase is explicit and cannot disguise foundation (0.5904ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10533.204
+$ node scripts/ui/controls.mjs
+{"status":"PASS","temporaryRoot":"C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-contract-v8D7Cf","removed":true,"controls":[{"name":"positive tokens","expectedExit":0,"actualExit":0,"fixtureHash":"b57a9e2b55abf96ac3caaf4beca7d6ce399a786277c478c0bdc6690e525f2814","stdout":"{\"status\":\"PASS\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[]}\n","stderr":""},{"name":"positive exact legacy occurrence","expectedExit":0,"actualExit":0,"fixtureHash":"ad5c3d4085563684e77a5c0e0b112155db1ea393f287fde57c79a5573822e4bb","stdout":"{\"status\":\"PASS\",\"occurrences\":1,\"legacyExceptions\":1,\"errors\":[]}\n","stderr":""},{"name":"negative generated drift","expectedExit":1,"actualExit":1,"fixtureHash":"3990e0f987e927091bffa10a7918ec8eaec59df2c5d566a5e393438468dd12a9","stdout":"{\"status\":\"FAIL\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[\"Generated CSS drift\"]}\n","stderr":""},{"name":"negative contrast","expectedExit":1,"actualExit":1,"fixtureHash":"d2f7d5e8243221bfc7b070053f04386bb85417a9523718b978467d577c662588","stdout":"{\"status\":\"FAIL\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[\"light: contrast text.primary/surface.base = 1 < 4.5\",\"light: contrast text.primary/surface.panel = 1.0813446936280224 < 4.5\",\"light: contrast text.primary/surface.rail = 1.174343318122725 < 4.5\",\"light: contrast text.primary/surface.hover = 1.1950322552091959 < 4.5\",\"light: contrast text.primary/surface.overlay = 1 < 4.5\",\"light: contrast text.primary/diagram.nodeBg = 1 < 4.5\"]}\n","stderr":""},{"name":"negative new literal beside legacy","expectedExit":1,"actualExit":1,"fixtureHash":"e387fb2ed90ac6466c730fb65634617ec339d56c51e430655c5f95a93eaff50b","stdout":"{\"status\":\"FAIL\",\"occurrences\":2,\"legacyExceptions\":1,\"errors\":[\"packages/ui-navigator/src/control.css:2: forbidden color red\"]}\n","stderr":""},{"name":"positive complete traceability","expectedExit":0,"actualExit":0,"fixtureHash":"6e1f99d5b147212762dfd5d9216cd394b4becab3b6de9970191ebca3467da920","stdout":"{\"status\":\"PASS\",\"foundationBindings\":28,\"futureBoundariesNotExecuted\":23,\"scope\":\"Binding integrity only; actual tests run separately\",\"errors\":[]}\n","stderr":""},{"name":"negative missing traceability","expectedExit":1,"actualExit":1,"fixtureHash":"39634c9eff8ab24b7edd0e87e879af1b2baaa3d8539d8634956a127e2051f1a3","stdout":"{\"status\":\"FAIL\",\"foundationBindings\":27,\"futureBoundariesNotExecuted\":23,\"scope\":\"Binding integrity only; actual tests run separately\",\"errors\":[\"Missing scenario/example FUI-001\"]}\n","stderr":""}]}
+$ node scripts/ui/checkout.mjs
+{"status":"PASS","platform":"win32","temporaryRoot":"C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-checkout-hNucwR","removed":true,"sourceUnchanged":true,"protectedArtifacts":8,"controls":[{"name":"no attributes: physical CRLF drift","actualExit":1,"stdout":"","stderr":"Error: Immutable upstream CSS fixture drift\n","namedContrastChecks":null,"artifacts":[{"path":"docs/ui/Frade-UI-Style-Guide.md","sha256":"f33021f71ce0bfbe271430e1a8592bfce2e66d0ba4f8d236e3f1fffecefd7117","bytes":70490,"crlfCount":400},{"path":"docs/ui/QA-Checklist.md","sha256":"99a9e2f70533d7d2d08f1115156c761efdd9dc1614813a0013dafa06b2a59d6a","bytes":2583,"crlfCount":34},{"path":"docs/ui/Themes-and-Plugins-Spec.md","sha256":"06db4293ffa2e2a3f3ae74bd96b878edeecdddecfe3fd226917d4f21ed513633","bytes":31748,"crlfCount":243},{"path":"packages/ui-workspace/tokens/tokens.json","sha256":"c96c4952621b6e90c76cc8b7e3cf19b6e36c4a4d75c1d5ea4333635c10076944","bytes":5007,"crlfCount":158},{"path":"packages/ui-workspace/tokens/theme.schema.json","sha256":"2686fa13c6f0160bcb446a666dc87bbaad0d51a8e051df7d70828165429d1da9","bytes":3977,"crlfCount":152},{"path":"tests/ui-contract/fixtures/upstream.tokens.css","sha256":"bc3f83d111ab9164a24a9fc2d273a5094e5a3a4944de71313afd458c301e1a24","bytes":9242,"crlfCount":280},{"path":"packages/ui-workspace/src/design/generated/tokens.css","sha256":"0a113ca05d17e45a9994715446efb5a33411882d8e51e955ab03a9e00478457f","bytes":9250,"crlfCount":280},{"path":"packages/ui-workspace/src/design/generated/tokens.ts","sha256":"1179d9d30d16027a43ec593cdbc4654a7274760953da98e0e2fea3bc4570d0b8","bytes":5413,"crlfCount":167}]},{"name":"accepted eight rules: raw LF preservation","actualExit":0,"stdout":"{\"status\":\"PASS\",\"namedContrastChecks\":102,\"adoption\":{\"guideVersion\":\"1.0\",\"tokenVersion\":\"1.0.0\",\"cssAdoptionRevision\":1},\"errors\":[]}\n","stderr":"","namedContrastChecks":102,"artifacts":[{"path":"docs/ui/Frade-UI-Style-Guide.md","sha256":"6fe886be979a32d87c94f29f65ee3abdbc2acf86dd4c12fdfc4d00022139b109","bytes":70090,"crlfCount":0},{"path":"docs/ui/QA-Checklist.md","sha256":"22fb9287d6740a2613dac07e5ef656aa6edcc9e6e1eb4be5bb5bff3f042b0f9b","bytes":2549,"crlfCount":0},{"path":"docs/ui/Themes-and-Plugins-Spec.md","sha256":"f8fb35e715dd7e0c420768b855e991c96244279b637e6d4db5eb061514ec3e81","bytes":31505,"crlfCount":0},{"path":"packages/ui-workspace/tokens/tokens.json","sha256":"d02e342cd54dc98807778fcdf10e386080f5b97a5c0a8dc1245b0ee9191e2764","bytes":4849,"crlfCount":0},{"path":"packages/ui-workspace/tokens/theme.schema.json","sha256":"d0967fe506f13bbc506e48d92a8ff68c07cdcdcc119b6a15862c65b89d28d9f3","bytes":3825,"crlfCount":0},{"path":"tests/ui-contract/fixtures/upstream.tokens.css","sha256":"11aac6f1c08ae67ef25415b220330d26bef9d0d805090ecc9626bb7ca6707d29","bytes":8962,"crlfCount":0},{"path":"packages/ui-workspace/src/design/generated/tokens.css","sha256":"6a6b47b12f5090a66231ee2541387ada31a2435d76f245c6631ad4285ac784a4","bytes":8970,"crlfCount":0},{"path":"packages/ui-workspace/src/design/generated/tokens.ts","sha256":"fbe1ced2cbb112f8073de4a5f8c612811ef087165514304f3820862c929fb63e","bytes":5246,"crlfCount":0}]}],"commands":[{"command":"git","args":["init","--quiet"],"actualExit":0,"stdout":"","stderr":""},{"command":"git","args":["config","--local","core.autocrlf","true"],"actualExit":0,"stdout":"","stderr":""},{"command":"git","args":["config","--local","core.safecrlf","false"],"actualExit":0,"stdout":"","stderr":""},{"command":"git","args":["config","--local","core.attributesFile","C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-checkout-hNucwR\\.empty-attributes"],"actualExit":0,"stdout":"","stderr":""},{"command":"git","args":["add","--","docs/ui/Frade-UI-Style-Guide.md","docs/ui/QA-Checklist.md","docs/ui/Themes-and-Plugins-Spec.md","packages/ui-workspace/tokens/tokens.json","packages/ui-workspace/tokens/theme.schema.json","tests/ui-contract/fixtures/upstream.tokens.css","packages/ui-workspace/src/design/generated/tokens.css","packages/ui-workspace/src/design/generated/tokens.ts"],"actualExit":0,"stdout":"","stderr":""},{"command":"git","args":["checkout-index","--all","--force"],"actualExit":0,"stdout":"","stderr":""},{"command":"git","args":["add","--",".gitattributes"],"actualExit":0,"stdout":"","stderr":""},{"command":"git","args":["checkout-index","--all","--force"],"actualExit":0,"stdout":"","stderr":""}]}
+$ pnpm --filter @frade/draw test:visual
+$ playwright test
+[2m[WebServer] [22m(node:54808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m(node:51228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 215 tests using 4 workers
+
+(node:52072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:47548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:55788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:52072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:47548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:55788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok   2 tests\spike\floating-magnet-click.spec.ts:3:3 › magnet click preserves existing edge state=initial clicked=a (1.4s)
+  ok   3 tests\spike\floating-horizontal-entry.spec.ts:4:5 › horizontal source segment switches to top (2.0s)
+  ok   5 tests\spike\floating-magnet-click.spec.ts:3:3 › magnet click preserves existing edge state=initial clicked=b (782ms)
+  ok   7 tests\spike\floating-magnet-click.spec.ts:3:3 › magnet click preserves existing edge state=moved clicked=a (846ms)
+  ok   1 tests\spike\floating-cross-terminal.spec.ts:15:42 › horizontal corridor crosses target height continuously (releaseY=null) (3.2s)
+  ok   6 tests\spike\floating-horizontal-entry.spec.ts:4:5 › horizontal source segment switches to bottom (1.4s)
+  ok   4 tests\spike\document-roundtrip.spec.ts:169:3 › @APP-101 Preserve a styled diagram through real files (3.6s)
+  ok   8 tests\spike\floating-magnet-click.spec.ts:3:3 › magnet click preserves existing edge state=moved clicked=b (769ms)
+  ok  10 tests\spike\floating-horizontal-entry.spec.ts:4:5 › horizontal target segment switches to top (1.4s)
+  ok  12 tests\spike\floating-magnet-click.spec.ts:3:3 › magnet click preserves existing edge state=edited clicked=a (1.1s)
+  ok  11 tests\spike\document-roundtrip.spec.ts:169:3 › @APP-102 Reject an invalid file without losing work (1.5s)
+  ok   9 tests\spike\floating-cross-terminal.spec.ts:15:42 › horizontal corridor crosses target height continuously (releaseY=270) (2.6s)
+  ok  14 tests\spike\floating-magnet-click.spec.ts:3:3 › magnet click preserves existing edge state=edited clicked=b (1.0s)
+  ok  13 tests\spike\floating-horizontal-entry.spec.ts:4:5 › horizontal target segment switches to bottom (1.3s)
+  ok  15 tests\spike\document-roundtrip.spec.ts:169:3 › @APP-103 Save As retains identity and updates the name (1.6s)
+  ok  16 tests\spike\floating-cross-terminal.spec.ts:15:42 › horizontal corridor crosses target height continuously (releaseY=280) (2.5s)
+  ok  19 tests\spike\document-roundtrip.spec.ts:169:3 › @APP-104 New clears the previous document and history (1.7s)
+  ok  17 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-a--1-A-B-edited=false (4.7s)
+  ok  18 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-a--1-A-B-edited=true (5.0s)
+  ok  21 tests\spike\document-roundtrip.spec.ts:291:1 › invalid documents and cancelled Save As preserve the current graph (2.9s)
+  ok  20 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-a--1-B-A-edited=false (4.5s)
+  ok  24 tests\spike\document-roundtrip.spec.ts:345:1 › New invalidates a file read that completes later (1.8s)
+  ok  26 tests\spike\document-roundtrip.spec.ts:378:1 › legacy version-one documents remain readable with deterministic routes and ports (1.2s)
+  ok  22 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-a--1-B-A-edited=true (4.3s)
+  ok  23 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-a-1-A-B-edited=false (4.0s)
+  ok  25 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-a-1-A-B-edited=true (4.3s)
+  ok  27 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-a-1-B-A-edited=false (4.2s)
+  ok  29 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-b--1-A-B-edited=false (4.2s)
+  ok  28 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-a-1-B-A-edited=true (4.4s)
+  ok  30 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-b--1-A-B-edited=true (4.7s)
+  ok  31 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-b--1-B-A-edited=false (4.6s)
+  ok  33 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-b-1-A-B-edited=false (4.7s)
+  ok  32 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-b--1-B-A-edited=true (4.9s)
+  ok  37 tests\spike\floating-placement.spec.ts:3:3 › unrelated figure placement preserves edge moved=false placement=near (1.1s)
+  ok  38 tests\spike\floating-placement.spec.ts:3:3 › unrelated figure placement preserves edge moved=false placement=over (934ms)
+  ok  34 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-b-1-A-B-edited=true (5.0s)
+  ok  39 tests\spike\floating-placement.spec.ts:3:3 › unrelated figure placement preserves edge moved=true placement=near (933ms)
+  ok  35 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-b-1-B-A-edited=false (4.6s)
+  ok  41 tests\spike\floating-placement.spec.ts:3:3 › unrelated figure placement preserves edge moved=true placement=over (873ms)
+  ok  40 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x0-y0-A-B-central--1 (1.8s)
+  ok  36 tests\spike\floating-orbit.spec.ts:13:3 › ORBIT-b-1-B-A-edited=true (4.9s)
+  ok  43 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y0-A-B-terminal-a--1 (1.6s)
+  ok  42 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x0-y0-A-B-central-1 (1.8s)
+  ok  44 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y0-A-B-terminal-a-1 (1.6s)
+  ok  45 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y0-A-B-terminal-b--1 (1.7s)
+  ok  46 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y0-A-B-terminal-b-1 (1.6s)
+  ok  47 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x0-y0-A-B-cross-reselect-false (2.0s)
+  ok  49 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x0-y0-A-B-aligned--1 (1.2s)
+  ok  48 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x0-y0-A-B-cross-reselect-true (2.2s)
+  ok  50 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x0-y0-A-B-aligned-1 (1.2s)
+  ok  51 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x0-y0-B-A-central--1 (1.8s)
+  ok  52 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x0-y0-B-A-central-1 (1.9s)
+  ok  53 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y0-B-A-terminal-a--1 (1.6s)
+  ok  54 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y0-B-A-terminal-a-1 (1.6s)
+  ok  55 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y0-B-A-terminal-b--1 (1.5s)
+  ok  56 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y0-B-A-terminal-b-1 (1.6s)
+  ok  57 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x0-y0-B-A-cross-reselect-false (2.0s)
+  ok  58 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x0-y0-B-A-cross-reselect-true (2.2s)
+  ok  59 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x0-y0-B-A-aligned--1 (1.2s)
+  ok  60 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x0-y0-B-A-aligned-1 (1.2s)
+  ok  61 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x0-y1-A-B-central--1 (2.0s)
+  ok  63 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y1-A-B-terminal-a--1 (1.6s)
+  ok  62 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x0-y1-A-B-central-1 (1.9s)
+  ok  64 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y1-A-B-terminal-a-1 (1.6s)
+  ok  65 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y1-A-B-terminal-b--1 (1.7s)
+  ok  66 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y1-A-B-terminal-b-1 (1.6s)
+  ok  67 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x0-y1-A-B-cross-reselect-false (2.1s)
+  ok  68 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x0-y1-A-B-cross-reselect-true (2.3s)
+  ok  69 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x0-y1-A-B-aligned--1 (1.2s)
+  ok  70 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x0-y1-A-B-aligned-1 (1.2s)
+  ok  71 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x0-y1-B-A-central--1 (1.8s)
+  ok  72 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x0-y1-B-A-central-1 (1.9s)
+  ok  73 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y1-B-A-terminal-a--1 (1.7s)
+  ok  74 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y1-B-A-terminal-a-1 (1.7s)
+  ok  75 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y1-B-A-terminal-b--1 (1.8s)
+  ok  76 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x0-y1-B-A-terminal-b-1 (1.7s)
+  ok  77 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x0-y1-B-A-cross-reselect-false (2.1s)
+  ok  78 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x0-y1-B-A-cross-reselect-true (2.3s)
+  ok  79 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x0-y1-B-A-aligned--1 (1.3s)
+  ok  80 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x0-y1-B-A-aligned-1 (1.3s)
+  ok  81 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x1-y0-A-B-central--1 (1.8s)
+  ok  82 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x1-y0-A-B-central-1 (1.8s)
+  ok  83 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y0-A-B-terminal-a--1 (1.6s)
+  ok  84 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y0-A-B-terminal-a-1 (1.6s)
+  ok  85 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y0-A-B-terminal-b--1 (1.7s)
+  ok  86 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y0-A-B-terminal-b-1 (1.7s)
+  ok  87 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x1-y0-A-B-cross-reselect-false (2.1s)
+  ok  88 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x1-y0-A-B-cross-reselect-true (2.3s)
+  ok  89 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x1-y0-A-B-aligned--1 (1.2s)
+  ok  90 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x1-y0-A-B-aligned-1 (1.3s)
+  ok  91 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x1-y0-B-A-central--1 (1.8s)
+  ok  93 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y0-B-A-terminal-a--1 (1.6s)
+  ok  92 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x1-y0-B-A-central-1 (1.8s)
+  ok  94 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y0-B-A-terminal-a-1 (1.5s)
+  ok  95 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y0-B-A-terminal-b--1 (1.6s)
+  ok  96 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y0-B-A-terminal-b-1 (1.6s)
+  ok  97 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x1-y0-B-A-cross-reselect-false (2.0s)
+  ok  98 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x1-y0-B-A-cross-reselect-true (2.3s)
+  ok  99 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x1-y0-B-A-aligned--1 (1.2s)
+  ok 100 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x1-y0-B-A-aligned-1 (1.2s)
+  ok 101 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x1-y1-A-B-central--1 (1.8s)
+  ok 103 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y1-A-B-terminal-a--1 (1.5s)
+  ok 102 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x1-y1-A-B-central-1 (1.8s)
+  ok 104 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y1-A-B-terminal-a-1 (1.5s)
+  ok 105 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y1-A-B-terminal-b--1 (1.6s)
+  ok 106 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y1-A-B-terminal-b-1 (1.6s)
+  ok 107 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x1-y1-A-B-cross-reselect-false (2.1s)
+  ok 108 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x1-y1-A-B-cross-reselect-true (2.3s)
+  ok 109 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x1-y1-A-B-aligned--1 (1.2s)
+  ok 110 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x1-y1-A-B-aligned-1 (1.2s)
+  ok 111 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x1-y1-B-A-central--1 (1.8s)
+  ok 113 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y1-B-A-terminal-a--1 (1.6s)
+  ok 112 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-horizontal-x1-y1-B-A-central-1 (1.8s)
+  ok 114 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y1-B-A-terminal-a-1 (1.6s)
+  ok 115 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y1-B-A-terminal-b--1 (1.5s)
+  ok 116 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-horizontal-x1-y1-B-A-terminal-b-1 (1.5s)
+  ok 117 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x1-y1-B-A-cross-reselect-false (1.9s)
+  ok 118 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-horizontal-x1-y1-B-A-cross-reselect-true (2.1s)
+  ok 119 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x1-y1-B-A-aligned--1 (1.3s)
+  ok 120 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-horizontal-x1-y1-B-A-aligned-1 (1.3s)
+  ok 121 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x0-y0-A-B-central--1 (1.8s)
+  ok 123 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y0-A-B-terminal-a--1 (1.6s)
+  ok 122 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x0-y0-A-B-central-1 (1.8s)
+  ok 124 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y0-A-B-terminal-a-1 (1.6s)
+  ok 125 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y0-A-B-terminal-b--1 (1.5s)
+  ok 126 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y0-A-B-terminal-b-1 (1.5s)
+  ok 127 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x0-y0-A-B-cross-reselect-false (2.0s)
+  ok 128 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x0-y0-A-B-cross-reselect-true (2.2s)
+  ok 129 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x0-y0-A-B-aligned--1 (1.2s)
+  ok 130 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x0-y0-A-B-aligned-1 (1.2s)
+  ok 131 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x0-y0-B-A-central--1 (1.8s)
+  ok 133 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y0-B-A-terminal-a--1 (1.5s)
+  ok 132 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x0-y0-B-A-central-1 (1.8s)
+  ok 134 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y0-B-A-terminal-a-1 (1.5s)
+  ok 136 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y0-B-A-terminal-b-1 (1.5s)
+  ok 135 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y0-B-A-terminal-b--1 (1.5s)
+  ok 137 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x0-y0-B-A-cross-reselect-false (1.9s)
+  ok 138 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x0-y0-B-A-cross-reselect-true (2.1s)
+  ok 139 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x0-y0-B-A-aligned--1 (1.1s)
+  ok 140 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x0-y0-B-A-aligned-1 (1.2s)
+  ok 141 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x0-y1-A-B-central--1 (1.7s)
+  ok 144 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y1-A-B-terminal-a-1 (1.5s)
+  ok 143 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y1-A-B-terminal-a--1 (1.6s)
+  ok 142 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x0-y1-A-B-central-1 (1.8s)
+  ok 145 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y1-A-B-terminal-b--1 (1.5s)
+  ok 146 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y1-A-B-terminal-b-1 (1.6s)
+  ok 147 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x0-y1-A-B-cross-reselect-false (2.0s)
+  ok 148 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x0-y1-A-B-cross-reselect-true (2.2s)
+  ok 149 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x0-y1-A-B-aligned--1 (1.2s)
+  ok 150 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x0-y1-A-B-aligned-1 (1.2s)
+  ok 151 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x0-y1-B-A-central--1 (1.7s)
+  ok 153 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y1-B-A-terminal-a--1 (1.4s)
+  ok 152 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x0-y1-B-A-central-1 (1.7s)
+  ok 154 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y1-B-A-terminal-a-1 (1.4s)
+  ok 155 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y1-B-A-terminal-b--1 (1.6s)
+  ok 156 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x0-y1-B-A-terminal-b-1 (1.6s)
+  ok 157 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x0-y1-B-A-cross-reselect-false (2.1s)
+  ok 158 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x0-y1-B-A-cross-reselect-true (2.2s)
+  ok 159 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x0-y1-B-A-aligned--1 (1.3s)
+  ok 160 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x0-y1-B-A-aligned-1 (1.3s)
+  ok 161 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x1-y0-A-B-central--1 (1.8s)
+  ok 163 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y0-A-B-terminal-a--1 (1.5s)
+  ok 162 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x1-y0-A-B-central-1 (1.8s)
+  ok 164 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y0-A-B-terminal-a-1 (1.5s)
+  ok 165 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y0-A-B-terminal-b--1 (1.6s)
+  ok 166 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y0-A-B-terminal-b-1 (1.6s)
+  ok 167 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x1-y0-A-B-cross-reselect-false (2.1s)
+  ok 168 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x1-y0-A-B-cross-reselect-true (2.4s)
+  ok 169 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x1-y0-A-B-aligned--1 (1.3s)
+  ok 170 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x1-y0-A-B-aligned-1 (1.4s)
+  ok 171 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x1-y0-B-A-central--1 (2.0s)
+  ok 173 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y0-B-A-terminal-a--1 (1.6s)
+  ok 172 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x1-y0-B-A-central-1 (1.9s)
+  ok 174 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y0-B-A-terminal-a-1 (1.7s)
+  ok 175 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y0-B-A-terminal-b--1 (1.6s)
+  ok 176 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y0-B-A-terminal-b-1 (1.6s)
+  ok 177 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x1-y0-B-A-cross-reselect-false (2.0s)
+  ok 178 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x1-y0-B-A-cross-reselect-true (2.3s)
+  ok 179 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x1-y0-B-A-aligned--1 (1.3s)
+  ok 180 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x1-y0-B-A-aligned-1 (1.3s)
+  ok 181 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x1-y1-A-B-central--1 (1.7s)
+  ok 183 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y1-A-B-terminal-a--1 (1.4s)
+  ok 184 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y1-A-B-terminal-a-1 (1.4s)
+  ok 182 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x1-y1-A-B-central-1 (1.7s)
+  ok 185 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y1-A-B-terminal-b--1 (1.6s)
+  ok 186 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y1-A-B-terminal-b-1 (1.6s)
+  ok 187 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x1-y1-A-B-cross-reselect-false (2.1s)
+  ok 188 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x1-y1-A-B-cross-reselect-true (2.3s)
+  ok 189 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x1-y1-A-B-aligned--1 (1.3s)
+  ok 190 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x1-y1-A-B-aligned-1 (1.3s)
+  ok 191 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x1-y1-B-A-central--1 (1.8s)
+  ok 193 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y1-B-A-terminal-a--1 (1.6s)
+  ok 192 tests\spike\floating-symmetry.spec.ts:160:36 › MATRIX-transpose-x1-y1-B-A-central-1 (1.8s)
+  ok 194 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y1-B-A-terminal-a-1 (1.6s)
+  ok 195 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y1-B-A-terminal-b--1 (1.5s)
+  ok 196 tests\spike\floating-symmetry.spec.ts:185:67 › MATRIX-transpose-x1-y1-B-A-terminal-b-1 (1.5s)
+  ok 197 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x1-y1-B-A-cross-reselect-false (2.0s)
+  ok 198 tests\spike\floating-symmetry.spec.ts:204:41 › MATRIX-transpose-x1-y1-B-A-cross-reselect-true (2.2s)
+  ok 199 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x1-y1-B-A-aligned--1 (1.2s)
+  ok 200 tests\spike\floating-symmetry.spec.ts:237:36 › MATRIX-transpose-x1-y1-B-A-aligned-1 (1.3s)
+  ok 203 tests\spike\production-visual.spec.ts:8:1 › production visual API reads real X6 SVG (790ms)
+  ok 201 tests\spike\floating-top-entry.spec.ts:2:44 › drag vertical corridor left switches floating sides without reversal (1.4s)
+  ok 204 tests\spike\routing-independence.spec.ts:2:1 › unrelated shapes never change routing; circular handles track every pointer sample and undo atomically (1.4s)
+  ok 202 tests\spike\palette-placement.spec.ts:3:3 › rect button preserves existing nodes and mouse-created connection (1.8s)
+  ok 205 tests\spike\production-visual.spec.ts:33:1 › selected real edge keeps SVG visible while a segment handle is dragged (1.3s)
+  ok 207 tests\spike\x6-segments.spec.ts:2:1 › X6 3.1.8 exposes floating boundary edge and native segments in SVG (574ms)
+  ok 206 tests\spike\floating-top-entry.spec.ts:2:44 › drag vertical corridor right switches floating sides without reversal (1.7s)
+  ok 209 tests\spike\production-visual.spec.ts:89:1 › production route remains rendered after node move and resize (676ms)
+  ok 208 tests\spike\palette-placement.spec.ts:3:3 › rounded-rect button preserves existing nodes and mouse-created connection (1.7s)
+  ok 210 tests\spike\production-visual.spec.ts:104:1 › fixture loading is deterministic and exposes logical segments (589ms)
+  ok 212 tests\spike\production-visual.spec.ts:139:1 › floating attachments cross unrelated figures and survive move, resize, and reconnect (507ms)
+  ok 211 tests\spike\palette-placement.spec.ts:3:3 › ellipse button preserves existing nodes and mouse-created connection (1.3s)
+  ok 213 tests\spike\production-visual.spec.ts:189:1 › approved visual baseline matrix covers selection, hover, drag, obstacle, and legacy edge (1.7s)
+  ok 214 tests\spike\palette-placement.spec.ts:3:3 › diamond button preserves existing nodes and mouse-created connection (1.3s)
+  ok 215 tests\spike\palette-placement.spec.ts:3:3 › text button preserves existing nodes and mouse-created connection (1.2s)
+
+  215 passed (1.8m)
+$ pnpm --filter @frade/desktop test:e2e
+$ pnpm build && playwright test
+$ node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility
+Draw.io 31.5.2: 2851 pinned resources verified
+$ tsc --noEmit
+vite v6.1.0 building SSR bundle for production...
+transforming...
+✓ 37 modules transformed.
+rendering chunks...
+out/main/index.cjs  132.74 kB
+✓ built in 432ms
+vite v6.1.0 building SSR bundle for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+out/preload/index.cjs  34.99 kB
+✓ built in 120ms
+vite v6.1.0 building for production...
+transforming...
+✓ 1072 modules transformed.
+rendering chunks...
+../../out/renderer/index.html                       0.39 kB
+../../out/renderer/assets/codicon-BP8tsb4Y.ttf    152.28 kB
+../../out/renderer/assets/index-BL4WwfO_.css       43.18 kB
+../../out/renderer/assets/index-CmcqJ59e.js     2,004.59 kB
+✓ built in 4.14s
+$ vite build --config vite.utility.config.ts
+vite v6.1.0 building for production...
+transforming...
+✓ 150 modules transformed.
+rendering chunks...
+computing gzip size...
+out/utility/index.cjs             0.05 kB │ gzip:  0.07 kB
+out/utility/paged-D9TBU87N.cjs   35.79 kB │ gzip: 11.22 kB
+out/utility/index-YDtQzKPC.cjs  288.97 kB │ gzip: 89.24 kB
+✓ built in 1.28s
+
+Running 69 tests using 1 worker
+
+(node:25172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25172) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x   1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade (3.7s)
+(node:42004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42004) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok  2 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (19.9s)
+  ok  3 tests\e2e\desktop.spec.ts:7:1 › built desktop: isolation, document lifecycle, real backend recovery and shutdown (2.2s)
+  ok  4 tests\e2e\development.spec.ts:10:1 › development desktop loads the local Vite renderer and connects to the backend (3.8s)
+HTTP [33m404[39m frade://drawio/null
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+  ok  5 tests\e2e\diagrams.spec.ts:41:1 › repository diagram opens in ordinary tabs, edits native XML and saves (7.5s)
+  ok  6 tests\e2e\diagrams.spec.ts:180:1 › Frade native diagram preserves bindings and responds to repository events in NRT (5.5s)
+  ok  7 tests\e2e\diagrams.spec.ts:358:1 › native Draw.io compressed pages, layers, groups and custom cell metadata survive an actual editor roundtrip (7.7s)
+  ok  8 tests\e2e\diagrams.spec.ts:462:1 › mixed diagram tabs share Save All, keep live editor state, reorder, discard and restore (9.6s)
+  x   9 tests\e2e\diagrams.spec.ts:579:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (20.8s)
+(node:49072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49072) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok 10 tests\e2e\diagrams.spec.ts:579:3 › frade navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (6.2s)
+  ok 11 tests\e2e\diagrams.spec.ts:754:3 › system notation, card NRT and persisted settings: frade (7.4s)
+  ok 12 tests\e2e\diagrams.spec.ts:754:3 › system notation, card NRT and persisted settings: drawio (12.9s)
+  ok 13 tests\e2e\diagrams.spec.ts:977:3 › empty bundle native gesture, undo and persistence: frade (4.7s)
+  ok 14 tests\e2e\diagrams.spec.ts:977:3 › empty bundle native gesture, undo and persistence: drawio (8.9s)
+  ok 15 tests\e2e\repository.spec.ts:11:3 › repository IPC native-v1: host-selected files and authorized commands through sandboxed preload (1.7s)
+  ok 16 tests\e2e\repository.spec.ts:11:3 › repository IPC native-v2: host-selected files and authorized commands through sandboxed preload (1.9s)
+  ok 17 tests\e2e\ui-contract-theme-performance.spec.ts:216:1 › P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms (33.2s)
+  ok 18 tests\e2e\ui-contract-theme-performance.spec.ts:418:1 › P01-diagnostic actual parked viewport and frame scheduling (8.8s)
+  ok 19 tests\e2e\ui-contract-theme.spec.ts:8:1 › P01 real startup restores validated presentation before the visible window and keeps health API isolated (1.8s)
+  ok 20 tests\e2e\ui-contract-theme.spec.ts:281:1 › P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history (3.3s)
+  ok 21 tests\e2e\ui-contract-theme.spec.ts:343:1 › P01 embedded hot preview and cancellation preserve XML, authored paint, preferences, selection and editor identity (6.7s)
+  ok 22 tests\e2e\ui-contract-theme.spec.ts:424:1 › P01 parked required frame acknowledges while dirty KA stays active and restores its same editor on return (6.7s)
+  ok 23 tests\e2e\ui-contract-theme.spec.ts:482:1 › P01 real frame chord, Settings, System media and preview window-close preserve dirty KA and durable ownership (9.0s)
+  ok 24 tests\e2e\ui-contract-theme.spec.ts:655:1 › P01 actual required frame refusal restores prior presentation and exposes truthful live error without document writes (7.3s)
+  ok 25 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix light compact native (4.4s)
+  ok 26 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix light compact frame (7.4s)
+  ok 27 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix light comfortable native (3.9s)
+  ok 28 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix light comfortable frame (7.4s)
+  ok 29 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix dark compact native (4.2s)
+  ok 30 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix dark compact frame (7.3s)
+  ok 31 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix dark comfortable native (3.9s)
+  ok 32 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix dark comfortable frame (6.4s)
+  ok 33 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix high-contrast compact native (4.5s)
+  ok 34 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix high-contrast compact frame (6.9s)
+  ok 35 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix high-contrast comfortable native (3.8s)
+  ok 36 tests\e2e\ui-contract-theme.spec.ts:740:3 › P01-matrix high-contrast comfortable frame (6.9s)
+  ok 37 tests\e2e\ui-contract-theme.spec.ts:874:3 › P01-responsive-media native actual viewports zoom forced coarse reduced across six theme/density states (11.7s)
+  ok 38 tests\e2e\ui-contract-theme.spec.ts:874:3 › P01-responsive-media frame actual viewports zoom forced coarse reduced across six theme/density states (17.2s)
+  ok 39 tests\e2e\ui-contract-theme.spec.ts:1102:1 › P01 real staged filesystem obstruction refuses commit and restores before retry and restart (4.7s)
+  ok 40 tests\e2e\ui-contract-theme.spec.ts:1435:1 › P01-B02 actual repository metadata pending error success across six themes and forced colors (44.0s)
+  x  41 tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states frade across six themes and forced colors (2.2m)
+(node:43560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43560) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  42 tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states drawio across six themes and forced colors (1.9m)
+(node:24752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24752) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok 43 tests\e2e\ui-contract-theme.spec.ts:1978:1 › P01 actual forced primary text retains system background behind glyphs rather than unreadable UA backplate (2.6s)
+  ok 44 tests\e2e\ui-contract-theme.spec.ts:2056:1 › P01 actual frame close and reopen disposes removed participants without renderer errors or document writes (7.3s)
+  ok 45 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:absent:normal (256ms)
+  ok 46 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:system:normal (175ms)
+  ok 47 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:light:normal (239ms)
+  ok 48 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:dark:normal (174ms)
+  ok 49 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:high-contrast:normal (167ms)
+  ok 50 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:absent:forced (154ms)
+  ok 51 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:system:forced (173ms)
+  ok 52 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:light:forced (169ms)
+  ok 53 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:dark:forced (176ms)
+  ok 54 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:light:high-contrast:forced (174ms)
+  ok 55 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:absent:normal (191ms)
+  ok 56 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:system:normal (194ms)
+  ok 57 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:light:normal (201ms)
+  ok 58 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:dark:normal (171ms)
+  ok 59 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:high-contrast:normal (150ms)
+  ok 60 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:absent:forced (157ms)
+  ok 61 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:system:forced (150ms)
+  ok 62 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:light:forced (159ms)
+  ok 63 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:dark:forced (165ms)
+  ok 64 tests\e2e\ui-contract-token-cascade.spec.ts:19:3 › UI-CASCADE:dark:high-contrast:forced (160ms)
+  ok 65 tests\e2e\workbench-editing.spec.ts:6:1 › INS-001/004 real KA typed scalar, nested, reference edits; shared groups, external conflict, keyboard cancel and geometry (11.0s)
+  x  66 tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel (33.4s)
+(node:57032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:57032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:57032) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok 67 tests\e2e\workbench-multiroot.spec.ts:193:1 › KM-006 real KA metadata relocation, dirty cancel, incompatible/missing candidates, preview cancellation and restart (9.5s)
+  ok 68 tests\e2e\workbench-paths.spec.ts:18:1 › KA rejects swapped folders before persistence and repairs a restored metadata path through settings (4.7s)
+  ok 69 tests\e2e\workbench.spec.ts:9:1 › KA opens through UI, edits a card, saves original YAML and restores workspace (9.3s)
+
+
+  1) tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade › Workbench uses circular handles and crosses systems outside this bundle 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: < [32m0.05[39m
+    Received:   [31m77[39m
+
+      155 |           for (const offset of [1, 2, 50, 230]) {
+      156 |             await page.mouse.move(pointerX, pointerY + offset)
+    > 157 |             expect(Math.abs((await midpointY()) - initialY - offset)).toBeLessThan(0.05)
+          |                                                                       ^
+      158 |           }
+      159 |           await page.mouse.up()
+      160 |           await page.keyboard.press('Control+z')
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:157:71
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:122:9
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\bundle-flows-bundle-flow-management-full-lifecycle-frade\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\bundle-flows-bundle-flow-management-full-lifecycle-frade\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\diagrams.spec.ts:579:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.diagram-slot .diagram-drop-target')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('.diagram-slot .diagram-drop-target')[22m
+
+
+      30 |   await page.mouse.move(from.x + from.width / 2 + 12, from.y + from.height / 2, { steps: 3 })
+      31 |   if (await iframe.count())
+    > 32 |     await expect(page.locator('.diagram-slot .diagram-drop-target')).toBeVisible()
+         |                                                                      ^
+      33 |   const x = to.x + (options.x ?? 220),
+      34 |     y = to.y + (options.y ?? 180)
+      35 |   await page.mouse.move(x, y, { steps: 12 })
+        at dragObject (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\diagrams.spec.ts:32:70)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\diagrams.spec.ts:642:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\diagrams-drawio-navigator--3079d-d-coordinates-and-read-only\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\diagrams-drawio-navigator--3079d-d-coordinates-and-read-only\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\diagrams-drawio-navigator--3079d-d-coordinates-and-read-only\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\diagrams-drawio-navigator--3079d-d-coordinates-and-read-only\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states frade across six themes and forced colors 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('complementary', { name: 'Интеграционные потоки' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('complementary', { name: 'Интеграционные потоки' })[22m
+
+
+      1864 |         await roPage.mouse.dblclick(pos.x + (box?.x ?? 0), pos.y + (box?.y ?? 0))
+      1865 |         const roManager = roPage.getByRole('complementary', { name: 'Интеграционные потоки' })
+    > 1866 |         await expect(roManager).toBeVisible()
+           |                                 ^
+      1867 |         await expect(
+      1868 |           roManager.getByRole('checkbox', {
+      1869 |             name: 'Включить все подходящие потоки из текущей выборки',
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1866:33
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-B02--be9c0-ix-themes-and-forced-colors\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-B02--be9c0-ix-themes-and-forced-colors\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-B02--be9c0-ix-themes-and-forced-colors\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-B02--be9c0-ix-themes-and-forced-colors\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('complementary', { name: 'Интеграционные потоки' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('complementary', { name: 'Интеграционные потоки' })[22m
+
+
+      1649 |           const p = await point(0.5)
+      1650 |           await page.mouse.dblclick(p.x, p.y)
+    > 1651 |           await expect(manager).toBeVisible()
+           |                                 ^
+      1652 |         }
+      1653 |         if (format === 'frade') {
+      1654 |           const p = await point(0.5)
+        at openActual (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1651:33)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1760:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[role=treeitem][data-repository-id="b1d1689a-618d-441c-8b3b-353d9434842e"][data-object-id="ecogroup.berezka.systems.berezka"]')[22m
+
+
+      29 |   await page
+      30 |     .locator(`[role=treeitem][data-repository-id="${repositoryId}"][data-object-id="${id}"]`)
+    > 31 |     .click()
+         |      ^
+      32 |   await expect(page.locator('.object-id')).toHaveText(id)
+      33 | }
+      34 | const description = (page: Page) => page.locator('.field[data-field-path="description"] textarea')
+        at card (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\workbench-multiroot.spec.ts:31:6)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\workbench-multiroot.spec.ts:72:5
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\workbench-multiroot-WB-006-987d5-ths-and-dirty-Remove-Cancel\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\workbench-multiroot-WB-006-987d5-ths-and-dirty-Remove-Cancel\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5 failed
+    tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade ──────────────
+    tests\e2e\diagrams.spec.ts:579:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only 
+    tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states frade across six themes and forced colors 
+    tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+    tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel 
+  64 passed (11.4m)
+[ELIFECYCLE] Command failed with exit code 1.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in C:\Users\NVISEN\.codex\worktrees\ui-design-
+  │ contract\frade\apps\desktop
+
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.

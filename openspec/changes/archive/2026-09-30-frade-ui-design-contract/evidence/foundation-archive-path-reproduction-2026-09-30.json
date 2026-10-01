@@ -1,0 +1,27 @@
+{
+  "recordedAtUtc": "2026-09-30T12:47:17.165Z",
+  "classification": "INTEGRATION",
+  "blocker": "FOUNDATION-ARCHIVE-01",
+  "productionChanged": false,
+  "temporaryRoot": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-checkout-I2wldP",
+  "removed": true,
+  "controls": [
+    {
+      "phase": "active",
+      "actualExit": 0,
+      "stdout": "{\"status\":\"PASS\",\"foundationBindings\":25,\"futureBoundariesNotExecuted\":23,\"scope\":\"Binding integrity only; actual tests run separately\",\"errors\":[]}\n",
+      "stderr": ""
+    },
+    {
+      "phase": "archived",
+      "actualExit": 1,
+      "stdout": "",
+      "stderr": "Error: ENOENT: no such file or directory, open 'C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-checkout-I2wldP\\openspec\\changes\\frade-ui-design-contract\\bdd\\ui-contracts.feature'\n"
+    }
+  ],
+  "affectedModules": [
+    "scripts/ui/traceability.mjs",
+    "scripts/ui/controls.mjs"
+  ],
+  "cause": "Runtime compliance hardcodes the active OpenSpec feature path; normal archive removes it. Existing controls also copy that active path."
+}

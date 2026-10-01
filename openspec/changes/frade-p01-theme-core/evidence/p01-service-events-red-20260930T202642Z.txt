@@ -1,0 +1,71 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/service.test.ts (32 tests | 2 failed | 29 skipped) 18ms
+   ↓ P01 controlled transaction service > P01-TX-001 joins hidden, waits for current applied-paint ACK, previews without persistence and cancels to published state
+   ↓ P01 controlled transaction service > P01-TX-002 keeps curtain through apply ACK and durable publication; emits exactly one authoritative change
+   ↓ P01 controlled transaction service > P01-TX-003 refusal in prepare restores all view/durable snapshots, dirty draft, selection and undo
+   ↓ P01 controlled transaction service > P01-TX-003 refusal in apply restores all view/durable snapshots, dirty draft, selection and undo
+   ↓ P01 controlled transaction service > P01-TX-003 refusal in persist restores all view/durable snapshots, dirty draft, selection and undo
+   ✓ P01 controlled transaction service > P01-TX-004 unknown response reconciles already-renamed settings before restoring/revealing; no false Saved 9ms
+   ↓ P01 controlled transaction service > P01-TX-005 unprovable rollback retains recovery curtain and dirty editors with no success/reveal
+   ↓ P01 controlled transaction service > P01-TX-005 unprovable readback retains recovery curtain and dirty editors with no success/reveal
+   ↓ P01 controlled transaction service > P01-TX-006 A B C supersession during preparation ignores late A, never writes B and publishes C only
+   ↓ P01 controlled transaction service > P01-TX-007 C accepted during A rename reconciles A in the current ownership before any C write/ACK
+   ↓ P01 controlled transaction service > P01-TX-008 join during PREPARING invalidates membership and safely reprepares once
+   ↓ P01 controlled transaction service > P01-TX-008 join during BARRIER_AWAIT_PAINT invalidates membership and safely reprepares once
+   ↓ P01 controlled transaction service > P01-TX-008 join during APPLYING invalidates membership and safely reprepares once
+   ↓ P01 controlled transaction service > P01-TX-008 join during PERSISTING invalidates membership and safely reprepares once
+   ↓ P01 controlled transaction service > P01-TX-009 ongoing membership churn is bounded and cancels instead of retrying indefinitely
+   ↓ P01 controlled transaction service > P01-TX-010 leave and generation replacement reject a removed participant ACK
+   ↓ P01 controlled transaction service > P01-TX-011 paint barrier is mandatory before apply, and forged ACK cannot publish or reveal
+   ↓ P01 controlled transaction service > P01-TX-012 prepare deadline is 2s; a late handle is disposed and never applied
+   ↓ P01 controlled transaction service > P01-TX-013 commit paint deadline is 2s and host/readback deadlines are 5s; unknown host outcome remains safely covered
+   ↓ P01 controlled transaction service > P01-TX-014 cancel during persistence reconciles first, then permits close/dirty-guard continuation
+   ↓ P01 controlled transaction service > P01-TX-015 curtain stays painted throughout BARRIER_AWAIT_PAINT membership compensation and reprepare
+   ↓ P01 controlled transaction service > P01-TX-015 curtain stays painted throughout APPLYING membership compensation and reprepare
+   ↓ P01 controlled transaction service > P01-TX-015 curtain stays painted throughout PERSISTING membership compensation and reprepare
+   ↓ P01 controlled transaction service > P01-TX-016 membership change during compensation rejects obsolete rollback ACK and retains covered recovery
+   ↓ P01 controlled transaction service > P01-TX-017 membership change during reconciliation never reveals an incompletely acknowledged set
+   ↓ P01 controlled transaction service > P01-TX-018 recovery action proves current durable state and all participant paints before revealing
+   ↓ P01 controlled transaction service > P01-TX-019 service owns queued selections and snapshot revisions instead of retaining mutable caller references
+   ↓ P01 controlled transaction service > P01-TX-020 join during published preview applies the visible revision hidden and cancellation restores every member
+   ↓ P01 controlled transaction service > P01-TX-021 membership during cancellation is bounded and restores published selection before guard continuation
+   ↓ P01 service BDD traceability rejects stale assertion source and missing cases
+   × named theme lifecycle events carry immutable snapshots and disposable listeners 6ms
+     → f.service.onWillChangeTheme is not a function
+   × named failure lifecycle never emits a successful change for a refused candidate 1ms
+     → f.service.onDidChangeTheme is not a function
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed | 29 skipped (32)
+   Start at  23:26:43
+   Duration  739ms (transform 140ms, setup 0ms, collect 171ms, tests 18ms, environment 0ms, prepare 225ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/service.test.ts > named theme lifecycle events carry immutable snapshots and disposable listeners
+TypeError: f.service.onWillChangeTheme is not a function
+ ❯ tests/ui-contract/service.test.ts:739:24
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > named failure lifecycle never emits a successful change for a refused candidate
+TypeError: f.service.onDidChangeTheme is not a function
+ ❯ tests/ui-contract/service.test.ts:747:13
+    745|   const f=fixture(),p=f.participant('root');await f.service.register(p…
+    746|   const failed:string[]=[],did:string[]=[]
+    747|   f.service.onDidChangeTheme(event=>did.push(event.snapshot.kind));f.s…
+       |             ^
+    748|   p.prepareHook.mockRejectedValueOnce(Error('adapter refused'));expect…
+    749|   expect(did).toEqual([]);expect(failed).toEqual(['adapter refused']);…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

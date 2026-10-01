@@ -1,0 +1,21 @@
+{
+  "recordedAtUtc": "2026-09-30T13:57:58.135Z",
+  "command": "FRADE_UI_ARCHIVE_RED=1 node --test tests/ui-contract/archive.test.mjs",
+  "actualExit": 1,
+  "logSha256": "21fbf26d0264eb93445ae902570d06b8721a663429e2a1070d1bbc375c82018f",
+  "testSha256": "1b8b1cd03793fef29d1b91c4ed85437fd30de758440e1d5d7966f74619fc3632",
+  "readerHashes": [
+    {
+      "path": "scripts/ui/traceability.mjs",
+      "sha256": "1362013d153a0c13fb1d760af7a719009ef18c73291b2dae41e88290a1e70a42"
+    },
+    {
+      "path": "scripts/ui/controls.mjs",
+      "sha256": "7e6ef6d16fa18f6eb0036ed32c5f21e136c87b18885213d76d215bf24d36b863"
+    }
+  ],
+  "classification": "INTEGRATION",
+  "rootCause": "Runtime traceability/control resources hardcode active OpenSpec lifecycle and controls ignore fixture base; canonical missing/malformed must fail without fallback",
+  "canonicalProductionAbsent": true,
+  "productionReadersNotChanged": true
+}

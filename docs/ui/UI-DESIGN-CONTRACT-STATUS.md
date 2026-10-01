@@ -1,0 +1,145 @@
+# Frade UI Design Contract — статус этой ветки
+
+Обновлено: **2026-10-01T12:02:37.672Z**. Событие: checkpoint commit/push preparing; strict/BDD/compliance/diff PASS, source538 unchanged.
+
+**Активный этап: P01 Theme Core — 5/10 задач закрыто.** Foundation закрыт и архивирован, 21/21. Сейчас: целевые проверки **PASS**, полный прогон текущих исходников **PASS**, решения Save As / lower chrome **USER_ACCEPTED**, новый PRE **FAIL (SPEC_CONFLICT / ABSTRACTION_BOUNDARY)**. Нижняя панель Draw.io: actual diagnostic **FAIL6/6**. P01 не готов к verify/archive.
+
+| Контекст | Значение |
+| --- | --- |
+| Ветка | codex/frade-ui-design-contract |
+| Worktree | C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade |
+| Исходный commit / текущий HEAD | 98f387f96b51b0ad139e3507c376ff1c3e8dec09 |
+| Guide / tokens | v1.0 / 1.0.0 |
+| Authority | [P01 tasks](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/tasks.md), [execution context](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/execution-context.json), [traceability](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/docs/ui/decisions/p01-theme-traceability.json) |
+| Правила текущего P01 | FDS-003/008/009/015, A11Y-001–009; точный scope и исключения — в [design](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/design.md) |
+
+Это обновляемый обзор фактического состояния, а не замена OpenSpec, approvals или evidence. Счётчик показывает закрытые пункты tasks.md, а не процент реализации. Все записи принадлежат этой UI-ветке. Routing не является её predecessor; принятие её изменений и revalidation остаются у потребителя на routing-ветке.
+
+## Все этапы
+
+| Этап | Закрыто | Фактическое состояние / следующий checkpoint |
+| --- | --- | --- |
+| Foundation: audit, WB-001, guide, AGENTS, tokens, checks, CI definition | 21/21 | ARCHIVED; независимый POST и post-archive compliance PASS. [Закрытие](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-09-30-frade-ui-design-contract/evidence/foundation-closure-report-2026-09-30.md) |
+| P01: resolver / preview / settings / density, Light + Dark + HC + System | 5/10 | ACTIVE; runtime реализован; fresh full regression PASS; bottom chrome FAIL и visual/verify/POST/archive ещё открыты |
+| P02: transactional installer | 0/9 | PLANNING_ONLY; ждёт P01 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p02-transactional-installer/tasks.md) |
+| P03: VS Code theme import | 0/8 | PLANNING_ONLY; ждёт P02 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p03-vscode-theme-import/tasks.md) |
+| P04: icon registries | 0/8 | PLANNING_ONLY; ждёт P03 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p04-icon-registries/tasks.md) |
+| P05: isolated browser host | 0/9 | PLANNING_ONLY; ждёт P04 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p05-isolated-browser-host/tasks.md) |
+| P06: native contribution APIs | 0/9 | PLANNING_ONLY; ждёт P05 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p06-native-contributions/tasks.md) |
+| P07: registry / profiles / policy | 0/9 | PLANNING_ONLY; ждёт P06 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p07-registry-profiles-policy/tasks.md) |
+| Миграция 1: shell / basic controls | — | NOT_STARTED; отдельный утверждённый scope → PRE → implementation → checks → verify / POST → archive |
+| Миграция 2: tree / tabs | — | NOT_STARTED; после предыдущего checkpoint |
+| Миграция 3: forms / tables / LoV | — | NOT_STARTED; включает consumer-owned UI-DRAW-READONLY-INSPECT-01 |
+| Миграция 4: Draw / flow manager | — | NOT_STARTED; UI состояния отдельно от domain paint / persisted semantics; семантика routing не меняется |
+| Миграция 5: AI | — | NOT_STARTED; provider integration не заявлена |
+
+Порядок P01–P07 и последовательность визуальных миграций сохранены. Переход к следующему numbered change требует отдельного checkpoint, автоматически он не начинается. Полная API-совместимость с исполняемыми VS Code extensions не заявляется; .frade-extension остаётся fixture будущего installer. [Исходная roadmap](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-09-30-frade-ui-design-contract/roadmap.md) и [migration inventory](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/docs/ui/migration.md) описывают starting scope, а не текущий runtime P01.
+
+## Детализация текущего P01
+
+| ID | Задача | Статус | Что готово / что остаётся |
+| --- | --- | --- | --- |
+| 1.1 | Scope, audit, baseline, provenance | DONE | Foundation принят; точные scope/исключения и исходные bytes сохранены |
+| 1.2 | Strict validation, freeze, независимый PRE | DONE | Основной PRE PASS; принятые readonly / compatibility delta прошли отдельный focused PRE; история FAIL сохранена |
+| 2.1 | BDD + meaningful resolver RED / properties | DONE | 31 role, 34 fixed pairs, precedence/repair/immutability; seed 20260930, ≥200 property runs |
+| 2.2 | Pure resolver / registry | DONE | Light и Dark одновременно; HC/System, независимая density, immutable snapshots и документация |
+| 2.3 | Transaction / host ownership | DONE | Preview/cancel, prepare/commit/persist/rollback, CAS/races/membership, unknown recovery и painted barrier |
+| 2.4 | Adapters, DTO, filesystem, bootstrap, keyboard, overlays, native / frame, B02 | IN_PROGRESS | Основной runtime и принятые readonly состояния проверены; три совместимых readiness fixture проверены целевым прогоном; Full regression PASS; завершить bottom chrome repair и final traceability. Save As scope утверждён; implementation BLOCKED: repeat PRE FAIL, keyboard scope USER_ACCEPTED; новый PRE pending |
+| 2.5 | Реальные screens, a11y/media/state matrix, benchmark, visual approval | IN_PROGRESS | Light/Dark/HC × compact/comfortable, viewport/media/readonly evidence и локальный benchmark сохранены; final coverage review и человеческое утверждение baseline ещё нужны |
+| 3.1 | Applicable package/root/compliance checks, status/diff | BLOCKED | Целевые проверки и fresh full root PASS; bottom chrome actual diagnostic FAIL6/6, repair scope утверждён; repeat PRE FAIL требует отдельного keyboard scope решения. Исторический Save As FAIL сохранён; repeat PRE FAIL (scope conflict) |
+| 3.2 | OpenSpec verify → freeze → независимый POST | NOT_RUN | После закрытия applicable blockers; requested gpt-6-astra / xhigh, read-only |
+| 3.3 | Visual acceptance + все required PASS → sync/archive → post-archive checks | NOT_RUN | После verify / POST; STOP перед P02 |
+
+### Текущий repair внутри 2.4 / 3.1
+
+| Шаг | Статус | Evidence / результат |
+| --- | --- | --- |
+| Зафиксировать full и isolated FAIL старого E2E-07 | DONE | Исходные source / logs / trace / screenshots сохранены |
+| Принять точный P01-BUNDLE-FRAME-COMPAT-01 scope | DONE | [Acceptance](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-bundle-frame-readiness-accepted-20261001T075310Z.json) |
+| Coherent plan / strict validation / frozen packet / automatic focused PRE | DONE | [PRE PASS](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-third-fixture-pre-received-20261001T081700Z/result.md); candidate и packet unchanged |
+| Actual point / frame events / screenshot → RCA | DONE | [RCA](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-failure-20261001T085452Z/RCA.json): TEST; readiness отсутствовала. Перехват ввода curtain в момент жеста — inference из screenshot и отсутствия frame events |
+| Минимальный разрешённый readiness delta, убрать временную диагностику | DONE | Тот же видимый frame, current revision, hidden curtain, fonts + two RAF; исходные действия/assertions/tolerances сохранены. Production в этом repair не менялся |
+| Финальный targeted regression | PASS | Native bundle + Draw.io bundle + Draw.io navigator drop: 3/3; [log](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-compat.txt) |
+| Отдельный Save As intermittent ENOENT | USER_ACCEPTED / COMBINED_PRE_FAIL | Исходный test не изменён; unchanged isolated retry PASS не закрывает воспроизведённый full/targeted blocker |
+| Новый полный root check:all / закрытие 2.4, 2.5, 3.1 | ROOT_PASS_CLOSURE_OPEN | Full root PASS; bottom chrome FAIL; final coverage closure ещё не завершено |
+
+## Последние выполненные проверки
+
+[Raw command/result record](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z.json) — завершён 01.10.2026 12:21:29 MSK. PASS относится только к перечисленным командам и их проверенному scope.
+
+| Проверка / команда | Результат |
+| --- | --- |
+| pnpm --filter @frade/desktop typecheck | PASS, exit 0 |
+| pnpm --filter @frade/desktop lint | PASS, exit 0 |
+| Playwright: bundle-flows + diagrams, grep full lifecycle / drawio navigator drop | PASS, 3/3, exit 0 |
+| openspec validate frade-p01-theme-core --strict --json | PASS, exit 0 |
+| pnpm --filter @frade/ui-workspace test:bdd | PASS, exit 0 |
+| pnpm ui:compliance, включая positive / negative controls | PASS, exit 0 |
+| git diff --check | PASS, exit 0 |
+| Последний полный root check:all, вариант до минимального readiness repair | FAIL: Draw 215 PASS / desktop 70 PASS + 1 FAIL; [исторический результат](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-owned-port-diagnostic-20261001T083513Z.json) |
+| Полный root check:all на окончательных текущих исходниках | PASS, exit 0; Draw215/215 + desktop71/71; 538 source hashes unchanged; [raw result](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json) |
+| OpenSpec verify / product POST / P01 archive | NOT_RUN |
+| Новый визуальный baseline | NOT_APPROVED; bottom chrome actual FAIL6/6 |
+| Actual lower frame token diagnostic | FAIL6/6; document files unchanged |
+| Fresh reference-hardware benchmark | PASS: nearest-rank p95=118.5ms ≤150ms;20 warmups/100 requests;i9-9880H |
+| Remote CI execution / GitHub required checks | LOCAL_ONLY, remote NOT_RUN / NOT_CONFIGURED, защита не проверена |
+
+Независимые reviews вызываются автоматически в разрешённом read-only packet scope. Requested model **gpt-6-astra**, reasoning **xhigh**; фактический backend/effort сервисом не подтверждены. Transport v3: 15/15 control tests PASS; canary подтвердил разрешённый packet и отказ доступа к source/routing/auth/config, записи и command sockets. Это не заменяет product POST, который ещё NOT_RUN.
+
+Проверка самого dashboard/process update: BDD, strict OpenSpec, git diff --check и git status выполнены, exit 0; [raw results](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-dashboard-checks-20261001T093117Z.json). Production и routing checkout этим обновлением не изменялись.
+
+## Дополнительный coverage finding
+
+P01-FRAME-BOTTOM-COVERAGE-01: реальный Dark screenshot показывает светлую нижнюю page/status панель Draw.io. Vendor DOM содержит geTabContainer/geTab; они не входят в текущие private chrome selectors и consumer measurement query. [Witnesses и hashes](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-frame-bottom-coverage-gap-20261001T100535Z.json). Статус: **FAIL6/6** actual Electron DOM token checks; все шесть XML files unchanged. [Diagnostic и screenshots](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-frame-chrome-observation-20261001T101428Z/result.json). [Точный repair scope](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md), USER_ACCEPTED / NOT_PRE_PASS. Production не исправлялся. Визуальное утверждение до исправления этой области не запрашивается.
+
+Проверки после данного status/proposal update: BDD / strict OpenSpec / compliance / diff / status — PASS, exit0; [raw results](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z.json). Proposed scopes ещё не реализованы.
+
+## Blockers и решения
+
+1. **P01-WORKSPACE-SAVEAS-READINESS-01 USER_ACCEPTED; общий repeat PRE FAIL (scope conflict).** [Точный proposed delta](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-workspace-saveas-readiness.proposed.md): existsSync + два ожидания существования atomically published workspace/alternate перед неизменными JSON assertions. Текущее разрешение на WB test покрывает rename-dialog readiness; новый delta принят; source implementation ещё BLOCKED до focused PRE. Accepted artifacts validated; repeat freeze → automatic focused PRE → только после PASS реализация.
+2. **Fresh полная регрессия PASS.** Старый FAIL сохранён; новый full PASS на тех же окончательных исходниках закрывает current full-root blocker. Отдельная bottom chrome проверка завершилась FAIL6/6; repair scope и исторический intermittent Save As остаются открытыми.
+3. **Визуальный baseline требует решения человека** по фактическим screen evidence; общий статус NOT_APPROVED.
+4. **Закрытие P01:** final traceability/coverage → verify → independent POST → archive; до этого READY_FOR_VERIFY: NO.
+
+Отдельные ограничения: legacy geometry/targets, native chrome и часть overlay placement сохраняются только по трём точным принятым исключениям P01; это не полный A11Y PASS. Новая readonly inspector entry остаётся future forms/Draw consumer task, не prerequisite P01. Отдельный Draw module-load ENVIRONMENT FAIL сохранён; неизменный isolated retry и последующий Draw full 215/215 PASS также сохранены; причина первоначального connection failure не установлена. Исторические FAIL / NOT_RUN не редактируются задним числом.
+
+5. **P01-FRAME-BOTTOM-CHROME-01 scope USER_ACCEPTED / PRE FAIL:** input repair содержит полный pinned JS и actual focus0/60; повторный PRE подтвердил CSS-only невозможность обязательного focus/keyboard. Production не меняется до PASS; новая lower semantic authority USER_ACCEPTED; её PRE pending.
+
+## Где смотреть реальные screenshots
+
+- [P01 real runtime screens и captures](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-current-root-artifacts-20261001T073825Z) — theme/density/B02/readonly/viewport evidence до final readiness repair; baseline NOT_APPROVED.
+- [Полный failing run с исходной curtain screenshot и artifacts](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-failure-20261001T085452Z/artifacts) — сохранён до повторных запусков.
+- [Окончательный targeted run artifacts](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-artifacts) — 3/3 PASS, без заявления полного visual approval.
+
+## Когда обновляется этот файл
+
+Обновляю после каждого значимого события: принят scope/decision; получен PRE; задача завершена или заблокирована; закончен пакет проверок; изменился blocker; получено visual approval; завершены verify/POST/archive. На старте/возобновлении работы сверяю branch, active change, tasks.md и execution-context; при долгой задаче отмечаю смену шага, а не выдуманный процент. Обновления сохраняю только в этом UI-worktree; review выполняется на frozen candidate без промежуточных изменений, файл обновляю после получения результата. Датированное raw evidence остаётся неизменным; новые события получают новые записи.
+
+## Журнал событий
+
+| Время MSK | Событие | Следующее действие |
+| --- | --- | --- |
+| 01.10.2026, 12:30:50 | Создан branch-local dashboard; final minimal targeted checks PASS отражены без закрытия OpenSpec задач | Решение по Save As → coherent scope + independent PRE при принятии → repair → fresh full root; затем coverage/visual/verify/POST/archive |
+| 01.10.2026, 12:32:19 | Dashboard/process update: BDD / strict OpenSpec / diff / status PASS | Дождаться уже запрошенного решения по Save As; остальные checkpoints остаются открыты |
+| 01.10.2026, 12:55:45 | Fresh pnpm check:all RUNNING; SaveAs test не изменён | Дождаться actual result; новые задачи не закрываются до evidence |
+| 01.10.2026, 13:05:35 | Draw full 215/215 PASS; desktop suite RUNNING; отдельный bottom chrome gap зафиксирован | Завершить full root → actual read-only DOM diagnostic |
+| 01.10.2026, 13:14:27 | pnpm check:all PASS: Draw215/215, desktop71/71; sources unchanged; artifacts1242 | Read-only bottom chrome diagnostic; visual/scope решения и FUI closure ещё открыты |
+| 01.10.2026, 13:18:46 | Full root PASS, fresh p95=118.5ms; separate bottom DOM diagnostic FAIL6/6; exact scope proposal подготовлен | Accepted scopes → automatic focused PRE → regression-first repair; visual/verify/POST/archive остаются открыты |
+| 01.10.2026, 13:22:00 | Post-update BDD/OpenSpec/compliance/diff/status PASS; два точных scope решения запрошены | После acceptance: coherent artifacts → automatic PRE; implementation только после PASS |
+| 01.10.2026, 13:57:29 | Оба exact delta подтверждены; [acceptance](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json); четыре artifacts/BDD/registry обновлены | Strict validation → fresh packet → automatic focused PRE; source не меняется до PASS |
+| 01.10.2026, 14:01:09 | Accepted plan strict/BDD/compliance/diff PASS; PRE packet preparing; implementation BLOCKED | Frozen automatic gpt-6-astra/xhigh review → receive result → update status |
+
+READY_FOR_VERIFY: **NO**
+
+- 20261001T110658Z: подготовка PRE остановлена до reviewer: неверная ссылка на compat log и Git-ignored runtime evidence. Исходные bytes сохранены; выбранные copies/provenance openspec/changes/frade-p01-theme-core/evidence/p01-pre-selected-runtime-20261001T110658Z/provenance.json; повторная подготовка с новым immutable request.
+
+- 20261001T111840Z: focused PRE **FAIL**, source/packet unchanged. SaveAs без найденных блокеров; нижний chrome требует полных pinned constructors/layout и actual keyboard/focus witness. Raw review: openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-received-20261001T111840Z/result.md. Сборка/tests reviewer NOT_RUN; production delta NOT_RUN.
+
+- 20261001T113009Z: PRE input repair завершён: full pinned vendor/constructors/layout + actual six-case focus0/60. Attributes-only XML/file/view/undo/selection/prefs unchanged. Earlier actual Tab test changed only selection via existing canvas behavior; diagnostic FAIL и RCA сохранены. Production/tests четыре source hashes unchanged. Repeat PRE pending; tasks5/10. openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-input-repair-20261001T113009Z.json
+
+- 2026-10-01T11:47:08.222Z: repeat independent PRE **FAIL**, input completeness resolved; SPEC_CONFLICT / ABSTRACTION_BOUNDARY: обязательный lower focus/keyboard vs запрет DOM semantics. Candidate/packet unchanged. SaveAs без найденных блокеров, общий gate FAIL. [Raw report](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z/result.md). Новый exact [keyboard scope proposal](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard.proposed.md) SHA 458361c95f36f02a2f438082dd52befc825413b928266722c494b9580c9d0874 **NOT_USER_ACCEPTED**. Production/permanent RED NOT_RUN; tasks5/10; READY_FOR_VERIFY NO.
+
+- 2026-10-01T11:56:57.319Z: человек **Разрешаю** — exact P01-FRAME-LOWER-KEYBOARD-01 принят; openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard-accepted-20261001T115657Z.json; четыре artifacts/BDD согласованы. Scope конфликт адресован планом, новый PRE pending, implementation/RED NOT_RUN.
+- Git policy USER_ACCEPTED: commit + push каждого завершённого checkpoint в этой UI-ветке. Первый накопленный checkpoint содержит foundation и незавершённый P01 с честными gate/tasks статусами; не объявляет P01 завершённым.
+
+- Git checkpoint preparing: branch codex/frade-ui-design-contract, actual remote branch not present, source538 unchanged, lower keyboard plan checks PASS. Foundation archived; P01 INCOMPLETE5/10/new PRE pending. No force/other ref update. openspec/changes/frade-p01-theme-core/evidence/p01-ui-git-checkpoint-started-20261001T120237Z.json

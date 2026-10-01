@@ -1,0 +1,65 @@
+Блокеров focused PRE для принятого FOUNDATION-ARCHIVE-01 delta не обнаружено. Scope и regression strategy реализуемы. Разрешение относится только к этому lifecycle repair.
+
+| Поле | Значение |
+|---|---|
+| Review ID | `PRE-ARCHIVE-20260930T134029Z` |
+| UTC | `2026-09-30T13:40:29Z` |
+| Reviewer | Текущая независимая review-сессия Codex; implementation не выполнялась, субагенты не привлекались |
+| Выбранные настройки | `gpt-6-astra` / `xhigh` |
+| Attested model / effort | `NOT_CONFIRMED / NOT_CONFIRMED` — runtime evidence отсутствует |
+| Change / schema | `frade-ui-design-contract` / `spec-driven` |
+| Workspace | `C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade` |
+| Branch | `codex/frade-ui-design-contract` |
+| HEAD | `98f387f96b51b0ad139e3507c376ff1c3e8dec09` |
+| Среда | Windows `10.0.26200`, x64; Node `v24.18.0`; Git `2.53.0.windows.1` |
+
+Focused PRE manifest (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/evidence/foundation-archive-focused-pre-manifest-2026-09-30.json) имеет SHA256:
+
+```
+fefb5737bf595544821512f0c1719f527dea51fe7842e78d209bb5546386c270
+```
+
+Он совпал с отдельно переданным пользователем ожидаемым hash. Начальная проверка выполнена в `13:33:29Z`, заключительная — в `13:40:25Z`: **4923/4923 raw hashes и sizes совпали обеими проверками**. Inventory — ровно **4671 tracked + 253 nonignored-untracked = 4924 файла**, включая manifest отдельно. Missing/extra/duplicate entries отсутствуют. Branch, HEAD, status совпали; cached diff пуст. Все три absenceConditions выполнены.
+
+SHA предыдущего EOL manifest совпал с заданным:
+`9181bc5c29671d22c79230e7a7fbb602752097d4fbff9dd7b376dc9f3e3810a7`.
+
+По существу review:
+
+1. **Acceptance и planning согласованы.** Проверены шесть before-base64 payloads, их raw SHA/размеры и реальные diffs. Из прежних 4913 файлов **4907 неизменны**; изменены ровно proposal, design, ui-token-compliance spec, tasks, traceability-plan и execution-context. Accepted source имеет SHA `0576c7a1547b4b7629e5ccc14b7deedbf1091b82d6cd7144a0b06d14d88574b4`. Acceptance record (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/decisions/bdd-archive-acceptance-2026-09-30.md:3) фиксирует прямое подтверждение и сохраняет исторический статус source. Новый requirement (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/specs/ui-token-compliance/spec.md:85) совпадает с принятым текстом; различается только emphasis WHEN/THEN. Прежние требования сохранены.
+2. **Scope закрыт.** Восемь implementation paths в manifest, acceptance и design (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/design.md:77) совпадают. Дополнительные planning/evidence файлы находятся в существующем change. Production, assertions, registry, active feature, package/CI/lockfile, input и старое evidence неизменны относительно EOL baseline. Восемь raw artifacts, восемь attribute rules и единственная CSS selector exception проверены отдельно; второй exception или девятого правила нет.
+3. **Состояние задач честное.** Переход **17/19 → 16/21** обусловлен новыми 3.8/3.9 и повторным открытием 4.3. 3.8 остаётся unchecked (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/tasks.md:27). EOL PASS, прежние FAIL, verification blocker и отсутствие POST/archive сохранены. `status.isComplete` подтверждает наличие planning artifacts, а не завершение implementation.
+4. **Архитектурная граница корректна.** Design (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/design.md:75) назначает единственный runtime contract `docs/ui/bdd/ui-contracts.feature`; active SDD artifact сохраняет согласованный контент. Directory search/fallback запрещён. Trusted script/module resolution и default production root сохраняются при fixture-base injection. Реализация помещается в разрешённые paths; текущий test glob уже включает будущий `archive.test.mjs`.
+5. **Regression strategy содержательна.** План требует node:test RED до reader changes, actual traceability CLI **и controls** после fixture archive и без active/archive artifacts. Missing и malformed проверяются отдельно при valid historical copy, включая защиту от случайного чтения production root. Семь прежних exit expectations сохраняются: **0, 0, 1, 1, 1, 0, 1**. Все 48 текущих cases, 25 foundation bindings, 23 future boundaries и assertion-source hashes сохранены. FUI-029/030/031 отсутствуют в исполняемом registry/feature и остаются planning text (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/bdd/traceability-plan.md:56).
+6. **Fixture safety и provenance предусмотрены.** Требуются verified OS-temp roots, absolute subtree containment, bigint dev/ino identity, сохранение execution/cleanup failures и отсутствие real-project archive в тестах. Owner instructions переносятся с provenance и durable links; remote protection не объявляется настроенной. Эти требования закреплены в design (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-ui-design-contract/design.md:79).
+7. **Последовательность выполнима.** Targeted/negative/full checks, EOL regression, 20-state cascade и fresh-owned-server `pnpm check:all` предшествуют verify → independent POST → real archive → actual post-archive compliance/link checks → STOP. Проверены project archive rules (/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/.agents/skills/openspec-archive-change/SKILL.md:104) и установленный CLI: incomplete tasks требуют явного подтверждения, но не ложного completion checkbox. Routing predecessor отсутствует.
+
+Фактически выполненные команды:
+
+| Команда / диагностика | Результат |
+|---|---|
+| Inline `node`: manifest, inventory, branch/HEAD/status, absence; повтор в конце | Exit 0, полное совпадение |
+| Inline `python -X utf8 -`: before/diffs, acceptance, requirement equivalence, raw anchors, registry hashes | Exit 0 |
+| `openspec status --change frade-ui-design-contract --json` | Exit 0; правильный UI root, все artifacts прочитаны |
+| `openspec validate frade-ui-design-contract --strict` | Exit 0 |
+| `node scripts/ui/tokens.mjs` | Exit 0; 102 пары |
+| `node scripts/ui/colors.mjs` | Exit 0; 124 occurrences / exceptions |
+| `node scripts/ui/traceability.mjs` | Exit 0; 25 foundation / 23 future |
+| `git --no-optional-locks diff --check` | Exit 0; autocrlf warnings |
+| `git --no-optional-locks diff --exit-code -- pnpm-lock.yaml` | Exit 0 |
+| `git --no-optional-locks diff --cached --exit-code` | Exit 0 |
+| Git status, inventory и diff четырёх tracked files | Exit 0; прежние изменения сохранены |
+| `rg`, чтение файлов, tool resolution/version inspection | Успешно, кроме диагностического случая ниже |
+
+**Environment errors:** первый Python read завершился exit 1 из-за CP1252 stdout; повтор с UTF-8 прошёл. Проверка локального `node_modules/.bin/openspec.CMD` завершилась exit 1; обнаруженный глобальный OpenSpec успешно выполнил status/validate. Неразрешённых environment blockers нет.
+
+**Applicability:** root engineering rules, UI compliance, scope/evidence integrity и сохранение общих build/typecheck/boundary/CI требований применимы. Routing-specific gate и nested routing AGENTS к этому delta неприменимы по §18; routing checkout не использовался.
+
+**NOT\_RUN:** новые lifecycle RED/GREEN и failure-path tests, controls/checkout reruns, полный suite, browser cascade, post-repair verification/POST, real archive и post-archive checks. Remote Actions — unobserved/LOCAL\_ONLY; Linux — NOT\_RUN; protection — NOT\_CONFIGURED by this task, remote state unverified.
+
+Неблокирующие наблюдения: старый PROPOSED\_NOT\_ACCEPTED текст сохранён намеренно; актуальное решение задаёт acceptance. Известный archive ENOENT остаётся неисправленным и не переобозначен как GREEN. Текущие успешные checks подтверждают frozen runtime.
+
+Review ничего не записал в worktree; scratch и screenshots не создавались, cleanup не выполнялся. Этот PRE не подтверждает ещё отсутствующую implementation, foundation POST, удалённую защиту или P01.
+
+GATE\_STATUS: PASS
+READY\_FOR\_IMPLEMENTATION: YES
