@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "LOWER_ORIGIN_POPUP_PLAN_CHECKS_PASS_FRESH_PRE_PENDING",
+  "phase": "LOWER_KEYBOARD_PRE_FAIL_LOWER_ORIGIN_POPUP_DECISION_PENDING",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -149,7 +149,7 @@
     }
   ],
   "laterHumanDecision": "New per-surface visual baseline approval after actual implementation evidence",
-  "nextAction": "Commit approved planning checkpoint; fresh installed v1.1 automatic independent PRE; no permanent RED/production before PASS",
+  "nextAction": "Human decision on exact lower-origin popup scope; then reconcile four artifacts/BDD and fresh automatic PRE before permanent RED/production",
   "sourceAndOriginalPlanningUnchanged": false,
   "scopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-v2-accepted-20260930T180721Z.json",
   "scopeAcceptanceRecordedAtUtc": "2026-09-30T18:07:21.024Z",
@@ -202,37 +202,8 @@
     "Task3.2 OpenSpec verify and independent automated POST",
     "Task3.3 archive only after all required PASS; STOP before P02"
   ],
-  "lastUpdatedAtUtc": "2026-10-01T19:34:14.257Z",
-  "currentDocsChecks": {
-    "atUtc": "2026-10-01T19:34:14.257Z",
-    "strict": {
-      "command": "openspec validate frade-p01-theme-core --strict --json",
-      "exitCode": 0,
-      "status": "PASS"
-    },
-    "bdd": {
-      "command": "pnpm --filter @frade/ui-workspace test:bdd",
-      "exitCode": 0,
-      "status": "PASS",
-      "passed": 95
-    },
-    "compliance": {
-      "command": "pnpm ui:compliance",
-      "exitCode": 0,
-      "status": "PASS",
-      "passed": 26,
-      "namedContrastPairs": 102,
-      "positiveNegativeFixturesRemoved": true
-    },
-    "sourcePreservation": "PASS: four production/test raw hashes unchanged",
-    "diffCheck": {
-      "command": "git -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol diff --check",
-      "exitCode": 0,
-      "status": "PASS"
-    },
-    "pre": "NOT_RUN",
-    "tasks": "5/10"
-  },
+  "lastUpdatedAtUtc": "2026-10-01T13:05:10.427Z",
+  "currentDocsChecks": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-popup-proposal-checks-20261001T130602Z.json",
   "focusedDeltaPre": {
     "status": "PASS",
     "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-readonly-readiness-accepted-20261001T055229Z.json",
@@ -531,16 +502,8 @@
   },
   "lowerOriginPopupDecision": {
     "id": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
-    "status": "USER_ACCEPTED_PRE_PENDING",
+    "status": "PROPOSED_NOT_USER_ACCEPTED",
     "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard.proposed.md",
-    "sha256": "8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a",
-    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard-accepted-20261001T193045Z.json"
-  },
-  "sharedReviewPolicy": {
-    "version": "1.1",
-    "release": "a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0",
-    "policyArtifact": "docs/engineering/agent-workflow.md",
-    "modelSelection": "APPROVED_OWNING_STAGE_PLAN_REQUIRED",
-    "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01"
+    "sha256": "8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a"
   }
 }

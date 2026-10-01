@@ -269,23 +269,3 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     Then focus is distinct from page selection and the original guarded action runs exactly once
     And theme projection and focus navigation preserve document viewport undo preferences and identities
     And teardown restores exactly the prior owned DOM semantics
-
-  @P01-RT-LOWER-MENU-008 @runtime-pending @A11Y-005 @A11Y-007
-  Scenario: Proven lower menu and submenu actions complete through original gestures
-    Given an accepted connected lower opener and captured actual menu participant generation
-    When keyboard navigation reaches an enabled original action or submenu
-    Then actual named focus targets and original guarded gesture perform the action exactly once
-    And hidden disabled and checkable states remain truthful with deliberate original action effects
-
-  @P01-RT-LOWER-ISOLATION-009 @runtime-pending
-  Scenario: Unowned or stale menus never acquire lower keyboard ownership
-    Given unrelated canvas toolbar sidebar plugin popup or replaced menu ownership
-    When a lower participant generation or actual submenu relationship is invalidated
-    Then unrelated semantics styles handlers and actions remain unchanged and stale activation is blocked
-
-  @P01-RT-LOWER-CANCEL-010 @runtime-pending
-  Scenario: Owned menu cancellation exit and recreation preserve original state
-    Given an actual owned lower popup with recorded prior attributes listeners and focus
-    When Escape Tab mouse dismissal detach recreation or theme transaction occurs
-    Then the original hide lifecycle restores exact owned values and connected focus without a trap
-    And presentation navigation and cancellation retain XML model files paint undo selection preferences viewport and identities

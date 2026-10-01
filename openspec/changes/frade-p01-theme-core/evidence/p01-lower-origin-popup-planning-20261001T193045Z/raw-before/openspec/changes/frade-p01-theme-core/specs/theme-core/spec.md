@@ -194,18 +194,3 @@ The private pinned-frame adapter SHALL expose accessible names, focusable button
 #### Scenario: Lower accessibility ownership teardown
 - **WHEN** the private adapter is detached or vendor lower DOM is recreated
 - **THEN** prior owned values and listeners are restored or correctly applied only to the new lower nodes, keeping graph/editor/frame identities, preferences and existing keyboard contracts intact
-
-### Requirement: Proven lower-origin popup keyboard ownership
-P01 SHALL adapt only actual lower-opener popup/submenu DOM in the existing private bridge under the exact accepted P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 design contract. Ownership SHALL bind a connected eligible opener, captured original menu instance and current participant generation. It SHALL preserve original nodes/handlers/capabilities/placement and all excluded menu/dialog/domain boundaries. Unknown, stale or ambiguous ownership MUST stop claimed accessibility success.
-
-#### Scenario: Complete original menu and submenu action path
-- **WHEN** an enabled existing lower page-menu or Pages control is opened by keyboard and its real action or submenu is selected
-- **THEN** real named focus targets navigate by Arrow/Home/End and Enter/Space performs the corresponding unchanged original DOM gesture once with actual hidden/disabled/checkable state; deliberate action effects match original handlers and downstream dialogs remain keyboard-operable without outside-scope adaptation
-
-#### Scenario: Unowned menus retain their original behavior
-- **WHEN** canvas/toolbar/sidebar/plugin or unrelated popup instances are shown, or stale ownership loses its generation or actual row relationship
-- **THEN** the lower adapter neither applies menu attributes/styles/listeners nor invokes their actions; invalidated lower ownership restores its exact previous values and never activates stale nodes
-
-#### Scenario: Cancellation teardown and presentation preservation
-- **WHEN** an owned popup is canceled by Escape, exited by Tab/ShiftTab, dismissed by mouse, detached/recreated or reconciled during a theme transaction
-- **THEN** original hide lifecycle and connected focus return/exit preserve exact attributes/listeners and semantic XML/model/file/authored paint/undo/selection/preferences/viewport/identities for presentation/navigation/cancellation; canonical palette/target/focus/text/icon and bounds oracles remain required across all accepted media/theme/density/viewports without a new exception

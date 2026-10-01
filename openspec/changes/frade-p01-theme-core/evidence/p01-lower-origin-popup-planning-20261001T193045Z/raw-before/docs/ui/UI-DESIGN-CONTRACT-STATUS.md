@@ -1,23 +1,5 @@
 # Frade UI Design Contract — статус этой ветки
 
-## Текущий этап — P01,5/10; popup scope USER_ACCEPTED / fresh PRE pending
-
-Обновлено: 2026-10-01T19:30:45.585Z. Branch codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; original baseline98f387f; current checkpoint08981db. Human accepted exact popup amendment SHA 8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a; accepted file openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard-accepted-20261001T193045Z.json. Four-artifact/BDD/registry reconciliation completed; task count stays5/10. Общая policy v1.1 installed, модель/effort каждого review из approved P01 stage plan; независимые PRE/POST автоматические.
-
-| Active repair step | Status |
-| --- | --- |
-| Exact popup scope human decision/raw-before | DONE: USER_ACCEPTED |
-| Coherent proposal/design/spec/tasks + pending BDD/registry | DONE; no production/test changes |
-| Strict/BDD/compliance, planning checkpoint | PASS: strict,BDD95/95,UI26/26/control; commit preparing |
-| Fresh independent read-only PRE | NOT_RUN; P01 plan Astra/xhigh |
-| Permanent unit/Electron RED → sole bridge repair → GREEN | NOT_RUN; requires fresh PRE PASS |
-| Complete six-state/media/zoom/viewport/preservation + full root | NOT_RUN for new delta |
-| Visual acceptance/verify/cumulative POST/archive | NOT_RUN / NOT_APPROVED |
-
-Prior combined PRE FAIL and lower token/focus FAIL remain historical; human acceptance itself is not PASS. Routing prerequisite absent; no active Routing/product/domain/vendor writes. Common policy supplier ARCHIVED6/6,7fc4c9c/08981db published with remote SHA verified; historical details below. STOP before P02.
-
-## Предыдущие сохранённые checkpoint записи
-
 ## Последний process этап — frade-stage-review-policy ARCHIVED6/6
 
 Обновлено: 2026-10-01T17:50:08.030Z. Common rules **v1.1** установлены; automatic independent read-only PRE/POST следуют approved plan текущего stage/role конкретной ветки. Universal model/effort default отсутствует; missing/conflict/unavailable → BLOCKED. Exact source path/hash/excerpt и фактические CLI args проверяются; actual backend/effort NOT_CONFIRMED. Branch codex/frade-ui-design-contract, worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade, baseline HEAD f0f10d9; process checkpoint **7fc4c9c19e1b7e9d03d57ab82e99789484919f34** committed/pushed, actual origin SHA verified at 2026-10-01T17:52:57.278Z.
