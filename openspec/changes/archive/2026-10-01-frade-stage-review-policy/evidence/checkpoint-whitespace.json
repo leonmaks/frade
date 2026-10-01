@@ -1,0 +1,30 @@
+{
+  "atUtc": "2026-10-01T17:51:46.652Z",
+  "checkpoint": "7fc4c9c19e1b7e9d03d57ab82e99789484919f34",
+  "fullCheck": {
+    "status": "FAIL",
+    "exitCode": 2,
+    "stdout": "openspec/changes/archive/2026-10-01-frade-stage-review-policy/evidence/plan-preparation-red.txt:16: trailing whitespace.\n+  \r\nopenspec/changes/archive/2026-10-01-frade-stage-review-policy/evidence/plan-preparation-red.txt:18: trailing whitespace.\n+  \r\nopenspec/changes/archive/2026-10-01-frade-stage-review-policy/specs/agent-review-workflow/spec.md:26: new blank line at EOF.\n",
+    "stderr": ""
+  },
+  "classification": "INTEGRATION",
+  "cause": "PowerShell continued to commit after nonzero diff-check; no failed functional/spec/architecture check ignored",
+  "preservedRawFiles": [
+    "openspec/changes/archive/2026-10-01-frade-stage-review-policy/evidence/plan-preparation-red.txt",
+    "openspec/changes/archive/2026-10-01-frade-stage-review-policy/specs/agent-review-workflow/spec.md"
+  ],
+  "disposition": "Preserve original RED output and reviewed archived plan bytes; retain explicit full check FAIL. Authored runtime/rules/canonical spec/tests scoped check independently PASS. No evidence rewrite.",
+  "scopedCheck": {
+    "status": "PASS",
+    "exitCode": 0,
+    "paths": [
+      "AGENTS.md",
+      "docs/engineering/agent-workflow.md",
+      "docs/engineering/parallel-feature-workflow.md",
+      "openspec/specs/agent-review-workflow/spec.md",
+      "scripts/agent-review",
+      "tests/agent-review"
+    ]
+  },
+  "productChanges": "NONE"
+}

@@ -1,21 +1,23 @@
 # Frade UI Design Contract — статус этой ветки
 
-## Текущий checkpoint — общий workflow ARCHIVED / checkpoint опубликован
+## Последний process этап — frade-stage-review-policy ARCHIVED6/6
 
-Обновлено: 2026-10-01T15:30:06.011Z. Supplier **frade-common-agent-workflow:6/6, ARCHIVED**. PRE2, cumulative POST2, verify, установка и post-archive checks **PASS**. Общие правила v1.0 и автоматические independent read-only gpt-6-astra/xhigh PRE/POST обязательны для Frade; actual backend/effort NOT_CONFIRMED. Shared release 9cd8cb57ae4f20373970181325d25e80181e7195b9a7798c8eeb3e5d5eee4c86 установлен в Git common;15/15 hashes, UI/Routing discovery и contextual isolation PASS. Active Routing не изменялся; prefix primary AGENTS сохранён.
+Обновлено: 2026-10-01T17:50:08.030Z. Common rules **v1.1** установлены; automatic independent read-only PRE/POST следуют approved plan текущего stage/role конкретной ветки. Universal model/effort default отсутствует; missing/conflict/unavailable → BLOCKED. Exact source path/hash/excerpt и фактические CLI args проверяются; actual backend/effort NOT_CONFIRMED. Branch codex/frade-ui-design-contract, worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade, baseline HEAD f0f10d9; process checkpoint **7fc4c9c19e1b7e9d03d57ab82e99789484919f34** committed/pushed, actual origin SHA verified at 2026-10-01T17:52:57.278Z.
 
-| Задача supplier | Статус |
+| Task | Status |
 | --- | --- |
 | 1.1 authority/audit/plan/strict | DONE |
-| 1.2 independent PRE | DONE: PASS после сохранённого FAIL |
-| 2.1 RED/GREEN/runner/shared rules | DONE:9 functional +15 inherited PASS |
-| 2.2 own status/Routing handoff | DONE; right-panel queued, visibility NOT_CONFIRMED |
-| 3.1 verify/checks/independent POST | DONE: cumulative POST2 PASS, предыдущий FAIL сохранён |
-| 3.2 shared publication/primary append/install checks | DONE:15 files, prefix proof, both contexts PASS |
-| Canonical sync/archive/post-archive checks | DONE: new spec synced; archive completed;9 tests/scoped lint/strict/UI26+controls PASS |
-| Process checkpoint commit/push/remote SHA | DONE: 704d43ad89163bd1c8433c76dc1db98b408dd036; push PASS, ls-remote SHA verified. Следующая запись metadata относится к этому checkpoint. STOP |
+| 1.2 independent PRE | DONE: PRE2 PASS; PRE1 FAIL preserved |
+| 2.1 regression-first stage runner | DONE:15/15; two actual model pairs, source/phase/race/argv alias guards |
+| 2.2 canonical v1.1/rules | DONE; Routing handoff/templates/oldarchive128raw files unchanged |
+| 3.1 verify/independent cumulative POST | DONE: POST3 PASS; earlier POST1/B01 and POST2/ENVIRONMENT FAIL preserved |
+| 3.2 shared install/primary append/context checks | DONE:16 installed hashes; UI/Routing status + read-only probes PASS; primary original13613 bytes preserved |
+| Canonical sync/archive/post-archive | DONE: exact2 requirements, total5/7 scenarios; strict10/10; ARCHIVED6/6; runner15/15 and UI26/26/control PASS |
+| Commit/push/remote SHA | DONE:7fc4c9c published; exact UI ref SHA verified; status metadata checkpoint preparing |
 
-[Итоговый отчёт](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-10-01-frade-common-agent-workflow/evidence/closure-report.md). P01 **5/10**, popup **NOT_USER_ACCEPTED**, READY_FOR_VERIFY **NO**. Guide v1.0 / tokens1.0.0 и продуктовые исходники не изменены этим supplier. Routing blockers не снимаются; P01/P02/Routing progression не начат. Исторические записи ниже сохранены.
+Shared installed release a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0. [Закрытие](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-10-01-frade-stage-review-policy/evidence/closure-report.md). Общие изменения доступны зарегистрированным worktree без настройки аккаунта; активный агент выполняет своё adoption/control revalidation. Routing files/handoff не менялись. Guide v1.0/tokens1.0.0/product source unchanged. **P01 остаётся5/10**, lower-origin popup NOT_USER_ACCEPTED; этот supplier не закрывает P01/Routing и не начинает следующий numbered change.
+
+Git full whitespace check: **FAIL**,3 findings in preserved raw RED log / archived reviewed spec. Authored source/rules/canonical spec/tests whitespace **PASS**. [Actual finding](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-10-01-frade-stage-review-policy/evidence/checkpoint-whitespace.json); raw evidence не исправлялось задним числом.
 
 ## Сохранённый P01 checkpoint — PRE FAIL / решение по lower-origin popup
 
