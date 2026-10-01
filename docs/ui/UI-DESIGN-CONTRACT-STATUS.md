@@ -1,16 +1,16 @@
 # Frade UI Design Contract — статус этой ветки
 
-## Текущий этап — P01,5/10; popup scope USER_ACCEPTED / fresh PRE pending
+## Текущий этап — P01,5/10; popup scope USER_ACCEPTED / PRE2 PASS; meaningful RED next
 
-Обновлено: 2026-10-01T19:30:45.585Z. Branch codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; original baseline98f387f; current checkpoint08981db. Human accepted exact popup amendment SHA 8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a; accepted file openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard-accepted-20261001T193045Z.json. Four-artifact/BDD/registry reconciliation completed; task count stays5/10. Общая policy v1.1 installed, модель/effort каждого review из approved P01 stage plan; независимые PRE/POST автоматические.
+Обновлено: 2026-10-01T19:30:45.585Z. Branch codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; original baseline98f387f; current planning checkpoint3d5927e. Human accepted exact popup amendment SHA 8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a; accepted file openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard-accepted-20261001T193045Z.json. Four-artifact/BDD/registry reconciliation completed; task count stays5/10. Общая policy v1.1 installed, модель/effort каждого review из approved P01 stage plan; независимые PRE/POST автоматические.
 
 | Active repair step | Status |
 | --- | --- |
 | Exact popup scope human decision/raw-before | DONE: USER_ACCEPTED |
 | Coherent proposal/design/spec/tasks + pending BDD/registry | DONE; no production/test changes |
-| Strict/BDD/compliance, planning checkpoint | PASS: strict,BDD95/95,UI26/26/control; commit preparing |
-| Fresh independent read-only PRE | NOT_RUN; P01 plan Astra/xhigh |
-| Permanent unit/Electron RED → sole bridge repair → GREEN | NOT_RUN; requires fresh PRE PASS |
+| Strict/BDD/compliance, planning checkpoint | DONE: strict,BDD95/95,UI26/26/control;3d5927e committed/pushed, remote SHA verified |
+| Fresh independent read-only PRE | DONE: PRE2 PASS1448 hashes; candidate/packet unchanged; PRE1 input FAIL preserved |
+| Permanent unit/Electron RED → sole bridge repair → GREEN | NEXT: RED before production; exact scope now PRE PASS |
 | Complete six-state/media/zoom/viewport/preservation + full root | NOT_RUN for new delta |
 | Visual acceptance/verify/cumulative POST/archive | NOT_RUN / NOT_APPROVED |
 

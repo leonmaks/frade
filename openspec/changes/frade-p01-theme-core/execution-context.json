@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "LOWER_ORIGIN_POPUP_PLAN_CHECKS_PASS_FRESH_PRE_PENDING",
+  "phase": "LOWER_ORIGIN_POPUP_PRE2_PASS_MEANINGFUL_RED_NEXT",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -149,7 +149,7 @@
     }
   ],
   "laterHumanDecision": "New per-surface visual baseline approval after actual implementation evidence",
-  "nextAction": "Commit approved planning checkpoint; fresh installed v1.1 automatic independent PRE; no permanent RED/production before PASS",
+  "nextAction": "Permanent generated-bridge/unit and actual Electron RED before sole bridge implementation; targeted GREEN/applicable fullchecks; no P02",
   "sourceAndOriginalPlanningUnchanged": false,
   "scopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-v2-accepted-20260930T180721Z.json",
   "scopeAcceptanceRecordedAtUtc": "2026-09-30T18:07:21.024Z",
@@ -202,7 +202,7 @@
     "Task3.2 OpenSpec verify and independent automated POST",
     "Task3.3 archive only after all required PASS; STOP before P02"
   ],
-  "lastUpdatedAtUtc": "2026-10-01T19:34:14.257Z",
+  "lastUpdatedAtUtc": "2026-10-01T20:08:51.607Z",
   "currentDocsChecks": {
     "atUtc": "2026-10-01T19:34:14.257Z",
     "strict": {
@@ -254,7 +254,7 @@
     "candidateUnchanged": true,
     "packetUnchanged": true
   },
-  "readyForDeltaImplementation": false,
+  "readyForDeltaImplementation": true,
   "packetAuthorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-packet-authorization-20261001T061101Z.json",
   "reviewPacketTransport": {
     "status": "PASS_LOCAL_FOCUSED_PRE",
@@ -531,7 +531,7 @@
   },
   "lowerOriginPopupDecision": {
     "id": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
-    "status": "USER_ACCEPTED_PRE_PENDING",
+    "status": "USER_ACCEPTED_FRESH_PRE_PASS",
     "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard.proposed.md",
     "sha256": "8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a",
     "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard-accepted-20261001T193045Z.json"
@@ -542,5 +542,42 @@
     "policyArtifact": "docs/engineering/agent-workflow.md",
     "modelSelection": "APPROVED_OWNING_STAGE_PLAN_REQUIRED",
     "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01"
+  },
+  "planningCheckpoint": {
+    "head": "3d5927ec87eb5ac293ff3c241e6c8ea940a2e454",
+    "published": true,
+    "remoteShaVerified": true,
+    "publication": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-planning-20261001T193045Z/publication.json"
+  },
+  "lowerOriginPopupPre1": {
+    "status": "FAIL",
+    "classification": "INPUT_COMPLETENESS",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-pre1-fail-received-20261001T194730Z/result.md",
+    "resultSha256": "98f6bc35f27b9c5bb2c327137fe9cc58cb8f9dc472dc9dbc3d8e49037f5eed2e",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-pre1-fail-received-20261001T194730Z/receipt.json",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true
+  },
+  "lowerOriginPopupPre2": {
+    "status": "PASS",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-pre2-pass-received-20261001T200707Z/result.md",
+    "resultSha256": "79ec6f2553e0099f013b7078a6831ec54dd1626444f4c8f7f03f3a203d631169",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-pre2-pass-received-20261001T200707Z/receipt.json",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "reviewPolicy": {
+      "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
+      "phase": "PRE",
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "source": {
+        "path": "openspec/changes/frade-p01-theme-core/design.md",
+        "sha256": "3c9874e95c86b2dc7e66e55d2424546ba78b5e0154d9aa0e1be23174289b3216",
+        "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+      }
+    },
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED"
   }
 }
