@@ -1,0 +1,3 @@
+# Closure task order clarification
+
+The original3.2 included its own archive/checkpoint as a checkbox precondition, while archive requires completed checkboxes. Move those unchanged mandatory closure actions to the post-task checkpoint section, keeping model/tests/verification/POST/publication/install/owner gates and6 tasks. No requirement/scope is removed and no outcome is marked in advance. Supplier POST2 reviews this clarification; first POST/packet/tasks evidence remain immutable. Canonical main spec sync and archived capability output are the established OpenSpec new-capability closure, not a product contract change.

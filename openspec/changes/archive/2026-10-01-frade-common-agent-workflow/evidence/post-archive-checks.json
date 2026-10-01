@@ -1,0 +1,49 @@
+{
+  "atUtc": "2026-10-01T15:24:16.858Z",
+  "phase": "ARCHIVED",
+  "archive": "2026-10-01-frade-common-agent-workflow",
+  "canonicalSpecSync": "INLINE_SYNC_VERIFIED_BEFORE_ARCHIVE",
+  "archiveSkipSpecs": "DUPLICATE_SYNC_ONLY",
+  "results": [
+    {
+      "name": "workflow-tests",
+      "command": "node --test tests/agent-review/workflow.test.mjs",
+      "startedAtUtc": "2026-10-01T15:23:47.139Z",
+      "completedAtUtc": "2026-10-01T15:23:54.618Z",
+      "exitCode": 0,
+      "error": null,
+      "status": "PASS",
+      "log": "post-archive-workflow-tests.txt"
+    },
+    {
+      "name": "scoped-lint",
+      "command": "pnpm.cmd exec eslint scripts/agent-review/core.mjs scripts/agent-review/cli.mjs scripts/agent-review/publish.mjs scripts/agent-review/make-bundle.mjs tests/agent-review/workflow.test.mjs",
+      "startedAtUtc": "2026-10-01T15:23:54.619Z",
+      "completedAtUtc": "2026-10-01T15:23:57.841Z",
+      "exitCode": 0,
+      "error": null,
+      "status": "PASS",
+      "log": "post-archive-scoped-lint.txt"
+    },
+    {
+      "name": "main-spec-strict",
+      "command": "pnpm.cmd exec openspec validate agent-review-workflow --type spec --strict --json",
+      "startedAtUtc": "2026-10-01T15:23:57.841Z",
+      "completedAtUtc": "2026-10-01T15:23:59.201Z",
+      "exitCode": 0,
+      "error": null,
+      "status": "PASS",
+      "log": "post-archive-main-spec-strict.txt"
+    },
+    {
+      "name": "ui-compliance",
+      "command": "pnpm.cmd ui:compliance",
+      "startedAtUtc": "2026-10-01T15:23:59.201Z",
+      "completedAtUtc": "2026-10-01T15:24:16.858Z",
+      "exitCode": 0,
+      "error": null,
+      "status": "PASS",
+      "log": "post-archive-ui-compliance.txt"
+    }
+  ]
+}

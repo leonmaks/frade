@@ -1,0 +1,14 @@
+{
+  "atUtc": "2026-10-01T14:51:31.437Z",
+  "failedAttempt": {
+    "tests": 9,
+    "pass": 7,
+    "fail": 2
+  },
+  "classifications": [
+    "INTEGRATION: bundle generated after tests instead of before; correctly rejected source digest drift",
+    "ENVIRONMENT/TEST: quote ref is git-valid but Windows loose-ref filename invalid"
+  ],
+  "resolution": "Regenerate bundle before tests. Preserve all9 tests/assertions and all five legal refs; use Git supported packed-ref representation plus symbolic HEAD for fixture, actual Git read/prepare validations unchanged. No second production patch or weakened assertion.",
+  "rawFailurePreserved": "conversation/tool output"
+}

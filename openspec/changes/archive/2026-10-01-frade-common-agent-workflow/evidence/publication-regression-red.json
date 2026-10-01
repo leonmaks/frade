@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-10-01T14:32:31.335Z",
+  "command": "node --test tests/agent-review/workflow.test.mjs",
+  "exit": 1,
+  "tests": 8,
+  "pass": 7,
+  "fail": 1,
+  "classification": "ALGORITHM/INVARIANT",
+  "rootCause": "Publisher validates semantic verdict/public source hashes but omits report bytes binding to recorded result SHA; valid-looking replaced report accepted in isolated fixture. Add direct hash guard in publisher and outer receipt. No real publication was performed.",
+  "temporaryFixtureRemoved": true
+}

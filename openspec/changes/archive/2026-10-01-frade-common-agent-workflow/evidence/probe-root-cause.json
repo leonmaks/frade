@@ -1,0 +1,93 @@
+{
+  "atUtc": "2026-10-01T14:20:33.043Z",
+  "classification": "TEST",
+  "rootCause": "root-deny omits forbidden mounts; existing host files are hidden and reads return ENOENT. Probe incorrectly requires EACCES/EPERM. Preserve read=false; add outside-sandbox existence-only precondition and accept ENOENT only for proven existing regular files. No private content read/hash/copy; no weakening read/write/network policy.",
+  "entries": [
+    {
+      "run": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-01T14-18-11-269Z-1b53b283-bc26-4d8b-bc72-72fc370e47a9",
+      "exit": 0,
+      "measured": {
+        "rows": [
+          {
+            "name": "allowed",
+            "read": true
+          },
+          {
+            "name": "source",
+            "read": false,
+            "error": "ENOENT"
+          },
+          {
+            "name": "common",
+            "read": false,
+            "error": "ENOENT"
+          },
+          {
+            "name": "other",
+            "read": false,
+            "error": "ENOENT"
+          },
+          {
+            "name": "auth",
+            "read": false,
+            "error": "ENOENT"
+          },
+          {
+            "name": "settings",
+            "read": false,
+            "error": "ENOENT"
+          }
+        ],
+        "write": false,
+        "network": {
+          "denied": true
+        },
+        "status": "FAIL"
+      },
+      "transportStatus": "BLOCKED"
+    },
+    {
+      "run": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-01T14-18-13-406Z-5f6fdf1c-324c-4400-b2df-282ddfc07852",
+      "exit": 0,
+      "measured": {
+        "rows": [
+          {
+            "name": "allowed",
+            "read": true
+          },
+          {
+            "name": "source",
+            "read": false,
+            "error": "ENOENT"
+          },
+          {
+            "name": "common",
+            "read": false,
+            "error": "ENOENT"
+          },
+          {
+            "name": "other",
+            "read": false,
+            "error": "ENOENT"
+          },
+          {
+            "name": "auth",
+            "read": false,
+            "error": "ENOENT"
+          },
+          {
+            "name": "settings",
+            "read": false,
+            "error": "ENOENT"
+          }
+        ],
+        "write": false,
+        "network": {
+          "denied": true
+        },
+        "status": "FAIL"
+      },
+      "transportStatus": "BLOCKED"
+    }
+  ]
+}

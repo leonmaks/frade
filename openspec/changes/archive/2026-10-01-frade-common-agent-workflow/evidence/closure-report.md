@@ -1,0 +1,14 @@
+# Common workflow closure report
+
+Recorded: 2026-10-01T15:25:36.962Z. This is closure evidence after actual archive and checks; earlier raw review/FAIL records are unchanged.
+
+CHANGE: frade-common-agent-workflow — ARCHIVED, tasks6/6.
+IMPLEMENTED: common policy v1.0, mandatory owning tracked status, automatic independent packet-confined PRE/POST requesting gpt-6-astra/xhigh, strict receipt, deterministic reviewed shared release installation, additive root rules and Routing handoff.
+FILES CHANGED: root AGENTS; docs/engineering policy/parallel workflow/handoff; scripts/agent-review; tests/agent-review; new OpenSpec agent-review-workflow capability and archived supplier artifacts/evidence. UI dashboard is separate current projection. No product sources, package manifests/dependencies/CI/Routing active controls changed. Passive-primary AGENTS received only the exact additive reviewed fragment; its previous bytes are preserved.
+TESTS ADDED:9 meaningful functional cases including strict streams/verdict, owner binding, generated literal instances, contextual confinement and publication integrity. Existing15 transport cases are unchanged.
+COMMANDS EXECUTED: Node syntax checks, node --test tests/agent-review/workflow.test.mjs, scoped ESLint, inherited transport suite, pnpm check:boundaries, pnpm ui:compliance, strict supplier and canonical spec validation, all-spec validation10/10, installed status/probes in UI and Routing, inline canonical sync, pnpm exec openspec archive frade-common-agent-workflow --yes --skip-specs --json, post-archive functional/lint/strict/UI compliance. Exact records/logs are in this evidence directory. Archive skip-specs prevented duplicate merge AFTER inline sync verified; validation was not skipped.
+TEST RESULTS: PRE2 PASS, cumulative POST2 PASS,9/9 functional PASS,15/15 inherited PASS, boundaries PASS, UI26/26 + token/color/control checks PASS, installed public files15/15 PASS and both contextual probes PASS. Post-archive four command exits0: see post-archive-checks.json/raw logs.
+KNOWN BLOCKERS: none for this supplier. P01 popup NOT_USER_ACCEPTED and Routing owning blockers remain. Requested backend/effort actual NOT_CONFIRMED; no weaker fallback allowed. This host's registered worktrees can use shared runner without model/account settings; other hosts need verified runtime installation. Existing chats require owner handoff/adoption, frozen gates remain. Right-panel request queued, visibility NOT_CONFIRMED. No CI/branch-protection enforcement claim. Typecheck/build/UI screenshots NOT_APPLICABLE to this Node.mjs/docs-only delta; full product regression was not rerun as supplier closure. Git commit/push pending here; immutable publication record will follow actual execution.
+READY_FOR_VERIFY: YES — verification and independent POST already passed; archive complete.
+
+GATE_STATUS: PASS

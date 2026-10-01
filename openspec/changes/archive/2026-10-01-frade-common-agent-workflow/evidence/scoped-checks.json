@@ -1,0 +1,36 @@
+{
+  "atUtc": "2026-10-01T14:24:14.071Z",
+  "commands": [
+    {
+      "command": "node --test tests/agent-review/workflow.test.mjs",
+      "exit": 0,
+      "tests": 7,
+      "pass": 7
+    },
+    {
+      "command": "node --test <isolated exact v3 copy>/transport.test.mjs",
+      "exit": 0,
+      "tests": 15,
+      "pass": 15
+    },
+    {
+      "command": "pnpm exec eslint scripts/agent-review/{core,cli,publish,make-bundle}.mjs tests/agent-review/workflow.test.mjs",
+      "exit": 0,
+      "scope": "first6 tests; repeat final scoped lint pending"
+    },
+    {
+      "command": "pnpm check:boundaries",
+      "exit": 0
+    },
+    {
+      "command": "pnpm ui:compliance",
+      "exit": 0,
+      "tests": 26,
+      "pass": 26
+    }
+  ],
+  "productSourceChanged": false,
+  "typecheck": "NOT_APPLICABLE: new Node.mjs tooling, Node syntax checks apply; no typed product change",
+  "screenshots": "NOT_APPLICABLE: engineering tooling/docs only, no changed product surface",
+  "routingGate": "NOT_APPLICABLE: supplier process, consumer Routing adoption owns its applicable controls"
+}

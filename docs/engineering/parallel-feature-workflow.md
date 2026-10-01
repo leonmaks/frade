@@ -28,6 +28,8 @@ UI PRE reviews its exact additive root section and canonical guide paths without
 
 ## Branch-local progress reporting
 
+Every engineering branch MUST maintain a tracked owning *-STATUS.md under shared AGENTS §20 and docs/engineering/agent-workflow.md. Existing program files are preserved; otherwise docs/engineering/BRANCH-STATUS.md. Start/resume, task/blocker/check/review/verify/archive/commit/push events update it outside freeze. Automatic independent gpt-6-astra/xhigh PRE/POST use one Git-common service without per-branch account setup; receiving review findings does not itself approve a new scope. The consumer owns shared control adoption and exact frozen revalidation.
+
 For the UI Design Contract branch, keep `docs/ui/UI-DESIGN-CONTRACT-STATUS.md` in its owning worktree and show it in the right panel. The user requested this on 1 October 2026. Refresh it on accepted scope/decisions, PRE results, completed or blocked tasks, completed check batches, blocker changes, visual approval, verification, POST and archive. On resume, check its branch/context/tasks authority before updating. Never copy another feature's progress into it. Do not edit a frozen candidate during review; record received outcomes afterwards. Preserve dated raw evidence; the dashboard is a current view and cannot substitute for gates or authorize the next change.
 
 ## UI branch checkpoint commits (user instruction 2026-10-01)

@@ -1,0 +1,7 @@
+# Final verification — frade-common-agent-workflow
+
+Completeness6/6 tasks,5/5 ADDED requirements/scenarios mapped. Correctness:9 functional controls +15 inherited unchanged controls PASS, root boundaries/UI compliance/scoped syntax/lint/strict PASS; PRE2 and cumulative POST2 PASS with original candidate/packet unchanged. POST-B01 repaired by one literal callback production fix, all RED/FAIL history preserved. Coherence: approved public-only shared service, mandatory owning tracked progress/events, owner adoption/frozen gates and no product/domain/refactor changes. No skipped requirement/scenario/pattern verification.
+
+Actual installed release 9cd8cb57ae4f20373970181325d25e80181e7195b9a7798c8eeb3e5d5eee4c86:15 public files hashes verified, common pointer matches; both UI/Routing discovery AVAILABLE and installed contextual probes PASS. Passive-primary prefix preserved exactly and fragment SHA verified. Credentials/global settings not copied/written. Routing source/control writes NONE; original owner gates/FAIL and P01 popup NOT_USER_ACCEPTED preserved. Model/backend actual NOT_CONFIRMED, requested gpt-6-astra/xhigh. Right-panel request queued, visibility NOT_CONFIRMED.
+
+No correctness/architecture blockers remain for this supplier. Ready for canonical new-capability spec sync/archive. Mandatory post-archive checks and authorized UI checkpoint/push still NOT_RUN and will be recorded after execution. No P01/P02/Routing progression granted.

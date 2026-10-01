@@ -1,0 +1,69 @@
+{
+  "atUtc": "2026-10-01T14:33:34.351Z",
+  "records": [
+    {
+      "name": "syntax",
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "--check",
+        "scripts/agent-review/core.mjs"
+      ],
+      "exit": 0,
+      "out": ""
+    },
+    {
+      "name": "cli syntax",
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "--check",
+        "scripts/agent-review/cli.mjs"
+      ],
+      "exit": 0,
+      "out": ""
+    },
+    {
+      "name": "publisher syntax",
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "--check",
+        "scripts/agent-review/publish.mjs"
+      ],
+      "exit": 0,
+      "out": ""
+    },
+    {
+      "name": "generator syntax",
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "--check",
+        "scripts/agent-review/make-bundle.mjs"
+      ],
+      "exit": 0,
+      "out": ""
+    },
+    {
+      "name": "functional GREEN",
+      "command": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "--test",
+        "tests/agent-review/workflow.test.mjs"
+      ],
+      "exit": 0,
+      "out": "✔ actual successful CLI stream and one-line PASS/FAIL are accepted (1.9472ms)\n✔ split-line verdict is rejected (0.2949ms)\n✔ completed turn followed by incomplete turn is rejected (0.1532ms)\n✔ errors, duplicate verdict, nonzero, trailing item and missing thread fail closed (0.2558ms)\n✔ registered worktree is discovered and unrelated repository with same origin rejected (942.4475ms)\n✔ generated instance prepares exact registered owner, keeps original bytes and isolates controls (1026.279ms)\n✔ hidden existing mounts prove denial; missing host targets cannot count as isolation proof (0.7108ms)\n✔ publication cannot accept a replaced report even when all public file hashes match (41.6783ms)\nℹ tests 8\nℹ suites 0\nℹ pass 8\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2116.285\n"
+    },
+    {
+      "name": "diff whitespace",
+      "command": "git",
+      "args": [
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "out": ""
+    }
+  ]
+}
