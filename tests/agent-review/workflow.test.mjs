@@ -4,6 +4,12 @@ import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
 import { execFileSync } from 'node:child_process'
+const fixturePolicy = {
+  stage: 'existing-control-fixture',
+  phase: 'PRE',
+  model: 'gpt-6-astra',
+  reasoningEffort: 'xhigh',
+}
 const baseline = process.env.FRADE_REVIEW_BASELINE === 'v3'
 const legacy = await import('../../scripts/agent-review/transport/policy.mjs')
 const api = baseline
@@ -101,7 +107,13 @@ test('generated instance prepares exact registered owner, keeps original bytes a
     const root = path.resolve('scripts/agent-review/../..'),
       owner = { root: await fs.realpath(source), branch: 'codex/quoted-owner' }
     const original = await fs.readFile(path.join(root, 'scripts/agent-review/transport/policy.mjs'))
-    const generated = await api.instance({ root, digest: 'fixture' }, owner, run, 'one.txt')
+    const generated = await api.instance(
+      { root, digest: 'fixture' },
+      owner,
+      run,
+      'one.txt',
+      fixturePolicy,
+    )
     assert.deepEqual(
       await fs.readFile(path.join(root, 'scripts/agent-review/transport/policy.mjs')),
       original,
@@ -273,7 +285,13 @@ test('legal dollar refs and paths survive literal generated-instance preparation
       const authority = 'one$&.txt'
       await fs.writeFile(path.join(source, authority), 'raw literal owner\n')
       const owner = { root: await fs.realpath(source), branch },
-        generated = await api.instance({ root, digest: 'fixture' }, owner, run, authority)
+        generated = await api.instance(
+          { root, digest: 'fixture' },
+          owner,
+          run,
+          authority,
+          fixturePolicy,
+        )
       const request = {
         phase: 'PRE',
         scope: 'literal dollar fixture',

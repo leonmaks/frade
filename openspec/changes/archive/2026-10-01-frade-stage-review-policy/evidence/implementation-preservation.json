@@ -1,0 +1,55 @@
+{
+  "atUtc": "2026-10-01T16:41:41.981Z",
+  "status": "PASS",
+  "oldRootSections": "1-19 unchanged under existing Git normalization; §20 only selected-policy correction",
+  "controls": [
+    {
+      "path": "docs/engineering/routing-v2-agent-handoff.md",
+      "bytes": 4395,
+      "sha256": "d7736b56d305bdc883b04c918b63c3b0f528af5e74287317b4c4c62d169b143f"
+    },
+    {
+      "path": "scripts/agent-review/transport/policy.mjs",
+      "bytes": 3626,
+      "sha256": "7d7ecefb6d5361716687fef5849dd887fcb70a4de17aa2af13b523c6bc1949b3"
+    },
+    {
+      "path": "scripts/agent-review/transport/invoke-review.mjs",
+      "bytes": 5675,
+      "sha256": "e7907861c5bde1cf3f30c1551fd99ec4938793a4c7743ccff533b3aa80902835"
+    },
+    {
+      "path": "scripts/agent-review/transport/integrity.mjs",
+      "bytes": 2474,
+      "sha256": "2fc3b036930871f010a6850f86dfc79c3234975e437124fc020a73d73d277395"
+    },
+    {
+      "path": "scripts/agent-review/transport/prepare-review.mjs",
+      "bytes": 2553,
+      "sha256": "0729ba46729e8d3a638f6839dca645467d33619eb3a348b1383a4e4e8183a8f1"
+    },
+    {
+      "path": "scripts/agent-review/transport/transport.test.mjs",
+      "bytes": 5194,
+      "sha256": "7b2fe0dc8aeb7f2c70605c74b2ec64b90caf10b21865dd51a652cb4b285e8d69"
+    },
+    {
+      "path": "scripts/agent-review/transport/provenance.json",
+      "bytes": 1923,
+      "sha256": "fa36588068c59561d740b721a4218937e9118caec7dc941c93ea1e4b7a88fcd0"
+    }
+  ],
+  "historicalArchiveFiles": 128,
+  "historicalArchive": "RAW_BLOB_IDENTICAL",
+  "routingHandoff": "BYTE_IDENTICAL",
+  "originalTemplates": "BYTE_IDENTICAL",
+  "foreignFeatureWrites": "NONE",
+  "functionalTests": {
+    "command": "node --test tests/agent-review/workflow.test.mjs tests/agent-review/stage-policy.test.mjs",
+    "exitCode": 0,
+    "pass": 14,
+    "skip": 0,
+    "log": "stage-policy-final-green.txt"
+  },
+  "general": "boundaries/UI compliance PASS; scoped syntax/lint/strict/inherited15 PASS"
+}

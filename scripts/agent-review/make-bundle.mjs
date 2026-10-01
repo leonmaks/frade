@@ -9,6 +9,7 @@ const paths = [
   'scripts/agent-review/publish.mjs',
   'scripts/agent-review/make-bundle.mjs',
   'scripts/agent-review/AGENTS-common.fragment.md',
+  'scripts/agent-review/AGENTS-stage-review.fragment.md',
   'docs/engineering/agent-workflow.md',
   'docs/engineering/routing-v2-agent-handoff.md',
   'docs/engineering/parallel-feature-workflow.md',
@@ -28,7 +29,7 @@ const files = await Promise.all(
 const manifest = {
   version: 1,
   common: COMMON,
-  policyVersion: '1.0',
+  policyVersion: '1.1',
   policySha256: files.find((f) => f.path === 'docs/engineering/agent-workflow.md').sha256,
   files,
 }

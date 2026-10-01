@@ -1,0 +1,95 @@
+{
+  "atUtc": "2026-10-01T16:38:20.818Z",
+  "results": [
+    {
+      "name": "syntax-core",
+      "command": "node",
+      "args": [
+        "--check",
+        "scripts/agent-review/core.mjs"
+      ],
+      "startedAtUtc": "2026-10-01T16:37:42.849Z",
+      "endedAtUtc": "2026-10-01T16:37:42.944Z",
+      "exitCode": 0,
+      "error": null,
+      "status": "PASS"
+    },
+    {
+      "name": "syntax-cli",
+      "command": "node",
+      "args": [
+        "--check",
+        "scripts/agent-review/cli.mjs"
+      ],
+      "startedAtUtc": "2026-10-01T16:37:42.945Z",
+      "endedAtUtc": "2026-10-01T16:37:43.035Z",
+      "exitCode": 0,
+      "error": null,
+      "status": "PASS"
+    },
+    {
+      "name": "syntax-bundle",
+      "command": "node",
+      "args": [
+        "--check",
+        "scripts/agent-review/make-bundle.mjs"
+      ],
+      "startedAtUtc": "2026-10-01T16:37:43.035Z",
+      "endedAtUtc": "2026-10-01T16:37:43.123Z",
+      "exitCode": 0,
+      "error": null,
+      "status": "PASS"
+    },
+    {
+      "name": "lint",
+      "command": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm exec eslint scripts/agent-review/core.mjs scripts/agent-review/cli.mjs scripts/agent-review/make-bundle.mjs tests/agent-review/workflow.test.mjs tests/agent-review/stage-policy.test.mjs"
+      ],
+      "startedAtUtc": "2026-10-01T16:37:43.124Z",
+      "endedAtUtc": "2026-10-01T16:38:17.524Z",
+      "exitCode": 0,
+      "error": null,
+      "status": "PASS"
+    },
+    {
+      "name": "strict",
+      "command": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm exec openspec validate frade-stage-review-policy --strict --json"
+      ],
+      "startedAtUtc": "2026-10-01T16:38:17.524Z",
+      "endedAtUtc": "2026-10-01T16:38:19.105Z",
+      "exitCode": 0,
+      "error": null,
+      "status": "PASS"
+    },
+    {
+      "name": "inherited-15-original-controls",
+      "command": "node --test <exact copied original transport.test.mjs>",
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceHashes": [
+        {
+          "name": "integrity.mjs",
+          "sha256": "2fc3b036930871f010a6850f86dfc79c3234975e437124fc020a73d73d277395"
+        },
+        {
+          "name": "policy.mjs",
+          "sha256": "7d7ecefb6d5361716687fef5849dd887fcb70a4de17aa2af13b523c6bc1949b3"
+        },
+        {
+          "name": "transport.test.mjs",
+          "sha256": "7b2fe0dc8aeb7f2c70605c74b2ec64b90caf10b21865dd51a652cb4b285e8d69"
+        }
+      ]
+    }
+  ],
+  "temporaryFixtureRemoved": true
+}

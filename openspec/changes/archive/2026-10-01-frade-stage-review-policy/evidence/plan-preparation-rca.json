@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-01T16:35:11.978Z",
+  "classification": "INTEGRATION",
+  "cause": "Initial stage selection precedes probe/prepare. A valid full source/packet freeze could start after plan bytes change; frozen manifest consistency alone does not bind old selected authority.",
+  "red": "plan-preparation-red.txt; actual generated prepare copied changed internally consistent plan; missing binding guard reproduced",
+  "fix": "Re-use exact hash/excerpt guard against actual prepared packet before independent invocation",
+  "scope": "Existing approved phase/hash/provenance drift contract; no new product scope"
+}

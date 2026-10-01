@@ -1,0 +1,34 @@
+✖ prepared plan is bound to the earlier selected hash even if it changes before preparation (1127.4426ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1257.8597
+
+✖ failing tests:
+
+test at tests\agent-review\stage-policy.test.mjs:226:1
+✖ prepared plan is bound to the earlier selected hash even if it changes before preparation (1127.4426ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /PLAN_POLICY_DRIFT/. Input:
+  
+  'TypeError: api.verifyPlanSource is not a function'
+  
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/agent-review/stage-policy.test.mjs:246:12)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: api.verifyPlanSource is not a function
+        at file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/agent-review/stage-policy.test.mjs:246:29
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/agent-review/stage-policy.test.mjs:246:12)
+        at async Test.run (node:internal/test_runner/test:1332:7)
+        at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3),
+    expected: /PLAN_POLICY_DRIFT/,
+    operator: 'throws',
+    diff: 'simple'
+  }

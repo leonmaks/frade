@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-01T17:04:33.657Z",
+  "task": "REVIEW_TO_REPAIR_WITHIN_APPROVED_SCOPE",
+  "classification": "INVARIANT",
+  "cause": "Receipt validator counts only bare effort payload arguments; supported --config= joined forms and other aliases may contain hidden duplicates. First incorrect decision: interpreting argv spellings rather than normalizing supported option payloads.",
+  "requiredRepair": "Normalize CLI model/config spellings; detect each effort override once; reject duplicates/conflicts and noncanonical quoted/escaped keys fail closed. Preserve original regression assertions, require RED then GREEN and fresh cumulative POST.",
+  "sourceScope": "exact once selected model/effort guard already approved; no spec/model policy/feature/handoff scope expansion"
+}

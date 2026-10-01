@@ -1,0 +1,90 @@
+{
+  "startedAtUtc": "2026-10-01T17:26:54.951Z",
+  "phase": "POST",
+  "scope": "Cumulative implementation POST of user-authorized common stage-review-policy correction; no product/Routing/handoff/archive edits, shared installation pending POST.",
+  "requestedModel": "gpt-6-astra",
+  "requestedEffort": "xhigh",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "candidate": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+  "packet": "C:\\Users\\NVISEN\\.codex\\review-automation\\packet-v1-20261001T061101Z\\stage-policy-post3-20261001T172619878Z-prepared\\packet",
+  "run": "C:\\Users\\NVISEN\\.codex\\review-automation\\packet-v1-20261001T061101Z\\stage-policy-post3-20261001T172619878Z-run",
+  "status": "PASS",
+  "gateStatus": "PASS",
+  "authorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-packet-authorization-20261001T061101Z.json",
+  "toolchain": [
+    {
+      "path": "integrity.mjs",
+      "sha256": "2fc3b036930871f010a6850f86dfc79c3234975e437124fc020a73d73d277395"
+    },
+    {
+      "path": "policy.mjs",
+      "sha256": "7d7ecefb6d5361716687fef5849dd887fcb70a4de17aa2af13b523c6bc1949b3"
+    },
+    {
+      "path": "prepare-review.mjs",
+      "sha256": "0729ba46729e8d3a638f6839dca645467d33619eb3a348b1383a4e4e8183a8f1"
+    },
+    {
+      "path": "invoke-review.mjs",
+      "sha256": "e7907861c5bde1cf3f30c1551fd99ec4938793a4c7743ccff533b3aa80902835"
+    },
+    {
+      "path": "transport.test.mjs",
+      "sha256": "7b2fe0dc8aeb7f2c70605c74b2ec64b90caf10b21865dd51a652cb4b285e8d69"
+    }
+  ],
+  "readConfinementProbeSha256": "0b1f27327f3546138fe4d59f6b33fac127d8e0eba6657a9278d0ef6b7b0cadb8",
+  "packetManifestSha256": "7485ab54d81ad0e23b75315033a744b6c16a2960577c1fb46e875a10a79f619c",
+  "verifiedSourceFiles": 72,
+  "promptSha256": "8d2cda6bdabf70b720c00f47d2c8c7c8f8dc44e48ee0e791eddc2fb098fb2579",
+  "cli": {
+    "launcher": "wsl.exe",
+    "args": [
+      "-d",
+      "Ubuntu-22.04_E",
+      "--exec",
+      "/usr/bin/env",
+      "CODEX_HOME=/mnt/c/Users/NVISEN/.codex",
+      "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime/node_modules/.bin/codex",
+      "exec",
+      "--ignore-user-config",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--model",
+      "gpt-6-astra",
+      "-c",
+      "default_permissions=\"frade-review\"",
+      "-c",
+      "permissions={frade-review={extends=\":read-only\",filesystem={\":root\"=\"deny\",\":minimal\"=\"read\",\":workspace_roots\"={\".\"=\"read\"},\"/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime\"=\"read\"},network={enabled=false}}}",
+      "-c",
+      "model_reasoning_effort=\"xhigh\"",
+      "-c",
+      "approval_policy=\"never\"",
+      "-c",
+      "web_search=\"disabled\"",
+      "-c",
+      "apps._default.enabled=false",
+      "-c",
+      "shell_environment_policy.inherit=\"none\"",
+      "-c",
+      "shell_environment_policy.set={PATH=\"/usr/bin:/bin\",HOME=\"/tmp\",TMPDIR=\"/tmp\",LANG=\"C.UTF-8\",LC_ALL=\"C.UTF-8\"}",
+      "-C",
+      "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/stage-policy-post3-20261001T172619878Z-prepared/packet",
+      "--json",
+      "--color",
+      "never",
+      "--output-last-message",
+      "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/stage-policy-post3-20261001T172619878Z-run/result.md",
+      "-"
+    ],
+    "version": "0.159.3"
+  },
+  "signal": null,
+  "exitCode": 0,
+  "threadId": "01a0f881-c22b-7d62-9fc2-773edb159fd8",
+  "resultSha256": "0c04af5eadb1e9c63b877d9012d84595c53bb1f6b985d96a52363be7c2c339e1",
+  "candidateUnchanged": true,
+  "packetUnchanged": true,
+  "endedAtUtc": "2026-10-01T17:34:58.063Z"
+}

@@ -1,0 +1,60 @@
+✖ generated command and metadata honor both stage assignments without editing templates (30.3288ms)
+✖ exact plan provenance selects each phase assignment and rejects omissions or drift (5.6069ms)
+✖ receipt rejects mismatched actual model, effort, role and duplicate overrides (0.6493ms)
+✖ missing stage selection cannot silently generate a default instance (14.7187ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 174.4494
+
+✖ failing tests:
+
+test at tests\agent-review\stage-policy.test.mjs:32:1
+✖ generated command and metadata honor both stage assignments without editing templates (30.3288ms)
+  AssertionError [ERR_ASSERTION]: gpt-6-sol
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/agent-review/stage-policy.test.mjs:41:14)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\agent-review\stage-policy.test.mjs:76:1
+✖ exact plan provenance selects each phase assignment and rejects omissions or drift (5.6069ms)
+  TypeError: api.selectReviewPolicy is not a function
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/agent-review/stage-policy.test.mjs:80:34)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\agent-review\stage-policy.test.mjs:105:1
+✖ receipt rejects mismatched actual model, effort, role and duplicate overrides (0.6493ms)
+  TypeError: api.verifyRequestedPolicy is not a function
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/agent-review/stage-policy.test.mjs:109:20)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\agent-review\stage-policy.test.mjs:122:1
+✖ missing stage selection cannot silently generate a default instance (14.7187ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/tests/agent-review/stage-policy.test.mjs:127:5)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /POLICY/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

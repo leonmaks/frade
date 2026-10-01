@@ -16,15 +16,18 @@ No whole UI merge, foreign uncommitted product files or silent baseline movement
 
 For every required PRE and POST automatically prepare a relevant authorized Frade
 source/contracts/tests/evidence packet, dispatch a fresh independent OpenAI Codex
-review requesting gpt-6-astra with reasoning xhigh, and receive the result. The
+review using the exact model and reasoning effort assigned in the approved
+owning branch plan for its current stage and PRE/POST role, and receive the result. The
 reviewer runs in technically verified read-only packet confinement: original
 checkout/other-worktrees/credentials/secrets/global settings/writes/network/apps
 are unavailable. Authenticated harness access stays outside reviewer commands.
 Do not ask the human to relay prompts/results or approve each authorized review.
 User authorization on1October2026 extends this workflow to all Frade worktrees;
 other repositories and sensitive data remain excluded. Do not silently substitute
-a model/effort or claim an unattested backend. If a required stronger/different
-review policy or working sandbox cannot be honored, report BLOCKED for decision.
+a model/effort or claim an unattested backend. There is no universal model/effort
+default. Missing, ambiguous or conflicting stage assignments, unavailable requested
+models/efforts or an unverified sandbox are BLOCKED for the actual decision/limitation.
+Record the selected stage/role and exact plan source hash/excerpt with the review.
 
 Approved coherent plan plus validation precedes PRE; PRE PASS precedes production.
 Actual required tests and OpenSpec verification precede POST; POST PASS precedes

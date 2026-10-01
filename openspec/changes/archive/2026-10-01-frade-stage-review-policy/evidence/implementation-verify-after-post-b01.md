@@ -1,0 +1,5 @@
+# Verification after POST-B01 repair
+
+Original2 changed requirements/4 scenarios and3 unchanged requirements/scenarios remain mapped by implementation-verify.md. POST1 FAIL is immutable; old verify was pre-B01 evidence, not current closure. B01 INVARIANT: normalize all supported model/config argv payload forms and reject duplicate/overriding model/effort, including --config=, --config value, -cjoined/-c=, -mjoined/-m=; reject quoted/escaped noncanonical TOML keys rather than miss aliases. Added regression-first RED, one production parser repair, full15/15 GREEN with original9 assertions and other5 cases retained. New receipt guard accepts single matching supported spellings and rejects overrides; stage source/phase/packet copy bindings and all confinement flags unchanged. Latest lint/syntax/strict exit0. Original15 and boundaries/UI26/control checks earlier PASS apply unchanged code/contracts; installed-context proof will be refreshed after actual publication. This requires fresh independent cumulative POST and installation; no archive/feature gate closure yet.
+
+GATE_STATUS: PASS

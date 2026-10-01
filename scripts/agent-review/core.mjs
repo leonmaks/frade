@@ -91,7 +91,93 @@ export async function bundle(root) {
   }
   return { root, manifest, digest: sha(bytes) }
 }
-export async function instance(release, owner, run, authority) {
+function validatePolicyParameters(selection) {
+  if (!selection) throw Error('MISSING_REVIEW_POLICY')
+  if (
+    typeof selection.stage !== 'string' ||
+    !selection.stage.trim() ||
+    !['PRE', 'POST'].includes(selection.phase) ||
+    typeof selection.model !== 'string' ||
+    !/^[a-z0-9]+(?:[._-][a-z0-9]+)*$/.test(selection.model) ||
+    !['none', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max', 'ultra'].includes(
+      selection.reasoningEffort,
+    )
+  )
+    throw Error('INVALID_REVIEW_POLICY')
+  return selection
+}
+export async function selectReviewPolicy(release, owner, input) {
+  const selection = validatePolicyParameters(input.reviewPolicy)
+  if (selection.phase !== input.phase) throw Error('POLICY_PHASE_MISMATCH')
+  const source = selection.source
+  if (
+    !source ||
+    typeof source.path !== 'string' ||
+    !Array.isArray(input.paths) ||
+    !input.paths.includes(source.path) ||
+    typeof source.sha256 !== 'string' ||
+    !/^[a-f0-9]{64}$/.test(source.sha256) ||
+    typeof source.excerpt !== 'string' ||
+    !source.excerpt.trim()
+  )
+    throw Error('MISSING_PLAN_POLICY_SOURCE')
+  const original = path.join(release.root, 'scripts/agent-review/transport')
+  const integrity = await import(pathToFileURL(path.join(original, 'integrity.mjs')))
+  const policy = await import(pathToFileURL(path.join(original, 'policy.mjs')))
+  policy.assertAllowedArtifact(source.path, Buffer.alloc(0))
+  const bytes = await integrity.rawFile(owner.root, source.path)
+  policy.assertAllowedArtifact(source.path, bytes)
+  verifyPlanSource(bytes, source)
+  // Approval interpretation stays with the owner and independent reviewer.
+  return structuredClone(selection)
+}
+export function verifyPlanSource(bytes, source) {
+  if (sha(bytes) !== source.sha256 || !bytes.toString('utf8').includes(source.excerpt))
+    throw Error('PLAN_POLICY_DRIFT')
+  return true
+}
+export function verifyRequestedPolicy(record, selection) {
+  validatePolicyParameters(selection)
+  const args = record.cli?.args
+  if (
+    record.phase !== selection.phase ||
+    record.requestedModel !== selection.model ||
+    record.requestedEffort !== selection.reasoningEffort ||
+    !Array.isArray(args) ||
+    args.some((a) => typeof a !== 'string')
+  )
+    throw Error('INVOKED_POLICY_MISMATCH')
+  const models = []
+  const configs = []
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i]
+    if (arg === '--model' || arg === '-m') models.push(args[++i])
+    else if (arg.startsWith('--model=')) models.push(arg.slice('--model='.length))
+    else if (arg.startsWith('-m') && arg.length > 2) models.push(arg.slice(2).replace(/^=/, ''))
+    else if (arg === '-c' || arg === '--config') configs.push(args[++i])
+    else if (arg.startsWith('--config=')) configs.push(arg.slice('--config='.length))
+    else if (arg.startsWith('-c') && arg.length > 2) configs.push(arg.slice(2).replace(/^=/, ''))
+  }
+  const efforts = []
+  for (const config of configs) {
+    // Generated configs have bare keys. Reject quoted/escaped aliases rather than
+    // silently miss a TOML key that changes the selected model or effort.
+    const key = typeof config === 'string' && /^([a-z_][a-z0-9_.]*)\s*=/.exec(config)
+    if (!key || key[1] === 'model' || key[1].startsWith('model_reasoning_effort.'))
+      throw Error('INVOKED_POLICY_MISMATCH')
+    if (key[1] === 'model_reasoning_effort') efforts.push(config)
+  }
+  if (
+    models.length !== 1 ||
+    models[0] !== selection.model ||
+    efforts.length !== 1 ||
+    efforts[0] !== 'model_reasoning_effort=' + JSON.stringify(selection.reasoningEffort)
+  )
+    throw Error('INVOKED_POLICY_MISMATCH')
+  return true
+}
+export async function instance(release, owner, run, authority, reviewPolicy) {
+  validatePolicyParameters(reviewPolicy)
   const directory = path.join(run, 'instance')
   await fs.mkdir(directory)
   const originals = path.join(release.root, 'scripts/agent-review/transport')
@@ -130,7 +216,13 @@ export async function instance(release, owner, run, authority) {
         name,
         text,
         '\'model_reasoning_effort="xhigh"\'',
-        "'project_doc_max_bytes=0','project_doc_fallback_filenames=[]','model_reasoning_effort=\"xhigh\"'",
+        [
+          'project_doc_max_bytes=0',
+          'project_doc_fallback_filenames=[]',
+          'model_reasoning_effort=' + JSON.stringify(reviewPolicy.reasoningEffort),
+        ]
+          .map((value) => JSON.stringify(value))
+          .join(','),
       )
     }
     if (name === 'prepare-review.mjs') {
@@ -154,18 +246,46 @@ export async function instance(release, owner, run, authority) {
         "authorization:'openspec/changes/frade-p01-theme-core/decisions/p01-review-packet-authorization-20261001T061101Z.json'",
         'authorization:' + JSON.stringify(authority),
       )
-    if (name === 'invoke-review.mjs')
+    if (name === 'invoke-review.mjs') {
+      text = edit(
+        name,
+        text,
+        "requestedModel:'gpt-6-astra'",
+        'requestedModel:' + JSON.stringify(reviewPolicy.model),
+      )
+      text = edit(
+        name,
+        text,
+        "requestedEffort:'xhigh'",
+        'requestedEffort:' + JSON.stringify(reviewPolicy.reasoningEffort),
+      )
+      text = edit(
+        name,
+        text,
+        "'--model','gpt-6-astra'",
+        "'--model'," + JSON.stringify(reviewPolicy.model),
+      )
       text = edit(
         name,
         text,
         "'--ignore-user-config','--ephemeral'",
         "'--ignore-user-config','--ignore-rules','--ephemeral'",
       )
+    }
+    if (name === 'transport.test.mjs')
+      text = edit(
+        name,
+        text,
+        String.raw`assert.match(policy,/model_reasoning_effort="xhigh"/);`,
+        'assert.ok(configs().includes(' +
+          JSON.stringify('model_reasoning_effort=' + JSON.stringify(reviewPolicy.reasoningEffort)) +
+          '));',
+      )
     await fs.writeFile(path.join(directory, name), text, { flag: 'wx' })
   }
   await fs.writeFile(
     path.join(run, 'instance-provenance.json'),
-    JSON.stringify({ release: release.digest, owner, mutations }, null, 2) + '\n',
+    JSON.stringify({ release: release.digest, owner, reviewPolicy, mutations }, null, 2) + '\n',
     { flag: 'wx' },
   )
   return directory
@@ -305,14 +425,18 @@ export async function review(release, owner, input) {
   )
     throw Error('INVALID_REQUEST')
   if (!input.paths.includes(input.policyArtifact)) throw Error('MISSING_POLICY_ARTIFACT')
+  const selectedPolicy = await selectReviewPolicy(release, owner, input)
   const integrity = await import(
     pathToFileURL(path.join(release.root, 'scripts/agent-review/transport/integrity.mjs'))
   )
   const policyBytes = await integrity.rawFile(owner.root, input.policyArtifact)
   if (sha(policyBytes) !== release.manifest.policySha256) throw Error('POLICY_ADOPTION_DRIFT')
   const run = await newRun(owner),
-    directory = await instance(release, owner, run, input.policyArtifact)
+    directory = await instance(release, owner, run, input.policyArtifact, selectedPolicy)
   try {
+    await fs.writeFile(path.join(run, 'input.json'), JSON.stringify(input, null, 2) + '\n', {
+      flag: 'wx',
+    })
     await probe(release, owner, run, directory)
     const request = {
       phase: input.phase,
@@ -322,7 +446,11 @@ export async function review(release, owner, input) {
       prompt: path.join(run, 'prompt.md'),
       run: path.join(run, 'output'),
     }
-    await fs.writeFile(request.prompt, input.prompt, { flag: 'wx' })
+    const policyPrompt =
+      '\n\nApproved owning stage selection (verify semantic plan approval; metadata is not approval):\n' +
+      JSON.stringify(selectedPolicy, null, 2) +
+      '\n'
+    await fs.writeFile(request.prompt, input.prompt + policyPrompt, { flag: 'wx' })
     const requestFile = path.join(run, 'request.json')
     await fs.writeFile(requestFile, JSON.stringify(request, null, 2) + '\n', { flag: 'wx' })
     const before = await bundle(release.root),
@@ -338,6 +466,10 @@ export async function review(release, owner, input) {
       { flag: 'wx' },
     )
     if (prepared.exit !== 0) throw Error('PREPARE_BLOCKED:' + run)
+    verifyPlanSource(
+      await integrity.rawFile(path.join(request.prepared, 'packet'), selectedPolicy.source.path),
+      selectedPolicy.source,
+    )
     const invoked = await execute(
       process.execPath,
       [path.join(directory, 'invoke-review.mjs'), requestFile],
@@ -358,13 +490,15 @@ export async function review(release, owner, input) {
       status: 'BLOCKED',
       release: release.digest,
       inputSha256: inputHash,
-      requestedModel: 'gpt-6-astra',
-      requestedEffort: 'xhigh',
+      reviewPolicy: selectedPolicy,
+      requestedModel: selectedPolicy.model,
+      requestedEffort: selectedPolicy.reasoningEffort,
       actualBackend: 'NOT_CONFIRMED',
       actualEffort: 'NOT_CONFIRMED',
     }
     try {
       const record = JSON.parse(await fs.readFile(path.join(request.run, 'record.json'), 'utf8'))
+      verifyRequestedPolicy(record, selectedPolicy)
       if (sha(await fs.readFile(path.join(request.run, 'result.md'))) !== record.resultSha256)
         throw Error('REVIEW_RESULT_DRIFT')
       const verdict = strictReceipt(
@@ -407,6 +541,11 @@ export async function review(release, owner, input) {
       status: 'BLOCKED',
       error: String(e),
       release: release.digest,
+      reviewPolicy: selectedPolicy,
+      requestedModel: selectedPolicy.model,
+      requestedEffort: selectedPolicy.reasoningEffort,
+      actualBackend: 'NOT_CONFIRMED',
+      actualEffort: 'NOT_CONFIRMED',
     }
     await fs.writeFile(path.join(run, 'receipt.json'), JSON.stringify(receipt, null, 2) + '\n', {
       flag: 'wx',
