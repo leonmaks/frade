@@ -1,5 +1,14 @@
 # Frade UI Design Contract — статус этой ветки
 
+## Текущий шаг — PRE FAIL / решение по lower-origin popup
+
+Независимый accepted keyboard PRE завершён **FAIL**, один blocker B01: меню/подменю страниц находятся вне ранее разрешённого subtree. Candidate/packet unchanged;1396 hashes verified. SaveAs новых блокеров не имеет; общий gate FAIL. Production/permanent RED этого delta **NOT_RUN**, P01 **5/10**, READY_FOR_VERIFY **NO**.
+
+[Последний raw PRE](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-lower-keyboard-pre-received-20261001T130510Z/result.md). [Точный scope amendment](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard.proposed.md), SHA 8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a: **PROPOSED / NOT_USER_ACCEPTED**. Решение требуется только для доказанно lower-origin popup/menu DOM; общий vendor keyboard/routing scope не добавляется. После acceptance: coherent plan/BDD → strict → fresh automatic PRE → RED → bounded repair/checks. Четыре approved artifacts сейчас не меняются.
+
+Git checkpoints **257b3a3** и **c2fa3ba** committed/pushed, SHA обоих проверены на origin. Source/test/scripts538 unchanged. Последний root PASS остаётся pre-delta; новые popup A11Y/visual checks NOT_RUN.
+
+
 Обновлено: **2026-10-01T12:02:37.672Z**. Событие: checkpoint commit/push preparing; strict/BDD/compliance/diff PASS, source538 unchanged.
 
 **Активный этап: P01 Theme Core — 5/10 задач закрыто.** Foundation закрыт и архивирован, 21/21. Сейчас: целевые проверки **PASS**, полный прогон текущих исходников **PASS**, решения Save As / lower chrome **USER_ACCEPTED**, новый PRE **FAIL (SPEC_CONFLICT / ABSTRACTION_BOUNDARY)**. Нижняя панель Draw.io: actual diagnostic **FAIL6/6**. P01 не готов к verify/archive.
@@ -153,3 +162,9 @@ P01-FRAME-LOWER-KEYBOARD-01 **USER_ACCEPTED / NEW_PRE_PREPARING**. Scope реш�
 [Фактический checkpoint/source/push record](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-ui-checkpoint-local-push-blocked-20261001T124226Z.json)
 
 - 2026-10-01T12:44:48.473Z: точное human разрешение на UI payload/destination получено; push checkpoint257b3a3 **PASS**, actual remote SHA exact. Исторический отказ сохранён. Новый lower keyboard PRE готовится; code/test538 unchanged; P01 5/10.
+
+- 2026-10-01T12:49:52.466Z: metadata checkpoint **c2fa3ba** committed/pushed; remote SHA exact. Fresh accepted lower keyboard PRE **PREPARING**,1396 selected files; requested gpt-6-astra/xhigh; candidate frozen during reviewer. Permanent RED/production NOT_RUN; next step requires actual PRE PASS.
+
+- 2026-10-01T13:05:10.427Z: received lower keyboard PRE FAIL, one B01; exact lower-origin popup scope proposal saved, human decision pending. Earlier FAIL/acceptance preserved; no code/test/approved-plan edits.
+
+- 2026-10-01T13:08:50.265Z: strict OpenSpec, BDD, compliance controls, diff **PASS exit0**; source538 unchanged. Product PRE **FAIL**, popup proposal NOT_USER_ACCEPTED; four approved artifacts unchanged. openspec/changes/frade-p01-theme-core/evidence/p01-lower-popup-proposal-checks-20261001T130602Z.json
