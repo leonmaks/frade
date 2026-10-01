@@ -8,7 +8,7 @@
 | --- | --- |
 | Ветка | codex/frade-ui-design-contract |
 | Worktree | C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade |
-| Исходный commit / текущий HEAD | 98f387f96b51b0ad139e3507c376ff1c3e8dec09 |
+| Исходный baseline commit | 98f387f96b51b0ad139e3507c376ff1c3e8dec09 |
 | Guide / tokens | v1.0 / 1.0.0 |
 | Authority | [P01 tasks](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/tasks.md), [execution context](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/execution-context.json), [traceability](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/docs/ui/decisions/p01-theme-traceability.json) |
 | Правила текущего P01 | FDS-003/008/009/015, A11Y-001–009; точный scope и исключения — в [design](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/design.md) |
@@ -143,3 +143,13 @@ READY_FOR_VERIFY: **NO**
 - Git policy USER_ACCEPTED: commit + push каждого завершённого checkpoint в этой UI-ветке. Первый накопленный checkpoint содержит foundation и незавершённый P01 с честными gate/tasks статусами; не объявляет P01 завершённым.
 
 - Git checkpoint preparing: branch codex/frade-ui-design-contract, actual remote branch not present, source538 unchanged, lower keyboard plan checks PASS. Foundation archived; P01 INCOMPLETE5/10/new PRE pending. No force/other ref update. openspec/changes/frade-p01-theme-core/evidence/p01-ui-git-checkpoint-started-20261001T120237Z.json
+
+## Текущее продолжение: accepted lower keyboard PRE
+
+Локальный checkpoint **257b3a31cf04c4c06583618381ab492d68060c5e** создан: foundation archived, P01 INCOMPLETE5/10. Исходный baseline98f сохранён отдельно. Push **BLOCKED_AUTO_REVIEW**, фактически не выполнялся; точное разрешение для origin `git@github.com:leonmaks/frade.git` и UI payload запрошено. Код/tests538 unchanged от сохранённого full root PASS; активный code/planning diff PASS, raw historical whitespace diagnostic FAIL сохранён без исправления evidence.
+
+P01-FRAME-LOWER-KEYBOARD-01 **USER_ACCEPTED / NEW_PRE_PREPARING**. Scope решение уже принято; повторный исторический PRE FAIL остаётся историей, новая implementation authority появится только после fresh PRE PASS. Permanent RED/production delta NOT_RUN; visual/verify/cumulative POST/archive NOT_RUN. Подготовка PRE не зависит от push или Routing.
+
+[Фактический checkpoint/source/push record](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-ui-checkpoint-local-push-blocked-20261001T124226Z.json)
+
+- 2026-10-01T12:44:48.473Z: точное human разрешение на UI payload/destination получено; push checkpoint257b3a3 **PASS**, actual remote SHA exact. Исторический отказ сохранён. Новый lower keyboard PRE готовится; code/test538 unchanged; P01 5/10.

@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-10-01T12:46:49.670Z",
+  "classification": "ENVIRONMENT_FORMATTING",
+  "cause": "New CRLF append in raw LF-tracked dashboard produced carriage-return whitespace diagnostic; no actual trailing spaces or production defect.",
+  "originalFail": "evidence/p01-lower-keyboard-resume-checks-20261001T124448Z-diff.txt",
+  "repair": "Normalize only this resume appended dashboard lines to existing LF; no raw historical evidence modified",
+  "command": "git -c core.longpaths=true diff --check",
+  "exit": 0,
+  "log": "openspec/changes/frade-p01-theme-core/evidence/p01-resume-dashboard-eol-check-20261001T124649Z.txt",
+  "productionChanged": false
+}
