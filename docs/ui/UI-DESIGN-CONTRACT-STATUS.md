@@ -168,3 +168,5 @@ P01-FRAME-LOWER-KEYBOARD-01 **USER_ACCEPTED / NEW_PRE_PREPARING**. Scope реш�
 - 2026-10-01T13:05:10.427Z: received lower keyboard PRE FAIL, one B01; exact lower-origin popup scope proposal saved, human decision pending. Earlier FAIL/acceptance preserved; no code/test/approved-plan edits.
 
 - 2026-10-01T13:08:50.265Z: strict OpenSpec, BDD, compliance controls, diff **PASS exit0**; source538 unchanged. Product PRE **FAIL**, popup proposal NOT_USER_ACCEPTED; four approved artifacts unchanged. openspec/changes/frade-p01-theme-core/evidence/p01-lower-popup-proposal-checks-20261001T130602Z.json
+
+- 2026-10-01T13:10:44.700Z: review/decision checkpoint **27e8765** committed/pushed; actual remote SHA exact. Evidence openspec/changes/frade-p01-theme-core/evidence/p01-review-checkpoint-published-20261001T131044Z.json. Этот checkpoint содержит PRE FAIL и proposed scope, не implementation PASS. Последующий metadata commit фиксирует эту подтверждённую публикацию; scope решение остаётся pending.
