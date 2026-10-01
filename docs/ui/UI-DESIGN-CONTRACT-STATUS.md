@@ -1,6 +1,23 @@
 # Frade UI Design Contract — статус этой ветки
 
-## Текущий шаг — PRE FAIL / решение по lower-origin popup
+## Текущий checkpoint — общий workflow ARCHIVED / checkpoint опубликован
+
+Обновлено: 2026-10-01T15:30:06.011Z. Supplier **frade-common-agent-workflow:6/6, ARCHIVED**. PRE2, cumulative POST2, verify, установка и post-archive checks **PASS**. Общие правила v1.0 и автоматические independent read-only gpt-6-astra/xhigh PRE/POST обязательны для Frade; actual backend/effort NOT_CONFIRMED. Shared release 9cd8cb57ae4f20373970181325d25e80181e7195b9a7798c8eeb3e5d5eee4c86 установлен в Git common;15/15 hashes, UI/Routing discovery и contextual isolation PASS. Active Routing не изменялся; prefix primary AGENTS сохранён.
+
+| Задача supplier | Статус |
+| --- | --- |
+| 1.1 authority/audit/plan/strict | DONE |
+| 1.2 independent PRE | DONE: PASS после сохранённого FAIL |
+| 2.1 RED/GREEN/runner/shared rules | DONE:9 functional +15 inherited PASS |
+| 2.2 own status/Routing handoff | DONE; right-panel queued, visibility NOT_CONFIRMED |
+| 3.1 verify/checks/independent POST | DONE: cumulative POST2 PASS, предыдущий FAIL сохранён |
+| 3.2 shared publication/primary append/install checks | DONE:15 files, prefix proof, both contexts PASS |
+| Canonical sync/archive/post-archive checks | DONE: new spec synced; archive completed;9 tests/scoped lint/strict/UI26+controls PASS |
+| Process checkpoint commit/push/remote SHA | DONE: 704d43ad89163bd1c8433c76dc1db98b408dd036; push PASS, ls-remote SHA verified. Следующая запись metadata относится к этому checkpoint. STOP |
+
+[Итоговый отчёт](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-10-01-frade-common-agent-workflow/evidence/closure-report.md). P01 **5/10**, popup **NOT_USER_ACCEPTED**, READY_FOR_VERIFY **NO**. Guide v1.0 / tokens1.0.0 и продуктовые исходники не изменены этим supplier. Routing blockers не снимаются; P01/P02/Routing progression не начат. Исторические записи ниже сохранены.
+
+## Сохранённый P01 checkpoint — PRE FAIL / решение по lower-origin popup
 
 Независимый accepted keyboard PRE завершён **FAIL**, один blocker B01: меню/подменю страниц находятся вне ранее разрешённого subtree. Candidate/packet unchanged;1396 hashes verified. SaveAs новых блокеров не имеет; общий gate FAIL. Production/permanent RED этого delta **NOT_RUN**, P01 **5/10**, READY_FOR_VERIFY **NO**.
 
@@ -11,7 +28,7 @@ Git checkpoints **257b3a3** и **c2fa3ba** committed/pushed, SHA обоих пр
 
 Обновлено: **2026-10-01T12:02:37.672Z**. Событие: checkpoint commit/push preparing; strict/BDD/compliance/diff PASS, source538 unchanged.
 
-**Активный этап: P01 Theme Core — 5/10 задач закрыто.** Foundation закрыт и архивирован, 21/21. Сейчас: целевые проверки **PASS**, полный прогон текущих исходников **PASS**, решения Save As / lower chrome **USER_ACCEPTED**, новый PRE **FAIL (SPEC_CONFLICT / ABSTRACTION_BOUNDARY)**. Нижняя панель Draw.io: actual diagnostic **FAIL6/6**. P01 не готов к verify/archive.
+**Продуктовый этап P01 Theme Core — 5/10; сейчас выполняется независимый supplier frade-common-agent-workflow (4/6).** Foundation закрыт и архивирован, 21/21. Сейчас: целевые проверки **PASS**, полный прогон текущих исходников **PASS**, решения Save As / lower chrome **USER_ACCEPTED**, новый PRE **FAIL (SPEC_CONFLICT / ABSTRACTION_BOUNDARY)**. Нижняя панель Draw.io: actual diagnostic **FAIL6/6**. P01 не готов к verify/archive.
 
 | Контекст | Значение |
 | --- | --- |
@@ -170,3 +187,9 @@ P01-FRAME-LOWER-KEYBOARD-01 **USER_ACCEPTED / NEW_PRE_PREPARING**. Scope реш�
 - 2026-10-01T13:08:50.265Z: strict OpenSpec, BDD, compliance controls, diff **PASS exit0**; source538 unchanged. Product PRE **FAIL**, popup proposal NOT_USER_ACCEPTED; four approved artifacts unchanged. openspec/changes/frade-p01-theme-core/evidence/p01-lower-popup-proposal-checks-20261001T130602Z.json
 
 - 2026-10-01T13:10:44.700Z: review/decision checkpoint **27e8765** committed/pushed; actual remote SHA exact. Evidence openspec/changes/frade-p01-theme-core/evidence/p01-review-checkpoint-published-20261001T131044Z.json. Этот checkpoint содержит PRE FAIL и proposed scope, не implementation PASS. Последующий metadata commit фиксирует эту подтверждённую публикацию; scope решение остаётся pending.
+
+## Общие правила Frade — текущая отдельная задача
+
+Current supplier projection is at the top of this file. The dated entry below records its initial planning state; it is historical, not the current phase. P01 remains5/10 / popup scope pending; active Routing remains owner-managed.
+
+- 2026-10-01T13:46:43.234Z: common-agent-workflow1/6, strict validation PASS;24-file independent PRE preparing, gpt-6-astra/xhigh. Shared production tooling/install NOT_RUN; no feature implementation authority implied.

@@ -12,3 +12,5 @@ KNOWN BLOCKERS: none for this supplier. P01 popup NOT_USER_ACCEPTED and Routing 
 READY_FOR_VERIFY: YES — verification and independent POST already passed; archive complete.
 
 GATE_STATUS: PASS
+
+Publication recorded 2026-10-01T15:30:06.011Z: process checkpoint 704d43ad89163bd1c8433c76dc1db98b408dd036 committed and pushed to authorized origin/ref; actual ls-remote SHA matched. First verification connection closed remotely (ENVIRONMENT), bounded retry exit0. Current shared runner status AVAILABLE after commit. Subsequent metadata stores this receipt, not a self-referential SHA.
