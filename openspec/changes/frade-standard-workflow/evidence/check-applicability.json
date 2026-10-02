@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "scope": "W01 engineering controls/docs/root additive loader/package-script/CI only",
+  "decidedBeforeExecution": true,
+  "required": [
+    {
+      "command": "openspec validate frade-standard-workflow --strict --json",
+      "reason": "Active process contract"
+    },
+    {
+      "command": "openspec validate --all --strict --json",
+      "reason": "Cumulative specification consistency"
+    },
+    {
+      "command": "node --test tests/directions/*.test.mjs",
+      "reason": "All actual new controls including disposable Git and negative cases"
+    },
+    {
+      "command": "pnpm lint",
+      "reason": "General repository lint retained"
+    },
+    {
+      "command": "pnpm typecheck",
+      "reason": "General repository typecheck retained"
+    },
+    {
+      "command": "pnpm build",
+      "reason": "General repository build retained"
+    },
+    {
+      "command": "pnpm test:boundaries",
+      "reason": "General existing boundary regressions retained"
+    },
+    {
+      "command": "pnpm check:boundaries",
+      "reason": "General existing boundary commands retained"
+    },
+    {
+      "command": "Own content/hash/link/traceability/frozen-product audit and scoped formatting",
+      "reason": "New control correctness, preserved packages/apps/lockfile/Routing/vendor"
+    }
+  ],
+  "notApplicable": [
+    {
+      "family": "New Routing algorithm/parity/numeric gates",
+      "reason": "No routing source, semantic contract or Routing control modification; exact protected tree hashes remain mandatory; an actual semantic change would require new Routing ownership."
+    },
+    {
+      "family": "New UI/browser/Electron human visual acceptance",
+      "reason": "No product presentation source or visual baseline modification; no visual approval claimed."
+    }
+  ],
+  "remoteCI": "NOT_RUN until observed",
+  "pre": "Exact assigned independent PRE required before code",
+  "verifyPost": "Required after actual cumulative checks"
+}

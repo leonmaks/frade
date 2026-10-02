@@ -1,17 +1,17 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-02T18:49:24.120Z
+UPDATED_AT_UTC: 2026-10-02T19:00:01.719Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
-Это собственный dashboard нового направления; общий шаблон пока PROPOSED, не deployed.
+Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: PLANNING | HEALTH: BLOCKED
-NEXT_PERMITTED_ACTION: human concrete policy/cadence decision -> fresh formal PRE on approved candidate -> tooling controls; no production admission yet.
-HUMAN_DECISION: принять/скорректировать проект policy, cadence и control scope после чтения artifacts.
-READY_FOR_IMPLEMENTATION: NO (concrete policy decision and formal PRE/checkpoint NOT_RUN).
+STAGE: W01 | PHASE: PRE_REVIEW | HEALTH: RUNNING
+NEXT_PERMITTED_ACTION: freeze accepted planning candidate -> fresh exact W01 formal PRE -> retained PASS/published owner checkpoint -> meaningful RED/tooling controls.
+HUMAN_DECISION: NONE; D03 accepted by direct reply «Принято. Продолжай.».
+READY_FOR_IMPLEMENTATION: NO (formal PRE/checkpoint NOT_RUN).
 READY_FOR_ARCHIVE: NO.
-Model matrix и feature-branch commit/push authorization приняты; весь proposed policy ещё не утверждён.
+Model matrix и feature-branch commit/push authorization приняты; конкретная общая policy/cadence/control scope принята D03.
 
 ## 2. Идентичность / scope
 
@@ -28,7 +28,7 @@ Public policy adoption: evidence/repository-audit.json has exact2 paths/hashes; 
 
 | Stage | Result | Phase / health | PRE / Verify / POST / archive |
 |---|---|---|---|
-| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | PLANNING/BLOCKED | Formal gates NOT_RUN |
+| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | PRE_REVIEW/RUNNING | Formal gates NOT_RUN |
 | Existing-owner adoption | Separate Routing/UI/Repo Core consumer checkpoints | NOT_STARTED; outside W01 | Own future scope/gates |
 | Main integration | Explicit merged-candidate revalidation | NOT_STARTED; outside current permission | No automatic merge |
 
@@ -41,13 +41,13 @@ STOP after W01; no next numbered change or owner migration automatically.
 | 1.1 | planning-architecture | isolate -> audit -> public-policy adoption | COMPLETE; repository-audit.json/user-decisions.json |
 | 1.2 | planning-architecture | consolidate -> specs/design/tasks -> standard/onboarding/status/manifest/adoption drafts | COMPLETE; feedback-register.md and drafts |
 | 1.3 | planning-architecture + independent-PRE pair for draft-only review | strict/checks -> independent draft-quality review -> checkpoint | COMPLETE; strict/integrity PASS; draft-01 BLOCKED, draft-02 FAIL retained; fresh draft-03 PASS on faf69d33 |
-| 1.4 | human material policy decision | concrete proposal -> acceptance/reconciliation | OPEN |
+| 1.4 | human material policy decision | concrete proposal -> acceptance/reconciliation | COMPLETE; policy-acceptance.json D03 |
 | 1.5 | independent-PRE | approved coherent plan -> actual formal PRE -> frozen checkpoint | OPEN |
 | 2.1–2.7 | tooling-tests | meaningful RED -> controls/docs/CLI -> GREEN | NOT_STARTED |
 | 3.1–3.2 | tooling-tests | cumulative applicable checks + integrity audit | NOT_RUN |
 | 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | NOT_RUN |
 
-TASKS_COMPLETE/TOTAL/REMAINING: 3/18/15.
+TASKS_COMPLETE/TOTAL/REMAINING: 4/18/14.
 REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed acceptance).
 46 BDD scenario declarations counted by actual planning audit; product/control behavioral tests NOT_RUN.
 
@@ -65,7 +65,7 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | Formal PRE/Verify/POST | REQUIRED for implementation/closure | NOT_RUN |
 | New validator/bootstrap/publication control suites | REQUIRED after approved plan | NOT_IMPLEMENTED/NOT_RUN |
 | Product suites | No product changes in current planning | NOT_RUN; no product PASS claimed |
-| Human policy/visual acceptance | Policy decision REQUIRED; product visuals outside current scope | Policy PENDING; no visual approval claim |
+| Human policy/visual acceptance | Policy decision REQUIRED; product visuals outside current scope | Policy ACCEPTED_D03; no visual approval claim |
 | CI / branch protection | Separate observable control | REMOTE_NOT_RUN / NOT_CONFIGURED_OR_UNVERIFIED |
 
 Historical invocation/EOF/EOL/link-check/count failures and classified corrections retained. Draft review history: BLOCKED -> FAIL/SPEC_CONFLICT -> repaired fresh PASS; raw reports/events/exits/provenance are immutable. Fresh current strict and planning-integrity PASS; staged diff-check PASS. No existing Routing/UI FAIL waived.
@@ -88,7 +88,7 @@ No model substitution, task override or silent current-chat switch. Common servi
 |---|---|---|---|
 | D01 models | W01 | ACCEPTED | Retain exact pairs and invocation provenance |
 | D02 remote/ref | W01 | ACCEPTED | Only origin refs/heads/codex/frade-standard-workflow |
-| D03 concrete common policy/cadence | W01 | PENDING | Read drafts/standard-workflow.md; approve or revise |
+| D03 concrete common policy/cadence | W01 | ACCEPTED | Direct reply and bound planning hashes retained; formal PRE next |
 | Adoption Routing/UI/Repo Core | Each consumer | NOT_STARTED | Do not block independent supplier or edit foreign workspace |
 | Reviewer CLI environment | W01 | RESOLVED_CURRENT; historical BLOCKED retained | Exact retries completed with FAIL then PASS; no model substitution or quota/reset claim |
 | Unknown writable-worker runtime | W01 tooling capability | NOT_IMPLEMENTED | Implement explicit honest capability/guard, no false dispatch |
@@ -98,12 +98,12 @@ No active production fix attempts; RCA rule retained.
 ## 8. Git / публикация / evidence
 
 SOURCE_CHECKPOINT_SHA: faf69d339b338173158d2f31465c2aa4f0b4108d (independent draft-quality PASS, not implementation admission).
-COMMIT_STATE: reviewed source committed/published faf69d33; this follow-up commits only receipt/status metadata and task1.3 completion; plan source hash remains501168ce...
+COMMIT_STATE: previous source/metadata published61c7b6d9; accepted policy checkpoint preparing for formal PRE freeze.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
 PUSH_STATE: reviewed source PUBLISHED, exact remote SHA verified. Metadata follow-up publication uses the external receipt below, bound to its own sourceSha; no recursive receipt commits.
 VERIFIED_SOURCE_REMOTE_SHA: faf69d339b338173158d2f31465c2aa4f0b4108d.
 SOURCE_PUBLICATION_RECEIPT: openspec/changes/frade-standard-workflow/evidence/publication/source-faf69d33-20261002.json.
-METADATA_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/metadata-followup-20261002.json; verify receipt.sourceSha against live HEAD. Receipt is external post-publication evidence; its absence/mismatch is NOT_RUN/BLOCKED, not PASS.
+PREVIOUS_METADATA_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/metadata-followup-20261002.json; previous61c7b6d9 verified; next checkpoint pending.
 Current evidence: openspec/changes/frade-standard-workflow/evidence/.
 Reviewable standard/onboarding/status/manifest/adoption: openspec/changes/frade-standard-workflow/drafts/.
 Feedback register: openspec/changes/frade-standard-workflow/feedback-register.md.

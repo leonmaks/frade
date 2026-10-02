@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "status": "PROPOSED_TEMPLATE_NOT_INSTALLED",
+  "status": "ACCEPTED_TEMPLATE_NOT_INSTALLED",
   "id": "frade-standard-workflow",
   "title": "Единый workflow Frade",
   "owner": {
@@ -35,7 +35,7 @@
       "vendor assets",
       "all other change artifacts"
     ],
-    "mode": "PLANNING",
+    "mode": "PRE_REVIEW",
     "planningAllowed": [
       "openspec/changes/frade-standard-workflow/**",
       "docs/engineering/BRANCH-STATUS.md"
@@ -68,15 +68,15 @@
     "authorization": "openspec/changes/frade-standard-workflow/evidence/user-decisions.json",
     "remote": "git@github.com:leonmaks/frade.git",
     "ref": "refs/heads/codex/frade-standard-workflow",
-    "cadence": "PROPOSED_completed-tested-task_or_significant_checkpoint",
+    "cadence": "completed-tested-task_or_significant_checkpoint",
     "autoMainMerge": false
   },
   "stages": [
     {
       "id": "W01",
       "change": "frade-standard-workflow",
-      "phase": "PLANNING",
-      "health": "BLOCKED",
+      "phase": "PRE_REVIEW",
+      "health": "RUNNING",
       "dependencies": [],
       "roleAssignments": [
         {
@@ -113,7 +113,7 @@
       "taskOverrides": [],
       "tasksAuthority": "openspec/changes/frade-standard-workflow/tasks.md",
       "admission": {
-        "policyDecision": "PENDING",
+        "policyDecision": "ACCEPTED_D03",
         "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
         "formalPRE": "NOT_RUN",
         "Verify": "NOT_RUN",
@@ -147,5 +147,9 @@
     "statusValidator": "NOT_IMPLEMENTED",
     "writerDispatcher": "NOT_IMPLEMENTED",
     "reviewTransport": "AVAILABLE_v1.1_exact_selected_role"
+  },
+  "policyAcceptance": {
+    "artifact": "openspec/changes/frade-standard-workflow/evidence/policy-acceptance.json",
+    "sha256": "98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239"
   }
 }

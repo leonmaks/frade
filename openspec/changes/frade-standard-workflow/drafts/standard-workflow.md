@@ -1,6 +1,6 @@
 # Единый рабочий процесс Frade — проект стандарта 2.0
 
-Статус: PROPOSED. Это конкретный проект для чтения и замечаний. Действующая общая политика — v1.1; документ не выдаёт внедрение или миграцию за завершённые. Источник: proposal/design/specs change frade-standard-workflow.
+Статус: ACCEPTED_FOR_IMPLEMENTATION, NOT_DEPLOYED. Пользователь принял проект; обязательные PRE/RED/checks/Verify/POST предшествуют внедрению. Действующая общая политика — v1.1; документ не выдаёт внедрение или миграцию за завершённые. Источник: proposal/design/specs change frade-standard-workflow.
 
 ## 1. Общая структура
 

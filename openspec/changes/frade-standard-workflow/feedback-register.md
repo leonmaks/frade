@@ -26,3 +26,5 @@ User will read top-to-bottom and add comments. Each substantive correction updat
 R01 independent draft review: FAIL/SPEC_CONFLICT (closure task versus incomplete scope allowlist). Reconciled phase-specific exact destinations/reference relocation across design, manifest, lifecycle scenarios/traceability, tasks and readable standard; fresh review required. No contract weakened or product/foreign workspace changed.
 
 R02 fresh independent draft review: PASS on faf69d33 (80 packet hashes;18 requirements/46 scenarios/18 tasks). Scope only DRAFT_PLANNING_QUALITY_ONLY; human concrete policy decision and formal PRE remain outstanding. Nonblocking dashboard staleness corrected after unfreeze; historical quota blockage is resolved for current transport, retained in history.
+
+D03 concrete policy/cadence/control scope ACCEPTED by human «Принято. Продолжай.» after presentation of reviewed planning source61c7b6d9. Exact artifact hashes retained in evidence/policy-acceptance.json. Continue W01 formal PRE then implementation; no new model/remote approval or automatic main/foreign-owner migration.

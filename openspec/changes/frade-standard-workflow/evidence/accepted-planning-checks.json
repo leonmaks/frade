@@ -1,0 +1,38 @@
+[
+  {
+    "label": "accepted-plan-integrity",
+    "startUtc": "2026-10-02T19:01:25.2717096Z",
+    "command": "node",
+    "arguments": [
+      "openspec/changes/frade-standard-workflow/evidence/check-planning.mjs"
+    ],
+    "output": "openspec/changes/frade-standard-workflow/evidence/accepted-plan-integrity.txt",
+    "exit": 0
+  },
+  {
+    "label": "accepted-plan-strict",
+    "startUtc": "2026-10-02T19:01:25.8598368Z",
+    "command": "openspec",
+    "arguments": [
+      "validate",
+      "frade-standard-workflow",
+      "--strict",
+      "--json"
+    ],
+    "output": "openspec/changes/frade-standard-workflow/evidence/accepted-plan-strict.txt",
+    "exit": 0
+  },
+  {
+    "label": "accepted-all-strict",
+    "startUtc": "2026-10-02T19:01:26.9650041Z",
+    "command": "openspec",
+    "arguments": [
+      "validate",
+      "--all",
+      "--strict",
+      "--json"
+    ],
+    "output": "openspec/changes/frade-standard-workflow/evidence/accepted-all-strict.txt",
+    "exit": 0
+  }
+]
