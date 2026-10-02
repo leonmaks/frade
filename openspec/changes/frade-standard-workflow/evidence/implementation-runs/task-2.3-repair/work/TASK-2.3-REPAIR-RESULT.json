@@ -1,0 +1,104 @@
+{
+  "stage": "W01",
+  "task": "2.3",
+  "scope": "Exact approved task 2.3 repair only; no owner import or task 2.4 work",
+  "requestedModel": "gpt-6-sol",
+  "requestedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "readyForVerify": "NO",
+  "eligibleChanges": [
+    "scripts/directions/bootstrap.mjs",
+    "scripts/directions/contracts.mjs",
+    "tests/directions/bootstrap.test.mjs",
+    "tests/directions/bootstrap-repair.test.mjs",
+    "docs/engineering/templates/task-2.3-bootstrap.md",
+    "evidence/task-2.3-repair/**",
+    "TASK-2.3-REPAIR-RESULT.json"
+  ],
+  "sourceAndTestHashes": {
+    "preFixBootstrapSha256": "78fed8202d3b54401ca22fcfdd9cd6c3e41ddcdf511caa33cb2763c13aa510c3",
+    "originalBootstrapTestSha256": "9127daa3ca06bf62813d649c9a48eae0403ae5cb9c2402a621335105aa182288",
+    "finalBootstrapSha256": "7869985dfe6ff38bcba0a65390991fabbbaca0863d71813279b064a897580cf9",
+    "finalContractsSha256": "e5113e9b500354ef3a91daf5c606646d6f1dee12b5dd2c5ab045022458a373ff",
+    "finalBootstrapTestSha256": "24c27b6b32e64be0278c6e23f43d9b68a6bdeb06668c649b1b667490d266d4a9",
+    "finalRepairTestSha256": "5f74919177b364978ff0e535cbf79999bb553e6554851c2eec9270d15369b504"
+  },
+  "historicalFailures": {
+    "windows59": {
+      "path": "evidence/task-2.3-repair/historical-windows59-fail5.json",
+      "exit": 1,
+      "pass": 54,
+      "fail": 5,
+      "cause": "exactDirectory rejected canonical Windows Git common .git without gitCommon:true"
+    },
+    "linuxController": "evidence/task-2.3-repair/historical-linux-probes.json",
+    "otherController": "evidence/task-2.3-repair/historical-controller-probes.json",
+    "originalResult": "evidence/task-2.3-repair/historical-task23-result.json"
+  },
+  "assertionIds": [
+    "FWE-003-A01", "FWE-001-A01", "FWE-002-A01", "FWE-003-A02",
+    "FWE-003-A03", "FWE-003-A04", "FWE-001-A02", "FWE-003-A05",
+    "FWE-001-A03", "FWE-003-A06", "I23-01", "I23-02", "I23-03",
+    "I23-04", "I23-05", "I23-06"
+  ],
+  "regressionEvidence": {
+    "redCommand": "node tests/directions/bootstrap-repair.test.mjs",
+    "redLog": "evidence/task-2.3-repair/red-direct.log",
+    "redExit": 1,
+    "redResult": "16 assertions; 10 passed and 6 failed before production edits",
+    "redTestSource": "evidence/task-2.3-repair/bootstrap-repair.red.test.mjs",
+    "redTestSourceNote": "Reconstructed from the initial patch after the failing run; original bootstrap test and production bytes were copied before edits",
+    "preFixSource": "evidence/task-2.3-repair/bootstrap.pre-fix.mjs",
+    "originalTests": "evidence/task-2.3-repair/bootstrap.original59.test.mjs",
+    "greenCommand": "mkdir -p /tmp; TMPDIR=/tmp node tests/directions/bootstrap-repair.test.mjs",
+    "greenLog": "evidence/task-2.3-repair/final-bootstrap-repair.log",
+    "greenExit": 0,
+    "greenResult": "19 assertions passed, comprising 9 retained bootstrap and 10 repair assertions"
+  },
+  "original59Green": [
+    { "command": "TMPDIR=/tmp node tests/directions/arguments.test.mjs", "exit": 0, "passed": 5, "log": "evidence/task-2.3-repair/final-arguments.log" },
+    { "command": "TMPDIR=/tmp node tests/directions/bootstrap.test.mjs", "exit": 0, "passed": 9, "log": "evidence/task-2.3-repair/final-bootstrap.log" },
+    { "command": "TMPDIR=/tmp node tests/directions/contracts.test.mjs", "exit": 0, "passed": 14, "log": "evidence/task-2.3-repair/final-contracts.log" },
+    { "command": "TMPDIR=/tmp node tests/directions/lifecycle.test.mjs", "exit": 0, "passed": 11, "log": "evidence/task-2.3-repair/final-lifecycle.log" },
+    { "command": "TMPDIR=/tmp node tests/directions/repair.test.mjs", "exit": 0, "passed": 5, "log": "evidence/task-2.3-repair/final-repair.log" },
+    { "command": "TMPDIR=/tmp node tests/directions/roles.test.mjs", "exit": 0, "passed": 15, "log": "evidence/task-2.3-repair/final-roles.log" }
+  ],
+  "otherCommands": [
+    { "command": "node --check scripts/directions/bootstrap.mjs && node --check scripts/directions/contracts.mjs && node --check tests/directions/bootstrap.test.mjs && node --check tests/directions/bootstrap-repair.test.mjs", "exit": 0, "log": "evidence/task-2.3-repair/syntax.log" },
+    { "command": "openspec validate alpha-direction --strict --json", "exit": 127, "log": "evidence/task-2.3-repair/strict-draft.log", "meaning": "OpenSpec CLI unavailable; actual strict validation of the created fixture remains required" },
+    { "command": "git status --short", "exit": 128, "log": "evidence/task-2.3-repair/git-status.log", "meaning": "Staged repair work directory is not a Git checkout; changed paths audited by input seed comparison" }
+  ],
+  "rootCauseAnalysis": {
+    "I23-01": "ABSTRACTION_BOUNDARY: Git common needs the explicit terminal .git exception; ordinary owner paths retain the prohibition",
+    "I23-02": "INTEGRATION: worktree registration was incorrectly equated with the first list entry; trust also depended on request adjacent JSON rather than the installed control location",
+    "I23-03": "SPEC_CONFLICT: seeded delta capability directory differed from its declared closure destination and the draft lacked a normative SHALL",
+    "I23-04": "INTEGRATION and ABSTRACTION_BOUNDARY: Git worktree add crosses into configured hooks and checkout filters unless every Git invocation and checkout attributes are guarded",
+    "I23-05": "INVARIANT: check accepted a syntactically valid baseline without commit ancestry and followed linked manifest parents",
+    "I23-06": "ABSTRACTION_BOUNDARY: bootstrap authority must come from current hash verified shared release and unchanged runner status outside the request"
+  },
+  "authority": {
+    "production": "Running control module resolves canonical Git common before request source inspection, verifies current.json, immutable bundle bytes and public policy, then requires existing runner status AVAILABLE with exact release and policy path; absent installation is NOT_CONFIGURED",
+    "fixture": "Explicit branded library test context supplies a synthetic AVAILABLE status only after fixture release bundle and policy hashes verify; production CLI never accepts the fixture context",
+    "requestSelfAssertion": "Not accepted",
+    "newReleasePublished": false
+  },
+  "strictDraft": {
+    "capability": "<id> matches openspec/specs/<id>/spec.md closure target",
+    "normativeRequirement": "SHALL resolve acceptance before dependent implementation",
+    "productAcceptance": "UNRESOLVED/BLOCKED",
+    "strictValidation": "NOT_RUN: CLI unavailable in sandbox; parent must validate the created fixture"
+  },
+  "safeGit": {
+    "allProductionGitCalls": "Command-local core.hooksPath=/dev/null, core.fsmonitor=false, core.attributesFile=/dev/null, core.autocrlf=false; no local or global config mutation",
+    "checkoutFilters": "Fail closed for filter attributes in committed .gitattributes or Git common info/attributes",
+    "resourceBytes": "Policy bytes and baseline AGENTS are read and seeded exactly; no foreign product source copied"
+  },
+  "partialRecoveryLimits": "Exclusive request intent precedes worktree add; completion follows seeding; same-request retry verifies actual registered owner and ancestry. Unregistered or colliding targets block without cleanup, reset or overwrite. Check grants no gate acceptance.",
+  "limitations": [
+    "Linux Node 18.19.1 and Git 2.43.0 ran; Windows Node 24 rerun is unavailable here",
+    "OpenSpec CLI unavailable, so strict validation of an actual created fixture is not proven here",
+    "Production installed runner status cannot be demonstrated in this staged non-Git sandbox; production create stays NOT_CONFIGURED until reviewed control installation",
+    "Prettier and staged ESLint checks are left to the parent; ignored files cannot count as lint proof",
+    "No formal Verify, POST, archive, publication or later numbered task was run"
+  ]
+}

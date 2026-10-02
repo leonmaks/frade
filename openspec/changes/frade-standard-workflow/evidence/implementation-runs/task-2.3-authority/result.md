@@ -1,0 +1,7 @@
+Task 2.3 authority repair is complete. Creation now requires an external grant for the exact normalized request, and `check` binds the manifest’s original baseline to both retained origin records. The fixture-only creation flag is gone. The Windows secondary checkout helper uses command-local `core.autocrlf=false`, and the unused import is removed.
+
+Only [bootstrap.mjs](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-authority-20261003/work/scripts/directions/bootstrap.mjs), the two bootstrap test files, and the [task 2.3 contract](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-authority-20261003/work/docs/engineering/templates/task-2.3-bootstrap.md) differ from the repair seed. `cli.mjs` is byte-identical to the task 2.3 seed and remains eligible for parent import.
+
+Linux verification passed: all original 50 core and role assertions, 9 bootstrap assertions, 10 repair assertions, and 6 new assertions; the actual I23-07 and I23-08 controller probes also passed. The tests-only snapshot, pre-fix hashes, RED and GREEN logs, exact eligible paths, and historical limitations are in [TASK-2.3-AUTHORITY-RESULT.json](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-authority-20261003/work/TASK-2.3-AUTHORITY-RESULT.json).
+
+The parent Windows rerun is pending. Actual backend remains **NOT_CONFIRMED**. Work stops at task 2.3.

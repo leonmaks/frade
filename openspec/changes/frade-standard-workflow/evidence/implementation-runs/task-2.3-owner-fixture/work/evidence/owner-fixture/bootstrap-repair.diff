@@ -1,0 +1,103 @@
+--- evidence/owner-fixture/bootstrap-repair.before.mjs	2026-10-03 02:26:38.813713300 +0300
++++ tests/directions/bootstrap-repair.test.mjs	2026-10-03 02:32:14.715175300 +0300
+@@ -1,8 +1,11 @@
+ import test from 'node:test'
+ import assert from 'node:assert/strict'
+ import { spawnSync } from 'node:child_process'
++import { createHash } from 'node:crypto'
+ import {
++  copyFileSync,
+   existsSync,
++  lstatSync,
+   mkdirSync,
+   readFileSync,
+   renameSync,
+@@ -10,6 +13,7 @@
+   writeFileSync,
+ } from 'node:fs'
+ import { join } from 'node:path'
++import { fileURLToPath, pathToFileURL } from 'node:url'
+ import { fixture, invoke } from './bootstrap.test.mjs'
+ import { safeOwnerPath } from '../../scripts/directions/contracts.mjs'
+ 
+@@ -90,6 +94,18 @@
+ test('I23-06 an unverified release cannot authorize creation', async () => {
+   const f = fixture()
+   f.authorize()
++  const modules = ['cli.mjs', 'bootstrap.mjs', 'contracts.mjs']
++  const fixtureModules = join(f.root, 'scripts/directions')
++  const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex')
++  mkdirSync(fixtureModules, { recursive: true })
++  for (const name of modules) {
++    const source = fileURLToPath(new URL(`../../scripts/directions/${name}`, import.meta.url))
++    const copied = join(fixtureModules, name)
++    assert.equal(lstatSync(source).isFile(), true, name)
++    copyFileSync(source, copied)
++    assert.equal(lstatSync(copied).isFile(), true, name)
++    assert.equal(sha256(readFileSync(copied)), sha256(readFileSync(source)), name)
++  }
+   const cli = join(
+     f.common,
+     'frade-workflow/releases',
+@@ -97,9 +113,58 @@
+     'scripts/agent-review/cli.mjs',
+   )
+   writeFileSync(cli, 'console.log("AVAILABLE")\n')
+-  const result = await invoke(f.root, 'create', f.requestFile)
+-  assert.equal(result.status, 2)
+-  assert.equal(result.body.code, 'NOT_CONFIGURED')
++  const worktreesBefore = git(f.root, 'worktree', 'list', '--porcelain')
++  const fixtureCli = join(fixtureModules, 'cli.mjs')
++  const args = [fixtureCli, 'create', f.requestFile]
++  const run = spawnSync(process.execPath, args, {
++    cwd: f.root,
++    encoding: 'utf8',
++  })
++  let stdout = run.stdout
++  let status = run.status
++  if (run.error?.code === 'EPERM' && process.platform !== 'win32') {
++    assert.equal(run.error.path, process.execPath)
++    assert.deepEqual(run.error.spawnargs, args)
++    // The Linux sandbox denies nested Node processes. Evaluate the same copied CLI instead.
++    const previous = {
++      argv: process.argv,
++      cwd: process.cwd(),
++      exitCode: process.exitCode,
++      write: process.stdout.write,
++    }
++    stdout = ''
++    try {
++      process.argv = [process.execPath, fixtureCli, 'create', f.requestFile]
++      process.chdir(f.root)
++      process.exitCode = undefined
++      process.stdout.write = (chunk) => {
++        if (typeof chunk === 'string' && chunk.startsWith('{"ok":')) {
++          stdout += chunk
++          return true
++        }
++        return previous.write.call(process.stdout, chunk)
++      }
++      await import(pathToFileURL(fixtureCli).href)
++      status = process.exitCode ?? 0
++    } finally {
++      process.stdout.write = previous.write
++      process.exitCode = previous.exitCode
++      process.chdir(previous.cwd)
++      process.argv = previous.argv
++    }
++  } else {
++    assert.equal(run.error, undefined)
++    assert.ok(run.pid > 0)
++  }
++  const outcomeLines = stdout.trim().split(/\r?\n/).filter((line) => line.startsWith('{"ok":'))
++  assert.equal(outcomeLines.length, 1, stdout)
++  const body = JSON.parse(outcomeLines[0])
++  assert.equal(status, 2)
++  assert.equal(body.code, 'NOT_CONFIGURED')
++  assert.equal(body.detail, 'CONTROL_NOT_CONFIGURED')
++  assert.equal(existsSync(join(f.common, 'frade-workflow/intents')), false)
++  assert.equal(existsSync(join(f.common, 'frade-workflow/intents', `${f.request.id}.json`)), false)
++  assert.equal(git(f.root, 'worktree', 'list', '--porcelain'), worktreesBefore)
+   assert.equal(existsSync(join(f.parent, f.request.id)), false)
+ })
+ 

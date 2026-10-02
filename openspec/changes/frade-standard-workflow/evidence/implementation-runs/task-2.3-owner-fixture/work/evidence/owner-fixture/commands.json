@@ -1,0 +1,47 @@
+{
+  "nodeVersion": "v18.19.1",
+  "checks": [
+    {
+      "command": "node tests/directions/bootstrap-repair.test.mjs",
+      "exitCode": 0,
+      "stdout": "linux-direct.stdout.log",
+      "stderr": "linux-direct.stderr.log",
+      "exitFile": "linux-direct.exit",
+      "cases": { "total": 26, "passed": 26, "failed": 0 }
+    },
+    {
+      "command": "node --test tests/directions/bootstrap-repair.test.mjs",
+      "exitCode": 0,
+      "stdout": "linux-test-runner-target.stdout.log",
+      "stderr": "linux-test-runner-target.stderr.log",
+      "exitFile": "linux-test-runner-target.exit",
+      "files": { "total": 1, "passed": 1, "failed": 0 }
+    },
+    {
+      "command": "node --test tests/directions/arguments.test.mjs tests/directions/bootstrap-repair.test.mjs tests/directions/bootstrap.test.mjs tests/directions/contracts.test.mjs tests/directions/lifecycle.test.mjs tests/directions/repair.test.mjs tests/directions/roles.test.mjs",
+      "exitCode": 0,
+      "stdout": "linux-suite.stdout.log",
+      "stderr": "linux-suite.stderr.log",
+      "exitFile": "linux-suite.exit",
+      "files": { "total": 7, "passed": 7, "failed": 0 }
+    },
+    {
+      "command": "for each of the seven listed directions test files: node <file> (sequentially)",
+      "exitCode": 0,
+      "exitFile": "linux-suite-direct.exit",
+      "stdoutPattern": "<basename>.stdout.log",
+      "stderrPattern": "<basename>.stderr.log",
+      "perFileExitPattern": "<basename>.exit",
+      "cases": { "total": 92, "passed": 92, "failed": 0, "skipped": 0 }
+    },
+    {
+      "command": "node --check tests/directions/bootstrap-repair.test.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "sha256sum -c evidence/owner-fixture/production-before.sha256",
+      "exitCode": 0,
+      "result": "all seven scripts/directions modules unchanged"
+    }
+  ]
+}

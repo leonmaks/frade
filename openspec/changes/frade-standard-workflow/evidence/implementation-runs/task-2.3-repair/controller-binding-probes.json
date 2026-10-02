@@ -1,0 +1,27 @@
+{
+  "command": [
+    "E:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "tests/directions/controller-task23-bindings.mjs"
+  ],
+  "node": "v24.18.0",
+  "cwd": "E:/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work",
+  "exitCode": 1,
+  "stdout": "✔ FWE-003-A01 plan previews exact owner and files without writing (1254.1808ms)\n✔ FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake (2466.1283ms)\n✔ FWE-003-A02 same request returns owner; changed request and foreign branch blocks (5354.4469ms)\n✔ FWE-003-A03 retained intent recovers a registered partial worktree (2613.5319ms)\n✔ FWE-003-A04 rejects foreign common, traversal, link and case collisions (2171.8571ms)\n✔ FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe (0.2799ms)\n✔ FWE-003-A05 request self-approval and policy drift cannot authorize create (1493.9321ms)\n✔ FWE-001-A03 check binds manifest to owner and rejects malformed state (2359.0217ms)\n✔ FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref (2326.2572ms)\n✖ I23-07 request-specific approval cannot create a different direction (1980.9023ms)\n✖ I23-08 immutable original baseline cannot move to a legitimate ancestor (2667.8199ms)\nSTRICT_DRAFT {\n  \"items\": [\n    {\n      \"id\": \"alpha-direction\",\n      \"type\": \"change\",\n      \"valid\": true,\n      \"issues\": [],\n      \"durationMs\": 30\n    }\n  ],\n  \"summary\": {\n    \"totals\": {\n      \"items\": 1,\n      \"passed\": 1,\n      \"failed\": 0\n    },\n    \"byType\": {\n      \"change\": {\n        \"items\": 1,\n        \"passed\": 1,\n        \"failed\": 0\n      }\n    }\n  },\n  \"version\": \"1.0\",\n  \"root\": {\n    \"path\": \"C:\\\\Users\\\\NVISEN\\\\AppData\\\\Local\\\\Temp\\\\frade-bootstrap-IqIRYL\\\\owners\\\\alpha-direction\",\n    \"source\": \"nearest\"\n  }\n}\n\n✔ I23-09 actual OpenSpec validates the created draft (2928.0307ms)\nℹ tests 12\nℹ suites 0\nℹ pass 10\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 27705.6363\n\n✖ failing tests:\n\ntest at tests\\directions\\controller-task23-bindings.mjs:2:1\n✖ I23-07 request-specific approval cannot create a different direction (1980.9023ms)\n  AssertionError [ERR_ASSERTION]: {\"ok\":true,\"status\":\"CREATED\",\"branch\":\"codex/beta-direction\",\"worktree\":\"C:/Users/NVISEN/AppData/Local/Temp/frade-bootstrap-v82UKx/owners/beta-direction\",\"baseline\":\"dbf1e1e48e15ff15b9b48b594b1909ce1bd52ec8\",\"intentHash\":\"1f798346d5d1bed594edeb0be016d93941d577c7ad13471eca4673f44ac4c99e\",\"reused\":false,\"recovered\":false,\"files\":[\"docs/engineering/directions/beta-direction/direction.json\",\"docs/engineering/directions/beta-direction/ROADMAP.md\",\"docs/engineering/directions/beta-direction/AGENTS.md\",\"docs/engineering/directions/beta-direction/DIRECTION-STATUS.md\",\"docs/engineering/directions/beta-direction/INTAKE.md\",\"docs/engineering/directions/beta-direction/RESEARCH.md\",\"docs/engineering/directions/beta-direction/REQUIREMENTS.md\",\"docs/engineering/directions/beta-direction/decisions/REGISTER.md\",\"openspec/changes/beta-direction/proposal.md\",\"openspec/changes/beta-direction/design.md\",\"openspec/changes/beta-direction/tasks.md\",\"openspec/changes/beta-direction/specs/beta-direction/spec.md\",\"openspec/changes/beta-direction/evidence/shared-policy.md\",\"AGENTS.md\"]}\n  \n  0 !== 2\n  \n      at TestContext.<anonymous> (file:///E:/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/controller-task23-bindings.mjs:2:277)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: 0,\n    expected: 2,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n\ntest at tests\\directions\\controller-task23-bindings.mjs:3:1\n✖ I23-08 immutable original baseline cannot move to a legitimate ancestor (2667.8199ms)\n  AssertionError [ERR_ASSERTION]: {\"ok\":true,\"status\":\"VALID\",\"id\":\"alpha-direction\",\"owner\":{\"branch\":\"codex/alpha-direction\",\"worktree\":\"C:/Users/NVISEN/AppData/Local/Temp/frade-bootstrap-YRudlr/owners/alpha-direction\",\"gitCommon\":\"C:/Users/NVISEN/AppData/Local/Temp/frade-bootstrap-YRudlr/source/.git\"},\"baseline\":\"6b9d15fe1a2bd254b38d86a236976ac072ce8060\"}\n  \n  0 !== 2\n  \n      at TestContext.<anonymous> (file:///E:/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/controller-task23-bindings.mjs:3:682)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: 0,\n    expected: 2,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "sourceRows": [
+    {
+      "path": "scripts/directions/bootstrap.mjs",
+      "sha256": "7869985dfe6ff38bcba0a65390991fabbbaca0863d71813279b064a897580cf9"
+    },
+    {
+      "path": "scripts/directions/contracts.mjs",
+      "sha256": "e5113e9b500354ef3a91daf5c606646d6f1dee12b5dd2c5ab045022458a373ff"
+    },
+    {
+      "path": "tests/directions/bootstrap.test.mjs",
+      "sha256": "24c27b6b32e64be0278c6e23f43d9b68a6bdeb06668c649b1b667490d266d4a9"
+    }
+  ],
+  "atUtc": "2026-10-02T22:42:54.578Z"
+}

@@ -1,0 +1,31 @@
+{
+  "atUtc": "2026-10-02T23:04:29.780Z",
+  "beforeNextSourceEdit": true,
+  "stage": "W01",
+  "task": "2.3",
+  "status": "BLOCKED_WINDOWS_PORTABILITY",
+  "defects": [
+    {
+      "id": "I23-WIN-MANIFEST-SEPARATORS",
+      "classification": "ABSTRACTION_BOUNDARY",
+      "root": "New checkDirection safeOwnerPath runs before Windows native separator normalization; normal Node join results are rejected. Canonical path proof must remain after platform-only normalization."
+    },
+    {
+      "id": "I23-WIN-LINK-FIXTURE",
+      "classification": "ENVIRONMENT",
+      "root": "New file symlink fixture requires absent Windows privilege. Use actual directory-junction escape/type controls on Windows with assertions retained, keep Linux file-link test."
+    }
+  ],
+  "actualRun": "win23authority-green.json",
+  "actualCounts": {
+    "tests": 90,
+    "pass": 80,
+    "fail": 10,
+    "duplicateBootstrapAssertions": 15,
+    "uniqueTests": 75
+  },
+  "lint": "actual stdin ESLint5/5 PASS",
+  "format": "actual Prettier FAIL5; mechanical formatter needed after semantic fix",
+  "sourceImported": false,
+  "requestsAndOrigins": "Linux current exact grants/origin full suite PASS; Windows replay of parent probes required"
+}

@@ -1,0 +1,49 @@
+{
+  "task": "W01 task 2.3 I23-06 owner fixture isolation repair",
+  "status": "LINUX_PASS_WINDOWS_REPLAY_PENDING",
+  "eligibleImplementationFiles": ["tests/directions/bootstrap-repair.test.mjs"],
+  "changedImplementationFiles": ["tests/directions/bootstrap-repair.test.mjs"],
+  "testsOnlySnapshot": {
+    "originalFile": "bootstrap-repair.before.mjs",
+    "beforeHashes": "tests-before.sha256",
+    "afterHashes": "tests-after.sha256",
+    "diff": "bootstrap-repair.diff",
+    "originalSha256": "1e18541060b2b6feda4ec84558fd84f68077f71616c39f1ebd1fa3d4262374ce",
+    "repairedSha256": "d50ae805f97991bb5f05c2649935df3f685c7e8a9cba486075e2a4a64d53a531"
+  },
+  "suppliedWindowsRed": {
+    "raw": "windows-owner-red.supplied.json",
+    "sha256": "b81aecffd88d421a111eeb31fcdec248614bd346d071bafb26feccc63f5a278e",
+    "cases": 92,
+    "passed": 91,
+    "failed": 1,
+    "failure": "I23-06 expected NOT_CONFIGURED, actual INSPECTION"
+  },
+  "repair": {
+    "classification": "TEST fixture isolation",
+    "copiedProductionModules": [
+      "scripts/directions/cli.mjs",
+      "scripts/directions/bootstrap.mjs",
+      "scripts/directions/contracts.mjs"
+    ],
+    "execution": "Invoke the byte-identical CLI under the fixture repository's scripts/directions so runningControl resolves its own tampered Git common. Linux EPERM on nested Node uses import of the same copied CLI module.",
+    "assertions": [
+      "copied modules are regular files with exact source SHA-256 hashes",
+      "CLI raw exit status is 2, code is NOT_CONFIGURED, and detail is CONTROL_NOT_CONFIGURED",
+      "fixture intent directory and owner target are absent, and registered worktrees are unchanged"
+    ]
+  },
+  "linux": {
+    "node": "v18.19.1",
+    "directFixture": "26/26 PASS",
+    "fullSuiteDirectCases": "92/92 PASS",
+    "fullSuiteTestRunnerFiles": "7/7 PASS",
+    "commandsAndLogs": "commands.json"
+  },
+  "production": {
+    "beforeHashes": "production-before.sha256",
+    "afterHashes": "production-after.sha256",
+    "hashCheck": "PASS: no production module changes"
+  },
+  "windowsReplay": "Pending parent replay with Windows Node 24 in the real owner checkout"
+}

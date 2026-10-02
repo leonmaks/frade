@@ -51,16 +51,14 @@ export function safeRepoPath(x, { glob = false } = {}) {
   return !!body && !body.includes('*') && !body.includes('//') && body.split('/').every(safeSegment)
 }
 export function safeOwnerPath(x, { gitCommon = false } = {}) {
-  if (
-    typeof x !== 'string' ||
-    !/^[A-Za-z]:\/(?:[^/]+\/)*[^/]+$/.test(x) ||
-    hasControlCharacter(x) ||
-    /\\/.test(x)
-  )
-    return false
-  const parts = x.slice(3).split('/')
+  if (typeof x !== 'string' || hasControlCharacter(x) || /\\/.test(x)) return false
+  const windows = /^[A-Za-z]:\//.test(x)
+  if (!windows && !x.startsWith('/')) return false
+  if (windows && !/^[A-Za-z]:\/(?:[^/]+\/)*[^/]+$/.test(x)) return false
+  if (x === '/' || x.endsWith('/') || x.includes('//')) return false
+  const parts = (windows ? x.slice(3) : x.slice(1)).split('/')
   return parts.every((part, index) =>
-    gitCommon && index === parts.length - 1 && part === '.git' ? true : safeSegment(part),
+    part === '.git' && gitCommon && index === parts.length - 1 ? true : safeSegment(part),
   )
 }
 export function pathMatches(pattern, path) {

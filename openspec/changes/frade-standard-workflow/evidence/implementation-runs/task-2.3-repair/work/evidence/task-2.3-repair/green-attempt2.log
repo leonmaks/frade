@@ -1,0 +1,206 @@
+TAP version 13
+# Subtest: FWE-003-A01 plan previews exact owner and files without writing
+not ok 1 - FWE-003-A01 plan previews exact owner and files without writing
+  ---
+  duration_ms: 193.813705
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:112:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"INSPECTION","detail":"GIT_rev-parse: fatal: not a git repository (or any parent up to mount point /mnt/e/dev/codex/frade/.git/frade-workflow/implementations)\\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:117:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async startSubtest (node:internal/test_runner/harness:214:3)
+  ...
+# Subtest: FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake
+not ok 2 - FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake
+  ---
+  duration_ms: 159.399429
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:132:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"INSPECTION","detail":"GIT_rev-parse: fatal: not a git repository (or any parent up to mount point /mnt/e/dev/codex/frade/.git/frade-workflow/implementations)\\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:137:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-003-A02 same request returns owner; changed request and foreign branch blocks
+not ok 3 - FWE-003-A02 same request returns owner; changed request and foreign branch blocks
+  ---
+  duration_ms: 181.628409
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:167:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    2 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:171:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-003-A03 retained intent recovers a registered partial worktree
+not ok 4 - FWE-003-A03 retained intent recovers a registered partial worktree
+  ---
+  duration_ms: 160.052999
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:192:1'
+  failureType: 'testCodeFailure'
+  error: 'branch --show-current: null'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  operator: 'strictEqual'
+  stack: |-
+    git (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:17:10)
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:198:16)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-003-A04 rejects foreign common, traversal, link and case collisions
+ok 5 - FWE-003-A04 rejects foreign common, traversal, link and case collisions
+  ---
+  duration_ms: 840.968862
+  ...
+# Subtest: FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe
+ok 6 - FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe
+  ---
+  duration_ms: 0.427109
+  ...
+# Subtest: FWE-003-A05 request self-approval and policy drift cannot authorize create
+ok 7 - FWE-003-A05 request self-approval and policy drift cannot authorize create
+  ---
+  duration_ms: 269.944445
+  ...
+# Subtest: FWE-001-A03 check binds manifest to owner and rejects malformed state
+not ok 8 - FWE-001-A03 check binds manifest to owner and rejects malformed state
+  ---
+  duration_ms: 139.821443
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:269:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    2 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap.test.mjs:273:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref
+ok 9 - FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref
+  ---
+  duration_ms: 289.274477
+  ...
+# Subtest: I23-01 Git common exception is limited to final .git component
+ok 10 - I23-01 Git common exception is limited to final .git component
+  ---
+  duration_ms: 0.433074
+  ...
+# Subtest: I23-02 registered secondary source creates under matching common
+not ok 11 - I23-02 registered secondary source creates under matching common
+  ---
+  duration_ms: 141.252714
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:24:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"INSPECTION","detail":"GIT_rev-parse: fatal: not a git repository (or any parent up to mount point /mnt/e/dev/codex/frade/.git/frade-workflow/implementations)\\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:32:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: I23-02 whole foreign repository switch is rejected before source access
+ok 12 - I23-02 whole foreign repository switch is rejected before source access
+  ---
+  duration_ms: 34.318015
+  ...
+# Subtest: I23-03 seed declares exact capability and strict draft obligation
+not ok 13 - I23-03 seed declares exact capability and strict draft obligation
+  ---
+  duration_ms: 138.42123
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:53:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"INSPECTION","detail":"GIT_rev-parse: fatal: not a git repository (or any parent up to mount point /mnt/e/dev/codex/frade/.git/frade-workflow/implementations)\\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:57:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: I23-04 Git worktree checkout cannot run hooks or smudge filter
+ok 14 - I23-04 Git worktree checkout cannot run hooks or smudge filter
+  ---
+  duration_ms: 154.719233
+  ...
+# Subtest: I23-05 check rejects nonexistent and unrelated baseline commits
+not ok 15 - I23-05 check rejects nonexistent and unrelated baseline commits
+  ---
+  duration_ms: 134.843514
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:85:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"INSPECTION","detail":"GIT_rev-parse: fatal: not a git repository (or any parent up to mount point /mnt/e/dev/codex/frade/.git/frade-workflow/implementations)\\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:89:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: I23-05 check rejects linked manifest parent
+not ok 16 - I23-05 check rejects linked manifest parent
+  ---
+  duration_ms: 135.812402
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:101:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"INSPECTION","detail":"GIT_rev-parse: fatal: not a git repository (or any parent up to mount point /mnt/e/dev/codex/frade/.git/frade-workflow/implementations)\\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:105:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 7
+# fail 9
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2989.838893

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "atUtc": "2026-10-02T22:43:57.851Z",
+  "beforeAnyFurtherProductionModification": true,
+  "defectId": "I23-07-REQUEST_AUTHORITY",
+  "deterministic": true,
+  "classification": "ABSTRACTION_BOUNDARY",
+  "secondaryClassification": "TEST",
+  "failedAttempts": [
+    "first repair substituted installed service availability for saved request authority; retained original self-approval assertion failed",
+    "fixture-only creation flag made the old assertion pass but production create still accepts unrelated requests; actual Windows I23-07 FAIL"
+  ],
+  "root": "The installed public review service proves family/policy availability. It does not authorize a request ID, baseline, workspaceParent or intent hash. Test-specific boolean fixtures modeled a different authority condition from production.",
+  "responsibleLayer": "bootstrap authority boundary and fixture adapter",
+  "requiredFix": "Restore a safe external common request grant bound to normalized intent hash/source/common/approved workspace parent/baseline/policy. Runtime context and request grant must both verify through the same production path. Fixture seams replace service attestation only; no separate creation approval flag.",
+  "relatedDefect": {
+    "id": "I23-08-IMMUTABLE_ORIGIN",
+    "classification": "INVARIANT",
+    "root": "Ancestor relationship proves compatibility, not immutable origin. Check must compare actual retained origin/intent with manifest originalBaseline and registered branch/worktree."
+  },
+  "otherFindings": [
+    {
+      "id": "I23-WIN-SECONDARY",
+      "classification": "ENVIRONMENT",
+      "root": "Repair test Git helper omitted command-local core.autocrlf=false, so Windows secondary checkout changed raw policy bytes."
+    },
+    {
+      "id": "I23-LINT",
+      "classification": "TEST",
+      "root": "Unused dirname import; restore lint without disabling rule."
+    },
+    {
+      "id": "CONTROLLER-FORMAT",
+      "classification": "ENVIRONMENT",
+      "root": "Absolute native backslashes were interpreted as Prettier glob escapes. Normalize controller argv to forward slashes; recorded no-matching-files is not PASS."
+    }
+  ],
+  "evidence": [
+    "controller-binding-probes.json",
+    "win23-green.json",
+    "win23-lint-bootstrap.test.mjs.json",
+    "win23-format.json"
+  ],
+  "strictCreatedDraft": "Actual Windows OpenSpec strict PASS; unresolved product decisions remain blocked",
+  "preserveHistoricalRaw": true
+}

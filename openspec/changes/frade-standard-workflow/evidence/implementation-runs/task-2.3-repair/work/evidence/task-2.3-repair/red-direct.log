@@ -1,0 +1,186 @@
+TAP version 13
+# Subtest: FWE-003-A01 plan previews exact owner and files without writing
+ok 1 - FWE-003-A01 plan previews exact owner and files without writing
+  ---
+  duration_ms: 931.627977
+  ...
+# Subtest: FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake
+ok 2 - FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake
+  ---
+  duration_ms: 2625.958259
+  ...
+# Subtest: FWE-003-A02 same request returns owner; changed request and foreign branch blocks
+ok 3 - FWE-003-A02 same request returns owner; changed request and foreign branch blocks
+  ---
+  duration_ms: 5327.409959
+  ...
+# Subtest: FWE-003-A03 retained intent recovers a registered partial worktree
+ok 4 - FWE-003-A03 retained intent recovers a registered partial worktree
+  ---
+  duration_ms: 3485.774875
+  ...
+# Subtest: FWE-003-A04 rejects foreign common, traversal, link and case collisions
+ok 5 - FWE-003-A04 rejects foreign common, traversal, link and case collisions
+  ---
+  duration_ms: 1638.324429
+  ...
+# Subtest: FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe
+ok 6 - FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe
+  ---
+  duration_ms: 0.502643
+  ...
+# Subtest: FWE-003-A05 request self-approval and policy drift cannot authorize create
+ok 7 - FWE-003-A05 request self-approval and policy drift cannot authorize create
+  ---
+  duration_ms: 995.069271
+  ...
+# Subtest: FWE-001-A03 check binds manifest to owner and rejects malformed state
+ok 8 - FWE-001-A03 check binds manifest to owner and rejects malformed state
+  ---
+  duration_ms: 2667.690422
+  ...
+# Subtest: FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref
+ok 9 - FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref
+  ---
+  duration_ms: 1876.140106
+  ...
+# Subtest: I23-01 Git common exception is limited to final .git component
+not ok 10 - I23-01 Git common exception is limited to final .git component
+  ---
+  duration_ms: 2.109999
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:15:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:20:10)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: I23-02 registered secondary source creates under matching common
+not ok 11 - I23-02 registered secondary source creates under matching common
+  ---
+  duration_ms: 1031.330843
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:24:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"INSPECTION","detail":"UNREGISTERED_PRIMARY_SOURCE"}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:32:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: I23-02 whole foreign repository switch is rejected before source access
+ok 12 - I23-02 whole foreign repository switch is rejected before source access
+  ---
+  duration_ms: 664.558349
+  ...
+# Subtest: I23-03 seed declares exact capability and strict draft obligation
+not ok 13 - I23-03 seed declares exact capability and strict draft obligation
+  ---
+  duration_ms: 2505.91525
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:53:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:59:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: I23-04 Git worktree checkout cannot run hooks or smudge filter
+not ok 14 - I23-04 Git worktree checkout cannot run hooks or smudge filter
+  ---
+  duration_ms: 2935.674331
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:67:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:81:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: I23-05 check rejects nonexistent and unrelated baseline commits
+not ok 15 - I23-05 check rejects nonexistent and unrelated baseline commits
+  ---
+  duration_ms: 3567.0347
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:85:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:94:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: I23-05 check rejects linked manifest parent
+not ok 16 - I23-05 check rejects linked manifest parent
+  ---
+  duration_ms: 3784.617265
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:101:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-repair-20261003/work/tests/directions/bootstrap-repair.test.mjs:111:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 10
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 34054.67456

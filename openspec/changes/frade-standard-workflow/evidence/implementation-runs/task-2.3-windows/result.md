@@ -1,0 +1,5 @@
+**Task 2.3 Windows micro-repair is ready for parent replay.** The manifest check now normalizes native Windows separators at its input boundary, and the Windows grant test uses a directory junction with a trusted fixture context. All original assertions remain.
+
+Changed files: [bootstrap.mjs](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-windows-20261003/work/scripts/directions/bootstrap.mjs), [bootstrap.test.mjs](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-windows-20261003/work/tests/directions/bootstrap.test.mjs), and [TASK-2.3-WINDOWS-RESULT.json](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-windows-20261003/work/TASK-2.3-WINDOWS-RESULT.json). The result contains the pre-fix hashes, exact test snapshot, commands, exits, and full raw logs.
+
+Linux checks passed: 16/16 focused assertions, 7/7 full-suite test files, and syntax checks. The supplied Windows run remains the reproduction; **Windows replay is pending** and the backend is **NOT_CONFIRMED**. No next task was started.

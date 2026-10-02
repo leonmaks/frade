@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "task": "W01 task 2.3 authority repair only",
+  "approvedExecution": {
+    "model": "gpt-6-sol",
+    "effort": "high",
+    "planSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+    "w01OriginalBaseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+    "actualBackend": "NOT_CONFIRMED"
+  },
+  "rcaBeforeProductionEdit": {
+    "source": "../input/diagnostics/controller-authority-RCA.json",
+    "i23_07": "ABSTRACTION_BOUNDARY/TEST; two historical request-authority fixes failed before this run",
+    "i23_08": "INVARIANT; ancestor status did not prove original baseline",
+    "windowsSecondary": "ENVIRONMENT; fixture Git checkout omitted command-local core.autocrlf=false",
+    "lint": "TEST; unused dirname import"
+  },
+  "eligiblePathsForParentImport": [
+    "scripts/directions/bootstrap.mjs",
+    "scripts/directions/cli.mjs",
+    "tests/directions/bootstrap.test.mjs",
+    "tests/directions/bootstrap-repair.test.mjs",
+    "docs/engineering/templates/task-2.3-bootstrap.md"
+  ],
+  "filesChangedAgainstRepairSeed": [
+    "scripts/directions/bootstrap.mjs",
+    "tests/directions/bootstrap.test.mjs",
+    "tests/directions/bootstrap-repair.test.mjs",
+    "docs/engineering/templates/task-2.3-bootstrap.md"
+  ],
+  "initialCliAdoption": {
+    "path": "scripts/directions/cli.mjs",
+    "sha256": "710be8629dd4c46110f6629632e9447f9961889c16abcad97fc243034cddb6ad",
+    "state": "byte-identical to task 2.3 seed; eligible for parent import"
+  },
+  "testsOnlySnapshotBeforeRedAndProductionEdit": {
+    "directory": "evidence/task23-authority/tests-only-snapshot",
+    "hashList": "evidence/task23-authority/pre-red-sha256.txt",
+    "bootstrapTestSha256": "5d7452ed10e2f4b53ff22e09f9b9165511c0bf24c9c20127dde0c439cae72122",
+    "bootstrapRepairTestSha256": "b876fba2b8b250ff62e7b2ca3fcc1e6c33bf829f90367c0bd3edd601366bb59b",
+    "preFixBootstrapSourceSha256": "7869985dfe6ff38bcba0a65390991fabbbaca0863d71813279b064a897580cf9",
+    "preFixContractsSourceSha256": "e5113e9b500354ef3a91daf5c606646d6f1dee12b5dd2c5ab045022458a373ff",
+    "preFixCliSourceSha256": "710be8629dd4c46110f6629632e9447f9961889c16abcad97fc243034cddb6ad",
+    "note": "One test assertion was corrected after the first GREEN attempt: a forged approved field is REQUEST_SHAPE, while a valid request without a grant is REQUEST_GRANT_MISSING. The saved tests-only snapshot is the exact suite used for captured behavioral RED. Final test SHA256 is f958c0d8ef5f6ae52ba1a14283d6ed36aadbbccb3cbd15250e487bb7ec46c7c6. Earlier repair RED is reconstructed historical evidence, not an immutable captured-before run."
+  },
+  "newNamedAssertions": [
+    "I23-07 installed service cannot create without an external exact request grant",
+    "I23-07 grant for alpha rejects changed identity, title, goal, outcomes, baseline and parent",
+    "I23-07 linked or forged grant cannot approve creation",
+    "I23-08 retained origin fixes original baseline after branch progress",
+    "I23-08 check requires both exact retained origin records",
+    "I23-08 foreign malformed manifest is rejected as unowned before JSON parsing"
+  ],
+  "contracts": {
+    "externalGrant": "Canonical Git-common frade-workflow/bootstrap-authority.json regular file, schemaVersion 1, exact normalized request intent SHA256, registered source, common, approved workspace parent, baseline and policy. Production and branded fixture context call the same verifier before intent journal or worktree writes. Fixture context attests service availability only. CLI never writes the grant.",
+    "immutableOrigin": "Both common intents/<id>.json and intents/<id>.complete.json are schemaVersion 2 canonical regular files holding exact request, its recomputed normalized hash, ID, branch, worktree, source, common, parent, baseline and policy. Check requires both records and actual registered owner; originalBaseline must equal retained baseline even if another commit is a legitimate ancestor. Missing records block with ORIGIN_MISSING_LEGACY_ADOPTION_REQUIRED.",
+    "ownerPathBeforeJson": "Check confines the supplied absolute path to an exact docs/engineering/directions/<id>/direction.json under a registered codex/<id> worktree from the trusted common before reading JSON. A foreign malformed file returns MANIFEST_OWNER_PATH."
+  },
+  "capturedRuns": [
+    {
+      "command": "node tests/directions/bootstrap.test.mjs",
+      "exit": 1,
+      "log": "evidence/task23-authority/red-direct-behavior.log",
+      "exitFile": "evidence/task23-authority/red-direct-behavior.exit",
+      "result": "Captured behavioral RED against pre-fix source: 15 assertions, 5 PASS, 10 FAIL; failures included FIXTURE_CREATE_NOT_AUTHORIZED and new authority/origin assertions."
+    },
+    {
+      "command": "node --test --test-concurrency=1 tests/directions/arguments.test.mjs tests/directions/bootstrap-repair.test.mjs tests/directions/bootstrap.test.mjs tests/directions/contracts.test.mjs tests/directions/lifecycle.test.mjs tests/directions/repair.test.mjs tests/directions/roles.test.mjs",
+      "exit": 0,
+      "log": "evidence/task23-authority/green-full-node-test.log",
+      "exitFile": "evidence/task23-authority/green-full-node-test.exit",
+      "result": "All seven test files PASS; detailed assertion totals are in the direct final runs."
+    },
+    {
+      "command": "for file in tests/directions/arguments.test.mjs tests/directions/bootstrap-repair.test.mjs tests/directions/bootstrap.test.mjs tests/directions/contracts.test.mjs tests/directions/lifecycle.test.mjs tests/directions/repair.test.mjs tests/directions/roles.test.mjs; do node \"$file\"; done",
+      "exit": 0,
+      "logs": "evidence/task23-authority/final-<basename>.log",
+      "exitFiles": "evidence/task23-authority/final-<basename>.exit",
+      "result": "50 original core/role assertions PASS; bootstrap file 15 PASS (9 original plus 6 new); repair import file 25 PASS (same 15 plus 10 repair assertions). Each direct invocation exited 0."
+    },
+    {
+      "command": "node --test-name-pattern='I23-07|I23-08' tests/directions/controller-task23-bindings.mjs",
+      "exit": 0,
+      "log": "evidence/task23-authority/final-controller-07-08.log",
+      "exitFile": "evidence/task23-authority/final-controller-07-08.exit",
+      "result": "8 relevant assertions PASS, including actual controller I23-07 alpha-to-beta and I23-08 ancestor probes; 10 unrelated names skipped by filter."
+    },
+    {
+      "command": "node --check scripts/directions/bootstrap.mjs && node --check tests/directions/bootstrap.test.mjs && node --check tests/directions/bootstrap-repair.test.mjs && cmp -s scripts/directions/cli.mjs ../input/seed/scripts/directions/cli.mjs",
+      "exit": 0,
+      "result": "Syntax PASS and initial CLI byte match PASS."
+    }
+  ],
+  "environment": {
+    "platform": "Linux",
+    "node": "v18.19.1",
+    "git": "2.43.0",
+    "fixtureRoot": "/tmp/frade-bootstrap-*; tests create /tmp when this isolated runtime lacks it",
+    "rawEnvironmentAttempt": "evidence/task23-authority/red-bootstrap.log; exit 1 before fixture setup because /tmp did not initially exist. It is not claimed as behavioral RED."
+  },
+  "historicalParentEvidencePreserved": {
+    "windowsFull": "../input/diagnostics/win23-green.json: 77 PASS / 1 FAIL from secondary checkout policy bytes",
+    "windowsLint": "../input/diagnostics/win23-lint-bootstrap.test.mjs.json: unused dirname FAIL",
+    "windowsController": "../input/diagnostics/controller-binding-probes.json: I23-07 FAIL, I23-08 FAIL, I23-09 actual created draft OpenSpec strict PASS",
+    "windowsRerun": "PENDING parent execution",
+    "strictDraftRerun": "Not run here; source byte binding of seed draft unchanged"
+  },
+  "postFixHashes": {
+    "scripts/directions/bootstrap.mjs": "c552ffc171f878fd3a7aee1e53e9f08966bc939af9454f7c7176480309c78ea5",
+    "scripts/directions/cli.mjs": "710be8629dd4c46110f6629632e9447f9961889c16abcad97fc243034cddb6ad",
+    "tests/directions/bootstrap.test.mjs": "f958c0d8ef5f6ae52ba1a14283d6ed36aadbbccb3cbd15250e487bb7ec46c7c6",
+    "tests/directions/bootstrap-repair.test.mjs": "b876fba2b8b250ff62e7b2ca3fcc1e6c33bf829f90367c0bd3edd601366bb59b",
+    "docs/engineering/templates/task-2.3-bootstrap.md": "103709b5e4872b75c42303d6103a745a1d05ee8fd85e2d6eb1be9ede80e52f24"
+  },
+  "status": "TASK_2_3_REPAIR_COMPLETE_WINDOWS_RERUN_PENDING",
+  "laterTasksStarted": false
+}
