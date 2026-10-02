@@ -1,6 +1,6 @@
 # P01: реализация трёх иконок проверена частично; два решения открыты
 
-Обновлено 2026-10-02T22:47:22.326Z. Ветка codex/frade-ui-design-contract, UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; последний опубликованный8253637f3614490ec215dbaa1aab778afe0fde6b. Guide1.0/tokens1.0.0.
+Обновлено 2026-10-02T22:47:22.326Z. Ветка codex/frade-ui-design-contract, UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; опубликованный checkpoint реализации470833af707ce3939293bdd61796ef561b4d29a3. Guide1.0/tokens1.0.0.
 
 | Текущий этап P01 | Фактический статус |
 | --- | --- |
@@ -18,7 +18,7 @@
 
 Решения ожидаются: [одна строка FUI control loader](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-fui-control-revalidation.proposed.md), SHA8b8b257ee9e13e086b762f98e5b80a3334d852250db8185c04020bd820f57a68; [граница paint-delta и исходных недоступных состояний](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-state-applicability.proposed.md), SHA529ac017072531211abd257ecffe12f33811cc497ef69e1b0625da00b36c2bb7. Ни одна ещё не принята. Production/новые assertions за эту границу не расширяются.
 
-P01 остаётся5/10:2.4,2.5,3.1,3.2,3.3 открыты. Foundation завершён; P02–P07 и последующая миграция не начаты. UI/Routing независимы. Три прежних исключения сохранены; protection LOCAL_ONLY/NOT_CONFIGURED. Текущий checkpoint UNCOMMITTED/UNPUSHED. Next: опубликовать честный неполный checkpoint; после решений coherentplan/strict/freshPRE перед зависимыми изменениями. Правая панель queued, видимость не подтверждена.
+P01 остаётся5/10:2.4,2.5,3.1,3.2,3.3 открыты. Foundation завершён; P02–P07 и последующая миграция не начаты. UI/Routing независимы. Три прежних исключения сохранены; protection LOCAL_ONLY/NOT_CONFIGURED. Checkpoint реализации470833af COMMITTED/PUSHED; remote SHA проверен, квитанция openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-checkpoint-20261002T223801Z/publication.json. Последующий metadata commit сохраняет эту запись и квитанции без изменения source/tests. Next: дождаться двух решений; после решений coherentplan/strict/freshPRE перед зависимыми изменениями. Правая панель queued, видимость не подтверждена.
 
 # P01: три верхние иконки — полная матрица выполняется
 
