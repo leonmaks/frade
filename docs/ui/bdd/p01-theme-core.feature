@@ -341,6 +341,7 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     Then the entire actual glyph raster matches a nonempty canonical compatible color set whose minimum effective contrast is at least three
     And original geometry opacity capability actions and semantic state remain intact
     And the actual enabled active opacity of 0.75 receives the same exact contrast proof
+    And distinct target and underlying backgrounds use exact paired V6 calibration and independently observed effective backdrop
 
   @P01-RT-UPPER-GLYPH-018 @runtime-pending @A11Y-007
   Scenario: Upper glyph projection restores only owned current state

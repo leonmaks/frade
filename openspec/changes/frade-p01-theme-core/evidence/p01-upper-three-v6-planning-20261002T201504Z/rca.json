@@ -1,0 +1,29 @@
+{
+  "atUtc": "2026-10-02T20:15:04.707Z",
+  "classification": "TEST",
+  "defect": "Closed single-backplate V5 cannot measure real original hover/pressed Light/Dark composition",
+  "cause": "A canonical hover target background differs from opaque toolbar background; retained original scalar opacity composites the target group over the toolbar. Assuming one equal background excludes required real states.",
+  "proof": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-composition-20261002T201102Z/composition-analysis.json",
+  "actual": {
+    "runs": 6,
+    "observations": 54,
+    "excludedByV5": 24,
+    "pressedActualActive": 18,
+    "source543Unchanged": true,
+    "binaryUnchanged": true,
+    "semanticPreservation": "PASS6/6"
+  },
+  "previousReference": {
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v5-controls-v2-20261002T200504Z",
+    "status": "PASS_RECORDED_SUBSET_ONLY",
+    "atlases": 36,
+    "cases": 360,
+    "syntheticNegativeControls": 18,
+    "notFullV5Completion": true
+  },
+  "proposal": "Separate V6 exact paired-background calibration at actual target T / underlying P / scalar q; all324pixels/all256channels/allcompatiblecolors and3:1 unchanged. Prior V5 guards/results remain immutable, no fallback. Fresh PRE before V6 implementation.",
+  "scopeChanged": false,
+  "productionChanged": false,
+  "permanentTestsChanged": false,
+  "requiredAction": "Technical plan reconciliation/strict/fresh automatic PRE; product repair remains stopped"
+}

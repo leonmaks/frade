@@ -281,3 +281,11 @@ P01 SHALL apply the human-accepted P01-UPPER-THREE-GLYPH-PAINT-01 only in the ex
 #### Scenario: Glyph digest failure occurs only inside a pending paint operation
 - **WHEN** a new source needs native digest verification during current apply or rollback
 - **THEN** all such work completes before PAINTED and current failure rejects the existing pending parent operation via REFUSED with no new late diagnostic; after PAINTED passive adoption uses only byte-exact positively verified cache entries without calling crypto and unknown bytes stay unowned
+
+#### Scenario: Actual target and underlying backgrounds are distinct
+- **WHEN** original hover or pressed upper chrome composites opaque target background T over a different opaque underlying background P through retained scalar q
+- **THEN** the separate independently reviewed V6 protocol calibrates those exact two layers and verifies every actual glyph pixel and every compatible effective foreground against independently observed effective target background B; V5's equal-background guard remains unchanged and no CSS-only or substituted-background PASS is permitted
+
+#### Scenario: V6 reference completion precedes application inference
+- **WHEN** paired-background V6 is proposed after the saved real composition blocker
+- **THEN** fresh strict/PRE and all declared actual and synthetic controls pass before permanent RED or repair; reference-only results do not close required application contrast visual acceptance cumulative verification POST archive or P02

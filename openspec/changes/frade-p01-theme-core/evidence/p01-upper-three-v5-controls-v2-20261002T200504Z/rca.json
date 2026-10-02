@@ -1,0 +1,38 @@
+{
+  "atUtc": "2026-10-02T20:05:04.309Z",
+  "classification": "TEST",
+  "previous": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v5-controls-20261002T195924Z",
+  "defect": "FirstWindow is observable before asynchronous loadURL has committed reference document; first evaluate races navigation",
+  "rawFailure": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v5-controls-20261002T195924Z/reference.stdout.json",
+  "reproduction": "Actual first reference execution failed before any atlas measurement",
+  "repair": "Unique reference document body marker and attached wait, no sleep/retry/assertion/tolerance weakening",
+  "productionChanged": false,
+  "permanentTestsChanged": false,
+  "delta": [
+    {
+      "path": "engine.mjs",
+      "previousSha256": "b75787f9203d1332234c26bc50712dcd5f97b8480995fcb086b981ded8a9e3e9",
+      "sha256": "b75787f9203d1332234c26bc50712dcd5f97b8480995fcb086b981ded8a9e3e9"
+    },
+    {
+      "path": "reference-main.cjs",
+      "previousSha256": "db160ac5dd7e8b581a03e084e9f9ae54200c587668d4591e9022b943e537733a",
+      "sha256": "379db57fac4ff98bd1c50bef243b1d2adbb2694daa4ae6492300a6504acc8f3e"
+    },
+    {
+      "path": "reference.spec.ts",
+      "previousSha256": "b22efc9d565a38266c807e19f0dfb474fe13efc2bd60e088e16be9edd99f7696",
+      "sha256": "4e5de42d6b3846e3d72d5e03a1b28ded0a249e1fa343bed0d7e6f263bc98a1b9"
+    },
+    {
+      "path": "playwright.config.ts",
+      "previousSha256": "bc50fd68860adfd4d2fd48197d0deb614a6761171afcbf56a1b341a699e03dcd",
+      "sha256": "bc50fd68860adfd4d2fd48197d0deb614a6761171afcbf56a1b341a699e03dcd"
+    },
+    {
+      "path": "original-resources.json",
+      "previousSha256": "4a2febc8b4d919afa6ac760b4d5462f7fac6d7e7539bbb452d37439f1212d740",
+      "sha256": "4a2febc8b4d919afa6ac760b4d5462f7fac6d7e7539bbb452d37439f1212d740"
+    }
+  ]
+}

@@ -1,3 +1,37 @@
+# P01: V6 reference controls PASS; permanent RED next
+
+2026-10-02T21:03:48.050Z. Actual Electron44.4.5:72atlases/720colorcases; classification {"FAIL":357,"PASS":359,"NOT_MEASURED":4}. All43negative controls executed. NOT_MEASURED are explicitly rejected threshold-straddling examples, not glyphPASS. Two original fixture FAILs/RCA preserved; V6engine unchanged. Audit openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v6-controls-v3-20261002T205922Z/controls-audit.json. Bridge and both permanent test files unchanged from published45d07835.
+
+Next: preserve original test prefixes/callbacks, append meaningful ownership/paint/lifecycle RED, reopen3.1, then sole bridge repair. WholeP01 6/10; actual product contrast/current root/POST remain OPEN; human372NOT_APPROVED, no P02. UI branch/worktree/common/policy unchanged. New reference/planning/evidence checkpoint preparing commit/push; panelqueued.
+
+# P01: V6 reference matrix RUNNING
+
+2026-10-02T20:51:36.098Z. UI branch/worktree unchanged, PRE102events PASS preserved. Starting actual72 paired-background atlases across3original SVGs/8T,Ppairs/q1,.65,.75, mixedRGB/threshold and actual/synthetic negative controls. Production/permanenttests unchanged; reference/application result NOT_RUN until command exits. P01 6/10, old12FAIL and human372NOT_APPROVED preserved. Published45d07835; new checkpoint UNCOMMITTED/UNPUSHED. Panelqueued, visibility unconfirmed.
+
+# P01: V6 independent PRE PASS; reference controls preparing
+
+2026-10-02T20:38:03.313Z. V6 PRE PASS102events/17raw, source/packet/plan unchanged; requested gpt-6-astra/xhigh, actualbackend/effort NOT_CONFIRMED. openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v6-pre-received-20261002T203556Z/output--result.md. Verified1767packetfiles,36exactreconstructedatlases,54actualscreens. Это разрешение текущего технического плана, не product PASS.
+
+Следующий шаг: все V6 same-Electron controls для восьми(T,P)пар/трёхSVG/opacity1,.65,.75 и actual/synthetic negatives → permanent RED → repair. Production/permanenttests всё ещё неизменны, старые FAIL и V5 unsupported24 сохранены. P01 6/10; humanvisual/cumulativePOST/archive/P02 открыты. Последнийpublished45d07835; текущие diagnostic/V6/PRE artifacts UNCOMMITTED. Panelqueued.
+
+# P01: V6 paired-background PRE готов
+
+2026-10-02T20:23:21.545Z. Технический V6 plan согласован, scope1bridge/2tests/3SVG unchanged. Strict/BDD111/UIcompliance26+positive-negativecontrols/diff PASS. Новый PRE gpt-6-astra/xhigh по текущему stage/tasks.36historicalV5 atlas JSON точно воспроизведены из rawPNG/наблюдений/engine; оригиналы не менялись, для review исключены только446.5MB повторяющихся массивов. openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v6-planning-20261002T201504Z/v5-atlas-reconstruction.json.
+
+V6controls/permanentRED/production NOT_RUN. Actual6/6 preservation/54screens показали24unsupportedV5 cases, это не contrastPASS. P01 6/10; cumulative/humanvisual/archive/P02 STOP. После freeze статусы/код/index не меняются до receipt. Checkpoint45d07835 опубликован; новые V5/actual/V6 artifacts UNCOMMITTED. Panelqueued.
+
+# P01: V5 reference subset PASS; реальная composition требует V6 PRE
+
+2026-10-02T20:15:04.707Z. V5 controls36atlas/360cases/18synthetic negatives PASS; initial fixture readiness FAIL сохранён. Actual Electron6/6 semantic/file preservation PASS,54screens/observations, source543/binary unchanged. В24 Light/Dark hover/pressed target background отличается от toolbar backdrop, а V5 допускает только равные фоны. Остальные30 лишь проходят это одно условие; numerical app PASS0. openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-composition-20261002T201102Z/composition-analysis.json.
+
+RCA TEST и raw-before: openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v6-planning-20261002T201504Z. Нужен отдельный V6 paired-background calibration plan и fresh PRE, порог3:1/полные324pixels/все256канальные кандидаты без изменений. Не менять production под ограничение измерения. Scope1bridge/2tests сохраняется; permanentRED/repair NOT_RUN. P01 6/10; humanvisual/cumulativePOST/archive/P02 STOP. Последнийpublished45d07835; новые controls/diagnostic/planning UNCOMMITTED. Panelqueued.
+
+# P01: опубликован PRE checkpoint; V5 controls RUNNING
+
+2026-10-02T20:06:36.159Z. Checkpoint45d078352382e1fc2edff93d9c052c1e862ead3e commit/push PASS, actual remote SHA exact. Новый reference harness: openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v5-controls-v2-20261002T200504Z. Первый запуск остановился на navigation readiness до измерений; raw FAIL/RCA сохранён, в новой версии добавлено ожидание конкретного DOM marker. Повторные controls RUNNING, numerical/application PASS ещё не заявлен.
+
+Production/permanenttests не менялись; RED/repair NOT_RUN. P01 6/10; PRE PASS толькоimplementationplan, humanvisual/cumulativePOST/archive/P02 остаются открыты. Новые reference/evidence metadata UNCOMMITTED. Panelqueued.
+
 # P01: upper-three implementation PRE PASS
 
 2026-10-02T19:53:24.484Z. Повторный независимый PRE PASS:80 событий,17 raw, candidate/packet/plan unchanged; openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-repeat-pre-received-20261002T195202Z/output--result.md. Requested gpt-6-astra/xhigh по exact stage/tasks; actual backend/effort NOT_CONFIRMED. Три замечания первого FAIL закрыты в плане, старый FAIL сохранён. Strict/BDD111/diff2 PASS. Production/permanenttests неизменны.
