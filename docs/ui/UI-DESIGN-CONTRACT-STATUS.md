@@ -1,3 +1,33 @@
+# P01: upper-three implementation PRE PASS
+
+2026-10-02T19:53:24.484Z. Повторный независимый PRE PASS:80 событий,17 raw, candidate/packet/plan unchanged; openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-repeat-pre-received-20261002T195202Z/output--result.md. Requested gpt-6-astra/xhigh по exact stage/tasks; actual backend/effort NOT_CONFIRMED. Три замечания первого FAIL закрыты в плане, старый FAIL сохранён. Strict/BDD111/diff2 PASS. Production/permanenttests неизменны.
+
+Следующий этап: same-Electron V5 positive/negative controls → permanent meaningful RED → sole-bridge repair → targeted/full/runtime/verify/POST. Controls/RED/implementation пока NOT_RUN. P01 6/10; при изменении source/tests task3.1 снова откроется. Human372visual NOT_APPROVED,114otherglyphs открыты, cumulativePOST/archive/P02 STOP. Guide1.0/tokens1.0.0; protectionLOCAL_ONLY/NOT_CONFIGURED.
+
+Planning/PRE checkpoint готовится к commit/push только в codex/frade-ui-design-contract; последний опубликованный fc20a850. Evidence openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-checkpoint-20261002T195324Z. Panelqueued.
+
+# P01: повторный upper-three PRE готов
+
+2026-10-02T19:37:48.558Z. Три технических замечания первого PRE согласованы в4 артефактах/BDD, accepted scope не расширен. Strict OpenSpec PASS; BDD111/111 PASS; diff2 PASS после исправления только новых EOL. Первые FAIL и raw-before сохранены в openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-repair-20261002T192946Z. Source manifest543:541 неизменен,2 planning-only изменения. Production/permanenttests не менялись. Новый PRE gpt-6-astra/xhigh из текущего tasks; V5 controls/RED/product NOT_RUN до PASS.
+
+P01 6/10, humanvisual/cumulativePOST/archive/P02 открыты. Checkpoint UNCOMMITTED/UNPUSHED после fc20a850; status заморожен на время нового review. Panelqueued.
+
+# P01: upper-three PRE FAIL; техническое исправление плана
+
+2026-10-02T19:29:46.253Z. Независимый PRE завершён: FAIL, 103 событий,17 raw, candidate/packet/plan unchanged. Requested gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. Отчёт содержит только verdict; точные публичные замечания reviewer сохранены из полного event stream: openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-repair-20261002T192946Z/review-messages.json. Блокеры: original active opacity0.75 не включена в V5; release ошибочно смешан со снятием активной темы; не определена поздняя async ошибка после PAINTED.
+
+Уточняю технический план в прежнем принятом scope:1 production bridge +2 append-only test paths, без parent/IPC/vendor/routing изменений. Production/permanenttests не менялись; новые controls/RED/implementation NOT_RUN до fresh PRE PASS. P01 6/10; visual/cumulativePOST/archive/P02 открыты. Все prior FAIL сохранены. Checkpoint UNCOMMITTED/UNPUSHED после fc20a850; panel queued.
+
+# P01: принятый upper-three delta — PRE READY
+
+2026-10-02T19:08:21.440Z. Strict OpenSpec PASS, shared runtime AVAILABLE; source manifest543 явно показывает только2 разрешённых planning BDD/traceability изменения,541 исходник неизменен. Production/permanenttests не изменены. Пакет нового implementation PRE: 779 файлов, requestedgpt-6-astra/xhigh из точного stage plan/tasks. Контракт V5 и async lifecycle входят в PRE; новые controls/RED/production до PASS NOT_RUN. openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-planning-20261002T190409Z/review-selection.json. Старые диагностические12FAIL/114NOT_MEASURED сохранены; P01 6/10, humanvisual/cumulativePOST/archive/P02 открыты. Candidate замораживается после fresh canary; во время review без записей. Panelqueued.
+
+# P01: scope трёх иконок принят; подготовка PRE
+
+2026-10-02T19:04:09.155Z. Пользователь принял точный P01-UPPER-THREE-GLYPH-PAINT-01/SHA2564fa0062a9c8d717f0b540bd5f65568b2f934b009947954e4ee7931e01df6808e; решение openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-glyph-paint-accepted-20261002T190409Z.json. Ветка codex/frade-ui-design-contract, UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade, опубликованныйHEADfc20a850, исходныйbaseline98f387f.
+
+Proposal/design/tasks/specs и новые pending BDD/traceability согласованы. V5 affirmative proof: полное попиксельное сопоставление с same-Electron calibration, все совместимые цвета и минимальный контраст, без CSS-only PASS. Сейчас PRE/новыеcontrols/permanentRED/repair NOT_RUN; production/permanenttests не менялись. P01 6/10; при source/test implementation task3.1 откроется заново. Старые12FAIL/114NOT_MEASURED и V4 preserved. Humanvisual372 NOT_APPROVED, cumulativePOST/archive/P02 STOP. Planning openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-planning-20261002T190409Z UNCOMMITTED/UNPUSHED. Panelqueued.
+
 # Актуально: P01 ожидает решения по исправлению трёх иконок
 
 Обновлено 2026-10-02T18:37:23.539Z. Ветка codex/frade-ui-design-contract, UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. Диагностический checkpoint537839d0340e37b91c5a41486897f69f3f673732 опубликован в авторизованную UI-ветку; remote SHA совпал. openspec/changes/frade-p01-theme-core/evidence/p01-upper-glyph-defect-20261002T183231Z/publication.json. Эта запись сохраняется последующим metadata commit.

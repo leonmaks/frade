@@ -333,3 +333,25 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
   # to twelve actual Electron cases, full assertion source, AST callbacks and raw execution.
   # Foundation declarations and original pendingRuntime NOT_RUN remain historical/cumulative.
   # Passing integrity/runtime does not accept screenshots or close cumulative P01.
+
+  @P01-RT-UPPER-GLYPH-017 @runtime-pending @FDS-003 @FDS-009 @A11Y-002
+  Scenario: Three original upper glyphs prove canonical effective paint
+    Given the exact accepted View Insert Freehand source identities and validated actual Electron calibration controls
+    When presentation changes across required themes densities media and states
+    Then the entire actual glyph raster matches a nonempty canonical compatible color set whose minimum effective contrast is at least three
+    And original geometry opacity capability actions and semantic state remain intact
+    And the actual enabled active opacity of 0.75 receives the same exact contrast proof
+
+  @P01-RT-UPPER-GLYPH-018 @runtime-pending @A11Y-007
+  Scenario: Upper glyph projection restores only owned current state
+    Given recorded original glyph inline properties priorities and marker absence
+    When preview rollback source replacement detach disposal or superseded asynchronous digest occurs
+    Then exact ownership restores without overwriting current external vendor values or changing unrelated targets and no stale mutation occurs
+    And normal handle release retains active paint while cancel reapplies the previous theme
+    And new native digest failures reject a pending apply or rollback before PAINTED while post-paint adoption uses only verified exact bytes
+
+  @P01-RT-UPPER-GLYPH-019 @runtime-pending
+  Scenario: Missing affirmative glyph evidence cannot pass
+    Given unchanged historical black-source RED and an unknown unsupported blank or contradictory actual glyph observation
+    When complete-raster calibration cannot establish the required compatible effective-paint contrast bound
+    Then no favorable pixel CSS-only value or absence of the old failure can produce PASS and closure remains blocked

@@ -82,3 +82,20 @@ Within existing open2.4/2.5/3.2: preserve raw source/planning/POST2/RCA; coheren
 ## Current FUI check execution checkpoint
 
 Current required openspec/changes/frade-p01-theme-core/evidence/p01-fui-full-root-20261002T130619Z exit0/Draw215/Electron93/source543 unchanged; fresh current FUI12,31actual required adapter roles,7examples/14negative controls,BDD111 and affected type/lint/compliance PASS. Previous rootFAIL250.10/unchanged controlPASS147.90 remain immutable; current full p95=137.80000000074506ms<=150, variability cause NOT_PROVEN, no budget/benchmark/production change. This closes task3.1 execution only. Tasks2.4/2.5 fullB02/humanvisual/3.2cumulativeverifyPOST/3.3archive stay open; focusedFUI verification does not waive them. STOP before P02.
+
+## Accepted P01-UPPER-THREE-GLYPH-PAINT-01 checkpoint
+
+Authority: [human acceptance](decisions/p01-upper-three-glyph-paint-accepted-20261002T190409Z.json); exact accepted proposal SHA256 4fa0062a9c8d717f0b540bd5f65568b2f934b009947954e4ee7931e01df6808e. Original proposal bytes, diagnostic PRE/results and RED remain immutable. This accepts only P01-UPPER-THREE-GLYPH-PAINT-01; fresh implementation PRE is required. P01 remains6/10 before code; task3.1 reopens on source/test implementation. No P02 or Routing dependency.
+
+Stage P01 upper-three repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three repair POST reviewer: gpt-6-astra; reasoning xhigh. Exact task-source raw hash/excerpt accompanies each fresh automatic packet-confined review.
+
+- Reconcile proposal/design/spec/tasks and BDD/traceability with this acceptance, preserve raw-before/old callbacks and diagnostic RED; strict validate and fresh independent implementation PRE before permanent tests or production changes.
+- Task2.4: fresh same-Electron V5 positive/negative calibration controls first; append meaningful permanent unit/Electron RED for exact three-resource ownership, visible canonical glyph proof, original behavior and lifecycle; implement only accepted sole bridge selector/property delta.
+- Task2.5: exact full-raster candidate reconstruction and minimum compatible effective-paint contrast >=3 for every required owned enabled target/state, all-six themes/densities/media/viewport/text200; preserve actual semantics/identities. Unknown/NOT_MEASURED blocks relevant closure. New baselines require a human decision.
+- Task3.1: reopen when implementation source/test changes; retain old raw full prefixes/AST callbacks, explicitly revalidate fullRuntimeBindings against new source via actual original FUI execution; targeted and fresh full root/checks. No existing assertions/tolerances/declarations weakened.
+- Task3.2: executor verify and automatic independent exact-model POST on current complete delta; task3.3/cumulative/archive/P02 stay open.
+
+
+## Upper-three PRE1 technical repair checkpoint
+
+The103-event independent PRE FAIL is retained at evidence/p01-upper-three-pre-received-20261002T192637Z; verbatim public findings/RCA/raw-before at openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-repair-20261002T192946Z. Existing6/10 task state is unchanged. Before implementation obtain a fresh PRE on the coherent revised design: original :active opacity0.75 in exact V5 controls; release retains active glyphs and rollback applies previous theme; native digest only within pending apply/rollback before PAINTED, passive exact positive-byte-cache adoption without late async diagnostic. Append regressions for all three findings without changing original test callbacks. Existing3:1 threshold, original paths and model/effort row remain mandatory. Controls/permanent RED/production NOT_RUN.

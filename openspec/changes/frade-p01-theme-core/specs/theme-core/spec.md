@@ -246,3 +246,38 @@ Under separately accepted P01-LOWER-REFLOW-REFUSAL-01, proven lower impossible-f
 #### Scenario: B05 gates preserve incomplete P01
 - **WHEN** the accepted B05 plan is strict-valid and fresh independent PRE passes
 - **THEN** permanent meaningful bridge-to-parent RED precedes implementation and actual targeted/full/matrix checks, verification and automatic POST must pass before this repair closes; human visuals/full FUI/cumulative/archive remain open and no P02 begins
+
+## ADDED Requirements
+
+### Requirement: Exact three upper toolbar glyph paint ownership
+
+P01 SHALL apply the human-accepted P01-UPPER-THREE-GLYPH-PAINT-01 only in the existing private Draw.io bridge to the three original View/Insert/Freehand SVG identities, selector/property bounds and lifecycle described in design.md. It SHALL reuse their unchanged original alpha silhouettes with canonical text.primary/effective forced colors and original18px geometry, opacity, state, target, handlers and actions. All other upper targets/vendor/domain/routing/persistence remain excluded. Required unknown ownership or unsupported composition SHALL block claimed closure.
+
+#### Scenario: Proven original upper glyph follows active presentation
+- **WHEN** one of the three connected original controls receives accepted presentation preview apply rollback or forced-color mapping
+- **THEN** its entire actual glyph raster proves canonical effective foreground and required3:1 contrast through the independently validated design protocol while original resource geometry opacity capability actions and semantic state remain intact
+
+#### Scenario: Changed excluded or late ownership receives no stale paint
+- **WHEN** source bytes change or an unowned target appears or ownership is superseded disposed detached or replaced
+- **THEN** only eligible exact current original resources may be adopted and exact prior owned properties and absence restore without overwriting new external vendor edits or mutating stale nodes
+
+#### Scenario: Positive glyph proof cannot collapse to absence of prior failure
+- **WHEN** the prior fixed-black upper-bound diagnostic no longer applies after projected paint
+- **THEN** required GREEN still needs all declared same-Electron positive-negative controls and complete actual glyph raster reconstruction with minimum compatible effective-paint contrast at least3; empty ambiguous unsupported or CSS-only evidence is NOT_MEASURED and blocks closure
+
+#### Scenario: Upper glyph delta observes original gates and scope
+- **WHEN** the human-accepted coherent delta passes strict validation and fresh independent PRE
+- **THEN** meaningful permanent RED precedes sole-bridge implementation and fresh targeted full-root runtime verify POST and visual acceptance remain required; old source callbacks evidence declarations and Routing independence are preserved with no P02 progression
+
+
+#### Scenario: Original active opacity remains measurable
+- **WHEN** an enabled original upper control is actually pressed and the pinned vendor opacity is0.75
+- **THEN** the unchanged opacity is covered by exact same-Electron calibration and full-raster proof with minimum3:1; no opacity override or unsupported-state PASS is allowed
+
+#### Scenario: Handle release retains the painted glyph lease
+- **WHEN** normal successful publication releases its prepared handle or preview cancel rolls back to a previous accepted theme
+- **THEN** release retains the active projection and rollback paints the previous projection while only detach disposal or ownership loss restores original unprojected properties; pending superseded work cannot publish late
+
+#### Scenario: Glyph digest failure occurs only inside a pending paint operation
+- **WHEN** a new source needs native digest verification during current apply or rollback
+- **THEN** all such work completes before PAINTED and current failure rejects the existing pending parent operation via REFUSED with no new late diagnostic; after PAINTED passive adoption uses only byte-exact positively verified cache entries without calling crypto and unknown bytes stay unowned
