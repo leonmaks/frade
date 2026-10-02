@@ -1,13 +1,13 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-02T18:37:20.149Z
+UPDATED_AT_UTC: 2026-10-02T18:49:24.120Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий шаблон пока PROPOSED, не deployed.
 
 ## 1. Решение / следующий шаг
 
 STAGE: W01 | PHASE: PLANNING | HEALTH: BLOCKED
-NEXT_PERMITTED_ACTION: actual planning checks -> independent draft-quality review -> publish planning checkpoint -> concrete policy decision.
+NEXT_PERMITTED_ACTION: human concrete policy/cadence decision -> fresh formal PRE on approved candidate -> tooling controls; no production admission yet.
 HUMAN_DECISION: принять/скорректировать проект policy, cadence и control scope после чтения artifacts.
 READY_FOR_IMPLEMENTATION: NO (concrete policy decision and formal PRE/checkpoint NOT_RUN).
 READY_FOR_ARCHIVE: NO.
@@ -40,14 +40,14 @@ STOP after W01; no next numbered change or owner migration automatically.
 |---|---|---|---|
 | 1.1 | planning-architecture | isolate -> audit -> public-policy adoption | COMPLETE; repository-audit.json/user-decisions.json |
 | 1.2 | planning-architecture | consolidate -> specs/design/tasks -> standard/onboarding/status/manifest/adoption drafts | COMPLETE; feedback-register.md and drafts |
-| 1.3 | planning-architecture + independent-PRE pair for draft-only review | strict/checks -> independent draft-quality review -> checkpoint | IN_PROGRESS; strict change PASS, draft-01 BLOCKED; draft-02 FAIL/SPEC_CONFLICT; plan repair complete, fresh review pending |
+| 1.3 | planning-architecture + independent-PRE pair for draft-only review | strict/checks -> independent draft-quality review -> checkpoint | COMPLETE; strict/integrity PASS; draft-01 BLOCKED, draft-02 FAIL retained; fresh draft-03 PASS on faf69d33 |
 | 1.4 | human material policy decision | concrete proposal -> acceptance/reconciliation | OPEN |
 | 1.5 | independent-PRE | approved coherent plan -> actual formal PRE -> frozen checkpoint | OPEN |
 | 2.1–2.7 | tooling-tests | meaningful RED -> controls/docs/CLI -> GREEN | NOT_STARTED |
 | 3.1–3.2 | tooling-tests | cumulative applicable checks + integrity audit | NOT_RUN |
 | 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | NOT_RUN |
 
-TASKS_COMPLETE/TOTAL/REMAINING: 2/18/16.
+TASKS_COMPLETE/TOTAL/REMAINING: 3/18/15.
 REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed acceptance).
 46 BDD scenario declarations counted by actual planning audit; product/control behavioral tests NOT_RUN.
 
@@ -60,15 +60,15 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | Exact public-policy transfer | REQUIRED | PASS2/2 raw hashes |
 | Inventory | REQUIRED | PASS20 package manifests; point-in-time owner process observations |
 | openspec validate frade-standard-workflow --strict --json | REQUIRED | PASS1/1, no issues |
-| Full planning content/hash/link/traceability and all-spec checks | REQUIRED | PASS; planning-checks.json,18requirements/46scenarios/18tasks/8sections; product/control tree unchanged |
-| Independent draft-quality review | REQUIRED for planning completion | draft-01 BLOCKED (usage); draft-02 FAIL (closure scope); candidate/packet unchanged; corrected planning requires fresh review |
+| Full planning content/hash/link/traceability and all-spec checks | REQUIRED | PASS; reconciled-planning-checks.json + final metadata check proof;18requirements/46scenarios/18tasks/8sections; product/control tree unchanged |
+| Independent draft-quality review | REQUIRED for planning completion | draft-03 PASS on faf69d33;80 input hashes; prior BLOCKED/FAIL preserved; no implementation admission |
 | Formal PRE/Verify/POST | REQUIRED for implementation/closure | NOT_RUN |
 | New validator/bootstrap/publication control suites | REQUIRED after approved plan | NOT_IMPLEMENTED/NOT_RUN |
 | Product suites | No product changes in current planning | NOT_RUN; no product PASS claimed |
 | Human policy/visual acceptance | Policy decision REQUIRED; product visuals outside current scope | Policy PENDING; no visual approval claim |
 | CI / branch protection | Separate observable control | REMOTE_NOT_RUN / NOT_CONFIGURED_OR_UNVERIFIED |
 
-Historical invocation/EOF/EOL failures and classified RCA retained. Fresh current strict and planning-integrity PASS; staged diff-check PASS. No existing Routing/UI FAIL waived.
+Historical invocation/EOF/EOL/link-check/count failures and classified corrections retained. Draft review history: BLOCKED -> FAIL/SPEC_CONFLICT -> repaired fresh PASS; raw reports/events/exits/provenance are immutable. Fresh current strict and planning-integrity PASS; staged diff-check PASS. No existing Routing/UI FAIL waived.
 
 ## 6. Модели / исполнение
 
@@ -77,7 +77,7 @@ Historical invocation/EOF/EOL failures and classified RCA retained. Fresh curren
 | W01 planning-architecture | gpt-6-astra/high | design4 + direct human decision | Current chat backend/effort NOT_CONFIRMED |
 | W01 tooling-tests | gpt-6-sol/high | design4 + direct human decision | NOT_RUN |
 | W01 formal-Verify | gpt-6-astra/high | design4 + direct human decision | NOT_RUN |
-| W01 independent-PRE | gpt-6-astra/xhigh | design4 + direct human decision | Invoked exact pair twice for draft-only review: BLOCKED then FAIL; actual backend/effort NOT_CONFIRMED |
+| W01 independent-PRE | gpt-6-astra/xhigh | design4 + direct human decision | Requested exact pair for three independent draft runs: BLOCKED -> FAIL -> PASS; actual backend/effort NOT_CONFIRMED |
 | W01 independent-POST | gpt-6-astra/xhigh | design4 + direct human decision | NOT_RUN |
 
 No model substitution, task override or silent current-chat switch. Common service is read-only reviewer transport; writer dispatch NOT_IMPLEMENTED.
@@ -90,18 +90,20 @@ No model substitution, task override or silent current-chat switch. Common servi
 | D02 remote/ref | W01 | ACCEPTED | Only origin refs/heads/codex/frade-standard-workflow |
 | D03 concrete common policy/cadence | W01 | PENDING | Read drafts/standard-workflow.md; approve or revise |
 | Adoption Routing/UI/Repo Core | Each consumer | NOT_STARTED | Do not block independent supplier or edit foreign workspace |
-| Reviewer CLI environment | W01 | BLOCKED | Initial CLI quota BLOCKED retained; exact retry executed successfully and returned FAIL; no substitution |
+| Reviewer CLI environment | W01 | RESOLVED_CURRENT; historical BLOCKED retained | Exact retries completed with FAIL then PASS; no model substitution or quota/reset claim |
 | Unknown writable-worker runtime | W01 tooling capability | NOT_IMPLEMENTED | Implement explicit honest capability/guard, no false dispatch |
 
 No active production fix attempts; RCA rule retained.
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 2021f1dd8621061d1179ec9577e9930b47cb9657 (draft, not implementation admission).
-COMMIT_STATE: draft planning committed2021f1dd; 354cab07 draft candidate reviewed with BLOCKED transport; raw evidence retained; no formal approval.
+SOURCE_CHECKPOINT_SHA: faf69d339b338173158d2f31465c2aa4f0b4108d (independent draft-quality PASS, not implementation admission).
+COMMIT_STATE: reviewed source committed/published faf69d33; this follow-up commits only receipt/status metadata and task1.3 completion; plan source hash remains501168ce...
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: PENDING.
-VERIFIED_REMOTE_SHA: NOT_RUN.
+PUSH_STATE: reviewed source PUBLISHED, exact remote SHA verified. Metadata follow-up publication uses the external receipt below, bound to its own sourceSha; no recursive receipt commits.
+VERIFIED_SOURCE_REMOTE_SHA: faf69d339b338173158d2f31465c2aa4f0b4108d.
+SOURCE_PUBLICATION_RECEIPT: openspec/changes/frade-standard-workflow/evidence/publication/source-faf69d33-20261002.json.
+METADATA_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/metadata-followup-20261002.json; verify receipt.sourceSha against live HEAD. Receipt is external post-publication evidence; its absence/mismatch is NOT_RUN/BLOCKED, not PASS.
 Current evidence: openspec/changes/frade-standard-workflow/evidence/.
 Reviewable standard/onboarding/status/manifest/adoption: openspec/changes/frade-standard-workflow/drafts/.
 Feedback register: openspec/changes/frade-standard-workflow/feedback-register.md.
