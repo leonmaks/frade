@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "scope": "Required general baseline checks; no new control implementation certified",
+  "historicalBuildFail": "openspec/changes/frade-standard-workflow/evidence/baseline-build.json",
+  "environmentRepair": "openspec/changes/frade-standard-workflow/evidence/baseline-build-environment-repair.json",
+  "checks": [
+    {
+      "command": "pnpm lint",
+      "exit": 0,
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/baseline-lint.json"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exit": 0,
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/baseline-typecheck.json"
+    },
+    {
+      "command": "pnpm test:boundaries",
+      "exit": 0,
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/baseline-boundaries.json"
+    },
+    {
+      "command": "pnpm check:boundaries",
+      "exit": 0,
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/baseline-boundary-commands.json"
+    },
+    {
+      "command": "pnpm build",
+      "exit": 0,
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/baseline-build-after-environment-repair.json"
+    }
+  ],
+  "atUtc": "2026-10-02T19:35:25.123Z",
+  "lockfileModified": false
+}
