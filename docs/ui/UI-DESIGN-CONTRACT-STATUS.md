@@ -2,7 +2,7 @@
 
 ## Текущий этап — P01,6/10; independent focused POST FAIL / B05 scope decision
 
-Обновлено: 2026-10-02T06:16:30.935Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. Последний опубликованный HEAD f9910e51948e45af62f873abcd67674ab3cf73e9, remote SHA VERIFIED. Текущий FAIL checkpoint: metadata BDD6/compliance/strict PASS; commit/push выполняется. Routing prerequisite отсутствует. Panel queued, видимость не подтверждена.
+Обновлено: 2026-10-02T06:24:11.628Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. Source FAIL checkpoint f3ee2659b06f0f8dcf3a9201bad54a40dc780173 committed/pushed; exact remote SHA VERIFIED. Metadata BDD6/compliance/strict PASS. Publication receipt сохраняется этим metadata checkpoint; product изменений вне source checkpoint нет. Routing prerequisite отсутствует. Panel queued, видимость не подтверждена.
 
 Автоматический focused POST2: **GATE_STATUS: FAIL**, единственный blocker B05 (INTEGRATION / STATE_TRANSITION). Impossible-fit REFUSED после завершённого apply/PAINTED теряется parent-handler; bridge не прекращает successful adoption/focus. Raw report/events/receipt17 файлов сохранены до интерпретации; unchanged candidate/packet/plan,7564packet hashes и42raw-copy hashes проверены. Requested gpt-6-astra/xhigh по exact owning POST row; actual backend/effort NOT_CONFIRMED. POST preparation1 BLOCKED из-за42ignored.log сохранён отдельно; оригинальные логи не изменены.
 
@@ -27,7 +27,9 @@
 
 [Точный proposed B05 scope](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal.proposed.md) · [Independent POST FAIL](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-post2-fail-received-20261002T060636Z/result.md) · [Actual RCA](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/result.json) · [Actual screenshots, human NOT_APPROVED](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-checks-20261002T045033Z/actual-visual-candidates.md).
 
-Applicable FDS003/004/005/008/009, A11Y001–005/007–009; exactly3approved exceptions. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Production parent/vendor/routing/domain не изменены. Scope ограничен UI; consumer-owned future shared fresh-proof packaging не создаёт Routing dependency. READY_FOR_VERIFY:NO (whole P01).
+Applicable FDS003/004/005/008/009, A11Y001–005/007–009; exactly3approved exceptions. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Production parent/vendor/routing/domain не изменены. Scope ограничен UI; consumer-owned future shared fresh-proof packaging не создаёт Routing dependency. READY_FOR_VERIFY:NO (whole P01). Raw staged evidence whitespace FAIL exit2 сохранён, authored code/docs PASS;3296staged files verified byte-identical.
+
+[Publication receipt](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/publication.json). Следующий шаг требует только принятия exact B05 scope; automatic PRE/POST и authorized commit/push не требуют отдельного подтверждения.
 
 ## Предыдущие сохранённые checkpoint записи
 
