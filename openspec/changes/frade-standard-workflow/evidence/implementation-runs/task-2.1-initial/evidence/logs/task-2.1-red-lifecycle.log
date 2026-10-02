@@ -1,0 +1,189 @@
+TAP version 13
+# Subtest: FWE-005-S01 PRE plus checkpoint admits normal implementation source changes
+ok 1 - FWE-005-S01 PRE plus checkpoint admits normal implementation source changes
+  ---
+  duration_ms: 2.876588
+  ...
+# Subtest: FWE-005-S01 forged JSON PASS/boolean and absent proof cannot admit implementation
+not ok 2 - FWE-005-S01 forged JSON PASS/boolean and absent proof cannot admit implementation
+  ---
+  duration_ms: 3.210447
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:37:1'
+  failureType: 'testCodeFailure'
+  error: 'false == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:39:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-005-S02 skipped phase and stale PRE plan/scope are barriers
+not ok 3 - FWE-005-S02 skipped phase and stale PRE plan/scope are barriers
+  ---
+  duration_ms: 0.776364
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:43:1'
+  failureType: 'testCodeFailure'
+  error: 'false == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:45:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-005-S02 POST requires current GREEN and Verify; POST source binding is current
+not ok 4 - FWE-005-S02 POST requires current GREEN and Verify; POST source binding is current
+  ---
+  duration_ms: 1.081792
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:51:1'
+  failureType: 'testCodeFailure'
+  error: 'false == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:55:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-005-S03 diagnostic PASS does not substitute for full review
+not ok 5 - FWE-005-S03 diagnostic PASS does not substitute for full review
+  ---
+  duration_ms: 0.684675
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:59:1'
+  failureType: 'testCodeFailure'
+  error: 'false == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:62:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-008-S03 completed legacy tasks without POST/archive are pending closure
+not ok 6 - FWE-008-S03 completed legacy tasks without POST/archive are pending closure
+  ---
+  duration_ms: 1.221306
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:65:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'CLOSED'
+    - 'IMPLEMENTED_PENDING_CLOSURE'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'IMPLEMENTED_PENDING_CLOSURE'
+  actual: 'CLOSED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:66:10)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-001-S04 scope rejects frozen writes, traversal and planning/closure confusion
+not ok 7 - FWE-001-S04 scope rejects frozen writes, traversal and planning/closure confusion
+  ---
+  duration_ms: 0.736053
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:70:1'
+  failureType: 'testCodeFailure'
+  error: 'false == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:73:10)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-001-S03 plans exact owner sync/archive with reference-origin relocation after verified barriers
+not ok 8 - FWE-001-S03 plans exact owner sync/archive with reference-origin relocation after verified barriers
+  ---
+  duration_ms: 0.53257
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:87:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 4
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 4
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:91:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-001-S04 closure rejects early, foreign, unsafe, stale and broken reference requests
+not ok 9 - FWE-001-S04 closure rejects early, foreign, unsafe, stale and broken reference requests
+  ---
+  duration_ms: 0.942075
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:95:1'
+  failureType: 'testCodeFailure'
+  error: 'false == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:98:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-001-S04 artifact reader hashes bytes and rejects symlink escape
+not ok 10 - FWE-001-S04 artifact reader hashes bytes and rejects symlink escape
+  ---
+  duration_ms: 41.120791
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:106:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - '13d88c6c0d70bbff19ed19f9b545ed2919687882f04a10b02ba627cf0144449a'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '13d88c6c0d70bbff19ed19f9b545ed2919687882f04a10b02ba627cf0144449a'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:113:12)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 1
+# fail 9
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 66.635812

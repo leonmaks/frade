@@ -3,3 +3,13 @@ evidence/shared-policy/*.md -text whitespace=cr-at-eol
 evidence/*.txt -text whitespace=cr-at-eol
 evidence/reviews/** -text whitespace=cr-at-eol
 evidence/runtime-probes/** -text whitespace=cr-at-eol
+
+# Immutable scoped implementation execution evidence (preserve raw CRLF)
+evidence/implementation-runs/** -text whitespace=cr-at-eol
+
+# Exact immutable raw TAP captures: retain bytes, inspect via log + hash manifest.
+evidence/implementation-runs/task-2.1-initial/evidence/logs/task-2.1-red-lifecycle.log -diff
+evidence/implementation-runs/task-2.1-initial/evidence/logs/task-2.1-red-replay-contracts.log -diff
+evidence/implementation-runs/task-2.1-initial/evidence/logs/task-2.1-red-replay-final-contracts.log -diff
+evidence/implementation-runs/task-2.1-initial/evidence/logs/task-2.1-red-replay-final-lifecycle.log -diff
+evidence/implementation-runs/task-2.1-initial/evidence/logs/task-2.1-red-replay-lifecycle.log -diff

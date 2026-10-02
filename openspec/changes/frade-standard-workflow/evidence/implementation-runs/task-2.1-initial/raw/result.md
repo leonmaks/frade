@@ -1,0 +1,3 @@
+Task 2.1 is implemented in the staged eligible paths. The [result file](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/TASK-2.1-RESULT.json) lists the APIs, scenario mappings, changed files, and raw RED/GREEN logs. The final tests-only RED snapshot is in [deliverables/red](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/deliverables/red).
+
+All 25 named tests pass on staging Node v18.19.1, including a disposable Git closure fixture. **Owner acceptance remains pending** the Windows Node v24.18.0 replay and owning-workspace checks. No PRE/POST certification, archive, merge, or publication was performed.

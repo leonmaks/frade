@@ -1,0 +1,77 @@
+TAP version 13
+# Subtest: FWE-005-S01 PRE plus checkpoint admits normal implementation source changes
+ok 1 - FWE-005-S01 PRE plus checkpoint admits normal implementation source changes
+  ---
+  duration_ms: 4.207522
+  ...
+# Subtest: FWE-005-S01 forged JSON PASS/boolean and absent proof cannot admit implementation
+ok 2 - FWE-005-S01 forged JSON PASS/boolean and absent proof cannot admit implementation
+  ---
+  duration_ms: 4.297268
+  ...
+# Subtest: FWE-005-S02 skipped phase and stale PRE plan/scope are barriers
+ok 3 - FWE-005-S02 skipped phase and stale PRE plan/scope are barriers
+  ---
+  duration_ms: 1.214534
+  ...
+# Subtest: FWE-005-S02 POST requires current GREEN and Verify; POST source binding is current
+ok 4 - FWE-005-S02 POST requires current GREEN and Verify; POST source binding is current
+  ---
+  duration_ms: 2.831301
+  ...
+# Subtest: FWE-005-S03 diagnostic PASS does not substitute for full review
+ok 5 - FWE-005-S03 diagnostic PASS does not substitute for full review
+  ---
+  duration_ms: 0.918633
+  ...
+# Subtest: FWE-008-S03 completed legacy tasks without POST/archive are pending closure
+ok 6 - FWE-008-S03 completed legacy tasks without POST/archive are pending closure
+  ---
+  duration_ms: 0.230371
+  ...
+# Subtest: FWE-001-S04 scope rejects frozen writes, traversal and planning/closure confusion
+ok 7 - FWE-001-S04 scope rejects frozen writes, traversal and planning/closure confusion
+  ---
+  duration_ms: 1.168846
+  ...
+# Subtest: FWE-001-S03 plans exact owner sync/archive with reference-origin relocation after verified barriers
+ok 8 - FWE-001-S03 plans exact owner sync/archive with reference-origin relocation after verified barriers
+  ---
+  duration_ms: 1.25493
+  ...
+# Subtest: FWE-001-S04 closure rejects early, foreign, unsafe, stale and broken reference requests
+ok 9 - FWE-001-S04 closure rejects early, foreign, unsafe, stale and broken reference requests
+  ---
+  duration_ms: 5.797731
+  ...
+# Subtest: FWE-001-S04 artifact reader hashes bytes and rejects symlink escape
+ok 10 - FWE-001-S04 artifact reader hashes bytes and rejects symlink escape
+  ---
+  duration_ms: 45.945935
+  ...
+# Subtest: FWE-001-S03 disposable Git owner sync/archive preserves foreign file and raw receipt origin
+not ok 11 - FWE-001-S03 disposable Git owner sync/archive preserves foreign file and raw receipt origin
+  ---
+  duration_ms: 808.228415
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:131:1'
+  failureType: 'testCodeFailure'
+  error: 'false == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-20261002/work/tests/directions/lifecycle.test.mjs:162:12)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 10
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 890.343979

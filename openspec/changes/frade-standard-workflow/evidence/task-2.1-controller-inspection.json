@@ -1,0 +1,61 @@
+{
+  "status": "REPAIR_REQUIRED_BEFORE_IMPORT",
+  "scope": "Controller integration inspection of disposable task2.1 staged code; not an independent gate",
+  "findings": [
+    {
+      "id": "I21-01",
+      "contract": "design1; one change per stage",
+      "finding": "validateManifest requires every stage.change === direction.id; a multi-stage direction with distinct numbered OpenSpec changes cannot pass",
+      "required": "Versioned explicit owned stage-change mappings, safe unique IDs; positive two-stage fixture and foreign-change negative test"
+    },
+    {
+      "id": "I21-02",
+      "contract": "task2.1/design1a/FWE001-S03,S04",
+      "finding": "planClosure only returns descriptors; no actual temporary-Git sync/archive/reference relocation control exists, and generic declared spec paths can target frozen/product files",
+      "required": "Verify exact openspec/specs/<safe capability>/spec.md destinations against frozen scope; execute controlled disposable Git closure and verify bytes/origins/actual references, reject unsafe/foreign/stale/broken cases before writes"
+    },
+    {
+      "id": "I21-03",
+      "contract": "actual target Windows Node24",
+      "finding": "lifecycle test assumes cwd/evidence exists and creates file symlink to /etc/passwd",
+      "required": "Portable isolated temporary fixtures with actual Windows-compatible escape/junction coverage; no test.skip or missing-privilege PASS"
+    },
+    {
+      "id": "I21-04",
+      "contract": "meaningful actual Windows RED replay",
+      "finding": "Tests-only RED snapshot retained without original behaviorless production skeleton bytes",
+      "required": "Retain exact preimplementation skeleton files and test snapshot, so Windows replay fails behavioral assertions rather than import/setup; preserve original logs and all later repaired test diffs"
+    },
+    {
+      "id": "I21-05",
+      "contract": "FWE006 / all-task lifecycle scope",
+      "finding": "STOP owner health exists but no deterministic repeated-defect/RCA guard is present",
+      "required": "Add tests-first structured two-failed-fix barrier with classified RCA/source authority; no raw JSON true approval"
+    },
+    {
+      "id": "I21-06",
+      "contract": "fail-closed schema controls",
+      "finding": "Malformed stage/scope arrays may throw or permit ambiguous references; requirement IDs hardcode FWE and path checks omit Windows-invalid characters",
+      "required": "Reject malformed inputs with stable issues; safe generic IDs and cross-platform path restrictions with meaningful boundary tests"
+    },
+    {
+      "id": "I21-07",
+      "contract": "Windows case and frozen boundary",
+      "finding": "Case-sensitive pathMatches/overlap permits a differently cased allowed/product path to avoid a frozen pattern on Windows",
+      "required": "Conservative canonical/case-aware containment and frozen checks; meaningful Apps/packages case and malformed scope regression cases"
+    },
+    {
+      "id": "I21-08",
+      "contract": "FWE005/FWE014 closure readiness",
+      "finding": "ARCHIVE -> CLOSED currently reuses POST barriers without an actual owner archive proof, so descriptors alone can label CLOSED",
+      "required": "Require verified owning archive operation with current origins/reference mapping and bound checkpoint/publication authority before CLOSED; reject merely completed tasks or declared archive PASS"
+    }
+  ],
+  "actualBackend": "NOT_CONFIRMED",
+  "productionImported": false,
+  "atUtc": "2026-10-02T19:38:08.572Z",
+  "observationUpdate": {
+    "note": "First worker subsequently added a temporary-Git fixture and tests-only missing-module loader; re-evaluate those partial resolutions against final immutable seed, do not discard earlier inspection",
+    "atUtc": "2026-10-02T19:46:17.067Z"
+  }
+}

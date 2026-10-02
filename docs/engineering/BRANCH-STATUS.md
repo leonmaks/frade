@@ -1,13 +1,13 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-02T19:35:25.125Z
+UPDATED_AT_UTC: 2026-10-02T19:51:50.021Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
 ## 1. Решение / следующий шаг
 
 STAGE: W01 | PHASE: BDD_TDD | HEALTH: RUNNING
-NEXT_PERMITTED_ACTION: inspect task2.1 staged core/tests, address Windows compatibility and complete required closure controls, replay meaningful RED/GREEN before owner import.
+NEXT_PERMITTED_ACTION: exact Sol/high task2.1 repair -> actual portable Windows RED/GREEN -> scope inspection -> owner import; no later task advancement.
 HUMAN_DECISION: NONE; D03 accepted by direct reply «Принято. Продолжай.».
 READY_FOR_IMPLEMENTATION: YES; formal PRE PASS retained and receipt checkpoint2a6f8f96 PUBLISHED with exact remote SHA..
 READY_FOR_ARCHIVE: NO.
@@ -43,7 +43,7 @@ STOP after W01; no next numbered change or owner migration automatically.
 | 1.3 | planning-architecture + independent-PRE pair for draft-only review | strict/checks -> independent draft-quality review -> checkpoint | COMPLETE; strict/integrity PASS; draft-01 BLOCKED, draft-02 FAIL retained; fresh draft-03 PASS on faf69d33 |
 | 1.4 | human material policy decision | concrete proposal -> acceptance/reconciliation | COMPLETE; policy-acceptance.json D03 |
 | 1.5 | independent-PRE | approved coherent plan -> actual formal PRE -> frozen checkpoint | COMPLETE; receipt checkpoint2a6f8f96 verified published; formal-pre-01-pass |
-| 2.1 | tooling-tests | staged tests-first RED -> contracts/lifecycle/scope/traceability -> GREEN -> Windows replay | IN_PROGRESS; requested gpt-6-sol/high; fresh staging canary PASS |
+| 2.1 | tooling-tests | initial staged GREEN -> Windows RED/check -> scoped repair -> Windows GREEN -> import | REPAIR_IN_PROGRESS; initial Windows check FAIL2 (symlink privilege / temp path length), no owner production imported |
 | 2.2–2.7 | tooling-tests | meaningful RED -> remaining controls/docs/CLI -> GREEN | NOT_STARTED |
 | 3.1–3.2 | tooling-tests | cumulative applicable checks + integrity audit | NOT_RUN |
 | 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | NOT_RUN |
@@ -65,7 +65,8 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | Independent draft-quality review | REQUIRED for planning completion | draft-03 PASS on faf69d33;80 input hashes; prior BLOCKED/FAIL preserved; no implementation admission |
 | Formal PRE/Verify/POST | REQUIRED for implementation/closure | PRE PASS on9c974da8; Verify/POST NOT_RUN |
 | General lint/typecheck/boundary suites | REQUIRED | Actual current baseline PASS5 checks; original build FAIL retained; exact pinned resources restored, repeated build PASS |
-| New validator/bootstrap/publication control suites | REQUIRED after approved plan | NOT_IMPLEMENTED/NOT_RUN |
+| New core schema/lifecycle/closure controls | REQUIRED | Initial staging GREEN25 cases; Windows contracts meaningful RED1; initial Windows full core FAIL2; portable repair in isolated exact Sol/high runtime |
+| Bootstrap/role/status/review/publication controls | REQUIRED | Tasks2.2–2.7 NOT_IMPLEMENTED/NOT_RUN |
 | Product suites | No product changes in current planning | NOT_RUN; no product PASS claimed |
 | Human policy/visual acceptance | Policy decision REQUIRED; product visuals outside current scope | Policy ACCEPTED_D03; no visual approval claim |
 | CI / branch protection | Separate observable control | REMOTE_NOT_RUN / NOT_CONFIGURED_OR_UNVERIFIED |
@@ -77,7 +78,7 @@ Historical invocation/EOF/EOL/link-check/count failures and classified correctio
 | Stage/role | Approved exact model/effort | Authority | Invoked / actual |
 |---|---|---|---|
 | W01 planning-architecture | gpt-6-astra/high | design4 + direct human decision | Current chat backend/effort NOT_CONFIRMED |
-| W01 tooling-tests | gpt-6-sol/high | design4 + direct human decision | task2.1 invoked gpt-6-sol/high; staging canary PASS; actual backend/effort NOT_CONFIRMED; no owner code transfer yet |
+| W01 tooling-tests | gpt-6-sol/high | design4 + direct human decision | initial task2.1 executed gpt-6-sol/high; raw complete/input unchanged; fresh repair requested same pair with fresh canary PASS; backend/effort NOT_CONFIRMED; no owner production import |
 | W01 formal-Verify | gpt-6-astra/high | design4 + direct human decision | NOT_RUN |
 | W01 independent-PRE | gpt-6-astra/xhigh | design4 + direct human decision | Requested exact pair for draft BLOCKED/FAIL/PASS and fresh formal PRE PASS; actual backend/effort NOT_CONFIRMED |
 | W01 independent-POST | gpt-6-astra/xhigh | design4 + direct human decision | NOT_RUN |
@@ -94,6 +95,7 @@ No model substitution, task override or silent current-chat switch. Common servi
 | Adoption Routing/UI/Repo Core | Each consumer | NOT_STARTED | Do not block independent supplier or edit foreign workspace |
 | Reviewer CLI environment | W01 | RESOLVED_CURRENT; historical BLOCKED retained | Exact retries completed with FAIL then PASS; no model substitution or quota/reset claim |
 | Baseline general build | W01 applicable check | RESOLVED_CURRENT; historical FAIL retained | All2851 pinned resources exact; repeated build PASS; index entries/product tree unchanged |
+| Task2.1 core control gaps | W01 | REPAIR_REQUIRED | Eight controller findings; initial Windows filesystem/Git fixture failures retained; fresh bounded Sol/high repair launched |
 | Product writer dispatcher | W01 tooling capability | NOT_IMPLEMENTED | Guard remains explicit; separate session staging runtime v2 technically verified, initial probe BLOCKED retained |
 
 No active production fix attempts; runtime ENVIRONMENT RCA retained separately; no test weakening.
@@ -103,8 +105,8 @@ No active production fix attempts; runtime ENVIRONMENT RCA retained separately; 
 SOURCE_CHECKPOINT_SHA: faf69d339b338173158d2f31465c2aa4f0b4108d (independent draft-quality PASS, not implementation admission).
 COMMIT_STATE: formal PRE admission checkpoint2a6f8f96 committed and published; current task2.1 status/implementation evidence follows next coherent checkpoint.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: PRE receipt checkpoint PUBLISHED2a6f8f96; task2.1 checkpoint not complete.
-VERIFIED_SOURCE_REMOTE_SHA: 2a6f8f9687d5ac2603bb476de8dce0f895a8ebea.
+PUSH_STATE: baseline checkpoint PUBLISHEDbd683957, exact remote SHA; task2.1 checkpoint not complete.
+VERIFIED_SOURCE_REMOTE_SHA: bd683957b0b95ff9eeed2ac3197d4dca3ff87879.
 SOURCE_PUBLICATION_RECEIPT: openspec/changes/frade-standard-workflow/evidence/publication/source-faf69d33-20261002.json.
 PRE_ADMISSION_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/formal-pre-admission-20261002.json; require PUBLISHED/sourceSha=live HEAD before first task2.1 owner code write.
 Current evidence: openspec/changes/frade-standard-workflow/evidence/.

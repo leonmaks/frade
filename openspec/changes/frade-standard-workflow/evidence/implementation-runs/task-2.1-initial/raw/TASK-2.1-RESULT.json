@@ -1,0 +1,111 @@
+{
+  "task": "2.1",
+  "stage": "W01",
+  "completionStatus": "IMPLEMENTED_IN_STAGING_GREEN_OWNER_NODE24_REPLAY_PENDING",
+  "readyForFormalVerify": false,
+  "formalPRE": "INPUT_RECEIPT_ONLY_NOT_SELF_CERTIFIED",
+  "formalPOST": "NOT_RUN",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "requestedPairFromAuthority": { "model": "gpt-6-sol", "effort": "high" },
+  "stagingEnvironment": {
+    "os": "Linux isolated work sandbox",
+    "node": "v18.19.1",
+    "git": "2.43.0",
+    "repositoryReplayTarget": "Windows Node v24.18.0",
+    "repositoryReplayExecutedHere": false,
+    "gitCheckoutPresent": false
+  },
+  "changedEligibleFiles": [
+    "scripts/directions/contracts.mjs",
+    "scripts/directions/evidence.mjs",
+    "scripts/directions/lifecycle.mjs",
+    "scripts/directions/scope.mjs",
+    "tests/directions/contracts.test.mjs",
+    "tests/directions/fixtures.mjs",
+    "tests/directions/lifecycle.test.mjs",
+    "tests/directions/load-core.mjs",
+    "docs/engineering/templates/direction-manifest.v2.json",
+    "docs/engineering/templates/task-2.1-core-contract.md"
+  ],
+  "localEvidenceFiles": [
+    "deliverables/red/tests/directions/contracts.test.mjs",
+    "deliverables/red/tests/directions/fixtures.mjs",
+    "deliverables/red/tests/directions/lifecycle.test.mjs",
+    "deliverables/red/tests/directions/load-core.mjs",
+    "evidence/logs/task-2.1-red-node-test.log",
+    "evidence/logs/task-2.1-red-contracts.log",
+    "evidence/logs/task-2.1-red-lifecycle.log",
+    "evidence/logs/task-2.1-red-closure-git.log",
+    "evidence/logs/task-2.1-red-malformed-contracts.log",
+    "evidence/logs/task-2.1-red-malformed-lifecycle.log",
+    "evidence/logs/task-2.1-red-replay-contracts.log",
+    "evidence/logs/task-2.1-red-replay-lifecycle.log",
+    "evidence/logs/task-2.1-red-replay-final-contracts.log",
+    "evidence/logs/task-2.1-red-replay-final-lifecycle.log",
+    "evidence/logs/task-2.1-green-contracts.log",
+    "evidence/logs/task-2.1-green-lifecycle.log",
+    "evidence/logs/task-2.1-green-core.log",
+    "evidence/logs/task-2.1-green-final-contracts.log",
+    "evidence/logs/task-2.1-green-final-lifecycle.log",
+    "evidence/logs/task-2.1-green-final-core.log",
+    "evidence/logs/task-2.1-green-verified-contracts.log",
+    "evidence/logs/task-2.1-green-verified-lifecycle.log",
+    "evidence/logs/task-2.1-green-verified-core.log"
+  ],
+  "exportedAPI": {
+    "contracts.mjs": ["PHASES", "HEALTH", "APPLICABILITY", "safeId", "safeRepoPath", "safeOwnerPath", "pathMatches", "validateManifest", "scopeFingerprint", "validateTraceability", "verifyTraceability", "validateApplicability", "verifyApplicability"],
+    "evidence.mjs": ["createArtifactReader", "verifyArtifactHash", "createEvidenceBoundary", "isEvidenceBoundary", "verifyGate"],
+    "lifecycle.mjs": ["evaluateTransition", "legacyClosureState"],
+    "scope.mjs": ["checkScope", "planClosure"]
+  },
+  "manifestShape": {
+    "schemaVersion": 2,
+    "fields": ["id", "title", "owner.branch", "owner.worktree", "owner.gitCommon", "originalBaseline", "policy", "scope.planningAllowed", "scope.allowed", "scope.frozen", "scope.closure", "statusPath", "stages[].id", "stages[].change", "stages[].phase", "stages[].health", "stages[].dependencies"],
+    "closure": "W01 exact three spec destinations plus openspec/changes/archive/<actual-archive-date>-frade-standard-workflow/**; read-only planning with verified barriers",
+    "evidenceBoundary": "Trusted caller must verify raw artifacts and review/check execution; manifest PASS labels and booleans do not authorize transitions"
+  },
+  "requirementScenarioTests": {
+    "FWE-001-S01": "contracts.test.mjs unsafe identity and path case; actual foreign Git registration is task 2.3",
+    "FWE-001-S02": "contracts.test.mjs safe owner/scope shape; lifecycle.test.mjs frozen scope; actual owner isolation is task 2.3",
+    "FWE-001-S03": "lifecycle.test.mjs exact closure plan and disposable Git sync/archive fixture with retained receipt origin; real W01 closure remains task 4.4",
+    "FWE-001-S04": "contracts.test.mjs widened destination; lifecycle.test.mjs early, foreign, unsafe, stale, broken reference and raw hash negatives",
+    "FWE-002-S02": "contracts.test.mjs unresolved acceptance versus bounded research",
+    "FWE-004-S01": "contracts.test.mjs scenario/task/assertion/run links, missing negative/boundary controls, current trusted run and explicit human boundary",
+    "FWE-005-S01": "contracts.test.mjs phase/health and scope fingerprint; lifecycle.test.mjs PRE/checkpoint and forged JSON negatives",
+    "FWE-005-S02": "lifecycle.test.mjs phase order, stale plan/scope/source, required GREEN/checks/Verify",
+    "FWE-005-S03": "lifecycle.test.mjs focused review cannot unlock archive",
+    "FWE-006-S02": "contracts.test.mjs retains historical unreferenced FAIL while checking current referenced PASS",
+    "FWE-007-S01": "contracts.test.mjs affected or failing check cannot become N/A",
+    "FWE-007-S02": "contracts.test.mjs required check proof guard; product tree preservation is cumulative task 3.1",
+    "FWE-008-S03": "lifecycle.test.mjs completed legacy checkboxes remain IMPLEMENTED_PENDING_CLOSURE"
+  },
+  "commandsAndExits": [
+    { "command": "node --version", "exit": 0, "result": "v18.19.1" },
+    { "command": "git --version", "exit": 0, "result": "2.43.0" },
+    { "command": "node tests/directions/contracts.test.mjs (initial RED stubs)", "nodeExit": 1, "log": "evidence/logs/task-2.1-red-contracts.log" },
+    { "command": "node tests/directions/lifecycle.test.mjs (initial RED stubs)", "nodeExit": 1, "log": "evidence/logs/task-2.1-red-lifecycle.log" },
+    { "command": "node tests/directions/lifecycle.test.mjs (closure Git RED)", "nodeExit": 1, "log": "evidence/logs/task-2.1-red-closure-git.log" },
+    { "command": "node tests/directions/contracts.test.mjs (malformed-input RED)", "nodeExit": 1, "log": "evidence/logs/task-2.1-red-malformed-contracts.log" },
+    { "command": "node tests/directions/lifecycle.test.mjs (malformed-input RED)", "nodeExit": 1, "log": "evidence/logs/task-2.1-red-malformed-lifecycle.log" },
+    { "command": "node tests/directions/contracts.test.mjs (isolated tests-only RED replay)", "nodeExit": 1, "log": "evidence/logs/task-2.1-red-replay-contracts.log" },
+    { "command": "node tests/directions/lifecycle.test.mjs (isolated tests-only RED replay)", "nodeExit": 1, "log": "evidence/logs/task-2.1-red-replay-lifecycle.log" },
+    { "command": "node tests/directions/contracts.test.mjs (final tests-only isolated RED replay)", "nodeExit": 1, "log": "evidence/logs/task-2.1-red-replay-final-contracts.log" },
+    { "command": "node tests/directions/lifecycle.test.mjs (final tests-only isolated RED replay)", "nodeExit": 1, "log": "evidence/logs/task-2.1-red-replay-final-lifecycle.log" },
+    { "command": "node tests/directions/contracts.test.mjs", "nodeExit": 0, "cases": "14/14", "log": "evidence/logs/task-2.1-green-verified-contracts.log" },
+    { "command": "node tests/directions/lifecycle.test.mjs", "nodeExit": 0, "cases": "11/11", "log": "evidence/logs/task-2.1-green-verified-lifecycle.log" },
+    { "command": "node --test tests/directions/*.test.mjs", "nodeExit": 0, "files": "2/2", "log": "evidence/logs/task-2.1-green-verified-core.log" },
+    { "command": "node --check all 8 scripts/directions and tests/directions .mjs files", "exit": 0 },
+    { "command": "parse and validate docs/engineering/templates/direction-manifest.v2.json", "exit": 0, "result": "{ok:true,issues:[]}" }
+  ],
+  "blockers": [
+    "Target Windows Node v24.18.0 owner replay and import were not possible in this isolated staging sandbox.",
+    "Owner Git registration, scoped rules, complete reference inventory and actual W01 archive must be checked in the owning workspace; this work contains a guard and disposable Git fixture, not a closure action."
+  ],
+  "limitations": [
+    "No independent PRE/POST, backend/effort attestation, archive, merge, push or publication was performed here.",
+    "A trusted integration must implement raw review, human decision, checkpoint, check and run verification behind createEvidenceBoundary; absent that integration the phase guards fail closed.",
+    "Task 2.2 role resolution, 2.3 bootstrap, 2.4 dashboard, 2.5 review transport, 2.6 publication and 2.7 root loader/CI are outside this result.",
+    "Initial RED snapshot predates later strengthened assertions; the final tests-only snapshot was separately replayed without production modules and its raw RED logs are retained."
+  ]
+}
