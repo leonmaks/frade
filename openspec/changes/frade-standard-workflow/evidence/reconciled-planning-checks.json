@@ -1,0 +1,38 @@
+[
+  {
+    "startUtc": "2026-10-02T18:39:36.6829967Z",
+    "label": "planning-integrity-reconciled",
+    "arguments": [
+      "openspec/changes/frade-standard-workflow/evidence/check-planning.mjs"
+    ],
+    "output": "openspec/changes/frade-standard-workflow/evidence/planning-integrity-reconciled.txt",
+    "exit": 0,
+    "command": "node"
+  },
+  {
+    "startUtc": "2026-10-02T18:39:37.3254752Z",
+    "label": "strict-change-reconciled",
+    "arguments": [
+      "validate",
+      "frade-standard-workflow",
+      "--strict",
+      "--json"
+    ],
+    "output": "openspec/changes/frade-standard-workflow/evidence/strict-change-reconciled.txt",
+    "exit": 0,
+    "command": "openspec"
+  },
+  {
+    "startUtc": "2026-10-02T18:39:38.6215481Z",
+    "label": "strict-all-reconciled",
+    "arguments": [
+      "validate",
+      "--all",
+      "--strict",
+      "--json"
+    ],
+    "output": "openspec/changes/frade-standard-workflow/evidence/strict-all-reconciled.txt",
+    "exit": 0,
+    "command": "openspec"
+  }
+]

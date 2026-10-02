@@ -22,3 +22,5 @@ Append new remarks with stable IDs; retain originals and distinguish acceptance 
 | D02 | Approved new feature-branch commit/push destination | ACCEPTED via direct reply | evidence/user-decisions.json |
 
 User will read top-to-bottom and add comments. Each substantive correction updates this register and coherent artifacts; it invalidates relevant old review fingerprints and requires focused/cumulative revalidation rather than silent spec edits.
+
+R01 independent draft review: FAIL/SPEC_CONFLICT (closure task versus incomplete scope allowlist). Reconciled phase-specific exact destinations/reference relocation across design, manifest, lifecycle scenarios/traceability, tasks and readable standard; fresh review required. No contract weakened or product/foreign workspace changed.

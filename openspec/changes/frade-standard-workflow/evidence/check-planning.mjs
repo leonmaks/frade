@@ -22,7 +22,7 @@ for(const cap of specs){
  for(const m of text.matchAll(/^#### Scenario: (.+)$/gm))scenarios.push(m[1])
 }
 assert(requirements.length===18&&new Set(requirements).size===18,'REQUIREMENT_ACCOUNTING')
-assert(scenarios.length===44&&new Set(scenarios).size===44,'SCENARIO_ACCOUNTING')
+assert(scenarios.length===46&&new Set(scenarios).size===scenarios.length,'SCENARIO_ACCOUNTING')
 const trace=JSON.parse(read(rel+'/traceability.json'))
 assert(trace.requirements.length===requirements.length,'TRACE_REQUIREMENTS')
 assert(trace.requirements.every(r=>requirements.includes(r.title)&&r.taskIds.length>0&&r.testStatus==='NOT_IMPLEMENTED'),'TRACE_ACCOUNTING')
@@ -35,6 +35,8 @@ assert(trace.requirements.every(r=>r.taskIds.every(id=>ids.has(id)))&&trace.scen
 const manifest=JSON.parse(read(rel+'/drafts/direction-manifest.example.json'))
 assert(manifest.stages[0].roleAssignments.every(a=>/^[a-z0-9-]+$/.test(a.model)&&['high','xhigh'].includes(a.effort)),'AMBIGUOUS_ROLE')
 assert(manifest.stages[0].roleAuthority.hash===sha(read(rel+'/design.md')),'MODEL_SOURCE_HASH')
+assert(JSON.stringify(manifest.scope.closure.specDestinations)===JSON.stringify(specs.map(s=>'openspec/specs/'+s+'/spec.md')),'CLOSURE_SPEC_SCOPE')
+assert(manifest.scope.closure.enabled===false&&manifest.scope.closure.archiveOwner==='frade-standard-workflow'&&manifest.scope.closure.archiveDestination==='openspec/changes/archive/<actual-archive-date>-frade-standard-workflow/**','CLOSURE_PHASE_OWNER')
 const status=read('docs/engineering/BRANCH-STATUS.md').toString('utf8')
 const sections=[...status.matchAll(/^## (\d+)\. (.+)$/gm)]
 assert(sections.length===8&&sections.every((s,i)=>Number(s[1])===i+1),'STATUS_SECTION_ORDER')
@@ -47,7 +49,7 @@ assert(productDiff==='','PRODUCT_OR_CONTROL_DRIFT')
 const trackedDocs=git(['ls-files','--',rel,'docs/engineering/BRANCH-STATUS.md']).split('\n')
 const untrackedDocs=git(['ls-files','--others','--exclude-standard']).split('\n')
 const files=[...new Set([...trackedDocs,...untrackedDocs])].filter(p=>p&&(p.startsWith(rel+'/')||p==='docs/engineering/BRANCH-STATUS.md'))
-for(const file of files.filter(p=>p.endsWith('.md'))){
+for(const file of files.filter(p=>p.endsWith('.md')&&!p.startsWith(rel+'/evidence/reviews/'))){
  const text=read(file).toString('utf8')
  for(const m of text.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)){
   const target=m[1].replace(/^<|>$/g,'').split('#')[0]
@@ -55,4 +57,4 @@ for(const file of files.filter(p=>p.endsWith('.md'))){
   assert(fs.existsSync(path.resolve(path.dirname(path.join(root,file)),target)),'BROKEN_LOCAL_LINK:'+file+':'+target)
  }
 }
-console.log(JSON.stringify({status:'PASS',scope:'PLANNING_ONLY',branch:git(['branch','--show-current']),base,packages:audit.packageCount,requirements:requirements.length,scenarios:scenarios.length,tasks:tasks.length,tasksComplete:tasks.filter(t=>t[1]==='x').length,statusSections:8,markdownFilesChecked:files.filter(p=>p.endsWith('.md')).length,productTreeUnchanged:true,modelSourceHash:manifest.stages[0].roleAuthority.hash,changedPaths:changed,evidenceNote:'Declarations/consistency only; product/control behavioral tests NOT_RUN'},null,2))
+console.log(JSON.stringify({status:'PASS',scope:'PLANNING_ONLY',branch:git(['branch','--show-current']),base,packages:audit.packageCount,requirements:requirements.length,scenarios:scenarios.length,tasks:tasks.length,tasksComplete:tasks.filter(t=>t[1]==='x').length,statusSections:8,markdownFilesChecked:files.filter(p=>p.endsWith('.md')&&!p.startsWith(rel+'/evidence/reviews/')).length,rawReviewLinks:'Preserved immutable packet references; verified by transfer hashes, excluded from authored local-link scan',productTreeUnchanged:true,modelSourceHash:manifest.stages[0].roleAuthority.hash,changedPaths:changed,evidenceNote:'Declarations/consistency only; product/control behavioral tests NOT_RUN'},null,2))

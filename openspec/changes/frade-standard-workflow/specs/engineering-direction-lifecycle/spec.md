@@ -8,7 +8,7 @@ Defines uniform auditable direction ownership, intake, research, requirement tra
 
 ### Requirement: FWE-001 Direction ownership
 
-Each direction SHALL identify its stable goal/ID, owning branch/worktree, original baseline, current change, allowed paths, dependencies and adopted policy version/hash. Ownership MUST be verified from actual Git registration before writes.
+Each direction SHALL identify its stable goal/ID, owning branch/worktree, original baseline, current change, allowed paths, dependencies and adopted policy version/hash. Ownership MUST be verified from actual Git registration before writes. Closure destinations SHALL be declared separately and activated only after the owning policy decision, required checks, formal Verify and current independent POST PASS; unrelated frozen paths MUST stay excluded.
 
 #### Scenario: FWE-001-S01 Reject a foreign checkout
 
@@ -19,6 +19,16 @@ Each direction SHALL identify its stable goal/ID, owning branch/worktree, origin
 
 - **WHEN** an independent direction starts from an explicitly selected committed baseline
 - **THEN** only its registered workspace is writable and foreign uncommitted product files are not transferred
+
+#### Scenario: FWE-001-S03 Close within exact owning destinations
+
+- **WHEN** the admitted owner has current required checks, formal Verify and independent POST PASS and executes closure
+- **THEN** it synchronizes only its declared delta spec destinations, archives only its own dated change, relocates owned references and preserves immutable evidence origins/hashes
+
+#### Scenario: FWE-001-S04 Reject unauthorized closure scope
+
+- **WHEN** closure is attempted before its barriers or targets an unrelated specification/archive, unsafe path/date, stale approval or unrelocated owned reference
+- **THEN** closure is BLOCKED and every unrelated or frozen file remains unchanged
 
 ### Requirement: FWE-002 Uniform intake and research
 

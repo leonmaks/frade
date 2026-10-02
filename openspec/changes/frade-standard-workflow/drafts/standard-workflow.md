@@ -65,6 +65,8 @@ Legacy status сохраняет существующий путь, но пол�
 
 Новый scope или существенная правка contracts проходит reconciliation/strict и новую применимую PRE revalidation. Старый PASS не разрешает изменённый candidate. Небольшая feature использует тот же каркас с небольшими artifacts, а не отдельный ослабленный процесс.
 
+Sync/archive разрешает только заранее перечисленные spec destinations и датированную папку собственного change после всех owning barriers. Относительные ссылки и актуальные role-source bindings переносятся явно; immutable исторические receipts сохраняют исходные hashes/paths и получают отдельную карту переноса. Чужие specs/archives и frozen controls не входят в closure allowance.
+
 Merge/integration — отдельный явно разрешённый checkpoint: target SHA, конфликты, итоговый merged-tree diff, applicable tests/control revalidation и review. Feature POST не одобряет новый конфликтующий merge tree.
 
 ## 4. Типы задач и модели

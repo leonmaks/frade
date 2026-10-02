@@ -35,7 +35,33 @@
       "vendor assets",
       "all other change artifacts"
     ],
-    "mode": "PLANNING"
+    "mode": "PLANNING",
+    "planningAllowed": [
+      "openspec/changes/frade-standard-workflow/**",
+      "docs/engineering/BRANCH-STATUS.md"
+    ],
+    "closure": {
+      "enabled": false,
+      "requires": [
+        "humanPolicyDecision",
+        "requiredChecksPASS",
+        "formalVerifyPASS",
+        "currentIndependentPOSTPASS"
+      ],
+      "specDestinations": [
+        "openspec/specs/engineering-direction-lifecycle/spec.md",
+        "openspec/specs/engineering-role-dispatch/spec.md",
+        "openspec/specs/engineering-progress-publication/spec.md"
+      ],
+      "archiveDestination": "openspec/changes/archive/<actual-archive-date>-frade-standard-workflow/**",
+      "archiveOwner": "frade-standard-workflow",
+      "operations": [
+        "Sync only W01 delta requirements into exactly the three declared specs",
+        "Move only this active W01 change to its canonically validated dated archive directory",
+        "Relocate owned references and current role-source path/raw hash bindings; preserve immutable receipt origins using an explicit mapping"
+      ],
+      "excludes": "Every unrelated specification/archive, foreign direction, product and frozen control remains excluded"
+    }
   },
   "statusPath": "docs/engineering/BRANCH-STATUS.md",
   "publication": {
@@ -50,7 +76,7 @@
       "id": "W01",
       "change": "frade-standard-workflow",
       "phase": "PLANNING",
-      "health": "RUNNING",
+      "health": "BLOCKED",
       "dependencies": [],
       "roleAssignments": [
         {
@@ -81,14 +107,14 @@
       ],
       "roleAuthority": {
         "path": "openspec/changes/frade-standard-workflow/design.md",
-        "hash": "d0dbb6a21b8415e3425592b0a0142175859b26a5859d96ae8d26cf981cf17070",
+        "hash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
         "humanDecision": "openspec/changes/frade-standard-workflow/evidence/user-decisions.json"
       },
       "taskOverrides": [],
       "tasksAuthority": "openspec/changes/frade-standard-workflow/tasks.md",
       "admission": {
         "policyDecision": "PENDING",
-        "draftPlanningReview": "NOT_RUN",
+        "draftPlanningReview": "FAIL_REPAIRED_PENDING_FRESH_REVIEW",
         "formalPRE": "NOT_RUN",
         "Verify": "NOT_RUN",
         "POST": "NOT_RUN",
