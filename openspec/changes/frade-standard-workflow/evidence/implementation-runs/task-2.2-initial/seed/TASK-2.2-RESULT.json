@@ -1,0 +1,81 @@
+{
+  "task": "2.2",
+  "scope": "FWE-009 and FWE-012 exact role resolution only",
+  "status": "COMPLETE_LOCAL",
+  "eligibleFiles": [
+    "scripts/directions/roles.mjs",
+    "tests/directions/roles.test.mjs",
+    "docs/engineering/templates/task-2.2-role-contract.md",
+    "deliverables/task-2.2-red/command.txt",
+    "deliverables/task-2.2-red/red.log",
+    "deliverables/task-2.2-red/red.exit",
+    "deliverables/task-2.2-red/tests.sha256",
+    "deliverables/task-2.2-green/command.txt",
+    "deliverables/task-2.2-green/regression.log",
+    "deliverables/task-2.2-green/regression.exit",
+    "deliverables/task-2.2-green/syntax.log",
+    "deliverables/task-2.2-green/syntax.exit",
+    "TASK-2.2-RESULT.json"
+  ],
+  "testsFirst": {
+    "testSha256BeforeModuleAndAfterGreen": "09288e6d9ba524b50f60c19c7806e1211e43f30ca9950eae6164873fba9d",
+    "moduleAbsentAtRed": true,
+    "command": "node tests/directions/roles.test.mjs",
+    "exit": 1,
+    "assertions": 9,
+    "failedAssertions": 9,
+    "log": "deliverables/task-2.2-red/red.log"
+  },
+  "namedAssertions": [
+    "FWE-009 exact stage/type/role resolves one pair and source provenance",
+    "FWE-009 missing, range and contradictory assignments block",
+    "FWE-009 role confusion and forged request metadata cannot select a reviewer",
+    "FWE-009 direct approval must be established outside the request",
+    "FWE-009 changed source bytes and changed excerpt block",
+    "FWE-009 reviewed task override applies only to its exact task and role",
+    "FWE-009 unapproved and duplicate task overrides block",
+    "FWE-012 invocation mismatch blocks; actual backend remains unattested",
+    "FWE-009 real W01 approved design and direct decisions resolve five roles"
+  ],
+  "green": {
+    "command": "node each of tests/directions/{arguments,contracts,lifecycle,repair,roles}.test.mjs sequentially",
+    "exit": 0,
+    "existingAssertionsPassed": 35,
+    "newAssertionsPassed": 9,
+    "log": "deliverables/task-2.2-green/regression.log",
+    "syntaxCommands": [
+      "node --check scripts/directions/roles.mjs",
+      "node --check tests/directions/roles.test.mjs"
+    ],
+    "syntaxExits": [0, 0],
+    "syntaxLog": "deliverables/task-2.2-green/syntax.log"
+  },
+  "approvedSchemaAndApi": {
+    "exports": ["createRoleAuthority", "resolveRole", "writableWorkerDispatch"],
+    "selection": "unique approved stage/type/role pair; exact reviewed task exception for only that task and role",
+    "authority": "trusted controller bindings and verifier outside request data; safe raw source and decision reads; no default verifier",
+    "w01DesignSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+    "w01DirectDecisionSha256": "126589d990e2e44b04efe8825b5ec4d90582205ba6c729375528c383ccbaf186",
+    "revision": "D03",
+    "resolvedW01Roles": [
+      "planning-architecture:gpt-6-astra/high",
+      "independent-PRE:gpt-6-astra/xhigh",
+      "tooling-tests:gpt-6-sol/high",
+      "formal-Verify:gpt-6-astra/high",
+      "independent-POST:gpt-6-astra/xhigh"
+    ],
+    "provenance": "stage, task, taskType, role, executionKind, exact pair, canonical source path/raw SHA256/excerpt/revision, exception reason and approval, requested, invoked, actual backend and effort"
+  },
+  "limitations": [
+    "Linux Node 18.19.1 node --test summarizes child files; direct entry points expose all 44 assertions.",
+    "Actual backend, actual effort, and model availability remain NOT_CONFIRMED without independent attestation.",
+    "Writable-worker dispatch is NOT_IMPLEMENTED/BLOCKED; the read-only reviewer transport is unchanged."
+  ],
+  "claims": {
+    "formalVerify": false,
+    "post": false,
+    "archive": false,
+    "publication": false,
+    "task2_3Started": false
+  }
+}

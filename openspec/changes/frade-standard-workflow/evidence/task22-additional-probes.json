@@ -1,0 +1,91 @@
+{
+  "status": "FAIL_REPAIR_REQUIRED",
+  "atUtc": "2026-10-02T21:22:21.950Z",
+  "environment": {
+    "node": "v24.18.0",
+    "platform": "win32"
+  },
+  "scope": "Synthetic public approval fixtures only; no real model invocation/approval/product changes",
+  "rows": [
+    {
+      "id": "I22-03-null-row",
+      "expected": "BLOCKED",
+      "error": "TypeError: Cannot read properties of null (reading 'taskType')",
+      "pass": false
+    },
+    {
+      "id": "I22-03-numeric-reason",
+      "expected": "BLOCKED",
+      "error": "TypeError: row?.reason?.trim is not a function",
+      "pass": false
+    },
+    {
+      "id": "I22-02-approved-excerpt-wrong-selected-pair",
+      "expected": "BLOCKED",
+      "actual": {
+        "ok": false,
+        "status": "BLOCKED",
+        "issues": [
+          {
+            "code": "ROLE_EXCERPT",
+            "path": "$",
+            "detail": "Stage row must match exact type, role and pair"
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "I22-05-injected-digest-metadata",
+      "expected": "BLOCKED",
+      "actual": {
+        "ok": true,
+        "status": "RESOLVED",
+        "assignment": {
+          "stage": "S01",
+          "task": "2.2",
+          "taskType": "build",
+          "role": "executor",
+          "executionKind": "executor",
+          "model": "gpt-6-sol",
+          "effort": "high",
+          "source": {
+            "path": "plan.md",
+            "sha256": "9ed5aabcf9bbbba25d0ae4a60b033faedd5ab6f0d7c6186fb18d3c3437439731",
+            "excerpt": "| S01 | build | executor | gpt-6-sol | high |",
+            "revision": "r1"
+          },
+          "exception": null
+        },
+        "provenance": {
+          "requested": {
+            "model": "gpt-6-sol",
+            "effort": "high"
+          },
+          "invoked": null,
+          "actualBackend": "NOT_CONFIRMED",
+          "actualEffort": "NOT_CONFIRMED",
+          "availability": "NOT_CONFIRMED"
+        },
+        "issues": []
+      },
+      "pass": false
+    },
+    {
+      "id": "I22-04-canonical-legacy-model-ID",
+      "expected": "RESOLVED",
+      "actual": {
+        "ok": false,
+        "status": "BLOCKED",
+        "issues": [
+          {
+            "code": "ROLE_PAIR",
+            "path": "$",
+            "detail": "One exact model and effort required"
+          }
+        ]
+      },
+      "pass": false
+    }
+  ]
+}

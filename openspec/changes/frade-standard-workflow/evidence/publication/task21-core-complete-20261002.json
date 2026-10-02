@@ -1,0 +1,70 @@
+{
+  "status": "PUBLISHED",
+  "atUtc": "2026-10-02T21:06:28.143Z",
+  "branch": "codex/frade-standard-workflow",
+  "remote": "git@github.com:leonmaks/frade.git",
+  "ref": "refs/heads/codex/frade-standard-workflow",
+  "sourceSha": "5b0e5592de9575e4b37f709618598d8a3b39bb09",
+  "verifiedRemoteSha": "5b0e5592de9575e4b37f709618598d8a3b39bb09",
+  "task": "W01 2.1 COMPLETE; W016/18; Verify/POST/archive NOT_RUN",
+  "commands": [
+    {
+      "args": [
+        "branch",
+        "--show-current"
+      ],
+      "exit": 0,
+      "stdout": "codex/frade-standard-workflow\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit": 0,
+      "stdout": "git@github.com:leonmaks/frade.git\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "status",
+        "--porcelain"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "5b0e5592de9575e4b37f709618598d8a3b39bb09\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "push",
+        "origin",
+        "5b0e5592de9575e4b37f709618598d8a3b39bb09:refs/heads/codex/frade-standard-workflow"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "To github.com:leonmaks/frade.git\n   f3c65012..5b0e5592  5b0e5592de9575e4b37f709618598d8a3b39bb09 -> codex/frade-standard-workflow\n"
+    },
+    {
+      "args": [
+        "ls-remote",
+        "--heads",
+        "origin",
+        "refs/heads/codex/frade-standard-workflow"
+      ],
+      "exit": 0,
+      "stdout": "5b0e5592de9575e4b37f709618598d8a3b39bb09\trefs/heads/codex/frade-standard-workflow\n",
+      "stderr": ""
+    }
+  ]
+}

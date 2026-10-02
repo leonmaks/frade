@@ -1,0 +1,34 @@
+{
+  "atUtc": "2026-10-02T21:17:04.482Z",
+  "task": "2.2",
+  "status": "REQUIRED_PRE_IMPORT_INSPECTION",
+  "findings": [
+    {
+      "id": "I22-01",
+      "path": "tests/directions/roles.test.mjs",
+      "finding": "Actual W01 source test reads ../../../input from test location; this is staging layout and fails ordinary owner checkout / later archive. Retain exact approved raw authority fixtures for portability, not a setup-dependent test."
+    },
+    {
+      "id": "I22-02",
+      "path": "scripts/directions/roles.mjs",
+      "finding": "canonicalSource permits a provided base excerpt without checking it equals the selected stage/type/role/model/effort row; an excerpt for another approved pair must not justify the output pair."
+    },
+    {
+      "id": "I22-03",
+      "path": "scripts/directions/roles.mjs",
+      "finding": "Untrusted roleAssignments may contain null; overrides may have numeric reason; filter/property/trim calls should return structured BLOCKED instead of throw."
+    },
+    {
+      "id": "I22-04",
+      "path": "scripts/directions/roles.mjs",
+      "finding": "Canonical available legacy model gpt-5.5 from provided app catalog has no family suffix; model syntax must accept an exact canonical ID without executing/substituting models. Availability remains NOT_CONFIRMED."
+    },
+    {
+      "id": "I22-05",
+      "path": "scripts/directions/roles.mjs",
+      "finding": "verifySource trusts reader-reported sha256 without hashing actual bytes; recompute raw source and decision hashes so an injected reader cannot report trusted digests for different bytes."
+    }
+  ],
+  "productionImported": false,
+  "doesNotModifyApprovedPlan": true
+}

@@ -1,0 +1,5 @@
+**W01 task 2.2 repair is complete.** The W01 authority test now uses byte-identical retained fixtures from a temporary artifact tree. The resolver blocks malformed role records and spoofed source or decision digests, and accepts the exact synthetic `gpt-5.5` ID.
+
+The pre-fix replay produced **six assertion-based RED failures**. After the repair, **all 50 tests passed**, including the original 44; the role tests also passed from an isolated layout without adjacent staging input. Syntax checks and narrow production lint passed. The available ESLint v6 cannot parse the test file’s existing top-level `await`.
+
+The full commands, logs, exits, fixture hashes, and file inventory are in [TASK-2.2-REPAIR-RESULT.json](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.2-repair-20261003/work/deliverables/TASK-2.2-REPAIR-RESULT.json). Actual backend and effort remain **NOT_CONFIRMED**. No owner checkout module was imported; Verify, POST, publication, archive, and task advancement were not performed.

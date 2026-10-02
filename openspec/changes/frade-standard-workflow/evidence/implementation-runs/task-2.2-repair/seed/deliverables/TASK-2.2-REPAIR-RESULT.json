@@ -1,0 +1,112 @@
+{
+  "task": "W01 task 2.2 scoped repair",
+  "status": "REPAIR_COMPLETE",
+  "approvedPair": { "role": "tooling-tests", "model": "gpt-6-sol", "effort": "high" },
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "eligibleChangedFiles": [
+    "scripts/directions/roles.mjs",
+    "tests/directions/roles.test.mjs",
+    "tests/directions/authority-fixtures/w01-design.snapshot",
+    "tests/directions/authority-fixtures/w01-decisions.snapshot"
+  ],
+  "evidenceFiles": [
+    "deliverables/task-2.2-repair-red/",
+    "deliverables/TASK-2.2-REPAIR-RESULT.json"
+  ],
+  "fixtureAdoption": [
+    {
+      "transferOrigin": "input/openspec/changes/frade-standard-workflow/design.md",
+      "retainedFixture": "tests/directions/authority-fixtures/w01-design.snapshot",
+      "artifactPathForReader": "openspec/changes/frade-standard-workflow/design.md",
+      "bytes": 18308,
+      "sha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+      "rawByteMatch": true,
+      "authority": "Original approved D03 design; fixture is a retained transfer, not new human approval"
+    },
+    {
+      "transferOrigin": "input/openspec/changes/frade-standard-workflow/evidence/user-decisions.json",
+      "retainedFixture": "tests/directions/authority-fixtures/w01-decisions.snapshot",
+      "artifactPathForReader": "openspec/changes/frade-standard-workflow/evidence/user-decisions.json",
+      "bytes": 4657,
+      "sha256": "126589d990e2e44b04efe8825b5ec4d90582205ba6c729375528c383ccbaf186",
+      "rawByteMatch": true,
+      "authority": "Original direct user decisions; fixture is a retained transfer, not new human approval"
+    }
+  ],
+  "findings": {
+    "I22-01": "Original five real W01 pair and approval assertions retained; exact fixture bytes populate a disposable tree at the original artifact paths for createArtifactReader. Isolated layout GREEN.",
+    "I22-02": "Existing canonical base-row comparison preserved and strengthened with a second approved row that cannot justify the selected pair.",
+    "I22-03": "Malformed role records and override reasons return structured BLOCKED before authority use; trusted factory constructor still throws for invalid setup.",
+    "I22-04": "Exact canonical gpt-5.5 syntax accepted in a synthetic fixture; malformed and range forms rejected. No model invoked or availability claimed.",
+    "I22-05": "Raw source and decision Buffer bytes are SHA256 checked against trusted bindings and reported metadata before approval; malformed bytes block."
+  },
+  "regressionAssertionNames": [
+    "FWE-009 changed source bytes and changed excerpt block (strengthened I22-02 negative case)",
+    "I22-03 malformed resolver options and role records return structured BLOCKED",
+    "I22-03 numeric override reason returns structured BLOCKED",
+    "I22-05 changed source bytes with spoofed digest metadata block before approval",
+    "I22-05 changed decision bytes with spoofed digest metadata block before approval",
+    "I22-05 malformed reader bytes block before approval",
+    "I22-04 exact canonical gpt-5.5 resolves while ranges and malformed IDs block"
+  ],
+  "environment": {
+    "platform": "Linux WSL2 x86_64",
+    "node": "v18.19.1",
+    "eslint": "v6.4.0",
+    "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.2-repair-20261003/work",
+    "gitStatus": "UNAVAILABLE: staged work directory has no Git metadata"
+  },
+  "red": {
+    "initialAttempt": {
+      "command": "node tests/directions/roles.test.mjs",
+      "module": "deliverables/task-2.2-repair-red/roles.pre-fix.mjs",
+      "originalTestCopy": "deliverables/task-2.2-repair-red/roles.test.pre-fix.mjs",
+      "log": "deliverables/task-2.2-repair-red/roles.first-red.tap",
+      "exitFile": "deliverables/task-2.2-repair-red/roles.first-red.exit",
+      "exit": 1,
+      "note": "First malformed-row case threw TypeError; retained as historical evidence before making RED assertion based."
+    },
+    "assertionReplay": {
+      "preparation": "Copy scripts/ and tests/ to a disposable isolated tree, then replace its scripts/directions/roles.mjs with roles.pre-fix.mjs",
+      "command": "cd deliverables/task-2.2-repair-red/red-replay && node tests/directions/roles.test.mjs",
+      "log": "deliverables/task-2.2-repair-red/roles.red.tap",
+      "exitFile": "deliverables/task-2.2-repair-red/roles.red.exit",
+      "exit": 1,
+      "tests": 15,
+      "passed": 9,
+      "failed": 6,
+      "failureKind": "All six new failing cases are AssertionError; I22-02 negative and portable W01 tests pass on the pre-fix module."
+    },
+    "ordinaryLayoutHistorical": "deliverables/task-2.2-repair-red/ordinary-layout.pre-repair.json"
+  },
+  "green": {
+    "commands": [
+      { "command": "node tests/directions/contracts.test.mjs", "log": "deliverables/task-2.2-repair-red/contracts.green.tap", "exitFile": "deliverables/task-2.2-repair-red/contracts.green.exit", "exit": 0, "tests": 14 },
+      { "command": "node tests/directions/lifecycle.test.mjs", "log": "deliverables/task-2.2-repair-red/lifecycle.green.tap", "exitFile": "deliverables/task-2.2-repair-red/lifecycle.green.exit", "exit": 0, "tests": 11 },
+      { "command": "node tests/directions/repair.test.mjs", "log": "deliverables/task-2.2-repair-red/repair.green.tap", "exitFile": "deliverables/task-2.2-repair-red/repair.green.exit", "exit": 0, "tests": 5 },
+      { "command": "node tests/directions/arguments.test.mjs", "log": "deliverables/task-2.2-repair-red/arguments.green.tap", "exitFile": "deliverables/task-2.2-repair-red/arguments.green.exit", "exit": 0, "tests": 5 },
+      { "command": "node tests/directions/roles.test.mjs", "log": "deliverables/task-2.2-repair-red/roles.green.tap", "exitFile": "deliverables/task-2.2-repair-red/roles.green.exit", "exit": 0, "tests": 15 }
+    ],
+    "total": { "tests": 50, "passed": 50, "failed": 0, "originalTests": 44, "newTests": 6 },
+    "isolatedOrdinaryLayout": {
+      "preparation": "Copy only scripts/ and tests/ into a disposable checkout with no adjacent input directory",
+      "command": "cd deliverables/task-2.2-repair-red/isolated-checkout && node tests/directions/roles.test.mjs",
+      "log": "deliverables/task-2.2-repair-red/roles.isolated.green.tap",
+      "exitFile": "deliverables/task-2.2-repair-red/roles.isolated.green.exit",
+      "exit": 0,
+      "tests": 15
+    }
+  },
+  "checks": {
+    "syntax": { "commands": ["node --check scripts/directions/roles.mjs", "node --check tests/directions/roles.test.mjs"], "exits": [0, 0], "log": "deliverables/task-2.2-repair-red/syntax.log", "exitFile": "deliverables/task-2.2-repair-red/syntax.exits" },
+    "narrowLint": { "command": "eslint --no-eslintrc --env node,es6 --parser-options '{\"ecmaVersion\":2020,\"sourceType\":\"module\"}' --rule 'no-unused-vars:error' --rule 'no-control-regex:error' scripts/directions/roles.mjs", "exit": 0, "log": "deliverables/task-2.2-repair-red/lint-production.log", "exitFile": "deliverables/task-2.2-repair-red/lint-production.exit" },
+    "testLintLimit": { "exit": 1, "log": "deliverables/task-2.2-repair-red/lint-test-parser.log", "reason": "Available ESLint v6.4.0 cannot parse the test file's pre-existing top-level await; Node syntax check and direct tests pass." }
+  },
+  "ownerCheckoutModulesImported": false,
+  "formalVerifyRun": false,
+  "independentPOSTRun": false,
+  "published": false,
+  "archived": false,
+  "taskAdvanced": false
+}

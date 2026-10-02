@@ -1,0 +1,15 @@
+{
+  "atUtc": "2026-10-02T21:09:25.004Z",
+  "action": "Dispatch task2.2 within the existing W01 OpenSpec change using approved gpt-6-sol/high",
+  "initialStatus": "AUTO_REVIEW_REJECTED",
+  "reason": "The command automatically dispatches and starts numbered task 2.2 after task 2.1, contrary to the explicit no-autonomous-phase-advancement rule; prior authorization to continue does not approve this exact next-task execution.",
+  "authorizationRecheck": {
+    "rootContract": "AGENTS.md section13: Do not automatically start the next numbered OpenSpec change; example R04 -> R05",
+    "plan": "tasks.md declares one active stage/change and tasks2.1/2.2 in the same W01",
+    "directHumanDecision": "D03: Принято. Продолжай.; whole coherent W01 policy/cadence/control plan accepted, formal PRE PASS",
+    "priorCheckpoint": "5b0e5592de9575e4b37f709618598d8a3b39bb09 PUBLISHED, actual remote SHA verified"
+  },
+  "resubmissionStatus": "ACCEPTED_AFTER_EXPLICIT_AUTHORIZATION_EVIDENCE",
+  "currentStatus": "RESOLVED_NO_NEW_USER_DECISION",
+  "doesNotAuthorize": "Later OpenSpec change, main merge, foreign owner adoption or skipping gates"
+}
