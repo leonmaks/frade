@@ -1,3 +1,7 @@
+# Публикация diagnostic checkpoint подтверждена
+
+2026-10-02T17:53:15.214Z. Checkpoint 49e473b81174505679429668657c46b44697bc4a опубликован в git@github.com:leonmaks/frade.git, refs/heads/codex/frade-ui-design-contract; фактический remote SHA совпал. Receipt: openspec/changes/frade-p01-theme-core/evidence/p01-compositor-blocked-checkpoint-20261002T174959Z/publication.json. Эта запись и receipt сохраняются отдельным metadata commit; точный его SHA определяется Git HEAD и проверкой push. Production/permanent tests не менялись. P01 6/10, новый PRE BLOCKED_USAGE_LIMIT; реализация V4, cumulative POST, archive и P02 остановлены. Для возобновления требуется восстановить доступ к точной утверждённой модели gpt-6-astra/xhigh и выполнить свежий read-only PRE. Human visual baseline 372 PNG NOT_APPROVED. Панель queued.
+
 # Текущий статус P01: независимый PRE заблокирован лимитом Codex
 
 Обновлено 2026-10-02T17:49:59.993Z. Ветка: codex/frade-ui-design-contract. Worktree: C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. Исходный baseline: 98f387f96b51b0ad139e3507c376ff1c3e8dec09. Git common: E:/dev/codex/frade/.git. Guide v1.0; tokens v1.0.0.
