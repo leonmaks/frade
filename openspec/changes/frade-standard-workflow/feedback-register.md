@@ -28,3 +28,5 @@ R01 independent draft review: FAIL/SPEC_CONFLICT (closure task versus incomplete
 R02 fresh independent draft review: PASS on faf69d33 (80 packet hashes;18 requirements/46 scenarios/18 tasks). Scope only DRAFT_PLANNING_QUALITY_ONLY; human concrete policy decision and formal PRE remain outstanding. Nonblocking dashboard staleness corrected after unfreeze; historical quota blockage is resolved for current transport, retained in history.
 
 D03 concrete policy/cadence/control scope ACCEPTED by human «Принято. Продолжай.» after presentation of reviewed planning source61c7b6d9. Exact artifact hashes retained in evidence/policy-acceptance.json. Continue W01 formal PRE then implementation; no new model/remote approval or automatic main/foreign-owner migration.
+
+Formal W01 PRE: PASS on accepted9c974da8;89 packet inputs, candidate/packet unchanged; raw receipt preserved. Admission only for W01 tooling/control scope after checkpoint publication. Separate writable staging canary v2 PASS with absolute paths; first namespace-probe BLOCKED retained; future product writer dispatcher still NOT_IMPLEMENTED.

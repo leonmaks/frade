@@ -1,0 +1,9 @@
+{
+  "classification": "ENVIRONMENT",
+  "initialProbe": "w01-runtime-probe-20261002/receipt.json",
+  "initialStatus": "BLOCKED",
+  "finding": "Write API succeeded at an unbound virtual namespace ancestor; host outside-write file absent; own host file present; originals/auth/settings/input remained inaccessible or unchanged.",
+  "responsibleLayer": "Explicit sandbox filesystem mounts and workspace-root resolution",
+  "repair": "Replace implicit workspace_roots with exact absolute writable staging and exact read-only self-owned harness parent; retain root deny/minimal public tools/runtime read/network deny; same strict probe assertions, no production modification or weaker fallback",
+  "beforeProduction": true
+}

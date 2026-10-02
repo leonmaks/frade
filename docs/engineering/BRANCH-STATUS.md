@@ -1,15 +1,15 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-02T19:00:01.719Z
+UPDATED_AT_UTC: 2026-10-02T19:15:58.035Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: PRE_REVIEW | HEALTH: RUNNING
-NEXT_PERMITTED_ACTION: freeze accepted planning candidate -> fresh exact W01 formal PRE -> retained PASS/published owner checkpoint -> meaningful RED/tooling controls.
+STAGE: W01 | PHASE: BDD_TDD | HEALTH: RUNNING
+NEXT_PERMITTED_ACTION: verify published formal PRE receipt checkpoint -> exact gpt-6-sol/high staging task2.1 -> actual meaningful RED -> implement controls -> GREEN.
 HUMAN_DECISION: NONE; D03 accepted by direct reply «Принято. Продолжай.».
-READY_FOR_IMPLEMENTATION: NO (formal PRE/checkpoint NOT_RUN).
+READY_FOR_IMPLEMENTATION: YES after actual PRE-receipt checkpoint publication; external receipt must match live HEAD before first code write..
 READY_FOR_ARCHIVE: NO.
 Model matrix и feature-branch commit/push authorization приняты; конкретная общая policy/cadence/control scope принята D03.
 
@@ -20,7 +20,7 @@ Branch: codex/frade-standard-workflow.
 Worktree: E:/dev/codex/frade-worktrees/frade-standard-workflow.
 Git common: E:/dev/codex/frade/.git.
 Original baseline/cumulative origin: 98f387f96b51b0ad139e3507c376ff1c3e8dec09.
-Approved implementation checkpoint: NONE.
+Approved planning candidate: 9c974da812e7f120cace9defcdca69dd6154254b; current formal PRE PASS, plan raw hash501168ce..., production allowed only within W01 after receipt publication.
 Current scope: own planning/drafts/process evidence/dashboard; production/foreign owners/lockfile/vendor/routing controls unchanged.
 Public policy adoption: evidence/repository-audit.json has exact2 paths/hashes; no foreign uncommitted product/process transfer.
 
@@ -28,7 +28,7 @@ Public policy adoption: evidence/repository-audit.json has exact2 paths/hashes; 
 
 | Stage | Result | Phase / health | PRE / Verify / POST / archive |
 |---|---|---|---|
-| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | PRE_REVIEW/RUNNING | Formal gates NOT_RUN |
+| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | BDD_TDD/RUNNING | Formal gates NOT_RUN |
 | Existing-owner adoption | Separate Routing/UI/Repo Core consumer checkpoints | NOT_STARTED; outside W01 | Own future scope/gates |
 | Main integration | Explicit merged-candidate revalidation | NOT_STARTED; outside current permission | No automatic merge |
 
@@ -42,12 +42,12 @@ STOP after W01; no next numbered change or owner migration automatically.
 | 1.2 | planning-architecture | consolidate -> specs/design/tasks -> standard/onboarding/status/manifest/adoption drafts | COMPLETE; feedback-register.md and drafts |
 | 1.3 | planning-architecture + independent-PRE pair for draft-only review | strict/checks -> independent draft-quality review -> checkpoint | COMPLETE; strict/integrity PASS; draft-01 BLOCKED, draft-02 FAIL retained; fresh draft-03 PASS on faf69d33 |
 | 1.4 | human material policy decision | concrete proposal -> acceptance/reconciliation | COMPLETE; policy-acceptance.json D03 |
-| 1.5 | independent-PRE | approved coherent plan -> actual formal PRE -> frozen checkpoint | OPEN |
+| 1.5 | independent-PRE | approved coherent plan -> actual formal PRE -> frozen checkpoint | COMPLETE upon verified receipt checkpoint publication; formal-pre-01-pass |
 | 2.1–2.7 | tooling-tests | meaningful RED -> controls/docs/CLI -> GREEN | NOT_STARTED |
 | 3.1–3.2 | tooling-tests | cumulative applicable checks + integrity audit | NOT_RUN |
 | 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | NOT_RUN |
 
-TASKS_COMPLETE/TOTAL/REMAINING: 4/18/14.
+TASKS_COMPLETE/TOTAL/REMAINING: 5/18/13.
 REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed acceptance).
 46 BDD scenario declarations counted by actual planning audit; product/control behavioral tests NOT_RUN.
 
@@ -62,7 +62,7 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | openspec validate frade-standard-workflow --strict --json | REQUIRED | PASS1/1, no issues |
 | Full planning content/hash/link/traceability and all-spec checks | REQUIRED | PASS; reconciled-planning-checks.json + final metadata check proof;18requirements/46scenarios/18tasks/8sections; product/control tree unchanged |
 | Independent draft-quality review | REQUIRED for planning completion | draft-03 PASS on faf69d33;80 input hashes; prior BLOCKED/FAIL preserved; no implementation admission |
-| Formal PRE/Verify/POST | REQUIRED for implementation/closure | NOT_RUN |
+| Formal PRE/Verify/POST | REQUIRED for implementation/closure | PRE PASS on9c974da8; Verify/POST NOT_RUN |
 | New validator/bootstrap/publication control suites | REQUIRED after approved plan | NOT_IMPLEMENTED/NOT_RUN |
 | Product suites | No product changes in current planning | NOT_RUN; no product PASS claimed |
 | Human policy/visual acceptance | Policy decision REQUIRED; product visuals outside current scope | Policy ACCEPTED_D03; no visual approval claim |
@@ -75,9 +75,9 @@ Historical invocation/EOF/EOL/link-check/count failures and classified correctio
 | Stage/role | Approved exact model/effort | Authority | Invoked / actual |
 |---|---|---|---|
 | W01 planning-architecture | gpt-6-astra/high | design4 + direct human decision | Current chat backend/effort NOT_CONFIRMED |
-| W01 tooling-tests | gpt-6-sol/high | design4 + direct human decision | NOT_RUN |
+| W01 tooling-tests | gpt-6-sol/high | design4 + direct human decision | Invocation NOT_RUN; separate absolute-path staging canary v2 PASS; original/input/auth/other/network denied |
 | W01 formal-Verify | gpt-6-astra/high | design4 + direct human decision | NOT_RUN |
-| W01 independent-PRE | gpt-6-astra/xhigh | design4 + direct human decision | Requested exact pair for three independent draft runs: BLOCKED -> FAIL -> PASS; actual backend/effort NOT_CONFIRMED |
+| W01 independent-PRE | gpt-6-astra/xhigh | design4 + direct human decision | Requested exact pair for draft BLOCKED/FAIL/PASS and fresh formal PRE PASS; actual backend/effort NOT_CONFIRMED |
 | W01 independent-POST | gpt-6-astra/xhigh | design4 + direct human decision | NOT_RUN |
 
 No model substitution, task override or silent current-chat switch. Common service is read-only reviewer transport; writer dispatch NOT_IMPLEMENTED.
@@ -91,19 +91,19 @@ No model substitution, task override or silent current-chat switch. Common servi
 | D03 concrete common policy/cadence | W01 | ACCEPTED | Direct reply and bound planning hashes retained; formal PRE next |
 | Adoption Routing/UI/Repo Core | Each consumer | NOT_STARTED | Do not block independent supplier or edit foreign workspace |
 | Reviewer CLI environment | W01 | RESOLVED_CURRENT; historical BLOCKED retained | Exact retries completed with FAIL then PASS; no model substitution or quota/reset claim |
-| Unknown writable-worker runtime | W01 tooling capability | NOT_IMPLEMENTED | Implement explicit honest capability/guard, no false dispatch |
+| Product writer dispatcher | W01 tooling capability | NOT_IMPLEMENTED | Guard remains explicit; separate session staging runtime v2 technically verified, initial probe BLOCKED retained |
 
-No active production fix attempts; RCA rule retained.
+No active production fix attempts; runtime ENVIRONMENT RCA retained separately; no test weakening.
 
 ## 8. Git / публикация / evidence
 
 SOURCE_CHECKPOINT_SHA: faf69d339b338173158d2f31465c2aa4f0b4108d (independent draft-quality PASS, not implementation admission).
-COMMIT_STATE: previous source/metadata published61c7b6d9; accepted policy checkpoint preparing for formal PRE freeze.
+COMMIT_STATE: accepted9c974da8 published; PRE receipt/runtime evidence metadata checkpoint preparing publication before production.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: reviewed source PUBLISHED, exact remote SHA verified. Metadata follow-up publication uses the external receipt below, bound to its own sourceSha; no recursive receipt commits.
-VERIFIED_SOURCE_REMOTE_SHA: faf69d339b338173158d2f31465c2aa4f0b4108d.
+PUSH_STATE: accepted planning PUBLISHED9c974da8; this PRE receipt checkpoint requires verified external receipt before production.
+VERIFIED_SOURCE_REMOTE_SHA: 9c974da812e7f120cace9defcdca69dd6154254b.
 SOURCE_PUBLICATION_RECEIPT: openspec/changes/frade-standard-workflow/evidence/publication/source-faf69d33-20261002.json.
-PREVIOUS_METADATA_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/metadata-followup-20261002.json; previous61c7b6d9 verified; next checkpoint pending.
+PRE_ADMISSION_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/formal-pre-admission-20261002.json; require PUBLISHED/sourceSha=live HEAD before first task2.1 owner code write.
 Current evidence: openspec/changes/frade-standard-workflow/evidence/.
 Reviewable standard/onboarding/status/manifest/adoption: openspec/changes/frade-standard-workflow/drafts/.
 Feedback register: openspec/changes/frade-standard-workflow/feedback-register.md.
