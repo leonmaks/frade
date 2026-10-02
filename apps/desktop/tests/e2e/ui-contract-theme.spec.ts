@@ -2382,6 +2382,20 @@ test('P01-LOWER actual canvas F6 entry preserves document, selection, undo and v
     expect(await observe()).toEqual(before)
     expect(await readFile(f.file, 'utf8')).toBe(original)
     await f.page.screenshot({ path: info.outputPath('lower-f6-focus.png') })
+    await f.page.keyboard.press('Escape')
+    await expect
+      .poll(() =>
+        frame.locator('body').evaluate(() => {
+          const ui = (window as any).__p01Ui
+          return (
+            document.activeElement === ui.typingShim ||
+            document.activeElement === ui.editor.graph.container
+          )
+        }),
+      )
+      .toBe(true)
+    expect(await observe()).toEqual(before)
+    expect(await readFile(f.file, 'utf8')).toBe(original)
   } finally {
     await finishDiagramFixture(f.app)
   }
@@ -2576,6 +2590,99 @@ test('P01-LOWER original keyboard page menu duplicate rename move remove, submen
   }
 })
 
+// eslint-disable-next-line no-empty-pattern
+test('P01-POST-B03 actual many-page overflow reveals focused target and outline without changing semantic viewport', async ({}, info) => {
+  test.setTimeout(180000)
+  const f = await diagramFixture('frame', { mode: 'dark', density: 'comfortable' })
+  try {
+    const frame = f.page.frameLocator('iframe')
+    await expect
+      .poll(() => frame.locator('body').evaluate(() => !!(window as any).__p01Ui))
+      .toBe(true)
+    const insert = await frame
+      .locator('body')
+      .evaluate(() => (window as any).mxResources.get('insertPage'))
+    const original = await readFile(f.file, 'utf8')
+    for (let i = 0; i < 20; i++) {
+      await frame
+        .locator('.geTabContainer')
+        .getByRole('button', { name: insert, exact: true })
+        .click()
+      await expect(frame.locator('.gePageTab')).toHaveCount(i + 2)
+    }
+    await frame.locator('.geTabScroller').evaluate((node) => {
+      node.scrollLeft = 0
+    })
+    await frame.locator('.geDiagramContainer').click({ position: { x: 80, y: 200 } })
+    await frame.locator('body').evaluate(async () => {
+      for (let i = 0; i < 8; i++)
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
+    })
+    const state = () =>
+      frame.locator('body').evaluate(() => {
+        const ui = (window as any).__p01Ui,
+          g = ui.editor.graph
+        return {
+          xml: (window as any).mxUtils.getXml(ui.editor.getGraphXml()),
+          pages: ui.pages.map((p: any) => ({ id: p.getId(), name: p.getName() })),
+          current: ui.currentPage.getId(),
+          selection: g.getSelectionCells().map((c: any) => c.id),
+          undo: ui.editor.undoManager.indexOfNextAdd,
+          history: ui.editor.undoManager.history.length,
+          scale: g.view.scale,
+          translate: { x: g.view.translate.x, y: g.view.translate.y },
+          preferences: { ...localStorage },
+        }
+      })
+    const before = await state()
+    await f.page.keyboard.press('F6')
+    await f.page.keyboard.press('End')
+    await f.page.keyboard.press('ArrowLeft')
+    const bounds = await frame.locator('body').evaluate(() => {
+      const active = document.activeElement as HTMLElement,
+        scroller = document.querySelector('.geTabScroller') as HTMLElement,
+        box = active.getBoundingClientRect(),
+        clip = scroller.getBoundingClientRect(),
+        css = getComputedStyle(active)
+      return {
+        focused:
+          active.closest('.gePageTab') ===
+          Array.from(document.querySelectorAll('.gePageTab')).at(-1),
+        left: box.left,
+        right: box.right,
+        top: box.top,
+        bottom: box.bottom,
+        clip: clip.toJSON(),
+        scroll: scroller.scrollLeft,
+        overflow: scroller.scrollWidth > scroller.clientWidth,
+        focusVisible: active.matches(':focus-visible'),
+        outline: parseFloat(css.outlineWidth),
+      }
+    })
+    await writeFile(
+      info.outputPath('overflow-observation.json'),
+      JSON.stringify({ before, bounds }, null, 2),
+    )
+    await f.page.screenshot({ path: info.outputPath('overflow-end-focus.png') })
+    expect(bounds.overflow).toBe(true)
+    expect(bounds.focused).toBe(true)
+    expect(bounds.scroll).toBeGreaterThan(0)
+    expect(bounds.left - 4).toBeGreaterThanOrEqual(bounds.clip.left)
+    expect(bounds.right + 4).toBeLessThanOrEqual(bounds.clip.right)
+    expect(bounds.top - 4).toBeGreaterThanOrEqual(bounds.clip.top)
+    expect(bounds.bottom + 4).toBeLessThanOrEqual(bounds.clip.bottom)
+    expect(bounds.focusVisible).toBe(true)
+    expect(bounds.outline).toBeGreaterThanOrEqual(2)
+    await f.page.keyboard.press('ArrowLeft')
+    await f.page.keyboard.press('Home')
+    await f.page.keyboard.press('Escape')
+    expect(await state()).toEqual(before)
+    expect(await readFile(f.file, 'utf8')).toBe(original)
+  } finally {
+    await finishDiagramFixture(f.app)
+  }
+})
+
 for (const mode of ['light', 'dark', 'high-contrast'] as const)
   for (const density of ['compact', 'comfortable'] as const) {
     test(
@@ -2717,6 +2824,13 @@ for (const mode of ['light', 'dark', 'high-contrast'] as const)
                       focusVisible: node.matches(':focus-visible'),
                       outlineWidth: css.outlineWidth,
                       outlineColor: css.outlineColor,
+                      parentBackground: bg(node.parentElement!),
+                      focusBackplate: css.boxShadow,
+                      adjacentBackground:
+                        focus && css.boxShadow !== 'none'
+                          ? css.boxShadow.match(/rgba?\([^)]+\)/)?.[0] || bg(node.parentElement!)
+                          : bg(node.parentElement!),
+                      hovered: node.matches(':hover'),
                       mask: css.maskImage,
                       hit: !!hit && (hit === node || node.contains(hit)),
                       clips,
@@ -2724,9 +2838,125 @@ for (const mode of ['light', 'dark', 'high-contrast'] as const)
                   }),
                 }
               })
+            const checkState = async (state: string, popupLayer = false) => {
+              await frame.locator('body').evaluate(async () => {
+                await new Promise<void>((resolve) =>
+                  requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+                )
+              })
+              const record = await inspect()
+              observations.push({ label: label + '-' + state, ...record })
+              for (const control of record.controls) {
+                if (control.disabled === 'true' || (popupLayer && control.layer === 'lower'))
+                  continue
+                const minimum = record.media.coarse ? 44 : density === 'compact' ? 28 : 36
+                if (
+                  control.box.height < minimum ||
+                  control.box.width < (record.media.coarse ? 44 : 24)
+                )
+                  violations.push({ label, state, rule: 'A11Y-004/FDS-DENSITY', control })
+                if (
+                  !control.hit ||
+                  control.clips.length ||
+                  control.box.left < 0 ||
+                  control.box.right > record.viewport.width ||
+                  control.box.top < 0 ||
+                  control.box.bottom > record.viewport.height
+                )
+                  violations.push({ label, state, rule: 'VISIBLE_UNOCCLUDED_TARGET', control })
+                if (uiContrast(control.color, control.background) < 4.5)
+                  violations.push({ label, state, rule: 'A11Y-001_TEXT', control })
+                if (
+                  control.focused &&
+                  (!control.focusVisible ||
+                    parseFloat(control.outlineWidth) < 2 ||
+                    control.mask !== 'none' ||
+                    uiContrast(control.outlineColor, control.adjacentBackground) < 3)
+                )
+                  violations.push({ label, state, rule: 'A11Y-003_FOCUS_CONTRAST_BOUNDS', control })
+              }
+              const glyphs = frame.locator(
+                popupLayer
+                  ? '[data-frade-lower-menu] td.mxPopupMenuIcon:has(img),[data-frade-lower-menu] td.mxPopupMenuItem>div'
+                  : '.geTabContainer .geButton',
+              )
+              const paint: unknown[] = []
+              for (let i = 0; i < (await glyphs.count()); i++) {
+                const glyph = glyphs.nth(i)
+                if (!(await glyph.isVisible())) continue
+                const values = await glyph.evaluate((node, lower) => {
+                  const css = getComputedStyle(node, lower ? '::before' : null)
+                  let background = ''
+                  for (
+                    let p: Element | null = lower ? node : node.parentElement;
+                    p;
+                    p = p.parentElement
+                  ) {
+                    const color = getComputedStyle(p).backgroundColor
+                    if (color !== 'rgba(0, 0, 0, 0)' && color !== 'transparent') {
+                      background = color
+                      break
+                    }
+                  }
+                  return {
+                    image: css.maskImage,
+                    ink: css.backgroundColor,
+                    background,
+                    color: css.color,
+                  }
+                }, !popupLayer)
+                expect(values.image, state + ' original glyph mask').not.toBe('none')
+                const png = await glyph.screenshot({
+                  path: info.outputPath(label + '-' + state + '-glyph-' + i + '.png'),
+                })
+                const pixels = pngColorCount(png, values.ink)
+                observations.push({
+                  label: label + '-' + state + '-glyph-' + i,
+                  ...values,
+                  pixels,
+                  projection: await glyph.evaluate((node) => {
+                    const values = []
+                    for (let p: Element | null = node; p; p = p.parentElement) {
+                      const css = getComputedStyle(p)
+                      values.push({
+                        className: p.className,
+                        opacity: css.opacity,
+                        filter: css.filter,
+                      })
+                    }
+                    return values
+                  }),
+                })
+                const effectivePixels = pngCanonicalContrastPixels(
+                  png,
+                  values.ink,
+                  values.background,
+                )
+                expect(
+                  effectivePixels,
+                  state + ' actual canonical glyph paint at contrast >=3',
+                ).toBeGreaterThan(0)
+                expect(
+                  uiContrast(values.ink, values.background),
+                  state + ' actual icon contrast',
+                ).toBeGreaterThanOrEqual(3)
+                paint.push({ ...values, pixels, effectivePixels })
+              }
+              if (state.startsWith('page-popup'))
+                expect(paint.length, 'Original duplicate/remove/rename rows have no icon').toBe(0)
+              else expect(paint.length, state + ' actual glyph coverage').toBeGreaterThan(0)
+              observations.push({ label: label + '-' + state + '-actual-glyph-paint', paint })
+              await f.page.screenshot({ path: info.outputPath(label + '-' + state + '.png') })
+            }
             const lower = await inspect()
             observations.push({ label: label + '-lower', ...lower })
             await f.page.screenshot({ path: info.outputPath(label + '-lower-focus.png') })
+            await checkState('lower-focus')
+            await frame
+              .locator('.geTabContainer [role="button"][aria-disabled="false"]:visible')
+              .last()
+              .hover()
+            await checkState('lower-hover-focus')
             await f.page.keyboard.press('Enter')
             await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(1)
             await f.page.keyboard.press('End')
@@ -2779,12 +3009,54 @@ for (const mode of ['light', 'dark', 'high-contrast'] as const)
                   control.focused &&
                   (!control.focusVisible ||
                     parseFloat(control.outlineWidth) < 2 ||
-                    control.mask !== 'none')
+                    control.mask !== 'none' ||
+                    uiContrast(control.outlineColor, control.adjacentBackground) < 3)
                 )
                   violations.push({ label, rule: 'A11Y-003_UNCLIPPED_FOCUS', control })
               }
             }
             await f.page.screenshot({ path: info.outputPath(label + '-popup-focus.png') })
+            await checkState('page-popup-focus', true)
+            await frame.locator('[data-frade-lower-menu] [role="menuitem"]').first().hover()
+            await checkState('page-popup-hover-focus', true)
+            await f.page.keyboard.press('Escape')
+            await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+            await frame.locator('.geTabContainer .geControlTab[aria-haspopup="menu"]').focus()
+            await f.page.keyboard.press('Enter')
+            await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(1)
+            await expect(frame.getByRole('menuitemcheckbox')).toHaveAttribute(
+              'aria-checked',
+              'true',
+            )
+            await f.page.keyboard.press('Home')
+            await checkState('pages-root-focus', true)
+            const checked = frame.locator('[data-frade-lower-menu] [role="menuitemcheckbox"]')
+            const checkedBox = await checked.boundingBox()
+            expect(checkedBox).not.toBeNull()
+            await checked.hover({
+              position: { x: checkedBox!.width - 8, y: checkedBox!.height / 2 },
+            })
+            await checkState('pages-root-hover-focus', true)
+            const parent = frame
+              .locator(
+                '[data-frade-lower-menu] [role^="menuitem"][aria-haspopup="menu"][aria-disabled="false"]',
+              )
+              .first()
+            await parent.focus()
+            await f.page.keyboard.press('ArrowRight')
+            await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(2)
+            await f.page.keyboard.press('End')
+            await f.page.keyboard.press('Home')
+            await checkState('pages-submenu-focus', true)
+            await frame
+              .locator('[data-frade-lower-menu][role="menu"]')
+              .last()
+              .locator('[role^="menuitem"][aria-disabled="false"]')
+              .first()
+              .hover()
+            await checkState('pages-submenu-hover-focus', true)
+            await f.page.keyboard.press('ArrowLeft')
+            await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(1)
             await f.page.keyboard.press('Escape')
             await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
             expect(await semantics()).toEqual(before)
@@ -2847,6 +3119,78 @@ for (const mode of ['light', 'dark', 'high-contrast'] as const)
       },
     )
   }
+
+function pngCanonicalContrastPixels(bytes: Buffer, css: string, background: string): number {
+  const expected = css
+    .match(/[0-9.]+/g)
+    ?.slice(0, 3)
+    .map(Number)
+  if (!expected || expected.length !== 3) throw Error('Unresolved glyph foreground ' + css)
+  let width = 0,
+    height = 0,
+    channels = 0
+  const blocks: Buffer[] = []
+  for (let at = 8; at < bytes.length;) {
+    const size = bytes.readUInt32BE(at),
+      type = bytes.toString('ascii', at + 4, at + 8),
+      data = bytes.subarray(at + 8, at + 8 + size)
+    if (type === 'IHDR') {
+      width = data.readUInt32BE(0)
+      height = data.readUInt32BE(4)
+      channels = data[9] === 6 ? 4 : data[9] === 2 ? 3 : 0
+      if (data[8] !== 8 || data[12] !== 0 || !channels)
+        throw Error('Unsupported screenshot PNG layout')
+    }
+    if (type === 'IDAT') blocks.push(data)
+    at += size + 12
+  }
+  const raw = inflateSync(Buffer.concat(blocks)),
+    stride = width * channels,
+    image = Buffer.alloc(stride * height)
+  let input = 0,
+    count = 0
+  for (let y = 0; y < height; y++) {
+    const filter = raw[input++]
+    for (let x = 0; x < stride; x++) {
+      const index = y * stride + x,
+        left = x >= channels ? image[index - channels] : 0,
+        up = y > 0 ? image[index - stride] : 0,
+        diagonal = y > 0 && x >= channels ? image[index - stride - channels] : 0
+      let predictor = 0
+      if (filter === 1) predictor = left
+      else if (filter === 2) predictor = up
+      else if (filter === 3) predictor = Math.floor((left + up) / 2)
+      else if (filter === 4) {
+        const p = left + up - diagonal,
+          a = Math.abs(p - left),
+          b = Math.abs(p - up),
+          c = Math.abs(p - diagonal)
+        predictor = a <= b && a <= c ? left : b <= c ? up : diagonal
+      } else if (filter !== 0) throw Error('Unsupported screenshot PNG filter')
+      image[index] = (raw[input++] + predictor) & 255
+    }
+  }
+  const back = background
+    .match(/[0-9.]+/g)
+    ?.slice(0, 3)
+    .map(Number)
+  if (!back || back.length !== 3) throw Error('Unresolved glyph backplate ' + background)
+  const delta = expected.map((value, i) => value - back[i]),
+    norm = delta.reduce((sum, value) => sum + value * value, 0)
+  if (!norm) return 0
+  for (let i = 0; i < image.length; i += channels) {
+    if (channels === 4 && image[i + 3] < 200) continue
+    const rgb = Array.from(image.subarray(i, i + 3)),
+      alpha = rgb.reduce((sum, value, j) => sum + (value - back[j]) * delta[j], 0) / norm
+    if (alpha <= 0 || alpha > 1) continue
+    if (
+      rgb.every((value, j) => Math.abs(value - (back[j] + alpha * delta[j])) <= 2) &&
+      uiContrast('rgb(' + rgb.join(',') + ')', background) >= 3
+    )
+      count++
+  }
+  return count
+}
 
 function pngColorCount(bytes: Buffer, css: string): number {
   const expected = css

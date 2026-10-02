@@ -15,7 +15,7 @@
 
 ## 3. Applicable integration checks, independent POST and archive
 
-- [x] 3.1 Run affected package lint/typecheck/tests/BDD and root boundaries/check:all, pinned Draw.io assets, foundation compliance positive/negative controls and applicable actual desktop/security/settings/frame/accessibility/visual checks. Preserve logs/exits; distinguish fresh runs and justified unchanged-source caches. Inspect git status/diff and confirm no unrelated/unauthorized writes.
+- [ ] 3.1 Run affected package lint/typecheck/tests/BDD and root boundaries/check:all, pinned Draw.io assets, foundation compliance positive/negative controls and applicable actual desktop/security/settings/frame/accessibility/visual checks. Preserve logs/exits; distinguish fresh runs and justified unchanged-source caches. Inspect git status/diff and confirm no unrelated/unauthorized writes.
 - [ ] 3.2 Perform OpenSpec verification against all requirements/scenarios/tasks, then freeze full manifest and obtain independent gpt-6-astra/xhigh read-only POST PASS. No production edits during gate; correctness/architecture/applicable check blockers mean FAIL. Preserve received report and exact candidate integrity.
 - [ ] 3.3 After every required check, verify, POST and human visual acceptance PASS, sync/archive by project workflow and run post-archive compliance. Preserve cumulative/historical evidence and report actual final state; STOP before P02.
 
@@ -57,3 +57,11 @@ Within existing open2.4/2.5/3.1 (task count stays5/10): reconcile all four artif
 ## Current check execution checkpoint — 2026-10-01T22:51:14.329Z
 
 Task3.1 closed by openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T223210Z/final-check-summary.json: actual root exit0, source hashes unchanged, Draw215/desktop79, UI26/BDD95, controls and pinned assets PASS; current bridge unit20 and targeted Electron11 PASS. Original callbacks and exact SaveAs raw-before delta are proven in openspec/changes/frade-p01-theme-core/evidence/p01-lower-style-green-20261001T222844Z/scope-test-integrity-ast-supplement.json. This closes check execution only; tasks2.4/2.5/3.2/3.3 remain open, human visual NOT_APPROVED, full FUI binding/cumulative POST/archive not claimed. STOP before P02.
+
+## Focused POST1 failure / current repair checkpoint — 2026-10-01T23:36:03.770Z
+
+Independent read-only POST1 FAIL B01–B04 retained at openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-post1-fail-received-20261001T232558Z. The prior6a49 check execution PASS/6of10 checkpoint remains historical. New required regressions reopen task3.1; current tasks5/10 until new source-bound targeted/full checks PASS. Same accepted sole bridge/test scope, no new exception/vendor/routing/domain behavior. Permanent combined ownership, Escape, overflow and full Pages/submenu focus/icon/state RED precedes repair. Full visual/FUI/cumulative closure and P02 remain blocked/open.
+
+## POST1 repair checkpoint 2026-10-02T00:22:33.649Z
+
+Tasks remain5/10: current bridge23/all desktop66, lower3/original3, BDD95/UI26/contrast102/boundaries/strict/lint/type/build PASS. Complete expanded matrix6x5 FAIL6/6 (990observations/90geometry findings) at openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z; current root/POST NOT_RUN after required FAIL. B01/B02/B03 repaired with permanent RED→GREEN; B04 now exposes original fitting overlap/overflow. Proposed exact P01-LOWER-ORIGIN-POPUP-REFLOW-01 SHA6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17 is NOT_ACCEPTED; no position/fit production delta. Current design224/235/252 requires a specific decision before reflow changes. No cumulative closure/visual acceptance/P02.

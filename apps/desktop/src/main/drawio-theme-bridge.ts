@@ -267,7 +267,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       lower +
       ' .geTabScroller{flex:1;min-width:0;max-width:none!important;display:flex;align-items:center;height:auto!important;background-color:var(--frade-frame-surface-panel)!important;color:var(--frade-frame-text-primary)!important;padding:4px;box-sizing:border-box;}' +
       lower +
-      ' .geTab{flex-shrink:0;height:auto!important;display:inline-flex;align-items:center;background-color:var(--frade-frame-surface-panel)!important;color:var(--frade-frame-text-primary)!important;border-color:var(--frade-frame-border-subtle)!important;}' +
+      ' .geTab{flex-shrink:0;height:auto!important;display:inline-flex;align-items:center;background-color:var(--frade-frame-surface-panel)!important;color:var(--frade-frame-text-primary)!important;border-color:var(--frade-frame-border-subtle)!important;filter:none!important;}' +
       lower +
       ' [role="button"]{min-height:' +
       size +
@@ -275,7 +275,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       lower +
       ' .gePageTab>span{padding:0 8px;}' +
       lower +
-      ' .geButton{color:inherit!important;}' +
+      ' .geButton{color:inherit!important;opacity:1!important;filter:none!important;}' +
       lower +
       ' .geButton::before{content:"";display:inline-block;width:16px;height:16px;flex-shrink:0;mask-image:var(--frade-lower-icon-image);mask-size:contain;mask-repeat:no-repeat;mask-position:center;background-color:currentColor;forced-color-adjust:none;}' +
       lower +
@@ -302,6 +302,9 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       ' [role="button"]:focus-visible,' +
       menu +
       ' [role^="menuitem"]:focus-visible{outline:2px solid var(--frade-frame-focus-ring)!important;outline-offset:2px;}' +
+      '@media(forced-colors:active){' +
+      lower +
+      ' [role="button"]:focus-visible{box-shadow:0 0 0 4px var(--frade-frame-surface-panel)!important;}}' +
       '@media(pointer:coarse){' +
       lower +
       ' [role="button"]{min-height:44px!important;min-width:44px!important;}' +
@@ -328,14 +331,20 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     lowerStyles = new Map<HTMLElement, Map<string, { value: string; priority: string }>>(),
     menuStyles = new Map<HTMLElement, Map<string, { value: string; priority: string }>>(),
     styleAttributePresence = new WeakMap<HTMLElement, boolean>()
+  type LowerPopup = {
+    instance: any
+    div: HTMLElement
+    opener: HTMLElement
+    request: any
+    hide: () => void
+  }
   let lowerObserver: MutationObserver | undefined,
     lowerTargets: HTMLElement[] = [],
     canvasFocus: HTMLElement | undefined,
     lastLower: HTMLElement | undefined,
     mouseSequence = 0,
-    popup:
-      | { instance: any; div: HTMLElement; opener: HTMLElement; request: any; hide: () => void }
-      | undefined
+    popup: LowerPopup | undefined,
+    cancellationPopup: LowerPopup | undefined
   const projectAttribute = (
     map: typeof lowerAttributes,
     node: Element,
@@ -462,18 +471,20 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     !ui.dialog &&
     !(ui.dialogs?.length > 0)
   function forgetPopup(cancel = false) {
-    if (
-      cancel &&
-      popup &&
-      ui?.currentMenu === popup.instance &&
-      popup.instance.div === popup.div &&
-      popup.div.isConnected
-    )
-      popup.hide()
+    const original = popup || cancellationPopup
+    const proven =
+      !!original &&
+      ui?.currentMenu === original.instance &&
+      original.instance.div === original.div &&
+      original.div.isConnected
+    if (cancel && proven) original.hide()
+    // Stale keys restore projections, but apply/disposal must still cancel this original menu.
+    // A detached/replaced/unowned current menu can never inherit the retained hide lease.
+    cancellationPopup = !cancel && proven ? original : undefined
     restoreLowerStyles(menuStyles)
     restoreAttributes(menuAttributes)
-    if (popup?.opener.isConnected && lowerAttributes.has(popup.opener))
-      projectAttribute(lowerAttributes, popup.opener, 'aria-expanded', 'false')
+    if (original?.opener.isConnected && lowerAttributes.has(original.opener))
+      projectAttribute(lowerAttributes, original.opener, 'aria-expanded', 'false')
     popup = undefined
   }
   const validPopup = () =>
@@ -676,8 +687,27 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
         node.getAttribute('aria-disabled') === 'false',
     )
   const focusNode = (node?: HTMLElement) => {
-    if (node && visible(node) && !node.closest('.mxDisabled,[disabled],[aria-disabled="true"]'))
-      node.focus({ preventScroll: true })
+    if (!node || !visible(node) || node.closest('.mxDisabled,[disabled],[aria-disabled="true"]'))
+      return
+    const scroller = ui?.tabScroller
+    if (
+      currentPresentation() &&
+      lowerTargets.includes(node) &&
+      scroller instanceof HTMLElement &&
+      ui.tabContainer.contains(scroller) &&
+      scroller.contains(node) &&
+      scroller.clientWidth > 0
+    ) {
+      const target = node.getBoundingClientRect(),
+        box = scroller.getBoundingClientRect(),
+        left = box.left + scroller.clientLeft + 4,
+        right = box.left + scroller.clientLeft + scroller.clientWidth - 4
+      // Reveal only the owned lower DOM scrollport; never scroll an ancestor or graph viewport.
+      const delta =
+        target.left < left ? target.left - left : target.right > right ? target.right - right : 0
+      if (delta) scroller.scrollLeft += delta
+    }
+    node.focus({ preventScroll: true })
   }
   function adoptPopup(opener: HTMLElement, previous: any, keyboard: boolean) {
     const instance = ui?.currentMenu
@@ -704,6 +734,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       request: active.request,
       hide: () => hide.call(ui),
     }
+    cancellationPopup = popup
     reconcilePopup()
     projectAttribute(lowerAttributes, opener, 'aria-expanded', 'true')
     if (keyboard) focusNode(rows(instance)[0])
@@ -884,7 +915,9 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       return true
     }
     if (ui.currentMenu?.div?.isConnected) return false
-    if (event.key === 'F6') {
+    if (event.key === 'Escape' && lowerTargets.includes(target))
+      focusNode(canvasFocus?.isConnected ? canvasFocus : ui.typingShim)
+    else if (event.key === 'F6') {
       if (lowerTargets.includes(target))
         focusNode(canvasFocus?.isConnected ? canvasFocus : ui.typingShim)
       else {

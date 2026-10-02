@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-01T23:59:17.037Z",
+  "classification": "TEST",
+  "evidence": "matrix-paint2-artifacts/ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds/lower-matrix-observations.json",
+  "cause": "Pseudo-element glyph paints over its own hover button background; new probe started at parent selected-page background, giving incorrect blend/contrast reference. Popup glyph itself is a masked ink plane and correctly uses its parent backplate.",
+  "repair": "Measure lower pseudo-element backplate from actual host node, popup mask backplate from parent. Keep same2RGB blend tolerance and3 measured contrast threshold."
+}

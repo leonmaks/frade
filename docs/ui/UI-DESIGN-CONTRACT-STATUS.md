@@ -1,30 +1,38 @@
 # Frade UI Design Contract — статус этой ветки
 
-## Текущий этап — P01, 6/10; popup PRE2 PASS; fresh full root PASS; focused POST NOT_RUN
+## Текущий этап — P01,5/10; repair checkpoint, menu reflow scope decision
 
-Обновлено: 2026-10-01T22:55:57.161Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; baseline 98f387f; опубликованный checkpoint fb5a566. Guide v1.0 / tokens1.0.0. Последний точный popup scope USER_ACCEPTED; автоматический read-only PRE2 PASS. Model/effort — по approved P01 stage plan. Routing prerequisite отсутствует.
+Обновлено: 2026-10-02T00:22:33.649Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; baseline98f387f. Последний опубликованный checkpoint6a49d5d; текущий repair checkpoint готовится к commit/push. Guide1.0/tokens1.0.0. Routing prerequisite отсутствует. Shared review policy1.1: model/effort по owning stage plan, автоматические PRE/POST без человеческого переноса промптов. Правый panel open queued; фактическая видимость не подтверждена.
 
-| Текущая задача | Фактический статус |
+| Задача/проверка | Фактический текущий статус |
 | --- | --- |
-| Scope, coherent artifacts, strict, independent PRE | DONE; PRE2 PASS, прежние FAIL сохранены |
-| Original Grid occlusion RED → bridge repair → GREEN | PASS: unit18/18, Electron11/11 с исходными bundle/chord действиями |
-| Style teardown / detached lower glyph | PASS: unit20/20, lint/typecheck/build, Electron11/11. Исторические style RED и typecheck FAIL сохранены |
-| Полный текущий прогон | PASS: root exit0, Draw215/215, desktop79/79, source unchanged. BDD95/UI26/contrast102/controls/pinned2851 PASS; p95=118.2ms≤150ms. Прежние FAIL/TERMINATED сохранены |
-| Visual acceptance / verify / cumulative POST / archive | NOT_APPROVED; focused OpenSpec verification PASS (4 requirements/10 scenarios); полный15/35 mapping INCOMPLETE; cumulative POST/archive NOT_RUN; P01 6/10 |
-| Commit/push текущей реализации | PREPARING_CURRENT_UI_CHECKPOINT; последний опубликованный fb5a566 |
+| B01 cancellation lease | Repaired; serialized combined prepare→stale Enter→apply regression RED→GREEN |
+| B02 Escape | Repaired; unit and actual Electron return preserve semantics |
+| B03 overflow focus/ring | Repaired; unit and actual21-page original UI workload preserve graph viewport/document/state |
+| B04 complete measurement |6x5 actual matrix extended to Pages/submenu/hover/focus/glyph paint; forced vendor inversion and selected focus backplate repaired. Remaining layout FAIL6/6 |
+| Unit/lint/type/build/assets | PASS: bridge23, all desktop66, affected lint/type/build, pinned2851 |
+| BDD/compliance/boundaries/strict | PASS: BDD95, UI26,102contrast pairs, positive/negative controls removed, four boundaries, strict validation |
+| Real Electron targeted | PASS: lower/action/Escape/overflow3 and unchanged native/embedded bundle lifecycle + frame chord3 |
+| Visual matrix | FAIL6/6:990observations,90geometry findings; actual screenshots/hashes saved; human baseline NOT_APPROVED |
+| Original test integrity | PASS:8unit/15Electron callback ASTs unchanged, WB exact3/CRLF, bundle unchanged, sole production bridge |
+| Current full root / repeated POST | NOT_RUN after applicable matrixFAIL; historical6a49 rootPASS and independent POST1FAIL preserved |
+| Git / next decision | Repair checkpoint commit/push pending. Proposed P01-LOWER-ORIGIN-POPUP-REFLOW-01 is NOT_USER_ACCEPTED; no placement implementation |
 
-Применимые lower/popup правила: FDS003/004/005/008/009, A11Y001–005/007–009. Сохраняются ровно три утверждённых legacy exceptions. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Следующий шаг: сохранить focused verification, commit/push UI checkpoint, автоматический read-only popup/lower/SaveAs POST по approved stage plan. STOP перед P02. Исторические записи ниже не являются текущим статусом.
+Применимые FDS003/004/005/008/009, A11Y001–005/007–009. Ровно3approved legacy exceptions; merge protection LOCAL_ONLY/NOT_CONFIGURED. Не закрываются full FUI005–009, visual acceptance, cumulative verify/POST/archive. STOP перед P02.
 
-## Оставшиеся задачи P01
+## Оставшиеся задачи
 
-| Task | Статус / необходимый результат |
+| Task | Статус / следующий результат |
 | --- | --- |
-| 2.4 runtime/BDD integration | PARTIAL: actual runtime PASS; полное связывание FUI005–009 и финальная сверка evidence открыты |
-| 2.5 visual/performance | Performance PASS; actual screens сохранены; human visual baseline NOT_APPROVED, полная visual/state closure открыта |
-| 3.2 verification/cumulative POST | OPEN; focused popup review не закрывает cumulative gate |
-| 3.3 sync/archive | OPEN; только после всех required gates и human visual acceptance |
+|2.4 runtime/BDD | PARTIAL; full FUI binding/evidence reconciliation open |
+|2.5 visual/performance | Current matrixFAIL; human baselines NOT_APPROVED. Performance118.2ms относится к опубликованному6a49, после repair NOT_RUN |
+|3.1 checks | OPEN: affected checks PASS, current complete root blocked by required matrixFAIL |
+|3.2 verify/POST | OPEN; focused POST1FAIL preserved; repeat only after all applicable checks |
+|3.3 archive | OPEN; after required verification/POST/human visual acceptance |
 
-Evidence текущего полного прогона: openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T223210Z/final-check-summary.json.
+Точный proposed scope: [P01-LOWER-ORIGIN-POPUP-REFLOW-01](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md); SHA2566bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17. Причина: design224/235/252 сохраняет vendor placement/fit и требует STOP при невозможности выполнить bounds/occlusion. Draft разрешает только proven lower popup DOM reflow; никаких vendor/domain/routing APIs, новых paths/exception или ослаблений тестов.
+
+[Фактический repair report](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/repair-checkpoint-report.md) · [Реальные screenshots](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/actual-visual-candidates.md). После human scope decision: coherent artifacts/strict → automatic PRE → RED/sole bridge reflow → targeted/full → verify/automatic POST. Сейчас координаты/fit меню не изменены.
 
 ## Предыдущие сохранённые checkpoint записи
 

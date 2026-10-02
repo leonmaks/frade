@@ -365,6 +365,11 @@
       "bytes": 747,
       "sha256": "60228231042a767c5783c0f54db975c7102271ad97a8bcc7d8bd1f42c9e0969a",
       "scope": "Current actual selected runtime/check results only; applicable root FAIL and visual approval NOT_APPROVED remain closure blockers."
+    },
+    {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/repair-checkpoint-report.json",
+      "sha256": "859131064719c612db237bb1a1a2ad4f6ee5e2f6a3dbccbd9cc9d1b9ffb76867",
+      "scope": "Current partial repair actual outcomes only; matrix FAIL and scope decision keep closure blocked."
     }
   ],
   "currentRuntimeSources": [
@@ -411,17 +416,17 @@
     },
     "assertions": {
       "file": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
-      "bytes": 131049,
-      "sha256": "a7ce7555da4f32b7435cc83d186a6de1d597e273f0ded05e7e7f7df2a2adee4d",
-      "status": "PASS_FOR_ACTUAL_ACCEPTED_RUNTIME_DELTA_ONLY",
+      "bytes": 146479,
+      "sha256": "5f5fd58930c3dcef7055a3365c49ec1050a43366bfebaa6c8f8c4858f0d1af27",
+      "status": "PARTIAL_RUNTIME_PASS_MATRIX_FAIL_NO_FULL_FUI_CLOSURE",
       "fullFuiClosure": false
     },
     "currentFullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T223210Z"
   },
   "currentRuntimeSource": {
     "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
-    "sha256": "a7ce7555da4f32b7435cc83d186a6de1d597e273f0ded05e7e7f7df2a2adee4d",
-    "bytes": 131049
+    "sha256": "5f5fd58930c3dcef7055a3365c49ec1050a43366bfebaa6c8f8c4858f0d1af27",
+    "bytes": 146479
   },
   "thirdFixtureDelta": {
     "id": "P01-BUNDLE-FRAME-COMPAT-01",
@@ -469,12 +474,9 @@
     "fullRootResult": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json"
   },
   "currentRootResult": {
-    "status": "PASS",
-    "exit": 0,
-    "draw": 215,
-    "desktop": 79,
-    "sourceUnchanged": true,
-    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T223210Z"
+    "status": "NOT_RUN",
+    "reason": "Current repaired source matrix FAIL6/6; original6a49 rootPASS retained in previousCurrentRootResults",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z"
   },
   "workspaceSaveAsDelta": {
     "id": "P01-WORKSPACE-SAVEAS-READINESS-01",
@@ -486,7 +488,7 @@
   },
   "frameBottomDelta": {
     "id": "P01-FRAME-BOTTOM-CHROME-01",
-    "status": "CURRENT_SIX_STATE_MEDIA_ZOOM_VIEWPORT_AND_FULL_ROOT_PASS_CLOSURE_OPEN",
+    "status": "CURRENT_MATRIX_FAIL_GEOMETRY_SCOPE_DECISION_REQUIRED",
     "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json",
     "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md",
     "diagnostic": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-chrome-observation-20261001T101428Z/result.json",
@@ -508,11 +510,11 @@
       "status": "USER_ACCEPTED_PRE_PENDING",
       "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard-accepted-20261001T115657Z.json"
     },
-    "currentEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-style-green-20261001T222844Z"
+    "currentEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z"
   },
   "lowerOriginPopupDelta": {
     "id": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
-    "status": "IMPLEMENTED_CURRENT_TARGETED_AND_FRESH_FULL_ROOT_PASS_CLOSURE_OPEN",
+    "status": "POST1_FAIL_THREE_BEHAVIOR_REPAIRS_GREEN_MATRIX_GEOMETRY_FAIL",
     "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard.proposed.md",
     "proposalSha256": "8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a",
     "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard-accepted-20261001T193045Z.json",
@@ -521,21 +523,109 @@
     "implementation": "SOLE_PRIVATE_BRIDGE_LOWER_AND_PROVEN_MENU",
     "fullFuiClosure": false,
     "pre": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-pre2-pass-received-20261001T200707Z/receipt.json",
-    "runtimeEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-style-green-20261001T222844Z",
+    "runtimeEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z",
     "currentAssertionSources": [
       {
         "file": "apps/desktop/tests/unit/drawio-theme.test.ts",
-        "sha256": "226b07a73634e0cfe8ce77c030047f64c4f0dd5861610434dc9d9a4be32a30be"
+        "sha256": "ade2d859f0b885794ad2f3487d1ed1ee1b09483b50fe6a00f7e5b4171019fe9f"
       },
       {
         "file": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
-        "sha256": "a7ce7555da4f32b7435cc83d186a6de1d597e273f0ded05e7e7f7df2a2adee4d"
+        "sha256": "5f5fd58930c3dcef7055a3365c49ec1050a43366bfebaa6c8f8c4858f0d1af27"
       }
     ],
-    "unitPassed": 20,
-    "actualElectronLowerPassed": 8,
-    "fullRoot": "PASS",
+    "unitPassed": 23,
+    "actualElectronLowerPassed": 3,
+    "fullRoot": "NOT_RUN_CURRENT_REPAIR",
     "currentFullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T223210Z",
-    "visualApproval": "NOT_APPROVED"
-  }
+    "visualApproval": "NOT_APPROVED",
+    "postRepair": {
+      "at": "2026-10-02T00:22:33.649Z",
+      "change": "frade-p01-theme-core",
+      "status": "INCOMPLETE_SCOPE_DECISION_REQUIRED",
+      "progress": "5/10",
+      "guideVersion": "1.0",
+      "tokenVersion": "1.0.0",
+      "checks": {
+        "generatedBridgeUnit": {
+          "status": "PASS",
+          "count": 23
+        },
+        "desktopAllUnit": {
+          "status": "PASS",
+          "count": 66
+        },
+        "lint": "PASS",
+        "typecheck": "PASS",
+        "buildAndPinned2851": "PASS",
+        "bdd95": "PASS",
+        "ui26Contrast102PositiveNegativeRemoved": "PASS",
+        "boundaries": "PASS",
+        "strict": "PASS",
+        "actualLowerActionsEscapeOverflow3": "PASS",
+        "unchangedBundleAndFrameChord3": "PASS",
+        "matrix": {
+          "status": "FAIL",
+          "cases": 6,
+          "observations": 990,
+          "geometryViolations": 90
+        },
+        "currentFullRoot": "NOT_RUN_AFTER_REQUIRED_MATRIX_FAIL",
+        "newFocusedPost": "NOT_RUN_AFTER_REQUIRED_MATRIX_FAIL",
+        "lastIndependentPost": "FAIL_B01_B02_B03_B04_PRESERVED",
+        "visualApproval": "NOT_APPROVED"
+      },
+      "scopeAudit": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/scope-integrity-current.json",
+      "proposedDecision": {
+        "path": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md",
+        "sha256": "6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17",
+        "status": "PROPOSED_NOT_ACCEPTED",
+        "productionPlacementChanged": false
+      },
+      "source": [
+        {
+          "file": "apps/desktop/src/main/drawio-theme-bridge.ts",
+          "sha256": "95eca54fc8aad45384415c7b8fc17138015b6ab13e111afd547561a1464ee831",
+          "bytes": 51865
+        },
+        {
+          "file": "apps/desktop/tests/unit/drawio-theme.test.ts",
+          "sha256": "ade2d859f0b885794ad2f3487d1ed1ee1b09483b50fe6a00f7e5b4171019fe9f",
+          "bytes": 31398
+        },
+        {
+          "file": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+          "sha256": "5f5fd58930c3dcef7055a3365c49ec1050a43366bfebaa6c8f8c4858f0d1af27",
+          "bytes": 146479
+        }
+      ],
+      "applicableRules": [
+        "FDS-003",
+        "FDS-004",
+        "FDS-005",
+        "FDS-008",
+        "FDS-009",
+        "A11Y-001",
+        "A11Y-002",
+        "A11Y-003",
+        "A11Y-004",
+        "A11Y-005",
+        "A11Y-007",
+        "A11Y-008",
+        "A11Y-009"
+      ],
+      "branchProtection": "LOCAL_ONLY/NOT_CONFIGURED",
+      "readyForVerify": false
+    }
+  },
+  "previousCurrentRootResults": [
+    {
+      "status": "PASS",
+      "exit": 0,
+      "draw": 215,
+      "desktop": 79,
+      "sourceUnchanged": true,
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T223210Z"
+    }
+  ]
 }

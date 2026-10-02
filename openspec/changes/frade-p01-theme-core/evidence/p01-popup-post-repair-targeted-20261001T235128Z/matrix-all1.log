@@ -1,0 +1,245 @@
+
+Running 6 tests using 1 worker
+
+(node:51936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:51936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:51936) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix light compact actual lower and popup target focus contrast bounds (17.4s)
+(node:57892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:57892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:57892) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  2 tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix light comfortable actual lower and popup target focus contrast bounds (18.2s)
+(node:41668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:41668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:41668) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  3 tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark compact actual lower and popup target focus contrast bounds (18.2s)
+(node:32392) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32392) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32392) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  4 tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds (17.4s)
+(node:43812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43812) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  5 tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix high-contrast compact actual lower and popup target focus contrast bounds (18.1s)
+(node:31260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31260) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  6 tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix high-contrast comfortable actual lower and popup target focus contrast bounds (18.1s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix light compact actual lower and popup target focus contrast bounds 
+
+    Error: lower-focus actual canonical glyph paint at contrast >=3
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      2931 |                   effectivePixels,
+      2932 |                   state + ' actual canonical glyph paint at contrast >=3',
+    > 2933 |                 ).toBeGreaterThan(0)
+           |                   ^
+      2934 |                 expect(
+      2935 |                   uiContrast(values.ink, values.background),
+      2936 |                   state + ' actual icon contrast',
+        at checkState (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2933:19)
+        at capture (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2949:13)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3093:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-eb501-arget-focus-contrast-bounds\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-eb501-arget-focus-contrast-bounds\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-LOWE-eb501-arget-focus-contrast-bounds\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix light comfortable actual lower and popup target focus contrast bounds 
+
+    Error: lower-focus actual canonical glyph paint at contrast >=3
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      2931 |                   effectivePixels,
+      2932 |                   state + ' actual canonical glyph paint at contrast >=3',
+    > 2933 |                 ).toBeGreaterThan(0)
+           |                   ^
+      2934 |                 expect(
+      2935 |                   uiContrast(values.ink, values.background),
+      2936 |                   state + ' actual icon contrast',
+        at checkState (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2933:19)
+        at capture (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2949:13)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3093:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-44eff-arget-focus-contrast-bounds\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-44eff-arget-focus-contrast-bounds\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-LOWE-44eff-arget-focus-contrast-bounds\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark compact actual lower and popup target focus contrast bounds 
+
+    Error: lower-focus actual canonical glyph paint at contrast >=3
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      2931 |                   effectivePixels,
+      2932 |                   state + ' actual canonical glyph paint at contrast >=3',
+    > 2933 |                 ).toBeGreaterThan(0)
+           |                   ^
+      2934 |                 expect(
+      2935 |                   uiContrast(values.ink, values.background),
+      2936 |                   state + ' actual icon contrast',
+        at checkState (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2933:19)
+        at capture (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2949:13)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3093:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-44191-arget-focus-contrast-bounds\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-44191-arget-focus-contrast-bounds\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-LOWE-44191-arget-focus-contrast-bounds\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds 
+
+    Error: lower-focus actual canonical glyph paint at contrast >=3
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      2931 |                   effectivePixels,
+      2932 |                   state + ' actual canonical glyph paint at contrast >=3',
+    > 2933 |                 ).toBeGreaterThan(0)
+           |                   ^
+      2934 |                 expect(
+      2935 |                   uiContrast(values.ink, values.background),
+      2936 |                   state + ' actual icon contrast',
+        at checkState (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2933:19)
+        at capture (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2949:13)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3093:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix high-contrast compact actual lower and popup target focus contrast bounds 
+
+    Error: lower-focus actual canonical glyph paint at contrast >=3
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      2931 |                   effectivePixels,
+      2932 |                   state + ' actual canonical glyph paint at contrast >=3',
+    > 2933 |                 ).toBeGreaterThan(0)
+           |                   ^
+      2934 |                 expect(
+      2935 |                   uiContrast(values.ink, values.background),
+      2936 |                   state + ' actual icon contrast',
+        at checkState (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2933:19)
+        at capture (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2949:13)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3093:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-e6bc0-arget-focus-contrast-bounds\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-e6bc0-arget-focus-contrast-bounds\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-LOWE-e6bc0-arget-focus-contrast-bounds\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix high-contrast comfortable actual lower and popup target focus contrast bounds 
+
+    Error: lower-focus actual canonical glyph paint at contrast >=3
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      2931 |                   effectivePixels,
+      2932 |                   state + ' actual canonical glyph paint at contrast >=3',
+    > 2933 |                 ).toBeGreaterThan(0)
+           |                   ^
+      2934 |                 expect(
+      2935 |                   uiContrast(values.ink, values.background),
+      2936 |                   state + ' actual icon contrast',
+        at checkState (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2933:19)
+        at capture (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2949:13)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3093:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-af9c5-arget-focus-contrast-bounds\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-af9c5-arget-focus-contrast-bounds\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-LOWE-af9c5-arget-focus-contrast-bounds\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix light compact actual lower and popup target focus contrast bounds 
+    tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix light comfortable actual lower and popup target focus contrast bounds 
+    tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark compact actual lower and popup target focus contrast bounds 
+    tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds 
+    tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix high-contrast compact actual lower and popup target focus contrast bounds 
+    tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix high-contrast comfortable actual lower and popup target focus contrast bounds 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+
