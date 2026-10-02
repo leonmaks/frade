@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-10-02T20:25:17.752Z",
+  "environment": {
+    "node": "v18.19.1",
+    "platform": "linux",
+    "arch": "x64",
+    "git": "git version 2.43.0",
+    "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+    "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED"
+  },
+  "configSha256": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+  "finalSourceBundleSha256": "dabef425193f5c05ab48c4740e77d73e2c41ca097951130c2d3b52590f2d5940",
+  "preFixBundleSha256": "09467f09012ee1c31a019cbfc136c3d6d0b179ff543d76f7c0525c4afeeca0f3",
+  "skeletonBundleSha256": "6c250716447696c65a736289784369e58b87a3fce335fd0a2b34311cfb16f7cf",
+  "sourceHashes": {
+    "scripts/directions/contracts.mjs": "b810d62dc0d07465d985211462e8d01824126f8e7a26538b47cb8ea3f29defc9",
+    "scripts/directions/evidence.mjs": "93966806051a47da2f23e2a7cb055ce9ad2b8ca6db5b5548a30bae792fdd9253",
+    "scripts/directions/lifecycle.mjs": "30b951c6f888a5be9e499db14e64c00bf7e199b900094750f763bc97c35aa586",
+    "scripts/directions/scope.mjs": "ea5c227c7d51059cd95e40f5adfca793b7e8cf9b54e8a69b73d52c048f8262a4",
+    "tests/directions/contracts.test.mjs": "70f08351798a9054639e1487424ee4c2610d100cffbe05b3d1d9be2f47f1f790",
+    "tests/directions/fixtures.mjs": "fe01d667fb3bc438db0d55ef080a0fce6d5cb49f197d90966e7cada16ed84e9b",
+    "tests/directions/lifecycle.test.mjs": "b21329a5c36ae89e68988c42cc4874bdaae6e9230f0a952cad86c536b3ca9d66",
+    "tests/directions/load-core.mjs": "26fbf0e063d26e551ecdfb590552012fb5fb49bdfd650d7ffd3160f597f95e55",
+    "tests/directions/repair.test.mjs": "6c90ef7dc9a8fb05be5980473e4d327fdfa1bd545069e02d52cc5d2027e31bf2",
+    "docs/engineering/templates/direction-manifest.v2.json": "5121115605b387fdf2d95486fe204733ee3b7e1a8981efab066542dbd109ae12",
+    "docs/engineering/templates/task-2.1-core-contract.md": "ce86d9d2d14bc7d42f314d763c6211fafeab57935abd3ae1cd0bfd49daf7f37c",
+    "package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "deliverables/repair-red/pre-fix-production/scripts/directions/contracts.mjs": "d450c8feb2d44256383f474b1286af42a1439475ddd8378eb76029ffbc248bb2",
+    "deliverables/repair-red/pre-fix-production/scripts/directions/evidence.mjs": "5d8777c7702231ef8e4d703dcd6c5473d8af6450e01e8f1b5cca9c1473791be6",
+    "deliverables/repair-red/pre-fix-production/scripts/directions/lifecycle.mjs": "856333185d9ad297aa606390c266e946f7850e84bde9ef8ce632554fe81480b6",
+    "deliverables/repair-red/pre-fix-production/scripts/directions/scope.mjs": "54f125e73fa14d516eb316db70c7f782817c078450ba474409691eaf59b69d87",
+    "deliverables/repair-red/baseline-skeleton/scripts/directions/contracts.mjs": "f3116f9c8e8748e28efefd4da9509938f8e6585c6cc52f3bd8150344adc15e5d",
+    "deliverables/repair-red/baseline-skeleton/scripts/directions/evidence.mjs": "115dc392f0e15c688b9a6005abb7a40bda19ed51180716a67e52783158feb9ad",
+    "deliverables/repair-red/baseline-skeleton/scripts/directions/lifecycle.mjs": "3b336b6e2c64c421189803908fa680939c69700ccb4e751fc2c7d35485c3484b",
+    "deliverables/repair-red/baseline-skeleton/scripts/directions/scope.mjs": "a425199cdb4be403d2d167f8efd490b7e714a6882fc6c0b172c3a3df790ecf8c",
+    "deliverables/repair-red/tests/contracts.test.mjs.snapshot": "70f08351798a9054639e1487424ee4c2610d100cffbe05b3d1d9be2f47f1f790",
+    "deliverables/repair-red/tests/fixtures.mjs.snapshot": "fe01d667fb3bc438db0d55ef080a0fce6d5cb49f197d90966e7cada16ed84e9b",
+    "deliverables/repair-red/tests/lifecycle.test.mjs.snapshot": "b21329a5c36ae89e68988c42cc4874bdaae6e9230f0a952cad86c536b3ca9d66",
+    "deliverables/repair-red/tests/load-core.mjs.snapshot": "26fbf0e063d26e551ecdfb590552012fb5fb49bdfd650d7ffd3160f597f95e55",
+    "deliverables/repair-red/tests/repair.test.mjs.snapshot": "6c90ef7dc9a8fb05be5980473e4d327fdfa1bd545069e02d52cc5d2027e31bf2"
+  },
+  "runs": [
+    {
+      "name": "final-green-direct-contracts",
+      "command": "TMPDIR=\"$PWD/deliverables/repair-red/tmp\" node tests/directions/contracts.test.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-green-direct-contracts.tap",
+      "sourceBundleSha256": "dabef425193f5c05ab48c4740e77d73e2c41ca097951130c2d3b52590f2d5940",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "final-green-direct-lifecycle",
+      "command": "TMPDIR=\"$PWD/deliverables/repair-red/tmp\" node tests/directions/lifecycle.test.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-green-direct-lifecycle.tap",
+      "sourceBundleSha256": "dabef425193f5c05ab48c4740e77d73e2c41ca097951130c2d3b52590f2d5940",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "final-green-direct-repair",
+      "command": "TMPDIR=\"$PWD/deliverables/repair-red/tmp\" node tests/directions/repair.test.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-green-direct-repair.tap",
+      "sourceBundleSha256": "dabef425193f5c05ab48c4740e77d73e2c41ca097951130c2d3b52590f2d5940",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "final-green-full",
+      "command": "TMPDIR=\"$PWD/deliverables/repair-red/tmp\" node --test",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-green-full.tap",
+      "sourceBundleSha256": "dabef425193f5c05ab48c4740e77d73e2c41ca097951130c2d3b52590f2d5940",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "final-pre-fix-production-red",
+      "command": "TMPDIR=/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp node /mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp/replay-fMXOCh/tests/directions/repair.test.mjs",
+      "replaySource": "deliverables/repair-red/pre-fix-production/scripts/directions",
+      "replayTests": "deliverables/repair-red/tests/*.snapshot (suffix removed in owned temporary replay)",
+      "exit": 1,
+      "log": "deliverables/repair-red/logs/final-pre-fix-production-red.tap",
+      "sourceBundleSha256": "09467f09012ee1c31a019cbfc136c3d6d0b179ff543d76f7c0525c4afeeca0f3",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      },
+      "chronologicalOriginalRed": false
+    },
+    {
+      "name": "final-baseline-skeleton-red",
+      "command": "TMPDIR=/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp node /mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp/replay-3G0a0B/tests/directions/repair.test.mjs",
+      "replaySource": "deliverables/repair-red/baseline-skeleton/scripts/directions",
+      "replayTests": "deliverables/repair-red/tests/*.snapshot (suffix removed in owned temporary replay)",
+      "exit": 1,
+      "log": "deliverables/repair-red/logs/final-baseline-skeleton-red.tap",
+      "sourceBundleSha256": "6c250716447696c65a736289784369e58b87a3fce335fd0a2b34311cfb16f7cf",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      },
+      "chronologicalOriginalRed": false
+    },
+    {
+      "name": "syntax-scripts/directions/contracts.mjs",
+      "command": "node --check scripts/directions/contracts.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-syntax-check.log",
+      "sourceSha256": "b810d62dc0d07465d985211462e8d01824126f8e7a26538b47cb8ea3f29defc9",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "syntax-scripts/directions/evidence.mjs",
+      "command": "node --check scripts/directions/evidence.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-syntax-check.log",
+      "sourceSha256": "93966806051a47da2f23e2a7cb055ce9ad2b8ca6db5b5548a30bae792fdd9253",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "syntax-scripts/directions/lifecycle.mjs",
+      "command": "node --check scripts/directions/lifecycle.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-syntax-check.log",
+      "sourceSha256": "30b951c6f888a5be9e499db14e64c00bf7e199b900094750f763bc97c35aa586",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "syntax-scripts/directions/scope.mjs",
+      "command": "node --check scripts/directions/scope.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-syntax-check.log",
+      "sourceSha256": "ea5c227c7d51059cd95e40f5adfca793b7e8cf9b54e8a69b73d52c048f8262a4",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "syntax-tests/directions/contracts.test.mjs",
+      "command": "node --check tests/directions/contracts.test.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-syntax-check.log",
+      "sourceSha256": "70f08351798a9054639e1487424ee4c2610d100cffbe05b3d1d9be2f47f1f790",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "syntax-tests/directions/fixtures.mjs",
+      "command": "node --check tests/directions/fixtures.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-syntax-check.log",
+      "sourceSha256": "fe01d667fb3bc438db0d55ef080a0fce6d5cb49f197d90966e7cada16ed84e9b",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "syntax-tests/directions/lifecycle.test.mjs",
+      "command": "node --check tests/directions/lifecycle.test.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-syntax-check.log",
+      "sourceSha256": "b21329a5c36ae89e68988c42cc4874bdaae6e9230f0a952cad86c536b3ca9d66",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "syntax-tests/directions/load-core.mjs",
+      "command": "node --check tests/directions/load-core.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-syntax-check.log",
+      "sourceSha256": "26fbf0e063d26e551ecdfb590552012fb5fb49bdfd650d7ffd3160f597f95e55",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    },
+    {
+      "name": "syntax-tests/directions/repair.test.mjs",
+      "command": "node --check tests/directions/repair.test.mjs",
+      "exit": 0,
+      "log": "deliverables/repair-red/logs/final-syntax-check.log",
+      "sourceSha256": "6c90ef7dc9a8fb05be5980473e4d327fdfa1bd545069e02d52cc5d2027e31bf2",
+      "environment": {
+        "node": "v18.19.1",
+        "platform": "linux",
+        "arch": "x64",
+        "git": "git version 2.43.0",
+        "cwd": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work",
+        "testTmpdir": "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/tmp",
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED"
+      }
+    }
+  ]
+}

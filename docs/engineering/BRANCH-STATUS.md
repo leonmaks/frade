@@ -1,13 +1,13 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-02T19:51:50.021Z
+UPDATED_AT_UTC: 2026-10-02T21:04:13.580Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: BDD_TDD | HEALTH: RUNNING
-NEXT_PERMITTED_ACTION: exact Sol/high task2.1 repair -> actual portable Windows RED/GREEN -> scope inspection -> owner import; no later task advancement.
+STAGE: W01 | PHASE: IMPLEMENTATION | HEALTH: RUNNING
+NEXT_PERMITTED_ACTION: publish verified task2.1 checkpoint -> task2.2 role resolver meaningful RED -> exact Sol/high implementation/checks.
 HUMAN_DECISION: NONE; D03 accepted by direct reply «Принято. Продолжай.».
 READY_FOR_IMPLEMENTATION: YES; formal PRE PASS retained and receipt checkpoint2a6f8f96 PUBLISHED with exact remote SHA..
 READY_FOR_ARCHIVE: NO.
@@ -21,14 +21,14 @@ Worktree: E:/dev/codex/frade-worktrees/frade-standard-workflow.
 Git common: E:/dev/codex/frade/.git.
 Original baseline/cumulative origin: 98f387f96b51b0ad139e3507c376ff1c3e8dec09.
 Approved planning candidate: 9c974da812e7f120cace9defcdca69dd6154254b; current formal PRE PASS, plan raw hash501168ce..., production allowed only within W01 after receipt publication.
-Current scope: own planning/drafts/process evidence/dashboard; production/foreign owners/lockfile/vendor/routing controls unchanged.
+Current scope: approved own workflow contracts/tests/templates imported; foreign owners/product/lockfile/vendor/routing controls unchanged.
 Public policy adoption: evidence/repository-audit.json has exact2 paths/hashes; no foreign uncommitted product/process transfer.
 
 ## 3. Roadmap этапов
 
 | Stage | Result | Phase / health | PRE / Verify / POST / archive |
 |---|---|---|---|
-| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | BDD_TDD/RUNNING | PRE PASS; Verify/POST NOT_RUN |
+| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | IMPLEMENTATION/RUNNING | PRE PASS; Verify/POST NOT_RUN |
 | Existing-owner adoption | Separate Routing/UI/Repo Core consumer checkpoints | NOT_STARTED; outside W01 | Own future scope/gates |
 | Main integration | Explicit merged-candidate revalidation | NOT_STARTED; outside current permission | No automatic merge |
 
@@ -43,14 +43,14 @@ STOP after W01; no next numbered change or owner migration automatically.
 | 1.3 | planning-architecture + independent-PRE pair for draft-only review | strict/checks -> independent draft-quality review -> checkpoint | COMPLETE; strict/integrity PASS; draft-01 BLOCKED, draft-02 FAIL retained; fresh draft-03 PASS on faf69d33 |
 | 1.4 | human material policy decision | concrete proposal -> acceptance/reconciliation | COMPLETE; policy-acceptance.json D03 |
 | 1.5 | independent-PRE | approved coherent plan -> actual formal PRE -> frozen checkpoint | COMPLETE; receipt checkpoint2a6f8f96 verified published; formal-pre-01-pass |
-| 2.1 | tooling-tests | initial staged GREEN -> Windows RED/check -> scoped repair -> Windows GREEN -> import | REPAIR_IN_PROGRESS; initial Windows check FAIL2 (symlink privilege / temp path length), no owner production imported |
+| 2.1 | tooling-tests | meaningful RED -> repair -> Windows GREEN -> import -> lint/format/strict/integrity | COMPLETE; task21-completion-audit.json; actual35/35 PASS, lint/format/syntax/strict PASS; historical FAIL retained |
 | 2.2–2.7 | tooling-tests | meaningful RED -> remaining controls/docs/CLI -> GREEN | NOT_STARTED |
 | 3.1–3.2 | tooling-tests | cumulative applicable checks + integrity audit | NOT_RUN |
 | 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | NOT_RUN |
 
-TASKS_COMPLETE/TOTAL/REMAINING: 5/18/13.
+TASKS_COMPLETE/TOTAL/REMAINING: 6/18/12.
 REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed acceptance).
-46 BDD scenario declarations counted by actual planning audit; product/control behavioral tests NOT_RUN.
+46 BDD scenario declarations counted by actual planning audit; task2.1 behavioral controls actual Windows35/35 PASS; cumulative18-requirement acceptance remains incomplete.
 
 ## 5. Проверки / gates / качество
 
@@ -65,7 +65,7 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | Independent draft-quality review | REQUIRED for planning completion | draft-03 PASS on faf69d33;80 input hashes; prior BLOCKED/FAIL preserved; no implementation admission |
 | Formal PRE/Verify/POST | REQUIRED for implementation/closure | PRE PASS on9c974da8; Verify/POST NOT_RUN |
 | General lint/typecheck/boundary suites | REQUIRED | Actual current baseline PASS5 checks; original build FAIL retained; exact pinned resources restored, repeated build PASS |
-| New core schema/lifecycle/closure controls | REQUIRED | Initial staging GREEN25 cases; Windows contracts meaningful RED1; initial Windows full core FAIL2; portable repair in isolated exact Sol/high runtime |
+| New core schema/lifecycle/closure controls | REQUIRED | Meaningful Windows RED retained; 30+5 expanded GREEN35/35; owner post-format35/35 PASS; scoped lint repaired; current PASS |
 | Bootstrap/role/status/review/publication controls | REQUIRED | Tasks2.2–2.7 NOT_IMPLEMENTED/NOT_RUN |
 | Product suites | No product changes in current planning | NOT_RUN; no product PASS claimed |
 | Human policy/visual acceptance | Policy decision REQUIRED; product visuals outside current scope | Policy ACCEPTED_D03; no visual approval claim |
@@ -78,7 +78,7 @@ Historical invocation/EOF/EOL/link-check/count failures and classified correctio
 | Stage/role | Approved exact model/effort | Authority | Invoked / actual |
 |---|---|---|---|
 | W01 planning-architecture | gpt-6-astra/high | design4 + direct human decision | Current chat backend/effort NOT_CONFIRMED |
-| W01 tooling-tests | gpt-6-sol/high | design4 + direct human decision | initial task2.1 executed gpt-6-sol/high; raw complete/input unchanged; fresh repair requested same pair with fresh canary PASS; backend/effort NOT_CONFIRMED; no owner production import |
+| W01 tooling-tests | gpt-6-sol/high | design4 + direct human decision | initial task2.1 executed gpt-6-sol/high; all three core runs raw complete/input unchanged; actual Windows35/35 PASS; fresh lint repair same pair/canary; backend/effort NOT_CONFIRMED |
 | W01 formal-Verify | gpt-6-astra/high | design4 + direct human decision | NOT_RUN |
 | W01 independent-PRE | gpt-6-astra/xhigh | design4 + direct human decision | Requested exact pair for draft BLOCKED/FAIL/PASS and fresh formal PRE PASS; actual backend/effort NOT_CONFIRMED |
 | W01 independent-POST | gpt-6-astra/xhigh | design4 + direct human decision | NOT_RUN |
@@ -95,22 +95,22 @@ No model substitution, task override or silent current-chat switch. Common servi
 | Adoption Routing/UI/Repo Core | Each consumer | NOT_STARTED | Do not block independent supplier or edit foreign workspace |
 | Reviewer CLI environment | W01 | RESOLVED_CURRENT; historical BLOCKED retained | Exact retries completed with FAIL then PASS; no model substitution or quota/reset claim |
 | Baseline general build | W01 applicable check | RESOLVED_CURRENT; historical FAIL retained | All2851 pinned resources exact; repeated build PASS; index entries/product tree unchanged |
-| Task2.1 core control gaps | W01 | REPAIR_REQUIRED | Eight controller findings; initial Windows filesystem/Git fixture failures retained; fresh bounded Sol/high repair launched |
+| Task2.1 core control gaps | W01 | RESOLVED_CURRENT; new lint blocker | Eight gaps and null options repaired, actual Windows RED/GREEN retained; six lint errors repaired without disabling rules; current checks PASS |
 | Product writer dispatcher | W01 tooling capability | NOT_IMPLEMENTED | Guard remains explicit; separate session staging runtime v2 technically verified, initial probe BLOCKED retained |
 
-No active production fix attempts; runtime ENVIRONMENT RCA retained separately; no test weakening.
+Task2.1 checks complete; prior actual FAIL/RED and runtime ENVIRONMENT RCA retained; no test weakening.
 
 ## 8. Git / публикация / evidence
 
 SOURCE_CHECKPOINT_SHA: faf69d339b338173158d2f31465c2aa4f0b4108d (independent draft-quality PASS, not implementation admission).
-COMMIT_STATE: formal PRE admission checkpoint2a6f8f96 committed and published; current task2.1 status/implementation evidence follows next coherent checkpoint.
+COMMIT_STATE: blocker evidence checkpoint f3c65012 committed/published; task2.1 complete locally; current checkpoint publication pending; post-publication status refresh retained for next natural checkpoint.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: baseline checkpoint PUBLISHEDbd683957, exact remote SHA; task2.1 checkpoint not complete.
-VERIFIED_SOURCE_REMOTE_SHA: bd683957b0b95ff9eeed2ac3197d4dca3ff87879.
+PUSH_STATE: PUBLISHED f3c650125ab4ddbd8b2e2530537ac8fa4c7b0dd4, exact remote SHA; task2.1 complete locally; new publication pending.
+VERIFIED_SOURCE_REMOTE_SHA: f3c650125ab4ddbd8b2e2530537ac8fa4c7b0dd4.
 SOURCE_PUBLICATION_RECEIPT: openspec/changes/frade-standard-workflow/evidence/publication/source-faf69d33-20261002.json.
 PRE_ADMISSION_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/formal-pre-admission-20261002.json; require PUBLISHED/sourceSha=live HEAD before first task2.1 owner code write.
 Current evidence: openspec/changes/frade-standard-workflow/evidence/.
 Reviewable standard/onboarding/status/manifest/adoption: openspec/changes/frade-standard-workflow/drafts/.
 Feedback register: openspec/changes/frade-standard-workflow/feedback-register.md.
 PANEL_STATE: QUEUED by open_in_codex; visibility unconfirmed.
-No production implementation, owner migration, archive, shared release mutation or main merge claimed.
+Task2.1 core complete with35 tests and required scoped checks PASS; remaining12 W01 tasks incomplete. No owner migration, archive, shared release mutation or main merge claimed.

@@ -1,0 +1,30 @@
+{
+  "task": "W01 2.1 argument-boundary defect",
+  "status": "SCOPED_FIX_GREEN_ON_LINUX",
+  "eligibleChangedFiles": [
+    "scripts/directions/contracts.mjs",
+    "scripts/directions/lifecycle.mjs",
+    "scripts/directions/scope.mjs",
+    "tests/directions/arguments.test.mjs",
+    "deliverables/arguments-red/**",
+    "TASK-2.1-ARGUMENTS-RESULT.json"
+  ],
+  "regressionTestNames": [
+    "FWE-007-S01 applicability rejects null and scalar plans with stable shape issues",
+    "FWE-007-S02 applicability verification rejects malformed plans and options before proof access",
+    "FWE-005-S01 transition rejects null and scalar options before gate access",
+    "FWE-001-S04 closure planner rejects null and scalar options without an operation plan",
+    "FWE-001-S04 closure executor rejects null and scalar options before filesystem access"
+  ],
+  "actualRuns": "deliverables/arguments-red/RUNS.json",
+  "red": "exit 1; 0/5 named assertions passed; deliverables/arguments-red/logs/targeted-red-direct.tap",
+  "green": "exit 0; 35/35 named assertions passed across four files; deliverables/arguments-red/logs/full-green.tap and full-green-*-direct.tap",
+  "environment": "Linux WSL2, Node v18.19.1; actual backend/effort NOT_CONFIRMED",
+  "formalPre": "RETAINED_FROM_INPUT_NOT_RERUN",
+  "humanPolicyApproval": "RETAINED_FROM_INPUT_NOT_RERUN",
+  "blockersWithinScopedFix": [],
+  "windowsNode24Replay": "PENDING",
+  "productionImported": false,
+  "formalVerifyOrPostClaimed": false,
+  "archiveOrPhaseAdvancementClaimed": false
+}

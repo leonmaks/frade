@@ -1,0 +1,104 @@
+TAP version 13
+# Subtest: FWE-007-S01 applicability rejects null and scalar plans with stable shape issues
+not ok 1 - FWE-007-S01 applicability rejects null and scalar plans with stable shape issues
+  ---
+  duration_ms: 2.064205
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:14:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot destructure property 'checks' of '(intermediate value)(intermediate value)(intermediate value)' as it is null."
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    validateApplicability (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/scripts/directions/contracts.mjs:150:41)
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:15:62)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.start (node:internal/test_runner/test:542:17)
+    startSubtest (node:internal/test_runner/harness:214:17)
+  ...
+# Subtest: FWE-007-S02 applicability verification rejects malformed plans and options before proof access
+not ok 2 - FWE-007-S02 applicability verification rejects malformed plans and options before proof access
+  ---
+  duration_ms: 0.743435
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:20:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot destructure property 'checks' of '(intermediate value)(intermediate value)(intermediate value)' as it is null."
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    validateApplicability (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/scripts/directions/contracts.mjs:150:41)
+    verifyApplicability (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/scripts/directions/contracts.mjs:165:22)
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:21:68)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async startSubtest (node:internal/test_runner/harness:214:3)
+  ...
+# Subtest: FWE-005-S01 transition rejects null and scalar options before gate access
+not ok 3 - FWE-005-S01 transition rejects null and scalar options before gate access
+  ---
+  duration_ms: 0.679989
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:27:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot destructure property 'manifest' of '(intermediate value)(intermediate value)(intermediate value)' as it is null."
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evaluateTransition (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/scripts/directions/lifecycle.mjs:30:44)
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:28:72)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-001-S04 closure planner rejects null and scalar options without an operation plan
+not ok 4 - FWE-001-S04 closure planner rejects null and scalar options without an operation plan
+  ---
+  duration_ms: 0.693635
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:35:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot destructure property 'manifest' of '(intermediate value)(intermediate value)(intermediate value)' as it is null."
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    planClosure (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/scripts/directions/scope.mjs:37:37)
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:37:26)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-001-S04 closure executor rejects null and scalar options before filesystem access
+not ok 5 - FWE-001-S04 closure executor rejects null and scalar options before filesystem access
+  ---
+  duration_ms: 1.182165
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:47:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot destructure property 'root' of 'args' as it is null."
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    executeClosure (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/scripts/directions/scope.mjs:180:11)
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/tests/directions/arguments.test.mjs:48:69)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 0
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 30.315059

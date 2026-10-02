@@ -1,0 +1,5 @@
+The task 2.1 argument-boundary fix is complete in the disposable work directory. The five entrypoints now return structured invalid results for null and scalar options instead of throwing.
+
+The new regression was RED before the source edit (5/5 failed with TypeError) and GREEN afterward. The full Linux Node 18 run passed all 35 named cases. The test snapshot, pre-fix modules, commands, exits, and logs are in [arguments-red](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/deliverables/arguments-red/RUNS.json); the scoped result is in [TASK-2.1-ARGUMENTS-RESULT.json](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-arguments-20261002/work/TASK-2.1-ARGUMENTS-RESULT.json).
+
+Windows Node 24 replay remains pending. No formal Verify, POST, archive, import, or task 2.2 progression is claimed.

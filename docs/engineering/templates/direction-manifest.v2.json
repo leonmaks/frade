@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 2,
+  "status": "EXAMPLE_ONLY_NOT_APPROVED",
+  "id": "example-direction",
+  "title": "Example direction",
+  "owner": {
+    "branch": "codex/example-direction",
+    "worktree": "E:/dev/codex/frade-worktrees/example-direction",
+    "gitCommon": "E:/dev/codex/frade/.git"
+  },
+  "originalBaseline": "0000000000000000000000000000000000000000",
+  "policy": {
+    "version": "1.1",
+    "release": "0000000000000000000000000000000000000000000000000000000000000000",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "artifact": "openspec/changes/example-direction/evidence/shared-policy.md"
+  },
+  "scope": {
+    "mode": "PLANNING",
+    "planningAllowed": [
+      "openspec/changes/example-direction/**",
+      "docs/engineering/BRANCH-STATUS.md"
+    ],
+    "allowed": ["openspec/changes/example-direction/**", "docs/engineering/**"],
+    "frozen": ["packages/**", "apps/**", "pnpm-lock.yaml"],
+    "closure": {
+      "enabled": false,
+      "requires": [
+        "humanPolicyDecision",
+        "requiredChecksPASS",
+        "formalVerifyPASS",
+        "currentIndependentPOSTPASS"
+      ],
+      "specDestinations": ["openspec/specs/example-capability/spec.md"],
+      "archiveDestination": "openspec/changes/archive/<actual-archive-date>-example-direction/**",
+      "archiveOwner": "example-direction"
+    }
+  },
+  "statusPath": "docs/engineering/BRANCH-STATUS.md",
+  "stages": [
+    {
+      "id": "E01",
+      "change": "example-direction",
+      "phase": "INTAKE",
+      "health": "NOT_RUN",
+      "dependencies": [],
+      "admission": {}
+    }
+  ]
+}

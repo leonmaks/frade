@@ -1,0 +1,83 @@
+{
+  "stage": "W01",
+  "task": "2.1-lint",
+  "status": "SCOPED_LINT_PASS_LINUX",
+  "requestedModel": "gpt-6-sol",
+  "requestedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "eligibleChangedFiles": [
+    "scripts/directions/contracts.mjs",
+    "scripts/directions/scope.mjs",
+    "tests/directions/repair.test.mjs"
+  ],
+  "changes": [
+    "Replace the two control-character regex ranges with a shared char-code check for U+0000 through U+001F; preserve all other path guards.",
+    "Remove unused readdir and relative imports from scope.mjs.",
+    "Remove unused symlink and lstat imports from repair.test.mjs."
+  ],
+  "commands": [
+    {
+      "command": "eslint --no-eslintrc --parser-options '{\"ecmaVersion\":2020,\"sourceType\":\"module\"}' --rule 'no-control-regex:error' --rule 'no-unused-vars:error' scripts/directions/contracts.mjs scripts/directions/scope.mjs tests/directions/repair.test.mjs",
+      "beforeExit": 1,
+      "beforeResult": "Six scoped errors: two no-control-regex and four no-unused-vars.",
+      "afterExit": 0,
+      "afterResult": "Zero scoped errors."
+    },
+    {
+      "command": "node --test tests/directions/*.test.mjs",
+      "exit": 0,
+      "result": "Four test files passed; Node 18's file runner summarizes files instead of the 35 individual tests."
+    },
+    {
+      "command": "node --test --test-reporter=spec tests/directions/*.test.mjs",
+      "exit": 0,
+      "result": "Four test files passed."
+    },
+    {
+      "command": "set -o pipefail\nnode tests/directions/arguments.test.mjs | tail -n 9",
+      "exit": 0,
+      "tests": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "set -o pipefail\nnode tests/directions/contracts.test.mjs | tail -n 9",
+      "exit": 0,
+      "tests": 14,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "set -o pipefail\nnode tests/directions/lifecycle.test.mjs | tail -n 9",
+      "exit": 0,
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "set -o pipefail\nnode tests/directions/repair.test.mjs | tail -n 9",
+      "exit": 0,
+      "tests": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "node --input-type=module -e 'import { safeRepoPath, safeOwnerPath } from \"./scripts/directions/contracts.mjs\"; const bad = []; for (let code = 0; code <= 31; code++) { const char = String.fromCharCode(code); if (safeRepoPath(`safe/${char}name`) || safeOwnerPath(`C:/safe/${char}name`)) bad.push(code); } if (bad.length) { console.error(`Accepted control codes: ${bad.join(\",\")}`); process.exitCode = 1; } else console.log(\"Both guards reject all 32 control codes (0–31)\");'",
+      "exit": 0,
+      "result": "Both guards rejected U+0000 through U+001F."
+    },
+    {
+      "command": "git status --short",
+      "exit": 128,
+      "result": "This confined work directory is not a Git worktree."
+    }
+  ],
+  "totalIndividualTests": 35,
+  "linuxEnvironmentLimitation": "The confined workspace is a standalone staging copy without Git worktree metadata. Available Linux tools are Node v18.19.1 and ESLint v6.4.0; this run does not establish Windows Node 24 or owner-repository lint/configuration parity. The two applicable ESLint rules were run explicitly without changing configuration.",
+  "approvalBoundary": "No task completion, formal Verify, POST, archive, publication, owner checkout write, or later task is claimed."
+}

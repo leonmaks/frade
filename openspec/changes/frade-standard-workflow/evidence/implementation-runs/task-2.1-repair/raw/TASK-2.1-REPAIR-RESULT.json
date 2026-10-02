@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "task": "W01 2.1 scoped controller repair",
+  "status": "REPAIR_COMPLETE_IN_DISPOSABLE_STAGING",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "formalPre": "RETAINED_FROM_INPUT_NOT_RERUN",
+  "humanPolicyApproval": "RETAINED_FROM_INPUT_NOT_RERUN",
+  "productionImported": false,
+  "realW01Archived": false,
+  "reviewOrPhaseAdvancementClaimed": false,
+  "eligiblePaths": [
+    "scripts/directions/contracts.mjs",
+    "scripts/directions/evidence.mjs",
+    "scripts/directions/lifecycle.mjs",
+    "scripts/directions/scope.mjs",
+    "tests/directions/lifecycle.test.mjs",
+    "tests/directions/repair.test.mjs",
+    "docs/engineering/templates/task-2.1-core-contract.md",
+    "deliverables/repair-red/**",
+    "TASK-2.1-REPAIR-RESULT.json"
+  ],
+  "preservedApis": [
+    "validateManifest", "scopeFingerprint", "validateTraceability", "verifyTraceability",
+    "validateApplicability", "verifyApplicability", "safeId", "safeRepoPath",
+    "safeOwnerPath", "pathMatches", "PHASES", "HEALTH", "APPLICABILITY",
+    "createArtifactReader", "verifyArtifactHash", "createEvidenceBoundary", "verifyGate",
+    "evaluateTransition", "legacyClosureState", "checkScope", "planClosure"
+  ],
+  "addedApis": ["executeClosure", "isClosureReceipt"],
+  "schemaMigration": {
+    "manifestVersion": 2,
+    "versionChange": "none",
+    "stageChange": "Each stage.change is now a safe unique OpenSpec change ID included in owned planning scope; direction ID remains the branch identity.",
+    "closureOwner": "scope.closure.archiveOwner selects an owned stage change and its archive pattern.",
+    "requirementIds": "Stable generic uppercase hyphenated IDs such as DRAW-CORE-12 are accepted alongside FWE-004.",
+    "compatibility": "Existing single-stage W01 manifest, exports, trace records and older assertions remain valid."
+  },
+  "findingResolutions": [
+    {
+      "id": "I21-01",
+      "resolution": "Two independently mapped stage changes validate; foreign/unowned changes and dependency cycles fail; semantic scope fingerprint changes with mapping.",
+      "assertions": ["I21-01 two stages own unique independent changes and semantic map is frozen"]
+    },
+    {
+      "id": "I21-02",
+      "resolution": "executeClosure preflights the exact owned delta sync/archive inventory, gates, branch, baseline, HEAD, clean isolated Git root, hashes, references, destinations and frozen scope before writing. It merges exact requirement sections, moves only the owner, relocates owned links and role source paths/hashes, and retains immutable raw origins.",
+      "assertions": ["I21-02/08 controlled temporary Git closure syncs only delta requirements and proves CLOSED", "FWE-001-S03 disposable Git owner sync/archive preserves foreign file and raw receipt origin"]
+    },
+    {
+      "id": "I21-03",
+      "resolution": "Tests use scoped os.tmpdir roots and a Windows junction or supported directory symlink to an owned outside fixture; no /etc/passwd or cwd/evidence dependency.",
+      "assertions": ["FWE-001-S04 artifact reader hashes bytes and rejects symlink escape", "FWE-001-S03 disposable Git owner sync/archive preserves foreign file and raw receipt origin"]
+    },
+    {
+      "id": "I21-04",
+      "resolution": "Exact seeded pre-fix production bytes and final equivalent tests are retained. A separately labelled behaviorless final-API skeleton gives importable controlled RED replay. Original historical input RED/GREEN remains immutable and distinct.",
+      "assertions": ["I21-01 two stages own unique independent changes and semantic map is frozen", "I21-06 malformed lists, generic requirement IDs, and Windows-invalid paths fail closed", "I21-07 case folding closes frozen Apps/packages and malformed scope gaps", "I21-05 repeated deterministic failures require classified RCA and trusted proof", "I21-02/08 controlled temporary Git closure syncs only delta requirements and proves CLOSED"]
+    },
+    {
+      "id": "I21-05",
+      "resolution": "Two deterministic FAIL attempts for one defect block implementation until a documented allowed RCA class, root, layer and matching trusted raw proof are present.",
+      "assertions": ["I21-05 repeated deterministic failures require classified RCA and trusted proof"]
+    },
+    {
+      "id": "I21-06",
+      "resolution": "Malformed manifest, scope, dependency and trace shapes yield structured issues. Generic requirement IDs and Windows-invalid path rejection are covered.",
+      "assertions": ["I21-06 malformed lists, generic requirement IDs, and Windows-invalid paths fail closed", "FWE-004-S01 malformed trace rows return issues without throwing"]
+    },
+    {
+      "id": "I21-07",
+      "resolution": "Case-folded matching and overlap prevent differently cased Apps/packages paths bypassing frozen or closure scope.",
+      "assertions": ["I21-07 case folding closes frozen Apps/packages and malformed scope gaps"]
+    },
+    {
+      "id": "I21-08",
+      "resolution": "CLOSED requires the minted actual closure receipt and a trusted archive proof bound to operation digest, current scope/source, archive HEAD, checkpoint SHA, published SHA and authorized ref. Completed tasks or declared PASS cannot close.",
+      "assertions": ["I21-02/08 controlled temporary Git closure syncs only delta requirements and proves CLOSED", "FWE-008-S03 completed legacy tasks without POST/archive are pending closure"]
+    }
+  ],
+  "evidence": {
+    "commandEnvironmentHashesAndExits": "deliverables/repair-red/RUNS.json",
+    "sourceHashes": "deliverables/repair-red/logs/final-source-hashes.sha256",
+    "chronologicalRepairRed": "deliverables/repair-red/logs/repair-red-direct.tap",
+    "finalPreFixControlledRed": "deliverables/repair-red/logs/final-pre-fix-production-red.tap",
+    "finalSkeletonControlledRed": "deliverables/repair-red/logs/final-baseline-skeleton-red.tap",
+    "finalDirectGreen": ["deliverables/repair-red/logs/final-green-direct-contracts.tap", "deliverables/repair-red/logs/final-green-direct-lifecycle.tap", "deliverables/repair-red/logs/final-green-direct-repair.tap"],
+    "finalNodeTestGreen": "deliverables/repair-red/logs/final-green-full.tap",
+    "syntax": "deliverables/repair-red/logs/final-syntax-check-exits.txt",
+    "resultCounts": { "directContracts": "14/14 PASS", "directLifecycle": "11/11 PASS", "directRepair": "5/5 PASS", "nodeTestFiles": "3/3 PASS", "preFixReplay": "0/5 PASS, expected RED", "skeletonReplay": "0/5 PASS, expected RED" },
+    "historicalInputPreserved": ["input/history/evidence/logs/task-2.1-red-node-test.log", "input/history/evidence/logs/task-2.1-green-final-core.log", "input/history/deliverables/red/tests/directions"]
+  },
+  "testIntegrity": "Older assertions retained; lifecycle fixture diff only changes portable temporary paths, junction escape and Git config isolation. No skip/only markers found.",
+  "limitations": [
+    "Staging executed on Linux Node 18.19.1; Windows Node 24 compatibility is not inferred. Parent Windows 24 replay against immutable original seed remains required before import.",
+    "The work directory is not a Git repository, so work-tree git status/diff commands returned 128/129; no checkpoint or remote publication is claimed.",
+    "createEvidenceBoundary remains an explicitly trusted integration adapter. Task 2.5 owns verification of the actual review protocol; a test callback is not claimed as independent review authority.",
+    "The closure executor is deliberately restricted to unconnected disposable temporary Git repositories; no real W01 spec sync or archive occurred."
+  ],
+  "blockersWithinScopedTask": [],
+  "readyForParentWindowsReplay": true,
+  "readyForFormalVerifyOrArchive": false
+}

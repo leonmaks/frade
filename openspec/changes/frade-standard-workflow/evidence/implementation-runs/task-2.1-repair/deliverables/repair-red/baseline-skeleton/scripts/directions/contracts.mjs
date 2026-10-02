@@ -1,0 +1,14 @@
+const missing = () => ({ ok: false, issues: [{ code: 'NOT_IMPLEMENTED', path: '$', detail: 'Behaviorless controlled baseline' }] });
+export const PHASES = [];
+export const HEALTH = [];
+export const APPLICABILITY = [];
+export const safeId = () => false;
+export const safeRepoPath = () => false;
+export const safeOwnerPath = () => false;
+export const pathMatches = () => false;
+export const scopeFingerprint = () => '0'.repeat(64);
+export const validateManifest = missing;
+export const validateTraceability = missing;
+export const verifyTraceability = async () => missing();
+export const validateApplicability = missing;
+export const verifyApplicability = async () => missing();

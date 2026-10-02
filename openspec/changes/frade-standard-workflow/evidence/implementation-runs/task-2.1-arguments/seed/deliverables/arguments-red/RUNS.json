@@ -1,0 +1,81 @@
+{
+  "scope": "W01 task 2.1 argument-boundary repair in disposable work directory",
+  "environment": {
+    "os": "Linux 5.15.167.4-microsoft-standard-WSL2 x86_64",
+    "node": "v18.19.1",
+    "nodePath": "/usr/bin/node",
+    "windowsNode24Replay": "PENDING"
+  },
+  "red": [
+    {
+      "command": "node --test tests/directions/arguments.test.mjs > deliverables/arguments-red/logs/targeted-red.tap 2>&1",
+      "exit": 1,
+      "log": "logs/targeted-red.tap",
+      "observed": "Node 18 file-level failure"
+    },
+    {
+      "command": "node tests/directions/arguments.test.mjs > deliverables/arguments-red/logs/targeted-red-direct.tap 2>&1",
+      "exit": 1,
+      "log": "logs/targeted-red-direct.tap",
+      "observed": "Five named tests failed with TypeError at argument destructuring"
+    }
+  ],
+  "green": [
+    {
+      "command": "node tests/directions/arguments.test.mjs > deliverables/arguments-red/logs/targeted-green-direct.tap 2>&1",
+      "exit": 0,
+      "log": "logs/targeted-green-direct.tap",
+      "observed": "5/5 named tests pass"
+    },
+    {
+      "command": "node --test tests/directions/*.test.mjs > deliverables/arguments-red/logs/full-green.tap 2>&1",
+      "exit": 0,
+      "log": "logs/full-green.tap",
+      "observed": "4/4 test files pass"
+    },
+    {
+      "command": "node tests/directions/contracts.test.mjs > deliverables/arguments-red/logs/full-green-contracts-direct.tap 2>&1",
+      "exit": 0,
+      "log": "logs/full-green-contracts-direct.tap",
+      "observed": "14/14 named tests pass"
+    },
+    {
+      "command": "node tests/directions/lifecycle.test.mjs > deliverables/arguments-red/logs/full-green-lifecycle-direct.tap 2>&1",
+      "exit": 0,
+      "log": "logs/full-green-lifecycle-direct.tap",
+      "observed": "11/11 named tests pass"
+    },
+    {
+      "command": "node tests/directions/repair.test.mjs > deliverables/arguments-red/logs/full-green-repair-direct.tap 2>&1",
+      "exit": 0,
+      "log": "logs/full-green-repair-direct.tap",
+      "observed": "5/5 named tests pass"
+    }
+  ],
+  "preFixHashes": {
+    "testSha256": "e2724c93d53b0458b9306a2edd81ba58171d516bbb593ee2a018a421",
+    "contractsSha256": "b810d62dc0d07465d985211462e8d01824126f8e7a26538b47cb8ea3f29defc9",
+    "evidenceSha256": "93966806051a47da2f23e2a7cb055ce9ad2b8ca6db5b5548a30bae792fdd9253",
+    "lifecycleSha256": "30b951c6f888a5be9e499db14e64c00bf7e199b900094750f763bc97c35aa586",
+    "scopeSha256": "ea5c227c7d51059cd95e40f5adfca793b7e8cf9b54e8a69b73d52c048f8262a4"
+  },
+  "postFixHashes": {
+    "testSha256": "e2724c93d53b0458b9306a2edd81ba58171d516bbb593ee2a018a421",
+    "contractsSha256": "7993c13cdd49e32cf36db2c5bff2b3ac144b9c3900d98bd3bcb21364fa60f2aa",
+    "evidenceSha256": "93966806051a47da2f23e2a7cb055ce9ad2b8ca6db5b5548a30bae792fdd9253",
+    "lifecycleSha256": "5bde37d68e17d798c3aa09bbeb9b82ce1e49e2dfd9bd243b30773f8d4e518808",
+    "scopeSha256": "0963127f3be4998c9220758c229f517e642f6dd2efb1c6595e204e9127bb3dd7"
+  },
+  "syntaxChecks": [
+    { "command": "node --check scripts/directions/contracts.mjs", "exit": 0 },
+    { "command": "node --check scripts/directions/lifecycle.mjs", "exit": 0 },
+    { "command": "node --check scripts/directions/scope.mjs", "exit": 0 },
+    { "command": "node --check tests/directions/arguments.test.mjs", "exit": 0 }
+  ],
+  "integrity": {
+    "seedDiff": "Only contracts.mjs, lifecycle.mjs, scope.mjs differ from seeded scripts; arguments.test.mjs is the only new test file",
+    "forbiddenTestMarkerSearchExit": 1,
+    "gitStatusExit": 128,
+    "gitStatusNote": "Disposable work directory is not a Git repository"
+  }
+}

@@ -1,0 +1,5 @@
+**CHANGE:** W01 task 2.1 scoped repair is complete in disposable staging. All eight controller findings have corresponding fixes and regression assertions. The [repair result](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/TASK-2.1-REPAIR-RESULT.json) lists eligible paths and each resolution.
+
+**TEST RESULTS:** The named TAP runs passed 30/30 assertions; full `node --test` passed 3/3 test files; syntax checks passed. Final tests failed 5/5 as expected against both the preserved pre-fix production bytes and the explicitly labelled behaviorless skeleton. Commands, exits, environment, hashes and logs are in [RUNS.json](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.1-repair-20261002/work/deliverables/repair-red/RUNS.json).
+
+**KNOWN BLOCKER / READY_FOR_VERIFY:** Windows Node 24 compatibility remains unverified; this staging run used Linux Node 18. The parent’s Windows replay against the immutable seed is required before import. No real W01 archive, publication, or phase advancement occurred. **READY_FOR_VERIFY: NO.**
