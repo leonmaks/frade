@@ -3,9 +3,9 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "REFLOW_PRE1_FAIL_FRESH_CANARY_INPUT_REPAIR",
+  "phase": "REFLOW_FOCUSED_POST_FAIL_B05_SCOPE_DECISION",
   "taskCounts": {
-    "completed": 5,
+    "completed": 6,
     "total": 10
   },
   "implementation": "SOLE_BRIDGE_REPAIR_IMPLEMENTED_RUNTIME_MATRIX_AND_FULL_GATES_OPEN",
@@ -102,6 +102,14 @@
       "inputRepair": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-input-repair-20261001T113009Z.json",
       "repeatPre": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z",
       "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard-accepted-20261001T115657Z.json"
+    },
+    {
+      "id": "P01-REFLOW-B05",
+      "status": "OPEN_INDEPENDENT_POST_FAIL",
+      "classification": "INTEGRATION / STATE_TRANSITION",
+      "rca": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z",
+      "proposed": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal.proposed.md",
+      "sha256": "15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01"
     }
   ],
   "humanDecisions": [
@@ -149,7 +157,7 @@
     }
   ],
   "laterHumanDecision": "New per-surface visual baseline approval after actual implementation evidence",
-  "nextAction": "Repair only fresh canary input packaging before freeze and automatically repeat independent PRE; no production before PASS",
+  "nextAction": "Human exact B05 scope decision -> coherent plan/strict -> automatic independent PRE -> permanent bridge-parent RED -> authorized repair -> required tests/full root/verify/POST. No P02.",
   "sourceAndOriginalPlanningUnchanged": false,
   "scopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-v2-accepted-20260930T180721Z.json",
   "scopeAcceptanceRecordedAtUtc": "2026-09-30T18:07:21.024Z",
@@ -194,7 +202,7 @@
   },
   "visualBaselineApproval": "NOT_APPROVED",
   "readyForVerify": false,
-  "postStatus": "NOT_RUN",
+  "postStatus": "FOCUSED_FAIL_B05_CUMULATIVE_NOT_RUN",
   "remaining": [
     "Task2.4 complete B02 consumer/lifecycle/adapter evidence and traceability",
     "Task2.5 full applicable accessibility/state coverage and human visual baseline approval",
@@ -202,7 +210,7 @@
     "Task3.2 OpenSpec verify and independent automated POST",
     "Task3.3 archive only after all required PASS; STOP before P02"
   ],
-  "lastUpdatedAtUtc": "2026-10-01T20:08:51.607Z",
+  "lastUpdatedAtUtc": "2026-10-02T06:16:30.935Z",
   "currentDocsChecks": {
     "atUtc": "2026-10-01T19:34:14.257Z",
     "strict": {
@@ -254,7 +262,7 @@
     "candidateUnchanged": true,
     "packetUnchanged": true
   },
-  "readyForDeltaImplementation": true,
+  "readyForDeltaImplementation": false,
   "packetAuthorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-packet-authorization-20261001T061101Z.json",
   "reviewPacketTransport": {
     "status": "PASS_LOCAL_FOCUSED_PRE",
@@ -744,13 +752,17 @@
     "implementation": "NOT_RUN_BEFORE_PRE"
   },
   "currentReview": {
-    "phase": "PRE",
-    "status": "FAIL_ENVIRONMENT_INPUT_COMPLETENESS",
-    "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
-    "sourcePlan": "openspec/changes/frade-p01-theme-core/design.md",
-    "sourceSha256": "167a57705bd977063a9000327b8ef4950a1fa9ec51faa9e718eb78629be9189b",
+    "phase": "POST",
+    "status": "FAIL",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-post2-fail-received-20261002T060636Z",
+    "resultSha256": "a204eeb25ba1eabca5c44659ae05b52124a0cd35ef86480958bdfbecc668feb3",
     "model": "gpt-6-astra",
     "reasoningEffort": "xhigh",
+    "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
+    "sourcePlanSha256": "167a57705bd977063a9000327b8ef4950a1fa9ec51faa9e718eb78629be9189b",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true,
     "actualBackend": "NOT_CONFIRMED",
     "actualEffort": "NOT_CONFIRMED"
   },
@@ -825,5 +837,53 @@
     "blocker": "B01_SAME_INVOCATION_FRESH_CANARY_NOT_SELECTED_IN_PACKET",
     "contentReview": "No other planning blocker found",
     "rawCanarySupplement": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre-input-repair-20261002T020616Z/pre1-actual-fresh-canary-raw.json"
+  },
+  "currentInputRepairCheckpoint": {
+    "commit": "f9910e51948e45af62f873abcd67674ab3cf73e9",
+    "push": "VERIFIED",
+    "remoteSha": "f9910e51948e45af62f873abcd67674ab3cf73e9"
+  },
+  "lowerOriginPopupReflowPre2": {
+    "status": "PASS",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre2-received-20261002T022132Z/receipt.json",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre2-received-20261002T022132Z/result.md",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true,
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED"
+  },
+  "currentReflowChecks": {
+    "atUtc": "2026-10-02T04:53:52.083Z",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-checks-20261002T045033Z",
+    "unit": "PASS_27",
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "build": "PASS_PINNED_2851",
+    "matrix": "PASS_6_OF_6_990_OBSERVATIONS_0_VIOLATIONS",
+    "fullRoot": "PASS_DRAW215_DESKTOP81_SOURCE635_UNCHANGED",
+    "post": "PREPARING_FRESH_AUTOMATIC_READ_ONLY",
+    "desktopUnit": "PASS_70",
+    "bdd": "PASS_95",
+    "compliance": "PASS",
+    "targeted": "PASS_ORIGINAL_6_AND_OPEN_CHAIN_1",
+    "fullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-full-root-20261002T051421Z",
+    "performance": "PASS_P95_110.79999999981374",
+    "scopeAudit": "PASS",
+    "verify": "FOCUSED_PASS_FULL_P01_INCOMPLETE",
+    "verifyEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-verify-20261002T053331Z"
+  },
+  "lowerReflowRefusalDecision": {
+    "status": "PROPOSED_NOT_USER_ACCEPTED",
+    "path": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal.proposed.md",
+    "sha256": "15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01",
+    "productionRepair": "NOT_IMPLEMENTED"
+  },
+  "b05MetadataChecks": {
+    "status": "PASS",
+    "bdd": 6,
+    "complianceExit": 0,
+    "strictExit": 0,
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/metadata-checks.json"
   }
 }

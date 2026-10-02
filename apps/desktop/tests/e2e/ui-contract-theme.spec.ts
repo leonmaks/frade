@@ -3033,9 +3033,9 @@ for (const mode of ['light', 'dark', 'high-contrast'] as const)
             const checked = frame.locator('[data-frade-lower-menu] [role="menuitemcheckbox"]')
             const checkedBox = await checked.boundingBox()
             expect(checkedBox).not.toBeNull()
-            await checked.hover({
-              position: { x: checkedBox!.width - 8, y: checkedBox!.height / 2 },
-            })
+            // The submenu can reflow this row after mouseenter. Let Playwright
+            // compute the current target center instead of freezing its old width.
+            await checked.hover()
             await checkState('pages-root-hover-focus', true)
             const parent = frame
               .locator(
@@ -3250,3 +3250,138 @@ function pngColorCount(bytes: Buffer, css: string): number {
       count++
   return count
 }
+
+// eslint-disable-next-line no-empty-pattern
+test('P01-REFLOW actual open chain reconciles resize and media without observer churn or semantic actions', async ({}, info) => {
+  test.setTimeout(120000)
+  const f = await diagramFixture('frame', { mode: 'dark', density: 'comfortable' })
+  const observations: unknown[] = []
+  try {
+    const frame = f.page.frameLocator('iframe')
+    await expect.poll(() => frame.locator('body').evaluate(() => !!(window as any).__p01Ui)).toBe(true)
+    const fileBefore = await readFile(f.file, 'utf8')
+    const semantics = () => frame.locator('body').evaluate(() => {
+      const ui = (window as any).__p01Ui, g = ui.editor.graph
+      return { xml: (window as any).mxUtils.getXml(new (window as any).mxCodec().encode(g.getModel())), background:g.background,gridSize:g.gridSize,gridEnabled:g.isGridEnabled(),selection: g.getSelectionCells().map((c: any) => c.id),
+        undo: ui.editor.undoManager.indexOfNextAdd, history: ui.editor.undoManager.history.length, preferences: { ...localStorage } }
+    })
+    await frame.locator('.geDiagramContainer').click({ position: { x: 80, y: 200 } })
+    const before = await semantics()
+    await f.page.keyboard.press('F6')
+    await frame.locator('.geTabContainer .geControlTab[aria-haspopup="menu"]').focus()
+    await f.page.keyboard.press('Enter')
+    await frame.locator('[data-frade-lower-menu] [aria-haspopup="menu"][aria-disabled="false"]').first().focus()
+    await f.page.keyboard.press('ArrowRight')
+    await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(2)
+    await frame.locator('body').evaluate(() => {
+      const ui = (window as any).__p01Ui
+      ;(window as any).__p01ReflowReferences = { ui, graph: ui.editor.graph, menu: ui.currentMenu,
+        nodes: Array.from(document.querySelectorAll('[data-frade-lower-menu][role="menu"]')), viewEvents: [] }
+      const references = (window as any).__p01ReflowReferences
+      references.viewListener = () => references.viewEvents.push({ at:performance.now(),scale:ui.editor.graph.view.scale,translate:{...ui.editor.graph.view.translate},stack:new Error('original view event').stack })
+      for (const event of ['scale','translate','scaleAndTranslate']) ui.editor.graph.view.addListener(event,references.viewListener)
+    })
+    const inspect = async (label: string) => {
+      await frame.locator('body').evaluate(async () => {
+        await document.fonts.ready
+        const g = (window as any).__p01Ui.editor.graph
+        const signature = () => { const b=g.container.getBoundingClientRect();return JSON.stringify([g.view.scale,g.view.translate.x,g.view.translate.y,b.x,b.y,b.width,b.height]) }
+        let previous=signature(),stable=0
+        for (let n=0;n<120 && stable<6;n++) { await new Promise<void>(resolve=>requestAnimationFrame(()=>resolve()));const next=signature();stable=previous===next?stable+1:0;previous=next }
+        if(stable<6)throw Error('Original resize/view geometry did not settle')
+      })
+      const record = await frame.locator('body').evaluate(async () => {
+        const refs = (window as any).__p01ReflowReferences, ui = (window as any).__p01Ui, g = ui.editor.graph
+        const nodes = Array.from(document.querySelectorAll<HTMLElement>('[data-frade-lower-menu][role="menu"]'))
+        const dimensions = (b: DOMRect) => ({ left: b.left, top: b.top, right: b.right, bottom: b.bottom, width: b.width, height: b.height })
+        const targets = nodes.map(node => Array.from(node.querySelectorAll<HTMLElement>('[role^="menuitem"]')).filter(row => getComputedStyle(row).display !== 'none').map(row => {
+          const b = row.getBoundingClientRect(), hit = document.elementFromPoint(b.left+b.width/2,b.top+b.height/2)
+          return { label: row.getAttribute('aria-label'), box: dimensions(b), hit: hit === row || !!hit && row.contains(hit) }
+        }))
+        const projected = nodes.flatMap(node => [node,...node.querySelectorAll<HTMLElement>('table,td')])
+        const styles = projected.map(node => node.getAttribute('style'))
+        const view = JSON.stringify([g.view.scale,g.view.translate.x,g.view.translate.y])
+        const viewportXml = (window as any).mxUtils.getXml(ui.editor.getGraphXml())
+        let writes = 0
+        const observer = new MutationObserver(records => { writes += records.length })
+        for (const node of nodes) observer.observe(node, { attributes:true,subtree:true,attributeFilter:['style'] })
+        for (let n = 0; n < 6; n++) await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
+        observer.disconnect()
+        return { viewport: { width:innerWidth,height:innerHeight }, panels:nodes.map(node=>dimensions(node.getBoundingClientRect())),targets,
+          sameNodes:nodes.length===refs.nodes.length && nodes.every((node,n)=>node===refs.nodes[n]),sameIdentity:ui===refs.ui && g===refs.graph && ui.currentMenu===refs.menu,
+          exactStyles:JSON.stringify(styles)===JSON.stringify(projected.map(node=>node.getAttribute('style'))),writes,
+          viewportXmlPreserved:(window as any).mxUtils.getXml(ui.editor.getGraphXml())===viewportXml,
+          viewBefore:view,viewAfter:JSON.stringify([g.view.scale,g.view.translate.x,g.view.translate.y]),viewEvents:[...refs.viewEvents],
+          viewPreserved:JSON.stringify([g.view.scale,g.view.translate.x,g.view.translate.y])===view,
+          media:{ forced:matchMedia('(forced-colors:active)').matches,coarse:matchMedia('(pointer:coarse)').matches,reduced:matchMedia('(prefers-reduced-motion:reduce)').matches } }
+      })
+      observations.push({label,...record})
+      expect(record.sameIdentity).toBe(true);expect(record.sameNodes).toBe(true)
+      expect(record.writes).toBe(0);expect(record.exactStyles).toBe(true);expect(record.viewPreserved).toBe(true);expect(record.viewportXmlPreserved).toBe(true)
+      for (const panel of record.panels) { expect(panel.left).toBeGreaterThanOrEqual(0);expect(panel.top).toBeGreaterThanOrEqual(0)
+        expect(panel.right).toBeLessThanOrEqual(record.viewport.width);expect(panel.bottom).toBeLessThanOrEqual(record.viewport.height) }
+      for (const group of record.targets) for (const target of group) { const b=target.box
+        expect(target.hit).toBe(true);expect(target.label).toBeTruthy();expect(b.left-4).toBeGreaterThanOrEqual(0);expect(b.top-4).toBeGreaterThanOrEqual(0)
+        expect(b.right+4).toBeLessThanOrEqual(record.viewport.width);expect(b.bottom+4).toBeLessThanOrEqual(record.viewport.height)
+        expect(b.height).toBeGreaterThanOrEqual(record.media.coarse?44:36);expect(b.width).toBeGreaterThanOrEqual(record.media.coarse?44:24) }
+      for (const a of record.targets[0]) for (const b of record.targets[1])
+        expect(a.box.right+8<=b.box.left || b.box.right+8<=a.box.left || a.box.bottom+8<=b.box.top || b.box.bottom+8<=a.box.top).toBe(true)
+      expect(await semantics()).toEqual(before);expect(await readFile(f.file,'utf8')).toBe(fileBefore)
+      await f.page.screenshot({path:info.outputPath(label+'.png')})
+      return record
+    }
+    await inspect('open-chain-1280')
+    const originalResize = async (width:number,height:number) => {
+      const events = await frame.locator('body').evaluate(() => (window as any).__p01ReflowReferences.viewEvents.length)
+      await f.page.setViewportSize({width,height})
+      // Original windowResized queues sizeDidChange in a timer; a stable RAF
+      // signature can precede that callback. Wait for its observed real event.
+      await expect.poll(() => frame.locator('body').evaluate(() => (window as any).__p01ReflowReferences.viewEvents.length)).toBeGreaterThan(events)
+    }
+    await originalResize(850,650);await inspect('open-chain-850')
+    await originalResize(1280,850);await inspect('open-chain-restored-1280')
+    await f.page.emulateMedia({forcedColors:'none',reducedMotion:'reduce'})
+    const child=f.page.frames().find(value=>value.url().startsWith('frade://drawio/'))!
+    const session=await f.page.context().newCDPSession(child)
+    await session.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1})
+    const coarse = await inspect('open-chain-coarse-reduced')
+    expect(coarse.media).toEqual({forced:false,coarse:true,reduced:true})
+    const changeForced = async (forcedColors:'active'|'none') => {
+      const revision = await frame.locator('html').getAttribute('data-frade-frame-revision')
+      await f.page.emulateMedia({forcedColors,reducedMotion:'reduce'})
+      // Forced colors creates a new authoritative presentation generation.
+      // Its approved apply lifecycle cancels the old owned menu; retain that guard.
+      await expect.poll(() => frame.locator('html').getAttribute('data-frade-frame-revision')).not.toBe(revision)
+      await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+      const canceled = await frame.locator('body').evaluate(() => {
+        const refs=(window as any).__p01ReflowReferences,ui=(window as any).__p01Ui
+        refs.graph.view.removeListener(refs.viewListener)
+        return { sameUi:ui===refs.ui,sameGraph:ui.editor.graph===refs.graph,
+          nodesRestored:refs.nodes.every((node:HTMLElement)=>!node.isConnected && !node.hasAttribute('data-frade-lower-menu') && !node.hasAttribute('role')),
+          layoutRestored:refs.nodes.every((node:HTMLElement)=>[node,...node.querySelectorAll<HTMLElement>('table,td')].every(n=>['width','max-width','white-space','overflow-wrap'].every(name=>n.style.getPropertyPriority(name)!=='important'))) }
+      })
+      observations.push({label:'forced-generation-cancel-'+forcedColors,canceled})
+      expect(canceled.sameUi).toBe(true);expect(canceled.sameGraph).toBe(true);expect(canceled.nodesRestored).toBe(true);expect(canceled.layoutRestored).toBe(true)
+      expect(await semantics()).toEqual(before);expect(await readFile(f.file,'utf8')).toBe(fileBefore)
+      await frame.locator('.geTabContainer .geControlTab[aria-haspopup="menu"]').focus();await f.page.keyboard.press('Enter')
+      await frame.locator('[data-frade-lower-menu] [aria-haspopup="menu"][aria-disabled="false"]').first().focus();await f.page.keyboard.press('ArrowRight')
+      await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(2)
+      await frame.locator('body').evaluate(() => { const refs=(window as any).__p01ReflowReferences,ui=(window as any).__p01Ui
+        refs.menu=ui.currentMenu;refs.nodes=Array.from(document.querySelectorAll('[data-frade-lower-menu][role="menu"]'));refs.graph.view.addListener('translate',refs.viewListener) })
+    }
+    await changeForced('active')
+    const actual=await inspect('open-chain-forced-coarse-reduced')
+    expect(actual.media).toEqual({forced:true,coarse:true,reduced:true})
+    await session.send('Emulation.setTouchEmulationEnabled',{enabled:false});await session.detach()
+    await changeForced('none')
+    await f.page.emulateMedia({forcedColors:'none',reducedMotion:'no-preference'})
+    await inspect('open-chain-media-restored')
+    await frame.locator('body').evaluate(() => { const refs=(window as any).__p01ReflowReferences;refs.graph.view.removeListener(refs.viewListener) })
+    await f.page.keyboard.press('ArrowLeft');await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(1)
+    await f.page.keyboard.press('Escape');await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+    expect(await semantics()).toEqual(before);expect(await readFile(f.file,'utf8')).toBe(fileBefore)
+  } finally {
+    await writeFile(info.outputPath('open-chain-observations.json'),JSON.stringify({observations,visualApproval:'NOT_APPROVED'},null,2))
+    await finishDiagramFixture(f.app)
+  }
+})

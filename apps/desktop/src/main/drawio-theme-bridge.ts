@@ -331,6 +331,8 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     lowerStyles = new Map<HTMLElement, Map<string, { value: string; priority: string }>>(),
     menuStyles = new Map<HTMLElement, Map<string, { value: string; priority: string }>>(),
     styleAttributePresence = new WeakMap<HTMLElement, boolean>()
+  let menuLayout: { nodes: HTMLElement[]; key: string; boxes: string } | undefined
+  const layoutProperties = new Set(['left', 'top', 'width', 'max-width', 'white-space', 'overflow-wrap'])
   type LowerPopup = {
     instance: any
     div: HTMLElement
@@ -481,6 +483,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     // Stale keys restore projections, but apply/disposal must still cancel this original menu.
     // A detached/replaced/unowned current menu can never inherit the retained hide lease.
     cancellationPopup = !cancel && proven ? original : undefined
+    menuLayout = undefined
     restoreLowerStyles(menuStyles)
     restoreAttributes(menuAttributes)
     if (original?.opener.isConnected && lowerAttributes.has(original.opener))
@@ -589,6 +592,126 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     visit(popup!.instance, popup!.div)
     return result
   }
+  function restoreMenuLayout() {
+    for (const [node, values] of menuStyles) {
+      for (const [name, prior] of values) {
+        if (!layoutProperties.has(name)) continue
+        if (prior.value) node.style.setProperty(name, prior.value, prior.priority)
+        else node.style.removeProperty(name)
+        values.delete(name)
+      }
+      if (values.size) continue
+      if (!node.style.length) {
+        if (styleAttributePresence.get(node)) node.setAttribute('style', '')
+        else node.removeAttribute('style')
+      }
+      styleAttributePresence.delete(node)
+      menuStyles.delete(node)
+    }
+  }
+  function reflowPopup(entries: ReturnType<typeof menuScopes>, keep: Set<Element>) {
+    if (!validPopup() || !entries.length) return
+    const nodes = entries.map(entry => entry.div), width = window.innerWidth, height = window.innerHeight
+    const measure = () => nodes.map(node => node.getBoundingClientRect())
+    const rectangles = (boxes: DOMRect[]) => JSON.stringify(boxes.map(b => [b.left, b.top, b.width, b.height]))
+    const current = measure()
+    // Layout-less unit DOM and detached/obsolete panels are never given invented geometry.
+    if (!(width > 0 && height > 0) || current.some(b => !(b.width > 0 && b.height > 0))) return
+    const key = JSON.stringify([width, height, active.snapshot.density,
+      typeof window.matchMedia === 'function' && window.matchMedia('(pointer:coarse)').matches,
+      ...entries.map(entry => {
+        const cell = entry.scope.tbody.querySelector('td:nth-child(2)') as HTMLElement | null
+        const css = cell ? window.getComputedStyle(cell) : undefined
+        return [entry.scope.tbody.textContent, css?.fontSize, css?.lineHeight]
+      })])
+    if (menuLayout?.key === key && menuLayout.boxes === rectangles(current) &&
+        menuLayout.nodes.length === nodes.length && menuLayout.nodes.every((node, n) => node === nodes[n])) return
+    restoreMenuLayout()
+    const natural = measure(), gap = 8, clearance = 4
+    const targetBoxes = () => entries.map(entry => Array.from(entry.scope.tbody.children as HTMLCollectionOf<HTMLElement>)
+      .filter(row => row.getAttribute('role')?.startsWith('menuitem') && visible(row))
+      .map(row => ({ row, box: row.getBoundingClientRect() })))
+    const fits = () => {
+      if (measure().some(b => b.left < 0 || b.top < 0 || b.right > width || b.bottom > height)) return false
+      const targets = targetBoxes()
+      for (const group of targets) for (const { row, box: b } of group) {
+        if (b.left < clearance || b.top < clearance || b.right + clearance > width || b.bottom + clearance > height) return false
+        if (typeof document.elementFromPoint === 'function') {
+          const hit = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)
+          if (!hit || (hit !== row && !row.contains(hit))) return false
+        }
+      }
+      for (let a = 0; a < targets.length; a++) for (let b = a + 1; b < targets.length; b++)
+        for (const x of targets[a]) for (const y of targets[b]) {
+          const r = x.box, t = y.box
+          if (!(r.right + gap <= t.left || t.right + gap <= r.left || r.bottom + gap <= t.top || t.bottom + gap <= r.top)) return false
+        }
+      return true
+    }
+    const settle = () => { menuLayout = { nodes, key, boxes: rectangles(measure()) } }
+    if (fits()) { settle(); return }
+    const project = (node: HTMLElement, name: string, value: string) => {
+      keep.add(node)
+      projectStyle(node, name, value, menuStyles)
+    }
+    const px = (value: string) => Number.parseFloat(value) || 0
+    const profile = entries.map((entry, n) => {
+      const table = entry.div.querySelector('table')!, box = table.getBoundingClientRect()
+      const inset = Math.max(0, natural[n].width - box.width)
+      const labels = Array.from(entry.scope.tbody.children as HTMLCollectionOf<HTMLElement>)
+        .filter(row => row.getAttribute('role')?.startsWith('menuitem'))
+        .map(row => {
+          const cells = Array.from(row.children) as HTMLElement[], cell = cells[1], css = window.getComputedStyle(cell)
+          const reserved = cells.filter(node => node !== cell).reduce((sum, node) => sum + node.getBoundingClientRect().width, 0)
+          const padding = px(css.paddingLeft) + px(css.paddingRight) + px(css.borderLeftWidth) + px(css.borderRightWidth)
+          return { cell, reserved, padding }
+        })
+      return { table, inset, labels, minimum: Math.max(44 + inset, ...labels.map(label => inset + label.reserved + label.padding + 1)) }
+    })
+    const available = width - clearance * 2 - gap * (nodes.length - 1)
+    const refuse = () => { settle(); reply(active.request, 'REFUSED', 'LOWER_MENU_REFLOW_UNAVAILABLE: original targets cannot fit without forbidden behavior') }
+    if (available < profile.reduce((sum, p) => sum + p.minimum, 0)) { refuse(); return }
+    const widths = natural.map(b => b.width)
+    if (widths.reduce((sum, w) => sum + w, 0) > available) {
+      const total = widths.reduce((sum, w) => sum + w, 0), spare = available - profile.reduce((sum, p) => sum + p.minimum, 0)
+      for (let n = 0; n < widths.length; n++) widths[n] = Math.floor(profile[n].minimum + spare * natural[n].width / total)
+      for (let n = 0; n < nodes.length; n++) {
+        project(nodes[n], 'width', widths[n] + 'px'); project(nodes[n], 'max-width', widths[n] + 'px')
+        project(profile[n].table, 'width', Math.max(1, widths[n] - profile[n].inset) + 'px')
+        project(profile[n].table, 'max-width', Math.max(1, widths[n] - profile[n].inset) + 'px')
+        for (const { cell, reserved, padding } of profile[n].labels) {
+          const textWidth = Math.max(1, widths[n] - profile[n].inset - reserved - padding)
+          project(cell, 'width', textWidth + 'px'); project(cell, 'max-width', textWidth + 'px')
+          project(cell, 'white-space', 'normal'); project(cell, 'overflow-wrap', 'anywhere')
+        }
+      }
+    }
+    // Synchronous finite remeasure after wrapping; no recurring RAF or fitting call.
+    for (let pass = 0; pass < 3; pass++) {
+      const boxes = measure(), extent = boxes.reduce((sum, b) => sum + b.width, 0) + gap * (nodes.length - 1)
+      if (extent > width - clearance * 2 || boxes.some(b => b.height > height - clearance * 2)) { refuse(); return }
+      const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(v, hi))
+      const right = clamp(natural[0].left, clearance, width - clearance - extent)
+      const leftOffset = extent - boxes[0].width
+      const left = clamp(natural[0].left, clearance + leftOffset, width - clearance - boxes[0].width)
+      const direction = Math.abs(right - natural[0].left) <= Math.abs(left - natural[0].left) ? 1 : -1
+      let x = direction === 1 ? right : left
+      for (let n = 0; n < nodes.length; n++) {
+        if (n && direction < 0) x -= boxes[n].width + gap
+        const y = Math.floor(clamp(natural[n].top, clearance, height - clearance - boxes[n].height))
+        const move = (name: 'left' | 'top', target: number, currentValue: number) => {
+          if (Math.abs(target - currentValue) < 0.001) return
+          const original = Number.parseFloat(nodes[n].style[name])
+          const origin = Number.isFinite(original) ? original : name === 'left' ? nodes[n].offsetLeft : nodes[n].offsetTop
+          project(nodes[n], name, origin + target - currentValue + 'px')
+        }
+        move('left', x, boxes[n].left); move('top', y, boxes[n].top)
+        if (direction > 0) x += boxes[n].width + gap
+      }
+      if (fits()) { settle(); return }
+    }
+    refuse()
+  }
   function reconcilePopup() {
     if (!validPopup()) {
       forgetPopup()
@@ -599,7 +722,8 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
         keep.add(node)
         projectAttribute(menuAttributes, node, name, value)
       }
-    for (const entry of menuScopes()) {
+    const scopes = menuScopes()
+    for (const entry of scopes) {
       own(entry.div, 'data-frade-lower-menu', String(active.request.participantGeneration))
       own(entry.div, 'role', 'menu')
       own(entry.div, 'aria-label', popup!.opener.getAttribute('aria-label') || '')
@@ -676,6 +800,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
         }
       }
     }
+    reflowPopup(scopes, keep)
     restoreAttributes(menuAttributes, keep)
     restoreLowerStyles(menuStyles, keep)
   }
@@ -1061,6 +1186,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       subtree: true,
       attributes: true,
       attributeFilter: ['class', 'style', 'title', 'hidden'],
+      characterData: true,
     })
     for (const event of ['scale', 'translate', 'scaleAndTranslate'])
       graph.view?.addListener?.(event, viewChanged)
@@ -1308,6 +1434,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     observer?.disconnect()
     lowerObserver?.disconnect()
     window.removeEventListener('resize', lowerResize)
+    for (const query of lowerMedia) query.removeEventListener('change', lowerResize)
     for (const name of ['click', 'mousedown', 'mouseup', 'pointerdown', 'pointerup'])
       document.removeEventListener(name, lowerMouse, true)
     graph?.view?.removeListener?.(viewChanged)
@@ -1319,6 +1446,10 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     if (prototype?.init === installedInit) prototype.init = originalInit
     clearProjection()
   }
+  const lowerMedia = typeof window.matchMedia === 'function'
+    ? ['(pointer:coarse)', '(forced-colors:active)', '(prefers-reduced-motion:reduce)'].map(query => window.matchMedia(query))
+    : []
+  for (const query of lowerMedia) query.addEventListener('change', lowerResize)
   window.addEventListener('resize', lowerResize)
   for (const name of ['click', 'mousedown', 'mouseup', 'pointerdown', 'pointerup'])
     document.addEventListener(name, lowerMouse, true)

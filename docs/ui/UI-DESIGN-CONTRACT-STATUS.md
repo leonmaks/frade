@@ -1,23 +1,63 @@
 # Frade UI Design Contract — статус этой ветки
 
-## Текущий этап — P01,5/10; reflow scope принят, PRE1 FAIL по составу входа
+## Текущий этап — P01,6/10; independent focused POST FAIL / B05 scope decision
 
-Обновлено: 2026-10-02T01:45:50.529Z. Ветка codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; baseline98f387f. Последний опубликованный HEAD c4bf023940f21297db972bb546c78ab00c317566; source checkpoint eeca8e1. Guide1.0/tokens1.0.0; routing prerequisite отсутствует. Правый panel ранее queued, видимость не подтверждена.
+Обновлено: 2026-10-02T06:16:30.935Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. Последний опубликованный HEAD f9910e51948e45af62f873abcd67674ab3cf73e9, remote SHA VERIFIED. Текущий FAIL checkpoint: metadata BDD6/compliance/strict PASS; commit/push выполняется. Routing prerequisite отсутствует. Panel queued, видимость не подтверждена.
 
-Точный P01-LOWER-ORIGIN-POPUP-REFLOW-01 SHA 6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17 принят человеком; [acceptance](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow-accepted-20261002T014550Z.json). Four artifacts/BDD/traceability согласованы. Новые strict/BDD95/complianceUI26/contrast102 checks PASS; независимый PRE1 FAIL (ENVIRONMENT/input), plan без других blockers, model/effort по точной owning stage PRE row: gpt-6-astra/xhigh. Reflow production и новый unit RED NOT_RUN до PRE PASS.
+Автоматический focused POST2: **GATE_STATUS: FAIL**, единственный blocker B05 (INTEGRATION / STATE_TRANSITION). Impossible-fit REFUSED после завершённого apply/PAINTED теряется parent-handler; bridge не прекращает successful adoption/focus. Raw report/events/receipt17 файлов сохранены до интерпретации; unchanged candidate/packet/plan,7564packet hashes и42raw-copy hashes проверены. Requested gpt-6-astra/xhigh по exact owning POST row; actual backend/effort NOT_CONFIRMED. POST preparation1 BLOCKED из-за42ignored.log сохранён отдельно; оригинальные логи не изменены.
 
-| Текущая задача | Статус |
+| Текущая задача | Фактический статус |
 | --- | --- |
-| Acceptance/raw-before/four-artifact planning | Сохранено; production/tests неизменны |
-| Strict/BDD/compliance/plan hash | PASS; raw outputs/exits сохранены, production/tests unchanged |
-| Automatic independent read-only PRE | PRE1 FAIL: свежий same-run canary не передан reviewer; candidate/packet unchanged, raw получен. Автоматический повтор после input repair |
-| Serialized unit RED / reflow implementation | NOT_RUN; после PRE PASS |
-| Actual six-state matrix | Сохранённый FAIL6/6,990observations/90geometry findings |
-| New targeted/full root/verify/POST | NOT_RUN; required layout FAIL остаётся blocker |
-| Full FUI/human visual/cumulative verify/archive | OPEN; visual NOT_APPROVED |
-| Planning checkpoint commit/push | DONE 5e14e06f34dd5aad44cb507da8ba229e564d71f0; origin exactSHA VERIFIED; transient SSH verify disconnect сохранён |
+| Accepted reflow / planning / PRE2 | PASS; exact accepted scope SHA6bdd2cfe…, PRE2 b50ee17d…; prior PRE1 FAIL сохранён |
+| Permanent RED / sole-bridge implementation | DONE;4FAIL/23PASS перед первой implementation; source bridge + разрешённые unit/E2E |
+| Targeted typecheck/lint/build/units/BDD/compliance | PASS:27bridge/70desktop/95BDD/UI26/contrast102/pinned2851; controls removed |
+| Six-state actual lower matrix | PASS6/6;990observations,0violations,690PNG; original assertions retained |
+| Original compatibility / actual open resize/media chain | PASS6+1; raw TEST FAIL/RCA preserved |
+| Fresh full root check:all | PASS exit0: Draw215/desktop81;635source hashes unchanged; current p95=110.8ms≤150 |
+| Focused OpenSpec verification before POST | PASS mapping16requirements/38scenarios,13focused; whole P01 INCOMPLETE |
+| Automatic focused POST2 | **FAIL_B05**; report a204eeb2…; advancement stopped |
+| B05 deterministic RCA | RED exit1 actual parent-handler: resolved1/rejected0/invalidated0/diagnostic0/waiting0; initial ENV import issue отдельно |
+| B05 scope amendment | **PROPOSED / NOT_USER_ACCEPTED**; no production repair; exact SHA 15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01 |
+|2.4 full FUI005–009 bindings | OPEN / full closure NOT_RUN; executed partial oracles отдельно |
+|2.5 human visual baseline | OPEN / NOT_APPROVED; actual gallery готова |
+|3.2 cumulative verification/POST | OPEN / focused FAIL; cumulative NOT_RUN |
+|3.3 sync/archive | OPEN / NOT_RUN; STOP перед P02 |
 
-Следом: fresh canary public raw/binding включить до freeze → automatic PRE2 → meaningful RED → sole bridge bounded reflow → current six-state/targeted/full checks → verify/automatic POST. Exactly3temporary exceptions unchanged; LOCAL_ONLY/NOT_CONFIGURED branch protection. STOP перед P02.
+Рекомендуемое решение: разрешить только bounded refusal handling в existing bridge, frameParticipant.ts и DiagramView.tsx; существующий REFUSED DTO и transaction/barrier/health keys не менять. Parent доставляет matching current painted-owner diagnostic через optional callback в existing themeError live region (role=status/aria-live=polite), bridge STOP/cancel/restoration; без frame reload или semantic действий. После acceptance — coherent four artifacts/strict, fresh automatic PRE, permanent meaningful bridge→parent RED, repair/required checks/fresh full root/verify/automatic POST.
+
+[Точный proposed B05 scope](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal.proposed.md) · [Independent POST FAIL](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-post2-fail-received-20261002T060636Z/result.md) · [Actual RCA](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/result.json) · [Actual screenshots, human NOT_APPROVED](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-checks-20261002T045033Z/actual-visual-candidates.md).
+
+Applicable FDS003/004/005/008/009, A11Y001–005/007–009; exactly3approved exceptions. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Production parent/vendor/routing/domain не изменены. Scope ограничен UI; consumer-owned future shared fresh-proof packaging не создаёт Routing dependency. READY_FOR_VERIFY:NO (whole P01).
+
+## Предыдущие сохранённые checkpoint записи
+
+# Frade UI Design Contract — статус этой ветки
+
+## Текущий этап — P01, 6/10; bounded reflow: current checks/verify PASS, automatic POST2 preparing
+
+Обновлено: 2026-10-02T05:45:41.354Z. Ветка codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; original baseline98f387f. Последний опубликованный HEAD f9910e51948e45af62f873abcd67674ab3cf73e9: remote SHA VERIFIED. Текущие изменения не закоммичены. Guide1.0/tokens1.0.0; routing prerequisite отсутствует. Правый panel: queued, видимость не подтверждена.
+
+Точный scope P01-LOWER-ORIGIN-POPUP-REFLOW-01 принят человеком (draft SHA6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17). PRE2 PASS:4366 hashes, свежая canary этой invocation, candidate/packet/plan unchanged; gpt-6-astra/xhigh по owning stage plan. PRE1 FAIL сохранён, actual backend/effort NOT_CONFIRMED.
+
+| Текущая задача | Фактический статус |
+| --- | --- |
+| Acceptance / coherent planning / strict | PASS; historical raw inputs preserved |
+| Independent PRE2 | PASS; report b50ee17dd85e7f4742af371247465e7e34dc8bb0e9b4d0cf29b8eaab3ea3cdce |
+| Serialized regression RED | DONE:4 FAIL /23 PASS до production; fixture geometry correction отдельно сохранена |
+| Sole-bridge bounded reflow | First implementation complete; production scope unchanged |
+| Targeted unit / typecheck / lint | PASS:27 tests; typecheck0; lint0 |
+| Desktop build / actual six-state matrix | PASS: pinned2851;6/6,990observations,0violations,690screenshots |
+| Original compatibility | PASS6/6 |
+| Open-chain resize/media | PASS: actual resize/coarse/reduced/forced lifecycle, zero churn; TEST RCA/raw FAIL retained |
+| Fresh full root | PASS exit0: Draw215/desktop81, source635 unchanged; p95 110.8ms ≤150 |
+| Focused OpenSpec verify | PASS:16requirements/38scenarios mapped;13focused scenarios; full P01 INCOMPLETE |
+| Automatic focused POST | POST1 preparation BLOCKED (42 ignored raw logs); byte-identical copies/manifest complete; POST2 PREPARING / freeze on dispatch; exact gpt-6-astra/xhigh owning POST row |
+| Full FUI / human visual / cumulative verify / POST / archive | OPEN; visual NOT_APPROVED |
+| Current checkpoint commit / push | NOT_DONE; prior f9910e5 published and verified |
+
+Current checks: [evidence](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-checks-20261002T045033Z). Prior actual matrix FAIL6/6 remains historical evidence, not current GREEN. Applicable FDS003/004/005/008/009 and A11Y001–005/007–009; exactly3 approved exceptions. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Routing/vendor/domain не изменены; production delta только в existing bridge.
+
+Следом: focused verification → freeze and automatic independent POST → checkpoint commit/push. Полное P01 closure требует FUI binding, human visual/cumulative verify/POST/archive. STOP перед P02.
 
 ## Предыдущие сохранённые checkpoint записи
 

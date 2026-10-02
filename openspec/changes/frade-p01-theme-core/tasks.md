@@ -15,7 +15,7 @@
 
 ## 3. Applicable integration checks, independent POST and archive
 
-- [ ] 3.1 Run affected package lint/typecheck/tests/BDD and root boundaries/check:all, pinned Draw.io assets, foundation compliance positive/negative controls and applicable actual desktop/security/settings/frame/accessibility/visual checks. Preserve logs/exits; distinguish fresh runs and justified unchanged-source caches. Inspect git status/diff and confirm no unrelated/unauthorized writes.
+- [x] 3.1 Run affected package lint/typecheck/tests/BDD and root boundaries/check:all, pinned Draw.io assets, foundation compliance positive/negative controls and applicable actual desktop/security/settings/frame/accessibility/visual checks. Preserve logs/exits; distinguish fresh runs and justified unchanged-source caches. Inspect git status/diff and confirm no unrelated/unauthorized writes.
 - [ ] 3.2 Perform OpenSpec verification against all requirements/scenarios/tasks, then freeze full manifest and obtain independent gpt-6-astra/xhigh read-only POST PASS. No production edits during gate; correctness/architecture/applicable check blockers mean FAIL. Preserve received report and exact candidate integrity.
 - [ ] 3.3 After every required check, verify, POST and human visual acceptance PASS, sync/archive by project workflow and run post-archive compliance. Preserve cumulative/historical evidence and report actual final state; STOP before P02.
 

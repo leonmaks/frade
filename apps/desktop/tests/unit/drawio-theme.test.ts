@@ -854,3 +854,110 @@ it('P01-POST-B03 focus-only End reveals a clipped original lower target and its 
   expect(f.original).not.toHaveBeenCalled()
   f.assertSemantic()
 })
+
+
+function lowerLayoutFixture(width = 501, childLeft = 5) {
+  let viewportWidth = width, coarse = false
+  const widthBefore = Object.getOwnPropertyDescriptor(window, 'innerWidth')!
+  const heightBefore = Object.getOwnPropertyDescriptor(window, 'innerHeight')!
+  const mediaBefore = Object.getOwnPropertyDescriptor(window, 'matchMedia')
+  const callbacks = new Set<() => void>()
+  Object.defineProperty(window, 'innerWidth', { configurable: true, get: () => viewportWidth })
+  Object.defineProperty(window, 'innerHeight', { configurable: true, get: () => 423 })
+  Object.defineProperty(window, 'matchMedia', { configurable: true, value: (query: string) => ({
+    media: query, get matches() { return query.includes('coarse') && coarse },
+    addEventListener: (_: string, fn: () => void) => { callbacks.add(fn) },
+    removeEventListener: (_: string, fn: () => void) => { callbacks.delete(fn) },
+  }) })
+  const f = lowerMenuFixture()
+  cleanup.push(() => {
+    Object.defineProperty(window, 'innerWidth', widthBefore)
+    Object.defineProperty(window, 'innerHeight', heightBefore)
+    if (mediaBefore) Object.defineProperty(window, 'matchMedia', mediaBefore)
+    else delete (window as unknown as { matchMedia?: unknown }).matchMedia
+  })
+  const root = f.menu.div, child = f.move.div!, panels = [root, child]
+  const tables = panels.map(node => node.querySelector('table')!)
+  root.style.setProperty('left', '70px', 'important'); root.style.top = '270px'
+  child.style.left = childLeft + 'px'; child.style.top = '270px'
+  tables[0].setAttribute('style', '')
+  const original = panels.map(node => node.outerHTML)
+  panels.forEach((panel, index) => {
+    panel.getBoundingClientRect = () => {
+      const naturalWidth = index ? 278 : 246, currentWidth = Number.parseFloat(panel.style.width) || naturalWidth
+      const label = panel.querySelector<HTMLElement>('tr>td:nth-child(2)')!
+      const wrapped = label.style.whiteSpace === 'normal' && currentWidth < naturalWidth
+      return new DOMRect(Number.parseFloat(panel.style.left), Number.parseFloat(panel.style.top), currentWidth,
+        144 + (wrapped ? 36 : 0) + (coarse ? 120 : 0))
+    }
+    const table = tables[index]
+    table.getBoundingClientRect = () => { const b = panel.getBoundingClientRect(); return new DOMRect(b.left+5,b.top+5,b.width-10,b.height-10) }
+    Array.from(table.rows).forEach((row, n) => {
+      row.getBoundingClientRect = () => { const b=table.getBoundingClientRect(); return new DOMRect(b.left,b.top+n*36,b.width,36) }
+      Array.from(row.cells).forEach((cell, col) => {
+        cell.getBoundingClientRect = () => { const b=row.getBoundingClientRect(); return new DOMRect(b.left+(col?28:0),b.top,col===1?b.width-42:col===0?28:14,b.height) }
+      })
+    })
+  })
+  const fitting = vi.fn(() => { throw Error('Bridge must never call vendor fit') })
+  vi.stubGlobal('mxUtils', { fit: fitting })
+  const open = async () => {
+    f.send('prepare'); f.send('apply'); await f.paint()
+    f.pages.focus(); f.key(f.pages, 'Enter'); f.key(f.move, 'ArrowRight')
+    await Promise.resolve(); await Promise.resolve()
+  }
+  const assertBounds = () => {
+    const [a,c] = panels.map(node=>node.getBoundingClientRect())
+    for (const r of [a,c]) { expect(r.left).toBeGreaterThanOrEqual(4); expect(r.right).toBeLessThanOrEqual(viewportWidth-4)
+      expect(r.top).toBeGreaterThanOrEqual(4); expect(r.bottom).toBeLessThanOrEqual(419); expect(r.width).toBeGreaterThanOrEqual(44) }
+    expect(a.right+4<=c.left || c.right+4<=a.left).toBe(true)
+    expect(root.contains(f.move)).toBe(true); expect(child.contains(f.first)).toBe(true)
+    expect(document.activeElement).toBe(f.first); expect(f.effects).toEqual([])
+    expect(fitting).not.toHaveBeenCalled(); f.assertSemantic()
+  }
+  return { ...f,root,child,tables,original,fitting,open,assertBounds,callbacks,
+    resize: async (next:number)=>{viewportWidth=next;window.dispatchEvent(new Event('resize'));await Promise.resolve();await Promise.resolve()},
+    media: async (next:boolean)=>{coarse=next;for(const callback of callbacks)callback();await Promise.resolve();await Promise.resolve()},
+  }
+}
+it('P01-REFLOW serialized narrow chain wraps original labels, fits viewport and restores exact panel/table/cell styles', async () => {
+  const f=lowerLayoutFixture(), originalHide=f.menu.hideMenu, label=f.rename.textContent
+  await f.open();f.assertBounds()
+  expect(f.rename.textContent).toBe(label);expect(f.rename.cells[1].style.whiteSpace).toBe('normal')
+  f.key(f.first,'ArrowLeft');expect(f.child.outerHTML).toBe(f.original[1]);expect(f.tables[1].hasAttribute('style')).toBe(false)
+  f.key(f.move,'Escape');expect(f.root.outerHTML).toBe(f.original[0]);expect(f.tables[0].getAttribute('style')).toBe('')
+  expect(f.menu.hideMenu).toBe(originalHide);expect(f.effects).toEqual([]);f.assertSemantic()
+})
+it('P01-REFLOW feasible anchor/side stays exact and open-chain resize/media avoids observer write loops', async () => {
+  const f=lowerLayoutFixture(700,321), positions=[f.root.style.cssText,f.child.style.cssText]
+  await f.open();expect([f.root.style.cssText,f.child.style.cssText]).toEqual(positions)
+  await f.resize(501);f.assertBounds()
+  const rootWrites=vi.spyOn(f.root.style,'setProperty'),childWrites=vi.spyOn(f.child.style,'setProperty')
+  const owned = [f.root,f.child,...f.root.querySelectorAll<HTMLElement>('table,td'),...f.child.querySelectorAll<HTMLElement>('table,td')]
+  const settledStyles = owned.map(node=>node.getAttribute('style'))
+  for(let n=0;n<6;n++){f.lower.setAttribute('title','actual observer trigger '+n);await Promise.resolve();await Promise.resolve()
+    expect(owned.map(node=>node.getAttribute('style'))).toEqual(settledStyles);f.assertBounds()}
+  expect(rootWrites).not.toHaveBeenCalled();expect(childWrites).not.toHaveBeenCalled()
+  await f.resize(700);expect([f.root.style.cssText,f.child.style.cssText]).toEqual(positions)
+  await f.media(true);expect(f.callbacks.size).toBeGreaterThan(0);f.assertBounds()
+  f.dispose();expect(f.callbacks.size).toBe(0);expect(f.root.outerHTML).toBe(f.original[0]);expect(f.child.outerHTML).toBe(f.original[1]);f.assertSemantic()
+})
+it('P01-REFLOW deferred original fit, stale cancellation lease and unowned panels retain bounded ownership', async () => {
+  const f=lowerLayoutFixture();await f.open();f.assertBounds()
+  f.root.style.left='999px';await Promise.resolve();await Promise.resolve();f.assertBounds()
+  f.key(f.first,'ArrowLeft');expect(f.child.outerHTML).toBe(f.original[1])
+  f.send('prepare',context('prepare',2,2),snapshot('light',2));f.key(f.rename,'Enter')
+  expect(f.root.outerHTML).toBe(f.original[0]);expect(f.root.isConnected).toBe(true)
+  f.send('apply',context('apply',2,2));await f.paint();expect(f.root.isConnected).toBe(false);expect(f.effects).toEqual([])
+  document.body.append(f.root);Object.assign(f.ui,{currentMenu:f.menu});const excluded=f.root.outerHTML
+  await f.resize(400);expect(f.root.outerHTML).toBe(excluded);expect(f.fitting).not.toHaveBeenCalled();f.assertSemantic()
+})
+
+it('P01-REFLOW impossible owned capacity reports refusal without hidden labels or semantic/fitting actions', async () => {
+  const f=lowerLayoutFixture(88)
+  await f.open()
+  expect(f.replies().some(reply=>reply.status==='REFUSED' && reply.message.includes('LOWER_MENU_REFLOW_UNAVAILABLE'))).toBe(true)
+  expect(f.rename.textContent).toContain('Rename');expect(f.first.textContent).toContain('First')
+  expect(f.root.style.display).not.toBe('none');expect(f.child.style.display).not.toBe('none')
+  expect(f.effects).toEqual([]);expect(f.fitting).not.toHaveBeenCalled();f.assertSemantic()
+})

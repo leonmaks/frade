@@ -1,0 +1,18 @@
+{
+  "atUtc": "2026-10-02T05:20:57.355Z",
+  "classification": "TEST",
+  "attempts": [
+    {
+      "status": "FAIL",
+      "method": "Printed callback bytes",
+      "finding": "Printer preserves original formatting; first difference offset9441 is a chained call line break."
+    },
+    {
+      "status": "FAIL",
+      "method": "Printed lexical token bytes",
+      "finding": "Old/new flow callback differ at token3598 only by optional trailing comma before object brace; historical callback behavior unchanged."
+    }
+  ],
+  "responsibleLayer": "Audit representation, not product/test behavior",
+  "repair": "Compare parsed callback AST kinds, operator and parsed literal/identifier text. Whitespace/comments/optional trailing commas do not appear in semantic node tree. Preserve every original callback and assertion AST; no expected value, domain tolerance or UI oracle is changed."
+}
