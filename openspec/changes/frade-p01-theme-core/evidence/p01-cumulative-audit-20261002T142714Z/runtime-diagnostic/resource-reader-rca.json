@@ -1,0 +1,10 @@
+{
+  "atUtc": "2026-10-02T15:41:55.026Z",
+  "classification": "TEST",
+  "reproduction": "six actual collector runs recorded TypeError Failed to fetch for valid embedded SVG data URI; runtime6 PASS asserts preservation only, never contrast",
+  "rootCause": "resource reader fetched data URI before decode, contrary to original plan direct exact data-URI decoding; existing CSP connect-src self disallows data fetch",
+  "sourceAuthority": "apps/desktop/src/main/index.ts existing CSP line141; no CSP change permitted",
+  "repair": "direct exact base64/percent UTF8 bytes, existing img-src data decode; protocol fetch only for nondata resource",
+  "productionChanged": false,
+  "oldCollectorSha256": "2d9914b904afda72e8ecfad7ebecc303fd4a6b22565412306a9f9e4010b525d3"
+}

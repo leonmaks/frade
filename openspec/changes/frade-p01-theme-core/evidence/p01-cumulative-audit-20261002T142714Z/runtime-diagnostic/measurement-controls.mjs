@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import {measure,contrast} from './measurement.mjs';
+const a={width:9,height:9,rgba:Buffer.alloc(9*9*4)};for(let y=3;y<=5;y++)for(let x=3;x<=5;x++)a.rgba[(y*9+x)*4+3]=255;
+const screen=(back,front)=>{let b=Buffer.alloc(9*9*4);for(let y=0;y<9;y++)for(let x=0;x<9;x++){let rgb=x>=3&&x<=5&&y>=3&&y<=5?front:back;b.set([...rgb,255],(y*9+x)*4);}return {width:9,height:9,channels:4,pixels:b};};
+const white=screen([255,255,255],[0,0,0]),black=screen([0,0,0],[0,0,0]),before=Buffer.from(a.rgba);const rows=[];const run=(name,input,status)=>{const r=measure(input);assert.equal(r.status,status,name);rows.push({name,...r});};
+assert.equal(contrast([0,0,0],[255,255,255]),21);assert.equal(contrast([0,0,0],[0,0,0]),1);
+run('opaque black on white passes exact 21',{asset:a,screen:white,x:0,y:0,enabled:true},'PASS');assert.equal(rows.at(-1).min,21);assert.equal(rows.at(-1).core.length,1);
+run('enabled black on black fails exact 1',{asset:a,screen:black,x:0,y:0,enabled:true},'FAIL');assert.equal(rows.at(-1).min,1);
+run('proven disabled retained exclusion',{asset:a,screen:black,x:0,y:0,enabled:false},'EXCLUDED_PROVEN_DISABLED');assert.equal(rows.at(-1).core.length,1);
+run('unknown enabled cannot pass',{asset:a,screen:white,x:0,y:0,enabled:null},'NOT_MEASURED');
+const fringe={...a,rgba:Buffer.from(a.rgba)};for(let i=3;i<fringe.rgba.length;i+=4)if(fringe.rgba[i])fringe.rgba[i]=120;
+run('antialias-only core rejected',{asset:fringe,screen:white,x:0,y:0,enabled:true},'NOT_MEASURED');
+run('wrong placement rejected',{asset:a,screen:white,x:1,y:0,enabled:true},'NOT_MEASURED');
+run('unsupported scale cannot pass',{asset:a,screen:white,x:0,y:0,enabled:true,reasons:['UNSUPPORTED_SCALE']},'NOT_MEASURED');
+run('unsupported filter cannot pass',{asset:a,screen:white,x:0,y:0,enabled:true,reasons:['UNSUPPORTED_FILTER']},'NOT_MEASURED');
+assert.deepEqual(a.rgba,before);fs.writeFileSync(new URL('./measurement-controls-result.json',import.meta.url),JSON.stringify({status:'PASS',cases:rows.length,sourceMaskUnchanged:true,rows},null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({status:'PASS',cases:rows.length}));

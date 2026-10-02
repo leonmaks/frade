@@ -1,0 +1,115 @@
+{
+  "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+  "rawSha256": "f8c48b61bdb8bfd01634fcc8579cbf1066ca7cf5228a2385294b5d78668f2d2d",
+  "extraction": "TypeScript AST import/type/four named helpers/fuiHash only; old test registrations not copied",
+  "records": [
+    {
+      "start": 0,
+      "end": 39,
+      "textSha256": "5ab4250de4a032c187416644e1af8a2cca9e75bf1bc9800650afec8555ee41a6",
+      "text": "import { inflateSync } from 'node:zlib'"
+    },
+    {
+      "start": 40,
+      "end": 110,
+      "textSha256": "8bb8d98db11000f947b71b270b0857777691948d143ec40673ca3c89a0cf3b93",
+      "text": "import { test, expect, _electron as electron } from '@playwright/test'"
+    },
+    {
+      "start": 111,
+      "end": 197,
+      "textSha256": "6a45811ee3e8724b8704100d7327962b751a5fb32d3d3a221373f08576086690",
+      "text": "import { mkdtemp, writeFile, readFile, mkdir, rmdir, readdir } from 'node:fs/promises'"
+    },
+    {
+      "start": 198,
+      "end": 230,
+      "textSha256": "ee2688de098fb902872d6ae44e1b04080471590604d2a45946f1c8a02cd4eced",
+      "text": "import { tmpdir } from 'node:os'"
+    },
+    {
+      "start": 231,
+      "end": 272,
+      "textSha256": "c1735db0de9ca7e0fde47a353912981c442a913e2f403434f83d1fb143d9e95b",
+      "text": "import { join, resolve } from 'node:path'"
+    },
+    {
+      "start": 273,
+      "end": 346,
+      "textSha256": "490282249e92deb9d29c13bc1dbbe95f7009e6759dc281bfcefe0ba234c045b3",
+      "text": "import { createFlowFixture } from '../../../../scripts/flow-fixtures.mjs'"
+    },
+    {
+      "start": 347,
+      "end": 416,
+      "textSha256": "575a32092dc959f0cc0674609c65f46199a86d6f3e2a675e71e93f99dcb89560",
+      "text": "import { createKaFixture } from '../../../../scripts/ka-fixtures.mjs'"
+    },
+    {
+      "start": 417,
+      "end": 482,
+      "textSha256": "f4c9fca6f17a60d9f117d118f2b7046097f658311957b0c4701c8140f5934cc2",
+      "text": "import type { Page, ElectronApplication } from '@playwright/test'"
+    },
+    {
+      "start": 483,
+      "end": 546,
+      "textSha256": "c193700f711b921db91d938d13276b4387617f98d38e11d3a8e937b8bfd153d4",
+      "text": "import type { PresentationApi } from '@frade/runtime-contracts'"
+    },
+    {
+      "start": 2929,
+      "end": 9530,
+      "textSha256": "18bdd8300f82a5f48dc4a695d079c4e73cbb8a5b1b8b453ff9adea4568b2208f",
+      "text": "async function diagramFixture(\n  kind: 'native' | 'frame',\n  presentation?: { mode: 'light' | 'dark' | 'high-contrast'; density: 'compact' | 'comfortable' },\n  welcome?: (page: Page) => Promise<void>,\n) {\n  const fixture = await createKaFixture(),\n    folder = join(fixture.dataRoot, '_diagrams')\n  await mkdir(folder, { recursive: true })\n  const name = kind === 'native' ? 'Workshop.frade' : 'Workshop.drawio'\n  const authoredDocument =\n    kind === 'native'\n      ? JSON.stringify(\n          {\n            format: 'frade-draw',\n            version: 1,\n            metadata: { id: 'p01-authored', name: 'Workshop' },\n            graph: {\n              nodes: [\n                {\n                  id: 'authored',\n                  shape: 'rect',\n                  x: 140,\n                  y: 120,\n                  width: 180,\n                  height: 80,\n                  label: 'Authored paint',\n                  style: { fill: '#77AADD', stroke: '#334455' },\n                  labelStyle: { fill: '#112244' },\n                },\n              ],\n              edges: [],\n            },\n            viewport: { zoom: 1, pan: { x: 0, y: 0 } },\n          },\n          null,\n          2,\n        )\n      : '<mxfile><diagram id=\"main\" name=\"Workshop\"><mxGraphModel grid=\"1\" gridSize=\"10\" background=\"#F7E2C2\" gridColor=\"#112233\" page=\"1\" pageWidth=\"700\" pageHeight=\"500\"><root><mxCell id=\"0\"/><mxCell id=\"1\" parent=\"0\"/><mxCell id=\"authored\" value=\"Authored paint\" style=\"rounded=0;fillColor=#77AADD;strokeColor=#334455;fontColor=#112244;\" vertex=\"1\" parent=\"1\"><mxGeometry x=\"140\" y=\"120\" width=\"180\" height=\"80\" as=\"geometry\"/></mxCell></root></mxGraphModel></diagram></mxfile>'\n  const file = join(folder, name)\n  await writeFile(file, authoredDocument)\n  if (presentation) {\n    const profile = join(fixture.destination, 'p01-' + kind + '-profile')\n    await mkdir(profile, { recursive: true })\n    await writeFile(\n      join(profile, 'presentation-settings.json'),\n      JSON.stringify({\n        version: 1,\n        revision: 0,\n        generation: 0,\n        transactionId: 'matrix/boot',\n        selection: {\n          ...presentation,\n          preferred: {\n            light: 'frade.builtin/light',\n            dark: 'frade.builtin/dark',\n            'high-contrast': 'frade.builtin/high-contrast',\n          },\n        },\n      }),\n    )\n  }\n  const app = await electron.launch({\n    args: [resolve('out/main/index.cjs')],\n    env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'p01-' + kind + '-profile') },\n  })\n  const page = await app.firstWindow()\n  await page.addInitScript(() => {\n    const telemetry = ((window as any).__p01Telemetry = {\n      messages: [] as unknown[],\n      paints: [] as number[],\n      visibility: [] as unknown[],\n    })\n    const tick = (now: number) => {\n      if (telemetry.paints.length > 999) telemetry.paints.shift()\n      telemetry.paints.push(now)\n      requestAnimationFrame(tick)\n    }\n    requestAnimationFrame(tick)\n    document.addEventListener('visibilitychange', () =>\n      telemetry.visibility.push({ time: performance.now(), state: document.visibilityState }),\n    )\n    window.addEventListener('message', (event) => {\n      let data\n      try {\n        data = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\n      } catch {\n        return\n      }\n      if (\n        data?.action === 'fradePresentation' &&\n        data.operation === 'prepare' &&\n        data.snapshot?.kind === 'dark' &&\n        (window as any).__p01RefuseDark\n      ) {\n        event.stopImmediatePropagation()\n        parent.postMessage(\n          JSON.stringify({\n            event: 'fradePresentation',\n            version: 1,\n            participantId: data.participantId,\n            participantGeneration: data.participantGeneration,\n            context: data.context,\n            operation: 'prepare',\n            status: 'REFUSED',\n            message: 'Controlled current frame refusal',\n          }),\n          'frade://app',\n        )\n      }\n      if (data?.action === 'fradePresentation' || data?.event === 'fradePresentation')\n        telemetry.messages.push({ time: performance.now(), data })\n    })\n    if (location.host !== 'drawio') return\n    window.addEventListener('message', (event) => {\n      let value\n      try {\n        value = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\n      } catch {\n        return\n      }\n      const Editor = (window as any).EditorUi\n      if (value?.action !== 'configure' || !Editor || Editor.prototype.init.__p01Capture) return\n      const original = Editor.prototype.init\n      const capture = function (this: any, ...args: unknown[]) {\n        const result = original.apply(this, args)\n        ;(window as any).__p01Ui = this\n        return result\n      }\n      capture.__p01Capture = true\n      Editor.prototype.init = capture\n    })\n  })\n  await expect(page.locator('.wb-statusbar [role=\"status\"]')).toHaveText('Backend: ready')\n  if (welcome) await welcome(page)\n  await app.evaluate(\n    ({ dialog }, paths) => {\n      let index = 0\n      dialog.showOpenDialog = (async () => ({\n        canceled: false,\n        filePaths: [paths[index++]],\n      })) as typeof dialog.showOpenDialog\n    },\n    [fixture.dataRoot, fixture.metadataRoot],\n  )\n  await page.getByRole('button', { name: 'Открыть KA', exact: true }).click()\n  await expect(page.locator('.status-message')).toContainText('138 объектов', { timeout: 30000 })\n  const diagrams = page.getByRole('treeitem').filter({ hasText: /^_diagrams$/ })\n  await diagrams.click()\n  await page\n    .getByRole('treeitem')\n    .filter({ hasText: new RegExp('^' + name.replace('.', '\\\\.') + '$') })\n    .dblclick()\n  await expect(\n    page\n      .locator('.repository-diagram .editor-actions')\n      .getByRole('button', { name: 'Сохранить', exact: true }),\n  ).toBeEnabled({ timeout: 20000 })\n  if (kind === 'frame') {\n    await expect(page.locator('iframe')).toHaveAttribute(\n      'data-frade-revision',\n      (await page.locator('html').getAttribute('data-frade-revision')) as string,\n    )\n    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()\n    await expect(page.locator('iframe')).toBeVisible()\n    await page\n      .frameLocator('iframe')\n      .locator('body')\n      .evaluate(async () => {\n        await document.fonts.ready\n        await new Promise<void>((resolve) =>\n          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),\n        )\n      })\n    await expect(page.locator('.diagram-error')).toHaveCount(0)\n  }\n  return { fixture, app, page, file, name }\n}"
+    },
+    {
+      "start": 9531,
+      "end": 9872,
+      "textSha256": "4c5d10ca77efd158dfff8b1cfddc361c274a4ec1a488b5ee8e8d6bd3b54e3879",
+      "text": "async function finishDiagramFixture(app: ElectronApplication) {\n  // A deliberately blocked recovery must not leak this test's isolated Electron process.\n  // Explicit window-close/dirty-guard scenarios use the normal close path separately.\n  await app.evaluate(({ app }) => {\n    setTimeout(() => app.exit(0), 50)\n  })\n  await app.close()\n}"
+    },
+    {
+      "start": 164947,
+      "end": 164987,
+      "textSha256": "0cb434b1bf297e615e9bf5a37df602a19ff510e8f7899738813495995f8ae689",
+      "text": "import { createHash } from 'node:crypto'"
+    },
+    {
+      "start": 164988,
+      "end": 165053,
+      "textSha256": "065bf6b2e3d0e8e485a91a14309541c59ad1f190ff24197f6065d0621e3f56dd",
+      "text": "import { builtinTokens } from '@frade/ui-workspace/design/tokens'"
+    },
+    {
+      "start": 165054,
+      "end": 165114,
+      "textSha256": "cf68ed4627bb46d6df85b47688b919b07b2d8a1abf5848c2c5b2414e1f482ac6",
+      "text": "type FuiFixture = Awaited<ReturnType<typeof diagramFixture>>"
+    },
+    {
+      "start": 165115,
+      "end": 165148,
+      "textSha256": "ebca87caddfd48aead56e423b9177d3f217109e30e476589306f50dd8f5d3028",
+      "text": "type FuiKind = 'native' | 'frame'"
+    },
+    {
+      "start": 165149,
+      "end": 165241,
+      "textSha256": "e0322a1ebf4627747d1260fb5267adf988ccc8111120796002aecc05926b9303",
+      "text": "const fuiHash = (bytes: Buffer | string) => createHash('sha256').update(bytes).digest('hex')"
+    },
+    {
+      "start": 165384,
+      "end": 165797,
+      "textSha256": "c33414538670faf7239dc3a173eb19be833ea420811e293826bd6070bf519677",
+      "text": "async function fuiFiles(f: FuiFixture) {\n  const records: Record<string, string> = {}\n  for (const file of f.fixture.manifest.files.filter((file: { path: string }) => file.path.startsWith('KA/')))\n    records[file.path] = fuiHash(await readFile(join(f.fixture.destination, file.path)))\n  records.diagram = fuiHash(await readFile(f.file))\n  expect(Object.keys(records).length).toBeGreaterThan(1)\n  return records\n}"
+    },
+    {
+      "start": 165798,
+      "end": 167487,
+      "textSha256": "648df49ac3a1b9a0e35e7af263161ba74f1b5004186bd0b57bc1428cabd88f6b",
+      "text": "async function fuiSemantics(f: FuiFixture, kind: FuiKind) {\n  if (kind === 'native')\n    return f.page.locator('.frade-canvas .canvas').evaluate((canvas) => {\n      const node = canvas.querySelector<SVGGElement>('.x6-node[data-cell-id=\"authored\"]')!\n      const rect = node.querySelector('rect')!\n      return {\n        geometry: node.getAttribute('transform'),\n        fill: rect.getAttribute('fill'), stroke: rect.getAttribute('stroke'),\n        selection: canvas.querySelectorAll('.x6-widget-selection-box').length,\n        canvasIdentity: canvas === (window as any).__fuiCanvas,\n        nodeIdentity: node === (window as any).__fuiNode,\n      }\n    })\n  return f.page.frameLocator('iframe').locator('body').evaluate(() => {\n    const ui = (window as any).__p01Ui, graph = ui.editor.graph,\n      geometry = graph.getModel().getCell('authored').geometry,\n      container = graph.container\n    return {\n      geometry: { x: geometry.x, y: geometry.y, width: geometry.width, height: geometry.height },\n      xml: (window as any).mxUtils.getXml(ui.editor.getGraphXml()),\n      selection: graph.getSelectionCells().map((cell: any) => cell.id),\n      history: ui.editor.undoManager.history.length, cursor: ui.editor.undoManager.indexOfNextAdd,\n      preferences: { ...localStorage }, page: ui.currentPage.id,\n      background: graph.background, gridColor: graph.gridColor, gridEnabled: graph.gridEnabled,\n      scale: graph.view.scale, translate: { x: graph.view.translate.x, y: graph.view.translate.y },\n      scroll: { left: container.scrollLeft, top: container.scrollTop },\n      uiIdentity: ui === (window as any).__fuiUi, graphIdentity: graph === (window as any).__fuiGraph,\n    }\n  })\n}"
+    }
+  ]
+}

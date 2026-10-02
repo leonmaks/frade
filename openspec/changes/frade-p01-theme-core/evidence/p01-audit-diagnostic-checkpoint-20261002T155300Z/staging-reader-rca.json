@@ -1,0 +1,22 @@
+{
+  "atUtc": "2026-10-02T15:55:42.139Z",
+  "classification": "TEST",
+  "reproduction": {
+    "status": null,
+    "error": {
+      "code": "ENOBUFS",
+      "message": "spawnSync git ENOBUFS"
+    },
+    "stdoutBytes": 8003584,
+    "stderrBytes": 0
+  },
+  "control": {
+    "status": 0,
+    "stdoutBytes": 12463409,
+    "stderr": ""
+  },
+  "stagedFiles": 409,
+  "rootCause": "staging auditor reads full Git index including historical evidence with8MB maxBuffer; use scoped index lookup or adequate bounded64MB and preserve spawn error fields",
+  "headChanged": false,
+  "productionChanged": false
+}
