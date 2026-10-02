@@ -1,0 +1,110 @@
+{
+  "change": "frade-standard-workflow",
+  "task": "2.3",
+  "scope": ["FWE-001 ownership", "FWE-002 intake/research", "FWE-003 safe bootstrap"],
+  "status": "LOCAL_GREEN",
+  "requestedModel": "gpt-6-sol",
+  "requestedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "eligibleChanges": {
+    "source": [
+      "scripts/directions/bootstrap.mjs",
+      "scripts/directions/cli.mjs",
+      "scripts/directions/contracts.mjs"
+    ],
+    "tests": ["tests/directions/bootstrap.test.mjs"],
+    "docsAndTemplates": ["docs/engineering/templates/task-2.3-bootstrap.md"]
+  },
+  "assertionIds": [
+    "FWE-003-A01",
+    "FWE-001-A01",
+    "FWE-002-A01",
+    "FWE-003-A02",
+    "FWE-003-A03",
+    "FWE-003-A04",
+    "FWE-001-A02",
+    "FWE-003-A05",
+    "FWE-001-A03",
+    "FWE-003-A06"
+  ],
+  "red": {
+    "testsOnlySnapshot": "deliverables/task-2.3-red/bootstrap.test.mjs",
+    "snapshotSha256": "b7b5dc7bd1fcc06c7ac7f6b9769fb5f0c37123407144dc256dd768a958f9b91f",
+    "assertionReplay": {
+      "commandFile": "deliverables/task-2.3-red/assertion-command.txt",
+      "exitCodeFile": "deliverables/task-2.3-red/assertion-exit-code.txt",
+      "exitCode": 1,
+      "fullLog": "deliverables/task-2.3-red/assertion-command.log",
+      "environment": "deliverables/task-2.3-red/environment.txt",
+      "meaningfulFailure": "FWE-003-A01 expected plan exit 0 and received NOT_IMPLEMENTED exit 2 against absent bootstrap; POSIX owner-path assertion also failed against the seed core"
+    },
+    "initialRunnerAttempt": {
+      "commandFile": "deliverables/task-2.3-red/command.txt",
+      "exitCodeFile": "deliverables/task-2.3-red/exit-code.txt",
+      "exitCode": 1,
+      "fullLog": "deliverables/task-2.3-red/command.log",
+      "limitation": "Node test runner subprocess did not expose individual assertions in this sandbox; direct Node assertion replay supplies the meaningful RED"
+    }
+  },
+  "green": {
+    "regressions": {
+      "commandFile": "deliverables/task-2.3-green/regressions-final-command.txt",
+      "exitCodeFile": "deliverables/task-2.3-green/regressions-final-exit.txt",
+      "exitCode": 0,
+      "perFileExitCodes": "deliverables/task-2.3-green/regressions-final-exits.txt",
+      "fullLog": "deliverables/task-2.3-green/regressions-final.log",
+      "result": "59 tests passed across six seeded direction test files"
+    },
+    "bootstrapFinalAssertions": {
+      "commandFile": "deliverables/task-2.3-green/bootstrap-final-command.txt",
+      "exitCodeFile": "deliverables/task-2.3-green/bootstrap-final-exit.txt",
+      "exitCode": 0,
+      "fullLog": "deliverables/task-2.3-green/bootstrap-final.log",
+      "result": "Nine bootstrap tests passed, including final Windows path negative assertions"
+    },
+    "cliPlan": {
+      "commandFile": "deliverables/task-2.3-green/cli-plan-command.txt",
+      "exitCodeFile": "deliverables/task-2.3-green/cli-plan-exit.txt",
+      "exitCode": 0,
+      "fullLog": "deliverables/task-2.3-green/cli-plan.log"
+    },
+    "cliCreate": {
+      "commandFile": "deliverables/task-2.3-green/cli-create-command.txt",
+      "exitCodeFile": "deliverables/task-2.3-green/cli-create-exit.txt",
+      "exitCode": 0,
+      "fullLog": "deliverables/task-2.3-green/cli-create.log",
+      "result": "idempotent reuse of the registered fixture owner"
+    },
+    "cliCheck": {
+      "commandFile": "deliverables/task-2.3-green/cli-check-command.txt",
+      "exitCodeFile": "deliverables/task-2.3-green/cli-check-exit.txt",
+      "exitCode": 0,
+      "fullLog": "deliverables/task-2.3-green/cli-check.log"
+    },
+    "syntax": {
+      "commandFile": "deliverables/task-2.3-green/syntax-command.txt",
+      "exitCodeFile": "deliverables/task-2.3-green/syntax-exit.txt",
+      "exitCode": 0,
+      "fullLog": "deliverables/task-2.3-green/syntax.log"
+    },
+    "environment": [
+      "deliverables/task-2.3-green/environment.json",
+      "deliverables/task-2.3-green/git-version.txt"
+    ]
+  },
+  "partialRecoveryProtocol": {
+    "intent": "Exclusive <Git common>/frade-workflow/intents/<id>.json before Git worktree creation, bound to request hash, branch, worktree and committed baseline",
+    "completion": "Separate exclusive <id>.complete.json after all seed files; identical retry verifies actual Git registration and returns original owner or completes the retained partial work",
+    "collisionRule": "Different request, branch, target, baseline, unregistered target or drift blocks without destructive cleanup",
+    "faultTest": "FWE-003-A03 injects failure after registered worktree creation, then verifies one-owner recovery"
+  },
+  "limitations": [
+    "Windows Node 24 replay pending; local execution used Linux Node 18.19.1 and Git 2.43.0",
+    "The staged workspace is not a Git checkout, so git status/diff on this work directory are unavailable",
+    "No installed reviewed production release was accessible here; creation was exercised with explicit trusted fixture authority and exact fixture policy bytes",
+    "Task 2.3 check validates manifest, policy bytes and registered owner only; later status, review, checkpoint and publish commands return NOT_IMPLEMENTED",
+    "No formal Verify, POST, archive, publication or later task was run"
+  ],
+  "readyForVerify": "NO"
+}

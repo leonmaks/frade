@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "stage": "W01",
+  "task": "2.3",
+  "status": "BLOCKED_REQUIRED_CHECKS",
+  "atUtc": "2026-10-02T22:30:36.887Z",
+  "sourceHead": "6f8b8ffc0a378d86859c3ed5a46c3c628bb82396",
+  "execution": "EXECUTED",
+  "rawTransferRows": 48,
+  "rawTransferHashVerified": true,
+  "initialLinux": "59 PASS",
+  "windows": "54 PASS / 5 FAIL",
+  "linuxController": "1 PASS / 3 FAIL",
+  "lint": "NOT_VERIFIED: initial staging files were ignored; stdin lint required",
+  "sourceImported": false,
+  "ownerProductAndFrozenControlsUnchanged": true,
+  "protectedPaths": [
+    "apps",
+    "packages",
+    "pnpm-lock.yaml",
+    "docs/routing-v2",
+    "scripts/routing-v2-architecture-gate.mjs",
+    "vendor"
+  ],
+  "defects": [
+    {
+      "id": "I23-01",
+      "classification": "ABSTRACTION_BOUNDARY",
+      "root": "Git common .git final component was validated with ordinary owner path rules."
+    },
+    {
+      "id": "I23-02",
+      "classification": "INTEGRATION",
+      "root": "Registered source was restricted to the first primary checkout rather than matching registered owner."
+    },
+    {
+      "id": "I23-03",
+      "classification": "SPEC_CONFLICT",
+      "root": "Seed delta capability direction differed from the declared closure destination ID."
+    },
+    {
+      "id": "I23-04",
+      "classification": "ENVIRONMENT",
+      "root": "worktree add invoked local post-checkout hooks; Git subprocesses require command-local safeguards."
+    }
+  ],
+  "repair": "exact gpt-6-sol/high in separate confined staging; task remains same W01",
+  "tasksComplete": 7,
+  "tasksTotal": 18,
+  "verify": "NOT_RUN",
+  "post": "NOT_RUN",
+  "archive": "NOT_RUN"
+}

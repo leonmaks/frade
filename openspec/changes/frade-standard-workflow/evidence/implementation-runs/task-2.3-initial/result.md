@@ -1,0 +1,5 @@
+**Task 2.3 is implemented locally** for the existing `frade-standard-workflow` change. The `plan/create/check` CLI uses a committed baseline and a trusted Git common authority, creates an isolated worktree, and recovers partial creation without cleanup. It seeds intake, research, planning, rules, and an eight-section starter status.
+
+The tests-only RED snapshot and full command evidence are in [task-2.3-red](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-20261003/work/deliverables/task-2.3-red). The final Linux run passed **59 direction tests across six files**; the CLI plan/create/check fixture commands also passed. Exact changed paths, assertion IDs, commands, exits, and logs are in [TASK-2.3-RESULT.json](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.3-20261003/work/TASK-2.3-RESULT.json).
+
+Windows Node 24 replay remains pending. The staged workspace has no installed production release or Git checkout, so production-release creation and `git status`/`git diff` could not be checked here. No Verify, POST, publication, archive, or later task was run. **READY_FOR_VERIFY: NO.**
