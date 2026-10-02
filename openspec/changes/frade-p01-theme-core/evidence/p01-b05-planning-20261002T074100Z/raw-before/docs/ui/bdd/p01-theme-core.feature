@@ -309,22 +309,3 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     When prepare stale activation cancel detach recreation disposal or relevant viewport text media generation occurs
     Then bounded compare before write reconciliation restores owned state without loops stale mutation or losing cancellation
     And impossible accommodation reports a concrete blocker without hidden targets new exceptions or weakened assertions
-
-  @P01-RT-LOWER-REFUSAL-014 @runtime-pending
-  Scenario: Settled frame paint still reports impossible owned lower placement
-    Given exact current painted frame ownership and a settled successful apply
-    When a normal original lower menu cannot fit its contracted targets
-    Then actual parent live diagnostic is visible and failed adaptation stops with exact cancellation restoration
-    And settled transaction durable state graph model file undo selection preferences viewport and identities remain unchanged
-
-  @P01-RT-LOWER-REFUSAL-015 @runtime-pending
-  Scenario: Forged stale superseded duplicate and disposed lower diagnostics are rejected
-    Given current painted owner and unchanged pending transaction response contracts
-    When an invalid or duplicate lower REFUSED envelope arrives
-    Then no false diagnostic reveal setting write or second transaction settlement occurs
-
-  @P01-RT-LOWER-REFUSAL-016 @runtime-pending
-  Scenario: Original feasible lower reopen recovers without automatic action
-    Given a refused original lower chain whose owned projection is restored
-    When viewport recovers and the user normally reopens the original menu
-    Then actual bounds focus and original actions are usable with no observer churn or semantic mutation

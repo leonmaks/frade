@@ -2,15 +2,13 @@
 
 ## Context and authority
 
-User acceptance: [revision 2 acceptance](decisions/p01-scope-v2-accepted-20260930T180721Z.json), accepted draft SHA256 5372993a796683ae34d350fd53264cf50fa1a0fa6320289d696a7c133bbe4d4f. The proposed draft stays immutable historical evidence; this updated four-artifact plan is the effective accepted contract. Historical PRE reports remain FAIL; the latest revision 2 review resolved B01/B03/B04/B05 and retained B02 color closure. The user accepted the exact B02 addition and independent PRE-P01-B02-20260930T185730Z subsequently passed; its received raw report remains unchanged. Historical proposed drafts/reports are preserved, not rewritten. This acceptance is not a gate verdict or screenshot approval. Archived foundation is closed 21/21 with accepted cumulative POST and post-archive checks; see ../archive/2026-09-30-frade-ui-design-contract/evidence/foundation-closure-report-2026-09-30.md. Actual audit/build/runtime screenshots are in evidence/p01-audit-2026-09-30.md and p01-baseline-*. Current implementation is partial6/10. Source checkpoint f3ee265 passed fresh root Draw215/desktop81 and lower matrix6/6; focused POST2 FAIL B05 is unresolved. The accepted B05 amendment below requires a fresh PRE before repair; human visual/full FUI/cumulative verify/POST/archive remain open. Earlier dated pre-delta states below are historical.
+User acceptance: [revision 2 acceptance](decisions/p01-scope-v2-accepted-20260930T180721Z.json), accepted draft SHA256 5372993a796683ae34d350fd53264cf50fa1a0fa6320289d696a7c133bbe4d4f. The proposed draft stays immutable historical evidence; this updated four-artifact plan is the effective accepted contract. Historical PRE reports remain FAIL; the latest revision 2 review resolved B01/B03/B04/B05 and retained B02 color closure. The user accepted the exact B02 addition and independent PRE-P01-B02-20260930T185730Z subsequently passed; its received raw report remains unchanged. Historical proposed drafts/reports are preserved, not rewritten. This acceptance is not a gate verdict or screenshot approval. Archived foundation is closed 21/21 with accepted cumulative POST and post-archive checks; see ../archive/2026-09-30-frade-ui-design-contract/evidence/foundation-closure-report-2026-09-30.md. Actual audit/build/runtime screenshots are in evidence/p01-audit-2026-09-30.md and p01-baseline-*. Runtime implementation is partial (5/10 tasks); pre-delta full root is PASS, required lower-frame token diagnostic is FAIL6/6, and verify/POST/archive remain NOT_RUN.
 
 Baseline commit 98f387f96b51b0ad139e3507c376ff1c3e8dec09; branch codex/frade-ui-design-contract; isolated UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. Selected baseline screenshots are real Electron 1280×850/DPR1, loaded fonts; old root has no runtime theme/density metadata. Source inspection found persisted Draw.io convenience APIs and graph callback identity risk; those constraints are addressed below rather than presumed safe.
 
 ## Goals / Non-Goals
 
 Complete view-only hot presentation with Light/Dark/HC/System and independent density; truthful feedback and retained workspace/editor context express the personal architectural workshop. Preserve editor identities, dirty drafts, selection, undo, document/model paint and persisted semantics. No installer, execution host, VS Code import/API compatibility, routing algorithm/endpoint/waypoint change, Repo Core repair, provider integration or full UI library. No consumer gate becomes a supplier prerequisite.
-
-For P01-LOWER-REFLOW-REFUSAL-01 only, the separately accepted B05 section below supersedes sole-bridge/no-additional-production-file and two-test-file restrictions for its exact parent diagnostic boundary and one existing participant test file. No other lower behavior gains parent authority.
 
 ## Closed implementation paths
 
@@ -274,49 +272,3 @@ Existing canonical palette/state/glyph/focus roles and compact28/comfortable36/w
 
 
 The existing P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 PRE/POST assignment table above governs this amendment: use its exact stage/role source hash/excerpt, with no universal default. Fresh coherent-plan strict validation and automatic independent PRE PASS are required before new serialized unit RED and sole-bridge implementation. Existing actual matrix-all2 FAIL6/6 remains RED, not waived or rewritten. Full six-state/three-window/text200/media/pointer/keyboard/preservation coverage, affected/original targeted tests and fresh full root check:all precede verification and automatic focused POST. Full P01 FUI binding, human visual approval, cumulative verify/POST/archive remain open;5/10, STOP before P02.
-
-
-## Accepted P01-LOWER-REFLOW-REFUSAL-01
-
-Authority: [p01-lower-reflow-refusal-accepted-20261002T074100Z.json](decisions/p01-lower-reflow-refusal-accepted-20261002T074100Z.json); exact unchanged draft SHA256 15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01. The separate human acceptance supersedes its PROPOSED header only; raw POST2 FAIL a204eeb25ba1eabca5c44659ae05b52124a0cd35ef86480958bdfbecc668feb3 and all earlier evidence remain unchanged. Acceptance is not PRE/POST, visual approval or closure.
-
-### Exact accepted B05 production authority
-
-Only these production paths may change for B05:
-- apps/desktop/src/main/drawio-theme-bridge.ts
-- packages/ui-workspace/src/design/theme/frameParticipant.ts
-- packages/ui-workspace/src/DiagramView.tsx
-
-Bridge:
-1. Make owned-chain reconciliation explicitly return success or failure. Impossible-fit must terminate successful adoption, ARIA-expanded and child-focus paths; observer/cache must never convert a refused result into success.
-2. Restore exact owned inline values/priorities/style presence and owned attributes; cancel only the proven current original lower menu through the already permitted original hide cancellation path; restore meaningful connected opener focus. No page action, fitting call, node replacement, label deletion or target hiding may count as success.
-3. Emit one bounded concrete refusal for the failed owned chain/current presentation lease. Remain capable of a normal later original opener action after resize/media recovery; do not create an observer/RAF loop or auto-reopen.
-4. Preserve stale prepare/cancellation lease, normal feasible keyboard/mouse actions, graph/frame identities, authored model/file/preferences/undo/selection and viewport.
-
-Frame participant:
-1. Preserve pending READY/PAINTED/REFUSED transaction handling exactly. Add an optional first-party presentation diagnostic callback for a lower-menu refusal arriving after a successful painted phase.
-2. Reuse the existing exact fradePresentation/REFUSED envelope and bounded message; no new serialized field, event, operation, runtime DTO or health key. Accept only the known lower reflow diagnostic from the actual frame/source/origin/id/generation with exact current painted context and matching painted operation.
-3. Reject wrong source/origin/owner/context, obsolete or in-flight superseded ownership, disposed/detached handles, invalid size/controls, unrelated messages and duplicates. Never reject or re-resolve an already settled phase, roll back a completed durable commit, fake an ACK, call semantic APIs, or invalidate/reload the whole frame as a diagnostic workaround.
-4. Report the local presentation failure through the optional callback; diagnostic state is transient, not persisted. Clear owner/dedup bookkeeping on the existing lifecycle boundaries.
-
-DiagramView:
-1. Wire that callback to the existing themeError live region (currently role="status", aria-live="polite") with a clear user-facing refusal message. Keep the graph visible and semantic editor/participant identity intact; no setThemeReady(false), forced rejoin, document load/save, draft mutation or graph refresh.
-2. Clear the diagnostic at an explicitly successful existing authoritative presentation/lifecycle boundary; do not claim geometric recovery without an actual successful owned reconciliation. No new overlay host, preferences or provider behavior.
-
-The earlier exact DTO/transaction/barrier/health contracts remain unchanged; this amendment adds only handling of the already existing bounded refusal after a painted phase and a scoped optional in-process callback. Do not reuse generic vendor/domain error reporting to bypass current presentation ownership checks.
-
-### Exact accepted B05 test/support scope
-
-Permitted permanent assertion paths:
-- apps/desktop/tests/unit/drawio-theme.test.ts
-- packages/ui-workspace/tests/ui-contract/participants.test.ts
-- apps/desktop/tests/e2e/ui-contract-theme.spec.ts
-
-Add meaningful bridge-to-actual-parent RED after completed apply, plus actual Electron visible live diagnostic / stopped failed menu / exact restoration / feasible retry and semantic preservation. Assert pending transaction behavior and settled promises unchanged; wrong/stale/duplicate/disposed diagnostic rejection. Preserve all original assertions/tolerances and every raw prior FAIL/BLOCKED. No WB or bundle fixture changes, no skip/only or blind snapshot update.
-
-Supporting current P01 proposal/design/spec/tasks, docs/ui BDD/traceability/status/context and new dated decision/evidence are allowed. Tokens, exceptions, dependencies, CI, vendor, other features, routing, persisted semantics and brand assets are excluded. Exactly3 approved legacy exceptions remain; no fourth exception or reduced target/contrast minimum.
-
-
-Pending transaction refusal remains a rejection; a late lower diagnostic is an authenticated transient presentation finding, never a second transaction outcome. Matching painted context/operation and unsuperseded ownership are mandatory. The existing role=status/aria-live=polite region is the actual intended destination.
-
-The exact existing P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 PRE/POST rows govern this accepted B05 stage: gpt-6-astra/xhigh for each role; select new design raw hash/excerpt after reconciliation. Fresh strict/PRE PASS -> permanent actual bridge-parent RED -> bounded B05 repair -> affected/original targeted checks and complete six-state/viewport/text/media matrix + fresh full root -> verification -> independent POST. Current6/10 remains; full FUI/human visuals/cumulative verify/POST/archive open; STOP before P02.

@@ -1,11 +1,3 @@
-# Frade UI Design Contract — текущий B05 accepted checkpoint
-
-Обновлено: 2026-10-02T07:41:00.587Z. Branch codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; original baseline98f387f. Published HEAD2a7614d remote SHA verified, clean at resume. P01 spec-driven6/10; guide1.0/tokens1.0.0; Routing prerequisite отсутствует.
-
-Exact B05 scope принят человеком: SHA15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01. Acceptance openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal-accepted-20261002T074100Z.json. Four artifacts/BDD согласованы; production unchanged. Strict/BDD6/compliance/shared status AVAILABLE PASS. Current stage: fresh automatic PRE, exact gpt-6-astra/xhigh from owning stage/role plan; before PASS no production. Prior POST2FAIL B05/RCA remains OPEN; previous required root PASS belongs to pre-repair source. PRE/repair/current changed-source checks/POST currently NOT_RUN. Full FUI/human visual/cumulative/archive open. STOP before P02. Right panel queued; visibility unconfirmed.
-
-## История checkpoint
-
 # Frade UI Design Contract — статус этой ветки
 
 ## Текущий этап — P01,6/10; independent focused POST FAIL / B05 scope decision
