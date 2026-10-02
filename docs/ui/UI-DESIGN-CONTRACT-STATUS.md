@@ -1,3 +1,16 @@
+# Актуально: P01 ожидает решения по исправлению трёх иконок
+
+Обновлено 2026-10-02T18:37:23.539Z. Ветка codex/frade-ui-design-contract, UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. Диагностический checkpoint537839d0340e37b91c5a41486897f69f3f673732 опубликован в авторизованную UI-ветку; remote SHA совпал. openspec/changes/frade-p01-theme-core/evidence/p01-upper-glyph-defect-20261002T183231Z/publication.json. Эта запись сохраняется последующим metadata commit.
+
+- PRE метода — PASS;19 новых контрольных примеров Electron — PASS.
+- Приложение —12 доказанных нарушений A11Y-002 у трёх верхних иконок в Dark/HC и двух плотностях. Required test — RED,exit1;114 наблюдений NOT_MEASURED.
+- Production/permanent tests не менялись;543 исходных файла и оригинальные screenshots/данные сохранены.
+- Scope P01-UPPER-THREE-GLYPH-PAINT-01 предложен, решение запрошено и ещё НЕ ПОЛУЧЕНО. Файл openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-glyph-paint.proposed.md, SHA2564fa0062a9c8d717f0b540bd5f65568b2f934b009947954e4ee7931e01df6808e. После принятия: coherentplan/strict/freshPRE, meaningfulRED, repair/checks/POST.
+- P01 остаётся6/10; задачи2.4/2.5/3.2/3.3 открыты. Human visual372PNG NOT_APPROVED, cumulativePOST/archive/P02 STOP. Guide1.0/tokens1.0.0; protectionLOCAL_ONLY/NOT_CONFIGURED.
+- Правая панель: queued, видимость не подтверждена.
+
+Ниже сохранена хронология; прежние FAIL/BLOCKED/NOT_RUN не удалены.
+
 # P01: контраст трёх верхних иконок FAIL; решение по scope
 
 2026-10-02T18:32:31.589Z. Ветка codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; исходныйbaseline98f387f, последнийpublished885fc36a. Guide1.0/tokens1.0.0.
