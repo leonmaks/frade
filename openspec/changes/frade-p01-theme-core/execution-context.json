@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "REFLOW_ACCEPTED_PLAN_VALIDATED_FRESH_PRE_PENDING",
+  "phase": "REFLOW_PRE1_FAIL_FRESH_CANARY_INPUT_REPAIR",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -149,7 +149,7 @@
     }
   ],
   "laterHumanDecision": "New per-surface visual baseline approval after actual implementation evidence",
-  "nextAction": "Strict validation and automatic independent stage-assigned reflow PRE; production blocked until fresh PASS; then unit RED and sole bridge reflow",
+  "nextAction": "Repair only fresh canary input packaging before freeze and automatically repeat independent PRE; no production before PASS",
   "sourceAndOriginalPlanningUnchanged": false,
   "scopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-v2-accepted-20260930T180721Z.json",
   "scopeAcceptanceRecordedAtUtc": "2026-09-30T18:07:21.024Z",
@@ -745,7 +745,7 @@
   },
   "currentReview": {
     "phase": "PRE",
-    "status": "NOT_RUN",
+    "status": "FAIL_ENVIRONMENT_INPUT_COMPLETENESS",
     "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
     "sourcePlan": "openspec/changes/frade-p01-theme-core/design.md",
     "sourceSha256": "167a57705bd977063a9000327b8ef4950a1fa9ec51faa9e718eb78629be9189b",
@@ -808,5 +808,22 @@
     "namedContrastPairs": 102,
     "fullRoot": "NOT_RUN_REQUIRED_LAYOUT_FAIL",
     "pre": "NOT_RUN"
+  },
+  "currentReflowPlanningCheckpoint": {
+    "commit": "5e14e06f34dd5aad44cb507da8ba229e564d71f0",
+    "remoteSha": "5e14e06f34dd5aad44cb507da8ba229e564d71f0",
+    "push": "VERIFIED",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-planning-20261002T014550Z/publication-receipt.json"
+  },
+  "lowerOriginPopupReflowPre1": {
+    "status": "FAIL",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre1-received-20261002T020210Z/result.md",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre1-received-20261002T020210Z/receipt.json",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true,
+    "blocker": "B01_SAME_INVOCATION_FRESH_CANARY_NOT_SELECTED_IN_PACKET",
+    "contentReview": "No other planning blocker found",
+    "rawCanarySupplement": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre-input-repair-20261002T020616Z/pre1-actual-fresh-canary-raw.json"
   }
 }

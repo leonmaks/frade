@@ -633,7 +633,7 @@
     "path": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md",
     "sha256": "6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17",
     "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow-accepted-20261002T014550Z.json",
-    "status": "USER_ACCEPTED_FRESH_PRE_NOT_RUN",
+    "status": "USER_ACCEPTED_PRE1_FAIL_INPUT_REPAIR",
     "beforeEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-planning-20261002T014550Z",
     "productionPlacementChanged": false,
     "permanentActualRED": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/matrix-all2-result.json",
@@ -644,6 +644,17 @@
       "P01-RT-LOWER-REFLOW-012",
       "P01-RT-LOWER-REFLOW-013"
     ],
-    "fullFuiClosure": false
+    "fullFuiClosure": false,
+    "pre1": {
+      "status": "FAIL",
+      "result": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre1-received-20261002T020210Z/result.md",
+      "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre1-received-20261002T020210Z/receipt.json",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "sourcePlanUnchanged": true,
+      "blocker": "B01_SAME_INVOCATION_FRESH_CANARY_NOT_SELECTED_IN_PACKET",
+      "contentReview": "No other planning blocker found",
+      "rawCanarySupplement": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre-input-repair-20261002T020616Z/pre1-actual-fresh-canary-raw.json"
+    }
   }
 }

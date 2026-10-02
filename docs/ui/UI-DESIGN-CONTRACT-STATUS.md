@@ -1,23 +1,23 @@
 # Frade UI Design Contract — статус этой ветки
 
-## Текущий этап — P01,5/10; reflow scope принят, свежий PRE pending
+## Текущий этап — P01,5/10; reflow scope принят, PRE1 FAIL по составу входа
 
 Обновлено: 2026-10-02T01:45:50.529Z. Ветка codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; baseline98f387f. Последний опубликованный HEAD c4bf023940f21297db972bb546c78ab00c317566; source checkpoint eeca8e1. Guide1.0/tokens1.0.0; routing prerequisite отсутствует. Правый panel ранее queued, видимость не подтверждена.
 
-Точный P01-LOWER-ORIGIN-POPUP-REFLOW-01 SHA 6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17 принят человеком; [acceptance](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow-accepted-20261002T014550Z.json). Four artifacts/BDD/traceability согласованы. Новые strict/BDD95/complianceUI26/contrast102 checks PASS; независимый PRE NOT_RUN, model/effort по точной owning stage PRE row: gpt-6-astra/xhigh. Reflow production и новый unit RED NOT_RUN до PRE PASS.
+Точный P01-LOWER-ORIGIN-POPUP-REFLOW-01 SHA 6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17 принят человеком; [acceptance](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow-accepted-20261002T014550Z.json). Four artifacts/BDD/traceability согласованы. Новые strict/BDD95/complianceUI26/contrast102 checks PASS; независимый PRE1 FAIL (ENVIRONMENT/input), plan без других blockers, model/effort по точной owning stage PRE row: gpt-6-astra/xhigh. Reflow production и новый unit RED NOT_RUN до PRE PASS.
 
 | Текущая задача | Статус |
 | --- | --- |
 | Acceptance/raw-before/four-artifact planning | Сохранено; production/tests неизменны |
 | Strict/BDD/compliance/plan hash | PASS; raw outputs/exits сохранены, production/tests unchanged |
-| Automatic independent read-only PRE | NOT_RUN; после validation/freeze |
+| Automatic independent read-only PRE | PRE1 FAIL: свежий same-run canary не передан reviewer; candidate/packet unchanged, raw получен. Автоматический повтор после input repair |
 | Serialized unit RED / reflow implementation | NOT_RUN; после PRE PASS |
 | Actual six-state matrix | Сохранённый FAIL6/6,990observations/90geometry findings |
 | New targeted/full root/verify/POST | NOT_RUN; required layout FAIL остаётся blocker |
 | Full FUI/human visual/cumulative verify/archive | OPEN; visual NOT_APPROVED |
-| Planning checkpoint commit/push | Готовится; exact UI origin/ref authorization retained |
+| Planning checkpoint commit/push | DONE 5e14e06f34dd5aad44cb507da8ba229e564d71f0; origin exactSHA VERIFIED; transient SSH verify disconnect сохранён |
 
-Следом: validation → freeze/automatic PRE → meaningful RED → sole bridge bounded reflow → current six-state/targeted/full checks → verify/automatic POST. Exactly3temporary exceptions unchanged; LOCAL_ONLY/NOT_CONFIGURED branch protection. STOP перед P02.
+Следом: fresh canary public raw/binding включить до freeze → automatic PRE2 → meaningful RED → sole bridge bounded reflow → current six-state/targeted/full checks → verify/automatic POST. Exactly3temporary exceptions unchanged; LOCAL_ONLY/NOT_CONFIGURED branch protection. STOP перед P02.
 
 ## Предыдущие сохранённые checkpoint записи
 
