@@ -1007,3 +1007,246 @@ it('P01-B05 original mouse root opening and open-chain media refusal stop withou
   expect(f.replies().filter(reply=>reply.status==='REFUSED')).toHaveLength(1)
   expect(f.root.outerHTML).toBe(f.original[0]);expect(f.child.outerHTML).toBe(f.original[1]);f.assertSemantic()
 })
+
+// P01-UPPER-THREE: original assets; append-only ownership/lifecycle regressions.
+const upperOriginalUrls = [
+  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjMDAwMDAwIj48cGF0aCBkPSJNMjAwLTEyMHEtMzMgMC01Ni41LTIzLjVUMTIwLTIwMHYtNTYwcTAtMzMgMjMuNS01Ni41VDIwMC04NDBoNTYwcTMzIDAgNTYuNSAyMy41VDg0MC03NjB2NTYwcTAgMzMtMjMuNSA1Ni41VDc2MC0xMjBIMjAwWm0xMjAtODB2LTU2MEgyMDB2NTYwaDEyMFptODAgMGgzNjB2LTU2MEg0MDB2NTYwWm0tODAgMEgyMDBoMTIwWiIvPjwvc3ZnPg==",
+  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkgMTNoLTZ2NmgtMnYtNkg1di0yaDZWNWgydjZoNnYyeiIvPjwvc3ZnPg==",
+  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjRweCIgZmlsbD0iIzAwMDAwMCI+PHJlY3QgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgd2lkdGg9IjI0Ii8+PHBhdGggZD0iTTQuNSw4YzEuMDQsMCwyLjM0LTEuNSw0LjI1LTEuNWMxLjUyLDAsMi43NSwxLjIzLDIuNzUsMi43NWMwLDIuMDQtMS45OSwzLjE1LTMuOTEsNC4yMkM1LjQyLDE0LjY3LDQsMTUuNTcsNCwxNyBjMCwxLjEsMC45LDIsMiwydjJjLTIuMjEsMC00LTEuNzktNC00YzAtMi43MSwyLjU2LTQuMTQsNC42Mi01LjI4YzEuNDItMC43OSwyLjg4LTEuNiwyLjg4LTIuNDdjMC0wLjQxLTAuMzQtMC43NS0wLjc1LTAuNzUgQzcuNSw4LjUsNi4yNSwxMCw0LjUsMTBDMy4xMiwxMCwyLDguODgsMiw3LjVDMiw1LjQ1LDQuMTcsMi44Myw1LDJsMS40MSwxLjQxQzUuNDEsNC40Miw0LDYuNDMsNCw3LjVDNCw3Ljc4LDQuMjIsOCw0LjUsOHogTTgsMjEgbDMuNzUsMGw4LjA2LTguMDZsLTMuNzUtMy43NUw4LDE3LjI1TDgsMjF6IE0xMCwxOC4wOGw2LjA2LTYuMDZsMC45MiwwLjkyTDEwLjkyLDE5TDEwLDE5TDEwLDE4LjA4eiBNMjAuMzcsNi4yOSBjLTAuMzktMC4zOS0xLjAyLTAuMzktMS40MSwwbC0xLjgzLDEuODNsMy43NSwzLjc1bDEuODMtMS44M2MwLjM5LTAuMzksMC4zOS0xLjAyLDAtMS40MUwyMC4zNyw2LjI5eiIvPjwvc3ZnPg=="
+] as const
+async function upperGlyphFixture(digestOverride?: (algorithm: AlgorithmIdentifier, bytes: BufferSource) => Promise<ArrayBuffer>) {
+  const { webcrypto } = await import('node:crypto')
+  const f = fixture(true)
+  const digest = vi.fn(digestOverride ?? ((algorithm: AlgorithmIdentifier, bytes: BufferSource) => webcrypto.subtle.digest(algorithm, bytes)))
+  vi.stubGlobal('crypto', { subtle: { digest } })
+  const style = document.createElement('style')
+  style.textContent = upperOriginalUrls.map((url, i) => '.upper-original-' + i + '{background-image:url("' + url + '");background-size:18px 18px;background-position:50% 50%;background-repeat:no-repeat;width:28px;height:28px;position:static;opacity:.65;padding:0;border:0}').join('')
+  document.head.append(style)
+  const toolbar = document.createElement('div')
+  toolbar.className = 'geToolbarContainer'
+  toolbar.innerHTML = '<div class="geToolbar">' + upperOriginalUrls.map((_, i) => '<a class="geButton upper-original-' + i + '" title="Original ' + i + '"></a>').join('') + '<a class="geButton untrusted" style="background-image:url(data:image/svg+xml;base64,PHN2Zy8+)"></a></div>'
+  document.body.append(toolbar)
+  const targets = Array.from(toolbar.querySelectorAll<HTMLAnchorElement>('a')).slice(0, 3)
+  targets[1].style.setProperty('background-image', 'url("' + upperOriginalUrls[1] + '")', 'important')
+  targets[2].style.setProperty('opacity', '.75')
+  const outside = targets[0].cloneNode(true) as HTMLAnchorElement
+  document.body.append(outside)
+  const nativeStyle = window.getComputedStyle.bind(window)
+  vi.spyOn(window, 'getComputedStyle').mockImplementation((node, pseudo) => {
+    const value = nativeStyle(node)
+    return new Proxy(value, { get(css, key) {
+      if (pseudo) return key === 'content' ? 'none' : key === 'backgroundImage' ? 'none' : Reflect.get(css, key, css)
+      const defaults: Record<string, string> = { opacity: '1', filter: 'none', transform: 'none', mixBlendMode: 'normal', backdropFilter: 'none', boxShadow: 'none', clipPath: 'none', position: 'static', visibility: 'visible' }
+      const result = Reflect.get(css, key, css)
+      return typeof result === 'function' ? result.bind(css) : result || defaults[String(key)] || result
+    } })
+  })
+  for (const [i, node] of targets.entries()) node.getBoundingClientRect = () => new DOMRect(20 + i * 40, 20, 28, 28)
+  const original = targets.map(node => node.outerHTML), excluded = [outside, toolbar.querySelector('.untrusted')!].map(node => node.outerHTML)
+  const callbacks = targets.map(node => { const callback = vi.fn(); node.addEventListener('click', callback); return callback })
+  const settle = async (operation = 'apply') => {
+    await vi.waitFor(async () => { await f.paint(); expect(f.replies().some(reply => reply.operation === operation && reply.status === 'PAINTED')).toBe(true) }, { timeout: 1200, interval: 10 })
+  }
+  const assertOwned = () => {
+    targets.forEach((node, i) => {
+      expect(node.hasAttribute('data-frade-upper-glyph'), JSON.stringify({ i, html: node.outerHTML, digestCalls: digest.mock.calls.length, replies: f.replies(), background: window.getComputedStyle(node).backgroundImage })).toBe(true)
+      expect(node.style.backgroundImage).toBe('none')
+      expect(node.style.getPropertyValue('--frade-upper-icon-image')).toBe('url("' + upperOriginalUrls[i] + '")')
+      expect(node.parentElement).toBe(toolbar.firstElementChild)
+      expect(node.title).toBe('Original ' + i)
+      expect(window.getComputedStyle(node).opacity).toBe(i === 2 ? '0.75' : '0.65')
+    })
+    expect([outside, toolbar.querySelector('.untrusted')!].map(node => node.outerHTML)).toEqual(excluded)
+    f.assertSemantic()
+  }
+  return { ...f, digest, targets, toolbar, original, callbacks, settle, assertOwned }
+}
+it('P01-UPPER-017 exact original three masks acquire canonical paint and restore absent/important inline state on detach', async () => {
+  const f = await upperGlyphFixture(), before = document.documentElement.outerHTML
+  f.send('prepare'); expect(document.documentElement.outerHTML).toBe(before); expect(f.digest).not.toHaveBeenCalled()
+  f.send('apply'); await f.settle(); f.assertOwned()
+  expect(f.digest.mock.calls.length).toBeGreaterThanOrEqual(3)
+  f.targets.forEach(node => node.click()); f.callbacks.forEach(fn => expect(fn).toHaveBeenCalledTimes(1))
+  f.send('detach'); expect(f.targets.map(node => node.outerHTML)).toEqual(f.original); f.assertSemantic()
+})
+it('P01-UPPER-018 release retains active projection, rollback restores previous canonical theme, disposal restores originals', async () => {
+  const f = await upperGlyphFixture(); f.send('prepare'); f.send('apply'); await f.settle(); f.assertOwned()
+  f.send('release', context('apply')); f.assertOwned()
+  f.send('rollback', context('rollback', 0, 2), snapshot('light', 0)); await f.settle('rollback'); f.assertOwned()
+  expect(document.documentElement.style.getPropertyValue('--frade-frame-text-primary')).toBe(snapshot('light', 0).effectiveColors['text.primary'])
+  f.dispose(); expect(f.targets.map(node => node.outerHTML)).toEqual(f.original); f.assertSemantic()
+})
+it('P01-UPPER-018 passive replacement after release uses verified bytes without crypto and preserves newer vendor writes', async () => {
+  const f = await upperGlyphFixture(); f.send('prepare'); f.send('apply'); await f.settle(); f.assertOwned()
+  f.send('release', context('apply')); const calls = f.digest.mock.calls.length, old = f.targets[0]
+  const replacement = document.createElement('a'); replacement.className = old.className; replacement.title = old.title
+  replacement.getBoundingClientRect = old.getBoundingClientRect
+  old.replaceWith(replacement)
+  await vi.waitFor(() => expect(replacement.hasAttribute('data-frade-upper-glyph')).toBe(true))
+  expect(old.outerHTML).toBe(f.original[0]); expect(f.digest).toHaveBeenCalledTimes(calls)
+  replacement.style.backgroundImage = 'url("data:image/svg+xml;base64,PHN2Zy8+")'
+  await vi.waitFor(() => expect(replacement.hasAttribute('data-frade-upper-glyph')).toBe(false))
+  expect(replacement.style.backgroundImage).toBe('url("data:image/svg+xml;base64,PHN2Zy8+")')
+  expect(replacement.style.getPropertyValue('--frade-upper-icon-image')).toBe('')
+  expect(replacement.style.position).toBe(''); expect(f.digest).toHaveBeenCalledTimes(calls); f.assertSemantic()
+})
+it('P01-UPPER-019 released deferred verification has no late projection, positive cache publication or ACK', async () => {
+  const pending: { algorithm: AlgorithmIdentifier; bytes: BufferSource; resolve: (value: ArrayBuffer) => void }[] = []
+  const f = await upperGlyphFixture((algorithm, bytes) => new Promise(resolve => pending.push({ algorithm, bytes, resolve })))
+  f.send('prepare'); f.send('apply'); expect(f.digest).toHaveBeenCalled()
+  f.send('release', context('apply')); const html = f.targets.map(node => node.outerHTML), posts = f.replies().length
+  const { webcrypto } = await import('node:crypto')
+  for (const item of pending) item.resolve(await webcrypto.subtle.digest(item.algorithm, item.bytes))
+  await new Promise(resolve => setTimeout(resolve, 10)); await f.paint()
+  expect(f.targets.map(node => node.outerHTML)).toEqual(html); expect(f.replies()).toHaveLength(posts)
+  const calls = f.digest.mock.calls.length
+  f.send('prepare', context('prepare', 2, 2), snapshot('light', 2)); f.send('apply', context('apply', 2, 2))
+  expect(f.digest.mock.calls.length).toBeGreaterThan(calls); f.dispose(); f.assertSemantic()
+})
+it('P01-UPPER-019 rejected native digest refuses the real pending parent before painted and never becomes a late diagnostic', async () => {
+  const f = await upperGlyphFixture(async () => { throw Error('Controlled native digest refusal') })
+  const parentFrame = document.createElement('iframe'); document.body.append(parentFrame)
+  const parentPost = vi.spyOn(parentFrame.contentWindow!, 'postMessage').mockImplementation(() => {})
+  const diagnostic = vi.fn(), parent = createFrameParticipant(parentFrame, { id: 'frame', generation: 7, sessionId: 'window', onPresentationDiagnostic: diagnostic })
+  cleanup.push(() => { parent.dispose(); parentPost.mockRestore(); parentFrame.remove() })
+  let delivered = 0
+  const deliver = () => { for (; delivered < f.post.mock.calls.length; delivered++) window.dispatchEvent(new MessageEvent('message', { source: parentFrame.contentWindow, origin: 'frade://drawio', data: String(f.post.mock.calls[delivered][0]) })) }
+  const ready = parent.prepare(snapshot('dark', 1), context('prepare') as PhaseContext, new AbortController().signal)
+  f.send('prepare'); deliver(); const handle = await ready
+  const outcome = handle.apply(context('apply') as PhaseContext, new AbortController().signal).then(() => ({ status: 'PAINTED', message: '' }), error => ({ status: 'REFUSED', message: String(error) }))
+  f.send('apply'); await new Promise(resolve => setTimeout(resolve, 10)); await f.paint(); deliver()
+  expect(await outcome).toMatchObject({ status: 'REFUSED', message: expect.stringContaining('Controlled native digest refusal') })
+  expect(f.replies().filter(reply => reply.status === 'PAINTED')).toHaveLength(0)
+  expect(diagnostic).not.toHaveBeenCalled(); handle.dispose(); f.assertSemantic()
+})
+
+it('P01-UPPER-017 Chromium computed 18px auto preserves the pinned square original glyph geometry', async () => {
+  const f = await upperGlyphFixture()
+  f.targets.forEach(node => { node.style.backgroundSize = '18px auto' })
+  expect(f.targets.map(node => window.getComputedStyle(node).backgroundSize)).toEqual(['18px auto', '18px auto', '18px auto'])
+  // jsdom's reflected style attribute can lag its CSSOM priority. Assert every actual property.
+  const exactInline = (node: HTMLElement) => ({
+    attributes: Array.from(node.attributes).filter(attribute => attribute.name !== 'style').map(attribute => [attribute.name, attribute.value]),
+    stylePresent: node.hasAttribute('style'), cssText: node.style.cssText,
+    properties: Array.from(node.style).map(name => ({ name, value: node.style.getPropertyValue(name), priority: node.style.getPropertyPriority(name) })),
+  })
+  const original = f.targets.map(exactInline)
+  expect(original[1].properties.find(property => property.name === 'background-image')?.priority).toBe('important')
+  f.send('prepare'); f.send('apply'); await f.settle(); f.assertOwned()
+  f.dispose(); expect(f.targets.map(exactInline)).toEqual(original); f.assertSemantic()
+})
+
+
+for (const ending of ['superseded', 'detached', 'disposed', 'root-lost'] as const) {
+  it('P01-UPPER-019 deferred native verification is inert after ' + ending, async () => {
+    const pending: { algorithm: AlgorithmIdentifier; bytes: BufferSource; resolve: (value: ArrayBuffer) => void }[] = []
+    const f = await upperGlyphFixture((algorithm, bytes) => new Promise(resolve => pending.push({ algorithm, bytes, resolve })))
+    f.send('prepare'); f.send('apply'); expect(pending).toHaveLength(3)
+    if (ending === 'superseded') f.send('prepare', context('prepare', 2, 2), snapshot('light', 2))
+    if (ending === 'detached') f.send('detach')
+    if (ending === 'disposed') f.dispose()
+    if (ending === 'root-lost') document.documentElement.removeAttribute('data-frade-frame-runtime')
+    await Promise.resolve(); await Promise.resolve()
+    const html = document.documentElement.outerHTML, replies = f.replies()
+    const { webcrypto } = await import('node:crypto')
+    for (const item of pending) item.resolve(await webcrypto.subtle.digest(item.algorithm, item.bytes))
+    await new Promise(resolve => setTimeout(resolve, 10)); await f.paint()
+    expect(document.documentElement.outerHTML).toBe(html); expect(f.replies()).toEqual(replies)
+    expect(f.replies().some(reply => reply.status === 'PAINTED')).toBe(false)
+    if (ending === 'superseded') {
+      f.send('apply', context('apply', 2, 2)); expect(f.digest).toHaveBeenCalledTimes(6)
+    }
+    f.dispose(); f.assertSemantic()
+  })
+}
+it('P01-UPPER-019 native timeout rejects the actual pending parent exactly once and late completion cannot publish', async () => {
+  const pending: { algorithm: AlgorithmIdentifier; bytes: BufferSource; resolve: (value: ArrayBuffer) => void }[] = []
+  const f = await upperGlyphFixture((algorithm, bytes) => new Promise(resolve => pending.push({ algorithm, bytes, resolve })))
+  const parentFrame = document.createElement('iframe'); document.body.append(parentFrame)
+  const parentPost = vi.spyOn(parentFrame.contentWindow!, 'postMessage').mockImplementation(() => {})
+  const diagnostic = vi.fn(), parent = createFrameParticipant(parentFrame, { id: 'frame', generation: 7, sessionId: 'window', onPresentationDiagnostic: diagnostic })
+  cleanup.push(() => { parent.dispose(); parentPost.mockRestore(); parentFrame.remove() })
+  let delivered = 0
+  const deliver = () => { for (; delivered < f.post.mock.calls.length; delivered++) window.dispatchEvent(new MessageEvent('message', { source: parentFrame.contentWindow, origin: 'frade://drawio', data: String(f.post.mock.calls[delivered][0]) })) }
+  const ready = parent.prepare(snapshot('dark', 1), context('prepare') as PhaseContext, new AbortController().signal)
+  f.send('prepare'); deliver(); const handle = await ready
+  const settled = vi.fn(), outcome = handle.apply(context('apply') as PhaseContext, new AbortController().signal).then(() => { settled('PAINTED'); return '' }, error => { settled('REFUSED'); return String(error) })
+  f.send('apply')
+  await vi.waitFor(() => { deliver(); expect(settled).toHaveBeenCalledWith('REFUSED') }, { timeout: 1950, interval: 10 })
+  expect(await outcome).toContain('Upper glyph verification exceeded pending deadline')
+  expect(f.replies().filter(reply => reply.status === 'REFUSED')).toHaveLength(1)
+  expect(f.replies().filter(reply => reply.status === 'PAINTED')).toHaveLength(0)
+  const html = f.targets.map(node => node.outerHTML), replies = f.replies()
+  const { webcrypto } = await import('node:crypto')
+  for (const item of pending) item.resolve(await webcrypto.subtle.digest(item.algorithm, item.bytes))
+  await new Promise(resolve => setTimeout(resolve, 10)); await f.paint(); deliver()
+  expect(f.targets.map(node => node.outerHTML)).toEqual(html); expect(f.replies()).toEqual(replies)
+  expect(settled).toHaveBeenCalledTimes(1); expect(diagnostic).not.toHaveBeenCalled(); handle.dispose(); f.assertSemantic()
+})
+for (const released of [false, true]) {
+  it('P01-UPPER-018 selector loss and original replacement restore exact ownership with release=' + released, async () => {
+    const f = await upperGlyphFixture(); f.send('prepare'); f.send('apply'); await f.settle()
+    if (released) f.send('release', context('apply'))
+    const old = f.targets[0], calls = f.digest.mock.calls.length
+    document.body.append(old)
+    await vi.waitFor(() => expect(old.outerHTML).toBe(f.original[0]))
+    f.toolbar.firstElementChild!.append(old)
+    await vi.waitFor(() => expect(old.hasAttribute('data-frade-upper-glyph')).toBe(true))
+    const replacement = document.createElement('a'); replacement.className = old.className; replacement.title = old.title
+    replacement.getBoundingClientRect = old.getBoundingClientRect; old.replaceWith(replacement)
+    await vi.waitFor(() => expect(replacement.hasAttribute('data-frade-upper-glyph')).toBe(true))
+    expect(old.outerHTML).toBe(f.original[0]); expect(f.digest).toHaveBeenCalledTimes(calls)
+    f.dispose(); expect(replacement.outerHTML).toBe(f.original[0]); f.assertSemantic()
+  })
+}
+it('P01-UPPER-019 passive unknown bytes wait for a normal apply while an equivalent URL reuses exact verified bytes', async () => {
+  const f = await upperGlyphFixture(), second = f.targets[1], third = f.targets[2]
+  second.remove(); third.remove(); f.send('prepare'); f.send('apply'); await f.settle()
+  expect(f.digest).toHaveBeenCalledTimes(1); f.send('release', context('apply'))
+  f.toolbar.firstElementChild!.append(second)
+  await Promise.resolve(); await Promise.resolve(); await f.paint()
+  expect(second.hasAttribute('data-frade-upper-glyph')).toBe(false); expect(f.digest).toHaveBeenCalledTimes(1)
+  const bytes = atob(upperOriginalUrls[0].split(',')[1]), alternate = 'data:image/svg+xml,' + encodeURIComponent(bytes)
+  const first = f.targets[0]; first.style.setProperty('background-image', 'url("' + alternate + '")', 'important')
+  await vi.waitFor(() => expect(first.style.getPropertyValue('--frade-upper-icon-image')).toBe('url("' + alternate + '")'))
+  expect(f.digest).toHaveBeenCalledTimes(1)
+  f.send('prepare', context('prepare', 2, 2), snapshot('light', 2)); f.send('apply', context('apply', 2, 2))
+  await vi.waitFor(async () => { await f.paint(); expect(f.replies().some(reply => reply.status === 'PAINTED' && reply.context.generation === 2)).toBe(true) })
+  expect(second.hasAttribute('data-frade-upper-glyph')).toBe(true); expect(f.digest).toHaveBeenCalledTimes(2)
+  f.dispose(); expect(first.style.backgroundImage).toBe('url("' + alternate + '")'); expect(second.outerHTML).toBe(f.original[1]); f.assertSemantic()
+})
+it('P01-UPPER-018 settled observer performs no repeated writes and root scope loss restores originals', async () => {
+  const f = await upperGlyphFixture(); f.send('prepare'); f.send('apply'); await f.settle(); f.send('release', context('apply'))
+  const setters = f.targets.map(node => vi.spyOn(node.style, 'setProperty')), html = f.targets.map(node => node.outerHTML), calls = f.digest.mock.calls.length
+  for (let n = 0; n < 8; n++) { f.toolbar.title = 'unrelated observer ' + n; await Promise.resolve(); await Promise.resolve(); expect(f.targets.map(node => node.outerHTML)).toEqual(html) }
+  setters.forEach(setter => expect(setter).not.toHaveBeenCalled()); expect(f.digest).toHaveBeenCalledTimes(calls)
+  document.documentElement.removeAttribute('data-frade-frame-runtime')
+  await vi.waitFor(() => expect(f.targets.map(node => node.outerHTML)).toEqual(f.original)); f.assertSemantic()
+})
+it('P01-UPPER-019 more than 256 exact selector candidates refuse before hashing or painted acknowledgement', async () => {
+  const f = await upperGlyphFixture()
+  for (let n = f.toolbar.querySelectorAll('a.geButton').length; n < 257; n++) { const node = document.createElement('a'); node.className = 'geButton'; f.toolbar.firstElementChild!.append(node) }
+  f.send('prepare'); f.send('apply'); await f.paint()
+  expect(f.replies().filter(reply => reply.status === 'REFUSED').map(reply => reply.message)).toEqual(['Upper glyph candidate bound exceeded'])
+  expect(f.digest).not.toHaveBeenCalled(); expect(f.replies().some(reply => reply.status === 'PAINTED')).toBe(false); f.assertSemantic()
+})
+it('P01-UPPER-019 oversized decoded SVG stays unowned and never enters native verification', async () => {
+  const f = await upperGlyphFixture(); f.targets[0].style.backgroundImage = 'url("data:image/svg+xml;base64,' + btoa('<svg>' + ' '.repeat(4096) + '</svg>') + '")'
+  const oversized = f.targets[0].outerHTML; f.send('prepare'); f.send('apply'); await f.settle()
+  expect(f.targets[0].outerHTML).toBe(oversized); expect(f.digest).toHaveBeenCalledTimes(2)
+  expect(f.targets.slice(1).every(node => node.hasAttribute('data-frade-upper-glyph'))).toBe(true); f.assertSemantic()
+})
+it('P01-UPPER-019 continuing new source churn refuses after three bounded native verification passes', async () => {
+  const { webcrypto } = await import('node:crypto')
+  let calls = 0
+  const f: Awaited<ReturnType<typeof upperGlyphFixture>> = await upperGlyphFixture(async (algorithm, bytes) => {
+    const hash = await webcrypto.subtle.digest(algorithm, bytes), index = calls++ % 3
+    f.targets[index].style.backgroundImage = 'url("data:image/svg+xml;base64,' + btoa('<svg>' + calls + '</svg>') + '")'
+    return hash
+  })
+  f.send('prepare'); f.send('apply')
+  await vi.waitFor(async () => { await f.paint(); expect(f.replies().some(reply => reply.status === 'REFUSED')).toBe(true) })
+  expect(f.replies().filter(reply => reply.status === 'REFUSED').map(reply => reply.message)).toEqual(['Upper glyph resources kept changing during verification'])
+  expect(f.digest).toHaveBeenCalledTimes(9); expect(f.replies().some(reply => reply.status === 'PAINTED')).toBe(false)
+  expect(f.targets.every(node => !node.hasAttribute('data-frade-upper-glyph'))).toBe(true); f.assertSemantic()
+})

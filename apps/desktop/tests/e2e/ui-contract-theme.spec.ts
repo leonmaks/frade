@@ -3739,3 +3739,327 @@ for (const kind of ['native', 'frame'] as const) {
     } finally { if (!closed) await finishDiagramFixture(f.app) }
   })
 }
+
+// P01-UPPER-THREE V6: exact all-pixel calibration. Historical PNG helpers stay unchanged.
+const upperTrusted = [
+  { hash: '0a22cca4e14802d225bb7ef9dd30d4a42b157389a1681b84975349fd18a00b3a', key: 'viewPanels', kind: 'menu' },
+  { hash: '4dc5547840d699651cf7d3059a91d575cddaf80451ab85a7c41ed1d7c7998b24', key: 'insert', kind: 'menu' },
+  { hash: 'e78bd38fea8a799c13ffc0fbbab4d9ca6a1ee0ee57360c68596b58e4fe68da9a', key: 'insertFreehand', kind: 'action' },
+] as const
+function upperDecodePng(bytes: Buffer) {
+  let width = 0, height = 0, channels = 0
+  const blocks: Buffer[] = []
+  expect(bytes.subarray(0, 8)).toEqual(Buffer.from([137,80,78,71,13,10,26,10]))
+  for (let at = 8; at < bytes.length;) {
+    const size = bytes.readUInt32BE(at), type = bytes.toString('ascii', at + 4, at + 8), data = bytes.subarray(at + 8, at + 8 + size)
+    if (type === 'IHDR') { width = data.readUInt32BE(0); height = data.readUInt32BE(4); channels = data[9] === 6 ? 4 : data[9] === 2 ? 3 : 0; expect(data[8]).toBe(8); expect(data[12]).toBe(0); expect(channels).toBeGreaterThan(0) }
+    if (type === 'IDAT') blocks.push(data)
+    at += size + 12
+  }
+  const input = inflateSync(Buffer.concat(blocks)), stride = width * channels, pixels = Buffer.alloc(stride * height)
+  let at = 0
+  for (let y = 0; y < height; y++) { const filter = input[at++]; for (let x = 0; x < stride; x++) {
+    const i = y * stride + x, left = x >= channels ? pixels[i - channels] : 0, up = y > 0 ? pixels[i - stride] : 0, diagonal = y > 0 && x >= channels ? pixels[i - stride - channels] : 0
+    let predictor = 0
+    if (filter === 1) predictor = left
+    else if (filter === 2) predictor = up
+    else if (filter === 3) predictor = Math.floor((left + up) / 2)
+    else if (filter === 4) { const p = left + up - diagonal, a = Math.abs(p - left), b = Math.abs(p - up), c = Math.abs(p - diagonal); predictor = a <= b && a <= c ? left : b <= c ? up : diagonal }
+    else expect(filter).toBe(0)
+    pixels[i] = (input[at++] + predictor) & 255
+  } }
+  expect(at).toBe(input.length)
+  return { width, height, channels, pixels }
+}
+function upperPixels(screen: ReturnType<typeof upperDecodePng>, x: number, y: number, size = 18) {
+  expect(Number.isInteger(x) && Number.isInteger(y)).toBe(true)
+  expect(x).toBeGreaterThanOrEqual(0); expect(y).toBeGreaterThanOrEqual(0)
+  expect(x + size).toBeLessThanOrEqual(screen.width); expect(y + size).toBeLessThanOrEqual(screen.height)
+  const result: number[][] = []
+  for (let yy = 0; yy < size; yy++) for (let xx = 0; xx < size; xx++) {
+    const at = ((y + yy) * screen.width + x + xx) * screen.channels
+    if (screen.channels === 4) expect(screen.pixels[at + 3]).toBe(255)
+    result.push([...screen.pixels.subarray(at, at + 3)])
+  }
+  return result
+}
+const upperEqual = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b)
+function upperContrast(a: number[], b: number[]) {
+  const luminance = (rgb: number[]) => rgb.map(x => { x /= 255; return x <= .04045 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4 }).reduce((n, x, i) => n + x * [.2126,.7152,.0722][i], 0)
+  const x = luminance(a), y = luminance(b)
+  return (Math.max(x, y) + .05) / (Math.min(x, y) + .05)
+}
+async function upperTargets(f: FuiFixture) {
+  return f.page.frameLocator('iframe').locator('body').evaluate(async (_, trusted) => {
+    const result = [], nodes = Array.from(document.querySelectorAll<HTMLElement>('html[data-frade-frame-runtime="1"] .geToolbarContainer .geToolbar a.geButton'))
+    for (const [index, node] of nodes.entries()) {
+      const css = getComputedStyle(node), image = css.backgroundImage === 'none' ? css.getPropertyValue('--frade-upper-icon-image').trim() : css.backgroundImage
+      const url = image.match(/^url\("(.*)"\)$/)?.[1]
+      if (!url?.startsWith('data:image/svg+xml;base64,')) continue
+      const bytes = Uint8Array.from(atob(url.split(',')[1]), c => c.charCodeAt(0)), hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))).map(c => c.toString(16).padStart(2, '0')).join('')
+      const identity = trusted.find(x => x.hash === hash)
+      if (identity) result.push({ ...identity, index, url, bytes: [...bytes] })
+    }
+    return result
+  }, upperTrusted)
+}
+async function upperObservation(f: FuiFixture, target: Awaited<ReturnType<typeof upperTargets>>[number]) {
+  const node = f.page.frameLocator('iframe').locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index)
+  const record = await node.evaluate(async (node, identity) => {
+    await document.fonts.ready; await new Promise<void>(r => requestAnimationFrame(() => requestAnimationFrame(() => r())))
+    const rgba = (s: string) => (s.match(/[\d.]+/g) || []).map(Number)
+    const style = (n: Element, pseudo?: string) => {
+      const s = getComputedStyle(n, pseudo), r = n.getBoundingClientRect()
+      return { background: rgba(s.backgroundColor), color: rgba(s.color), opacity: Number(s.opacity), filter: s.filter, transform: s.transform, blend: s.mixBlendMode, backdropFilter: s.backdropFilter, shadow: s.boxShadow, backgroundImage: s.backgroundImage, backgroundSize: s.backgroundSize, backgroundPosition: s.backgroundPosition, backgroundOrigin: s.backgroundOrigin, backgroundRepeat: s.backgroundRepeat, clipPath: s.clipPath, overflowX: s.overflowX, overflowY: s.overflowY, display: s.display, visibility: s.visibility, rect: r.toJSON(), border: [s.borderLeftWidth,s.borderTopWidth,s.borderRightWidth,s.borderBottomWidth].map(parseFloat), content: s.content, position: s.position }
+    }
+    const s = style(node), p = getComputedStyle(node, '::before'), after = getComputedStyle(node, '::after'), r = node.getBoundingClientRect()
+    const x = r.x + s.border[0] + parseFloat(p.left), y = r.y + s.border[1] + parseFloat(p.top)
+    const chain = []; for (let n = node.parentElement; n; n = n.parentElement) chain.push(style(n))
+    const ancestor = chain.findIndex(n => n.background.length === 3 || n.background[3] === 1)
+    const ui = (window as any).__p01Ui, capability = identity.kind === 'menu' ? ui.menus.get(identity.key) : ui.actions.get(identity.key)
+    const image = new Image(); image.src = identity.url; await image.decode()
+    const raster = (size: number) => { const canvas = document.createElement('canvas'); canvas.width = canvas.height = size; const ctx = canvas.getContext('2d')!; ctx.drawImage(image, 0, 0, size, size); return [...ctx.getImageData(0, 0, size, size).data] }
+    return { identity, connected: node.isConnected, owned: node.hasAttribute('data-frade-upper-glyph'), dpr: devicePixelRatio, fonts: document.fonts.status, style: s, chain, ancestor, target: s.background, underlying: ancestor >= 0 ? chain[ancestor].background : [], foreground: rgba(p.backgroundColor), canonical: s.color, capability: { exists: !!capability, enabled: identity.kind === 'action' ? capability?.isEnabled() : capability?.enabled }, actualState: { hover: node.matches(':hover'), active: node.matches(':active'), focus: node.matches(':focus') }, media: { forced: matchMedia('(forced-colors:active)').matches, coarse: matchMedia('(pointer:coarse)').matches, reduced: matchMedia('(prefers-reduced-motion:reduce)').matches }, interference: node.children.length > 0 || !['none','normal'].includes(after.content), unobscured: Number.isFinite(x) && Number.isFinite(y) && [[1,1],[16,1],[1,16],[16,16],[9,9]].every(([dx,dy]) => document.elementFromPoint(x+dx,y+dy) === node), pseudo: { x,y,width:parseFloat(p.width),height:parseFloat(p.height),mask:p.maskImage,maskSize:p.maskSize,maskRepeat:p.maskRepeat,maskPosition:p.maskPosition,opacity:Number(p.opacity),filter:p.filter,blend:p.mixBlendMode,transform:p.transform,content:p.content,backgroundImage:p.backgroundImage }, natural: raster(24), alpha: raster(18).filter((_,i) => i%4===3) }
+  }, target)
+  const frame = await f.page.locator('iframe').boundingBox()
+  expect(frame).not.toBeNull()
+  return { ...record, frame: frame!, x: frame!.x + record.pseudo.x, y: frame!.y + record.pseudo.y }
+}
+
+import type { TestInfo } from '@playwright/test'
+type UpperObservation = Awaited<ReturnType<typeof upperObservation>>
+type UpperAtlas = { back: number[]; underlying: number[]; rows: { c: number; glyph: number[][]; full: number[]; empty: number[][] }[] }
+const upperReferenceMain = "const {app,BrowserWindow}=require('electron');if(!process.env.FRADE_UPPER_V6_PROFILE)throw Error('Isolated profile required');app.setPath('userData',process.env.FRADE_UPPER_V6_PROFILE);app.whenReady().then(async()=>{const w=new BrowserWindow({width:1600,height:850,useContentSize:true,show:true,webPreferences:{sandbox:true,contextIsolation:true,nodeIntegration:false}});await w.loadURL('data:text/html;charset=utf-8,'+encodeURIComponent('<!doctype html><html><head><style>html,body{margin:0;padding:0} .target{position:absolute;width:28px;height:28px;border:0;padding:0;box-sizing:border-box}.target::before{content:\"\";position:absolute;left:5px;top:5px;width:18px;height:18px;background-color:var(--ink);mask-image:var(--image);mask-size:contain;mask-position:center;mask-repeat:no-repeat;pointer-events:none;forced-color-adjust:none}.probe::before{mask-image:none}.empty::before{mask-image:url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PHBhdGggZmlsbD0iYmxhY2siIGZpbGwtb3BhY2l0eT0iMCIgZD0iTTAgMGgxOHYxOEgweiIvPjwvc3ZnPg==\")}</style></head><body data-frade-v5-reference=\"1\"></body></html>'));});app.on('window-all-closed',()=>app.quit());"
+async function upperReferenceHost() {
+  const profile = await mkdtemp(join(tmpdir(), 'frade-upper-v6-permanent-')), main = join(profile, 'reference.cjs')
+  await writeFile(main, upperReferenceMain)
+  const app = await electron.launch({ args: [main], env: { ...process.env, FRADE_UPPER_V6_PROFILE: profile } })
+  try {
+    expect(await app.evaluate(() => process.versions.electron)).toBe('44.4.5')
+    const page = await app.firstWindow(); await page.locator('body[data-frade-v5-reference="1"]').waitFor({ state: 'attached' })
+    return { app, page }
+  } catch (error) { await app.close(); throw error }
+}
+function upperBounds(screen: ReturnType<typeof upperDecodePng>, x: number, y: number, alpha: number[], atlas: UpperAtlas, foreground: number[]) {
+  const actual = upperPixels(screen, x, y), holes = actual.filter((_, i) => alpha[i] === 0)
+  if (!holes.length || !holes.every(p => upperEqual(p, atlas.back))) return { status: 'NOT_MEASURED', reason: 'NONUNIFORM_OBSERVED_BACKDROP', actual }
+  const candidates = [0,1,2].map(channel => atlas.rows.filter(row => row.glyph.every((p,i) => p[channel] === actual[i][channel])).map(row => row.c))
+  if (candidates.some(c => !c.length || c.length === 256)) return { status: 'NOT_MEASURED', reason: 'EMPTY_OR_UNINFORMATIVE_COMPATIBLE_SET', actual, candidates }
+  const possibilities: { source: number[]; effective: number[]; ratio: number }[] = []
+  for (const r of candidates[0]) for (const g of candidates[1]) for (const b of candidates[2]) {
+    const effective = [atlas.rows[r].full[0],atlas.rows[g].full[1],atlas.rows[b].full[2]]
+    possibilities.push({ source: [r,g,b], effective, ratio: upperContrast(effective,atlas.back) })
+  }
+  const min = Math.min(...possibilities.map(p => p.ratio)), max = Math.max(...possibilities.map(p => p.ratio)), canonicalMember = foreground.length === 3 && foreground.every((c,i) => candidates[i].includes(c))
+  return { status: max < 3 ? 'FAIL' : min >= 3 && canonicalMember ? 'PASS' : 'NOT_MEASURED', min,max,canonicalMember,candidates,possibilities,actual,background:atlas.back,threshold:3 }
+}
+async function upperCalibrate(page: Page, record: UpperObservation, info: TestInfo, name: string) {
+  const width = record.style.rect.width, height = record.style.rect.height, strideX = Math.ceil(width) + 4, strideY = Math.ceil(height) + 4
+  await page.setViewportSize({ width: strideX * 48 + 40, height: strideY * 16 + 30 })
+  await page.emulateMedia({ forcedColors: record.media.forced ? 'active' : 'none', reducedMotion: record.media.reduced ? 'reduce' : 'no-preference' })
+  const mediaSession = await page.context().newCDPSession(page)
+  await mediaSession.send('Emulation.setTouchEmulationEnabled', { enabled: record.media.coarse, maxTouchPoints: 1 })
+  expect(await page.evaluate(() => matchMedia('(pointer:coarse)').matches)).toBe(record.media.coarse)
+  await mediaSession.detach()
+  const observation = await page.evaluate(async ({ record, width, height, strideX, strideY }) => {
+    const rgb = (v: number[]) => 'rgb(' + v.join(',') + ')'
+    document.body.replaceChildren(); document.body.style.cssText = 'margin:0;padding:0;forced-color-adjust:none;background-color:' + rgb(record.underlying)
+    document.documentElement.style.cssText = 'forced-color-adjust:none;background-color:' + rgb(record.underlying)
+    const style = document.createElement('style'); style.textContent = '.target{forced-color-adjust:none}.target::before{left:var(--gx);top:var(--gy)}'; document.body.append(style)
+    const gx = record.pseudo.x - record.style.rect.x, gy = record.pseudo.y - record.style.rect.y, tiles = []
+    for (let c = 0; c < 256; c++) {
+      const x = (c % 16) * strideX * 3, y = Math.floor(c/16) * strideY
+      const add = (kind: string, dx: number) => { const node = document.createElement('div'); node.className = 'target ' + kind; node.style.cssText = 'left:'+(x+dx)+'px;top:'+y+'px;width:'+width+'px;height:'+height+'px;--gx:'+gx+'px;--gy:'+gy+'px;background-color:'+rgb(record.target)+';opacity:'+record.style.opacity+';--ink:'+rgb([c,c,c])+';--image:url("'+record.identity.url+'")'; document.body.append(node); return node }
+      add('',0); add('probe',strideX); add('empty',2*strideX)
+      tiles.push({ c, glyph:{x:x+gx,y:y+gy}, probe:{x:x+strideX+gx,y:y+gy}, empty:{x:x+2*strideX+gx,y:y+gy} })
+    }
+    const image = new Image(); image.src = record.identity.url; await image.decode(); await document.fonts.ready; await new Promise<void>(r => requestAnimationFrame(() => requestAnimationFrame(() => r())))
+    return { tiles, under:{x:strideX*48+5,y:5}, fonts:document.fonts.status,dpr:devicePixelRatio,forced:matchMedia('(forced-colors:active)').matches,reduced:matchMedia('(prefers-reduced-motion:reduce)').matches,html:document.documentElement.outerHTML }
+  }, { record, width,height,strideX,strideY })
+  expect(observation.dpr).toBe(1); expect(observation.fonts).toBe('loaded'); expect(observation.forced).toBe(record.media.forced); expect(observation.reduced).toBe(record.media.reduced)
+  const raw = await page.screenshot({ path: info.outputPath(name+'-atlas.png') }), screen = upperDecodePng(raw), underlying = upperPixels(screen,observation.under.x,observation.under.y)
+  expect(underlying.every(p => upperEqual(p,record.underlying))).toBe(true)
+  const rows = observation.tiles.map(t => {
+    const glyph = upperPixels(screen,t.glyph.x,t.glyph.y), probe = upperPixels(screen,t.probe.x,t.probe.y), empty = upperPixels(screen,t.empty.x,t.empty.y)
+    expect(probe.every(p => upperEqual(p,probe[0]))).toBe(true); expect(empty.every(p => upperEqual(p,empty[0]))).toBe(true)
+    return { c:t.c,glyph,full:probe[0],empty }
+  })
+  const atlas: UpperAtlas = { back:rows[0].empty[0],underlying:record.underlying,rows }
+  expect(rows.every(r => upperEqual(r.empty[0],atlas.back))).toBe(true)
+  expect(upperEqual(rows[0].glyph,rows[255].glyph)).toBe(false)
+  await writeFile(info.outputPath(name+'-atlas.json'),JSON.stringify({ screenshotSha256:fuiHash(raw),record,observation,atlas }))
+  const controls = []
+  for (const [index, color] of [record.foreground,[0,0,0],[255,255,255],[21,187,93],[207,39,168]].entries()) {
+    await page.evaluate(async ({ color,record,strideX }) => {
+      const nodes = [...document.querySelectorAll<HTMLElement>('.target')]; nodes.slice(3).forEach(n=>n.remove()); for(const n of nodes.slice(0,3)) n.style.setProperty('--ink','rgb('+color.join(',')+')')
+      const image = new Image(); image.src=record.identity.url; await image.decode(); await new Promise<void>(r=>requestAnimationFrame(()=>requestAnimationFrame(()=>r())))
+      return strideX
+    },{color,record,strideX})
+    const png = await page.screenshot({path:info.outputPath(name+'-mixed-'+index+'.png')}), pixels=upperDecodePng(png),t=observation.tiles[0],full=upperPixels(pixels,t.probe.x,t.probe.y),empty=upperPixels(pixels,t.empty.x,t.empty.y),bound=upperBounds(pixels,t.glyph.x,t.glyph.y,record.alpha,atlas,color)
+    expect(full.every(p=>upperEqual(p,full[0]))).toBe(true); expect(empty.every(p=>upperEqual(p,atlas.back))).toBe(true)
+    expect(bound.canonicalMember).toBe(true); expect(bound.possibilities?.some(p=>upperEqual(p.effective,full[0]))).toBe(true)
+    const ratio=upperContrast(full[0],atlas.back);expect(bound.min).toBeLessThanOrEqual(ratio);expect(bound.max).toBeGreaterThanOrEqual(ratio)
+    if(bound.status==='NOT_MEASURED'){expect(bound.min).toBeLessThan(3);expect(bound.max).toBeGreaterThanOrEqual(3)} else expect(bound.status).toBe(ratio>=3?'PASS':'FAIL')
+    controls.push({ color,bound,actualFull:full[0],actualRatio:ratio,screenshotSha256:fuiHash(png) })
+  }
+  await writeFile(info.outputPath(name+'-mixed-controls.json'),JSON.stringify({controls}))
+  return atlas
+}
+function upperAssertComposition(record: UpperObservation) {
+  expect(record.connected).toBe(true); expect(record.owned).toBe(true); expect(record.capability.exists).toBe(true); expect(typeof record.capability.enabled).toBe('boolean')
+  expect(record.dpr).toBe(1); expect(record.fonts).toBe('loaded'); expect(record.style.backgroundImage).toBe('none')
+  expect(record.pseudo.mask).toBe('url("'+record.identity.url+'")'); expect(record.pseudo.width).toBe(18);expect(record.pseudo.height).toBe(18)
+  expect(record.pseudo.opacity).toBe(1);expect(record.pseudo.maskSize).toBe('contain');expect(record.pseudo.maskRepeat).toBe('no-repeat');expect(record.pseudo.maskPosition).toBe('50% 50%')
+  expect(record.foreground).toEqual(record.canonical);expect(record.foreground).toHaveLength(3);expect(record.target).toHaveLength(3);expect(record.underlying).toHaveLength(3)
+  expect([1,.65,.75]).toContain(record.style.opacity);expect(record.interference).toBe(false);expect(record.unobscured).toBe(true)
+  for(const style of [record.style,record.pseudo,...record.chain]) { expect(style.filter).toBe('none');expect(style.transform).toBe('none');expect(style.blend).toBe('normal');expect(style.backgroundImage).toBe('none') }
+  expect(record.style.clipPath).toBe('none');expect(record.style.shadow).toBe('none');expect(record.style.backdropFilter).toBe('none')
+  expect(record.ancestor).toBeGreaterThanOrEqual(0)
+  for(const [index,ancestor] of record.chain.entries()) {
+    expect(ancestor.opacity).toBe(1);expect(ancestor.shadow).toBe('none');expect(ancestor.backdropFilter).toBe('none');expect(ancestor.clipPath).toBe('none')
+    if(index<record.ancestor)expect(ancestor.background).toEqual([0,0,0,0])
+    if(index===record.ancestor||ancestor.overflowX!=='visible'||ancestor.overflowY!=='visible') {expect(record.pseudo.x).toBeGreaterThanOrEqual(ancestor.rect.x);expect(record.pseudo.y).toBeGreaterThanOrEqual(ancestor.rect.y);expect(record.pseudo.x+18).toBeLessThanOrEqual(ancestor.rect.right);expect(record.pseudo.y+18).toBeLessThanOrEqual(ancestor.rect.bottom)}
+  }
+  expect(record.alpha.some(a=>a>0)).toBe(true);expect(record.alpha.some(a=>a===0)).toBe(true);expect(record.natural.filter((_,i)=>i%4===3)).toContain(255)
+}
+for(const mode of ['light','dark','high-contrast'] as const)for(const density of ['compact','comfortable'] as const){
+  // eslint-disable-next-line no-empty-pattern
+  test('P01-UPPER-017 actual canonical original glyph raster '+mode+' '+density,async({},info)=>{
+    test.setTimeout(300000)
+    const f=await diagramFixture('frame',{mode,density},page=>page.setViewportSize({width:1280,height:850}))
+    const samples: { name:string;record:UpperObservation;raw:Buffer }[]=[]
+    try {
+      const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)},targets=await upperTargets(f)
+      expect(targets.map(t=>t.hash).sort()).toEqual(upperTrusted.map(t=>t.hash).sort())
+      for(const target of targets){
+        const node=f.page.frameLocator('iframe').locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index)
+        for(const state of ['default','hover','pressed'] as const){
+          if(state==='default')await f.page.mouse.move(1,1)
+          if(state==='hover')await node.hover()
+          if(state==='pressed')await f.page.mouse.down()
+          const record=await upperObservation(f,target),name=target.key+'-'+state,raw=await f.page.screenshot({path:info.outputPath(name+'.png')})
+          await writeFile(info.outputPath(name+'.json'),JSON.stringify({record,screenshotSha256:fuiHash(raw),visualApproval:'NOT_APPROVED'}))
+          if(state==='pressed')expect(record.actualState.active).toBe(true)
+          upperAssertComposition(record);samples.push({name,record,raw})
+        }
+        await f.page.mouse.move(1,1);await f.page.mouse.up();await f.page.keyboard.press('Escape')
+      }
+      const after={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)}
+      await writeFile(info.outputPath('preservation.json'),JSON.stringify({before,after}));expect(after).toEqual(before)
+    } finally {await finishDiagramFixture(f.app)}
+    const reference=await upperReferenceHost()
+    try {for(const sample of samples){
+      const atlas=await upperCalibrate(reference.page,sample.record,info,sample.name),bound=upperBounds(upperDecodePng(sample.raw),sample.record.x,sample.record.y,sample.record.alpha,atlas,sample.record.foreground)
+      await writeFile(info.outputPath(sample.name+'-proof.json'),JSON.stringify({actualScreenshotSha256:fuiHash(sample.raw),bound,measure:'effective full-coverage paint bound, not antialias pixel minimum'}))
+      expect(sample.record.capability.enabled).toBe(true);expect(bound.status).toBe('PASS');expect(bound.canonicalMember).toBe(true);expect(bound.min).toBeGreaterThanOrEqual(3)
+    }}finally{await reference.app.close()}
+  })
+}
+
+
+async function upperPinIdentity(f: FuiFixture, targets: Awaited<ReturnType<typeof upperTargets>>) {
+  await f.page.locator('iframe').evaluate(node => { (window as any).__upperFrame = node })
+  await f.page.frameLocator('iframe').locator('body').evaluate((_, targets) => {
+    const ui = (window as any).__p01Ui
+    ;(window as any).__fuiUi = ui; (window as any).__fuiGraph = ui.editor.graph
+    const nodes = document.querySelectorAll('.geToolbarContainer .geToolbar a.geButton')
+    ;(window as any).__upperIdentity = { ui, graph: ui.editor.graph, toolbar: document.querySelector('.geToolbarContainer'),
+      targets: targets.map(t => { const node = nodes[t.index], capability = t.kind === 'menu' ? ui.menus.get(t.key) : ui.actions.get(t.key); return { node, capability, funct: capability.funct, key: t.key, kind: t.kind, title: node.getAttribute('title'), tabIndex: (node as HTMLElement).tabIndex, aria: [...node.attributes].filter(a => a.name.startsWith('aria-')).map(a => [a.name,a.value]) } }) }
+  }, targets)
+}
+async function upperCheckIdentity(f: FuiFixture) {
+  expect(await f.page.locator('iframe').evaluate(node => node === (window as any).__upperFrame)).toBe(true)
+  const result = await f.page.frameLocator('iframe').locator('body').evaluate(() => {
+    const saved = (window as any).__upperIdentity, ui = (window as any).__p01Ui
+    return { ui: ui === saved.ui, graph: ui.editor.graph === saved.graph, toolbar: document.querySelector('.geToolbarContainer') === saved.toolbar,
+      targets: saved.targets.map((t: any) => { const c = t.kind === 'menu' ? ui.menus.get(t.key) : ui.actions.get(t.key); return { connected: t.node.isConnected, originalParent: saved.toolbar.contains(t.node), capability: c === t.capability, handler: c.funct === t.funct, title: t.node.getAttribute('title') === t.title, tabIndex: t.node.tabIndex === t.tabIndex, aria: JSON.stringify([...t.node.attributes].filter((a: any) => a.name.startsWith('aria-')).map((a: any) => [a.name,a.value])) === JSON.stringify(t.aria) } }) }
+  })
+  expect(result.ui).toBe(true); expect(result.graph).toBe(true); expect(result.toolbar).toBe(true)
+  for (const target of result.targets) for (const preserved of Object.values(target)) expect(preserved).toBe(true)
+  return result
+}
+for (const mode of ['light','dark','high-contrast'] as const) for (const density of ['compact','comfortable'] as const) {
+  // eslint-disable-next-line no-empty-pattern
+  test('P01-UPPER-017 expanded real viewport text and media raster ' + mode + ' ' + density, async ({}, info) => {
+    test.setTimeout(600000)
+    const f = await diagramFixture('frame',{mode,density},page=>page.setViewportSize({width:1280,height:850}))
+    const samples: {name:string;record:UpperObservation;raw:Buffer}[] = [], limitations: unknown[] = [], preservation: unknown[] = []
+    let mediaSession: Awaited<ReturnType<ReturnType<Page['context']>['newCDPSession']>> | undefined
+    try {
+      const targets = await upperTargets(f); expect(targets).toHaveLength(3); await upperPinIdentity(f,targets)
+      const frame = f.page.frameLocator('iframe')
+      for (const scenario of ['wide','narrow','text200','forced-coarse-reduced-text200']) {
+        await f.page.setViewportSize(scenario==='wide'?{width:1600,height:900}:scenario==='narrow'?{width:850,height:650}:{width:1280,height:850})
+        if (scenario==='text200') {
+          const fonts = await frame.locator('body').evaluate(() => {
+            const nodes = [...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')]
+            const before = nodes.map(node=>parseFloat(getComputedStyle(node).fontSize))
+            nodes.forEach((node,i)=>node.style.setProperty('font-size',before[i]*2+'px','important'))
+            return nodes.map((node,i)=>({before:before[i],after:parseFloat(getComputedStyle(node).fontSize)}))
+          })
+          expect(fonts.length).toBeGreaterThan(3); for(const font of fonts) expect(font.after).toBe(font.before*2)
+          await writeFile(info.outputPath('actual-text200.json'),JSON.stringify(fonts))
+        }
+        if (scenario.startsWith('forced')) {
+          const previousRevision = await frame.locator('html').getAttribute('data-frade-frame-revision')
+          await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'})
+          mediaSession = await f.page.context().newCDPSession(f.page.frames().find(frame=>frame.url().startsWith('frade://drawio/'))!)
+          await mediaSession.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1})
+          await expect.poll(()=>frame.locator('html').evaluate(node=>({forced:matchMedia('(forced-colors:active)').matches,coarse:matchMedia('(pointer:coarse)').matches,reduced:matchMedia('(prefers-reduced-motion:reduce)').matches,theme:node.getAttribute('data-frade-frame-theme')}))).toEqual({forced:true,coarse:true,reduced:true,theme:mode})
+          await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-revision')).not.toBe(previousRevision)
+          await expect.poll(()=>frame.locator('html').evaluate(node=>getComputedStyle(node).getPropertyValue('--frade-frame-text-primary').trim())).toBe('CanvasText')
+          await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+        }
+        // Native responsive layout settles asynchronously after resize; preserve the full settled state.
+        const readiness: { at:number; state:unknown; frame:unknown }[]=[]
+        let stable=0, previous=''
+        await expect.poll(async()=>{
+          const state=await fuiSemantics(f,'frame'),box=await f.page.locator('iframe').boundingBox(),current=JSON.stringify({state,box})
+          readiness.push({at:Date.now(),state,frame:box});stable=current===previous?stable+1:0;previous=current;return stable
+        },{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5)
+        await writeFile(info.outputPath(scenario+'-readiness.json'),JSON.stringify(readiness))
+        const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f),identity:await upperCheckIdentity(f)}
+        expect((before.semantics as any).uiIdentity).toBe(true);expect((before.semantics as any).graphIdentity).toBe(true)
+        for(const target of targets) {
+          const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index)
+          for(const state of ['default','hover','pressed'] as const) {
+            if(state==='default')await f.page.mouse.move(1,1)
+            if(state==='hover')await node.hover()
+            if(state==='pressed')await f.page.mouse.down()
+            const record=await upperObservation(f,target),name=scenario+'-'+target.key+'-'+state,raw=await f.page.screenshot({path:info.outputPath(name+'.png')})
+            await writeFile(info.outputPath(name+'.json'),JSON.stringify({record,screenshotSha256:fuiHash(raw),visualApproval:'NOT_APPROVED'}))
+            if(state==='pressed')expect(record.actualState.active).toBe(true)
+            samples.push({name,record,raw})
+          }
+          await f.page.mouse.move(1,1);await f.page.mouse.up();await f.page.keyboard.press('Escape')
+          const focus=await node.evaluate(node=>{node.focus();return{focused:document.activeElement===node,tabIndex:node.tabIndex,href:node.getAttribute('href')}})
+          if(!focus.focused)limitations.push({scenario,key:target.key,state:'focus',status:'BLOCKED_UNAVAILABLE_ORIGINAL_STATE',actual:focus})
+          else {
+            const record=await upperObservation(f,target),name=scenario+'-'+target.key+'-focus',raw=await f.page.screenshot({path:info.outputPath(name+'.png')})
+            await writeFile(info.outputPath(name+'.json'),JSON.stringify({record,screenshotSha256:fuiHash(raw),visualApproval:'NOT_APPROVED'}));samples.push({name,record,raw})
+            await node.evaluate(node=>node.blur())
+          }
+          limitations.push({scenario,key:target.key,state:'disabled',status:'NOT_RUN_NO_ORIGINAL_DISABLED_TRIGGER_YET'})
+        }
+        const after={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f),identity:await upperCheckIdentity(f)}
+        preservation.push({scenario,before,after});expect(after).toEqual(before)
+      }
+    } finally {
+      await writeFile(info.outputPath('expanded-preservation.json'),JSON.stringify(preservation))
+      await writeFile(info.outputPath('capability-limitations.json'),JSON.stringify(limitations))
+      if(mediaSession)await mediaSession.detach()
+      await finishDiagramFixture(f.app)
+    }
+    for(const sample of samples)upperAssertComposition(sample.record)
+    const reference=await upperReferenceHost(),cache=new Map<string,{atlas:UpperAtlas;name:string}>()
+    try {for(const sample of samples) {
+      const r=sample.record
+      const key=JSON.stringify({identity:r.identity,dimensions:[r.style.rect.width,r.style.rect.height],glyph:[r.pseudo.width,r.pseudo.height,r.pseudo.x-r.style.rect.x,r.pseudo.y-r.style.rect.y],target:r.target,underlying:r.underlying,opacity:r.style.opacity,foreground:r.foreground,media:r.media,dpr:r.dpr,fonts:r.fonts,alpha:r.alpha})
+      let calibration=cache.get(key)
+      if(!calibration){calibration={atlas:await upperCalibrate(reference.page,r,info,sample.name),name:sample.name};cache.set(key,calibration)}
+      const bound=upperBounds(upperDecodePng(sample.raw),r.x,r.y,r.alpha,calibration.atlas,r.foreground)
+      await writeFile(info.outputPath(sample.name+'-proof.json'),JSON.stringify({actualScreenshotSha256:fuiHash(sample.raw),bound,calibration:calibration.name,exactCalibrationKeySha256:fuiHash(key)}))
+      expect(r.capability.enabled).toBe(true);expect(bound.status).toBe('PASS');expect(bound.canonicalMember).toBe(true);expect(bound.min).toBeGreaterThanOrEqual(3)
+    }}finally{await reference.app.close()}
+  })
+}

@@ -1,0 +1,18 @@
+{
+  "classification": "TEST",
+  "issues": [
+    {
+      "failure": "prefer-const lint",
+      "fix": "const annotated fixture capture; no assertion/behavior change"
+    },
+    {
+      "failure": "Diagnostic guessed forced media must change selected kind to high-contrast,4FAIL; resolver retains selected kind and maps effectiveColors to system keywords",
+      "proof": "packages/ui-workspace/src/design/theme/resolver.ts:76-106 and original actual forced media tests at ui-contract-theme.spec.ts:952-978",
+      "fix": "New test asserts actual media, preserved explicit kind, new revision and canonical CanvasText effective role; no product or original assertion edits"
+    }
+  ],
+  "sourceHashes": {
+    "apps/desktop/tests/unit/drawio-theme.test.ts": "48e3bd94f81f31e08a9c4edeaca23c912e24d9ac1b1d1e9fcf99284cbdf0dbda",
+    "apps/desktop/tests/e2e/ui-contract-theme.spec.ts": "1affe2ef92db0dbc2eb8c1249dfdfcff57bf1bf7454fa60bbad82de26785a6e7"
+  }
+}

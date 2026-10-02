@@ -1,3 +1,43 @@
+# P01: реализация трёх иконок проверена частично; два решения открыты
+
+Обновлено 2026-10-02T22:47:22.326Z. Ветка codex/frade-ui-design-contract, UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; последний опубликованный8253637f3614490ec215dbaa1aab778afe0fde6b. Guide1.0/tokens1.0.0.
+
+| Текущий этап P01 | Фактический статус |
+| --- | --- |
+| Upper-three принятый scope / независимый V6 PRE | ACCEPTED / PASS;3SVG,1bridge,2append-only tests |
+| Production / meaningful RED | Реализовано в одном bridge; RED и все RCA сохранены |
+| Текущие desktop lint/typecheck/unit | PASS / PASS /91из91 PASS, включая48 bridge |
+| Token drift, color/contrast checks, compliance controls, boundaries | PASS |
+| Light/Dark/HC ×2density,1280×850 |54из54 PASS, минимум4.7977:1; повтор на окончательном test hash PASS,54/54, source/binary unchanged |
+| Прежние FUI runtime / binding |12из12 PASS на текущем полном source hash; registry обновлён после исполнения |
+| BDD |110PASS/1FAIL: hardcoded positive control всё ещё привязан к старому полному test hash |
+| Expanded viewport/text/media |FAIL: original Insert/Freehand скрыты при850×650; focus исходных anchors недоступен |
+| Независимая диагностика границ |6из6 PASS по сбору/сохранности;72наблюдения,12скрытых,60видимых без focus,18реальных forced/coarse/reduced. Это НЕ численный contrast PASS |
+| Current root check:all / verify / POST |NOT_RUN / BLOCKED / NOT_RUN |
+| Human visual / cumulative / archive |NOT_APPROVED / OPEN / BLOCKED |
+
+Решения ожидаются: [одна строка FUI control loader](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-fui-control-revalidation.proposed.md), SHA8b8b257ee9e13e086b762f98e5b80a3334d852250db8185c04020bd820f57a68; [граница paint-delta и исходных недоступных состояний](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-state-applicability.proposed.md), SHA529ac017072531211abd257ecffe12f33811cc497ef69e1b0625da00b36c2bb7. Ни одна ещё не принята. Production/новые assertions за эту границу не расширяются.
+
+P01 остаётся5/10:2.4,2.5,3.1,3.2,3.3 открыты. Foundation завершён; P02–P07 и последующая миграция не начаты. UI/Routing независимы. Три прежних исключения сохранены; protection LOCAL_ONLY/NOT_CONFIGURED. Текущий checkpoint UNCOMMITTED/UNPUSHED. Next: опубликовать честный неполный checkpoint; после решений coherentplan/strict/freshPRE перед зависимыми изменениями. Правая панель queued, видимость не подтверждена.
+
+# P01: три верхние иконки — полная матрица выполняется
+
+Обновлено 2026-10-02T22:13:39.018Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0.
+
+- Принятый scope P01-UPPER-THREE-GLYPH-PAINT-01: один bridge, три оригинальных SVG, два append-only test paths. Независимый V6 PRE PASS сохранён.
+- Реализация: выполнена. Permanent RED и два исправленных CSSOM/geometry дефекта сохранены с RCA. Текущие unit36/36 и desktop build PASS.
+- Реальный Electron Dark/compact:9/9 enabled glyph/state PASS; canonical paint подтверждён, минимальный контраст6.3021:1; документы/семантика сохранены. Evidence p01-upper-three-green4-20261002T215815Z.
+- Light/Dark/HC × compact/comfortable: RUNNING, evidence p01-upper-three-six-state-20261002T220241Z. Исходники/тесты/binary не меняются до завершения измерения.
+- Ещё не закрыто: остальные lifecycle/interaction/media/viewport/text200 проверки; current fullRuntimeBindings; свежий root check:all; verify; focused POST; cumulative POST; человеческое принятие новых screenshots.
+- P01:5/10 верхнеуровневых задач;2.4,2.5,3.1,3.2,3.3 открыты. Foundation завершён; P02–P07 не начаты. Routing независим.
+- Последний опубликованный checkpoint 8253637f3614490ec215dbaa1aab778afe0fde6b; новые изменения UNCOMMITTED/UNPUSHED. Protection LOCAL_ONLY/NOT_CONFIGURED. Правая панель queued, видимость не подтверждена.
+
+# P01: upper-three unit GREEN; actual Electron proof next
+
+2026-10-02T21:39:41.202Z. Sole bridge repair implemented after PRE/V6controls/5unitRED+6ElectronRED. Current35/35 bridge tests, typecheck and affected lint PASS. Initial collector and CSSOM ownership FAIL/RCA retained. Original unit/e2e raw prefixes and31/25AST callbacks exact. Six-state actual raster GREEN/full root/current binding revalidation/verify/POST NOT_RUN. P01 task3.1 reopened:5/10; humanvisual/cumulative/archive/P02 STOP.
+
+Controls checkpoint8253637f3614490ec215dbaa1aab778afe0fde6b published to authorized UI ref; remoteSHA exact. New production/tests/RED/GREEN evidence UNCOMMITTED/UNPUSHED. UIworktree/branch unchanged, guide1.0/tokens1.0.0, protectionLOCAL_ONLY/NOT_CONFIGURED. Panelqueued. Next: complete actual all-pixel calibration, then remaining scope/media/lifecycle matrix and full checks.
+
 # P01: V6 reference controls PASS; permanent RED next
 
 2026-10-02T21:03:48.050Z. Actual Electron44.4.5:72atlases/720colorcases; classification {"FAIL":357,"PASS":359,"NOT_MEASURED":4}. All43negative controls executed. NOT_MEASURED are explicitly rejected threshold-straddling examples, not glyphPASS. Two original fixture FAILs/RCA preserved; V6engine unchanged. Audit openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v6-controls-v3-20261002T205922Z/controls-audit.json. Bridge and both permanent test files unchanged from published45d07835.

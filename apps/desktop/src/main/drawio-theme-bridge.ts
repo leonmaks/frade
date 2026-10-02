@@ -208,6 +208,142 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       window.requestAnimationFrame(() => window.requestAnimationFrame(() => resolve())),
     )
   const privateRoot = 'html[data-frade-frame-runtime="1"]'
+  const upperSelector = privateRoot + ' .geToolbarContainer .geToolbar a.geButton'
+  const upperHashes = new Set([
+    '0a22cca4e14802d225bb7ef9dd30d4a42b157389a1681b84975349fd18a00b3a',
+    '4dc5547840d699651cf7d3059a91d575cddaf80451ab85a7c41ed1d7c7998b24',
+    'e78bd38fea8a799c13ffc0fbbab4d9ca6a1ee0ee57360c68596b58e4fe68da9a',
+  ])
+  type UpperSource = { node: HTMLElement; image: string; bytes: string }
+  type UpperProperty = { before: string; priority: string; projected: string; projectedPriority: string }
+  type UpperOwner = UpperSource & { marker: string | null; stylePresent: boolean; className: string; properties: Map<string, UpperProperty> }
+  const upperVerified = new Map<string, string>(), upperOwners = new Map<HTMLElement, UpperOwner>()
+  let upperPaintedRequest: any
+  const upperRootOwned = () => !!active && root.getAttribute('data-frade-frame-runtime') === '1' &&
+    root.getAttribute('data-frade-frame-revision') === String(active.snapshot.revision)
+  const upperLive = (request: any, token: number) =>
+    !disposed && epoch === token && active?.request === request && currentPresentation() && upperRootOwned()
+  const upperPropertyMatches = (node: HTMLElement, name: string, saved: UpperProperty) =>
+    node.style.getPropertyValue(name) === saved.projected && node.style.getPropertyPriority(name) === saved.projectedPriority
+  function restoreUpper(node: HTMLElement, saved: UpperOwner) {
+    for (const [name, value] of saved.properties) {
+      if (!upperPropertyMatches(node, name, value)) continue
+      if (value.before) node.style.setProperty(name, value.before, value.priority)
+      else node.style.removeProperty(name)
+    }
+    if (node.getAttribute('data-frade-upper-glyph') === '1') {
+      if (saved.marker === null) node.removeAttribute('data-frade-upper-glyph')
+      else node.setAttribute('data-frade-upper-glyph', saved.marker)
+    }
+    if (!node.style.length) {
+      if (saved.stylePresent) node.setAttribute('style', '')
+      else node.removeAttribute('style')
+    }
+    upperOwners.delete(node)
+  }
+  function clearUpper() {
+    upperPaintedRequest = undefined
+    for (const [node, saved] of upperOwners) restoreUpper(node, saved)
+  }
+  function upperSource(node: HTMLElement): UpperSource | undefined {
+    if (!node.isConnected || !node.matches(upperSelector)) return
+    const owned = upperOwners.get(node), css = window.getComputedStyle(node)
+    if (node.children.length || !['static', 'relative'].includes(css.position) ||
+      !['18px', '18px auto', '18px 18px'].includes(css.backgroundSize) ||
+      !['50% 50%', 'center center'].includes(css.backgroundPosition) || css.backgroundRepeat !== 'no-repeat' ||
+      css.filter !== 'none' || css.transform !== 'none' || css.mixBlendMode !== 'normal' ||
+      css.boxShadow !== 'none' || css.clipPath !== 'none') return
+    if (!owned && !['none', 'normal'].includes(window.getComputedStyle(node, '::before').content)) return
+    if (!['none', 'normal'].includes(window.getComputedStyle(node, '::after').content)) return
+    const box = node.getBoundingClientRect()
+    if (box.width < 18 || box.height < 18) return
+    const image = owned?.image ?? css.backgroundImage, match = image.match(/^url\(["']?(data:image\/svg\+xml[^)]*?)["']?\)$/i)
+    if (!match || match[1].length > 24576) return
+    const url = match[1], comma = url.indexOf(','), header = url.slice(0, comma), encoded = url.slice(comma + 1)
+    if (comma < 0 || !/^data:image\/svg\+xml(?:;charset=utf-8)?(?:;base64)?$/i.test(header)) return
+    let bytes: string
+    try {
+      if (/;base64$/i.test(header)) bytes = atob(encoded)
+      else bytes = Array.from(new TextEncoder().encode(decodeURIComponent(encoded)), byte => String.fromCharCode(byte)).join('')
+    } catch { return }
+    if (!bytes.length || bytes.length > 4096) return
+    return { node, image, bytes }
+  }
+  function upperCandidates(strict: boolean): UpperSource[] {
+    for (const [node, saved] of upperOwners) {
+      if (!node.isConnected || !node.matches(upperSelector) || node.className !== saved.className ||
+        node.getAttribute('data-frade-upper-glyph') !== '1' ||
+        Array.from(saved.properties).some(([name, value]) => !upperPropertyMatches(node, name, value))) restoreUpper(node, saved)
+    }
+    const nodes = document.querySelectorAll<HTMLElement>(upperSelector)
+    if (nodes.length > 256) {
+      if (strict) throw Error('Upper glyph candidate bound exceeded')
+      return []
+    }
+    return Array.from(nodes).map(upperSource).filter((source): source is UpperSource => !!source)
+  }
+  function reconcileUpper(pendingRequest?: any, pendingToken?: number) {
+    if (disposed || !upperRootOwned()) { clearUpper(); return }
+    if (pendingRequest ? !upperLive(pendingRequest, pendingToken!) : upperPaintedRequest !== active.request) return
+    const sources = upperCandidates(false), keep = new Set<HTMLElement>()
+    for (const source of sources) {
+      if (!upperVerified.has(source.bytes)) continue
+      const { node } = source
+      keep.add(node)
+      if (upperOwners.has(node)) continue
+      const saved: UpperOwner = { ...source, marker: node.getAttribute('data-frade-upper-glyph'), stylePresent: node.hasAttribute('style'), className: node.className, properties: new Map() }
+      const project = (name: string, value: string) => {
+        const before = node.style.getPropertyValue(name), priority = node.style.getPropertyPriority(name)
+        node.style.setProperty(name, value, 'important')
+        saved.properties.set(name, { before, priority, projected: node.style.getPropertyValue(name), projectedPriority: node.style.getPropertyPriority(name) })
+      }
+      if (window.getComputedStyle(node).position === 'static') project('position', 'relative')
+      project('--frade-upper-icon-image', source.image)
+      project('background-image', 'none')
+      node.setAttribute('data-frade-upper-glyph', '1')
+      upperOwners.set(node, saved)
+    }
+    for (const [node, saved] of upperOwners) if (!keep.has(node)) restoreUpper(node, saved)
+  }
+  // New native digests belong only to pending apply/rollback; passive observers use verified bytes.
+  function verifyUpper(request: any, token: number): Promise<void> | undefined {
+    const deadline = performance.now() + 1800, examined = new Set<string>()
+    let passes = 0, expired = false
+    const live = () => !expired && upperLive(request, token)
+    const verify = (): Promise<void> | undefined => {
+      if (!live()) return
+      if (performance.now() >= deadline) throw Error('Upper glyph verification exceeded pending deadline')
+      const sources = upperCandidates(true), unseen = new Map<string, UpperSource[]>()
+      for (const source of sources) if (!upperVerified.has(source.bytes) && !examined.has(source.bytes)) {
+        const siblings = unseen.get(source.bytes) ?? []; siblings.push(source); unseen.set(source.bytes, siblings)
+      }
+      if (!unseen.size) { reconcileUpper(request, token); return }
+      if (++passes > 3) throw Error('Upper glyph resources kept changing during verification')
+      if (!window.crypto?.subtle?.digest) throw Error('Native upper glyph verification unavailable')
+      return Promise.all(Array.from(unseen, async ([bytes, originals]) => {
+        const digest = await window.crypto.subtle.digest('SHA-256', Uint8Array.from(bytes, byte => byte.charCodeAt(0)))
+        return { bytes, originals, hash: Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('') }
+      })).then(results => {
+        if (!live()) return
+        if (performance.now() >= deadline) throw Error('Upper glyph verification exceeded pending deadline')
+        const current = upperCandidates(true)
+        for (const result of results) {
+          if (!result.originals.some(original => current.some(source => source.node === original.node && source.image === original.image && source.bytes === original.bytes))) continue
+          examined.add(result.bytes)
+          if (upperHashes.has(result.hash)) upperVerified.set(result.bytes, result.hash)
+        }
+        return verify()
+      })
+    }
+    const pending = verify()
+    if (!pending) return
+    let timer: ReturnType<typeof setTimeout> | undefined
+    const timeout = new Promise<never>((_, reject) => { timer = setTimeout(() => { expired = true; reject(Error('Upper glyph verification exceeded pending deadline')) }, Math.max(0, deadline - performance.now())) })
+    return Promise.race([pending, timeout]).catch(error => {
+      if (!upperLive(request, token)) return
+      throw error
+    }).finally(() => { if (timer !== undefined) clearTimeout(timer) })
+  }
   function stylesheet(snapshot: any): HTMLStyleElement {
     const style = document.createElement('style')
     style.setAttribute('data-frade-private-theme', '1')
@@ -310,6 +446,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       ' [role="button"]{min-height:44px!important;min-width:44px!important;}' +
       menu +
       ' [role^="menuitem"]{height:44px!important;min-width:44px;}}'
+    style.textContent += upperSelector + '[data-frade-upper-glyph="1"]::before{content:"";position:absolute;width:18px;height:18px;left:calc(50% - 9px);top:calc(50% - 9px);mask-image:var(--frade-upper-icon-image);mask-size:contain;mask-position:center;mask-repeat:no-repeat;background-color:var(--frade-frame-text-primary);pointer-events:none;forced-color-adjust:none;}'
     return style
   }
   const ownAttribute = (name: string, value: string) => {
@@ -1172,7 +1309,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     dot.setAttribute('fill', active.snapshot.effectiveColors['diagram.grid'])
   }
   async function redraw(): Promise<void> {
-    if (!active || disposed) return
+    if (!active || disposed || active.upperPending) return
     const request = active.request,
       token = epoch
     try {
@@ -1191,7 +1328,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     ui = instance
     graph = instance.editor?.graph
     if (!graph?.container) return
-    lowerObserver = new MutationObserver(() => reconcileLower())
+    lowerObserver = new MutationObserver(() => { reconcileLower(); reconcileUpper() })
     lowerObserver.observe(document.body, {
       childList: true,
       subtree: true,
@@ -1199,6 +1336,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       attributeFilter: ['class', 'style', 'title', 'hidden'],
       characterData: true,
     })
+    lowerObserver!.observe(root, { attributes: true, attributeFilter: ['data-frade-frame-runtime', 'data-frade-frame-revision'] })
     for (const event of ['scale', 'translate', 'scaleAndTranslate'])
       graph.view?.addListener?.(event, viewChanged)
     ui.editor?.addListener?.('pageSelected', viewChanged)
@@ -1229,6 +1367,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     })
   }
   function clearProjection() {
+    clearUpper()
     clearLower()
     installedStyle?.remove()
     installedStyle = undefined
@@ -1266,11 +1405,23 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     for (const role of roles)
       ownProperty('--frade-frame-' + role.replaceAll('.', '-'), snapshot.effectiveColors[role])
     forgetPopup(true)
-    active = { request, snapshot }
+    upperPaintedRequest = undefined
+    active = { request, snapshot, upperPending: true }
     reconcileLower()
     syncProjection()
+    const verification = verifyUpper(request, token)
+    if (verification) await verification
+    if (!upperLive(request, token)) return
+    const beforePaint = upperCandidates(true)
     await paint()
-    if (!disposed && token === epoch && active?.request === request) reply(request, 'PAINTED')
+    if (upperLive(request, token)) {
+      const afterPaint = upperCandidates(true)
+      if (afterPaint.length !== beforePaint.length || afterPaint.some((source, i) => source.node !== beforePaint[i].node || source.image !== beforePaint[i].image || source.bytes !== beforePaint[i].bytes))
+        throw Error('Upper glyph ownership changed before painted acknowledgement')
+      active.upperPending = false
+      upperPaintedRequest = request
+      reply(request, 'PAINTED')
+    }
   }
   function validRequest(value: any): boolean {
     if (

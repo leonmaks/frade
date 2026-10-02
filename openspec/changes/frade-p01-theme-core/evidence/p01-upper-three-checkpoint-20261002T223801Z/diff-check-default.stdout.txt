@@ -1,0 +1,68 @@
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:1: trailing whitespace.
++# P01: реализация трёх иконок проверена частично; два решения открыты
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:2: trailing whitespace.
++
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:3: trailing whitespace.
++Обновлено 2026-10-02T22:47:22.326Z. Ветка codex/frade-ui-design-contract, UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; последний опубликованный8253637f3614490ec215dbaa1aab778afe0fde6b. Guide1.0/tokens1.0.0.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:4: trailing whitespace.
++
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:5: trailing whitespace.
++| Текущий этап P01 | Фактический статус |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:6: trailing whitespace.
++| --- | --- |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:7: trailing whitespace.
++| Upper-three принятый scope / независимый V6 PRE | ACCEPTED / PASS;3SVG,1bridge,2append-only tests |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:8: trailing whitespace.
++| Production / meaningful RED | Реализовано в одном bridge; RED и все RCA сохранены |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:9: trailing whitespace.
++| Текущие desktop lint/typecheck/unit | PASS / PASS /91из91 PASS, включая48 bridge |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:10: trailing whitespace.
++| Token drift, color/contrast checks, compliance controls, boundaries | PASS |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:11: trailing whitespace.
++| Light/Dark/HC ×2density,1280×850 |54из54 PASS, минимум4.7977:1; повтор на окончательном test hash RUNNING |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:12: trailing whitespace.
++| Прежние FUI runtime / binding |12из12 PASS на текущем полном source hash; registry обновлён после исполнения |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:13: trailing whitespace.
++| BDD |110PASS/1FAIL: hardcoded positive control всё ещё привязан к старому полному test hash |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:14: trailing whitespace.
++| Expanded viewport/text/media |FAIL: original Insert/Freehand скрыты при850×650; focus исходных anchors недоступен |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:15: trailing whitespace.
++| Независимая диагностика границ |6из6 PASS по сбору/сохранности;72наблюдения,12скрытых,60видимых без focus,18реальных forced/coarse/reduced. Это НЕ численный contrast PASS |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:16: trailing whitespace.
++| Current root check:all / verify / POST |NOT_RUN / BLOCKED / NOT_RUN |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:17: trailing whitespace.
++| Human visual / cumulative / archive |NOT_APPROVED / OPEN / BLOCKED |
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:18: trailing whitespace.
++
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:19: trailing whitespace.
++Решения ожидаются: [одна строка FUI control loader](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-fui-control-revalidation.proposed.md), SHA8b8b257ee9e13e086b762f98e5b80a3334d852250db8185c04020bd820f57a68; [граница paint-delta и исходных недоступных состояний](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-state-applicability.proposed.md), SHA529ac017072531211abd257ecffe12f33811cc497ef69e1b0625da00b36c2bb7. Ни одна ещё не принята. Production/новые assertions за эту границу не расширяются.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:20: trailing whitespace.
++
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:21: trailing whitespace.
++P01 остаётся5/10:2.4,2.5,3.1,3.2,3.3 открыты. Foundation завершён; P02–P07 и последующая миграция не начаты. UI/Routing независимы. Три прежних исключения сохранены; protection LOCAL_ONLY/NOT_CONFIGURED. Текущий checkpoint UNCOMMITTED/UNPUSHED. Next: закончить текущую matrix revalidation и опубликовать честный неполный checkpoint; после решений coherentplan/strict/freshPRE перед зависимыми изменениями. Правая панель queued, видимость не подтверждена.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:22: trailing whitespace.
++
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:23: trailing whitespace.
++# P01: три верхние иконки — полная матрица выполняется
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:24: trailing whitespace.
++
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:25: trailing whitespace.
++Обновлено 2026-10-02T22:13:39.018Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:26: trailing whitespace.
++
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:27: trailing whitespace.
++- Принятый scope P01-UPPER-THREE-GLYPH-PAINT-01: один bridge, три оригинальных SVG, два append-only test paths. Независимый V6 PRE PASS сохранён.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:28: trailing whitespace.
++- Реализация: выполнена. Permanent RED и два исправленных CSSOM/geometry дефекта сохранены с RCA. Текущие unit36/36 и desktop build PASS.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:29: trailing whitespace.
++- Реальный Electron Dark/compact:9/9 enabled glyph/state PASS; canonical paint подтверждён, минимальный контраст6.3021:1; документы/семантика сохранены. Evidence p01-upper-three-green4-20261002T215815Z.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:30: trailing whitespace.
++- Light/Dark/HC × compact/comfortable: RUNNING, evidence p01-upper-three-six-state-20261002T220241Z. Исходники/тесты/binary не меняются до завершения измерения.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:31: trailing whitespace.
++- Ещё не закрыто: остальные lifecycle/interaction/media/viewport/text200 проверки; current fullRuntimeBindings; свежий root check:all; verify; focused POST; cumulative POST; человеческое принятие новых screenshots.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:32: trailing whitespace.
++- P01:5/10 верхнеуровневых задач;2.4,2.5,3.1,3.2,3.3 открыты. Foundation завершён; P02–P07 не начаты. Routing независим.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:33: trailing whitespace.
++- Последний опубликованный checkpoint 8253637f3614490ec215dbaa1aab778afe0fde6b; новые изменения UNCOMMITTED/UNPUSHED. Protection LOCAL_ONLY/NOT_CONFIGURED. Правая панель queued, видимость не подтверждена.
+docs/ui/UI-DESIGN-CONTRACT-STATUS.md:34: trailing whitespace.
++

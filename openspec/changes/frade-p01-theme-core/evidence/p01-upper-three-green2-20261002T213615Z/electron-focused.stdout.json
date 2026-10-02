@@ -1,0 +1,145 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\playwright.config.ts",
+    "rootDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-green2-20261002T213615Z/electron-focused-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ui-contract-theme.spec.ts",
+      "file": "ui-contract-theme.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P01-UPPER-017 actual canonical original glyph raster dark compact",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6335,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at upperAssertComposition (C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3905:61)\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3939:11",
+                    "location": {
+                      "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                      "column": 61,
+                      "line": 3905
+                    },
+                    "snippet": "  3903 | }\n  3904 | function upperAssertComposition(record: UpperObservation) {\n> 3905 |   expect(record.connected).toBe(true); expect(record.owned).toBe(true); expect(record.capability.exists).toBe(true); expect(typeof record.capability.enabled).toBe('boolean')\n       |                                                             ^\n  3906 |   expect(record.dpr).toBe(1); expect(record.fonts).toBe('loaded'); expect(record.style.backgroundImage).toBe('none')\n  3907 |   expect(record.pseudo.mask).toBe('url(\"'+record.identity.url+'\")'); expect(record.pseudo.width).toBe(18);expect(record.pseudo.height).toBe(18)\n  3908 |   expect(record.pseudo.opacity).toBe(1);expect(record.pseudo.maskSize).toBe('contain');expect(record.pseudo.maskRepeat).toBe('no-repeat');expect(record.pseudo.maskPosition).toBe('50% 50%')"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                        "column": 61,
+                        "line": 3905
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  3903 | }\n  3904 | function upperAssertComposition(record: UpperObservation) {\n> 3905 |   expect(record.connected).toBe(true); expect(record.owned).toBe(true); expect(record.capability.exists).toBe(true); expect(typeof record.capability.enabled).toBe('boolean')\n       |                                                             ^\n  3906 |   expect(record.dpr).toBe(1); expect(record.fonts).toBe('loaded'); expect(record.style.backgroundImage).toBe('none')\n  3907 |   expect(record.pseudo.mask).toBe('url(\"'+record.identity.url+'\")'); expect(record.pseudo.width).toBe(18);expect(record.pseudo.height).toBe(18)\n  3908 |   expect(record.pseudo.opacity).toBe(1);expect(record.pseudo.maskSize).toBe('contain');expect(record.pseudo.maskRepeat).toBe('no-repeat');expect(record.pseudo.maskPosition).toBe('50% 50%')\n    at upperAssertComposition (C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3905:61)\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3939:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:15152) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-02T21:41:11.422Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-green2-20261002T213615Z\\electron-focused-artifacts\\ui-contract-theme-P01-UPPE-9f427-l-glyph-raster-dark-compact\\test-failed-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-green2-20261002T213615Z\\electron-focused-artifacts\\ui-contract-theme-P01-UPPE-9f427-l-glyph-raster-dark-compact\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                    "column": 61,
+                    "line": 3905
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-b5bfe90885929771a722",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 4773,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T21:41:08.353Z",
+    "duration": 9496.544999999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

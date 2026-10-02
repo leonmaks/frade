@@ -1,0 +1,26 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-UPPER-017 Chromium computed 18px auto preserves the pinned square original glyph geometry
+AssertionError: expected [ …(3) ] to deeply equal [ …(3) ]
+
+- Expected
++ Received
+
+  [
+    "<a class=\"geButton upper-original-0\" title=\"Original 0\" style=\"background-size: 18px auto;\"></a>",
+-   "<a class=\"geButton upper-original-1\" title=\"Original 1\" style=\"background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkgMTNoLTZ2NmgtMnYtNkg1di0yaDZWNWgydjZoNnYyeiIvPjwvc3ZnPg==&quot;) !important; background-size: 18px auto;\"></a>",
++   "<a class=\"geButton upper-original-1\" title=\"Original 1\" style=\"background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkgMTNoLTZ2NmgtMnYtNkg1di0yaDZWNWgydjZoNnYyeiIvPjwvc3ZnPg==&quot;); background-size: 18px auto;\"></a>",
+    "<a class=\"geButton upper-original-2\" title=\"Original 2\" style=\"opacity: 0.75; background-size: 18px auto;\"></a>",
+  ]
+
+ ❯ tests/unit/drawio-theme.test.ts:1129:62
+    1127|   const original = f.targets.map(node => node.outerHTML)
+    1128|   f.send('prepare'); f.send('apply'); await f.settle(); f.assertOwned()
+    1129|   f.dispose(); expect(f.targets.map(node => node.outerHTML)).toEqual(o…
+       |                                                              ^
+    1130| })
+    1131| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
