@@ -68,7 +68,7 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | Human policy/visual acceptance | Policy decision REQUIRED; product visuals outside current scope | Policy PENDING; no visual approval claim |
 | CI / branch protection | Separate observable control | REMOTE_NOT_RUN / NOT_CONFIGURED_OR_UNVERIFIED |
 
-Historical failures kept separate; no existing Routing/UI FAIL waived.
+Historical invocation/EOF/EOL failures and classified RCA retained. Fresh current strict and planning-integrity PASS; staged diff-check PASS. No existing Routing/UI FAIL waived.
 
 ## 6. Модели / исполнение
 
@@ -96,8 +96,8 @@ No active production fix attempts; RCA rule retained.
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: baseline98f387f; planning checkpoint PENDING.
-COMMIT_STATE: draft planning checkpoint preparing; explicit scoped stage/commit below; not approved implementation baseline.
+SOURCE_CHECKPOINT_SHA: 2021f1dd8621061d1179ec9577e9930b47cb9657 (draft, not implementation admission).
+COMMIT_STATE: draft planning committed2021f1dd; final check/status evidence preparing candidate freeze, no formal approval.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
 PUSH_STATE: PENDING.
 VERIFIED_REMOTE_SHA: NOT_RUN.
