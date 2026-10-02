@@ -1,0 +1,59 @@
+$ pnpm check && pnpm test:e2e && pnpm test:desktop
+$ pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries && pnpm ui:compliance
+$ turbo lint
+• turbo 2.11.2
+$ turbo typecheck
+• turbo 2.11.2
+$ turbo test --concurrency=2
+• turbo 2.11.2
+ WARNING  no output files found for task @frade/desktop#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/ui-workspace#test. Please check your `outputs` key in `turbo.json`
+$ pnpm --filter @frade/draw test:bdd && pnpm --filter @frade/metamodel-domain test:bdd && pnpm --filter @frade/metamodel-compiler test:bdd && node scripts/check-repo-traceability.mjs && pnpm --filter @frade/repository-application test:bdd && node scripts/check-ka-traceability.mjs && pnpm --filter @frade/ui-workspace test:bdd
+$ vitest run tests/unit/bdd-mapping.test.ts tests/unit/bdd-contract.test.ts
+$ vitest run tests/bdd
+$ vitest run tests/bdd
+$ vitest run tests/acceptance tests/bdd
+$ vitest run tests/bundle-flows.bdd.test.tsx tests/ui-contract/p01.bdd.test.tsx tests/ui-contract/service.test.ts tests/ui-contract/picker.test.tsx
+$ node --test tests/contract/*.test.mjs
+$ turbo build
+• turbo 2.11.2
+$ node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs
+$ pnpm ui:tokens:check && pnpm ui:colors:check && pnpm ui:traceability:check && pnpm test:ui-contract && pnpm ui:controls && pnpm ui:checkout:check
+$ node scripts/ui/tokens.mjs
+$ node scripts/ui/colors.mjs
+$ node scripts/ui/traceability.mjs
+$ node --test tests/ui-contract/*.test.mjs
+$ node scripts/ui/controls.mjs
+$ node scripts/ui/checkout.mjs
+$ pnpm --filter @frade/draw test:visual
+$ playwright test
+[2m[WebServer] [22m(node:31724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m(node:6428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:13872) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:13872) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+$ pnpm --filter @frade/desktop test:e2e
+$ pnpm build && playwright test
+$ node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility
+$ tsc --noEmit
+$ vite build --config vite.utility.config.ts
+(node:28604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28604) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.

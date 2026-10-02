@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "B05_FOCUSED_POST3_PASS_SOURCE_CHECKPOINT_PUBLISHED_P01_INCOMPLETE",
+  "phase": "P01_FUI_FOCUSED_POST_PASS_PUBLICATION_PENDING",
   "taskCounts": {
     "completed": 6,
     "total": 10
@@ -160,7 +160,7 @@
     }
   ],
   "laterHumanDecision": "New per-surface visual baseline approval after actual implementation evidence",
-  "nextAction": "Within P01, reconcile complete FUI005–009 scenario-to-current-assertion bindings, then prepare human visual baseline decision; cumulative verify/POST/archive remain open. STOP before P02.",
+  "nextAction": "Type/lint then actual targeted FUI runtime; binding negative RED before implementation; task3.1 reopened until fresh root",
   "sourceAndOriginalPlanningUnchanged": false,
   "scopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-v2-accepted-20260930T180721Z.json",
   "scopeAcceptanceRecordedAtUtc": "2026-09-30T18:07:21.024Z",
@@ -212,7 +212,7 @@
     "Task3.2 cumulative OpenSpec verification and independent automatic POST",
     "Task3.3 archive only after all required PASS; STOP before P02"
   ],
-  "lastUpdatedAtUtc": "2026-10-02T11:21:58.432Z",
+  "lastUpdatedAtUtc": "2026-10-02T12:11:54.228Z",
   "currentDocsChecks": {
     "atUtc": "2026-10-01T19:34:14.257Z",
     "strict": {
@@ -275,7 +275,7 @@
     "scope": "P01 relevant packet plus minimal public runtime; exact shell canary read/write confinement verified",
     "proof": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-pre-provenance-20261001T064615Z.json"
   },
-  "currentRootResult": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-full-root4-20261002T100844Z/result.json",
+  "currentRootResult": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-full-root-20261002T130619Z/result.json",
   "currentRootSummary": {
     "status": "PASS",
     "draw": {
@@ -283,13 +283,13 @@
       "failed": 0
     },
     "desktop": {
-      "passed": 71,
+      "passed": 93,
       "failed": 0
     },
-    "sourceVariant": "final minimal approved readiness source",
+    "sourceCount": 543,
     "sourceUnchanged": true,
-    "currentMinimalSourceFullRoot": "PASS",
-    "artifactFiles": 1242
+    "artifactFiles": 1971,
+    "currentScope": "FUI tests/docs current root"
   },
   "acceptedDeltaRuntime": {
     "readonlyNative": "PASS",
@@ -386,12 +386,10 @@
   "currentVerificationRun": {
     "status": "PASS",
     "command": "pnpm check:all",
-    "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.txt",
-    "startedAtUtc": "2026-10-01T09:55:45.158Z",
-    "drawPort": 56670,
-    "sourceManifest": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z-started.json",
-    "finishedAtUtc": "2026-10-01T10:12:25.958Z",
-    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json"
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-full-root-20261002T130619Z/result.json",
+    "startedAtUtc": "2026-10-02T13:06:19.659Z",
+    "finishedAtUtc": "2026-10-02T13:28:24.696Z",
+    "sourceUnchanged": true
   },
   "frameBottomCoverage": {
     "atUtc": "2026-10-01T10:05:35.894Z",
@@ -1066,5 +1064,97 @@
       "remoteShaVerified": "6e5c63405bdc9995ec56cac373d10444f38d075c",
       "publication": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-closure-20261002T111335Z/publication-source.json"
     }
+  },
+  "fuiPre": {
+    "status": "PASS",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-pre-received-20261002T120622Z",
+    "resultSha256": "f1b05a2ca8f57af0bcd1c47fbd6bf5239edb0969ae68a837e29581476e0988f0"
+  },
+  "fuiRuntime": {
+    "status": "PASS",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261002T130053Z",
+    "caseCount": 12,
+    "requiredAdapterRoles": 31
+  },
+  "fuiBindings": {
+    "status": "GREEN",
+    "exampleCount": 7,
+    "negativeControls": 14,
+    "red": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-binding-red-20261002T122842Z",
+    "integrity": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-integrity-20261002T130619Z"
+  },
+  "fuiAffectedChecks": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-binding-green-20261002T130355Z",
+  "fuiFullRoot": {
+    "status": "PASS",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-full-root-20261002T130619Z",
+    "sourceCount": 543,
+    "sourceUnchanged": true,
+    "desktopPassed": 93,
+    "drawPassed": 215,
+    "p95Ms": 137.80000000074506,
+    "budgetMs": 150,
+    "priorFail": "RETAINED",
+    "variationCause": "NOT_PROVEN"
+  },
+  "fuiPerformanceRca": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-performance-rca-20261002T125530Z",
+  "fuiPerformanceControl": {
+    "status": "PASS",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-performance-control-20261002T125634Z",
+    "p95Ms": 147.90000000223517,
+    "rootFailureWaived": false,
+    "environmentCause": "NOT_PROVEN"
+  },
+  "fuiFocusedVerification": {
+    "status": "PASS",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-verify-20261002T132921Z"
+  },
+  "fuiHumanVisual": {
+    "status": "NOT_APPROVED",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-visual-review-20261002T133432Z"
+  },
+  "fuiFocusedPost": {
+    "status": "PASS",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-post-received-20261002T140329Z",
+    "resultSha256": "54ff4afaa7e7c0fee42a06d0e4a28678adc23d6e2454e01e915ddabfc38fe35c",
+    "eventCount": 82,
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true
+  },
+  "fuiClosure": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-closure-20261002T140734Z",
+  "previousCurrentRootSummary": {
+    "status": "PASS",
+    "draw": {
+      "passed": 215,
+      "failed": 0
+    },
+    "desktop": {
+      "passed": 71,
+      "failed": 0
+    },
+    "sourceVariant": "final minimal approved readiness source",
+    "sourceUnchanged": true,
+    "currentMinimalSourceFullRoot": "PASS",
+    "artifactFiles": 1242
+  },
+  "previousCurrentVerificationRun": {
+    "status": "PASS",
+    "command": "pnpm check:all",
+    "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.txt",
+    "startedAtUtc": "2026-10-01T09:55:45.158Z",
+    "drawPort": 56670,
+    "sourceManifest": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z-started.json",
+    "finishedAtUtc": "2026-10-01T10:12:25.958Z",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json"
+  },
+  "checkpointPublication": {
+    "status": "PENDING",
+    "previousRemoteVerified": "c4ab5b181f321ca2200e6a29b41ff305b1b629bb",
+    "destination": "git@github.com:leonmaks/frade.git",
+    "ref": "refs/heads/codex/frade-ui-design-contract"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "atUtc": "2026-10-02T12:23:50.556Z",
+  "classification": "TEST",
+  "runtime": {
+    "expected": 5,
+    "unexpected": 7,
+    "total": 12
+  },
+  "sourceSha256": "759026052233b45ed0cd0bc70f93f4f7c2c6cc0675a4ad40d691593d0af53ba5",
+  "issues": [
+    {
+      "id": "FUI-TEST-TAB-01",
+      "evidence": "native FUI005 all three modes: exact accessible tab name omits real dirty-dot text. Workbench.tsx lines1595–1615 includes title and dirty marker.",
+      "fix": "Unique existing diagram tab identified by actual filename content; retain meaningful Undo/Redo expectations."
+    },
+    {
+      "id": "FUI-TEST-SETUP-02",
+      "evidence": "frame FUI005/FUI006 compare active diagram scroll664/518 before opening dirty KA with parked frame scroll0/0 after it. Semantic XML, geometry, selection, undo, identity and preferences unchanged. Causal baseline contains an unrelated tab activation.",
+      "fix": "Record active setup before parking and settled full snapshot after dirty editor setup, before any theme action; preserve strict full equality including scroll during theme transaction. Verify no-theme setup observation in fresh run."
+    }
+  ],
+  "productionChanged": false,
+  "oldAssertionsChanged": false
+}

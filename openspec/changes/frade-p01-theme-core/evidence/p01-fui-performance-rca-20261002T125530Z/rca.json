@@ -1,0 +1,77 @@
+{
+  "atUtc": "2026-10-02T12:55:30.663Z",
+  "requiredRoot": "FAIL_RETAINED",
+  "root": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-full-root-20261002T123318Z",
+  "classification": "ENVIRONMENT",
+  "classificationStatus": "HYPOTHESIS_NOT_PROVEN",
+  "comparison": [
+    {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-full-root-20261002T123318Z/desktop-artifacts/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms",
+      "p95Ms": 250.09999999776483,
+      "medianMs": 138.80000000074506,
+      "over150": 28,
+      "window": {
+        "visible": true,
+        "focused": true,
+        "backgroundThrottling": true
+      },
+      "visibility": "visible",
+      "samples": 100,
+      "hardware": {
+        "timestampUtc": "2026-10-02T12:39:12.291Z",
+        "source": "LIVE_LOCAL_NODE_OS_SAME_HOST_AS_LAUNCHED_ELECTRON",
+        "cpu": {
+          "Name": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz",
+          "logicalProcessors": 16,
+          "models": [
+            "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz"
+          ]
+        },
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "totalMemoryBytes": 34203607040
+      }
+    },
+    {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-full-root4-20261002T100844Z/desktop-artifacts/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms",
+      "p95Ms": 110.30000000074506,
+      "medianMs": 107.59999999776483,
+      "over150": 1,
+      "window": {
+        "visible": true,
+        "focused": true,
+        "backgroundThrottling": true
+      },
+      "visibility": "visible",
+      "samples": 100,
+      "hardware": {
+        "timestampUtc": "2026-10-02T10:15:04.326Z",
+        "source": "LIVE_LOCAL_NODE_OS_SAME_HOST_AS_LAUNCHED_ELECTRON",
+        "cpu": {
+          "Name": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz",
+          "logicalProcessors": 16,
+          "models": [
+            "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz"
+          ]
+        },
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "totalMemoryBytes": 34203607040
+      }
+    }
+  ],
+  "productionUnchanged": true,
+  "source": {
+    "file": "apps/desktop/tests/e2e/ui-contract-theme-performance.spec.ts",
+    "sha256": "1f867cb6901378a91a470682483c9eb97f559df72e8da871d7b8d4dafd3419e2"
+  },
+  "decision": "No production/test/threshold change. One unchanged isolated benchmark control with aggregate machine CPU observations to separate variability before further repair. A targeted PASS cannot waive root FAIL.",
+  "freshRootNeeded": true,
+  "POST": "NOT_RUN"
+}

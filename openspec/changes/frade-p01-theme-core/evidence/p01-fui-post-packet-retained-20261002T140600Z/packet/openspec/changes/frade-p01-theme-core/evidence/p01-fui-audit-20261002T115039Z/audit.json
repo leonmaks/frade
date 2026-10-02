@@ -1,0 +1,123 @@
+{
+  "atUtc": "2026-10-02T11:50:39.148Z",
+  "branch": "codex/frade-ui-design-contract",
+  "head": "c4ab5b181f321ca2200e6a29b41ff305b1b629bb",
+  "change": "frade-p01-theme-core",
+  "task": "2.4/2.5 runtime BDD bindings within existing approved scope",
+  "originals": [
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "bytes": 166856,
+      "sha256": "89edaa19e8b185713c93b68d228b115194870177ff832a931169610bbdc7ca74"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+      "bytes": 4981,
+      "sha256": "4607f2490e97b7428fa5de10b1d50b3673e68144f8d536e27e62b89dfcb6a989"
+    },
+    {
+      "path": "docs/ui/bdd/p01-theme-core.feature",
+      "bytes": 22097,
+      "sha256": "98020b2898036156fece39cf1703b02c273d26ed39e837e169095b1d7b783fc8"
+    },
+    {
+      "path": "docs/ui/decisions/p01-theme-traceability.json",
+      "bytes": 41826,
+      "sha256": "61e402b518c827286e205730701a20e35a96f03cfa55af1e6ee39d35a2c15c59"
+    },
+    {
+      "path": "openspec/changes/frade-p01-theme-core/execution-context.json",
+      "bytes": 55708,
+      "sha256": "7e5e9e293faab3a25d169360a44cc931dd1f2af17b7abc5e26c8930e9bb3443f"
+    },
+    {
+      "path": "docs/ui/UI-DESIGN-CONTRACT-STATUS.md",
+      "bytes": 61883,
+      "sha256": "dbb6619962af1f456d9a545e934efd7e7605d27141aa5c4fd3282d84e8bce397"
+    }
+  ],
+  "frozen": [
+    {
+      "path": "docs/ui/bdd/ui-contracts.feature",
+      "bytes": 9583,
+      "sha256": "5892b960f017940332a5dd1a0b9fbf4652e3f842ab449f0459ef31d8102b0eb3"
+    },
+    {
+      "path": "docs/ui/decisions/ui-contract-traceability.json",
+      "bytes": 13323,
+      "sha256": "6e1f99d5b147212762dfd5d9216cd394b4becab3b6de9970191ebca3467da920"
+    },
+    {
+      "path": "scripts/ui/traceability.mjs",
+      "bytes": 7771,
+      "sha256": "d21a5fe4160c9d953170ce0a892b875c5300c50f6f6aa4e417732ca39b456078"
+    },
+    {
+      "path": "docs/ui/decisions/legacy-colors.json",
+      "bytes": 59908,
+      "sha256": "c5ac3f58e3a974ada34eb90118efc0bcbd32633821c000ec591a9df88fc83720"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/generated/tokens.ts",
+      "bytes": 5246,
+      "sha256": "fbe1ced2cbb112f8073de4a5f8c612811ef087165514304f3820862c929fb63e"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/generated/tokens.css",
+      "bytes": 8970,
+      "sha256": "6a6b47b12f5090a66231ee2541387ada31a2435d76f245c6631ad4285ac784a4"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "FUI-005",
+      "examples": [
+        "light",
+        "dark",
+        "high-contrast"
+      ],
+      "status": "PARTIAL_NOT_BOUND",
+      "existing": [
+        "native hot preview/commit",
+        "parked frame dirty KA",
+        "performance alternating light/dark"
+      ],
+      "gap": "No single current runtime case commits each theme while retaining dirty object plus required native/frame identity/selection/meaningful undo and managed portal snapshot."
+    },
+    {
+      "id": "FUI-006",
+      "status": "PARTIAL_NOT_BOUND",
+      "existing": [
+        "parked frame dirty KA cancellation",
+        "frame chord Escape settings unchanged in separate case"
+      ],
+      "gap": "Same actual dirty-work fixture must assert durable settings bytes unchanged through Dark preview/Escape plus restored participants."
+    },
+    {
+      "id": "FUI-007",
+      "status": "PARTIAL_NOT_BOUND",
+      "existing": [
+        "actual controlled current frame prepare refusal"
+      ],
+      "gap": "Existing actual refusal test lacks explicit durable settings readback/no-write and retained embedded semantic snapshot assertions in same case."
+    },
+    {
+      "id": "FUI-008",
+      "status": "EXISTING_ASSERTIONS_IDENTIFIED_NOT_BOUND",
+      "existing": [
+        "actual frame chord Settings explicit Light + real OS Dark"
+      ],
+      "gap": "Bind exact unchanged assertions/source and current execution; do not treat full P01 or visual accepted."
+    },
+    {
+      "id": "FUI-009",
+      "status": "PARTIAL_NOT_BOUND",
+      "existing": [
+        "startup preset Dark comfortable",
+        "actual select Light comfortable then restart"
+      ],
+      "gap": "Need actual Dark compact -> select comfortable -> persist -> restart same profile, Dark remains with measured non-excepted targets/clipping."
+    }
+  ],
+  "productionChangePlanned": false
+}
