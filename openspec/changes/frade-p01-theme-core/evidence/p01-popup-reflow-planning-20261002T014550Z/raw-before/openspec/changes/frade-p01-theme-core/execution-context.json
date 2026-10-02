@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "REFLOW_ACCEPTED_PLAN_VALIDATED_FRESH_PRE_PENDING",
+  "phase": "CURRENT_SCOPE_REPAIRS_GREEN_MATRIX_FAIL_PROPOSED_REFLOW_DECISION",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -11,7 +11,7 @@
   "implementation": "SOLE_BRIDGE_REPAIR_IMPLEMENTED_RUNTIME_MATRIX_AND_FULL_GATES_OPEN",
   "preReview": "PRE-P01-B02-20260930T185730Z",
   "preStatus": "PASS",
-  "readyForImplementation": false,
+  "readyForImplementation": true,
   "independentReviewerThread": "01a0f3ae-b5cd-7b10-9400-a69bc5ed39bd",
   "requestedModel": "gpt-6-astra",
   "requestedEffort": "xhigh",
@@ -149,7 +149,7 @@
     }
   ],
   "laterHumanDecision": "New per-surface visual baseline approval after actual implementation evidence",
-  "nextAction": "Strict validation and automatic independent stage-assigned reflow PRE; production blocked until fresh PASS; then unit RED and sole bridge reflow",
+  "nextAction": "Permanent generated-bridge/unit and actual Electron RED before sole bridge implementation; targeted GREEN/applicable fullchecks; no P02",
   "sourceAndOriginalPlanningUnchanged": false,
   "scopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-v2-accepted-20260930T180721Z.json",
   "scopeAcceptanceRecordedAtUtc": "2026-09-30T18:07:21.024Z",
@@ -713,16 +713,10 @@
       "readyForVerify": false
     },
     "reflowDecision": {
-      "id": "P01-LOWER-ORIGIN-POPUP-REFLOW-01",
       "path": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md",
       "sha256": "6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17",
-      "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow-accepted-20261002T014550Z.json",
-      "status": "USER_ACCEPTED_FRESH_PRE_NOT_RUN",
-      "beforeEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-planning-20261002T014550Z",
-      "productionPlacementChanged": false,
-      "permanentActualRED": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/matrix-all2-result.json",
-      "newUnitRED": "NOT_RUN_BEFORE_PRE",
-      "implementation": "NOT_RUN_BEFORE_PRE"
+      "status": "PROPOSED_NOT_ACCEPTED",
+      "productionPlacementChanged": false
     },
     "previousCheckpoint": {
       "commit": "6a49d5d1ae5e1acb7701831a10af0fe2a4177bee",
@@ -730,83 +724,5 @@
       "remoteShaVerified": "6a49d5d1ae5e1acb7701831a10af0fe2a4177bee",
       "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-checkpoint-publication-20261001T230915Z"
     }
-  },
-  "lowerOriginPopupReflowDecision": {
-    "id": "P01-LOWER-ORIGIN-POPUP-REFLOW-01",
-    "path": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md",
-    "sha256": "6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17",
-    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow-accepted-20261002T014550Z.json",
-    "status": "USER_ACCEPTED_FRESH_PRE_NOT_RUN",
-    "beforeEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-planning-20261002T014550Z",
-    "productionPlacementChanged": false,
-    "permanentActualRED": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/matrix-all2-result.json",
-    "newUnitRED": "NOT_RUN_BEFORE_PRE",
-    "implementation": "NOT_RUN_BEFORE_PRE"
-  },
-  "currentReview": {
-    "phase": "PRE",
-    "status": "NOT_RUN",
-    "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
-    "sourcePlan": "openspec/changes/frade-p01-theme-core/design.md",
-    "sourceSha256": "167a57705bd977063a9000327b8ef4950a1fa9ec51faa9e718eb78629be9189b",
-    "model": "gpt-6-astra",
-    "reasoningEffort": "xhigh",
-    "actualBackend": "NOT_CONFIRMED",
-    "actualEffort": "NOT_CONFIRMED"
-  },
-  "currentReflowPlanningChecks": {
-    "atUtc": "2026-10-02T01:47:14.390Z",
-    "results": [
-      {
-        "id": "strict",
-        "command": [
-          "E:\\Program Files\\nodejs\\node.exe",
-          "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
-          "validate",
-          "frade-p01-theme-core",
-          "--strict",
-          "--json"
-        ],
-        "startedAtUtc": "2026-10-02T01:46:39.598Z",
-        "finishedAtUtc": "2026-10-02T01:46:45.187Z",
-        "exitCode": 0,
-        "error": null,
-        "status": "PASS"
-      },
-      {
-        "id": "bdd",
-        "command": [
-          "E:\\Program Files\\nodejs\\node.exe",
-          "E:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
-          "--filter",
-          "@frade/ui-workspace",
-          "test:bdd"
-        ],
-        "startedAtUtc": "2026-10-02T01:46:45.188Z",
-        "finishedAtUtc": "2026-10-02T01:46:55.604Z",
-        "exitCode": 0,
-        "error": null,
-        "status": "PASS"
-      },
-      {
-        "id": "compliance",
-        "command": [
-          "E:\\Program Files\\nodejs\\node.exe",
-          "E:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
-          "ui:compliance"
-        ],
-        "startedAtUtc": "2026-10-02T01:46:55.604Z",
-        "finishedAtUtc": "2026-10-02T01:47:14.385Z",
-        "exitCode": 0,
-        "error": null,
-        "status": "PASS"
-      }
-    ],
-    "sourceUnchanged": true,
-    "bddPassed": 95,
-    "uiContractPassed": 26,
-    "namedContrastPairs": 102,
-    "fullRoot": "NOT_RUN_REQUIRED_LAYOUT_FAIL",
-    "pre": "NOT_RUN"
   }
 }

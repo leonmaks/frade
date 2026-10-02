@@ -289,23 +289,3 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     When Escape Tab mouse dismissal detach recreation or theme transaction occurs
     Then the original hide lifecycle restores exact owned values and connected focus without a trap
     And presentation navigation and cancellation retain XML model files paint undo selection preferences viewport and identities
-
-  @P01-RT-LOWER-REFLOW-011 @runtime-pending
-  Scenario: Proven lower menu chain fits current viewport without covered targets
-    Given accepted bounded reflow and the retained actual six-case layout RED
-    When original lower popup or submenu bounds overlap or exceed the actual resized text200 coarse media viewport
-    Then measured bounded owned widths side and text wrapping retain visible accessible original actions and four pixel focus clearance
-    And original labels canonical minima contrasts font size and presentation-only semantic state remain intact
-
-  @P01-RT-LOWER-REFLOW-012 @runtime-pending
-  Scenario: Feasible original placement and excluded popup DOM remain intact
-    Given proven original panels whose anchor and side already fit and unrelated stale or detached panels
-    When bounded layout reconciliation measures current owned DOM
-    Then feasible original placement remains and excluded panels receive no mutation or vendor fitting semantic call
-
-  @P01-RT-LOWER-REFLOW-013 @runtime-pending
-  Scenario: Owned reflow restores exact state on every lifecycle boundary
-    Given recorded original inline values priorities and style attribute presence with a proven cancellation lease
-    When prepare stale activation cancel detach recreation disposal or relevant viewport text media generation occurs
-    Then bounded compare before write reconciliation restores owned state without loops stale mutation or losing cancellation
-    And impossible accommodation reports a concrete blocker without hidden targets new exceptions or weakened assertions

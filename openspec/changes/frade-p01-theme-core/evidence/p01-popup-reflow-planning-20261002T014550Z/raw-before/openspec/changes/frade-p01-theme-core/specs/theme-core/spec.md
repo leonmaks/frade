@@ -196,7 +196,7 @@ The private pinned-frame adapter SHALL expose accessible names, focusable button
 - **THEN** prior owned values and listeners are restored or correctly applied only to the new lower nodes, keeping graph/editor/frame identities, preferences and existing keyboard contracts intact
 
 ### Requirement: Proven lower-origin popup keyboard ownership
-P01 SHALL adapt only actual lower-opener popup/submenu DOM in the existing private bridge under the exact accepted P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 design contract. Ownership SHALL bind a connected eligible opener, captured original menu instance and current participant generation. It SHALL preserve original nodes/handlers/capabilities and all excluded menu/dialog/domain boundaries. Original placement SHALL remain preferred when feasible; only accepted P01-LOWER-ORIGIN-POPUP-REFLOW-01 bounded owned DOM reflow may accommodate proven panels. Unknown, stale or ambiguous ownership MUST stop claimed accessibility success.
+P01 SHALL adapt only actual lower-opener popup/submenu DOM in the existing private bridge under the exact accepted P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 design contract. Ownership SHALL bind a connected eligible opener, captured original menu instance and current participant generation. It SHALL preserve original nodes/handlers/capabilities/placement and all excluded menu/dialog/domain boundaries. Unknown, stale or ambiguous ownership MUST stop claimed accessibility success.
 
 #### Scenario: Complete original menu and submenu action path
 - **WHEN** an enabled existing lower page-menu or Pages control is opened by keyboard and its real action or submenu is selected
@@ -209,19 +209,3 @@ P01 SHALL adapt only actual lower-opener popup/submenu DOM in the existing priva
 #### Scenario: Cancellation teardown and presentation preservation
 - **WHEN** an owned popup is canceled by Escape, exited by Tab/ShiftTab, dismissed by mouse, detached/recreated or reconciled during a theme transaction
 - **THEN** original hide lifecycle and connected focus return/exit preserve exact attributes/listeners and semantic XML/model/file/authored paint/undo/selection/preferences/viewport/identities for presentation/navigation/cancellation; canonical palette/target/focus/text/icon and bounds oracles remain required across all accepted media/theme/density/viewports without a new exception
-
-### Requirement: Bounded owned lower popup reflow
-
-P01 SHALL restrict reflow to the exact accepted P01-LOWER-ORIGIN-POPUP-REFLOW-01 in design.md and its separate human acceptance. Proven connected current lower-origin panels SHALL retain original anchor/side when feasible; otherwise bounded first-party left/top/width/max-width and existing table/cell width/wrapping projection SHALL fit the actual iframe viewport with4px focus clearance and non-overlapping actionable targets. Actual text at200% and canonical target minima MUST remain intact without truncation, hidden or forced clicks. Reconciliation SHALL be bounded and compare-before-write; it MUST NOT change vendor callbacks, invoke fitting or semantic APIs, replace/reparent nodes, alter actions/content or mutate other menus/domain/routing/persistence. Unachievable contracted bounds MUST produce a concrete blocker and STOP. Exact prior inline values/priorities/style-attribute presence SHALL restore on all ownership/lifecycle invalidations, including retained cancellation lease.
-
-#### Scenario: Original fitting overlaps or exceeds current viewport
-- **WHEN** proven lower root/submenu geometry at850x650 or actual text200/coarse/media exceeds the iframe viewport or covers an actionable target
-- **THEN** bounded measured owned reflow chooses feasible non-overlapping widths/side, preserves localized text and canonical target/focus/contrast obligations, and original keyboard/pointer actions remain accessible with presentation-only state preservation
-
-#### Scenario: Feasible original placement and unowned panels
-- **WHEN** original placement already satisfies measured bounds, or an unowned/detached/obsolete panel is present
-- **THEN** the original feasible anchor/side remains and excluded panels receive no reflow mutation or vendor action/fit call
-
-#### Scenario: Reflow restores exact ownership state
-- **WHEN** cancellation, resize, theme generation, prepare/stale activation, detach/recreation or disposal invalidates the owned projection
-- **THEN** bounded reconciliation and original cancellation restore exact prior inline properties/priorities/style presence without a mutation loop, semantic write or loss of the proven cancellation lease; any impossible accommodation remains a reported blocker

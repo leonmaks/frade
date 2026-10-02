@@ -1,28 +1,5 @@
 # Frade UI Design Contract — статус этой ветки
 
-## Текущий этап — P01,5/10; reflow scope принят, свежий PRE pending
-
-Обновлено: 2026-10-02T01:45:50.529Z. Ветка codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; baseline98f387f. Последний опубликованный HEAD c4bf023940f21297db972bb546c78ab00c317566; source checkpoint eeca8e1. Guide1.0/tokens1.0.0; routing prerequisite отсутствует. Правый panel ранее queued, видимость не подтверждена.
-
-Точный P01-LOWER-ORIGIN-POPUP-REFLOW-01 SHA 6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17 принят человеком; [acceptance](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow-accepted-20261002T014550Z.json). Four artifacts/BDD/traceability согласованы. Новые strict/BDD95/complianceUI26/contrast102 checks PASS; независимый PRE NOT_RUN, model/effort по точной owning stage PRE row: gpt-6-astra/xhigh. Reflow production и новый unit RED NOT_RUN до PRE PASS.
-
-| Текущая задача | Статус |
-| --- | --- |
-| Acceptance/raw-before/four-artifact planning | Сохранено; production/tests неизменны |
-| Strict/BDD/compliance/plan hash | PASS; raw outputs/exits сохранены, production/tests unchanged |
-| Automatic independent read-only PRE | NOT_RUN; после validation/freeze |
-| Serialized unit RED / reflow implementation | NOT_RUN; после PRE PASS |
-| Actual six-state matrix | Сохранённый FAIL6/6,990observations/90geometry findings |
-| New targeted/full root/verify/POST | NOT_RUN; required layout FAIL остаётся blocker |
-| Full FUI/human visual/cumulative verify/archive | OPEN; visual NOT_APPROVED |
-| Planning checkpoint commit/push | Готовится; exact UI origin/ref authorization retained |
-
-Следом: validation → freeze/automatic PRE → meaningful RED → sole bridge bounded reflow → current six-state/targeted/full checks → verify/automatic POST. Exactly3temporary exceptions unchanged; LOCAL_ONLY/NOT_CONFIGURED branch protection. STOP перед P02.
-
-## Предыдущие сохранённые checkpoint записи
-
-# Frade UI Design Contract — статус этой ветки
-
 ## Текущий этап — P01,5/10; repair checkpoint, menu reflow scope decision
 
 Обновлено: 2026-10-02T00:22:33.649Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; baseline98f387f. Engineering repair checkpointeeca8e159edade32d85baaae8dd1298bf50d7c5e committed/pushed, exact origin SHA VERIFIED; этот checkpoint сохраняет matrixFAIL и P01 INCOMPLETE. Guide1.0/tokens1.0.0. Routing prerequisite отсутствует. Shared review policy1.1: model/effort по owning stage plan, автоматические PRE/POST без человеческого переноса промптов. Правый panel open queued; фактическая видимость не подтверждена.
