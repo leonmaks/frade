@@ -1,0 +1,49 @@
+[
+  {
+    "label": "strict-change",
+    "command": "openspec",
+    "arguments": [
+      "validate",
+      "frade-standard-workflow",
+      "--strict",
+      "--json"
+    ],
+    "startUtc": "2026-10-02T18:04:14.6873636Z",
+    "exit": 0,
+    "output": "strict-change.txt"
+  },
+  {
+    "label": "strict-all",
+    "command": "openspec",
+    "arguments": [
+      "validate",
+      "--all",
+      "--strict",
+      "--json"
+    ],
+    "startUtc": "2026-10-02T18:04:15.9118022Z",
+    "exit": 0,
+    "output": "strict-all.txt"
+  },
+  {
+    "label": "planning-integrity",
+    "command": "node",
+    "arguments": [
+      "openspec/changes/frade-standard-workflow/evidence/check-planning.mjs"
+    ],
+    "startUtc": "2026-10-02T18:04:17.0219742Z",
+    "exit": 0,
+    "output": "planning-integrity.txt"
+  },
+  {
+    "label": "diff-check",
+    "command": "git",
+    "arguments": [
+      "diff",
+      "--check"
+    ],
+    "startUtc": "2026-10-02T18:04:17.8028581Z",
+    "exit": 0,
+    "output": "diff-check.txt"
+  }
+]

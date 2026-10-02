@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "date": "2026-10-02",
+  "source": "Direct human messages in this chat",
+  "accepted": {
+    "goal": "One standard strict quality-first workflow for every Frade direction, minimal routine human relay",
+    "terminology": "направление",
+    "isolation": "Independent directions in branches/worktrees; explicit merge conflicts",
+    "uniformStatus": true,
+    "roleDefaultsWithTaskExceptions": true,
+    "exactEfforts": true,
+    "models": {
+      "planningArchitecture": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "independentPRE": {
+        "model": "gpt-6-astra",
+        "effort": "xhigh"
+      },
+      "toolingTests": {
+        "model": "gpt-6-sol",
+        "effort": "high"
+      },
+      "formalVerify": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "independentPOST": {
+        "model": "gpt-6-astra",
+        "effort": "xhigh"
+      }
+    },
+    "modelReply": "Утверждаю предложенные назначения",
+    "publication": {
+      "remote": "git@github.com:leonmaks/frade.git",
+      "ref": "refs/heads/codex/frade-standard-workflow",
+      "reply": "Разрешаю commit/push в указанную ветку",
+      "automaticMainMerge": false
+    }
+  },
+  "proposedPendingConcretePolicyDecision": [
+    "Exact eight-section dashboard and lifecycle contract",
+    "Task/checkpoint/blocker commit+push cadence and combining same-candidate events",
+    "Bootstrap/validator contract and staged per-owner adoption"
+  ],
+  "limitations": [
+    "Model/destination approval is not approval of all proposed normative details",
+    "No foreign active worktree modifications authorized by this checkpoint",
+    "Request metadata is not independent PRE"
+  ]
+}

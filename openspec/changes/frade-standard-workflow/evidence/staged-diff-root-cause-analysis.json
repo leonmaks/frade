@@ -1,0 +1,18 @@
+{
+  "repair": "Normalize only newly authored md/mjs/json/yaml to LF; narrow cr-at-eol to preserved raw policy/logs; keep ordinary trailing/blank checks and do not modify root/global Git options",
+  "productionModified": false,
+  "requiredRechecks": [
+    "Copied policy raw hashes unchanged",
+    "plan manifest hash refreshed after authored EOL handling",
+    "planning checker",
+    "strict OpenSpec",
+    "actual staged diff-check",
+    "stage scope"
+  ],
+  "responsibleLayer": "New planning artifact serialization and owning change attributes, not product or shared gate",
+  "stopPatchLoopAudit": true,
+  "contract": "Copied public policy must preserve exact raw hash; authored plans use deterministic LF; raw diagnostic logs remain retained",
+  "whyPreviousFixFailed": "EOF trimming fixed original blank lines, but broad -text exposed CR bytes previously normalized by Git; PowerShell ConvertTo-Json uses CRLF",
+  "firstIncorrectDecision": "Broad raw-byte preservation (-text) was added without distinguishing authored LF documents from copied CRLF immutable evidence",
+  "classification": "ENVIRONMENT"
+}

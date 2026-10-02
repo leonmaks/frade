@@ -1,0 +1,37 @@
+# Tasks — W01 standard Frade direction workflow
+
+One active stage/change. This checklist is not approval. Original baseline and historical controls remain fixed. No tooling/product implementation before task 1.5; no autonomous owner migration or next numbered change.
+
+## 1. Planning and admission (planning-architecture: gpt-6-astra/high; PRE: gpt-6-astra/xhigh)
+
+- [x] 1.1 Isolate the owner at explicit committed baseline; audit canonical Git/common/worktrees, 20 package manifests, active/archive evidence and existing shared v1.1 service; save raw selected public policy with exact transfer hashes and user-approved model/destination decisions. Verify no foreign uncommitted product transfer and actual service AVAILABLE.
+- [x] 1.2 Consolidate all user comments into proposal/design/three capability specs, readable standard, onboarding/status/manifest drafts and scoped adoption inventory; retain approved versus proposed decisions, stable IDs and exact role mapping. Verify all comments trace to concrete sections/tasks and every package/legacy direction has an owner/adoption disposition.
+- [ ] 1.3 Run strict change/all-spec validation, document/link/traceability checks, safe Git diff/changed-path audit and unchanged product-tree proof; retain actual commands/exits/logs. Complete a separate independent draft-planning quality review on the explicit no-production scope; save raw result without treating it as formal PRE.
+- [ ] 1.4 Record the human decision on the concrete common policy, checkpoint cadence and scope; reconcile any changes across proposal/spec/design/tasks/drafts and rerun strict validation. Model/destination approval alone does not approve the entire proposed standard.
+- [ ] 1.5 Freeze complete authorized candidate, invoke fresh independent exact W01 PRE through the unchanged common confined service, require current unambiguous PASS and required owner admission, retain raw events/exits/provenance and commit/push the approved planning checkpoint. Verify unchanged source/packet/plan hashes and remote SHA before production controls.
+
+## 2. Common controls and documentation (tooling-tests: gpt-6-sol/high)
+
+- [ ] 2.1 Add meaningful RED schema/lifecycle/traceability cases for unsafe identities/paths, unresolved acceptance, skipped/stale barriers, forged evidence, ambiguous phase/health/N/A, missing negative controls and legacy closure misclassification; implement versioned common contracts and docs/templates, then verify GREEN and compatibility without weakened root/scoped rules.
+- [ ] 2.2 Add RED exact-role resolver controls for missing/range/conflicting assignments, role confusion, unapproved task overrides and drifted plan hashes; implement deterministic resolver with one pair/provenance and honest backend fields; verify all roles/overrides and document unsupported writable-worker dispatch explicitly.
+- [ ] 2.3 Add real temporary-Git RED bootstrap/collision/partial-retry/ref/path-link/case/foreign-root tests; implement plan/create CLI and common rule inheritance, preserving unrelated work and immutable baseline; verify actual isolated worktree creation and safe repeated invocation plus newcomer command examples.
+- [ ] 2.4 Add RED status parser/render/count/staleness/freeze/history tests; implement the fixed eight-section projection and task/scenario/evidence metrics, preserve legacy tail and truthfully report panel visibility; verify two different direction fixtures produce identical external section order without rewriting history.
+- [ ] 2.5 Add RED review-wrapper tests for incomplete inputs, policy source drift, candidate mutation, canary failure, incomplete/ambiguous report and mismatched final event; consume unchanged shared runner, retain complete raw receipts and freeze/unfreeze protocol; verify fresh actual W01 invocation and adversarial controls without reviewer write/network access.
+- [ ] 2.6 Add actual local bare-remote/Git RED publication tests for unauthorized URL/ref, unexpected staged paths, divergence/force temptation, failed push/ls-remote mismatch and recursive receipt commits; implement explicit checkpoint/publish cadence and immutable receipts; verify exact allowed ref/remote SHA and preservation of other refs.
+- [ ] 2.7 Implement explicit root loader, narrow package-script/CI control entries and scoped adoption checklist only after RED inheritance/applicability tests; document per-subsystem checks and approved N/A evidence. Verify root/scoped contracts stay stricter, product/lockfile/vendor/routing fingerprints unchanged and remote CI/protection remains honest NOT_RUN/NOT_CONFIGURED until observed.
+
+## 3. Required cumulative checks (tooling-tests: gpt-6-sol/high)
+
+- [ ] 3.1 Execute actual complete direction-control unit/BDD/temporary-Git/adversarial suites, formatting/content/link/schema checks and all required applicable general lint/type/build/boundary checks; retain commands/exits/environment/seeds and prove exclusions from product-tree hashes. Resolve every applicable failure before progression, no inferred product check:all PASS.
+- [ ] 3.2 Audit requirement->scenario->task->assertion->run mappings, frozen origin/control scope and cumulative diff; reproduce bootstrap/review/status/publication examples, fresh shared discovery/confinement and unchanged supplier/consumer boundaries. Commit/push the coherent implementation/check checkpoint with verified remote SHA and honest outstanding gate state.
+
+## 4. Verify, POST and close (formal-Verify: gpt-6-astra/high; POST: gpt-6-astra/xhigh)
+
+- [ ] 4.1 Freeze completed candidate and perform formal OpenSpec verification against every requirement/scenario/task/control and newcomer example; record actual completeness/correctness/coherence report and resolve required gaps within scope before POST, with review-safe status handling.
+- [ ] 4.2 Dispatch fresh independent W01 POST with exact assigned pair and complete relevant immutable packet; require current PASS, actual full stream/exit/raw provenance and unchanged candidate/plan/toolchain. No production edits during gate; findings cannot self-authorize new product scope.
+- [ ] 4.3 Publish any new common public release only via existing reviewed supplier publication protocol after applicable POST; preserve v1.1 immutably and verify bundle discovery/runtime canary. If no transport release changes, record adoption of the standard's reviewed Git control commit separately; never claim new common release enforcement from docs alone.
+- [ ] 4.4 Sync/archive W01 only after all checks/Verify/POST and required policy decisions; validate all specs, commit implementation/archive/closure separately as owner requires, push exact authorized ref and retain SHAs. Final report lists all existing-owner adoption NOT_STARTED unless actually performed; STOP before migration or another direction.
+
+## Deferred owner checkpoints (not W01 tasks)
+
+Routing, UI, Repo Core and main integration each require separately selected owner scope, their frozen provenance and applicable PRE/RED/checks/Verify/POST. The supplier W01 does not wait for those gates and does not modify their workspaces.

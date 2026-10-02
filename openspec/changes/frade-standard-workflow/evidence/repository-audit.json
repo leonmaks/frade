@@ -1,0 +1,577 @@
+{
+  "version": 1,
+  "observedAtUtc": "2026-10-02T17:58:40.7445431Z",
+  "scope": "Registered Frade repository and its process/contracts; unrelated repositories/account secrets excluded",
+  "owner": {
+    "origin": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+    "common": "E:/dev/codex/frade/.git",
+    "branch": "codex/frade-standard-workflow",
+    "root": "E:\\dev\\codex\\frade-worktrees\\frade-standard-workflow"
+  },
+  "sharedPolicy": {
+    "version": 1,
+    "release": "a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0",
+    "common": "E:\\dev\\codex\\frade\\.git",
+    "installedAtUtc": "2026-10-01T17:43:48.187Z",
+    "postResultSha256": "0c04af5eadb1e9c63b877d9012d84595c53bb1f6b985d96a52363be7c2c339e1",
+    "policySha256": "6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb"
+  },
+  "transfer": [
+    {
+      "source": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\releases\\a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0\\docs\\engineering\\agent-workflow.md",
+      "destination": "openspec/changes/frade-standard-workflow/evidence/shared-policy/agent-workflow.md",
+      "sha256": "6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb",
+      "bytes": 12126
+    },
+    {
+      "source": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\releases\\a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0\\docs\\engineering\\parallel-feature-workflow.md",
+      "destination": "openspec/changes/frade-standard-workflow/evidence/shared-policy/parallel-feature-workflow.md",
+      "sha256": "98a1dbb621aed7574e0d19cf1603b9e41d5485860494c87643f458d8dc3674e6",
+      "bytes": 5462
+    }
+  ],
+  "foreignUncommittedProductTransferred": false,
+  "packageCount": 20,
+  "packages": [
+    {
+      "path": "apps/desktop/package.json",
+      "name": "@frade/desktop",
+      "scripts": {
+        "dev": "pnpm build:utility && electron-vite dev",
+        "start": "electron .",
+        "build": "node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility",
+        "build:utility": "vite build --config vite.utility.config.ts",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests *.ts",
+        "test": "vitest run tests/unit",
+        "test:e2e": "pnpm build && playwright test"
+      },
+      "dependencies": {
+        "@frade/adapter-yaml": "workspace:*",
+        "@frade/repository-api": "workspace:*",
+        "@frade/repository-application": "workspace:*",
+        "@frade/repository-domain": "workspace:*",
+        "@frade/repository-ports": "workspace:*",
+        "@frade/local-index": "workspace:*",
+        "@frade/draw": "workspace:*",
+        "@frade/runtime-contracts": "workspace:*",
+        "@frade/runtime-electron": "workspace:*",
+        "@frade/runtime-node": "workspace:*",
+        "react": "18.3.1",
+        "react-dom": "18.3.1",
+        "@frade/ui-workspace": "workspace:*"
+      },
+      "sha256": "ac8276d3e40562f8939e3ac82c9cf5f73fbe4ea521b2c73f0dec874e1affac61"
+    },
+    {
+      "path": "packages/versioning-git/package.json",
+      "name": "@frade/versioning-git",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/repository-domain": "workspace:*",
+        "@frade/repository-ports": "workspace:*"
+      },
+      "sha256": "194c919a01761dfa28a1d2bb2e010bba507b358d45964f1df1938e5e955f4590"
+    },
+    {
+      "path": "packages/repository-api/package.json",
+      "name": "@frade/repository-api",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/repository-domain": "workspace:*",
+        "@frade/repository-ports": "workspace:*",
+        "@frade/repository-application": "workspace:*",
+        "@frade/metamodel-domain": "workspace:*"
+      },
+      "sha256": "389a05683887dd226e18fb04669a03a29a303744f594bf3e34b042524bf3707a"
+    },
+    {
+      "path": "packages/repository-bridge/package.json",
+      "name": "@frade/repository-bridge",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/repository-domain": "workspace:*",
+        "@frade/repository-ports": "workspace:*"
+      },
+      "sha256": "419d4a97049db7b16fbdef2b5fe7144a2672d04d492c0482f4702a90aa65eb19"
+    },
+    {
+      "path": "packages/runtime-electron/package.json",
+      "name": "@frade/runtime-electron",
+      "scripts": {
+        "build": "tsc --outDir dist --declaration",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/runtime-contracts": "workspace:*"
+      },
+      "sha256": "04d3aad05d3068eacdcda8e422d978ffe55279d2f02ca52f6a630548ce58246d"
+    },
+    {
+      "path": "packages/metamodel-domain/package.json",
+      "name": "@frade/metamodel-domain",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run",
+        "test:bdd": "vitest run tests/bdd"
+      },
+      "dependencies": null,
+      "sha256": "02e1b4dfd0013d2c865626992c65ae5b9b1f7f251cec9c23a9c089e01896aed1"
+    },
+    {
+      "path": "packages/ui-workspace/package.json",
+      "name": "@frade/ui-workspace",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run",
+        "test:bdd": "vitest run tests/bundle-flows.bdd.test.tsx"
+      },
+      "dependencies": {
+        "@frade/repository-api": "workspace:*",
+        "@frade/repository-domain": "workspace:*",
+        "@frade/ui-navigator": "workspace:*",
+        "@frade/ui-inspector": "workspace:*",
+        "@frade/draw": "workspace:*",
+        "react": "18.3.1",
+        "react-dom": "18.3.1"
+      },
+      "sha256": "7f7d7e0a030b8070251a8be6047a51783b9bfee5c2bcad2ff6d2ca80ed2f9457"
+    },
+    {
+      "path": "packages/adapter-sberea-yaml/package.json",
+      "name": "@frade/adapter-sberea-yaml",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/metamodel-config": "workspace:*",
+        "@frade/metamodel-domain": "workspace:*",
+        "@frade/metamodel-compiler": "workspace:*",
+        "@frade/repository-domain": "workspace:*",
+        "@frade/repository-ports": "workspace:*",
+        "yaml": "2.8.2"
+      },
+      "sha256": "1ca3dddf01b56340eb6cf41212cb132c87d0cc1212ce27b37adb9395c63758e2"
+    },
+    {
+      "path": "packages/repository-application/package.json",
+      "name": "@frade/repository-application",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run",
+        "test:bdd": "vitest run tests/acceptance tests/bdd",
+        "benchmark": "vitest run --config vitest.benchmark.config.ts"
+      },
+      "dependencies": {
+        "@frade/repository-domain": "workspace:*",
+        "@frade/repository-ports": "workspace:*",
+        "@frade/metamodel-domain": "workspace:*",
+        "@frade/metamodel-compiler": "workspace:*"
+      },
+      "sha256": "568315759f0a0a5670ce3fd43859f6b5ec3099bdb1e7e356fb12165f017c18ed"
+    },
+    {
+      "path": "packages/repository-ports/package.json",
+      "name": "@frade/repository-ports",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run",
+        "test:bdd": "vitest run tests/bdd"
+      },
+      "dependencies": {
+        "@frade/repository-domain": "workspace:*"
+      },
+      "sha256": "f3a61fa61873f139f48d7e9736fbc365496e1633c67286000dd6b192361fb17e"
+    },
+    {
+      "path": "packages/runtime-contracts/package.json",
+      "name": "@frade/runtime-contracts",
+      "scripts": {
+        "build": "tsc --outDir dist --declaration",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {},
+      "sha256": "9c35764dc0cde8b0f122f3b2b275aad5e73642e2f2901b1a820966aea69780e4"
+    },
+    {
+      "path": "packages/metamodel-compiler/package.json",
+      "name": "@frade/metamodel-compiler",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run",
+        "test:bdd": "vitest run tests/bdd"
+      },
+      "dependencies": {
+        "@frade/metamodel-domain": "workspace:*"
+      },
+      "sha256": "ba21bda5ec8df12fc5d687e3fe197307eb7c7782d7237bdfd8367e38ff2198d5"
+    },
+    {
+      "path": "packages/runtime-node/package.json",
+      "name": "@frade/runtime-node",
+      "scripts": {
+        "build": "tsc --outDir dist --declaration",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/adapter-sberea-yaml": "workspace:*",
+        "@frade/adapter-yaml": "workspace:*",
+        "@frade/local-index": "workspace:*",
+        "@frade/metamodel-config": "workspace:*",
+        "@frade/metamodel-domain": "workspace:*",
+        "@frade/repository-api": "workspace:*",
+        "@frade/repository-application": "workspace:*",
+        "@frade/repository-domain": "workspace:*",
+        "@frade/repository-ports": "workspace:*",
+        "@frade/runtime-contracts": "workspace:*",
+        "saxes": "6.0.0",
+        "@frade/draw": "workspace:*"
+      },
+      "sha256": "cb11f1a5813bd9369bfcdd2697f35ac58c165aeb5dc3fc59bc0113ba4b629050"
+    },
+    {
+      "path": "packages/ui-navigator/package.json",
+      "name": "@frade/ui-navigator",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/repository-api": "workspace:*",
+        "@frade/repository-domain": "workspace:*",
+        "react": "18.3.1"
+      },
+      "sha256": "215257e3d585b94cd893921175277d8070ba61c513218a37c46728ac561c60f6"
+    },
+    {
+      "path": "packages/ui-inspector/package.json",
+      "name": "@frade/ui-inspector",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/repository-api": "workspace:*",
+        "@frade/repository-domain": "workspace:*",
+        "@frade/metamodel-domain": "workspace:*",
+        "react": "18.3.1"
+      },
+      "sha256": "1a97910932eb0c063c30fd44fd6c91b14d9de5f358bc080e07dcfe7f7e0ff5d2"
+    },
+    {
+      "path": "packages/metamodel-config/package.json",
+      "name": "@frade/metamodel-config",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/metamodel-domain": "workspace:*",
+        "@frade/metamodel-compiler": "workspace:*"
+      },
+      "sha256": "fa6472cf4d2345befa6b814e87114ae05c0d38c34b224d8c7435faf2b57c2902"
+    },
+    {
+      "path": "packages/local-index/package.json",
+      "name": "@frade/local-index",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/metamodel-domain": "workspace:*",
+        "@frade/repository-domain": "workspace:*",
+        "@frade/repository-ports": "workspace:*"
+      },
+      "sha256": "24b85b81dcad17f18d92dcd067a4dfcc3603480fd8f9fcc1da0a14c9b28138e1"
+    },
+    {
+      "path": "packages/repository-domain/package.json",
+      "name": "@frade/repository-domain",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run",
+        "test:bdd": "vitest run tests/bdd"
+      },
+      "dependencies": {
+        "@frade/metamodel-domain": "workspace:*",
+        "@frade/metamodel-compiler": "workspace:*"
+      },
+      "sha256": "34d3c8f12350e9f93fcd872677d633c9812572baa4f96d4995da831a8f5d2c51"
+    },
+    {
+      "path": "packages/adapter-yaml/package.json",
+      "name": "@frade/adapter-yaml",
+      "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src tests",
+        "test": "vitest run"
+      },
+      "dependencies": {
+        "@frade/local-index": "workspace:*",
+        "@frade/repository-domain": "workspace:*",
+        "@frade/repository-ports": "workspace:*",
+        "@frade/metamodel-domain": "workspace:*",
+        "@frade/metamodel-compiler": "workspace:*",
+        "yaml": "2.8.2"
+      },
+      "sha256": "86d6cb6f551247c64eed4e238565b0d10bb38859009dfa62e454056d640c002f"
+    },
+    {
+      "path": "packages/draw/package.json",
+      "name": "@frade/draw",
+      "scripts": {
+        "dev": "vite",
+        "build": "pnpm typecheck && vite build",
+        "preview": "vite preview",
+        "typecheck": "tsc --noEmit --pretty false",
+        "typecheck:consumer": "tsc -p tests/consumer/tsconfig.json --noEmit --pretty false",
+        "lint": "eslint src tests *.ts",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:bdd": "vitest run tests/unit/bdd-mapping.test.ts tests/unit/bdd-contract.test.ts",
+        "test:visual": "playwright test",
+        "test:visual:matrix": "playwright test tests/spike/floating-symmetry.spec.ts",
+        "test:visual:update": "playwright test --update-snapshots"
+      },
+      "dependencies": {
+        "@antv/x6": "3.1.8",
+        "react": "18.3.1",
+        "react-dom": "18.3.1",
+        "tslib": "2.8.1"
+      },
+      "sha256": "9459494272b36b83fe3519480b26d5f66244e6fc973a3df9d540fa67cfa2af50"
+    }
+  ],
+  "worktrees": [
+    "worktree E:/dev/codex/frade",
+    "HEAD 98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+    "branch refs/heads/main",
+    "",
+    "worktree C:/Users/NVISEN/.codex/worktrees/r04-pre-review/frade",
+    "HEAD da22452d7e9c35f28f4004d9826432b12bf6a521",
+    "detached",
+    "",
+    "worktree C:/Users/NVISEN/.codex/worktrees/routing-v2/frade",
+    "HEAD 98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+    "branch refs/heads/codex/routing-v2",
+    "",
+    "worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+    "HEAD 885fc36a95c2303705cc98b3373e4f93c53bfe17",
+    "branch refs/heads/codex/frade-ui-design-contract",
+    "",
+    "worktree E:/dev/codex/frade-worktrees/frade-standard-workflow",
+    "HEAD 98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+    "branch refs/heads/codex/frade-standard-workflow",
+    ""
+  ],
+  "changes": {
+    "changes": [
+      {
+        "name": "frade-standard-workflow",
+        "completedTasks": 2,
+        "totalTasks": 18,
+        "lastModified": "2026-10-02T17:58:40.663Z",
+        "status": "in-progress"
+      },
+      {
+        "name": "routing-v2-04-orthogonal-router",
+        "completedTasks": 17,
+        "totalTasks": 31,
+        "lastModified": "2026-10-02T17:44:08.248Z",
+        "status": "in-progress"
+      },
+      {
+        "name": "frade-repo-core",
+        "completedTasks": 26,
+        "totalTasks": 37,
+        "lastModified": "2026-10-02T17:44:08.215Z",
+        "status": "in-progress"
+      },
+      {
+        "name": "frade-repository-diagrams",
+        "completedTasks": 24,
+        "totalTasks": 24,
+        "lastModified": "2026-10-02T17:44:08.215Z",
+        "status": "complete"
+      },
+      {
+        "name": "frade-metamodel-domain",
+        "completedTasks": 13,
+        "totalTasks": 13,
+        "lastModified": "2026-10-02T17:44:08.207Z",
+        "status": "complete"
+      },
+      {
+        "name": "frade-metamodel-compiler",
+        "completedTasks": 16,
+        "totalTasks": 16,
+        "lastModified": "2026-10-02T17:44:08.203Z",
+        "status": "complete"
+      },
+      {
+        "name": "bundle-integration-flow-management",
+        "completedTasks": 24,
+        "totalTasks": 24,
+        "lastModified": "2026-10-02T17:44:08.182Z",
+        "status": "complete"
+      },
+      {
+        "name": "frade-draw-document-roundtrip",
+        "completedTasks": 5,
+        "totalTasks": 5,
+        "lastModified": "2026-10-02T17:44:08.182Z",
+        "status": "complete"
+      },
+      {
+        "name": "frade-electron-runtime",
+        "completedTasks": 9,
+        "totalTasks": 9,
+        "lastModified": "2026-10-02T17:44:08.182Z",
+        "status": "complete"
+      },
+      {
+        "name": "frade-ka-workbench-pilot",
+        "completedTasks": 59,
+        "totalTasks": 59,
+        "lastModified": "2026-10-02T17:44:08.182Z",
+        "status": "complete"
+      }
+    ],
+    "root": {
+      "path": "E:\\dev\\codex\\frade-worktrees\\frade-standard-workflow",
+      "source": "nearest"
+    }
+  },
+  "observations": [
+    {
+      "source": "E:/dev/codex/frade/AGENTS.md",
+      "sha256": "2e9aa32a3eb8826903cb339e805e2de84f250ef0fb12d24a91b2b7069620e761",
+      "bytes": 14569,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "E:/dev/codex/frade/docs/engineering/parallel-feature-workflow.md",
+      "sha256": "70f0be8674719243baab0121fd20d5f930fba9818507b31387146bea1f28a4f8",
+      "bytes": 3442,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "C:/Users/NVISEN/.codex/worktrees/routing-v2/frade/docs/routing-v2/CURRENT_CHANGE.md",
+      "sha256": "61796363ca95e43c37a6c2416c072f752ca20ee445becc7358d56b68ba57d078",
+      "bytes": 7843,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "C:/Users/NVISEN/.codex/worktrees/routing-v2/frade/docs/routing-v2/ROUTING-V2-STATUS.md",
+      "sha256": "3c32fcbe2a469880ade27026de9b27f50bb1012dd0fcddcf4423bbac6f82f0b4",
+      "bytes": 45879,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "C:/Users/NVISEN/.codex/worktrees/routing-v2/frade/docs/routing-v2/workflow-models.md",
+      "sha256": "9418110cce5a44fad781f897280f602845adb8bd40d531aa4187a99b0c4cb1fb",
+      "bytes": 10723,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "C:/Users/NVISEN/.codex/worktrees/routing-v2/frade/openspec/changes/routing-v2-04-orthogonal-router/tasks.md",
+      "sha256": "956f7772f77cf1938d578e5c6e6bb9aa72c8e7771fcd9b44dbdba7b821287122",
+      "bytes": 21749,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/docs/ui/UI-DESIGN-CONTRACT-STATUS.md",
+      "sha256": "5c989d5f4f54921e7ab0ccecd68daaa57ddea9a96ad7311b2f1087d515caf305",
+      "bytes": 88279,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/docs/ui/foundation-status.md",
+      "sha256": "96088916619be3861d5e6749373350b55b511baf3a6fe123655d2bde3159d381",
+      "bytes": 1788,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/tasks.md",
+      "sha256": "4368923c5bdb165a0415dc4878546d113c325958e8da25360d0ab28c23a90e38",
+      "bytes": 17572,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/design.md",
+      "sha256": "e2609dfa5204c604f40d394fa55b4373642e7ca30415011e5de8c3817c1f546a",
+      "bytes": 68601,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    },
+    {
+      "source": "C:/Users/NVISEN/.codex/worktrees/r04-pre-review/frade/docs/routing-v2/CURRENT_CHANGE.md",
+      "sha256": "b4d973de0ba1f2c55d9b59b220ce08c366194c413f15c4158256a10eb332dd90",
+      "bytes": 7852,
+      "copied": false,
+      "role": "read-only point-in-time process observation, not current-owner certification"
+    }
+  ],
+  "limitations": [
+    "Package manifest audit and selected contracts, not execution of all product suites",
+    "Other active owners may advance after snapshot",
+    "Task completion does not certify POST/archive",
+    "Read-only existing-owner observation; no foreign status/source edits",
+    "New process standard controls not implemented"
+  ]
+}
