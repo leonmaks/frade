@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-02T10:03:10.542Z",
+  "classification": "TEST",
+  "cause": "New test duplicated preexisting service import and used ES2023 findLast outside project ES2022 lib",
+  "repair": "Reuse existing import, use equivalent ordered filter(...).at(-1); no production/assertion/tolerance/dependency/tsconfig changes",
+  "priorActualGreen": 38,
+  "priorTypecheck": "FAIL_RAW_PRESERVED"
+}

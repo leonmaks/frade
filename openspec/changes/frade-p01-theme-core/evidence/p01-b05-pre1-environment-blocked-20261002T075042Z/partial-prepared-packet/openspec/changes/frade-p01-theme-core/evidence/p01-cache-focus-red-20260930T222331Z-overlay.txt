@@ -1,0 +1,66 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/overlays.test.tsx (8 tests | 2 failed) 138ms
+   ✓ managed modal owns initial focus, traps Tab, inerts background and restores exact opener/attributes on disposal 65ms
+   ✓ nested picker returns focus to its Settings opener; dirty guard outranks and pauses both 22ms
+   ✓ outside dismissal awaits successful cancellation and retains dirty editor DOM through pending/failed result 6ms
+   ✓ dirty guard outside click stays owned; Escape invokes only topmost cancellation 8ms
+   ✓ preexisting inert state remains after modal closes and disposed owner no longer handles events 5ms
+   ✓ visible transaction curtain pauses overlay key/outside/focus ownership so recovery remains reachable 5ms
+   × roving negative tabindex buttons are excluded from modal Tab order and initial focus 14ms
+     → expected <button tabindex="-1"></button> to be <button></button> // Object.is equality
+   × thrown cancellation becomes associated live error and a later retry invokes owner again 12ms
+     → expected false to be true // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 6 passed (8)
+   Start at  01:23:34
+   Duration  1.59s (transform 76ms, setup 0ms, collect 77ms, tests 138ms, environment 675ms, prepare 219ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/overlays.test.tsx > roving negative tabindex buttons are excluded from modal Tab order and initial focus
+AssertionError: expected <button tabindex="-1"></button> to be <button></button> // Object.is equality
+
+- Expected
++ Received
+
+- <button>
+-   last
++ <button
++   tabindex="-1"
++ >
++   first
+  </button>
+
+ ❯ tests/ui-contract/overlays.test.tsx:233:33
+    231| it('roving negative tabindex buttons are excluded from modal Tab order…
+    232|  const f=fixture(),d=f.dialog('Roving picker');d.first.tabIndex=-1;con…
+    233|  expect(document.activeElement).toBe(d.last);f.manager.handleKey(key('…
+       |                                 ^
+    234| })
+    235| it('thrown cancellation becomes associated live error and a later retr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/ui-contract/overlays.test.tsx > thrown cancellation becomes associated live error and a later retry invokes owner again
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/ui-contract/overlays.test.tsx:238:38
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

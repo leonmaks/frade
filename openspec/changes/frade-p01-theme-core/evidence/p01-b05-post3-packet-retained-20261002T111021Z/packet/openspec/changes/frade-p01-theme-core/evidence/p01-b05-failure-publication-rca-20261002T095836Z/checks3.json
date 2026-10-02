@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ui-lint3",
+    "startedAtUtc": "2026-10-02T10:05:13.852Z",
+    "finishedAtUtc": "2026-10-02T10:05:22.374Z",
+    "command": [
+      "E:\\Program Files\\nodejs\\node.exe",
+      "pnpm",
+      "--filter",
+      "@frade/ui-workspace",
+      "lint"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "ui-type3",
+    "startedAtUtc": "2026-10-02T10:05:22.376Z",
+    "finishedAtUtc": "2026-10-02T10:05:29.470Z",
+    "command": [
+      "E:\\Program Files\\nodejs\\node.exe",
+      "pnpm",
+      "--filter",
+      "@frade/ui-workspace",
+      "typecheck"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "green3",
+    "startedAtUtc": "2026-10-02T10:05:29.470Z",
+    "finishedAtUtc": "2026-10-02T10:05:34.043Z",
+    "command": [
+      "E:\\Program Files\\nodejs\\node.exe",
+      "pnpm",
+      "--filter",
+      "@frade/ui-workspace",
+      "exec",
+      "vitest",
+      "run",
+      "tests/ui-contract/participants.test.ts"
+    ],
+    "exitCode": 0
+  },
+  {
+    "id": "desktop-type3",
+    "startedAtUtc": "2026-10-02T10:05:34.043Z",
+    "finishedAtUtc": "2026-10-02T10:05:43.596Z",
+    "command": [
+      "E:\\Program Files\\nodejs\\node.exe",
+      "pnpm",
+      "--filter",
+      "@frade/desktop",
+      "typecheck"
+    ],
+    "exitCode": 0
+  }
+]

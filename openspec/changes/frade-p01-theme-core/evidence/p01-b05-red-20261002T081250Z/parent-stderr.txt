@@ -1,0 +1,54 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > P01-B05 painted diagnostic survives normal prepared release without re-settling or invalidating the participant
+AssertionError: expected [] to deeply equal [ Array(1) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "LOWER_MENU_REFLOW_UNAVAILABLE: original targets cannot fit without forbidden behavior",
+-   ],
+- ]
++ []
+
+ ❯ tests/ui-contract/participants.test.ts:1164:35
+    1162|     f.receive(phase(1),'REFUSED','apply',{message:lowerRefusal})
+    1163|     f.receive(phase(1),'REFUSED','apply',{message:lowerRefusal})
+    1164|     expect(diagnostic.mock.calls).toEqual([[lowerRefusal]])
+       |                                   ^
+    1165|     expect(settled).toHaveBeenCalledTimes(1);expect(rejected).not.toHa…
+    1166|     expect(f.invalidated).not.toHaveBeenCalled();expect(f.frame.outerH…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > P01-B05 rejects forged, malformed, unrelated, detached and superseded settled diagnostics while preserving pending refusal
+AssertionError: expected [] to deeply equal [ Array(1) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "LOWER_MENU_REFLOW_UNAVAILABLE: original targets cannot fit without forbidden behavior",
+-   ],
+- ]
++ []
+
+ ❯ tests/ui-contract/participants.test.ts:1182:42
+    1180|     f.frame.remove();emit();document.body.append(f.frame)
+    1181|     expect(diagnostic).not.toHaveBeenCalled()
+    1182|     emit();expect(diagnostic.mock.calls).toEqual([[lowerRefusal]])
+       |                                          ^
+    1183|     const next={...phase(2,'prepare'),generation:2,requestId:'window-1…
+    1184|     const pending=f.participant.prepare(snapshot('light',2),next,new A…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

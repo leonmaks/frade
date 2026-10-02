@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-09-30T22:00:14.622Z",
+  "results": [
+    {
+      "label": "target",
+      "command": "pnpm --filter @frade/desktop exec vitest run tests/unit/drawio-theme.test.ts",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-drawio-theme-checks-20260930T220014Z-target.txt"
+    },
+    {
+      "label": "typecheck",
+      "command": "pnpm --filter @frade/desktop typecheck",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-drawio-theme-checks-20260930T220014Z-typecheck.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "sha256": "d660c0128da04a484d55797edeeb028e7be671b2764e7149926f5f71cb854743"
+    },
+    {
+      "path": "apps/desktop/tests/unit/drawio-theme.test.ts",
+      "sha256": "dbda91b64907f510e4be00ce5292ff4f26a75c65be375a60adcfeb2ddb85728f"
+    }
+  ],
+  "pinnedFrameRuntime": "NOT_RUN",
+  "electronXMLOracle": "NOT_RUN"
+}

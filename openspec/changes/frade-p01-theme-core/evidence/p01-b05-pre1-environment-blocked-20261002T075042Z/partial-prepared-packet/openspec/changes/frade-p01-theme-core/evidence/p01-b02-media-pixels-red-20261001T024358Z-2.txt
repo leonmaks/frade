@@ -1,0 +1,50 @@
+
+Running 4 tests using 1 worker
+
+  ok 1 tests\e2e\ui-contract-theme.spec.ts:1382:1 › P01-B02 actual repository metadata pending error success across six themes and forced colors (25.0s)
+  ok 2 tests\e2e\ui-contract-theme.spec.ts:1448:3 › P01-B02 actual flow manager states frade across six themes and forced colors (51.8s)
+  ok 3 tests\e2e\ui-contract-theme.spec.ts:1448:3 › P01-B02 actual flow manager states drawio across six themes and forced colors (54.7s)
+  x  4 tests\e2e\ui-contract-theme.spec.ts:1612:1 › P01 actual forced primary text retains system background behind glyphs rather than unreadable UA backplate (2.4s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:1612:1 › P01 actual forced primary text retains system background behind glyphs rather than unreadable UA backplate 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0.15[39m
+    Received:   [31m0[39m
+
+      1599 |     )
+      1600 |     expect(pixels.total).toBeGreaterThan(50)
+    > 1601 |     expect(pixels.backgroundFraction).toBeGreaterThan(0.15)
+           |                                       ^
+      1602 |   } finally {
+      1603 |     await finishDiagramFixture(f.app)
+      1604 |   }
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1601:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-media-pixels-red-20261001T024358Z-artifacts\ui-contract-theme-P01-actu-61636-han-unreadable-UA-backplate\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-media-pixels-red-20261001T024358Z-artifacts\ui-contract-theme-P01-actu-61636-han-unreadable-UA-backplate\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-media-pixels-red-20261001T024358Z-artifacts\ui-contract-theme-P01-actu-61636-han-unreadable-UA-backplate\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:1612:1 › P01 actual forced primary text retains system background behind glyphs rather than unreadable UA backplate 
+  3 passed (2.3m)
+(node:56016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:56016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:56016) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

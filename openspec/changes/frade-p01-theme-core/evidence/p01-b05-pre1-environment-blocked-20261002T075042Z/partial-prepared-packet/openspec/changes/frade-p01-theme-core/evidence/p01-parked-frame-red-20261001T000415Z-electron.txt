@@ -1,0 +1,60 @@
+
+Running 4 tests using 1 worker
+
+  ok 1 tests\e2e\ui-contract-theme.spec.ts:7:1 › P01 real startup restores validated presentation before the visible window and keeps health API isolated (1.1s)
+  ok 2 tests\e2e\ui-contract-theme.spec.ts:236:1 › P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history (3.0s)
+  ok 3 tests\e2e\ui-contract-theme.spec.ts:298:1 › P01 embedded hot preview and cancellation preserve XML, authored paint, preferences, selection and editor identity (4.8s)
+  x  4 tests\e2e\ui-contract-theme.spec.ts:379:1 › P01 parked required frame acknowledges while dirty KA stays active and restores its same editor on return (13.8s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:379:1 › P01 parked required frame acknowledges while dirty KA stays active and restores its same editor on return 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: getByRole('status').filter({ hasText: 'Предпросмотр' })
+    Expected substring: [32m"Предпросмотр"[39m
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('status').filter({ hasText: 'Предпросмотр' })[22m
+    [2m    8 × locator resolved to <p role="status" aria-live="polite" aria-atomic="true" id="frade-theme-picker-status">Подготовка предпросмотра…</p>[22m
+    [2m      - unexpected value "Подготовка предпросмотра…"[22m
+
+
+      197 |   await page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
+      198 |   await page.getByRole('option', { name: /Dark/ }).click()
+    > 199 |   await expect(page.getByRole('status').filter({ hasText: 'Предпросмотр' })).toContainText(
+          |                                                                              ^
+      200 |     'Предпросмотр',
+      201 |   )
+      202 | }
+        at previewDark (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:199:78)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:348:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-parked-frame-red-20261001T000415Z-artifacts\ui-contract-theme-P01-park-b7ec8-s-its-same-editor-on-return\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-parked-frame-red-20261001T000415Z-artifacts\ui-contract-theme-P01-park-b7ec8-s-its-same-editor-on-return\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-parked-frame-red-20261001T000415Z-artifacts\ui-contract-theme-P01-park-b7ec8-s-its-same-editor-on-return\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:379:1 › P01 parked required frame acknowledges while dirty KA stays active and restores its same editor on return 
+  3 passed (24.1s)
+(node:51824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:51824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:51824) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

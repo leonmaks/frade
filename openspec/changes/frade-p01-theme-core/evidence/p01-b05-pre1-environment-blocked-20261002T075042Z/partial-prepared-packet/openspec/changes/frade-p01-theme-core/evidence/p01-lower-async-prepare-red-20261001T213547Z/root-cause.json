@@ -1,0 +1,7 @@
+{
+  "classification": "STATE_TRANSITION",
+  "cause": "Queued MutationObserver reconciliation treats prepared higher generation as invalid applied DOM and drops captured popup ownership before apply. Prepare must not change DOM; apply must retain original hide cancellation proof.",
+  "repair": "Suspend observer reconciliation while current applied ownership is not authoritative; do not clear popup from observation alone. Explicit stale keyboard guard, applied cancellation and teardown remain exact.",
+  "regression": "18 tests, 1 deterministic RED / 17 PASS; exact popup outerHTML across two prepare microtask turns.",
+  "scope": "Only sole accepted bridge; no protocol, vendor, model or routing API changes"
+}

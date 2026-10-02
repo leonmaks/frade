@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-10-01T00:28:53.264Z",
+  "results": [
+    {
+      "label": "desktop-unit",
+      "command": "pnpm --filter @frade/desktop test",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-channel-isolation-checks-20261001T002800Z-desktop-unit.txt"
+    },
+    {
+      "label": "desktop-lint",
+      "command": "pnpm --filter @frade/desktop lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-channel-isolation-checks-20261001T002800Z-desktop-lint.txt"
+    },
+    {
+      "label": "desktop-build",
+      "command": "pnpm --filter @frade/desktop build",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-channel-isolation-checks-20261001T002800Z-desktop-build.txt"
+    },
+    {
+      "label": "electron",
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme.spec.ts --output C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-channel-isolation-checks-20261001T002800Z-artifacts",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-channel-isolation-checks-20261001T002800Z-electron.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "sha256": "d4f6d4a8cc4a60d0126f675eef5ec24796bd72b6045a732a10a7d0fcc0588a25"
+    },
+    {
+      "path": "apps/desktop/tests/unit/drawio-theme.test.ts",
+      "sha256": "9bf5d645fbb8d01de625d9c49c2e366f7e785387724bb879f1a11ae2dbc0fec1"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "sha256": "c15411ee7d42f16f1cd17d7517990f061f56be0632976fa3c814555caaa50737"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-01T23:49:26.842Z",
+  "classification": "TEST",
+  "evidence": "electron-red.log and preserved electron-red-artifacts",
+  "findings": [
+    {
+      "id": "overflow-target",
+      "cause": "Original vendor exposes a trailing right-scroll control when overflowing; End targets that control, not a page. Navigate one ArrowLeft before inspecting the last page. Preserve bounds, overflow, state and focus assertions."
+    },
+    {
+      "id": "page-popup-glyph-inventory",
+      "cause": "Pinned createPageMenu uses addMenuItems duplicate/remove/rename. Menus.addMenuItem calls addItem with null icon. These real three-row page popups contain zero glyphs; assert exact zero inventory for that state, retain positive original glyph paint oracles for lower/Pages/submenus. This is newly authored incorrect expectation, no historical assertion removal."
+    },
+    {
+      "id": "glyph-paint",
+      "classification": "UNESTABLISHED",
+      "cause": "Actual lower SVG screenshot shows foreground but pure canonical pixel count is zero; collect actual glyph CSS plus ancestor opacity/filter before production change."
+    }
+  ]
+}

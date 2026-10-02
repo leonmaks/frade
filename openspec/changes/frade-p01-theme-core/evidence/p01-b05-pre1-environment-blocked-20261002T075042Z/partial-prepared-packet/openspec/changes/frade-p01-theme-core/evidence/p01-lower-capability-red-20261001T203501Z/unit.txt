@@ -1,0 +1,48 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/drawio-theme.test.ts (13 tests | 1 failed) 693ms
+   ✓ serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 69ms
+   ✓ bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 9ms
+   ✓ bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 16ms
+   ✓ bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 11ms
+   ✓ bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 8ms
+   ✓ bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 9ms
+   ✓ bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 5ms
+   ✓ separate presentation channel never reaches downstream vendor semantic handler, while unrelated actions still do 8ms
+   ✓ P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once 121ms
+   ✓ P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup 235ms
+   ✓ P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions 73ms
+   × P01-LOWER real capability removal and restoration, hidden controls and regenerated DOM retain exact original handlers 44ms
+     → expected 'true' to be 'false' // Object.is equality
+   ✓ P01-LOWER pointer registrations execute one original family only and menu DOM ownership restores exact prior values 83ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 12 passed (13)
+   Start at  23:35:02
+   Duration  2.45s (transform 190ms, setup 0ms, collect 239ms, tests 693ms, environment 758ms, prepare 246ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER real capability removal and restoration, hidden controls and regenerated DOM retain exact original handlers
+AssertionError: expected 'true' to be 'false' // Object.is equality
+
+Expected: "false"
+Received: "true"
+
+ ❯ tests/unit/drawio-theme.test.ts:518:49
+    516|   f.pages.classList.remove('mxDisabled')
+    517|   await Promise.resolve()
+    518|   expect(f.pages.getAttribute('aria-disabled')).toBe('false')
+       |                                                 ^
+    519|   f.pages.style.display = 'none'
+    520|   await Promise.resolve()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

@@ -1,0 +1,12 @@
+{
+  "atUtc": "2026-10-02T09:58:36.545Z",
+  "classification": "STATE_TRANSITION",
+  "gate": "FAIL",
+  "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post2-fail-received-20261002T095150Z",
+  "cause": "DiagramView subscribes to every ThemeController notification. IDLE and matching frame/state revision can mean successful compensation after a FAILED request; changed revision is not proof of successful publication.",
+  "responsibleLayer": "First-party presentation integration in approved DiagramView.tsx",
+  "contract": "Existing accepted B05/PRE note3 forbids failure notification clearing, including compensation to a different committed revision.",
+  "regressionPlan": "Permanent test in approved participants.test.ts executes exact production diagnostic/clear/published/subscription callbacks against actual PresentationService and FrameParticipant wire. Dark preview1 refusal then controlled failed HC preview compensates to baseline0; failure must retain diagnostic. A subsequent genuine successful publication may clear.",
+  "repairScope": "Only existing DiagramView subscription/phase filter; no new wire/API/service/controller changes",
+  "productionModified": false
+}

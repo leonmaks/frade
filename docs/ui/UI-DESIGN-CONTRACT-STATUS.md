@@ -1,8 +1,78 @@
+# B05 — focused independent POST3 PASS; checkpoint preparing
+
+2026-10-02T11:13:35.739Z. Exact planned gpt-6-astra/xhigh automatic read-only POST3 PASS;91complete events; candidate/packet/plan unchanged; raw17 saved before interpretation. Backend/effort NOT_CONFIRMED. Root4 Draw215/Electron82, workspace184/desktop73,parent38/bridge30, source538 unchanged PASS. Lower6/6,990observations/0violations/690PNG; p95 110.30ms<=150. Original callbacks byte-identical;8newunits+1Electron. Different-revision failure retention repaired after RED; all previous FAIL/BLOCKED preserved. Focused B05 closed, P01 remains6/10: fullFUI005–009 bindings, human visual approval, cumulative verify/POST/archive OPEN; STOP before P02. Source/evidence UNCOMMITTED/UNPUSHED after e1e9797. Closure: openspec/changes/frade-p01-theme-core/evidence/p01-b05-closure-20261002T111335Z/report.md. Only verified duplicate of completed own POST3 packet removed after exact2834file retention; reports/events/receipts/controls unchanged. Right panel queued; visibility unconfirmed.
+
+# B05 — fresh automatic POST3 DISPATCHING / frozen candidate
+
+2026-10-02T10:47:53.940Z. Root4/metadata/verify2 PASS; Draw215/Electron82/source538 unchanged, lower990/0/690, p95 110.30ms,8newunits+1Electron, oldcallbacksunchanged. Accepted different-revision failure publication defect fixed after permanent RED;38parent units PASS. Exact approved POST gpt-6-astra/xhigh;2831selectedfiles/219170511bytes plus fresh same-run canary. Candidate/status/index/HEAD immutable through receipt. POST2 FAIL and all raw histories retained. P01 6/10; fullFUI/humanvisual/cumulative/archive OPEN; STOP before P02. Changes UNCOMMITTED/UNPUSHED after e1e9797. Right panel queued; visibility unconfirmed.
+
+# B05 — fresh root4 + verify2 PASS; POST3 PREPARING
+
+2026-10-02T10:39:29.966Z. Different-revision compensation failure regression RED before narrow successful-event DiagramView fix; current 38parent/30bridge/184workspace/73desktop units PASS. Fresh check:all PASS, Draw215/215, Electron82/82, source538 unchanged. Lower6/6/990observations0violations690PNG;1952fresh raw artifacts verified, p95 recomputed110.30ms<=150. Exact original27bridge/20Electron/33parent and prior37parent callbacks unchanged. Strict + focused verify2 PASS. POST2 FAIL77events/source/packet unchanged retained; fresh automatic POST3 required. P01 6/10, fullFUI/humanvisual/cumulative/archive OPEN; STOP before P02. Current source/evidence UNCOMMITTED/UNPUSHED; planning e1e9797 remote verified.
+
+# B05 — root4 general checks + Draw215 PASS; desktop runtime RUNNING
+
+2026-10-02T10:14:02.443Z. Current root4: lint20/type20/package tests/bdd/build/boundaries/UI compliance and actual Draw215/215 PASS. Workspace184units including different-revision regression38parent PASS; desktop73units PASS. Actual full Electron82case runtime underway; final root exit/source invariance/actual matrix/performance/verify/POST not complete. Own completed POST2 packet2889files/195162817bytes retained exact in UI evidence; only reverified duplicate packet folder removed from own common run, allreports/events/receipts/controls/other runs retained, Efree290643968 for nextreview. P01 6/10; full FUI/human visual/cumulative/archive OPEN, STOP before P02; current changes UNCOMMITTED/UNPUSHED.
+
+# B05 — failure publication repair GREEN; root4 RUNNING
+
+2026-10-02T10:08:44.900Z. Permanent real service/frame/actual DiagramView binding RED reproduced revision1->0 failure clearing before narrow production fix. Existing success-only service subscription plus PUBLISHED filter now preserves failure diagnostic and clears after genuine subsequent successful publication;38parent tests PASS, affected UI lint/type and desktop type PASS. New harness URL/type/lint errors retained with TEST RCA; no old assertions weakened. Fresh root4 required/running; old root3 Draw215/Electron82 belong to failed POST2 candidate. POST2 FAIL/raw77events retained; fresh verify/automatic POST pending. P01 6/10, visuals/full FUI/cumulative/archive OPEN; STOP before P02. Current source/evidence UNCOMMITTED/UNPUSHED.
+
+# B05 — independent POST2 FAIL; regression-first repair
+
+2026-10-02T09:58:36.550Z. Exact automatic POST77events/exit1, candidate/packet/plan unchanged. Blocker: failure compensation to different revision incorrectly clears unresolved diagnostic through generic controller notifications. Accepted B05/PRE note3 already requires retention on every failure. Raw17 saved, report1529e4d4a75f63deb5cffe0876ab4aaaf96a5634dc8c2f59a450cca07a271e5d. RCA STATE_TRANSITION; permanent actual service+frame+DiagramView closure regression added BEFORE production fix. New production correction NOT_IMPLEMENTED; previous root215/82 and scoped checks remain historical PASS for failed candidate. Current repair RED pending; fresh checks/verify/POST required. P01 6/10, visual/full FUI/cumulative/archive open; STOP before P02. Changes UNCOMMITTED/UNPUSHED after e1e9797.
+
+# B05 — POST2 DISPATCHING; evidence упаковка исправлена
+
+2026-10-02T09:28:21.697Z. POST1 BLOCKED до вызова модели: Git ignore test-results. Raw получен; exact1952 runtime artifacts/116580298bytes перенесены в evidence aliases с исходными SHA и fresh mtime; все selected paths входят в candidate. Production/test bytes unchanged; текущие root215/82,lower6/6/990/0,performance110.60 PASS. POST2 exact plan gpt-6-astra/xhigh; candidate/status/index/HEAD frozen through receipt. P01 6/10, visual/full FUI/cumulative/archive OPEN; STOP before P02. Current B05 UNCOMMITTED/UNPUSHED; planning e1e9797 remote verified.
+
+# B05 — automatic focused POST DISPATCHING / candidate frozen
+
+2026-10-02T09:24:37.671Z. Current check:all Draw215/Electron82/source538 unchanged PASS, lower6/6/990/0/690 PASS, p95 110.60ms PASS, focused OpenSpec verify and metadataBDD6/compliance PASS. Exact approved POST gpt-6-astra/xhigh; relevant packet 2873files/191447358bytes; fresh same-run confinement proof before freeze. Candidate/status/index/HEAD immutable through receipt. Current source/evidence UNCOMMITTED/UNPUSHED; planning e1e9797 published verified. P01 6/10, human visual NOT_APPROVED, full FUI/cumulative/archive OPEN, STOP before P02. Right panel queued; visible unconfirmed.
+
+# Текущий B05 — full checks и focused verify PASS; POST PREPARING
+
+Обновлено 2026-10-02T09:21:02.746Z. Branch codex/frade-ui-design-contract; отдельный UI worktree; original baseline98f387f. PRE2 PASS, meaningful RED до exact3production repair. Current check:all PASS: Draw215/215, Electron82/82, desktop units73, workspace units183;538 source hashes unchanged. Lower Light/Dark/HC ×compact/comfortable6/6,990observations0violations690PNG. Performance p95=110.60ms<=150. All1952 current artifact raw hashes/freshness verified; old27bridge/20E2E/33parent callbacks byte-identical. New7unit+1Electron tests.
+
+Focused OpenSpec verification PASS для B05; P01 остаётся6/10. Полные FUI005–009 bindings, human visual NOT_APPROVED, cumulative verify/POST и archive OPEN; STOP before P02. Следующий шаг: автоматический independent POST по exact owning plan gpt-6-astra/xhigh. После freeze статус не меняется до получения immutable receipt. Checkpoint e1e9797 опубликован; текущая B05 реализация/evidence UNCOMMITTED/UNPUSHED. GitHub required checks LOCAL_ONLY/NOT_CONFIGURED. Evidence: openspec/changes/frade-p01-theme-core/evidence/p01-b05-verify-20261002T091831Z. Right panel ранее queued, visibility unconfirmed.
+
+## Текущий B05 — Draw215 PASS; desktop runtime RUNNING
+
+Обновлено 2026-10-02T09:02:01.151Z. Fresh root3 Draw215/215 PASS; desktop cases1–41 including actual benchmark, required frame refusal, startup/native/frame/parked/settings/System/window-close, six-state general/media/metadata/flow native PASS. Whole desktop82/check:all still RUNNING; remaining embedded flow/readonly/lower/B05/WB required. All source unchanged so far; full result/integrity/performance audit pending. No focused verify/POST/archive advancement yet. P01 6/10, visual NOT_APPROVED; current source uncommitted/unpushed; STOP before P02.
+
+## Текущий B05 — full root3 general checks PASS; Draw runtime RUNNING
+
+Обновлено 2026-10-02T08:53:00.221Z. Current root lint20/type20/package test37 task gates and UI-workspaceBDD95 executed PASS; general check chain completed before current Draw runtime. Whole check:all still RUNNING, Draw/desktop/performance outcomes pending; do not score old default artifacts. Matrix previous current runtime6/6/990/0/690 PASS, B05 Electron PASS, original assertions exact. P01 6/10, focused verify/automatic POST/human visual/cumulative/archive OPEN, STOP before P02. UI source changes uncommitted/unpushed after planning e1e9797.
+
+## Текущий B05 — full root3 RUNNING after type-only fixture correction
+
+Обновлено 2026-10-02T08:50:12.923Z. Root2 FAIL at new observer array inferred never[]; explicit test-only Record array fixed, targeted desktop typecheck PASS. Raw FAIL/538unchanged source and PREEXISTING artifact classification preserved. Root3 mandatory check:all RUNNING,538source hashes frozen; all runtime results must execute current source. Matrix actual6/6/990/0/690 PASS before type-only assertion fixture correction; fresh full runtime will revalidate. P01 6/10, visual NOT_APPROVED, verify/POST/archive pending, STOP before P02. Current B05 changes uncommitted/unpushed after planning e1e9797.
+
+## Текущий B05 — matrix PASS / full root2 RUNNING
+
+Обновлено 2026-10-02T08:45:21.240Z. Root1 preparation ENVIRONMENT_ENOBUFS before tests; exact source pathspec +16MiB buffer fixed harness. Root2 pnpm check:all running, source538 hashes frozen. Matrix6/6,990observations0violations690PNG PASS; PRE2/RED/current Electron PASS. Full P016/10, visual NOT_APPROVED, verify/POST/archive pending, STOP before P02; current source uncommitted/unpushed.
+
+## Текущий B05 — 30bridge/37parent + actual Electron PASS; matrix RUNNING
+
+Обновлено 2026-10-02T08:40:38.079Z. New mouse/media fixture used actual40px root capacity after documented TEST RCA (88px is feasible for one panel). All original27bridge/20E2E/33parent callbacks byte-identical. New6 meaningful unit tests plus1 Electron test added; strict source scope3production+3test paths. Fresh current six-state lower matrix running; full root/verify/automatic POST pending. Exact accepted scope/PRE2 unchanged, P01 6/10, human visual NOT_APPROVED, STOP before P02. Current changes uncommitted/unpushed after published planning e1e9797.
+
+## Текущий B05 — targeted GREEN / fresh matrix + root required
+
+Обновлено 2026-10-02T08:34:32.394Z. PRE2 PASS/raw17 retained; permanent RED4FAIL before exact3production repair. Targeted37parent/72desktop units,lint/type/build2851 PASS. Actual Electron B05 PASS: live/refusal STOP/exact owned restoration/vendor classes/feasible retry/failed same-revision retention/new authoritative cancel clearing/semantic durable preservation. Four historical Electron FAIL+TEST RCA retained; production did not change for fixture repair. Fresh current six-state matrix/root/verify/POST NOT_RUN; human visual NOT_APPROVED. P01 6/10, full FUI/cumulative/archive OPEN, STOP before P02. Checkpoint e1e9797 published verified; current B05 changes uncommitted. New mouse/media coverage and exact old assertion/source pins prepared for current final checks.
+
+## Текущий B05 — PRE2 PASS / permanent RED
+
+Обновлено: 2026-10-02T08:12:06.608Z. P01 6/10; candidate unfreezed after completed immutable receipt. Automatic PRE2 PASS, 754 packet files, exact gpt-6-astra/xhigh owning plan; report SHA 3337ef37ff3e976800f74653e12b298674640e7170127e0ee9a50dfd42dad2ad. Raw17 copies verified before interpretation; candidate/packet/plan unchanged. PRE1 ENVIRONMENT_ENOSPC preserved. Production unchanged. Next permanent bridge→actual-parent RED then exact3production repair; fresh checks/verify/POST required. Full FUI/human visual/cumulative/archive open, STOP before P02. Planning e1e9797 committed/pushed verified; new metadata/tests not committed.
+
+## Текущее окружение B05 PRE
+
+PRE1 preparation BLOCKED_ENVIRONMENT_ENOSPC before reviewer; raw receipt/input/canary preserved. Only task-created incomplete duplicate packet copied to UI C,6736files/424589591bytes verified, then duplicate on E removed; prior runs/releases/receipts unchanged. PRE2 relevant compact packet 752paths/48634687bytes; current contracts/source/tests/B05 evidence retained. Production unchanged; candidate freeze resumes through PRE2 receipt.
+
 # Frade UI Design Contract — текущий B05 accepted checkpoint
 
-Обновлено: 2026-10-02T07:41:00.587Z. Branch codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; original baseline98f387f. Published HEAD2a7614d remote SHA verified, clean at resume. P01 spec-driven6/10; guide1.0/tokens1.0.0; Routing prerequisite отсутствует.
+Обновлено: 2026-10-02T07:41:00.587Z. Branch codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; original baseline98f387f. Planning checkpoint e1e97975346e2556c7af8c0801b8a59b2cff5e4d committed/pushed, remote SHA VERIFIED; production unchanged. P01 spec-driven6/10; guide1.0/tokens1.0.0; Routing prerequisite отсутствует.
 
-Exact B05 scope принят человеком: SHA15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01. Acceptance openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal-accepted-20261002T074100Z.json. Four artifacts/BDD согласованы; production unchanged. Strict/BDD6/compliance/shared status AVAILABLE PASS. Current stage: fresh automatic PRE, exact gpt-6-astra/xhigh from owning stage/role plan; before PASS no production. Prior POST2FAIL B05/RCA remains OPEN; previous required root PASS belongs to pre-repair source. PRE/repair/current changed-source checks/POST currently NOT_RUN. Full FUI/human visual/cumulative/archive open. STOP before P02. Right panel queued; visibility unconfirmed.
+Exact B05 scope принят человеком: SHA15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01. Acceptance openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal-accepted-20261002T074100Z.json. Four artifacts/BDD согласованы; production unchanged. Strict/BDD6/compliance/shared status AVAILABLE PASS. Current stage: automatic independent PRE DISPATCHING; candidate frozen through receipt. Fresh automatic PRE, exact gpt-6-astra/xhigh from owning stage/role plan; before PASS no production. Prior POST2FAIL B05/RCA remains OPEN; previous required root PASS belongs to pre-repair source. PRE/repair/current changed-source checks/POST currently NOT_RUN. Full FUI/human visual/cumulative/archive open. STOP before P02. Right panel queued; visibility unconfirmed.
 
 ## История checkpoint
 

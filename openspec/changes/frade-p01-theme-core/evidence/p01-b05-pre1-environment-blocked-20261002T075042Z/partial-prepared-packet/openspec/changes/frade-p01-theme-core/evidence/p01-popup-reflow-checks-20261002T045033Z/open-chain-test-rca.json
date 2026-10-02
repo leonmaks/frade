@@ -1,0 +1,17 @@
+{
+  "atUtc": "2026-10-02T05:08:29.199Z",
+  "classification": "TEST",
+  "failures": [
+    "targeted-result.json",
+    "open-chain-diagnostic-result.json"
+  ],
+  "callerProof": "open-chain-diagnostic-artifacts/ui-contract-theme-P01-REFL-33d20-r-churn-or-semantic-actions/open-chain-observations.json",
+  "rootCause": "New test assumes original runtime viewport projection is fixed across actual window resize. Original pinned App.sizeDidChange calls mxGraphView.setTranslate; getGraphXml adds viewport-derived dx/dy (664/511 ->465/258), not authored model mutation.",
+  "repair": "Reuse actual geometry signature/6 stable RAF readiness from existing matrix. Encode original getModel with mxCodec (same existing lower semantic oracle) across actual resize; retain file bytes, authored background/grid, selection/undo/preferences/identities. Add exact getGraphXml and scale/translate preservation during every settled measurement. Bounds, targets, zero writes and all previous assertions retained.",
+  "productionUnchanged": true,
+  "productionSha256": "1bf719149d48555d20f8583258accb9d5906fcb992948212d4efa0cd0943d8c7",
+  "sourceBeforeSha256": "4fa8e717a67baa5d7b95fb84d95e89f7a42b56214a3d9670b6b4aae1a4b20481",
+  "sourceAfterSha256": "7241144abd322483434fbf8740fc1d368da039eb5330192777fedc4ce3c54158",
+  "originalBehaviorChanged": false,
+  "scopeChanged": false
+}

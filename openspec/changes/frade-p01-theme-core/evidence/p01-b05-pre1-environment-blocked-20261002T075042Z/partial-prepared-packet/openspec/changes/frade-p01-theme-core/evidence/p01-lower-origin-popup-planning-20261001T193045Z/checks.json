@@ -1,0 +1,30 @@
+{
+  "atUtc": "2026-10-01T19:34:14.257Z",
+  "strict": {
+    "command": "openspec validate frade-p01-theme-core --strict --json",
+    "exitCode": 0,
+    "status": "PASS"
+  },
+  "bdd": {
+    "command": "pnpm --filter @frade/ui-workspace test:bdd",
+    "exitCode": 0,
+    "status": "PASS",
+    "passed": 95
+  },
+  "compliance": {
+    "command": "pnpm ui:compliance",
+    "exitCode": 0,
+    "status": "PASS",
+    "passed": 26,
+    "namedContrastPairs": 102,
+    "positiveNegativeFixturesRemoved": true
+  },
+  "sourcePreservation": "PASS: four production/test raw hashes unchanged",
+  "diffCheck": {
+    "command": "git -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol diff --check",
+    "exitCode": 0,
+    "status": "PASS"
+  },
+  "pre": "NOT_RUN",
+  "tasks": "5/10"
+}

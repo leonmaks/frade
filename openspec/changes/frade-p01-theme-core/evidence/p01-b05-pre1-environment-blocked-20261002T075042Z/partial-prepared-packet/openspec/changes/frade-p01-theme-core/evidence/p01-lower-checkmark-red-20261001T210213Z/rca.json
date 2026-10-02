@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-01T21:02:18.328Z",
+  "exit": 1,
+  "classification": "ABSTRACTION_BOUNDARY",
+  "cause": "Projection currently assigns menuitem to all rows; original Pages checkmark is actual selected/checkable DOM",
+  "repair": "Use original Editor.checkmarkImage identity and actual label-cell mark to expose aria-checked=true only for marked rows. Unmarked unknown actions have no invented checkbox state. Restore exact attributes and original mark unchanged."
+}

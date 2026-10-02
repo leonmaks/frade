@@ -1,0 +1,30 @@
+{
+  "name": "@frade/adapter-sberea-yaml",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@frade/metamodel-config": "workspace:*",
+    "@frade/metamodel-domain": "workspace:*",
+    "@frade/metamodel-compiler": "workspace:*",
+    "@frade/repository-domain": "workspace:*",
+    "@frade/repository-ports": "workspace:*",
+    "yaml": "2.8.2"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vitest": "3.2.7",
+    "@types/node": "24.10.1",
+    "@frade/repository-application": "workspace:*",
+    "esbuild": "0.24.2"
+  }
+}

@@ -1,0 +1,53 @@
+
+Running 2 tests using 1 worker
+
+  x  1 tests\e2e\ui-contract-theme-performance.spec.ts:216:1 › P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms (40.4s)
+  ok 2 tests\e2e\ui-contract-theme-performance.spec.ts:418:1 › P01-diagnostic actual parked viewport and frame scheduling (8.6s)
+
+
+  1) tests\e2e\ui-contract-theme-performance.spec.ts:216:1 › P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m150[39m
+    Received:    [31m192.19999998807907[39m
+
+      405 |     expect(hash(await readFile(nativeFile))).toBe(hash(nativeBefore))
+      406 |     expect(hash(await readFile(f.file))).toBe(hash(frameBefore))
+    > 407 |     expect(p95).toBeLessThanOrEqual(150)
+          |                 ^
+      408 |   } finally {
+      409 |     await finishDiagramFixture(f.app)
+      410 |   }
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme-performance.spec.ts:407:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-opaque-cover-checks-20261001T012803Z-artifacts\ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-opaque-cover-checks-20261001T012803Z-artifacts\ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-opaque-cover-checks-20261001T012803Z-artifacts\ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme-performance.spec.ts:216:1 › P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms 
+  1 passed (51.6s)
+(node:4344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4344) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(node:49608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49608) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

@@ -1,0 +1,30 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > P01-B05 rejects forged, malformed, unrelated, detached and superseded settled diagnostics while preserving pending refusal
+AssertionError: expected "spy" to not be called at all, but actually been called 1 times
+
+Received: 
+
+  1st spy call:
+
+    Array []
+
+
+Number of calls: 1
+
+ ❯ tests/ui-contract/participants.test.ts:1188:106
+    1186|     f.receive(next,'REFUSED','prepare',{message:lowerRefusal});await e…
+    1187|     emit();expect(diagnostic).toHaveBeenCalledTimes(1)
+    1188|     f.participant.dispose();emit();expect(diagnostic).toHaveBeenCalled…
+       |                                                                                                          ^
+    1189|   } finally { f.cleanup() }
+    1190| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

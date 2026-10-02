@@ -1,0 +1,57 @@
+{
+  "atUtc": "2026-10-01T08:58:22.725Z",
+  "scope": "Accepted readiness with frame/root event witness; exact old compatibility assertions/tolerances",
+  "runs": [
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop typecheck"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "startedAtUtc": "2026-10-01T08:57:08.190Z",
+      "endedAtUtc": "2026-10-01T08:57:15.722Z",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-readiness-targeted-20261001T085708Z-typecheck.txt"
+    },
+    {
+      "cmd": "cmd.exe",
+      "args": [
+        "/d",
+        "/s",
+        "/c",
+        "pnpm --filter @frade/desktop lint"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "startedAtUtc": "2026-10-01T08:57:15.723Z",
+      "endedAtUtc": "2026-10-01T08:57:21.355Z",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-readiness-targeted-20261001T085708Z-lint.txt"
+    },
+    {
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/bundle-flows.spec.ts",
+        "tests/e2e/diagrams.spec.ts",
+        "tests/e2e/workbench-multiroot.spec.ts",
+        "--grep",
+        "full lifecycle|drawio navigator drop|WB-006/007",
+        "--output",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-e2e07-readiness-targeted-20261001T085708Z-artifacts",
+        "--reporter",
+        "list"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop",
+      "startedAtUtc": "2026-10-01T08:57:21.356Z",
+      "endedAtUtc": "2026-10-01T08:58:22.725Z",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-readiness-targeted-20261001T085708Z-compat.txt"
+    }
+  ],
+  "status": "FAIL",
+  "productionChanged": false
+}

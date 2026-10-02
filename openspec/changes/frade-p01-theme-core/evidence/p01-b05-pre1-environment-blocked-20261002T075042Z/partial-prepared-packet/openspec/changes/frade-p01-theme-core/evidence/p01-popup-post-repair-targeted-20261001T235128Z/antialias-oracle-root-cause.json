@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-01T23:55:57.055Z",
+  "classification": "TEST",
+  "evidence": "electron-artifacts/ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds/1280x850-lower-focus-glyph-0.png",
+  "actual": {
+    "opacity": 1,
+    "filter": "none",
+    "opaqueCanonicalPixels": 0,
+    "background": [
+      32,
+      35,
+      41
+    ],
+    "canonicalInk": [
+      230,
+      233,
+      239
+    ],
+    "visibleRgbCounts": [
+      [
+        [
+          181,
+          184,
+          190
+        ],
+        12
+      ],
+      [
+        [
+          131,
+          134,
+          140
+        ],
+        8
+      ],
+      [
+        [
+          165,
+          168,
+          174
+        ],
+        6
+      ],
+      [
+        [
+          164,
+          167,
+          173
+        ],
+        6
+      ],
+      [
+        [
+          214,
+          217,
+          222
+        ],
+        4
+      ]
+    ]
+  },
+  "cause": "Original opaque24px SVG scaled to16px with fractionally aligned edges contains only alpha-blended ink. Pure opaque RGB existence is an invalid newly authored glyph oracle, not a guide requirement.",
+  "requirement": "Actual canonical glyph paint and effective contrast>=3; preserve original glyph geometry/assets and older exact checkmark assertion unchanged.",
+  "correction": "Keep computed canonical color/mask assertions plus opaque count as recorded diagnostic; assert actual screenshot pixels on the canonical foreground/background blend line (same2RGB tolerance) with measured contrast>=3. No tolerance loosening or production modification."
+}

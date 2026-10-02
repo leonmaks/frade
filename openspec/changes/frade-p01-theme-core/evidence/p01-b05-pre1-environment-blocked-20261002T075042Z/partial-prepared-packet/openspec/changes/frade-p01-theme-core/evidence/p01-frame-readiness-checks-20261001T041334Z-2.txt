@@ -1,0 +1,53 @@
+
+Running 2 tests using 1 worker
+
+(node:57040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:57040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:57040) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states drawio across six themes and forced colors (1.7m)
+(node:54264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:54264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:54264) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok 2 tests\e2e\ui-contract-theme.spec.ts:2208:1 › P01 actual restored readonly frame refuses navigator drop after exact presentation readiness without document writes (10.6s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+
+    Error: locator.scrollIntoViewIfNeeded: Element is not attached to the DOM
+    Call log:
+    [2m  - attempting scroll into view action[22m
+    [2m    - waiting for element to be stable[22m
+    [2m    - element is not stable[22m
+    [2m  - retrying scroll into view action[22m
+    [2m    - waiting for element to be stable[22m
+
+
+      1653 |             )
+      1654 |             await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+    > 1655 |             await line.scrollIntoViewIfNeeded()
+           |                        ^
+      1656 |             await canvas().evaluate(async () => {
+      1657 |               await new Promise<void>((resolve) =>
+      1658 |                 requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        at openActual (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1655:24)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1736:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-frame-readiness-checks-20261001T041334Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-frame-readiness-checks-20261001T041334Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-frame-readiness-checks-20261001T041334Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:1501:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+  1 passed (2.0m)

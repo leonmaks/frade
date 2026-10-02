@@ -1,0 +1,27 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-B05 original mouse root opening and open-chain media refusal stop without repeated diagnostics or hidden success
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/unit/drawio-theme.test.ts:1002:30
+    1000|   const f=lowerLayoutFixture(88);f.send('prepare');f.send('apply');awa…
+    1001|   f.pages.click();await Promise.resolve();await Promise.resolve()
+    1002|   expect(f.root.isConnected).toBe(false);expect(f.root.outerHTML).toBe…
+       |                              ^
+    1003|   expect(f.replies().filter(reply=>reply.status==='REFUSED')).toHaveLe…
+    1004|   await f.resize(501);f.pages.focus();f.key(f.pages,'Enter');f.key(f.m…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

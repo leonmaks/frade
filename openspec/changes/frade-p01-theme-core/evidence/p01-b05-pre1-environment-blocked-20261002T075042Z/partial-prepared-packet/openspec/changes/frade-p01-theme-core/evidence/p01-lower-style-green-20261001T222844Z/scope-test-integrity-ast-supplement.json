@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-01T22:35:46.638Z",
+  "classification": "TEST",
+  "supplements": "scope-test-integrity-audit.json (immutable)",
+  "explanation": "Initial token scanner counts trailing commas as changes and compared CRLF checkout against normalized Git blob. AST shape excludes formatting/comments/separators; accepted raw-before bytes supply exact checkout comparator.",
+  "tests": [
+    {
+      "file": "apps/desktop/tests/unit/drawio-theme.test.ts",
+      "priorTests": 8,
+      "currentTests": 20,
+      "removed": 0,
+      "changedPriorCallbackAst": 0
+    },
+    {
+      "file": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "priorTests": 15,
+      "currentTests": 18,
+      "removed": 0,
+      "changedPriorCallbackAst": 0
+    }
+  ],
+  "saveAs": {
+    "exactThreeLineDeltaAgainstRawBefore": true,
+    "exactThreeLineDeltaAgainstNormalizedGit": true,
+    "rawBefore": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-planning-20261001T193045Z/raw-before/apps/desktop/tests/e2e/workbench-multiroot.spec.ts",
+    "rawBeforeSha256": "6217bacf65c394ca7b6c240985383b17a2d0fcf31d6be54904884029d681e9b9",
+    "crlfPreserved": true
+  },
+  "status": "PASS"
+}

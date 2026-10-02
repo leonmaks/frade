@@ -1,0 +1,119 @@
+{
+  "timestamp": "2026-09-30T22:07:10.371Z",
+  "results": [
+    {
+      "label": "participants",
+      "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/participants.test.ts",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-participants.txt"
+    },
+    {
+      "label": "ui-typecheck",
+      "command": "pnpm --filter @frade/ui-workspace typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-ui-typecheck.txt"
+    },
+    {
+      "label": "ui-lint",
+      "command": "pnpm --filter @frade/ui-workspace lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-ui-lint.txt"
+    },
+    {
+      "label": "ui-tests",
+      "command": "pnpm --filter @frade/ui-workspace test",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-ui-tests.txt"
+    },
+    {
+      "label": "ui-bdd",
+      "command": "pnpm --filter @frade/ui-workspace test:bdd",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-ui-bdd.txt"
+    },
+    {
+      "label": "desktop-unit",
+      "command": "pnpm --filter @frade/desktop test",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-desktop-unit.txt"
+    },
+    {
+      "label": "boundaries",
+      "command": "pnpm check:boundaries",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-boundaries.txt"
+    },
+    {
+      "label": "tokens",
+      "command": "pnpm ui:tokens:check",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-tokens.txt"
+    },
+    {
+      "label": "colors",
+      "command": "pnpm ui:colors:check",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-colors.txt"
+    },
+    {
+      "label": "traceability",
+      "command": "pnpm ui:traceability:check",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-traceability.txt"
+    },
+    {
+      "label": "openspec",
+      "command": "pnpm exec openspec validate frade-p01-theme-core --strict --json",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-openspec.txt"
+    },
+    {
+      "label": "diff-check",
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-adapter-checks-20260930T220710Z-diff-check.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "packages/ui-workspace/src/design/theme/service.ts",
+      "sha256": "8fe57b5208245a8888634715c55aaf3b9afb962cf3dacb1ec86123f2e2c53a73"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/rootParticipant.ts",
+      "sha256": "ffc83e3cc8f95207a920d43edc9642ad21e5f7cb16b6fde07c6fb1014a3be1c7"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+      "sha256": "119790d7fb96cd808c983285e3f119e009cd525974e84b7b89e2fb9018c10897"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+      "sha256": "70d79465285bf1cc66ba35b5e31f623588f75d5f3e25ee09f07a17e5e2caf663"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+      "sha256": "cb4dff8f2d3414fcf3dada31405f9d89e50ee561591366742bcd491fbcd0e095"
+    },
+    {
+      "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "sha256": "934292065029d310d215f55286d3c94891369d88a09a04a59b85dfaf158f1847"
+    },
+    {
+      "path": "apps/desktop/tests/unit/drawio-theme.test.ts",
+      "sha256": "dbda91b64907f510e4be00ce5292ff4f26a75c65be375a60adcfeb2ddb85728f"
+    },
+    {
+      "path": "apps/desktop/src/preload/presentation-bridge.ts",
+      "sha256": "61c43eff0f418f02433c1b8971d338a0a913dcd31721165614e7059d29bafba9"
+    },
+    {
+      "path": "apps/desktop/tests/unit/presentation-bridge.test.ts",
+      "sha256": "10510fbdd29eff0563f33cdee38c1c2d834b2b6a607dfec9def7c5d82f64c321"
+    }
+  ],
+  "electronWiring": "NOT_IMPLEMENTED",
+  "screens": "NOT_RUN",
+  "p95": "NOT_RUN",
+  "readyForVerify": false
+}

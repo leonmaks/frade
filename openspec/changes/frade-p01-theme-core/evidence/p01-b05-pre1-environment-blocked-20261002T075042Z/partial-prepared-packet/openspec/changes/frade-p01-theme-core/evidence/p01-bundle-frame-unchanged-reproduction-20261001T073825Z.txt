@@ -1,0 +1,45 @@
+
+Running 1 test using 1 worker
+
+(node:60088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:60088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:60088) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (25.7s)
+
+
+  1) tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio › E2E-07 broken canonical reference remains removable 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('complementary', { name: 'Интеграционные потоки' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('complementary', { name: 'Интеграционные потоки' })[22m
+
+
+      438 |           format === 'drawio' ? await page.locator('.diagram-slot iframe').boundingBox() : undefined
+      439 |         await page.mouse.dblclick(position.x + (box?.x ?? 0), position.y + (box?.y ?? 0))
+    > 440 |         await expect(manager).toBeVisible()
+          |                               ^
+      441 |         await expect(manager.getByText('Недоступный поток: Missing', { exact: true })).toBeVisible()
+      442 |         await manager.getByRole('button', { name: 'Исключить из жгута', exact: true }).click()
+      443 |         await expect(manager.getByText('Недоступный поток: Missing', { exact: true })).toHaveCount(
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:440:31
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\bundle-flows.spec.ts:398:7
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-bundle-frame-unchanged-reproduction-20261001T073825Z-artifacts\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-bundle-frame-unchanged-reproduction-20261001T073825Z-artifacts\bundle-flows-bundle-flow-management-full-lifecycle-drawio\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio ─────────────

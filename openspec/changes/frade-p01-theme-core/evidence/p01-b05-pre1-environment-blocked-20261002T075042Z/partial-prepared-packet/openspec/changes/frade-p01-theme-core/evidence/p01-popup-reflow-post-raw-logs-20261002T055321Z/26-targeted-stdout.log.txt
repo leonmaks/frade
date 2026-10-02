@@ -1,0 +1,44 @@
+
+Running 7 tests using 1 worker
+
+  ok 1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade (12.3s)
+  ok 2 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (18.0s)
+  ok 3 tests\e2e\ui-contract-theme.spec.ts:483:1 › P01 real frame chord, Settings, System media and preview window-close preserve dirty KA and durable ownership (6.5s)
+  ok 4 tests\e2e\ui-contract-theme.spec.ts:2415:1 › P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport (3.7s)
+  ok 5 tests\e2e\ui-contract-theme.spec.ts:2490:1 › P01-LOWER original keyboard page menu duplicate rename move remove, submenu and cancellation (4.8s)
+  ok 6 tests\e2e\ui-contract-theme.spec.ts:2674:1 › P01-POST-B03 actual many-page overflow reveals focused target and outline without changing semantic viewport (5.8s)
+  x  7 tests\e2e\ui-contract-theme.spec.ts:3270:1 › P01-REFLOW actual open chain reconciles resize and media without observer churn or semantic actions (4.3s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:3270:1 › P01-REFLOW actual open chain reconciles resize and media without observer churn or semantic actions 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      3308 |       observations.push({label,...record})
+      3309 |       expect(record.sameIdentity).toBe(true);expect(record.sameNodes).toBe(true)
+    > 3310 |       expect(record.writes).toBe(0);expect(record.exactStyles).toBe(true);expect(record.viewPreserved).toBe(true)
+           |                                                                                                        ^
+      3311 |       for (const panel of record.panels) { expect(panel.left).toBeGreaterThanOrEqual(0);expect(panel.top).toBeGreaterThanOrEqual(0)
+      3312 |         expect(panel.right).toBeLessThanOrEqual(record.viewport.width);expect(panel.bottom).toBeLessThanOrEqual(record.viewport.height) }
+      3313 |       for (const group of record.targets) for (const target of group) { const b=target.box
+        at inspect (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3310:104)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3324:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-REFL-33d20-r-churn-or-semantic-actions\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-REFL-33d20-r-churn-or-semantic-actions\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-REFL-33d20-r-churn-or-semantic-actions\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:3270:1 › P01-REFLOW actual open chain reconciles resize and media without observer churn or semantic actions 
+  6 passed (57.2s)

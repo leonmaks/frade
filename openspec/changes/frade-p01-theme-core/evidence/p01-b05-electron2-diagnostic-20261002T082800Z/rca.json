@@ -1,0 +1,13 @@
+{
+  "atUtc": "2026-10-02T08:27:23.265Z",
+  "classification": "TEST",
+  "actualMismatch": {
+    "node": "TR",
+    "name": "class",
+    "before": "mxPopupMenuItem",
+    "after": "mxPopupMenuItemHover"
+  },
+  "cause": "New observer incorrectly included vendor-owned hover class changed by original submenu gesture before refusal. Bridge owns fixed ARIA/role/data/style attributes only and never classes. Accepted exact-owned restoration excludes vendor classes; preserve them against actual post-gesture state instead.",
+  "repair": "Observe exact owned attribute list; separately assert all vendor classes unchanged across refusal using post-original-gesture baseline. Keep exact owned restoration assertion and original test assertions/tolerances; no production edit.",
+  "scopeAuthority": "accepted P01-LOWER-REFLOW-REFUSAL-01 exact restoration is owned values/attributes, original vendor actions remain intact"
+}

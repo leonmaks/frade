@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "@frade/repository-domain": ["../repository-domain/dist/index.d.ts"],
+      "@frade/metamodel-domain": ["../metamodel-domain/dist/index.d.ts"],
+      "@frade/metamodel-compiler": ["../metamodel-compiler/dist/index.d.ts"]
+    }
+  },
+  "include": ["src"]
+}

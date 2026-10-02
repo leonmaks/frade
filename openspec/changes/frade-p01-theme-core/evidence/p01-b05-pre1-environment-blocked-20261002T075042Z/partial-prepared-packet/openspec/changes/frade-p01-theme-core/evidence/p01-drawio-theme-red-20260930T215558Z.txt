@@ -1,0 +1,113 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/drawio-theme.test.ts (7 tests | 7 failed) 69ms
+   × serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 48ms
+     → P01 DOM-only theme bridge not implemented
+   × bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 5ms
+     → P01 DOM-only theme bridge not implemented
+   × bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 4ms
+     → P01 DOM-only theme bridge not implemented
+   × bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 3ms
+     → P01 DOM-only theme bridge not implemented
+   × bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 2ms
+     → P01 DOM-only theme bridge not implemented
+   × bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 2ms
+     → P01 DOM-only theme bridge not implemented
+   × bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 3ms
+     → P01 DOM-only theme bridge not implemented
+
+ Test Files  1 failed (1)
+      Tests  7 failed (7)
+   Start at  00:55:59
+   Duration  2.97s (transform 149ms, setup 0ms, collect 181ms, tests 69ms, environment 1.96s, prepare 333ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint
+Error: P01 DOM-only theme bridge not implemented
+ ❯ drawioThemeBridge tests/unit/drawio-theme.test.ts:22:26
+
+ ❯ fixture tests/unit/drawio-theme.test.ts:23:16
+ ❯ tests/unit/drawio-theme.test.ts:32:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner
+Error: P01 DOM-only theme bridge not implemented
+ ❯ drawioThemeBridge src/main/drawio-theme-bridge.ts:2:78
+      1| /** Self-contained DOM-only projection serialized into the unprivilege…
+      2| export function drawioThemeBridge(_parentOrigin: string): () => void {…
+       |                                                                              ^
+      3| 
+ ❯ fixture tests/unit/drawio-theme.test.ts:23:16
+ ❯ tests/unit/drawio-theme.test.ts:39:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences
+Error: P01 DOM-only theme bridge not implemented
+ ❯ drawioThemeBridge src/main/drawio-theme-bridge.ts:2:78
+      1| /** Self-contained DOM-only projection serialized into the unprivilege…
+      2| export function drawioThemeBridge(_parentOrigin: string): () => void {…
+       |                                                                              ^
+      3| 
+ ❯ fixture tests/unit/drawio-theme.test.ts:23:16
+ ❯ tests/unit/drawio-theme.test.ts:47:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement
+Error: P01 DOM-only theme bridge not implemented
+ ❯ drawioThemeBridge src/main/drawio-theme-bridge.ts:2:78
+      1| /** Self-contained DOM-only projection serialized into the unprivilege…
+      2| export function drawioThemeBridge(_parentOrigin: string): () => void {…
+       |                                                                              ^
+      3| 
+ ❯ fixture tests/unit/drawio-theme.test.ts:23:16
+ ❯ tests/unit/drawio-theme.test.ts:52:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged
+Error: P01 DOM-only theme bridge not implemented
+ ❯ drawioThemeBridge src/main/drawio-theme-bridge.ts:2:78
+      1| /** Self-contained DOM-only projection serialized into the unprivilege…
+      2| export function drawioThemeBridge(_parentOrigin: string): () => void {…
+       |                                                                              ^
+      3| 
+ ❯ fixture tests/unit/drawio-theme.test.ts:23:16
+ ❯ tests/unit/drawio-theme.test.ts:58:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close
+Error: P01 DOM-only theme bridge not implemented
+ ❯ drawioThemeBridge src/main/drawio-theme-bridge.ts:2:78
+      1| /** Self-contained DOM-only projection serialized into the unprivilege…
+      2| export function drawioThemeBridge(_parentOrigin: string): () => void {…
+       |                                                                              ^
+      3| 
+ ❯ fixture tests/unit/drawio-theme.test.ts:23:16
+ ❯ tests/unit/drawio-theme.test.ts:64:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state
+Error: P01 DOM-only theme bridge not implemented
+ ❯ drawioThemeBridge src/main/drawio-theme-bridge.ts:2:78
+      1| /** Self-contained DOM-only projection serialized into the unprivilege…
+      2| export function drawioThemeBridge(_parentOrigin: string): () => void {…
+       |                                                                              ^
+      3| 
+ ❯ fixture tests/unit/drawio-theme.test.ts:23:16
+ ❯ tests/unit/drawio-theme.test.ts:71:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

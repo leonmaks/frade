@@ -1,0 +1,18 @@
+{
+  "classification": "INTEGRATION / STATE_TRANSITION",
+  "actualSource": "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+  "actualSourceSha256": "7bea302a2d0e6aa5ca743f32666048c23195067ab7b66d8e841c9ed8751d90b0",
+  "method": "Extract actual current TypeScript handler into memory; no source edits, replacement handler, timers or persisted state. Deliver exact matching PAINTED then REFUSED envelope with same frame/origin/owner/context.",
+  "counts": {
+    "resolved": 1,
+    "rejected": 0,
+    "invalidated": 0,
+    "diagnostic": 0,
+    "cleanup": 1
+  },
+  "waiting": 0,
+  "revision": "1",
+  "expected": "After completed PAINTED, a matching bounded lower reflow REFUSED must reach an observable diagnostic without changing settled promise/semantic state.",
+  "actual": "Refusal dropped after waiting entry cleanup",
+  "status": "FAIL"
+}

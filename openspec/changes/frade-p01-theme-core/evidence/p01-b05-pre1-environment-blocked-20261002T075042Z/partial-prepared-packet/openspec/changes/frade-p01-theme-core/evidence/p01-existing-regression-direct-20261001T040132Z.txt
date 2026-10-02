@@ -1,0 +1,87 @@
+
+Running 3 tests using 1 worker
+
+(node:17856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17856) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok 1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade (16.0s)
+  x  2 tests\e2e\diagrams.spec.ts:579:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (22.4s)
+(node:53064) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:53064) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:53064) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  3 tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel (33.5s)
+
+
+  1) tests\e2e\diagrams.spec.ts:579:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.diagram-slot .diagram-drop-target')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('.diagram-slot .diagram-drop-target')[22m
+
+
+      30 |   await page.mouse.move(from.x + from.width / 2 + 12, from.y + from.height / 2, { steps: 3 })
+      31 |   if (await iframe.count())
+    > 32 |     await expect(page.locator('.diagram-slot .diagram-drop-target')).toBeVisible()
+         |                                                                      ^
+      33 |   const x = to.x + (options.x ?? 220),
+      34 |     y = to.y + (options.y ?? 180)
+      35 |   await page.mouse.move(x, y, { steps: 12 })
+        at dragObject (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\diagrams.spec.ts:32:70)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\diagrams.spec.ts:642:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-existing-regression-direct-20261001T040132Z-artifacts\diagrams-drawio-navigator--3079d-d-coordinates-and-read-only\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-existing-regression-direct-20261001T040132Z-artifacts\diagrams-drawio-navigator--3079d-d-coordinates-and-read-only\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-existing-regression-direct-20261001T040132Z-artifacts\diagrams-drawio-navigator--3079d-d-coordinates-and-read-only\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-existing-regression-direct-20261001T040132Z-artifacts\diagrams-drawio-navigator--3079d-d-coordinates-and-read-only\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[role=treeitem][data-repository-id="fb0049b3-8480-4797-a599-c6cc5835aff2"][data-object-id="ecogroup.berezka.systems.berezka"]')[22m
+
+
+      29 |   await page
+      30 |     .locator(`[role=treeitem][data-repository-id="${repositoryId}"][data-object-id="${id}"]`)
+    > 31 |     .click()
+         |      ^
+      32 |   await expect(page.locator('.object-id')).toHaveText(id)
+      33 | }
+      34 | const description = (page: Page) => page.locator('.field[data-field-path="description"] textarea')
+        at card (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\workbench-multiroot.spec.ts:31:6)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\workbench-multiroot.spec.ts:72:5
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-existing-regression-direct-20261001T040132Z-artifacts\workbench-multiroot-WB-006-987d5-ths-and-dirty-Remove-Cancel\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-existing-regression-direct-20261001T040132Z-artifacts\workbench-multiroot-WB-006-987d5-ths-and-dirty-Remove-Cancel\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\diagrams.spec.ts:579:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only 
+    tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel 
+  1 passed (1.2m)

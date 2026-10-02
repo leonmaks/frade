@@ -1,0 +1,93 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/presentation-bridge.test.ts (13 tests | 4 failed) 48ms
+   ✓ validated cached boot is synchronous, immutable, owned and never calls transport 7ms
+   ✓ rejects invalid boot before exposing any capability or reading accessors 1ms
+   ✓ intent announces a validated request and rejects stale or malformed generation replies 3ms
+   ✓ input phase, session, choice and bounds are checked before any IPC call 2ms
+   ✓ persist ACK requires durable selection, owner and increasing CAS revision 6ms
+   ✓ explicit REFUSED and UNKNOWN preserve bounded truthful error text without exposing extra fields 2ms
+   ✓ reconcile permits exact last publication or owned compensation; forged change cannot become authoritative 4ms
+   ✓ ready accepts only matched boot/root revisions and a narrow host acknowledgement 2ms
+   ✓ response parser bounds and owns data before exposing it to preload or renderer 1ms
+   × prepaint bootstrap synchronously projects validated cached selection without invoking transport 8ms
+     → P01 bootstrap not implemented
+   × boot readiness waits for registered root paint before asking Main to show, and handshake refusal stays failed 2ms
+     → P01 bootstrap not implemented
+   × invalid cached boot is rejected before any root mutation or transport call 7ms
+     → expected [Function] to throw error including 'INVALID_PRESENTATION' but got 'P01 bootstrap not implemented'
+   × media refresh applies current forced colors without a durable write and every listener is disposed 1ms
+     → P01 bootstrap not implemented
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 9 passed (13)
+   Start at  02:08:43
+   Duration  1.77s (transform 145ms, setup 0ms, collect 174ms, tests 48ms, environment 830ms, prepare 305ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/presentation-bridge.test.ts > prepaint bootstrap synchronously projects validated cached selection without invoking transport
+Error: P01 bootstrap not implemented
+ ❯ bootstrapPresentation src/renderer/presentation-bootstrap.ts:8:9
+      6|   _options: { paint?: () => Promise<void>; media?: (query: string) => …
+      7| ): { controller: ThemeController; ready(): Promise<void>; dispose(): v…
+      8|   throw Error('P01 bootstrap not implemented')
+       |         ^
+      9| }
+     10| 
+ ❯ bootFixture tests/unit/presentation-bridge.test.ts:254:17
+ ❯ tests/unit/presentation-bridge.test.ts:270:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/unit/presentation-bridge.test.ts > boot readiness waits for registered root paint before asking Main to show, and handshake refusal stays failed
+Error: P01 bootstrap not implemented
+ ❯ bootstrapPresentation src/renderer/presentation-bootstrap.ts:8:9
+      6|   _options: { paint?: () => Promise<void>; media?: (query: string) => …
+      7| ): { controller: ThemeController; ready(): Promise<void>; dispose(): v…
+      8|   throw Error('P01 bootstrap not implemented')
+       |         ^
+      9| }
+     10| 
+ ❯ bootFixture tests/unit/presentation-bridge.test.ts:254:17
+ ❯ tests/unit/presentation-bridge.test.ts:290:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/unit/presentation-bridge.test.ts > invalid cached boot is rejected before any root mutation or transport call
+AssertionError: expected [Function] to throw error including 'INVALID_PRESENTATION' but got 'P01 bootstrap not implemented'
+
+Expected: "INVALID_PRESENTATION"
+Received: "P01 bootstrap not implemented"
+
+ ❯ tests/unit/presentation-bridge.test.ts:311:50
+    309|     bad = { ...api, getBoot: () => ({ ...boot(), bootRevision: 3 }) }
+    310|   const original = root.outerHTML
+    311|   expect(() => bootstrapPresentation(bad, root)).toThrow('INVALID_PRES…
+       |                                                  ^
+    312|   expect(root.outerHTML).toBe(original)
+    313| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/unit/presentation-bridge.test.ts > media refresh applies current forced colors without a durable write and every listener is disposed
+Error: P01 bootstrap not implemented
+ ❯ bootstrapPresentation src/renderer/presentation-bootstrap.ts:8:9
+      6|   _options: { paint?: () => Promise<void>; media?: (query: string) => …
+      7| ): { controller: ThemeController; ready(): Promise<void>; dispose(): v…
+      8|   throw Error('P01 bootstrap not implemented')
+       |         ^
+      9| }
+     10| 
+ ❯ bootFixture tests/unit/presentation-bridge.test.ts:254:17
+ ❯ tests/unit/presentation-bridge.test.ts:315:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

@@ -1,0 +1,27 @@
+{
+  "name": "@frade/repository-ports",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit",
+    "lint": "eslint src tests",
+    "test": "vitest run",
+    "test:bdd": "vitest run tests/bdd"
+  },
+  "dependencies": {
+    "@frade/repository-domain": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vitest": "3.2.7",
+    "fast-check": "4.10.2",
+    "@cucumber/gherkin": "35.1.0",
+    "@cucumber/messages": "29.0.1",
+    "@types/node": "24.10.1"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "atUtc": "2026-10-02T04:59:03.512Z",
+  "classification": "TEST",
+  "failure": "Six actual matrix cases stop at850x650 Pages root hover. Trace proves the position frozen from pre-submenu checkedBox.width-8 lands in the submenu after bounded root reflow.",
+  "evidence": "matrix-artifacts/*/trace.zip and test-failed-1.png",
+  "reproducedCases": 6,
+  "measuredBeforeFailure": {
+    "observationsPerCase": 87,
+    "violationsPerCase": 0
+  },
+  "correction": "Ordinary locator.hover uses current target center; no force, DOM gesture injection, hidden target, assertion/tolerance removal, or production modification. checkedBox non-null assertion retained.",
+  "productionBeforeSha256": "1bf719149d48555d20f8583258accb9d5906fcb992948212d4efa0cd0943d8c7",
+  "productionAfterSha256": "1bf719149d48555d20f8583258accb9d5906fcb992948212d4efa0cd0943d8c7",
+  "productionUnchanged": true,
+  "originalSourceBeforeSha256": "5f5fd58930c3dcef7055a3365c49ec1050a43366bfebaa6c8f8c4858f0d1af27",
+  "currentTestSha256": "00d5aaa2ce20920ea1e30dd071bcde794ce3539a400c930f8136719584b85dc1",
+  "historicalFailPreserved": true
+}

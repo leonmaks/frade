@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-01T20:47:53.766Z",
+  "exit": 1,
+  "command": [
+    "pnpm",
+    "--filter",
+    "@frade/desktop",
+    "exec",
+    "vitest",
+    "run",
+    "tests/unit/drawio-theme.test.ts"
+  ],
+  "classification": "STATE_TRANSITION",
+  "realEvidence": "p01-lower-actions-return-20261001T204500Z",
+  "cause": "Keyboard opening an inactive page menu invokes original selection down handler; it recreates lower DOM before original up opens the actual current menu. Old opener detaches and must not remain owner.",
+  "repair": "Capture eligible original opener DOM identity before original event; permit only unique connected same-type/title replacement in the current strip. Page group title includes original page ID. Ambiguous/no matching identity must not adopt. Captured actual original menu event/generation proof remains required; no global popup adoption or semantic API."
+}

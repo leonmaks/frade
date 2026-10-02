@@ -1,0 +1,41 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/drawio-theme.test.ts (30 tests | 1 failed) 1999ms
+   ✓ serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 54ms
+   ✓ bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 9ms
+   ✓ bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 15ms
+   ✓ bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 9ms
+   ✓ bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 7ms
+   ✓ bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 9ms
+   ✓ bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 6ms
+   ✓ separate presentation channel never reaches downstream vendor semantic handler, while unrelated actions still do 7ms
+   ✓ P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once 112ms
+   ✓ P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup 216ms
+   ✓ P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions 61ms
+   ✓ P01-LOWER real capability removal and restoration, hidden controls and regenerated DOM retain exact original handlers 57ms
+   ✓ P01-LOWER pointer registrations execute one original family only and menu DOM ownership restores exact prior values 70ms
+   ✓ P01-LOWER original action recreating the strip returns focus to a connected proven replacement 65ms
+   ✓ P01-LOWER original lower opening that recreates its opener binds only a unique connected DOM-identical replacement 55ms
+   ✓ P01-LOWER checkability comes from the original actual checkmark and is restored with its DOM unchanged 65ms
+   ✓ P01-LOWER Tab dismisses owned menu and permits native focus navigation without downstream vendor key activation 60ms
+   ✓ P01-LOWER prepare keeps menu DOM untouched and applied new ownership cancels it through original UI hide lifecycle 52ms
+   ✓ P01-LOWER detached original glyph restores exact prior style during lower recreation 21ms
+   ✓ P01-LOWER owned menu glyph teardown preserves an originally present empty style attribute 56ms
+   ✓ P01-POST-B01 stale key after next prepare preserves original cancellation lease through matching apply 51ms
+   ✓ P01-POST-B02 Escape leaves lower navigation for the remembered original idle canvas without actions 30ms
+   ✓ P01-POST-B03 focus-only End reveals a clipped original lower target and its ring by local scroller scroll only 29ms
+   ✓ P01-REFLOW serialized narrow chain wraps original labels, fits viewport and restores exact panel/table/cell styles 118ms
+   ✓ P01-REFLOW feasible anchor/side stays exact and open-chain resize/media avoids observer write loops 207ms
+   ✓ P01-REFLOW deferred original fit, stale cancellation lease and unowned panels retain bounded ownership 155ms
+   ✓ P01-REFLOW impossible owned capacity reports refusal without hidden labels or semantic/fitting actions 77ms
+   ✓ P01-B05 impossible root stops adoption, cancels the original menu, restores exact state and permits feasible original retry 172ms
+   ✓ P01-B05 serialized bridge refusal reaches the actual painted parent after release and cancels an open chain on resize 97ms
+   × P01-B05 original mouse root opening and open-chain media refusal stop without repeated diagnostics or hidden success 55ms
+     → expected true to be false // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 29 passed (30)
+   Start at  11:34:33
+   Duration  3.50s (transform 237ms, setup 0ms, collect 309ms, tests 2.00s, environment 656ms, prepare 207ms)
+

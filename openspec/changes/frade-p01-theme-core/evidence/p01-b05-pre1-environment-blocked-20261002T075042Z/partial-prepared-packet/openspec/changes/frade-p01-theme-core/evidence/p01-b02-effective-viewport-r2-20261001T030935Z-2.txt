@@ -1,0 +1,125 @@
+
+Running 3 tests using 1 worker
+
+  x  1 tests\e2e\ui-contract-theme.spec.ts:1431:1 › P01-B02 actual repository metadata pending error success across six themes and forced colors (5.0s)
+  x  2 tests\e2e\ui-contract-theme.spec.ts:1497:3 › P01-B02 actual flow manager states frade across six themes and forced colors (2.0m)
+  x  3 tests\e2e\ui-contract-theme.spec.ts:1497:3 › P01-B02 actual flow manager states drawio across six themes and forced colors (2.1m)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:1431:1 › P01-B02 actual repository metadata pending error success across six themes and forced colors 
+
+    Error: page.setViewportSize: viewportSize: expected object, got null
+
+      1321 |       }
+      1322 |     }
+    > 1323 |   await page.setViewportSize(originalViewport)
+           |              ^
+      1324 |   await page.emulateMedia({ forcedColors: 'none' })
+      1325 |   await expect
+      1326 |     .poll(() =>
+        at captureB02Matrix (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1323:14)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1361:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--03331-ix-themes-and-forced-colors\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--03331-ix-themes-and-forced-colors\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--03331-ix-themes-and-forced-colors\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\ui-contract-theme.spec.ts:1497:3 › P01-B02 actual flow manager states frade across six themes and forced colors 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('complementary', { name: 'Интеграционные потоки' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('complementary', { name: 'Интеграционные потоки' })[22m
+
+
+      1809 |         await roPage.mouse.dblclick(pos.x + (box?.x ?? 0), pos.y + (box?.y ?? 0))
+      1810 |         const roManager = roPage.getByRole('complementary', { name: 'Интеграционные потоки' })
+    > 1811 |         await expect(roManager).toBeVisible()
+           |                                 ^
+      1812 |         await expect(
+      1813 |           roManager.getByRole('checkbox', {
+      1814 |             name: 'Включить все подходящие потоки из текущей выборки',
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1811:33
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--be9c0-ix-themes-and-forced-colors\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--be9c0-ix-themes-and-forced-colors\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--be9c0-ix-themes-and-forced-colors\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--be9c0-ix-themes-and-forced-colors\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\e2e\ui-contract-theme.spec.ts:1497:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+
+    TimeoutError: locator.dblclick: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('treeitem').filter({ hasText: /^Flows[.]drawio$/ })[22m
+
+
+      1702 |           .getByRole('treeitem')
+      1703 |           .filter({ hasText: new RegExp('^Flows[.]' + format + '$') })
+    > 1704 |           .dblclick()
+           |            ^
+      1705 |         await expect(node('A')).toBeVisible({ timeout: 20000 })
+      1706 |         await openActual()
+      1707 |         await expect(manager.getByText('Недоступный поток: Missing', { exact: true })).toBeVisible()
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1704:12
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-effective-viewport-r2-20261001T030935Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests\e2e\ui-contract-theme.spec.ts:1431:1 › P01-B02 actual repository metadata pending error success across six themes and forced colors 
+    tests\e2e\ui-contract-theme.spec.ts:1497:3 › P01-B02 actual flow manager states frade across six themes and forced colors 
+    tests\e2e\ui-contract-theme.spec.ts:1497:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+(node:55276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:55276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:55276) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(node:6752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6752) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(node:54012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:54012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:54012) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

@@ -1,0 +1,50 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-B05 impossible root stops adoption, cancels the original menu, restores exact state and permits feasible original retry
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/unit/drawio-theme.test.ts:970:30
+    968|   const f=lowerLayoutFixture(88)
+    969|   await f.open()
+    970|   expect(f.root.isConnected).toBe(false);expect(f.root.outerHTML).toBe…
+       |                              ^
+    971|   expect(f.pages.getAttribute('aria-expanded')).toBe('false');expect(d…
+    972|   for(let n=0;n<6;n++){f.lower.setAttribute('title','refused observer …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-B05 serialized bridge refusal reaches the actual painted parent after release and cancels an open chain on resize
+AssertionError: expected [] to deeply equal [ Array(1) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "LOWER_MENU_REFLOW_UNAVAILABLE: original targets cannot fit without forbidden behavior",
+-   ],
+- ]
++ []
+
+ ❯ tests/unit/drawio-theme.test.ts:991:33
+    989|   const parentBefore=parentFrame.outerHTML,posts=parentPost.mock.calls…
+    990|   await f.resize(88);deliver()
+    991|   expect(diagnostic.mock.calls).toEqual([['LOWER_MENU_REFLOW_UNAVAILAB…
+       |                                 ^
+    992|   expect(f.root.isConnected).toBe(false);expect(f.child.isConnected).t…
+    993|   expect(f.root.outerHTML).toBe(f.original[0]);expect(f.child.outerHTM…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+
