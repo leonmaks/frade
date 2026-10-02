@@ -1,12 +1,12 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-02T18:00:44.896Z
+UPDATED_AT_UTC: 2026-10-02T18:21:56.674Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий шаблон пока PROPOSED, не deployed.
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: PLANNING | HEALTH: RUNNING
+STAGE: W01 | PHASE: PLANNING | HEALTH: BLOCKED
 NEXT_PERMITTED_ACTION: actual planning checks -> independent draft-quality review -> publish planning checkpoint -> concrete policy decision.
 HUMAN_DECISION: принять/скорректировать проект policy, cadence и control scope после чтения artifacts.
 READY_FOR_IMPLEMENTATION: NO (concrete policy decision and formal PRE/checkpoint NOT_RUN).
@@ -28,7 +28,7 @@ Public policy adoption: evidence/repository-audit.json has exact2 paths/hashes; 
 
 | Stage | Result | Phase / health | PRE / Verify / POST / archive |
 |---|---|---|---|
-| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | PLANNING/RUNNING | Formal gates NOT_RUN |
+| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | PLANNING/BLOCKED | Formal gates NOT_RUN |
 | Existing-owner adoption | Separate Routing/UI/Repo Core consumer checkpoints | NOT_STARTED; outside W01 | Own future scope/gates |
 | Main integration | Explicit merged-candidate revalidation | NOT_STARTED; outside current permission | No automatic merge |
 
@@ -40,7 +40,7 @@ STOP after W01; no next numbered change or owner migration automatically.
 |---|---|---|---|
 | 1.1 | planning-architecture | isolate -> audit -> public-policy adoption | COMPLETE; repository-audit.json/user-decisions.json |
 | 1.2 | planning-architecture | consolidate -> specs/design/tasks -> standard/onboarding/status/manifest/adoption drafts | COMPLETE; feedback-register.md and drafts |
-| 1.3 | planning-architecture + independent-PRE pair for draft-only review | strict/checks -> independent draft-quality review -> checkpoint | IN_PROGRESS; strict change PASS, review NOT_RUN |
+| 1.3 | planning-architecture + independent-PRE pair for draft-only review | strict/checks -> independent draft-quality review -> checkpoint | IN_PROGRESS; strict change PASS, draft review BLOCKED (CLI usage limit; no verdict) |
 | 1.4 | human material policy decision | concrete proposal -> acceptance/reconciliation | OPEN |
 | 1.5 | independent-PRE | approved coherent plan -> actual formal PRE -> frozen checkpoint | OPEN |
 | 2.1–2.7 | tooling-tests | meaningful RED -> controls/docs/CLI -> GREEN | NOT_STARTED |
@@ -61,7 +61,7 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | Inventory | REQUIRED | PASS20 package manifests; point-in-time owner process observations |
 | openspec validate frade-standard-workflow --strict --json | REQUIRED | PASS1/1, no issues |
 | Full planning content/hash/link/traceability and all-spec checks | REQUIRED | PASS; planning-checks.json,18requirements/44scenarios/18tasks/8sections; product/control tree unchanged |
-| Independent draft-quality review | REQUIRED for planning checkpoint | NOT_RUN; does not grant production admission |
+| Independent draft-quality review | REQUIRED for planning completion | BLOCKED run draft-01; CLI usage limit; no verdict; candidate/packet unchanged; retry pending |
 | Formal PRE/Verify/POST | REQUIRED for implementation/closure | NOT_RUN |
 | New validator/bootstrap/publication control suites | REQUIRED after approved plan | NOT_IMPLEMENTED/NOT_RUN |
 | Product suites | No product changes in current planning | NOT_RUN; no product PASS claimed |
@@ -77,7 +77,7 @@ Historical invocation/EOF/EOL failures and classified RCA retained. Fresh curren
 | W01 planning-architecture | gpt-6-astra/high | design4 + direct human decision | Current chat backend/effort NOT_CONFIRMED |
 | W01 tooling-tests | gpt-6-sol/high | design4 + direct human decision | NOT_RUN |
 | W01 formal-Verify | gpt-6-astra/high | design4 + direct human decision | NOT_RUN |
-| W01 independent-PRE | gpt-6-astra/xhigh | design4 + direct human decision | NOT_RUN |
+| W01 independent-PRE | gpt-6-astra/xhigh | design4 + direct human decision | Invoked for draft-only review; BLOCKED; actual backend/effort NOT_CONFIRMED |
 | W01 independent-POST | gpt-6-astra/xhigh | design4 + direct human decision | NOT_RUN |
 
 No model substitution, task override or silent current-chat switch. Common service is read-only reviewer transport; writer dispatch NOT_IMPLEMENTED.
@@ -90,6 +90,7 @@ No model substitution, task override or silent current-chat switch. Common servi
 | D02 remote/ref | W01 | ACCEPTED | Only origin refs/heads/codex/frade-standard-workflow |
 | D03 concrete common policy/cadence | W01 | PENDING | Read drafts/standard-workflow.md; approve or revise |
 | Adoption Routing/UI/Repo Core | Each consumer | NOT_STARTED | Do not block independent supplier or edit foreign workspace |
+| Reviewer CLI environment | W01 | BLOCKED | CLI quota message conflicts with desktop ordinaryUsageAllowed; exact-pair retry; no substitute |
 | Unknown writable-worker runtime | W01 tooling capability | NOT_IMPLEMENTED | Implement explicit honest capability/guard, no false dispatch |
 
 No active production fix attempts; RCA rule retained.
@@ -97,7 +98,7 @@ No active production fix attempts; RCA rule retained.
 ## 8. Git / публикация / evidence
 
 SOURCE_CHECKPOINT_SHA: 2021f1dd8621061d1179ec9577e9930b47cb9657 (draft, not implementation admission).
-COMMIT_STATE: draft planning committed2021f1dd; final check/status evidence preparing candidate freeze, no formal approval.
+COMMIT_STATE: draft planning committed2021f1dd; 354cab07 draft candidate reviewed with BLOCKED transport; raw evidence retained; no formal approval.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
 PUSH_STATE: PENDING.
 VERIFIED_REMOTE_SHA: NOT_RUN.

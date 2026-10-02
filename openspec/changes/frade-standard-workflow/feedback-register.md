@@ -9,7 +9,7 @@ Append new remarks with stable IDs; retain originals and distinguish acceptance 
 | C03 | Stage + task type determines model; task-specific exception allowed | Explicit resolver precedence and exception authority | design 4; task2.2 |
 | C04 | high/xhigh and Luna/Sol are ambiguous | One exact model/effort per invoked role; fail closed | role-dispatch exact resolution |
 | C05 | Same external frame for every direction | Intake/research/requirements plus shared stage lifecycle | standard 2/3; lifecycle specs |
-| C06 | Entry command opens direction, branch, folder, local rules | Preview + safe isolated idempotent bootstrap | standard 4; task2.3 |
+| C06 | Entry command opens direction, branch, folder, local rules | Preview + safe isolated idempotent bootstrap | standard 2; task2.3 |
 | C07 | Strict controls inherited immediately | Root/scoped contract inheritance and pinned policy adoption | design1/8; task2.7 |
 | C08 | Directions independent; conflicts handled on integration | Supplier/consumer ownership; merged-tree revalidation | design9; lifecycle adoption |
 | C09 | Mandatory commits and pushes everywhere; recommend cadence | Completed tested task + planning/review/stage/blocker checkpoints, no empty loops | standard7; task2.6; cadence PROPOSED |

@@ -44,7 +44,9 @@ const changed=[...git(['diff','--name-only',base]).split('\n'),...git(['ls-files
 assert(changed.every(p=>p==='docs/engineering/BRANCH-STATUS.md'||p.startsWith(rel+'/')),'UNAUTHORIZED_CHANGED_PATH')
 const productDiff=git(['diff',base,'--','packages','apps','pnpm-lock.yaml','scripts/routing-v2-architecture-gate.mjs','docs/routing-v2','AGENTS.md','package.json','.github'])
 assert(productDiff==='','PRODUCT_OR_CONTROL_DRIFT')
-const files=git(['ls-files','--others','--exclude-standard']).split('\n').filter(Boolean)
+const trackedDocs=git(['ls-files','--',rel,'docs/engineering/BRANCH-STATUS.md']).split('\n')
+const untrackedDocs=git(['ls-files','--others','--exclude-standard']).split('\n')
+const files=[...new Set([...trackedDocs,...untrackedDocs])].filter(p=>p&&(p.startsWith(rel+'/')||p==='docs/engineering/BRANCH-STATUS.md'))
 for(const file of files.filter(p=>p.endsWith('.md'))){
  const text=read(file).toString('utf8')
  for(const m of text.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)){
@@ -53,4 +55,4 @@ for(const file of files.filter(p=>p.endsWith('.md'))){
   assert(fs.existsSync(path.resolve(path.dirname(path.join(root,file)),target)),'BROKEN_LOCAL_LINK:'+file+':'+target)
  }
 }
-console.log(JSON.stringify({status:'PASS',scope:'PLANNING_ONLY',branch:git(['branch','--show-current']),base,packages:audit.packageCount,requirements:requirements.length,scenarios:scenarios.length,tasks:tasks.length,tasksComplete:tasks.filter(t=>t[1]==='x').length,statusSections:8,productTreeUnchanged:true,modelSourceHash:manifest.stages[0].roleAuthority.hash,changedPaths:changed,evidenceNote:'Declarations/consistency only; product/control behavioral tests NOT_RUN'},null,2))
+console.log(JSON.stringify({status:'PASS',scope:'PLANNING_ONLY',branch:git(['branch','--show-current']),base,packages:audit.packageCount,requirements:requirements.length,scenarios:scenarios.length,tasks:tasks.length,tasksComplete:tasks.filter(t=>t[1]==='x').length,statusSections:8,markdownFilesChecked:files.filter(p=>p.endsWith('.md')).length,productTreeUnchanged:true,modelSourceHash:manifest.stages[0].roleAuthority.hash,changedPaths:changed,evidenceNote:'Declarations/consistency only; product/control behavioral tests NOT_RUN'},null,2))
