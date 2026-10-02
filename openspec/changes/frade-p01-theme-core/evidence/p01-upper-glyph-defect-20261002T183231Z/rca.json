@@ -1,0 +1,163 @@
+{
+  "atUtc": "2026-10-02T18:32:31.582Z",
+  "classification": "ABSTRACTION_BOUNDARY",
+  "status": "REPRODUCED_REQUIRED_A11Y_FAIL",
+  "applicableRules": [
+    "FDS-003",
+    "FDS-004",
+    "FDS-007",
+    "FDS-008",
+    "FDS-009",
+    "FDS-010",
+    "A11Y-002",
+    "A11Y-007",
+    "A11Y-008"
+  ],
+  "cause": "The existing bridge projects canonical target background/text colors onto upper toolbar controls, but original fixed-black SVG background images do not inherit CSS text color. On canonical Dark/HC backplates, even opaque black contrast is below required3:1; scalar opacity cannot improve it over the identical backplate.",
+  "responsibleLayer": "Owned Electron Draw.io UI presentation bridge",
+  "source": "apps/desktop/src/main/drawio-theme-bridge.ts",
+  "sourceSha256": "3f73b3fb8e6f5bc68692feea5a4d95ea48b9afa446461017e13a48a66c00f03d",
+  "sourceLines": {
+    "stylesheetStart": 211,
+    "canonicalControlBackgroundAndColor": 235
+  },
+  "evidence": {
+    "pre": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-received-20261002T182051Z",
+    "references": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/black-bound-v4/reference-command.json",
+    "analysis": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/black-bound-v4/application-analysis.json",
+    "red": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/black-bound-v4/required-contrast-red-command.json",
+    "redExitCode": 1,
+    "sourceFilesUnchanged": 543,
+    "controlsPassed": 19
+  },
+  "counts": {
+    "records": 126,
+    "failUpperBound": 12,
+    "notMeasured": 114,
+    "excludedDisabled": 0,
+    "pass": 0
+  },
+  "failures": [
+    {
+      "theme": "high-contrast",
+      "density": "comfortable",
+      "index": 0,
+      "title": "Вид (Пробел+перетаскивание для панорамирования)",
+      "sourceSha256": "0a22cca4e14802d225bb7ef9dd30d4a42b157389a1681b84975349fd18a00b3a",
+      "upperBound": 1,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--03264-c-high-contrast-comfortable/upper-toolbar-high-contrast-comfortable.png",
+      "screenshotSha256": "ac0ac0baa1f3c09ec50fa033dae9deaf49339bc1163215a6d96e2a6dd4b28a68"
+    },
+    {
+      "theme": "high-contrast",
+      "density": "comfortable",
+      "index": 14,
+      "title": "Вставить (Нажмите дважды, чтобы вставить текст)",
+      "sourceSha256": "4dc5547840d699651cf7d3059a91d575cddaf80451ab85a7c41ed1d7c7998b24",
+      "upperBound": 1,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--03264-c-high-contrast-comfortable/upper-toolbar-high-contrast-comfortable.png",
+      "screenshotSha256": "ac0ac0baa1f3c09ec50fa033dae9deaf49339bc1163215a6d96e2a6dd4b28a68"
+    },
+    {
+      "theme": "high-contrast",
+      "density": "comfortable",
+      "index": 17,
+      "title": "Режим рисования (X)",
+      "sourceSha256": "e78bd38fea8a799c13ffc0fbbab4d9ca6a1ee0ee57360c68596b58e4fe68da9a",
+      "upperBound": 1,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--03264-c-high-contrast-comfortable/upper-toolbar-high-contrast-comfortable.png",
+      "screenshotSha256": "ac0ac0baa1f3c09ec50fa033dae9deaf49339bc1163215a6d96e2a6dd4b28a68"
+    },
+    {
+      "theme": "high-contrast",
+      "density": "compact",
+      "index": 0,
+      "title": "Вид (Пробел+перетаскивание для панорамирования)",
+      "sourceSha256": "0a22cca4e14802d225bb7ef9dd30d4a42b157389a1681b84975349fd18a00b3a",
+      "upperBound": 1,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--6e706-ostic-high-contrast-compact/upper-toolbar-high-contrast-compact.png",
+      "screenshotSha256": "07439dc4d09ba9768bc01b79d8fc99af1067637e7ad771795e22167abb61a02a"
+    },
+    {
+      "theme": "high-contrast",
+      "density": "compact",
+      "index": 14,
+      "title": "Вставить (Нажмите дважды, чтобы вставить текст)",
+      "sourceSha256": "4dc5547840d699651cf7d3059a91d575cddaf80451ab85a7c41ed1d7c7998b24",
+      "upperBound": 1,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--6e706-ostic-high-contrast-compact/upper-toolbar-high-contrast-compact.png",
+      "screenshotSha256": "07439dc4d09ba9768bc01b79d8fc99af1067637e7ad771795e22167abb61a02a"
+    },
+    {
+      "theme": "high-contrast",
+      "density": "compact",
+      "index": 17,
+      "title": "Режим рисования (X)",
+      "sourceSha256": "e78bd38fea8a799c13ffc0fbbab4d9ca6a1ee0ee57360c68596b58e4fe68da9a",
+      "upperBound": 1,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--6e706-ostic-high-contrast-compact/upper-toolbar-high-contrast-compact.png",
+      "screenshotSha256": "07439dc4d09ba9768bc01b79d8fc99af1067637e7ad771795e22167abb61a02a"
+    },
+    {
+      "theme": "dark",
+      "density": "compact",
+      "index": 0,
+      "title": "Вид (Пробел+перетаскивание для панорамирования)",
+      "sourceSha256": "0a22cca4e14802d225bb7ef9dd30d4a42b157389a1681b84975349fd18a00b3a",
+      "upperBound": 1.3338470153815378,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--d8a71-yph-diagnostic-dark-compact/upper-toolbar-dark-compact.png",
+      "screenshotSha256": "ceaf449012348a9b5913cc31796303ebcdd08dee4989ab05e45284aca63348ad"
+    },
+    {
+      "theme": "dark",
+      "density": "compact",
+      "index": 14,
+      "title": "Вставить (Нажмите дважды, чтобы вставить текст)",
+      "sourceSha256": "4dc5547840d699651cf7d3059a91d575cddaf80451ab85a7c41ed1d7c7998b24",
+      "upperBound": 1.3338470153815378,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--d8a71-yph-diagnostic-dark-compact/upper-toolbar-dark-compact.png",
+      "screenshotSha256": "ceaf449012348a9b5913cc31796303ebcdd08dee4989ab05e45284aca63348ad"
+    },
+    {
+      "theme": "dark",
+      "density": "compact",
+      "index": 17,
+      "title": "Режим рисования (X)",
+      "sourceSha256": "e78bd38fea8a799c13ffc0fbbab4d9ca6a1ee0ee57360c68596b58e4fe68da9a",
+      "upperBound": 1.3338470153815378,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--d8a71-yph-diagnostic-dark-compact/upper-toolbar-dark-compact.png",
+      "screenshotSha256": "ceaf449012348a9b5913cc31796303ebcdd08dee4989ab05e45284aca63348ad"
+    },
+    {
+      "theme": "dark",
+      "density": "comfortable",
+      "index": 0,
+      "title": "Вид (Пробел+перетаскивание для панорамирования)",
+      "sourceSha256": "0a22cca4e14802d225bb7ef9dd30d4a42b157389a1681b84975349fd18a00b3a",
+      "upperBound": 1.3338470153815378,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--e92cc-diagnostic-dark-comfortable/upper-toolbar-dark-comfortable.png",
+      "screenshotSha256": "306ec9b8b118a91c41224255c195c191962203b70420fa429cd309697d4e5125"
+    },
+    {
+      "theme": "dark",
+      "density": "comfortable",
+      "index": 14,
+      "title": "Вставить (Нажмите дважды, чтобы вставить текст)",
+      "sourceSha256": "4dc5547840d699651cf7d3059a91d575cddaf80451ab85a7c41ed1d7c7998b24",
+      "upperBound": 1.3338470153815378,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--e92cc-diagnostic-dark-comfortable/upper-toolbar-dark-comfortable.png",
+      "screenshotSha256": "306ec9b8b118a91c41224255c195c191962203b70420fa429cd309697d4e5125"
+    },
+    {
+      "theme": "dark",
+      "density": "comfortable",
+      "index": 17,
+      "title": "Режим рисования (X)",
+      "sourceSha256": "e78bd38fea8a799c13ffc0fbbab4d9ca6a1ee0ee57360c68596b58e4fe68da9a",
+      "upperBound": 1.3338470153815378,
+      "screenshot": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/application-artifacts/collector-v3-P01-isolated--e92cc-diagnostic-dark-comfortable/upper-toolbar-dark-comfortable.png",
+      "screenshotSha256": "306ec9b8b118a91c41224255c195c191962203b70420fa429cd309697d4e5125"
+    }
+  ],
+  "limits": "Only three proven enabled black SVG controls in Dark/HC across both densities have FAIL upper bounds. Other114 records remain NOT_MEASURED. No observed minimum, numerical PASS, or universal icon failure is claimed. V3 remains126NOT_MEASURED. No product repair authorized by diagnostic PRE."
+}

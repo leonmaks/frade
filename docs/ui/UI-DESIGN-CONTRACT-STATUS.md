@@ -1,3 +1,25 @@
+# P01: контраст трёх верхних иконок FAIL; решение по scope
+
+2026-10-02T18:32:31.589Z. Ветка codex/frade-ui-design-contract; UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; исходныйbaseline98f387f, последнийpublished885fc36a. Guide1.0/tokens1.0.0.
+
+- Fresh independent diagnostic PRE: PASS60events17raw, candidate/packet/plan unchanged, requestedgpt-6-astra/xhigh.
+- Новые Electron44.4.5 reference controls:19PASS. Actual source-bound six-state analysis:12enabled FAIL_CONTRAST_UPPER_BOUND,114NOT_MEASURED,0PASS. «Вид», «Вставить», «Режим рисования» в Dark/HC, обе плотности. Верхние границы1 и1.333847 меньше3. Required assertion действительно exit1.
+- RCA ABSTRACTION_BOUNDARY: original fixed-black SVG background-image не наследует изменённый CSS color, тогда как фон уже токенизирован. Все543 source/старыеPNG/наблюдения неизменны; production/permanenttests не редактировались.
+- Точный proposed scope P01-UPPER-THREE-GLYPH-PAINT-01: openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-glyph-paint.proposed.md, SHA2564fa0062a9c8d717f0b540bd5f65568b2f934b009947954e4ee7931e01df6808e. Только существующий bridge, три доказанных originalSVG как маска canonicalforeground; no vendor/routing/domain changes. Сейчас NOT_ACCEPTED.
+- Следующий шаг: решение пользователя по этому delta; затем coherentplan/strict/freshPRE, meaningfulRED и реализация. Новый PRE метода не является разрешением product repair. Утвердительное contrast proof ещё требует собственного coherentplan/PRE; V4 никогда не выдаёт PASS.
+- P01 6/10.2.4/2.5/3.2/3.3 открыты; human372baselineNOT_APPROVED; cumulativePOST/archive/P02STOP. Четвёртого исключения нет. BranchprotectionLOCAL_ONLY/NOT_CONFIGURED.
+- Checkpoint openspec/changes/frade-p01-theme-core/evidence/p01-upper-glyph-defect-20261002T183231Z: UNCOMMITTED/UNPUSHED. Публикация только в прежнюю авторизованную UI ветку. Panelqueued.
+
+# P01: повторный PRE PASS; новые контрольные примеры
+
+2026-10-02T18:20:51.672Z. Fresh independent P01 PRE gpt-6-astra/xhigh PASS:60 событий,17 raw артефактов, candidate/packet/plan неизменны. openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-received-20261002T182051Z/output--result.md. Предыдущий usage-limit BLOCKED сохранён. Разрешён только ограниченный V4 diagnostic method; до проверки приложения обязательны новые same-Electron controls. Они сейчас NOT_RUN. Production/permanent tests не меняются. P01 6/10; human372PNG NOT_APPROVED; cumulativePOST/archive/P02 открыты. Новые metadata UNCOMMITTED после опубликованного885fc36a. Panelqueued.
+
+# P01: повторный независимый PRE подготовлен
+
+2026-10-02T17:58:53.954Z. Ветка codex/frade-ui-design-contract, UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. HEAD885fc36a опубликован. Fresh OpenSpec list/status/apply/strict validation PASS; общий review runtime AVAILABLE. Все543 исходных файла сохранены. По команде пользователя «Продолжи» выполняется новый PRE неизменённого V4 diagnostic plan с gpt-6-astra/xhigh. Предыдущий usage-limit BLOCKED сохранён; новый результат ещё не получен. До PASS реализация V4 не разрешена. Пакет/candidate замораживаются на время review; статус обновится после получения результата.
+
+P01 остаётся6/10: задачи2.4/2.5/3.2/3.3 открыты; glyph126 NOT_MEASURED, human372PNG NOT_APPROVED, cumulativePOST/archive/P02 STOP. Текущий restart evidence openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-resume-20261002T175842Z; текущие metadata UNCOMMITTED. Panelqueued.
+
 # Публикация diagnostic checkpoint подтверждена
 
 2026-10-02T17:53:15.214Z. Checkpoint 49e473b81174505679429668657c46b44697bc4a опубликован в git@github.com:leonmaks/frade.git, refs/heads/codex/frade-ui-design-contract; фактический remote SHA совпал. Receipt: openspec/changes/frade-p01-theme-core/evidence/p01-compositor-blocked-checkpoint-20261002T174959Z/publication.json. Эта запись и receipt сохраняются отдельным metadata commit; точный его SHA определяется Git HEAD и проверкой push. Production/permanent tests не менялись. P01 6/10, новый PRE BLOCKED_USAGE_LIMIT; реализация V4, cumulative POST, archive и P02 остановлены. Для возобновления требуется восстановить доступ к точной утверждённой модели gpt-6-astra/xhigh и выполнить свежий read-only PRE. Human visual baseline 372 PNG NOT_APPROVED. Панель queued.

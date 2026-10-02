@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_BLACK_SOURCE_BOUND_PRE_BLOCKED_USAGE_LIMIT",
+  "phase": "P01_UPPER_THREE_GLYPH_SCOPE_DECISION",
   "taskCounts": {
     "completed": 6,
     "total": 10
@@ -120,6 +120,19 @@
       "classification": "ENVIRONMENT",
       "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-blocked-received-20261002T174959Z/interpretation.json",
       "resolution": "Restore access to approved P01 reviewer; run fresh confined PRE before method implementation. No model substitution."
+    },
+    {
+      "id": "P01-INDEPENDENT-REVIEW-USAGE-LIMIT-RESUME",
+      "status": "RESOLVED_CURRENT_REVIEW_PASS_PRIOR_BLOCKED_RETAINED",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-received-20261002T182051Z/interpretation.json"
+    },
+    {
+      "id": "P01-UPPER-THREE-GLYPH-CONTRAST",
+      "status": "REPRODUCED_REQUIRED_A11Y_FAIL",
+      "classification": "ABSTRACTION_BOUNDARY",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-glyph-defect-20261002T183231Z/rca.json",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-glyph-paint.proposed.md",
+      "proposalSha256": "4fa0062a9c8d717f0b540bd5f65568b2f934b009947954e4ee7931e01df6808e"
     }
   ],
   "humanDecisions": [
@@ -758,7 +771,7 @@
     "newUnitRED": "NOT_RUN_BEFORE_PRE",
     "implementation": "NOT_RUN_BEFORE_PRE"
   },
-  "currentReview": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-blocked-received-20261002T174959Z",
+  "currentReview": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-received-20261002T182051Z",
   "currentReflowPlanningChecks": {
     "atUtc": "2026-10-02T01:47:14.390Z",
     "results": [
@@ -1206,9 +1219,11 @@
     "v3Diagnostic": "126NOT_MEASURED_CORELESS_13REFERENCES6RUNTIME_PRESERVATION_PASS",
     "v3Analysis": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/analysis-v3.json",
     "boundPlan": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-20261002T171512Z/execution-plan-v4.md",
-    "boundStatus": "BLOCKED_USAGE_LIMIT_NO_VERDICT",
-    "boundReceipt": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-blocked-received-20261002T174959Z",
-    "boundImplementation": "NOT_RUN_PRE_REQUIRED"
+    "boundStatus": "PASS_60_EVENTS_17_RAW",
+    "boundReceipt": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-received-20261002T182051Z",
+    "boundImplementation": "REFERENCE19_PASS_APPLICATION12_ENABLED_FAIL_114_NOT_MEASURED",
+    "boundResume": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-resume-20261002T175842Z",
+    "boundAnalysis": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/black-bound-v4/application-analysis.json"
   },
   "checkpoint": {
     "sourceSha": "4be1c67720522f647043965ec58c14658d7aa024",
@@ -1217,5 +1232,11 @@
     "status": "PUBLISHED_EXACT_SHA",
     "metadataPending": true
   },
-  "currentReviewStatus": "BLOCKED"
+  "currentReviewStatus": "PASS",
+  "currentScopeDecision": {
+    "id": "P01-UPPER-THREE-GLYPH-PAINT-01",
+    "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-glyph-paint.proposed.md",
+    "sha256": "4fa0062a9c8d717f0b540bd5f65568b2f934b009947954e4ee7931e01df6808e",
+    "status": "PROPOSED_NOT_ACCEPTED"
+  }
 }
