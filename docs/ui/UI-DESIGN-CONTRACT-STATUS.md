@@ -2,7 +2,7 @@
 
 ## Текущий этап — P01,5/10; repair checkpoint, menu reflow scope decision
 
-Обновлено: 2026-10-02T00:22:33.649Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; baseline98f387f. Последний опубликованный checkpoint6a49d5d; текущий repair checkpoint готовится к commit/push. Guide1.0/tokens1.0.0. Routing prerequisite отсутствует. Shared review policy1.1: model/effort по owning stage plan, автоматические PRE/POST без человеческого переноса промптов. Правый panel open queued; фактическая видимость не подтверждена.
+Обновлено: 2026-10-02T00:22:33.649Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; baseline98f387f. Engineering repair checkpointeeca8e159edade32d85baaae8dd1298bf50d7c5e committed/pushed, exact origin SHA VERIFIED; этот checkpoint сохраняет matrixFAIL и P01 INCOMPLETE. Guide1.0/tokens1.0.0. Routing prerequisite отсутствует. Shared review policy1.1: model/effort по owning stage plan, автоматические PRE/POST без человеческого переноса промптов. Правый panel open queued; фактическая видимость не подтверждена.
 
 | Задача/проверка | Фактический текущий статус |
 | --- | --- |
@@ -16,9 +16,11 @@
 | Visual matrix | FAIL6/6:990observations,90geometry findings; actual screenshots/hashes saved; human baseline NOT_APPROVED |
 | Original test integrity | PASS:8unit/15Electron callback ASTs unchanged, WB exact3/CRLF, bundle unchanged, sole production bridge |
 | Current full root / repeated POST | NOT_RUN after applicable matrixFAIL; historical6a49 rootPASS and independent POST1FAIL preserved |
-| Git / next decision | Repair checkpoint commit/push pending. Proposed P01-LOWER-ORIGIN-POPUP-REFLOW-01 is NOT_USER_ACCEPTED; no placement implementation |
+| Git / next decision | Repair checkpoint eeca8e1 commit/push DONE, remote SHA VERIFIED. Proposed P01-LOWER-ORIGIN-POPUP-REFLOW-01 is NOT_USER_ACCEPTED; no placement implementation |
 
 Применимые FDS003/004/005/008/009, A11Y001–005/007–009. Ровно3approved legacy exceptions; merge protection LOCAL_ONLY/NOT_CONFIGURED. Не закрываются full FUI005–009, visual acceptance, cumulative verify/POST/archive. STOP перед P02.
+
+Raw staged whitespace FAIL exit2 в неизменённых исходных logs/evidence; authored code/docs whitespace PASS0. Raw bytes не нормализованы. [Publication receipt](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/publication.json).
 
 ## Оставшиеся задачи
 
