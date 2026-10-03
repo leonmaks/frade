@@ -1,15 +1,3 @@
-# P01: два решения приняты; следующий PRE — gpt-6-astra / xhigh
-
-Обновлено 2026-10-03T01:09:23.283Z. Ветка codex/frade-ui-design-contract; UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Active change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. Последний опубликованный metadata checkpoint e0655eea11b3c56bd8cb4b39ca98cbda6e7245b5; реализация470833af707ce3939293bdd61796ef561b4d29a3.
-
-- ACCEPTED: P01-UPPER-FUI-CONTROL-REVALIDATION-01 и P01-UPPER-STATE-APPLICABILITY-01, точные исходные SHA сохранены в [квитанции утверждения](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-scope-acceptance-20261003T010923Z/acceptance.json). Исходные proposed-файлы и исторические FAIL неизменны.
-- Следующий шаг: согласовать proposal/design/tasks/specs с принятыми решениями, выполнить strict validation и свежий независимый read-only PRE. Новый PRE: NOT_RUN. Назначение из tasks.md:90 — gpt-6-astra, reasoning xhigh; последующий POST — та же пара. Проверки выполняются автоматически.
-- До нового PRE PASS зависимые изменения тестов/control loader не выполняются. Статусы текущих проверок прежние: desktop lint/typecheck/unit91/91 PASS; обычная raster-матрица54/54 PASS; FUI12/12 PASS; BDD110PASS/1FAIL; expanded matrix FAIL; current root NOT_RUN, verify BLOCKED, POST NOT_RUN.
-- P01 остаётся5/10;2.4,2.5,3.1,3.2,3.3 открыты. Недоступный исходный keyboard focus остаётся отдельным открытым UI-подэтапом; cumulative/archive BLOCKED, human visual NOT_APPROVED. Foundation завершён; P02–P07 не начаты. Routing независим. Три прежних исключения; protection LOCAL_ONLY/NOT_CONFIGURED.
-- Квитанция и статус: подготовлены к metadata commit/push в разрешённую UI-ветку. Правая панель queued, видимость не подтверждена.
-
-## История статуса до принятия решений
-
 # P01: реализация трёх иконок проверена частично; два решения открыты
 
 Обновлено 2026-10-02T22:47:22.326Z. Ветка codex/frade-ui-design-contract, UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade. Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; опубликованный checkpoint реализации470833af707ce3939293bdd61796ef561b4d29a3. Guide1.0/tokens1.0.0.
