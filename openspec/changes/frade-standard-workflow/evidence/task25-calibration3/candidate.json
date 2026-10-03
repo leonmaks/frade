@@ -1,0 +1,163 @@
+{
+  "task": "W01-2.5",
+  "calibration": "03",
+  "plan": {
+    "path": "tests/directions/authority-fixtures/w01-design.snapshot",
+    "sha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a"
+  },
+  "sharedPolicy": {
+    "version": "v1.1",
+    "bundleSha256": "a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0"
+  },
+  "generator": {
+    "requestedModel": "gpt-6-sol",
+    "requestedEffort": "high",
+    "actualBackend": "NOT_CONFIRMED",
+    "approval": "NOT_REQUESTED",
+    "inputUnchanged": true,
+    "executionSha256": "01021b07e8744398a6cd2eaf738c119d9a3a9225ad3ad519edd4f6762412b3e2",
+    "resultSha256": "ddf36af9438c1d52db2df33a994e92e8aa8d10cd9db9e63f9e940110b0e3132a"
+  },
+  "sources": [
+    {
+      "path": "scripts/directions/review.mjs",
+      "sha256": "2ac4459885eb1a0d524d9cab1915156ce6f13cf789d6f99732a2ee56e2ae3708"
+    },
+    {
+      "path": "tests/directions/review-terminal.test.mjs",
+      "sha256": "70baecbd2b55200508ea30db8e2691d2883ab0b663a9cd1040afb86ed4803589"
+    },
+    {
+      "path": "tests/directions/review.test.mjs",
+      "sha256": "aff7c33adfc6004dd751edfa3b62551abe7602e174dd4d01df106348d7fe09be"
+    },
+    {
+      "path": "docs/engineering/templates/task-2.5-review.md",
+      "sha256": "a938ccf4bc65f085865b6ce707c8d0510758fe37840dfed4d766a4df5fd259b8"
+    }
+  ],
+  "verification": {
+    "windowsSuite": {
+      "command": [
+        "E:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "tests/directions/arguments.test.mjs",
+        "tests/directions/bootstrap-repair.test.mjs",
+        "tests/directions/bootstrap.test.mjs",
+        "tests/directions/contracts.test.mjs",
+        "tests/directions/lifecycle.test.mjs",
+        "tests/directions/repair.test.mjs",
+        "tests/directions/review-terminal.test.mjs",
+        "tests/directions/review.test.mjs",
+        "tests/directions/roles.test.mjs",
+        "tests/directions/status.test.mjs"
+      ],
+      "cwd": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-calibration3-native-20261003\\green",
+      "exit": 0,
+      "stdout": "✔ FWE-007-S01 applicability rejects null and scalar plans with stable shape issues (4.5413ms)\n✔ FWE-007-S02 applicability verification rejects malformed plans and options before proof access (1.4006ms)\n✔ FWE-005-S01 transition rejects null and scalar options before gate access (7.541ms)\n✔ FWE-001-S04 closure planner rejects null and scalar options without an operation plan (3.5158ms)\n✔ FWE-001-S04 closure executor rejects null and scalar options before filesystem access (1.9006ms)\n✔ FWE-003-A01 plan previews exact owner and files without writing (2130.9043ms)\n✔ FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake (2768.7267ms)\n✔ FWE-003-A02 same request returns owner; changed request and foreign branch blocks (10814.5671ms)\n✔ FWE-003-A03 retained intent recovers a registered partial worktree (5395.1816ms)\n✔ FWE-003-A04 rejects foreign common, traversal, link and case collisions (4207.6589ms)\n✔ FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe (0.581ms)\n✔ FWE-003-A05 request self-approval and policy drift cannot authorize create (1052.8466ms)\n✔ FWE-001-A03 check binds manifest to owner and rejects malformed state (4728.8191ms)\n✔ I23-WIN manifest boundary accepts native and canonical owner paths only (6047.1564ms)\n✔ FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref (4438.3412ms)\n✔ I23-07 installed service cannot create without an external exact request grant (5883.6121ms)\n✔ I23-07 grant for alpha rejects changed identity, title, goal, outcomes, baseline and parent (11560.8802ms)\n✔ I23-07 linked or forged grant cannot approve creation (3641.543ms)\n✔ I23-08 retained origin fixes original baseline after branch progress (4880.9994ms)\n✔ I23-08 check requires both exact retained origin records (3540.5829ms)\n✔ I23-08 foreign malformed manifest is rejected as unowned before JSON parsing (3922.6637ms)\n✔ I23-01 Git common exception is limited to final .git component (0.4059ms)\n✔ I23-01 native separators normalize only on Windows request boundary (1614.2818ms)\n✔ I23-02 registered secondary source creates under matching common (4577.8472ms)\n✔ I23-02 whole foreign repository switch is rejected before source access (1273.5437ms)\n✔ I23-06 an unverified release cannot authorize creation (1160.8536ms)\n✔ I23-03 seed declares exact capability and strict draft obligation (3161.863ms)\n✔ I23-04 Git worktree checkout cannot run hooks or smudge filter (1995.882ms)\n✔ I23-04 safe checkout creates owner without running post-checkout hook (3671.01ms)\n✔ I23-05 check rejects nonexistent and unrelated baseline commits (4973.1433ms)\n✔ I23-05 check rejects linked manifest parent (3427.4834ms)\n✔ FWE-003-A01 plan previews exact owner and files without writing (2113.3273ms)\n✔ FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake (2768.7229ms)\n✔ FWE-003-A02 same request returns owner; changed request and foreign branch blocks (10951.8531ms)\n✔ FWE-003-A03 retained intent recovers a registered partial worktree (5263.0559ms)\n✔ FWE-003-A04 rejects foreign common, traversal, link and case collisions (4221.8809ms)\n✔ FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe (0.6777ms)\n✔ FWE-003-A05 request self-approval and policy drift cannot authorize create (1075.4181ms)\n✔ FWE-001-A03 check binds manifest to owner and rejects malformed state (4872.5436ms)\n✔ I23-WIN manifest boundary accepts native and canonical owner paths only (5933.0043ms)\n✔ FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref (4391.4588ms)\n✔ I23-07 installed service cannot create without an external exact request grant (5926.6275ms)\n✔ I23-07 grant for alpha rejects changed identity, title, goal, outcomes, baseline and parent (11524.7382ms)\n✔ I23-07 linked or forged grant cannot approve creation (3598.1311ms)\n✔ I23-08 retained origin fixes original baseline after branch progress (4892.8086ms)\n✔ I23-08 check requires both exact retained origin records (3557.9405ms)\n✔ I23-08 foreign malformed manifest is rejected as unowned before JSON parsing (3901.4707ms)\n✔ FWE-001-S02 versioned manifest accepts safe separate owner and scope fields (6.295ms)\n✔ FWE-001-S01 rejects unsafe direction identity, branch and owner paths (2.8018ms)\n✔ FWE-001-S04 rejects unknown schema, unsafe glob, frozen overlap and widened closure destination (3.8484ms)\n✔ FWE-005-S01 phase, health and applicability are separate exact enums (0.9823ms)\n✔ FWE-005-S01 progress edits preserve reviewed scope while allowed paths and acceptance links change it (4.0812ms)\n✔ FWE-004-S01 traceability links requirement to scenario, task, assertion and bound run (1.4585ms)\n✔ FWE-004-S01 critical requirement needs negative and boundary controls, with no fake completed run (0.5002ms)\n✔ FWE-004-S01 traced PASS text needs trusted current run proof (2.7724ms)\n✔ FWE-004-S01 human boundary is explicit rather than an implicit passing assertion (1.0041ms)\n✔ FWE-004-S01 malformed trace rows return issues without throwing (0.5989ms)\n✔ FWE-002-S02 unresolved acceptance blocks dependent task while independent research remains permitted (0.5178ms)\n✔ FWE-007-S01 applicability rejects relabelled affected FAIL and accepts documented unaffected N/A (0.5632ms)\n✔ FWE-007-S02 required unavailable check blocks and never becomes PASS (0.2907ms)\n✔ FWE-007-S02 required PASS label still needs a current trusted check run (1.2175ms)\n✔ FWE-005-S01 PRE plus checkpoint admits normal implementation source changes (8.1753ms)\n✔ FWE-005-S01 forged JSON PASS/boolean and absent proof cannot admit implementation (3.6226ms)\n✔ FWE-005-S02 skipped phase and stale PRE plan/scope are barriers (2.8068ms)\n✔ FWE-005-S02 POST requires current GREEN and Verify; POST source binding is current (3.6715ms)\n✔ FWE-005-S03 diagnostic PASS does not substitute for full review (1.977ms)\n✔ FWE-008-S03 completed legacy tasks without POST/archive are pending closure (0.3757ms)\n✔ FWE-001-S04 scope rejects frozen writes, traversal and planning/closure confusion (3.2981ms)\n✔ FWE-001-S03 plans exact owner sync/archive with reference-origin relocation after verified barriers (4.2429ms)\n✔ FWE-001-S04 closure rejects early, foreign, unsafe, stale and broken reference requests (8.3179ms)\n✔ FWE-001-S04 artifact reader hashes bytes and rejects symlink escape (29.7947ms)\n✔ FWE-001-S03 disposable Git owner sync/archive preserves foreign file and raw receipt origin (899.8492ms)\n✔ I21-01 two stages own unique independent changes and semantic map is frozen (10.3845ms)\n✔ I21-06 malformed lists, generic requirement IDs, and Windows-invalid paths fail closed (3.8886ms)\n✔ I21-07 case folding closes frozen Apps/packages and malformed scope gaps (1.8044ms)\n✔ I21-05 repeated deterministic failures require classified RCA and trusted proof (7.565ms)\n✔ I21-02/08 controlled temporary Git closure syncs only delta requirements and proves CLOSED (4517.4136ms)\n✔ completed shared root binds exact record, packet and single UUID probe (69.6642ms)\n✔ live, unavailable and unexpected WSL probe receipts block (47.8828ms)\n✔ CLI 0.159.3 read-only terminal PASS and FAIL messages and completed negative command remain valid (2.1732ms)\n✔ CLI 0.159.3 completed error item blocks independently (0.4206ms)\n✔ CLI 0.159.3 command completed with in_progress status and null exit blocks independently (0.4188ms)\n✔ CLI 0.159.3 terminal command missing status or integer exit blocks (0.6299ms)\n✔ production failure path has no snapshot-only freeze release (4.9485ms)\n✔ CLI 0.159.3 unknown, write, contradictory and unmatched item states block (1.2664ms)\n✔ nested pinned arg0 utility links retain exactly four metadata exclusions (166.9008ms)\n✔ nested arg0 missing-cardinality link metadata blocks (85.3708ms)\n✔ nested arg0 wrong-name link metadata blocks (51.5635ms)\n✔ nested arg0 wrong-depth link metadata blocks (44.4888ms)\n✔ nested arg0 wrong-target link metadata blocks (50.0479ms)\n✔ nested arg0 duplicate-directory link metadata blocks (66.9801ms)\n✔ failed raw retention and live reviewer subprocess keep freeze; stopped complete run releases (3125.832ms)\n✔ approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not (2589.3067ms)\n✔ canonical owner fields are required on every host (1785.4534ms)\n✔ second direction resolves its own approved stage pair; request metadata cannot grant approval (10352.3916ms)\n✔ missing or stale plan, role ambiguity, range, source drift and request self approval block (2874.8555ms)\n✔ foreign source is rejected before reading artifacts (1097.9957ms)\n✔ credentials, unsafe paths, foreign paths and oversized packets block preparation (2078.0395ms)\n✔ public review test source is safe in the complete packet (3102.8222ms)\n✔ wrong common, branch, source or owner registration blocks (1043.1741ms)\n✔ snapshot binds source, tracked status, raw index bytes and HEAD (10991.8612ms)\n✔ complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage (7895.8286ms)\n✔ a real candidate status mutation blocks and retains the common freeze marker (3932.7673ms)\n✔ incomplete, error, timeout, ambiguous and differing final agent message block (17645.0471ms)\n✔ canary, runtime, version, control, request, candidate and packet drift block (21555.4282ms)\n✔ strict validation requires both exact actual commands, clean exits and current source binding (2.031ms)\n✔ strict validation launches the discovered public Node entry and binds semantic results (7567.9038ms)\n✔ approved proposal and task source omissions or drift block (1336.9175ms)\n✔ raw external request is retained exactly and any later byte drift blocks (6448.8054ms)\n✔ live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct (0.4146ms)\n✔ event stream rejects item errors, dangling commands, duplicate IDs and wrong order (0.9762ms)\n✔ pinned bundle is checked before mutated executable module can load (178.831ms)\n✔ shared raw capture excludes only bounded runtime-home links and blocks output links (76.0594ms)\n✔ untouched shared core discover and snapshot in isolated Git child preserve raw index (1867.5998ms)\n✔ FWE-009 exact stage/type/role resolves one pair and source provenance (29.8494ms)\n✔ FWE-009 missing, range and contradictory assignments block (11.1416ms)\n✔ FWE-009 role confusion and forged request metadata cannot select a reviewer (5.7781ms)\n✔ FWE-009 direct approval must be established outside the request (6.1583ms)\n✔ FWE-009 changed source bytes and changed excerpt block (29.8123ms)\n✔ FWE-009 reviewed task override applies only to its exact task and role (27.6455ms)\n✔ FWE-009 unapproved and duplicate task overrides block (4.9073ms)\n✔ I22-03 malformed resolver options and role records return structured BLOCKED (5.8629ms)\n✔ I22-03 numeric override reason returns structured BLOCKED (4.8276ms)\n✔ I22-05 changed source bytes with spoofed digest metadata block before approval (13.201ms)\n✔ I22-05 changed decision bytes with spoofed digest metadata block before approval (12.5977ms)\n✔ I22-05 malformed reader bytes block before approval (13.6013ms)\n✔ I22-04 exact canonical gpt-5.5 resolves while ranges and malformed IDs block (11.3106ms)\n✔ FWE-012 invocation mismatch blocks; actual backend remains unattested (20.9371ms)\n✔ FWE-009 real W01 approved design and direct decisions resolve five roles (71.5298ms)\n✔ FWE-013-A01 exact current headings, order, duplicate and injection rejection (3.948ms)\n✔ FWE-014-A01 stable checklist ids and administrative counts (2.5279ms)\n✔ FWE-014-A02 current source-bound proof only; human boundary never accepted (17.3637ms)\n✔ FWE-014-A03 contradictory phase/health and applicability block (1.4899ms)\n✔ FWE-014-A04 raw artifact bytes bind every executable assertion (21.7866ms)\n✔ FWE-014-A05 required check PASS needs trusted bound raw receipt (2.8686ms)\n✔ FWE-013-A02 different directions share exact Russian headings and safe strings (3.6825ms)\n✔ FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel (3298.9198ms)\n✔ one direction freeze defers real status write for a distinct owning stage change (1196.182ms)\n✔ FWE-015-S02 actual checkpoint-only change stales the previous projection until refresh (3712.9882ms)\n✔ FWE-015 no UI operation and self-declared panel flags remain NOT_OPENED (2044.0609ms)\n✔ FWE-015 visible state requires actual trusted controller raw receipt (1500.089ms)\n✔ FWE-013 W01 legacy BRANCH-STATUS remains mapped to its registered origin (2282.0202ms)\n✔ FWE-015 freeze arriving during awaited trusted proof defers the write (2225.123ms)\n✔ one direction freeze blocks status writes for either change in a real Git owner (2720.9253ms)\n✔ FWE-013 status target cannot overwrite an in-scope non-dashboard file (2693.4273ms)\n✔ FWE-013 POSIX origin fields reject native backslashes (0.32ms)\nℹ tests 146\nℹ suites 0\nℹ pass 146\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 104727.7331\n",
+      "stderr": "",
+      "atUtc": "2026-10-03T17:41:43.066Z"
+    },
+    "scopedEslint": [
+      {
+        "path": "scripts/directions/review.mjs",
+        "sourceSha256": "2ac4459885eb1a0d524d9cab1915156ce6f13cf789d6f99732a2ee56e2ae3708",
+        "command": "eslint --stdin --stdin-filename scripts/directions/review.mjs",
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "path": "tests/directions/review-terminal.test.mjs",
+        "sourceSha256": "70baecbd2b55200508ea30db8e2691d2883ab0b663a9cd1040afb86ed4803589",
+        "command": "eslint --stdin --stdin-filename tests/directions/review-terminal.test.mjs",
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "path": "tests/directions/review.test.mjs",
+        "sourceSha256": "aff7c33adfc6004dd751edfa3b62551abe7602e174dd4d01df106348d7fe09be",
+        "command": "eslint --stdin --stdin-filename tests/directions/review.test.mjs",
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "prettier": {
+      "command": [
+        "E:\\Program Files\\nodejs\\node.exe",
+        "E:\\dev\\codex\\frade-worktrees\\frade-standard-workflow\\node_modules\\prettier\\bin\\prettier.cjs",
+        "--check",
+        "scripts/directions/review.mjs",
+        "tests/directions/review-terminal.test.mjs",
+        "tests/directions/review.test.mjs",
+        "docs/engineering/templates/task-2.5-review.md"
+      ],
+      "cwd": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-calibration3-native-20261003\\green",
+      "exit": 0,
+      "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": "",
+      "atUtc": "2026-10-03T17:41:47.424Z"
+    },
+    "boundedPreviousRunProbe": "PASS_ACTUAL_BOUND_RUN",
+    "focusedTerminalTests": {
+      "pass": 15,
+      "fail": 0,
+      "logHashes": [
+        {
+          "source": "tmp/review-terminal-final.log",
+          "sha256": "f3b41b746623f418e6ede0caf9bd26fc0290143afea3cad9d10d2675c9d37243",
+          "exit": 0,
+          "pass": 15,
+          "fail": 0
+        },
+        {
+          "source": "tmp/review-test.log",
+          "sha256": "edc5a7f8d2a66d9ae90dc7d7f9a2f74e6ee161e4ffe6905f0a5c944da1a24442",
+          "exit": 1,
+          "pass": 21,
+          "fail": 1
+        }
+      ]
+    },
+    "linuxCopiedFixtureTest": {
+      "pass": 21,
+      "fail": 1,
+      "class": "ENVIRONMENT",
+      "reason": "UNRELATED_REPOSITORY in isolated Linux copied fixture; preserve as environment failure"
+    }
+  },
+  "historical": {
+    "previousIndependentDiagnostic": "FAIL",
+    "outerCapture": "BLOCKED",
+    "preserved": true,
+    "notReclassified": true
+  },
+  "independentPRE": {
+    "status": "PENDING",
+    "model": "gpt-6-astra",
+    "effort": "xhigh"
+  },
+  "logs": [
+    {
+      "source": "tmp/review-terminal-final.log",
+      "sha256": "f3b41b746623f418e6ede0caf9bd26fc0290143afea3cad9d10d2675c9d37243",
+      "exit": 0,
+      "pass": 15,
+      "fail": 0
+    },
+    {
+      "source": "tmp/review-test.log",
+      "sha256": "edc5a7f8d2a66d9ae90dc7d7f9a2f74e6ee161e4ffe6905f0a5c944da1a24442",
+      "exit": 1,
+      "pass": 21,
+      "fail": 1
+    }
+  ],
+  "oldSourceRed": {
+    "exit": 1,
+    "sha256": "f56b3b9fcb086b9868c57385d1f5f96de41af779822791077498844f14879694",
+    "path": "native/old-source-red.json"
+  }
+}

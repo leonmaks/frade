@@ -1,13 +1,13 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-03T16:01:40.006Z
+UPDATED_AT_UTC: 2026-10-03T18:35:23.203Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: IMPLEMENTATION | HEALTH: FAIL
-NEXT_PERMITTED_ACTION: same W01 task2.5 exact Sol/high scoped repair after diagnostic02 RCA; fresh native RED/GREEN and independent PRE required. Task2.6/Verify/POST/archive pending; local-only.
+STAGE: W01 | PHASE: IMPLEMENTATION | HEALTH: RUNNING
+NEXT_PERMITTED_ACTION: fresh independent PRE for task2.5 calibration03; after PASS continue task2.6. Task2.6/Verify/POST/archive pending; local-only.
 HUMAN_DECISION: NONE; D03 accepted by direct reply «Принято. Продолжай.».
 READY_FOR_IMPLEMENTATION: YES; formal PRE PASS retained and receipt checkpoint2a6f8f96 PUBLISHED with exact remote SHA..
 READY_FOR_ARCHIVE: NO.
@@ -47,7 +47,7 @@ STOP after W01; no next numbered change or owner migration automatically.
 | 2.2 | tooling-tests | role RED9 -> Windows44 -> required gaps -> new RED6 -> owner GREEN50/lint/format/strict | COMPLETE; task22-completion-audit.json; full old FAIL retained |
 | 2.3 | tooling-tests | Git RED -> exact grant/origin -> Windows portability repair -> owner GREEN/checkpoint | COMPLETE; task23-completion-audit.json; actual Windows92/92, 76 unique + 3 extra binding assertions; strict all16/16, lint/format PASS; prior FAIL retained |
 | 2.4 | tooling-tests | RED -> eight sections/metrics/freeze/history/panel/checkpoint -> Windows GREEN | COMPLETE; task24-completion-audit.json; Windows107/107 PASS (91 unique), scoped syntax/lint/format/strict PASS; historical FAIL retained |
-| 2.5 | tooling-tests | RED -> wrapper/freeze/raw binding -> Windows GREEN -> actual focused PRE | DIAGNOSTIC02 FAIL: parser terminal states and unsafe failure unfreeze; outer BLOCKED nested runtime links. Actual131/131 machine checks retained. Raw complete FAIL/RCA saved; reviewer stopped; same-scope repair required |
+| 2.5 | tooling-tests | RED -> wrapper/freeze/raw binding -> Windows GREEN -> actual focused PRE | Calibration03 imported locally; Windows146/146, scoped ESLint and Prettier PASS, UUID-bound stop probe PASS; Linux copied-fixture 21/22 ENVIRONMENT. Diagnostic02 FAIL/BLOCKED retained. Fresh Astra/xhigh PRE PENDING |
 | 2.6–2.7 | tooling-tests | publication/inheritance/docs/CI | NOT_STARTED |
 | 3.1–3.2 | tooling-tests | cumulative applicable checks + integrity audit | NOT_RUN |
 | 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | NOT_RUN |
@@ -104,14 +104,14 @@ No model substitution, task override or silent current-chat switch. Common servi
 | Task2.2 exact authority/portable fixtures | W01 | RESOLVED_CURRENT; historical FAIL retained | Actual raw-byte digests, portable immutable fixtures, malformed records and canonical ID repaired; Windows50 PASS |
 | Product writer dispatcher | W01 tooling capability | NOT_IMPLEMENTED | Guard remains explicit; separate session staging runtime v2 technically verified, initial probe BLOCKED retained |
 
-Task2.1–2.4 PUBLISHED; task2.5 source imported and actual owner Windows131/131, lint/format/strict PASS; focused diagnostic pending. All prior Windows/lint/panel/checkpoint-only freshness failures and RCA retained; no required test weakened. Formal Verify/POST/archive NOT_RUN.
+Task2.1–2.4 PUBLISHED; task2.5 calibration03 imported and actual Windows146/146, scoped lint/format PASS; fresh independent PRE pending. All prior FAIL/BLOCKED and RCA retained; no required test weakened. Formal Verify/POST/archive NOT_RUN.
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 3271409bb52451ed267551224a211649de50843f (task2.5 incomplete FAIL/BLOCKED checkpoint).
-COMMIT_STATE: preparing local task2.5 diagnostic02 FAIL/BLOCKED checkpoint; incomplete9/18 retained. Exact commit SHA captured outside candidate and joins next natural checkpoint; no push.
+SOURCE_CHECKPOINT_SHA: 082bb16ba8fc4701c82ad5d6b095083785a2920b (task2.5 diagnostic02 FAIL/BLOCKED base; calibration03 checkpoint pending commit; incomplete9/18).
+COMMIT_STATE: 082bb16ba8fc4701c82ad5d6b095083785a2920b COMMITTED_LOCAL; diagnostic02 FAIL/RCA/source preserved. Task2.5 calibration03 source/evidence checkpoint prepared locally; fresh PRE pending; no push attempted per user instruction until SSH restored.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: DEFERRED_BY_USER; existing checkpoint3271409b publication BLOCKED (SSH22/443); fresh remote SHA UNAVAILABLE. User restores SSH; continue locally, no further push attempts.
+PUSH_STATE: DEFERRED_BY_USER; SSH access restoration in progress; continue locally, no push attempted. Remote SHA UNAVAILABLE.
 VERIFIED_SOURCE_REMOTE_SHA: UNAVAILABLE.
 SOURCE_PUBLICATION_RECEIPT: openspec/changes/frade-standard-workflow/evidence/publication/source-faf69d33-20261002.json.
 PRE_ADMISSION_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/formal-pre-admission-20261002.json; require PUBLISHED/sourceSha=live HEAD before first task2.1 owner code write.
