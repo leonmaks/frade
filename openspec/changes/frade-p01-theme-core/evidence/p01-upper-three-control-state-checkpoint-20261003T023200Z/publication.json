@@ -1,0 +1,62 @@
+{
+  "atUtc": "2026-10-03T09:58:41.766Z",
+  "status": "PASS",
+  "destination": "git@github.com:leonmaks/frade.git",
+  "ref": "refs/heads/codex/frade-ui-design-contract",
+  "commit": "661a777a4a9431ff3cccbc2d9fedccf398674547",
+  "remoteSha": "661a777a4a9431ff3cccbc2d9fedccf398674547",
+  "calls": [
+    {
+      "args": [
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "startedAtUtc": "2026-10-03T09:57:08.324Z",
+      "finishedAtUtc": "2026-10-03T09:57:08.376Z",
+      "exitCode": 0,
+      "stdout": "git@github.com:leonmaks/frade.git\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "startedAtUtc": "2026-10-03T09:57:08.376Z",
+      "finishedAtUtc": "2026-10-03T09:57:08.432Z",
+      "exitCode": 0,
+      "stdout": "661a777a4a9431ff3cccbc2d9fedccf398674547\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "-c",
+        "core.sshCommand=ssh -p 443 -o HostName=ssh.github.com -o HostKeyAlias=github.com -o StrictHostKeyChecking=yes -o BatchMode=yes -o ConnectTimeout=15 -o ServerAliveInterval=10 -o ServerAliveCountMax=2",
+        "push",
+        "origin",
+        "HEAD:refs/heads/codex/frade-ui-design-contract"
+      ],
+      "startedAtUtc": "2026-10-03T09:57:08.432Z",
+      "finishedAtUtc": "2026-10-03T09:58:39.225Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "To github.com:leonmaks/frade.git\n   01ec8def..661a777a  HEAD -> codex/frade-ui-design-contract\n"
+    },
+    {
+      "args": [
+        "-c",
+        "core.sshCommand=ssh -p 443 -o HostName=ssh.github.com -o HostKeyAlias=github.com -o StrictHostKeyChecking=yes -o BatchMode=yes -o ConnectTimeout=15 -o ServerAliveInterval=10 -o ServerAliveCountMax=2",
+        "ls-remote",
+        "--exit-code",
+        "origin",
+        "refs/heads/codex/frade-ui-design-contract"
+      ],
+      "startedAtUtc": "2026-10-03T09:58:39.225Z",
+      "finishedAtUtc": "2026-10-03T09:58:41.766Z",
+      "exitCode": 0,
+      "stdout": "661a777a4a9431ff3cccbc2d9fedccf398674547\trefs/heads/codex/frade-ui-design-contract\n",
+      "stderr": ""
+    }
+  ]
+}

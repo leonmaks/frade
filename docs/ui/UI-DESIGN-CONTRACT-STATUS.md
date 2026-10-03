@@ -29,7 +29,7 @@
 
 [Полный отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/report.md). [Решение keyboard scope](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-keyboard-owned-popups.proposed.md), SHA6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34 — NOT_ACCEPTED. Уточнение границы нужно потому, что текущий paint scope прямо запрещает keyboard/ARIA/upper-popup изменения. После решения: coherent plan/strict/автоматический PRE, затем RED/repair/checks/POST. P01 задачи2.4/2.5/3.1/3.2/3.3 открыты; P02 STOP. Routing независим. Protection LOCAL_ONLY/NOT_CONFIGURED.
 
-Последний опубликованный PRE checkpoint01ec8def; новый checkpoint готовится к commit/push только в разрешённую UI ветку. Правая панель queued, видимость не подтверждена.
+Checkpoint661a777a4a9431ff3cccbc2d9fedccf398674547 COMMITTED/PUSHED в origin git@github.com:leonmaks/frade.git, только refs/heads/codex/frade-ui-design-contract; remoteSHA проверен. Квитанция openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/publication.json. Этот статус и квитанция сохраняются отдельным metadata commit; product/test source прежний. Правая панель queued, видимость не подтверждена.
 
 ## История
 
