@@ -1,8 +1,5 @@
 # Tasks — P01
 
-Current scope precedence: the effective accepted P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01 amendment at the end of this artifact governs only its exact delta. Earlier dated execution statuses remain historical; current P01 is5/10, new keyboard PRE/implementation NOT_RUN. Authority openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/acceptance.json.
-
-
 ## 1. Accepted scope and independent PRE
 
 - [x] 1.1 Confirm archived foundation closure; audit actual paths/shared primitives/consumer semantics and save original commit, build, actual Electron screenshots, full original planning/context/source/inventory bytes; record accepted exact revision 2 scope, exceptions, two-occurrence authority and exact B02 color closure acceptance. Verify acceptance hash, baseline checkpoint hashes and coherent proposal/design/spec/tasks.
@@ -131,26 +128,3 @@ Accepted amendment A/B/D completed within open2.4/2.5/3.1: fresh independent PRE
 C/E/F remain incomplete: actual original View Escape FAIL reproduced from BODY and focused canvas; further actions/lifecycle NOT_RUN after that assertion. Desktop/UI lint/typecheck, compliance, boundaries and strict PASS; current full root/verify/POST blocked/notrun. Proposed P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01 SHA6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34 remains NOT_ACCEPTED. No production repair until its exact scope decision/coherent plan/strict/fresh independent PRE. This execution note neither approves that proposal nor weakens required assertions.
 
 Detailed report: openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/report.md. Current matrix: openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-expanded-current-20261003T022037Z/results-audit.json; FUI: openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261003T021505Z/checks.json. Historical FAIL retained. Upper-level tasks remain5/10; visualNOT_APPROVED/cumulative/archiveBLOCKED; noP02. Routing independent.
-
-
-## Accepted upper-three keyboard substage within2.4/2.5/3.1 — 2026-10-03T11:04:18.907Z
-
-Authority: openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/acceptance.json. The user said "Решение подтверждаю" in direct response to the exact linked P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01 proposal, SHA256 6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34. The proposal/raw prior plans remain immutable. This acceptance supersedes its PROPOSED header only through this separate record. It grants bounded keyboard scope, not PRE/POST, visual acceptance, a guide exception or P02 progression.
-
-Stage P01 upper-three keyboard repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three keyboard repair POST reviewer: gpt-6-astra; reasoning xhigh.
-Exact stage/role, tasks raw SHA and this row are inputs to each fresh automatic read-only packet review. No universal model default.
-
-Detailed execution states at acceptance (upper-level5/10 unchanged):
-
-1. ACCEPTANCE RECORDED; raw proposal/plans/source pins saved. Reconcile all four artifacts plus BDD/trace/docs/context/status; strict validation; prepare complete relevant immutable packet and fresh PRE. PRE NOT_RUN.
-2. After PRE PASS: preserve current full source/raw Escape FAIL and old test prefixes/callbacks; add permanent meaningful unit/Electron RED for exact anchor focus/state/once-only original activation, upper-lower-unrelated ownership separation, submenu navigation/root-pointer Escape/Tab, lifecycle compare-before-restore and poisoned semantic APIs/no churn. NOT_RUN.
-3. Repair only the private bridge under the effective exact keyboard design; no geometry/vendor/domain/routing or Freehand-window authority. NOT_RUN.
-4. Actual original View/Insert/Freehand actions, focus/menu keyboard paths and preview/cancel/commit/preservation; six themes/densities plus required resize/media/text200, unchanged V6 and current source bindings. NOT_RUN on repaired source.
-5. Freeze final test source, execute original FUI12, exact one-literal immutable-control revalidation, BDD111/2positive/14negative intended causes; affected unit/lint/typecheck/pinned assets/compliance/boundaries and fresh full root. NOT_RUN on repaired source.
-6. Scope verify then fresh automatic independent POST; retain human visual/cumulative/other target/popup/toolbar/disabled requirements, commit/push honest checkpoint, no checkbox closes without complete evidence and no P02. NOT_RUN.
-
-Only apps/desktop/src/main/drawio-theme-bridge.ts is a production output. No parent/IPC, vendor, dependencies, generated tokens, routing/domain/persistence or other feature source. The two permanent test paths remain apps/desktop/tests/unit/drawio-theme.test.ts and apps/desktop/tests/e2e/ui-contract-theme.spec.ts, limited to the already-new upper-three tails. Original43044/186048byte prefixes and31/25ASTcallbacks remain exact. Existing original Escape assertion stays. The separately accepted third test support file permits only the fuiControlRun literal after fresh actual12-case FUI PASS on final full source, plus immutable actual binding metadata; original helpers/assertions/14negative mutations stay exact.
-
-Original three SVG bytes/silhouettes/18px geometry/opacity, target dimensions, positions, responsive thresholds, menu content/order/placement and enabled decisions remain unchanged. UI state tokens do not become domain visualization. XML/JSON/preferences/undo/selection/viewport/graph-editor identities remain exact for presentation/navigation/cancellation; deliberate original actions are measured separately. Freehand window/dialog internals and persistence behavior remain excluded. Any new required defect there, target sizing/reflow or unsupported composition is still a blocker for its proper scope. No fourth exception; Routing independent; STOP before P02.
-
-Current source397916/productiond8dfc retained: expanded234PASS/FUI12PASS/BDD111PASS and original EscapeFAIL remain historical source-bound evidence. Acceptance is not resolution of that defect. Fresh coherent plan and strict validation -> automatic independent packet-confined PRE PASS -> meaningful permanent RED -> sole-bridge repair -> targeted and applicable full checks/current FUI revalidation -> scope verification -> fresh independent POST. Required FAIL stops progression. Cumulative P01/human visuals/archive remain open. Requested reviewer pair is selected from the exact current tasks row; actual backend/effort remains NOT_CONFIRMED unless attested.

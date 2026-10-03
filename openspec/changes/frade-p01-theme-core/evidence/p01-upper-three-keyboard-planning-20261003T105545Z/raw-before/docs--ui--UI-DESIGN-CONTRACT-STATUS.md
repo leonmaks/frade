@@ -1,16 +1,3 @@
-# P01: keyboard scope принят; подготовка независимого PRE
-
-2026-10-03T11:04:18.916Z. UI branch codex/frade-ui-design-contract / worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade / common E:/dev/codex/frade/.git. Change frade-p01-theme-core, original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; guide1.0/tokens1.0.0; P01 5/10.
-
-- ACCEPTED: P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01, exact SHA6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34. [Квитанция](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/acceptance.json).
-- План proposal/design/spec/tasks и BDD/trace/docs согласован: только три anchors и доказанный View/Insert popup, sole bridge. Vendor/domain/routing/geometry/Freehand window вне ремонта.
-- Сейчас: strict validation → свежий автоматический read-only PRE. По текущему stage plan: gpt-6-astra / xhigh для PRE и POST. Strict/compliance/diff PASS; PRE READY_FOR_DISPATCH, затем RUNNING с полной заморозкой candidate до квитанции. Production/tests unchanged.
-- После PASS: permanent RED → bridge repair → actual keyboard/action/lifecycle six-state evidence → current FUI12/control/BDD111/14negative и full checks → verify/POST. Все эти шаги на repaired source NOT_RUN.
-- Прежний checkpoint661a777a/metadata7971f6fc опубликован. Его234raster/FUI12/BDD111 PASS сохранены; original Escape FAIL не закрыт принятием scope. Human visual NOT_APPROVED; cumulative/archive BLOCKED; noP02. Routing независим.
-- Новое planning/evidence UNCOMMITTED/UNPUSHED. Panelqueued; visibility not confirmed.
-
-## История
-
 # P01: control/state checkpoint готов; keyboard scope ожидает решения
 
 Обновлено 2026-10-03T09:53:24.445Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0.

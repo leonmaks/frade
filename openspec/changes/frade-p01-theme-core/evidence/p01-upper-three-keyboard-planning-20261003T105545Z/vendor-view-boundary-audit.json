@@ -1,0 +1,72 @@
+{
+  "atUtc": "2026-10-03T10:59:59.495Z",
+  "file": "apps/desktop/vendor/drawio/js/app.min.js",
+  "sha256": "0a0152fccee4c6d826435f0dd5b14e38f17257e132918850f20ef45e6821a899",
+  "snippets": [
+    {
+      "purpose": "menu creation and original click family",
+      "offset": 1208464,
+      "length": 2100,
+      "source": "EditorUi.prototype.createMenuElement=function(a,b,d){var e=document.createElement(\"a\");this.addMenuHandler(e,b,d);mxUtils.write(e,a);e.className=\"geItem\";return e};\nEditorUi.prototype.addMenuHandler=function(a,b,d,e){if(null!=b){var g=null,c=!0,h=mxUtils.bind(this,function(k){null!=d&&d(k);if(!mxEvent.isConsumed(k)&&c&&(null==a.enabled||a.enabled)){this.editor.graph.popupMenuHandler.hideMenu();var n=new mxPopupMenu(b);n.smartSeparators=!0;n.showDisabled=!0;n.autoExpand=!0;n.hideMenu=mxUtils.bind(this,function(){mxPopupMenu.prototype.hideMenu.apply(n,arguments);this.resetCurrentMenu();g=null;n.destroy()});this.menus.autoPopup||null==this.currentMenu||this.hideCurrentMenu();\nvar l=mxUtils.getOffset(a);n.popup(l.x,l.y+a.offsetHeight,null,k);this.setCurrentMenu(n,a);g=n}e||mxEvent.consume(k)});mxEvent.addListener(a,\"mousemove\",mxUtils.bind(this,function(k){if(this.menus.autoPopup&&null!=this.currentMenu&&this.currentMenuElt!=a&&null!=this.currentMenuElt){var n=this.currentMenuElt;this.hideCurrentMenu();n.parentNode==a.parentNode&&\"INPUT\"!=a.nodeName&&h(k)}}));mxEvent.addListener(a,mxClient.IS_POINTER?\"pointerdown\":\"mousedown\",mxUtils.bind(this,function(k){!this.menus.autoPopup&&\nnull!=this.currentMenu&&this.currentMenuElt!=a&&mxEvent.isMouseEvent(k)&&this.hideCurrentMenu();c=null==this.currentMenu;\"INPUT\"!=mxEvent.getSource(k).nodeName?k.preventDefault():k.stopPropagation()}));mxEvent.addListener(a,\"click\",mxUtils.bind(this,function(k){h(k);c=!0}));e&&(mxEvent.addListener(a,\"focus\",mxUtils.bind(this,function(k){h(k);c=!0})),mxEvent.addListener(a,\"blur\",mxUtils.bind(this,function(k){this.currentMenu==g&&this.hideCurrentMenu()})),mxEvent.addListener(a,\"keyup\",mxUtils.bind(this,\nfunction(k){38!=k.keyCode&&40!=k.keyCode&&(this.hideCurrentMenu(),13!=k.keyCode&&27!=k.keyCode&&(h(k),c=!0))})))}};\nEditorUi.prototype.addShapePicker=function(a,b){var d=this.editor.graph;mxEvent.addListener(a,\"click\",mxUtils.bind(this,function(e){if(this.isShapePickerVisible())this.hideShapePicker();else{var g=mxUtils.getOffset(a);Editor.inlineFullscreen||null==this.embedViewport?b?(g.x-=this.di",
+      "sha256": "5fc6efe627259452ac4d3972d33913f437191d6c91f4811f31b4047ef78e7880"
+    },
+    {
+      "purpose": "current menu opener/instance and view-only hide/reset",
+      "offset": 1171736,
+      "length": 410,
+      "source": "EditorUi.prototype.setCurrentMenu=function(a,b){this.currentMenuElt=b;this.currentMenu=a;this.hideShapePicker()};EditorUi.prototype.resetCurrentMenu=function(){this.currentMenu=this.currentMenuElt=null};\nEditorUi.prototype.hideCurrentMenu=function(){null!=this.currentMenu&&(this.currentMenu.hideMenu(),this.resetCurrentMenu())};EditorUi.prototype.updateDocumentTitle=function(){var a=this.editor.getOrCreateFi",
+      "sha256": "cd16317cd6f73579796636d0e9ddbc8dc0c7f0150ab790d30ae4e140e06d5b48"
+    },
+    {
+      "purpose": "menu hide/submenu/destroy",
+      "offset": 273756,
+      "length": 610,
+      "source": "mxPopupMenu.prototype.hideMenu=function(){null!=this.div&&(null!=this.div.parentNode&&this.div.parentNode.removeChild(this.div),this.hideSubmenu(this),this.containsItems=!1,this.fireEvent(new mxEventObject(mxEvent.HIDE)))};mxPopupMenu.prototype.hideSubmenu=function(a){null!=a.activeRow&&(this.hideSubmenu(a.activeRow),null!=a.activeRow.div.parentNode&&a.activeRow.div.parentNode.removeChild(a.activeRow.div),a.activeRow=null)};\nmxPopupMenu.prototype.destroy=function(){null!=this.div&&(mxEvent.release(this.div),null!=this.div.parentNode&&this.div.parentNode.removeChild(this.div),this.div=null)};function mxA",
+      "sha256": "03d87294b7684060908281c5542e4eb3bf9098528529daa88927eb0806925081"
+    },
+    {
+      "purpose": "truthful menu enabled state",
+      "offset": 2168005,
+      "length": 115,
+      "source": ";Menu.prototype.isEnabled=function(){return this.enabled};Menu.prototype.setEnabled=function(a){this.enabled!=a&&(t",
+      "sha256": "328a5edc6044e066d9f25ffe08e04fba9192a12cd7f5c8938de84a9be96d8b62"
+    },
+    {
+      "purpose": "menu state projects to original anchor",
+      "offset": 2167234,
+      "length": 405,
+      "source": "Menus.prototype.menuCreated=function(a,b,d){null!=b&&(d=null!=d?d:\"geItem\",b.className=d,a.addListener(\"stateChanged\",function(){(b.enabled=a.enabled)?(b.className=d,8==document.documentMode&&(b.style.color=\"\")):(b.className=d+\" mxDisabled\",8==document.documentMode&&(b.style.color=\"#c3c3c3\"))}))};function Menubar(a,b){this.editorUi=a;this.container=b}Menubar.prototype.hideMenu=function(){this.editorUi.",
+      "sha256": "32d3599ebc161a71f3920874cb169283512821f7bd742880615e243f4e7231b9"
+    },
+    {
+      "purpose": "toolbar original action click guard",
+      "offset": 8877461,
+      "length": 490,
+      "source": "EditorUi.prototype.createToolbarButton=function(c,d,l){var n=document.createElement(\"a\");\nn.className=\"geButton\";null!=c&&\"data:\"==c.substring(0,5)&&(n.style.backgroundImage=\"url(\"+c+\")\");null!=d&&n.setAttribute(\"title\",d);null!=l&&mxEvent.addListener(n,\"click\",function(q){\"disabled\"!=n.getAttribute(\"disabled\")&&l(q);mxEvent.consume(q)});mxEvent.preventDefault(n);return n};EditorUi.prototype.createMenuItem=function(c,d,l){var n=this.actions.get(c),q=null!=n?n.funct:null,v=this.createTo",
+      "sha256": "00599202fa5e7bec0fae191f7f85efe6446122d677320b63291cb269c7ec71dc"
+    },
+    {
+      "purpose": "freehand actual original action/window persistence",
+      "offset": 9536629,
+      "length": 860,
+      "source": "u=f.actions.put(\"insertFreehand\",new Action(\"freehand\",function(){if(p.isEnabled()){if(null==f.freehandWindow){var B=mxSettings.getWindowState(\"freehand\");f.freehandWindow=new FreehandWindow(f,null!=B&&null!=B.x?B.x:document.body.offsetWidth-420,null!=B&&null!=B.y?B.y:102,null!=B&&null!=B.w?B.w:180,null!=B&&null!=B.h?B.h:126,!0);f.installWindowPersistence(\"freehand\",f.freehandWindow);null!=B&&f.restoreWindowState(\"freehand\",\nf.freehandWindow)}p.freehand.isDrawing()?p.freehand.stopDrawing():p.freehand.startDrawing();f.freehandWindow.window.setVisible(p.freehand.isDrawing())}},null,null,\"X\")),u.isEnabled=function(){return r()},u.setToggleAction(!0),u.setSelectedCallback(function(){return null!=f.freehandWindow&&f.freehandWindow.window.isVisible()}));f.actions.put(\"exportXml\",new Action(\"formatXml...\",function(){var B=document.createElement(\"div\");B.s",
+      "sha256": "5b14c5a05d2c75fadcf9a25dde564e792696560c1b14235c33d0171e3935a07a"
+    },
+    {
+      "purpose": "freehand read-only drawing flag",
+      "offset": 9719164,
+      "length": 55,
+      "source": "this.isDrawing=function(){return G};this.isActive=funct",
+      "sha256": "5f1920dfb04d79f8eeea04b398b46da71a91bd8ea265c8aeb51d2f293e9f0799"
+    }
+  ],
+  "conclusion": {
+    "identification": "Exact SVG digest cache plus current owned anchor; labels/index never establish identity.",
+    "menuProof": "Original createMenuElement registers click; original handler creates mxPopupMenu and setCurrentMenu(menu,anchor). Bind both currentMenu===captured instance and currentMenuElt===exact connected opener, instance.div connected, original creation transition and current presentation.",
+    "cancel": "Capture exact instance.hideMenu installed by original addMenuHandler (calls original popup hide, resetCurrentMenu, nulls closure, destroy). Call only while opener/instance/generation proof remains. hideSubmenu acts on activeRow DOM; never generic cancellation against a replacement menu. HIDE listener graph must be validated in runtime before claiming no semantic effects.",
+    "capability": "Menu original enabled member/class and anchor disabled plus actual original capability; no setter or action call. Freehand isDrawing returns lexical flag, no write.",
+    "freehand": "Original click may create window/install persistence; this is deliberate original action effect, not theme behavior. Window internals remain excluded; first action effects recorded then repeat/presentation preservation separately.",
+    "implementation": "NOT_RUN; permanent RED and fresh PRE still required",
+    "vendor": "UNCHANGED"
+  }
+}

@@ -1,8 +1,5 @@
 # Spec Delta
 
-Current scope precedence: the effective accepted P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01 amendment at the end of this artifact governs only its exact delta. Earlier dated execution statuses remain historical; current P01 is5/10, new keyboard PRE/implementation NOT_RUN. Authority openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/acceptance.json.
-
-
 ## Purpose
 
 The desktop currently ships a fixed VS Code Dark Modern palette. A single runtime service must ship Light and Dark together, support HC/System and preview safely without closing or mutating editors.
@@ -315,34 +312,3 @@ P01 SHALL honor the accepted control/state amendments recorded at openspec/chang
 #### Scenario: Applicability is not a general unknown-state waiver
 - **WHEN** disabled behavior lacks an original trigger or a visible composition is unknown
 - **THEN** evidence remains NOT_RUN or BLOCKED/NOT_MEASURED respectively with no guessed PASS, relaxed numerical guard, production expansion or cumulative closure
-
-
-## ADDED Requirements
-
-### Requirement: Exact upper-three keyboard and proven popup ownership
-
-P01 SHALL implement only accepted P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01 under openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/acceptance.json, exact proposal SHA256 6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34. It SHALL preserve the accepted paint/transaction/domain contracts and implement the exact anchor, original gesture, popup ownership, restoration and exclusions in the effective design amendment. This is the explicit bounded successor to the previous paint-only keyboard restriction; unknown or unowned controls SHALL NOT gain adaptation. Existing lower contracts and original tests SHALL remain intact.
-
-#### Scenario: Exact enabled anchors expose truthful keyboard operation
-- **WHEN** a connected verified View Insert or Freehand control is eligible under current presentation and original capability
-- **THEN** it has its original accessible name truthful state and visible focus and Enter Space or menu ArrowDown invokes exactly one original registered DOM gesture while natural Tab and lower contextual chords remain intact
-
-#### Scenario: Original menu transition proves both opener and instance
-- **WHEN** a real pointer or keyboard action creates an original View or Insert menu
-- **THEN** adaptation requires matching currentMenuElt opener currentMenu instance connected original panel and current frame generation; another toolbar canvas lower plugin or dialog instance stays unowned
-
-#### Scenario: Deepest submenu and root cancellation preserve data
-- **WHEN** keyboard navigates an actually owned original submenu or Escape is pressed after pointer or keyboard opening
-- **THEN** only the captured current original submenu or root hide lifecycle runs and focus returns to its current parent row or opener with exact document files preferences undo selection viewport identities and original callbacks preserved; Tab exits through normal traversal
-
-#### Scenario: Ownership expiry restores only still-owned values
-- **WHEN** source menu opener or generation changes or prepare apply rollback release refusal detach disposal occurs
-- **THEN** stale actions and writes stop, prepare stays pure, release retains current successful projection and exact owned values restore without overwriting subsequent vendor edits or causing observer churn
-
-#### Scenario: Original Freehand action retains its separate window boundary
-- **WHEN** the exact Freehand anchor is activated through its original DOM gesture
-- **THEN** actual selected state follows original behavior with deliberate first-action effects explicitly recorded; its window internals remain excluded and subsequent presentation navigation preserves semantic state without a fake accessibility PASS
-
-#### Scenario: Accepted keyboard scope does not waive cumulative gates
-- **WHEN** the coherent plan passes strict validation and fresh stage-assigned independent PRE
-- **THEN** meaningful RED precedes sole-bridge repair and required real six-state focus action preservation current-FUI full checks verification and independent POST follow; unavailable states new sizing reflow or composition defects and human visual acceptance remain open blockers without another exception or P02 progression

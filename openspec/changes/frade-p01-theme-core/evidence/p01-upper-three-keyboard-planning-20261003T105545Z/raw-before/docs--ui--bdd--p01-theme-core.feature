@@ -378,34 +378,3 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     When the accepted sole control run literal and current binding hashes are revalidated
     Then both positive controls and all fourteen negative controls execute against the fresh valid immutable fixture
     And historical fixtures original callbacks and every other test byte remain unchanged
-
-
-  @P01-RT-UPPER-KEYBOARD-023 @runtime-pending @FDS-005 @A11Y-003 @A11Y-005 @A11Y-007
-  Scenario: Exact three anchors expose truthful original keyboard actions
-    Given current proven original View Insert and Freehand identities and enabled capabilities
-    When the user tabs and activates an eligible anchor with Enter Space or menu ArrowDown
-    Then real visible focus and truthful state accompany exactly one original DOM action without a new chord or lower focus regression
-
-  @P01-RT-UPPER-KEYBOARD-024 @runtime-pending @A11Y-005 @A11Y-007
-  Scenario: Two upper openers own only their exact original menus
-    Given original currentMenuElt and currentMenu match the verified current opener and frame
-    When real menu and submenu navigation action or cancellation occurs
-    Then only that original chain receives bounded keyboard ARIA and token projection while lower other toolbar canvas dialogs and stale menus remain unowned
-
-  @P01-RT-UPPER-KEYBOARD-025 @runtime-pending @A11Y-003 @A11Y-005
-  Scenario: Escape and Tab leave the real upper menu correctly
-    Given a proven View or Insert root opened by real pointer or keyboard and an actual submenu
-    When Escape closes the deepest current panel or Tab exits the chain
-    Then captured original hide lifecycle returns focus to the current parent or opener and normal traversal preserves documents files preferences undo selection viewport and identities
-
-  @P01-RT-UPPER-KEYBOARD-026 @runtime-pending @A11Y-007
-  Scenario: Upper accessibility ownership restores exactly without stale actions
-    Given original and last projected attributes properties and absence with exact current ownership
-    When vendor writes source replacement prepare rollback release refusal detach or disposal occurs
-    Then compare before restore preserves later vendor edits and stale actions stop with pure prepare retained release paint and no observer churn
-
-  @P01-RT-UPPER-KEYBOARD-027 @runtime-pending @FDS-007 @FDS-009 @A11Y-008
-  Scenario: Real upper keyboard proof does not waive full presentation evidence
-    Given retained original Escape RED and all six theme density states
-    When repaired keyboard actions and presentation lifecycle execute with actual media viewport text200 and state preservation
-    Then exact V6 current FUI full checks and independent gates remain required and Freehand window unavailable disabled other toolbar and visual requirements stay explicit

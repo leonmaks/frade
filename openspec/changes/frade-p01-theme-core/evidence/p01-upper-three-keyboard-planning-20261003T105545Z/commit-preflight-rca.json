@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-03T11:09:35.448Z",
+  "status": "BLOCKED_BEFORE_MUTATION",
+  "classification": "TEST",
+  "observed": "Unexpected path ocs/ui/UI-DESIGN-CONTRACT-STATUS.md",
+  "cause": "Generic git helper trimmed leading whitespace from porcelain output before slicing status prefix. Correct path docs/ui/... lost first character in local guard only.",
+  "repair": "Use trimEnd for raw porcelain output and trim only scalar identity results. No file/index/HEAD mutation happened before guard failure; no production/test change."
+}
