@@ -1,13 +1,13 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-03T00:19:03.793Z
+UPDATED_AT_UTC: 2026-10-03T01:15:08.243Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: IMPLEMENTATION | HEALTH: BLOCKED
-NEXT_PERMITTED_ACTION: same W01 task2.4 regression-first scoped repair -> actual Linux/Windows GREEN -> import/checkpoint; no task2.5 before current task checks.
+STAGE: W01 | PHASE: IMPLEMENTATION | HEALTH: RUNNING
+NEXT_PERMITTED_ACTION: publish checked task2.4 checkpoint -> same W01 task2.5 RED/review-wrapper/current diagnostic review; Verify/POST/archive remain pending.
 HUMAN_DECISION: NONE; D03 accepted by direct reply «Принято. Продолжай.».
 READY_FOR_IMPLEMENTATION: YES; formal PRE PASS retained and receipt checkpoint2a6f8f96 PUBLISHED with exact remote SHA..
 READY_FOR_ARCHIVE: NO.
@@ -46,12 +46,12 @@ STOP after W01; no next numbered change or owner migration automatically.
 | 2.1 | tooling-tests | meaningful RED -> repair -> Windows GREEN -> import -> lint/format/strict/integrity | COMPLETE; task21-completion-audit.json; actual35/35 PASS, lint/format/syntax/strict PASS; historical FAIL retained |
 | 2.2 | tooling-tests | role RED9 -> Windows44 -> required gaps -> new RED6 -> owner GREEN50/lint/format/strict | COMPLETE; task22-completion-audit.json; full old FAIL retained |
 | 2.3 | tooling-tests | Git RED -> exact grant/origin -> Windows portability repair -> owner GREEN/checkpoint | COMPLETE; task23-completion-audit.json; actual Windows92/92, 76 unique + 3 extra binding assertions; strict all16/16, lint/format PASS; prior FAIL retained |
-| 2.4 | tooling-tests | status RED -> renderer/metrics/freeze -> actual Windows replay | BLOCKED: initial Windows99/100, canonical fixture paths FAIL; scoped ESLint1 FAIL; actual panel probe FAIL. Same exact Sol/high repair RUNNING; source not imported |
+| 2.4 | tooling-tests | RED -> eight sections/metrics/freeze/history/panel/checkpoint -> Windows GREEN | COMPLETE; task24-completion-audit.json; Windows107/107 PASS (91 unique), scoped syntax/lint/format/strict PASS; historical FAIL retained |
 | 2.5–2.7 | tooling-tests | meaningful RED -> remaining controls/docs/CLI -> GREEN | NOT_STARTED |
 | 3.1–3.2 | tooling-tests | cumulative applicable checks + integrity audit | NOT_RUN |
 | 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | NOT_RUN |
 
-TASKS_COMPLETE/TOTAL/REMAINING: 8/18/10.
+TASKS_COMPLETE/TOTAL/REMAINING: 9/18/9.
 REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed acceptance).
 46 BDD scenario declarations counted by actual planning audit; task2.1 behavioral controls actual Windows35/35 PASS; cumulative18-requirement acceptance remains incomplete.
 
@@ -70,7 +70,7 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | General lint/typecheck/boundary suites | REQUIRED | Actual current baseline PASS5 checks; original build FAIL retained; exact pinned resources restored, repeated build PASS |
 | New core schema/lifecycle/closure controls | REQUIRED | Meaningful Windows RED retained; 30+5 expanded GREEN35/35; owner post-format35/35 PASS; scoped lint repaired; current PASS |
 | Role resolver controls | REQUIRED | Actual Windows50/50 PASS; format/scoped lint/strict PASS; meaningful RED6 and original layout/probe FAIL retained |
-| Bootstrap/status/review/publication controls | REQUIRED | Task2.3 actual owner Windows92/92 PASS, exact-grant/origin/draft probes PASS; status task2.4 BLOCKED/repair RUNNING; review/publication tasks2.5–2.7 NOT_STARTED |
+| Bootstrap/status/review/publication controls | REQUIRED | Task2.3 and2.4 complete; current Windows107/107 PASS; review/publication/integration2.5–2.7 NOT_STARTED |
 | Product suites | No product changes in current planning | NOT_RUN; no product PASS claimed |
 | Human policy/visual acceptance | Policy decision REQUIRED; product visuals outside current scope | Policy ACCEPTED_D03; no visual approval claim |
 | CI / branch protection | Separate observable control | REMOTE_NOT_RUN / NOT_CONFIGURED_OR_UNVERIFIED |
@@ -103,19 +103,19 @@ No model substitution, task override or silent current-chat switch. Common servi
 | Task2.2 exact authority/portable fixtures | W01 | RESOLVED_CURRENT; historical FAIL retained | Actual raw-byte digests, portable immutable fixtures, malformed records and canonical ID repaired; Windows50 PASS |
 | Product writer dispatcher | W01 tooling capability | NOT_IMPLEMENTED | Guard remains explicit; separate session staging runtime v2 technically verified, initial probe BLOCKED retained |
 
-Task2.1–2.3 complete/PUBLISHED. Task2.4 remains BLOCKED until native/canonical path, truthful panel and lint checks pass; source remains staging-only. Initial required Windows FAIL and independent controller probe/raw false-positive correction retained. Same exact model/effort scoped repair RUNNING, no test weakening or nexttask.
+Task2.1–2.3 PUBLISHED; task2.4 actual owner checks PASS, source imported and ready for its coherent checkpoint. All prior Windows/lint/panel/checkpoint-only freshness failures and RCA retained; no required test weakened. Formal Verify/POST/archive NOT_RUN.
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: efe344808e453b8cd9ee59afe13c54e617fede86 (published task2.3; Verify/POST/archive NOT_RUN).
-COMMIT_STATE: task2.3 efe344808e453b8cd9ee59afe13c54e617fede86 committed; post-publication receipt/status enter next natural checkpoint.
+SOURCE_CHECKPOINT_SHA: 8351a21c2552bd4cde5e009000aa82c3959bdd8a (published status blocker, task2.3 complete; no task2.4 source import).
+COMMIT_STATE: blocker 8351a21c2552bd4cde5e009000aa82c3959bdd8a committed; post-publication receipt/status enter next natural checkpoint.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: PUBLISHED efe344808e453b8cd9ee59afe13c54e617fede86; fresh remote SHA confirmed.
-VERIFIED_SOURCE_REMOTE_SHA: efe344808e453b8cd9ee59afe13c54e617fede86.
+PUSH_STATE: PUBLISHED 8351a21c2552bd4cde5e009000aa82c3959bdd8a; fresh remote SHA confirmed.
+VERIFIED_SOURCE_REMOTE_SHA: 8351a21c2552bd4cde5e009000aa82c3959bdd8a.
 SOURCE_PUBLICATION_RECEIPT: openspec/changes/frade-standard-workflow/evidence/publication/source-faf69d33-20261002.json.
 PRE_ADMISSION_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/formal-pre-admission-20261002.json; require PUBLISHED/sourceSha=live HEAD before first task2.1 owner code write.
 Current evidence: openspec/changes/frade-standard-workflow/evidence/.
 Reviewable standard/onboarding/status/manifest/adoption: openspec/changes/frade-standard-workflow/drafts/.
 Feedback register: openspec/changes/frade-standard-workflow/feedback-register.md.
 PANEL_STATE: QUEUED by open_in_codex; visibility unconfirmed.
-Task2.1–2.3 complete; full current suite92/92 PASS (76 unique cases; imported fixture registers16 twice). Remaining10 W01 tasks incomplete. No owner migration, archive, shared release mutation or main merge claimed.
+Task2.1–2.4 complete; full current Windows suite107/107 PASS (91 unique; 16 duplicate fixture registrations). Remaining9 W01 tasks incomplete. No foreign adoption, archive, shared release mutation or main merge claimed.

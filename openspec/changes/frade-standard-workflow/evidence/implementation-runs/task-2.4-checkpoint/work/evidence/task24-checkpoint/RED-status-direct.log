@@ -1,0 +1,101 @@
+TAP version 13
+# Subtest: FWE-013-A01 exact current headings, order, duplicate and injection rejection
+ok 1 - FWE-013-A01 exact current headings, order, duplicate and injection rejection
+  ---
+  duration_ms: 3.585725
+  ...
+# Subtest: FWE-014-A01 stable checklist ids and administrative counts
+ok 2 - FWE-014-A01 stable checklist ids and administrative counts
+  ---
+  duration_ms: 2.910267
+  ...
+# Subtest: FWE-014-A02 current source-bound proof only; human boundary never accepted
+ok 3 - FWE-014-A02 current source-bound proof only; human boundary never accepted
+  ---
+  duration_ms: 11.024109
+  ...
+# Subtest: FWE-014-A03 contradictory phase/health and applicability block
+ok 4 - FWE-014-A03 contradictory phase/health and applicability block
+  ---
+  duration_ms: 2.239358
+  ...
+# Subtest: FWE-014-A04 raw artifact bytes bind every executable assertion
+ok 5 - FWE-014-A04 raw artifact bytes bind every executable assertion
+  ---
+  duration_ms: 20.262775
+  ...
+# Subtest: FWE-014-A05 required check PASS needs trusted bound raw receipt
+ok 6 - FWE-014-A05 required check PASS needs trusted bound raw receipt
+  ---
+  duration_ms: 2.138067
+  ...
+# Subtest: FWE-013-A02 different directions share exact Russian headings and safe strings
+ok 7 - FWE-013-A02 different directions share exact Russian headings and safe strings
+  ---
+  duration_ms: 2.857292
+  ...
+# Subtest: FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel
+ok 8 - FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel
+  ---
+  duration_ms: 168.233325
+  ...
+# Subtest: FWE-015-S02 actual checkpoint-only change stales the previous projection until refresh
+not ok 9 - FWE-015-S02 actual checkpoint-only change stales the previous projection until refresh
+  ---
+  duration_ms: 93.347042
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-checkpoint-20261003/work/tests/directions/status.test.mjs:462:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-checkpoint-20261003/work/tests/directions/status.test.mjs:482:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-015 no UI operation and self-declared panel flags remain NOT_OPENED
+ok 10 - FWE-015 no UI operation and self-declared panel flags remain NOT_OPENED
+  ---
+  duration_ms: 60.413708
+  ...
+# Subtest: FWE-015 visible state requires actual trusted controller raw receipt
+ok 11 - FWE-015 visible state requires actual trusted controller raw receipt
+  ---
+  duration_ms: 37.145225
+  ...
+# Subtest: FWE-013 W01 legacy BRANCH-STATUS remains mapped to its registered origin
+ok 12 - FWE-013 W01 legacy BRANCH-STATUS remains mapped to its registered origin
+  ---
+  duration_ms: 56.317517
+  ...
+# Subtest: FWE-015 freeze arriving during awaited trusted proof defers the write
+ok 13 - FWE-015 freeze arriving during awaited trusted proof defers the write
+  ---
+  duration_ms: 72.377067
+  ...
+# Subtest: FWE-013 status target cannot overwrite an in-scope non-dashboard file
+ok 14 - FWE-013 status target cannot overwrite an in-scope non-dashboard file
+  ---
+  duration_ms: 104.617066
+  ...
+# Subtest: FWE-013 POSIX origin fields reject native backslashes
+ok 15 - FWE-013 POSIX origin fields reject native backslashes
+  ---
+  duration_ms: 31.2884
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 14
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 686.140108

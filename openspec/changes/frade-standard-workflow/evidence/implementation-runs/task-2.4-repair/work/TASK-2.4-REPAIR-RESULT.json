@@ -1,0 +1,107 @@
+{
+  "task": "W01 2.4 scoped repair",
+  "recordedAtUtc": "2026-10-03T00:31:11Z",
+  "modelPolicy": "gpt-6-sol/high approved; unchanged",
+  "sourceBefore": "evidence/task24-repair/source-before.sha256",
+  "sourceBeforeBytes": "evidence/task24-repair/source-before-bytes.txt",
+  "sourceBeforeSnapshot": "evidence/task24-repair/source-before-snapshot",
+  "sourceBeforeSnapshotProof": "evidence/task24-repair/source-before-snapshot-compare.log (exit 0, 26 supplied seed files byte-identical to pre-edit hashes)",
+  "sourceAfter": "evidence/task24-repair/source-after.sha256",
+  "sourceAfterBytes": "evidence/task24-repair/source-after-bytes.txt",
+  "changedFiles": [
+    "scripts/directions/status.mjs",
+    "tests/directions/status.test.mjs",
+    "docs/engineering/templates/task-2.4-status.md"
+  ],
+  "eligibleChanges": [
+    "Canonical forward manifest and origin fields in actual registered temp Git owner fixtures; native/Git paths compared at status owner, registration, origin, and reparse boundaries.",
+    "No UI operation projects NOT_OPENED; QUEUED and VISIBLE require an externally supplied trusted controller boundary and raw receipt binding owner and status path.",
+    "Freeze parents and marker are rechecked after awaited projection, immediately before dashboard write.",
+    "Status writes target only the generated direction dashboard or the explicitly mapped W01 legacy BRANCH-STATUS with verified registered origin.",
+    "One no-useless-escape regex fix and genuinely different direction identity/branch/change/closure fixtures."
+  ],
+  "api": {
+    "added": "createPanelControllerBoundary({ verify }) in scripts/directions/status.mjs",
+    "inputs": "projectStatus and refreshStatus accept panelBoundary and panelReceipt from trusted integration; requester panelState and verified flags have no authority",
+    "default": "panelState NOT_OPENED"
+  },
+  "suppliedDiagnostics": {
+    "windows": "Node 24 win32: 100 cases, 99 PASS, 1 FAIL; native-backslash manifest fields rejected MANIFEST_INVALID",
+    "panel": "No UI operation incorrectly yielded QUEUED",
+    "checkProof": "Initial probe shape malformed; corrected trusted check proof PASS, forged verified flag NOT_VERIFIED",
+    "sourceStatusSha256": "c562023736122d9df41d46c2ee61820a75f7748ea00bd070c4203dcc4a9f62a6"
+  },
+  "actualEnvironment": {
+    "platform": "linux",
+    "node": "v18.19.1",
+    "windowsChild": "Unavailable: no cmd.exe/powershell.exe/pwsh or Windows node.exe in sandbox",
+    "prettier": "Unavailable offline: npm ENOTCACHED; no local/global Prettier installation",
+    "gitWorkspace": "Staging work directory is not a Git repository; git status/diff unavailable"
+  },
+  "commands": [
+    {
+      "name": "Initial direct eight files before edits",
+      "command": "TMPDIR=/dev/shm/frade-task24-repair node --test tests/directions/{arguments,bootstrap-repair,bootstrap,contracts,lifecycle,repair,roles,status}.test.mjs",
+      "log": "evidence/task24-repair/linux-red.log",
+      "exit": 1,
+      "note": "Environment failure: private tmp directory was absent in this sandbox command; retained raw."
+    },
+    {
+      "name": "Corrected baseline before edits, private tmp created in same command",
+      "command": "mkdir -p /dev/shm/frade-task24-repair && TMPDIR=/dev/shm/frade-task24-repair node --input-type=module -e \"for (const p of ['arguments','bootstrap-repair','bootstrap','contracts','lifecycle','repair','roles','status']) await import('./tests/directions/' + p + '.test.mjs')\"",
+      "log": "evidence/task24-repair/linux-import-red-actual.log",
+      "exit": 0,
+      "result": "84/84 PASS before new regressions"
+    },
+    {
+      "name": "New regressions RED before production edits",
+      "command": "mkdir -p /dev/shm/frade-task24-repair && TMPDIR=/dev/shm/frade-task24-repair node --input-type=module -e \"await import('./tests/directions/status.test.mjs')\"",
+      "log": "evidence/task24-repair/status-regressions-red.log",
+      "exit": 1,
+      "result": "7 PASS, 4 FAIL: absent panel boundary, no-operation QUEUED, freeze-during-await WRITTEN, non-dashboard overwritten"
+    },
+    {
+      "name": "Final direct eight files",
+      "command": "mkdir -p /dev/shm/frade-task24-repair && TMPDIR=/dev/shm/frade-task24-repair node --test tests/directions/arguments.test.mjs tests/directions/bootstrap-repair.test.mjs tests/directions/bootstrap.test.mjs tests/directions/contracts.test.mjs tests/directions/lifecycle.test.mjs tests/directions/repair.test.mjs tests/directions/roles.test.mjs tests/directions/status.test.mjs",
+      "log": "evidence/task24-repair/linux-direct-8files-green.log",
+      "exit": 0,
+      "result": "8/8 test files PASS"
+    },
+    {
+      "name": "Final in-process assertion detail",
+      "command": "mkdir -p /dev/shm/frade-task24-repair && TMPDIR=/dev/shm/frade-task24-repair node --input-type=module -e \"for (const p of ['arguments','bootstrap-repair','bootstrap','contracts','lifecycle','repair','roles','status']) await import('./tests/directions/' + p + '.test.mjs')\"",
+      "log": "evidence/task24-repair/linux-import-assertions-green.log",
+      "exit": 0,
+      "result": "90/90 assertions PASS"
+    },
+    {
+      "name": "Scoped available lint rule",
+      "command": "eslint --no-eslintrc --env es6,node --parser-options '{\"ecmaVersion\":2022,\"sourceType\":\"module\"}' --rule 'no-useless-escape:error' scripts/directions/status.mjs tests/directions/status.test.mjs",
+      "log": "evidence/task24-repair/scoped-no-useless-escape.log",
+      "exit": 0
+    },
+    {
+      "name": "Syntax",
+      "command": "node --check scripts/directions/status.mjs && node --check tests/directions/status.test.mjs",
+      "log": "evidence/task24-repair/syntax.log",
+      "exit": 0
+    },
+    {
+      "name": "Prettier availability",
+      "command": "TMPDIR=/dev/shm/frade-task24-repair npm exec --offline -- prettier --check scripts/directions/status.mjs tests/directions/status.test.mjs docs/engineering/templates/task-2.4-status.md",
+      "log": "evidence/task24-repair/prettier-unavailable.log",
+      "exit": 1,
+      "result": "ENOTCACHED; formatting gate unverified"
+    }
+  ],
+  "remainingLimitations": [
+    "Actual Windows child subprocess and full Windows 100-case replay could not run in this Linux sandbox; supplied Windows failure is not reclassified as green.",
+    "Parent Prettier and full scoped lint configuration could not run here; only the available no-useless-escape rule was executed.",
+    "An actual Codex UI controller operation was unavailable; trusted raw receipt behavior is exercised in registered temp Git fixtures.",
+    "The later review wrapper must serialize marker creation with the final freeze check/write interval and retain frozen events outside the candidate."
+  ],
+  "readyForImport": false,
+  "readyForVerify": false,
+  "nextTaskStarted": false,
+  "publishedBaselineChanged": false
+}

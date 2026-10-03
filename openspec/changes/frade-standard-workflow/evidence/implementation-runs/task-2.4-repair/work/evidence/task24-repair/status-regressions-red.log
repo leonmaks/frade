@@ -1,0 +1,115 @@
+TAP version 13
+# Subtest: FWE-013-A01 exact current headings, order, duplicate and injection rejection
+ok 1 - FWE-013-A01 exact current headings, order, duplicate and injection rejection
+  ---
+  duration_ms: 3.003178
+  ...
+# Subtest: FWE-014-A01 stable checklist ids and administrative counts
+ok 2 - FWE-014-A01 stable checklist ids and administrative counts
+  ---
+  duration_ms: 1.689134
+  ...
+# Subtest: FWE-014-A02 current source-bound proof only; human boundary never accepted
+ok 3 - FWE-014-A02 current source-bound proof only; human boundary never accepted
+  ---
+  duration_ms: 11.055999
+  ...
+# Subtest: FWE-014-A03 contradictory phase/health and applicability block
+ok 4 - FWE-014-A03 contradictory phase/health and applicability block
+  ---
+  duration_ms: 0.993976
+  ...
+# Subtest: FWE-014-A04 raw artifact bytes bind every executable assertion
+ok 5 - FWE-014-A04 raw artifact bytes bind every executable assertion
+  ---
+  duration_ms: 16.991116
+  ...
+# Subtest: FWE-014-A05 required check PASS needs trusted bound raw receipt
+ok 6 - FWE-014-A05 required check PASS needs trusted bound raw receipt
+  ---
+  duration_ms: 1.623642
+  ...
+# Subtest: FWE-013-A02 different directions share exact Russian headings and safe strings
+ok 7 - FWE-013-A02 different directions share exact Russian headings and safe strings
+  ---
+  duration_ms: 2.443316
+  ...
+# Subtest: FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel
+not ok 8 - FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel
+  ---
+  duration_ms: 68.389131
+  location: 'undefined:undefined:undefined'
+  failureType: 'testCodeFailure'
+  error: 'createPanelControllerBoundary is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-repair-20261003/work/tests/directions/status.test.mjs:380:25)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-015 no UI operation and self-declared panel flags remain NOT_OPENED
+not ok 9 - FWE-015 no UI operation and self-declared panel flags remain NOT_OPENED
+  ---
+  duration_ms: 2.292726
+  location: 'undefined:undefined:undefined'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'QUEUED'
+    - 'NOT_OPENED'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'NOT_OPENED'
+  actual: 'QUEUED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-repair-20261003/work/tests/directions/status.test.mjs:434:12)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-015 freeze arriving during awaited trusted proof defers the write
+not ok 10 - FWE-015 freeze arriving during awaited trusted proof defers the write
+  ---
+  duration_ms: 72.473643
+  location: 'undefined:undefined:undefined'
+  failureType: 'testCodeFailure'
+  error: '{"ok":true,"status":"WRITTEN","path":"/dev/shm/frade-task24-repair/frade-status-I4hfAX/alpha-direction/docs/engineering/directions/alpha-direction/DIRECTION-STATUS.md","sourceInputSha256":"e269c9fe9f2e344e28fdef0ba96068aacd3210cdc8f24ce3778ff7e9274547fb","panelState":"QUEUED","projection":{"manifest":{"schemaVersion":2,"id":"alpha-direction","title":"Alpha direction","owner":{"branch":"codex/alpha-direction","worktree":"/dev/shm/frade-task24-repair/frade-status-I4hfAX/alpha-direction","gitCommon":"/dev/shm/frade-task24-repair/frade-status-I4hfAX/repo/.git"},"originalBaseline":"e548a1844456f8912707f31785ca7745d86d593d","policy":{"version":"1.1","release":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","artifact":"openspec/changes/frade-standard-workflow/evidence/shared-policy.md"},"scope":{"mode":"IMPLEMENTATION","planningAllowed":["openspec/changes/alpha-direction/**","docs/engineering/BRANCH-STATUS.md","docs/engineering/directions/alpha-direction/DIRECTION-STATUS.md"],"allowed":["docs/engineering/**","scripts/directions/**","tests/directions/**","openspec/changes/frade-standard-workflow/**"],"frozen":["packages/**","apps/**","pnpm-lock.yaml"],"closure":{"enabled":false,"requires":["humanPolicyDecision","requiredChecksPASS","formalVerifyPASS","currentIndependentPOSTPASS"],"specDestinations":["openspec/specs/alpha-direction/spec.md"],"archiveDestination":"openspec/changes/archive/<actual-archive-date>-alpha-direction/**","archiveOwner":"alpha-direction"}},"statusPath":"docs/engineering/directions/alpha-direction/DIRECTION-STATUS.md","stages":[{"id":"S01","change":"alpha-direction","phase":"INTAKE","health":"BLOCKED","dependencies":[],"admission":{"formalPRE":"PASS"}}]},"stage":{"id":"S01","change":"alpha-direction","phase":"INTAKE","health":"BLOCKED","dependencies":[],"admission":{"formalPRE":"PASS"}},"tasks":[{"id":"2.4","complete":true,"title":"Dashboard controls"},{"id":"2.5","complete":false,"title":"Review wrapper"}],"trace":{"requirements":[{"id":"FWE-014","critical":true,"scenarioIds":["FWE-014-S01","FWE-014-S02","FWE-014-S03"]}],"scenarios":[{"id":"FWE-014-S01","requirementId":"FWE-014","control":"positive","taskIds":["2.4"],"assertionIds":["A-P"]},{"id":"FWE-014-S02","requirementId":"FWE-014","control":"negative","taskIds":["2.4"],"assertionIds":["A-N"]},{"id":"FWE-014-S03","requirementId":"FWE-014","control":"boundary","taskIds":["2.4"],"assertionIds":["A-B"]},{"id":"FWE-014-S04","requirementId":"FWE-014","control":"human","taskIds":["2.4"],"boundaryReason":"A human must approve the actual visual presentation."}],"tasks":[{"id":"2.4","scenarioIds":["FWE-014-S01","FWE-014-S02","FWE-014-S03","FWE-014-S04"]}],"assertions":[{"id":"A-P","runId":"RUN-1"},{"id":"A-N","runId":"RUN-1"},{"id":"A-B","runId":"RUN-1"}],"runs":[{"id":"RUN-1","kind":"run","status":"PASS","complete":true,"scope":"full","sourceSha256":"41cf6794ba4200b839c53531555f0f3998df4cbb01a4d5cb0b94e3ca5e23947d","configSha256":"b79606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910","environment":"node fixture","bindings":{"sourceSha256":"41cf6794ba4200b839c53531555f0f3998df4cbb01a4d5cb0b94e3ca5e23947d","configSha256":"b79606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910"},"artifact":{"path":"runs/raw.json","sha256":"d7439bee24773bcbfa2d0a97947ee36227b10d1022b1a55847e928965bb6bfde"}}]},"checks":[],"snapshot":{"sourceSha256":"41cf6794ba4200b839c53531555f0f3998df4cbb01a4d5cb0b94e3ca5e23947d","configSha256":"b79606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910"},"updatedAt":"2026-10-03T12:00:00.000Z","sourceInputSha256":"e269c9fe9f2e344e28fdef0ba96068aacd3210cdc8f24ce3778ff7e9274547fb","issues":[{"code":"TASK_ACCEPTANCE_GAP","path":"tasks"}],"metrics":{"tasks":{"complete":1,"total":2,"remaining":1},"requirements":{"accepted":0,"total":1,"uncovered":1},"scenarios":{"executed":3,"total":4,"negativeExecuted":1,"boundaryExecuted":1,"humanPending":1},"checks":{"complete":0,"total":0,"remaining":0}},"actualHead":"e548a1844456f8912707f31785ca7745d86d593d","readyForImplementation":false,"readyForArchive":false,"nextAction":"Record research and resolve acceptance decisions.","humanDecision":"NONE","panelState":"QUEUED"}}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'FROZEN'
+  actual: 'WRITTEN'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-repair-20261003/work/tests/directions/status.test.mjs:459:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-013 status target cannot overwrite an in-scope non-dashboard file
+not ok 11 - FWE-013 status target cannot overwrite an in-scope non-dashboard file
+  ---
+  duration_ms: 64.697571
+  location: 'undefined:undefined:undefined'
+  failureType: 'testCodeFailure'
+  error: 'docs/engineering/directions/alpha-direction/direction.json: {"ok":true,"status":"WRITTEN","path":"/dev/shm/frade-task24-repair/frade-status-ceJihg/alpha-direction/docs/engineering/directions/alpha-direction/direction.json","sourceInputSha256":"018c23f9e2e35a4786747b9da4d152736c1b9939334ac1cee0e9a8e4d8cb4d22","panelState":"QUEUED","projection":{"manifest":{"schemaVersion":2,"id":"alpha-direction","title":"Alpha direction","owner":{"branch":"codex/alpha-direction","worktree":"/dev/shm/frade-task24-repair/frade-status-ceJihg/alpha-direction","gitCommon":"/dev/shm/frade-task24-repair/frade-status-ceJihg/repo/.git"},"originalBaseline":"e548a1844456f8912707f31785ca7745d86d593d","policy":{"version":"1.1","release":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","artifact":"openspec/changes/frade-standard-workflow/evidence/shared-policy.md"},"scope":{"mode":"IMPLEMENTATION","planningAllowed":["openspec/changes/alpha-direction/**","docs/engineering/BRANCH-STATUS.md","docs/engineering/directions/alpha-direction/DIRECTION-STATUS.md","docs/engineering/directions/alpha-direction/direction.json"],"allowed":["docs/engineering/**","scripts/directions/**","tests/directions/**","openspec/changes/frade-standard-workflow/**"],"frozen":["packages/**","apps/**","pnpm-lock.yaml"],"closure":{"enabled":false,"requires":["humanPolicyDecision","requiredChecksPASS","formalVerifyPASS","currentIndependentPOSTPASS"],"specDestinations":["openspec/specs/alpha-direction/spec.md"],"archiveDestination":"openspec/changes/archive/<actual-archive-date>-alpha-direction/**","archiveOwner":"alpha-direction"}},"statusPath":"docs/engineering/directions/alpha-direction/direction.json","stages":[{"id":"S01","change":"alpha-direction","phase":"INTAKE","health":"BLOCKED","dependencies":[],"admission":{"formalPRE":"PASS"}}]},"stage":{"id":"S01","change":"alpha-direction","phase":"INTAKE","health":"BLOCKED","dependencies":[],"admission":{"formalPRE":"PASS"}},"tasks":[{"id":"2.4","complete":true,"title":"Dashboard controls"},{"id":"2.5","complete":false,"title":"Review wrapper"}],"trace":{"requirements":[{"id":"FWE-014","critical":true,"scenarioIds":["FWE-014-S01","FWE-014-S02","FWE-014-S03"]}],"scenarios":[{"id":"FWE-014-S01","requirementId":"FWE-014","control":"positive","taskIds":["2.4"],"assertionIds":["A-P"]},{"id":"FWE-014-S02","requirementId":"FWE-014","control":"negative","taskIds":["2.4"],"assertionIds":["A-N"]},{"id":"FWE-014-S03","requirementId":"FWE-014","control":"boundary","taskIds":["2.4"],"assertionIds":["A-B"]},{"id":"FWE-014-S04","requirementId":"FWE-014","control":"human","taskIds":["2.4"],"boundaryReason":"A human must approve the actual visual presentation."}],"tasks":[{"id":"2.4","scenarioIds":["FWE-014-S01","FWE-014-S02","FWE-014-S03","FWE-014-S04"]}],"assertions":[{"id":"A-P","runId":"RUN-1"},{"id":"A-N","runId":"RUN-1"},{"id":"A-B","runId":"RUN-1"}],"runs":[{"id":"RUN-1","kind":"run","status":"PASS","complete":true,"scope":"full","sourceSha256":"41cf6794ba4200b839c53531555f0f3998df4cbb01a4d5cb0b94e3ca5e23947d","configSha256":"b79606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910","environment":"node fixture","bindings":{"sourceSha256":"41cf6794ba4200b839c53531555f0f3998df4cbb01a4d5cb0b94e3ca5e23947d","configSha256":"b79606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910"},"artifact":{"path":"runs/raw.json","sha256":"d7439bee24773bcbfa2d0a97947ee36227b10d1022b1a55847e928965bb6bfde"}}]},"checks":[],"snapshot":{"sourceSha256":"41cf6794ba4200b839c53531555f0f3998df4cbb01a4d5cb0b94e3ca5e23947d","configSha256":"b79606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910"},"updatedAt":"2026-10-03T12:00:00.000Z","sourceInputSha256":"018c23f9e2e35a4786747b9da4d152736c1b9939334ac1cee0e9a8e4d8cb4d22","issues":[{"code":"RUN_NOT_VERIFIED","path":"RUN-1"},{"code":"TASK_ACCEPTANCE_GAP","path":"tasks"}],"metrics":{"tasks":{"complete":1,"total":2,"remaining":1},"requirements":{"accepted":0,"total":1,"uncovered":1},"scenarios":{"executed":0,"total":4,"negativeExecuted":0,"boundaryExecuted":0,"humanPending":1},"checks":{"complete":0,"total":0,"remaining":0}},"actualHead":"e548a1844456f8912707f31785ca7745d86d593d","readyForImplementation":false,"readyForArchive":false,"nextAction":"Record research and resolve acceptance decisions.","humanDecision":"NONE","panelState":"QUEUED"}}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'BLOCKED'
+  actual: 'WRITTEN'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-repair-20261003/work/tests/directions/status.test.mjs:483:12)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 7
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 259.267923

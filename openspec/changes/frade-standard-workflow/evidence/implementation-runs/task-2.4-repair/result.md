@@ -1,0 +1,7 @@
+**CHANGE:** W01 task 2.4 scoped repair. The status engine now rechecks freeze before writing, restricts dashboard targets, compares Windows native and Git paths consistently, and reports `NOT_OPENED` unless a trusted UI controller receipt proves `QUEUED` or `VISIBLE`. The receipt verifier and published task 2.3 baseline were unchanged.
+
+**FILES CHANGED:** [status.mjs](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-repair-20261003/work/scripts/directions/status.mjs), [status.test.mjs](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-repair-20261003/work/tests/directions/status.test.mjs), and [task-2.4-status.md](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-repair-20261003/work/docs/engineering/templates/task-2.4-status.md).
+
+**TEST RESULTS:** The new regressions were RED before the fix. Final Linux runs pass: eight direct test files and 90/90 assertions. Syntax and the available scoped `no-useless-escape` check pass. Commands, exits, source snapshots, and raw logs are recorded in [TASK-2.4-REPAIR-RESULT.json](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-repair-20261003/work/TASK-2.4-REPAIR-RESULT.json).
+
+**KNOWN BLOCKERS:** This sandbox has no Windows executable for the required child replay, and Prettier is unavailable offline. Windows GREEN, the parent formatting gate, and import remain unverified. **READY_FOR_VERIFY: NO.** Stopped at task 2.4.

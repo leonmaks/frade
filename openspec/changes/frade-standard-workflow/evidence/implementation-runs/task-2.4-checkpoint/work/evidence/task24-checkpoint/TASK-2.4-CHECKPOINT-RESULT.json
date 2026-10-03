@@ -1,0 +1,60 @@
+{
+  "task": "2.4",
+  "scenario": "FWE-015-S02",
+  "result": "REPAIRED_LINUX_VERIFIED",
+  "classification": "INVARIANT",
+  "rootCause": "The projection rendered the actual registered-owner Git HEAD but omitted it from sourceInputSha256.",
+  "change": "Add the already-read actualHead to the existing source input hash payload; keep the existing stale comparison and refresh behavior.",
+  "changedFiles": [
+    "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-checkpoint-20261003/work/scripts/directions/status.mjs",
+    "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-checkpoint-20261003/work/tests/directions/status.test.mjs",
+    "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-checkpoint-20261003/work/docs/engineering/templates/task-2.4-status.md"
+  ],
+  "preEditExactBytes": {
+    "directory": "evidence/task24-checkpoint/pre-edit",
+    "sha256File": "evidence/task24-checkpoint/pre-edit/SHA256SUMS",
+    "statusSourceSha256": "9b49c2d1b3c907457acf7edf2e47bf89cc4a32e93bfcd845f2b25817fc401ab8"
+  },
+  "red": {
+    "command": "mkdir -m 700 /dev/shm/frade-task24-red && TMPDIR=/dev/shm/frade-task24-red node tests/directions/status.test.mjs",
+    "exitCode": 1,
+    "log": "evidence/task24-checkpoint/RED-status-direct.log",
+    "exitFile": "evidence/task24-checkpoint/RED-status-direct.exit",
+    "tests": 15,
+    "passed": 14,
+    "failed": 1,
+    "failure": "FWE-015-S02: previousProjectionStale was false after an actual second Git commit"
+  },
+  "green": [
+    {
+      "command": "TMPDIR=$(mktemp -d /dev/shm/frade-task24-green-XXXXXX) node tests/directions/status.test.mjs",
+      "exitCode": 0,
+      "log": "evidence/task24-checkpoint/GREEN-status-sameprocess.log",
+      "exitFile": "evidence/task24-checkpoint/GREEN-status-sameprocess.exit",
+      "tests": 15,
+      "passed": 15
+    },
+    {
+      "command": "TMPDIR=$(mktemp -d /dev/shm/frade-task24-eight-XXXXXX) node --input-type=module -e 'for (const file of process.argv.slice(1)) await import(`./${file}`)' tests/directions/arguments.test.mjs tests/directions/bootstrap-repair.test.mjs tests/directions/bootstrap.test.mjs tests/directions/contracts.test.mjs tests/directions/lifecycle.test.mjs tests/directions/repair.test.mjs tests/directions/roles.test.mjs tests/directions/status.test.mjs",
+      "exitCode": 0,
+      "log": "evidence/task24-checkpoint/GREEN-eight-sameprocess.log",
+      "exitFile": "evidence/task24-checkpoint/GREEN-eight-sameprocess.exit",
+      "tests": 91,
+      "passed": 91
+    },
+    {
+      "command": "node --check scripts/directions/status.mjs && node --check tests/directions/status.test.mjs",
+      "exitCode": 0,
+      "log": "evidence/task24-checkpoint/GREEN-syntax.log",
+      "exitFile": "evidence/task24-checkpoint/GREEN-syntax.exit"
+    }
+  ],
+  "limitations": [
+    "Linux Node v18.19.1 was available. Its node --test child runner failed before reporting named assertions in this sandbox; RED-status.log and RED-status.exit retain that attempted command. Direct same-process execution provided the named RED and GREEN assertions.",
+    "The supplied work directory is not a Git repository, so git status/diff are unavailable; exact pre-edit copies and diff against them were inspected.",
+    "Actual Windows Node v24 tests, scoped ESLint and Prettier are reserved for the parent validation."
+  ],
+  "actualBackend": "NOT_CONFIRMED",
+  "publication": "NOT_ATTEMPTED",
+  "nextTaskStarted": false
+}
