@@ -1,21 +1,3 @@
-# P01: keyboard PRE PASS; permanent RED — следующий шаг
-
-2026-10-03T12:43:26.637Z. UI branch codex/frade-ui-design-contract / worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade / common E:/dev/codex/frade/.git. Change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0; P01 5/10.
-
-| Задача текущего keyboard этапа | Статус |
-| --- | --- |
-| Принятый scope / coherent plan / strict validation | PASS; planning7f911b95 PUSHED/remote verified |
-| Свежий независимый PRE | PASS;17raw,166events, candidate/packet/plan unchanged; [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-pre-received-20261003T123505Z/output--result.md) |
-| Permanent unit/Electron RED | NEXT; прежний original Escape FAIL сохранён |
-| Sole-bridge keyboard implementation | NOT_RUN |
-| Actual six-state keyboard/action/lifecycle/V6 coverage | NOT_RUN на repaired source |
-| Fresh FUI12 / one literal / BDD111 / full checks | NOT_RUN на repaired source |
-| Verify / independent POST | NOT_RUN |
-
-PRE requested gpt-6-astra/xhigh из stage plan; actual backend/effort NOT_CONFIRMED. Первый сетевой BLOCKED сохранён отдельно. Новый review checkpoint готов к commit/push; publication receipt сохраняется после фактической проверки remote SHA. Production/tests пока unchanged. Human visual NOT_APPROVED; cumulative/archive BLOCKED; P02–P07 NOT_STARTED; Routing независим. Panel queued.
-
-## История
-
 # P01: keyboard PRE — сетевой таймаут; повторная проверка
 
 2026-10-03T12:03:53.461Z. Ветка codex/frade-ui-design-contract; UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0; P01 5/10.
