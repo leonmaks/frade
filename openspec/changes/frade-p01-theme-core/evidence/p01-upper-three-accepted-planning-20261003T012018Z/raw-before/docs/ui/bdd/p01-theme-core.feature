@@ -356,25 +356,3 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     Given unchanged historical black-source RED and an unknown unsupported blank or contradictory actual glyph observation
     When complete-raster calibration cannot establish the required compatible effective-paint contrast bound
     Then no favorable pixel CSS-only value or absence of the old failure can produce PASS and closure remains blocked
-
-
-  @P01-RT-UPPER-GLYPH-020 @runtime-pending
-  Scenario: Original narrow glyphs restore without replacement
-    Given the original Insert and Freehand are hidden at the approved narrow viewport
-    When their original responsive layout is observed and the window is widened
-    Then absence is NOT_RENDERED_ORIGINAL_RESPONSIVE with zero bounds exact unowned source restoration
-    And the same original nodes handlers and URLs regain canonical projection and complete V6 contrast proof
-
-  @P01-RT-UPPER-GLYPH-021 @runtime-pending @A11Y-007
-  Scenario: Unavailable original focus stays a cumulative accessibility blocker
-    Given the exact original anchors lack a focusable state
-    When the actual unchanged focus attempt fails
-    Then evidence records BLOCKED_ORIGINAL_FOCUS_UNAVAILABLE and the separate UI owned keyboard substage remains open
-    And paint focused verification cannot close cumulative P01 or add a guide exception
-
-  @P01-RT-UPPER-GLYPH-022 @runtime-pending
-  Scenario: Fresh FUI control fixture is bound to final actually executed source
-    Given all twelve original FUI cases passed on the final unchanged full assertion source
-    When the accepted sole control run literal and current binding hashes are revalidated
-    Then both positive controls and all fourteen negative controls execute against the fresh valid immutable fixture
-    And historical fixtures original callbacks and every other test byte remain unchanged

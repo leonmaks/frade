@@ -1,14 +1,3 @@
-# P01: принятые решения внесены в план; подготовка свежего PRE
-
-2026-10-03T01:20:18.228Z. UI branch/worktree/common/original baseline неизменны (ниже). Checkpoint37efb8608d3961f2df0f2d3ae3a726a75f934258 опубликован и remote SHA проверен. Guide1.0/tokens1.0.0; P01 5/10.
-
-- План proposal/design/spec/tasks, BDD/traceability/docs/context согласован с обоими принятыми решениями. Raw-before: openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-accepted-planning-20261003T012018Z. Production/tests неизменны.
-- Следом: strict validation → автоматический независимый PRE gpt-6-astra/xhigh → разрешённые assertions/FUI control revalidation → проверки/verify/focused POST. Новый PRE NOT_RUN; текущий BDD110/111 и expanded FAIL сохранены.
-- Keyboard accessibility остаётся отдельным открытым UI-подэтапом; visual NOT_APPROVED, cumulative/archive BLOCKED; P02 не начинается. Routing независим.
-- Новое планирование UNCOMMITTED/UNPUSHED; панель queued, видимость не подтверждена.
-
-## Предыдущий статус
-
 # P01: два решения приняты; следующий PRE — gpt-6-astra / xhigh
 
 Обновлено 2026-10-03T01:09:23.283Z. Ветка codex/frade-ui-design-contract; UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Active change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. Последний опубликованный metadata checkpoint e0655eea11b3c56bd8cb4b39ca98cbda6e7245b5; реализация470833af707ce3939293bdd61796ef561b4d29a3.
@@ -658,8 +647,3 @@ P01-FRAME-LOWER-KEYBOARD-01 **USER_ACCEPTED / NEW_PRE_PREPARING**. Scope реш�
 Current supplier projection is at the top of this file. The dated entry below records its initial planning state; it is historical, not the current phase. P01 remains5/10 / popup scope pending; active Routing remains owner-managed.
 
 - 2026-10-01T13:46:43.234Z: common-agent-workflow1/6, strict validation PASS;24-file independent PRE preparing, gpt-6-astra/xhigh. Shared production tooling/install NOT_RUN; no feature implementation authority implied.
-
-
-## Planning validation checkpoint 2026-10-03T01:23:51.862Z
-
-Strict validation, ui:compliance and git diff --check PASS. Candidate production/tests unchanged. Fresh gpt-6-astra/xhigh PRE prepared; status PREPARING, not PASS. Planning checkpoints and exact requested plan hash in openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-accepted-planning-20261003T012018Z. Freeze starts at dispatch; no candidate writes during review.
