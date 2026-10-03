@@ -1259,26 +1259,39 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     // prepare is pure; the current visual lease remains until apply/rollback.
     if (!currentPresentation()) return
     const node = document.activeElement, control = node instanceof HTMLElement ? upperControlProof(node) : undefined
-    if (!(node instanceof HTMLElement) || !control || upperDisabled(node, control) || !node.matches(':focus-visible')) { clearUpperFocus(); return }
-    const host = node.closest<HTMLElement>('.geToolbarContainer')
-    if (!host || !host.isConnected || !['absolute', 'relative', 'fixed'].includes(getComputedStyle(host).position)) { clearUpperFocus(); return }
-    const bounds = node.getBoundingClientRect(), parent = host.getBoundingClientRect()
-    if (![bounds.x, bounds.y, bounds.width, bounds.height, parent.x, parent.y].every(Number.isFinite) || bounds.width <= 0 || bounds.height <= 0) { clearUpperFocus(); return }
-    if (!upperFocusRing || upperFocusRing.parentElement !== host) {
+    if (!document.hasFocus() || ui?.dialog || ui?.dialogs?.length || ui?.currentMenu?.div?.isConnected ||
+      !(node instanceof HTMLElement) || !control || upperDisabled(node, control) || !node.matches(':focus-visible')) { clearUpperFocus(); return }
+    const host = node.closest<HTMLElement>('.geToolbarContainer'), bounds = node.getBoundingClientRect()
+    if (!host?.isConnected || !document.body?.isConnected || ![bounds.x, bounds.y, bounds.width, bounds.height].every(Number.isFinite) ||
+      bounds.width <= 0 || bounds.height <= 0) { clearUpperFocus(); return }
+    const style = getComputedStyle(node), corners = ['top-left', 'top-right', 'bottom-right', 'bottom-left'] as const
+    const radii = corners.map(corner => style.getPropertyValue('border-' + corner + '-radius') || '0px')
+    if (radii.some(radius => !/^\d+(?:\.\d+)?px$/.test(radius))) { clearUpperFocus(); return }
+    if (!upperFocusRing || upperFocusRing.parentElement !== document.body) {
       clearUpperFocus()
       upperFocusRing = document.createElement('div')
       upperFocusRing.setAttribute('data-frade-upper-focus-ring', '1')
       upperFocusRing.setAttribute('aria-hidden', 'true')
       upperFocusRing.setAttribute('inert', '')
-      upperFocusRing.style.cssText = 'position:absolute;pointer-events:none;opacity:1;background:transparent;border:0;padding:0;margin:0;box-sizing:border-box;outline:2px solid var(--frade-frame-focus-ring);outline-offset:2px;z-index:1;'
-      host.append(upperFocusRing)
+      // Native toolbar paint ends at z=3; native popup/dialog paint starts at 9999.
+      // Keep 1px backing around the ring; trim only the optional horizontal outer
+      // pixel to fit the original 4px neighbor gap without clipping the ring.
+      upperFocusRing.style.cssText = 'position:fixed;pointer-events:none;opacity:1;background:transparent;border-width:4px;border-style:solid;border-color:var(--frade-frame-surface-panel)!important;padding:0;margin:0;box-sizing:border-box;z-index:4;clip-path:inset(0px 1px);outline:none!important;box-shadow:none!important;forced-color-adjust:none;'
+      const contour = document.createElement('div')
+      contour.style.cssText = 'position:absolute;left:1px;top:1px;pointer-events:none;background:transparent;border:0;padding:0;margin:0;box-sizing:border-box;outline:2px solid var(--frade-frame-focus-ring);outline-offset:2px;'
+      upperFocusRing.append(contour)
+      document.body.append(upperFocusRing)
     }
-    const values: Record<string, string> = {
-      left: bounds.left - parent.left - host.clientLeft + host.scrollLeft + 'px',
-      top: bounds.top - parent.top - host.clientTop + host.scrollTop + 'px',
-      width: bounds.width + 'px', height: bounds.height + 'px', 'border-radius': getComputedStyle(node).borderRadius || '0px',
+    const contour = upperFocusRing.firstElementChild as HTMLElement
+    const update = (element: HTMLElement, values: Record<string, string>) => {
+      for (const [name, value] of Object.entries(values)) if (element.style.getPropertyValue(name) !== value) element.style.setProperty(name, value)
     }
-    for (const [name, value] of Object.entries(values)) if (upperFocusRing.style.getPropertyValue(name) !== value) upperFocusRing.style.setProperty(name, value)
+    update(upperFocusRing, { left: bounds.left - 5 + 'px', top: bounds.top - 5 + 'px', width: bounds.width + 10 + 'px', height: bounds.height + 10 + 'px' })
+    update(contour, { width: bounds.width + 'px', height: bounds.height + 'px' })
+    corners.forEach((corner, index) => {
+      update(upperFocusRing!, { ['border-' + corner + '-radius']: parseFloat(radii[index]) + 5 + 'px' })
+      update(contour, { ['border-' + corner + '-radius']: radii[index] })
+    })
   }
   const upperFocusChanged = () => {
     if (upperFocusQueued || disposed) return
@@ -1842,6 +1855,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     for (const name of ['click', 'mousemove', 'pointermove']) document.removeEventListener(name, upperMouse, true)
     for (const name of ['focusin', 'focusout', 'scroll']) document.removeEventListener(name, upperFocusChanged, true)
     window.removeEventListener('resize', lowerResize)
+    for (const name of ['focus', 'blur']) window.removeEventListener(name, upperFocusChanged)
     for (const query of lowerMedia) query.removeEventListener('change', lowerResize)
     for (const name of ['click', 'mousedown', 'mouseup', 'pointerdown', 'pointerup'])
       document.removeEventListener(name, lowerMouse, true)
@@ -1859,6 +1873,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     : []
   for (const query of lowerMedia) query.addEventListener('change', lowerResize)
   window.addEventListener('resize', lowerResize)
+  for (const name of ['focus', 'blur']) window.addEventListener(name, upperFocusChanged)
   for (const name of ['click', 'mousedown', 'mouseup', 'pointerdown', 'pointerup'])
     document.addEventListener(name, lowerMouse, true)
   for (const name of ['click', 'mousemove', 'pointermove']) document.addEventListener(name, upperMouse, true)

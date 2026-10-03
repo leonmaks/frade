@@ -1377,12 +1377,38 @@ it('P01-UPPER-025 original menu opens after the capture microtask checkpoint and
 it('P01-UPPER-029 focus projection avoids original opacity and follows ownership without changing target geometry or actions', async () => {
   const f=await upperKeyboardFixture();f.toolbar.style.position='absolute';f.toolbar.getBoundingClientRect=()=>new DOMRect(0,0,300,70);await f.start()
   const node=f.targets[0],before=node.outerHTML;node.focus();await f.flush()
-  const ring=f.toolbar.querySelector<HTMLElement>('[data-frade-upper-focus-ring="1"]');expect(ring).not.toBeNull()
-  expect(ring!.parentElement).toBe(f.toolbar);expect(node.contains(ring)).toBe(false);expect(ring!.getAttribute('aria-hidden')).toBe('true');expect(ring!.hasAttribute('inert')).toBe(true);expect(ring!.style.pointerEvents).toBe('none');expect(ring!.style.opacity).toBe('1')
-  expect(node.outerHTML).toBe(before);expect(ring!.style.left).toBe('20px');expect(ring!.style.top).toBe('20px');expect(ring!.style.width).toBe('28px');expect(ring!.style.height).toBe('28px')
+  const ring=document.body.querySelector<HTMLElement>('[data-frade-upper-focus-ring="1"]');expect(ring).not.toBeNull()
+  expect(ring!.parentElement).toBe(document.body);expect(node.contains(ring)).toBe(false);expect(ring!.getAttribute('aria-hidden')).toBe('true');expect(ring!.hasAttribute('inert')).toBe(true);expect(ring!.style.pointerEvents).toBe('none');expect(ring!.style.opacity).toBe('1')
+  expect(node.outerHTML).toBe(before);expect(ring!.style.left).toBe('15px');expect(ring!.style.top).toBe('15px');expect(ring!.style.width).toBe('38px');expect(ring!.style.height).toBe('38px')
   const writes=vi.spyOn(ring!.style,'setProperty');for(let n=0;n<5;n++){f.toolbar.title='native unrelated '+n;await f.flush()};expect(writes).not.toHaveBeenCalled()
   const html=document.documentElement.outerHTML;f.send('prepare',context('prepare',2,2),snapshot('light',2));expect(document.documentElement.outerHTML).toBe(html)
-  f.send('apply',context('apply',2,2));await f.settle();f.send('release',context('apply',2,2));expect(f.toolbar.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
-  node.blur();await f.flush();expect(f.toolbar.querySelector('[data-frade-upper-focus-ring]')).toBeNull();node.focus();await f.flush();expect(f.toolbar.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
-  f.dispose();expect(f.toolbar.querySelector('[data-frade-upper-focus-ring]')).toBeNull();expect(f.targets.map(n=>n.outerHTML)).toEqual(f.before);f.callbacks.forEach(cb=>expect(cb).not.toHaveBeenCalled());f.assertSemantic()
+  f.send('apply',context('apply',2,2));await f.settle();f.send('release',context('apply',2,2));expect(document.body.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
+  node.blur();await f.flush();expect(document.body.querySelector('[data-frade-upper-focus-ring]')).toBeNull();node.focus();await f.flush();expect(document.body.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
+  f.dispose();expect(document.body.querySelector('[data-frade-upper-focus-ring]')).toBeNull();expect(f.targets.map(n=>n.outerHTML)).toEqual(f.before);f.callbacks.forEach(cb=>expect(cb).not.toHaveBeenCalled());f.assertSemantic()
+})
+
+
+it('P01-UPPER-030 body focus decoration escapes original clipping within five pixels and stays below native overlays', async () => {
+  const f=await upperKeyboardFixture();f.toolbar.style.position='relative';f.toolbar.style.overflow='hidden';f.toolbar.getBoundingClientRect=()=>new DOMRect(0,18,300,30);await f.start()
+  const node=f.targets[0],before=node.outerHTML;node.focus();await f.flush()
+  const ring=document.querySelector<HTMLElement>('body>[data-frade-upper-focus-ring="1"]');expect(ring).not.toBeNull()
+  expect(ring!.style.position).toBe('fixed');expect(ring!.style.left).toBe('15px');expect(ring!.style.top).toBe('15px');expect(ring!.style.width).toBe('38px');expect(ring!.style.height).toBe('38px')
+  expect(ring!.style.borderWidth).toBe('4px');expect(ring!.style.borderStyle).toBe('solid');expect(ring!.style.zIndex).toBe('4');expect(ring!.style.opacity).toBe('1');expect(ring!.style.pointerEvents).toBe('none');expect(ring!.hasAttribute('inert')).toBe(true);expect(ring!.getAttribute('aria-hidden')).toBe('true')
+  expect(node.outerHTML).toBe(before);expect(f.toolbar.style.overflow).toBe('hidden');expect(f.toolbar.getBoundingClientRect().height).toBe(30);expect(document.activeElement).toBe(node)
+  const contour=ring!.firstElementChild as HTMLElement;expect(contour.style.left).toBe('1px');expect(contour.style.top).toBe('1px');expect(contour.style.width).toBe('28px');expect(contour.style.height).toBe('28px');expect(contour.style.outlineOffset).toBe('2px')
+  f.ui.dialog=document.createElement('div');f.toolbar.title='dialog changed';await f.flush();expect(document.querySelector('[data-frade-upper-focus-ring]')).toBeNull();f.ui.dialog=null;f.toolbar.title='dialog closed';await f.flush();expect(document.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
+  f.key(node,'Enter');await f.flush();expect(document.querySelector('[data-frade-upper-focus-ring]')).toBeNull();f.key(document.body,'Escape');await f.flush();expect(document.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
+  const focused=vi.spyOn(document,'hasFocus').mockReturnValue(false);window.dispatchEvent(new Event('blur'));await f.flush();expect(document.querySelector('[data-frade-upper-focus-ring]')).toBeNull();focused.mockReturnValue(true);window.dispatchEvent(new Event('focus'));await f.flush();expect(document.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
+  Object.assign(node,{enabled:false});f.toolbar.title='capability changed';await f.flush();expect(document.querySelector('[data-frade-upper-focus-ring]')).toBeNull();Object.assign(node,{enabled:true});f.toolbar.title='capability restored';await f.flush();expect(document.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
+  window.dispatchEvent(new Event('focus'));f.dispose();await f.flush();expect(document.querySelector('[data-frade-upper-focus-ring]')).toBeNull();expect(f.targets.map(n=>n.outerHTML)).toEqual(f.before);f.assertSemantic()
+})
+
+
+it('P01-UPPER-032 private focus backing cannot paint the adjacent target edge or inherit vendor important colors', async () => {
+  const f=await upperKeyboardFixture();await f.start();f.targets[1].focus();await f.flush()
+  const ring=document.querySelector<HTMLElement>('body>[data-frade-upper-focus-ring="1"]')!
+  expect(ring.style.clipPath).toBe('inset(0px 1px)')
+  expect(ring.style.getPropertyValue('border-color')).toBe('var(--frade-frame-surface-panel)');expect(ring.style.getPropertyPriority('border-color')).toBe('important')
+  expect(ring.style.getPropertyValue('outline')).toBe('none');expect(ring.style.getPropertyPriority('outline')).toBe('important')
+  expect(ring.style.forcedColorAdjust).toBe('none');f.assertSemantic()
 })

@@ -1,25 +1,37 @@
-# P01: unclipped focus PRE PASS; extension RED — следующий шаг
+# P01: focus — permanent6/6,96контуров PASS
 
-Обновлено 2026-10-03T17:02:13.667Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; P02–P07 NOT_STARTED. Routing независим.
+Обновлено 2026-10-03T19:30:04.326Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; P02–P07 NOT_STARTED. Routing независим.
 
-| Текущий этап keyboard | Фактический статус |
+- Exact focus scope32ddae6f ACCEPTED; PRE PASS83events/17raw, requested gpt-6-astra/xhigh; actual backend NOT_CONFIRMED.
+- Body focus repair IMPLEMENTED.60/60units/build/typecheck/lint PASS. Permanent actual matrix6/6PASS:96full contour proofs/PNG hashes,12positive/36negative controls, minimum5.4912:1,36preservation comparisons,6parent modals; Light/Dark/HC ×2density plus viewport/text200/forced/coarse/reduced.
+- Earlier failures and900s test-reporter timeout retained. Same guard checks optimized only in new focus helper; retest38s PASS. Original prefixes/callbacks and V6 unchanged.
+- Fresh final-source FUI12 PASS; one control literal with byte-exact reverse proof; BDD111 PASS;2positive/14negative exact rejection causes PASS. UI typecheck/lint/compliance PASS.
+- Remaining: current-source V6/actions/full root, popup indicator/state coverage, verify/POST. Human visual NOT_APPROVED; archive BLOCKED; no P02. Protection LOCAL_ONLY/NOT_CONFIGURED.
+- [Полный отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-checkpoint-20261003T175031Z/report.md); [аудит96PNG/контролей](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-checkpoint-20261003T175031Z/permanent-runtime-audit.json).
+- Git HEADd2ce1504; new checkpoint READY_TO_COMMIT; full gates remain open. Previous SSH publication unverified, last confirmed remote7f911b95. Right panel queued, visibility unconfirmed.
+
+Next: commit/publish honest focus checkpoint; remaining final-source checks and independent POST before any closure.
+
+## История
+
+# P01: body focus repair — unit59/59 и Electron6/6 PASS
+
+Обновлено 2026-10-03T17:26:55.766Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; P02–P07 NOT_STARTED. Routing независим.
+
+| Текущий этап | Фактический статус |
 | --- | --- |
-| Принятый scope / independent PRE | PASS; exact6087da74;17raw/165events; requested gpt-6-astra/xhigh, actual backend NOT_CONFIRMED |
-| Три anchors / original actions / keyboard paths | IMPLEMENTED;6theme-density combinations passed in source-bound runs |
-| Expanded glyph raster |6/6PASS,312proofs, min4.7977:1; PNG SHA verified. Before later popup text/focus changes; final-source revalidation required |
-| Popup shortcut text | Actual RED Light/Dark retained; inheritance repaired;6/6actual Electron PASS. Current build/typecheck/lint and58bridge units PASS |
-| Focus ring contrast | Текущая матрица2PASS/4FAIL: Comfortable top/bottom clipped; HC compact1.074:1. Новый exact scope32ddae6f ACCEPTED; extension NOT_IMPLEMENTED; fresh PRE PASS83events/17raw, no blockers |
-| Popup indicator contrast / remaining state coverage | OPEN; original black checkmark/arrows captured; no numerical PASS |
-| Fresh FUI12/control/BDD111/full root | NOT_RUN on final repaired source |
-| Verify / independent POST / archive | NOT_RUN / NOT_RUN / BLOCKED |
+| Exact accepted focus scope / independent PRE | PASS; SHA32ddae6f, 83events/17raw; requested gpt-6-astra/xhigh, backend NOT_CONFIRMED |
+| Meaningful extension RED | PASS как воспроизведение: новая body ownership проверка FAIL, остальные58PASS; typecheckPASS |
+| Sole-bridge body focus / cleanup / layout preservation | IMPLEMENTED;59/59units, build/typecheck/lint PASS |
+| Existing actual four-side focus / popup text matrix |6/6ElectronPASS на новом source; старые2PASS/4FAIL и PNG сохранены |
+| Complete rounded contour / media / neighbor / modal evidence | IN_PROGRESS; straight bands не закрывают полный контур |
+| Popup indicator contrast / remaining state coverage |OPEN |
+| Final-source V6 / FUI12 / BDD111 / full root |NOT_RUN |
+| Verify / POST / archive / human visual |NOT_RUN / NOT_RUN / BLOCKED / NOT_APPROVED |
 
-Evidence: p01-upper-keyboard-raster-current-20261003T150039Z + p01-upper-keyboard-raster-five-20261003T150842Z; p01-upper-keyboard-contrast-red-20261003T154201Z (immutable failures/RCA/measurement correction); p01-upper-keyboard-contrast-green-20261003T154603Z; p01-upper-focus-red-20261003T155435Z, all under openspec/changes/frade-p01-theme-core/evidence/.
+Evidence: openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-body-red-20261003T170618Z, p01-upper-focus-body-check1-20261003T171847Z (jsdom shorthand parsing FAIL retained), p01-upper-focus-body-check2-20261003T172116Z (PASS), p01-upper-focus-body-runtime1-20261003T172254Z (6PASS). Existing V6/original actions/keyboard prior source-bound PASS require final-source revalidation. Protection LOCAL_ONLY/NOT_CONFIGURED.
 
-Next: strict/compliance и independent PRE PASS; candidate unfrozen. Extension RED → implementation → current full checks/verify/POST. PRE result openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-pre-received-20261003T165728Z/output--result.md; requested gpt-6-astra/xhigh, actual backend NOT_CONFIRMED. Original43044/186048byte prefixes/31/25callbacks remain protected; fresh checkpoint audit PASS. Human visual NOT_APPROVED; other sizing/coarse/reflow/disabled/unsupported-composition and cumulative P01 remain open. Protection LOCAL_ONLY/NOT_CONFIGURED.
-
-Git: checkpoint cd93819cb7b1d02e474e01c664e8654c04af5ca9 COMMITTED; два push BLOCKED_ENVIRONMENT (SSH disconnect/timeout180s). Последний подтверждённый remote7f911b95; свежий remote read FAILED, публикация не подтверждена. Status right panel queued; visibility unconfirmed.
-
-[Полный текущий отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-checkpoint-20261003T160507Z/report.md). [Точное решение focus scope](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-focus-unclipped-projection.proposed.md), SHA32ddae6f2896fe57bbdb506337fd70199d477f7ea7992e7739a5bae563d47f0b — ACCEPTED.
+Next: expanded real focus bounds/occlusion/complete-contour evidence and media; no cumulative closure or P02. Git HEADd2ce150464f0c5bbb8ae6ea52908709343fda662 COMMITTED; new repair/evidence UNCOMMITTED. Previous publication BLOCKED_ENVIRONMENT (SSH disconnect/timeout); latest remote unavailable, last verified7f911b95. Right panel queued, visibility unconfirmed.
 
 ## История
 
