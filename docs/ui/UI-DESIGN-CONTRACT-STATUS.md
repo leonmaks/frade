@@ -1,6 +1,6 @@
-# P01: focus scope принят; подготовка автоматического PRE
+# P01: unclipped focus PRE PASS; extension RED — следующий шаг
 
-Обновлено 2026-10-03T16:17:48.699Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; P02–P07 NOT_STARTED. Routing независим.
+Обновлено 2026-10-03T17:02:13.667Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; P02–P07 NOT_STARTED. Routing независим.
 
 | Текущий этап keyboard | Фактический статус |
 | --- | --- |
@@ -8,16 +8,16 @@
 | Три anchors / original actions / keyboard paths | IMPLEMENTED;6theme-density combinations passed in source-bound runs |
 | Expanded glyph raster |6/6PASS,312proofs, min4.7977:1; PNG SHA verified. Before later popup text/focus changes; final-source revalidation required |
 | Popup shortcut text | Actual RED Light/Dark retained; inheritance repaired;6/6actual Electron PASS. Current build/typecheck/lint and58bridge units PASS |
-| Focus ring contrast | Текущая матрица2PASS/4FAIL: Comfortable top/bottom clipped; HC compact1.074:1. Новый exact scope32ddae6f ACCEPTED; extension NOT_IMPLEMENTED; fresh PRE required |
+| Focus ring contrast | Текущая матрица2PASS/4FAIL: Comfortable top/bottom clipped; HC compact1.074:1. Новый exact scope32ddae6f ACCEPTED; extension NOT_IMPLEMENTED; fresh PRE PASS83events/17raw, no blockers |
 | Popup indicator contrast / remaining state coverage | OPEN; original black checkmark/arrows captured; no numerical PASS |
 | Fresh FUI12/control/BDD111/full root | NOT_RUN on final repaired source |
 | Verify / independent POST / archive | NOT_RUN / NOT_RUN / BLOCKED |
 
 Evidence: p01-upper-keyboard-raster-current-20261003T150039Z + p01-upper-keyboard-raster-five-20261003T150842Z; p01-upper-keyboard-contrast-red-20261003T154201Z (immutable failures/RCA/measurement correction); p01-upper-keyboard-contrast-green-20261003T154603Z; p01-upper-focus-red-20261003T155435Z, all under openspec/changes/frade-p01-theme-core/evidence/.
 
-Next: strict validation → automatic read-only PRE gpt-6-astra/xhigh → extension RED/repair/checks. Original43044/186048byte prefixes/31/25callbacks remain protected; fresh checkpoint audit PASS. Human visual NOT_APPROVED; other sizing/coarse/reflow/disabled/unsupported-composition and cumulative P01 remain open. Protection LOCAL_ONLY/NOT_CONFIGURED.
+Next: strict/compliance и independent PRE PASS; candidate unfrozen. Extension RED → implementation → current full checks/verify/POST. PRE result openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-pre-received-20261003T165728Z/output--result.md; requested gpt-6-astra/xhigh, actual backend NOT_CONFIRMED. Original43044/186048byte prefixes/31/25callbacks remain protected; fresh checkpoint audit PASS. Human visual NOT_APPROVED; other sizing/coarse/reflow/disabled/unsupported-composition and cumulative P01 remain open. Protection LOCAL_ONLY/NOT_CONFIGURED.
 
-Git: HEAD b02795e2 COMMITTED; previous push BLOCKED_ENVIRONMENT/SSH timeout, not verified. New implementation/tests/evidence UNCOMMITTED; authorized checkpoint publication pending. Status right panel queued; visibility unconfirmed.
+Git: checkpoint cd93819cb7b1d02e474e01c664e8654c04af5ca9 COMMITTED; два push BLOCKED_ENVIRONMENT (SSH disconnect/timeout180s). Последний подтверждённый remote7f911b95; свежий remote read FAILED, публикация не подтверждена. Status right panel queued; visibility unconfirmed.
 
 [Полный текущий отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-checkpoint-20261003T160507Z/report.md). [Точное решение focus scope](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-focus-unclipped-projection.proposed.md), SHA32ddae6f2896fe57bbdb506337fd70199d477f7ea7992e7739a5bae563d47f0b — ACCEPTED.
 

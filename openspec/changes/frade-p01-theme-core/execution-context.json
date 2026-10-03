@@ -1487,7 +1487,7 @@
       ],
       "scope": "Glyph contrast including focus glyph only; popup/focus ring not measured"
     },
-    "phase": "ACCEPTED_FOCUS_PLANNING_PRE_NOT_RUN",
+    "phase": "UNCLIPPED_FOCUS_PRE_PASS_READY_FOR_RED",
     "latestChecks": {
       "bridgeUnits": "58/58 PASS",
       "build": "PASS",
@@ -1508,8 +1508,24 @@
     },
     "focusExtension": {
       "implementation": "NOT_RUN",
-      "pre": "NOT_RUN",
-      "planningEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z"
+      "pre": "PASS",
+      "planningEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z",
+      "preEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-pre-received-20261003T165728Z",
+      "preResultSha256": "a3313dd6304a415c9cef900c591847abe157d64672ddbe830b6e10b40e626a3b"
+    },
+    "checkpointPublication": {
+      "atUtc": "2026-10-03T16:34:53.934Z",
+      "checkpoint": "cd93819cb7b1d02e474e01c664e8654c04af5ca9",
+      "publication": "BLOCKED_ENVIRONMENT",
+      "lastVerifiedRemote": "7f911b957c7a68250362829ce8c559f5742c2770",
+      "latestRemoteRead": "FAILED",
+      "attempts": [
+        "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z/publication-attempt1.json",
+        "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z/publication-attempt2.json"
+      ],
+      "explanation": "SSH443 disconnected; longer per-call keepalive retry hit180s process timeout and final ls-remote failed. No force or config change. Remote publication unverified, local checkpoint safe.",
+      "permissionReview": "One evidence-save command automatic approval review timed out before execution; single permitted retry succeeded. No user approval or safety rejection was inferred.",
+      "next": "Proceed local authorized independent PRE; retry authorized publication after environment recovers."
     }
   }
 }
