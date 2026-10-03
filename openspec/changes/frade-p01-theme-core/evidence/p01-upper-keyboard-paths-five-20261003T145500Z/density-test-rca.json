@@ -1,0 +1,51 @@
+{
+  "atUtc": "2026-10-03T14:51:07.540Z",
+  "classification": "TEST",
+  "defect": "New focus test incorrectly hard-coded compact height for both densities.",
+  "contract": "Accepted keyboard scope preserves existing original geometry. Pre-repair stylesheet min-height uses compact28/comfortable36; all three actual pre-keyboard comfortable records independently show28x36.",
+  "baseline": [
+    {
+      "path": "openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-expanded-current-20261003T022037Z\\artifacts\\ui-contract-theme-P01-UPPE-8c80b-dia-raster-dark-comfortable\\wide-viewPanels-default.json",
+      "sha256": "d0bbddf0a27289acbd1db65122256b1268175cb3de5822d381e2fc335faf437e",
+      "rect": {
+        "x": 10,
+        "y": 37,
+        "width": 28,
+        "height": 36,
+        "top": 37,
+        "right": 38,
+        "bottom": 73,
+        "left": 10
+      }
+    },
+    {
+      "path": "openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-expanded-current-20261003T022037Z\\artifacts\\ui-contract-theme-P01-UPPE-cd02c-r-high-contrast-comfortable\\wide-viewPanels-default.json",
+      "sha256": "76d8bb040237a5bab4d6456e8212acd145e049e88134c1b020bb877fe870da10",
+      "rect": {
+        "x": 10,
+        "y": 37,
+        "width": 28,
+        "height": 36,
+        "top": 37,
+        "right": 38,
+        "bottom": 73,
+        "left": 10
+      }
+    },
+    {
+      "path": "openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-expanded-current-20261003T022037Z\\artifacts\\ui-contract-theme-P01-UPPE-fca6a-ia-raster-light-comfortable\\wide-viewPanels-default.json",
+      "sha256": "25c69c0f624752e22bbc8999e8d580047fd90e577821e54f5ace37d03ba571e4",
+      "rect": {
+        "x": 10,
+        "y": 37,
+        "width": 28,
+        "height": 36,
+        "top": 37,
+        "right": 38,
+        "bottom": 73,
+        "left": 10
+      }
+    }
+  ],
+  "repair": "Exact expected density-specific dimensions28x28/28x36, no tolerance, no production/geometry change."
+}

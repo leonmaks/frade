@@ -1,0 +1,71 @@
+{
+  "records": [
+    {
+      "name": "typecheck",
+      "command": [
+        "E:\\Program Files\\nodejs\\node.exe",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "--filter",
+        "@frade/desktop",
+        "typecheck"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "startedAtUtc": "2026-10-03T15:55:23.524Z",
+      "endedAtUtc": "2026-10-03T15:55:30.033Z",
+      "exitCode": 0
+    },
+    {
+      "name": "unit",
+      "command": [
+        "E:\\Program Files\\nodejs\\node.exe",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "--filter",
+        "@frade/desktop",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/drawio-theme.test.ts",
+        "-t",
+        "P01-UPPER-029",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-focus-red-20261003T155435Z\\unit.report.json"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "startedAtUtc": "2026-10-03T15:55:30.033Z",
+      "endedAtUtc": "2026-10-03T15:55:32.607Z",
+      "exitCode": 1
+    },
+    {
+      "name": "electron",
+      "command": [
+        "E:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "ui-contract-theme.spec.ts",
+        "--grep",
+        "P01-UPPER-028.*light compact$",
+        "--workers=1",
+        "--reporter=json",
+        "--output",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-focus-red-20261003T155435Z\\artifacts"
+      ],
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop",
+      "startedAtUtc": "2026-10-03T15:55:32.607Z",
+      "endedAtUtc": "2026-10-03T15:55:41.702Z",
+      "exitCode": 1
+    }
+  ],
+  "before": {
+    "apps/desktop/src/main/drawio-theme-bridge.ts": "32e6d5ba6b10c0096705bbb7b5a2ab2d21b48386542a63976cdc1251d75060e2",
+    "apps/desktop/tests/e2e/ui-contract-theme.spec.ts": "81b8a1912ed16bda7db50fdcba61d3fca0fbb240eabd81400449e77590e6d24b",
+    "apps/desktop/tests/unit/drawio-theme.test.ts": "0dd225518e4a187b326bd74db8677a6c8bd4edcf09473ba40c5498a1c2241182",
+    "apps/desktop/out/main/index.cjs": "cd8b9fba6183981a223138b1b432088698cc1e702bc57b7402de2c21e0bd15d5"
+  },
+  "after": {
+    "apps/desktop/src/main/drawio-theme-bridge.ts": "32e6d5ba6b10c0096705bbb7b5a2ab2d21b48386542a63976cdc1251d75060e2",
+    "apps/desktop/tests/e2e/ui-contract-theme.spec.ts": "81b8a1912ed16bda7db50fdcba61d3fca0fbb240eabd81400449e77590e6d24b",
+    "apps/desktop/tests/unit/drawio-theme.test.ts": "0dd225518e4a187b326bd74db8677a6c8bd4edcf09473ba40c5498a1c2241182",
+    "apps/desktop/out/main/index.cjs": "cd8b9fba6183981a223138b1b432088698cc1e702bc57b7402de2c21e0bd15d5"
+  },
+  "sourceUnchanged": true
+}

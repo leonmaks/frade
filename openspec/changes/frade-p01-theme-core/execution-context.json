@@ -232,7 +232,7 @@
     "Task3.2 cumulative OpenSpec verification and independent automatic POST",
     "Task3.3 archive only after all required PASS; STOP before P02"
   ],
-  "lastUpdatedAtUtc": "2026-10-03T12:43:26.637Z",
+  "lastUpdatedAtUtc": "2026-10-03T15:06:04.166Z",
   "currentDocsChecks": {
     "atUtc": "2026-10-01T19:34:14.257Z",
     "strict": {
@@ -1342,7 +1342,7 @@
     "fullRoot": "NOT_RUN_CURRENT_IMPLEMENTATION",
     "post": "NOT_RUN"
   },
-  "currentPhase": "UPPER_KEYBOARD_PERMANENT_RED",
+  "currentPhase": "UPPER_KEYBOARD_EXPANDED_RASTER",
   "upperThreeCurrentCheckpoint": {
     "atUtc": "2026-10-02T22:47:22.326Z",
     "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-checkpoint-20261002T223801Z",
@@ -1440,7 +1440,7 @@
     "planning": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z",
     "pre": "PASS",
     "production": "UNCHANGED",
-    "implementation": "NOT_RUN",
+    "implementation": "IMPLEMENTED_TARGETED_UNIT_GREEN",
     "reviewModel": "gpt-6-astra",
     "reviewEffort": "xhigh",
     "planRow": "Stage P01 upper-three keyboard repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three keyboard repair POST reviewer: gpt-6-astra; reasoning xhigh.",
@@ -1468,6 +1468,48 @@
       "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-pre-received-20261003T123505Z",
       "resultSha256": "0efbfbf835c5fca9744c57abaa6a01e09fafebf302867db01fe09fe70f72818b"
     },
-    "next": "Meaningful permanent RED, then sole-bridge repair"
+    "next": "Complete final-source raster/media/zoom/focus and popup contrast, then final-source FUI12/control/BDD/full checks/verify/POST",
+    "unitChecks": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-check2-20261003T143600Z/checks.json",
+    "originalActionRuntime": {
+      "status": "PASS",
+      "coverage": "light compact only",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-original-runtime2-20261003T143900Z"
+    },
+    "originalActions": "6_THEME_DENSITY_CASES_PASS_SOURCE_BOUND_RUNS",
+    "keyboardPaths": "6_THEME_DENSITY_CASES_PASS_SOURCE_BOUND_RUNS",
+    "expandedRaster": {
+      "status": "PASS",
+      "proofs": 312,
+      "minimum": 4.797672908386502,
+      "runs": [
+        "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-raster-current-20261003T150039Z",
+        "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-raster-five-20261003T150842Z"
+      ],
+      "scope": "Glyph contrast including focus glyph only; popup/focus ring not measured"
+    },
+    "phase": "ACCEPTED_FOCUS_PLANNING_PRE_NOT_RUN",
+    "latestChecks": {
+      "bridgeUnits": "58/58 PASS",
+      "build": "PASS",
+      "typecheck": "PASS",
+      "lint": "PASS",
+      "compliance": "PASS",
+      "boundaries": "PASS",
+      "assets": "PASS",
+      "strict": "PASS",
+      "focusRuntime": "2 PASS / 4 FAIL",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-checkpoint-20261003T160507Z"
+    },
+    "focusDecision": {
+      "status": "ACCEPTED",
+      "path": "openspec/changes/frade-p01-theme-core/decisions/p01-upper-focus-unclipped-projection.proposed.md",
+      "sha256": "32ddae6f2896fe57bbdb506337fd70199d477f7ea7992e7739a5bae563d47f0b",
+      "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z/acceptance.json"
+    },
+    "focusExtension": {
+      "implementation": "NOT_RUN",
+      "pre": "NOT_RUN",
+      "planningEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z"
+    }
   }
 }

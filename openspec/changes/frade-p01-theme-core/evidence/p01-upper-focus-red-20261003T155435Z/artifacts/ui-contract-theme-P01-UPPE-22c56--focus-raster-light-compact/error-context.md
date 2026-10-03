@@ -1,0 +1,91 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]: F
+    - button "Меню Файл" [ref=e6] [cursor=pointer]: Файл
+    - button "Вид" [ref=e7] [cursor=pointer]
+    - button "⌕ KA" [ref=e8] [cursor=pointer]
+    - generic [ref=e9]: Frade
+  - generic [ref=e10]:
+    - navigation "Разделы" [ref=e11]:
+      - button "Проводник" [ref=e12] [cursor=pointer]:
+        - generic [ref=e13]: 
+      - button "Поиск" [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]: 
+      - button "Настройки репозитория" [ref=e17] [cursor=pointer]:
+        - generic [ref=e18]: 
+    - complementary [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: ПРОВОДНИК
+        - button "Добавить репозиторий" [ref=e22] [cursor=pointer]: ＋
+        - button "Настройки выбранного корня" [ref=e23] [cursor=pointer]: ⋯
+      - generic [ref=e24]: ⌄ РАБОЧЕЕ ПРОСТРАНСТВО
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - textbox "Поиск объектов" [ref=e27]:
+            - /placeholder: Поиск объектов…
+          - combobox "Проекция дерева" [ref=e28]:
+            - option "По типам" [selected]
+            - option "По файлам"
+        - tree "Репозитории архитектуры" [ref=e29]:
+          - treeitem "KA 138" [expanded] [level=1] [selected] [ref=e30] [cursor=pointer]:
+            - generic [ref=e32]: 
+            - generic [ref=e33]: 
+            - generic [ref=e34]: KA
+            - generic [ref=e35]: "138"
+          - treeitem "_diagrams" [expanded] [level=2] [ref=e36] [cursor=pointer]:
+            - generic [ref=e38]: 
+            - generic [ref=e39]: 
+            - generic [ref=e40]: _diagrams
+          - treeitem "Workshop.drawio" [level=3] [ref=e41] [cursor=pointer]:
+            - generic [ref=e42]: 
+            - generic [ref=e43]: Workshop.drawio
+          - treeitem "Прикладная архитектура" [level=2] [ref=e44] [cursor=pointer]:
+            - generic [ref=e46]: 
+            - generic [ref=e47]: 
+            - generic [ref=e48]: Прикладная архитектура
+          - treeitem "Технологическая архитектура" [level=2] [ref=e49] [cursor=pointer]:
+            - generic [ref=e51]: 
+            - generic [ref=e52]: 
+            - generic [ref=e53]: Технологическая архитектура
+          - treeitem "Архитектура данных" [level=2] [ref=e54] [cursor=pointer]:
+            - generic [ref=e56]: 
+            - generic [ref=e57]: 
+            - generic [ref=e58]: Архитектура данных
+          - treeitem "Бизнес-архитектура" [level=2] [ref=e59] [cursor=pointer]:
+            - generic [ref=e61]: 
+            - generic [ref=e62]: 
+            - generic [ref=e63]: Бизнес-архитектура
+          - treeitem "Архитектурные сведения" [level=2] [ref=e64] [cursor=pointer]:
+            - generic [ref=e66]: 
+            - generic [ref=e67]: 
+            - generic [ref=e68]: Архитектурные сведения
+    - separator "Ширина проводника" [ref=e69]
+    - main [ref=e70]:
+      - generic [ref=e72]:
+        - tablist [ref=e73]:
+          - generic [ref=e74]:
+            - tab "Workshop.drawio" [selected] [ref=e75] [cursor=pointer]:
+              - generic [ref=e76]: 
+              - text: Workshop.drawio
+            - button "Закрыть Workshop.drawio" [ref=e77] [cursor=pointer]: ×
+          - button "Разделить редактор" [ref=e79] [cursor=pointer]:
+            - generic [ref=e80]: 
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - text: _diagrams/Workshop.drawio
+            - generic [ref=e84]: ·
+            - text: Draw.io 31.5.2
+          - generic [ref=e85]:
+            - generic [ref=e86]: Все изменения сохранены
+            - button "Сохранить" [ref=e87] [cursor=pointer]
+            - button "Отменить изменения" [ref=e88] [cursor=pointer]
+          - iframe [active] [ref=e92]
+  - contentinfo [ref=e93]:
+    - button "Диагностика" [ref=e94] [cursor=pointer]: ⊗ 0 ⚠ 61
+    - generic [ref=e95]: 1 репозиториев · 138 объектов
+    - status [ref=e96]: "Backend: ready"
+    - generic [ref=e97]: UTF-8 YAML
+```

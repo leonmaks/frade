@@ -1,0 +1,41 @@
+{
+  "atUtc": "2026-10-03T13:44:14.296Z",
+  "status": "BLOCKED",
+  "commit": "b02795e2c529a96939887150a58719ef21d5b8c1",
+  "remoteSha": "",
+  "ref": "refs/heads/codex/frade-ui-design-contract",
+  "destination": "git@github.com:leonmaks/frade.git",
+  "note": "Earlier commit completed; exec session no longer available and publication receipt absent. This is a fresh actual remote verification and conditional exact-ref retry.",
+  "calls": [
+    {
+      "args": [
+        "ls-remote",
+        "git@github.com:leonmaks/frade.git",
+        "refs/heads/codex/frade-ui-design-contract"
+      ],
+      "exit": 0,
+      "out": "7f911b957c7a68250362829ce8c559f5742c2770\trefs/heads/codex/frade-ui-design-contract\n",
+      "err": ""
+    },
+    {
+      "args": [
+        "push",
+        "git@github.com:leonmaks/frade.git",
+        "b02795e2c529a96939887150a58719ef21d5b8c1:refs/heads/codex/frade-ui-design-contract"
+      ],
+      "exit": 128,
+      "out": "",
+      "err": "Timeout, server ssh.github.com not responding.\r\nfatal: sha1 file '<stdout>' write error: Broken pipe\nsend-pack: unexpected disconnect while reading sideband packet\nfatal: the remote end hung up unexpectedly\n"
+    },
+    {
+      "args": [
+        "ls-remote",
+        "git@github.com:leonmaks/frade.git",
+        "refs/heads/codex/frade-ui-design-contract"
+      ],
+      "exit": 128,
+      "out": "",
+      "err": "Connection timed out during banner exchange\r\nConnection to 140.82.121.35 port 443 timed out\r\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n"
+    }
+  ]
+}

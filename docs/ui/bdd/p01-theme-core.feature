@@ -409,3 +409,10 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     Given retained original Escape RED and all six theme density states
     When repaired keyboard actions and presentation lifecycle execute with actual media viewport text200 and state preservation
     Then exact V6 current FUI full checks and independent gates remain required and Freehand window unavailable disabled other toolbar and visual requirements stay explicit
+
+
+  @P01-RT-UPPER-FOCUS-030 @runtime-pending @A11Y-002 @A11Y-003 @A11Y-007 @A11Y-008
+  Scenario: Exact unclipped focus decoration preserves original toolbar and isolation
+    Given accepted exact focus extension and a current verified visible enabled original upper anchor
+    When canonical focus is projected outside original clipping and ownership layout or modal context changes
+    Then the complete bounded inert contour remains visible and contrasted without changing original geometry opacity actions or data and stale decoration is removed before independent closure

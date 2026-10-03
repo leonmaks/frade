@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-03T14:29:15.500Z",
+  "classification": "INTEGRATION",
+  "rootCause": "Trusted native event has a microtask checkpoint between document capture listener and original target click handler. The previous single microtask observed no transition and discarded adoption. jsdom synchronous dispatch concealed that order.",
+  "evidence": "Actual original-viewPanels-ownership.json: capture/microtask menu=false; next task menu=true, sameOpener=true, connected=true. New permanent capture-checkpoint unit RED fails role=null.",
+  "repair": "One coalesced cancelable task fallback after original event completion, revalidate request/sequence/opener/handler/menu proof; retain immediate observation for synchronous original keyboard clicks. No semantic callback/vendor/geometry change.",
+  "productionFixAttempt": 2
+}

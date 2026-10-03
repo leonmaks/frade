@@ -1,18 +1,25 @@
-# P01: keyboard PRE PASS; permanent RED — следующий шаг
+# P01: focus scope принят; подготовка автоматического PRE
 
-2026-10-03T12:43:26.637Z. UI branch codex/frade-ui-design-contract / worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade / common E:/dev/codex/frade/.git. Change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0; P01 5/10.
+Обновлено 2026-10-03T16:17:48.699Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; P02–P07 NOT_STARTED. Routing независим.
 
-| Задача текущего keyboard этапа | Статус |
+| Текущий этап keyboard | Фактический статус |
 | --- | --- |
-| Принятый scope / coherent plan / strict validation | PASS; planning7f911b95 PUSHED/remote verified |
-| Свежий независимый PRE | PASS;17raw,166events, candidate/packet/plan unchanged; [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-pre-received-20261003T123505Z/output--result.md) |
-| Permanent unit/Electron RED | NEXT; прежний original Escape FAIL сохранён |
-| Sole-bridge keyboard implementation | NOT_RUN |
-| Actual six-state keyboard/action/lifecycle/V6 coverage | NOT_RUN на repaired source |
-| Fresh FUI12 / one literal / BDD111 / full checks | NOT_RUN на repaired source |
-| Verify / independent POST | NOT_RUN |
+| Принятый scope / independent PRE | PASS; exact6087da74;17raw/165events; requested gpt-6-astra/xhigh, actual backend NOT_CONFIRMED |
+| Три anchors / original actions / keyboard paths | IMPLEMENTED;6theme-density combinations passed in source-bound runs |
+| Expanded glyph raster |6/6PASS,312proofs, min4.7977:1; PNG SHA verified. Before later popup text/focus changes; final-source revalidation required |
+| Popup shortcut text | Actual RED Light/Dark retained; inheritance repaired;6/6actual Electron PASS. Current build/typecheck/lint and58bridge units PASS |
+| Focus ring contrast | Текущая матрица2PASS/4FAIL: Comfortable top/bottom clipped; HC compact1.074:1. Новый exact scope32ddae6f ACCEPTED; extension NOT_IMPLEMENTED; fresh PRE required |
+| Popup indicator contrast / remaining state coverage | OPEN; original black checkmark/arrows captured; no numerical PASS |
+| Fresh FUI12/control/BDD111/full root | NOT_RUN on final repaired source |
+| Verify / independent POST / archive | NOT_RUN / NOT_RUN / BLOCKED |
 
-PRE requested gpt-6-astra/xhigh из stage plan; actual backend/effort NOT_CONFIRMED. Первый сетевой BLOCKED сохранён отдельно. Новый review checkpoint готов к commit/push; publication receipt сохраняется после фактической проверки remote SHA. Production/tests пока unchanged. Human visual NOT_APPROVED; cumulative/archive BLOCKED; P02–P07 NOT_STARTED; Routing независим. Panel queued.
+Evidence: p01-upper-keyboard-raster-current-20261003T150039Z + p01-upper-keyboard-raster-five-20261003T150842Z; p01-upper-keyboard-contrast-red-20261003T154201Z (immutable failures/RCA/measurement correction); p01-upper-keyboard-contrast-green-20261003T154603Z; p01-upper-focus-red-20261003T155435Z, all under openspec/changes/frade-p01-theme-core/evidence/.
+
+Next: strict validation → automatic read-only PRE gpt-6-astra/xhigh → extension RED/repair/checks. Original43044/186048byte prefixes/31/25callbacks remain protected; fresh checkpoint audit PASS. Human visual NOT_APPROVED; other sizing/coarse/reflow/disabled/unsupported-composition and cumulative P01 remain open. Protection LOCAL_ONLY/NOT_CONFIGURED.
+
+Git: HEAD b02795e2 COMMITTED; previous push BLOCKED_ENVIRONMENT/SSH timeout, not verified. New implementation/tests/evidence UNCOMMITTED; authorized checkpoint publication pending. Status right panel queued; visibility unconfirmed.
+
+[Полный текущий отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-checkpoint-20261003T160507Z/report.md). [Точное решение focus scope](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-focus-unclipped-projection.proposed.md), SHA32ddae6f2896fe57bbdb506337fd70199d477f7ea7992e7739a5bae563d47f0b — ACCEPTED.
 
 ## История
 

@@ -1,0 +1,48 @@
+{
+  "calls": [
+    {
+      "name": "typecheck",
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+      "command": [
+        "E:\\Program Files\\nodejs\\node.exe",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "--filter",
+        "@frade/desktop",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-03T14:57:06.533Z",
+      "endedAtUtc": "2026-10-03T14:57:12.919Z",
+      "exitCode": 0
+    },
+    {
+      "name": "electron",
+      "cwd": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop",
+      "command": [
+        "E:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "ui-contract-theme.spec.ts",
+        "--grep",
+        "P01-UPPER-017 expanded real viewport text and media raster dark compact$",
+        "--workers=1",
+        "--reporter=json",
+        "--output",
+        "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-keyboard-raster-current-20261003T145706Z\\artifacts"
+      ],
+      "startedAtUtc": "2026-10-03T14:57:12.920Z",
+      "endedAtUtc": "2026-10-03T14:57:23.502Z",
+      "exitCode": 1
+    }
+  ],
+  "before": {
+    "apps/desktop/src/main/drawio-theme-bridge.ts": "37b2ed1bc342a62236245c7c8bffd788ddd8c08cff7c5ac704caa918133b1722",
+    "apps/desktop/tests/e2e/ui-contract-theme.spec.ts": "4ce1d2df41e8bf99db285628346840c5819adacac6db7e822cc0eda64fd1e88a",
+    "apps/desktop/out/main/index.cjs": "4f559fe2d99a0e7b344e52bed2c3b83f85581a108192a99f18351e0c1d2521db"
+  },
+  "after": {
+    "apps/desktop/src/main/drawio-theme-bridge.ts": "37b2ed1bc342a62236245c7c8bffd788ddd8c08cff7c5ac704caa918133b1722",
+    "apps/desktop/tests/e2e/ui-contract-theme.spec.ts": "4ce1d2df41e8bf99db285628346840c5819adacac6db7e822cc0eda64fd1e88a",
+    "apps/desktop/out/main/index.cjs": "4f559fe2d99a0e7b344e52bed2c3b83f85581a108192a99f18351e0c1d2521db"
+  },
+  "sourceUnchanged": true
+}

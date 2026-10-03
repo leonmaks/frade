@@ -1,0 +1,40 @@
+{
+  "atUtc": "2026-10-03T15:00:30.050Z",
+  "classification": "TEST",
+  "defect": "State-aware test incorrectly assumed native anchor.tabIndex=-1 without tabindex. Actual pinned Chromium reflects0 for this original href-less anchor, while focus fails.",
+  "baseline": {
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-expanded-current-20261003T022037Z/artifacts/ui-contract-theme-P01-UPPE-4d605-d-media-raster-dark-compact/capability-limitations.json",
+    "sha256": "90e9e1b9ae36559f20dee2c3fe9f24c12c23c61a4918862317e279b6e09c23d5",
+    "observations": [
+      {
+        "key": "viewPanels",
+        "actual": {
+          "focused": false,
+          "tabIndex": 0,
+          "tabIndexAttribute": null,
+          "href": null
+        }
+      },
+      {
+        "key": "insert",
+        "actual": {
+          "focused": false,
+          "tabIndex": 0,
+          "tabIndexAttribute": null,
+          "href": null
+        }
+      },
+      {
+        "key": "insertFreehand",
+        "actual": {
+          "focused": false,
+          "tabIndex": 0,
+          "tabIndexAttribute": null,
+          "href": null
+        }
+      }
+    ]
+  },
+  "repair": "Assert exact original absent tabindex/href plus reflected0; add actual hidden focus rejection. Visible keyboard role/tabindex/focus assertions and original identity/pixel guards retained.",
+  "productionChanged": false
+}

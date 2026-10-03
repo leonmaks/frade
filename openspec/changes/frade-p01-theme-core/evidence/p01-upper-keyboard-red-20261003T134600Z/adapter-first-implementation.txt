@@ -1,0 +1,181 @@
+
+  // Separate ownership records keep upper projections from changing the lower adapter.
+  type UpperProjection = Map<string, { before: string | null; last: string }>
+  type UpperControl = { kind: 'menu' | 'freehand'; handlers: unknown[]; drawing?: () => boolean; freehand?: any }
+  type UpperPopup = { instance: any; div: HTMLElement; tbody: HTMLElement; opener: HTMLElement; request: any; hide: () => void; hideSubmenu: (scope: any) => void }
+  type UpperPanel = { scope: any; div: HTMLElement; tbody: HTMLElement; parent?: any; row?: HTMLElement }
+  const upperControls = new Map<HTMLElement, UpperControl>(), upperControlProjection = new Map<HTMLElement, UpperProjection>(), upperMenuProjection = new Map<HTMLElement, UpperProjection>()
+  let upperPopup: UpperPopup | undefined, upperGestureSequence = 0
+  function upperAttribute(map: Map<HTMLElement, UpperProjection>, node: HTMLElement, name: string, value: string) {
+    let saved = map.get(node)
+    if (!saved) { saved = new Map(); map.set(node, saved) }
+    let property = saved.get(name)
+    if (!property) { property = { before: node.getAttribute(name), last: value }; saved.set(name, property) }
+    else if (node.getAttribute(name) !== property.last) return
+    if (node.getAttribute(name) !== value) node.setAttribute(name, value)
+    property.last = value
+  }
+  function restoreUpperProjection(map: Map<HTMLElement, UpperProjection>, keep?: Set<HTMLElement>) {
+    for (const [node, saved] of map) {
+      if (keep?.has(node)) continue
+      for (const [name, property] of saved) if (node.getAttribute(name) === property.last) {
+        if (property.before === null) node.removeAttribute(name)
+        else node.setAttribute(name, property.before)
+      }
+      map.delete(node)
+    }
+  }
+  const upperClickHandlers = (node: any): unknown[] => Array.isArray(node.mxListenerList)
+    ? node.mxListenerList.filter((entry: any) => entry.name === 'click' && typeof entry.f === 'function').map((entry: any) => entry.f) : []
+  function upperControlProof(node: HTMLElement) {
+    const source = upperOwners.get(node), control = upperControls.get(node)
+    if (!source || !control || !visible(node) || !node.matches(upperSelector) || node.className !== source.className ||
+      node.getAttribute('data-frade-upper-glyph') !== '1' || Array.from(source.properties).some(([name, value]) => !upperPropertyMatches(node, name, value))) return
+    const handlers = upperClickHandlers(node)
+    if (!handlers.length || handlers.length !== control.handlers.length || handlers.some((handler, i) => handler !== control.handlers[i])) return
+    if (control.kind === 'menu' && typeof (node as any).enabled !== 'boolean') return
+    if (control.kind === 'freehand' && (graph?.freehand !== control.freehand || graph?.freehand?.isDrawing !== control.drawing)) return
+    return control
+  }
+  const upperDisabled = (node: HTMLElement, control: UpperControl) => node.hasAttribute('disabled') || node.classList.contains('mxDisabled') ||
+    (control.kind === 'menu' ? (node as any).enabled === false : typeof graph?.isEnabled !== 'function' || !graph.isEnabled())
+  const upperInteractionReady = () => !disposed && currentPresentation() && upperRootOwned() && !active.upperPending &&
+    !graph?.isEditing?.() && !graph?.isMouseDown && !ui?.dialog && !(ui?.dialogs?.length > 0)
+  function upperPopupStructure(value: UpperPopup) {
+    return ui?.currentMenu === value.instance && ui.currentMenuElt === value.opener && value.instance.div === value.div &&
+      value.instance.tbody === value.tbody && value.div.isConnected && value.div.contains(value.tbody) &&
+      value.instance.hideMenu === value.hide && value.instance.hideSubmenu === value.hideSubmenu && !!upperControlProof(value.opener)
+  }
+  function upperPanels(value: UpperPopup): UpperPanel[] | undefined {
+    const result: UpperPanel[] = [], seen = new Set<HTMLElement>()
+    let rowCount = 0
+    const visit = (scope: any, div: HTMLElement, tbody: HTMLElement, parent?: any, row?: HTMLElement): boolean => {
+      if (result.length >= 32 || seen.has(div) || !(tbody instanceof HTMLElement) || !div.isConnected || !div.contains(tbody) || tbody.tagName !== 'TBODY') return false
+      seen.add(div); result.push({ scope, div, tbody, parent, row })
+      const children = Array.from(tbody.children)
+      rowCount += children.length
+      if (rowCount > 512) return false
+      for (const child of children) {
+        if (!(child instanceof HTMLTableRowElement)) return false
+        const sub = child as any
+        if (sub.div?.isConnected && (scope.activeRow !== child || !(sub.div instanceof HTMLElement) || !visit(child, sub.div, sub.tbody, scope, child))) return false
+      }
+      return !scope.activeRow || children.includes(scope.activeRow)
+    }
+    return visit(value.instance, value.div, value.tbody) ? result : undefined
+  }
+  function forgetUpperPopup(cancel = false) {
+    const previous = upperPopup
+    upperPopup = undefined
+    if (cancel && previous && upperPopupStructure(previous) && upperPanels(previous)) previous.hide.call(previous.instance)
+    restoreUpperProjection(upperMenuProjection)
+    if (previous && upperControlProjection.has(previous.opener)) upperAttribute(upperControlProjection, previous.opener, 'aria-expanded', 'false')
+  }
+  function clearUpperInteraction() {
+    ++upperGestureSequence; forgetUpperPopup(true); restoreUpperProjection(upperControlProjection); upperControls.clear()
+  }
+  function upperPopupLive() {
+    if (!upperPopup || !upperInteractionReady() || upperPopup.request !== active.request || !upperPopupStructure(upperPopup)) return false
+    const control = upperControlProof(upperPopup.opener)
+    return !!control && !upperDisabled(upperPopup.opener, control)
+  }
+  function reconcileUpperMenu() {
+    if (!upperPopup || !currentPresentation()) return
+    const panels = upperPopupLive() ? upperPanels(upperPopup) : undefined
+    if (!panels) { forgetUpperPopup(); return }
+    const keep = new Set<HTMLElement>(), own = (node: HTMLElement, name: string, value: string) => { keep.add(node); upperAttribute(upperMenuProjection, node, name, value) }
+    for (const entry of panels) {
+      own(entry.div, 'data-frade-upper-menu', '1'); own(entry.div, 'role', 'menu'); own(entry.div, 'aria-label', upperPopup.opener.title)
+      const table = entry.tbody.parentElement
+      if (table?.tagName === 'TABLE') own(table, 'role', 'presentation')
+      own(entry.tbody, 'role', 'presentation')
+      for (const child of Array.from(entry.tbody.children)) {
+        const row = child as HTMLTableRowElement, label = row.cells[1]?.textContent?.trim() || ''
+        if (!label) { own(row, 'role', 'separator'); continue }
+        const disabled = Array.from(row.cells).some(cell => cell.classList.contains('mxDisabled')) || !registered(row, gestureNames()[0]) || !registered(row, gestureNames()[1])
+        const checkmark = globals.Editor?.checkmarkImage
+        const checked = typeof checkmark === 'string' && !!checkmark && Array.from(row.cells[1].querySelectorAll<HTMLElement>('div,img')).some(icon => icon.style.backgroundImage.includes(checkmark) || (icon instanceof HTMLImageElement && icon.src === checkmark))
+        own(row, 'data-frade-upper-row', '1'); own(row, 'role', checked ? 'menuitemcheckbox' : 'menuitem'); own(row, 'aria-label', label); own(row, 'aria-disabled', String(disabled)); own(row, 'tabindex', '-1')
+        if (checked) own(row, 'aria-checked', 'true')
+        const sub = row as any
+        if (sub.div instanceof HTMLElement && sub.tbody instanceof HTMLElement && sub.div.contains(sub.tbody)) { own(row, 'aria-haspopup', 'menu'); own(row, 'aria-expanded', String(sub.div.isConnected && entry.scope.activeRow === row)) }
+        for (const cell of Array.from(row.cells)) { own(cell, 'role', 'presentation'); own(cell, 'aria-hidden', 'true') }
+      }
+    }
+    restoreUpperProjection(upperMenuProjection, keep)
+  }
+  function reconcileUpperInteraction() {
+    if (disposed || !upperRootOwned()) { clearUpperInteraction(); return }
+    if (!currentPresentation()) return
+    const keep = new Set<HTMLElement>()
+    for (const [node, source] of upperOwners) {
+      if (!visible(node)) continue
+      const hash = upperVerified.get(source.bytes), kind = hash === 'e78bd38fea8a799c13ffc0fbbab4d9ca6a1ee0ee57360c68596b58e4fe68da9a' ? 'freehand' : 'menu'
+      if (!upperControls.has(node)) {
+        const handlers = upperClickHandlers(node)
+        if (!handlers.length || !node.title.trim() || (kind === 'menu' ? typeof (node as any).enabled !== 'boolean' : typeof graph?.freehand?.isDrawing !== 'function')) continue
+        upperControls.set(node, { kind, handlers, ...(kind === 'freehand' ? { freehand: graph.freehand, drawing: graph.freehand.isDrawing } : {}) })
+      }
+      const control = upperControlProof(node)
+      if (!control) continue
+      keep.add(node)
+      const own = (name: string, value: string) => upperAttribute(upperControlProjection, node, name, value), disabled = upperDisabled(node, control)
+      own('data-frade-upper-control', '1'); own('role', 'button'); own('tabindex', disabled ? '-1' : '0'); own('aria-label', node.title); own('aria-disabled', String(disabled))
+      if (control.kind === 'menu') { own('aria-haspopup', 'menu'); own('aria-expanded', String(upperPopup?.opener === node && upperPopupStructure(upperPopup))) }
+      else own('aria-pressed', String(control.drawing!.call(control.freehand)))
+    }
+    restoreUpperProjection(upperControlProjection, keep)
+    for (const node of upperControls.keys()) if (!keep.has(node)) upperControls.delete(node)
+    reconcileUpperMenu()
+  }
+  function upperFocus(node?: HTMLElement) {
+    if (node && upperInteractionReady() && visible(node) && node.getAttribute('aria-disabled') !== 'true') node.focus({ preventScroll: true })
+  }
+  const upperRows = (panel: UpperPanel) => Array.from(panel.tbody.children).filter((node): node is HTMLElement => node instanceof HTMLElement && visible(node) && node.getAttribute('role')?.startsWith('menuitem') === true && node.getAttribute('aria-disabled') === 'false')
+  function adoptUpperPopup(opener: HTMLElement, previous: any, request: any, keyboard = false) {
+    const control = upperControlProof(opener), instance = ui?.currentMenu
+    if (!upperInteractionReady() || active.request !== request || control?.kind !== 'menu' || upperDisabled(opener, control) || !instance || instance === previous || ui.currentMenuElt !== opener || !(instance.div instanceof HTMLElement) || !(instance.tbody instanceof HTMLElement) || typeof instance.hideMenu !== 'function' || typeof instance.hideSubmenu !== 'function') return
+    if (upperPopup?.instance === instance) return
+    forgetUpperPopup()
+    const candidate: UpperPopup = { instance, div: instance.div, tbody: instance.tbody, opener, request, hide: instance.hideMenu, hideSubmenu: instance.hideSubmenu }
+    if (!upperPopupStructure(candidate) || !upperPanels(candidate)) return
+    upperPopup = candidate; reconcileUpperInteraction()
+    if (keyboard && upperPopupLive()) upperFocus(upperRows(upperPanels(candidate)![0])[0])
+  }
+  function upperMouse(event: Event) {
+    const target = event.target instanceof Element ? event.target.closest<HTMLElement>(upperSelector) : null
+    if (!target || !upperInteractionReady()) return
+    const control = upperControlProof(target)
+    if (!control || upperDisabled(target, control) || !registered(target, event.type)) return
+    const request = active.request, previous = ui.currentMenu, sequence = ++upperGestureSequence
+    queueMicrotask(() => { if (sequence !== upperGestureSequence || !upperInteractionReady() || active.request !== request) return; if (control.kind === 'menu') adoptUpperPopup(target, previous, request); reconcileUpperInteraction() })
+  }
+  function upperKey(event: KeyboardEvent): boolean {
+    if (!upperInteractionReady() || event.isComposing || event.keyCode === 229 || event.repeat || event.altKey || event.ctrlKey || event.metaKey || (event.shiftKey && event.key !== 'Tab')) return false
+    const target = event.target instanceof Element ? event.target : null
+    if (target?.closest('input,textarea,select,[contenteditable=""],[contenteditable="true"],[role="textbox"],[role="dialog"],[role="alertdialog"]')) return false
+    if (upperPopup && !upperPopupLive()) forgetUpperPopup()
+    const panels = upperPopupLive() ? upperPanels(upperPopup!) : undefined
+    if (upperPopup && !panels) { forgetUpperPopup(); return false }
+    let handled = false
+    if (panels?.length) {
+      const previous = upperPopup!, row = target?.closest<HTMLElement>('tr'), entry = panels.find(panel => !!row && row.parentElement === panel.tbody)
+      if (event.key === 'Escape' || event.key === 'Tab') {
+        const deepest = panels[panels.length - 1]
+        if (event.key === 'Escape' && deepest.parent && deepest.row) { previous.hideSubmenu.call(previous.instance, deepest.parent); reconcileUpperMenu(); upperFocus(deepest.row) }
+        else { forgetUpperPopup(true); reconcileUpperInteraction(); upperFocus(previous.opener) }
+        event.stopPropagation(); if (event.key === 'Tab') return true; handled = true
+      } else if (entry && row && row.getAttribute('aria-disabled') === 'false') {
+        const items = upperRows(entry), index = items.indexOf(row)
+        if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) { upperFocus(items[event.key === 'Home' ? 0 : event.key === 'End' ? items.length - 1 : (index + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length]); handled = true }
+        else if (event.key === 'ArrowRight' && (row as any).div && originalGesture(row, true)) { reconcileUpperMenu(); const nested = upperPopup && upperPanels(upperPopup)?.find(panel => panel.row === row); if (nested) upperFocus(upperRows(nested)[0]); handled = true }
+        else if (event.key === 'ArrowLeft' && entry.parent && entry.row) { previous.hideSubmenu.call(previous.instance, entry.parent); reconcileUpperMenu(); upperFocus(entry.row); handled = true }
+        else if (['Enter', ' '].includes(event.key) && originalGesture(row)) { reconcileUpperInteraction(); if (!upperPopup) upperFocus(previous.opener); handled = true }
+      }
+    } else {
+      const node = target?.closest<HTMLElement>(upperSelector), control = node && upperControlProof(node)
+      if (node && control && !upperDisabled(node, control) && (['Enter', ' '].includes(event.key) || (event.key === 'ArrowDown' && control.kind === 'menu'))) { const previous = ui.currentMenu, request = active.request; node.click(); if (control.kind === 'menu') adoptUpperPopup(node, previous, request, true); reconcileUpperInteraction(); handled = true }
+    }
+    if (handled) { event.preventDefault(); event.stopPropagation() }
+    return handled
+  }

@@ -154,3 +154,18 @@ Only apps/desktop/src/main/drawio-theme-bridge.ts is a production output. No par
 Original three SVG bytes/silhouettes/18px geometry/opacity, target dimensions, positions, responsive thresholds, menu content/order/placement and enabled decisions remain unchanged. UI state tokens do not become domain visualization. XML/JSON/preferences/undo/selection/viewport/graph-editor identities remain exact for presentation/navigation/cancellation; deliberate original actions are measured separately. Freehand window/dialog internals and persistence behavior remain excluded. Any new required defect there, target sizing/reflow or unsupported composition is still a blocker for its proper scope. No fourth exception; Routing independent; STOP before P02.
 
 Current source397916/productiond8dfc retained: expanded234PASS/FUI12PASS/BDD111PASS and original EscapeFAIL remain historical source-bound evidence. Acceptance is not resolution of that defect. Fresh coherent plan and strict validation -> automatic independent packet-confined PRE PASS -> meaningful permanent RED -> sole-bridge repair -> targeted and applicable full checks/current FUI revalidation -> scope verification -> fresh independent POST. Required FAIL stops progression. Cumulative P01/human visuals/archive remain open. Requested reviewer pair is selected from the exact current tasks row; actual backend/effort remains NOT_CONFIRMED unless attested.
+
+
+## Accepted unclipped focus substage within2.4/2.5/3.1
+
+Authority: openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z/acceptance.json. The user explicitly accepted P01-UPPER-FOCUS-UNCLIPPED-PROJECTION-01 exact proposal SHA25632ddae6f2896fe57bbdb506337fd70199d477f7ea7992e7739a5bae563d47f0b. This separate acceptance supersedes only its historical PROPOSED header; old FAIL/raw candidates remain immutable, no gate or visual approval implied.
+
+Existing exact P01 upper-three keyboard repair PRE/POST gpt-6-astra/xhigh row governs this substage; each request pins current tasks raw SHA/excerpt.
+
+A. Acceptance/raw-before recorded; coherent four-artifact/BDD/trace/docs reconciliation; strict validation; fresh confined independent PRE. PRE NOT_RUN at planning.
+B. Preserve current2PASS/4FAIL candidate and original assertions/PNGs; permanent RED for body focus decoration lease, preserved target/layout/opacity, clipping/contrast/backing bounds, no neighbor obstruction, modal/z-order isolation and cleanup/no churn. NOT_RUN for extension.
+C. After PRE PASS implement exact accepted sole-bridge decoration/backing. No toolbar layout or opacity change. NOT_RUN.
+D. Actual complete contour/keyboard/popup/actions/preview/preservation six-state and required media/viewport/text200; unchanged V6/current-source pins. Final-source FUI12 before one-control-literal/111BDD/two-positive/14negative; affected and full checks. NOT_RUN.
+E. Scope verify then fresh independent POST. Human visual/cumulative/other required state coverage remain open; no archive/P02. NOT_RUN.
+
+The current toolbar-contained candidate has58/58bridge units/static/build PASS but actual focus2PASS/4FAIL. Preserve all assertions/reports/PNGs. Coherent four-artifact/BDD/trace plan and strict validation -> fresh automatic independent PRE using existing P01 upper-three keyboard repair gpt-6-astra/xhigh assignment -> permanent RED -> sole-bridge repair -> current required runtime/full checks/FUI12 before one-control-literal/111BDD/two-positive/14negative revalidation -> verify -> independent POST. P01 remains5/10, human visual NOT_APPROVED; other popup-indicator/state/target/coarse/reflow/disabled/composition requirements remain open. No P02.

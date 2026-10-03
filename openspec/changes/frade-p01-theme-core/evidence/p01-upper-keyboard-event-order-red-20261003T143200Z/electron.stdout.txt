@@ -1,0 +1,145 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\playwright.config.ts",
+    "rootDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-event-order-red-20261003T143200Z/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ui-contract-theme.spec.ts",
+      "file": "ui-contract-theme.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P01-UPPER-018 original actions and presentation ownership light compact",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 14469,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('iframe').contentFrame().locator('div.mxPopupMenu:visible')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('iframe').contentFrame().locator('div.mxPopupMenu:visible')\u001b[22m\n\u001b[2m    13 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('iframe').contentFrame().locator('div.mxPopupMenu:visible')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('iframe').contentFrame().locator('div.mxPopupMenu:visible')\u001b[22m\n\u001b[2m    13 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:4130:29",
+                    "location": {
+                      "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                      "column": 29,
+                      "line": 4130
+                    },
+                    "snippet": "  4128 |         const escapeObservation=await frame.locator('body').evaluate(async()=>{await new Promise<void>(r=>requestAnimationFrame(()=>requestAnimationFrame(()=>r())));const w=window as any;document.removeEventListener('keydown',w.__upperEscapeCapture,true);return {events:w.__upperEscapeEvents,activeTag:document.activeElement?.tagName,activeClass:document.activeElement?.className,menus:[...document.querySelectorAll<HTMLElement>('div.mxPopupMenu')].map(menu=>({visible:menu.getBoundingClientRect().height>0,html:menu.outerHTML}))}})\n  4129 |         await writeFile(info.outputPath('original-'+key+'-escape-diagnostic.json'),JSON.stringify({focusBeforeEscape,escapeObservation}))\n> 4130 |         await expect(popup).toHaveCount(0)\n       |                             ^\n  4131 |         const after={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f),identity:await upperCheckIdentity(f)}\n  4132 |         expect(after).toEqual(before);observations.push({action:key,labels,before,after})\n  4133 |       }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                        "column": 29,
+                        "line": 4130
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('iframe').contentFrame().locator('div.mxPopupMenu:visible')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('iframe').contentFrame().locator('div.mxPopupMenu:visible')\u001b[22m\n\u001b[2m    13 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  4128 |         const escapeObservation=await frame.locator('body').evaluate(async()=>{await new Promise<void>(r=>requestAnimationFrame(()=>requestAnimationFrame(()=>r())));const w=window as any;document.removeEventListener('keydown',w.__upperEscapeCapture,true);return {events:w.__upperEscapeEvents,activeTag:document.activeElement?.tagName,activeClass:document.activeElement?.className,menus:[...document.querySelectorAll<HTMLElement>('div.mxPopupMenu')].map(menu=>({visible:menu.getBoundingClientRect().height>0,html:menu.outerHTML}))}})\n  4129 |         await writeFile(info.outputPath('original-'+key+'-escape-diagnostic.json'),JSON.stringify({focusBeforeEscape,escapeObservation}))\n> 4130 |         await expect(popup).toHaveCount(0)\n       |                             ^\n  4131 |         const after={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f),identity:await upperCheckIdentity(f)}\n  4132 |         expect(after).toEqual(before);observations.push({action:key,labels,before,after})\n  4133 |       }\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:4130:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:12756) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-03T14:27:17.333Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-keyboard-event-order-red-20261003T143200Z\\artifacts\\ui-contract-theme-P01-UPPE-578ac-ion-ownership-light-compact\\test-failed-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-keyboard-event-order-red-20261003T143200Z\\artifacts\\ui-contract-theme-P01-UPPE-578ac-ion-ownership-light-compact\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                    "column": 29,
+                    "line": 4130
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-e943d274592ccaf49e24",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 5222,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-03T14:27:15.730Z",
+    "duration": 16136.351,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

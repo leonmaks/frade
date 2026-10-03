@@ -346,3 +346,22 @@ P01 SHALL implement only accepted P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01 under
 #### Scenario: Accepted keyboard scope does not waive cumulative gates
 - **WHEN** the coherent plan passes strict validation and fresh stage-assigned independent PRE
 - **THEN** meaningful RED precedes sole-bridge repair and required real six-state focus action preservation current-FUI full checks verification and independent POST follow; unavailable states new sizing reflow or composition defects and human visual acceptance remain open blockers without another exception or P02 progression
+
+
+## ADDED Requirements
+
+### Requirement: Exact unclipped focus decoration preserves original toolbar
+
+P01 SHALL apply accepted P01-UPPER-FOCUS-UNCLIPPED-PROJECTION-01 under openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z/acceptance.json, exact proposal SHA25632ddae6f2896fe57bbdb506337fd70199d477f7ea7992e7739a5bae563d47f0b. Effective design bounds SHALL remain normative; prior exclusions and gates remain intact.
+
+#### Scenario: Focus escapes clipping without changing original layout
+- **WHEN** a current verified enabled original View Insert or Freehand anchor has visible keyboard focus
+- **THEN** exactly one inert pointer-transparent bridge-created frame-body decoration shows canonical2px positive-offset2px focus with at most1px canonical backing around its stroke and at most5px extent while original target opacity geometry toolbar layout callbacks and document state remain exact
+
+#### Scenario: Visual ownership cannot cross menus modal or expired context
+- **WHEN** focus menu modal source capability frame ownership scroll resize media text or lifecycle changes
+- **THEN** exact current proof governs bounded reprojection or removal and the decoration cannot cover another required control escape the iframe cross a modal or be recreated by stale queued work; prepare stays pure release retains rollback restores and disposal removes owned presentation
+
+#### Scenario: Complete real contour evidence retains historical blockers
+- **WHEN** accepted extension passes coherent-plan validation and fresh independent PRE
+- **THEN** permanent RED precedes production and actual complete contour contrast visibility six-state preservation current glyph FUI full checks verification and POST remain required; straight-band samples CSS declarations acceptance and historic PASS cannot close unknown composition human visuals or cumulative P01

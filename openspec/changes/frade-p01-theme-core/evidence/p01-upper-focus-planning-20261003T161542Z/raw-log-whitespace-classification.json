@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-10-03T16:22:37.235Z",
+  "fullCheck": {
+    "command": [
+      "git",
+      "-c",
+      "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exitCode": 2,
+    "stdout": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-red-20261003T155435Z/unit.stderr.txt:5: new blank line at EOF.\nopenspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-event-order-red-20261003T143200Z/unit.stderr.txt:5: new blank line at EOF.\nopenspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-red-20261003T134600Z/unit-red.stderr.txt:5: new blank line at EOF.\nopenspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-red-20261003T134600Z/unit-red2.stderr.txt:5: new blank line at EOF.\n",
+    "stderr": ""
+  },
+  "classification": "Four immutable raw Vitest stderr captures end with native blank lines; preserve exact emitted bytes as evidence, not authored source formatting. No source/test rule or global config is changed.",
+  "exactRawLogs": [
+    "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-red-20261003T155435Z/unit.stderr.txt",
+    "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-event-order-red-20261003T143200Z/unit.stderr.txt",
+    "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-red-20261003T134600Z/unit-red.stderr.txt",
+    "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-red-20261003T134600Z/unit-red2.stderr.txt"
+  ],
+  "authoredAndAllOtherFiles": {
+    "command": [
+      "git",
+      "-c",
+      "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".",
+      ":(exclude)openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-red-20261003T155435Z/unit.stderr.txt",
+      ":(exclude)openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-event-order-red-20261003T143200Z/unit.stderr.txt",
+      ":(exclude)openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-red-20261003T134600Z/unit-red.stderr.txt",
+      ":(exclude)openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-red-20261003T134600Z/unit-red2.stderr.txt"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+}
