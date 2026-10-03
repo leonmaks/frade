@@ -1,6 +1,6 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-03T18:35:23.203Z
+UPDATED_AT_UTC: 2026-10-03T18:42:13.765Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
@@ -108,7 +108,7 @@ Task2.1–2.4 PUBLISHED; task2.5 calibration03 imported and actual Windows146/14
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 082bb16ba8fc4701c82ad5d6b095083785a2920b (task2.5 diagnostic02 FAIL/BLOCKED base; calibration03 checkpoint pending commit; incomplete9/18).
+SOURCE_CHECKPOINT_SHA: 77907fe42250d13befaaae1da3c86f68b8979594 (task2.5 calibration03 candidate committed locally; fresh PRE pending; incomplete9/18).
 COMMIT_STATE: 082bb16ba8fc4701c82ad5d6b095083785a2920b COMMITTED_LOCAL; diagnostic02 FAIL/RCA/source preserved. Task2.5 calibration03 source/evidence checkpoint prepared locally; fresh PRE pending; no push attempted per user instruction until SSH restored.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
 PUSH_STATE: DEFERRED_BY_USER; SSH access restoration in progress; continue locally, no push attempted. Remote SHA UNAVAILABLE.
