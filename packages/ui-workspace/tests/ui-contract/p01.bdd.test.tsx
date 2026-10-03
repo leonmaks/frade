@@ -137,7 +137,7 @@ function checkFuiBindings(bindings: FuiBinding[], read: (file: string) => Buffer
   }
   fuiDemand(names.length === 12 && new Set(names).size === 12, 'ALLOCATIONS')
 }
-const fuiControlRun = "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261003T193349Z"
+const fuiControlRun = "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261003T232700Z"
 const fuiControl = () => JSON.parse(fuiRead(fuiControlRun + '/control-valid-bindings.json').toString()) as FuiBinding[]
 it('P01 FUI actual fullRuntimeBindings require all seven examples independently of pending declarations', () => {
   const registry = JSON.parse(fuiRead('docs/ui/decisions/p01-theme-traceability.json').toString())

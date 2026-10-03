@@ -1,6 +1,6 @@
 # P01: readiness 7/7 PASS; pending-focus repair PRE preparation
 
-Обновлено 2026-10-03T22:54:33.612Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; Foundation archived; P02–P07 NOT_STARTED; Routing независим.
+Обновлено 2026-10-03T23:41:28.967Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; Foundation archived; P02–P07 NOT_STARTED; Routing независим.
 
 | Текущая задача | Фактический статус |
 | --- | --- |
@@ -9,17 +9,17 @@
 | Two-callback repair | IMPLEMENTED; original assertions/actions exact, reverse restores every byte; production/vendor unchanged |
 | Original lower six states + reflow/media | 7/7 PASS,36 readiness receipts, listener cleanup and native completion checked |
 | Typecheck / lint / UI compliance / strict OpenSpec | PASS on current repair/planning source |
-| Original B02 / V6 / upper actions / keyboard / focus | RUNNING,37-case batch; no result claim before command exit |
+| Original B02 / V6 / upper actions / keyboard / focus | NOT_COMPLETED: owner stopped after new production RED; source unchanged, no matrix PASS; B02 FAIL repeated |
 | Pending-prepare retained focus | Deterministic RED:7FAIL; current ring survives invalidation, handoff; production repair NOT_STARTED |
-| Pending-focus coherent corrective plan | Four artifacts + BDD prepared within accepted focus contract; fresh automatic PRE NOT_DISPATCHED while runtime writes evidence |
-| Current-source FUI12 / control refresh / BDD111 / fresh full root | NOT_RUN; old binding retained until actual FUI execution; historical full FAIL116PASS/13FAIL remains |
+| Pending-focus coherent corrective plan | Four artifacts + BDD prepared within accepted focus contract; strict/static/compliance PASS; fresh automatic PRE READY_FOR_DISPATCH, then candidate freeze |
+| Current-source FUI12 / control refresh / BDD111 / fresh full root | FUI12 / exact literal refresh / BDD111 / 2positive+14negative PASS; fresh full NOT_RUN, historical FAIL116PASS/13FAIL remains |
 | Verify / POST / human visuals / archive | BLOCKED / NOT_RUN / NOT_APPROVED / BLOCKED |
 
 Evidence: [readiness repair and RCA](../../openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-repair-20261003T223400Z/rca.md); [pending-focus corrective plan](../../openspec/changes/frade-p01-theme-core/evidence/p01-pending-focus-planning-20261003T225400Z/repair-plan.md). No new scope exception or model change. B02/full-focus failures remain separately open.
 
-Next: finish source-bound regression batch, save complete evidence; freeze a fresh independent PRE packet for the existing focus-contract defect. No production fix before PASS. Then current-source required checks and POST; no P02.
+Next: freeze a fresh independent PRE packet for the existing focus-contract defect. No production fix before PASS. Then current-source required checks and POST; no P02.
 
-Git local HEAD eedbf406428bb9d03b929d4f822ab853a9a84e76; current repair/tests/plan/evidence UNCOMMITTED. Publication BLOCKED_ENVIRONMENT timeout/reset; last verified remote cd93819cb7b1d02e474e01c664e8654c04af5ca9. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibility unconfirmed.
+Git checkpoint fb8ed636ac157790b7c7a9d435d9d00e8c29bbcf COMMITTED; final FUI/control/partial-run metadata will enter next checkpoint. Publication retry via strict pinned SSH22 BLOCKED_ENVIRONMENT timeout/reset; last verified remote cd93819cb7b1d02e474e01c664e8654c04af5ca9. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibility unconfirmed.
 
 ## История
 
