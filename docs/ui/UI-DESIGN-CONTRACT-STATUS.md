@@ -1,3 +1,25 @@
+# P01: независимый PRE PASS; начинается ремонт тестов
+
+2026-10-03T01:43:57.585Z. UI branch/worktree/common/original baseline неизменны; P01 5/10, guide1.0/tokens1.0.0. PRE gpt-6-astra/xhigh PASS:130events,17raw artifacts,1513packet hashes verified, candidate/packet/plan unchanged. Evidence openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-accepted-pre-received-20261003T014255Z. Actual backend/effort NOT_CONFIRMED. Предыдущий prepare BLOCKED сохранён отдельно.
+
+- План/strict/compliance PASS. Разрешены только новые upper-three assertions и одна FUI control ссылка после свежего12-case запуска; production неизменен.
+- Сейчас: narrow hidden/restoration → rendered full matrix → final-source FUI12 → one-literal integrity/BDD111+14negative → affected/full checks → verify/focused POST.
+- Keyboard BLOCKED_ORIGINAL_FOCUS_UNAVAILABLE, human visuals NOT_APPROVED, cumulative/archive BLOCKED; P02 не начат. Текущие старые BDD110/111 и expanded FAIL ещё не исправлены/не переименованы в PASS. Routing независим.
+- PRE checkpoint готовится к commit/push в разрешённую UI ветку; панельqueued.
+
+## История
+
+# P01: strict/compliance PASS; повторная подготовка независимого PRE
+
+2026-10-03T01:28:51.827Z. Branch codex/frade-ui-design-contract; UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. P01 5/10; guide1.0/tokens1.0.0.
+
+- Coherent accepted plan committed244b882bc6337854accfee5552019434c8873f31; push pending. Strict validation, ui:compliance and diff PASS.
+- PRE attempt1 BLOCKED before model invocation: ignored empty historical stderr.log omitted by candidateSnapshot. Fresh confinement PASS; raw receipt preserved. Exact byte-identical evidence copy repairs selection; shared runner/guards unchanged. RCA openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-packet-repair-20261003T012851Z/rca.json.
+- Retry requests gpt-6-astra/xhigh from exact current tasks row. Production/tests unchanged; pending dependent test/control changes blocked until fresh PRE PASS. BDD110/111, expanded FAIL, current root NOT_RUN, cumulative/keyboard/archive BLOCKED and visuals NOT_APPROVED remain. No P02/Routing dependency.
+- On dispatch the full candidate is frozen. Status will update only after unfreezing. New preparation metadata UNCOMMITTED/UNPUSHED; panelqueued.
+
+## История
+
 # P01: принятые решения внесены в план; подготовка свежего PRE
 
 2026-10-03T01:20:18.228Z. UI branch/worktree/common/original baseline неизменны (ниже). Checkpoint37efb8608d3961f2df0f2d3ae3a726a75f934258 опубликован и remote SHA проверен. Guide1.0/tokens1.0.0; P01 5/10.
