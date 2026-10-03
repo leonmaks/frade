@@ -382,3 +382,23 @@ Only apps/desktop/tests/e2e/ui-contract-theme.spec.ts may receive this repair: r
 #### Scenario: Frozen original tests and all failure evidence remain authoritative
 - **WHEN** the accepted readiness delta passes coherent validation and fresh independent PRE before repair
 - **THEN** exact reverse-delta proof SHALL restore original bytes and callbacks, other frozen assertions SHALL remain exact, and targeted six-state current FUI controls full regression verification and POST SHALL remain required without waiving B02 focus or cumulative visual blockers
+
+
+## ADDED Requirements
+
+### Requirement: Retained focus obeys existing live-anchor validity during pending prepare
+
+P01 SHALL preserve the previously accepted exact focus contract during a pending prepare: prepare itself remains DOM-pure, and subsequent independent focus/capability/menu/modal changes SHALL invalidate an ineligible retained visual lease. Pending ownership SHALL NOT create or transfer a new decoration. This clarifies the existing accepted current-anchor and stale-work invariants without extending visual authority.
+
+#### Scenario: Independent focus invalidation ends the retained lease
+- **WHEN** pending prepare retains an otherwise valid decoration and its anchor loses focus or enabled state or an original menu or modal opens or focus moves to another anchor
+- **THEN** only that stale private decoration is removed without native actions geometry or semantic changes and no pending task recreates it
+
+#### Scenario: Valid pending prepare is pure and current apply can restore focus
+- **WHEN** prepare retains the same eligible focused anchor and later current apply rollback or release occurs
+- **THEN** pending validation makes no decorative writes while current presentation may restore its valid decoration under all previous ownership and contour limits
+
+This is corrective planning within already accepted P01-UPPER-FOCUS-UNCLIPPED-PROJECTION-01 (proposal SHA25632ddae6f2896fe57bbdb506337fd70199d477f7ea7992e7739a5bae563d47f0b; acceptance evidence/p01-upper-focus-planning-20261003T161542Z/acceptance.json), not a new visual/scope exception. Its exact-current-focus, enabled-anchor, menu/modal exclusion and stale-work rules remain normative. The separately accepted native-resize exception authorizes only its two readiness callbacks and does not authorize this production repair. No guide/token/geometry/opacity/vendor/domain/routing/parent-IPC change; no P02 or task closure.
+
+The open PRE concern is now deterministic: evidence/p01-pending-focus-red-20261003T224500Z preserves five FAIL; expanded evidence/p01-pending-focus-expanded-red-20261003T224900Z preserves seven FAIL. During a second pending prepare, early currentPresentation returns retain a ring after focus/window blur, disabled capability, a native menu/dialog or focus handoff. Prepare itself remains DOM-pure; retention is valid only while the same exact anchor remains eligible. No production fix has been applied.
+Order: coherent artifacts/BDD and strict validation -> fresh automatic independent PRE under the unchanged exact P01 upper-three keyboard repair assignment in tasks.md -> regression-first sole-bridge repair -> all existing bridge units/static/build, current six-state V6/actions/keyboard/focus and native lower/reflow, final-source FUI12 before sole authorized control-literal/registry refresh, two positives/14 exact negative causes/BDD111, fresh full root -> OpenSpec verification -> independent POST. Source-bound earlier PASS does not validate later production. B02/full focus failures remain separately open until explained; human visuals NOT_APPROVED; cumulative/archive blocked. No new model decision or scope waiver.

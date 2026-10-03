@@ -1,26 +1,51 @@
-# P01: fixture-scope принят — подготовка PRE
+# P01: readiness 7/7 PASS; pending-focus repair PRE preparation
 
-Обновлено 2026-10-03T21:29:03.164Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; Foundation archived; P02–P07 NOT_STARTED; Routing независим.
+Обновлено 2026-10-03T22:54:33.612Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; Foundation archived; P02–P07 NOT_STARTED; Routing независим.
+
+| Текущая задача | Фактический статус |
+| --- | --- |
+| Native readiness: exact accepted scope + automatic PRE | ACCEPTED / PASS,17raw/76events; requested gpt-6-astra/xhigh, backend NOT_CONFIRMED |
+| Causal RED | PROVEN native Format lower / Shapes reflow; all raw FAIL retained |
+| Two-callback repair | IMPLEMENTED; original assertions/actions exact, reverse restores every byte; production/vendor unchanged |
+| Original lower six states + reflow/media | 7/7 PASS,36 readiness receipts, listener cleanup and native completion checked |
+| Typecheck / lint / UI compliance / strict OpenSpec | PASS on current repair/planning source |
+| Original B02 / V6 / upper actions / keyboard / focus | RUNNING,37-case batch; no result claim before command exit |
+| Pending-prepare retained focus | Deterministic RED:7FAIL; current ring survives invalidation, handoff; production repair NOT_STARTED |
+| Pending-focus coherent corrective plan | Four artifacts + BDD prepared within accepted focus contract; fresh automatic PRE NOT_DISPATCHED while runtime writes evidence |
+| Current-source FUI12 / control refresh / BDD111 / fresh full root | NOT_RUN; old binding retained until actual FUI execution; historical full FAIL116PASS/13FAIL remains |
+| Verify / POST / human visuals / archive | BLOCKED / NOT_RUN / NOT_APPROVED / BLOCKED |
+
+Evidence: [readiness repair and RCA](../../openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-repair-20261003T223400Z/rca.md); [pending-focus corrective plan](../../openspec/changes/frade-p01-theme-core/evidence/p01-pending-focus-planning-20261003T225400Z/repair-plan.md). No new scope exception or model change. B02/full-focus failures remain separately open.
+
+Next: finish source-bound regression batch, save complete evidence; freeze a fresh independent PRE packet for the existing focus-contract defect. No production fix before PASS. Then current-source required checks and POST; no P02.
+
+Git local HEAD eedbf406428bb9d03b929d4f822ab853a9a84e76; current repair/tests/plan/evidence UNCOMMITTED. Publication BLOCKED_ENVIRONMENT timeout/reset; last verified remote cd93819cb7b1d02e474e01c664e8654c04af5ca9. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibility unconfirmed.
+
+## История
+
+# P01: native readiness — targeted tests
+
+Обновлено 2026-10-03T22:37:42.391Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; Foundation archived; P02–P07 NOT_STARTED; Routing независим.
 
 | Текущая задача | Статус |
 | --- | --- |
 | Body focus repair | IMPLEMENTED, commit e5edd771; targeted60units/96contours/FUI12/BDD111 PASS |
 | Fresh full check:all | FAIL: Draw215PASS; desktop116PASS/13FAIL;3478source hashes unchanged |
 | Unchanged diagnostic control |1PASS (new focus),2FAIL (old lower/reflow); full FAIL не отменён |
-| Native reflow RCA | Actual late toggleShapesPanel stack recorded; early stable fixture boundary; lower causal proof pending |
+| Native reflow RCA | PROVEN: delayed Shapes completion (reflow) and Format completion (lower); raw original-assertion FAIL retained |
 | Exact two-fixture readiness exception | ACCEPTED SHA5d1b7aee; assertions/limits/old origin retained |
-| Four artifacts + BDD | RECONCILED; source/tests unchanged |
+| Four artifacts + BDD | RECONCILED; accepted readiness implementation below |
 | Strict/compliance/BDD after plan update | PASS / PASS /111PASS |
-| Independent PRE | READY_TO_DISPATCH; assigned gpt-6-astra/xhigh, actual backend NOT_CONFIRMED |
-| Readiness implementation / full retest | NOT_STARTED / NOT_RUN |
+| Independent PRE | PASS;17raw/76events; candidate/packet/plan unchanged; requested gpt-6-astra/xhigh, backend NOT_CONFIRMED |
+| Readiness implementation / full retest | IMPLEMENTED readiness only; typecheck/lint PASS; seven original cases RUNNING / full NOT_RUN |
 | Other B02/focus FAIL and pending-prepare lease question | OPEN; no environment or production attribution assumed |
 | Focus/cumulative POST, human visuals, archive | BLOCKED / NOT_APPROVED / BLOCKED |
 
 [Текущий full-check отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-verification-20261003T201400Z/report.md); [принятый scope](../../openspec/changes/frade-p01-theme-core/decisions/p01-native-resize-settlement-fixture.proposed.md); [acceptance](../../openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-planning-20261003T211000Z/acceptance.json).
 
-Next: planning checks PASS -> checkpoint -> automatic fresh PRE before test changes. Existing model assignment unchanged; discussion of Sol did not approve a review-model change.
+Next: original two fixtures/all six lower states, then remaining current-source regressions and FUI controls. Reverse delta restores every byte; only two named callbacks changed, production/vendor unchanged. Review completed and candidate unfrozen. Existing model assignment unchanged; discussion of Sol did not approve a review-model change.
 
-Git local HEAD e5edd7719431d09125eb610fbdd0cdbb789ee32f; planning/evidence UNCOMMITTED. Push BLOCKED_ENVIRONMENT timeout/reset; latest verified remote cd93819cb7b1d02e474e01c664e8654c04af5ca9. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued, visibility unconfirmed.
+Git local HEAD eedbf406428bb9d03b929d4f822ab853a9a84e76; accepted planning/full FAIL evidence COMMITTED. Current dashboard update awaits next checkpoint. Push BLOCKED_ENVIRONMENT timeout/reset; latest verified remote cd93819cb7b1d02e474e01c664e8654c04af5ca9. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued, visibility unconfirmed.
 
 ## История
 

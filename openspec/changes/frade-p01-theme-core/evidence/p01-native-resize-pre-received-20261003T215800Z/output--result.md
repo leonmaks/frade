@@ -1,0 +1,22 @@
+The narrow fixture-readiness PRE passes. No blocking approval, planning, architecture or test-integrity issue was found within this exception. This permits regression-first causal investigation and the accepted readiness additions; it grants no implementation PASS or P01 closure.
+
+- **Authority and scope:** The proposal matches SHA256 `5d1b7aee5541005b23b4d0d0e782a5a94d33176912c1a77967c9ee994cce0c57`, with separate human acceptance. Under `openspec/changes/frade-p01-theme-core/`, the appended effective sections in `proposal.md:157`, `design.md:484`, `specs/theme-core/spec.md:374` and `tasks.md:176` consistently reconcile the two-callback exception with the immutable origins. All four preserve their earlier bytes.
+- **Integrity:** All 1,144 manifest entries match their sizes and hashes, including a final recheck. Bridge, Electron test, unit test and FUI-control test match raw-before records. Original **186048-byte/25-callback** Electron and **43044-byte/31-callback** unit origins remain exact. No readiness implementation has occurred.
+- **Planning checks:** Inspected `checks.json` and raw strict, BDD and compliance logs: all exit 0; BDD reports **111 passed**. The new scenario remains `@runtime-pending`, with no runtime bindings or implementation claim.
+- **Confinement and selection:** Fresh version/probe exits are 0; packet reads succeed, existing external source/common/worktree/auth/settings reads fail, and writes/network are denied. Raw hash, same-run binding, policy, orchestrator, bundle digest and plan excerpt match. Requested assignment remains **gpt-6-astra/xhigh**; actual backend and effort remain **NOT_CONFIRMED**.
+
+Required follow-through:
+
+1. **Prove lower-matrix causality before changing its readiness.** Its current boundary at [ui-contract-theme.spec.ts:2730](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-03T21-45-15-924Z-86d946a3-5610-46f3-bc1e-0b73acf6c1d9/prepared/packet/apps/desktop/tests/e2e/ui-contract-theme.spec.ts:2730) can accept six early stable frames. The control reproduces `translate.x` **984→748**, but does not establish its complete cause.
+
+2. **Implement bounded completion observation without absorbing an unexplained mutation.** Raw open-chain evidence records **[1,234,258]→[1,465,258]**, unchanged identities/styles and zero owned menu-style writes. Vendor [app.min.js:14695](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-03T21-45-15-924Z-86d946a3-5610-46f3-bc1e-0b73acf6c1d9/prepared/packet/apps/desktop/vendor/drawio/js/app.min.js:14695) confirms delayed `toggleShapesPanel → refresh → sizeDidChange`, followed by `shapesPanelChanged`. The planned event/current transition-transform-geometry-state predicate is implementable, including already-completed transitions, bounded failure and listener cleanup. These observations do **not** establish blanket bridge innocence.
+
+3. **Preserve exact regression protection.** Add readiness only at the two authorized boundaries; append any shared read-only helper in the new tail. Preserve every action, assertion, expected value and tolerance. POST must verify exact reverse-delta restoration, all other original bytes/callbacks, and the unchanged unit origin.
+
+4. **Complete required verification:** both original fixtures; all six lower states; open-chain/media cases; upper actions, V6 and focus; final-source **FUI12 before** the existing permitted control-literal refresh; exact **two positive/14 intended negative** controls; **BDD111**; affected checks; fresh full root; scope verification and independent POST.
+
+The current full result remains **Draw215 PASS; desktop116 PASS/13 FAIL**, with the recorded 3478-source unchanged audit. I independently matched all **544 included** source records. The isolated body-focus control PASS does not override that result. Other B02/focus failures and the pending-prepare focus-lease concern remain open. Historical PRE1 FAIL is not superseded by this review.
+
+Runtime tests were not rerun in this read-only packet. Final request/candidate integrity and review completion still require the outer receipt. Human visuals, cumulative POST/archive and P02 remain open; Routing is independent. No repository writes were made.
+
+GATE_STATUS: PASS

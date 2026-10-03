@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_NATIVE_RESIZE_ACCEPTED_PLANNING_PRE_PENDING",
+  "phase": "P01_NATIVE_RESIZE_7PASS_PENDING_FOCUS_RED_PRE_PREPARATION",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -232,7 +232,7 @@
     "Task3.2 cumulative OpenSpec verification and independent automatic POST",
     "Task3.3 archive only after all required PASS; STOP before P02"
   ],
-  "lastUpdatedAtUtc": "2026-10-03T21:29:03.161Z",
+  "lastUpdatedAtUtc": "2026-10-03T22:17:58.896Z",
   "currentDocsChecks": {
     "atUtc": "2026-10-01T19:34:14.257Z",
     "strict": {
@@ -1548,13 +1548,36 @@
   "nativeResizeSettlement": {
     "decision": "P01-NATIVE-RESIZE-SETTLEMENT-FIXTURE-01",
     "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-planning-20261003T211000Z/acceptance.json",
-    "pre": "NOT_RUN",
-    "implementation": "NOT_STARTED",
+    "pre": "PASS",
+    "implementation": "READINESS_ONLY_IMPLEMENTED",
     "scope": "TWO_FROZEN_FIXTURE_READINESS",
     "planReviewerStage": "P01 upper-three keyboard repair",
     "requestedModel": "gpt-6-astra",
     "requestedEffort": "xhigh",
     "previousFullFail": "evidence/p01-upper-focus-full-root-20261003T200130Z",
-    "control": "evidence/p01-upper-focus-full-failure-control-20261003T205400Z"
+    "control": "evidence/p01-upper-focus-full-failure-control-20261003T205400Z",
+    "preEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-pre-received-20261003T215800Z",
+    "preResultSha256": "fbb6a4a2c4484cb80658a20cfe3243e9fdd233b402b6f636ec64075756ee6c28",
+    "diagnostic": "evidence/p01-native-resize-diagnostic-20261003T220400Z",
+    "diagnostics": [
+      "evidence/p01-native-resize-diagnostic-20261003T220400Z",
+      "evidence/p01-native-format-diagnostic-20261003T223200Z"
+    ],
+    "repairEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-repair-20261003T223400Z",
+    "static": "TYPECHECK_LINT_PASS",
+    "targeted": "PASS_7_CASES_36_OBSERVATIONS",
+    "scopeIntegrity": "PASS_REVERSE_EVERY_BYTE",
+    "fullRegression": "NOT_RUN_FINAL",
+    "remainingRegression": "RUNNING_37_CASES"
+  },
+  "pendingFocusRepair": {
+    "authority": "Existing P01-UPPER-FOCUS-UNCLIPPED-PROJECTION-01",
+    "planning": "evidence/p01-pending-focus-planning-20261003T225400Z",
+    "red": "7FAIL",
+    "pre": "NOT_DISPATCHED_RUNTIME_ACTIVE",
+    "implementation": "NOT_STARTED",
+    "scope": "SAME_CURRENT_ANCHOR_LEASE_VALIDATION_NO_NEW_VISUAL_AUTHORITY",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh"
   }
 }

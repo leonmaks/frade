@@ -423,3 +423,10 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     Given the exact accepted exception for two frozen resize fixtures and retained raw failure evidence
     When actual native shapes panel completion follows the first resize event
     Then bounded read only readiness separates that intentional transition from protected observations while exact assertions original byte restoration and full gates remain mandatory
+
+
+  @P01-RT-UPPER-FOCUS-033 @runtime-pending @A11Y-003 @A11Y-007
+  Scenario: Pending prepare retains only the same still-valid focus lease
+    Given pure prepare retained one valid decoration under the accepted focus contract
+    When focus capability menu or modal changes independently before apply
+    Then the invalid decoration is removed without pending recreation native actions or data writes and a still-valid lease receives no writes

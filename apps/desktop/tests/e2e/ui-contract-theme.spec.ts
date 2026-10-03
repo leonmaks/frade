@@ -2720,6 +2720,7 @@ for (const mode of ['light', 'dark', 'high-contrast'] as const)
               }
             })
           const capture = async (label: string) => {
+            await p01WaitNativeResizeSettlement(f.page, info, label)
             await frame.locator('body').evaluate(async () => {
               await document.fonts.ready
               await new Promise<void>((resolve) =>
@@ -3282,6 +3283,7 @@ test('P01-REFLOW actual open chain reconciles resize and media without observer 
       for (const event of ['scale','translate','scaleAndTranslate']) ui.editor.graph.view.addListener(event,references.viewListener)
     })
     const inspect = async (label: string) => {
+      await p01WaitNativeResizeSettlement(f.page, info, label)
       await frame.locator('body').evaluate(async () => {
         await document.fonts.ready
         const g = (window as any).__p01Ui.editor.graph
@@ -4470,4 +4472,65 @@ function upperFocusDecodePng(bytes: Buffer) {
   } }
   expect(at).toBe(input.length)
   return { width, height, channels, pixels }
+}
+
+
+// P01-NATIVE-RESIZE-SETTLEMENT-FIXTURE-01: observe native readiness only.
+// Both native panel completion timers can outlive an early quiet RAF interval.
+async function p01WaitNativeResizeSettlement(page: Page, info: TestInfo, label: string) {
+  const result = await page.frameLocator('iframe').locator('body').evaluate(async () => {
+    const ui = (window as any).__p01Ui, graph = ui.editor.graph
+    const sidebar = ui.sidebarContainer as HTMLElement, format = ui.formatContainer as HTMLElement
+    const samples: unknown[] = [], events: unknown[] = [], pending = new Set<string>()
+    let stable = 0, previous = '', raf = 0, deadline = 0, finished = false
+    const box = (node: HTMLElement) => { const b = node.getBoundingClientRect(); return [b.x, b.y, b.width, b.height] }
+    const panel = (node: HTMLElement) => {
+      const css = getComputedStyle(node)
+      return { box: box(node), transition: node.style.transition, transform: node.style.transform,
+        computedTransform: css.transform, computedTransition: css.transition,
+        animating: node.getAnimations().some(animation => animation.pending || animation.playState === 'running') }
+    }
+    const snapshot = () => ({ viewport: [innerWidth, innerHeight], lastWindowWidth: ui.lastWindowWidth,
+      view: [graph.view.scale, graph.view.translate.x, graph.view.translate.y], graph: box(graph.container),
+      hsplit: ui.hsplitPosition, formatWidth: ui.formatWidth, sidebar: panel(sidebar), format: panel(format) })
+    const viewListener = () => { events.push({ kind: 'view', at: performance.now(), state: snapshot(), stack: new Error('Native readiness view event').stack }); stable = 0 }
+    const shapesListener = () => { pending.delete('shapesPanelChanged'); events.push({ kind: 'shapesPanelChanged', at: performance.now(), state: snapshot() }); stable = 0 }
+    const formatListener = () => { pending.delete('formatWidthChanged'); events.push({ kind: 'formatWidthChanged', at: performance.now(), state: snapshot() }); stable = 0 }
+    const resizeListener = () => { events.push({ kind: 'resize', at: performance.now(), state: snapshot() }); stable = 0 }
+    for (const name of ['scale', 'translate', 'scaleAndTranslate']) graph.view.addListener(name, viewListener)
+    ui.addListener('shapesPanelChanged', shapesListener); ui.addListener('formatWidthChanged', formatListener)
+    window.addEventListener('resize', resizeListener)
+    let outcome: { settled: boolean; reason: string } | undefined
+    try {
+      outcome = await new Promise<{ settled: boolean; reason: string }>(resolve => {
+        const finish = (settled: boolean, reason: string) => { if (!finished) { finished = true; resolve({ settled, reason }) } }
+        // This deadline bounds a stalled/background RAF; it never grants readiness.
+        deadline = window.setTimeout(() => finish(false, 'Native settlement deadline exceeded'), 5000)
+        const observe = () => {
+          if (finished) return
+          const state = snapshot()
+          if (state.sidebar.transition || state.sidebar.transform) pending.add('shapesPanelChanged')
+          if (state.format.transition) pending.add('formatWidthChanged')
+          const clear = state.lastWindowWidth === innerWidth && pending.size === 0 &&
+            !state.sidebar.transition && !state.sidebar.transform && !state.sidebar.animating &&
+            !state.format.transition && !state.format.animating
+          const signature = JSON.stringify(state)
+          stable = clear && previous === signature ? stable + 1 : 0
+          previous = signature
+          samples.push({ at: performance.now(), state, pending: [...pending], clear, stable })
+          if (stable >= 6) finish(true, 'Native transitions complete and geometry stable')
+          else if (samples.length >= 120 || events.length >= 256) finish(false, 'Native settlement observation bound exceeded')
+          else raf = requestAnimationFrame(observe)
+        }
+        observe()
+      })
+    } finally {
+      finished = true; cancelAnimationFrame(raf); clearTimeout(deadline)
+      graph.view.removeListener(viewListener); ui.removeListener(shapesListener); ui.removeListener(formatListener)
+      window.removeEventListener('resize', resizeListener)
+    }
+    return { ...outcome, samples, events, cleanup: true }
+  })
+  await writeFile(info.outputPath('native-settlement-' + label + '.json'), JSON.stringify(result, null, 2))
+  if (!result.settled) throw Error(result.reason)
 }
