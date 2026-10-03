@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_UPPER_THREE_CONTROL_STATE_PRE_PASS",
+  "phase": "P01_CONTROL_STATE_CHECKPOINT_PASS_KEYBOARD_SCOPE_BLOCKED",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -11,7 +11,7 @@
   "implementation": "SOLE_BRIDGE_REPAIR_IMPLEMENTED_RUNTIME_MATRIX_AND_FULL_GATES_OPEN",
   "preReview": "PRE-P01-B02-20260930T185730Z",
   "preStatus": "PASS",
-  "readyForImplementation": true,
+  "readyForImplementation": false,
   "independentReviewerThread": "01a0f3ae-b5cd-7b10-9400-a69bc5ed39bd",
   "requestedModel": "gpt-6-astra",
   "requestedEffort": "xhigh",
@@ -180,7 +180,7 @@
     }
   ],
   "laterHumanDecision": "New per-surface visual baseline approval after actual implementation evidence",
-  "nextAction": "Type/lint then actual targeted FUI runtime; binding negative RED before implementation; task3.1 reopened until fresh root",
+  "nextAction": "Publish honest test/control/evidence checkpoint. Await exact keyboard scope decision; only then coherent plan/strict/fresh PRE. Full root/verify/POST/archive blocked; no P02.",
   "sourceAndOriginalPlanningUnchanged": false,
   "scopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-v2-accepted-20260930T180721Z.json",
   "scopeAcceptanceRecordedAtUtc": "2026-09-30T18:07:21.024Z",
@@ -225,14 +225,14 @@
   },
   "visualBaselineApproval": "NOT_APPROVED",
   "readyForVerify": false,
-  "postStatus": "FOCUSED_B05_PASS_CUMULATIVE_NOT_RUN",
+  "postStatus": "NOT_RUN",
   "remaining": [
     "Task2.4 full FUI005–009 adapter/consumer/lifecycle traceability closure",
     "Task2.5 full applicable accessibility/state coverage and human visual baseline approval",
     "Task3.2 cumulative OpenSpec verification and independent automatic POST",
     "Task3.3 archive only after all required PASS; STOP before P02"
   ],
-  "lastUpdatedAtUtc": "2026-10-02T12:11:54.228Z",
+  "lastUpdatedAtUtc": "2026-10-03T09:53:24.445Z",
   "currentDocsChecks": {
     "atUtc": "2026-10-01T19:34:14.257Z",
     "strict": {
@@ -295,21 +295,10 @@
     "scope": "P01 relevant packet plus minimal public runtime; exact shell canary read/write confinement verified",
     "proof": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-pre-provenance-20261001T064615Z.json"
   },
-  "currentRootResult": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-full-root-20261002T130619Z/result.json",
+  "currentRootResult": null,
   "currentRootSummary": {
-    "status": "PASS",
-    "draw": {
-      "passed": 215,
-      "failed": 0
-    },
-    "desktop": {
-      "passed": 93,
-      "failed": 0
-    },
-    "sourceCount": 543,
-    "sourceUnchanged": true,
-    "artifactFiles": 1971,
-    "currentScope": "FUI tests/docs current root"
+    "status": "NOT_RUN_CURRENT_SOURCE",
+    "reason": "Required upper original Escape regression FAIL; old full-root PASS retained in dated evidence and snapshot."
   },
   "acceptedDeltaRuntime": {
     "readonlyNative": "PASS",
@@ -404,12 +393,8 @@
     }
   },
   "currentVerificationRun": {
-    "status": "PASS",
-    "command": "pnpm check:all",
-    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-full-root-20261002T130619Z/result.json",
-    "startedAtUtc": "2026-10-02T13:06:19.659Z",
-    "finishedAtUtc": "2026-10-02T13:28:24.696Z",
-    "sourceUnchanged": true
+    "status": "BLOCKED",
+    "reason": "Original upper Escape FAIL and keyboard scope decision pending; current root NOT_RUN."
   },
   "frameBottomCoverage": {
     "atUtc": "2026-10-01T10:05:35.894Z",
@@ -1357,7 +1342,7 @@
     "fullRoot": "NOT_RUN_CURRENT_IMPLEMENTATION",
     "post": "NOT_RUN"
   },
-  "currentPhase": "P01_UPPER_THREE_SCOPE_DECISIONS_PENDING",
+  "currentPhase": "P01_CONTROL_STATE_CHECKPOINT_PASS_KEYBOARD_SCOPE_BLOCKED",
   "upperThreeCurrentCheckpoint": {
     "atUtc": "2026-10-02T22:47:22.326Z",
     "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-checkpoint-20261002T223801Z",
@@ -1403,10 +1388,42 @@
     "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-scope-acceptance-20261003T010923Z/acceptance.json",
     "planning": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-accepted-planning-20261003T012018Z",
     "pre": "PASS",
-    "dependentImplementation": "READY_BOUNDED_TEST_CONTROL_REPAIR",
-    "keyboard": "BLOCKED_ORIGINAL_FOCUS_UNAVAILABLE",
+    "dependentImplementation": "APPROVED_ASSERTION_CONTROL_REVALIDATION_COMPLETE_REQUIRED_ORIGINAL_ESCAPE_FAIL",
+    "keyboard": "BLOCKED_ORIGINAL_ESCAPE_FROM_BODY_AND_CANVAS",
     "reviewModel": "gpt-6-astra",
     "reviewEffort": "xhigh",
-    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-accepted-pre-received-20261003T014255Z"
-  }
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-accepted-pre-received-20261003T014255Z",
+    "keyboardProposal": "openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-keyboard-owned-popups.proposed.md",
+    "keyboardProposalAcceptance": "PENDING_USER_DECISION",
+    "knownFailure": "Required original menu Escape assertion remains FAIL; production unchanged",
+    "currentChecks": {
+      "fui": "12/12_PASS",
+      "bdd": "111/111_PASS",
+      "positive": "2/2_PASS",
+      "negativeCauses": "14/14_PASS",
+      "desktopTypecheck": "PASS",
+      "desktopLint": "PASS",
+      "uiTypecheck": "PASS",
+      "uiLint": "PASS",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261003T021505Z",
+      "compliance": "PASS",
+      "boundaries": "PASS",
+      "strict": "PASS",
+      "checkpointEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/checks.json"
+    },
+    "expanded": {
+      "status": "PASS_RENDERED_ONLY",
+      "cases": 6,
+      "proofs": 234,
+      "minimum": 4.797672908386502,
+      "hiddenOriginal": 12,
+      "blockedFocus": 78,
+      "disabledNotRun": 78,
+      "preservationChecks": 30,
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-expanded-current-20261003T022037Z/results-audit.json"
+    },
+    "integrity": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/source-integrity-v2.json",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/report.md"
+  },
+  "currentHistoricalClaimsPreservedAt": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/context-before.json"
 }

@@ -1,0 +1,12 @@
+{
+  "classification": "TEST",
+  "failedRun": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-lifecycle-runtime-20261003T015930Z",
+  "failure": "Count2 from broad .mxPopupMenu:visible: original constructor gives identical class to DIV and its TABLE. Requirement is one original menu panel, not one class-bearing element.",
+  "vendor": {
+    "file": "apps/desktop/vendor/drawio/js/app.min.js",
+    "sha256": "0a0152fccee4c6d826435f0dd5b14e38f17257e132918850f20ef45e6821a899",
+    "offset": 268408,
+    "excerpt": "mxPopupMenu.prototype.init=function(){this.table=document.createElement(\"table\");this.table.className=\"mxPopupMenu\";this.tbody=document.createElement(\"tbody\");this.table.appendChild(this.tbody);this.div=document.createElement(\"div\");this.div.className=\"mxPopupMenu\";this.div.style.display=\"inline\";this.div.style.zIndex=this.zIndex;this.div.appendChild(this.table);mxEvent.disableContextMenu(this.div)};mxPopupMenu.prototype.isEna"
+  },
+  "repair": "Narrow only new original-action selector to div.mxPopupMenu:visible. Keep count1, labels, cancellation and exact preservation assertions. Production/vendor unchanged."
+}

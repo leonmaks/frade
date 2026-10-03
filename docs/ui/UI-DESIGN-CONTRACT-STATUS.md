@@ -1,3 +1,85 @@
+# P01: control/state checkpoint готов; keyboard scope ожидает решения
+
+Обновлено 2026-10-03T09:53:24.445Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0.
+
+| Этап | Статус |
+| --- | --- |
+| Foundation | Завершён |
+| P01 theme resolver/preview |5/10; текущий control/state checkpoint выполнен, общий этап BLOCKED |
+| P02 transactional installer |NOT_STARTED |
+| P03 VS Code theme import |NOT_STARTED |
+| P04 icon registries |NOT_STARTED |
+| P05 isolated browser host |NOT_STARTED |
+| P06 native contribution APIs |NOT_STARTED |
+| P07 registry/profiles/policy |NOT_STARTED |
+| Последующая миграция shell → tree/tabs → forms/tables/LoV → Draw/flow manager → AI |Отдельные этапы не начаты; текущий P01 не закрывает их |
+
+| Задачи текущего control/state подэтапа | Фактический результат |
+| --- | --- |
+| A. Принятый план / strict / независимый PRE |PASS;130events/17raw; requested gpt-6-astra/xhigh, actual backend NOT_CONFIRMED |
+| B. Narrow hidden/restored / доступность состояний |Реализовано; оригинальные prefixes/callbacks сохранены |
+| B/C. Light/Dark/HC ×2density raster |6/6PASS,234proofs, min4.7977:1;30проверок сохранности; source/binary unchanged |
+| C. Original actions/lifecycle |FAIL View Escape; дальнейшие действия NOT_RUN |
+| D. Fresh FUI / один control literal / BDD |12/12PASS;111BDD PASS;2positive/14negative с точными причинами PASS |
+| E. Desktop/UI lint/typecheck, compliance, boundaries, strict |PASS |
+| E. Current root check:all |NOT_RUN, required Escape FAIL |
+| F. Verify / focused POST / cumulative/archive |BLOCKED / NOT_RUN / BLOCKED |
+
+12исходно скрытых контролов имеют доказательство восстановления;78недоступных focus-состояний BLOCKED и78disabled NOT_RUN. Новых guide exceptions нет. Visual NOT_APPROVED; остальные toolbar glyphs и требования полной миграции открыты. Production этого checkpoint не менялся.
+
+[Полный отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/report.md). [Решение keyboard scope](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-keyboard-owned-popups.proposed.md), SHA6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34 — NOT_ACCEPTED. Уточнение границы нужно потому, что текущий paint scope прямо запрещает keyboard/ARIA/upper-popup изменения. После решения: coherent plan/strict/автоматический PRE, затем RED/repair/checks/POST. P01 задачи2.4/2.5/3.1/3.2/3.3 открыты; P02 STOP. Routing независим. Protection LOCAL_ONLY/NOT_CONFIGURED.
+
+Последний опубликованный PRE checkpoint01ec8def; новый checkpoint готовится к commit/push только в разрешённую UI ветку. Правая панель queued, видимость не подтверждена.
+
+## История
+
+# P01: FUI revalidation PASS; expanded raster RUNNING; Escape BLOCKED
+
+Обновлено 2026-10-03T02:27:30.783Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; change frade-p01-theme-core. Исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0; P01 5/10.
+
+| Детализация текущего этапа | Фактический статус |
+| --- | --- |
+| Принятый control/state план и независимый PRE | PASS;130events/17raw; checkpoint01ec8def опубликован, remoteSHA проверен |
+| Narrow/restored assertions | Реализованы только в новом test tail; первый Dark/compact PASS39proofs на прежнем hash теста |
+| Fresh original FUI на окончательном test source397916 | PASS12/12; evidence p01-fui-runtime-20261003T021505Z |
+| One-literal control update / BDD / negative-cause audit | PASS:111BDD,2positive,14negative с точными причинами отказа; helpers/assertions неизменны |
+| Desktop/UI typecheck и lint | PASS на текущих исходниках |
+| Light/Dark/HC ×2density expanded raster | RUNNING; p01-upper-three-expanded-current-20261003T022037Z; pin исходников/тестов/binary |
+| Original View Escape | FAIL; доставка Escape в iframe и реально сфокусированный canvas доказана; assertion сохранён |
+| Верхний keyboard scope | NOT_ACCEPTED; proposal6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34 ожидает решения |
+| Остальные original actions/lifecycle | NOT_RUN после Escape FAIL |
+| Full root / verify / POST | NOT_RUN / BLOCKED / NOT_RUN |
+
+Новый keyboard proposal: openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-keyboard-owned-popups.proposed.md. Производственный bridge не менялся. Неизвестные состояния/недоступный исходный focus не выдаются за PASS. Матрица собирает разрешённое независимое evidence, не закрывает Escape blocker.
+
+Следующий шаг: завершить текущую матрицу, сохранить итог и проверки целостности, опубликовать честный незавершённый checkpoint. Keyboard repair — только после решения, coherent plan/strict и свежего PRE. P01 задачи2.4/2.5/3.1/3.2/3.3 открыты; human visual NOT_APPROVED, cumulative/archive BLOCKED; Foundation завершён, P02–P07 не начаты. Routing независим. Три прежних исключения; protection LOCAL_ONLY/NOT_CONFIGURED. Новые tests/control/evidence UNCOMMITTED/UNPUSHED. Правая панель queued; видимость не подтверждена.
+
+## История
+
+# P01: original Escape BLOCKED; решение по keyboard scope ожидается
+
+2026-10-03T02:16:18.494Z. UI branch/worktree/common/baseline прежние; P01 5/10; guide1.0/tokens1.0.0. PRE checkpoint01ec8def опубликован, exactremoteSHA подтверждён.
+
+- Fresh control/state PRE PASS130events/17raw. Утверждённая narrow/restored матрица Dark/compact:1case PASS,39V6proofs, min6.302111870066281:1; source/binary unchanged. Остальные5expandedcases ещё NOT_RUN на новом source.
+- Original-action regression FAIL: View menu не закрывается реальным Escape ни от BODY, ни от реально сфокусированного canvas. Key delivery доказан. DIV/TABLE test selector error исправлен отдельно; все FAIL/RCA сохранены. Failing Escape assertion не ослабляется, product unchanged.
+- Предложен openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-keyboard-owned-popups.proposed.md, SHA6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34. NOT_ACCEPTED; отдельный production keyboard scope требует решения и нового PRE.
+- Независимая от этого разрешённая FUI revalidation12cases RUNNING; после её PASS можно обновить только один control literal/фактические bindings и проверить111BDD/14negative. Это не закрывает Escape FAIL.
+- Общий current root/verify/POST BLOCKED/NOT_RUN; human visual NOT_APPROVED, cumulative/archive BLOCKED, noP02, Routing independent. Новые tests/evidence UNCOMMITTED/UNPUSHED; panelqueued.
+
+## История
+
+# P01: расширенная матрица — первый реальный запуск
+
+2026-10-03T01:49:35.467Z. Branch codex/frade-ui-design-contract / отдельный UI-worktree; P01 5/10. PRE PASS130events/17raw; checkpoint01ec8def090fe3258e894c795938c36d3b9c14e7 COMMITTED/PUSHED, remoteSHA verified.
+
+- После PRE изменены только новые assertions expanded matrix; frozen Electron prefix186048bytes неизменен. Production unchanged. Текущий desktop typecheck/lint PASS.
+- Actual Electron dark/compact wide→narrow→restored→text200→forced/coarse/reduced: RUNNING. Новые результаты ещё не PASS.
+- FUI full-source bindings требуют нового запуска на окончательном test hash. Прежние54raster/12FUI/BDD110of111 — исторический source-bound checkpoint; не переименованы в текущий PASS.
+- Затем: вся six-state матрица, оригинальные actions/lifecycle, fresh FUI12, one-literal BDD111/14negative, full checks/verify/POST. Keyboard остаётся BLOCKED, visual NOT_APPROVED, cumulative/archive BLOCKED. Routing independent; P02 STOP.
+- Изменения теста UNCOMMITTED/UNPUSHED. Panelqueued.
+
+## История
+
 # P01: независимый PRE PASS; начинается ремонт тестов
 
 2026-10-03T01:43:57.585Z. UI branch/worktree/common/original baseline неизменны; P01 5/10, guide1.0/tokens1.0.0. PRE gpt-6-astra/xhigh PASS:130events,17raw artifacts,1513packet hashes verified, candidate/packet/plan unchanged. Evidence openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-accepted-pre-received-20261003T014255Z. Actual backend/effort NOT_CONFIRMED. Предыдущий prepare BLOCKED сохранён отдельно.

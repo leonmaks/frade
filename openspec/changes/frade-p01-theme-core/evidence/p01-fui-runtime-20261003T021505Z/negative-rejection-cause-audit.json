@@ -1,0 +1,234 @@
+{
+  "atUtc": "2026-10-03T02:19:11.508Z",
+  "method": "Execute exact original TypeScript checker and original16it callbacks from current source, transpiled without editing source. Minimal assertion adapter records the actual thrown rejection code. Independent actual Vitest BDD follows.",
+  "source": {
+    "file": "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+    "sha256": "6b641d66d3d2faee420c11c3d6694b95f86bbb5e9ce3c1837adfe6116d808113",
+    "extractedTailSha256": "c0a6533330cda158596df7f6595830f5b12dcaaca4d70a033f7df94339c58629"
+  },
+  "results": [
+    {
+      "name": "P01 FUI actual fullRuntimeBindings require all seven examples independently of pending declarations",
+      "rejections": [],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI valid actual source and named execution packet passes integrity only",
+      "rejections": [],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects missing-example",
+      "rejections": [
+        "EXAMPLE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects duplicate-example",
+      "rejections": [
+        "EXAMPLE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects stale-source",
+      "rejections": [
+        "SOURCE_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects stale-callback",
+      "rejections": [
+        "CALLBACK_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects dropped-assertion",
+      "rejections": [
+        "CALLBACK_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects wrong-case",
+      "rejections": [
+        "CASE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects missing-kind",
+      "rejections": [
+        "CASE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects wrong-scope",
+      "rejections": [
+        "SCOPE"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects unapproved-file",
+      "rejections": [
+        "SOURCE_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects escaping-evidence",
+      "rejections": [
+        "EVIDENCE_PATH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects stale-evidence",
+      "rejections": [
+        "EVIDENCE_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects forged-success",
+      "rejections": [
+        "EXECUTION"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects failed-record",
+      "rejections": [
+        "RESULT_STATUS"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects wrong-record",
+      "rejections": [
+        "RESULT_CASE"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "causes": [
+    {
+      "defect": "missing-example",
+      "expected": "EXAMPLE_SET",
+      "actual": [
+        "EXAMPLE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "duplicate-example",
+      "expected": "EXAMPLE_SET",
+      "actual": [
+        "EXAMPLE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "stale-source",
+      "expected": "SOURCE_HASH",
+      "actual": [
+        "SOURCE_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "stale-callback",
+      "expected": "CALLBACK_HASH",
+      "actual": [
+        "CALLBACK_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "dropped-assertion",
+      "expected": "CALLBACK_HASH",
+      "actual": [
+        "CALLBACK_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "wrong-case",
+      "expected": "CASE_SET",
+      "actual": [
+        "CASE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "missing-kind",
+      "expected": "CASE_SET",
+      "actual": [
+        "CASE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "wrong-scope",
+      "expected": "SCOPE",
+      "actual": [
+        "SCOPE"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "unapproved-file",
+      "expected": "SOURCE_HASH",
+      "actual": [
+        "SOURCE_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "escaping-evidence",
+      "expected": "EVIDENCE_PATH",
+      "actual": [
+        "EVIDENCE_PATH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "stale-evidence",
+      "expected": "EVIDENCE_HASH",
+      "actual": [
+        "EVIDENCE_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "forged-success",
+      "expected": "EXECUTION",
+      "actual": [
+        "EXECUTION"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "failed-record",
+      "expected": "RESULT_STATUS",
+      "actual": [
+        "RESULT_STATUS"
+      ],
+      "status": "PASS"
+    },
+    {
+      "defect": "wrong-record",
+      "expected": "RESULT_CASE",
+      "actual": [
+        "RESULT_CASE"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}
