@@ -1,0 +1,36 @@
+{
+  "atUtc": "2026-10-03T09:53:22.8840355Z",
+  "task": "W01 2.5",
+  "status": "FAIL_REPAIR_RUNNING",
+  "ownerHead": "396c6ad1c5a44335fe245a427c9638e144ef079b",
+  "originalImplementation": "E:/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003",
+  "hashDriftCause": "Recorded parent Prettier run 2026-10-03T02:01:04Z changed three MJS files; template unchanged. Historical worker source hashes and Linux logs remain unchanged; fresh formatted source hashes are separate.",
+  "formatReceipt": "controller-parent-format.json",
+  "actualWindows": {
+    "reviewPassed": 9,
+    "reviewFailed": 4,
+    "failure": "REVIEW_MANIFEST:OWNER_PATH,OWNER_PATH",
+    "replayedCommand": "node --test tests/directions/review.test.mjs",
+    "exit": 1,
+    "lint": "FAIL: no-useless-escape, two unused callback parameters, unused test row"
+  },
+  "rootCauseClassification": "TEST",
+  "rootCause": "fixture manifest uses native backslash Windows paths, but safeOwnerPath requires canonical forward slash paths",
+  "additionalReviewGaps": [
+    "stage-only inputRoot cannot run tests from owning checkout",
+    "unnecessary non-Windows OWNER_PATH suppression",
+    "W01-specific core preparation needs reusable trusted authority boundary",
+    "task2.5 diagnostic must not depend on later task2.7 product manifest installation"
+  ],
+  "repair": {
+    "run": "E:/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-repair-20261003",
+    "approvedModel": "gpt-6-sol",
+    "approvedEffort": "high",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "confinement": "PASS",
+    "sourceImport": "NOT_RUN",
+    "productionOwnerFilesChanged": false
+  },
+  "phaseAdvancement": "STOP_BEFORE_TASK2.6"
+}

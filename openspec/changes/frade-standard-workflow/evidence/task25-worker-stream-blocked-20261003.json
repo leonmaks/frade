@@ -1,0 +1,105 @@
+{
+  "atUtc": "2026-10-03T10:18:21.9440846Z",
+  "task": "W01 2.5",
+  "status": "BLOCKED_EXECUTION_RETAINED",
+  "execution": {
+    "startedAtUtc": "2026-10-03T09:52:00.638Z",
+    "stage": "W01",
+    "task": "2.5",
+    "role": "tooling-tests",
+    "approvedModel": "gpt-6-sol",
+    "approvedEffort": "high",
+    "requestedModel": "gpt-6-sol",
+    "requestedEffort": "high",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "sandboxProbeSha256": "24cca8e209da025e54280a0361ac3a39a42fc7cefbf64386d8dd7a573c3597b8",
+    "inputManifestSha256": "af7ac4857892d8e7a8fa4a9f4f367f03c9807df3f04cc749073b5b44e94d53fd",
+    "promptSha256": "74581476c98f1ff71e34151e3ded85082fad92203d6c1144d67730bc66d15eab",
+    "args": [
+      "-d",
+      "Ubuntu-22.04_E",
+      "--exec",
+      "/usr/bin/env",
+      "CODEX_HOME=/mnt/c/Users/NVISEN/.codex",
+      "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime/node_modules/.bin/codex",
+      "exec",
+      "--ignore-user-config",
+      "--ignore-rules",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--model",
+      "gpt-6-sol",
+      "-c",
+      "default_permissions=\"frade-worker\"",
+      "-c",
+      "permissions={frade-worker={extends=\":read-only\",filesystem={\":root\"=\"deny\",\":minimal\"=\"read\",\"/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-repair-20261003\"=\"read\",\"/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-repair-20261003/work\"=\"write\",\"/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime\"=\"read\",\"/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-repair-20261003/input\"=\"read\"},network={enabled=false}}}",
+      "-c",
+      "model_reasoning_effort=\"high\"",
+      "-c",
+      "approval_policy=\"never\"",
+      "-c",
+      "web_search=\"disabled\"",
+      "-c",
+      "apps._default.enabled=false",
+      "-c",
+      "project_doc_max_bytes=0",
+      "-c",
+      "project_doc_fallback_filenames=[]",
+      "-c",
+      "shell_environment_policy.inherit=\"none\"",
+      "-c",
+      "shell_environment_policy.set={PATH=\"/usr/bin:/bin\",HOME=\"/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-repair-20261003/work/home\",TMPDIR=\"/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-repair-20261003/work/tmp\",LANG=\"C.UTF-8\",LC_ALL=\"C.UTF-8\",GIT_CONFIG_GLOBAL=\"/dev/null\",GIT_CONFIG_SYSTEM=\"/dev/null\"}",
+      "-C",
+      "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-repair-20261003/work",
+      "--json",
+      "--color",
+      "never",
+      "--output-last-message",
+      "/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-repair-20261003/result.md",
+      "-"
+    ],
+    "status": "BLOCKED",
+    "exitCode": 0,
+    "inputUnchanged": true,
+    "completeStream": false,
+    "endedAtUtc": "2026-10-03T10:07:48.672Z"
+  },
+  "rawEvents": {
+    "path": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\implementations\\w01-task-2.5-repair-20261003/events.jsonl",
+    "sha256": "14c570fb907c8d4d70dbdbda5d976073939ff283a60fbc7d65651ee34c00104c",
+    "turnCompleted": true,
+    "errors": [
+      {
+        "type": "error",
+        "message": "Reconnecting... 2/5 (workspace routing discovery failed)"
+      },
+      {
+        "type": "error",
+        "message": "Reconnecting... 3/5 (workspace routing discovery failed)"
+      },
+      {
+        "type": "error",
+        "message": "Reconnecting... 4/5 (workspace routing discovery failed)"
+      },
+      {
+        "type": "error",
+        "message": "Reconnecting... 5/5 (workspace routing discovery failed)"
+      }
+    ]
+  },
+  "sourceUse": "Raw candidate only; no execution PASS, independent approval or completion claimed; fresh source-bound testing required",
+  "environmentRca": "Prior Linux fixture TMPDIR was under Git common .git, violating unchanged safeOwnerPath owner contract. New writer temp namespace is outside .git and outside registered worktrees.",
+  "retry": {
+    "path": "E:/dev/codex/frade-worker-staging/w01-task-2.5-runtime-20261003",
+    "model": "gpt-6-sol",
+    "effort": "high",
+    "confinement": "PASS",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "state": "RUNNING"
+  },
+  "currentOwnerSourceImport": "NOT_RUN",
+  "taskComplete": false,
+  "nextTasks": "STOP before2.6/2.7 until required owner checks and fresh actual diagnostic pass"
+}

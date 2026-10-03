@@ -11,24 +11,46 @@ import { relative } from 'node:path'
 const blocked = (code, detail) => ({ ok: false, status: 'BLOCKED', code, detail })
 const [command, path, ...extra] = process.argv.slice(2)
 let result
-if (!['plan', 'create', 'check', 'status'].includes(command)) {
+if (!['plan', 'create', 'check', 'status', 'review/prepare', 'review'].includes(command)) {
   result = {
     ok: false,
     status: 'NOT_IMPLEMENTED',
     code: 'COMMAND_NOT_IMPLEMENTED',
-    detail: 'Supported: plan, create, check, status. Other workflow commands require later tasks.',
+    detail:
+      'Supported: plan, create, check, status, review/prepare, review. Other workflow commands require later tasks.',
   }
 } else if (
   !path ||
   (command === 'status'
     ? extra.length > 1 || (extra.length === 1 && extra[0] !== '--write')
-    : extra.length) ||
+    : ['review/prepare', 'review'].includes(command)
+      ? extra.length !== 2 || !['PRE', 'POST'].includes(extra[0]) || !isAbsolute(extra[1])
+      : extra.length) ||
   !isAbsolute(path)
 ) {
   result = blocked('ARGUMENTS', 'One absolute JSON request or manifest path required')
 } else {
   try {
-    if (command === 'check') result = await checkDirection(path)
+    if (['review/prepare', 'review'].includes(command)) {
+      const { prepareReview, runProductionReview } = await import('./review.mjs')
+      const manifest = JSON.parse(await readFile(path, 'utf8'))
+      const request = JSON.parse(await readFile(extra[1], 'utf8'))
+      if (request.phase !== extra[0])
+        result = blocked('PHASE_MISMATCH', 'Explicit physical PRE/POST must match request')
+      else {
+        const options = {
+          manifest,
+          request,
+          root: manifest.owner?.worktree,
+          expectedCommon: 'E:/dev/codex/frade/.git',
+          requestPath: extra[1],
+        }
+        result =
+          command === 'review/prepare'
+            ? await prepareReview(options)
+            : await runProductionReview(options)
+      }
+    } else if (command === 'check') result = await checkDirection(path)
     else if (command === 'status') {
       const checked = await checkDirection(path)
       if (!checked.ok) result = checked
@@ -101,4 +123,4 @@ if (!['plan', 'create', 'check', 'status'].includes(command)) {
   }
 }
 process.stdout.write(`${JSON.stringify(result)}\n`)
-process.exitCode = result.ok ? 0 : 2
+process.exitCode = result.status === 'FAIL' ? 1 : result.ok ? 0 : 2
