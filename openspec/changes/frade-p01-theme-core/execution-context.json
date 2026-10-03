@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_UPPER_FOCUS_TARGETED_PASS_FULL_REGRESSION_PENDING",
+  "phase": "P01_NATIVE_RESIZE_ACCEPTED_PLANNING_PRE_PENDING",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -232,7 +232,7 @@
     "Task3.2 cumulative OpenSpec verification and independent automatic POST",
     "Task3.3 archive only after all required PASS; STOP before P02"
   ],
-  "lastUpdatedAtUtc": "2026-10-03T19:47:49.463Z",
+  "lastUpdatedAtUtc": "2026-10-03T21:29:03.161Z",
   "currentDocsChecks": {
     "atUtc": "2026-10-01T19:34:14.257Z",
     "strict": {
@@ -1523,11 +1523,12 @@
       "permanentRetest": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-permanent-retest-20261003T185222Z",
       "permanentRemaining": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-permanent-five-20261003T190444Z",
       "permanentStatus": "PASS_6CASES_96CONTOURS",
-      "post": "NOT_RUN",
-      "fullRoot": "NOT_RUN_FINAL_SOURCE",
+      "post": "BLOCKED_APPLICABLE_FULL_FAIL",
+      "fullRoot": "FAIL_DESKTOP116PASS_13FAIL",
       "fuiRun": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261003T193349Z",
       "fui": "12/12 PASS",
-      "bdd": "111/111 PASS"
+      "bdd": "111/111 PASS",
+      "fullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-full-root-20261003T200130Z"
     },
     "checkpointPublication": {
       "atUtc": "2026-10-03T16:34:53.934Z",
@@ -1543,5 +1544,17 @@
       "permissionReview": "One evidence-save command automatic approval review timed out before execution; single permitted retry succeeded. No user approval or safety rejection was inferred.",
       "next": "Proceed local authorized independent PRE; retry authorized publication after environment recovers."
     }
+  },
+  "nativeResizeSettlement": {
+    "decision": "P01-NATIVE-RESIZE-SETTLEMENT-FIXTURE-01",
+    "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-planning-20261003T211000Z/acceptance.json",
+    "pre": "NOT_RUN",
+    "implementation": "NOT_STARTED",
+    "scope": "TWO_FROZEN_FIXTURE_READINESS",
+    "planReviewerStage": "P01 upper-three keyboard repair",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "previousFullFail": "evidence/p01-upper-focus-full-root-20261003T200130Z",
+    "control": "evidence/p01-upper-focus-full-failure-control-20261003T205400Z"
   }
 }

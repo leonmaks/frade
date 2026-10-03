@@ -365,3 +365,20 @@ P01 SHALL apply accepted P01-UPPER-FOCUS-UNCLIPPED-PROJECTION-01 under openspec/
 #### Scenario: Complete real contour evidence retains historical blockers
 - **WHEN** accepted extension passes coherent-plan validation and fresh independent PRE
 - **THEN** permanent RED precedes production and actual complete contour contrast visibility six-state preservation current glyph FUI full checks verification and POST remain required; straight-band samples CSS declarations acceptance and historic PASS cannot close unknown composition human visuals or cumulative P01
+
+
+## ADDED Requirements
+
+### Requirement: Accepted native resize fixture readiness preserves all invariants
+
+P01 SHALL apply only the accepted native-resize readiness exception. Authority: openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-planning-20261003T211000Z/acceptance.json; exact accepted P01-NATIVE-RESIZE-SETTLEMENT-FIXTURE-01 proposal SHA2565d1b7aee5541005b23b4d0d0e782a5a94d33176912c1a77967c9ee994cce0c57. Its separate acceptance supersedes only the historical PROPOSED header. This narrow exception supersedes earlier blanket new-tails-only/frozen-callback restrictions only for readiness in the two named callbacks; original origin and every other restriction remain.
+
+Only apps/desktop/tests/e2e/ui-contract-theme.spec.ts may receive this repair: readiness before the existing intentional-resize baseline in P01-LOWER-matrix and before the observation interval in P01-REFLOW actual open chain reconciles resize and media without observer churn or semantic actions. A shared read-only helper may be appended to the new tail. No production, vendor, routing, domain, native-state forcing, animation disabling, expectation/action/tolerance changes, blind snapshots, arbitrary sleeps or swallowed errors. Every existing assertion remains exact. Preserve original186048-byte prefix and25callbacks as immutable origin; prove the exact permitted readiness-only delta reverses to all original bytes, while all other callbacks/bytes and original43044-byte/31callback unit origin stay exact.
+
+#### Scenario: Native transition completion precedes the protected observation
+- **WHEN** either named fixture intentionally resizes the original frame and native shapes-panel transition completes after its initial resize event
+- **THEN** bounded read-only readiness SHALL distinguish actual completed native state from an early stable interval before existing baseline or observation, preserve all original actions and assertions, and fail without forcing state when causality cannot be proven
+
+#### Scenario: Frozen original tests and all failure evidence remain authoritative
+- **WHEN** the accepted readiness delta passes coherent validation and fresh independent PRE before repair
+- **THEN** exact reverse-delta proof SHALL restore original bytes and callbacks, other frozen assertions SHALL remain exact, and targeted six-state current FUI controls full regression verification and POST SHALL remain required without waiving B02 focus or cumulative visual blockers

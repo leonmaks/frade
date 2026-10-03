@@ -1,0 +1,14 @@
+{
+  "atUtc": "2026-10-03T20:36:33.895Z",
+  "firstAudit": "FAIL V6_SLICE_DRIFT before saving success",
+  "classification": "TEST",
+  "cause": "Audit script assumed CRLF at appended new tail. Actual appended boundary is LF; CRLF marker index=-1.",
+  "diagnostic": {
+    "oldBytes": 246962,
+    "newBytes": 267332,
+    "firstDifferentByte": 246962,
+    "lfInsertion": 246962,
+    "crlfInsertion": -1
+  },
+  "correction": "Byte-exact equality of the complete previous E2E source prefix; stronger than helper slice; no production/test changes."
+}

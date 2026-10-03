@@ -1,16 +1,26 @@
-# P01: focus — permanent6/6,96контуров PASS
+# P01: fixture-scope принят — подготовка PRE
 
-Обновлено 2026-10-03T19:30:04.326Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; P02–P07 NOT_STARTED. Routing независим.
+Обновлено 2026-10-03T21:29:03.164Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. P01 5/10; Foundation archived; P02–P07 NOT_STARTED; Routing независим.
 
-- Exact focus scope32ddae6f ACCEPTED; PRE PASS83events/17raw, requested gpt-6-astra/xhigh; actual backend NOT_CONFIRMED.
-- Body focus repair IMPLEMENTED.60/60units/build/typecheck/lint PASS. Permanent actual matrix6/6PASS:96full contour proofs/PNG hashes,12positive/36negative controls, minimum5.4912:1,36preservation comparisons,6parent modals; Light/Dark/HC ×2density plus viewport/text200/forced/coarse/reduced.
-- Earlier failures and900s test-reporter timeout retained. Same guard checks optimized only in new focus helper; retest38s PASS. Original prefixes/callbacks and V6 unchanged.
-- Fresh final-source FUI12 PASS; one control literal with byte-exact reverse proof; BDD111 PASS;2positive/14negative exact rejection causes PASS. UI typecheck/lint/compliance PASS.
-- Remaining: current-source V6/actions/full root, popup indicator/state coverage, verify/POST. Human visual NOT_APPROVED; archive BLOCKED; no P02. Protection LOCAL_ONLY/NOT_CONFIGURED.
-- [Полный отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-checkpoint-20261003T175031Z/report.md); [аудит96PNG/контролей](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-checkpoint-20261003T175031Z/permanent-runtime-audit.json).
-- Git HEADd2ce1504; new checkpoint READY_TO_COMMIT; full gates remain open. Previous SSH publication unverified, last confirmed remote7f911b95. Right panel queued, visibility unconfirmed.
+| Текущая задача | Статус |
+| --- | --- |
+| Body focus repair | IMPLEMENTED, commit e5edd771; targeted60units/96contours/FUI12/BDD111 PASS |
+| Fresh full check:all | FAIL: Draw215PASS; desktop116PASS/13FAIL;3478source hashes unchanged |
+| Unchanged diagnostic control |1PASS (new focus),2FAIL (old lower/reflow); full FAIL не отменён |
+| Native reflow RCA | Actual late toggleShapesPanel stack recorded; early stable fixture boundary; lower causal proof pending |
+| Exact two-fixture readiness exception | ACCEPTED SHA5d1b7aee; assertions/limits/old origin retained |
+| Four artifacts + BDD | RECONCILED; source/tests unchanged |
+| Strict/compliance/BDD after plan update | PASS / PASS /111PASS |
+| Independent PRE | READY_TO_DISPATCH; assigned gpt-6-astra/xhigh, actual backend NOT_CONFIRMED |
+| Readiness implementation / full retest | NOT_STARTED / NOT_RUN |
+| Other B02/focus FAIL and pending-prepare lease question | OPEN; no environment or production attribution assumed |
+| Focus/cumulative POST, human visuals, archive | BLOCKED / NOT_APPROVED / BLOCKED |
 
-Next: commit/publish honest focus checkpoint; remaining final-source checks and independent POST before any closure.
+[Текущий full-check отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-verification-20261003T201400Z/report.md); [принятый scope](../../openspec/changes/frade-p01-theme-core/decisions/p01-native-resize-settlement-fixture.proposed.md); [acceptance](../../openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-planning-20261003T211000Z/acceptance.json).
+
+Next: planning checks PASS -> checkpoint -> automatic fresh PRE before test changes. Existing model assignment unchanged; discussion of Sol did not approve a review-model change.
+
+Git local HEAD e5edd7719431d09125eb610fbdd0cdbb789ee32f; planning/evidence UNCOMMITTED. Push BLOCKED_ENVIRONMENT timeout/reset; latest verified remote cd93819cb7b1d02e474e01c664e8654c04af5ca9. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued, visibility unconfirmed.
 
 ## История
 

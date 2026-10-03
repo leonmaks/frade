@@ -1,0 +1,63 @@
+{
+  "atUtc": "2026-10-03T21:18:01.680Z",
+  "change": "frade-p01-theme-core",
+  "scope": "Accepted unclipped focus projection; cumulative P01 remains incomplete",
+  "guideVersion": "1.0",
+  "tokensVersion": "1.0.0",
+  "fullRoot": {
+    "start": "2026-10-03T20:07:41.726Z",
+    "end": "2026-10-03T20:48:38.055Z",
+    "exitCode": 1,
+    "sourceCount": 3478,
+    "sourceUnchanged": true,
+    "changed": [],
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-full-root-20261003T200130Z",
+    "drawPassed": 215,
+    "desktopPassed": 116,
+    "desktopFailed": 13
+  },
+  "failureGroups": {
+    "oldB02Presentation": 1,
+    "oldLowerViewportPreservation": 6,
+    "oldOpenChainViewportPreservation": 1,
+    "upper028Focus": 1,
+    "newBodyFocus": 4
+  },
+  "control": {
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-full-failure-control-20261003T205400Z",
+    "stats": {
+      "startTime": "2026-10-03T21:01:02.769Z",
+      "duration": 81846.281,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "sourceUnchanged": true,
+    "interpretation": "Lower and open-chain failures reproduced; new body-focus light compact passes unchanged. Full FAIL remains."
+  },
+  "classification": {
+    "reflow": "TEST: actual native toggleShapesPanel completion occurs after first resize event and six stable RAFs; raw stack retained, fixture repair unapproved",
+    "lower": "NOT_PROVEN causal chain; viewport failure reproduced at1600x900; same native readiness hypothesis requires proof",
+    "focusAndB02": "NOT_PROVEN; do not relabel environment without evidence"
+  },
+  "scopeIntegrity": "PASS: frozen31/25callbacks,43044/186048bytes and entire previous246962byte E2E prefix unchanged",
+  "strict": "PASS",
+  "post": "BLOCKED_APPLICABLE_FULL_FAIL",
+  "verification": "INCOMPLETE_WITH_CORRECTNESS_BLOCKERS",
+  "overallTasks": "5/10",
+  "humanVisual": "NOT_APPROVED",
+  "archive": "BLOCKED",
+  "modelDecision": "No change authorized; current stage reviewer remains gpt-6-astra/xhigh. Sol suggested for routine implementation only.",
+  "pendingDecision": {
+    "path": "openspec/changes/frade-p01-theme-core/decisions/p01-native-resize-settlement-fixture.proposed.md",
+    "sha256": "5d1b7aee5541005b23b4d0d0e782a5a94d33176912c1a77967c9ee994cce0c57",
+    "status": "NOT_ACCEPTED"
+  },
+  "publication": {
+    "localCheckpoint": "e5edd7719431d09125eb610fbdd0cdbb789ee32f",
+    "verifiedRemote": "cd93819cb7b1d02e474e01c664e8654c04af5ca9",
+    "status": "BLOCKED_ENVIRONMENT_SSH_TIMEOUT_RESET"
+  },
+  "additionalInspection": "Pending-prepare visual lease guard ordering needs deterministic invalidation reproduction before focused POST; this is an unproven code-inspection concern, not an executed failure."
+}

@@ -416,3 +416,10 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     Given accepted exact focus extension and a current verified visible enabled original upper anchor
     When canonical focus is projected outside original clipping and ownership layout or modal context changes
     Then the complete bounded inert contour remains visible and contrasted without changing original geometry opacity actions or data and stale decoration is removed before independent closure
+
+
+  @P01-RT-RESIZE-SETTLEMENT-031 @runtime-pending @A11Y-008
+  Scenario: Original native resize finishes before unchanged fixture assertions
+    Given the exact accepted exception for two frozen resize fixtures and retained raw failure evidence
+    When actual native shapes panel completion follows the first resize event
+    Then bounded read only readiness separates that intentional transition from protected observations while exact assertions original byte restoration and full gates remain mandatory
