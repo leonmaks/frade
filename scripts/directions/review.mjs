@@ -1,9 +1,20 @@
 import { createHash, randomUUID } from 'node:crypto'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
-import { mkdir, readFile, realpath, lstat, readdir, writeFile, rm } from 'node:fs/promises'
+import {
+  mkdir,
+  readFile,
+  realpath,
+  lstat,
+  readdir,
+  readlink,
+  writeFile,
+  rm,
+  open,
+} from 'node:fs/promises'
+import { constants as fsConstants } from 'node:fs'
 import { join, resolve, relative, isAbsolute, dirname } from 'node:path'
-import { pathToFileURL } from 'node:url'
+import { pathToFileURL, fileURLToPath } from 'node:url'
 import { safeRepoPath, pathMatches, validateManifest } from './contracts.mjs'
 import { createArtifactReader } from './evidence.mjs'
 import { createRoleAuthority, resolveRole } from './roles.mjs'
@@ -29,6 +40,17 @@ const DECISIONS_SHA = '126589d990e2e44b04efe8825b5ec4d90582205ba6c729375528c383c
 const D03_SHA = '98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239'
 const POLICY_SHA = '6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb'
 const RELEASE = 'a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0'
+const RELEASE_MODULES = [
+  'scripts/agent-review/core.mjs',
+  'scripts/agent-review/cli.mjs',
+  'scripts/agent-review/publish.mjs',
+  'scripts/agent-review/make-bundle.mjs',
+  'scripts/agent-review/transport/integrity.mjs',
+  'scripts/agent-review/transport/policy.mjs',
+  'scripts/agent-review/transport/prepare-review.mjs',
+  'scripts/agent-review/transport/invoke-review.mjs',
+  'scripts/agent-review/transport/transport.test.mjs',
+]
 const MAX_PACKET = 16 * 1024 * 1024
 const RUNTIME =
   '/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime'
@@ -51,6 +73,91 @@ async function safeDirectory(path) {
   const stat = await lstat(path)
   if (!stat.isDirectory() || stat.isSymbolicLink() || !samePath(await realpath(path), path))
     throw Error('REVIEW_COMMON_REPARSE')
+}
+export async function verifyPinnedRelease(root, expectedDigest = RELEASE) {
+  try {
+    await safeDirectory(root)
+    const bundlePath = join(root, 'scripts/agent-review/bundle.json')
+    const bundleBytes = await safeFile(root, 'scripts/agent-review/bundle.json')
+    if (sha(bundleBytes) !== expectedDigest) throw Error('PIN')
+    const manifest = JSON.parse(bundleBytes)
+    if (
+      manifest.version !== 1 ||
+      manifest.common !== PRODUCTION_COMMON ||
+      manifest.policyVersion !== '1.1' ||
+      manifest.policySha256 !== POLICY_SHA ||
+      !Array.isArray(manifest.files) ||
+      !manifest.files.length
+    )
+      throw Error('MANIFEST')
+    const seen = new Set()
+    for (const item of manifest.files) {
+      if (!item || !safeRepoPath(item.path) || !/^[a-f0-9]{64}$/.test(item.sha256))
+        throw Error('PATH')
+      const folded = item.path.toLowerCase()
+      if (seen.has(folded)) throw Error('DUPLICATE')
+      seen.add(folded)
+      if (sha(await safeFile(root, item.path)) !== item.sha256) throw Error('HASH')
+    }
+    if (RELEASE_MODULES.some((path) => !seen.has(path.toLowerCase()))) throw Error('MODULE')
+    if (sha(await readFile(bundlePath)) !== expectedDigest) throw Error('DRIFT')
+    return { root, manifest, digest: expectedDigest }
+  } catch (error) {
+    throw Error(`REVIEW_BUNDLE:${error.message}`)
+  }
+}
+export async function loadVerifiedRelease(root, expectedDigest = RELEASE) {
+  const release = await verifyPinnedRelease(root, expectedDigest)
+  const core = await import(pathToFileURL(join(root, 'scripts/agent-review/core.mjs')))
+  if ((await core.bundle(root)).digest !== expectedDigest) throw Error('REVIEW_BUNDLE')
+  return { core, release }
+}
+async function materializeVerifiedRelease(sourceRoot, run, expectedDigest) {
+  const release = await verifyPinnedRelease(sourceRoot, expectedDigest)
+  const target = join(run, 'verified-release')
+  await mkdir(target)
+  for (const path of [
+    'scripts/agent-review/bundle.json',
+    ...release.manifest.files.map((x) => x.path),
+  ]) {
+    const bytes = await safeFile(sourceRoot, path)
+    const dest = join(target, path)
+    await mkdir(dirname(dest), { recursive: true })
+    await writeFile(dest, bytes, { flag: 'wx' })
+  }
+  await verifyPinnedRelease(target, expectedDigest)
+  await verifyPinnedRelease(sourceRoot, expectedDigest)
+  return target
+}
+export async function invokeVerifiedSharedChild(input) {
+  const helper = fileURLToPath(new URL('./review-child.mjs', import.meta.url))
+  const parameters =
+    process.platform === 'win32'
+      ? "'core.fsmonitor=false' 'core.hooksPath=NUL'"
+      : "'core.fsmonitor=false' 'core.hooksPath=/dev/null'"
+  const { stdout } = await exec(process.execPath, [helper, JSON.stringify(input)], {
+    cwd: input.ownerRoot,
+    encoding: 'utf8',
+    timeout: 35 * 60 * 1000,
+    maxBuffer: 32 * 1024 * 1024,
+    env: {
+      ...process.env,
+      GIT_OPTIONAL_LOCKS: '0',
+      GIT_CONFIG_NOSYSTEM: '1',
+      GIT_CONFIG_GLOBAL: process.platform === 'win32' ? 'NUL' : '/dev/null',
+      GIT_CONFIG_PARAMETERS: parameters,
+    },
+  })
+  const rows = stdout.trim().split(/\r?\n/)
+  if (rows.length !== 1) throw Error('REVIEW_CHILD_OUTPUT')
+  const response = JSON.parse(rows[0])
+  if (
+    !response?.receipt ||
+    typeof response.receipt !== 'object' ||
+    !/^[a-f0-9]{64}$/.test(response.recordSha256)
+  )
+    throw Error('REVIEW_CHILD_OUTPUT')
+  return response
 }
 const gitEnv = () => ({
   ...process.env,
@@ -104,7 +211,22 @@ async function safeFile(root, path) {
       throw Error('REVIEW_SOURCE_REPARSE')
   }
   if (!(await lstat(target)).isFile()) throw Error('REVIEW_SOURCE_TYPE')
-  return readFile(target)
+  return readRegularNoFollow(target)
+}
+async function readRegularNoFollow(path) {
+  const handle = await open(path, fsConstants.O_RDONLY | (fsConstants.O_NOFOLLOW ?? 0))
+  try {
+    const state = await handle.stat()
+    if (
+      !state.isFile() ||
+      (await lstat(path)).isSymbolicLink() ||
+      !samePath(await realpath(path), path)
+    )
+      throw Error('REVIEW_SOURCE_REPARSE')
+    return await handle.readFile()
+  } finally {
+    await handle.close()
+  }
 }
 const forbidden = (path) =>
   /(^|\/)(\.env(?:\.[^/]*)?|\.codex|\.aws|\.ssh|\.git|auth\.json|credentials|id_rsa|id_ed25519|[^/]+\.(pem|key))($|\/)/i.test(
@@ -427,38 +549,91 @@ export function createFixtureTransport(raw) {
   return transport
 }
 
-function finalAgentMessage(events) {
-  const messages = events.filter(
-    (e) => e.type === 'item.completed' && e.item?.type === 'agent_message',
-  )
-  return messages.at(-1)?.item?.text
-}
+export const reviewExitCode = (status) => (status === 'PASS' ? 0 : status === 'FAIL' ? 1 : 2)
 export function verifyRawReview({ events, report, exit, timedOut = false }) {
   try {
-    if (timedOut || (exit !== 0 && exit !== 1)) throw Error('REVIEW_TRANSPORT')
+    if (timedOut || exit !== 0) throw Error('REVIEW_TRANSPORT')
     const parsed = events
       .split(/\r?\n/)
       .filter(Boolean)
       .map((line) => JSON.parse(line))
-    if (
-      parsed[0]?.type !== 'thread.started' ||
-      !parsed[0].thread_id ||
-      parsed.filter((e) => e.type === 'thread.started').length !== 1 ||
-      parsed.filter((e) => e.type === 'turn.started').length !== 1 ||
-      parsed.findIndex((e) => e.type === 'turn.started') >
-        parsed.findIndex((e) => e.type === 'turn.completed') ||
-      parsed.at(-1)?.type !== 'turn.completed' ||
-      parsed.some((e) => ['error', 'turn.failed'].includes(e.type)) ||
-      parsed.filter((e) => e.type === 'turn.completed').length !== 1
-    )
-      throw Error('REVIEW_EVENTS')
+    if (parsed[0]?.type !== 'thread.started' || !parsed[0].thread_id) throw Error('REVIEW_EVENTS')
+    let phase = 'BEFORE',
+      started = 0,
+      completed = 0,
+      final = null,
+      lastItemWasMessage = false
+    const items = new Map()
+    const seen = new Set()
+    for (const [index, event] of parsed.entries()) {
+      if (
+        !event ||
+        typeof event !== 'object' ||
+        Array.isArray(event) ||
+        event.error ||
+        ['error', 'turn.failed'].includes(event.type)
+      )
+        throw Error('REVIEW_EVENTS')
+      if (event.type === 'thread.started') {
+        if (index !== 0 || event.thread_id !== parsed[0].thread_id) throw Error('REVIEW_EVENTS')
+      } else if (event.type === 'turn.started') {
+        if (phase !== 'BEFORE' || ++started !== 1) throw Error('REVIEW_EVENTS')
+        phase = 'ACTIVE'
+      } else if (event.type === 'turn.completed') {
+        if (
+          phase !== 'ACTIVE' ||
+          ++completed !== 1 ||
+          items.size ||
+          !lastItemWasMessage ||
+          index !== parsed.length - 1
+        )
+          throw Error('REVIEW_EVENTS')
+        phase = 'DONE'
+      } else if (event.type?.startsWith('item.')) {
+        if (phase !== 'ACTIVE') throw Error('REVIEW_EVENTS')
+        const item = event.item
+        if (
+          !item ||
+          typeof item.id !== 'string' ||
+          !item.id ||
+          typeof item.type !== 'string' ||
+          !item.type ||
+          item.error ||
+          ['failed', 'error'].includes(item.status)
+        )
+          throw Error('REVIEW_EVENTS')
+        const prior = items.get(item.id)
+        if (event.type === 'item.started') {
+          if (prior || seen.has(item.id)) throw Error('REVIEW_EVENTS')
+          seen.add(item.id)
+          items.set(item.id, item.type)
+          lastItemWasMessage = false
+        } else if (event.type === 'item.updated') {
+          if (prior !== item.type) throw Error('REVIEW_EVENTS')
+        } else if (event.type === 'item.completed') {
+          if (
+            (prior && prior !== item.type) ||
+            (!prior && item.type === 'command_execution') ||
+            (!prior && seen.has(item.id))
+          )
+            throw Error('REVIEW_EVENTS')
+          if (prior) items.delete(item.id)
+          else seen.add(item.id)
+          lastItemWasMessage = item.type === 'agent_message'
+          if (item.type === 'agent_message') {
+            if (items.size || typeof item.text !== 'string') throw Error('REVIEW_EVENTS')
+            final = item.text
+          }
+        } else throw Error('REVIEW_EVENTS')
+      } else throw Error('REVIEW_EVENTS')
+    }
+    if (phase !== 'DONE' || started !== 1 || completed !== 1) throw Error('REVIEW_EVENTS')
     const lines = report.replace(/\\+_/g, '_').split(/\r?\n/)
     const markers = lines.filter((line) => line.includes('GATE_STATUS:'))
     const match =
       markers.length === 1 && /^[ \t]*GATE_STATUS:[ \t]*(PASS|FAIL)[ \t]*$/.exec(markers[0])
-    if (!match || (match[1] === 'PASS' ? exit !== 0 : exit !== 1)) throw Error('REVIEW_VERDICT')
-    if (finalAgentMessage(parsed)?.trimEnd() !== report.trimEnd())
-      throw Error('REVIEW_FINAL_REPORT')
+    if (!match) throw Error('REVIEW_VERDICT')
+    if (final.trimEnd() !== report.trimEnd()) throw Error('REVIEW_FINAL_REPORT')
     return { ok: true, status: match[1], gateStatus: match[1], threadId: parsed[0].thread_id }
   } catch (error) {
     return blocked(error.message || 'REVIEW_RAW')
@@ -710,7 +885,7 @@ export async function runStrictValidation(root, run, snapshotSha256, change) {
   return records
 }
 
-async function freeze(owner, prepared, request, requestPath) {
+async function freeze(owner, prepared, manifest, request, requestPath) {
   const requestBytes = requestPath ? await readFile(requestPath) : null
   if (requestBytes && sha(requestBytes) !== prepared.requestFileSha256)
     throw Error('REVIEW_REQUEST_DRIFT')
@@ -723,8 +898,11 @@ async function freeze(owner, prepared, request, requestPath) {
   const run = join(runs, `${new Date().toISOString().replace(/[:.]/g, '-')}-${randomUUID()}`)
   await mkdir(run)
   await safeDirectory(run)
-  const lock = join(freezes, `${request.change}.json`)
+  const lock = join(freezes, `${manifest.id}.json`)
   const record = {
+    directionId: manifest.id,
+    owningChange: request.change,
+    stageId: request.stage,
     owner: owner.root,
     common: owner.common,
     branch: owner.branch,
@@ -779,38 +957,104 @@ async function verifyPacket(packet, files) {
   return sha(JSON.stringify(files))
 }
 
-async function captureSharedRaw(common, sharedRun, run) {
+export async function captureSharedRaw(common, sharedRun, run) {
   const root = join(common, 'frade-workflow', 'runs')
   if (!inside(root, sharedRun) || !samePath(await realpath(sharedRun), sharedRun))
     throw Error('REVIEW_SHARED_RUN_PATH')
   const target = join(run, 'shared-raw')
   await mkdir(target)
   const artifacts = []
+  const exclusions = []
+  const seen = new Set()
   const walk = async (relativePath = '') => {
     const current = join(sharedRun, relativePath)
+    await safeDirectory(current)
     for (const entry of await readdir(current, { withFileTypes: true })) {
       const child = relativePath ? `${relativePath}/${entry.name}` : entry.name
       const origin = join(sharedRun, child)
-      if (entry.isSymbolicLink()) throw Error('REVIEW_SHARED_RUN_LINK')
-      if (entry.isDirectory()) {
+      if (!safeRepoPath(child) || seen.has(child.toLowerCase()))
+        throw Error('REVIEW_SHARED_RUN_PATH')
+      seen.add(child.toLowerCase())
+      const state = await lstat(origin)
+      if (state.isSymbolicLink() || !samePath(await realpath(origin), origin)) {
+        if (
+          !state.isSymbolicLink() ||
+          !/^offline-home\/tmp\/arg0\/[^/]+$/.test(child) ||
+          exclusions.length >= 4
+        )
+          throw Error('REVIEW_SHARED_RUN_LINK')
+        exclusions.push({
+          path: child,
+          kind: 'runtime-symlink',
+          target: await readlink(origin),
+          reason: 'Codex canary offline home; outside reviewer evidence',
+        })
+      } else if (state.isDirectory()) {
         await mkdir(join(target, child))
         await walk(child)
-      } else if (entry.isFile()) {
-        const bytes = await readFile(origin)
+      } else if (state.isFile()) {
+        const bytes = await readRegularNoFollow(origin)
         const copy = join(target, child)
         await writeFile(copy, bytes, { flag: 'wx' })
-        if (sha(await readFile(copy)) !== sha(bytes) || sha(await readFile(origin)) !== sha(bytes))
+        if (
+          sha(await readRegularNoFollow(copy)) !== sha(bytes) ||
+          sha(await readRegularNoFollow(origin)) !== sha(bytes)
+        )
           throw Error('REVIEW_SHARED_RAW_DRIFT')
         artifacts.push({ path: child, bytes: bytes.length, sha256: sha(bytes) })
       } else throw Error('REVIEW_SHARED_RUN_TYPE')
     }
   }
   await walk()
+  const afterPaths = []
+  const inventory = async (relativePath = '') => {
+    const directory = join(sharedRun, relativePath)
+    await safeDirectory(directory)
+    for (const entry of await readdir(directory, { withFileTypes: true })) {
+      const child = relativePath ? `${relativePath}/${entry.name}` : entry.name
+      afterPaths.push(child.toLowerCase())
+      const state = await lstat(join(sharedRun, child))
+      if (state.isDirectory() && !state.isSymbolicLink()) await inventory(child)
+    }
+  }
+  await inventory()
+  if (JSON.stringify(afterPaths.sort()) !== JSON.stringify([...seen].sort()))
+    throw Error('REVIEW_SHARED_RAW_DRIFT')
   artifacts.sort((a, b) => a.path.localeCompare(b.path))
+  for (const artifact of artifacts) {
+    const source = await readRegularNoFollow(join(sharedRun, artifact.path))
+    const copy = await readRegularNoFollow(join(target, artifact.path))
+    if (
+      source.length !== artifact.bytes ||
+      copy.length !== artifact.bytes ||
+      sha(source) !== artifact.sha256 ||
+      sha(copy) !== artifact.sha256
+    )
+      throw Error('REVIEW_SHARED_RAW_DRIFT')
+  }
+  for (const excluded of exclusions) {
+    const path = join(sharedRun, excluded.path)
+    if (!(await lstat(path)).isSymbolicLink() || (await readlink(path)) !== excluded.target)
+      throw Error('REVIEW_SHARED_RAW_DRIFT')
+  }
   await writeFile(join(run, 'shared-raw-index.json'), JSON.stringify(artifacts, null, 2) + '\n', {
     flag: 'wx',
   })
-  return { root: target, artifacts, digest: sha(JSON.stringify(artifacts)) }
+  await writeFile(
+    join(run, 'shared-runtime-exclusions.json'),
+    JSON.stringify(
+      { max: 4, allowedPath: 'offline-home/tmp/arg0/<direct-child>', exclusions },
+      null,
+      2,
+    ) + '\n',
+    { flag: 'wx' },
+  )
+  return {
+    root: target,
+    artifacts,
+    exclusions,
+    digest: sha(JSON.stringify({ artifacts, exclusions })),
+  }
 }
 
 export async function runFixtureReview(options = {}) {
@@ -821,7 +1065,13 @@ export async function runFixtureReview(options = {}) {
   if (!prepared.ok) return prepared
   let locked, raw
   try {
-    locked = await freeze(prepared.owner, prepared, options.request, options.requestPath)
+    locked = await freeze(
+      prepared.owner,
+      prepared,
+      options.manifest,
+      options.request,
+      options.requestPath,
+    )
     const packet = await materializePacket(prepared.owner, prepared, locked.run)
     const packetSha256 = await verifyPacket(packet, prepared.files)
     raw = await retainRaw(locked.run, sealed.raw)
@@ -930,16 +1180,19 @@ export async function runProductionReview(options = {}) {
       throw Error('REVIEW_RELEASE')
     const releaseRoot = join(prepared.owner.common, 'frade-workflow', 'releases', pointer.release)
     await safeDirectory(releaseRoot)
-    const core = await import(pathToFileURL(join(releaseRoot, 'scripts/agent-review/core.mjs')))
-    const release = await core.bundle(releaseRoot)
-    if (release.digest !== pointer.release) throw Error('REVIEW_BUNDLE')
-    const discovered = await core.discover(prepared.owner.root, prepared.owner.common)
-    if (
-      !samePath(discovered.root, prepared.owner.root) ||
-      discovered.branch !== prepared.owner.branch
+    const release = await verifyPinnedRelease(releaseRoot, pointer.release)
+    locked = await freeze(
+      prepared.owner,
+      prepared,
+      options.manifest,
+      options.request,
+      options.requestPath,
     )
-      throw Error('REVIEW_OWNER')
-    locked = await freeze(prepared.owner, prepared, options.request, options.requestPath)
+    const privateReleaseRoot = await materializeVerifiedRelease(
+      releaseRoot,
+      locked.run,
+      pointer.release,
+    )
     const packet = await materializePacket(prepared.owner, prepared, locked.run)
     const packetSha256 = await verifyPacket(packet, prepared.files)
     const strictValidation = await runStrictValidation(
@@ -957,7 +1210,7 @@ export async function runProductionReview(options = {}) {
       throw Error('REVIEW_TOOLCHAIN_DRIFT')
     if (
       sha(await readFile(pointerPath)) !== pointerSha256 ||
-      (await core.bundle(releaseRoot)).digest !== release.digest
+      (await verifyPinnedRelease(releaseRoot, pointer.release)).digest !== release.digest
     )
       throw Error('REVIEW_CONTROL_DRIFT')
     const selected = prepared.assignment
@@ -980,7 +1233,15 @@ export async function runProductionReview(options = {}) {
       paths: options.request.paths,
       prompt: options.request.prompt,
     }
-    const receipt = await core.review(release, discovered, request)
+    const child = await invokeVerifiedSharedChild({
+      releaseRoot: privateReleaseRoot,
+      expectedDigest: pointer.release,
+      ownerRoot: prepared.owner.root,
+      common: prepared.owner.common,
+      expectedBranch: prepared.owner.branch,
+      request,
+    })
+    const receipt = child.receipt
     const rawRun = receipt.run
     captured = await captureSharedRaw(prepared.owner.common, rawRun, locked.run)
     const output = join(captured.root, 'output')
@@ -1001,7 +1262,7 @@ export async function runProductionReview(options = {}) {
     const inner = await readFile(join(output, 'record.json'))
     const innerHash = sha(inner)
     const innerRecord = JSON.parse(inner)
-    core.verifyRequestedPolicy(innerRecord, request.reviewPolicy)
+    if (innerHash !== child.recordSha256) throw Error('REVIEW_RECORD_DRIFT')
     const probeBytes = await readFile(join(captured.root, 'instance', 'offline-probe-b.json'))
     const probeRecord = JSON.parse(probeBytes)
     const confinement =
@@ -1029,7 +1290,7 @@ export async function runProductionReview(options = {}) {
       sha(JSON.stringify(options.request)) === locked.record.requestSha256 &&
       (!options.requestPath ||
         sha(await readFile(options.requestPath)) === prepared.requestFileSha256) &&
-      (await core.bundle(releaseRoot)).digest === release.digest
+      (await verifyPinnedRelease(releaseRoot, pointer.release)).digest === release.digest
     const wrapper = {
       ok: valid,
       status: valid ? result.status : 'BLOCKED',

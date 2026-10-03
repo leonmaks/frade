@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not
+ok 1 - approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not # SKIP test name does not match pattern
+  ---
+  duration_ms: 2.076704
+  ...
+# Subtest: canonical owner fields are required on every host
+ok 2 - canonical owner fields are required on every host # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.119612
+  ...
+# Subtest: second direction resolves its own approved stage pair; request metadata cannot grant approval
+ok 3 - second direction resolves its own approved stage pair; request metadata cannot grant approval # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.091338
+  ...
+# Subtest: missing or stale plan, role ambiguity, range, source drift and request self approval block
+ok 4 - missing or stale plan, role ambiguity, range, source drift and request self approval block # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.244374
+  ...
+# Subtest: foreign source is rejected before reading artifacts
+ok 5 - foreign source is rejected before reading artifacts # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.098065
+  ...
+# Subtest: credentials, unsafe paths, foreign paths and oversized packets block preparation
+ok 6 - credentials, unsafe paths, foreign paths and oversized packets block preparation # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.161024
+  ...
+# Subtest: public review test source is safe in the complete packet
+ok 7 - public review test source is safe in the complete packet # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.089866
+  ...
+# Subtest: wrong common, branch, source or owner registration blocks
+ok 8 - wrong common, branch, source or owner registration blocks # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.094386
+  ...
+# Subtest: snapshot binds source, tracked status, raw index bytes and HEAD
+ok 9 - snapshot binds source, tracked status, raw index bytes and HEAD # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.147465
+  ...
+# Subtest: complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage
+ok 10 - complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.138846
+  ...
+# Subtest: a real candidate status mutation blocks and retains the common freeze marker
+ok 11 - a real candidate status mutation blocks and retains the common freeze marker # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.099851
+  ...
+# Subtest: incomplete, error, timeout, ambiguous and differing final agent message block
+ok 12 - incomplete, error, timeout, ambiguous and differing final agent message block # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.085872
+  ...
+# Subtest: canary, runtime, version, control, request, candidate and packet drift block
+ok 13 - canary, runtime, version, control, request, candidate and packet drift block # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.078936
+  ...
+# Subtest: strict validation requires both exact actual commands, clean exits and current source binding
+ok 14 - strict validation requires both exact actual commands, clean exits and current source binding # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.226926
+  ...
+# Subtest: strict validation launches the discovered public Node entry and binds semantic results
+ok 15 - strict validation launches the discovered public Node entry and binds semantic results # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.087238
+  ...
+# Subtest: approved proposal and task source omissions or drift block
+ok 16 - approved proposal and task source omissions or drift block # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.081773
+  ...
+# Subtest: raw external request is retained exactly and any later byte drift blocks
+ok 17 - raw external request is retained exactly and any later byte drift blocks # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.194448
+  ...
+# Subtest: live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct
+ok 18 - live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.275905
+  ...
+# Subtest: event stream rejects item errors, dangling commands, duplicate IDs and wrong order
+ok 19 - event stream rejects item errors, dangling commands, duplicate IDs and wrong order # SKIP test name does not match pattern
+  ---
+  duration_ms: 0.107314
+  ...
+# Subtest: pinned bundle is checked before mutated executable module can load
+ok 20 - pinned bundle is checked before mutated executable module can load
+  ---
+  duration_ms: 1007.55556
+  ...
+# Subtest: shared raw capture excludes only bounded runtime-home links and blocks output links
+ok 21 - shared raw capture excludes only bounded runtime-home links and blocks output links
+  ---
+  duration_ms: 711.238565
+  ...
+# Subtest: untouched shared core discover and snapshot in isolated Git child preserve raw index
+not ok 22 - untouched shared core discover and snapshot in isolated Git child preserve raw index
+  ---
+  duration_ms: 1119.611973
+  location: 'file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tests/directions/review.test.mjs:844:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Command failed: /usr/bin/node --input-type=module -e const core=await import(process.argv[1]);const integrity=await import(process.argv[2]);const owner=await core.discover(process.argv[3],process.argv[4]);const snap=await integrity.candidateSnapshot(owner.root);console.log(JSON.stringify({branch:owner.branch,digest:snap.digest})); file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tests/directions/shared-core-fixture/core.mjs file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tests/directions/shared-core-fixture/transport/integrity.mjs /mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tmp/frade-review-test-wxoNLF /mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tmp/frade-review-test-wxoNLF/.git
+    file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tests/directions/shared-core-fixture/core.mjs:22
+        throw Error('UNRELATED_REPOSITORY')
+              ^
+    
+    Error: UNRELATED_REPOSITORY
+        at Module.discover (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tests/directions/shared-core-fixture/core.mjs:22:11)
+        at file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tmp/frade-review-test-wxoNLF/[eval1]:1:111
+    
+    Node.js v18.19.1
+    
+  code: 1
+  stack: |-
+    Module.discover (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tests/directions/shared-core-fixture/core.mjs:22:11)
+    file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-confirm-20261003/work/tmp/frade-review-test-wxoNLF/[eval1]:1:111
+    ChildProcess.exithandler (node:child_process:422:12)
+    ChildProcess.emit (node:events:517:28)
+    maybeClose (node:internal/child_process:1098:16)
+    ChildProcess._handle.onexit (node:internal/child_process:303:5)
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 2
+# fail 1
+# cancelled 0
+# skipped 19
+# todo 0
+# duration_ms 2858.259749

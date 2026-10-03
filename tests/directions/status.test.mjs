@@ -459,6 +459,23 @@ test('FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queu
   assert.equal(readFileSync(statusPath, 'utf8'), retained)
 })
 
+test('one direction freeze defers real status write for a distinct owning stage change', async () => {
+  const { common, owner, m, statusPath } = actualOwner('alpha-direction')
+  m.stages.push({ ...m.stages[0], id: 'B02', change: 'beta-change', dependencies: [] })
+  m.scope.planningAllowed.push('openspec/changes/beta-change/**')
+  assert.equal(validateManifest(m).ok, true)
+  writeFileSync(statusPath, 'ORIGINAL STATUS\n')
+  const freeze = join(common, 'frade-workflow/freeze/alpha-direction.json')
+  mkdirSync(join(common, 'frade-workflow/freeze'), { recursive: true })
+  writeFileSync(
+    freeze,
+    JSON.stringify({ directionId: m.id, stageId: 'B02', owningChange: 'beta-change' }),
+  )
+  const result = await refreshStatus({ ...input({ manifest: m }), ownerRoot: owner, write: true })
+  assert.equal(result.status, 'FROZEN', JSON.stringify(result))
+  assert.equal(readFileSync(statusPath, 'utf8'), 'ORIGINAL STATUS\n')
+})
+
 test('FWE-015-S02 actual checkpoint-only change stales the previous projection until refresh', async () => {
   const { owner, m, statusPath } = actualOwner()
   const x = input({ manifest: m })
@@ -585,6 +602,42 @@ test('FWE-015 freeze arriving during awaited trusted proof defers the write', as
   assert.equal(readFileSync(statusPath, 'utf8'), prior)
   assert.equal(git(owner, 'status', '--porcelain'), beforeStatus)
   assert.equal(git(owner, 'rev-parse', 'HEAD'), beforeHead)
+})
+
+test('one direction freeze blocks status writes for either change in a real Git owner', async () => {
+  const { common, owner, m, statusPath } = actualOwner()
+  const original = 'Direction status before either change review\n'
+  writeFileSync(statusPath, original)
+  const beforeHead = git(owner, 'rev-parse', 'HEAD')
+  const indexPath = git(owner, 'rev-parse', '--git-path', 'index')
+  const beforeIndex = readFileSync(indexPath)
+  const freeze = join(common, 'frade-workflow/freeze/alpha-direction.json')
+  mkdirSync(join(common, 'frade-workflow/freeze'), { recursive: true })
+  writeFileSync(
+    freeze,
+    JSON.stringify({ directionId: m.id, owningChange: 'feature-a', stageId: 'S01' }),
+  )
+  for (const change of ['feature-a', 'feature-b']) {
+    const variant = structuredClone(m)
+    variant.stages[0].change = change
+    variant.scope.planningAllowed.push(`openspec/changes/${change}/**`)
+    variant.scope.closure.archiveOwner = change
+    variant.scope.closure.archiveDestination = `openspec/changes/archive/<actual-archive-date>-${change}/**`
+    const result = await refreshStatus({
+      ...input({ manifest: variant }),
+      ownerRoot: owner,
+      write: true,
+    })
+    assert.equal(result.status, 'FROZEN', JSON.stringify(result))
+    assert.equal(result.code, 'REVIEW_FREEZE')
+    assert.equal(readFileSync(statusPath, 'utf8'), original)
+    assert.equal(git(owner, 'rev-parse', 'HEAD'), beforeHead)
+    assert.deepEqual(readFileSync(indexPath), beforeIndex)
+  }
+  assert.equal(
+    readFileSync(freeze, 'utf8'),
+    JSON.stringify({ directionId: m.id, owningChange: 'feature-a', stageId: 'S01' }),
+  )
 })
 
 test('FWE-013 status target cannot overwrite an in-scope non-dashboard file', async () => {

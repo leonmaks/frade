@@ -1,0 +1,131 @@
+TAP version 13
+# Subtest: approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not
+ok 1 - approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not
+  ---
+  duration_ms: 2986.700384
+  ...
+# Subtest: canonical owner fields are required on every host
+ok 2 - canonical owner fields are required on every host
+  ---
+  duration_ms: 2743.561023
+  ...
+# Subtest: second direction resolves its own approved stage pair; request metadata cannot grant approval
+ok 3 - second direction resolves its own approved stage pair; request metadata cannot grant approval
+  ---
+  duration_ms: 10290.513676
+  ...
+# Subtest: missing or stale plan, role ambiguity, range, source drift and request self approval block
+ok 4 - missing or stale plan, role ambiguity, range, source drift and request self approval block
+  ---
+  duration_ms: 2092.206465
+  ...
+# Subtest: foreign source is rejected before reading artifacts
+ok 5 - foreign source is rejected before reading artifacts
+  ---
+  duration_ms: 1010.957633
+  ...
+# Subtest: credentials, unsafe paths, foreign paths and oversized packets block preparation
+ok 6 - credentials, unsafe paths, foreign paths and oversized packets block preparation
+  ---
+  duration_ms: 2182.260037
+  ...
+# Subtest: public review test source is safe in the complete packet
+ok 7 - public review test source is safe in the complete packet
+  ---
+  duration_ms: 3157.784333
+  ...
+# Subtest: wrong common, branch, source or owner registration blocks
+ok 8 - wrong common, branch, source or owner registration blocks
+  ---
+  duration_ms: 1260.299452
+  ...
+# Subtest: snapshot binds source, tracked status, raw index bytes and HEAD
+ok 9 - snapshot binds source, tracked status, raw index bytes and HEAD
+  ---
+  duration_ms: 9376.91888
+  ...
+# Subtest: complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage
+ok 10 - complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage
+  ---
+  duration_ms: 13488.98216
+  ...
+# Subtest: a real candidate status mutation blocks and retains the common freeze marker
+ok 11 - a real candidate status mutation blocks and retains the common freeze marker
+  ---
+  duration_ms: 5913.505486
+  ...
+# Subtest: incomplete, error, timeout, ambiguous and differing final agent message block
+ok 12 - incomplete, error, timeout, ambiguous and differing final agent message block
+  ---
+  duration_ms: 38133.864974
+  ...
+# Subtest: canary, runtime, version, control, request, candidate and packet drift block
+ok 13 - canary, runtime, version, control, request, candidate and packet drift block
+  ---
+  duration_ms: 48363.944537
+  ...
+# Subtest: strict validation requires both exact actual commands, clean exits and current source binding
+ok 14 - strict validation requires both exact actual commands, clean exits and current source binding
+  ---
+  duration_ms: 2.18595
+  ...
+# Subtest: strict validation launches the discovered public Node entry and binds semantic results
+ok 15 - strict validation launches the discovered public Node entry and binds semantic results
+  ---
+  duration_ms: 1079.722349
+  ...
+# Subtest: approved proposal and task source omissions or drift block
+ok 16 - approved proposal and task source omissions or drift block
+  ---
+  duration_ms: 1037.31204
+  ...
+# Subtest: raw external request is retained exactly and any later byte drift blocks
+ok 17 - raw external request is retained exactly and any later byte drift blocks
+  ---
+  duration_ms: 11541.131989
+  ...
+# Subtest: live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct
+ok 18 - live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct
+  ---
+  duration_ms: 0.259346
+  ...
+# Subtest: event stream rejects item errors, dangling commands, duplicate IDs and wrong order
+ok 19 - event stream rejects item errors, dangling commands, duplicate IDs and wrong order
+  ---
+  duration_ms: 0.791157
+  ...
+# Subtest: pinned bundle is checked before mutated executable module can load
+ok 20 - pinned bundle is checked before mutated executable module can load
+  ---
+  duration_ms: 728.919955
+  ...
+# Subtest: shared raw capture excludes only bounded runtime-home links and blocks output links
+ok 21 - shared raw capture excludes only bounded runtime-home links and blocks output links
+  ---
+  duration_ms: 492.463107
+  ...
+# Subtest: untouched shared core discover and snapshot in isolated Git child preserve raw index
+not ok 22 - untouched shared core discover and snapshot in isolated Git child preserve raw index
+  ---
+  duration_ms: 1526.582624
+  location: 'file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:820:1'
+  failureType: 'testCodeFailure'
+  error: 'Unexpected end of JSON input'
+  code: 'ERR_TEST_FAILURE'
+  name: 'SyntaxError'
+  stack: |-
+    JSON.parse (<anonymous>)
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:840:21)
+    process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 21
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 157427.078373

@@ -1,0 +1,303 @@
+{
+  "historicalExecution": {
+    "startedAtUtc": "2026-10-03T13:47:17.360Z",
+    "stage": "W01",
+    "task": "2.5",
+    "role": "tooling-tests",
+    "approvedModel": "gpt-6-sol",
+    "approvedEffort": "high",
+    "requestedModel": "gpt-6-sol",
+    "requestedEffort": "high",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "sandboxProbeSha256": "e27996dc96c82921a46456c2a5daad03d5dcbafb57055816e6d8e5e64f0b3420",
+    "inputManifestSha256": "30bb7aea8ca3e81de76072e6290e7a5b4f071582b95d41fafab41eeaffdbb77b",
+    "promptSha256": "a852049937c1a46c49563452237a467fe4bfc619664b0b234c3949ecdb64a5ea",
+    "args": [
+      "-d",
+      "Ubuntu-22.04_E",
+      "--exec",
+      "/usr/bin/env",
+      "CODEX_HOME=/mnt/c/Users/NVISEN/.codex",
+      "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime/node_modules/.bin/codex",
+      "exec",
+      "--ignore-user-config",
+      "--ignore-rules",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--model",
+      "gpt-6-sol",
+      "-c",
+      "default_permissions=\"frade-worker\"",
+      "-c",
+      "permissions={frade-worker={extends=\":read-only\",filesystem={\":root\"=\"deny\",\":minimal\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work\"=\"write\",\"/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/input\"=\"read\"},network={enabled=false}}}",
+      "-c",
+      "model_reasoning_effort=\"high\"",
+      "-c",
+      "approval_policy=\"never\"",
+      "-c",
+      "web_search=\"disabled\"",
+      "-c",
+      "apps._default.enabled=false",
+      "-c",
+      "project_doc_max_bytes=0",
+      "-c",
+      "project_doc_fallback_filenames=[]",
+      "-c",
+      "shell_environment_policy.inherit=\"none\"",
+      "-c",
+      "shell_environment_policy.set={PATH=\"/usr/bin:/bin\",HOME=\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/home\",TMPDIR=\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp\",LANG=\"C.UTF-8\",LC_ALL=\"C.UTF-8\",GIT_CONFIG_GLOBAL=\"/dev/null\",GIT_CONFIG_SYSTEM=\"/dev/null\"}",
+      "-C",
+      "/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work",
+      "--json",
+      "--color",
+      "never",
+      "--output-last-message",
+      "/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/result.md",
+      "-"
+    ],
+    "status": "BLOCKED",
+    "timedOut": true,
+    "exitCode": null,
+    "inputUnchanged": true,
+    "completeStream": false,
+    "endedAtUtc": "2026-10-03T14:17:17.417Z"
+  },
+  "sources": [
+    {
+      "path": "scripts/directions/bootstrap.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\bootstrap.mjs",
+      "sha256": "7d49cabf133c9a9a59d9458931e4dc1d88626f660d19c58a770a2effa63edb68",
+      "bytes": 37676
+    },
+    {
+      "path": "scripts/directions/cli.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\cli.mjs",
+      "sha256": "573b7e49d831f5b3724c623a784f671f3619b7ac5f25c50bf756c7fa5e0ca4be",
+      "bytes": 4527
+    },
+    {
+      "path": "scripts/directions/contracts.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\contracts.mjs",
+      "sha256": "50e1efe38d9e906a6b0f577138baa9c107ef1f5349c8f6e2c5c85b59ab0ae367",
+      "bytes": 19165
+    },
+    {
+      "path": "scripts/directions/evidence.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\evidence.mjs",
+      "sha256": "34982bee69bf397a42450c1c5f239c567a9a61da59dd025710d6e05cbe6ea06a",
+      "bytes": 2961
+    },
+    {
+      "path": "scripts/directions/lifecycle.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\lifecycle.mjs",
+      "sha256": "8893ece1fe454fe8829cf0b9013304135db2faf38dc5c3f4a0ba4aa1e19fe8ed",
+      "bytes": 7273
+    },
+    {
+      "path": "scripts/directions/review-child.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\review-child.mjs",
+      "sha256": "621b33a053f4c9861f83f5b44581e375c31d3ffa2033f55754c549ab0ea84d35",
+      "bytes": 1443
+    },
+    {
+      "path": "scripts/directions/review.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\review.mjs",
+      "sha256": "304272a2bdf20e163ae444e4a8d75d2beca60a7305c42eb6b27fd862b97616e3",
+      "bytes": 50700
+    },
+    {
+      "path": "scripts/directions/roles.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\roles.mjs",
+      "sha256": "9fb5da92a87fc9fd173765857f61c36fcd4855bf572bd74f7145f4efbd4f2341",
+      "bytes": 10354
+    },
+    {
+      "path": "scripts/directions/scope.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\scope.mjs",
+      "sha256": "199dcb887c35111cf775a6af5f2d8324760ca0127540233181cf4d024d64f3ce",
+      "bytes": 22347
+    },
+    {
+      "path": "scripts/directions/status.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\scripts\\directions\\status.mjs",
+      "sha256": "c0a83640e7b9bfa27cb4fbf91a6475d27f9f5295c55cd7b17ec3477a1bd69a67",
+      "bytes": 22338
+    },
+    {
+      "path": "tests/directions/arguments.test.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\arguments.test.mjs",
+      "sha256": "7414525539e5f884d2751dce0fd42e03231b568daa3f9ceec322f0dc11ee36f8",
+      "bytes": 3090
+    },
+    {
+      "path": "tests/directions/authority-fixtures/.gitattributes",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\.gitattributes",
+      "sha256": "0b19e50da161e769a6ae60ad529155b0aad373f7e20b2da66ef2bdf12462fd73",
+      "bytes": 113
+    },
+    {
+      "path": "tests/directions/authority-fixtures/w01-d03.snapshot",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\w01-d03.snapshot",
+      "sha256": "98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239",
+      "bytes": 2501
+    },
+    {
+      "path": "tests/directions/authority-fixtures/w01-decisions.snapshot",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\w01-decisions.snapshot",
+      "sha256": "126589d990e2e44b04efe8825b5ec4d90582205ba6c729375528c383ccbaf186",
+      "bytes": 4657
+    },
+    {
+      "path": "tests/directions/authority-fixtures/w01-design.snapshot",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\w01-design.snapshot",
+      "sha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+      "bytes": 18308
+    },
+    {
+      "path": "tests/directions/authority-fixtures/w01-lifecycle.snapshot",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\w01-lifecycle.snapshot",
+      "sha256": "fc0b8cec6ab51ccd03a902ec2874aca49c1814cc42464a0a3d3c25b35aa6b204",
+      "bytes": 7849
+    },
+    {
+      "path": "tests/directions/authority-fixtures/w01-policy.snapshot",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\w01-policy.snapshot",
+      "sha256": "6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb",
+      "bytes": 12126
+    },
+    {
+      "path": "tests/directions/authority-fixtures/w01-progress.snapshot",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\w01-progress.snapshot",
+      "sha256": "c023d6c5ba9b65dc49e5d63e1690e8fa9e0b46f950052f13dd157b7aeebd4481",
+      "bytes": 5734
+    },
+    {
+      "path": "tests/directions/authority-fixtures/w01-proposal.snapshot",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\w01-proposal.snapshot",
+      "sha256": "97a26d30bf7dd54d5503000ebd754fa6ceb728d45a0d17c2ccb33e12e10c4d22",
+      "bytes": 3367
+    },
+    {
+      "path": "tests/directions/authority-fixtures/w01-role-dispatch.snapshot",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\w01-role-dispatch.snapshot",
+      "sha256": "0c2ac77851f57a1fec0e5d6b3959927c7c59646fe485f9dddbf6d1f2e2e4ed1b",
+      "bytes": 3819
+    },
+    {
+      "path": "tests/directions/authority-fixtures/w01-tasks.snapshot",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\authority-fixtures\\w01-tasks.snapshot",
+      "sha256": "d5296756e7bd359dbb678a247ed628e9291c8958cf2fbe8ec24943a146b814e0",
+      "bytes": 7510
+    },
+    {
+      "path": "tests/directions/bootstrap-repair.test.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\bootstrap-repair.test.mjs",
+      "sha256": "e8e51c64299526cccfda517418a2d6e8fd248c276b2333541aa316fe456696ce",
+      "bytes": 10314
+    },
+    {
+      "path": "tests/directions/bootstrap.test.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\bootstrap.test.mjs",
+      "sha256": "e0529db1eb462fb8e2c6ff6bbda438f031a9fd6c482a9864257eb0fca9e9cc25",
+      "bytes": 24344
+    },
+    {
+      "path": "tests/directions/contracts.test.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\contracts.test.mjs",
+      "sha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182",
+      "bytes": 9490
+    },
+    {
+      "path": "tests/directions/fixtures.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\fixtures.mjs",
+      "sha256": "af555e723d96979821f37b63cc39483f03764a735fb960d7983bea17b9a8e6b5",
+      "bytes": 1874
+    },
+    {
+      "path": "tests/directions/lifecycle.test.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\lifecycle.test.mjs",
+      "sha256": "8aca030c8d44c1b3e1fff364f7be8ee1e7ed558dfdc92312911f839f7e0e8a9c",
+      "bytes": 15368
+    },
+    {
+      "path": "tests/directions/load-core.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\load-core.mjs",
+      "sha256": "f825780530d0daea3cff32587edfd81ada2fa3a8a56bc99e547d22e5029d9770",
+      "bytes": 1223
+    },
+    {
+      "path": "tests/directions/repair.test.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\repair.test.mjs",
+      "sha256": "26c888d9fc85d146968e2f37670d739ee7ee020637a95c0a13c60136386f343e",
+      "bytes": 18734
+    },
+    {
+      "path": "tests/directions/review.test.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\review.test.mjs",
+      "sha256": "aa4e88a873d0cc8ff4b910fe9bf37c4642466f87b71ad1c0b17a0c77d43278d2",
+      "bytes": 35134
+    },
+    {
+      "path": "tests/directions/roles.test.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\roles.test.mjs",
+      "sha256": "6a929c969b50c098bbf8106a6f1dfd27debdb2b1d789c907a893f67163c06570",
+      "bytes": 16548
+    },
+    {
+      "path": "tests/directions/shared-core-fixture/core.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\shared-core-fixture\\core.mjs",
+      "sha256": "07851ff4be7d011a430a59f9382c9a220daba22071c8a8a27887f21f98226fad",
+      "bytes": 21465
+    },
+    {
+      "path": "tests/directions/shared-core-fixture/transport/integrity.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\shared-core-fixture\\transport\\integrity.mjs",
+      "sha256": "2fc3b036930871f010a6850f86dfc79c3234975e437124fc020a73d73d277395",
+      "bytes": 2474
+    },
+    {
+      "path": "tests/directions/status.test.mjs",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\tests\\directions\\status.test.mjs",
+      "sha256": "5f14d338fe9003341df4a9d9fb9195cf38b71dfb910b25c2361c37dd71dd5c90",
+      "bytes": 25638
+    },
+    {
+      "path": "docs/engineering/templates/direction-manifest.v2.json",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\docs\\engineering\\templates\\direction-manifest.v2.json",
+      "sha256": "f957709be54cc909e77e6550a692700ee529d64b06fda6f7137b9bd2994b6b64",
+      "bytes": 1606
+    },
+    {
+      "path": "docs/engineering/templates/task-2.1-core-contract.md",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\docs\\engineering\\templates\\task-2.1-core-contract.md",
+      "sha256": "ce86d9d2d14bc7d42f314d763c6211fafeab57935abd3ae1cd0bfd49daf7f37c",
+      "bytes": 10258
+    },
+    {
+      "path": "docs/engineering/templates/task-2.2-role-contract.md",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\docs\\engineering\\templates\\task-2.2-role-contract.md",
+      "sha256": "d2baca53539441dcf7aaf0149a0111d4615a29757f52d0cae16c252ef8858348",
+      "bytes": 4424
+    },
+    {
+      "path": "docs/engineering/templates/task-2.3-bootstrap.md",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\docs\\engineering\\templates\\task-2.3-bootstrap.md",
+      "sha256": "103709b5e4872b75c42303d6103a745a1d05ee8fd85e2d6eb1be9ede80e52f24",
+      "bytes": 5956
+    },
+    {
+      "path": "docs/engineering/templates/task-2.4-status.md",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\docs\\engineering\\templates\\task-2.4-status.md",
+      "sha256": "65c358df8f5b1c52f8cf4593e031842af2401b5a5a4d334572e9fe0e718e0bae",
+      "bytes": 4533
+    },
+    {
+      "path": "docs/engineering/templates/task-2.5-review.md",
+      "origin": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-gate-repair-20261003\\work\\docs\\engineering\\templates\\task-2.5-review.md",
+      "sha256": "430f22b7847240da6bd8112065e35c92ef997084eb2cfba34a34d75dafbf1b2c",
+      "bytes": 6789
+    }
+  ],
+  "admission": "RAW_CANDIDATE_ONLY_NOT_IMPLEMENTATION_APPROVAL"
+}

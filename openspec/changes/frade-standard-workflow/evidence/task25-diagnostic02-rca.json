@@ -1,0 +1,148 @@
+{
+  "atUtc": "2026-10-03T16:01:40.004Z",
+  "status": "REPAIR_REQUIRED_NO_TASK_COMPLETION",
+  "task": "2.5",
+  "independentGate": "FAIL",
+  "outerReception": "BLOCKED_REVIEW_SHARED_RUN_LINK",
+  "completeSharedStream": true,
+  "rawReviewExit": 0,
+  "candidateUnchanged": true,
+  "beforeSha256": "bca89094bc2f76cb066d624374fa621f0ca886fb1bad86f144e8aac12ea54e83",
+  "afterSha256": "bca89094bc2f76cb066d624374fa621f0ca886fb1bad86f144e8aac12ea54e83",
+  "reviewerTermination": {
+    "checkedBy": "wsl Ubuntu-22.04_E /usr/bin/pgrep -af exact shared-run UUID",
+    "exit": 1,
+    "matchingProcesses": 0,
+    "checkPerformedBeforeOwnerRecovery": true
+  },
+  "freeze": "Existing buggy catch removed marker. No replacement approval inferred; review fully stopped and raw records retained before scoped repair.",
+  "classification": [
+    "ALGORITHM",
+    "STATE_TRANSITION",
+    "INTEGRATION"
+  ],
+  "rootCauses": [
+    {
+      "id": "RCA02-PARSER",
+      "cause": "Generic truthiness and failed/error status rejection does not establish type-specific terminal state. item.type=error and command completed/in_progress/null exit accepted.",
+      "repair": "Closed supported-item schema and type-specific terminal validation; separate named meaningful old-source RED cases, not an assertion sequence that stops early."
+    },
+    {
+      "id": "RCA02-FREEZE",
+      "cause": "Failure path treats source identity equality as sufficient evidence of safe reception, omitting complete immutable raw retention and technical process termination.",
+      "repair": "Explicit frozen lifecycle; any timeout/ambiguous completion/raw retention failure keeps marker. Release only after termination plus retention plus unchanged candidate. Supply termination evidence and tested recovery procedure without pretending processes ended."
+    },
+    {
+      "id": "RCA02-LINK",
+      "cause": "Synthetic fixture modeled links as direct children offline-home/tmp/arg0; actual pinned CLI creates an intervening codex-arg0<random> directory. Unrelated generic links must still block.",
+      "repair": "Model real pinned-runtime metadata layout and exactly four named utility links pointing to verified runtime executable; keep link target metadata only, no following. Add real nested portable junction/symlink RED/GREEN and malformed path/target/cardinality controls."
+    }
+  ],
+  "noPatchLoop": "Repeated deterministic capture failure RCA performed BEFORE further production-source modifications. Preserve prior failed fixes and test limitations.",
+  "checks": "Owner Windows131/131/lint/format/strict remain actual machine evidence only; required fresh independent FAIL stops task2.5.",
+  "publication": "DEFERRED_BY_USER; local continuation authorized; no push",
+  "refs": [
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-48-00-344Z-c84f8ea4-12c6-49b8-ac46-095bf6bbf199\\receipt.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/shared/receipt.json",
+      "sha256": "3ed243aefaa0d33181366c33631c3a1b6828b070b0f9849d914f42abd6421568",
+      "bytes": 1836
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-48-00-344Z-c84f8ea4-12c6-49b8-ac46-095bf6bbf199\\input.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/shared/input.json",
+      "sha256": "07bcc3cd5abf62ab379cc8645777313297f75ca4667e36c4434d381fdb6169d0",
+      "bytes": 20441
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-48-00-344Z-c84f8ea4-12c6-49b8-ac46-095bf6bbf199\\prompt.md",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/shared/prompt.md",
+      "sha256": "5db5b6e8fce17518c00741cf91889e0f5e3d26ec0571592579b2b6dec5e002d2",
+      "bytes": 3549
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-48-00-344Z-c84f8ea4-12c6-49b8-ac46-095bf6bbf199\\output\\record.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/shared/output/record.json",
+      "sha256": "02dddee62b9ec8cc791fc5e4d4206c2885f5bc0904923494f08a998e4a745aed",
+      "bytes": 3798
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-48-00-344Z-c84f8ea4-12c6-49b8-ac46-095bf6bbf199\\output\\events.jsonl",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/shared/output/events.jsonl",
+      "sha256": "441e3b01e2a7cf51d315ed01bd227deb4e133c1736f6e5b98acc8f778455de40",
+      "bytes": 677965
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-48-00-344Z-c84f8ea4-12c6-49b8-ac46-095bf6bbf199\\output\\result.md",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/shared/output/result.md",
+      "sha256": "4fac83185e788a7b0d47843831f62f1d91d854da45a3e4217fb1ece4b64157c0",
+      "bytes": 2270
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-48-00-344Z-c84f8ea4-12c6-49b8-ac46-095bf6bbf199\\output\\stderr.txt",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/shared/output/stderr.txt",
+      "sha256": "31d793cfb9a452c0dd0f5f0139dd7d38f4887d53d404c1af4ddd80eb6e7229e5",
+      "bytes": 379
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-48-00-344Z-c84f8ea4-12c6-49b8-ac46-095bf6bbf199\\instance\\offline-probe-b.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/shared/instance/offline-probe-b.json",
+      "sha256": "5334133cc22c5fcf2a82c9fdc6bf1fe501778442743d69cbd6934cac2ed9de6b",
+      "bytes": 4602
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-47-31-259Z-3b0c1fb9-27f8-4d57-a2cc-70321c311057\\freeze.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/wrapper/freeze.json",
+      "sha256": "916c360e531b2b40513bb624ca1efd823804dc63f80a633bfd3c8b7220fcccb6",
+      "bytes": 1163
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-47-31-259Z-3b0c1fb9-27f8-4d57-a2cc-70321c311057\\candidate-before.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/wrapper/candidate-before.json",
+      "sha256": "fdaf3238db352049d07430336148d1b4d741040ab58635d71f8107f151160185",
+      "bytes": 1328786
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-47-31-259Z-3b0c1fb9-27f8-4d57-a2cc-70321c311057\\wrapper-error.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/wrapper/wrapper-error.json",
+      "sha256": "49d056fe6fa315fca66a528c8d0beb4afd2c53659bf031a0a49a1dc7dbc2cfad",
+      "bytes": 86
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-47-31-259Z-3b0c1fb9-27f8-4d57-a2cc-70321c311057\\request.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/wrapper/request.json",
+      "sha256": "cc60e1829383fd46a2586490e75e5134f61109d1fd8ae8415e7d25d73c021095",
+      "bytes": 20086
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-47-31-259Z-3b0c1fb9-27f8-4d57-a2cc-70321c311057\\external-request.raw.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/wrapper/external-request.raw.json",
+      "sha256": "cc60e1829383fd46a2586490e75e5134f61109d1fd8ae8415e7d25d73c021095",
+      "bytes": 20086
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-47-31-259Z-3b0c1fb9-27f8-4d57-a2cc-70321c311057\\strict-1.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/wrapper/strict-1.json",
+      "sha256": "9417e1ddf873aa4b0adc8c9d285cdb1eb28cef38f55669d2773c5148b1ddc697",
+      "bytes": 2137
+    },
+    {
+      "original": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-03T15-47-31-259Z-3b0c1fb9-27f8-4d57-a2cc-70321c311057\\strict-2.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/wrapper/strict-2.json",
+      "sha256": "0ff8faf018234635da566efefc37515ae47a6be4688c48d29e7f06cdca3ade9e",
+      "bytes": 13294
+    },
+    {
+      "original": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-diagnostic-02-20261003\\raw-run-inventory.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/raw-run-inventory.json",
+      "sha256": "2885b499e5594aae779580ea4c016ee2e5c5a9cb0207e96f391238f844412826",
+      "bytes": 50269
+    },
+    {
+      "original": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.5-diagnostic-02-20261003\\invoke.json",
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/invoke.json",
+      "sha256": "cea13ac488fd8272c546107017c01e348df9524e7478f10c904dc08cb7b5166b",
+      "bytes": 694
+    }
+  ]
+}

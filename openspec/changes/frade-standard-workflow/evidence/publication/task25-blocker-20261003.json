@@ -1,0 +1,86 @@
+{
+  "status": "BLOCKED",
+  "event": "task25-blocker-RCA",
+  "sourceSha": "3271409bb52451ed267551224a211649de50843f",
+  "remoteSha": "396c6ad1c5a44335fe245a427c9638e144ef079b",
+  "remote": "git@github.com:leonmaks/frade.git",
+  "ref": "refs/heads/codex/frade-standard-workflow",
+  "atUtc": "2026-10-03T12:47:09.393Z",
+  "readyForVerify": false,
+  "gateStatus": "FAIL",
+  "wrapperStatus": "BLOCKED",
+  "records": [
+    {
+      "args": [
+        "push",
+        "git@github.com:leonmaks/frade.git",
+        "3271409bb52451ed267551224a211649de50843f:refs/heads/codex/frade-standard-workflow"
+      ],
+      "exit": 128,
+      "stderr": "Connection closed by 140.82.121.3 port 22; fatal: Could not read from remote repository.",
+      "origin": "Original actual parent publish-staged-blocker execution; summarized here, raw output retained by controller"
+    },
+    {
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout": "3271409bb52451ed267551224a211649de50843f\n",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "args": [
+        "branch",
+        "--show-current"
+      ],
+      "stdout": "codex/frade-standard-workflow\n",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "args": [
+        "remote",
+        "get-url",
+        "--push",
+        "origin"
+      ],
+      "stdout": "git@github.com:leonmaks/frade.git\n",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "args": [
+        "ls-remote",
+        "--exit-code",
+        "git@github.com:leonmaks/frade.git",
+        "refs/heads/codex/frade-standard-workflow"
+      ],
+      "stdout": "396c6ad1c5a44335fe245a427c9638e144ef079b\trefs/heads/codex/frade-standard-workflow\n",
+      "stderr": "",
+      "exit": 0
+    },
+    {
+      "args": [
+        "push",
+        "git@github.com:leonmaks/frade.git",
+        "3271409bb52451ed267551224a211649de50843f:refs/heads/codex/frade-standard-workflow"
+      ],
+      "stdout": "",
+      "stderr": "Connection to github.com closed by remote host.\r\nsend-pack: unexpected disconnect while reading sideband packet\nfatal: the remote end hung up unexpectedly\n",
+      "exit": 128
+    },
+    {
+      "args": [
+        "ls-remote",
+        "--exit-code",
+        "git@github.com:leonmaks/frade.git",
+        "refs/heads/codex/frade-standard-workflow"
+      ],
+      "stdout": "396c6ad1c5a44335fe245a427c9638e144ef079b\trefs/heads/codex/frade-standard-workflow\n",
+      "stderr": "",
+      "exit": 0
+    }
+  ],
+  "retry": "One explicit same-ref retry after fresh remote observation; no fallback, force or origin/config change"
+}

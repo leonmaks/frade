@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises'
+import { mkdtemp, mkdir, readFile, writeFile, rm, symlink, cp, stat } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { execFile } from 'node:child_process'
@@ -171,14 +171,17 @@ const complete = (status = 'PASS') => ({
     [
       { type: 'thread.started', thread_id: 'fixture-thread' },
       { type: 'turn.started' },
-      { type: 'item.completed', item: { type: 'agent_message', text: `GATE_STATUS: ${status}` } },
+      {
+        type: 'item.completed',
+        item: { id: 'fixture-message', type: 'agent_message', text: `GATE_STATUS: ${status}` },
+      },
       { type: 'turn.completed' },
     ]
       .map((e) => JSON.stringify(e))
       .join('\n') + '\n',
   report: `GATE_STATUS: ${status}\n`,
   stderr: '',
-  exit: status === 'PASS' ? 0 : 1,
+  exit: 0,
   canary: 'PASS',
   runtime: '/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime',
   version: '0.159.3',
@@ -213,7 +216,8 @@ test('second direction resolves its own approved stage pair; request metadata ca
   const f = await fixture(t)
   const sourcePath = 'docs/engineering/roles.md'
   const decisionPath = 'docs/engineering/approval.md'
-  const source = '| S02 | independent-POST | gpt-5.5 | high |\n'
+  const source =
+    '| S02 | independent-POST | gpt-5.5 | high |\n| S03 | independent-POST | gpt-5.5 | high |\n'
   const decision = 'Direct owner approval for S02 independent-POST gpt-5.5/high\n'
   await writeFile(join(f.root, sourcePath), source)
   await writeFile(join(f.root, decisionPath), decision)
@@ -238,6 +242,12 @@ test('second direction resolves its own approved stage pair; request metadata ca
   manifest.stages[0].roleAssignments = [
     { role: 'independent-POST', model: 'gpt-5.5', effort: 'high' },
   ]
+  manifest.stages.push({
+    ...structuredClone(manifest.stages[0]),
+    id: 'S03',
+    change: 'second-change',
+  })
+  manifest.scope.planningAllowed.push('openspec/changes/second-change/**')
   manifest.originalBaseline = await git(f.root, 'rev-parse', 'HEAD')
   const request = {
     ...f.request,
@@ -267,6 +277,25 @@ test('second direction resolves its own approved stage pair; request metadata ca
   assert.equal(ready.status, 'READY', JSON.stringify(ready))
   assert.equal(ready.assignment.model, 'gpt-5.5')
   assert.equal(ready.assignment.effort, 'high')
+  const otherRequest = { ...request, stage: 'S03', change: 'second-change', task: '3.2' }
+  assert.equal(
+    (await api.prepareReview({ ...f, manifest, request: otherRequest, admission })).status,
+    'READY',
+  )
+  const lock = join(f.root, '.git/frade-workflow/freeze/second-direction.json')
+  await mkdir(join(lock, '..'), { recursive: true })
+  await writeFile(
+    lock,
+    JSON.stringify({ directionId: manifest.id, stageId: 'S03', owningChange: otherRequest.change }),
+  )
+  const locked = await run({ ...f, manifest, request, admission }, complete())
+  assert.equal(locked.status, 'BLOCKED', JSON.stringify(locked))
+  assert.match(locked.code, /EEXIST/)
+  assert.equal(
+    await readFile(lock, 'utf8'),
+    JSON.stringify({ directionId: manifest.id, stageId: 'S03', owningChange: otherRequest.change }),
+  )
+  await rm(lock)
   const received = await run({ ...f, manifest, request, admission }, complete())
   assert.equal(received.status, 'PASS', JSON.stringify(received))
   assert.equal(received.closureAuthorized, false)
@@ -717,4 +746,214 @@ test('raw external request is retained exactly and any later byte drift blocks',
     },
   )
   assert.equal(blocked.status, 'BLOCKED')
+})
+
+test('live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct', () => {
+  const raw = complete('FAIL')
+  assert.equal(raw.exit, 0)
+  assert.equal(api.verifyRawReview(raw).status, 'FAIL')
+  assert.equal(api.reviewExitCode('PASS'), 0)
+  assert.equal(api.reviewExitCode('FAIL'), 1)
+  assert.equal(api.reviewExitCode('BLOCKED'), 2)
+})
+
+test('event stream rejects item errors, dangling commands, duplicate IDs and wrong order', () => {
+  const report = 'GATE_STATUS: FAIL\n'
+  const message = {
+    type: 'item.completed',
+    item: { id: 'm1', type: 'agent_message', text: report.trim() },
+  }
+  const base = [
+    { type: 'thread.started', thread_id: 'live-thread' },
+    { type: 'turn.started' },
+    { type: 'item.started', item: { id: 'c1', type: 'command_execution' } },
+    { type: 'item.completed', item: { id: 'c1', type: 'command_execution', exit_code: 0 } },
+    message,
+    { type: 'turn.completed' },
+  ]
+  const check = (rows) =>
+    api.verifyRawReview({
+      events: rows.map((e) => JSON.stringify(e)).join('\n') + '\n',
+      report,
+      exit: 0,
+    })
+  assert.equal(check(base).status, 'FAIL')
+  for (const rows of [
+    base.filter((e) => e.item?.id !== 'c1' || e.type !== 'item.completed'),
+    [
+      base[0],
+      base[1],
+      base[2],
+      { type: 'item.completed', item: { id: 'c1', type: 'command_execution', status: 'failed' } },
+      ...base.slice(4),
+    ],
+    [
+      base[0],
+      base[1],
+      base[2],
+      { type: 'item.updated', item: { id: 'c1', type: 'command_execution', error: 'failed' } },
+      ...base.slice(3),
+    ],
+    [
+      base[0],
+      base[1],
+      base[2],
+      base[3],
+      { ...message, item: { ...message.item, id: 'c1' } },
+      base[5],
+    ],
+    [base[0], base[1], base[4], base[2], base[3], base[5]],
+    [base[0], base[4], base[1], base[5]],
+    [base[0], base[1], base[2], base[3], base[5], base[4]],
+  ])
+    assert.equal(check(rows).status, 'BLOCKED', JSON.stringify(rows))
+})
+
+test('pinned bundle is checked before mutated executable module can load', async (t) => {
+  const root = await mkdtemp(join(tmpdir(), 'frade-bundle-test-'))
+  t.after(() => rm(root, { recursive: true, force: true }))
+  const dir = join(root, 'scripts/agent-review')
+  await mkdir(dir, { recursive: true })
+  const marker = join(root, 'EXECUTED')
+  const original = 'export const safe = true\n'
+  await writeFile(join(dir, 'core.mjs'), original)
+  const modules = [
+    'core.mjs',
+    'cli.mjs',
+    'publish.mjs',
+    'make-bundle.mjs',
+    'transport/integrity.mjs',
+    'transport/policy.mjs',
+    'transport/prepare-review.mjs',
+    'transport/invoke-review.mjs',
+    'transport/transport.test.mjs',
+  ]
+  const files = []
+  for (const name of modules) {
+    const path = `scripts/agent-review/${name}`
+    await mkdir(join(root, path, '..'), { recursive: true })
+    if (name !== 'core.mjs') await writeFile(join(root, path), original)
+    files.push({ path, sha256: hash(original) })
+  }
+  const manifest = {
+    version: 1,
+    common: 'E:/dev/codex/frade/.git',
+    policyVersion: '1.1',
+    policySha256: '6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb',
+    files,
+  }
+  const bytes = Buffer.from(JSON.stringify(manifest))
+  await writeFile(join(dir, 'bundle.json'), bytes)
+  const expected = hash(bytes)
+  assert.equal((await api.verifyPinnedRelease(root, expected)).digest, expected)
+  await writeFile(
+    join(dir, 'core.mjs'),
+    `import {writeFileSync} from 'node:fs';writeFileSync(${JSON.stringify(marker)}, 'ran')\n`,
+  )
+  await assert.rejects(api.loadVerifiedRelease(root, expected), /REVIEW_BUNDLE/)
+  await assert.rejects(stat(marker), { code: 'ENOENT' })
+  await writeFile(join(dir, 'core.mjs'), original)
+  await assert.rejects(api.verifyPinnedRelease(root, f64()), /REVIEW_BUNDLE/)
+  manifest.files.push({ path: 'scripts/agent-review/CORE.mjs', sha256: hash(original) })
+  await writeFile(join(dir, 'bundle.json'), JSON.stringify(manifest))
+  await assert.rejects(
+    api.verifyPinnedRelease(root, hash(JSON.stringify(manifest))),
+    /REVIEW_BUNDLE/,
+  )
+  manifest.files.pop()
+  manifest.files[0].path = '../escape.mjs'
+  await writeFile(join(dir, 'bundle.json'), JSON.stringify(manifest))
+  await assert.rejects(
+    api.verifyPinnedRelease(root, hash(JSON.stringify(manifest))),
+    /REVIEW_BUNDLE/,
+  )
+  manifest.files[0].path = 'scripts/agent-review/core.mjs'
+  await writeFile(join(dir, 'bundle.json'), JSON.stringify(manifest))
+  // A directory reparse escape also covers core.mjs and works without Windows
+  // file-symlink privilege. The complete bundle remains present behind the link.
+  const external = join(root, 'external-bundle')
+  await rm(join(dir, 'core.mjs'))
+  await writeFile(join(dir, 'core.mjs'), original)
+  await cp(dir, external, { recursive: true })
+  await rm(dir, { recursive: true })
+  await symlink(external, dir, process.platform === 'win32' ? 'junction' : 'dir')
+  assert.equal(await readFile(join(dir, 'core.mjs'), 'utf8'), original)
+  await assert.rejects(
+    api.verifyPinnedRelease(root, hash(JSON.stringify(manifest))),
+    /REVIEW_BUNDLE/,
+  )
+})
+const f64 = () => 'a'.repeat(64)
+
+test('shared raw capture excludes only bounded runtime-home links and blocks output links', async (t) => {
+  const root = await mkdtemp(join(tmpdir(), 'frade-raw-test-'))
+  t.after(() => rm(root, { recursive: true, force: true }))
+  const common = join(root, 'common')
+  const shared = join(common, 'frade-workflow/runs/shared')
+  const run = join(root, 'wrapper')
+  await mkdir(join(shared, 'offline-home/tmp/arg0'), { recursive: true })
+  await mkdir(join(shared, 'output'), { recursive: true })
+  await mkdir(run)
+  await writeFile(join(shared, 'output/record.json'), '{}')
+  const external = join(root, 'external-directory')
+  await mkdir(external)
+  for (const name of ['.codex', '.agents', '.aws', '.ssh'])
+    await symlink(
+      external,
+      join(shared, 'offline-home/tmp/arg0', name),
+      process.platform === 'win32' ? 'junction' : 'dir',
+    )
+  const captured = await api.captureSharedRaw(common, shared, run)
+  assert.equal(captured.exclusions.length, 4)
+  assert.equal(
+    captured.artifacts.some((a) => a.path === 'output/record.json'),
+    true,
+  )
+  assert.equal(await readFile(join(captured.root, 'output/record.json'), 'utf8'), '{}')
+  await symlink(
+    external,
+    join(shared, 'output/unknown'),
+    process.platform === 'win32' ? 'junction' : 'dir',
+  )
+  await mkdir(join(root, 'another'))
+  await assert.rejects(
+    api.captureSharedRaw(common, shared, join(root, 'another')),
+    /REVIEW_SHARED_RUN_LINK/,
+  )
+})
+
+test('untouched shared core discover and snapshot in isolated Git child preserve raw index', async (t) => {
+  const f = await fixture(t)
+  const core = new URL('./shared-core-fixture/core.mjs', import.meta.url)
+  const integrity = new URL('./shared-core-fixture/transport/integrity.mjs', import.meta.url)
+  assert.equal(
+    hash(await readFile(core)),
+    '07851ff4be7d011a430a59f9382c9a220daba22071c8a8a27887f21f98226fad',
+  )
+  assert.equal(
+    hash(await readFile(integrity)),
+    '2fc3b036930871f010a6850f86dfc79c3234975e437124fc020a73d73d277395',
+  )
+  const index = join(f.root, '.git/index')
+  const before = hash(await readFile(index))
+  const code = `const core=await import(process.argv[1]);const integrity=await import(process.argv[2]);const owner=await core.discover(process.argv[3],process.argv[4]);const snap=await integrity.candidateSnapshot(owner.root);console.log(JSON.stringify({branch:owner.branch,digest:snap.digest}));`
+  const { stdout } = await exec(
+    process.execPath,
+    ['--input-type=module', '-e', code, core.href, integrity.href, f.root, join(f.root, '.git')],
+    {
+      cwd: f.root,
+      env: {
+        ...process.env,
+        GIT_OPTIONAL_LOCKS: '0',
+        GIT_CONFIG_NOSYSTEM: '1',
+        GIT_CONFIG_GLOBAL: process.platform === 'win32' ? 'NUL' : '/dev/null',
+        GIT_CONFIG_PARAMETERS:
+          process.platform === 'win32'
+            ? "'core.fsmonitor=false' 'core.hooksPath=NUL'"
+            : "'core.fsmonitor=false' 'core.hooksPath=/dev/null'",
+      },
+    },
+  )
+  assert.equal(JSON.parse(stdout).branch, f.manifest.owner.branch)
+  assert.equal(hash(await readFile(index)), before)
 })

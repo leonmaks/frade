@@ -1,0 +1,61 @@
+{
+  "stage": "W01",
+  "task": "2.5",
+  "admission": "CANDIDATE_ONLY_NOT_APPROVED",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "sourceSnapshots": {
+    "seed": ["review.test.seed.mjs", "status.test.seed.mjs", "prior-source.json"],
+    "green": ["review.test.green.mjs", "status.test.green.mjs"]
+  },
+  "checks": [
+    {
+      "command": "node --test-name-pattern='one direction freeze blocks' tests/directions/status.test.mjs",
+      "exit": 0,
+      "log": "freeze-green.log",
+      "exitFile": "freeze-green.exit",
+      "scope": "disposable Git direction freeze and unchanged status/HEAD/index"
+    },
+    {
+      "command": "node --test-name-pattern='second direction resolves' tests/directions/review.test.mjs",
+      "exit": 0,
+      "log": "wrapper-freeze-green.log",
+      "exitFile": "wrapper-freeze-green.exit",
+      "scope": "two approved stage changes, one direction freeze, blocked competing wrapper"
+    },
+    {
+      "command": "node --test-name-pattern='pinned bundle|shared raw capture|untouched shared core' tests/directions/review.test.mjs",
+      "exit": 1,
+      "log": "portable-focused.log",
+      "exitFile": "portable-focused.exit",
+      "scope": "bundle and raw capture passed; untouched child failed in Linux sandbox at normal synchronous Git call"
+    },
+    {
+      "command": "E:\\Program Files\\nodejs\\node.exe --test tests/directions/review.test.mjs",
+      "exit": 1,
+      "log": "native-windows-preflight.json",
+      "scope": "supplied native Node v24.18.0 source-bound preflight, 20 pass and two file-symlink EPERM fixture setup failures before portable repair"
+    },
+    {
+      "command": "node --check scripts/directions/review.mjs; node --check scripts/directions/review-child.mjs; node --check scripts/directions/status.mjs; node --check tests/directions/review.test.mjs; node --check tests/directions/status.test.mjs",
+      "exit": 0,
+      "scope": "syntax only"
+    },
+    {
+      "command": "git -C tmp/git-eol-verify -c core.autocrlf=true add .gitattributes core.mjs transport/integrity.mjs; git show indexed modules; sha256sum indexed modules",
+      "exit": 0,
+      "log": "git-eol-index.log",
+      "scope": "approved raw shared module hashes preserved through a Git index with core.autocrlf=true"
+    }
+  ],
+  "redAgainstOriginalOwner": {
+    "status": "PENDING_PARENT_REPLAY",
+    "reason": "The supplied read-only seed is the timed-out candidate with the direction lock already changed. Original owner production bytes and runnable worktree were not supplied to this isolated worker. A RED result is not inferred or fabricated."
+  },
+  "pending": [
+    "Parent replay of new freeze tests against old owner production and retention of exact RED logs/exit",
+    "Parent native Windows Node 24 review suite after portable fixture repair",
+    "Parent fresh Astra/xhigh diagnostic with raw canary, reviewer stream and independent verdict",
+    "Executable import and approval"
+  ]
+}

@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: FWE-003-A01 plan previews exact owner and files without writing
+ok 1 - FWE-003-A01 plan previews exact owner and files without writing
+  ---
+  duration_ms: 128.1581
+  ...
+# Subtest: FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake
+ok 2 - FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake
+  ---
+  duration_ms: 198.8862
+  ...
+# Subtest: FWE-003-A02 same request returns owner; changed request and foreign branch blocks
+ok 3 - FWE-003-A02 same request returns owner; changed request and foreign branch blocks
+  ---
+  duration_ms: 411.4455
+  ...
+# Subtest: FWE-003-A03 retained intent recovers a registered partial worktree
+ok 4 - FWE-003-A03 retained intent recovers a registered partial worktree
+  ---
+  duration_ms: 209.3161
+  ...
+# Subtest: FWE-003-A04 rejects foreign common, traversal, link and case collisions
+ok 5 - FWE-003-A04 rejects foreign common, traversal, link and case collisions
+  ---
+  duration_ms: 164.3682
+  ...
+# Subtest: FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe
+ok 6 - FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe
+  ---
+  duration_ms: 0.5296
+  ...
+# Subtest: FWE-003-A05 request self-approval and policy drift cannot authorize create
+ok 7 - FWE-003-A05 request self-approval and policy drift cannot authorize create
+  ---
+  duration_ms: 42.9277
+  ...
+# Subtest: FWE-001-A03 check binds manifest to owner and rejects malformed state
+ok 8 - FWE-001-A03 check binds manifest to owner and rejects malformed state
+  ---
+  duration_ms: 217.1671
+  ...
+# Subtest: I23-WIN manifest boundary accepts native and canonical owner paths only
+ok 9 - I23-WIN manifest boundary accepts native and canonical owner paths only
+  ---
+  duration_ms: 252.716699
+  ...
+# Subtest: FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref
+ok 10 - FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref
+  ---
+  duration_ms: 151.418475
+  ...
+# Subtest: I23-07 installed service cannot create without an external exact request grant
+ok 11 - I23-07 installed service cannot create without an external exact request grant
+  ---
+  duration_ms: 284.114675
+  ...
+# Subtest: I23-07 grant for alpha rejects changed identity, title, goal, outcomes, baseline and parent
+ok 12 - I23-07 grant for alpha rejects changed identity, title, goal, outcomes, baseline and parent
+  ---
+  duration_ms: 474.584283
+  ...
+# Subtest: I23-07 linked or forged grant cannot approve creation
+ok 13 - I23-07 linked or forged grant cannot approve creation
+  ---
+  duration_ms: 151.087408
+  ...
+# Subtest: I23-08 retained origin fixes original baseline after branch progress
+ok 14 - I23-08 retained origin fixes original baseline after branch progress
+  ---
+  duration_ms: 275.484409
+  ...
+# Subtest: I23-08 check requires both exact retained origin records
+ok 15 - I23-08 check requires both exact retained origin records
+  ---
+  duration_ms: 212.90945
+  ...
+# Subtest: I23-08 foreign malformed manifest is rejected as unowned before JSON parsing
+ok 16 - I23-08 foreign malformed manifest is rejected as unowned before JSON parsing
+  ---
+  duration_ms: 226.847833
+  ...
+# Subtest: I23-01 Git common exception is limited to final .git component
+ok 17 - I23-01 Git common exception is limited to final .git component
+  ---
+  duration_ms: 0.715
+  ...
+# Subtest: I23-01 native separators normalize only on Windows request boundary
+ok 18 - I23-01 native separators normalize only on Windows request boundary
+  ---
+  duration_ms: 41.072417
+  ...
+# Subtest: I23-02 registered secondary source creates under matching common
+ok 19 - I23-02 registered secondary source creates under matching common
+  ---
+  duration_ms: 232.908541
+  ...
+# Subtest: I23-02 whole foreign repository switch is rejected before source access
+ok 20 - I23-02 whole foreign repository switch is rejected before source access
+  ---
+  duration_ms: 60.7061
+  ...
+# Subtest: I23-06 an unverified release cannot authorize creation
+not ok 21 - I23-06 an unverified release cannot authorize creation
+  ---
+  duration_ms: 215.751359
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/bootstrap-repair.test.mjs:94:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot find module '/tmp/frade-bootstrap-amK8En/source/scripts/directions/review.mjs' imported from /tmp/frade-bootstrap-amK8En/source/scripts/directions/cli.mjs"
+  code: 'ERR_MODULE_NOT_FOUND'
+  stack: |-
+    new NodeError (node:internal/errors:405:5)
+    finalizeResolution (node:internal/modules/esm/resolve:327:11)
+    moduleResolve (node:internal/modules/esm/resolve:980:10)
+    defaultResolve (node:internal/modules/esm/resolve:1193:11)
+    ModuleLoader.defaultResolve (node:internal/modules/esm/loader:403:12)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:372:25)
+    ModuleLoader.getModuleJob (node:internal/modules/esm/loader:249:38)
+    ModuleWrap.<anonymous> (node:internal/modules/esm/module_job:76:39)
+    link (node:internal/modules/esm/module_job:75:36)
+  ...
+# Subtest: I23-03 seed declares exact capability and strict draft obligation
+ok 22 - I23-03 seed declares exact capability and strict draft obligation
+  ---
+  duration_ms: 171.951108
+  ...
+# Subtest: I23-04 Git worktree checkout cannot run hooks or smudge filter
+ok 23 - I23-04 Git worktree checkout cannot run hooks or smudge filter
+  ---
+  duration_ms: 86.019808
+  ...
+# Subtest: I23-04 safe checkout creates owner without running post-checkout hook
+ok 24 - I23-04 safe checkout creates owner without running post-checkout hook
+  ---
+  duration_ms: 169.0962
+  ...
+# Subtest: I23-05 check rejects nonexistent and unrelated baseline commits
+ok 25 - I23-05 check rejects nonexistent and unrelated baseline commits
+  ---
+  duration_ms: 242.646083
+  ...
+# Subtest: I23-05 check rejects linked manifest parent
+ok 26 - I23-05 check rejects linked manifest parent
+  ---
+  duration_ms: 184.034717
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 25
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4823.786291

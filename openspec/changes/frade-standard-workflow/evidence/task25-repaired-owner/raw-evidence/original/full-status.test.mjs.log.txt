@@ -1,0 +1,161 @@
+TAP version 13
+# Subtest: FWE-013-A01 exact current headings, order, duplicate and injection rejection
+ok 1 - FWE-013-A01 exact current headings, order, duplicate and injection rejection
+  ---
+  duration_ms: 2.732774
+  ...
+# Subtest: FWE-014-A01 stable checklist ids and administrative counts
+ok 2 - FWE-014-A01 stable checklist ids and administrative counts
+  ---
+  duration_ms: 2.003015
+  ...
+# Subtest: FWE-014-A02 current source-bound proof only; human boundary never accepted
+ok 3 - FWE-014-A02 current source-bound proof only; human boundary never accepted
+  ---
+  duration_ms: 9.066678
+  ...
+# Subtest: FWE-014-A03 contradictory phase/health and applicability block
+ok 4 - FWE-014-A03 contradictory phase/health and applicability block
+  ---
+  duration_ms: 1.600514
+  ...
+# Subtest: FWE-014-A04 raw artifact bytes bind every executable assertion
+ok 5 - FWE-014-A04 raw artifact bytes bind every executable assertion
+  ---
+  duration_ms: 34.662903
+  ...
+# Subtest: FWE-014-A05 required check PASS needs trusted bound raw receipt
+ok 6 - FWE-014-A05 required check PASS needs trusted bound raw receipt
+  ---
+  duration_ms: 1.668962
+  ...
+# Subtest: FWE-013-A02 different directions share exact Russian headings and safe strings
+ok 7 - FWE-013-A02 different directions share exact Russian headings and safe strings
+  ---
+  duration_ms: 2.337667
+  ...
+# Subtest: FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel
+not ok 8 - FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel
+  ---
+  duration_ms: 972.718677
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:380:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"MANIFEST_INVALID","issues":[{"code":"OWNER_PATH","path":"owner.worktree","detail":"Canonical absolute path required"},{"code":"OWNER_PATH","path":"owner.gitCommon","detail":"Canonical absolute path required"}]}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'FROZEN'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:388:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-015-S02 actual checkpoint-only change stales the previous projection until refresh
+not ok 9 - FWE-015-S02 actual checkpoint-only change stales the previous projection until refresh
+  ---
+  duration_ms: 1043.861954
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:462:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"MANIFEST_INVALID","issues":[{"code":"OWNER_PATH","path":"owner.worktree","detail":"Canonical absolute path required"},{"code":"OWNER_PATH","path":"owner.gitCommon","detail":"Canonical absolute path required"}]}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'WRITTEN'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:467:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-015 no UI operation and self-declared panel flags remain NOT_OPENED
+not ok 10 - FWE-015 no UI operation and self-declared panel flags remain NOT_OPENED
+  ---
+  duration_ms: 946.943243
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:500:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"MANIFEST_INVALID","issues":[{"code":"OWNER_PATH","path":"owner.worktree","detail":"Canonical absolute path required"},{"code":"OWNER_PATH","path":"owner.gitCommon","detail":"Canonical absolute path required"}]}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'WRITTEN'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:510:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-015 visible state requires actual trusted controller raw receipt
+ok 11 - FWE-015 visible state requires actual trusted controller raw receipt
+  ---
+  duration_ms: 1029.81238
+  ...
+# Subtest: FWE-013 W01 legacy BRANCH-STATUS remains mapped to its registered origin
+not ok 12 - FWE-013 W01 legacy BRANCH-STATUS remains mapped to its registered origin
+  ---
+  duration_ms: 967.762489
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:553:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"MANIFEST_INVALID","issues":[{"code":"OWNER_PATH","path":"owner.worktree","detail":"Canonical absolute path required"},{"code":"OWNER_PATH","path":"owner.gitCommon","detail":"Canonical absolute path required"}]}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'WRITTEN'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:560:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-015 freeze arriving during awaited trusted proof defers the write
+not ok 13 - FWE-015 freeze arriving during awaited trusted proof defers the write
+  ---
+  duration_ms: 1132.354412
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:564:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","code":"MANIFEST_INVALID","issues":[{"code":"OWNER_PATH","path":"owner.worktree","detail":"Canonical absolute path required"},{"code":"OWNER_PATH","path":"owner.gitCommon","detail":"Canonical absolute path required"}]}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'FROZEN'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:584:10)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-013 status target cannot overwrite an in-scope non-dashboard file
+not ok 14 - FWE-013 status target cannot overwrite an in-scope non-dashboard file
+  ---
+  duration_ms: 933.345301
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:590:1'
+  failureType: 'testCodeFailure'
+  error: 'docs/engineering/directions/alpha-direction/direction.json must reach status target guard'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/status.test.mjs:605:14)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: FWE-013 POSIX origin fields reject native backslashes
+ok 15 - FWE-013 POSIX origin fields reject native backslashes
+  ---
+  duration_ms: 954.920864
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 9
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8056.281294

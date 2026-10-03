@@ -1,0 +1,91 @@
+TAP version 13
+# Subtest: approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not
+not ok 1 - approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not
+  ---
+  duration_ms: 1231.4497
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/review.test.mjs:87:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'BLOCKED'
+    - 'READY'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'READY'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/review.test.mjs:89:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async startSubtest (node:internal/test_runner/harness:214:3)
+  ...
+# Subtest: missing or stale plan, role ambiguity, range, source drift and request self approval block
+ok 2 - missing or stale plan, role ambiguity, range, source drift and request self approval block
+  ---
+  duration_ms: 1178.481092
+  ...
+# Subtest: foreign source is rejected before reading artifacts
+ok 3 - foreign source is rejected before reading artifacts
+  ---
+  duration_ms: 1265.926025
+  ...
+# Subtest: credentials, unsafe paths, foreign paths and oversized packets block preparation
+ok 4 - credentials, unsafe paths, foreign paths and oversized packets block preparation
+  ---
+  duration_ms: 1209.486424
+  ...
+# Subtest: wrong common, branch, source or owner registration blocks
+ok 5 - wrong common, branch, source or owner registration blocks
+  ---
+  duration_ms: 1024.754899
+  ...
+# Subtest: snapshot binds source, tracked status, raw index bytes and HEAD
+ok 6 - snapshot binds source, tracked status, raw index bytes and HEAD
+  ---
+  duration_ms: 8848.758655
+  ...
+# Subtest: complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage
+not ok 7 - complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage
+  ---
+  duration_ms: 1009.5356
+  location: 'file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/review.test.mjs:155:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'BLOCKED'
+    - 'PASS'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'PASS'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.5-20261003/work/tests/directions/review.test.mjs:159:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: incomplete, error, timeout, ambiguous and differing final agent message block
+ok 8 - incomplete, error, timeout, ambiguous and differing final agent message block
+  ---
+  duration_ms: 1078.4762
+  ...
+# Subtest: canary, runtime, version, control, request, candidate and packet drift block
+ok 9 - canary, runtime, version, control, request, candidate and packet drift block
+  ---
+  duration_ms: 1079.643542
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 7
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17944.643295

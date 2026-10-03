@@ -1,0 +1,163 @@
+TAP version 13
+# Subtest: approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not
+ok 1 - approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not
+  ---
+  duration_ms: 2922.872812
+  ...
+# Subtest: canonical owner fields are required on every host
+ok 2 - canonical owner fields are required on every host
+  ---
+  duration_ms: 2651.00694
+  ...
+# Subtest: second direction resolves its own approved stage pair; request metadata cannot grant approval
+ok 3 - second direction resolves its own approved stage pair; request metadata cannot grant approval
+  ---
+  duration_ms: 9637.591459
+  ...
+# Subtest: missing or stale plan, role ambiguity, range, source drift and request self approval block
+ok 4 - missing or stale plan, role ambiguity, range, source drift and request self approval block
+  ---
+  duration_ms: 1934.715137
+  ...
+# Subtest: foreign source is rejected before reading artifacts
+ok 5 - foreign source is rejected before reading artifacts
+  ---
+  duration_ms: 956.052225
+  ...
+# Subtest: credentials, unsafe paths, foreign paths and oversized packets block preparation
+ok 6 - credentials, unsafe paths, foreign paths and oversized packets block preparation
+  ---
+  duration_ms: 1969.827041
+  ...
+# Subtest: public review test source is safe in the complete packet
+ok 7 - public review test source is safe in the complete packet
+  ---
+  duration_ms: 3106.668808
+  ...
+# Subtest: wrong common, branch, source or owner registration blocks
+ok 8 - wrong common, branch, source or owner registration blocks
+  ---
+  duration_ms: 1340.870186
+  ...
+# Subtest: snapshot binds source, tracked status, raw index bytes and HEAD
+ok 9 - snapshot binds source, tracked status, raw index bytes and HEAD
+  ---
+  duration_ms: 9565.58396
+  ...
+# Subtest: complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage
+ok 10 - complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage
+  ---
+  duration_ms: 13608.720237
+  ...
+# Subtest: a real candidate status mutation blocks and retains the common freeze marker
+ok 11 - a real candidate status mutation blocks and retains the common freeze marker
+  ---
+  duration_ms: 6262.03453
+  ...
+# Subtest: incomplete, error, timeout, ambiguous and differing final agent message block
+ok 12 - incomplete, error, timeout, ambiguous and differing final agent message block
+  ---
+  duration_ms: 38396.006014
+  ...
+# Subtest: canary, runtime, version, control, request, candidate and packet drift block
+ok 13 - canary, runtime, version, control, request, candidate and packet drift block
+  ---
+  duration_ms: 48865.910342
+  ...
+# Subtest: strict validation requires both exact actual commands, clean exits and current source binding
+ok 14 - strict validation requires both exact actual commands, clean exits and current source binding
+  ---
+  duration_ms: 2.068707
+  ...
+# Subtest: strict validation launches the discovered public Node entry and binds semantic results
+ok 15 - strict validation launches the discovered public Node entry and binds semantic results
+  ---
+  duration_ms: 1188.313748
+  ...
+# Subtest: approved proposal and task source omissions or drift block
+ok 16 - approved proposal and task source omissions or drift block
+  ---
+  duration_ms: 1214.210178
+  ...
+# Subtest: raw external request is retained exactly and any later byte drift blocks
+ok 17 - raw external request is retained exactly and any later byte drift blocks
+  ---
+  duration_ms: 13174.184146
+  ...
+# Subtest: live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct
+ok 18 - live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct
+  ---
+  duration_ms: 0.357175
+  ...
+# Subtest: event stream rejects item errors, dangling commands, duplicate IDs and wrong order
+ok 19 - event stream rejects item errors, dangling commands, duplicate IDs and wrong order
+  ---
+  duration_ms: 0.9581
+  ...
+# Subtest: pinned bundle is checked before mutated executable module can load
+ok 20 - pinned bundle is checked before mutated executable module can load
+  ---
+  duration_ms: 726.301901
+  ...
+# Subtest: shared raw capture excludes only bounded runtime-home links and blocks output links
+not ok 21 - shared raw capture excludes only bounded runtime-home links and blocks output links
+  ---
+  duration_ms: 389.019164
+  location: 'file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:789:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /REVIEW_SHARED_RUN_LINK/. Input:
+    
+    "Error: ENOENT: no such file or directory, mkdir '/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-raw-test-QL25HE/another/shared-raw'"
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    errno: -2
+    syscall: 'mkdir'
+    path: '/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-raw-test-QL25HE/another/shared-raw'
+  error: "ENOENT: no such file or directory, mkdir '/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-raw-test-QL25HE/another/shared-raw'"
+  code: 'ENOENT'
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:806:3)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: untouched shared core discover and snapshot in isolated Git child preserve raw index
+not ok 22 - untouched shared core discover and snapshot in isolated Git child preserve raw index
+  ---
+  duration_ms: 1205.274918
+  location: 'file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:809:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Command failed: /usr/bin/node --input-type=module -e const core=await import(process.argv[1]);const integrity=await import(process.argv[2]);const owner=await core.discover(process.argv[3],process.argv[4]);const snap=await integrity.candidateSnapshot(owner.root);console.log(JSON.stringify({branch:owner.branch,digest:snap.digest})); file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/shared-core-fixture/core.mjs file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/shared-core-fixture/transport/integrity.mjs /mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-review-test-ddeSG8 /mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-review-test-ddeSG8/.git
+    file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/shared-core-fixture/core.mjs:22
+        throw Error('UNRELATED_REPOSITORY')
+              ^
+    
+    Error: UNRELATED_REPOSITORY
+        at Module.discover (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/shared-core-fixture/core.mjs:22:11)
+        at file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-review-test-ddeSG8/[eval1]:1:111
+    
+    Node.js v18.19.1
+    
+  code: 1
+  stack: |-
+    Module.discover (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/shared-core-fixture/core.mjs:22:11)
+    file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-review-test-ddeSG8/[eval1]:1:111
+    ChildProcess.exithandler (node:child_process:422:12)
+    ChildProcess.emit (node:events:517:28)
+    maybeClose (node:internal/child_process:1098:16)
+    ChildProcess._handle.onexit (node:internal/child_process:303:5)
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 20
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 159133.602407

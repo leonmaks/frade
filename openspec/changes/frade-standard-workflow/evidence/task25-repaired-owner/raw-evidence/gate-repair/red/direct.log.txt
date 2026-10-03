@@ -1,0 +1,187 @@
+TAP version 13
+# Subtest: approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not
+ok 1 - approved W01 raw source, D03, decision and exact role resolve; illustrative manifest alone does not
+  ---
+  duration_ms: 2690.364911
+  ...
+# Subtest: canonical owner fields are required on every host
+ok 2 - canonical owner fields are required on every host
+  ---
+  duration_ms: 2427.218276
+  ...
+# Subtest: second direction resolves its own approved stage pair; request metadata cannot grant approval
+ok 3 - second direction resolves its own approved stage pair; request metadata cannot grant approval
+  ---
+  duration_ms: 8586.045311
+  ...
+# Subtest: missing or stale plan, role ambiguity, range, source drift and request self approval block
+ok 4 - missing or stale plan, role ambiguity, range, source drift and request self approval block
+  ---
+  duration_ms: 1790.229685
+  ...
+# Subtest: foreign source is rejected before reading artifacts
+ok 5 - foreign source is rejected before reading artifacts
+  ---
+  duration_ms: 913.070045
+  ...
+# Subtest: credentials, unsafe paths, foreign paths and oversized packets block preparation
+ok 6 - credentials, unsafe paths, foreign paths and oversized packets block preparation
+  ---
+  duration_ms: 1865.945536
+  ...
+# Subtest: public review test source is safe in the complete packet
+ok 7 - public review test source is safe in the complete packet
+  ---
+  duration_ms: 2768.768887
+  ...
+# Subtest: wrong common, branch, source or owner registration blocks
+ok 8 - wrong common, branch, source or owner registration blocks
+  ---
+  duration_ms: 1165.073318
+  ...
+# Subtest: snapshot binds source, tracked status, raw index bytes and HEAD
+ok 9 - snapshot binds source, tracked status, raw index bytes and HEAD
+  ---
+  duration_ms: 8696.101427
+  ...
+# Subtest: complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage
+not ok 10 - complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage
+  ---
+  duration_ms: 13324.673873
+  location: 'file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:432:1'
+  failureType: 'testCodeFailure'
+  error: '{"ok":false,"status":"BLOCKED","gateStatus":null,"code":"REVIEW_VERDICT","run":"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-review-test-8wYW45/.git/frade-workflow/runs/2026-10-03T13-53-22-084Z-223181f5-c27e-43a0-a531-0b48a4e66c68","raw":{"events":{"path":"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-review-test-8wYW45/.git/frade-workflow/runs/2026-10-03T13-53-22-084Z-223181f5-c27e-43a0-a531-0b48a4e66c68/events.jsonl","bytes":190,"sha256":"a60487dd146e22cfe96bf82f8b17453f68b9c04dea6cfba31055b83f589b0002"},"report":{"path":"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-review-test-8wYW45/.git/frade-workflow/runs/2026-10-03T13-53-22-084Z-223181f5-c27e-43a0-a531-0b48a4e66c68/result.md","bytes":18,"sha256":"008e6809da5c1977702effa01ba8d9e7d94b737eb719e72766b3a890bae52d4d"},"stderr":{"path":"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-review-test-8wYW45/.git/frade-workflow/runs/2026-10-03T13-53-22-084Z-223181f5-c27e-43a0-a531-0b48a4e66c68/stderr.txt","bytes":0,"sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},"exit":{"path":"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tmp/frade-review-test-8wYW45/.git/frade-workflow/runs/2026-10-03T13-53-22-084Z-223181f5-c27e-43a0-a531-0b48a4e66c68/exit.json","bytes":28,"sha256":"f715f6b104b81785299329b6af5adaaa9c1e1492a2fcb36f69f2559bbded3e71"}},"assignment":{"stage":"W01","task":"2.5","taskType":"independent-POST","role":"independent-POST","executionKind":"reviewer","model":"gpt-6-astra","effort":"xhigh","source":{"path":"openspec/changes/frade-standard-workflow/design.md","sha256":"501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a","excerpt":"| W01 | independent-POST | gpt-6-astra | xhigh |","revision":"D03"},"exception":null},"requestedModel":"gpt-6-astra","requestedEffort":"xhigh","actualBackend":"NOT_CONFIRMED","actualEffort":"NOT_CONFIRMED","closureAuthorized":false,"scope":"Focused task 2.5 diagnostic only","focused":true,"snapshotSha256":"83e74900d17c6343b1b057402df22a32f0dc22c0c242c8e39296440ab36b0451","packetSha256":"cc28c055be789bf9e5bd1460e6603da27a6845fdaab986e5b7c0018d03aa7cdd"}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'FAIL'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:436:12)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: a real candidate status mutation blocks and retains the common freeze marker
+ok 11 - a real candidate status mutation blocks and retains the common freeze marker
+  ---
+  duration_ms: 5954.45326
+  ...
+# Subtest: incomplete, error, timeout, ambiguous and differing final agent message block
+ok 12 - incomplete, error, timeout, ambiguous and differing final agent message block
+  ---
+  duration_ms: 37543.208316
+  ...
+# Subtest: canary, runtime, version, control, request, candidate and packet drift block
+ok 13 - canary, runtime, version, control, request, candidate and packet drift block
+  ---
+  duration_ms: 43421.64079
+  ...
+# Subtest: strict validation requires both exact actual commands, clean exits and current source binding
+ok 14 - strict validation requires both exact actual commands, clean exits and current source binding
+  ---
+  duration_ms: 2.058057
+  ...
+# Subtest: strict validation launches the discovered public Node entry and binds semantic results
+ok 15 - strict validation launches the discovered public Node entry and binds semantic results
+  ---
+  duration_ms: 1096.6984
+  ...
+# Subtest: approved proposal and task source omissions or drift block
+ok 16 - approved proposal and task source omissions or drift block
+  ---
+  duration_ms: 1051.875054
+  ...
+# Subtest: raw external request is retained exactly and any later byte drift blocks
+ok 17 - raw external request is retained exactly and any later byte drift blocks
+  ---
+  duration_ms: 11698.933494
+  ...
+# Subtest: live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct
+not ok 18 - live FAIL uses a clean raw Codex exit and wrapper verdict exit is distinct
+  ---
+  duration_ms: 2.050558
+  location: 'file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:722:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'BLOCKED'
+    - 'FAIL'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'FAIL'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:725:10)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: event stream rejects item errors, dangling commands, duplicate IDs and wrong order
+not ok 19 - event stream rejects item errors, dangling commands, duplicate IDs and wrong order
+  ---
+  duration_ms: 0.490626
+  location: 'file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:731:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'BLOCKED'
+    - 'FAIL'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'FAIL'
+  actual: 'BLOCKED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:743:10)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: pinned bundle is checked before mutated executable module can load
+not ok 20 - pinned bundle is checked before mutated executable module can load
+  ---
+  duration_ms: 31.337772
+  location: 'file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:756:1'
+  failureType: 'testCodeFailure'
+  error: 'api.verifyPinnedRelease is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:768:27)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: shared raw capture excludes only bounded runtime-home links and blocks output links
+not ok 21 - shared raw capture excludes only bounded runtime-home links and blocks output links
+  ---
+  duration_ms: 96.223681
+  location: 'file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:780:1'
+  failureType: 'testCodeFailure'
+  error: 'api.captureSharedRaw is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/e/dev/codex/frade-worker-staging/w01-task-2.5-gate-repair-20261003/work/tests/directions/review.test.mjs:792:30)
+    async Test.run (node:internal/test_runner/test:632:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 16
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 145140.452282
