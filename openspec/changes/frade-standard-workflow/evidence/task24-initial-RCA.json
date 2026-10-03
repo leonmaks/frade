@@ -1,0 +1,23 @@
+{
+  "atUtc": "2026-10-03T00:17:27.602Z",
+  "classifications": [
+    "ABSTRACTION_BOUNDARY",
+    "ENVIRONMENT",
+    "INVARIANT"
+  ],
+  "actualWindows": {
+    "cases": 100,
+    "pass": 99,
+    "fail": 1,
+    "firstFailure": "canonical manifest fields have native backslashes"
+  },
+  "actualPanelProbe": "FAIL: QUEUED without UI operation",
+  "controllerFalsePositive": "Initial check proof omitted required check.run; corrected probe PASS; old raw retained",
+  "rootCauses": [
+    "Normalize filesystem/Git path representations at boundary; never change expected guards to pass",
+    "File write is not UI panel operation",
+    "Freeze observation cached across awaited projection can become stale; reproduce before repair",
+    "Allowed statusPath must remain a dashboard, not arbitrary in-scope control target"
+  ],
+  "action": "Exact same Sol/high scoped tests-first repair; no rootsource import, nexttask or gate"
+}

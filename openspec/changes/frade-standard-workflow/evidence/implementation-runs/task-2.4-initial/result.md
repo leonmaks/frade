@@ -1,0 +1,5 @@
+**W01 task 2.4 is implemented in the isolated staging workspace.** The fixed Russian eight-section renderer now serves bootstrap and the `status <absolute manifest>` CLI. The CLI previews by default; `--write` requires the registered owner and immutable origin, respects the review freeze, and reports panel opening as `QUEUED`. Task counts remain administrative, and acceptance requires current trusted raw evidence.
+
+Tests were written before implementation. The tests-only RED run exited 1 because the module was absent; the stub RED run also exited 1. The final targeted run passed **8 assertions**, and the full direction suite passed **8 test files**. Syntax checks passed. Commands, exits, logs, named assertions, and limitations are recorded in [TASK-2.4-RESULT.json](/mnt/e/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-20261003/work/TASK-2.4-RESULT.json).
+
+**READY_FOR_VERIFY: NO.** This staging directory is not a Git checkout, and the parent’s Windows Node 24 replay, formatting, and cumulative gates remain pending. No commit, push, review, publication, archive, or later task was performed.

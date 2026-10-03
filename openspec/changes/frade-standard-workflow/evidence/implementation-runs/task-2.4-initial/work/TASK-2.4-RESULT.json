@@ -1,0 +1,99 @@
+{
+  "stage": "W01",
+  "task": "2.4",
+  "approvedModel": "gpt-6-sol",
+  "approvedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "status": "IMPLEMENTED_LOCAL_GREEN",
+  "readyForVerify": false,
+  "eligiblePaths": [
+    "scripts/directions/status.mjs",
+    "scripts/directions/bootstrap.mjs",
+    "scripts/directions/cli.mjs",
+    "tests/directions/status.test.mjs",
+    "tests/directions/bootstrap-repair.test.mjs",
+    "docs/engineering/templates/task-2.4-status.md",
+    "TASK-2.4-RESULT.json",
+    "TASK-2.4-RED.log",
+    "TASK-2.4-RED.exit",
+    "TASK-2.4-RED-NAMED.log",
+    "TASK-2.4-RED-NAMED.exit",
+    "TASK-2.4-TESTS-ONLY.sha256",
+    "TASK-2.4-TARGETED.log",
+    "TASK-2.4-TARGETED.exit",
+    "TASK-2.4-FULL.log",
+    "TASK-2.4-FULL.exit",
+    "TASK-2.4-CLI-ARG.log",
+    "TASK-2.4-CLI-ARG.exit"
+  ],
+  "namedAssertions": [
+    "FWE-013-A01 exact current headings, order, duplicate and injection rejection",
+    "FWE-014-A01 stable checklist ids and administrative counts",
+    "FWE-014-A02 current source-bound proof only; human boundary never accepted",
+    "FWE-014-A03 contradictory phase/health and applicability block",
+    "FWE-014-A04 raw artifact bytes bind every executable assertion",
+    "FWE-014-A05 required check PASS needs trusted bound raw receipt",
+    "FWE-013-A02 different directions share exact Russian headings and safe strings",
+    "FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel"
+  ],
+  "commands": [
+    {
+      "command": "node --test tests/directions/status.test.mjs",
+      "phase": "tests-only before status module",
+      "exit": 1,
+      "log": "TASK-2.4-RED.log",
+      "observation": "ERR_MODULE_NOT_FOUND; test-only snapshot hash recorded before the module"
+    },
+    {
+      "command": "node --test tests/directions/status.test.mjs",
+      "phase": "export stub before implementation",
+      "exit": 1,
+      "log": "TASK-2.4-RED-NAMED.log",
+      "observation": "test file failed; Linux Node test worker reported file-level output rather than individual assertion lines"
+    },
+    {
+      "command": "TMPDIR=/dev/shm node tests/directions/status.test.mjs",
+      "phase": "final targeted",
+      "exit": 0,
+      "log": "TASK-2.4-TARGETED.log",
+      "observation": "8 named assertions passed"
+    },
+    {
+      "command": "TMPDIR=/dev/shm node --test tests/directions/*.test.mjs",
+      "phase": "final full direction suite",
+      "exit": 0,
+      "log": "TASK-2.4-FULL.log",
+      "observation": "8 test files passed, 0 failed"
+    },
+    {
+      "command": "node --check scripts/directions/status.mjs && node --check scripts/directions/bootstrap.mjs && node --check scripts/directions/cli.mjs && node --check tests/directions/status.test.mjs",
+      "phase": "final syntax",
+      "exit": 0
+    },
+    {
+      "command": "node scripts/directions/cli.mjs status relative.json",
+      "phase": "CLI negative argument smoke",
+      "exit": 2,
+      "log": "TASK-2.4-CLI-ARG.log",
+      "observation": "BLOCKED ARGUMENTS"
+    }
+  ],
+  "apiDataContract": {
+    "cli": "status <absolute tracked owner manifest> previews JSON; append --write for explicit refresh",
+    "library": "parseStatus, parseTasks, projectStatus, renderStatus, refreshStatus",
+    "inputHash": "SHA256 of structured manifest, checklist text, trace, snapshot, checks, applicability inputs and source availability issues",
+    "evidence": "createEvidenceBoundary verifies current raw artifact bytes and source/config bindings; JSON status and verified booleans carry no authority",
+    "freeze": "<canonical Git common>/frade-workflow/freeze/<id>.json; present marker defers status writes",
+    "panel": "QUEUED; VISIBLE requires separate Codex UI controller receipt",
+    "history": "legacy content is retained byte for byte below an explicit historical boundary",
+    "readiness": "projection only; implementation/archive readiness stays false without later trusted gates"
+  },
+  "limitations": [
+    "This isolated Linux staging root is not a Git checkout, so git status and git diff are unavailable here; actual Git behavior was exercised in disposable repositories.",
+    "The W01 manifest is not installed until task 2.7; the production CLI status path was not run against a deployed W01 owner.",
+    "No production check, numeric budget, role approval, remote SHA, panel visibility or formal gate is inferred from manifest text.",
+    "The local sandbox's os.tmpdir is under .git and fails safeOwnerPath; real Git status tests used TMPDIR=/dev/shm. Parent Windows Node 24 replay remains pending.",
+    "Prettier and repository-wide pnpm checks are unavailable in this isolated staging package; parent formatting and cumulative gates remain pending."
+  ]
+}

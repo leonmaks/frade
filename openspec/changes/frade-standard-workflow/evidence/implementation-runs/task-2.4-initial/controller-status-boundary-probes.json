@@ -1,0 +1,26 @@
+{
+  "atUtc": "2026-10-03T00:04:12.928Z",
+  "sourceSha256": "2f1d04d8920024886b1521ea8905ca7ac80788dd7e64ca3172acd76ae0b7e0a7",
+  "command": [
+    "E:\\Program Files\\nodejs\\node.exe",
+    "E:\\dev\\codex\\frade\\.git\\frade-workflow\\implementations\\task24-boundary-probes.mjs",
+    "E:/dev/codex/frade/.git/frade-workflow/implementations/w01-task-2.4-20261003"
+  ],
+  "results": [
+    {
+      "name": "I24-01 no panel operation cannot become QUEUED",
+      "result": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'QUEUED'\n- 'NOT_OPENED'\n"
+    },
+    {
+      "name": "I24-02 untrusted verified boolean cannot render a check PASS",
+      "result": "PASS"
+    },
+    {
+      "name": "I24-03 actual trusted current raw check proof increments derived count",
+      "result": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n"
+    }
+  ],
+  "allPass": false
+}
