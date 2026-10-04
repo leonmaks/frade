@@ -1,4 +1,4 @@
-# P01: focus/readiness PASS; B02 corrective PRE ready
+# P01: B02 retained-ownership plan validated; repeat PRE ready
 
 Updated 2026-10-04T01:25:25.699Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing independent.
 
@@ -18,7 +18,7 @@ Updated 2026-10-04T01:25:25.699Z. Branch codex/frade-ui-design-contract; worktre
 | Accepted two-fixture native readiness | IMPLEMENTED; prior7PASS/36receipts; exact original reverse retained |
 | Pending-focus independent PRE | PASS;17raw/119events; candidate/packet/plan unchanged |
 | Pending-focus bridge repair | IMPLEMENTED;71unit PASS; desktop typecheck/lint/build PASS |
-| Pending-focus actual Electron | 6/6 PASS,12pure-prepare/lease invalidations; original semantic/files/identity assertions PASS |
+| Pending-focus actual Electron | Corrected6/6 PASS;12after-original-READY DOM comparisons with exact context; old microtask claim withdrawn and raw evidence retained |
 | Original actions / keyboard / popup / focus / lower / reflow | 31/31 PASS;0skipped/flaky; source/binary unchanged |
 | New fixture diagnostic failure | Retained; late message-listener setup fixed only in new tail; old source remains exact prefix |
 | B02 original flow manager | FAIL retained; actual current apply REFUSED / rollback proven |
@@ -26,13 +26,13 @@ Updated 2026-10-04T01:25:25.699Z. Branch codex/frade-ui-design-contract; worktre
 | Corrective glyph ACK plan | Four artifacts + BDD coherent; sole exact-three-source final guard; production NOT_CHANGED |
 | Current FUI / BDD / controls | 12PASS /111PASS /2positive+14exact negative PASS; one authorized literal reverse proven |
 | Corrective planning validation | Strict OpenSpec / UI compliance / UI typecheck / lint PASS |
-| Fresh independent boundary PRE | READY_FOR_DISPATCH; current stage gpt-6-astra/xhigh; freeze candidate at dispatch |
+| Fresh independent boundary PRE | First PRE FAIL retained; coherent ownership-record/marker/properties correction + strict/compliance/static PASS; repeat PRE READY_FOR_DISPATCH, gpt-6-astra/xhigh |
 | Fresh V6 / full root | NOT_RUN after current repair; historical root116PASS/13FAIL and aborted37case run retained |
 | OpenSpec verify / POST / human visual / archive | BLOCKED / NOT_RUN / NOT_APPROVED / BLOCKED |
 
-Next: commit this honest incomplete checkpoint, automatically run fresh read-only PRE, then only after PASS add deterministic ownership RED and repair final comparison. No new target, native/vendor/domain/routing change or assertion relaxation. A material specification conflict requires a human decision; PRE is not user authorization. No P02.
+Next: automatically repeat read-only PRE on validated corrected plan; only after PASS append deterministic RED and implement sole-bridge final ownership guard. Current after-READY6/FUI12/BDD111/16controls/static PASS; production unchanged. No new target, native/vendor/domain/routing change or assertion relaxation. A material specification conflict requires a human decision; PRE is not user authorization. No P02.
 
-Git: local HEAD aad13b9a; current focus repair/runtime/diagnostics/plan checkpoint preparing. Sequential publication verified d2ce1504 and e5edd771; next eedbf406 timed out. Last verified remote e5edd7719431d09125eb610fbdd0cdbb789ee32f; later checkpoints NOT_PUBLISHED. Destination remains origin git@github.com:leonmaks/frade.git, only refs/heads/codex/frade-ui-design-contract. No force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibility unconfirmed.
+Git: local checkpoint 312c992dcf8281914326b22737afb12f7c53f884 COMMITTED; focus repair/runtime/diagnostics/coherent boundary plan saved. PRE dispatch candidate includes this status/receipt update. Sequential publication verified d2ce1504 and e5edd771; next eedbf406 timed out. Last verified remote e5edd7719431d09125eb610fbdd0cdbb789ee32f; later checkpoints NOT_PUBLISHED. Destination remains origin git@github.com:leonmaks/frade.git, only refs/heads/codex/frade-ui-design-contract. No force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibility unconfirmed.
 
 Evidence: openspec/changes/frade-p01-theme-core/evidence/p01-pending-focus-runtime-six-20261004T005900Z/audit.json; p01-pending-focus-original-regression-20261004T010000Z/runtime-command.json; p01-b02-glyph-diagnostic-20261004T011300Z/causal-audit.json; p01-fui-runtime-20261004T011700Z; p01-upper-paint-boundary-planning-20261004T012000Z.
 

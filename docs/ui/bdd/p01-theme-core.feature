@@ -437,3 +437,10 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     Given native toolbar resources outside the three accepted glyph identities remain unowned
     When those unrelated native resources change during paint but the admitted projection stays exact
     Then pending paint can finish without adopting them while changed admitted resources and stale ownership remain rejected
+
+
+  @P01-RT-UPPER-OWNERSHIP-035 @runtime-pending @FDS-007 @A11Y-007
+  Scenario: Same source cannot hide revoked upper projection ownership
+    Given the positively verified original node URL and bytes stay identical during paint
+    When the private marker or an owned projected property is replaced and ownership is revoked
+    Then the current attempt refuses without PAINTED repair retry digest or semantic actions while stale work stays inert
