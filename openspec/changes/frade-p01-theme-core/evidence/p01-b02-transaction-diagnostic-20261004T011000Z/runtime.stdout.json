@@ -1,0 +1,145 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\playwright.config.ts",
+    "rootDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-b02-transaction-diagnostic-20261004T011000Z/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ui-contract-theme.spec.ts",
+      "file": "ui-contract-theme.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P01-B02 diagnostic unchanged flow manager states drawio",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20261,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"high-contrast\"\u001b[39m\nReceived: \u001b[31m\"dark\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ru\" data-frade-runtime=\"1\" data-frade-theme=\"dark\" data-frade-revision=\"24\" data-frade-density=\"comfortable\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"dark\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"high-contrast\"\u001b[39m\nReceived: \u001b[31m\"dark\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ru\" data-frade-runtime=\"1\" data-frade-theme=\"dark\" data-frade-revision=\"24\" data-frade-density=\"comfortable\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"dark\"\u001b[22m\n\n    at applyActualPresentation (C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:1104:38)\n    at captureB02Matrix (C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:1189:19)\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:4765:9",
+                    "location": {
+                      "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                      "column": 38,
+                      "line": 1104
+                    },
+                    "snippet": "  1102 |   await dialog.getByRole('button', { name: 'Закрыть', exact: true }).click()\n  1103 |   await expect(dialog).toHaveCount(0)\n> 1104 |   await expect(page.locator('html')).toHaveAttribute('data-frade-theme', mode)\n       |                                      ^\n  1105 |   await expect(page.locator('html')).toHaveAttribute('data-frade-density', density)\n  1106 | }\n  1107 | async function installActualRequestGate(app: ElectronApplication) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                        "column": 38,
+                        "line": 1104
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"high-contrast\"\u001b[39m\nReceived: \u001b[31m\"dark\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ru\" data-frade-runtime=\"1\" data-frade-theme=\"dark\" data-frade-revision=\"24\" data-frade-density=\"comfortable\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"dark\"\u001b[22m\n\n\n  1102 |   await dialog.getByRole('button', { name: 'Закрыть', exact: true }).click()\n  1103 |   await expect(dialog).toHaveCount(0)\n> 1104 |   await expect(page.locator('html')).toHaveAttribute('data-frade-theme', mode)\n       |                                      ^\n  1105 |   await expect(page.locator('html')).toHaveAttribute('data-frade-density', density)\n  1106 | }\n  1107 | async function installActualRequestGate(app: ElectronApplication) {\n    at applyActualPresentation (C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:1104:38)\n    at captureB02Matrix (C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:1189:19)\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:4765:9"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:39892) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-04T01:08:59.043Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-b02-transaction-diagnostic-20261004T011000Z\\artifacts\\ui-contract-theme-P01-B02--f594a--flow-manager-states-drawio\\test-failed-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-b02-transaction-diagnostic-20261004T011000Z\\artifacts\\ui-contract-theme-P01-B02--f594a--flow-manager-states-drawio\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                    "column": 38,
+                    "line": 1104
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-668715c0c4f909f8513d",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 6990,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-04T01:08:57.315Z",
+    "duration": 22062.791999999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

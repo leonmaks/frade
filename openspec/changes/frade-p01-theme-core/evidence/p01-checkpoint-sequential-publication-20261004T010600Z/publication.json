@@ -1,0 +1,111 @@
+{
+  "start": "2026-10-04T01:06:43.655Z",
+  "reason": "Previous combined push HTTP408; transfer original authorized checkpoints serially to reduce individual request size. No rewrite or force.",
+  "remote": "git@github.com:leonmaks/frade.git",
+  "ref": "refs/heads/codex/frade-ui-design-contract",
+  "before": {
+    "args": [
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/frade-ui-design-contract"
+    ],
+    "exit": 0,
+    "stdout": "cd93819cb7b1d02e474e01c664e8654c04af5ca9\trefs/heads/codex/frade-ui-design-contract\n",
+    "stderr": ""
+  },
+  "steps": [
+    {
+      "target": "d2ce150464f0c5bbb8ae6ea52908709343fda662",
+      "start": "2026-10-04T01:06:43.766Z",
+      "push": {
+        "args": [
+          "-c",
+          "pack.threads=2",
+          "-c",
+          "pack.windowMemory=64m",
+          "push",
+          "origin",
+          "d2ce150464f0c5bbb8ae6ea52908709343fda662:refs/heads/codex/frade-ui-design-contract"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "To https://github.com/leonmaks/frade.git\n   cd93819c..d2ce1504  d2ce150464f0c5bbb8ae6ea52908709343fda662 -> codex/frade-ui-design-contract\n"
+      },
+      "after": {
+        "args": [
+          "ls-remote",
+          "origin",
+          "refs/heads/codex/frade-ui-design-contract"
+        ],
+        "exit": 0,
+        "stdout": "d2ce150464f0c5bbb8ae6ea52908709343fda662\trefs/heads/codex/frade-ui-design-contract\n",
+        "stderr": ""
+      },
+      "verified": true,
+      "end": "2026-10-04T01:07:02.932Z"
+    },
+    {
+      "target": "e5edd7719431d09125eb610fbdd0cdbb789ee32f",
+      "start": "2026-10-04T01:07:02.989Z",
+      "push": {
+        "args": [
+          "-c",
+          "pack.threads=2",
+          "-c",
+          "pack.windowMemory=64m",
+          "push",
+          "origin",
+          "e5edd7719431d09125eb610fbdd0cdbb789ee32f:refs/heads/codex/frade-ui-design-contract"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "To https://github.com/leonmaks/frade.git\n   d2ce1504..e5edd771  e5edd7719431d09125eb610fbdd0cdbb789ee32f -> codex/frade-ui-design-contract\n"
+      },
+      "after": {
+        "args": [
+          "ls-remote",
+          "origin",
+          "refs/heads/codex/frade-ui-design-contract"
+        ],
+        "exit": 0,
+        "stdout": "e5edd7719431d09125eb610fbdd0cdbb789ee32f\trefs/heads/codex/frade-ui-design-contract\n",
+        "stderr": ""
+      },
+      "verified": true,
+      "end": "2026-10-04T01:07:49.038Z"
+    },
+    {
+      "target": "eedbf406428bb9d03b929d4f822ab853a9a84e76",
+      "start": "2026-10-04T01:07:49.089Z",
+      "push": {
+        "args": [
+          "-c",
+          "pack.threads=2",
+          "-c",
+          "pack.windowMemory=64m",
+          "push",
+          "origin",
+          "eedbf406428bb9d03b929d4f822ab853a9a84e76:refs/heads/codex/frade-ui-design-contract"
+        ],
+        "exit": null,
+        "error": "spawnSync git ETIMEDOUT",
+        "stdout": "",
+        "stderr": ""
+      },
+      "after": {
+        "args": [
+          "ls-remote",
+          "origin",
+          "refs/heads/codex/frade-ui-design-contract"
+        ],
+        "exit": 0,
+        "stdout": "e5edd7719431d09125eb610fbdd0cdbb789ee32f\trefs/heads/codex/frade-ui-design-contract\n",
+        "stderr": ""
+      },
+      "verified": false,
+      "end": "2026-10-04T01:10:51.732Z"
+    }
+  ],
+  "end": "2026-10-04T01:10:51.733Z",
+  "status": "BLOCKED_ENVIRONMENT"
+}

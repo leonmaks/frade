@@ -430,3 +430,10 @@ Feature: P01 pure theme resolution over the Frade UI contract v1.0
     Given pure prepare retained one valid decoration under the accepted focus contract
     When focus capability menu or modal changes independently before apply
     Then the invalid decoration is removed without pending recreation native actions or data writes and a still-valid lease receives no writes
+
+
+  @P01-RT-UPPER-OWNERSHIP-034 @runtime-pending @FDS-007 @A11Y-007
+  Scenario: Paint acknowledgement is isolated to the exact admitted upper projection
+    Given native toolbar resources outside the three accepted glyph identities remain unowned
+    When those unrelated native resources change during paint but the admitted projection stays exact
+    Then pending paint can finish without adopting them while changed admitted resources and stale ownership remain rejected

@@ -1,0 +1,43 @@
+{
+  "atUtc": "2026-10-04T00:21:06.508Z",
+  "authority": "Existing accepted focus scope; fresh PRE PASS b784112d",
+  "classification": "STATE_TRANSITION",
+  "rootCause": "Pending-owner early returns bypassed independent focus lease invalidation; no exact retained anchor identity",
+  "file": "apps/desktop/src/main/drawio-theme-bridge.ts",
+  "beforeSha256": "da5aef95fb2cd4aa836bc13cb04673ad60b3cd0121a2bebacdd8b250afc60d52",
+  "afterSha256": "3923f389a6a0f294dcdec33ae341264846a265d43fab1276a3d46834754d529f",
+  "patches": [
+    {
+      "offset": 57689,
+      "before": "  let upperFocusRing: HTMLDivElement | undefined, upperFocusQueued = false",
+      "after": "  let upperFocusRing: HTMLDivElement | undefined, upperFocusAnchor: HTMLElement | undefined, upperFocusQueued = false"
+    },
+    {
+      "offset": 57867,
+      "before": "    upperFocusRing = undefined\n",
+      "after": "    upperFocusRing = undefined\n    upperFocusAnchor = undefined\n"
+    },
+    {
+      "offset": 58039,
+      "before": "    // prepare is pure; the current visual lease remains until apply/rollback.\n    if (!currentPresentation()) return\n",
+      "after": ""
+    },
+    {
+      "offset": 58729,
+      "before": "    const style = getComputedStyle(node), corners = ['top-left', 'top-right', 'bottom-right', 'bottom-left'] as const",
+      "after": "    if (upperFocusRing && upperFocusAnchor !== node) clearUpperFocus()\n    // Prepare itself is DOM-pure. Later independent events may only revoke an\n    // invalid retained lease; pending ownership cannot create or move focus paint.\n    if (!currentPresentation()) {\n      if (upperFocusRing && (upperFocusRing.style.left !== bounds.left - 5 + 'px' ||\n        upperFocusRing.style.top !== bounds.top - 5 + 'px' || upperFocusRing.style.width !== bounds.width + 10 + 'px' ||\n        upperFocusRing.style.height !== bounds.height + 10 + 'px')) clearUpperFocus()\n      return\n    }\n    const style = getComputedStyle(node), corners = ['top-left', 'top-right', 'bottom-right', 'bottom-left'] as const"
+    },
+    {
+      "offset": 60918,
+      "before": "    const contour = upperFocusRing.firstElementChild as HTMLElement",
+      "after": "    upperFocusAnchor = node\n    const contour = upperFocusRing.firstElementChild as HTMLElement"
+    },
+    {
+      "offset": 69131,
+      "before": "  function reconcileUpperInteraction() {\n    if (disposed || !upperRootOwned()) { clearUpperInteraction(); return }\n    if (!currentPresentation()) return",
+      "after": "  function reconcileUpperInteraction() {\n    if (disposed || !upperRootOwned()) { clearUpperInteraction(); return }\n    if (!currentPresentation()) { reconcileUpperFocus(); return }"
+    }
+  ],
+  "reverseRestoresEveryByte": true,
+  "nativeResizeProductionDelta": false
+}

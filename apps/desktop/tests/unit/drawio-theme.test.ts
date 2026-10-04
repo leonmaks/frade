@@ -1453,3 +1453,21 @@ it('P01-UPPER-033 pending prepare retains the still-valid ring without writes an
   f.send('release', context('apply', 2, 2)); await f.flush(); expect(document.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
   f.callbacks.forEach(callback => expect(callback).not.toHaveBeenCalled()); f.assertSemantic()
 })
+
+
+for (const invalidation of ['geometry', 'resource', 'owner', 'queued-disposal'] as const) {
+  it('P01-UPPER-033 pending prepare checks exact lease on ' + invalidation, async () => {
+    const f = await upperKeyboardFixture(); await f.start(); const node = f.targets[0]
+    node.focus(); await f.flush(); expect(document.querySelector('[data-frade-upper-focus-ring]')).not.toBeNull()
+    const before = document.documentElement.outerHTML
+    f.send('prepare', context('prepare', 2, 2), snapshot('light', 2))
+    expect(document.documentElement.outerHTML).toBe(before)
+    if (invalidation === 'geometry') { node.getBoundingClientRect = () => new DOMRect(40, 20, 28, 28); window.dispatchEvent(new Event('resize')) }
+    else if (invalidation === 'resource') node.style.backgroundImage = 'url("data:image/svg+xml;base64,PHN2Zy8+")'
+    else if (invalidation === 'owner') document.documentElement.setAttribute('data-frade-frame-revision', '999')
+    else { window.dispatchEvent(new Event('focus')); f.dispose() }
+    await f.flush(); expect(document.querySelector('[data-frade-upper-focus-ring]')).toBeNull()
+    window.dispatchEvent(new Event('focus')); await f.flush(); expect(document.querySelector('[data-frade-upper-focus-ring]')).toBeNull()
+    f.callbacks.forEach(callback => expect(callback).not.toHaveBeenCalled()); f.assertSemantic()
+  })
+}

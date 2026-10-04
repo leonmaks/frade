@@ -1,0 +1,44 @@
+{
+  "start": "2026-10-03T23:47:44.819Z",
+  "head": "aad13b9a15e477c7b14b16bcb8b0d4404f207b06",
+  "remote": "git@github.com:leonmaks/frade.git",
+  "ref": "refs/heads/codex/frade-ui-design-contract",
+  "transport": "Per-command HTTPS rewrite to same github.com/leonmaks/frade.git; origin/global settings unchanged",
+  "interactiveAuthentication": false,
+  "before": {
+    "args": [
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/frade-ui-design-contract"
+    ],
+    "exit": 0,
+    "stdout": "cd93819cb7b1d02e474e01c664e8654c04af5ca9\trefs/heads/codex/frade-ui-design-contract\n",
+    "stderr": ""
+  },
+  "push": {
+    "args": [
+      "-c",
+      "pack.threads=2",
+      "-c",
+      "pack.windowMemory=64m",
+      "push",
+      "origin",
+      "HEAD:refs/heads/codex/frade-ui-design-contract"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "error: RPC failed; HTTP 408 curl 22 The requested URL returned error: 408\nsend-pack: unexpected disconnect while reading sideband packet\nfatal: the remote end hung up unexpectedly\nEverything up-to-date\n"
+  },
+  "after": {
+    "args": [
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/frade-ui-design-contract"
+    ],
+    "exit": 0,
+    "stdout": "cd93819cb7b1d02e474e01c664e8654c04af5ca9\trefs/heads/codex/frade-ui-design-contract\n",
+    "stderr": ""
+  },
+  "status": "BLOCKED_ENVIRONMENT",
+  "end": "2026-10-03T23:48:28.808Z"
+}

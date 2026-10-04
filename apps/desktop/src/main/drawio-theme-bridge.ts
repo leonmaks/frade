@@ -1249,21 +1249,29 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
   const upperControls = new Map<HTMLElement, UpperControl>(), upperControlProjection = new Map<HTMLElement, UpperProjection>(), upperMenuProjection = new Map<HTMLElement, UpperProjection>()
   let upperPopup: UpperPopup | undefined, upperGestureSequence = 0
   let upperGestureTimer: ReturnType<typeof setTimeout> | undefined
-  let upperFocusRing: HTMLDivElement | undefined, upperFocusQueued = false
+  let upperFocusRing: HTMLDivElement | undefined, upperFocusAnchor: HTMLElement | undefined, upperFocusQueued = false
   function clearUpperFocus() {
     upperFocusRing?.remove()
     upperFocusRing = undefined
+    upperFocusAnchor = undefined
   }
   function reconcileUpperFocus() {
     if (disposed || !upperRootOwned()) { clearUpperFocus(); return }
-    // prepare is pure; the current visual lease remains until apply/rollback.
-    if (!currentPresentation()) return
     const node = document.activeElement, control = node instanceof HTMLElement ? upperControlProof(node) : undefined
     if (!document.hasFocus() || ui?.dialog || ui?.dialogs?.length || ui?.currentMenu?.div?.isConnected ||
       !(node instanceof HTMLElement) || !control || upperDisabled(node, control) || !node.matches(':focus-visible')) { clearUpperFocus(); return }
     const host = node.closest<HTMLElement>('.geToolbarContainer'), bounds = node.getBoundingClientRect()
     if (!host?.isConnected || !document.body?.isConnected || ![bounds.x, bounds.y, bounds.width, bounds.height].every(Number.isFinite) ||
       bounds.width <= 0 || bounds.height <= 0) { clearUpperFocus(); return }
+    if (upperFocusRing && upperFocusAnchor !== node) clearUpperFocus()
+    // Prepare itself is DOM-pure. Later independent events may only revoke an
+    // invalid retained lease; pending ownership cannot create or move focus paint.
+    if (!currentPresentation()) {
+      if (upperFocusRing && (upperFocusRing.style.left !== bounds.left - 5 + 'px' ||
+        upperFocusRing.style.top !== bounds.top - 5 + 'px' || upperFocusRing.style.width !== bounds.width + 10 + 'px' ||
+        upperFocusRing.style.height !== bounds.height + 10 + 'px')) clearUpperFocus()
+      return
+    }
     const style = getComputedStyle(node), corners = ['top-left', 'top-right', 'bottom-right', 'bottom-left'] as const
     const radii = corners.map(corner => style.getPropertyValue('border-' + corner + '-radius') || '0px')
     if (radii.some(radius => !/^\d+(?:\.\d+)?px$/.test(radius))) { clearUpperFocus(); return }
@@ -1282,6 +1290,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       upperFocusRing.append(contour)
       document.body.append(upperFocusRing)
     }
+    upperFocusAnchor = node
     const contour = upperFocusRing.firstElementChild as HTMLElement
     const update = (element: HTMLElement, values: Record<string, string>) => {
       for (const [name, value] of Object.entries(values)) if (element.style.getPropertyValue(name) !== value) element.style.setProperty(name, value)
@@ -1402,7 +1411,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
   }
   function reconcileUpperInteraction() {
     if (disposed || !upperRootOwned()) { clearUpperInteraction(); return }
-    if (!currentPresentation()) return
+    if (!currentPresentation()) { reconcileUpperFocus(); return }
     const keep = new Set<HTMLElement>()
     for (const [node, source] of upperOwners) {
       if (!visible(node)) continue
