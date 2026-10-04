@@ -1,0 +1,45 @@
+{
+  "label": "general-lint",
+  "atUtc": "2026-10-04T22:46:48.245Z",
+  "endedAtUtc": "2026-10-04T22:46:49.965Z",
+  "cwd": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+  "exe": "node",
+  "args": [
+    "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+    "lint"
+  ],
+  "node": "v24.18.0",
+  "platform": "win32",
+  "exitCode": 0,
+  "signal": null,
+  "stdout": "\n   • Packages in scope: @frade/adapter-sberea-yaml, @frade/adapter-yaml, @frade/desktop, @frade/draw, @frade/local-index, @frade/metamodel-compiler, @frade/metamodel-config, @frade/metamodel-domain, @frade/repository-api, @frade/repository-application, @frade/repository-bridge, @frade/repository-domain, @frade/repository-ports, @frade/runtime-contracts, @frade/runtime-electron, @frade/runtime-node, @frade/ui-inspector, @frade/ui-navigator, @frade/ui-workspace, @frade/versioning-git\n   • Running lint in 20 packages\n   • Remote caching disabled, using shared worktree cache\n\n@frade/runtime-contracts:lint: cache hit, replaying logs bf082829a3d72785\n@frade/draw:lint: cache hit, replaying logs 4b899ac7daf84380\n@frade/metamodel-domain:lint: cache hit, replaying logs 3bb3d7e22f20dad3\n@frade/metamodel-domain:lint: $ eslint src tests\n@frade/runtime-contracts:lint: $ eslint src tests\n@frade/draw:lint: $ eslint src tests *.ts\n@frade/metamodel-compiler:lint: cache hit, replaying logs dd7d6b869090fbc4\n@frade/runtime-electron:lint: cache hit, replaying logs 318c66a060eaf91c\n@frade/metamodel-compiler:lint: $ eslint src tests\n@frade/runtime-electron:lint: $ eslint src tests\n@frade/repository-domain:lint: cache hit, replaying logs 04b9c6ac4a099cd9\n@frade/metamodel-config:lint: cache hit, replaying logs 479cd96270685e09\n@frade/repository-domain:lint: $ eslint src tests\n@frade/metamodel-config:lint: $ eslint src tests\n@frade/repository-ports:lint: cache hit, replaying logs 06bed98155985f7f\n@frade/repository-ports:lint: $ eslint src tests\n@frade/local-index:lint: cache hit, replaying logs cbeaa36e5824eb4e\n@frade/repository-bridge:lint: cache hit, replaying logs 9a0e7572bec94bc5\n@frade/repository-application:lint: cache hit, replaying logs a2e10c7bbd235f4e\n@frade/versioning-git:lint: cache hit, replaying logs 846799115ab03f33\n@frade/local-index:lint: $ eslint src tests\n@frade/repository-bridge:lint: $ eslint src tests\n@frade/repository-application:lint: $ eslint src tests\n@frade/versioning-git:lint: $ eslint src tests\n@frade/adapter-yaml:lint: cache hit, replaying logs 3addff7fb36cfd63\n@frade/adapter-sberea-yaml:lint: cache hit, replaying logs d6f635d9630f1dac\n@frade/repository-api:lint: cache hit, replaying logs 1eec624e7dcdea5a\n@frade/adapter-yaml:lint: $ eslint src tests\n@frade/adapter-sberea-yaml:lint: $ eslint src tests\n@frade/repository-api:lint: $ eslint src tests\n@frade/ui-navigator:lint: cache hit, replaying logs 99229ef209fb32e6\n@frade/ui-navigator:lint: $ eslint src tests\n@frade/runtime-node:lint: cache hit, replaying logs 2d52d271b68c8d34\n@frade/ui-inspector:lint: cache hit, replaying logs 9d734c5953a4cebc\n@frade/runtime-node:lint: $ eslint src tests\n@frade/ui-inspector:lint: $ eslint src tests\n@frade/ui-workspace:lint: cache hit, replaying logs 627d3f624802fbdd\n@frade/ui-workspace:lint: $ eslint src tests\n@frade/desktop:lint: cache hit, replaying logs 450635e5d4cec562\n@frade/desktop:lint: $ eslint src tests *.ts\n\n Tasks:    20 successful, 20 total\nCached:    20 cached, 20 total\n  Time:    224ms >>> FULL TURBO\n\n",
+  "stderr": "$ turbo lint\n• turbo 2.11.2\n",
+  "status": "PASS",
+  "applicability": {
+    "scope": "Required task2.7/3.1 general existing controls; no new product PASS inferred",
+    "frozenTrackedFingerprint": "cf179a47a2ea8c6b4cc1778d58933a6b66e8d67f1a025a0d7946eb35c5e09c4d",
+    "existingGeneralScripts": {
+      "lint": "turbo lint",
+      "typecheck": "turbo typecheck",
+      "build": "turbo build",
+      "test:boundaries": "node --test tests/contract/*.test.mjs",
+      "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs"
+    },
+    "toolchain": {
+      "packageManager": "pnpm@12.6.0",
+      "engines": {
+        "node": ">=24.0.0 <25"
+      },
+      "devDependencies": {
+        "@eslint/js": "9.39.1",
+        "eslint": "9.39.1",
+        "eslint-plugin-react-hooks": "7.0.1",
+        "globals": "16.5.0",
+        "prettier": "3.9.8",
+        "turbo": "2.11.2",
+        "typescript-eslint": "8.46.3"
+      }
+    },
+    "lockfileSha256": "755f06619fb8269a345412512c1a44c30cd41887e2d499e4236c262b624d95c0"
+  }
+}

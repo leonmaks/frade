@@ -1,0 +1,45 @@
+{
+  "label": "loader-native-probe1",
+  "atUtc": "2026-10-04T22:48:49.985Z",
+  "endedAtUtc": "2026-10-04T22:48:54.008Z",
+  "cwd": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+  "exe": "node",
+  "args": [
+    "--test",
+    "E:/dev/codex/frade-worker-staging/w01-task-2.7-native-probe1-20261005/tests/directions/root-loader.test.mjs"
+  ],
+  "node": "v24.18.0",
+  "platform": "win32",
+  "exitCode": 1,
+  "signal": null,
+  "stdout": "✖ registered owner root and nested target load exact applicable contracts (1110.1605ms)\n✔ foreign, unsafe, malformed and drifted owner controls fail closed without writes (1548.3817ms)\n✔ nested rule drift and weakened manifest scope fail without textual equivalence claims (1162.8283ms)\nℹ tests 3\nℹ suites 0\nℹ pass 2\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 3935.4713\n\n✖ failing tests:\n\ntest at ..\\..\\frade-worker-staging\\w01-task-2.7-native-probe1-20261005\\tests\\directions\\root-loader.test.mjs:56:1\n✖ registered owner root and nested target load exact applicable contracts (1110.1605ms)\n  AssertionError [ERR_ASSERTION]: {\"ok\":false,\"status\":\"BLOCKED\",\"code\":\"RULE_SELECTION\",\"detail\":\"UNREGISTERED_OWNER\"}\n  \n  false !== true\n  \n      at TestContext.<anonymous> (file:///E:/dev/codex/frade-worker-staging/w01-task-2.7-native-probe1-20261005/tests/directions/root-loader.test.mjs:61:10)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "status": "FAIL",
+  "applicability": {
+    "scope": "Required task2.7/3.1 general existing controls; no new product PASS inferred",
+    "frozenTrackedFingerprint": "cf179a47a2ea8c6b4cc1778d58933a6b66e8d67f1a025a0d7946eb35c5e09c4d",
+    "existingGeneralScripts": {
+      "lint": "turbo lint",
+      "typecheck": "turbo typecheck",
+      "build": "turbo build",
+      "test:boundaries": "node --test tests/contract/*.test.mjs",
+      "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs"
+    },
+    "toolchain": {
+      "packageManager": "pnpm@12.6.0",
+      "engines": {
+        "node": ">=24.0.0 <25"
+      },
+      "devDependencies": {
+        "@eslint/js": "9.39.1",
+        "eslint": "9.39.1",
+        "eslint-plugin-react-hooks": "7.0.1",
+        "globals": "16.5.0",
+        "prettier": "3.9.8",
+        "turbo": "2.11.2",
+        "typescript-eslint": "8.46.3"
+      }
+    },
+    "lockfileSha256": "755f06619fb8269a345412512c1a44c30cd41887e2d499e4236c262b624d95c0"
+  }
+}

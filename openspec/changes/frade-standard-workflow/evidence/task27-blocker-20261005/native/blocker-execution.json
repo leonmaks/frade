@@ -1,0 +1,45 @@
+{
+  "label": "blocker-execution",
+  "atUtc": "2026-10-04T23:19:00.087Z",
+  "endedAtUtc": "2026-10-04T23:19:00.179Z",
+  "cwd": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+  "exe": "node",
+  "args": [
+    "E:/dev/codex/frade/.git/frade-workflow/implementations/task27-blocker-20261005.mjs",
+    "execution"
+  ],
+  "node": "v24.18.0",
+  "platform": "win32",
+  "exitCode": 1,
+  "signal": null,
+  "stdout": "{\"status\":\"FAIL\",\"code\":\"EXACT_ROLE_EXECUTION_UNAVAILABLE\",\"rows\":[{\"path\":\"E:/dev/codex/frade-worker-staging/w01-task-2.7-native-20261005/execution.json\",\"sha256\":\"9cfb48dedc9255994d2a55ba06d8ed9a63b43158eb254f4c5b1ec975bc99a591\",\"status\":\"BLOCKED\",\"exitCode\":1,\"completeStream\":false,\"inputUnchanged\":true,\"model\":\"gpt-6-sol\",\"effort\":\"high\"},{\"path\":\"E:/dev/codex/frade-worker-staging/w01-task-2.7-confirm-20261005/execution.json\",\"sha256\":\"190a1edb52f4dd264504d81e000cf22b8bc3626230b51e622a5c9b5dcca4ee2d\",\"status\":\"BLOCKED\",\"exitCode\":1,\"completeStream\":false,\"inputUnchanged\":true,\"model\":\"gpt-6-sol\",\"effort\":\"high\"}],\"admitted\":false}\n",
+  "stderr": "",
+  "status": "FAIL",
+  "applicability": {
+    "scope": "Required task2.7/3.1 general existing controls; no new product PASS inferred",
+    "frozenTrackedFingerprint": "cf179a47a2ea8c6b4cc1778d58933a6b66e8d67f1a025a0d7946eb35c5e09c4d",
+    "existingGeneralScripts": {
+      "lint": "turbo lint",
+      "typecheck": "turbo typecheck",
+      "build": "turbo build",
+      "test:boundaries": "node --test tests/contract/*.test.mjs",
+      "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs"
+    },
+    "toolchain": {
+      "packageManager": "pnpm@12.6.0",
+      "engines": {
+        "node": ">=24.0.0 <25"
+      },
+      "devDependencies": {
+        "@eslint/js": "9.39.1",
+        "eslint": "9.39.1",
+        "eslint-plugin-react-hooks": "7.0.1",
+        "globals": "16.5.0",
+        "prettier": "3.9.8",
+        "turbo": "2.11.2",
+        "typescript-eslint": "8.46.3"
+      }
+    },
+    "lockfileSha256": "755f06619fb8269a345412512c1a44c30cd41887e2d499e4236c262b624d95c0"
+  }
+}

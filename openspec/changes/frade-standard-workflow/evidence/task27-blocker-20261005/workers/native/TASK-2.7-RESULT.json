@@ -1,0 +1,81 @@
+{
+  "task": "W01-2.7",
+  "role": {
+    "approvedModel": "gpt-6-sol",
+    "approvedEffort": "high",
+    "backend": "NOT_CONFIRMED"
+  },
+  "status": "IMPLEMENTED_PENDING_NATIVE_FINAL_INTEGRATION",
+  "readyForVerify": false,
+  "changedFilesSha256": {
+    "AGENTS.md": "dd366d4289a1ef3c279778aed323b524da926023e7122b400d418d7239a9009a",
+    "package.json": "f06660766fcbe1cbc7ecb240463954f91da0c5e1b64e32e106ab69979ea16c61",
+    ".github/workflows/ci.yml": "c835b658c3296ecc8b75cb2f928971cf932260448a2a4a0d5fdfb03000d4dc4d",
+    "scripts/directions/root-loader.mjs": "d06ab5a7024f9525ce7a0756630b4f4ccbeeb6213055bb23a8c22096db8bc028",
+    "scripts/directions/check-applicability.mjs": "65e87cd912ab5bd888c004f712a1a335f9609d8b6cb13a452ba9418e9d64238e",
+    "tests/directions/root-loader.test.mjs": "2e33df4f6947eb68641e23d1035fe9410f12e605d8466d30ebb14fe1feecca43",
+    "tests/directions/check-applicability.test.mjs": "4ada32fcec34a7e37648b9f7fa48eaebcade45778e93437325c6317b0db331bc",
+    "tests/directions/ci-scope.test.mjs": "02aba4bd0926e16f0d30f95d52547c405030aa1562010bde15e67f8351ab2e6e",
+    "tests/directions/task27-red-evidence.json": "ff029a3753e717ae501b9d229b978c449efc9655842df0a55fc3e37eef9845c6",
+    "tests/directions/task27-root-loader-linux.log": "6ab88ac10e1e5b28fdbbed607ecdbee4128c9528da7e4a6cbbb72b4b52f13785",
+    "tests/directions/task27-applicability-linux.log": "ab591e8e7a76ba7c85f28d0ac023a4274ad71c1ecfdcf03846f4d8bc3ae434dc",
+    "docs/engineering/standard-workflow.md": "a5c05ab796a81d605449f7c95b79881cdb2124896bbc35a239e5ca4ba76c0ad8",
+    "docs/engineering/newcomer-guide.md": "342607561909c16ae8e7ad85c970d32f29a8f80ab040e87da28188e025b9063c",
+    "docs/engineering/adoption-map.md": "2b801e8cca94210611ddac472ea012776ebb5caed2fdcf54b4db7b35becd89de",
+    "docs/engineering/check-applicability.json": "94b977ac83bb93e08ddb15b3b95da66a3a9296ae882fd6396ea305459eae8a8f",
+    "docs/engineering/directions/frade-standard-workflow/AGENTS.md": "7222f96b4cd184f915339b96e13d58d7a3b042743aebf0dd6fdc6f048ae64536",
+    "docs/engineering/templates/task-2.7-root-control.md": "ba4eb65ad8fa65a45df539c77b46f6ef1456d129682a266c12d6d4d0f11d8358"
+  },
+  "selfHashExcluded": "TASK-2.7-RESULT.json is excluded from its own hash bindings",
+  "namedAssertions": [
+    "registered Git owner selects root and own direction contracts from owner root and nested path",
+    "LF and CRLF Git checkout retain exact canonical root sections 1-17 content",
+    "foreign root, target, direction and requester manifest fail with intended reason",
+    "malformed/missing manifest, root/owner/nested rule and role/scope drift fail closed",
+    "frozen nested context returns applicable rules and OUTSIDE_OWNER_SCOPE without mutation permission",
+    "copied public CLI rejects foreign common for alpha owner",
+    "N/A needs predecision plus unchanged committed and working protected tree proof",
+    "actual CI W01 guard excludes foreign branches, main and forked lookalike heads"
+  ],
+  "redEvidence": "tests/directions/task27-red-evidence.json",
+  "nativeIntermediateEvidence": [
+    {
+      "path": "../NATIVE-LOADER-PROBE1.json",
+      "sha256": "e0ad53b45f480696d197929972fdb29bd7e892bcb8094eb069b2274a8a19349e",
+      "exitCode": 1,
+      "result": "FAIL_1_OF_3"
+    },
+    {
+      "path": "../NATIVE-LOADER-PROBE2.json",
+      "sha256": "df255401b8bb419610b52840daa9f4c33628502c17dd16bc72e32613b88d0668",
+      "exitCode": 1,
+      "result": "FAIL_0_OF_5"
+    },
+    {
+      "path": "../NATIVE-LOADER-PROBE3.json",
+      "sha256": "8302d1ccfba2ef3101c430ce38419d0558c650d926e5d5d19cb140be1606525e",
+      "exitCode": 0,
+      "result": "PASS_7_OF_7_INTERMEDIATE"
+    },
+    {
+      "path": "../NATIVE-LOADER-PROBE4.json",
+      "sha256": "3e037e2d0646a1033ed6598f30c9ccded9193f1ce61167081f882cbb923ee868",
+      "exitCode": 0,
+      "result": "PASS_10_OF_10_INTERMEDIATE"
+    }
+  ],
+  "workerChecks": [
+    { "command": "node --check new scripts and tests", "exitCode": 0 },
+    { "command": "node tests/directions/ci-scope.test.mjs", "exitCode": 0, "result": "PASS_1_OF_1" },
+    { "command": "node tests/directions/root-loader.test.mjs", "exitCode": 1, "result": "ENVIRONMENT_GIT_SPAWN_EPERM" },
+    { "command": "node tests/directions/check-applicability.test.mjs", "exitCode": 1, "result": "ENVIRONMENT_GIT_SPAWN_EPERM" },
+    { "command": "root17 byte comparison to supplied original", "exitCode": 0, "result": "EXACT_7307_BYTE_PREFIX" },
+    { "command": "existing package scripts/dependencies and CI foundation/Windows job comparison", "exitCode": 0, "result": "UNCHANGED" }
+  ],
+  "limitations": [
+    "Native probe4 is bound to its recorded intermediate source; final source hashes above include later CI/rule-scope edits and require final native replay.",
+    "Scoped Prettier, ESLint, existing 168 controls, strict OpenSpec, general required checks and actual owner root/nested replay remain for the parent with native Node 24 and installed dependencies.",
+    "This worker snapshot is not a Git checkout and Linux Node 18 child Git spawn returns EPERM; no product, remote CI, branch protection or check:all PASS is inferred.",
+    "Remote CI NOT_RUN, branch protection NOT_CONFIGURED, writer dispatch NOT_IMPLEMENTED, W01 closure NOT_DEPLOYED_W01_CLOSURE_PENDING, consumer adoption NOT_STARTED; no Verify, POST, archive or release publication performed."
+  ]
+}
