@@ -1,0 +1,115 @@
+{
+  "atUtc": "2026-10-04T20:42:30.566Z",
+  "scope": "Separate disposable writable implementation staging ONLY; original owner/common/foreign/auth/settings excluded; shared read-only review service unchanged",
+  "status": "PASS",
+  "version": {
+    "args": [
+      "-d",
+      "Ubuntu-22.04_E",
+      "--exec",
+      "/usr/bin/env",
+      "CODEX_HOME=/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/offline-home",
+      "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime/node_modules/.bin/codex",
+      "--version"
+    ],
+    "exit": 0,
+    "out": "codex-cli 0.159.3\n",
+    "err": "w\u0000s\u0000l\u0000:\u0000 \u0000A\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000y\u0000 \u0000c\u0000o\u0000n\u0000f\u0000i\u0000g\u0000u\u0000r\u0000a\u0000t\u0000i\u0000o\u0000n\u0000 \u0000w\u0000a\u0000s\u0000 \u0000d\u0000e\u0000t\u0000e\u0000c\u0000t\u0000e\u0000d\u0000 \u0000b\u0000u\u0000t\u0000 \u0000n\u0000o\u0000t\u0000 \u0000m\u0000i\u0000r\u0000r\u0000o\u0000r\u0000e\u0000d\u0000 \u0000i\u0000n\u0000t\u0000o\u0000 \u0000W\u0000S\u0000L\u0000.\u0000 \u0000W\u0000S\u0000L\u0000 \u0000i\u0000n\u0000 \u0000N\u0000A\u0000T\u0000 \u0000m\u0000o\u0000d\u0000e\u0000 \u0000d\u0000o\u0000e\u0000s\u0000 \u0000n\u0000o\u0000t\u0000 \u0000s\u0000u\u0000p\u0000p\u0000o\u0000r\u0000t\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000i\u0000e\u0000s\u0000.\u0000\r\u0000\n\u0000"
+  },
+  "configs": [
+    "default_permissions=\"frade-worker\"",
+    "permissions={frade-worker={extends=\":read-only\",filesystem={\":root\"=\"deny\",\":minimal\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/work\"=\"write\",\"/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/input\"=\"read\"},network={enabled=false}}}",
+    "model_reasoning_effort=\"high\"",
+    "approval_policy=\"never\"",
+    "web_search=\"disabled\"",
+    "apps._default.enabled=false",
+    "project_doc_max_bytes=0",
+    "project_doc_fallback_filenames=[]",
+    "shell_environment_policy.inherit=\"none\"",
+    "shell_environment_policy.set={PATH=\"/usr/bin:/bin\",HOME=\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/work/home\",TMPDIR=\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/work/tmp\",LANG=\"C.UTF-8\",LC_ALL=\"C.UTF-8\",GIT_CONFIG_GLOBAL=\"/dev/null\",GIT_CONFIG_SYSTEM=\"/dev/null\"}"
+  ],
+  "work": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.6-native-20261004\\work",
+  "input": "E:\\dev\\codex\\frade-worker-staging\\w01-task-2.6-native-20261004\\input",
+  "sourceExists": true,
+  "measured": {
+    "rows": [
+      {
+        "name": "allowed",
+        "read": true
+      },
+      {
+        "name": "source",
+        "read": false,
+        "error": "ENOENT"
+      },
+      {
+        "name": "common",
+        "read": false,
+        "error": "ENOENT"
+      },
+      {
+        "name": "other",
+        "read": false,
+        "error": "ENOENT"
+      },
+      {
+        "name": "auth",
+        "read": false,
+        "error": "ENOENT"
+      },
+      {
+        "name": "settings",
+        "read": false,
+        "error": "ENOENT"
+      }
+    ],
+    "ownWrite": true,
+    "inputWrite": false,
+    "outsideWrite": false,
+    "network": {
+      "denied": true
+    },
+    "status": "PASS"
+  },
+  "args": [
+    "-d",
+    "Ubuntu-22.04_E",
+    "--exec",
+    "/usr/bin/env",
+    "CODEX_HOME=/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/offline-home",
+    "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime/node_modules/.bin/codex",
+    "sandbox",
+    "-c",
+    "default_permissions=\"frade-worker\"",
+    "-c",
+    "permissions={frade-worker={extends=\":read-only\",filesystem={\":root\"=\"deny\",\":minimal\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/work\"=\"write\",\"/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/input\"=\"read\"},network={enabled=false}}}",
+    "-c",
+    "model_reasoning_effort=\"high\"",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-c",
+    "apps._default.enabled=false",
+    "-c",
+    "project_doc_max_bytes=0",
+    "-c",
+    "project_doc_fallback_filenames=[]",
+    "-c",
+    "shell_environment_policy.inherit=\"none\"",
+    "-c",
+    "shell_environment_policy.set={PATH=\"/usr/bin:/bin\",HOME=\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/work/home\",TMPDIR=\"/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/work/tmp\",LANG=\"C.UTF-8\",LC_ALL=\"C.UTF-8\",GIT_CONFIG_GLOBAL=\"/dev/null\",GIT_CONFIG_SYSTEM=\"/dev/null\"}",
+    "-P",
+    "frade-worker",
+    "--include-managed-config",
+    "-C",
+    "/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/work",
+    "/usr/bin/node",
+    "/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-native-20261004/input/probe.cjs"
+  ],
+  "exit": 0,
+  "out": "{\"rows\":[{\"name\":\"allowed\",\"read\":true},{\"name\":\"source\",\"read\":false,\"error\":\"ENOENT\"},{\"name\":\"common\",\"read\":false,\"error\":\"ENOENT\"},{\"name\":\"other\",\"read\":false,\"error\":\"ENOENT\"},{\"name\":\"auth\",\"read\":false,\"error\":\"ENOENT\"},{\"name\":\"settings\",\"read\":false,\"error\":\"ENOENT\"}],\"ownWrite\":true,\"inputWrite\":false,\"outsideWrite\":false,\"network\":{\"denied\":true},\"status\":\"PASS\"}\n",
+  "err": "w\u0000s\u0000l\u0000:\u0000 \u0000A\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000y\u0000 \u0000c\u0000o\u0000n\u0000f\u0000i\u0000g\u0000u\u0000r\u0000a\u0000t\u0000i\u0000o\u0000n\u0000 \u0000w\u0000a\u0000s\u0000 \u0000d\u0000e\u0000t\u0000e\u0000c\u0000t\u0000e\u0000d\u0000 \u0000b\u0000u\u0000t\u0000 \u0000n\u0000o\u0000t\u0000 \u0000m\u0000i\u0000r\u0000r\u0000o\u0000r\u0000e\u0000d\u0000 \u0000i\u0000n\u0000t\u0000o\u0000 \u0000W\u0000S\u0000L\u0000.\u0000 \u0000W\u0000S\u0000L\u0000 \u0000i\u0000n\u0000 \u0000N\u0000A\u0000T\u0000 \u0000m\u0000o\u0000d\u0000e\u0000 \u0000d\u0000o\u0000e\u0000s\u0000 \u0000n\u0000o\u0000t\u0000 \u0000s\u0000u\u0000p\u0000p\u0000o\u0000r\u0000t\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000i\u0000e\u0000s\u0000.\u0000\r\u0000\n\u0000",
+  "probeCodeSha256": "77857ad52dbbf356b7a3b9afb444145d712bd72416d5fd8d61e4c592a4b7fe8b",
+  "doesNotAdvertiseProductWriterDispatcher": true
+}

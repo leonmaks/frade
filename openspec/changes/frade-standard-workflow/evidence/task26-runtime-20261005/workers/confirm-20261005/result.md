@@ -1,0 +1,5 @@
+W01 task 2.6 is handed off as an **unadmitted candidate** in [TASK-2.6-RESULT.json](/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-confirm-20261005/work/TASK-2.6-RESULT.json). It contains the changed-file list, verified source hashes, fixture API, exact controller record schema, commands, evidence hashes, and limitations.
+
+The spawn diagnostic regression now preserves the actual status, signal, and error and blocks a reported spawn error even with status zero. The focused regression and syntax checks passed. A Git-backed fixture run in this Linux sandbox failed with `spawnSync git EPERM` alongside status zero; its raw record was retained as an **environment failure**.
+
+The parent’s Node 24 Windows result passed 21/21 cases for the **pre-fix** snapshot. The amended source has no current native PASS. No live W01 invocation, production import, Verify, POST, or push was performed. **READY_FOR_VERIFY: NO.**

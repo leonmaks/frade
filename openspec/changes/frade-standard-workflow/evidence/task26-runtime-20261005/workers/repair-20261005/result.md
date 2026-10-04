@@ -1,0 +1,3 @@
+Task 2.6 repair candidate is complete. The canonical CLI commands, controller bound checkpoint admission, Git destination checks, and publication tests are updated. The handoff and exact source/test hash bindings are in [TASK-2.6-RESULT.json](/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-repair-20261005/work/TASK-2.6-RESULT.json).
+
+Linux Node 18 results: **18/18 publication tests passed**, nine other copied regression files exited 0, and syntax checks passed. The untouched shared review fixture still fails with `UNRELATED_REPOSITORY` in this sandbox; its code was not changed. Native Windows Node 24 public CLI acceptance remains with the parent. Backend actual: **NOT_CONFIRMED**. No live publication was attempted.

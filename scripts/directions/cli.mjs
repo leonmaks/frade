@@ -11,13 +11,24 @@ import { relative } from 'node:path'
 const blocked = (code, detail) => ({ ok: false, status: 'BLOCKED', code, detail })
 const [command, path, ...extra] = process.argv.slice(2)
 let result
-if (!['plan', 'create', 'check', 'status', 'review/prepare', 'review'].includes(command)) {
+if (
+  ![
+    'plan',
+    'create',
+    'check',
+    'status',
+    'review/prepare',
+    'review',
+    'checkpoint',
+    'publish',
+  ].includes(command)
+) {
   result = {
     ok: false,
     status: 'NOT_IMPLEMENTED',
     code: 'COMMAND_NOT_IMPLEMENTED',
     detail:
-      'Supported: plan, create, check, status, review/prepare, review. Other workflow commands require later tasks.',
+      'Supported: plan, create, check, status, review/prepare, review, checkpoint, publish. Other workflow commands require later tasks.',
   }
 } else if (
   !path ||
@@ -25,13 +36,18 @@ if (!['plan', 'create', 'check', 'status', 'review/prepare', 'review'].includes(
     ? extra.length > 1 || (extra.length === 1 && extra[0] !== '--write')
     : ['review/prepare', 'review'].includes(command)
       ? extra.length !== 2 || !['PRE', 'POST'].includes(extra[0]) || !isAbsolute(extra[1])
-      : extra.length) ||
+      : command === 'checkpoint'
+        ? extra.length !== 1 || !isAbsolute(extra[0])
+        : extra.length) ||
   !isAbsolute(path)
 ) {
   result = blocked('ARGUMENTS', 'One absolute JSON request or manifest path required')
 } else {
   try {
-    if (['review/prepare', 'review'].includes(command)) {
+    if (command === 'checkpoint' || command === 'publish') {
+      const { checkpoint, publish } = await import('./publication.mjs')
+      result = command === 'checkpoint' ? checkpoint(path, extra[0]) : publish(path)
+    } else if (['review/prepare', 'review'].includes(command)) {
       const { prepareReview, runProductionReview } = await import('./review.mjs')
       const manifest = JSON.parse(await readFile(path, 'utf8'))
       const request = JSON.parse(await readFile(extra[1], 'utf8'))

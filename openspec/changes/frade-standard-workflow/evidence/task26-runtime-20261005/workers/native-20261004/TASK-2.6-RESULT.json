@@ -1,0 +1,124 @@
+{
+  "task": "W01 task 2.6",
+  "status": "IMPLEMENTED_PENDING_NATIVE_REPLAY",
+  "readyForVerify": false,
+  "changedFiles": [
+    "scripts/directions/publication.mjs",
+    "tests/directions/publication.test.mjs",
+    "docs/engineering/templates/task-2.6-publication.md",
+    "evidence/task26/GREEN-node18-copy.exit",
+    "evidence/task26/GREEN-node18-copy.log",
+    "evidence/task26/GREEN-node18-expanded.exit",
+    "evidence/task26/GREEN-node18-expanded.log",
+    "evidence/task26/GREEN-node18-final.exit",
+    "evidence/task26/GREEN-node18-final.log",
+    "evidence/task26/GREEN-node18-import.exit",
+    "evidence/task26/GREEN-node18-import.log",
+    "evidence/task26/GREEN-node18-import2.exit",
+    "evidence/task26/GREEN-node18-import2.log",
+    "evidence/task26/GREEN-node18-initial.exit",
+    "evidence/task26/GREEN-node18-initial.log",
+    "evidence/task26/GREEN-source.sha256",
+    "evidence/task26/RED-node18.exit",
+    "evidence/task26/RED-node18.log",
+    "evidence/task26/RED-test-source.sha256",
+    "evidence/task26/regression-arguments.test.mjs.log",
+    "evidence/task26/regression-bootstrap-repair.test.mjs.log",
+    "evidence/task26/regression-bootstrap.test.mjs.log",
+    "evidence/task26/regression-contracts.test.mjs.log",
+    "evidence/task26/regression-exits.txt",
+    "evidence/task26/regression-lifecycle.test.mjs.log",
+    "evidence/task26/regression-publication.test.mjs.log",
+    "evidence/task26/regression-repair.test.mjs.log",
+    "evidence/task26/regression-review-terminal.test.mjs.log",
+    "evidence/task26/regression-review.test.mjs.log",
+    "evidence/task26/regression-roles.test.mjs.log",
+    "evidence/task26/regression-status.test.mjs.log",
+    "evidence/task26/syntax.exit",
+    "evidence/task26/syntax.log",
+    "TASK-2.6-RESULT.json"
+  ],
+  "api": {
+    "cli": "node scripts/directions/publication.mjs",
+    "commands": [
+      "checkpoint <absolute-manifest> <absolute-event>",
+      "publish <absolute-checkpoint-receipt>"
+    ],
+    "outputs": [
+      "CHECKPOINTED",
+      "PUBLISHED",
+      "BLOCKED"
+    ],
+    "authority": "<git-common>/frade-workflow/publication-authority/<id>.json",
+    "receipts": "<git-common>/frade-workflow/publication/<id>/<sha>.{checkpoint,publish}.json"
+  },
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "tests/directions/publication.test.mjs"
+      ],
+      "phase": "RED",
+      "exitCode": 1,
+      "log": "evidence/task26/RED-node18.log",
+      "sourceSnapshot": "evidence/task26/RED-test-source.sha256"
+    },
+    {
+      "argv": [
+        "node",
+        "tests/directions/publication.test.mjs"
+      ],
+      "phase": "GREEN",
+      "exitCode": 0,
+      "passed": 10,
+      "failed": 0,
+      "log": "evidence/task26/GREEN-node18-final.log",
+      "sourceSnapshot": "evidence/task26/GREEN-source.sha256"
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "scripts/directions/publication.mjs"
+      ],
+      "exitCode": 0,
+      "log": "evidence/task26/syntax.log"
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "tests/directions/publication.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "evidence/task26/syntax.log"
+    },
+    {
+      "argv": [
+        "node",
+        "<each tests/directions/*.test.mjs>"
+      ],
+      "exitCodesFile": "evidence/task26/regression-exits.txt",
+      "testsAtRun": 155,
+      "passed": 154,
+      "failed": 1
+    }
+  ],
+  "limitations": [
+    "The sandbox denied nested Node subprocess execution (EPERM); the behavioral suite imported the same copied CLI under Node 18 while using real temporary Git and bare remotes.",
+    "Existing review.test.mjs control 22 failed in its nested child with UNRELATED_REPOSITORY. Shared reviewer/bootstrap code and test were left unchanged; parent must replay on native Node 24.",
+    "Actual W01 production CLI invocation, controller authority provision, Windows subprocess replay, GitHub push, and fresh production remote SHA are NOT_CONFIRMED in this private worker."
+  ],
+  "publication": {
+    "actualW01": "NOT_CONFIRMED",
+    "fixture": "PUBLISHED_VERIFIED",
+    "forceUsed": false,
+    "otherRefsPreserved": true
+  },
+  "scope": {
+    "productChanged": false,
+    "rootPackageCiChanged": false,
+    "sharedReviewChanged": false,
+    "nextTaskStarted": false
+  }
+}

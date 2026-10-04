@@ -1,0 +1,3 @@
+Repaired the two `no-control-regex` violations in [publication.mjs](/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-lint-20261005/work/scripts/directions/publication.mjs). The character-code check preserves control-character rejection, remote whitespace handling, and DEL behavior. `cli.mjs` and the tests are unchanged.
+
+Local syntax and boundary-equivalence checks passed. The retained parent lint result is the required RED; post-repair Node 24 lint, format, and full regression remain with the parent. Source hashes and raw parent evidence are recorded in [TASK-2.6-RESULT.json](/mnt/e/dev/codex/frade-worker-staging/w01-task-2.6-lint-20261005/work/TASK-2.6-RESULT.json).

@@ -1,0 +1,80 @@
+{
+  "task": "W01 2.6 scoped lint repair",
+  "role": {
+    "requestedModel": "gpt-6-sol",
+    "requestedReasoningEffort": "high",
+    "backend": "NOT_CONFIRMED"
+  },
+  "state": "UNADMITTED_CANDIDATE",
+  "classification": "INTEGRATION",
+  "repair": "Replace the two forbidden control-character regex checks in publication.mjs with the same deterministic UTF-16 code-unit <= 31 predicate already used by contracts.mjs. Keep the remote whitespace regex, DEL behavior, admission rejection, and raw Git error handling unchanged.",
+  "changedFiles": [
+    "scripts/directions/publication.mjs"
+  ],
+  "sourceHashesSha256": {
+    "scripts/directions/publication.mjs": "7375f38e284447038d309bff4e1d89d15bd0637d95baad19d6b215521d1cf720"
+  },
+  "preRepairSourceSha256": "8bd089e9196bdcf52298183530a8fc176999774f73cb5fd792eee81be9ccb8ef",
+  "unchangedSourceHashesSha256": {
+    "scripts/directions/cli.mjs": "ab694f3fb2aa44d089706fb7c758cde83eaa145543bb1e321a1b521d007da25a",
+    "tests/directions/publication.test.mjs": "d9f8b6d466bc1e033d01ebfb8b72353f2f44eb97f37d0affa302191534d7dd68"
+  },
+  "rawParentNativeEvidence": {
+    "preRepairRegression": {
+      "path": "../input/native/windows22.json",
+      "sha256": "4d5f26be43cdd26e18f0d59db4f925909ce7531ede50b61c9d6cd00538125aa4",
+      "node": "v24.18.0 Windows",
+      "exitCode": 0,
+      "passed": 22,
+      "failed": 0,
+      "applicability": "Parent native result before this lint repair, not a post-repair result."
+    },
+    "requiredRedLint": {
+      "path": "../input/native/owner-lint.json",
+      "sha256": "7e87ebba008ebf1e4f22611a643bbae7de70c2d4f28c4ac3e6a67ee1679e9a11",
+      "command": "node node_modules/eslint/bin/eslint.js scripts/directions/publication.mjs scripts/directions/cli.mjs tests/directions/publication.test.mjs",
+      "node": "v24.18.0 Windows",
+      "exitCode": 1,
+      "errors": [
+        "publication.mjs:239:67 no-control-regex",
+        "publication.mjs:335:5 no-control-regex"
+      ]
+    },
+    "preRepairFormat": {
+      "path": "../input/native/owner-format.json",
+      "sha256": "bb627f24f66d0f74095c0f7a3f0bd7638c9f1779d0b3aeea6e22059572bfdd71",
+      "node": "v24.18.0 Windows",
+      "exitCode": 0,
+      "applicability": "Parent native result before this lint repair."
+    }
+  },
+  "localChecks": [
+    {
+      "command": "node --check scripts/directions/publication.mjs",
+      "node": "v18.19.1 Linux",
+      "exitCode": 0
+    },
+    {
+      "command": "node -e <read actual hasControlCharacter declaration from publication.mjs, evaluate it, compare to original regex for all 65536 UTF-16 code units and mixed control/whitespace/DEL samples>",
+      "node": "v18.19.1 Linux",
+      "exitCode": 0,
+      "output": "PASS: 65,536 code-unit boundaries and remote whitespace/DEL samples equivalent"
+    },
+    {
+      "command": "rg -n -F '\\x00-\\x1f' scripts/directions/publication.mjs",
+      "exitCode": 1,
+      "meaning": "No remaining exact forbidden regex range in the scoped file."
+    }
+  ],
+  "parentNextActions": "Run actual Node 24 owner scoped lint, format, and full native regression on the repaired source hash; then handle actual W01 CLI/controller publication under the existing admission contract.",
+  "limits": [
+    "Post-repair native lint, format, and regression have not yet been reported by the parent.",
+    "No actual W01 CLI/controller invocation or publication was performed by this worker.",
+    "Linux Git EPERM with status 0 remains an ENVIRONMENT failure, never a green Git result.",
+    "Copied private review ENVIRONMENT issue was not rerun.",
+    "No Verify, POST, gate, or stage COMPLETE verdict is made."
+  ],
+  "readyForVerify": false,
+  "readyForPost": false,
+  "stageComplete": false
+}

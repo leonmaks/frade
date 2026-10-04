@@ -1,0 +1,83 @@
+{
+  "task": "2.6",
+  "worker": "tooling-tests gpt-6-sol/high implementation repair",
+  "ownerHeadAtInput": "3c082b1ed848248685ca97a946b3537e6a84fcd8",
+  "status": "REPAIR_CANDIDATE_FOR_PARENT_NATIVE_ACCEPTANCE",
+  "backendActual": "NOT_CONFIRMED",
+  "changedFiles": [
+    "scripts/directions/publication.mjs",
+    "scripts/directions/cli.mjs",
+    "tests/directions/publication.test.mjs",
+    "tests/directions/publication-repair-rca.json",
+    "tests/directions/publication-repair-runs.json",
+    "tests/directions/publication-repair-red.log",
+    "tests/directions/publication-repair-green.log",
+    "docs/engineering/templates/task-2.6-publication.md",
+    "TASK-2.6-RESULT.json"
+  ],
+  "implementation": [
+    "Canonical cli.mjs checkpoint and publish commands invoke the publication API",
+    "Windows copied-module dynamic import uses pathToFileURL; Linux Node 18 uses copied direct API because nested Node can report EPERM",
+    "TASK checkpoints require trusted Git-common admission bound to exact event, source HEAD, manifest, authority, candidate bytes and current mandatory check records",
+    "BLOCKER checkpoints require blocked health and an actual failed check record; they cannot satisfy tested-task cadence",
+    "Actual origin fetch and push URLs, branch upstream and URL rewrite configuration are checked before external remote operations",
+    "Real bare-remote tests cover pushes, fresh ls-remote, preserved other refs, hook rejection, post-receive SHA mutation and immutable blocked receipts",
+    "Local Git config inspection records key names and only the authorized origin URL value, so unrelated config values are absent from receipts",
+    "Source and test candidates including encoded negative secret fixtures stage without waiving actual secret scanning"
+  ],
+  "api": {
+    "checkpoint": "node scripts/directions/cli.mjs checkpoint <absolute-manifest> <absolute-event>",
+    "publish": "node scripts/directions/cli.mjs publish <absolute-checkpoint-receipt>",
+    "exports": ["checkpoint(manifestPath, eventPath)", "publish(checkpointPath)"],
+    "controllerProvisioning": {
+      "authorityPath": "<actual-git-common>/frade-workflow/publication-authority/<direction-id>.json",
+      "authorityRequired": ["schemaVersion=1", "id", "owner", "originalBaseline", "approvedSourceCommit", "remote", "ref", "approval.path", "approval.sha256", "plan.path", "plan.sha256", "requiredChecks[]"],
+      "admissionPath": "<actual-git-common>/frade-workflow/publication-admission/<direction-id>/<event-sha256>.json",
+      "admissionRequired": ["schemaVersion=1", "id", "kind", "task", "sourceHead", "manifestSha256", "authoritySha256", "eventSha256", "candidateSha256", "checks[]"],
+      "candidateSha256Rule": "SHA256(concat(sorted event paths, each as path + NUL + SHA256(raw current file bytes) + LF))",
+      "checkRequired": ["id in authority.requiredChecks", "actual argv[]", "actual exitCode", "result PASS or FAIL", "raw.name=<id>.log", "raw.sha256"],
+      "rawCheckPath": "<actual-git-common>/frade-workflow/publication-checks/<direction-id>/<id>.log",
+      "trustBoundary": "Controller writes admission and raw native command records under actual Git common; owner event and hash-bound owner JSON cannot provision them"
+    }
+  },
+  "evidence": {
+    "runRecord": "tests/directions/publication-repair-runs.json",
+    "redTranscriptExcerpts": "tests/directions/publication-repair-red.log",
+    "greenTranscriptExcerpts": "tests/directions/publication-repair-green.log",
+    "classifiedRca": "tests/directions/publication-repair-rca.json",
+    "priorRawEvidencePreservedAt": "../input/prior-evidence and ../input/native-diagnostic",
+    "red": {
+      "command": "node tests/directions/publication.test.mjs",
+      "exitCode": 1,
+      "preFixProductionSha256": "f2bc0d702462485c27edafcec1803d78a795e9c943f085d75e36d91a82376196",
+      "testSourceSha256": "cad2d7d44ad2f7d7a48d386347e9eda93f27b86cf2124db09a7ad2054283ceec",
+      "result": "10 pass, 2 fail: absent and stale admission both incorrectly CHECKPOINTED"
+    },
+    "additionalRed": {
+      "command": "node --test-name-pattern='local config inspection' tests/directions/publication.test.mjs",
+      "exitCode": 1,
+      "preFixProductionSha256": "14394cf35382574c54cddc588d0fef88181629966a9dd8ff6305ed8edd955005",
+      "testSourceSha256": "764cf802e216dc542f524554a5e2dd7dad5a05209f755f3cbc2dd02ebc176b3e",
+      "result": "Receipt incorrectly included an unrelated local Git config value"
+    },
+    "green": {
+      "command": "node tests/directions/publication.test.mjs",
+      "exitCode": 0,
+      "productionSha256": "b3908f47e7e6c38e75ad2403d1ec2c9aff49b841eed6e675502e7b3358f02fc2",
+      "cliSha256": "b2d32b0f748a8664fe7ca51fd041d1acfb60170e67b3f7d4f04d1fcf4f05e5f4",
+      "testSourceSha256": "764cf802e216dc542f524554a5e2dd7dad5a05209f755f3cbc2dd02ebc176b3e",
+      "result": "18 pass, 0 fail, 0 skipped"
+    },
+    "syntaxExitCode": 0,
+    "otherCopiedRegressionExits": "9 files exit 0; see run record",
+    "untouchedSeedBindings": "40 copied seed files checked against ../input/EXECUTION-INPUTS.json SHA256; 0 mismatches",
+    "reviewFixtureExitCode": 1,
+    "reviewFixtureClassification": "ENVIRONMENT: untouched shared-core fixture discover throws UNRELATED_REPOSITORY in Linux sandbox"
+  },
+  "limits": [
+    "Native Windows Node 24 public CLI and full publication test run remain parent-owned acceptance checks",
+    "No live GitHub publication or authorized source commit/push was attempted by this worker",
+    "A blocked publication receipt is write-once; recovery requires new evidence, new admission and a new coherent checkpoint SHA",
+    "Formal Verify, POST and gate verdict are outside this task repair"
+  ]
+}

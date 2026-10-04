@@ -1,0 +1,23 @@
+{
+  "atUtc": "2026-10-04T21:17:36.481Z",
+  "task": "2.6",
+  "classification": "ABSTRACTION_BOUNDARY",
+  "diagnosticPhase": "INTERMEDIATE_REPAIR_DIAGNOSTIC_NOT_PREFIX_RED",
+  "defect": "relativeFile joins native Windows separators but compares against forward-slash owner root plus native sep; legal descendants are rejected as PATH_ESCAPE",
+  "reproduction": {
+    "artifact": "E:/dev/codex/frade/.git/frade-workflow/implementations/task26-repair-native-20261005/windows-repair-red.json",
+    "sha256": "a975120cecc961a251adab2fe4bee8bad6732bfc4dcfc586b0a1e3c8b9000e97",
+    "exitCode": 1,
+    "node": "v24.18.0",
+    "source": {
+      "path": "scripts\\directions\\publication.mjs",
+      "sha256": "e5dbf3ab97aab597ace50e17516c946e61d92c84b0084b347132e2c9d5a4e750"
+    },
+    "test": {
+      "path": "tests\\directions\\publication.test.mjs",
+      "sha256": "cad2d7d44ad2f7d7a48d386347e9eda93f27b86cf2124db09a7ad2054283ceec"
+    }
+  },
+  "requiredResolution": "Normalize the path boundary once using resolve/relative and canonical case/path containment; preserve link and traversal rejection. Exact tooling-tests worker must add regression before fix and parent must rerun native controls.",
+  "ownerCodeModified": false
+}

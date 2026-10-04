@@ -1,0 +1,86 @@
+{
+  "task": "W01 2.6",
+  "role": { "model": "gpt-6-sol", "reasoningEffort": "high", "backend": "NOT_CONFIRMED" },
+  "state": "UNADMITTED_CANDIDATE",
+  "readyForVerify": false,
+  "readyForPost": false,
+  "stageComplete": false,
+  "productionImported": false,
+  "liveW01Invocation": "NOT_RUN_BY_WORKER",
+  "approvedSource": {
+    "ownerHeadAtHandoff": "3c082b1e (parent-reported, not independently read from private owner)",
+    "originalBaseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+    "approvedPlanRawSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+    "distinction": "Original baseline, accepted D03/formal PRE plan, and current owner HEAD have separate roles. A fixture baseline or locally generated authority does not replace any of them."
+  },
+  "changedFiles": [
+    "scripts/directions/publication.mjs",
+    "scripts/directions/cli.mjs",
+    "tests/directions/publication.test.mjs",
+    "tests/directions/publication-spawn-diagnostics-rca-20261005.json",
+    "tests/directions/publication-spawn-diagnostics-red-direct-20261005.json",
+    "tests/directions/publication-controller-feedback-003-20261005.json",
+    "docs/engineering/templates/task-2.6-publication.md"
+  ],
+  "sourceHashesSha256": {
+    "scripts/directions/publication.mjs": "de4ea6648c7f380a819b852ed8618ee7580d9d22fbe3cbbc2c06ff9be7930449",
+    "scripts/directions/cli.mjs": "b2d32b0f748a8664fe7ca51fd041d1acfb60170e67b3f7d4f04d1fcf4f05e5f4",
+    "tests/directions/publication.test.mjs": "67c1902c19690726efde8a4d4242ca74a0977e9b601c54ea68cb079c0005e8f6",
+    "tests/directions/publication-spawn-diagnostics-rca-20261005.json": "0a2fe1749fd5ab6be66eb8752e6c81e26239daa25134ff18405ac148f6857b07",
+    "tests/directions/publication-spawn-diagnostics-red-direct-20261005.json": "ff9e041f105024f12ff6c22187dd434e46ce8cadddfac5c485e93f4f69a85117",
+    "tests/directions/publication-controller-feedback-003-20261005.json": "45ca53cd31502cae398a119a0cb77b70083915b862ac1111b1a5a8be908e0e92",
+    "docs/engineering/templates/task-2.6-publication.md": "e52eef7d1fee6c144d503533c2f3e9fea5fae2fcf4a4bfb8b2869ae847d1e80b"
+  },
+  "api": {
+    "publicCli": [
+      "node scripts/directions/cli.mjs checkpoint <absolute-direction.json> <absolute-event.json>",
+      "node scripts/directions/cli.mjs publish <absolute-checkpoint-receipt.json>"
+    ],
+    "fixtureOnly": "trustedPublicationFixtureContext(common, { brand: 'FRADE_PUBLICATION_TEST_CONTROLLER_V1' }) returns an in-process trustedContext for checkpoint(manifest,event,{trustedContext}) or publish(receipt,{trustedContext}). The public CLI does not accept or construct this context. A fixture success is not an installed W01 CLI success.",
+    "diagnostics": "checkedGitRecord(args, spawnResult, commands) appends actual status, exitCode, signal, stdout, stderr and reported error, then rejects any error or signal even when status is zero."
+  },
+  "controllerProvisioning": {
+    "authorityPath": "<actual-W01-git-common>/frade-workflow/publication-authority/<direction-id>.json",
+    "authoritySchema": {
+      "schemaVersion": 1,
+      "id": "<manifest.id>",
+      "owner": "<exact manifest.owner object>",
+      "originalBaseline": "<immutable original 40-hex baseline>",
+      "approvedSourceCommit": "<actual approved source commit descending from original baseline and preceding HEAD>",
+      "remote": "git@github.com:leonmaks/frade.git",
+      "ref": "refs/heads/codex/frade-standard-workflow",
+      "requiredChecks": ["<unique native mandatory check id>"],
+      "approval": { "path": "<repository path to raw D02 decision at approved source commit>", "sha256": "<raw SHA256 at approved source commit>" },
+      "plan": { "path": "<repository path to accepted D03 plan at approved source commit>", "sha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a" }
+    },
+    "admissionPath": "<actual-W01-git-common>/frade-workflow/publication-admission/<direction-id>/<event-sha256>.json",
+    "admissionSchema": {
+      "schemaVersion": 1,
+      "id": "<manifest.id>",
+      "kind": "TASK or BLOCKER",
+      "task": "<task ID for TASK; null for BLOCKER>",
+      "sourceHead": "<actual current HEAD before checkpoint>",
+      "manifestSha256": "<SHA256 of current raw direction.json bytes>",
+      "authoritySha256": "<SHA256 of raw authority JSON bytes>",
+      "eventSha256": "<SHA256 of raw event JSON bytes>",
+      "candidateSha256": "SHA256 of concatenated sorted event paths, each path + NUL + SHA256(current file bytes) + LF",
+      "checks": [{ "id": "<id in authority.requiredChecks>", "argv": ["<actual executable and argv>"], "exitCode": "<actual integer exit>", "result": "PASS or FAIL matching actual output", "raw": { "name": "<id>.log", "sha256": "<SHA256 of unmodified raw check log>" } }]
+    },
+    "checkLogPath": "<actual-W01-git-common>/frade-workflow/publication-checks/<direction-id>/<id>.log",
+    "conditions": "Provision records only after current native mandatory checks and exact candidate/source bindings. TASK requires all required checks PASS with exit 0; BLOCKER requires actual failed raw check. The D02 raw reply, original baseline ancestry, current source bytes, canonical common, exact origin/upstream and no URL rewrite remain enforced. Controller records are not inferred from worker tests or the event's PASS field."
+  },
+  "evidence": {
+    "nativePreFix": { "path": "../input/native/windows-probe2.json", "sha256": "95c271fece29ae87dec80e429f8ab017132d39dcb905c5c9b102c353bb7bda69", "sourceSnapshotPath": "../input/native/SOURCE-SNAPSHOT.json", "sourceSnapshotSha256": "e4e447425cff1e3451969c41499a9e11e82735e76ced04181be042306f9b416a", "node": "v24.18.0 Windows", "exitCode": 0, "passed": 21, "failed": 0, "applicability": "Actual parent native diagnostic for the input snapshot before the spawn-diagnostic edit; not a current-source native PASS, admission, installed W01 invocation, Verify or POST." },
+    "regressionRed": { "path": "tests/directions/publication-spawn-diagnostics-red-seed-20261005.log", "sha256": "11dd56f64b352c366787a11f814af967a1271f59f1f0dba80b4283122f983c93", "sourceSha256": "1b1e396a00ba18a657afa86c3dec3a48ec68d1781332868d04a8446ee153be6e", "command": "node --input-type=module -e <assert contradictory status-zero/error record using ../input/seed/scripts/directions/publication.mjs>", "exitCode": 1, "meaning": "Pre-fix seed module lacks checkedGitRecord; assertion failed with TypeError. The added test also failed on pre-fix source in direct execution, retained in red-direct JSON. The separate node --test runner failed at its file process boundary with exit 1 and no individual result.", "directObservation": "tests/directions/publication-spawn-diagnostics-red-direct-20261005.json", "runnerLog": "tests/directions/publication-spawn-diagnostics-red-20261005.log", "runnerLogSha256": "f7b4729ef3ec0910253ff967653fb8394516de840ed099202a3df265dc618e1d" },
+    "regressionGreen": { "command": "node --test-name-pattern='contradictory Git spawn diagnostics' tests/directions/publication.test.mjs", "exitCode": 0, "passed": 1, "skippedByPattern": 21, "log": "tests/directions/publication-spawn-diagnostics-green-direct-20261005.log", "sha256": "5ece685d450fe9c220c4e7abf0913d7184906bc4545bc7b26b26e890a696eb65" },
+    "linuxFixture": { "command": "node --test-name-pattern='controller-branded bare fixture API checkpoint and publish' tests/directions/publication.test.mjs", "exitCode": 1, "classification": "ENVIRONMENT", "observed": "Fixture checkpoint BLOCKED with TRUSTED_COMMON_UNAVAILABLE; raw Git command recorded status 0, signal null and error spawnSync git EPERM. This is not GREEN and must not be cleared or recoded.", "log": "tests/directions/publication-spawn-boundary-linux-fixture-20261005.log", "sha256": "8bff79fbb8c5dff32a6f7d3091b93a73f3959bd5f1c8c7f6875cb8b486d7f636" },
+    "syntax": { "command": "node --check scripts/directions/publication.mjs && node --check scripts/directions/cli.mjs && node --check tests/directions/publication.test.mjs", "exitCode": 0, "node": "v18.19.1 Linux" },
+    "controllerFeedback": { "path": "tests/directions/publication-controller-feedback-003-20261005.json", "sourceSha256": "8d96609bf0d90a74cbbc1eade3ff73b95d06fb3f0461c65ba76d98aad74ddf39", "classification": "writer steering only" }
+  },
+  "limits": [
+    "Current amended source has no native Windows regression result; parent must run actual full/scoped owner checks on exact hashes before admission or import.",
+    "No real W01 manifest/controller records were provisioned or exercised by this worker; no live remote push was attempted.",
+    "Formal Verify, independent POST, root/package/CI controls, and later task 2.7 were not run or changed.",
+    "The copied private Linux review fixture previously failed UNRELATED_REPOSITORY; it remains ENVIRONMENT evidence and was not rerun."
+  ]
+}

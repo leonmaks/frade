@@ -1,0 +1,8 @@
+{
+  "task": "2.6",
+  "classification": "INTEGRATION",
+  "defect": "The Git child-process record converts a reported spawn error to null whenever status is zero. Linux broker diagnostics observed spawnSync git EPERM and status 0 together. A status-only decision could therefore admit a contradictory execution as successful.",
+  "evidence": "Earlier retained Linux logs reported spawnSync git EPERM alongside status 0; native Windows diagnostics for the candidate reported ordinary success with null errors.",
+  "regression": "FWE-017 contradictory Git spawn diagnostics retain raw status and block; pre-fix seed RED is retained in publication-spawn-diagnostics-red-seed-20261005.log (exit 1)",
+  "resolution": "Preserve the actual status, signal, and error in each command record. Append the raw record before rejecting any reported spawn error or signal, regardless of numeric status. Keep normal zero-status, null-error Windows success valid. Do not synthesize a nonzero exit code."
+}
