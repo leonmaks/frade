@@ -1,0 +1,27 @@
+{
+  "atUtc": "2026-10-04T18:07:36.282Z",
+  "classifications": [
+    "INTEGRATION",
+    "ENVIRONMENT"
+  ],
+  "failureLayer": "Reviewer inspection protocol, no production-source change",
+  "deterministicEvidence": [
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_5",
+        "type": "command_execution",
+        "command": "/usr/bin/zsh -lc \"python3 - <<'PY'\nfrom pathlib import Path\nimport json,hashlib\nroot=Path.cwd()\nm=json.loads(Path('REVIEW-PACKET-MANIFEST.json').read_text())\nprint(json.dumps({k:v for k,v in m.items() if k\"'!='\"'artifacts'},indent=2))\nissues=[]\nfor a in m['artifacts']:\n p=root/a['path']\n if not p.is_relative_to(root) or '..' in p.parts or p.is_symlink():\n  issues.append({'path':a['path'],'error':'unsafe path'});continue\n if not p.is_file():\n  issues.append({'path':a['path'],'error':'missing'});continue\n b=p.read_bytes()\n if len(b)\"'!=a['\"'bytes'] or hashlib.sha256(b).hexdigest()\"'!=a['\"'sha256']:\n  issues.append({'path':a['path'],'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})\nprint('ARTIFACT_COUNT',len(m['artifacts']))\nprint('INTEGRITY_ISSUES',json.dumps(issues))\nfor n in ['candidate.json','native/summary.json']:\n p=Path('openspec/changes/frade-standard-workflow/evidence/task25-calibration3')/n\n d=json.loads(p.read_text())\n print(n,json.dumps({k:v for k,v in d.items() if k not in ['sources','sourceHashes']},indent=2))\nPY\"",
+        "aggregated_output": "zsh:1: can't create temp file for here document: no such file or directory\n",
+        "exit_code": 1,
+        "status": "failed"
+      }
+    }
+  ],
+  "precedingFailure": "jq unavailable, terminal failed exit127",
+  "rootCause": "Prompt permits ordinary read-only inspection but omits runtime constraints. jq is absent; shell heredocs allocate temp files unavailable in the strictly read-only sandbox. Validator correctly refuses failed events per current contract.",
+  "noPatchLoop": "Two prompt-only fixes have not produced valid reception; classified RCA precedes any further change. No production modifications or test weakening.",
+  "nextBoundedRepair": "Declare verified available tools and no temporary-file shell constructs; use python3 -c and known existing packet paths. Preserve each rejected stream and require a wholly fresh complete review; do not alter failed events or grant approval from the report.",
+  "sourceScopeChanged": false,
+  "reviewStillRunning": true
+}
