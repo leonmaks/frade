@@ -1,0 +1,602 @@
+{
+  "schemaVersion": 1,
+  "status": "TASK41_REQUIRED_CHECKS_AND_FORMAL_VERIFY_PASS",
+  "task": "4.1",
+  "sourceCheckpoint": "1086b867abc4d28085b851353e6ced356d7abc50",
+  "formalVerify": "PASS",
+  "readyForPost": true,
+  "readyForArchive": false,
+  "checks": [
+    {
+      "id": "task41-final-native-full",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "--test",
+        "tests/directions/*.test.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-native-full.log",
+        "sha256": "b782a5d964378a6fd05bfa38d3485315df0b01e34b8f2c628cb8191f9b0e8005"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-native-full.json",
+        "sha256": "b782a5d964378a6fd05bfa38d3485315df0b01e34b8f2c628cb8191f9b0e8005"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-green-native-owner",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "tests/directions/task41-native-owner.replay.mjs",
+        "E:/dev/codex/frade-worktrees/frade-standard-workflow"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-green-native-owner.log",
+        "sha256": "9202f7a116062a4fcac8da280b3e139a7ec45f31f6cdb7368634a348dc526d3d"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-green-native-owner.json",
+        "sha256": "9202f7a116062a4fcac8da280b3e139a7ec45f31f6cdb7368634a348dc526d3d"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-lint",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "node_modules/eslint/bin/eslint.js",
+        "scripts/directions/*.mjs",
+        "tests/directions/*.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-lint.log",
+        "sha256": "6fad66dd1c16c78c5f05be25858461f930028d7e4badd466aee1e66303756214"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-lint.json",
+        "sha256": "6fad66dd1c16c78c5f05be25858461f930028d7e4badd466aee1e66303756214"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-format",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "scripts/directions/*.mjs",
+        "tests/directions/*.mjs",
+        "docs/engineering/templates/*.md",
+        "docs/engineering/templates/*.json",
+        "docs/engineering/directions/frade-standard-workflow/direction.json",
+        "docs/engineering/newcomer-guide.md"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-format.log",
+        "sha256": "6bb4c363f11ffb172fee8a1cbfb2fff0e08a30907cbeb77ae0b6a2badf9adca4"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-format.json",
+        "sha256": "6bb4c363f11ffb172fee8a1cbfb2fff0e08a30907cbeb77ae0b6a2badf9adca4"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-integrity",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task41-final-integrity-20261005.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-integrity.log",
+        "sha256": "53a50fbc9b3902cf20fae0f073aacec010c06b1617b2ff4529141bdba92ae2ec"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-integrity.json",
+        "sha256": "53a50fbc9b3902cf20fae0f073aacec010c06b1617b2ff4529141bdba92ae2ec"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-content",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task41-repair-content-20261005.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-content.log",
+        "sha256": "018ff2fc2de6ad070d2f4964cb10de1ef2d7295244c9eaedb6b8aa185841ea63"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-content.json",
+        "sha256": "018ff2fc2de6ad070d2f4964cb10de1ef2d7295244c9eaedb6b8aa185841ea63"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-applicability",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "scripts/directions/check-applicability.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-applicability.log",
+        "sha256": "9948b7bda486d1a2dd793a2efc9d162529661b4fdba604d680fa01d06d15ac44"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-applicability.json",
+        "sha256": "9948b7bda486d1a2dd793a2efc9d162529661b4fdba604d680fa01d06d15ac44"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-loader",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task27-owner-loader-replay-20261005.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-loader.log",
+        "sha256": "f053c9548ca66e190c71cd5141bd1e6c2b620889b9c00ce7e46f6219848a1a5d"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-loader.json",
+        "sha256": "f053c9548ca66e190c71cd5141bd1e6c2b620889b9c00ce7e46f6219848a1a5d"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-general-lint",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "lint"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-general-lint.log",
+        "sha256": "9a8b69c553e350c7ae6429697f242ec8d512e03a12b4577c7bd7a0cc30177314"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-general-lint.json",
+        "sha256": "9a8b69c553e350c7ae6429697f242ec8d512e03a12b4577c7bd7a0cc30177314"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-typecheck",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-typecheck.log",
+        "sha256": "c4756afff594e54ea5e9df36fe38e49a3f586bc992e1219aa86e6e26995f9eee"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-typecheck.json",
+        "sha256": "c4756afff594e54ea5e9df36fe38e49a3f586bc992e1219aa86e6e26995f9eee"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-build",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "build"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-build.log",
+        "sha256": "68567d63e8f41d622bc13775606869cd4f349345b17e48753d47244024e640b9"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-build.json",
+        "sha256": "68567d63e8f41d622bc13775606869cd4f349345b17e48753d47244024e640b9"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-strict-all",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+        "validate",
+        "--all",
+        "--strict",
+        "--json"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-strict-all.log",
+        "sha256": "0c104481b0aa50d34110293d79294f9a114bde2342e74f49c6a72426f8bb886a"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-strict-all.json",
+        "sha256": "0c104481b0aa50d34110293d79294f9a114bde2342e74f49c6a72426f8bb886a"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-strict-active",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+        "validate",
+        "frade-standard-workflow",
+        "--strict",
+        "--json"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-strict-active.log",
+        "sha256": "a503617811bc9bf5bc3fa11024444227235aa845d8c4b2abe7e2c278aece538b"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-strict-active.json",
+        "sha256": "a503617811bc9bf5bc3fa11024444227235aa845d8c4b2abe7e2c278aece538b"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-boundaries",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "check:boundaries"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-boundaries.log",
+        "sha256": "716bb3e4aa278ad55a34f3f86a4ab0623651282ed8f5c3c6b77ac3357419cf17"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-boundaries.json",
+        "sha256": "716bb3e4aa278ad55a34f3f86a4ab0623651282ed8f5c3c6b77ac3357419cf17"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-test-boundaries",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "test:boundaries"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-test-boundaries.log",
+        "sha256": "0bc4535f2c8444f4ce8b471d6fda3b81e347a7ec4f6bdb3da9ced7df22495806"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-test-boundaries.json",
+        "sha256": "0bc4535f2c8444f4ce8b471d6fda3b81e347a7ec4f6bdb3da9ced7df22495806"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-discovery",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/dev/codex/frade/.git/frade-workflow/releases/a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0/scripts/agent-review/cli.mjs",
+        "status"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-discovery.log",
+        "sha256": "0ffc967127b0ded5e7e83e121636491b983fc97245cc5209d6efd7da81ee98b5"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-discovery.json",
+        "sha256": "0ffc967127b0ded5e7e83e121636491b983fc97245cc5209d6efd7da81ee98b5"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-canary",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/dev/codex/frade/.git/frade-workflow/releases/a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0/scripts/agent-review/cli.mjs",
+        "probe",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task32-shared-probe-request2-20261005.json"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-canary.log",
+        "sha256": "c21ba140ffd0a8ef17735edd2cfa6e154f1af486038639580a579158e5018709"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-canary.json",
+        "sha256": "c21ba140ffd0a8ef17735edd2cfa6e154f1af486038639580a579158e5018709"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-installed-admin",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "tests/directions/task41-installed-red.test.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-installed-admin.log",
+        "sha256": "57d27fe5c85fa15b93c8e4251ff157b185dacfba562ad0142e61d8a078a5a13c"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-installed-admin.json",
+        "sha256": "57d27fe5c85fa15b93c8e4251ff157b185dacfba562ad0142e61d8a078a5a13c"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-status-write",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "scripts/directions/cli.mjs",
+        "status",
+        "E:/dev/codex/frade-worktrees/frade-standard-workflow/docs/engineering/directions/frade-standard-workflow/direction.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-status-write.log",
+        "sha256": "0524cae8840645cd2d7fe104e7860562e233b0fdb911767d223033c7e7a1025a"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-status-write.json",
+        "sha256": "0524cae8840645cd2d7fe104e7860562e233b0fdb911767d223033c7e7a1025a"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-final-status-audit-retry1",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task41-status-audit-20261005.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-final-status-audit-retry1.log",
+        "sha256": "01ee575d45d927ecd56e247647034c3e4c5e3d84eb4f77fbbfc57868c9f45de2"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-final-status-audit-retry1.json",
+        "sha256": "01ee575d45d927ecd56e247647034c3e4c5e3d84eb4f77fbbfc57868c9f45de2"
+      },
+      "phase": "Source-bound native repair evidence; unchanged code and assertions"
+    },
+    {
+      "id": "task41-verified-status-write-native",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "scripts/directions/cli.mjs",
+        "status",
+        "E:/dev/codex/frade-worktrees/frade-standard-workflow/docs/engineering/directions/frade-standard-workflow/direction.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-verified-status-write-native.log",
+        "sha256": "2e8ebfee6933b77b1021373813a5b26f63a2a6e621356f0154e8d8a0411f27ea"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/native/task41-verified-status-write-native.json",
+        "sha256": "2e8ebfee6933b77b1021373813a5b26f63a2a6e621356f0154e8d8a0411f27ea"
+      },
+      "phase": "Post-Verify administrative/reception check"
+    },
+    {
+      "id": "task41-verified-strict-active",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+        "validate",
+        "frade-standard-workflow",
+        "--strict"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-verified-strict-active.log",
+        "sha256": "041b971ed99fca3649b3d1ab4332eeeb242705fc983eff3d8f4c5bfb52db339f"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/native/task41-verified-strict-active.json",
+        "sha256": "041b971ed99fca3649b3d1ab4332eeeb242705fc983eff3d8f4c5bfb52db339f"
+      },
+      "phase": "Post-Verify administrative/reception check"
+    },
+    {
+      "id": "task41-verified-admin-audit",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task41-verification-admin-20261005.mjs",
+        "audit"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-verified-admin-audit.log",
+        "sha256": "e393af0207f9739971be3f90628b2b54e55b40e2d45352d7b0ce81c25b17df7c"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/native/task41-verified-admin-audit.json",
+        "sha256": "e393af0207f9739971be3f90628b2b54e55b40e2d45352d7b0ce81c25b17df7c"
+      },
+      "phase": "Post-Verify administrative/reception check"
+    },
+    {
+      "id": "task41-verified-content",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task41-repair-content-20261005.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-verified-content.log",
+        "sha256": "97fa4d9ca91807f4b06a04700f087099d3551f8435a12ad8ec7fd12c81bbe258"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/native/task41-verified-content.json",
+        "sha256": "97fa4d9ca91807f4b06a04700f087099d3551f8435a12ad8ec7fd12c81bbe258"
+      },
+      "phase": "Post-Verify administrative/reception check"
+    },
+    {
+      "id": "task41-verified-strict-all",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+        "validate",
+        "--all",
+        "--strict"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-verified-strict-all.log",
+        "sha256": "c50b2e278498b00d1ae40ab9680042e9fd50ff6d5e7a01345962548f2bb297b6"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/native/task41-verified-strict-all.json",
+        "sha256": "c50b2e278498b00d1ae40ab9680042e9fd50ff6d5e7a01345962548f2bb297b6"
+      },
+      "phase": "Post-Verify administrative/reception check"
+    },
+    {
+      "id": "task41-verified-installed",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "--test",
+        "tests/directions/task41-installed-red.test.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-verified-installed.log",
+        "sha256": "c20929eaee2a131d975675d0044fbf46cc883c199794d7f33cf4a24ab76cc981"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/native/task41-verified-installed.json",
+        "sha256": "c20929eaee2a131d975675d0044fbf46cc883c199794d7f33cf4a24ab76cc981"
+      },
+      "phase": "Post-Verify administrative/reception check"
+    },
+    {
+      "id": "task41-verified-admin-format",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "docs/engineering/directions/frade-standard-workflow/direction.json"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-verified-admin-format.log",
+        "sha256": "7e7758862f59d1825d9ce1be92a952d90783630c77bc6fd15b9c0258f0a4486b"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/native/task41-verified-admin-format.json",
+        "sha256": "7e7758862f59d1825d9ce1be92a952d90783630c77bc6fd15b9c0258f0a4486b"
+      },
+      "phase": "Post-Verify administrative/reception check"
+    },
+    {
+      "id": "task41-verified-reception",
+      "argv": [
+        "E:/Program Files/nodejs/node.exe",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task41-verified-reception-audit-20261005.mjs"
+      ],
+      "exitCode": 0,
+      "result": "PASS",
+      "raw": {
+        "name": "task41-verified-reception.log",
+        "sha256": "db88d2f016f0124ef2f600da2e4be5a219bbdcbe893546e11f6ae0a1051d7f06"
+      },
+      "artifact": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/native/task41-verified-reception.json",
+        "sha256": "db88d2f016f0124ef2f600da2e4be5a219bbdcbe893546e11f6ae0a1051d7f06"
+      },
+      "phase": "Post-Verify administrative/reception check"
+    }
+  ],
+  "productionAndTestsUnchangedSinceVerify": true,
+  "taskProgress": "15/18 administrative only",
+  "acceptedRequirements": 0,
+  "warning": "W03 executable acceptance trace pending; planning declarations remain unchanged",
+  "administrativeAudit": {
+    "status": "PASS",
+    "sourceCheckpoint": "1086b867abc4d28085b851353e6ced356d7abc50",
+    "formalVerify": "PASS",
+    "unchangedFrozenOwnerInputs": 158,
+    "productionAndTestsUnchangedSinceVerify": true,
+    "approvedPlanAndDecisionsUnchanged": true,
+    "administrativeChangesOnly": [
+      "task4.1 checkbox",
+      "stage health",
+      "Verify admission",
+      "fresh Verify blocker removal",
+      "formalVerify receipt binding",
+      "actual CLI projection"
+    ],
+    "historicalStatusPreservedExactAndOnce": true,
+    "taskProgress": "15/18 administrative only",
+    "acceptedRequirements": 0,
+    "warning": "W03 executable acceptance trace pending; no acceptance inferred",
+    "manifestSha256": "7102526e2db134254a1647e99e751fa85356c08fec7cba422b50c7ad59160dea",
+    "tasksSha256": "6ba7f7c257065cc210d83ea7ad8f4543af7527a21ec9eedfa12bdc806c832bcb",
+    "statusSha256": "2b02d95051baf8107a344d18721563e88745b7f34fb21e20cbd36b94d55270cd",
+    "POST": "NOT_RUN",
+    "architectureGate": "NOT_RUN",
+    "archive": "NOT_RUN",
+    "closureEnabled": false
+  },
+  "authorityBeforeSha256": "2b03163ac6b36a58feda3b902a9a303f38b3857ad298409dbbf34b198a03a141",
+  "authorityAfterSha256": "1f9dc95d1c8f9c0a567f7d59d0f329e22b84cae2973686741d3a2ebae78e6348",
+  "independentPOST": "NOT_RUN",
+  "architectureGate": "NOT_RUN",
+  "archive": "NOT_RUN",
+  "consumerAdoption": "NOT_STARTED",
+  "closureEnabled": false,
+  "environmentRetry": {
+    "classification": "ENVIRONMENT",
+    "initialRecord": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/native/task41-verified-status-sandbox-environment-failure.json",
+    "reason": "Sandbox identity differs from registered Git owner; no global safe.directory change",
+    "successfulRecord": "task41-verified-status-write-native"
+  }
+}

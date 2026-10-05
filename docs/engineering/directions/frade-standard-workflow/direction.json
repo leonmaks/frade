@@ -84,7 +84,7 @@
       "id": "W01",
       "change": "frade-standard-workflow",
       "phase": "VERIFICATION",
-      "health": "BLOCKED",
+      "health": "RUNNING",
       "dependencies": [],
       "roleAssignments": [
         {
@@ -129,7 +129,7 @@
         "policyDecision": "ACCEPTED_D03",
         "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
         "formalPRE": "PASS_9c974da8",
-        "Verify": "FAIL_REPAIR_CHECKS_PASS_FRESH_VERIFY_PENDING",
+        "Verify": "PASS_1086b867_RECEIVED_VALID",
         "POST": "NOT_RUN",
         "archive": "NOT_RUN"
       }
@@ -171,6 +171,22 @@
       "sha256": "437220ab5bca7e7274fa042c6b8a9508730c75bae8a0e1c7ddffa34de3b00f46",
       "candidate": "9c974da812e7f120cace9defcdca69dd6154254b",
       "planHash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a"
+    },
+    "formalVerify": {
+      "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/receipt.json",
+      "sha256": "21c80ee688f05a43f761aa07be62fbefba0363de0fb23ab611121823c6313ef4",
+      "candidate": "1086b867abc4d28085b851353e6ced356d7abc50",
+      "planHash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+      "reports": [
+        {
+          "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/VERIFY-REPORT.json",
+          "sha256": "84fead595d4dd198c4fa71197911092395d520a41c8b12e267e840a33eed1aac"
+        },
+        {
+          "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/VERIFY-REPORT.md",
+          "sha256": "549aa3f1bf87b3ecd020307a2c82e8f9c9bc7a8a3dc6dbc40a9fafba8767f086"
+        }
+      ]
     }
   },
   "provisioning": {
@@ -179,16 +195,5 @@
     "currentCheckpoint": "882a9980fcaa1a3508097a1edaf5369bf42513f4",
     "closureActivated": false
   },
-  "blockers": [
-    {
-      "id": "FRESH_VERIFY_PENDING",
-      "owner": "frade-standard-workflow",
-      "state": "OPEN",
-      "openedAt": "2026-10-05T09:12:00.000Z",
-      "evidence": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/repair-receipt.json",
-      "failedFixes": 0,
-      "rca": "V01-V04 repair passed200 native tests and original-owner replay; previous Verify FAIL remains historical gate evidence",
-      "nextAction": "Publish checked repair checkpoint and run fresh formal Verify gpt-6-astra/high before independent POST"
-    }
-  ]
+  "blockers": []
 }

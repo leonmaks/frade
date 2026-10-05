@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "status": "RECEIVED_VALID_PASS",
+  "change": "frade-standard-workflow",
+  "task": "4.1",
+  "role": "formal-Verify",
+  "approvedModel": "gpt-6-astra",
+  "approvedEffort": "high",
+  "requestedModel": "gpt-6-astra",
+  "requestedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "sourceCheckpoint": "1086b867abc4d28085b851353e6ced356d7abc50",
+  "formalVerify": "PASS",
+  "readyForPost": true,
+  "readyForArchive": false,
+  "sourceUnchanged": true,
+  "inputUnchanged": true,
+  "indexUnchanged": true,
+  "exactRawIndexSha256": "297fdb7f148bc92e2f45582bde993b26d4e82eefaf0138af1e23467917952941",
+  "gitSnapshotOptionalLocks": "0",
+  "headUnchanged": true,
+  "completeStream": true,
+  "finalReportBound": true,
+  "exitCode": 0,
+  "requirements": 18,
+  "scenarios": 46,
+  "blockers": [],
+  "previousFindingDisposition": [
+    {
+      "id": "V01",
+      "status": "RESOLVED",
+      "paths": [
+        "scripts/directions/review.mjs:255",
+        "tests/directions/task41-installed-red.test.mjs:18"
+      ],
+      "assessment": "Exact installed ci.yml scope passes REVIEW_SOURCE boundary; widened wildcard, packages scope and foreign packet path are rejected. This proves source preflight only, not an actual POST invocation.",
+      "runBindings": [
+        "N200"
+      ],
+      "nativeRED": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-repair-red-installed.json"
+    },
+    {
+      "id": "V02",
+      "status": "RESOLVED",
+      "paths": [
+        "docs/engineering/directions/frade-standard-workflow/direction.json:116",
+        "scripts/directions/roles.mjs:38",
+        "tests/directions/task41-installed-red.test.mjs:58"
+      ],
+      "assessment": "All five exact pairs resolve with five approval callbacks against fixed raw design/D03; altered source binding, altered decision bytes and non-approving authority remain blocked.",
+      "runBindings": [
+        "N200"
+      ],
+      "nativeRED": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-repair-red-installed.json"
+    },
+    {
+      "id": "V03",
+      "status": "RESOLVED",
+      "paths": [
+        "scripts/directions/bootstrap.mjs:367",
+        "scripts/directions/bootstrap.mjs:496",
+        "tests/directions/bootstrap.test.mjs:618"
+      ],
+      "assessment": "Actual temporary Git plan/create/check and refreshStatus preview yield IDs 1.1–1.4, initial and refreshed 0/4/4, no TASK_MALFORMED; malformed and duplicate IDs still throw. Status portion calls the public library, not the CLI status command.",
+      "runBindings": [
+        "N200"
+      ],
+      "nativeRED": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-repair-red-bootstrap.json"
+    },
+    {
+      "id": "V04",
+      "status": "RESOLVED",
+      "paths": [
+        "scripts/directions/status.mjs:552",
+        "scripts/directions/bootstrap.mjs:885",
+        "tests/directions/status.test.mjs:588",
+        "tests/directions/status.test.mjs:599",
+        "tests/directions/task41-native-owner.replay.mjs:23"
+      ],
+      "assessment": "Ordinary complete journals use original verifyOrigin. Only ENOENT for W01 delegates to checkedOrigin; neither journal invokes fixed historical evidence, one journal blocks. Canonical owner/common/baseline/checkpoint ancestry, raw approval, freeze and recheck guards remain. Native historical write and unchanged journal-backed test pass. Initial 196/198 failure and classified RCA are retained.",
+      "runBindings": [
+        "N200",
+        "NOWNER"
+      ],
+      "nativeRED": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/native/task41-repair-red-native-owner.json"
+    },
+    {
+      "id": "W01",
+      "status": "RESOLVED",
+      "paths": [
+        "docs/engineering/templates/task-2.3-bootstrap.md:41",
+        "docs/engineering/newcomer-guide.md:9"
+      ],
+      "assessment": "Current syntax, W01-only review admission, narrow historical origin, external grant, unresolved decisions and unsupported writer are documented. Guide wording/argv test plus repaired flow assertions reviewed.",
+      "runBindings": [
+        "N200"
+      ]
+    },
+    {
+      "id": "W02",
+      "status": "RESOLVED_WITH_PENDING_ACCEPTANCE_LIMIT",
+      "paths": [
+        "scripts/directions/status.mjs:570",
+        "docs/engineering/BRANCH-STATUS.md:3",
+        "published-status-write.json:1"
+      ],
+      "assessment": "Generated VERIFICATION/BLOCKED header exactly reproduced with actualHead1086 and current input digest. Complete prior manual history SHA710c7de5 remains exactly once. Administrative task counts and TRACE_SHAPE grant no acceptance.",
+      "runBindings": [
+        "N200",
+        "NOWNER"
+      ],
+      "projectionSha256": "03ff710c67d8e03390e54595fca336e4362a1e2ceec673742ba7fdb7781e3de4"
+    },
+    {
+      "id": "W03",
+      "status": "RETAINED_HONEST_PENDING_ACCEPTANCE_LIMIT",
+      "paths": [
+        "scripts/directions/cli.mjs:108",
+        "scripts/directions/status.mjs:132",
+        "docs/engineering/BRANCH-STATUS.md:60"
+      ],
+      "assessment": "Independently reassessed against design3/5/8/9 and FWE-004/014: the planning artifact has never represented executable proof. Current trace/status APIs reject missing or forged proof and positively accept independently bound synthetic runs; this report supplies actual requirement/scenario/assertion/run links. The approved design separates those links and administrative counts from requirement acceptance and later deployment/closure. It does not require converting immutable declarations or automatically ingesting the20 native records before formal Verify. Thus the visible TRACE_SHAPE and0 accepted are an honest pending acceptance limit for this phase. Automatic installed ledger ingestion is not certified; a claimed accepted dashboard without actual trusted trace would be a blocker.",
+      "runBindings": [
+        "N200"
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/VERIFY-REPORT.json",
+      "sha256": "84fead595d4dd198c4fa71197911092395d520a41c8b12e267e840a33eed1aac"
+    },
+    {
+      "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/VERIFY-REPORT.md",
+      "sha256": "549aa3f1bf87b3ecd020307a2c82e8f9c9bc7a8a3dc6dbc40a9fafba8767f086"
+    }
+  ],
+  "retained": [
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/execution.json",
+      "sha256": "0c77bdc881b669bc84fa0ad3c677c6a7becaba947e741c184d00d54ce4ab0d1d",
+      "bytes": 2831
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/request.json",
+      "sha256": "6b05c29ffbd42ee1bc304adc60be8da415fe1692d1899cd3902558f10fdab0dd",
+      "bytes": 2663
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/receipt.json",
+      "sha256": "4de9db2bb5956d0485b9ed9b9e9ef312f7224864a88edbbb88997a0c36724084",
+      "bytes": 7234
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/events.jsonl",
+      "sha256": "a5c587c752ce19df665dbfcd90e4afaebbc6af5dedb650147298e34242570db5",
+      "bytes": 1582839
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/stderr.txt",
+      "sha256": "ab3fa8d50ef1cef82ab68c8cc777ed0a8a449d020f78fd2b521d9cff7c5ca578",
+      "bytes": 260
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/result.md",
+      "sha256": "fd920f36d9ed1a3cf9da62895844e78eb013563917dd02394037064c01dd1b3a",
+      "bytes": 406
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/approved-prompt.md",
+      "sha256": "61977dd1ceb581fa08dcc0307540d7010ccc5d9c836ae6a3eecc01407206c020",
+      "bytes": 6809
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/input/EXECUTION-INPUTS.json",
+      "sha256": "10fffdce17d70881e55d27f27038e0ffd27c2b5c7d3fc64243ece14ebc01837b",
+      "bytes": 64499
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/freeze.json",
+      "sha256": "178373a88f5729b04fc4d072fad4899087ccbbd634deccc40ba71dcf5c7e9fd8",
+      "bytes": 64944
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/live-freeze-receipt.json",
+      "sha256": "3a45853b3a746212729d43ccd74f9575bc6778c5bfc5049dfa0f9d3d28ccd5f7",
+      "bytes": 171
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/freeze-release.json",
+      "sha256": "6df3f6f8d7f7618fbb45dd26aeb90b78a971d87c6585052c37993e0154090ae3",
+      "bytes": 272
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/index-before.snapshot",
+      "sha256": "297fdb7f148bc92e2f45582bde993b26d4e82eefaf0138af1e23467917952941",
+      "bytes": 1045719
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/index-after.snapshot",
+      "sha256": "297fdb7f148bc92e2f45582bde993b26d4e82eefaf0138af1e23467917952941",
+      "bytes": 1045719
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/semantic-index-before.snapshot",
+      "sha256": "bb24c4003707b7e129ba18515f0d1c2cef44505a35c0634afa67ac655d84b6b9",
+      "bytes": 917577
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/work/VERIFY-REPORT.json",
+      "sha256": "84fead595d4dd198c4fa71197911092395d520a41c8b12e267e840a33eed1aac",
+      "bytes": 145582
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-index-retry1-20261005-raw/work/VERIFY-REPORT.md",
+      "sha256": "549aa3f1bf87b3ecd020307a2c82e8f9c9bc7a8a3dc6dbc40a9fafba8767f086",
+      "bytes": 34507
+    }
+  ],
+  "previousUnadmittedPass": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-repair-20261005-unadmitted-raw/retention-receipt.json",
+  "independentPOST": "NOT_RUN",
+  "architectureGate": "NOT_RUN",
+  "archive": "NOT_RUN"
+}
