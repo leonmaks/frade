@@ -1,12 +1,12 @@
 # Единый workflow Frade — статус
 
-UPDATED_AT_UTC: 2026-10-05T14:36:56.779Z
-PROJECTION_SOURCE_SHA256: 8c030d0bfd31f120c8fb0368044e9e9e7f748d4e61ab63a07af724bdb34d3e19
+UPDATED_AT_UTC: 2026-10-05T14:58:24.830Z
+PROJECTION_SOURCE_SHA256: ac7c08fdd496b38a30e4006dad73002229066f5e98c49ddfec33d8429326d127
 POLICY_VERSION: 1.1 / 6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: VERIFICATION | HEALTH: BLOCKED
+STAGE: W01 | PHASE: VERIFICATION | HEALTH: RUNNING
 NEXT_PERMITTED_ACTION: Resolve listed blockers and refresh source-bound evidence.
 HUMAN_DECISION: NONE
 READY_FOR_IMPLEMENTATION: NO | current PRE and checkpoint proof required
@@ -22,7 +22,7 @@ READY_FOR_ARCHIVE: NO | current checks, Verify, POST and publication proof requi
 
 | Stage | Goal / OpenSpec change | Dependencies | Phase / health | PRE / Verify / POST / archive |
 |---|---|---|---|---|
-| W01 | frade-standard-workflow | NONE | VERIFICATION / BLOCKED | NOT_VERIFIED |
+| W01 | frade-standard-workflow | NONE | VERIFICATION / RUNNING | NOT_VERIFIED |
 
 ## 4. Активные задачи / шаги
 
@@ -42,11 +42,11 @@ READY_FOR_ARCHIVE: NO | current checks, Verify, POST and publication proof requi
 | 2.7 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
 | 3.1 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
 | 3.2 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
-| 4.1 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | OPEN | NOT_VERIFIED unless listed below |
+| 4.1 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
 | 4.2 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | OPEN | NOT_VERIFIED unless listed below |
 | 4.3 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | OPEN | NOT_VERIFIED unless listed below |
 | 4.4 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | OPEN | NOT_VERIFIED unless listed below |
-TASKS_COMPLETE/TOTAL/REMAINING: 14/18/4
+TASKS_COMPLETE/TOTAL/REMAINING: 15/18/3
 REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18
 
 ## 5. Проверки / gates / качество
@@ -75,11 +75,11 @@ GAP: TASK_ACCEPTANCE_GAP tasks
 
 | ID | Consumer owner / affected scope | State / age | Evidence / fix attempts / RCA | Required decision / next action |
 |---|---|---|---|---|
-| FRESH_VERIFY_AND_POST_PENDING | frade-standard-workflow | OPEN; 0 days | openspec/changes/frade-standard-workflow/evidence/task42-req-repair-20261005/repair-receipt.json; attempts 0; Native RED6/13 then GREEN221/221; contracts/status boundary repaired by approved Sol/high role. Admitted POST FAIL retained withou | Publish checked repair; fresh exact Astra/high Verify and Astra/xhigh cumulative POST before closure |
+| NONE | frade-standard-workflow | NONE; AGE_UNKNOWN | NOT_RUN; attempts 0; NONE | NONE |
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: bb980612e519fabcfbdb76a76a432dcf074c1689
+SOURCE_CHECKPOINT_SHA: eadd32026c0f71a82ce3981ae3e6cdd16f924e26
 COMMIT_STATE: NOT_VERIFIED
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow
 PUSH_STATE: NOT_VERIFIED

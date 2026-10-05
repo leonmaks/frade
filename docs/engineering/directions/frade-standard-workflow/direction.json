@@ -84,7 +84,7 @@
       "id": "W01",
       "change": "frade-standard-workflow",
       "phase": "VERIFICATION",
-      "health": "BLOCKED",
+      "health": "RUNNING",
       "dependencies": [],
       "roleAssignments": [
         {
@@ -129,8 +129,8 @@
         "policyDecision": "ACCEPTED_D03",
         "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
         "formalPRE": "PASS_9c974da8",
-        "Verify": "FWE014_REPAIR_CHECKS_PASS_FRESH_VERIFY_PENDING",
-        "POST": "INACTIVE_CURRENT_REPAIR_REVERIFY_REQUIRED",
+        "Verify": "PASS_EADD320_RECEIVED_VALID",
+        "POST": "NOT_RUN",
         "archive": "NOT_RUN"
       }
     }
@@ -173,18 +173,18 @@
       "planHash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a"
     },
     "formalVerify": {
-      "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-task42-20261005/receipt.json",
-      "sha256": "1235bc2ccc8b240d5e19d0ead2c4f5f5dbb6a67d99d7c504304a54a751d05c27",
-      "candidate": "a71a7bedc41beac16ce1c374509281b4e9feca79",
+      "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-req-repair-20261005/receipt.json",
+      "sha256": "5fa0b536a0be6a46a8d58bd962fbc71c43a88ec7bf92176966acb457fca0f410",
+      "candidate": "eadd32026c0f71a82ce3981ae3e6cdd16f924e26",
       "planHash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
       "reports": [
         {
-          "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-task42-20261005/VERIFY-REPORT.json",
-          "sha256": "a3bdde84a514f79e2f159b59c54dd35073db169d963163d438a131ba4d8a8df0"
+          "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-req-repair-20261005/VERIFY-REPORT.json",
+          "sha256": "cf44d91c99a7c6e3acc1d681e080846c3f0c526df52b45a75a7a31661567573e"
         },
         {
-          "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-task42-20261005/VERIFY-REPORT.md",
-          "sha256": "3eade75c85a85243ce59bbc616cf0053d5e016f6113210e55790345c68d09ba2"
+          "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-req-repair-20261005/VERIFY-REPORT.md",
+          "sha256": "3edc9d1197e2bb78cb5df6d32ce2fe547ff638f056342c13857dcfbc2fb78074"
         }
       ]
     },
@@ -206,16 +206,5 @@
     "currentCheckpoint": "882a9980fcaa1a3508097a1edaf5369bf42513f4",
     "closureActivated": false
   },
-  "blockers": [
-    {
-      "id": "FRESH_VERIFY_AND_POST_PENDING",
-      "owner": "frade-standard-workflow",
-      "state": "OPEN",
-      "openedAt": "2026-10-05T14:36:44.171Z",
-      "evidence": "openspec/changes/frade-standard-workflow/evidence/task42-req-repair-20261005/repair-receipt.json",
-      "failedFixes": 0,
-      "rca": "Native RED6/13 then GREEN221/221; contracts/status boundary repaired by approved Sol/high role. Admitted POST FAIL retained without relaxing guard.",
-      "nextAction": "Publish checked repair; fresh exact Astra/high Verify and Astra/xhigh cumulative POST before closure"
-    }
-  ]
+  "blockers": []
 }
