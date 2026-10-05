@@ -222,6 +222,34 @@ function fixture(t) {
   }
 }
 const save = (f) => writeFileSync(f.eventPath, JSON.stringify(f.event) + '\n')
+function bindCandidate(f, path, bytes) {
+  mkdirSync(join(f.root, path, '..'), { recursive: true })
+  writeFileSync(join(f.root, path), bytes)
+  f.event.paths.push(path)
+  save(f)
+  f.admission.eventSha256 = hash(readFileSync(f.eventPath))
+  f.admission.candidateSha256 = hash(
+    f.event.paths
+      .slice()
+      .sort()
+      .map((p) => p + '\0' + hash(readFileSync(join(f.root, p))) + '\n')
+      .join(''),
+  )
+  const admissionPath = join(
+    f.common,
+    'frade-workflow/publication-admission',
+    f.m.id,
+    f.admission.eventSha256 + '.json',
+  )
+  writeFileSync(admissionPath, JSON.stringify(f.admission) + '\n')
+}
+function checkpointState(f) {
+  return {
+    head: git(f.root, 'rev-parse', 'HEAD'),
+    index: git(f.root, 'diff', '--cached', '--name-only'),
+    remote: git(f.base, 'ls-remote', f.remote),
+  }
+}
 test('FWE-016 Windows owner containment accepts mixed separators and rejects traversal or sibling roots', async () => {
   const { ownedPath } = await import(pathToFileURL(cli).href)
   assert.doesNotThrow(() => ownedPath('C:/Frade/Owner', 'c:\\frade\\owner\\docs\\status.md', win32))
@@ -718,4 +746,83 @@ test('FWE-017 stdout-only cached diff diagnostic blocks checkpoint without losin
     false,
   )
   assert.equal(existsSync(join(f.common, 'frade-workflow/publication', f.m.id)), false)
+})
+
+test('FWE-016 benign identifiers, functions, objects and regex checkpoint through public guard', async (t) => {
+  const f = fixture(t)
+  const source = [
+    ['const to', 'ken = Object.freeze({})'].join(''),
+    ['function se', 'cret(value) { return value }'].join(''),
+    ['const pass', 'word = makeFixtureValue()'].join(''),
+    ['const api_', 'key = { fixture: true }'].join(''),
+    ['const matcher = /to', 'ken\\s*[:=]\\s*\\w+/i'].join(''),
+    '',
+  ].join('\n')
+  const path = 'scripts/directions/checkpoint-content.mjs'
+  bindCandidate(f, path, source)
+  const cp = await invoke(f, 'checkpoint')
+  assert.equal(cp.exit, 0, JSON.stringify(cp))
+  assert.equal(cp.body.status, 'CHECKPOINTED')
+  assert.equal(git(f.root, 'show', 'HEAD:' + path), source.trim())
+})
+
+test('FWE-016 current W01 review control source checkpoints through public guard', async (t) => {
+  const f = fixture(t)
+  const sourcePath = 'scripts/directions/review.mjs'
+  const source = readFileSync(resolve(sourcePath))
+  assert.equal(hash(source), '3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa')
+  bindCandidate(f, sourcePath, source)
+  const cp = await invoke(f, 'checkpoint')
+  assert.equal(cp.exit, 0, JSON.stringify(cp))
+  assert.equal(hash(git(f.root, 'show', 'HEAD:' + sourcePath) + '\n'), hash(source))
+})
+
+test('FWE-016 literal credential candidates block before HEAD, index or remote changes', async (t) => {
+  const values = [
+    ['to', 'ken = fixture_only_value_1234'].join(''),
+    ['pass', 'word: "fixture_only_value_1234"'].join(''),
+    ['api_', "key = 'fixture_only_value_1234'"].join(''),
+    ['const se', 'cret = `fixture_only_value_1234`'].join(''),
+  ]
+  for (const [index, content] of values.entries()) {
+    const f = fixture(t)
+    bindCandidate(f, 'scripts/directions/checkpoint-content-' + index + '.mjs', content + '\n')
+    const before = checkpointState(f)
+    const result = await invoke(f, 'checkpoint')
+    assert.equal(result.exit, 2, JSON.stringify({ content, result }))
+    assert.match(result.body.detail, /SECRET_CANDIDATE/)
+    assert.deepEqual(checkpointState(f), before)
+    assert.equal(
+      result.body.commands.some((x) => ['add', 'commit', 'push'].includes(x.args[0])),
+      false,
+    )
+  }
+})
+
+test('FWE-016 private key blocks and prohibited credential filenames block before mutation', async (t) => {
+  const samples = [
+    [
+      'scripts/directions/checkpoint-content.pem.txt',
+      ['-----BEGIN ', 'OPENSSH PRIVATE KEY-----'].join('') +
+        '\nfixture_only_material\n' +
+        ['-----END ', 'OPENSSH PRIVATE KEY-----'].join('') +
+        '\n',
+    ],
+    ['docs/engineering/.env.local', 'fixture metadata\n'],
+    ['docs/engineering/checkpoint.key', 'fixture metadata\n'],
+    ['docs/engineering/checkpoint.p12', 'fixture metadata\n'],
+  ]
+  for (const [path, content] of samples) {
+    const f = fixture(t)
+    bindCandidate(f, path, content)
+    const before = checkpointState(f)
+    const result = await invoke(f, 'checkpoint')
+    assert.equal(result.exit, 2, JSON.stringify({ path, result }))
+    assert.match(result.body.detail, /SECRET_CANDIDATE/)
+    assert.deepEqual(checkpointState(f), before)
+    assert.equal(
+      result.body.commands.some((x) => ['add', 'commit', 'push'].includes(x.args[0])),
+      false,
+    )
+  }
 })

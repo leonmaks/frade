@@ -1,0 +1,180 @@
+{
+  "status": "TASK31_CHECKS_COMPLETE_TASK32_AUDIT_COMPLETE_PUBLICATION_PENDING",
+  "model": "gpt-6-sol",
+  "effort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "tests": {
+    "pass": 193,
+    "uniqueTitles": 177,
+    "fail": 0,
+    "skipped": 0,
+    "ownerReplay": 1,
+    "publication": 27,
+    "newPortableTests": 11
+  },
+  "checks": [
+    {
+      "label": "task32-final-native-full",
+      "rawSha256": "dcda5449b0eca2b8b0dfbdfe7d0b53f96f66c0d84aa32f843ae582715b59f64f",
+      "status": "PASS",
+      "command": [
+        "node",
+        "--test",
+        "tests/directions/*.test.mjs"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-lint",
+      "rawSha256": "35c6460fb21063f49fb5ffe3caa7195fba3817eb812cdcf5c11086856274a0dd",
+      "status": "PASS",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "scripts/directions/*.mjs",
+        "tests/directions/*.mjs"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-format",
+      "rawSha256": "9ef8d892d75018cdbeef90fe7aa5230b392bb7a19bd54db18ddcecb902d749a1",
+      "status": "PASS",
+      "command": [
+        "node",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "scripts/directions/*.mjs",
+        "tests/directions/*.mjs",
+        "docs/engineering/templates/*.md",
+        "docs/engineering/templates/*.json"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-content",
+      "rawSha256": "182addd2ab12da736f1a30bbb5ff1e6afcc3cd6d730f11544ea28b8331399a81",
+      "status": "PASS",
+      "command": [
+        "node",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task31-content-20261005.mjs"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-integrity",
+      "rawSha256": "715fe3c2637633864f7176691867405985ca4d8611b5033f655bd303d37dbaea",
+      "status": "PASS",
+      "command": [
+        "node",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task32-integrity-final-20261005.mjs"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-general-lint",
+      "rawSha256": "05d26930b4e789c9d9ab757dc705ab7dcba17310694614485d7b9723058977c1",
+      "status": "PASS",
+      "command": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "lint"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-general-typecheck",
+      "rawSha256": "9e3820334002d5b63191ba94ced7301d95c298cd310964994e18b2a013913865",
+      "status": "PASS",
+      "command": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "typecheck"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-general-build",
+      "rawSha256": "ef8925b5d8ec99633c60d790cbe57701e05b2ed3dc1cc601158f018288915807",
+      "status": "PASS",
+      "command": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "build"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-boundaries",
+      "rawSha256": "098978c9f06cf821c953f623c56893b88e821d50d30b2fd6dcfdc4886ad9200f",
+      "status": "PASS",
+      "command": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "check:boundaries"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-boundary-tests",
+      "rawSha256": "ba25971acd44e822039cf6d13920b090e75c5e0f6fc119a50f4792a0b11e53a7",
+      "status": "PASS",
+      "command": [
+        "node",
+        "--test",
+        "tests/contract/*.test.mjs"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-owner-replay",
+      "rawSha256": "ede6db6ce8eb4cf9cd99304d8606a194bfd7b59409543a95c0ff9ce7d3dd8619",
+      "status": "PASS",
+      "command": [
+        "node",
+        "--test",
+        "tests/directions/w01-origin-native.replay.mjs"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-applicability",
+      "rawSha256": "37e4481e8d9aadcd4185047286b1bb368e967697e6861c00a2fa5c04f513c51a",
+      "status": "PASS",
+      "command": [
+        "node",
+        "scripts/directions/check-applicability.mjs"
+      ],
+      "sourceBindingsMatch": true
+    },
+    {
+      "label": "task32-final-loader",
+      "rawSha256": "97f1a4a0cd0087a5055cf4e3cccd773ff374362687c59c6e8b3494615e5b89c6",
+      "status": "PASS",
+      "command": [
+        "node",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task27-owner-loader-replay-20261005.mjs"
+      ],
+      "sourceBindingsMatch": true
+    }
+  ],
+  "generalLintTypecheckBuild": "ACTUAL_COMMANDS_PASS_WITH_20_OF_20_TURBO_CACHE_HITS_EACH",
+  "boundaryTests": 19,
+  "boundaryCommands": 4,
+  "frozenTree": "UNCHANGED_FROM_ORIGINAL_BASELINE",
+  "priorFAILAndCapacityStreams": "IMMUTABLY_RETAINED",
+  "privateRaw": {
+    "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task32-nonpublic-raw-20261005/publication-events.jsonl",
+    "sha256": "bdaa64116632fcce088eaac4e301ae69dc6629e3d7f1003b53dc765c430ddc73",
+    "fullStreamPreserved": true
+  },
+  "blockers": [],
+  "task32Publication": "PENDING",
+  "formalVerify": "NOT_RUN",
+  "POST": "NOT_RUN",
+  "archive": "NOT_RUN",
+  "remoteCI": "NOT_RUN",
+  "branchProtection": "NOT_CONFIGURED",
+  "consumers": "NOT_STARTED",
+  "readyForVerify": false
+}

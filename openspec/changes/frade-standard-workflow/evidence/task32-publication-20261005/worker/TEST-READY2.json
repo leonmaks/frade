@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "stage": "W01",
+  "task": "3.2 publication scanner false positive repair",
+  "phase": "TEST_ONLY_PENDING_NATIVE_RED2",
+  "supersedesTestReadiness": "TEST-READY.json",
+  "preservedFirstNativeRed": {
+    "path": "../NATIVE-RED.json",
+    "sha256": "d6868e7fd9de9a3a5aa6dcaf9da1b3ef4dfe3ff8c47d61956054b2540618b6dd"
+  },
+  "prerequisiteCorrection": {
+    "classification": "TEST",
+    "detail": "Corrected current W01 review.mjs source SHA256 assertion to the independently bound immutable input hash 3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa; preserved the binding and all existing assertions."
+  },
+  "designSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "testpaths": ["tests/directions/publication.test.mjs"],
+  "productionHashes": {
+    "scripts/directions/publication.mjs": "cb7deaa5aa43bde181d52085c4cd50e2b5652e4cb42307bf181debf626947559"
+  },
+  "testHashes": {
+    "tests/directions/publication.test.mjs": "01e42107e00c95fec8e3318b68853c1e60c3e9d9bc65b149269f43c4c9eb49ba"
+  },
+  "intendedRedTitles": [
+    "FWE-016 benign identifiers, functions, objects and regex checkpoint through public guard",
+    "FWE-016 current W01 review control source checkpoints through public guard",
+    "FWE-016 literal credential candidates block before HEAD, index or remote changes"
+  ],
+  "preservationGreenTitle": "FWE-016 private key blocks and prohibited credential filenames block before mutation",
+  "rca": {
+    "classification": "ABSTRACTION_BOUNDARY",
+    "firstIncorrectDecision": "publication sensitive(bytes, path) treats a credential-shaped identifier followed by = or : and four nonspace characters as a secret, including JavaScript expressions such as Object.freeze({}).",
+    "layer": "scripts/directions/publication.mjs content scanning only"
+  },
+  "productionEdited": false
+}

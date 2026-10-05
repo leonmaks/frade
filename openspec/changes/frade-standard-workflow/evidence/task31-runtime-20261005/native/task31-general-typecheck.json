@@ -1,0 +1,45 @@
+{
+  "label": "task31-general-typecheck",
+  "atUtc": "2026-10-05T03:54:37.220Z",
+  "endedAtUtc": "2026-10-05T03:54:38.112Z",
+  "cwd": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+  "exe": "node",
+  "args": [
+    "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+    "typecheck"
+  ],
+  "node": "v24.18.0",
+  "platform": "win32",
+  "exitCode": 0,
+  "signal": null,
+  "stdout": "\n   • Packages in scope: @frade/adapter-sberea-yaml, @frade/adapter-yaml, @frade/desktop, @frade/draw, @frade/local-index, @frade/metamodel-compiler, @frade/metamodel-config, @frade/metamodel-domain, @frade/repository-api, @frade/repository-application, @frade/repository-bridge, @frade/repository-domain, @frade/repository-ports, @frade/runtime-contracts, @frade/runtime-electron, @frade/runtime-node, @frade/ui-inspector, @frade/ui-navigator, @frade/ui-workspace, @frade/versioning-git\n   • Running typecheck in 20 packages\n   • Remote caching disabled, using shared worktree cache\n\n@frade/draw:typecheck: cache hit, replaying logs 890e73abe62ab9d2\n@frade/draw:typecheck: $ tsc --noEmit --pretty false\n@frade/runtime-contracts:typecheck: cache hit, replaying logs cf9fbdfa60c0d423\n@frade/runtime-contracts:typecheck: $ tsc --noEmit\n@frade/runtime-electron:typecheck: cache hit, replaying logs 8af6c19c5fea9365\n@frade/runtime-electron:typecheck: $ tsc --noEmit\n@frade/metamodel-domain:typecheck: cache hit, replaying logs fb13e0a7546033bb\n@frade/metamodel-domain:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit\n@frade/metamodel-compiler:typecheck: cache hit, replaying logs 2842bbd97e801a27\n@frade/metamodel-compiler:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit\n@frade/metamodel-config:typecheck: cache hit, replaying logs 105c58af7c1c8dd3\n@frade/repository-domain:typecheck: cache hit, replaying logs 5499b3aca88f0b4c\n@frade/metamodel-config:typecheck: $ tsc --noEmit\n@frade/repository-domain:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit\n@frade/repository-ports:typecheck: cache hit, replaying logs e6915383147ad0da\n@frade/repository-ports:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit\n@frade/local-index:typecheck: cache hit, replaying logs 87408a293544ea4b\n@frade/repository-bridge:typecheck: cache hit, replaying logs 26bd14dab9f50dba\n@frade/local-index:typecheck: $ tsc --noEmit\n@frade/repository-bridge:typecheck: $ tsc --noEmit\n@frade/repository-application:typecheck: cache hit, replaying logs f8785a5c3e7c1cfc\n@frade/repository-application:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit\n@frade/versioning-git:typecheck: cache hit, replaying logs 64077fc09dcbd06d\n@frade/adapter-sberea-yaml:typecheck: cache hit, replaying logs 76b94ab0bf6ebea1\n@frade/repository-api:typecheck: cache hit, replaying logs cf4a231b87ab7e48\n@frade/versioning-git:typecheck: $ tsc --noEmit\n@frade/adapter-sberea-yaml:typecheck: $ tsc --noEmit\n@frade/repository-api:typecheck: $ tsc --noEmit\n@frade/adapter-yaml:typecheck: cache hit, replaying logs 56d3b95b63f6b16e\n@frade/adapter-yaml:typecheck: $ tsc --noEmit\n@frade/ui-inspector:typecheck: cache hit, replaying logs 8d3ebc18a47862a3\n@frade/ui-inspector:typecheck: $ tsc --noEmit\n@frade/ui-navigator:typecheck: cache hit, replaying logs 1d4b7a649e5e9118\n@frade/ui-navigator:typecheck: $ tsc --noEmit\n@frade/runtime-node:typecheck: cache hit, replaying logs c209246578a6662c\n@frade/ui-workspace:typecheck: cache hit, replaying logs 2d0a5a4d8d2e3a58\n@frade/runtime-node:typecheck: $ tsc --noEmit\n@frade/ui-workspace:typecheck: $ tsc --noEmit\n@frade/desktop:typecheck: cache hit, replaying logs 863672726820f163\n@frade/desktop:typecheck: $ tsc --noEmit\n\n Tasks:    20 successful, 20 total\nCached:    20 cached, 20 total\n  Time:    166ms >>> FULL TURBO\n\n",
+  "stderr": "$ turbo typecheck\n• turbo 2.11.2\n",
+  "status": "PASS",
+  "applicability": {
+    "scope": "Required task2.7/3.1 general existing controls; no new product PASS inferred",
+    "frozenTrackedFingerprint": "cf179a47a2ea8c6b4cc1778d58933a6b66e8d67f1a025a0d7946eb35c5e09c4d",
+    "existingGeneralScripts": {
+      "lint": "turbo lint",
+      "typecheck": "turbo typecheck",
+      "build": "turbo build",
+      "test:boundaries": "node --test tests/contract/*.test.mjs",
+      "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs"
+    },
+    "toolchain": {
+      "packageManager": "pnpm@12.6.0",
+      "engines": {
+        "node": ">=24.0.0 <25"
+      },
+      "devDependencies": {
+        "@eslint/js": "9.39.1",
+        "eslint": "9.39.1",
+        "eslint-plugin-react-hooks": "7.0.1",
+        "globals": "16.5.0",
+        "prettier": "3.9.8",
+        "turbo": "2.11.2",
+        "typescript-eslint": "8.46.3"
+      }
+    },
+    "lockfileSha256": "755f06619fb8269a345412512c1a44c30cd41887e2d499e4236c262b624d95c0"
+  }
+}

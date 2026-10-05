@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "stage": "W01",
+  "task": "3.1-3.2 origin admission regression first",
+  "status": "AWAITING_PARENT_NATIVE_RED_AFTER_FIXTURE_CORRECTION",
+  "testpaths": [
+    "tests/directions/w01-origin-admission.test.mjs",
+    "tests/directions/bootstrap.test.mjs"
+  ],
+  "testSha256": {
+    "tests/directions/w01-origin-admission.test.mjs": "ac44755350e3f49918fdb23e6c62b7ed18800b7178441c3cb3462091fad60076",
+    "tests/directions/bootstrap.test.mjs": "e0529db1eb462fb8e2c6ff6bbda438f031a9fd6c482a9864257eb0fca9e9cc25"
+  },
+  "originalProductionHashes": {
+    "scripts/directions/bootstrap.mjs": "7d49cabf133c9a9a59d9458931e4dc1d88626f660d19c58a770a2effa63edb68",
+    "scripts/directions/cli.mjs": "ab694f3fb2aa44d089706fb7c758cde83eaa145543bb1e321a1b521d007da25a",
+    "scripts/directions/contracts.mjs": "50e1efe38d9e906a6b0f577138baa9c107ef1f5349c8f6e2c5c85b59ab0ae367",
+    "scripts/directions/status.mjs": "c0a83640e7b9bfa27cb4fbf91a6475d27f9f5295c55cd7b17ec3477a1bd69a67",
+    "scripts/directions/evidence.mjs": "34982bee69bf397a42450c1c5f239c567a9a61da59dd025710d6e05cbe6ea06a"
+  },
+  "intendedFails": [
+    {
+      "test": "W01 historical admission: real registered owner check and status accept its original origin",
+      "expectedBeforeFix": "check exits 2 BLOCKED with ORIGIN_MISSING_LEGACY_ADOPTION_REQUIRED; status is also blocked through check",
+      "requiredFixturePrerequisites": "Native runner can read the actual registered W01 owner at E:/dev/codex/frade-worktrees/frade-standard-workflow, including its tracked manifest, current shared release and unchanged accepted design bytes; public CLI is invoked from that owner"
+    }
+  ],
+  "expectedPreFixGreen": [
+    "Existing bootstrap tests for missing/foreign/stale exact origin and forged grants remain green",
+    "FWE-012-S02 public writer dispatch remains unavailable and cannot mutate a repository",
+    "FWE-018-S01 guide and bootstrap examples match public CLI guards and honest boundary"
+  ],
+  "rca": {
+    "classification": "STATE_TRANSITION/INTEGRATION",
+    "defect": "The public check/status path applies the new bootstrap intent-and-completion origin protocol to every owner. W01 was already manually isolated, registered and admitted through D03 and formal PRE before this protocol existed, so it has no bootstrap journal. Its accepted manifest correctly points at shared-policy/agent-workflow.md, while the new-owner check hardcodes shared-policy.md.",
+    "admissionProposal": "Recognize only the exact historical W01 owner under its actual registered Git common and original baseline using immutable D03, repository-audit, formal PRE, policy bytes/release and current manifest bindings. Keep checkedOrigin unchanged for bootstrap-created owners and block missing, foreign, stale or forged evidence. Do not create or infer a bootstrap journal.",
+    "scope": "Own W01 controls and tests only; no foreign owner adoption, original-baseline rewrite, shared supplier edit or closure activation",
+    "coverageLimit": "FWE-004-S02 still needs an owning approved numeric contract and a trusted raw check evaluator that binds that contract hash to measured values; a status renderer threshold or self-approved fixture is not evidence"
+  },
+  "localVerification": [
+    "node --check tests/directions/w01-origin-admission.test.mjs: PASS (Linux Node 18 syntax only)",
+    "node --check tests/directions/bootstrap.test.mjs: PASS (Linux Node 18 syntax only)"
+  ]
+}

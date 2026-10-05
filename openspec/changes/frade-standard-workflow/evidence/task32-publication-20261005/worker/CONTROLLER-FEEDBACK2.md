@@ -1,0 +1,3 @@
+Parent native GREEN has completed: ../NATIVE-GREEN.json,27/27 PASS, original staged publication source9ea66143 and corrected test01e42107 source hashes match. Retain exact raw hash and update handoff validation to observed GREEN, while owner full regression/lint/format/publication remain pending.
+
+The own nested contract bytes exist in ../input/docs/engineering/directions/frade-standard-workflow/AGENTS.md, rawSHA256 7222f96b4cd184f915339b96e13d58d7a3b042743aebf0dd6fdc6f048ae64536. Read that exact file before completing work; it was copied and bound by EXECUTION-INPUTS.json. The current knownLimitation claiming those bytes absent is incorrect; correct the finding honestly in your handoff. Source scopes, model pair and production edits remain unchanged.

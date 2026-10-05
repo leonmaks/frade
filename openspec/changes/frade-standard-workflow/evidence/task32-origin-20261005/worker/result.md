@@ -1,0 +1,5 @@
+The W01 origin repair is staged in [bootstrap.mjs](/mnt/e/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work/scripts/directions/bootstrap.mjs). It admits only the historically registered W01 owner using pinned D03, audit, policy and PRE evidence. Missing origins for other owners remain blocked; no bootstrap journal or baseline was changed.
+
+The corrected native RED run recorded **18 passes and one intended failure**: public W01 `check` returned `ORIGIN_MISSING_LEGACY_ADOPTION_REQUIRED`. Portable adversarial tests and a separate real-owner replay are staged. The handoff, hashes and remaining gates are in [TASK-3-REPAIR.json](/mnt/e/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work/TASK-3-REPAIR.json).
+
+**READY_FOR_VERIFY: NO.** Parent native regression, lint, format, frozen-tree checks and post-import public check/status are pending. FWE-004-S02 remains an open evidence-boundary gap: there is no approved numeric contract binding or trusted measurement evaluator to claim that scenario passed.

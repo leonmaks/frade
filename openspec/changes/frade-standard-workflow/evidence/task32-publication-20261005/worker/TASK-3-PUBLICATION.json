@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "stage": "W01",
+  "task": "3.2 publication content scanner repair",
+  "assignment": "tooling-tests",
+  "approvedModel": "gpt-6-sol",
+  "approvedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "status": "REPAIR_STAGED_NATIVE_PUBLICATION_SUITE_GREEN",
+  "designSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "eligibleOutputFilesSha256": {
+    "scripts/directions/publication.mjs": "9ea66143a1d5ef6bd80c0bcffdb811265abd2ba1651f9a585d28d8a4cb228542",
+    "tests/directions/publication.test.mjs": "01e42107e00c95fec8e3318b68853c1e60c3e9d9bc65b149269f43c4c9eb49ba"
+  },
+  "nativeRED": {
+    "receipt": "../NATIVE-RED2.json",
+    "receiptSha256": "b1aaca8f5b17245072019be3837fa0657023a37e7387919141582103ea84f5a3",
+    "testReady": "TEST-READY2.json",
+    "testReadySha256": "4c2fefe90e7def7feffb0d40a51787a77d2c80ebe8e247646ff557e69a2bf660",
+    "platform": "win32",
+    "node": "v24.18.0",
+    "originalProductionSha256": "cb7deaa5aa43bde181d52085c4cd50e2b5652e4cb42307bf181debf626947559",
+    "result": "27 tests: 24 PASS, 3 intended RED. Benign declaration and exact current W01 review.mjs checkpoint cases blocked as SECRET_CANDIDATE; quoted literal credential case incorrectly checkpointed. Private-key and prohibited-path preservation test passed.",
+    "initialPrerequisiteCorrection": {
+      "classification": "TEST",
+      "preservedReceipt": "../NATIVE-RED.json",
+      "preservedReceiptSha256": "d6868e7fd9de9a3a5aa6dcaf9da1b3ef4dfe3ff8c47d61956054b2540618b6dd",
+      "correction": "Corrected the review.mjs source hash assertion to immutable input hash; binding assertion retained."
+    }
+  },
+  "rca": {
+    "classification": "ABSTRACTION_BOUNDARY",
+    "firstIncorrectDecision": "Publication content scanning interpreted any credential-shaped identifier followed by an assignment delimiter and four nonspace nonquote characters as a literal credential; Object.freeze({}) was misclassified, while quoted credential literals were missed.",
+    "repair": "Within publication.mjs only, scan assignment values and distinguish quoted or unquoted literal candidates from object, array, regex and function-call expressions. Preserve prohibited filename and supported private-key blocking, checkpoint admission and all Git/remote guards.",
+    "noPathExclusionsOrGuardBypass": true
+  },
+  "validation": {
+    "local": [
+      "node --check scripts/directions/publication.mjs PASS under Linux Node v18.19.1",
+      "node --check tests/directions/publication.test.mjs PASS under Linux Node v18.19.1",
+      "Actual private helper text smoke check PASS for benign Object.freeze initializer, full current review.mjs source, quoted and unquoted synthetic credential values, .env.local filename and OpenSSH private-key header"
+    ],
+    "nativeAfterRepair": {
+      "receipt": "../NATIVE-GREEN.json",
+      "receiptSha256": "ce1e43287004edb0dd3b58b953be274552a52706c7b9dc64c985ea7ba1b3e996",
+      "platform": "win32",
+      "node": "v24.18.0",
+      "result": "27 PASS, 0 FAIL against exact final production and test hashes"
+    },
+    "publicFixtureLocal": "BLOCKED_BY_SANDBOX_SPAWNSYNC_GIT_EPERM"
+  },
+  "knownLimitations": [
+    "Owner full regression, lint, formatting and actual authorized checkpoint remain pending parent execution.",
+    "The original root and owning W01 direction AGENTS.md were read from the isolated input; the nested rule SHA256 is 7222f96b4cd184f915339b96e13d58d7a3b042743aebf0dd6fdc6f048ae64536. No rule change was made.",
+    "No formal Verify, independent POST, archive, commit, push or actual owner checkpoint performed."
+  ],
+  "sharedWriterDispatch": "NOT_IMPLEMENTED",
+  "publication": "NOT_REQUESTED_FROM_THIS_STAGING",
+  "taskCompletionClaim": false
+}

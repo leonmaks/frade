@@ -1,0 +1,8 @@
+**AUDIT_BLOCKED.** The staged native Node 24 run reports 182/182 passing subtests, but three current scenarios lack meaningful executable assertions: FWE-004-S02 (numeric budget failure and rewrite), FWE-012-S02 (public refusal of writable-worker dispatch), and FWE-018-S01 (newcomer examples checked against CLI rules). The audit records proposed RED fixtures; it makes no production changes. Verify, POST, closure, live shared canary, and consumer adoption remain outstanding.
+
+The execution sidecar maps all 18 requirements and 46 scenarios to task IDs, assertion bodies, source hashes, and individual passing-title evidence where coverage exists. It records that 16 bootstrap titles ran twice because `bootstrap-repair.test.mjs` imports `bootstrap.test.mjs`; those are 32 passing events, not 32 distinct assertions.
+
+- [TASK-3-AUDIT.json](/mnt/e/dev/codex/frade-worker-staging/w01-task-3-audit-20261005/work/TASK-3-AUDIT.json) — SHA256 `533576efd6c3aee2fcb4b578389ceeac0164c309a141dbfedc03bc68248507a3`
+- [traceability-execution.json](/mnt/e/dev/codex/frade-worker-staging/w01-task-3-audit-20261005/work/traceability-execution.json) — SHA256 `ec958cce7a1ecf962913a59acfad585352981cbd63b3d2a86f221898f87809d5`
+
+Input bindings verified: `native-full.json` SHA256 `340416d9484a83f0e0c90d69f112b5cde50d5311a2caad2c424ee5a0cc336576`; `EXECUTION-INPUTS.json` SHA256 `aff2ad99d64103b30c5b1a55777b92aa030fb6d86f65dc63cc6ac98d86a378b7`; accepted design SHA256 `501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a`. All 48 native source hashes matched the staged bytes. No original planning traceability, production source, checklist, or Git state was changed.

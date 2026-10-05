@@ -1,0 +1,243 @@
+{
+  "atUtc": "2026-10-05T06:26:47.327Z",
+  "status": "NATIVE_CHECKS_PASS_PUBLICATION_REPAIR_PENDING",
+  "results": [
+    {
+      "label": "task32-resume-full",
+      "status": "FAIL",
+      "exitCode": 1,
+      "currentSourceDrift": [],
+      "rawSha256": "e549f80538229b43599983dc7d894fd657482d2286f1c69d1322784de7c2c3c9",
+      "command": [
+        "node",
+        "--test",
+        "tests/directions/*.test.mjs"
+      ]
+    },
+    {
+      "label": "task32-resume-lint",
+      "status": "FAIL",
+      "exitCode": 1,
+      "currentSourceDrift": [],
+      "rawSha256": "609ca8852c8b80085dd4bafdf6c568a0f78a6e925fefa22925102d284021d3a4",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "scripts/directions",
+        "tests/directions"
+      ]
+    },
+    {
+      "label": "task32-resume-format",
+      "status": "FAIL",
+      "exitCode": 1,
+      "currentSourceDrift": [],
+      "rawSha256": "993d43b17a1afddd89507c750791bf969e03159b6159a9d1b987518b1d1b300e",
+      "command": [
+        "node",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "scripts/directions",
+        "tests/directions"
+      ]
+    },
+    {
+      "label": "task32-resume-strict",
+      "status": "FAIL",
+      "exitCode": null,
+      "currentSourceDrift": [],
+      "rawSha256": "0142415556922dacc75980a493554435c3f4868927367f414a6bd1443a3b4fae",
+      "command": [
+        "openspec",
+        "validate",
+        "--all",
+        "--strict",
+        "--json"
+      ]
+    },
+    {
+      "label": "task32-resume-native-full",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "e5ee36137043fefd11ae1b998d88bbc6afb6f67a08202f5d188acc6fbe54f27a",
+      "command": [
+        "node",
+        "--test",
+        "tests/directions/*.test.mjs"
+      ]
+    },
+    {
+      "label": "task32-resume-own-lint",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "9044b1cd060315e42477b45f08f34e4e5dba85532a8dd7541b269776c2f03ef7",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "scripts/directions/*.mjs",
+        "tests/directions/*.mjs"
+      ]
+    },
+    {
+      "label": "task32-resume-own-format",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "7803519190a8b1015b6576d9c44e46041ae985b770fee5e2e64ab886f2873331",
+      "command": [
+        "node",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "scripts/directions/*.mjs",
+        "tests/directions/*.mjs",
+        "docs/engineering/templates/*.md",
+        "docs/engineering/templates/*.json"
+      ]
+    },
+    {
+      "label": "task32-resume-native-strict",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "9d6d742c78ff5b4189b2fb68e47ef1f7e2ee86bf2c91db42cdb9c376c9042acd",
+      "command": [
+        "node",
+        "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+        "validate",
+        "--all",
+        "--strict",
+        "--json"
+      ]
+    },
+    {
+      "label": "task32-resume-general-lint",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "1e05248a56eae72158efe3ec6512cb7b1b5a1cab8dd374716666254d799666b3",
+      "command": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "lint"
+      ]
+    },
+    {
+      "label": "task32-resume-general-typecheck",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "7ee2dcd875f172f71024c6bd8acb5aadb01d3d20d3b6140219e06212a902c687",
+      "command": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "typecheck"
+      ]
+    },
+    {
+      "label": "task32-resume-general-build",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "1fc5b29214306f6d4410ead7dd65c374d92213e8f87f12ba0e6a2ec6e45ae02d",
+      "command": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "build"
+      ]
+    },
+    {
+      "label": "task32-resume-boundary-tests",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "7b36da14ad707820dcb0c40722ae8447c825d25d9166ee3abffa1ed75a68c25f",
+      "command": [
+        "node",
+        "--test",
+        "tests/contract/*.test.mjs"
+      ]
+    },
+    {
+      "label": "task32-resume-boundary-checks",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "2923d2ff92019d7050be827dcc154229b7691e5606135c46811b8be1d8c1a581",
+      "command": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "check:boundaries"
+      ]
+    },
+    {
+      "label": "task32-resume-content",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "55e53b9d876bafee1c3508b06ca84e938e43e8ed31c84fd24760b22e75be79eb",
+      "command": [
+        "node",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task31-content-20261005.mjs"
+      ]
+    },
+    {
+      "label": "task32-resume-integrity",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "ee10879befc6c117674f0cf399ebbb355be5b29e288361a8c4fabae14299d0ce",
+      "command": [
+        "node",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task27-resume-integrity-20261005.mjs"
+      ]
+    },
+    {
+      "label": "task32-resume-owner-replay",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "cb80b14ceb2af5f2bd8c500ed9c7cf32f21d9814f88e8db6b875a879f28b9568",
+      "command": [
+        "node",
+        "--test",
+        "tests/directions/w01-origin-native.replay.mjs"
+      ]
+    },
+    {
+      "label": "task32-resume-discovery",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "e167535fdfc878a703262ff9c652778bd879b978864927f1c4a7b6c07e5ac1fa",
+      "command": [
+        "node",
+        "E:/dev/codex/frade/.git/frade-workflow/releases/a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0/scripts/agent-review/cli.mjs",
+        "status"
+      ]
+    },
+    {
+      "label": "task32-resume-canary",
+      "status": "PASS",
+      "exitCode": 0,
+      "currentSourceDrift": [],
+      "rawSha256": "d8851a1e1d4ed31b1dd8ab12b69d8d5f77ebf0b2de193d18afedf7c38a6a22b0",
+      "command": [
+        "node",
+        "E:/dev/codex/frade/.git/frade-workflow/releases/a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0/scripts/agent-review/cli.mjs",
+        "probe",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task32-shared-probe-request2-20261005.json"
+      ]
+    }
+  ],
+  "invalidInvocationRCA": {
+    "classification": "ENVIRONMENT",
+    "sandbox": "Restricted Windows realpath EPERM; resolved by actual native run189/189",
+    "immutableFixtureLint": "Recursive directory arguments accidentally included byte-pinned historical shared runner and raw RED JSON; declared original W01 glob invocations pass without changing those artifacts",
+    "strictInvocation": "spawnSync cannot directly execute the Windows openspec CMD shim; invoked its Node bin entry, strict16/16 PASS"
+  },
+  "tasks31and32": "INCOMPLETE",
+  "remainingBlocker": "Publication sensitive scanner flags benign Object.freeze declaration; exact gpt-6-sol/high repair initial stream BLOCKED_CAPACITY; same-pair retry running",
+  "readyForVerify": false
+}

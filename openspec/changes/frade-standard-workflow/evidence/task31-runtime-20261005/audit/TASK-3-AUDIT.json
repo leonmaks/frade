@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "role": {
+    "stage": "W01",
+    "tasks": [
+      "3.1",
+      "3.2"
+    ],
+    "assignment": "tooling-tests",
+    "approvedModel": "gpt-6-sol",
+    "approvedEffort": "high",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED"
+  },
+  "status": "AUDIT_BLOCKED",
+  "reason": "Three current assertion gaps remain (FWE-004-S02, FWE-012-S02, FWE-018-S01); native full tests passing do not close all 46 scenario claims. Task 3.1 general checks, task 3.2 live shared canary/publication, and task 4.x gates remain outstanding.",
+  "inputs": {
+    "root": "../input",
+    "manifestSha256": "aff2ad99d64103b30c5b1a55777b92aa030fb6d86f65dc63cc6ac98d86a378b7",
+    "bindingsVerified": 83,
+    "allBindingsMatch": true,
+    "nativeRunSha256": "340416d9484a83f0e0c90d69f112b5cde50d5311a2caad2c424ee5a0cc336576",
+    "nativeRunSourceHashCount": 48,
+    "planningTraceabilitySha256": "b4fcb93b5d24169a5e0a024ff564325b1db74dcb24b1b3866498d6baca50989b",
+    "acceptedDesignSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+    "cumulativeDiffSha256": "ae5eb7dd913c731919cff2d2ff26ef838abdefac06bf79d2bbbd8528c374840d"
+  },
+  "currentCoverageBlockers": [
+    {
+      "scenario": "FWE-004-S02",
+      "classification": "TEST/ABSTRACTION_BOUNDARY",
+      "source": [
+        "scripts/directions/status.mjs:337",
+        "docs/engineering/templates/task-2.1-core-contract.md:13",
+        "tests/directions/status.test.mjs:249"
+      ],
+      "rootCause": "Approved numeric budgets are per owning contract; current status explicitly emits NO_VERIFIED_LIMIT and no test verifies an over-budget measurement stays FAIL after a proposed budget rewrite.",
+      "proposedREDFixture": "In a disposable direction with an independently hashed approved limit L and current measured value L+1, present a check receipt claiming PASS; assert the trusted check boundary/status rejects acceptance and a changed limit hash invalidates the old approval. Obtain an actual approved limit before writing this fixture; no arbitrary W01 threshold."
+    },
+    {
+      "scenario": "FWE-012-S02",
+      "classification": "TEST",
+      "source": [
+        "scripts/directions/cli.mjs:13",
+        "scripts/directions/cli.mjs:28",
+        "tests/directions/roles.test.mjs:322"
+      ],
+      "rootCause": "The CLI omits a writer-dispatch verb and documentation states NOT_IMPLEMENTED, but no direct public CLI test asserts a writer request cannot reuse read-only review transport.",
+      "proposedREDFixture": "Invoke the copied public CLI in a disposable Git fixture with writer-dispatch request/role; assert exit 2, status NOT_IMPLEMENTED or BLOCKED, no review runner call, no files/index/HEAD changed."
+    },
+    {
+      "scenario": "FWE-018-S01",
+      "classification": "TEST/DOCUMENTATION",
+      "source": [
+        "docs/engineering/newcomer-guide.md:1",
+        "scripts/directions/cli.mjs:13",
+        "tests/directions/bootstrap.test.mjs:180"
+      ],
+      "rootCause": "The guide describes commands and responsibilities, while tests verify command behavior separately; no assertion binds documented syntax and warning to actual public CLI argument rules.",
+      "proposedREDFixture": "Parse guide command examples, substitute paths in a disposable registered owner, invoke plan/create/check/status with exact required absolute JSON arguments and assert expected JSON shape; assert guide includes human decision boundary and NOT_DEPLOYED_W01_CLOSURE_PENDING. Qualitative newcomer comprehension remains a human review."
+    }
+  ],
+  "examplesAudit": {
+    "cliGrammar": {
+      "source": "scripts/directions/cli.mjs:13",
+      "planCreateCheck": "one absolute JSON path, no extras",
+      "status": "absolute manifest plus optional --write",
+      "review": "absolute manifest, literal PRE|POST, absolute external request JSON; request.phase must match",
+      "checkpoint": "absolute manifest plus absolute event JSON",
+      "publish": "absolute checkpoint receipt JSON only",
+      "unsupported": "NOT_IMPLEMENTED with exit 2",
+      "blocked": "exit 2",
+      "fail": "exit 1"
+    },
+    "guide": {
+      "source": "docs/engineering/newcomer-guide.md",
+      "findings": [
+        "Uses absolute JSON path and separate read-only root-loader, consistent with CLI argument guard",
+        "States W01 controls not deployed, writer dispatch NOT_IMPLEMENTED, backend NOT_CONFIRMED, remote CI/protection unobserved",
+        "Human material decisions and no automatic main merge are explicit"
+      ],
+      "limitation": "The guide lists verbs without executable complete sample request or fixture grant; task 2.3 template supplies create request and external grant contract."
+    },
+    "bootstrap": {
+      "source": "docs/engineering/templates/task-2.3-bootstrap.md",
+      "actualControl": "tests/directions/bootstrap.test.mjs:180-330 and bootstrap-repair.test.mjs:26-260 exercise temporary Git plan/create/check, external exact grant, collision and retry",
+      "limitation": "Example request contains placeholders and pending publication authorization; runnable only after replacing values and controller grant/service are supplied."
+    },
+    "review": {
+      "source": "docs/engineering/templates/task-2.5-review.md",
+      "actualControl": "tests/directions/review.test.mjs:199-1064 and review-terminal.test.mjs:35-690 exercise fixture packet and raw reception",
+      "limitation": "Disposable branded transport does not attest live confined shared runner, fresh canary, actual backend or independent final POST."
+    },
+    "status": {
+      "source": "docs/engineering/templates/task-2.4-status.md",
+      "actualControl": "tests/directions/status.test.mjs:118-682 exercise actual temporary Git registered owner, freeze, eight headings, stale HEAD, legacy history, panel receipt",
+      "limitation": "Public CLI supplies no trusted evidence boundary; preview does not accept requirements or assert panel visibility."
+    },
+    "publication": {
+      "source": "docs/engineering/templates/task-2.6-publication.md",
+      "actualControl": "tests/directions/publication.test.mjs:225-721 use controller-branded temporary bare remote and check exact ref/SHA/other refs",
+      "limitation": "External controller authority/admission and actual GitHub remote publication belong to parent; local bare remote PASS is not shared stream or live production push."
+    },
+    "safeFixtureReplay": {
+      "status": "PROPOSED_NOT_EXECUTED_HERE",
+      "reason": "This input tree is read-only and Linux Node 18/sandbox Git EPERM cannot reproduce native Windows Node 24 full run.",
+      "commands": [
+        "cd E:/dev/codex/frade-worktrees/frade-standard-workflow",
+        "node --version",
+        "node --test tests/directions/bootstrap.test.mjs tests/directions/bootstrap-repair.test.mjs tests/directions/status.test.mjs tests/directions/review.test.mjs tests/directions/review-terminal.test.mjs tests/directions/publication.test.mjs",
+        "node --test tests/directions/*.test.mjs"
+      ],
+      "preconditions": "Run in the authorized native Node 24 owner checkout. Tests create disposable local Git owners and bare remotes; they do not call live reviewer transport or push the actual GitHub destination. Exact public CLI argument forms are specified in cliGrammar above; live commands require real external controller authority and are not fixture replay."
+    }
+  },
+  "boundaryAudit": {
+    "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+    "approvedW01Remote": "git@github.com:leonmaks/frade.git",
+    "approvedW01Ref": "refs/heads/codex/frade-standard-workflow",
+    "publishedTask27": "c6ae5143 (reported input; parent verifies remote SHA)",
+    "scope": "Engineering controls/docs only; product, vendor, lockfile, Routing/UI/Repo Core and other owners excluded",
+    "cumulativeDiff": "Input cumulative-diff lists root AGENTS additive section, engineering docs/controls/tests/CI/package entries and W01 evidence; no visible product package source edits. Full changed-path and frozen hash proof is parent task 3.1.",
+    "acceptedPolicy": "D03 direct reply Принято. Продолжай. and separate model/destination approvals; no approval for skipping PRE/RED/checks/Verify/POST, main merge or foreign adoption",
+    "sharedRelease": "v1.1 immutable; no new supplier release or live canary asserted by this audit",
+    "remoteCI": "NOT_RUN",
+    "branchProtection": "NOT_CONFIGURED",
+    "productCheckAll": "NOT_RUN",
+    "consumers": "NOT_STARTED",
+    "writerDispatch": "NOT_IMPLEMENTED",
+    "originalPlanningTraceability": "UNCHANGED"
+  },
+  "integrity": {
+    "nativeRun": "182/182 reported PASS, 0 fail, 0 skipped, exit 0, Node v24.18.0 win32",
+    "duplicateTitles": "16 bootstrap titles each execute twice due bootstrap-repair import; count as 32 passing events, not 32 distinct assertions",
+    "sourceHashes": "All staged EXECUTION-INPUTS bindings and native listed source hashes checked byte-for-byte",
+    "testsWeakening": "No existing input test source modified here; cumulative diff only addition of tests/directions files; no skip/only directives found in supplied test bodies by audit search. Earlier RED artifacts are retained in W01 evidence, not independently rerun here.",
+    "limitation": "Native output is a captured parent record; this role cannot independently attest original process execution, live common confinement or actual model backend."
+  },
+  "futureGates": [
+    {
+      "task": "3.1",
+      "status": "OUTSTANDING",
+      "detail": "Parent executes applicable general lint/type/build/boundaries, strict OpenSpec, formatting/content/link/schema/frozen/hash checks and resolves failures"
+    },
+    {
+      "task": "3.2",
+      "status": "OUTSTANDING",
+      "detail": "Parent checks fresh shared discovery/canary, exact publication and verified remote SHA"
+    },
+    {
+      "task": "4.1",
+      "status": "NOT_RUN",
+      "detail": "Formal independent OpenSpec Verify"
+    },
+    {
+      "task": "4.2",
+      "status": "NOT_RUN",
+      "detail": "Fresh independent W01 POST"
+    },
+    {
+      "task": "4.3",
+      "status": "NOT_RUN",
+      "detail": "Conditional reviewed supplier publication; v1.1 remains immutable"
+    },
+    {
+      "task": "4.4",
+      "status": "NOT_RUN",
+      "detail": "Exact W01 sync/archive/closure after barriers"
+    }
+  ],
+  "sidecar": "traceability-execution.json"
+}

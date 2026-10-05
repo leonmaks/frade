@@ -1,0 +1,31 @@
+{
+  "status": "ELIGIBLE_ROLE_OUTPUT_IMPORTED_PENDING_OWNER_CHECKS",
+  "model": "gpt-6-sol",
+  "effort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "inputBindingsVerified": 93,
+  "test": {
+    "path": "tests/directions/budget-boundary.test.mjs",
+    "sha256": "d627f750b781c2fa5987d234f4da0cddc0e1241e37c696a7e55b15c2e263a51b"
+  },
+  "productionSemanticsUnchanged": true,
+  "formatted": [
+    {
+      "path": "scripts/directions/bootstrap.mjs",
+      "originalSha256": "3715d77fd97f924fd8cd02945dd35e1479ce277376097a6033244648826cf34d",
+      "currentSha256": "dc6844ce8dca197cf5a4bcb701c39074e159cc3d23b8ab21dbb13f66d415913b",
+      "identicalAST": true
+    }
+  ],
+  "bindingRCA": {
+    "classification": "INTEGRATION",
+    "cause": "Worker interpreted work/BUDGET-TEST-READY.json from an already nested work cwd. Native controller read base/work/BUDGET-TEST-READY.json, a separate controller handoff.",
+    "actualControllerHandoffSha256": "f27628317d2e8e539a1d1317b770b360b8b602ac43675d0fb19aba96f2ee797f",
+    "workerReadySha256": "af2bb9ec1e5dcc68c87241c2720481526f3ccbd30af8fdf2a397d04d4d9c6aeb",
+    "nativeReceiptClaimSha256": "f27628317d2e8e539a1d1317b770b360b8b602ac43675d0fb19aba96f2ee797f",
+    "actualConsumedHandoffMatches": true,
+    "rawWorkerFindingPreserved": true
+  },
+  "formalVerify": "NOT_RUN",
+  "POST": "NOT_RUN"
+}

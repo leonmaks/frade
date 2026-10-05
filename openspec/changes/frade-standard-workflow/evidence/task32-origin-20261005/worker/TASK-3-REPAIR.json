@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "stage": "W01",
+  "tasks": ["3.1", "3.2"],
+  "assignment": "tooling-tests",
+  "approvedModel": "gpt-6-sol",
+  "approvedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "status": "REPAIR_STAGED_PARENT_GATES_REQUIRED",
+  "rca": {
+    "classification": "STATE_TRANSITION/INTEGRATION",
+    "defect": "Public check/status required new-owner bootstrap intent and completion journals for the manually established W01 supplier. W01 was already isolated, registered and admitted by D03 and formal PRE before those controls existed. Its accepted policy artifact is shared-policy/agent-workflow.md, not the bootstrap seed artifact shared-policy.md.",
+    "repair": "Only when both origin journals are absent, admit the exact registered historical W01 owner after checking its immutable original baseline, approved planning and PRE checkpoint ancestry, current verified common release, manifest scope/roles/publication bindings and byte-pinned D03, user decisions, repository audit, accepted design and formal PRE. All other missing origins remain blocked; partial or malformed journals remain blocked; bootstrap-created owners keep the original exact-origin path.",
+    "noSemanticExpansion": "No bootstrap journal fabricated; no original baseline, policy, role, spec, model, foreign owner, closure or shared supplier change"
+  },
+  "actualREDsourceBinding": {
+    "receipt": "../NATIVE-RED.json",
+    "receiptSha256": "15f3cd4806f645418ec915c456f7589036e3108f0d8a0b911ca5164e6204786f",
+    "testReady": "TEST-READY.json",
+    "testReadySha256": "1fde9e5d5c0629b7e487cf4a5b3a54a77c37ede14e6b654299dcc306e753543a",
+    "node": "v24.18.0 win32",
+    "result": "19 tests; 18 PASS, 1 intended RED: actual registered W01 public check returned BLOCKED CHECK ORIGIN_MISSING_LEGACY_ADOPTION_REQUIRED; production original hashes matched input",
+    "initialInvalidRunRetained": "../NATIVE-RED-FIRST.json",
+    "replay": "../NATIVE-RED-REPLAY.json"
+  },
+  "eligibleOutputFilesSha256": {
+    "scripts/directions/bootstrap.mjs": "3715d77fd97f924fd8cd02945dd35e1479ce277376097a6033244648826cf34d",
+    "tests/directions/w01-origin-admission.test.mjs": "66d3ffee4b4b78e4152ed168e4b5bc0f4d92bbdf507dc7f620a2749e2eb3fd1e",
+    "tests/directions/w01-origin-native.replay.mjs": "e3bfccd4adfa99a90ffc739b446d3c1ea4b37208218d0063564ae4a8adcfac29",
+    "tests/directions/authority-fixtures/w01-manifest.snapshot": "1deaa13693e65249eed27d2cd4399b0c389062e9c324b77903da8602a3fcf82b",
+    "tests/directions/authority-fixtures/w01-audit.snapshot": "7568e25c4d1d0692f961c0cb589af890df269c4b7d77af6ebf6ba25c0440bae0",
+    "tests/directions/authority-fixtures/w01-pre.snapshot": "437220ab5bca7e7274fa042c6b8a9508730c75bae8a0e1c7ddffa34de3b00f46"
+  },
+  "existingEvidenceFixturesReused": {
+    "tests/directions/authority-fixtures/w01-design.snapshot": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+    "tests/directions/authority-fixtures/w01-d03.snapshot": "98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239",
+    "tests/directions/authority-fixtures/w01-decisions.snapshot": "126589d990e2e44b04efe8825b5ec4d90582205ba6c729375528c383ccbaf186"
+  },
+  "checks": {
+    "local": [
+      "node --check scripts/directions/bootstrap.mjs PASS",
+      "node --check tests/directions/w01-origin-admission.test.mjs PASS",
+      "node --check tests/directions/w01-origin-native.replay.mjs PASS",
+      "Portable W01 pure evidence test PASS under direct Linux Node 18 execution; public CLI child process tests blocked locally by sandbox EPERM"
+    ],
+    "nativeBeforeRepair": "Original bootstrap suite and writer/guide controls PASS in parent native RED receipt",
+    "nativeAfterRepair": "NOT_RUN_PENDING_PARENT_IMPORT_AND_GATES",
+    "actualPublicCheckStatusAfterImport": "NOT_RUN"
+  },
+  "coverage": {
+    "FWE-012-S02": "Direct public unsupported writer CLI returns NOT_IMPLEMENTED exit 2; disposable Git fixture checks files, index and HEAD unchanged; pre-fix native PASS",
+    "FWE-018-S01": "Guide lifecycle, human boundary and NOT_DEPLOYED claim bound to public CLI argument guards and bootstrap example; pre-fix native PASS. Human comprehension remains a human review.",
+    "FWE-004-S02": "OPEN_ABSTRACTION_GAP: no owning approved numeric budget contract/hash and no trusted check evaluator that compares measured raw values to that contract. A future first failing test should use a controller-approved, independently hashed synthetic contract L, verify measurement L+1 stays FAIL, and reject an approval-hash rewrite. Do not add a W01-wide threshold or implement comparison in status rendering."
+  },
+  "parentGates": [
+    "Run native Node 24 portable directions regression and separately invoke w01-origin-native.replay.mjs against registered owner after approved import",
+    "Run lint/format/strict OpenSpec/content/link/schema/frozen tree checks and current audit",
+    "Verify actual public check/status and current shared canary/publication; preserve raw results",
+    "Formal Verify, independent POST, conditional release and closure remain separate future gates"
+  ],
+  "writerDispatcher": "NOT_IMPLEMENTED",
+  "publication": "NOT_REQUESTED_FROM_THIS_STAGING",
+  "taskCompletionClaim": false
+}

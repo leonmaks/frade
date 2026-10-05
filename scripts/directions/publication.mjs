@@ -405,13 +405,19 @@ function statusPaths(root, commands) {
 }
 function sensitive(bytes, path) {
   const s = bytes.toString('utf8')
-  if (
-    /\.(?:pem|key|p12|pfx)$|(?:^|\/)\.env(?:\.|$)/i.test(path) ||
-    /-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----|(?:password|secret|api[_-]?key|token)\s*[:=]\s*[^\s"']{4,}/i.test(
-      s,
-    )
-  )
-    throw Error('SECRET_CANDIDATE: ' + path)
+  const prohibitedPath = /\.(?:pem|key|p12|pfx)$|(?:^|\/)\.env(?:\.|$)/i.test(path)
+  const privateKey = /-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----/i.test(s)
+  const assignments =
+    /(?:^|[^\w$])(?:password|secret|api[_-]?key|token)["']?\s*[:=]\s*("[^"\r\n]*"|'[^'\r\n]*'|`[^`\r\n]*`|[^\s"'`;,\r\n]+)/gim
+  const credential = [...s.matchAll(assignments)].some((match) => {
+    const value = match[1]
+    const quoted = /^["'`]/.test(value)
+    if (value.length - (quoted ? 2 : 0) < 4) return false
+    if (quoted) return true
+    if ('{[(/'.includes(value[0])) return false
+    return !/^[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*\(/.test(value)
+  })
+  if (prohibitedPath || privateKey || credential) throw Error('SECRET_CANDIDATE: ' + path)
 }
 function receiptDir(control, id) {
   const base = join(control, 'publication')

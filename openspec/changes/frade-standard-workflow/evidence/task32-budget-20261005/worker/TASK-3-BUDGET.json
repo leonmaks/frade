@@ -1,0 +1,2982 @@
+{
+  "schemaVersion": 1,
+  "stage": "W01",
+  "tasks": [
+    "3.1",
+    "3.2"
+  ],
+  "assignment": "tooling-tests",
+  "approvedModel": "gpt-6-sol",
+  "approvedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "status": "NATIVE_EXECUTION_OBSERVED_RECEIPT_READY_HASH_MISMATCH",
+  "eligibleOutputFilesSha256": {
+    "tests/directions/budget-boundary.test.mjs": "d627f750b781c2fa5987d234f4da0cddc0e1241e37c696a7e55b15c2e263a51b"
+  },
+  "sourceBindings": {
+    "acceptedDesignSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+    "originalPlanningTraceability": {
+      "path": "../input/openspec/changes/frade-standard-workflow/traceability.json",
+      "sha256": "b4fcb93b5d24169a5e0a024ff564325b1db74dcb24b1b3866498d6baca50989b",
+      "unchanged": true
+    },
+    "priorAudit": {
+      "path": "../input/prior-audit/traceability-execution.json",
+      "sha256": "ec958cce7a1ecf962913a59acfad585352981cbd63b3d2a86f221898f87809d5",
+      "preserved": true
+    },
+    "originalProductionHashes": {
+      "scripts/directions/evidence.mjs": "34982bee69bf397a42450c1c5f239c567a9a61da59dd025710d6e05cbe6ea06a",
+      "scripts/directions/status.mjs": "c0a83640e7b9bfa27cb4fbf91a6475d27f9f5295c55cd7b17ec3477a1bd69a67",
+      "scripts/directions/lifecycle.mjs": "8893ece1fe454fe8829cf0b9013304135db2faf38dc5c3f4a0ba4aa1e19fe8ed",
+      "scripts/directions/contracts.mjs": "50e1efe38d9e906a6b0f577138baa9c107ef1f5349c8f6e2c5c85b59ab0ae367",
+      "scripts/directions/bootstrap.mjs": "3715d77fd97f924fd8cd02945dd35e1479ce277376097a6033244648826cf34d"
+    },
+    "testHash": "d627f750b781c2fa5987d234f4da0cddc0e1241e37c696a7e55b15c2e263a51b",
+    "testReady": {
+      "path": "work/BUDGET-TEST-READY.json",
+      "rawSha256": "af2bb9ec1e5dcc68c87241c2720481526f3ccbd30af8fdf2a397d04d4d9c6aeb",
+      "beforeReceiptClaimedSha256": "f27628317d2e8e539a1d1317b770b360b8b602ac43675d0fb19aba96f2ee797f",
+      "match": false
+    },
+    "allOriginalProductionHashes": {
+      "scripts/directions/bootstrap.mjs": "3715d77fd97f924fd8cd02945dd35e1479ce277376097a6033244648826cf34d",
+      "scripts/directions/check-applicability.mjs": "4a7447a54137a5a5d6501ce50b2cc14b0c1307910a7f2115606efbaf77b66bac",
+      "scripts/directions/cli.mjs": "ab694f3fb2aa44d089706fb7c758cde83eaa145543bb1e321a1b521d007da25a",
+      "scripts/directions/contracts.mjs": "50e1efe38d9e906a6b0f577138baa9c107ef1f5349c8f6e2c5c85b59ab0ae367",
+      "scripts/directions/evidence.mjs": "34982bee69bf397a42450c1c5f239c567a9a61da59dd025710d6e05cbe6ea06a",
+      "scripts/directions/lifecycle.mjs": "8893ece1fe454fe8829cf0b9013304135db2faf38dc5c3f4a0ba4aa1e19fe8ed",
+      "scripts/directions/publication.mjs": "cb7deaa5aa43bde181d52085c4cd50e2b5652e4cb42307bf181debf626947559",
+      "scripts/directions/review-child.mjs": "a8833683101c62ce4481b9304dec3ed54a487e90c75a4ed829a05fd6939f02dd",
+      "scripts/directions/review.mjs": "3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa",
+      "scripts/directions/roles.mjs": "9fb5da92a87fc9fd173765857f61c36fcd4855bf572bd74f7145f4efbd4f2341",
+      "scripts/directions/root-loader.mjs": "80ed28bd74e8d92c24608316d20ea7c0662dd372b518993b2cb1596bbe4f18d2",
+      "scripts/directions/scope.mjs": "199dcb887c35111cf775a6af5f2d8324760ca0127540233181cf4d024d64f3ce",
+      "scripts/directions/status.mjs": "c0a83640e7b9bfa27cb4fbf91a6475d27f9f5295c55cd7b17ec3477a1bd69a67"
+    },
+    "allOriginalProductionHashesStillMatch": true,
+    "existingHistoricalRepairUnchanged": {
+      "scripts/directions/bootstrap.mjs": "3715d77fd97f924fd8cd02945dd35e1479ce277376097a6033244648826cf34d",
+      "tests/directions/w01-origin-admission.test.mjs": "66d3ffee4b4b78e4152ed168e4b5bc0f4d92bbdf507dc7f620a2749e2eb3fd1e",
+      "tests/directions/w01-origin-native.replay.mjs": "e3bfccd4adfa99a90ffc739b446d3c1ea4b37208218d0063564ae4a8adcfac29"
+    }
+  },
+  "beforeTestRawReceipt": {
+    "path": "../NATIVE-BUDGET-BEFORE.json",
+    "sha256": "8b6d9e007ba3eece87d51fe23fb3832378542ac548408dc5b6f189decd6e4682",
+    "node": "v24.18.0",
+    "platform": "win32",
+    "exitCode": 0,
+    "status": "GREEN_BEFORE_REPAIR",
+    "passed": 4,
+    "failed": 0,
+    "productionUnchangedBeforeTest": true,
+    "testReadySha256": "f27628317d2e8e539a1d1317b770b360b8b602ac43675d0fb19aba96f2ee797f",
+    "testReadyActualRawSha256": "af2bb9ec1e5dcc68c87241c2720481526f3ccbd30af8fdf2a397d04d4d9c6aeb",
+    "testReadyHashMatches": false,
+    "bindingIssue": "Receipt testReadySha256 does not equal the raw test-ready file hash; parent must correct or explain the receipt chain before this native run is fully bound."
+  },
+  "coverageDetermination": {
+    "classification": "TEST",
+    "productionFixRequired": false,
+    "FWE004S02": "EXECUTED_CONTROL_SYNTHETIC_FIXTURE_ONLY",
+    "statement": "Controller pins a synthetic numeric contract hash and raw measurement before reporter candidate evaluation. Existing trusted evidence callback rejects L+1, candidate PASS, budget/approval rewrite and stale source/config across common check, acceptance, status and stage barriers. No real Frade numeric acceptance is claimed.",
+    "remaining": "Formal Verify, independent POST, task 3.1 general checks, task 3.2 live shared canary/publication and real owning-domain numeric acceptance remain separate.",
+    "nativeProofLimit": "Native test and production sourceHashes match current bytes and four test events passed; receipt test-ready hash mismatch prevents a fully bound approval claim."
+  },
+  "auditExecutionOverlay": {
+    "basis": {
+      "priorAudit": "../input/prior-audit/traceability-execution.json",
+      "planningTraceabilityUnchanged": true,
+      "currentNativeFull": {
+        "path": "../input/native-full.json",
+        "sha256": "4470b5a6fa57438c319064a15fc8205adb1caa3ff5036e070fbf9a3e23436723",
+        "reportedTests": 185,
+        "parsedPassingEvents": 185,
+        "uniqueTitles": 169,
+        "exitCode": 0,
+        "status": "PASS",
+        "sourceHashCount": 53
+      },
+      "originReplay": {
+        "path": "../input/origin-replay.json",
+        "sha256": "475e3bf63b1cc85083a0f44220e65dc9a62ae37f342396b4472e7349159cf853",
+        "passed": 1,
+        "exitCode": 0,
+        "status": "PASS"
+      },
+      "budgetBefore": {
+        "path": "../NATIVE-BUDGET-BEFORE.json",
+        "sha256": "8b6d9e007ba3eece87d51fe23fb3832378542ac548408dc5b6f189decd6e4682",
+        "passed": 4,
+        "exitCode": 0,
+        "status": "GREEN_BEFORE_REPAIR",
+        "testReadyHashMatches": false
+      }
+    },
+    "duplicateFullSuiteTitles": [
+      {
+        "title": "FWE-003-A01 plan previews exact owner and files without writing",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "FWE-003-A02 same request returns owner; changed request and foreign branch blocks",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "FWE-003-A03 retained intent recovers a registered partial worktree",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "FWE-003-A04 rejects foreign common, traversal, link and case collisions",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "FWE-003-A05 request self-approval and policy drift cannot authorize create",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "FWE-001-A03 check binds manifest to owner and rejects malformed state",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "I23-WIN manifest boundary accepts native and canonical owner paths only",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "I23-07 installed service cannot create without an external exact request grant",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "I23-07 grant for alpha rejects changed identity, title, goal, outcomes, baseline and parent",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "I23-07 linked or forged grant cannot approve creation",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "I23-08 retained origin fixes original baseline after branch progress",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "I23-08 check requires both exact retained origin records",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      },
+      {
+        "title": "I23-08 foreign malformed manifest is rejected as unowned before JSON parsing",
+        "occurrences": 2,
+        "interpretation": "Repeated executions of the same declaration; not separate distinct assertions."
+      }
+    ],
+    "counts": {
+      "requirements": 18,
+      "scenarios": 46,
+      "executedControlScenarios": 37,
+      "partialScenarios": 7,
+      "notCoveredScenarios": 0,
+      "notRunScenarios": 2,
+      "acceptedRequirements": 0
+    },
+    "requirements": [
+      {
+        "id": "FWE-001",
+        "title": "FWE-001 Direction ownership",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1",
+          "4.4"
+        ],
+        "scenarioIds": [
+          "FWE-001-S01",
+          "FWE-001-S02",
+          "FWE-001-S03",
+          "FWE-001-S04"
+        ],
+        "assessment": "EXECUTED_CONTROLS_ONLY",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.4",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-002",
+        "title": "FWE-002 Uniform intake and research",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-002-S01",
+          "FWE-002-S02"
+        ],
+        "assessment": "NOT_FULLY_ACCEPTED",
+        "outstandingScenarioIds": [
+          "FWE-002-S01"
+        ],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-003",
+        "title": "FWE-003 Safe repeatable bootstrap",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-003-S01",
+          "FWE-003-S02"
+        ],
+        "assessment": "EXECUTED_CONTROLS_ONLY",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-004",
+        "title": "FWE-004 Requirements and executable traceability",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-004-S01",
+          "FWE-004-S02"
+        ],
+        "assessment": "NOT_FULLY_ACCEPTED",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-005",
+        "title": "FWE-005 Sequential stage barriers",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-005-S01",
+          "FWE-005-S02",
+          "FWE-005-S03"
+        ],
+        "assessment": "EXECUTED_CONTROLS_ONLY",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-006",
+        "title": "FWE-006 STOP and root cause integrity",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-006-S01",
+          "FWE-006-S02"
+        ],
+        "assessment": "NOT_FULLY_ACCEPTED",
+        "outstandingScenarioIds": [
+          "FWE-006-S02"
+        ],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-007",
+        "title": "FWE-007 Applicable contract preservation",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-007-S01",
+          "FWE-007-S02"
+        ],
+        "assessment": "EXECUTED_CONTROLS_ONLY",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-008",
+        "title": "FWE-008 Owner-controlled adoption and integration",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-008-S01",
+          "FWE-008-S02",
+          "FWE-008-S03"
+        ],
+        "assessment": "NOT_FULLY_ACCEPTED",
+        "outstandingScenarioIds": [
+          "FWE-008-S01",
+          "FWE-008-S02"
+        ],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-009",
+        "title": "FWE-009 Exact model resolution",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "scenarioIds": [
+          "FWE-009-S01",
+          "FWE-009-S02",
+          "FWE-009-S03"
+        ],
+        "assessment": "EXECUTED_CONTROLS_ONLY",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-010",
+        "title": "FWE-010 Automatic independent review",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "scenarioIds": [
+          "FWE-010-S01",
+          "FWE-010-S02",
+          "FWE-010-S03"
+        ],
+        "assessment": "NOT_FULLY_ACCEPTED",
+        "outstandingScenarioIds": [
+          "FWE-010-S01",
+          "FWE-010-S02"
+        ],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-011",
+        "title": "FWE-011 Complete immutable review reception",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "scenarioIds": [
+          "FWE-011-S01",
+          "FWE-011-S02",
+          "FWE-011-S03"
+        ],
+        "assessment": "NOT_FULLY_ACCEPTED",
+        "outstandingScenarioIds": [
+          "FWE-011-S02"
+        ],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-012",
+        "title": "FWE-012 Separate requested and actual execution",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "scenarioIds": [
+          "FWE-012-S01",
+          "FWE-012-S02"
+        ],
+        "assessment": "NOT_FULLY_ACCEPTED",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-013",
+        "title": "FWE-013 Uniform status projection",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-013-S01",
+          "FWE-013-S02"
+        ],
+        "assessment": "NOT_FULLY_ACCEPTED",
+        "outstandingScenarioIds": [
+          "FWE-013-S01"
+        ],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-014",
+        "title": "FWE-014 Truthful source-bound metrics",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-014-S01",
+          "FWE-014-S02",
+          "FWE-014-S03"
+        ],
+        "assessment": "EXECUTED_CONTROLS_ONLY",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-015",
+        "title": "FWE-015 Event-driven status freshness",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-015-S01",
+          "FWE-015-S02"
+        ],
+        "assessment": "EXECUTED_CONTROLS_ONLY",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-016",
+        "title": "FWE-016 Durable checkpoint cadence",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-016-S01",
+          "FWE-016-S02",
+          "FWE-016-S03"
+        ],
+        "assessment": "EXECUTED_CONTROLS_ONLY",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-017",
+        "title": "FWE-017 Authorized verified publication",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-017-S01",
+          "FWE-017-S02",
+          "FWE-017-S03"
+        ],
+        "assessment": "EXECUTED_CONTROLS_ONLY",
+        "outstandingScenarioIds": [],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-018",
+        "title": "FWE-018 Minimal human decision boundary and onboarding",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "scenarioIds": [
+          "FWE-018-S01",
+          "FWE-018-S02"
+        ],
+        "assessment": "NOT_FULLY_ACCEPTED",
+        "outstandingScenarioIds": [
+          "FWE-018-S02"
+        ],
+        "futureGates": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "FWE-001-S01",
+        "title": "FWE-001-S01 Reject a foreign checkout",
+        "requirementId": "FWE-001",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/root-loader.test.mjs",
+            "fullTestTitle": "copied public loader in a foreign Git common rejects even a valid alpha fixture",
+            "declarationLine": 329,
+            "sourceSha256": "e1625b67b06072e60a561eed5d0c3c5038f7d705fe9baebc70ef0aca5e63c356",
+            "concreteAssertionBehavior": "asserts foreign common loader returns blocked despite a copied valid-looking owner fixture",
+            "assertionExpressionsSample": [
+              "assert.equal(run.error, undefined, run.error?.message)",
+              "assert.equal(run.signal, null)",
+              "assert.equal(run.status, 2, run.stderr)",
+              "assert.equal(result.code, 'PUBLIC_COMMON')",
+              "assert.equal(result.detail, 'FOREIGN_PUBLIC_COMMON')"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ copied public loader in a foreign Git common rejects even a valid alpha fixture",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/bootstrap.test.mjs",
+            "fullTestTitle": "FWE-003-A04 rejects foreign common, traversal, link and case collisions",
+            "declarationLine": 298,
+            "sourceSha256": "e0529db1eb462fb8e2c6ff6bbda438f031a9fd6c482a9864257eb0fca9e9cc25",
+            "concreteAssertionBehavior": "asserts foreign Git common and unsafe target requests return exit 2 before owner creation",
+            "assertionExpressionsSample": [
+              "assert.equal((await invoke(f.root, 'plan', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(f.root, 'plan', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(f.root, 'plan', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(f.root, 'plan', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(f.root, 'create', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(g.root, 'create', g.requestFile)).status, 2)",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-003-A04 rejects foreign common, traversal, link and case collisions",
+              "occurrenceCount": 2,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/w01-origin-admission.test.mjs",
+            "fullTestTitle": "W01 historical evidence rejects foreign, stale and forged approvals without changing owner files",
+            "declarationLine": 43,
+            "sourceSha256": "66d3ffee4b4b78e4152ed168e4b5bc0f4d92bbdf507dc7f620a2749e2eb3fd1e",
+            "concreteAssertionBehavior": "Valid historical W01 source is admitted; foreign common/owner, stale baseline/checkpoint, forged PRE and changed decision/PRE/audit bytes are rejected.",
+            "assertionExpressionsSample": [
+              "assert.equal(verifyHistoricalW01Evidence(valid), true)",
+              "assert.throws(() => verifyHistoricalW01Evidence({ ...valid, common: foreign }), /W01_HISTORICAL_ORIGIN_MISMATCH/)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ W01 historical evidence rejects foreign, stale and forged approvals without changing owner files",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/w01-origin-native.replay.mjs",
+            "fullTestTitle": "W01 historical admission: real registered owner public check and status accept its original origin",
+            "declarationLine": 29,
+            "sourceSha256": "e3bfccd4adfa99a90ffc739b446d3c1ea4b37208218d0063564ae4a8adcfac29",
+            "concreteAssertionBehavior": "Registered W01 owner with immutable original baseline and design hash receives public check VALID and status ok on native Windows.",
+            "assertionExpressionsSample": [
+              "assert.equal(checked.status, 0)",
+              "assert.equal(checked.body.status, VALID)",
+              "assert.equal(status.body.ok, true)"
+            ],
+            "nativeRun": {
+              "record": "input/origin-replay.json",
+              "event": "✔ W01 historical admission: real registered owner public check and status accept its original origin",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-001-S02",
+        "title": "FWE-001-S02 Preserve isolated owners",
+        "requirementId": "FWE-001",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/bootstrap.test.mjs",
+            "fullTestTitle": "FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake",
+            "declarationLine": 205,
+            "sourceSha256": "e0529db1eb462fb8e2c6ff6bbda438f031a9fd6c482a9864257eb0fca9e9cc25",
+            "concreteAssertionBehavior": "asserts new registered codex branch contains committed product bytes while dirty source product.txt remains dirty and untransferred",
+            "assertionExpressionsSample": [
+              "assert.equal(result.status, 0, JSON.stringify(result.body))",
+              "assert.equal(git(owner, 'branch', '--show-current'), 'codex/alpha-direction')",
+              "assert.equal(readFileSync(join(owner, 'product.txt'), 'utf8'), 'committed\\n')",
+              "assert.match(readFileSync(join(owner, 'AGENTS.md'), 'utf8'), /Root rules/)",
+              "assert.match(readFileSync(join(owner, 'AGENTS.md'), 'utf8'), /direction.json/)",
+              "assert.equal(manifest.originalBaseline, f.baseline)",
+              "assert.equal(manifest.owner.gitCommon, f.common)",
+              "assert.equal(manifest.scope.closure.enabled, false)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake",
+              "occurrenceCount": 2,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-002-S01",
+        "title": "FWE-002-S01 Open a direction",
+        "requirementId": "FWE-002",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "PARTIAL",
+        "scopeNote": "Seeded intake/research fields are checked; actual human authorization remains pending in the fixture and must be supplied separately.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/bootstrap.test.mjs",
+            "fullTestTitle": "FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake",
+            "declarationLine": 205,
+            "sourceSha256": "e0529db1eb462fb8e2c6ff6bbda438f031a9fd6c482a9864257eb0fca9e9cc25",
+            "concreteAssertionBehavior": "asserts intake and research seed, unknowns, original baseline and pending role/implementation state are written in isolated owner",
+            "assertionExpressionsSample": [
+              "assert.equal(result.status, 0, JSON.stringify(result.body))",
+              "assert.equal(git(owner, 'branch', '--show-current'), 'codex/alpha-direction')",
+              "assert.equal(readFileSync(join(owner, 'product.txt'), 'utf8'), 'committed\\n')",
+              "assert.match(readFileSync(join(owner, 'AGENTS.md'), 'utf8'), /Root rules/)",
+              "assert.match(readFileSync(join(owner, 'AGENTS.md'), 'utf8'), /direction.json/)",
+              "assert.equal(manifest.originalBaseline, f.baseline)",
+              "assert.equal(manifest.owner.gitCommon, f.common)",
+              "assert.equal(manifest.scope.closure.enabled, false)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake",
+              "occurrenceCount": 2,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-002-S02",
+        "title": "FWE-002-S02 Reject premature planning acceptance",
+        "requirementId": "FWE-002",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/contracts.test.mjs",
+            "fullTestTitle": "FWE-002-S02 unresolved acceptance blocks dependent task while independent research remains permitted",
+            "declarationLine": 217,
+            "sourceSha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182",
+            "concreteAssertionBehavior": "asserts unresolved acceptance prevents dependent implementation but leaves bounded research admissible",
+            "assertionExpressionsSample": [
+              "assert.ok(issue(validateTraceability(t, { action: 'IMPLEMENTATION' }), 'UNRESOLVED_ACCEPTANCE'))",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-002-S02 unresolved acceptance blocks dependent task while independent research remains permitted",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-003-S01",
+        "title": "FWE-003-S01 Recover a partial creation",
+        "requirementId": "FWE-003",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/bootstrap.test.mjs",
+            "fullTestTitle": "FWE-003-A03 retained intent recovers a registered partial worktree",
+            "declarationLine": 276,
+            "sourceSha256": "e0529db1eb462fb8e2c6ff6bbda438f031a9fd6c482a9864257eb0fca9e9cc25",
+            "concreteAssertionBehavior": "injects failure after worktree creation then asserts identical retry recovers one registered branch",
+            "assertionExpressionsSample": [
+              "assert.equal(failed.status, 2, JSON.stringify(failed.body))",
+              "assert.equal(",
+              "assert.equal(recovered.status, 0, JSON.stringify(recovered.body))",
+              "assert.equal(recovered.body.recovered, true)",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-003-A03 retained intent recovers a registered partial worktree",
+              "occurrenceCount": 2,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-003-S02",
+        "title": "FWE-003-S02 Reject collisions and escapes",
+        "requirementId": "FWE-003",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/bootstrap.test.mjs",
+            "fullTestTitle": "FWE-003-A04 rejects foreign common, traversal, link and case collisions",
+            "declarationLine": 298,
+            "sourceSha256": "e0529db1eb462fb8e2c6ff6bbda438f031a9fd6c482a9864257eb0fca9e9cc25",
+            "concreteAssertionBehavior": "asserts unsafe common, traversal, main ref, link escape and case collision return exit 2 with existing target preserved",
+            "assertionExpressionsSample": [
+              "assert.equal((await invoke(f.root, 'plan', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(f.root, 'plan', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(f.root, 'plan', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(f.root, 'plan', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(f.root, 'create', f.requestFile)).status, 2)",
+              "assert.equal((await invoke(g.root, 'create', g.requestFile)).status, 2)",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-003-A04 rejects foreign common, traversal, link and case collisions",
+              "occurrenceCount": 2,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-004-S01",
+        "title": "FWE-004-S01 Detect missing traceability",
+        "requirementId": "FWE-004",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/contracts.test.mjs",
+            "fullTestTitle": "FWE-004-S01 critical requirement needs negative and boundary controls, with no fake completed run",
+            "declarationLine": 147,
+            "sourceSha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182",
+            "concreteAssertionBehavior": "removes boundary scenario and corrupts run source hash; validator emits CONTROL_BOUNDARY and RUN_BINDING",
+            "assertionExpressionsSample": [
+              "assert.ok(issue(validateTraceability(t), 'CONTROL_BOUNDARY'))",
+              "assert.ok(issue(validateTraceability(t), 'RUN_BINDING'))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-004-S01 critical requirement needs negative and boundary controls, with no fake completed run",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/contracts.test.mjs",
+            "fullTestTitle": "FWE-004-S01 traced PASS text needs trusted current run proof",
+            "declarationLine": 156,
+            "sourceSha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182",
+            "concreteAssertionBehavior": "asserts a declared PASS needs trusted current run proof and changed source invalidates it",
+            "assertionExpressionsSample": [
+              "assert.ok(issue(await verifyTraceability(t, { boundary, snapshot: current }), 'TRACE_RUN_PROOF'))",
+              "assert.equal((await verifyTraceability(t, { boundary, snapshot: current })).ok, true)",
+              "assert.equal((await verifyTraceability(t, { boundary, snapshot: current })).ok, true)",
+              "assert.ok("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-004-S01 traced PASS text needs trusted current run proof",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-004-S02",
+        "title": "FWE-004-S02 Keep numeric budgets independent",
+        "requirementId": "FWE-004",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": "Synthetic independently approved fixture contract only; proves W01 evidence boundary behavior for over-budget failure and rewrite resistance. It does not approve a real Frade numeric limit or product measurement.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/budget-boundary.test.mjs",
+            "fullTestTitle": "FWE-004-S02 independently approved synthetic budget admits within and exact boundary",
+            "declarationLine": 141,
+            "sourceSha256": "d627f750b781c2fa5987d234f4da0cddc0e1241e37c696a7e55b15c2e263a51b",
+            "concreteAssertionBehavior": "Controller-approved synthetic contract and pinned raw measurement admit within and exact limit through check, trace acceptance, status and VERIFICATION transition.",
+            "assertionExpressionsSample": [
+              "assert.equal(result.check.ok, true)",
+              "assert.equal(result.status.metrics.requirements.accepted, 1)",
+              "assert.equal(result.transition.ok, true)"
+            ],
+            "nativeRun": {
+              "record": "../NATIVE-BUDGET-BEFORE.json",
+              "event": "✔ FWE-004-S02 independently approved synthetic budget admits within and exact boundary",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/budget-boundary.test.mjs",
+            "fullTestTitle": "FWE-004-S02 L+1 and self-claimed PASS remain failed through check, acceptance and stage barrier",
+            "declarationLine": 155,
+            "sourceSha256": "d627f750b781c2fa5987d234f4da0cddc0e1241e37c696a7e55b15c2e263a51b",
+            "concreteAssertionBehavior": "L+1 raw measurement remains unverified despite reporter PASS and cannot complete check, accept requirement or enter VERIFICATION.",
+            "assertionExpressionsSample": [
+              "assert.equal(result.status.metrics.checks.complete, 0)",
+              "assert.equal(result.status.metrics.requirements.accepted, 0)",
+              "assert.ok(result.transition.issues.some((x) => x.code === CHECKS_PROOF))"
+            ],
+            "nativeRun": {
+              "record": "../NATIVE-BUDGET-BEFORE.json",
+              "event": "✔ FWE-004-S02 L+1 and self-claimed PASS remain failed through check, acceptance and stage barrier",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/budget-boundary.test.mjs",
+            "fullTestTitle": "FWE-004-S02 reporter budget rewrite and approval claim cannot change controller approval",
+            "declarationLine": 175,
+            "sourceSha256": "d627f750b781c2fa5987d234f4da0cddc0e1241e37c696a7e55b15c2e263a51b",
+            "concreteAssertionBehavior": "A candidate approval claim and modified budget file/hash fail against controller-pinned approval.",
+            "assertionExpressionsSample": [
+              "assert.equal(claimOnly.check.ok, false)",
+              "assert.notEqual(changedHash, c.approval.sha256)",
+              "assert.equal(result.transition.ok, false)"
+            ],
+            "nativeRun": {
+              "record": "../NATIVE-BUDGET-BEFORE.json",
+              "event": "✔ FWE-004-S02 reporter budget rewrite and approval claim cannot change controller approval",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/budget-boundary.test.mjs",
+            "fullTestTitle": "FWE-004-S02 stale raw source or config binding cannot pass approved numeric fixture",
+            "declarationLine": 211,
+            "sourceSha256": "d627f750b781c2fa5987d234f4da0cddc0e1241e37c696a7e55b15c2e263a51b",
+            "concreteAssertionBehavior": "Stale candidate binding and modified pinned raw source are rejected through the same barriers.",
+            "assertionExpressionsSample": [
+              "assert.equal(result.check.ok, false)",
+              "assert.equal(altered.acceptance.ok, false)",
+              "assert.equal(altered.transition.ok, false)"
+            ],
+            "nativeRun": {
+              "record": "../NATIVE-BUDGET-BEFORE.json",
+              "event": "✔ FWE-004-S02 stale raw source or config binding cannot pass approved numeric fixture",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-005-S01",
+        "title": "FWE-005-S01 Block implementation before PRE",
+        "requirementId": "FWE-005",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/lifecycle.test.mjs",
+            "fullTestTitle": "FWE-005-S01 forged JSON PASS/boolean and absent proof cannot admit implementation",
+            "declarationLine": 78,
+            "sourceSha256": "8aca030c8d44c1b3e1fff364f7be8ee1e7ed558dfdc92312911f839f7e0e8a9c",
+            "concreteAssertionBehavior": "asserts fake PASS, boolean and missing independent proof reject implementation",
+            "assertionExpressionsSample": [
+              "assert.ok(",
+              "assert.ok(",
+              "assert.ok("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-005-S01 forged JSON PASS/boolean and absent proof cannot admit implementation",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/lifecycle.test.mjs",
+            "fullTestTitle": "FWE-005-S01 PRE plus checkpoint admits normal implementation source changes",
+            "declarationLine": 50,
+            "sourceSha256": "8aca030c8d44c1b3e1fff364f7be8ee1e7ed558dfdc92312911f839f7e0e8a9c",
+            "concreteAssertionBehavior": "asserts current PRE, policy, checkpoint and RED allow scoped implementation despite normal source changes",
+            "assertionExpressionsSample": [
+              "assert.equal(result.ok, true)",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-005-S01 PRE plus checkpoint admits normal implementation source changes",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-005-S02",
+        "title": "FWE-005-S02 Block POST before Verify",
+        "requirementId": "FWE-005",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/lifecycle.test.mjs",
+            "fullTestTitle": "FWE-005-S02 POST requires current GREEN and Verify; POST source binding is current",
+            "declarationLine": 169,
+            "sourceSha256": "8aca030c8d44c1b3e1fff364f7be8ee1e7ed558dfdc92312911f839f7e0e8a9c",
+            "concreteAssertionBehavior": "asserts POST admission rejects missing/stale GREEN or Verify and binds current source",
+            "assertionExpressionsSample": [
+              "assert.equal(",
+              "assert.ok(",
+              "assert.ok("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-005-S02 POST requires current GREEN and Verify; POST source binding is current",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-005-S03",
+        "title": "FWE-005-S03 Keep focused review bounded",
+        "requirementId": "FWE-005",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/lifecycle.test.mjs",
+            "fullTestTitle": "FWE-005-S03 diagnostic PASS does not substitute for full review",
+            "declarationLine": 214,
+            "sourceSha256": "8aca030c8d44c1b3e1fff364f7be8ee1e7ed558dfdc92312911f839f7e0e8a9c",
+            "concreteAssertionBehavior": "asserts focused diagnostic PASS cannot satisfy full review transition",
+            "assertionExpressionsSample": [
+              "assert.ok("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-005-S03 diagnostic PASS does not substitute for full review",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-006-S01",
+        "title": "FWE-006-S01 Stop a patch loop",
+        "requirementId": "FWE-006",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/repair.test.mjs",
+            "fullTestTitle": "I21-05 repeated deterministic failures require classified RCA and trusted proof",
+            "declarationLine": 142,
+            "sourceSha256": "26c888d9fc85d146968e2f37670d739ee7ee020637a95c0a13c60136386f343e",
+            "concreteAssertionBehavior": "asserts two deterministic failures require classified RCA plus trusted current proof before implementation",
+            "assertionExpressionsSample": [
+              "assert.ok(issue(await evaluateTransition(args), 'RCA_REQUIRED'))",
+              "assert.ok(issue(await evaluateTransition(args), 'RCA_PROOF'))",
+              "assert.ok(issue(await evaluateTransition(args), 'RCA_PROOF'))",
+              "assert.equal((await evaluateTransition(args)).ok, true)",
+              "assert.ok(issue(await evaluateTransition(args), 'RCA_PROOF'))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ I21-05 repeated deterministic failures require classified RCA and trusted proof",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-006-S02",
+        "title": "FWE-006-S02 Preserve historical failures",
+        "requirementId": "FWE-006",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "PARTIAL",
+        "scopeNote": "Synthetic historical FAIL coexistence and blocker retention are tested; full immutable historical ledger across real owner progression is a later evidence check.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/contracts.test.mjs",
+            "fullTestTitle": "FWE-004-S01 traced PASS text needs trusted current run proof",
+            "declarationLine": 156,
+            "sourceSha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182",
+            "concreteAssertionBehavior": "adds an older FAIL run and asserts a newer trusted PASS can coexist without deleting it",
+            "assertionExpressionsSample": [
+              "assert.ok(issue(await verifyTraceability(t, { boundary, snapshot: current }), 'TRACE_RUN_PROOF'))",
+              "assert.equal((await verifyTraceability(t, { boundary, snapshot: current })).ok, true)",
+              "assert.equal((await verifyTraceability(t, { boundary, snapshot: current })).ok, true)",
+              "assert.ok("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-004-S01 traced PASS text needs trusted current run proof",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-016 honest blocker retains failed raw check and cannot claim tested task",
+            "declarationLine": 581,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts failed raw check remains in blocker checkpoint and cannot be relabeled tested task",
+            "assertionExpressionsSample": [
+              "assert.equal(cp.exit, 0, JSON.stringify(cp))",
+              "assert.equal(cp.body.status, 'CHECKPOINTED')",
+              "assert.equal(receipt.event.kind, 'BLOCKER')",
+              "assert.equal(receipt.event.health, 'BLOCKED')",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-016 honest blocker retains failed raw check and cannot claim tested task",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-007-S01",
+        "title": "FWE-007-S01 Reject false not-applicable",
+        "requirementId": "FWE-007",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/contracts.test.mjs",
+            "fullTestTitle": "FWE-007-S01 applicability rejects relabelled affected FAIL and accepts documented unaffected N/A",
+            "declarationLine": 227,
+            "sourceSha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182",
+            "concreteAssertionBehavior": "asserts affected FAIL cannot be relabelled N/A while separately documented unaffected N/A is accepted",
+            "assertionExpressionsSample": [
+              "assert.ok(",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-007-S01 applicability rejects relabelled affected FAIL and accepts documented unaffected N/A",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-007-S02",
+        "title": "FWE-007-S02 Verify process-only scope",
+        "requirementId": "FWE-007",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/check-applicability.test.mjs",
+            "fullTestTitle": "N/A is reported only after unchanged committed and working product tree proof",
+            "declarationLine": 53,
+            "sourceSha256": "ec82aeaee3ca20cdadfe74a5b0bd0519f5adb09ad417835f72dce7dbf0d9cf25",
+            "concreteAssertionBehavior": "asserts process-only N/A requires exact unchanged baseline and working product tree",
+            "assertionExpressionsSample": [
+              "assert.equal(good.ok, true, JSON.stringify(good))",
+              "assert.equal(good.productChecks, 'NOT_RUN')",
+              "assert.match(good.planSha256, /^[a-f0-9]{64}$/)",
+              "assert.match(good.protectedTreeSha256, /^[a-f0-9]{64}$/)",
+              "assert.match(good.sourceHead, /^[a-f0-9]{40}$/)",
+              "assert.equal(dirty.ok, false, JSON.stringify(dirty))",
+              "assert.match(dirty.detail, /PROTECTED_TREE_CHANGED/)",
+              "assert.equal(committed.ok, false, JSON.stringify(committed))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ N/A is reported only after unchanged committed and working product tree proof",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/contracts.test.mjs",
+            "fullTestTitle": "FWE-007-S02 required unavailable check blocks and never becomes PASS",
+            "declarationLine": 254,
+            "sourceSha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182",
+            "concreteAssertionBehavior": "asserts required unavailable control cannot be counted PASS",
+            "assertionExpressionsSample": [
+              "assert.ok(issue(result, 'REQUIRED_CHECK_NOT_PASS'))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-007-S02 required unavailable check blocks and never becomes PASS",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-008-S01",
+        "title": "FWE-008-S01 Supplier closes independently",
+        "requirementId": "FWE-008",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "NOT_RUN",
+        "scopeNote": "Supplier Verify/POST/closure is task 4.x and consumer-owned adoption remains NOT_STARTED; the independence policy is documented but no actual closure event exists.",
+        "evidence": [],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-008-S02",
+        "title": "FWE-008-S02 Reject inherited merge approval",
+        "requirementId": "FWE-008",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "NOT_RUN",
+        "scopeNote": "Actual merged candidate/integration review is a separately authorized future owner checkpoint; no merge candidate or approval exists in this stage.",
+        "evidence": [],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-008-S03",
+        "title": "FWE-008-S03 Preserve old closure states",
+        "requirementId": "FWE-008",
+        "exactTaskIds": [
+          "2.1",
+          "2.3",
+          "2.7",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/lifecycle.test.mjs",
+            "fullTestTitle": "FWE-008-S03 completed legacy tasks without POST/archive are pending closure",
+            "declarationLine": 233,
+            "sourceSha256": "8aca030c8d44c1b3e1fff364f7be8ee1e7ed558dfdc92312911f839f7e0e8a9c",
+            "concreteAssertionBehavior": "asserts complete legacy checkboxes without POST/archive map to IMPLEMENTED_PENDING_CLOSURE",
+            "assertionExpressionsSample": [
+              "assert.equal(",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-008-S03 completed legacy tasks without POST/archive are pending closure",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-009-S01",
+        "title": "FWE-009-S01 Resolve a task exception",
+        "requirementId": "FWE-009",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/roles.test.mjs",
+            "fullTestTitle": "FWE-009 reviewed task override applies only to its exact task and role",
+            "declarationLine": 145,
+            "sourceSha256": "6a929c969b50c098bbf8106a6f1dfd27debdb2b1d789c907a893f67163c06570",
+            "concreteAssertionBehavior": "asserts reviewed exception selects one exact pair only for matching task and role",
+            "assertionExpressionsSample": [
+              "assert.equal(result.ok, true)",
+              "assert.equal(result.assignment.model, 'gpt-6-astra')",
+              "assert.equal(result.assignment.exception.reason, 'deep audit')",
+              "assert.deepEqual(result.assignment.exception.approval, stage.roleAuthority.decision)",
+              "assert.equal(otherTask.assignment.model, 'gpt-6-sol')"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-009 reviewed task override applies only to its exact task and role",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-009-S02",
+        "title": "FWE-009-S02 Block ambiguous assignments",
+        "requirementId": "FWE-009",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/roles.test.mjs",
+            "fullTestTitle": "FWE-009 missing, range and contradictory assignments block",
+            "declarationLine": 86,
+            "sourceSha256": "6a929c969b50c098bbf8106a6f1dfd27debdb2b1d789c907a893f67163c06570",
+            "concreteAssertionBehavior": "asserts missing, range and conflicting pair resolve BLOCKED without fallback",
+            "assertionExpressionsSample": [],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-009 missing, range and contradictory assignments block",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-009-S03",
+        "title": "FWE-009-S03 Reject plan drift",
+        "requirementId": "FWE-009",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/roles.test.mjs",
+            "fullTestTitle": "FWE-009 changed source bytes and changed excerpt block",
+            "declarationLine": 129,
+            "sourceSha256": "6a929c969b50c098bbf8106a6f1dfd27debdb2b1d789c907a893f67163c06570",
+            "concreteAssertionBehavior": "asserts changed approved source or excerpt blocks role resolution",
+            "assertionExpressionsSample": [],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-009 changed source bytes and changed excerpt block",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-010-S01",
+        "title": "FWE-010-S01 Check confinement before review",
+        "requirementId": "FWE-010",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "PARTIAL",
+        "scopeNote": "Fixture wrapper rejects canary/runtime drift; actual fresh shared canary and isolation must be independently checked by parent.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/review.test.mjs",
+            "fullTestTitle": "canary, runtime, version, control, request, candidate and packet drift block",
+            "declarationLine": 564,
+            "sourceSha256": "f7c9677ec172e142b55d6cc89fcac99d7aeb9f59600f305dff69673b0f3d07e3",
+            "concreteAssertionBehavior": "fixture reception rejects canary/runtime/version/control and packet mismatch before accepting reviewer verdict",
+            "assertionExpressionsSample": [
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ canary, runtime, version, control, request, candidate and packet drift block",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-010-S02",
+        "title": "FWE-010-S02 Fail unavailable isolation",
+        "requirementId": "FWE-010",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "PARTIAL",
+        "scopeNote": "Fixture unavailable isolation blocks; live unavailable service behavior is a future actual shared check.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/review.test.mjs",
+            "fullTestTitle": "canary, runtime, version, control, request, candidate and packet drift block",
+            "declarationLine": 564,
+            "sourceSha256": "f7c9677ec172e142b55d6cc89fcac99d7aeb9f59600f305dff69673b0f3d07e3",
+            "concreteAssertionBehavior": "fixture canary or runtime mismatch produces BLOCKED and no weaker admission",
+            "assertionExpressionsSample": [
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ canary, runtime, version, control, request, candidate and packet drift block",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-010-S03",
+        "title": "FWE-010-S03 Keep auth outside packet",
+        "requirementId": "FWE-010",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/review.test.mjs",
+            "fullTestTitle": "credentials, unsafe paths, foreign paths and oversized packets block preparation",
+            "declarationLine": 420,
+            "sourceSha256": "f7c9677ec172e142b55d6cc89fcac99d7aeb9f59600f305dff69673b0f3d07e3",
+            "concreteAssertionBehavior": "asserts credential, unsafe/foreign selection and oversized packet reject preparation",
+            "assertionExpressionsSample": [
+              "assert.equal((await api.prepareReview(input)).status, 'BLOCKED')",
+              "assert.equal(",
+              "assert.equal(await readFile(join(f.root, credential), 'utf8'), credentialBytes)",
+              "assert.equal(credentialResult.status, 'BLOCKED')",
+              "assert.equal(credentialResult.code, 'REVIEW_CREDENTIAL')",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ credentials, unsafe paths, foreign paths and oversized packets block preparation",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-011-S01",
+        "title": "FWE-011-S01 Reject forged PASS",
+        "requirementId": "FWE-011",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/review.test.mjs",
+            "fullTestTitle": "incomplete, error, timeout, ambiguous and differing final agent message block",
+            "declarationLine": 538,
+            "sourceSha256": "f7c9677ec172e142b55d6cc89fcac99d7aeb9f59600f305dff69673b0f3d07e3",
+            "concreteAssertionBehavior": "asserts incomplete/error/timeout/multiple or final-message/report mismatch cannot yield PASS",
+            "assertionExpressionsSample": [
+              "assert.equal((await run({ ...f, request: f.request }, fixture)).status, 'BLOCKED')"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ incomplete, error, timeout, ambiguous and differing final agent message block",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-011-S02",
+        "title": "FWE-011-S02 Freeze owner data",
+        "requirementId": "FWE-011",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "PARTIAL",
+        "scopeNote": "Temporary Git fixture proves candidate mutation/freeze; live shared reviewer freeze remains an independent parent check.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/review.test.mjs",
+            "fullTestTitle": "a real candidate status mutation blocks and retains the common freeze marker",
+            "declarationLine": 526,
+            "sourceSha256": "f7c9677ec172e142b55d6cc89fcac99d7aeb9f59600f305dff69673b0f3d07e3",
+            "concreteAssertionBehavior": "mutates tracked status while fixture review runs; asserts BLOCKED and retained freeze marker",
+            "assertionExpressionsSample": [
+              "assert.equal(result.status, 'BLOCKED')",
+              "assert.equal(result.code, 'REVIEW_MUTATION')",
+              "assert.match(await readFile(lock, 'utf8'), /snapshotSha256/)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ a real candidate status mutation blocks and retains the common freeze marker",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/review.test.mjs",
+            "fullTestTitle": "snapshot binds source, tracked status, raw index bytes and HEAD",
+            "declarationLine": 497,
+            "sourceSha256": "f7c9677ec172e142b55d6cc89fcac99d7aeb9f59600f305dff69673b0f3d07e3",
+            "concreteAssertionBehavior": "asserts review snapshot includes source, index, status and HEAD",
+            "assertionExpressionsSample": [
+              "assert.match(before.digest, /^[a-f0-9]{64}$/)",
+              "assert.notEqual(after.digest, before.digest)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ snapshot binds source, tracked status, raw index bytes and HEAD",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-011-S03",
+        "title": "FWE-011-S03 Retain a valid FAIL",
+        "requirementId": "FWE-011",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/review.test.mjs",
+            "fullTestTitle": "complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage",
+            "declarationLine": 513,
+            "sourceSha256": "f7c9677ec172e142b55d6cc89fcac99d7aeb9f59600f305dff69673b0f3d07e3",
+            "concreteAssertionBehavior": "asserts complete fixture FAIL remains FAIL, not transport BLOCKED, and focused PASS lacks closure authority",
+            "assertionExpressionsSample": [
+              "assert.equal(result.status, verdict, JSON.stringify(result))",
+              "assert.equal(result.closureAuthorized, false)",
+              "assert.match(result.raw.events.sha256, /^[a-f0-9]{64}$/)",
+              "assert.match(result.raw.report.sha256, /^[a-f0-9]{64}$/)",
+              "assert.equal(hash(await readFile(result.raw.events.path)), result.raw.events.sha256)",
+              "assert.equal(hash(await readFile(result.raw.report.path)), result.raw.report.sha256)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ complete PASS and FAIL are distinct from BLOCKED; focused PASS cannot close stage",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-012-S01",
+        "title": "FWE-012-S01 Record unattested backend",
+        "requirementId": "FWE-012",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/roles.test.mjs",
+            "fullTestTitle": "FWE-012 invocation mismatch blocks; actual backend remains unattested",
+            "declarationLine": 322,
+            "sourceSha256": "6a929c969b50c098bbf8106a6f1dfd27debdb2b1d789c907a893f67163c06570",
+            "concreteAssertionBehavior": "asserts invoked mismatch blocks and absent independent attestation leaves backend/effort NOT_CONFIRMED",
+            "assertionExpressionsSample": [
+              "assert.deepEqual(result.provenance.requested, { model: 'gpt-6-sol', effort: 'high' })",
+              "assert.deepEqual(result.provenance.invoked, { model: 'gpt-6-sol', effort: 'high' })",
+              "assert.equal(result.provenance.actualBackend, 'NOT_CONFIRMED')",
+              "assert.equal(result.provenance.actualEffort, 'NOT_CONFIRMED')"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-012 invocation mismatch blocks; actual backend remains unattested",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-012-S02",
+        "title": "FWE-012-S02 Block unsupported writer dispatch",
+        "requirementId": "FWE-012",
+        "exactTaskIds": [
+          "2.2",
+          "2.5",
+          "3.1",
+          "4.1",
+          "4.2"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": "Public unsupported writer dispatch is directly blocked with no disposable repository mutation. Writer execution remains NOT_IMPLEMENTED.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/w01-origin-admission.test.mjs",
+            "fullTestTitle": "FWE-012-S02 public writer dispatch remains unavailable and cannot mutate a repository",
+            "declarationLine": 122,
+            "sourceSha256": "66d3ffee4b4b78e4152ed168e4b5bc0f4d92bbdf507dc7f620a2749e2eb3fd1e",
+            "concreteAssertionBehavior": "Public writer and writer-dispatch requests return exit 2 NOT_IMPLEMENTED and preserve disposable Git HEAD, index, status, sentinel and files.",
+            "assertionExpressionsSample": [
+              "assert.equal(result.status, 2)",
+              "assert.equal(result.body.status, NOT_IMPLEMENTED)",
+              "assert.equal(git(cwd, rev-parse, HEAD), before.head)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-012-S02 public writer dispatch remains unavailable and cannot mutate a repository",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.2",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-013-S01",
+        "title": "FWE-013-S01 Find the next action consistently",
+        "requirementId": "FWE-013",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "PARTIAL",
+        "scopeNote": "Section order and source-bound next action are tested; newcomer comprehension is qualitative document evidence.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/status.test.mjs",
+            "fullTestTitle": "FWE-013-A01 exact current headings, order, duplicate and injection rejection",
+            "declarationLine": 118,
+            "sourceSha256": "53d830b3e0a1beea24c2727f43a2a9e2d77c4854a35c97384234c8e9dee7fbc0",
+            "concreteAssertionBehavior": "asserts eight current sections in order and rejects duplicate/injected headings",
+            "assertionExpressionsSample": [
+              "assert.equal(parseStatus(text).sections.length, 8)",
+              "assert.throws(",
+              "assert.throws(() => parseStatus(text + `\\n${HEADINGS[0]}\\n`), /SECTION_DUPLICATE/)",
+              "assert.throws(() => parseStatus(text.replace('body', '## 9. Injected')), /SECTION_UNKNOWN/)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-013-A01 exact current headings, order, duplicate and injection rejection",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/status.test.mjs",
+            "fullTestTitle": "FWE-014-A02 current source-bound proof only; human boundary never accepted",
+            "declarationLine": 140,
+            "sourceSha256": "53d830b3e0a1beea24c2727f43a2a9e2d77c4854a35c97384234c8e9dee7fbc0",
+            "concreteAssertionBehavior": "asserts projection retains pending human boundary and no archive readiness",
+            "assertionExpressionsSample": [
+              "assert.deepEqual(p.metrics.tasks, { complete: 1, total: 2, remaining: 1 })",
+              "assert.equal(p.metrics.requirements.accepted, 0)",
+              "assert.equal(p.readyForArchive, false)",
+              "assert.equal(p.metrics.requirements.accepted, 0)",
+              "assert.deepEqual(p.metrics.scenarios, {",
+              "assert.equal(",
+              "assert.equal(q.metrics.requirements.accepted, 0)",
+              "assert.equal(q.readyForArchive, false)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-014-A02 current source-bound proof only; human boundary never accepted",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-013-S02",
+        "title": "FWE-013-S02 Avoid rewriting legacy history",
+        "requirementId": "FWE-013",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/status.test.mjs",
+            "fullTestTitle": "FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel",
+            "declarationLine": 380,
+            "sourceSha256": "53d830b3e0a1beea24c2727f43a2a9e2d77c4854a35c97384234c8e9dee7fbc0",
+            "concreteAssertionBehavior": "asserts legacy history bytes stay below explicit boundary when registered owner status refreshes",
+            "assertionExpressionsSample": [
+              "assert.equal(result.status, 'FROZEN', JSON.stringify(result))",
+              "assert.equal(readFileSync(statusPath, 'utf8'), before)",
+              "assert.equal(git(owner, 'rev-parse', 'HEAD'), m.originalBaseline)",
+              "assert.equal(git(owner, 'diff', '--cached', '--name-only'), '')",
+              "assert.equal(result.status, 'WRITTEN')",
+              "assert.ok(after.endsWith(legacy))",
+              "assert.ok(after.includes('PANEL_STATE: QUEUED'))",
+              "assert.ok(!after.includes('PANEL_STATE: VISIBLE'))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-014-S01",
+        "title": "FWE-014-S01 Reject unchecked acceptance",
+        "requirementId": "FWE-014",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/status.test.mjs",
+            "fullTestTitle": "FWE-014-A02 current source-bound proof only; human boundary never accepted",
+            "declarationLine": 140,
+            "sourceSha256": "53d830b3e0a1beea24c2727f43a2a9e2d77c4854a35c97384234c8e9dee7fbc0",
+            "concreteAssertionBehavior": "asserts checked task count remains administrative and unverified requirement acceptance remains zero",
+            "assertionExpressionsSample": [
+              "assert.deepEqual(p.metrics.tasks, { complete: 1, total: 2, remaining: 1 })",
+              "assert.equal(p.metrics.requirements.accepted, 0)",
+              "assert.equal(p.readyForArchive, false)",
+              "assert.equal(p.metrics.requirements.accepted, 0)",
+              "assert.deepEqual(p.metrics.scenarios, {",
+              "assert.equal(",
+              "assert.equal(q.metrics.requirements.accepted, 0)",
+              "assert.equal(q.readyForArchive, false)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-014-A02 current source-bound proof only; human boundary never accepted",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-014-S02",
+        "title": "FWE-014-S02 Keep checks separate",
+        "requirementId": "FWE-014",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/status.test.mjs",
+            "fullTestTitle": "FWE-014-A02 current source-bound proof only; human boundary never accepted",
+            "declarationLine": 140,
+            "sourceSha256": "53d830b3e0a1beea24c2727f43a2a9e2d77c4854a35c97384234c8e9dee7fbc0",
+            "concreteAssertionBehavior": "asserts human pending and incomplete proof prevent archive readiness even with checked task",
+            "assertionExpressionsSample": [
+              "assert.deepEqual(p.metrics.tasks, { complete: 1, total: 2, remaining: 1 })",
+              "assert.equal(p.metrics.requirements.accepted, 0)",
+              "assert.equal(p.readyForArchive, false)",
+              "assert.equal(p.metrics.requirements.accepted, 0)",
+              "assert.deepEqual(p.metrics.scenarios, {",
+              "assert.equal(",
+              "assert.equal(q.metrics.requirements.accepted, 0)",
+              "assert.equal(q.readyForArchive, false)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-014-A02 current source-bound proof only; human boundary never accepted",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-014-S03",
+        "title": "FWE-014-S03 Report unavailable measurements",
+        "requirementId": "FWE-014",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/status.test.mjs",
+            "fullTestTitle": "FWE-014-A05 required check PASS needs trusted bound raw receipt",
+            "declarationLine": 249,
+            "sourceSha256": "53d830b3e0a1beea24c2727f43a2a9e2d77c4854a35c97384234c8e9dee7fbc0",
+            "concreteAssertionBehavior": "asserts PASS label without current trusted raw receipt counts zero; changed source invalidates it",
+            "assertionExpressionsSample": [
+              "assert.equal((await projectStatus({ ...x, checks })).metrics.checks.complete, 0)",
+              "assert.equal((await projectStatus({ ...x, checks, boundary })).metrics.checks.complete, 1)",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-014-A05 required check PASS needs trusted bound raw receipt",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-015-S01",
+        "title": "FWE-015-S01 Defer during freeze",
+        "requirementId": "FWE-015",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/status.test.mjs",
+            "fullTestTitle": "FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel",
+            "declarationLine": 380,
+            "sourceSha256": "53d830b3e0a1beea24c2727f43a2a9e2d77c4854a35c97384234c8e9dee7fbc0",
+            "concreteAssertionBehavior": "asserts freeze defers actual status write and panel state is queued rather than visible",
+            "assertionExpressionsSample": [
+              "assert.equal(result.status, 'FROZEN', JSON.stringify(result))",
+              "assert.equal(readFileSync(statusPath, 'utf8'), before)",
+              "assert.equal(git(owner, 'rev-parse', 'HEAD'), m.originalBaseline)",
+              "assert.equal(git(owner, 'diff', '--cached', '--name-only'), '')",
+              "assert.equal(result.status, 'WRITTEN')",
+              "assert.ok(after.endsWith(legacy))",
+              "assert.ok(after.includes('PANEL_STATE: QUEUED'))",
+              "assert.ok(!after.includes('PANEL_STATE: VISIBLE'))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queued panel",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-015-S02",
+        "title": "FWE-015-S02 Avoid stale status claims",
+        "requirementId": "FWE-015",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/status.test.mjs",
+            "fullTestTitle": "FWE-015-S02 actual checkpoint-only change stales the previous projection until refresh",
+            "declarationLine": 479,
+            "sourceSha256": "53d830b3e0a1beea24c2727f43a2a9e2d77c4854a35c97384234c8e9dee7fbc0",
+            "concreteAssertionBehavior": "asserts HEAD-only checkpoint change marks prior projection stale until regeneration",
+            "assertionExpressionsSample": [
+              "assert.equal(first.status, 'WRITTEN', JSON.stringify(first))",
+              "assert.match(firstBody, new RegExp(`SOURCE_CHECKPOINT_SHA: ${firstHead}`))",
+              "assert.equal(first.projection.actualHead, firstHead)",
+              "assert.notEqual(secondHead, firstHead)",
+              "assert.equal(m.originalBaseline, firstHead)",
+              "assert.equal(stale.status, 'PREVIEW', JSON.stringify(stale))",
+              "assert.equal(stale.projection.actualHead, secondHead)",
+              "assert.equal(stale.previousProjectionStale, true)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-015-S02 actual checkpoint-only change stales the previous projection until refresh",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-016-S01",
+        "title": "FWE-016-S01 Publish a completed task",
+        "requirementId": "FWE-016",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-017 exact authorized target, fresh remote SHA, other refs unchanged",
+            "declarationLine": 350,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts local fixture checkpoint publishes exact SHA to approved bare ref and leaves other refs unchanged",
+            "assertionExpressionsSample": [
+              "assert.equal(cp.exit, 0, JSON.stringify(cp))",
+              "assert.equal(pub.exit, 0, JSON.stringify(pub))",
+              "assert.equal(pub.body.status, 'PUBLISHED')",
+              "assert.equal(pub.body.verifiedRemoteSha, cp.body.checkpointSha)",
+              "assert.equal(git(f.base, 'ls-remote', f.remote, 'refs/heads/main'), main)",
+              "assert.equal(git(f.base, 'ls-remote', f.other), '')",
+              "assert.equal(receipt.sourceSha, cp.body.checkpointSha)",
+              "assert.ok(receipt.commands.some((x) => x.args[0] === 'push' && x.exitCode === 0))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-017 exact authorized target, fresh remote SHA, other refs unchanged",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-016 changed candidate and missing current mandatory check block tested task",
+            "declarationLine": 567,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts changed candidate or missing required check blocks tested task checkpoint",
+            "assertionExpressionsSample": [
+              "assert.equal(changed.exit, 2, JSON.stringify(changed))",
+              "assert.equal(changed.body.detail, 'ADMISSION_BINDING')",
+              "assert.equal(failed.exit, 2, JSON.stringify(failed))",
+              "assert.equal(failed.body.detail, 'ADMISSION_CHECK_FAILED')"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-016 changed candidate and missing current mandatory check block tested task",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-016-S02",
+        "title": "FWE-016-S02 Publish blocker evidence honestly",
+        "requirementId": "FWE-016",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-016 honest blocker retains failed raw check and cannot claim tested task",
+            "declarationLine": 581,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts failure raw check and BLOCKED status remain attached to blocker checkpoint",
+            "assertionExpressionsSample": [
+              "assert.equal(cp.exit, 0, JSON.stringify(cp))",
+              "assert.equal(cp.body.status, 'CHECKPOINTED')",
+              "assert.equal(receipt.event.kind, 'BLOCKER')",
+              "assert.equal(receipt.event.health, 'BLOCKED')",
+              "assert.equal("
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-016 honest blocker retains failed raw check and cannot claim tested task",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-016-S03",
+        "title": "FWE-016-S03 Avoid empty publication loops",
+        "requirementId": "FWE-016",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-016 receipt-only event cannot recurse; repeated publish is refused",
+            "declarationLine": 464,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts receipt-only checkpoint and repeated publish for same SHA are rejected",
+            "assertionExpressionsSample": [
+              "assert.equal(cp.exit, 0, JSON.stringify(cp))",
+              "assert.equal((await invoke(f, 'checkpoint')).exit, 2)",
+              "assert.equal(git(f.root, 'rev-parse', 'HEAD'), cp.body.checkpointSha)",
+              "assert.equal(pub.exit, 0, JSON.stringify(pub))",
+              "assert.equal((await invoke(f, 'publish', cp.body.receiptPath)).exit, 2)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-016 receipt-only event cannot recurse; repeated publish is refused",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-017-S01",
+        "title": "FWE-017-S01 Reject unauthorized target",
+        "requirementId": "FWE-017",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-017 requester URL/ref, manifest approval and wrong branch cannot authorize",
+            "declarationLine": 379,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts requester/manifest target and wrong branch cannot override external authorization",
+            "assertionExpressionsSample": [
+              "assert.equal((await invoke(f, 'checkpoint')).exit, 2)",
+              "assert.equal((await invoke(f, 'checkpoint')).exit, 2)",
+              "assert.equal((await invoke(f, 'checkpoint')).exit, 2)",
+              "assert.equal((await invoke(f, 'checkpoint')).exit, 2)",
+              "assert.equal(git(f.base, 'ls-remote', f.remote), before)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-017 requester URL/ref, manifest approval and wrong branch cannot authorize",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-017 origin and local URL rewrites reject alternate destination before remote operations",
+            "declarationLine": 550,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts origin and URL rewrite drift reject before push",
+            "assertionExpressionsSample": [
+              "assert.equal(result.exit, 2, JSON.stringify(result))",
+              "assert.equal(",
+              "assert.equal(git(f.base, 'ls-remote', f.remote), before)",
+              "assert.equal(git(f.base, 'ls-remote', f.other), '')"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-017 origin and local URL rewrites reject alternate destination before remote operations",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-017-S02",
+        "title": "FWE-017-S02 Handle divergent remote",
+        "requirementId": "FWE-017",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-017 real divergent remote blocks and keeps local checkpoint",
+            "declarationLine": 440,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts divergent bare remote blocks publish and retains local HEAD",
+            "assertionExpressionsSample": [
+              "assert.equal(cp.exit, 0, JSON.stringify(cp))",
+              "assert.equal(pub.exit, 2, JSON.stringify(pub))",
+              "assert.equal(pub.body.status, 'BLOCKED')",
+              "assert.equal(git(f.root, 'rev-parse', 'HEAD'), cp.body.checkpointSha)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-017 real divergent remote blocks and keeps local checkpoint",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-017 fresh post-push remote SHA mismatch is BLOCKED",
+            "declarationLine": 502,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts post-push SHA mismatch remains BLOCKED",
+            "assertionExpressionsSample": [
+              "assert.equal(cp.exit, 0, JSON.stringify(cp))",
+              "assert.equal(pub.exit, 2, JSON.stringify(pub))",
+              "assert.equal(pub.body.status, 'BLOCKED')",
+              "assert.equal(pub.body.detail, 'REMOTE_SHA_MISMATCH')",
+              "assert.equal(git(f.root, 'rev-parse', 'HEAD'), cp.body.checkpointSha)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-017 fresh post-push remote SHA mismatch is BLOCKED",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-017-S03",
+        "title": "FWE-017-S03 Confirm actual publication",
+        "requirementId": "FWE-017",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/publication.test.mjs",
+            "fullTestTitle": "FWE-017 exact authorized target, fresh remote SHA, other refs unchanged",
+            "declarationLine": 350,
+            "sourceSha256": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+            "concreteAssertionBehavior": "asserts fresh ls-remote equals pushed checkpoint SHA before PUBLISHED",
+            "assertionExpressionsSample": [
+              "assert.equal(cp.exit, 0, JSON.stringify(cp))",
+              "assert.equal(pub.exit, 0, JSON.stringify(pub))",
+              "assert.equal(pub.body.status, 'PUBLISHED')",
+              "assert.equal(pub.body.verifiedRemoteSha, cp.body.checkpointSha)",
+              "assert.equal(git(f.base, 'ls-remote', f.remote, 'refs/heads/main'), main)",
+              "assert.equal(git(f.base, 'ls-remote', f.other), '')",
+              "assert.equal(receipt.sourceSha, cp.body.checkpointSha)",
+              "assert.ok(receipt.commands.some((x) => x.args[0] === 'push' && x.exitCode === 0))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-017 exact authorized target, fresh remote SHA, other refs unchanged",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-018-S01",
+        "title": "FWE-018-S01 Start from the guide",
+        "requirementId": "FWE-018",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": "Exact guide examples, deployment boundary and CLI guards are executed; actual newcomer comprehension remains a human judgment.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/w01-origin-admission.test.mjs",
+            "fullTestTitle": "FWE-018-S01 guide and bootstrap examples match public CLI guards and honest boundary",
+            "declarationLine": 149,
+            "sourceSha256": "66d3ffee4b4b78e4152ed168e4b5bc0f4d92bbdf507dc7f620a2749e2eb3fd1e",
+            "concreteAssertionBehavior": "Guide and bootstrap examples bind to deployment warning, human decision ownership, external request grant and public CLI argument rejection.",
+            "assertionExpressionsSample": [
+              "assert.match(guide, /NOT_DEPLOYED_W01_CLOSURE_PENDING/)",
+              "assert.equal(invalid.body.code, ARGUMENTS)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-018-S01 guide and bootstrap examples match public CLI guards and honest boundary",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-018-S02",
+        "title": "FWE-018-S02 Respect the human boundary",
+        "requirementId": "FWE-018",
+        "exactTaskIds": [
+          "2.4",
+          "2.6",
+          "3.1",
+          "3.2",
+          "4.1"
+        ],
+        "assessment": "PARTIAL",
+        "scopeNote": "Human boundary and independent approval are guarded; actual visual/scope decision remains human and cannot be accepted by fixture.",
+        "evidence": [
+          {
+            "testPath": "tests/directions/contracts.test.mjs",
+            "fullTestTitle": "FWE-004-S01 human boundary is explicit rather than an implicit passing assertion",
+            "declarationLine": 196,
+            "sourceSha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182",
+            "concreteAssertionBehavior": "asserts human scenario without boundary reason is invalid",
+            "assertionExpressionsSample": [
+              "assert.ok(issue(validateTraceability(t), 'TRACE_BOUNDARY_REASON'))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-004-S01 human boundary is explicit rather than an implicit passing assertion",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          },
+          {
+            "testPath": "tests/directions/roles.test.mjs",
+            "fullTestTitle": "FWE-009 direct approval must be established outside the request",
+            "declarationLine": 114,
+            "sourceSha256": "6a929c969b50c098bbf8106a6f1dfd27debdb2b1d789c907a893f67163c06570",
+            "concreteAssertionBehavior": "asserts request metadata cannot self-approve a material role decision",
+            "assertionExpressionsSample": [],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-009 direct approval must be established outside the request",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-001-S03",
+        "title": "FWE-001-S03 Close within exact owning destinations",
+        "requirementId": "FWE-001",
+        "exactTaskIds": [
+          "2.1",
+          "3.1",
+          "3.2",
+          "4.1",
+          "4.4"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/lifecycle.test.mjs",
+            "fullTestTitle": "FWE-001-S03 disposable Git owner sync/archive preserves foreign file and raw receipt origin",
+            "declarationLine": 420,
+            "sourceSha256": "8aca030c8d44c1b3e1fff364f7be8ee1e7ed558dfdc92312911f839f7e0e8a9c",
+            "concreteAssertionBehavior": "asserts controlled Git closure writes only owned delta specs/archive and preserves a foreign file and original raw receipt origin",
+            "assertionExpressionsSample": [
+              "assert.equal(run.status, 0, `${args.join(' ')}: ${run.stderr}`)",
+              "assert.equal((await planClosure(args)).ok, true)",
+              "assert.ok(issue(await planClosure(args), 'REFERENCE_HASH'))",
+              "assert.equal((await stat(join(root, operations.at(-1).to, 'design.md'))).isFile(), true)",
+              "assert.equal(digest(await readFile(join(root, actualRefs[1].relocated))), actualRefs[1].sha256)",
+              "assert.equal(await readFile(join(root, 'foreign.txt'), 'utf8'), 'foreign untouched')",
+              "assert.equal(git('status', '--short').includes('foreign.txt'), false)"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-001-S03 disposable Git owner sync/archive preserves foreign file and raw receipt origin",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.4",
+            "status": "NOT_RUN"
+          }
+        ]
+      },
+      {
+        "id": "FWE-001-S04",
+        "title": "FWE-001-S04 Reject unauthorized closure scope",
+        "requirementId": "FWE-001",
+        "exactTaskIds": [
+          "2.1",
+          "3.1",
+          "3.2",
+          "4.1",
+          "4.4"
+        ],
+        "assessment": "EXECUTED_CONTROL",
+        "scopeNote": null,
+        "evidence": [
+          {
+            "testPath": "tests/directions/lifecycle.test.mjs",
+            "fullTestTitle": "FWE-001-S04 closure rejects early, foreign, unsafe, stale and broken reference requests",
+            "declarationLine": 329,
+            "sourceSha256": "8aca030c8d44c1b3e1fff364f7be8ee1e7ed558dfdc92312911f839f7e0e8a9c",
+            "concreteAssertionBehavior": "asserts early gates, unrelated destinations, unsafe date/path, stale proof and unrelocated references produce closure issues",
+            "assertionExpressionsSample": [
+              "assert.ok(",
+              "assert.ok(",
+              "assert.ok(issue(await planClosure({ ...args, date: '2026-2-2' }), 'ARCHIVE_DATE'))",
+              "assert.ok(",
+              "assert.ok(",
+              "assert.ok(",
+              "assert.equal(malformed.ok, false)",
+              "assert.ok(issue(malformed, 'CLOSURE_OPERATIONS'))"
+            ],
+            "nativeRun": {
+              "record": "input/native-full.json",
+              "event": "✔ FWE-001-S04 closure rejects early, foreign, unsafe, stale and broken reference requests",
+              "occurrenceCount": 1,
+              "allOccurrencesPassed": true,
+              "processExitCode": 0
+            }
+          }
+        ],
+        "futureGateStatus": [
+          {
+            "taskId": "4.1",
+            "status": "NOT_RUN"
+          },
+          {
+            "taskId": "4.4",
+            "status": "NOT_RUN"
+          }
+        ]
+      }
+    ],
+    "interpretation": "Executable fixture controls update scenario coverage only. Scenario titles alone, administrative checkboxes, synthetic numeric limits, and old PASS labels do not establish real product acceptance or future gates."
+  },
+  "productionModified": false,
+  "taskCheckboxChanged": false,
+  "commit": false,
+  "publication": false,
+  "verify": false,
+  "post": false,
+  "archive": false
+}

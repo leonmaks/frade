@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "stage": "W01",
+  "task": "3.2 publication scanner false positive repair",
+  "phase": "TEST_ONLY_PENDING_NATIVE_RED",
+  "designSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "testpaths": ["tests/directions/publication.test.mjs"],
+  "productionHashes": {
+    "scripts/directions/publication.mjs": "cb7deaa5aa43bde181d52085c4cd50e2b5652e4cb42307bf181debf626947559"
+  },
+  "testHashes": {
+    "tests/directions/publication.test.mjs": "c61b71597a2016b30724895624014262b865465f9b97bee55efe00e982d45485"
+  },
+  "intendedRedTitles": [
+    "FWE-016 benign identifiers, functions, objects and regex checkpoint through public guard",
+    "FWE-016 current W01 review control source checkpoints through public guard",
+    "FWE-016 literal credential candidates block before HEAD, index or remote changes"
+  ],
+  "preservationGreenTitle": "FWE-016 private key blocks and prohibited credential filenames block before mutation",
+  "rca": {
+    "classification": "ABSTRACTION_BOUNDARY",
+    "firstIncorrectDecision": "publication sensitive(bytes, path) treats a credential-shaped identifier followed by = or : and four nonspace characters as a secret, including JavaScript expressions such as Object.freeze({}).",
+    "layer": "scripts/directions/publication.mjs content scanning only",
+    "observedReplay": "input/publication-defect.json reproduced SECRET_CANDIDATE for const token = Object.freeze({}) with unchanged production hash cb7deaa5aa43bde181d52085c4cd50e2b5652e4cb42307bf181debf626947559"
+  },
+  "localValidation": "node --check test passed under Linux Node v18.19.1; disposable fixture checkpoint execution is locally blocked by spawnSync git EPERM. Parent native Node 24 RED is authoritative.",
+  "productionEdited": false
+}

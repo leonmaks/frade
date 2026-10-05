@@ -1,0 +1,5 @@
+**CHANGE:** Added FWE-004-S02 budget boundary coverage in [budget-boundary.test.mjs](/mnt/e/dev/codex/frade-worker-staging/w01-task-3-budget-20261005/work/tests/directions/budget-boundary.test.mjs). The synthetic fixture checks an independently pinned budget and raw measurement through the common check, acceptance, status, and stage barriers. Production code is unchanged.
+
+**TEST RESULTS:** The parent’s native Node 24 before-run passed all 4 new tests against the original production hashes. The supplied full suite passed 185 tests, and the public owner replay passed 1. The [TASK-3-BUDGET.json](/mnt/e/dev/codex/frade-worker-staging/w01-task-3-budget-20261005/work/work/TASK-3-BUDGET.json) overlay covers all 18 requirements and 46 scenarios; it claims no real Frade numeric acceptance.
+
+**KNOWN BLOCKER:** The native receipt’s test-ready SHA does not match the raw [BUDGET-TEST-READY.json](/mnt/e/dev/codex/frade-worker-staging/w01-task-3-budget-20261005/work/work/BUDGET-TEST-READY.json) hash. Both values are recorded in the handoff. Parent correction or explanation is needed before the receipt is fully bound. **READY_FOR_VERIFY: NO.**

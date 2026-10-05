@@ -1,0 +1,37 @@
+{
+  "atUtc": "2026-10-05T04:07:55.008Z",
+  "endedAtUtc": "2026-10-05T04:08:38.149Z",
+  "cwd": "E:/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work",
+  "exe": "E:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "--test",
+    "tests/directions/w01-origin-admission.test.mjs",
+    "tests/directions/bootstrap.test.mjs"
+  ],
+  "node": "v24.18.0",
+  "platform": "win32",
+  "testReadySha256": "1ed379422f604a1c236e48574bb9d3770e279670729dec0a2c2a4cbefef7e4ad",
+  "sourceHashes": {
+    "scripts/directions/bootstrap.mjs": "7d49cabf133c9a9a59d9458931e4dc1d88626f660d19c58a770a2effa63edb68",
+    "scripts/directions/cli.mjs": "ab694f3fb2aa44d089706fb7c758cde83eaa145543bb1e321a1b521d007da25a",
+    "scripts/directions/contracts.mjs": "50e1efe38d9e906a6b0f577138baa9c107ef1f5349c8f6e2c5c85b59ab0ae367",
+    "scripts/directions/evidence.mjs": "34982bee69bf397a42450c1c5f239c567a9a61da59dd025710d6e05cbe6ea06a",
+    "scripts/directions/root-loader.mjs": "80ed28bd74e8d92c24608316d20ea7c0662dd372b518993b2cb1596bbe4f18d2",
+    "scripts/directions/roles.mjs": "9fb5da92a87fc9fd173765857f61c36fcd4855bf572bd74f7145f4efbd4f2341",
+    "scripts/directions/status.mjs": "c0a83640e7b9bfa27cb4fbf91a6475d27f9f5295c55cd7b17ec3477a1bd69a67",
+    "scripts/directions/lifecycle.mjs": "8893ece1fe454fe8829cf0b9013304135db2faf38dc5c3f4a0ba4aa1e19fe8ed",
+    "scripts/directions/review.mjs": "3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa",
+    "scripts/directions/publication.mjs": "cb7deaa5aa43bde181d52085c4cd50e2b5652e4cb42307bf181debf626947559"
+  },
+  "testHashes": {
+    "tests/directions/w01-origin-admission.test.mjs": "fdb01f045f862a22135e711d89b0cc6aba376cf797ad5ee4da8c4dac0f948cbe",
+    "tests/directions/bootstrap.test.mjs": "d926405ce1ca9f1378c22b6717e1fb4f617273463e3184fdb214992851a266e8"
+  },
+  "exitCode": 1,
+  "signal": null,
+  "stdout": "✔ FWE-003-A01 plan previews exact owner and files without writing (1530.0105ms)\n✔ FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake (2057.4494ms)\n✔ FWE-003-A02 same request returns owner; changed request and foreign branch blocks (4693.4542ms)\n✔ FWE-003-A03 retained intent recovers a registered partial worktree (2352.2501ms)\n✔ FWE-003-A04 rejects foreign common, traversal, link and case collisions (2023.5005ms)\n✔ FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe (0.3521ms)\n✔ FWE-003-A05 request self-approval and policy drift cannot authorize create (514.9929ms)\n✔ FWE-001-A03 check binds manifest to owner and rejects malformed state (2331.3677ms)\n✔ I23-WIN manifest boundary accepts native and canonical owner paths only (2621.1738ms)\n✔ FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref (2230.8583ms)\n✔ I23-07 installed service cannot create without an external exact request grant (3762.7574ms)\n✔ I23-07 grant for alpha rejects changed identity, title, goal, outcomes, baseline and parent (6745.5967ms)\n✔ I23-07 linked or forged grant cannot approve creation (2207.8787ms)\n✔ I23-08 retained origin fixes original baseline after branch progress (3274.4524ms)\n✔ I23-08 check requires both exact retained origin records (2331.0034ms)\n✔ I23-08 foreign malformed manifest is rejected as unowned before JSON parsing (2338.1234ms)\n✖ W01 historical admission cannot be claimed by a different registered common or forged approval fields (1868.1141ms)\n✖ W01 historical admission: real registered owner check and status accept its original origin (2.748ms)\n✔ FWE-012-S02 public writer dispatch remains unavailable and cannot mutate a repository (1059.1201ms)\n✔ FWE-018-S01 guide and bootstrap examples match public CLI guards and honest boundary (546.8576ms)\nℹ tests 20\nℹ suites 0\nℹ pass 18\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 43024.3848\n\n✖ failing tests:\n\ntest at tests\\directions\\bootstrap.test.mjs:618:1\n✖ W01 historical admission cannot be claimed by a different registered common or forged approval fields (1868.1141ms)\n  AssertionError [ERR_ASSERTION]: {\"ok\":false,\"status\":\"BLOCKED\",\"code\":\"CREATE\",\"detail\":\"MANIFEST: CLOSURE_DESTINATION\"}\n  \n  2 !== 0\n  \n      at TestContext.<anonymous> (file:///E:/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work/tests/directions/bootstrap.test.mjs:625:10)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: 2,\n    expected: 0,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n\ntest at tests\\directions\\w01-origin-admission.test.mjs:34:1\n✖ W01 historical admission: real registered owner check and status accept its original origin (2.748ms)\n  AssertionError [ERR_ASSERTION]: Run in the registered W01 checkout\n  \n  false !== true\n  \n      at TestContext.<anonymous> (file:///E:/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work/tests/directions/w01-origin-admission.test.mjs:35:10)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.start (node:internal/test_runner/test:1191:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "productionUnchangedBeforeRED": true,
+  "status": "NATIVE_RED_CAPTURED",
+  "intendedInvariantVerdict": "WORKER_MUST_INSPECT_RAW_PREREQUISITES_AND_FAILURE"
+}

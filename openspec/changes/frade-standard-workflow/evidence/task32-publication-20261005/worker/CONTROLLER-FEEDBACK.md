@@ -1,0 +1,5 @@
+Controller prerequisite correction required before production edit.
+
+The new current-W01-source test pins review.mjs to a malformed/truncated hash `65220c1c62ce4481b9304dec3ed54a487e90c75a4ed829a05fd6939f02dd`. The immutable input/scripts/directions/review.mjs and the copied original work source both have actual SHA256 `3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa`. The existing known publication-defect replay pin is independent and remains correct.
+
+Preserve initial TEST-READY.json and initial native RED. Classify this prerequisite mismatch as TEST. Correct the pin using the independently hashed immutable input/EXECUTION-INPUTS.json; do not remove the binding assertion or weaken any test. Write TEST-READY2.json with actual corrected test hash and unchanged production hashes. Wait for ../NATIVE-RED2.json before production changes, so current source checkpoint can reach the actual scanner defect. Keep all raw evidence immutable. Parent will execute the corrected publication tests in native Windows.

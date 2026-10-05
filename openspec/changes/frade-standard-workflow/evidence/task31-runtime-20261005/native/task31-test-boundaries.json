@@ -1,0 +1,45 @@
+{
+  "label": "task31-test-boundaries",
+  "atUtc": "2026-10-05T03:55:12.147Z",
+  "endedAtUtc": "2026-10-05T03:55:12.487Z",
+  "cwd": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+  "exe": "node",
+  "args": [
+    "--test",
+    "tests/contract/*.test.mjs"
+  ],
+  "node": "v24.18.0",
+  "platform": "win32",
+  "exitCode": 0,
+  "signal": null,
+  "stdout": "✔ compiler allows only public metamodel domain production dependencies (33.3724ms)\n✔ compiler rejects host imports, deep imports, source escapes and dynamic execution (0.7214ms)\n✔ compiler manifest cannot smuggle runtime dependencies (0.3772ms)\n✔ current Draw production dependencies and imports respect the boundary (57.1367ms)\n✔ boundary check rejects a privileged Electron import (33.614ms)\n✔ metamodel production package is host-independent (34.8491ms)\n✔ metamodel rejects external imports, local escapes and dynamic execution (0.9139ms)\n✔ metamodel rejects production, optional and peer dependencies (0.477ms)\n✔ repository packages retain portable inward-only boundaries (38.1603ms)\n✔ repository boundaries reject host, private, escaping and dynamic imports (2.6061ms)\n✔ runtime packages and renderer respect architecture boundaries (38.5611ms)\n✔ renderer rejects Node, privileged packages and local escapes (0.74ms)\n✔ ordinary diagnostic text containing import is not an import declaration (0.2143ms)\n✔ pilot public exports and package boundaries exist and remain inward-only (36.662ms)\n✔ adapter-sberea-yaml rejects privileged, private and escaping dependencies (1.2764ms)\n✔ metamodel-config rejects privileged, private and escaping dependencies (0.2738ms)\n✔ ui-navigator rejects privileged, private and escaping dependencies (0.3233ms)\n✔ ui-inspector rejects privileged, private and escaping dependencies (0.2479ms)\n✔ ui-workspace rejects privileged, private and escaping dependencies (0.2977ms)\nℹ tests 19\nℹ suites 0\nℹ pass 19\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 243.871\n",
+  "stderr": "",
+  "status": "PASS",
+  "applicability": {
+    "scope": "Required task2.7/3.1 general existing controls; no new product PASS inferred",
+    "frozenTrackedFingerprint": "cf179a47a2ea8c6b4cc1778d58933a6b66e8d67f1a025a0d7946eb35c5e09c4d",
+    "existingGeneralScripts": {
+      "lint": "turbo lint",
+      "typecheck": "turbo typecheck",
+      "build": "turbo build",
+      "test:boundaries": "node --test tests/contract/*.test.mjs",
+      "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs"
+    },
+    "toolchain": {
+      "packageManager": "pnpm@12.6.0",
+      "engines": {
+        "node": ">=24.0.0 <25"
+      },
+      "devDependencies": {
+        "@eslint/js": "9.39.1",
+        "eslint": "9.39.1",
+        "eslint-plugin-react-hooks": "7.0.1",
+        "globals": "16.5.0",
+        "prettier": "3.9.8",
+        "turbo": "2.11.2",
+        "typescript-eslint": "8.46.3"
+      }
+    },
+    "lockfileSha256": "755f06619fb8269a345412512c1a44c30cd41887e2d499e4236c262b624d95c0"
+  }
+}

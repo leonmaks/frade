@@ -22,7 +22,7 @@ One active stage/change. This checklist is not approval. Original baseline and h
 
 ## 3. Required cumulative checks (tooling-tests: gpt-6-sol/high)
 
-- [ ] 3.1 Execute actual complete direction-control unit/BDD/temporary-Git/adversarial suites, formatting/content/link/schema checks and all required applicable general lint/type/build/boundary checks; retain commands/exits/environment/seeds and prove exclusions from product-tree hashes. Resolve every applicable failure before progression, no inferred product check:all PASS.
+- [x] 3.1 Execute actual complete direction-control unit/BDD/temporary-Git/adversarial suites, formatting/content/link/schema checks and all required applicable general lint/type/build/boundary checks; retain commands/exits/environment/seeds and prove exclusions from product-tree hashes. Resolve every applicable failure before progression, no inferred product check:all PASS.
 - [ ] 3.2 Audit requirement->scenario->task->assertion->run mappings, frozen origin/control scope and cumulative diff; reproduce bootstrap/review/status/publication examples, fresh shared discovery/confinement and unchanged supplier/consumer boundaries. Commit/push the coherent implementation/check checkpoint with verified remote SHA and honest outstanding gate state.
 
 ## 4. Verify, POST and close (formal-Verify: gpt-6-astra/high; POST: gpt-6-astra/xhigh)

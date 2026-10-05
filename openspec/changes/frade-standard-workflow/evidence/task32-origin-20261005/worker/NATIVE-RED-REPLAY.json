@@ -1,0 +1,35 @@
+{
+  "atUtc": "2026-10-05T04:10:03.783Z",
+  "endedAtUtc": "2026-10-05T04:10:06.218Z",
+  "exe": "E:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "--test",
+    "E:/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work/tests/directions/w01-origin-native-replay.test.mjs"
+  ],
+  "cwd": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+  "node": "v24.18.0",
+  "platform": "win32",
+  "originalTest": {
+    "path": "tests/directions/w01-origin-admission.test.mjs",
+    "sha256": "ac44755350e3f49918fdb23e6c62b7ed18800b7178441c3cb3462091fad60076"
+  },
+  "replaySha256": "a0e570b5b3ac7ef0535ac832d160b3a0b7c090b553efbacf0bbd4905e4e775b5",
+  "mechanicalMapping": {
+    "root": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+    "cli": "E:/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work/scripts/directions/cli.mjs",
+    "onlyTwoLocationConstantsChanged": true,
+    "allAssertionsAndBodiesIdentical": true
+  },
+  "sourceHashes": {
+    "scripts/directions/bootstrap.mjs": "7d49cabf133c9a9a59d9458931e4dc1d88626f660d19c58a770a2effa63edb68",
+    "scripts/directions/cli.mjs": "ab694f3fb2aa44d089706fb7c758cde83eaa145543bb1e321a1b521d007da25a",
+    "scripts/directions/contracts.mjs": "50e1efe38d9e906a6b0f577138baa9c107ef1f5349c8f6e2c5c85b59ab0ae367",
+    "scripts/directions/status.mjs": "c0a83640e7b9bfa27cb4fbf91a6475d27f9f5295c55cd7b17ec3477a1bd69a67"
+  },
+  "productionUnchangedBeforeRED": true,
+  "exitCode": 1,
+  "signal": null,
+  "stdout": "✖ W01 historical admission: real registered owner check and status accept its original origin (771.7469ms)\n✔ FWE-012-S02 public writer dispatch remains unavailable and cannot mutate a repository (973.8927ms)\n✔ FWE-018-S01 guide and bootstrap examples match public CLI guards and honest boundary (478.2854ms)\nℹ tests 3\nℹ suites 0\nℹ pass 2\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2338.0728\n\n✖ failing tests:\n\ntest at ..\\..\\frade-worker-staging\\w01-task-3-repair-20261005\\work\\tests\\directions\\w01-origin-native-replay.test.mjs:39:1\n✖ W01 historical admission: real registered owner check and status accept its original origin (771.7469ms)\n  AssertionError [ERR_ASSERTION]: {\"ok\":false,\"status\":\"BLOCKED\",\"code\":\"CHECK\",\"detail\":\"ORIGIN_MISSING_LEGACY_ADOPTION_REQUIRED\"}\n  \n  2 !== 0\n  \n      at TestContext.<anonymous> (file:///E:/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work/tests/directions/w01-origin-native-replay.test.mjs:54:10)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.start (node:internal/test_runner/test:1191:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: 2,\n    expected: 0,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "status": "INTENDED_NATIVE_ORIGIN_RED"
+}

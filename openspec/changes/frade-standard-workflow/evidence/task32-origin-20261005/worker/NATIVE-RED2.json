@@ -1,0 +1,32 @@
+{
+  "atUtc": "2026-10-05T04:11:49.974Z",
+  "endedAtUtc": "2026-10-05T04:12:26.572Z",
+  "exe": "E:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "--test",
+    "tests/directions/w01-origin-admission.test.mjs",
+    "tests/directions/bootstrap.test.mjs"
+  ],
+  "cwd": "E:/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work",
+  "node": "v24.18.0",
+  "platform": "win32",
+  "testReadySha256": "1fde9e5d5c0629b7e487cf4a5b3a54a77c37ede14e6b654299dcc306e753543a",
+  "sourceHashes": {
+    "scripts/directions/bootstrap.mjs": "7d49cabf133c9a9a59d9458931e4dc1d88626f660d19c58a770a2effa63edb68",
+    "scripts/directions/cli.mjs": "ab694f3fb2aa44d089706fb7c758cde83eaa145543bb1e321a1b521d007da25a",
+    "scripts/directions/contracts.mjs": "50e1efe38d9e906a6b0f577138baa9c107ef1f5349c8f6e2c5c85b59ab0ae367",
+    "scripts/directions/status.mjs": "c0a83640e7b9bfa27cb4fbf91a6475d27f9f5295c55cd7b17ec3477a1bd69a67",
+    "scripts/directions/evidence.mjs": "34982bee69bf397a42450c1c5f239c567a9a61da59dd025710d6e05cbe6ea06a"
+  },
+  "testHashes": {
+    "tests/directions/w01-origin-admission.test.mjs": "ac44755350e3f49918fdb23e6c62b7ed18800b7178441c3cb3462091fad60076",
+    "tests/directions/bootstrap.test.mjs": "e0529db1eb462fb8e2c6ff6bbda438f031a9fd6c482a9864257eb0fca9e9cc25"
+  },
+  "productionUnchangedBeforeRED": true,
+  "ownerAndStagingProductionHashesEqual": true,
+  "exitCode": 1,
+  "signal": null,
+  "stdout": "✔ FWE-003-A01 plan previews exact owner and files without writing (1208.8016ms)\n✔ FWE-001-A01 and FWE-002-A01 create registers isolated baseline and intake (1797.1448ms)\n✔ FWE-003-A02 same request returns owner; changed request and foreign branch blocks (4924.6536ms)\n✔ FWE-003-A03 retained intent recovers a registered partial worktree (2209.2779ms)\n✔ FWE-003-A04 rejects foreign common, traversal, link and case collisions (1867.8661ms)\n✔ FWE-001-A02 POSIX canonical owner paths accept safe absolute and reject unsafe (0.3182ms)\n✔ FWE-003-A05 request self-approval and policy drift cannot authorize create (488.0654ms)\n✔ FWE-001-A03 check binds manifest to owner and rejects malformed state (1999.7866ms)\n✔ I23-WIN manifest boundary accepts native and canonical owner paths only (2474.3832ms)\n✔ FWE-003-A06 rejects pre-existing baseline state and case-variant Git ref (1955.4208ms)\n✔ I23-07 installed service cannot create without an external exact request grant (2609.8137ms)\n✔ I23-07 grant for alpha rejects changed identity, title, goal, outcomes, baseline and parent (5761.493ms)\n✔ I23-07 linked or forged grant cannot approve creation (2013.0317ms)\n✔ I23-08 retained origin fixes original baseline after branch progress (2973.3401ms)\n✔ I23-08 check requires both exact retained origin records (2001.8009ms)\n✔ I23-08 foreign malformed manifest is rejected as unowned before JSON parsing (2114.8735ms)\n✖ W01 historical admission: real registered owner check and status accept its original origin (795.3696ms)\n✔ FWE-012-S02 public writer dispatch remains unavailable and cannot mutate a repository (847.4109ms)\n✔ FWE-018-S01 guide and bootstrap examples match public CLI guards and honest boundary (426.7313ms)\nℹ tests 19\nℹ suites 0\nℹ pass 18\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 36509.846\n\n✖ failing tests:\n\ntest at tests\\directions\\w01-origin-admission.test.mjs:39:1\n✖ W01 historical admission: real registered owner check and status accept its original origin (795.3696ms)\n  AssertionError [ERR_ASSERTION]: {\"ok\":false,\"status\":\"BLOCKED\",\"code\":\"CHECK\",\"detail\":\"ORIGIN_MISSING_LEGACY_ADOPTION_REQUIRED\"}\n  \n  2 !== 0\n  \n      at TestContext.<anonymous> (file:///E:/dev/codex/frade-worker-staging/w01-task-3-repair-20261005/work/tests/directions/w01-origin-admission.test.mjs:54:10)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.start (node:internal/test_runner/test:1191:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: 2,\n    expected: 0,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "status": "INTENDED_NATIVE_ORIGIN_RED"
+}

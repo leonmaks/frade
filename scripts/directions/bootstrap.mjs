@@ -735,10 +735,157 @@ function exactOrigin(record, expected) {
     )
   )
 }
+const historicalW01 = Object.freeze({
+  id: 'frade-standard-workflow',
+  owner: 'E:/dev/codex/frade-worktrees/frade-standard-workflow',
+  common: 'E:/dev/codex/frade/.git',
+  baseline: '98f387f96b51b0ad139e3507c376ff1c3e8dec09',
+  checkpoint: '9c974da812e7f120cace9defcdca69dd6154254b',
+  planning: '61c7b6d9b0cde8fe06b714c74bfa6ac04009a1ab',
+  release: 'a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0',
+  policy: '6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb',
+  artifact: 'openspec/changes/frade-standard-workflow/evidence/shared-policy/agent-workflow.md',
+  design: '501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a',
+  decision: '98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239',
+  user: '126589d990e2e44b04efe8825b5ec4d90582205ba6c729375528c383ccbaf186',
+  audit: '7568e25c4d1d0692f961c0cb589af890df269c4b7d77af6ebf6ba25c0440bae0',
+  pre: '437220ab5bca7e7274fa042c6b8a9508730c75bae8a0e1c7ddffa34de3b00f46',
+})
+const historicalW01Sources = Object.freeze({
+  design: 'openspec/changes/frade-standard-workflow/design.md',
+  decision: 'openspec/changes/frade-standard-workflow/evidence/policy-acceptance.json',
+  user: 'openspec/changes/frade-standard-workflow/evidence/user-decisions.json',
+  audit: 'openspec/changes/frade-standard-workflow/evidence/repository-audit.json',
+  pre: 'openspec/changes/frade-standard-workflow/evidence/reviews/formal-pre-01-pass/receipt.json',
+})
+const sameHistoricalPath = (a, b) =>
+  typeof a === 'string' &&
+  typeof b === 'string' &&
+  forward(a).toLowerCase() === forward(b).toLowerCase()
+
+// Pure evidence check for the one manually established supplier. The caller still
+// verifies actual Git registration, canonical owner paths and checkpoint ancestry.
+export function verifyHistoricalW01Evidence({ common, owner, manifest: m, control, sources }) {
+  const a = historicalW01
+  if (
+    m?.id !== a.id ||
+    !sameHistoricalPath(common, a.common) ||
+    !sameHistoricalPath(owner, a.owner) ||
+    m.owner?.branch !== `codex/${a.id}` ||
+    !sameHistoricalPath(m.owner?.gitCommon, a.common) ||
+    !sameHistoricalPath(m.owner?.worktree, a.owner) ||
+    m.originalBaseline !== a.baseline ||
+    m.approvedCheckpoint !== a.checkpoint ||
+    m.policy?.version !== '1.1' ||
+    m.policy?.release !== a.release ||
+    m.policy?.sha256 !== a.policy ||
+    m.policy?.artifact !== a.artifact ||
+    control?.release !== a.release ||
+    control?.policyVersion !== '1.1' ||
+    control?.policySha256 !== a.policy ||
+    m.policyAcceptance?.artifact !== historicalW01Sources.decision ||
+    m.policyAcceptance?.sha256 !== a.decision ||
+    m.reviewReceipts?.formalPRE?.path !== historicalW01Sources.pre ||
+    m.reviewReceipts?.formalPRE?.sha256 !== a.pre ||
+    m.reviewReceipts?.formalPRE?.candidate !== a.checkpoint ||
+    m.reviewReceipts?.formalPRE?.planHash !== a.design ||
+    m.stages?.length !== 1 ||
+    m.stages[0]?.id !== 'W01' ||
+    m.stages[0]?.change !== a.id ||
+    m.stages[0]?.roleAuthority?.path !== historicalW01Sources.design ||
+    m.stages[0]?.roleAuthority?.hash !== a.design ||
+    m.stages[0]?.roleAuthority?.humanDecision !== historicalW01Sources.user ||
+    !Array.isArray(m.stages[0]?.roleAssignments) ||
+    m.stages[0].roleAssignments.length !== 5 ||
+    m.stages[0]?.admission?.policyDecision !== 'ACCEPTED_D03' ||
+    m.stages[0]?.admission?.formalPRE !== 'PASS_9c974da8' ||
+    m.publication?.remote !== 'git@github.com:leonmaks/frade.git' ||
+    m.publication?.ref !== 'refs/heads/codex/frade-standard-workflow' ||
+    m.publication?.autoMainMerge !== false
+  )
+    throw new Error('W01_HISTORICAL_ORIGIN_MISMATCH')
+  for (const key of Object.keys(historicalW01Sources))
+    if (!Buffer.isBuffer(sources?.[key]) || hash(sources[key]) !== a[key])
+      throw new Error(`W01_HISTORICAL_${key.toUpperCase()}_DRIFT`)
+  const decision = JSON.parse(sources.decision)
+  const user = JSON.parse(sources.user)
+  const audit = JSON.parse(sources.audit)
+  const pre = JSON.parse(sources.pre)
+  const roles = new Map(
+    m.stages[0].roleAssignments.map((item) => [item.role, `${item.model}/${item.effort}`]),
+  )
+  if (
+    decision.id !== 'D03' ||
+    decision.reply !== 'Принято. Продолжай.' ||
+    decision.approvedPlanningCommit !== a.planning ||
+    !decision.approvedArtifacts?.some(
+      (item) => item.path === historicalW01Sources.design && item.sha256 === a.design,
+    ) ||
+    !decision.doesNotApprove?.includes('Foreign active-owner adoption') ||
+    user.accepted?.concretePolicy?.id !== 'D03' ||
+    user.accepted?.concretePolicy?.approvedPlanningCommit !== a.planning ||
+    user.accepted?.publication?.remote !== 'git@github.com:leonmaks/frade.git' ||
+    user.accepted?.publication?.ref !== 'refs/heads/codex/frade-standard-workflow' ||
+    user.accepted?.publication?.automaticMainMerge !== false ||
+    roles.size !== 5 ||
+    roles.get('planning-architecture') !== 'gpt-6-astra/high' ||
+    roles.get('tooling-tests') !== 'gpt-6-sol/high' ||
+    roles.get('formal-Verify') !== 'gpt-6-astra/high' ||
+    roles.get('independent-PRE') !== 'gpt-6-astra/xhigh' ||
+    roles.get('independent-POST') !== 'gpt-6-astra/xhigh' ||
+    audit.owner?.origin !== a.baseline ||
+    audit.owner?.branch !== `codex/${a.id}` ||
+    !sameHistoricalPath(audit.owner?.common, a.common) ||
+    !sameHistoricalPath(audit.owner?.root, a.owner) ||
+    audit.sharedPolicy?.release !== a.release ||
+    audit.sharedPolicy?.policySha256 !== a.policy ||
+    !audit.transfer?.some((item) => item.destination === a.artifact && item.sha256 === a.policy) ||
+    pre.change !== a.id ||
+    pre.phase !== 'PRE' ||
+    pre.status !== 'PASS' ||
+    pre.gateStatus !== 'PASS' ||
+    pre.owner?.branch !== `codex/${a.id}` ||
+    !sameHistoricalPath(pre.owner?.common, a.common) ||
+    !sameHistoricalPath(pre.owner?.root, a.owner) ||
+    pre.owner?.head !== a.checkpoint ||
+    pre.release !== a.release ||
+    pre.reviewPolicy?.source?.sha256 !== a.design ||
+    pre.candidateUnchanged !== true ||
+    pre.packetUnchanged !== true
+  )
+    throw new Error('W01_HISTORICAL_APPROVAL_MISMATCH')
+  return true
+}
+async function checkedHistoricalW01(common, id, owner, manifest, control) {
+  if (id !== historicalW01.id) throw new Error('ORIGIN_MISSING_LEGACY_ADOPTION_REQUIRED')
+  if (
+    !sameHistoricalPath(common, historicalW01.common) ||
+    !sameHistoricalPath(owner, historicalW01.owner)
+  )
+    throw new Error('W01_HISTORICAL_ORIGIN_MISMATCH')
+  const sources = {}
+  for (const [key, path] of Object.entries(historicalW01Sources))
+    sources[key] = await readFile(await safeRelative(owner, path))
+  verifyHistoricalW01Evidence({ common, owner, manifest, control, sources })
+  const head = git(owner, ['rev-parse', 'HEAD'])
+  for (const ancestor of [historicalW01.planning, historicalW01.checkpoint]) {
+    if (git(owner, ['cat-file', '-t', ancestor]) !== 'commit')
+      throw new Error('W01_HISTORICAL_CHECKPOINT_NOT_COMMIT')
+    if (
+      spawnSync('git', [...gitOptions, 'merge-base', '--is-ancestor', ancestor, head], {
+        cwd: owner,
+        env: gitEnv(),
+        encoding: 'utf8',
+      }).status !== 0
+    )
+      throw new Error('W01_HISTORICAL_CHECKPOINT_STALE')
+  }
+}
 async function checkedOrigin(common, id, owner, manifest, control) {
   const journal = await intentPath(common, id)
   const retained = await loadIntent(journal)
   const completion = await loadIntent(journal.replace(/\.json$/, '.complete.json'))
+  if (!retained && !completion) return checkedHistoricalW01(common, id, owner, manifest, control)
   if (!retained || !completion) throw new Error('ORIGIN_MISSING_LEGACY_ADOPTION_REQUIRED')
   if (
     retained.baseline !== manifest.originalBaseline ||

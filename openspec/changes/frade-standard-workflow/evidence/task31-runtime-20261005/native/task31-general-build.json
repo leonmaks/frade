@@ -1,0 +1,45 @@
+{
+  "label": "task31-general-build",
+  "atUtc": "2026-10-05T03:54:33.175Z",
+  "endedAtUtc": "2026-10-05T03:54:33.662Z",
+  "cwd": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+  "exe": "node",
+  "args": [
+    "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+    "build"
+  ],
+  "node": "v24.18.0",
+  "platform": "win32",
+  "exitCode": 0,
+  "signal": null,
+  "stdout": "\n   • Packages in scope: @frade/adapter-sberea-yaml, @frade/adapter-yaml, @frade/desktop, @frade/draw, @frade/local-index, @frade/metamodel-compiler, @frade/metamodel-config, @frade/metamodel-domain, @frade/repository-api, @frade/repository-application, @frade/repository-bridge, @frade/repository-domain, @frade/repository-ports, @frade/runtime-contracts, @frade/runtime-electron, @frade/runtime-node, @frade/ui-inspector, @frade/ui-navigator, @frade/ui-workspace, @frade/versioning-git\n   • Running build in 20 packages\n   • Remote caching disabled, using shared worktree cache\n\n@frade/runtime-contracts:build: cache hit, replaying logs f8a1fcd117984269\n@frade/runtime-contracts:build: $ tsc --outDir dist --declaration\n@frade/draw:build: cache hit, replaying logs a40398bd846df2e1\n@frade/draw:build: $ pnpm typecheck && vite build\n@frade/draw:build: $ tsc --noEmit --pretty false\n@frade/draw:build: vite v6.1.0 building for production...\n@frade/draw:build: transforming...\n@frade/draw:build: ✓ 1014 modules transformed.\n@frade/draw:build: rendering chunks...\n@frade/draw:build: computing gzip size...\n@frade/draw:build: dist/index.html                   0.41 kB │ gzip:   0.27 kB\n@frade/draw:build: dist/assets/index-BMbdYGPl.css    0.82 kB │ gzip:   0.44 kB\n@frade/draw:build: dist/assets/index-C7RacItR.js   761.77 kB │ gzip: 226.44 kB\n@frade/draw:build: \n@frade/draw:build: (!) Some chunks are larger than 500 kB after minification. Consider:\n@frade/draw:build: - Using dynamic import() to code-split the application\n@frade/draw:build: - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks\n@frade/draw:build: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n@frade/draw:build: ✓ built in 9.79s\n@frade/metamodel-domain:build: cache hit, replaying logs dff8ade51ca04897\n@frade/metamodel-domain:build: $ tsc -p tsconfig.build.json\n@frade/runtime-electron:build: cache hit, replaying logs 325c1816a36e498a\n@frade/runtime-electron:build: $ tsc --outDir dist --declaration\n@frade/metamodel-compiler:build: cache hit, replaying logs bbe15260eeab59a1\n@frade/metamodel-compiler:build: $ tsc -p tsconfig.build.json\n@frade/metamodel-config:build: cache hit, replaying logs 5f63cdaf11e03383\n@frade/metamodel-config:build: $ tsc -p tsconfig.build.json\n@frade/repository-domain:build: cache hit, replaying logs c64ab5411c9e4220\n@frade/repository-domain:build: $ tsc -p tsconfig.build.json\n@frade/repository-ports:build: cache hit, replaying logs f352b6c861bcd174\n@frade/repository-ports:build: $ tsc -p tsconfig.build.json\n@frade/local-index:build: cache hit, replaying logs 053c8f620d685ee8\n@frade/repository-bridge:build: cache hit, replaying logs f8df3e8085f1d922\n@frade/local-index:build: $ tsc -p tsconfig.build.json\n@frade/repository-bridge:build: $ tsc -p tsconfig.build.json\n@frade/versioning-git:build: cache hit, replaying logs 4f92c075c3db27e3\n@frade/versioning-git:build: $ tsc -p tsconfig.build.json\n@frade/repository-application:build: cache hit, replaying logs e131b07bf8e1bab1\n@frade/repository-application:build: $ tsc -p tsconfig.build.json\n@frade/repository-api:build: cache hit, replaying logs 8eefbf36a173483b\n@frade/adapter-yaml:build: cache hit, replaying logs abb045125cf692b3\n@frade/repository-api:build: $ tsc -p tsconfig.build.json\n@frade/adapter-sberea-yaml:build: cache hit, replaying logs 3eb2f0bd35f42a7e\n@frade/adapter-yaml:build: $ tsc -p tsconfig.build.json\n@frade/adapter-sberea-yaml:build: $ tsc -p tsconfig.build.json\n@frade/ui-inspector:build: cache hit, replaying logs a948affd0d8c7778\n@frade/ui-navigator:build: cache hit, replaying logs 17327b23142fa123\n@frade/ui-inspector:build: $ tsc -p tsconfig.build.json\n@frade/ui-navigator:build: $ tsc -p tsconfig.build.json\n@frade/runtime-node:build: cache hit, replaying logs bf01eaec6e245520\n@frade/ui-workspace:build: cache hit, replaying logs 27b2755f25a63ea8\n@frade/runtime-node:build: $ tsc --outDir dist --declaration\n@frade/ui-workspace:build: $ tsc -p tsconfig.build.json\n@frade/desktop:build: cache hit, replaying logs 23b25e2e8d0cd53c\n@frade/desktop:build: $ node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility\n@frade/desktop:build: Draw.io 31.5.2: 2851 pinned resources verified\n@frade/desktop:build: $ tsc --noEmit\n@frade/desktop:build: vite v6.1.0 building SSR bundle for production...\n@frade/desktop:build: transforming...\n@frade/desktop:build: ✓ 29 modules transformed.\n@frade/desktop:build: rendering chunks...\n@frade/desktop:build: out/main/index.cjs  75.16 kB\n@frade/desktop:build: ✓ built in 437ms\n@frade/desktop:build: vite v6.1.0 building SSR bundle for production...\n@frade/desktop:build: transforming...\n@frade/desktop:build: ✓ 24 modules transformed.\n@frade/desktop:build: rendering chunks...\n@frade/desktop:build: out/preload/index.cjs  21.56 kB\n@frade/desktop:build: ✓ built in 101ms\n@frade/desktop:build: vite v6.1.0 building for production...\n@frade/desktop:build: transforming...\n@frade/desktop:build: ✓ 1054 modules transformed.\n@frade/desktop:build: rendering chunks...\n@frade/desktop:build: ../../out/renderer/index.html                       0.40 kB\n@frade/desktop:build: ../../out/renderer/assets/codicon-BP8tsb4Y.ttf    152.28 kB\n@frade/desktop:build: ../../out/renderer/assets/index-BdfeSZBO.css       24.97 kB\n@frade/desktop:build: ../../out/renderer/assets/index-ChvF-yyo.js     1,889.86 kB\n@frade/desktop:build: ✓ built in 3.68s\n@frade/desktop:build: $ vite build --config vite.utility.config.ts\n@frade/desktop:build: vite v6.1.0 building for production...\n@frade/desktop:build: transforming...\n@frade/desktop:build: ✓ 149 modules transformed.\n@frade/desktop:build: rendering chunks...\n@frade/desktop:build: computing gzip size...\n@frade/desktop:build: out/utility/index.cjs             0.05 kB │ gzip:  0.07 kB\n@frade/desktop:build: out/utility/paged-DwF7DYps.cjs   35.79 kB │ gzip: 11.22 kB\n@frade/desktop:build: out/utility/index-BVRV8ssa.cjs  288.43 kB │ gzip: 89.04 kB\n@frade/desktop:build: ✓ built in 1.26s\n\n Tasks:    20 successful, 20 total\nCached:    20 cached, 20 total\n  Time:    142ms >>> FULL TURBO\n\n",
+  "stderr": "$ turbo build\n• turbo 2.11.2\n",
+  "status": "PASS",
+  "applicability": {
+    "scope": "Required task2.7/3.1 general existing controls; no new product PASS inferred",
+    "frozenTrackedFingerprint": "cf179a47a2ea8c6b4cc1778d58933a6b66e8d67f1a025a0d7946eb35c5e09c4d",
+    "existingGeneralScripts": {
+      "lint": "turbo lint",
+      "typecheck": "turbo typecheck",
+      "build": "turbo build",
+      "test:boundaries": "node --test tests/contract/*.test.mjs",
+      "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs"
+    },
+    "toolchain": {
+      "packageManager": "pnpm@12.6.0",
+      "engines": {
+        "node": ">=24.0.0 <25"
+      },
+      "devDependencies": {
+        "@eslint/js": "9.39.1",
+        "eslint": "9.39.1",
+        "eslint-plugin-react-hooks": "7.0.1",
+        "globals": "16.5.0",
+        "prettier": "3.9.8",
+        "turbo": "2.11.2",
+        "typescript-eslint": "8.46.3"
+      }
+    },
+    "lockfileSha256": "755f06619fb8269a345412512c1a44c30cd41887e2d499e4236c262b624d95c0"
+  }
+}

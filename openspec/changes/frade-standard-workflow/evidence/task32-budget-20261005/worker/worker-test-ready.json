@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "stage": "W01",
+  "task": "3.1–3.2 FWE-004-S02 numeric contract evidence boundary coverage",
+  "assignment": "tooling-tests",
+  "approvedModel": "gpt-6-sol",
+  "approvedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "status": "TEST_ONLY_READY_FOR_PARENT_NATIVE_BEFORE",
+  "testPathsSha256": {
+    "tests/directions/budget-boundary.test.mjs": "d627f750b781c2fa5987d234f4da0cddc0e1241e37c696a7e55b15c2e263a51b"
+  },
+  "currentOriginalProductionSha256": {
+    "scripts/directions/bootstrap.mjs": "3715d77fd97f924fd8cd02945dd35e1479ce277376097a6033244648826cf34d",
+    "scripts/directions/check-applicability.mjs": "4a7447a54137a5a5d6501ce50b2cc14b0c1307910a7f2115606efbaf77b66bac",
+    "scripts/directions/cli.mjs": "ab694f3fb2aa44d089706fb7c758cde83eaa145543bb1e321a1b521d007da25a",
+    "scripts/directions/contracts.mjs": "50e1efe38d9e906a6b0f577138baa9c107ef1f5349c8f6e2c5c85b59ab0ae367",
+    "scripts/directions/evidence.mjs": "34982bee69bf397a42450c1c5f239c567a9a61da59dd025710d6e05cbe6ea06a",
+    "scripts/directions/lifecycle.mjs": "8893ece1fe454fe8829cf0b9013304135db2faf38dc5c3f4a0ba4aa1e19fe8ed",
+    "scripts/directions/publication.mjs": "cb7deaa5aa43bde181d52085c4cd50e2b5652e4cb42307bf181debf626947559",
+    "scripts/directions/review-child.mjs": "a8833683101c62ce4481b9304dec3ed54a487e90c75a4ed829a05fd6939f02dd",
+    "scripts/directions/review.mjs": "3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa",
+    "scripts/directions/roles.mjs": "9fb5da92a87fc9fd173765857f61c36fcd4855bf572bd74f7145f4efbd4f2341",
+    "scripts/directions/root-loader.mjs": "80ed28bd74e8d92c24608316d20ea7c0662dd372b518993b2cb1596bbe4f18d2",
+    "scripts/directions/scope.mjs": "199dcb887c35111cf775a6af5f2d8324760ca0127540233181cf4d024d64f3ce",
+    "scripts/directions/status.mjs": "c0a83640e7b9bfa27cb4fbf91a6475d27f9f5295c55cd7b17ec3477a1bd69a67"
+  },
+  "rca": {
+    "classification": "TEST",
+    "finding": "The prior audit had no fixture with a controller-approved numeric contract and independently pinned raw measurement. Existing createEvidenceBoundary, verifyGate, verifyApplicability, verifyTraceability, projectStatus and evaluateTransition support this trusted integration. No production boundary defect is currently demonstrated.",
+    "owner": "The synthetic limit belongs solely to this test controller and does not define a real Frade or W01 numeric acceptance threshold."
+  },
+  "local": {
+    "command": "node tests/directions/budget-boundary.test.mjs",
+    "result": "4 PASS, 0 FAIL; direct Linux execution only, parent native run authoritative",
+    "syntax": "node --check tests/directions/budget-boundary.test.mjs PASS"
+  },
+  "parentNativeBefore": "../NATIVE-BUDGET-BEFORE.json",
+  "productionModified": false
+}

@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 2,
+  "status": "IMPLEMENTATION_PENDING_W01_CLOSURE",
+  "id": "frade-standard-workflow",
+  "title": "Единый workflow Frade",
+  "owner": {
+    "branch": "codex/frade-standard-workflow",
+    "worktree": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+    "gitCommon": "E:/dev/codex/frade/.git"
+  },
+  "originalBaseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "approvedCheckpoint": "9c974da812e7f120cace9defcdca69dd6154254b",
+  "policy": {
+    "version": "1.1",
+    "release": "a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0",
+    "sha256": "6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb",
+    "artifact": "openspec/changes/frade-standard-workflow/evidence/shared-policy/agent-workflow.md"
+  },
+  "scope": {
+    "allowed": [
+      "docs/engineering/**",
+      "openspec/changes/frade-standard-workflow/**",
+      "scripts/directions/**",
+      "tests/directions/**",
+      "AGENTS.md",
+      "package.json",
+      ".github/workflows/ci.yml"
+    ],
+    "frozen": [
+      "packages/**",
+      "apps/**",
+      "pnpm-lock.yaml",
+      "scripts/routing-v2-architecture-gate.mjs",
+      "docs/routing-v2/**",
+      "vendor/**",
+      "openspec/changes/bundle-integration-flow-management/**",
+      "openspec/changes/frade-draw-document-roundtrip/**",
+      "openspec/changes/frade-electron-runtime/**",
+      "openspec/changes/frade-ka-workbench-pilot/**",
+      "openspec/changes/frade-metamodel-compiler/**",
+      "openspec/changes/frade-metamodel-domain/**",
+      "openspec/changes/frade-repo-core/**",
+      "openspec/changes/frade-repository-diagrams/**",
+      "openspec/changes/routing-v2-04-orthogonal-router/**"
+    ],
+    "mode": "IMPLEMENTATION",
+    "planningAllowed": [
+      "openspec/changes/frade-standard-workflow/**",
+      "docs/engineering/BRANCH-STATUS.md"
+    ],
+    "closure": {
+      "enabled": false,
+      "requires": [
+        "humanPolicyDecision",
+        "requiredChecksPASS",
+        "formalVerifyPASS",
+        "currentIndependentPOSTPASS"
+      ],
+      "specDestinations": [
+        "openspec/specs/engineering-direction-lifecycle/spec.md",
+        "openspec/specs/engineering-role-dispatch/spec.md",
+        "openspec/specs/engineering-progress-publication/spec.md"
+      ],
+      "archiveDestination": "openspec/changes/archive/<actual-archive-date>-frade-standard-workflow/**",
+      "archiveOwner": "frade-standard-workflow",
+      "operations": [
+        "Sync only W01 delta requirements into exactly the three declared specs",
+        "Move only this active W01 change to its canonically validated dated archive directory",
+        "Relocate owned references and current role-source path/raw hash bindings; preserve immutable receipt origins using an explicit mapping"
+      ],
+      "excludes": "Every unrelated specification/archive, foreign direction, product and frozen control remains excluded"
+    }
+  },
+  "statusPath": "docs/engineering/BRANCH-STATUS.md",
+  "publication": {
+    "authorization": "openspec/changes/frade-standard-workflow/evidence/user-decisions.json",
+    "remote": "git@github.com:leonmaks/frade.git",
+    "ref": "refs/heads/codex/frade-standard-workflow",
+    "cadence": "completed-tested-task_or_significant_checkpoint",
+    "autoMainMerge": false
+  },
+  "stages": [
+    {
+      "id": "W01",
+      "change": "frade-standard-workflow",
+      "phase": "IMPLEMENTATION",
+      "health": "RUNNING",
+      "dependencies": [],
+      "roleAssignments": [
+        {
+          "role": "planning-architecture",
+          "model": "gpt-6-astra",
+          "effort": "high"
+        },
+        {
+          "role": "tooling-tests",
+          "model": "gpt-6-sol",
+          "effort": "high"
+        },
+        {
+          "role": "formal-Verify",
+          "model": "gpt-6-astra",
+          "effort": "high"
+        },
+        {
+          "role": "independent-PRE",
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
+        },
+        {
+          "role": "independent-POST",
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
+        }
+      ],
+      "roleAuthority": {
+        "path": "openspec/changes/frade-standard-workflow/design.md",
+        "hash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+        "humanDecision": "openspec/changes/frade-standard-workflow/evidence/user-decisions.json"
+      },
+      "taskOverrides": [],
+      "tasksAuthority": "openspec/changes/frade-standard-workflow/tasks.md",
+      "admission": {
+        "policyDecision": "ACCEPTED_D03",
+        "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
+        "formalPRE": "PASS_9c974da8",
+        "Verify": "NOT_RUN",
+        "POST": "NOT_RUN",
+        "archive": "NOT_RUN"
+      }
+    }
+  ],
+  "metrics": {
+    "acceptedRequirements": 0,
+    "requirementsTotal": 18,
+    "qualityScore": null,
+    "numericalBudgets": "Owning stage contracts, not universal process defaults"
+  },
+  "existingOwnerAdoption": [
+    {
+      "owner": "routing-v2",
+      "status": "NOT_STARTED"
+    },
+    {
+      "owner": "ui-design-contract",
+      "status": "NOT_STARTED"
+    },
+    {
+      "owner": "repo-core",
+      "status": "NOT_STARTED"
+    }
+  ],
+  "implementationCapabilities": {
+    "directionCLI": "PLAN_CREATE_CHECK_STATUS_REVIEW_CHECKPOINT_PUBLISH_IMPLEMENTED;TASK26_ACTUAL_W01_PUBLICATION_PASS;TASK27_ROOT_LOADER_PACKAGE_CI_LOCAL_PASS",
+    "statusValidator": "IMPLEMENTED_TASK24",
+    "writerDispatcher": "NOT_IMPLEMENTED",
+    "reviewTransport": "AVAILABLE_v1.1_exact_selected_role"
+  },
+  "policyAcceptance": {
+    "artifact": "openspec/changes/frade-standard-workflow/evidence/policy-acceptance.json",
+    "sha256": "98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239"
+  },
+  "reviewReceipts": {
+    "formalPRE": {
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/formal-pre-01-pass/receipt.json",
+      "sha256": "437220ab5bca7e7274fa042c6b8a9508730c75bae8a0e1c7ddffa34de3b00f46",
+      "candidate": "9c974da812e7f120cace9defcdca69dd6154254b",
+      "planHash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a"
+    }
+  },
+  "provisioning": {
+    "source": "Accepted D03 draft + actual registered W01 owner; deterministic own publication controller instantiation, no policy/model change",
+    "scope": "Accepted task2.7 additive root loader/package/CI exact paths; frozen product/foreign scopes and closure remain unchanged",
+    "currentCheckpoint": "882a9980fcaa1a3508097a1edaf5369bf42513f4",
+    "closureActivated": false
+  }
+}
