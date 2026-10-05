@@ -1,13 +1,13 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-05T06:59:20.041Z
+UPDATED_AT_UTC: 2026-10-05T08:06:54.508Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: IMPLEMENTATION | HEALTH: RUNNING
-NEXT_PERMITTED_ACTION: task3.1 complete, task3.2 audit and final193/193 checks PASS; canonical checkpoint/publication pending, then formal Verify by exact gpt-6-astra/high. Verify/POST/archive NOT_RUN; READY_FOR_VERIFY: NO.
+STAGE: W01 | PHASE: VERIFICATION | HEALTH: BLOCKED
+NEXT_PERMITTED_ACTION: STOP progression. Formal Verify FAIL on source9fcdced7; resolve V-01 review scope, V-02 role provenance, V-03 seeded task IDs, V-04 historical status-write admission through approved tooling-tests gpt-6-sol/high, regression-first; rerun required checks and fresh formal Verify before POST. READY_FOR_VERIFY: NO.
 HUMAN_DECISION: NONE; D03 accepted; direct reply «да» authorized BLOCKED freeze recovery and fresh Astra/xhigh PRE.
 READY_FOR_IMPLEMENTATION: YES; formal PRE PASS retained and receipt checkpoint2a6f8f96 PUBLISHED with exact remote SHA..
 READY_FOR_ARCHIVE: NO.
@@ -28,7 +28,7 @@ Public policy adoption: evidence/repository-audit.json has exact2 paths/hashes; 
 
 | Stage | Result | Phase / health | PRE / Verify / POST / archive |
 |---|---|---|---|
-| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | IMPLEMENTATION/RUNNING | PRE PASS; Verify/POST NOT_RUN |
+| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | VERIFICATION/BLOCKED | PRE PASS; formal Verify FAIL; POST NOT_RUN |
 | Existing-owner adoption | Separate Routing/UI/Repo Core consumer checkpoints | NOT_STARTED; outside W01 | Own future scope/gates |
 | Main integration | Explicit merged-candidate revalidation | NOT_STARTED; outside current permission | No automatic merge |
 
@@ -51,10 +51,10 @@ STOP after W01; no next numbered change or owner migration automatically.
 | 2.6 | tooling-tests | publication RED -> real Git/adversarial/native tests -> canonical W01 checkpoint/publish | COMPLETE; Windows168/168,22 publication tests; lint/format/strict16/16/integrity PASS. Actual CHECKPOINTED/PUBLISHED882a9980; fresh exact remote SHA. Historical failures and RCA retained |
 | 2.7 | tooling-tests | RED -> root/scoped loader + applicability -> docs/package/CI -> Windows GREEN -> checkpoint | COMPLETE_SCOPED; PUBLISHED c6ae514350b46da67721126b4bd86fa04698c863; three complete exact Sol/high streams; Windows182/182, actual check:directions/scoped lint/format/strict16/16/general checks/owner root+nested read-only replay PASS; task27-runtime-20261005 |
 | 3.1 | tooling-tests | cumulative applicable checks | COMPLETE; final193/193, scoped lint/format/content/frozen/manifest/link checks PASS; general cached20/20 each; boundary19/19+4 |
-| 3.2 | tooling-tests | traceability, origin, examples, confinement, checkpoint | AUDIT_COMPLETE_PUBLICATION_PENDING; 18 requirements/46 scenarios, original23 publication assertions preserved, own replay and live discovery/canary PASS; task32-final-20261005 |
-| 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | NOT_RUN |
+| 3.2 | tooling-tests | traceability, origin, examples, confinement, checkpoint | COMPLETE_PUBLISHED; 18 requirements/46 scenarios, original23 publication assertions preserved, own replay and live discovery/canary PASS; task32-final-20261005 |
+| 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | 4.1 VALID_FAIL, incomplete; 4.2–4.4 NOT_RUN; formal-verify-20261005 |
 
-TASKS_COMPLETE/TOTAL/REMAINING: 13/18/5.
+TASKS_COMPLETE/TOTAL/REMAINING: 14/18/4.
 REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed acceptance).
 46 BDD scenario declarations counted by actual planning audit; task2.1 behavioral controls actual Windows35/35 PASS; cumulative18-requirement acceptance remains incomplete.
 
@@ -69,7 +69,7 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | openspec validate frade-standard-workflow --strict --json | REQUIRED | PASS1/1, no issues |
 | Full planning content/hash/link/traceability and all-spec checks | REQUIRED | PASS; reconciled-planning-checks.json + final metadata check proof;18requirements/46scenarios/18tasks/8sections; product/control tree unchanged |
 | Independent draft-quality review | REQUIRED for planning completion | draft-03 PASS on faf69d33;80 input hashes; prior BLOCKED/FAIL preserved; no implementation admission |
-| Formal PRE/Verify/POST | REQUIRED for implementation/closure | PRE PASS on9c974da8; Verify/POST NOT_RUN |
+| Formal PRE/Verify/POST | REQUIRED for implementation/closure | PRE PASS on9c974da8; formal Verify FAIL on9fcdced7 (V-01–V-04); POST NOT_RUN |
 | General lint/typecheck/boundary suites | REQUIRED | Actual current baseline PASS5 checks; original build FAIL retained; exact pinned resources restored, repeated build PASS |
 | New core schema/lifecycle/closure controls | REQUIRED | Meaningful Windows RED retained; 30+5 expanded GREEN35/35; owner post-format35/35 PASS; scoped lint repaired; current PASS |
 | Role resolver controls | REQUIRED | Actual Windows50/50 PASS; format/scoped lint/strict PASS; meaningful RED6 and original layout/probe FAIL retained |
@@ -86,7 +86,7 @@ Historical invocation/EOF/EOL/link-check/count failures and classified correctio
 |---|---|---|---|
 | W01 planning-architecture | gpt-6-astra/high | design4 + direct human decision | Current chat backend/effort NOT_CONFIRMED |
 | W01 tooling-tests | gpt-6-sol/high | design4 + direct human decision | initial task2.1 executed gpt-6-sol/high; all three core runs raw complete/input unchanged; actual Windows35/35 PASS; fresh lint repair same pair/canary; backend/effort NOT_CONFIRMED |
-| W01 formal-Verify | gpt-6-astra/high | design4 + direct human decision | NOT_RUN |
+| W01 formal-Verify | gpt-6-astra/high | design4 + direct human decision | first run BLOCKED_CAPACITY; fresh exact-pair retry complete, valid FAIL. Source/index/HEAD/packet unchanged, complete final report binding; backend/effort NOT_CONFIRMED |
 | W01 independent-PRE | gpt-6-astra/xhigh | design4 + direct human decision | Exact pair invoked for accepted formal PRE and task2.5 focused PRE; current focused reviewer/reception PASS; actual backend/effort NOT_CONFIRMED |
 | W01 independent-POST | gpt-6-astra/xhigh | design4 + direct human decision | NOT_RUN |
 
@@ -110,12 +110,12 @@ Task2.1–2.5 PUBLISHED; task2.5 complete: actual Windows146/146 and focused PRE
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: c6ae514350b46da67721126b4bd86fa04698c863 (task2.7 tested implementation; W01 progress12/18).
-COMMIT_STATE: task2.7 c6ae514350b46da67721126b4bd86fa04698c863 CHECKPOINTED/PUBLISHED; this post-publication status refresh joins the next natural checkpoint, no receipt-only commit.
+SOURCE_CHECKPOINT_SHA: 9fcdced7bfd3e1ae3e6895de050466417b19d8c1 (task3.1–3.2 implementation/check checkpoint).
+COMMIT_STATE: task3.1–3.2 9fcdced7bfd3e1ae3e6895de050466417b19d8c1 CHECKPOINTED/PUBLISHED; this receipt/status refresh joins the next natural gate checkpoint.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: PUBLISHED; actual canonical task2.7 checkpoint/publish PASS; fresh exact remote SHA c6ae514350b46da67721126b4bd86fa04698c863 verified.
-VERIFIED_SOURCE_REMOTE_SHA: c6ae514350b46da67721126b4bd86fa04698c863.
-SOURCE_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publication/frade-standard-workflow/c6ae514350b46da67721126b4bd86fa04698c863.publish.json.
+PUSH_STATE: PUBLISHED; canonical task3.2 publish PASS; fresh exact remote SHA 9fcdced7bfd3e1ae3e6895de050466417b19d8c1 verified.
+VERIFIED_SOURCE_REMOTE_SHA: 9fcdced7bfd3e1ae3e6895de050466417b19d8c1.
+SOURCE_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publication/frade-standard-workflow/9fcdced7bfd3e1ae3e6895de050466417b19d8c1.publish.json.
 PRE_ADMISSION_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/formal-pre-admission-20261002.json; require PUBLISHED/sourceSha=live HEAD before first task2.1 owner code write.
 Current task2.6 evidence: openspec/changes/frade-standard-workflow/evidence/task26-runtime-20261005/origins.json; final native command logs and all historical failed/blocked streams retained. Previous task2.5 publication receipt joins this natural implementation checkpoint. Complete raw run trees remain in canonical Git common.
 Reviewable standard/onboarding/status/manifest/adoption: openspec/changes/frade-standard-workflow/drafts/.
@@ -130,3 +130,7 @@ Current task2.7 evidence: openspec/changes/frade-standard-workflow/evidence/task
 Resume evidence: openspec/changes/frade-standard-workflow/evidence/task32-resume-20261005/checks.json and traceability-run-bindings.json; 18requirements/46scenarios mapped, 60 current assertion/run bindings, native189 events/173 unique titles plus separate owner replay. Initial broad/sandbox/CMD invocation failures preserved with classified correction; budget handoff path mismatch resolved by exact consumed-file hash. Synthetic numeric fixture proves common evidence controls only, no real consumer budget acceptance. Publication scanner benign Object.freeze false positive reproduced; no production publication repair imported yet. Exact Sol/high initial repair stream BLOCKED_CAPACITY; same-pair retry in isolated staging. Tasks3.1/3.2 remain unchecked; Verify/POST/archive NOT_RUN.
 
 Final task3 checks: task32-final-20261005/completion.json and traceability-run-bindings.json. Native193/193 PASS (177 unique titles), publication27/27, owner replay1/1; exact Sol/high origin/budget/publication streams complete and source-bound. Publication scanner repair and11 new portable tests imported; original23 publication assertions AST-identical; root17/product/dependencies/CI/supplier unchanged. Full adversarial role events retain exact bytes in canonical private common with public origin hash/path pointer; sensitive guard unchanged for publication. Task3.1 complete; task3.2 audit complete, canonical checkpoint/push pending. Formal Verify/POST/archive NOT_RUN; READY_FOR_VERIFY: NO.
+
+Task3.1–3.2 publication refresh 2026-10-05: final193/193 PASS, original23 publication tests retained and27 current PASS, boundary19/19+4, owner replay1/1, strict16/16, current source bindings verified. Checkpoint 9fcdced7bfd3e1ae3e6895de050466417b19d8c1 PUBLISHED; canonical receipt stored in task32-final-20261005/publication-result.json. Prior auto-review rejection retained outside candidate; user explicitly permitted this payload/destination. Verify starts only on the refreshed frozen packet; tasks4.1–4.4 remain incomplete, consumer adoption NOT_STARTED, shared v1.1 unchanged, writer dispatch NOT_IMPLEMENTED.
+
+Formal Verify result 2026-10-05: RECEIVED_VALID_FAIL; all18 requirements and46 scenarios inspected, four correctness/coherence blockers V-01–V-04 prevent POST. Raw reports, events, exits and provenance are immutable and retained; stopped worker and unchanged source/index/HEAD/packet proven before freeze release. Public evidence: openspec/changes/frade-standard-workflow/evidence/formal-verify-20261005/receipt.json. Native193/193 remains actual historical GREEN and does not waive current semantic FAIL. Dashboard is an administrative BLOCKED update, not a generated source-bound projection; W-02 remains open until authenticated status-write repair. Tasks4.1–4.4 remain incomplete, no production repair, POST, archive or consumer adoption performed during this review.

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "status": "RECEIVED_VALID_FAIL",
+  "change": "frade-standard-workflow",
+  "task": "4.1",
+  "role": "formal-Verify",
+  "approvedModel": "gpt-6-astra",
+  "approvedEffort": "high",
+  "requestedModel": "gpt-6-astra",
+  "requestedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "sourceCheckpoint": "9fcdced7bfd3e1ae3e6895de050466417b19d8c1",
+  "formalVerify": "FAIL",
+  "readyForPost": false,
+  "readyForArchive": false,
+  "sourceUnchanged": true,
+  "inputUnchanged": true,
+  "indexUnchanged": true,
+  "headUnchanged": true,
+  "completeStream": true,
+  "finalReportBound": true,
+  "exitCode": 0,
+  "requirements": 18,
+  "scenarios": 46,
+  "blockers": [
+    {
+      "id": "V-01",
+      "title": "Installed W01 manifest is rejected by review preparation scope admission",
+      "paths": [
+        "scripts/directions/review.mjs:256",
+        "scripts/directions/review.mjs:563",
+        "docs/engineering/directions/frade-standard-workflow/direction.json:27",
+        "scripts/directions/root-loader.mjs:155"
+      ]
+    },
+    {
+      "id": "V-02",
+      "title": "Installed role provenance cannot resolve any of the five approved W01 roles",
+      "paths": [
+        "docs/engineering/directions/frade-standard-workflow/direction.json:116",
+        "scripts/directions/roles.mjs:38",
+        "scripts/directions/roles.mjs:61",
+        "scripts/directions/review.mjs:596"
+      ]
+    },
+    {
+      "id": "V-03",
+      "title": "Bootstrap generates task IDs that the status parser rejects",
+      "paths": [
+        "scripts/directions/bootstrap.mjs:491",
+        "scripts/directions/bootstrap.mjs:370",
+        "scripts/directions/status.mjs:98",
+        "scripts/directions/status.mjs:112"
+      ]
+    },
+    {
+      "id": "V-04",
+      "title": "Historical W01 origin is admitted by check but cannot refresh status with --write",
+      "paths": [
+        "scripts/directions/bootstrap.mjs:884",
+        "scripts/directions/bootstrap.mjs:859",
+        "scripts/directions/status.mjs:448",
+        "scripts/directions/status.mjs:551"
+      ]
+    }
+  ],
+  "rawOriginsPath": "E:/dev/codex/frade/.git/frade-workflow/implementations/formal-verify-20261005-raw/origins.json",
+  "rawOriginsSha256": "6b41e428027c6b8852d0fede3be5dceac87bd3e6bf6cff3235f4d9341af48594",
+  "reportSha256": "a536bfecc5353a36068d3964e96978d48384b4630c175a6c0a3fffde20d0f795",
+  "priorRun": "BLOCKED_CAPACITY_NO_VERDICT",
+  "consumerAdoption": "NOT_STARTED",
+  "POST": "NOT_RUN",
+  "archive": "NOT_RUN"
+}
