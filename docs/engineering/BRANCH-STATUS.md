@@ -1,13 +1,13 @@
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-04T23:18:56.245Z
+UPDATED_AT_UTC: 2026-10-05T03:28:22.378Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: IMPLEMENTATION | HEALTH: BLOCKED
-NEXT_PERMITTED_ACTION: retry exact Sol/high task2.7 after provider availability; two BLOCKED_CAPACITY streams retained, no task2.7 owner import. Resume final native/root integration only after complete unchanged-input stream. No model fallback or phase advancement.
+STAGE: W01 | PHASE: IMPLEMENTATION | HEALTH: RUNNING
+NEXT_PERMITTED_ACTION: task2.7 local checks COMPLETE_SCOPED; publish coherent checkpoint to approved feature ref. Remaining tasks3.1–4.4 not advanced; formal Verify/POST/archive NOT_RUN.
 HUMAN_DECISION: NONE; D03 accepted; direct reply «да» authorized BLOCKED freeze recovery and fresh Astra/xhigh PRE.
 READY_FOR_IMPLEMENTATION: YES; formal PRE PASS retained and receipt checkpoint2a6f8f96 PUBLISHED with exact remote SHA..
 READY_FOR_ARCHIVE: NO.
@@ -28,7 +28,7 @@ Public policy adoption: evidence/repository-audit.json has exact2 paths/hashes; 
 
 | Stage | Result | Phase / health | PRE / Verify / POST / archive |
 |---|---|---|---|
-| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | IMPLEMENTATION/BLOCKED | PRE PASS; Verify/POST NOT_RUN |
+| W01 | Общий стандарт, onboarding, validated templates/controls/CLI/publication | IMPLEMENTATION/RUNNING | PRE PASS; Verify/POST NOT_RUN |
 | Existing-owner adoption | Separate Routing/UI/Repo Core consumer checkpoints | NOT_STARTED; outside W01 | Own future scope/gates |
 | Main integration | Explicit merged-candidate revalidation | NOT_STARTED; outside current permission | No automatic merge |
 
@@ -49,11 +49,11 @@ STOP after W01; no next numbered change or owner migration automatically.
 | 2.4 | tooling-tests | RED -> eight sections/metrics/freeze/history/panel/checkpoint -> Windows GREEN | COMPLETE; task24-completion-audit.json; Windows107/107 PASS (91 unique), scoped syntax/lint/format/strict PASS; historical FAIL retained |
 | 2.5 | tooling-tests | RED -> wrapper/freeze/raw binding -> Windows GREEN -> actual focused PRE | COMPLETE; task25-runtime-20261004/completion.json. Native Windows146/146, focused37/37; scoped Astra/xhigh PASS, full raw reception PASS, exact-run termination and unchanged candidate verified, freeze RELEASED. Historical FAIL/BLOCKED retained |
 | 2.6 | tooling-tests | publication RED -> real Git/adversarial/native tests -> canonical W01 checkpoint/publish | COMPLETE; Windows168/168,22 publication tests; lint/format/strict16/16/integrity PASS. Actual CHECKPOINTED/PUBLISHED882a9980; fresh exact remote SHA. Historical failures and RCA retained |
-| 2.7 | tooling-tests | inheritance/docs/CI | IN_PROGRESS/BLOCKED; two exact Sol/high streams BLOCKED_CAPACITY, completeStream=false, input unchanged; interim native10/10 diagnostic. Candidate not imported; task27-blocker-20261005 |
+| 2.7 | tooling-tests | RED -> root/scoped loader + applicability -> docs/package/CI -> Windows GREEN -> checkpoint | COMPLETE_SCOPED_PENDING_PUBLICATION; three complete exact Sol/high streams; Windows182/182, actual check:directions/scoped lint/format/strict16/16/general checks/owner root+nested read-only replay PASS; task27-runtime-20261005 |
 | 3.1–3.2 | tooling-tests | cumulative applicable checks + integrity audit | NOT_RUN |
 | 4.1–4.4 | Verify/POST + orchestration | Verify -> POST -> release/archive/checkpoint | NOT_RUN |
 
-TASKS_COMPLETE/TOTAL/REMAINING: 11/18/7.
+TASKS_COMPLETE/TOTAL/REMAINING: 12/18/6.
 REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed acceptance).
 46 BDD scenario declarations counted by actual planning audit; task2.1 behavioral controls actual Windows35/35 PASS; cumulative18-requirement acceptance remains incomplete.
 
@@ -72,7 +72,7 @@ REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 (normative draft is not deployed 
 | General lint/typecheck/boundary suites | REQUIRED | Actual current baseline PASS5 checks; original build FAIL retained; exact pinned resources restored, repeated build PASS |
 | New core schema/lifecycle/closure controls | REQUIRED | Meaningful Windows RED retained; 30+5 expanded GREEN35/35; owner post-format35/35 PASS; scoped lint repaired; current PASS |
 | Role resolver controls | REQUIRED | Actual Windows50/50 PASS; format/scoped lint/strict PASS; meaningful RED6 and original layout/probe FAIL retained |
-| Bootstrap/status/review/publication controls | REQUIRED | Task2.3–2.5 complete; native Windows146/146 PASS; actual task2.5 focused PRE/reception PASS. Task2.6 controls and actual W01 checkpoint/publish PASS; native Windows168/168; task2.7 BLOCKED_CAPACITY; no owner import |
+| Bootstrap/status/review/publication controls | REQUIRED | Task2.3–2.5 complete; native Windows146/146 PASS; actual task2.5 focused PRE/reception PASS. Task2.6 publication PASS; task2.7 installed and local182/182 PASS, real check:directions PASS; historical capacity streams retained, fresh same-pair complete |
 | Product suites | No product changes in current planning | NOT_RUN; no product PASS claimed |
 | Human policy/visual acceptance | Policy decision REQUIRED; product visuals outside current scope | Policy ACCEPTED_D03; no visual approval claim |
 | CI / branch protection | Separate observable control | REMOTE_NOT_RUN / NOT_CONFIGURED_OR_UNVERIFIED |
@@ -109,17 +109,19 @@ Task2.1–2.5 PUBLISHED; task2.5 complete: actual Windows146/146 and focused PRE
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 882a9980fcaa1a3508097a1edaf5369bf42513f4 (task2.6 native-tested control checkpoint; task completion/status refresh joins next natural task2.7 checkpoint).
-COMMIT_STATE: task2.6 CHECKPOINTED/PUBLISHED; this task/status completion refresh is pending the next natural checkpoint, no receipt-only commit.
+SOURCE_CHECKPOINT_SHA: 545c6005d792a1e665a50fb60837f906abcc4a26 (honest task2.7 capacity blocker; task2.6 implemented source882a9980fcaa1a3508097a1edaf5369bf42513f4 remains published; W01 progress12/18; task2.7 tested implementation candidate currently pending new publication).
+COMMIT_STATE: blocker545c6005 CHECKPOINTED/PUBLISHED; this post-publication status refresh joins the next natural checkpoint, no receipt-only commit.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: PUBLISHED; installed canonical publish CLI pushed exact authorized feature ref and fresh ls-remote verified at 2026-10-04T22:39:27.722Z.
-VERIFIED_SOURCE_REMOTE_SHA: 882a9980fcaa1a3508097a1edaf5369bf42513f4.
-SOURCE_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publication/frade-standard-workflow/882a9980fcaa1a3508097a1edaf5369bf42513f4.publish.json.
+PUSH_STATE: PUBLISHED; actual canonical blocker checkpoint/publish PASS and fresh exact remote545c6005 verified; preceding blocker is resolved by current task2.7 tested candidate; new publication pending.
+VERIFIED_SOURCE_REMOTE_SHA: 545c6005d792a1e665a50fb60837f906abcc4a26.
+SOURCE_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publication/frade-standard-workflow/545c6005d792a1e665a50fb60837f906abcc4a26.publish.json.
 PRE_ADMISSION_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/formal-pre-admission-20261002.json; require PUBLISHED/sourceSha=live HEAD before first task2.1 owner code write.
 Current task2.6 evidence: openspec/changes/frade-standard-workflow/evidence/task26-runtime-20261005/origins.json; final native command logs and all historical failed/blocked streams retained. Previous task2.5 publication receipt joins this natural implementation checkpoint. Complete raw run trees remain in canonical Git common.
 Reviewable standard/onboarding/status/manifest/adoption: openspec/changes/frade-standard-workflow/drafts/.
 Feedback register: openspec/changes/frade-standard-workflow/feedback-register.md.
 PANEL_STATE: NOT_OPENED_THIS_SESSION; no panel-opening tool is available. Historical QUEUED state does not establish current visibility.
-Task2.1–2.5 complete; current native Windows suite168/168 PASS,22 new publication tests. Task2.6 complete and PUBLISHED; task2.7 BLOCKED_CAPACITY, remaining7 W01 tasks incomplete. Scoped task2.5 PASS grants no formal Verify, final POST, archive, foreign adoption, shared release publication or main merge.
+Task2.1–2.6 complete and published; task2.7 COMPLETE_SCOPED_PENDING_PUBLICATION. Native Windows182/182 PASS (168 historical +14 new),23 publication tests; remaining6 W01 tasks incomplete. Scoped task2.5 PASS grants no formal Verify, final POST, archive, foreign adoption, shared release publication or main merge.
 
-Task2.7 current blocker evidence: openspec/changes/frade-standard-workflow/evidence/task27-blocker-20261005/blocker.json; full failed streams/probes/native logs/origins retained. No new production changes or shared release; consumer adoption NOT_STARTED.
+Task2.7 historical capacity blocker evidence: openspec/changes/frade-standard-workflow/evidence/task27-blocker-20261005/blocker.json; full failed streams/probes/native logs/origins retained. Historical blocked runs made no admitted production changes. Fresh complete exact-pair streams and task27-runtime-20261005 resolve capacity/Git diagnostics/fsmonitor blockers within W01; no shared release, consumer adoption NOT_STARTED.
+
+Current task2.7 evidence: openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/completion.json and origins.json; publication stdout-only RED, active fsmonitor RED and nested read-only RED all GREEN. Root17/original scripts/dependencies/CI jobs/product/lockfile/vendor/routing unchanged. Actual general lint/typecheck/build20/20 are Turbo cache hits; boundaries19/19 and four boundary commands PASS. Formal Verify/POST/archive NOT_RUN; READY_FOR_VERIFY: NO.

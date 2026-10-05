@@ -1,0 +1,71 @@
+{
+  "task": "W01-2.7",
+  "status": "RED_RETAINED",
+  "observations": [
+    {
+      "name": "root loader missing before production",
+      "command": "node tests/directions/root-loader.test.mjs",
+      "testSourceSha256": "8ebd783e9e95245e0e9838f12ac541a0f84003846d5711d411e05646a9be59c6",
+      "event": "registered owner root and nested target: root loader is required, first assertion at test source line 57",
+      "exitCode": 1,
+      "environment": "Linux Node 18.19.1; later fixture tests independently reported spawnSync git EPERM and were not counted as semantic RED"
+    },
+    {
+      "name": "native Windows registration path regression",
+      "sourceBinding": "../NATIVE-LOADER-PROBE1-SOURCE.json",
+      "rawResult": "../NATIVE-LOADER-PROBE1.json",
+      "event": "positive registered owner fixture blocked UNREGISTERED_OWNER; Git worktree forward slash path versus Windows resolved backslash path",
+      "exitCode": 1,
+      "classification": "ABSTRACTION_BOUNDARY"
+    },
+    {
+      "name": "native Windows incoherent owner fixture",
+      "sourceBinding": "../NATIVE-LOADER-PROBE2-SOURCE.json",
+      "rawResult": "../NATIVE-LOADER-PROBE2.json",
+      "event": "five positive preconditions exposed MANIFEST_INVALID:STAGE_OWNER before fixture stage.change/planning scope correction",
+      "exitCode": 1,
+      "classification": "TEST"
+    },
+    {
+      "name": "applicability behavior missing before implementation",
+      "command": "node tests/directions/check-applicability.test.mjs",
+      "testSourceSha256": "b1b582c5a9dd4e80f4ecaf39d59f20c0db372b598822ad05b0b65a98d31e5130",
+      "event": "SyntaxError: module does not provide export named checkApplicability, before Git fixture creation",
+      "exitCode": 1,
+      "environment": "Linux Node 18.19.1"
+    },
+    {
+      "name": "CI W01 ref scope before guard",
+      "command": "node tests/directions/ci-scope.test.mjs",
+      "testSourceSha256": "acdc74452f331d18943261e84914d46ab286f5e9565bc076f88a66eeb1bfd823",
+      "event": "W01 ref condition must be on the actual directions job; later fork head case also failed true versus false before exact same-repository guard",
+      "exitCode": 1,
+      "environment": "Linux Node 18.19.1"
+    },
+    {
+      "name": "intermediate native owner and adversarial GREEN",
+      "sourceBinding": "../NATIVE-LOADER-PROBE3-SOURCE.json",
+      "rawResult": "../NATIVE-LOADER-PROBE3.json",
+      "event": "7/7 PASS on intermediate snapshot; not final LF/CRLF or applicability admission",
+      "exitCode": 0
+    },
+    {
+      "name": "Linux final fixture environment attempt",
+      "rawLogs": [
+        {
+          "path": "tests/directions/task27-root-loader-linux.log",
+          "sha256": "6ab88ac10e1e5b28fdbbed607ecdbee4128c9528da7e4a6cbbb72b4b52f13785"
+        },
+        {
+          "path": "tests/directions/task27-applicability-linux.log",
+          "sha256": "ab591e8e7a76ba7c85f28d0ac023a4274ad71c1ecfdcf03846f4d8bc3ae434dc"
+        }
+      ],
+      "exitCodes": [
+        1,
+        1
+      ],
+      "classification": "ENVIRONMENT Git spawn EPERM; no GREEN claim"
+    }
+  ]
+}

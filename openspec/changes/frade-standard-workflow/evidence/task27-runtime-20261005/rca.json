@@ -1,0 +1,43 @@
+{
+  "status": "RESOLVED_SCOPED",
+  "publication": {
+    "classification": "INTEGRATION",
+    "red": "native/red-publication.json",
+    "cause": "need() trimmed numeric exit2 because Git diagnostic was stdout-only",
+    "fix": "nonblank stderr then stdout then String(exitCode); raw command records and spawn rejection unchanged"
+  },
+  "applicability": {
+    "classification": "ABSTRACTION_BOUNDARY",
+    "red": "native/red-fsmonitor-controlled-3.json",
+    "cause": "raw Git status executed configured fsmonitor hook",
+    "fix": "disable core.fsmonitor and legacy core.useBuiltinFSMonitor per subprocess"
+  },
+  "rootLoader": {
+    "classification": "ABSTRACTION_BOUNDARY",
+    "red": "native/red-root-fsmonitor.json",
+    "cause": "gitSuccess/trackedUnchanged omitted main helper read-only overrides",
+    "fix": "all loader subprocesses disable both fsmonitor forms and optional locks"
+  },
+  "fixture": {
+    "classification": "TEST_ENVIRONMENT",
+    "preserved": [
+      "native/red-fsmonitor.json",
+      "native/red-fsmonitor-controlled.json",
+      "native/red-fsmonitor-controlled-2.json"
+    ],
+    "cause": "initial test had no active-hook prerequisite; subsequent prerequisite was masked by global legacy builtin fsmonitor setting",
+    "resolution": "classified RCA before third fixture correction, pin legacy false only inside disposable fixture and verify ordinary Git hook actually writes marker before intended RED"
+  },
+  "verificationOrchestration": {
+    "classification": "TEST_COMMAND_SCOPE",
+    "preserved": [
+      "native/owner-lint.json",
+      "native/owner-integrity.json"
+    ],
+    "lint": "directory-wide exploratory command included unchanged shared supplier fixture with existing unused dirname import. Actual approved W01 leaf control scope passes scripts/directions/*.mjs and tests/directions/*.mjs; supplier not modified.",
+    "integrity": "byte-prefix checker incorrectly rejected added existsSync import needed by new regression. Corrected checker requires exactly that import addition and byte-identical original test bodies/assertions; corrected audit PASS."
+  },
+  "formalVerify": "NOT_RUN",
+  "POST": "NOT_RUN",
+  "archive": "NOT_RUN"
+}

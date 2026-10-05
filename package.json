@@ -25,7 +25,11 @@
     "test:boundaries": "node --test tests/contract/*.test.mjs",
     "check:boundaries": "node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs",
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries",
-    "check:all": "pnpm check && pnpm test:e2e && pnpm test:desktop"
+    "check:all": "pnpm check && pnpm test:e2e && pnpm test:desktop",
+    "test:directions": "node --test tests/directions/*.test.mjs",
+    "lint:directions": "eslint scripts/directions/root-loader.mjs scripts/directions/check-applicability.mjs scripts/directions/publication.mjs tests/directions/root-loader.test.mjs tests/directions/check-applicability.test.mjs tests/directions/publication.test.mjs tests/directions/ci-scope.test.mjs",
+    "format:directions": "prettier --check package.json .github/workflows/ci.yml scripts/directions/root-loader.mjs scripts/directions/check-applicability.mjs scripts/directions/publication.mjs tests/directions/root-loader.test.mjs tests/directions/check-applicability.test.mjs tests/directions/publication.test.mjs tests/directions/ci-scope.test.mjs docs/engineering/standard-workflow.md docs/engineering/newcomer-guide.md docs/engineering/adoption-map.md docs/engineering/check-applicability.json docs/engineering/directions/frade-standard-workflow/AGENTS.md docs/engineering/templates/task-2.7-root-control.md",
+    "check:directions": "pnpm test:directions && pnpm lint:directions && pnpm format:directions && node scripts/directions/check-applicability.mjs"
   },
   "devDependencies": {
     "@eslint/js": "9.39.1",

@@ -414,3 +414,11 @@ executable regression protection
 +
 correct architecture boundary
 ```
+
+## 18. Direction Control
+
+Before work in an active direction, run `node scripts/directions/root-loader.mjs <absolute-target-path>` from the registered owning worktree. The loader selects the owning manifest by its actual Git branch/common and returns the root, owning direction and applicable nested `AGENTS.md` contracts. Read every returned contract in order. A blocked result stops the affected work.
+
+The loader's scope result is read-only rule selection. It does not grant product mutation, adoption, publication, Verify, POST, archive or integration permission. The approved stage scope, root rules, applicable nested rules and current gates remain mandatory. A nested rule can add constraints but cannot waive a parent constraint. Textual tokens alone do not establish semantic equivalence.
+
+W01 owns only the approved engineering control and documentation paths. Routing, UI and Repository Core adoption remains separate in their owning workspaces. Do not use W01 metadata to authorize foreign product or direction changes.

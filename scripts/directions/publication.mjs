@@ -89,8 +89,12 @@ function git(cwd, args, commands) {
 }
 function need(cwd, args, commands) {
   const r = git(cwd, args, commands)
-  if (r.exitCode !== 0)
-    throw Error('GIT_' + args[0] + ': ' + (r.stderr || r.error || r.exitCode).trim())
+  if (r.exitCode !== 0) {
+    const diagnostic = [r.stderr, r.stdout].find(
+      (value) => typeof value === 'string' && value.trim(),
+    )
+    throw Error('GIT_' + args[0] + ': ' + (diagnostic?.trim() ?? String(r.exitCode)))
+  }
   return r.stdout.trim()
 }
 function plainFile(path) {

@@ -1,0 +1,148 @@
+{
+  "status": "FAIL",
+  "classification": "ABSTRACTION_BOUNDARY",
+  "sourceHashes": {
+    "rootLoader": "d06ab5a7024f9525ce7a0756630b4f4ccbeeb6213055bb23a8c22096db8bc028",
+    "existingFixtureTest": "2e33df4f6947eb68641e23d1035fe9410f12e605d8466d30ebb14fe1feecca43"
+  },
+  "fixture": {
+    "base": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-root-loader-kdfvx5",
+    "source": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-root-loader-kdfvx5\\source",
+    "owner": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-root-loader-kdfvx5\\owner",
+    "manifest": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-root-loader-kdfvx5\\owner\\docs\\engineering\\directions\\alpha\\direction.json",
+    "m": {
+      "schemaVersion": 2,
+      "id": "alpha",
+      "title": "Alpha",
+      "owner": {
+        "branch": "codex/alpha",
+        "worktree": "C:/Users/NVISEN/AppData/Local/Temp/frade-root-loader-kdfvx5/owner",
+        "gitCommon": "C:/Users/NVISEN/AppData/Local/Temp/frade-root-loader-kdfvx5/source/.git"
+      },
+      "originalBaseline": "a638ac48cef821c9b4574c8bbfaf2dafa4dbd1e7",
+      "policy": {
+        "version": "1.1",
+        "release": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "artifact": "openspec/changes/frade-standard-workflow/evidence/shared-policy.md"
+      },
+      "scope": {
+        "mode": "IMPLEMENTATION",
+        "planningAllowed": [
+          "openspec/changes/alpha/**",
+          "docs/engineering/BRANCH-STATUS.md"
+        ],
+        "allowed": [
+          "docs/engineering/**",
+          "scripts/directions/**"
+        ],
+        "frozen": [
+          "apps/**",
+          "pnpm-lock.yaml",
+          "packages/draw/**"
+        ],
+        "closure": {
+          "enabled": false,
+          "requires": [
+            "humanPolicyDecision",
+            "requiredChecksPASS",
+            "formalVerifyPASS",
+            "currentIndependentPOSTPASS"
+          ],
+          "specDestinations": [
+            "openspec/specs/engineering-direction-lifecycle/spec.md",
+            "openspec/specs/engineering-role-dispatch/spec.md",
+            "openspec/specs/engineering-progress-publication/spec.md"
+          ],
+          "archiveDestination": "openspec/changes/archive/<actual-archive-date>-alpha/**",
+          "archiveOwner": "alpha"
+        }
+      },
+      "statusPath": "docs/engineering/BRANCH-STATUS.md",
+      "stages": [
+        {
+          "id": "W01",
+          "change": "alpha",
+          "phase": "BDD_TDD",
+          "health": "RUNNING",
+          "dependencies": [],
+          "admission": {
+            "formalPRE": "PASS"
+          }
+        }
+      ]
+    }
+  },
+  "activeControl": "executed\n",
+  "result": {
+    "ok": false,
+    "status": "BLOCKED",
+    "code": "RULE_SELECTION",
+    "detail": "OUTSIDE_OWNER_SCOPE",
+    "owner": "alpha",
+    "target": "packages/draw/src/routing/router.ts",
+    "contracts": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "d25ee707c256885e529a8ebbfbecf1ec6cd7759cc07b9b9b27322869f3c9a43d",
+        "text": "# Frade — Engineering Agent Contract\r\n\r\n## Purpose\r\n\r\nThis file defines repository-wide engineering rules for AI coding agents working on Frade.\r\n\r\nThese rules are mandatory.\r\n\r\nSubsystem-specific rules may exist in nested `AGENTS.md` files and may impose stricter constraints.\r\n\r\n---\r\n\r\n## 1. Development Method\r\n\r\nFrade uses:\r\n\r\n```text\r\nSDD / OpenSpec\r\n    ↓\r\nBDD\r\n    ↓\r\nTDD\r\n    ↓\r\nImplementation\r\n    ↓\r\nVerification\r\n    ↓\r\nArchitecture Gate\r\n    ↓\r\nArchive\r\n```\r\n\r\nImplementation follows specification.\r\n\r\nSpecification must not be silently changed to match implementation.\r\n\r\nTests must not be weakened to make implementation pass.\r\n\r\n---\r\n\r\n## 2. OpenSpec Is the Change Authority\r\n\r\nFor substantial product or architecture work:\r\n\r\n1. identify the active OpenSpec change;\r\n2. read its proposal/spec/design/tasks;\r\n3. validate the change before implementation;\r\n4. implement only the active scope;\r\n5. run required tests;\r\n6. run OpenSpec verification;\r\n7. pass the Architecture Gate;\r\n8. only then archive the change.\r\n\r\nDo not implement a later dependent change before the previous change has passed its gate.\r\n\r\n---\r\n\r\n## 3. STOP Conditions\r\n\r\nStop progression whenever any of the following is true:\r\n\r\n```text\r\nrequired test fails\r\ntypecheck fails in affected code\r\nOpenSpec validation fails\r\nOpenSpec verification has a correctness blocker\r\narchitecture invariant fails\r\narchitecture gate fails\r\nreference parity fails\r\na specification conflict exists\r\na previously fixed regression reappears\r\n```\r\n\r\nResolve the blocker before moving to the next phase.\r\n\r\n---\r\n\r\n## 4. No Patch-Loop Rule\r\n\r\nAfter two unsuccessful fixes of the same deterministic defect:\r\n\r\n```text\r\nSTOP PATCHING\r\n```\r\n\r\nBefore another production-code modification, perform root-cause analysis.\r\n\r\nClassify the failure as:\r\n\r\n```text\r\nDOMAIN_MODEL\r\nINVARIANT\r\nALGORITHM\r\nABSTRACTION_BOUNDARY\r\nSTATE_TRANSITION\r\nTEST\r\nSPEC_CONFLICT\r\nINTEGRATION\r\nENVIRONMENT\r\n```\r\n\r\nDo not continue making local symptom-oriented fixes.\r\n\r\n---\r\n\r\n## 5. Regression-First Rule\r\n\r\nFor a reproduced defect use:\r\n\r\n```text\r\nDEFECT\r\n ↓\r\nDETERMINISTIC REPRODUCTION\r\n ↓\r\nFAILING TEST / FIXTURE\r\n ↓\r\nROOT CAUSE\r\n ↓\r\nIMPLEMENTATION FIX\r\n ↓\r\nTARGETED TEST\r\n ↓\r\nFULL REGRESSION SUITE\r\n```\r\n\r\nDo not fix production code first and add a regression test afterwards unless reproduction before the fix is technically impossible and explicitly documented.\r\n\r\n---\r\n\r\n## 6. Test Integrity\r\n\r\nDo not make tests pass by weakening them.\r\n\r\nForbidden without an explicit specification decision:\r\n\r\n```text\r\ntest.skip\r\nit.skip\r\ndescribe.skip\r\n\r\ntest.only\r\nit.only\r\ndescribe.only\r\n\r\nremoving meaningful assertions\r\nloosening geometry tolerances\r\nblind snapshot regeneration\r\ndeleting regression fixtures\r\nignoring thrown errors\r\nchanging expected values merely to match current implementation\r\n@ts-nocheck\r\n@ts-ignore\r\n```\r\n\r\nExisting regression tests are historical evidence.\r\n\r\nDo not remove them casually.\r\n\r\n---\r\n\r\n## 7. Architecture Direction\r\n\r\nPrefer dependency direction:\r\n\r\n```text\r\nUI / Framework\r\n      ↓\r\nAdapters\r\n      ↓\r\nApplication / Interaction\r\n      ↓\r\nDomain\r\n      ↓\r\nPure primitives\r\n```\r\n\r\nDo not solve domain defects inside renderers, React lifecycle hooks, persistence adapters, or framework glue.\r\n\r\nFix the first incorrect decision in the proper layer.\r\n\r\n---\r\n\r\n## 8. Derived State\r\n\r\nDo not persist state that can be deterministically derived from semantic state unless the specification explicitly requires materialization.\r\n\r\nTypical transient/derived state includes:\r\n\r\n```text\r\nselection handles\r\npreview geometry\r\nrender-only paths\r\ncached projections\r\ntemporary interaction coordinates\r\n```\r\n\r\n---\r\n\r\n## 9. Determinism\r\n\r\nCore domain algorithms must not depend on accidental runtime state such as:\r\n\r\n```text\r\nMath.random()\r\nDate.now()\r\nDOM ordering\r\nReact render ordering\r\nscreen zoom\r\ndevicePixelRatio\r\npointer event frequency\r\nanimation-frame timing\r\n```\r\n\r\nIdentical semantic inputs must produce identical semantic outputs within the explicitly defined numeric tolerance.\r\n\r\n---\r\n\r\n## 10. Scope Discipline\r\n\r\nDo not turn an active OpenSpec change into an unrelated repository-wide refactoring.\r\n\r\nIf unrelated technical debt is discovered:\r\n\r\n```text\r\ndocument it\r\ndo not opportunistically implement it\r\n```\r\n\r\nunless it blocks the active change.\r\n\r\n---\r\n\r\n## 11. Evidence\r\n\r\nNever report:\r\n\r\n```text\r\n\"should pass\"\r\n\"looks correct\"\r\n\"probably fixed\"\r\n```\r\n\r\nas verification.\r\n\r\nClaims about passing tests or validation must come from commands that were actually executed.\r\n\r\nAt the end of implementation report:\r\n\r\n```text\r\nCHANGE:\r\nIMPLEMENTED:\r\nFILES CHANGED:\r\nTESTS ADDED:\r\nCOMMANDS EXECUTED:\r\nTEST RESULTS:\r\nKNOWN BLOCKERS:\r\nREADY_FOR_VERIFY: YES | NO\r\n```\r\n\r\n---\r\n\r\n## 12. Architecture Gate\r\n\r\nAn Architecture Gate is a review phase.\r\n\r\nDuring a gate:\r\n\r\n```text\r\nDO NOT MODIFY PRODUCTION CODE\r\n```\r\n\r\nunless the task is explicitly changed from review to repair.\r\n\r\nGate output must contain exactly one unambiguous status:\r\n\r\n```text\r\nGATE_STATUS: PASS\r\n```\r\n\r\nor:\r\n\r\n```text\r\nGATE_STATUS: FAIL\r\n```\r\n\r\nCorrectness or architecture blockers always mean `FAIL`.\r\n\r\n---\r\n\r\n## 13. No Autonomous Phase Advancement\r\n\r\nDo not automatically start the next numbered OpenSpec change after completing the current one.\r\n\r\nExample:\r\n\r\n```text\r\nR04 complete\r\n→ STOP\r\n→ report status\r\n```\r\n\r\nDo not automatically begin R05.\r\n\r\nEach numbered change is an engineering checkpoint.\r\n\r\n---\r\n\r\n## 14. Routing Engine V2\r\n\r\nAny task involving:\r\n\r\n```text\r\nedge routing\r\nedge connections\r\nterminal attachment\r\nwaypoints\r\northogonal routing\r\nsegment editing\r\nrouting preview\r\nself-loops\r\nrouting rendering\r\nrouting/X6 integration\r\n```\r\n\r\nmust additionally read:\r\n\r\n```text\r\ndocs/routing-v2/drawio-routing-master-spec.md\r\ndocs/routing-v2/implementation-playbook.md\r\n```\r\n\r\nThese documents define the Routing Engine V2 architecture and implementation program.\r\n\r\nWhen a routing-specific nested `AGENTS.md` exists, its stricter rules also apply.\r\n\r\nDo not implement Routing Engine V2 from memory or from legacy code alone.\r\n\r\n---\r\n\r\n## 15. Routing V2 Sequence\r\n\r\nRouting Engine V2 follows this dependency order:\r\n\r\n```text\r\nR01 Geometry Kernel\r\n ↓\r\nR02 Terminal / Perimeter\r\n ↓\r\nR03 Direction Resolver\r\n ↓\r\nR04 Orthogonal Router\r\n ↓\r\nR05 Segment Router\r\n ↓\r\nR06 Segment Editor\r\n ↓\r\nR07 Preview / Commit\r\n ↓\r\nR08 Self-loop\r\n ↓\r\nR09 Draw.io Differential Harness\r\n ↓\r\nR10 X6 Integration\r\n```\r\n\r\nA later change must not compensate for a defect in an earlier layer.\r\n\r\nFix the responsible layer.\r\n\r\n---\r\n\r\n## 16. Git Safety\r\n\r\nDo not perform destructive operations merely to simplify implementation.\r\n\r\nDo not execute without explicit instruction:\r\n\r\n```text\r\ngit reset --hard\r\ngit clean -fd\r\ndiscard unrelated user changes\r\nrewrite unrelated commits\r\n```\r\n\r\nBefore reporting implementation complete, inspect:\r\n\r\n```text\r\ngit status\r\ngit diff\r\n```\r\n\r\nUnexpected unrelated changes must be identified.\r\n\r\n---\r\n\r\n## 17. Prime Directive\r\n\r\nDo not optimize for:\r\n\r\n```text\r\n\"make the current visual symptom disappear\"\r\n```\r\n\r\nOptimize for:\r\n\r\n```text\r\ncorrect domain model\r\n+\r\nexplicit invariants\r\n+\r\ndeterministic implementation\r\n+\r\nexecutable regression protection\r\n+\r\ncorrect architecture boundary\r\n```\r\n\r\n## 18. Direction Control\r\n\r\nBefore work in an active direction, run `node scripts/directions/root-loader.mjs <absolute-target-path>` from the registered owning worktree. The loader selects the owning manifest by its actual Git branch/common and returns the root, owning direction and applicable nested `AGENTS.md` contracts. Read every returned contract in order. A blocked result stops the affected work.\r\n\r\nThe loader's scope result is read-only rule selection. It does not grant product mutation, adoption, publication, Verify, POST, archive or integration permission. The approved stage scope, root rules, applicable nested rules and current gates remain mandatory. A nested rule can add constraints but cannot waive a parent constraint. Textual tokens alone do not establish semantic equivalence.\r\n\r\nW01 owns only the approved engineering control and documentation paths. Routing, UI and Repository Core adoption remains separate in their owning workspaces. Do not use W01 metadata to authorize foreign product or direction changes.\r\n"
+      },
+      {
+        "path": "docs/engineering/directions/alpha/AGENTS.md",
+        "sha256": "01ab448512ead5b1a7a638fbad6cb40224cb2c1ca2e10b2f66182cf7b35a3ee7",
+        "text": "# Alpha rules\n\nAdditional owner limits.\n"
+      },
+      {
+        "path": "packages/draw/AGENTS.md",
+        "sha256": "6256365084019b520f0e312c6ce9f143f57678ba99bc751af9150b2c47e36eef",
+        "text": "# Draw rules\n\nPreserve Draw.\n"
+      },
+      {
+        "path": "packages/draw/src/routing/AGENTS.md",
+        "sha256": "4cacbeca252cdb82ba788bb5d8738e4553058df0dbb302f7ba51a9ebfc951d35",
+        "text": "# Routing rules\n\nPreserve routing.\n"
+      }
+    ],
+    "deployment": "ADOPTION_NOT_CONFIRMED",
+    "mutationAuthorized": false
+  },
+  "hookExecuted": true,
+  "commands": [
+    {
+      "args": [
+        "config",
+        "core.useBuiltinFSMonitor",
+        "false"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "config",
+        "core.fsmonitor",
+        "C:/Users/NVISEN/AppData/Local/Temp/frade-root-loader-kdfvx5/owner/hook.sh"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "status",
+        "--porcelain=v1"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "?? hook-marker.txt\n?? hook.sh\n",
+      "stderr": ""
+    }
+  ],
+  "description": "Read-only nested rule selection must not execute local fsmonitor hook; fixture preparation extracted mechanically from existing exact-role test"
+}

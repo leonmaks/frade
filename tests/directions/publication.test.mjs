@@ -12,6 +12,7 @@ import {
   rmSync,
   unlinkSync,
   readdirSync,
+  existsSync,
 } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve, win32 } from 'node:path'
@@ -668,4 +669,53 @@ test('FWE-017 local config inspection does not copy unrelated values into receip
   assert.equal(cp.exit, 0, JSON.stringify(cp))
   const receipt = JSON.parse(readFileSync(cp.body.receiptPath))
   assert.equal(JSON.stringify(receipt).includes(marker), false)
+})
+
+test('FWE-017 stdout-only cached diff diagnostic blocks checkpoint without losing Git error', async (t) => {
+  const valid = fixture(t)
+  const prerequisite = await invoke(valid, 'checkpoint')
+  assert.equal(prerequisite.exit, 0, JSON.stringify(prerequisite))
+  assert.equal(prerequisite.body.status, 'CHECKPOINTED')
+
+  const f = fixture(t)
+  const head = git(f.root, 'rev-parse', 'HEAD')
+  const remoteRef = git(f.base, 'ls-remote', f.remote, 'refs/heads/codex/frade-standard-workflow')
+  writeFileSync(
+    join(f.root, f.status),
+    'Health: RUNNING; task 2.6 checks PASS; Verify/POST NOT_RUN \n',
+  )
+  f.admission.candidateSha256 = hash(
+    f.event.paths
+      .slice()
+      .sort()
+      .map((p) => p + '\0' + hash(readFileSync(join(f.root, p))) + '\n')
+      .join(''),
+  )
+  writeFileSync(f.admissionPath, JSON.stringify(f.admission) + '\n')
+
+  const failed = await invoke(f, 'checkpoint')
+  const diff = failed.body.commands.find(
+    (entry) => JSON.stringify(entry.args) === JSON.stringify(['diff', '--cached', '--check']),
+  )
+  assert.ok(diff, JSON.stringify(failed))
+  assert.deepEqual(diff.args, ['diff', '--cached', '--check'])
+  assert.equal(diff.exitCode, 2, JSON.stringify(diff))
+  assert.equal(diff.status, 2)
+  assert.equal(diff.stderr, '')
+  assert.match(diff.stdout, /BRANCH-STATUS\.md:\d+: trailing whitespace/)
+  assert.equal(failed.exit, 2)
+  assert.equal(failed.body.status, 'BLOCKED')
+  assert.equal(failed.body.code, 'CHECKPOINT')
+  assert.match(failed.body.detail, /GIT_diff:.*BRANCH-STATUS\.md:\d+: trailing whitespace/s)
+  assert.doesNotMatch(failed.body.detail, /TypeError|\.trim is not a function/)
+  assert.equal(git(f.root, 'rev-parse', 'HEAD'), head)
+  assert.equal(
+    git(f.base, 'ls-remote', f.remote, 'refs/heads/codex/frade-standard-workflow'),
+    remoteRef,
+  )
+  assert.equal(
+    failed.body.commands.some((entry) => ['commit', 'push'].includes(entry.args[0])),
+    false,
+  )
+  assert.equal(existsSync(join(f.common, 'frade-workflow/publication', f.m.id)), false)
 })

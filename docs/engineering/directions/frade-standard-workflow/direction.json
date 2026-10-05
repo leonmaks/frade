@@ -21,7 +21,10 @@
       "docs/engineering/**",
       "openspec/changes/frade-standard-workflow/**",
       "scripts/directions/**",
-      "tests/directions/**"
+      "tests/directions/**",
+      "AGENTS.md",
+      "package.json",
+      ".github/workflows/ci.yml"
     ],
     "frozen": [
       "packages/**",
@@ -81,7 +84,7 @@
       "id": "W01",
       "change": "frade-standard-workflow",
       "phase": "IMPLEMENTATION",
-      "health": "BLOCKED",
+      "health": "RUNNING",
       "dependencies": [],
       "roleAssignments": [
         {
@@ -148,7 +151,7 @@
     }
   ],
   "implementationCapabilities": {
-    "directionCLI": "PLAN_CREATE_CHECK_STATUS_REVIEW_CHECKPOINT_PUBLISH_IMPLEMENTED;TASK26_ACTUAL_W01_PUBLICATION_PASS",
+    "directionCLI": "PLAN_CREATE_CHECK_STATUS_REVIEW_CHECKPOINT_PUBLISH_IMPLEMENTED;TASK26_ACTUAL_W01_PUBLICATION_PASS;TASK27_ROOT_LOADER_PACKAGE_CI_LOCAL_PASS",
     "statusValidator": "IMPLEMENTED_TASK24",
     "writerDispatcher": "NOT_IMPLEMENTED",
     "reviewTransport": "AVAILABLE_v1.1_exact_selected_role"
@@ -167,7 +170,7 @@
   },
   "provisioning": {
     "source": "Accepted D03 draft + actual registered W01 owner; deterministic own publication controller instantiation, no policy/model change",
-    "scope": "Task2.6 implementation namespaces only; approved additive root loader/package/CI permissions remain for explicit task2.7 installation",
+    "scope": "Accepted task2.7 additive root loader/package/CI exact paths; frozen product/foreign scopes and closure remain unchanged",
     "currentCheckpoint": "882a9980fcaa1a3508097a1edaf5369bf42513f4",
     "closureActivated": false
   }

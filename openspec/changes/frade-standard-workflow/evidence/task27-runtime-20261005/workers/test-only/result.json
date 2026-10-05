@@ -1,0 +1,61 @@
+{
+  "task": "W01-2.7 TEST-ONLY RED",
+  "role": {
+    "approvedModel": "gpt-6-sol",
+    "approvedEffort": "high",
+    "backend": "NOT_CONFIRMED"
+  },
+  "status": "TESTS_APPENDED_NATIVE_RED_PENDING",
+  "classification": {
+    "publication": "INTEGRATION/error formatting",
+    "privateLinuxGitSpawn": "ENVIRONMENT",
+    "fsmonitor": "PENDING_NATIVE_REPRODUCTION"
+  },
+  "changedTestFilesSha256Raw": {
+    "tests/directions/publication.test.mjs": "bb983749ebb3481ad004d50030775190c03cba8d217dbd94bd686fc63c0f0af5",
+    "tests/directions/check-applicability.test.mjs": "3f83645271be79f25054459111c0dcbb0062c68c0dd7f03cc3f4fa8921818810"
+  },
+  "newAssertions": [
+    "A valid temporary-Git fixture first checkpoints successfully through the public API; a second fixture refreshes its candidate admission after introducing trailing whitespace and requires the actual cached-diff command record to contain argv, stdout-only diagnostic, empty stderr and exit code 2.",
+    "The failed checkpoint must be BLOCKED with informative GIT_diff detail, unchanged HEAD and remote ref, and no commit, push or checkpoint receipt.",
+    "A configured executable sh core.fsmonitor hook in a disposable fixture must not run during successful applicability proof or after a working product delta, while the latter must still be detected."
+  ],
+  "commands": [
+    {
+      "argv": ["node", "--check", "tests/directions/publication.test.mjs"],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": ["node", "--check", "tests/directions/check-applicability.test.mjs"],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": ["sha256sum", "tests/directions/publication.test.mjs", "tests/directions/check-applicability.test.mjs"],
+      "exitCode": 0,
+      "stdout": "bb983749ebb3481ad004d50030775190c03cba8d217dbd94bd686fc63c0f0af5  tests/directions/publication.test.mjs\n3f83645271be79f25054459111c0dcbb0062c68c0dd7f03cc3f4fa8921818810  tests/directions/check-applicability.test.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": ["sha256sum", "../input/seed/scripts/directions/publication.mjs", "../input/seed/scripts/directions/check-applicability.mjs", "scripts/directions/publication.mjs", "scripts/directions/check-applicability.mjs"],
+      "exitCode": 0,
+      "stdout": "7375f38e284447038d309bff4e1d89d15bd0637d95baad19d6b215521d1cf720  ../input/seed/scripts/directions/publication.mjs\n65e87cd912ab5bd888c004f712a1a335f9609d8b6cb13a452ba9418e9d64238e  ../input/seed/scripts/directions/check-applicability.mjs\n7375f38e284447038d309bff4e1d89d15bd0637d95baad19d6b215521d1cf720  scripts/directions/publication.mjs\n65e87cd912ab5bd888c004f712a1a335f9609d8b6cb13a452ba9418e9d64238e  scripts/directions/check-applicability.mjs\n",
+      "stderr": ""
+    }
+  ],
+  "hypotheses": [
+    "need() in scripts/directions/publication.mjs selects numeric exitCode when stderr and error are empty, then calls .trim() on the number; an actual stdout-only git diff --cached --check failure therefore produces TypeError rather than GIT_diff with Git's diagnostic.",
+    "checkApplicability() spawns raw Git commands without overriding locally configured core.fsmonitor; Git may execute a repository-local hook during status inspection."
+  ],
+  "productionFiles": "UNCHANGED_THIS_TURN",
+  "root17": "UNCHANGED_THIS_TURN",
+  "limitations": [
+    "No native RED run was attempted in this private Linux worker: child Git spawn EPERM is established ENVIRONMENT evidence, and the parent owns the native RED run before any production repair.",
+    "No numeric empty-stdout/empty-stderr fallback integration test was added because the responsible need() boundary is private and the required public Git case exercises the actual defect without production exports.",
+    "No production, documentation, owner, common, global settings, Verify, POST, archive or release changes were made. Task and stage remain incomplete."
+  ],
+  "readyForVerify": false
+}

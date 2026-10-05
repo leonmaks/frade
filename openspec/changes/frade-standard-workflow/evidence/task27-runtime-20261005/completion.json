@@ -1,0 +1,183 @@
+{
+  "change": "frade-standard-workflow",
+  "task": "2.7",
+  "status": "COMPLETE_SCOPED_PENDING_PUBLICATION",
+  "approvedInvokedPair": "gpt-6-sol/high",
+  "actualBackend": "NOT_CONFIRMED",
+  "completeExactRoleStreams": 3,
+  "tests": {
+    "historical": 168,
+    "new": 14,
+    "total": 182,
+    "pass": 182,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "publication": 23
+  },
+  "packageEntry": "check:directions PASS",
+  "requiredChecks": [
+    {
+      "label": "owner-full",
+      "argv": [
+        "node",
+        "--test",
+        "tests/directions/*.test.mjs"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/owner-full.json",
+      "rawSha256": "f6027429b4d364274aa16403ad4f1c788fe53557219e4cd2d015ad7fdfa3c118"
+    },
+    {
+      "label": "owner-package-entry",
+      "argv": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "check:directions"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/owner-package-entry.json",
+      "rawSha256": "45c1ec101b53a154f24a73a14da9fad12f98b20d0ecd5ff8fbf6c0a35371a5ba"
+    },
+    {
+      "label": "owner-lint-scoped",
+      "argv": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "scripts/directions/*.mjs",
+        "tests/directions/*.mjs"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/owner-lint-scoped.json",
+      "rawSha256": "754d4b668d1fb7b3c800b341789481fbbcf8f7967c07af5a20b33107a0740312"
+    },
+    {
+      "label": "owner-integrity-corrected",
+      "argv": [
+        "node",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task27-resume-integrity-20261005.mjs"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/owner-integrity-corrected.json",
+      "rawSha256": "97b54d068a37889c9518da5a659a8055a694b0bd08edd61e8893236f4c17609b"
+    },
+    {
+      "label": "owner-strict",
+      "argv": [
+        "node",
+        "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+        "validate",
+        "--all",
+        "--strict",
+        "--json"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/owner-strict.json",
+      "rawSha256": "bba4f3d488a8fa0a93342f2195b8f2c78fa387b2d71d1c29641b3b56b7476d25"
+    },
+    {
+      "label": "owner-loader-replay",
+      "argv": [
+        "node",
+        "E:/dev/codex/frade/.git/frade-workflow/implementations/task27-owner-loader-replay-20261005.mjs"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/owner-loader-replay.json",
+      "rawSha256": "894b17bbd42899686ce2340259421aec2b595f558d93547d06077214c48b8a8b"
+    },
+    {
+      "label": "general-lint-final",
+      "argv": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "lint"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/general-lint-final.json",
+      "rawSha256": "759d1cc876c192ab16ef1a601ba9f5a345d7f0e948b63fd7d42b6d137ba35d9c"
+    },
+    {
+      "label": "general-typecheck-final",
+      "argv": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/general-typecheck-final.json",
+      "rawSha256": "ad9513914404ecdd4d3c45da629777bd26757244517a9d72cc627a34c7ce2363"
+    },
+    {
+      "label": "general-build-final",
+      "argv": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "build"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/general-build-final.json",
+      "rawSha256": "6095375d176bde2ce1644abafdac1c7b11386c303e98562653010db342886336"
+    },
+    {
+      "label": "general-boundary-tests-final",
+      "argv": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "test:boundaries"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/general-boundary-tests-final.json",
+      "rawSha256": "3cccf2cfa0aaa8800b5f69e5adabb9b07c8cd1a401cc4aab46a39a91b941f46d"
+    },
+    {
+      "label": "general-boundary-checks-final",
+      "argv": [
+        "node",
+        "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+        "check:boundaries"
+      ],
+      "exitCode": 0,
+      "rawPath": "openspec/changes/frade-standard-workflow/evidence/task27-runtime-20261005/native/general-boundary-checks-final.json",
+      "rawSha256": "d353794e2784abd7d28a84275369a77bf551ec9a43ef31a9f7ae1260ed949f2e"
+    }
+  ],
+  "finalHashes": {
+    ".github/workflows/ci.yml": "9694d966424ca41adf85929c8ca50056be45d2e12f7369cef4ddaca04e2d7bda",
+    "AGENTS.md": "d87c0bdf8de56ec43e05309982febd46dc7568956ac01239934c17826c9b9ee6",
+    "docs/engineering/adoption-map.md": "e35421daacef247e7d5560ee28cec821ddabe2b6d0e166d81b4819d80f66b33c",
+    "docs/engineering/check-applicability.json": "94b977ac83bb93e08ddb15b3b95da66a3a9296ae882fd6396ea305459eae8a8f",
+    "docs/engineering/directions/frade-standard-workflow/AGENTS.md": "7222f96b4cd184f915339b96e13d58d7a3b042743aebf0dd6fdc6f048ae64536",
+    "docs/engineering/newcomer-guide.md": "342607561909c16ae8e7ad85c970d32f29a8f80ab040e87da28188e025b9063c",
+    "docs/engineering/standard-workflow.md": "a5c05ab796a81d605449f7c95b79881cdb2124896bbc35a239e5ca4ba76c0ad8",
+    "docs/engineering/templates/task-2.7-root-control.md": "ba4eb65ad8fa65a45df539c77b46f6ef1456d129682a266c12d6d4d0f11d8358",
+    "package.json": "b7311bb53ffde8adb19f092c7822e8d398750b657962fe68f4ec9fa0517ce116",
+    "scripts/directions/check-applicability.mjs": "4a7447a54137a5a5d6501ce50b2cc14b0c1307910a7f2115606efbaf77b66bac",
+    "scripts/directions/publication.mjs": "cb7deaa5aa43bde181d52085c4cd50e2b5652e4cb42307bf181debf626947559",
+    "scripts/directions/root-loader.mjs": "80ed28bd74e8d92c24608316d20ea7c0662dd372b518993b2cb1596bbe4f18d2",
+    "tests/directions/check-applicability.test.mjs": "ec82aeaee3ca20cdadfe74a5b0bd0519f5adb09ad417835f72dce7dbf0d9cf25",
+    "tests/directions/ci-scope.test.mjs": "7d62891b979a5cd40ee062f19e19a7e44b0f4451005f08715c853f891972b5b8",
+    "tests/directions/publication.test.mjs": "5a21486a5b36d5c4ae8fd590c50f4c4900941897be22a136437df88f71765cdd",
+    "tests/directions/root-loader.test.mjs": "e1625b67b06072e60a561eed5d0c3c5038f7d705fe9baebc70ef0aca5e63c356",
+    "tests/directions/task27-applicability-linux.log": "ab591e8e7a76ba7c85f28d0ac023a4274ad71c1ecfdcf03846f4d8bc3ae434dc",
+    "tests/directions/task27-red-evidence.json": "ff029a3753e717ae501b9d229b978c449efc9655842df0a55fc3e37eef9845c6",
+    "tests/directions/task27-root-loader-linux.log": "6ab88ac10e1e5b28fdbbed607ecdbee4128c9528da7e4a6cbbb72b4b52f13785"
+  },
+  "root17CanonicalUnchanged": true,
+  "existingScriptsDependenciesCIJobsProductLockVendorRoutingUnchanged": true,
+  "progress": {
+    "complete": 12,
+    "total": 18,
+    "remaining": 6
+  },
+  "remoteCI": "NOT_RUN",
+  "branchProtection": "NOT_CONFIGURED",
+  "writerDispatcher": "NOT_IMPLEMENTED",
+  "consumerAdoption": "NOT_STARTED",
+  "formalVerify": "NOT_RUN",
+  "POST": "NOT_RUN",
+  "archive": "NOT_RUN",
+  "readyForVerify": false,
+  "publication": "PENDING_NEW_CHECKPOINT",
+  "priorPublishedSource": "545c6005d792a1e665a50fb60837f906abcc4a26",
+  "remainingTasks": "3.1–4.4; no autonomous advancement"
+}

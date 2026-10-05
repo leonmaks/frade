@@ -1,0 +1,15 @@
+# Start or continue a Frade direction
+
+Status: W01 controls are `NOT_DEPLOYED_W01_CLOSURE_PENDING`; use the owning checkout and its current approved gates. Node 24.x, pnpm 12.6.0 and Git are the product toolchain. The pinned common review runtime is separate.
+
+Tell the agent: **“Открой направление <название>: <проблема>, <кому нужно>, <ожидаемый результат>, <ограничения>.”** The agent inventories owners, baseline, rules, affected contracts and acceptance, then proposes a bounded direction, exact stage roles and publication destination. You decide material goal/spec/scope, model, visual or destination questions when presented with concrete options. Do not move another owner's uncommitted work to start quickly.
+
+Read the current status decision and next step first, then scope, roadmap, tasks, required checks, approvals and publication. Run `node scripts/directions/root-loader.mjs <absolute-target-path>` in the registered owner to see root and applicable direction/nested rules. A blocked result means the affected task needs correction. The result is rule context only; use existing lifecycle, review, scope and closure commands for executor admission and stage gates.
+
+The available direction CLI commands are `plan`, `create`, `check`, `status`, `review/prepare`, `review`, `checkpoint` and `publish` through `node scripts/directions/cli.mjs`. Use the command's absolute JSON request or manifest path. The loader is a separate read-only command. Writer dispatch is `NOT_IMPLEMENTED`; do not describe review transport as writer execution. Current model backend is `NOT_CONFIRMED` unless actual runtime provenance confirms it.
+
+For continuation say: **“Продолжи направление <ID> с текущего checkpoint; проверь owner, baseline, rules, applicability and gates.”** Work follows planning and current PRE, meaningful RED, implementation, applicable checks, Verify, POST, archive and STOP. For a failure request the first failing invariant, reproduction, root cause and next allowed step. Keep prior failure evidence. Never update visual baselines as a normal verification step.
+
+The root `pnpm check` runs existing general product checks; `pnpm check:all` additionally runs browser and desktop tests. Their names do not prove execution. `pnpm check:directions` runs direction controls and W01 applicability proof in the actual owner checkout. Required OpenSpec and owner checks are recorded separately. CI definitions or branch protection remain `NOT_RUN`/`NOT_CONFIGURED` until observed remotely.
+
+An approved feature ref may receive tested task or significant checkpoint commits. Checkpoint and publish return distinct local and verified remote states. A published feature is not merged. For integration, ask for a candidate against an exact target SHA, conflict review and checks on the merged tree; merge awaits separate authorization. Routing, UI and Repo Core adoption remains `NOT_STARTED` until their owners perform it.

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "owner": "frade-standard-workflow",
+  "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "decidedBeforeExecution": true,
+  "required": [
+    "direction-controls",
+    "openspec validate frade-standard-workflow --strict --json",
+    "openspec validate --all --strict --json",
+    "pnpm lint",
+    "pnpm typecheck",
+    "pnpm build",
+    "pnpm test:boundaries",
+    "pnpm check:boundaries",
+    "content/hash/link/traceability/frozen audit"
+  ],
+  "notApplicable": [
+    {
+      "family": "new Routing numerical/parity/visual gates",
+      "reason": "W01 changes engineering controls only; unchanged protected tree is checked against its original baseline before this N/A applies."
+    },
+    {
+      "family": "new UI/browser/Electron visual acceptance",
+      "reason": "W01 changes no presentation or host behavior; unchanged protected tree is checked against its original baseline before this N/A applies."
+    }
+  ],
+  "remoteCI": "NOT_RUN",
+  "branchProtection": "NOT_CONFIGURED",
+  "productCheckAll": "NOT_RUN"
+}
