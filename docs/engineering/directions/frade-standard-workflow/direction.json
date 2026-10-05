@@ -84,7 +84,7 @@
       "id": "W01",
       "change": "frade-standard-workflow",
       "phase": "VERIFICATION",
-      "health": "RUNNING",
+      "health": "BLOCKED",
       "dependencies": [],
       "roleAssignments": [
         {
@@ -129,8 +129,8 @@
         "policyDecision": "ACCEPTED_D03",
         "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
         "formalPRE": "PASS_9c974da8",
-        "Verify": "PASS_A71A7BED_RECEIVED_VALID",
-        "POST": "NOT_RUN",
+        "Verify": "HISTORICAL_PASS_A71_REQ_RECIPROCITY_REPAIR_REVERIFY_REQUIRED",
+        "POST": "FAIL_42CB1CBE_RECEIVED_VALID",
         "archive": "NOT_RUN"
       }
     }
@@ -187,6 +187,17 @@
           "sha256": "3eade75c85a85243ce59bbc616cf0053d5e016f6113210e55790345c68d09ba2"
         }
       ]
+    },
+    "independentPOST": {
+      "path": "openspec/changes/frade-standard-workflow/evidence/independent-post-repaired-20261005/receipt.json",
+      "sha256": "a0635a2ac472a143640af9847f0ee7819ae28993abf9edddd2a06192ac203a8d",
+      "candidate": "42cb1cbe4a81ef6a775b03cd7712183055540fda",
+      "planHash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+      "status": "FAIL",
+      "report": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/independent-post-repaired-20261005/POST-REPORT.md",
+        "sha256": "82cd49157c21c14e647254ed31c222e3644f1077cf0c051069abb74056145243"
+      }
     }
   },
   "provisioning": {
@@ -195,5 +206,16 @@
     "currentCheckpoint": "882a9980fcaa1a3508097a1edaf5369bf42513f4",
     "closureActivated": false
   },
-  "blockers": []
+  "blockers": [
+    {
+      "id": "REQUIREMENT_SCENARIO_RECIPROCITY",
+      "owner": "frade-standard-workflow",
+      "state": "OPEN",
+      "openedAt": "2026-10-05T12:15:24.643Z",
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/independent-post-repaired-20261005/receipt.json",
+      "failedFixes": 0,
+      "rca": "INVARIANT / ABSTRACTION_BOUNDARY: scenario.requirementId can name a requirement whose outgoing list omits that failed scenario; structurally accepted trace yields false accepted count. Previous completed-task gap is resolved and preserved.",
+      "nextAction": "Regression-first native RED, approved Sol/high contracts/status repair, current applicable checks, fresh Verify and fresh cumulative POST; closure remains inactive"
+    }
+  ]
 }
