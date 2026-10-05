@@ -83,8 +83,8 @@
     {
       "id": "W01",
       "change": "frade-standard-workflow",
-      "phase": "IMPLEMENTATION",
-      "health": "RUNNING",
+      "phase": "VERIFICATION",
+      "health": "BLOCKED",
       "dependencies": [],
       "roleAssignments": [
         {
@@ -116,7 +116,12 @@
       "roleAuthority": {
         "path": "openspec/changes/frade-standard-workflow/design.md",
         "hash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
-        "humanDecision": "openspec/changes/frade-standard-workflow/evidence/user-decisions.json"
+        "humanDecision": "openspec/changes/frade-standard-workflow/evidence/user-decisions.json",
+        "revision": "D03",
+        "decision": {
+          "path": "openspec/changes/frade-standard-workflow/evidence/policy-acceptance.json",
+          "sha256": "98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239"
+        }
       },
       "taskOverrides": [],
       "tasksAuthority": "openspec/changes/frade-standard-workflow/tasks.md",
@@ -124,7 +129,7 @@
         "policyDecision": "ACCEPTED_D03",
         "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
         "formalPRE": "PASS_9c974da8",
-        "Verify": "NOT_RUN",
+        "Verify": "FAIL_REPAIR_CHECKS_PASS_FRESH_VERIFY_PENDING",
         "POST": "NOT_RUN",
         "archive": "NOT_RUN"
       }
@@ -173,5 +178,17 @@
     "scope": "Accepted task2.7 additive root loader/package/CI exact paths; frozen product/foreign scopes and closure remain unchanged",
     "currentCheckpoint": "882a9980fcaa1a3508097a1edaf5369bf42513f4",
     "closureActivated": false
-  }
+  },
+  "blockers": [
+    {
+      "id": "FRESH_VERIFY_PENDING",
+      "owner": "frade-standard-workflow",
+      "state": "OPEN",
+      "openedAt": "2026-10-05T09:12:00.000Z",
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/repair-receipt.json",
+      "failedFixes": 0,
+      "rca": "V01-V04 repair passed200 native tests and original-owner replay; previous Verify FAIL remains historical gate evidence",
+      "nextAction": "Publish checked repair checkpoint and run fresh formal Verify gpt-6-astra/high before independent POST"
+    }
+  ]
 }

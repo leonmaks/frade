@@ -1,0 +1,20 @@
+{
+  "id": "W01-TASK41-V04-FOLLOWUP-20261005",
+  "classification": ["STATE_TRANSITION", "ABSTRACTION_BOUNDARY"],
+  "source": "../input/native-repair-fail.json",
+  "nativeResult": "196 of 198 passed; FWE-013 W01 legacy BRANCH-STATUS failed while native historical W01 replay passed",
+  "firstIncorrectDecision": "Status selected bootstrap.checkedOrigin for every W01 write by direction ID. This treated a journal-backed W01 status fixture as a new bootstrap creation request and applied its stricter requestShape and policy artifact admission. The existing status verifyOrigin contract had already authenticated that fixture's retained and complete journal records. Direction ID alone does not select the origin state.",
+  "priorUnsuccessfulVariants": [
+    "Status originally required journals for all writes and rejected the historical W01 owner with no journals.",
+    "First repair sent all W01 writes through bootstrap.checkedOrigin and rejected the existing journal-backed W01 status fixture."
+  ],
+  "invariants": [
+    "Journal-backed status owners, including a W01-named fixture, retain status.verifyOrigin admission.",
+    "Only W01 with no retained or completion journal may enter the authenticated fixed historical W01 boundary.",
+    "A single journal is incomplete and must fail before status mutation.",
+    "Historical admission continues to verify fixed owner, Git common, baseline/checkpoint ancestry and source-bound approval evidence; no public boolean or test knob grants admission.",
+    "Existing FWE-013 legacy BRANCH-STATUS assertion and fixtures remain unchanged."
+  ],
+  "repairPlan": "Keep status verifyOrigin as the ordinary journal-backed path. On W01 and only an absent journal path, dynamically call bootstrap.checkedOrigin, whose missing/missing branch authenticates the fixed historical owner and whose partial state rejects. A dynamic import removes the static bootstrap/status dependency cycle. Add partial-journal negative coverage before production edit, then run targeted tests; preserve the native FAIL record and report native GREEN as pending parent replay.",
+  "publicationDecision": "TEST-SPEC-DECISION.json approved historical and current source version regressions; publication repair is separate."
+}

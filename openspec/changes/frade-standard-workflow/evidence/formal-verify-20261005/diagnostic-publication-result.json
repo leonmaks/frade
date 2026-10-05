@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "status": "PUBLISHED",
+  "id": "frade-standard-workflow",
+  "sourceSha": "1bfcc149d00e38c7a2a8efa482a160d65a84f8fc",
+  "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "authoritySha256": "714b3abd4f3e78b004dfea05a1744b5fb758db99aae8631575dae0f507fce699",
+  "remote": "git@github.com:leonmaks/frade.git",
+  "ref": "refs/heads/codex/frade-standard-workflow",
+  "previousRemoteSha": "9fcdced7bfd3e1ae3e6895de050466417b19d8c1",
+  "verifiedRemoteSha": "1bfcc149d00e38c7a2a8efa482a160d65a84f8fc",
+  "commands": [
+    {
+      "args": [
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "E:/dev/codex/frade-worktrees/frade-standard-workflow\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "rev-parse",
+        "--git-common-dir"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "E:/dev/codex/frade/.git\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "E:/dev/codex/frade-worktrees/frade-standard-workflow\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "rev-parse",
+        "--git-common-dir"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "E:/dev/codex/frade/.git\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "symbolic-ref",
+        "--quiet",
+        "--short",
+        "HEAD"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "codex/frade-standard-workflow\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "1bfcc149d00e38c7a2a8efa482a160d65a84f8fc\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "merge-base",
+        "--is-ancestor",
+        "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+        "1bfcc149d00e38c7a2a8efa482a160d65a84f8fc"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "worktree",
+        "list",
+        "--porcelain"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "worktree E:/dev/codex/frade\nHEAD 98f387f96b51b0ad139e3507c376ff1c3e8dec09\nbranch refs/heads/main\n\nworktree C:/Users/NVISEN/.codex/worktrees/r04-pre-review/frade\nHEAD da22452d7e9c35f28f4004d9826432b12bf6a521\ndetached\n\nworktree C:/Users/NVISEN/.codex/worktrees/routing-v2/frade\nHEAD 98f387f96b51b0ad139e3507c376ff1c3e8dec09\nbranch refs/heads/codex/routing-v2\n\nworktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade\nHEAD a894702a2429ad33c6168a64e0f9759462b8d3b3\nbranch refs/heads/codex/frade-ui-design-contract\n\nworktree E:/dev/codex/frade-worktrees/frade-standard-workflow\nHEAD 1bfcc149d00e38c7a2a8efa482a160d65a84f8fc\nbranch refs/heads/codex/frade-standard-workflow\n\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "merge-base",
+        "--is-ancestor",
+        "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+        "9c974da812e7f120cace9defcdca69dd6154254b"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "merge-base",
+        "--is-ancestor",
+        "9c974da812e7f120cace9defcdca69dd6154254b",
+        "1bfcc149d00e38c7a2a8efa482a160d65a84f8fc"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "show",
+        "9c974da812e7f120cace9defcdca69dd6154254b:openspec/changes/frade-standard-workflow/evidence/user-decisions.json"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "{\n  \"version\": 2,\n  \"date\": \"2026-10-02\",\n  \"source\": \"Direct human messages in this chat\",\n  \"accepted\": {\n    \"goal\": \"One standard strict quality-first workflow for every Frade direction, minimal routine human relay\",\n    \"terminology\": \"направление\",\n    \"isolation\": \"Independent directions in branches/worktrees; explicit merge conflicts\",\n    \"uniformStatus\": true,\n    \"roleDefaultsWithTaskExceptions\": true,\n    \"exactEfforts\": true,\n    \"models\": {\n      \"planningArchitecture\": {\n        \"model\": \"gpt-6-astra\",\n        \"effort\": \"high\"\n      },\n      \"independentPRE\": {\n        \"model\": \"gpt-6-astra\",\n        \"effort\": \"xhigh\"\n      },\n      \"toolingTests\": {\n        \"model\": \"gpt-6-sol\",\n        \"effort\": \"high\"\n      },\n      \"formalVerify\": {\n        \"model\": \"gpt-6-astra\",\n        \"effort\": \"high\"\n      },\n      \"independentPOST\": {\n        \"model\": \"gpt-6-astra\",\n        \"effort\": \"xhigh\"\n      }\n    },\n    \"modelReply\": \"Утверждаю предложенные назначения\",\n    \"publication\": {\n      \"remote\": \"git@github.com:leonmaks/frade.git\",\n      \"ref\": \"refs/heads/codex/frade-standard-workflow\",\n      \"reply\": \"Разрешаю commit/push в указанную ветку\",\n      \"automaticMainMerge\": false\n    },\n    \"concretePolicy\": {\n      \"id\": \"D03\",\n      \"date\": \"2026-10-02\",\n      \"recordedAtUtc\": \"2026-10-02T19:00:01.713Z\",\n      \"source\": \"Direct human reply following presented standard and outstanding policy question\",\n      \"reply\": \"Принято. Продолжай.\",\n      \"approvedPlanningCommit\": \"61c7b6d9b0cde8fe06b714c74bfa6ac04009a1ab\",\n      \"approvedArtifacts\": [\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/proposal.md\",\n          \"sha256\": \"97a26d30bf7dd54d5503000ebd754fa6ceb728d45a0d17c2ccb33e12e10c4d22\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/design.md\",\n          \"sha256\": \"501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/tasks.md\",\n          \"sha256\": \"ef1666635dc3f2cf51fded54b6ba772cb7f0dfd7062b6bb5ab742727e7df8c3a\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/drafts/standard-workflow.md\",\n          \"sha256\": \"a389084d94b7b4d0e857ab27ff45ece2aa5f2de13845b482dbc2bc405f2b0fe7\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/drafts/newcomer-guide.md\",\n          \"sha256\": \"b6d417123dc6b202e27149f9a0f7bbfceb0d740e84d10979213d372b91bfd090\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/drafts/status-template.md\",\n          \"sha256\": \"a2064a49a7d44c2c2582b8053e178a06a165def21e40ad07f6a2abb61ce5f182\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/drafts/direction-manifest.example.json\",\n          \"sha256\": \"d23f4b4b920fa14a60583b069ac976f43971d3de8dd9330cd131d74e1206f229\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/specs/engineering-direction-lifecycle/spec.md\",\n          \"sha256\": \"fc0b8cec6ab51ccd03a902ec2874aca49c1814cc42464a0a3d3c25b35aa6b204\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/specs/engineering-role-dispatch/spec.md\",\n          \"sha256\": \"0c2ac77851f57a1fec0e5d6b3959927c7c59646fe485f9dddbf6d1f2e2e4ed1b\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/specs/engineering-progress-publication/spec.md\",\n          \"sha256\": \"c023d6c5ba9b65dc49e5d63e1690e8fa9e0b46f950052f13dd157b7aeebd4481\"\n        }\n      ],\n      \"scope\": \"Accept concrete W01 policy/cadence/control plan and continue implementation subject to mandatory formal PRE; existing model/destination approvals persist\",\n      \"doesNotApprove\": [\n        \"Skipping PRE/RED/checks/Verify/POST\",\n        \"Main merge or other ref\",\n        \"Automatic later numbered change\",\n        \"Foreign active-owner adoption\"\n      ]\n    }\n  },\n  \"proposedPendingConcretePolicyDecision\": [],\n  \"limitations\": [\n    \"No foreign active worktree modifications authorized by this checkpoint\",\n    \"Request metadata is not independent PRE\",\n    \"D03 accepts the concrete plan; implementation still requires fresh formal PRE and closure barriers. Historical model-only approval retains its original bounded authority.\"\n  ],\n  \"previouslyProposedNowAccepted\": [\n    \"Exact eight-section dashboard and lifecycle contract\",\n    \"Task/checkpoint/blocker commit+push cadence and combining same-candidate events\",\n    \"Bootstrap/validator contract and staged per-owner adoption\"\n  ]\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "show",
+        "9c974da812e7f120cace9defcdca69dd6154254b:openspec/changes/frade-standard-workflow/design.md"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "# Design: uniform Frade direction workflow\n\n## Context\n\nOwner: codex/frade-standard-workflow, E:/dev/codex/frade-worktrees/frade-standard-workflow.\nOriginal/cumulative baseline: 98f387f96b51b0ad139e3507c376ff1c3e8dec09.\nGit common: E:/dev/codex/frade/.git. Shared release v1.1 a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0.\nPolicy raw SHA256: 6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb.\nRead evidence/repository-audit.json and evidence/user-decisions.json. User instructions override local skill assumptions; this package is planning only until coherent plan approval and independent PRE. The numbered W01 checkpoint never starts a later change autonomously.\n\nObserved: one pnpm/Turbo monorepo, 20 package manifests at the committed baseline, 9 active changes there, additional UI/Routing process files only in their owning dirty worktrees. Common CLI exposes status/probe/run/publish, not direction bootstrap or writer execution. Baseline root AGENTS lacks later shared policy; exact user-provided instructions and shared public policy are adopted as process evidence, without foreign product source.\n\n## Goals / Non-Goals\n\nGoals: one external lifecycle; minimal routine human relay; precise role dispatch; executable fail-closed guards; understandable fixed dashboards; repeatable onboarding; all packages assigned applicable checks; consistent publication; preservation of stricter program contracts and historical evidence.\n\nNon-goals: repairing Routing R04, completing Repo Core, closing UI P01, imposing a uniform geometry tolerance or performance budget, retroactive model claims, automatically accepting visual baselines, copying dirty branches, account-wide settings, foreign repositories, force pushing or automatic main merge. No absolute quality guarantee is claimed from a process.\n\n## Decisions\n\n### 1. Direction taxonomy and identities\n\nA direction is a bounded engineering objective, not a physical package. A direction owns stable ID, goal, branch/worktree, immutable origin, current approved checkpoint, versioned rules and numbered stages. A stage owns one OpenSpec change or explicit mapping of existing change artifacts; tasks carry stable IDs, type, dependencies, acceptance/evidence and ordered steps. Phases are lifecycle activities, separate from stage numbers and health. Legacy Routing R01-R10 and UI P01-P07 keep their names and origins. A small feature uses one stage with the same barriers; it cannot skip research/checks silently, but applicable evidence can be bounded.\n\nDo not create empty product packages for planning. Proposed metadata layout: docs/engineering/directions/<id>/{direction.json,ROADMAP.md,AGENTS.md,DIRECTION-STATUS.md,decisions/}. Use a legacy owner status path when present and render it in the common layout. Each OpenSpec change retains its own artifacts/evidence. Internal direction AGENTS extends root/scoped contracts; it never weakens them. Root loader references the active direction manifest so rules apply outside the docs subtree.\n\n### 1a. Phase-bounded scope and closure destinations\n\nPlanning may write only the owning change and docs/engineering/BRANCH-STATUS.md. Implementation uses the reviewed explicit control/docs path set; this is not permission to write foreign direction metadata. Closure permissions are separate and remain inactive until required checks, formal Verify and current independent POST PASS plus the human policy decision. W01 closure allows only `openspec/specs/engineering-direction-lifecycle/spec.md`, `openspec/specs/engineering-role-dispatch/spec.md`, `openspec/specs/engineering-progress-publication/spec.md` and the dated directory openspec/changes/archive/<actual-archive-date>-frade-standard-workflow/**. The archive date is recorded at execution, canonically validated, and never expands the owner ID or matches another change. Sync is limited to W01 delta requirements; archive moves exactly this owning change, retains raw hashes, and relocates owned relative references and role-source paths/hash bindings. Historical immutable receipts keep their original paths/hashes and gain an explicit origin-to-archive mapping; they are never rewritten. All unrelated specs, archives, product/frozen files and owner process state remain excluded.\n\nAdd positive actual temporary-Git sync/archive/reference-relocation controls and negative early-closure, foreign-spec, foreign-archive, unsafe date/path, stale approval and broken-reference controls. No real sync/archive occurs in this planning repair.\n\n### 2. Initial command and standard lifecycle\n\nUser command: \"Открой направление <name>: <goal>\". The owner performs dry-run inventory first, resolves the canonical Git common and selected explicit committed baseline, validates ID/path/remote/ref, verifies available shared policy/runtime, refuses an existing mismatched direction/branch, creates one isolated registered worktree and branch codex/<id>, and seeds intake, research, requirements, roadmap, manifest, rules, status, decision register and OpenSpec planning. No user input is guessed for irreversible product scope or external publication. If origin/baseline/destination is ambiguous, it blocks only dependent steps; safe research proceeds.\n\nPhases: INTAKE -> RESEARCH -> REQUIREMENTS -> PLANNING -> PRE_REVIEW -> BDD_TDD -> IMPLEMENTATION -> CHECKS -> VERIFICATION -> POST_REVIEW -> ARCHIVE -> CLOSED. Integration to a shared target is a separately authorized candidate after closure or an explicitly bounded integration checkpoint; merged candidate receives applicable regression/control revalidation. Unknown phases, skipped barriers and stale approvals fail.\n\nHealth is separate: NOT_RUN, RUNNING, PASS, FAIL, BLOCKED, PAUSED. PAUSED requires human instruction. Applicability is REQUIRED or NOT_APPLICABLE with contract-based reason, decided before execution; N/A cannot waive a current applicable FAIL. PRE/POST unavailable/invalid transport is BLOCKED; valid reviewer verdict is exactly PASS/FAIL. Stage/tasks checked-count is administrative progress only, not product readiness.\n\n### 3. Discovery, research and requirements\n\nIntake captures problem, users, expected outcome, constraints, exclusions, original baseline, quality-first priority, publication destination and human decision boundary. Research retains dated primary/local sources, current behavior, reproducible gaps, alternatives/tradeoffs, risks, unknowns and capability limitations. Browsing stays outside confined reviews; selected relevant public/source evidence enters packet.\n\nRequirements use stable IDs, mandatory behavior/invariants, explicit acceptance cases, compatibility/preservation constraints and measurable limits. Each requirement links to BDD scenario -> task -> meaningful test/assertion -> actual source-bound evidence. Critical invariants, failure/cancel/recovery states and security boundaries require positive, negative and boundary controls. Qualitative usability/visual decisions remain human. Numerical limits are approved per contract before measurement, not fitted to observed failures. Existing actual evidence may be reused only with source/toolchain/config applicability proof; failed obsolete runs remain retained.\n\n### 4. Exact role assignments (approved for this direction)\n\nUser authorized the following exact assignments on 2 October 2026 via the question/reply saved in evidence/user-decisions.json. This is the W01 stage plan, not a global model default.\n\n| Stage | Role | Model | Effort |\n|---|---|---|---|\n| W01 | planning-architecture | gpt-6-astra | high |\n| W01 | independent-PRE | gpt-6-astra | xhigh |\n| W01 | tooling-tests | gpt-6-sol | high |\n| W01 | formal-Verify | gpt-6-astra | high |\n| W01 | independent-POST | gpt-6-astra | xhigh |\n\nCheckpoint/publication is a deterministic authorized orchestration action, not a new LLM reasoning assignment. Drafting onboarding/requirements belongs to planning-architecture; schema/CLI/test implementation belongs to tooling-tests.\n\nFor future directions, approved stage task-type assignment resolves one pair; a reviewed task-specific exception overrides only its own task and role. Resolver must emit stage, task, type/role, exact pair, source path/raw hash/excerpt, assignment revision and override reason/approval. No \"Luna/Sol\", \"high/xhigh\", dynamic choice, universal strongest model, silent fallback or request-self-approval. Missing mappings block dispatch. Recommended pairs in templates are proposals and never authorize execution. Executor and reviewer assignments are separate. The current chat model cannot be silently changed; launch exact approved workers through supported tooling only after actual runtime/confinement proof. Review worker is fresh, independent and read-only; a writable implementation worker is confined to its own owner scope, gets no reviewer credentials and cannot self-certify PRE/POST. Initial tooling must report writer dispatch NOT_IMPLEMENTED rather than pretend it exists.\n\n### 5. Fixed dashboard and metrics\n\nExactly eight primary sections, same order: 1 Decision/Next Action; 2 Identity/Scope; 3 Stage Roadmap; 4 Active Tasks/Steps; 5 Checks/Gates/Quality; 6 Models/Execution; 7 Dependencies/Decisions/Blockers; 8 Git/Publication/Evidence. Current projection renders validated structured state; dated raw history remains separate. Legacy dashboards can retain append-only historical tail after these sections, with a clear snapshot boundary; no rewrite of old evidence. A tracked required status path is recorded in manifest.\n\nTop row: UTC update, direction/stage/phase/health, exact next permitted action, human decision or NONE. Counts use explicit complete/total/remaining requirements/tasks/checks; missing evidence cannot increase acceptance. Report invariant failures, executed scenario coverage, negative-control coverage, regression state, approved performance/security/visual gates, stale evidence, open blocker age, failed fix attempts, baseline/source fingerprints, last checkpoint SHA and verified remote SHA. No invented quality score, arbitrary 100% code coverage mandate or universal latency budget.\n\nRefresh on start/resume, scope/decision, task/blocker/check batch, PRE/POST/Verify/archive/publication. Freeze defers status writes. Render after receipt unfreeze; open right panel and distinguish queued/visible. Hash the input records used to produce the projection. A record claiming PASS is not evidence: validator checks declared evidence bindings and review receipts; actual gate execution stays authoritative.\n\n### 6. Commit/push cadence and remote safety\n\nRecommended normative cadence: one commit and push after each coherent completed task whose required checks pass; additionally commit/push planning approval, PRE/POST receipt, stage close/archive and reproduced blocker/RCA checkpoint when new evidence exists. Combine events belonging to the same frozen candidate into one checkpoint; do not create empty commits. Do not push every shell command, failed local patch or intermediate edit. A work-in-progress diagnostic checkpoint must label incomplete/FAIL/BLOCKED and cannot satisfy GREEN/closure. Preserve RED locally before repair; a durable RED checkpoint can be published with explicit non-ready status.\n\nOpening a direction captures explicit human remote/ref authorization once; routine subsequent publication uses it. This direction is authorized only git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow. Validate URL/ref plus actual branch/upstream; explicit scoped staging; scan prohibited/sensitive files; refuse unexpected staging or unauthorized paths; no blind git add .; no force/reset/clean. Push exact local checkpoint SHA to exact approved ref and verify remote SHA by fresh ls-remote. Remote divergence, unavailable transport, permissions or mismatch = publication BLOCKED, never PUBLISHED; retain checkpoint locally. Push cannot mutate main or another direction. Publication receipt is append-only after verification; avoid self-referential \"this commit\" hashes by pointing to the preceding source checkpoint and record receipt in the next natural checkpoint, without infinite commits.\n\n### 7. Applicable controls for all packages\n\nGeneral contract baseline: applicable strict OpenSpec, lint/typecheck/build, unit/BDD/boundary tests and clean lockfile/reproducibility checks. Product changes require affected package checks plus required root regression per approved control matrix; docs/process-only changes require actual process/control tests, strict validation, content/hash/link checks and proven unchanged product tree, not an invented product GREEN. New schema/CLI/CI controls need integration tests on actual temporary Git/worktrees and adversarial controls, not just schema examples.\n\nPer subsystem: Routing geometry/property/parity/mutation/compiler/frozen gates; UI theme/density/keyboard/contrast/visual/preservation; Repository profiles/identity/revisions/authorization/atomicity/recovery; Metamodel composition/inheritance/imports/fingerprints; Runtime sender/DTO/isolation/lifecycle; adapters actual filesystem/SQL/Git behavior; host browser/Electron real integration. Existing thresholds and narrower constraints prevail. Each area must have declared scope owner and actual applicability, including shared manifests/CI/AGENTS. No unrelated FAIL blocks an independent direction, but a failing truly applicable check cannot be relabelled unrelated.\n\n### 8. Bootstrap and validators\n\nProposed entry: node scripts/directions/cli.mjs plan <request.json>; create <approved-request.json>; check <manifest>; status <manifest>; review <manifest> PRE|POST; checkpoint <manifest> <event>; publish <receipt>. User commands map to these deterministically. plan is read-only and outputs exact creation/destination/unknowns; create is idempotent only when owner/baseline/hash match. Creation uses argv APIs without shell interpolation, validates canonical path containment/reparse points/case collisions, Git ownership/modes and branch/ref collisions; partial operations return recoverable receipts and never delete existing work. Registry is branch-local/versioned; common service remains review transport. Do not assume common network capability grants reviewer network.\n\nValidator detects unresolved models, missing evidence/task order/approval, unknown status, forged/stale bindings, scope drift, semantic weakening, changed source during review, incomplete stream, missing checks/remote SHA and circular dependencies. Machine checks complement independent semantic review; false plan approval cannot be verified merely by a JSON true. Adoption of new public controls needs PRE/RED/implementation/checks/Verify/POST and immutable release publish, then consumer-owned migration. No rewriting release v1.1.\n\n### 9. Adoption and integration\n\nNew directions use the new standard after reviewed release adoption. Existing Routing/UI/Repo Core keep approved origin and evidence; add mapping records and common dashboard header through owning planning revalidation. Adopt one direction at a time in separate worktrees. Archived historical changes remain historical, not reopened or renamed without a new authorized scope. Completed checkboxes without Verify/POST/archive map to IMPLEMENTED_PENDING_CLOSURE, never CLOSED. Future stages with ambiguous model matrices are PLANNING_BLOCKED, not automatically assigned today's models.\n\nShared release is published only after actual successful complete POST of public supplier controls; registration/bundle hashes and discovery/confinement are verified from registered owners. Per-owner control adoption may fail independently and does not prevent supplier closure. A reviewed standard alone does not claim all directions migrated. CI definitions and branch protection distinguish LOCAL_ONLY, REMOTE_VERIFIED and NOT_CONFIGURED.\n\nIntegration captures target commit/ref, resolved conflicts, preserved supplier/consumer approvals, final diff and tests on actual merged candidate, independent integration POST as applicable and explicit merge permission. No auto main merge. Pre-merge feature POST cannot certify a later conflicting merge tree.\n\n## Risks / Trade-offs\n\nFrequent task publication improves recoverability but creates evidence volume: keep relevant minimal packets, never recursively select copied historical packets; raw receipts immutable and storage budgets measured before reviews. Strong controls cost time; quality remains first, human interaction second, not test count maximization. Proposed model assignments require availability, not aliases or unattested claims. Existing docs are inconsistent/stale; mapping must use observed source path/hash/time and separate owner status, never infer closure.\n\n## Migration Plan\n\n1. This W01 planning package + audited user decisions + exact public-policy adoption; actual strict validation; independent PRE on approved scope.\n2. Implement docs/templates/schema/lifecycle/role/status/bootstrap/publication controls in the sole owning workspace after meaningful RED. Run targeted and required general control checks.\n3. Formal Verify -> independent POST -> immutable common release/control publication under allowed destinations -> W01 archive/checkpoint -> STOP.\n4. Routing, UI and Repo Core migration are separately authorized owner checkpoints; preserve frozen origins and conduct their affected PRE/POST. Record NOT_STARTED until actual adoption.\n5. Main integration is separately authorized and revalidated; no next numbered engineering change automatically.\n\n## Verification Strategy\n\nBDD requirements cover creation collision/foreign root, ambiguous role/task overrides, task/barrier ordering, drifted/forged review, UNKNOWN/N/A misuse, dashboard count integrity, blocked publication/divergent remote, schema version/adoption, public-release hash and unchanged product behavior. Use deterministic Node tests plus actual disposable Git repositories/worktrees/remotes for mutations. Run commands/exits/hashes, positive/negative controls, strict OpenSpec and changed-path audit. Existing shared CLI is consumed unchanged; regression-test any new wrappers and scoped root loader. Root product check:all applicability must be declared with contract proof before implementation; no false product PASS from docs-only tests.\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "show",
+        "9c974da812e7f120cace9defcdca69dd6154254b:openspec/changes/frade-standard-workflow/evidence/user-decisions.json"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "{\n  \"version\": 2,\n  \"date\": \"2026-10-02\",\n  \"source\": \"Direct human messages in this chat\",\n  \"accepted\": {\n    \"goal\": \"One standard strict quality-first workflow for every Frade direction, minimal routine human relay\",\n    \"terminology\": \"направление\",\n    \"isolation\": \"Independent directions in branches/worktrees; explicit merge conflicts\",\n    \"uniformStatus\": true,\n    \"roleDefaultsWithTaskExceptions\": true,\n    \"exactEfforts\": true,\n    \"models\": {\n      \"planningArchitecture\": {\n        \"model\": \"gpt-6-astra\",\n        \"effort\": \"high\"\n      },\n      \"independentPRE\": {\n        \"model\": \"gpt-6-astra\",\n        \"effort\": \"xhigh\"\n      },\n      \"toolingTests\": {\n        \"model\": \"gpt-6-sol\",\n        \"effort\": \"high\"\n      },\n      \"formalVerify\": {\n        \"model\": \"gpt-6-astra\",\n        \"effort\": \"high\"\n      },\n      \"independentPOST\": {\n        \"model\": \"gpt-6-astra\",\n        \"effort\": \"xhigh\"\n      }\n    },\n    \"modelReply\": \"Утверждаю предложенные назначения\",\n    \"publication\": {\n      \"remote\": \"git@github.com:leonmaks/frade.git\",\n      \"ref\": \"refs/heads/codex/frade-standard-workflow\",\n      \"reply\": \"Разрешаю commit/push в указанную ветку\",\n      \"automaticMainMerge\": false\n    },\n    \"concretePolicy\": {\n      \"id\": \"D03\",\n      \"date\": \"2026-10-02\",\n      \"recordedAtUtc\": \"2026-10-02T19:00:01.713Z\",\n      \"source\": \"Direct human reply following presented standard and outstanding policy question\",\n      \"reply\": \"Принято. Продолжай.\",\n      \"approvedPlanningCommit\": \"61c7b6d9b0cde8fe06b714c74bfa6ac04009a1ab\",\n      \"approvedArtifacts\": [\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/proposal.md\",\n          \"sha256\": \"97a26d30bf7dd54d5503000ebd754fa6ceb728d45a0d17c2ccb33e12e10c4d22\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/design.md\",\n          \"sha256\": \"501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/tasks.md\",\n          \"sha256\": \"ef1666635dc3f2cf51fded54b6ba772cb7f0dfd7062b6bb5ab742727e7df8c3a\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/drafts/standard-workflow.md\",\n          \"sha256\": \"a389084d94b7b4d0e857ab27ff45ece2aa5f2de13845b482dbc2bc405f2b0fe7\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/drafts/newcomer-guide.md\",\n          \"sha256\": \"b6d417123dc6b202e27149f9a0f7bbfceb0d740e84d10979213d372b91bfd090\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/drafts/status-template.md\",\n          \"sha256\": \"a2064a49a7d44c2c2582b8053e178a06a165def21e40ad07f6a2abb61ce5f182\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/drafts/direction-manifest.example.json\",\n          \"sha256\": \"d23f4b4b920fa14a60583b069ac976f43971d3de8dd9330cd131d74e1206f229\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/specs/engineering-direction-lifecycle/spec.md\",\n          \"sha256\": \"fc0b8cec6ab51ccd03a902ec2874aca49c1814cc42464a0a3d3c25b35aa6b204\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/specs/engineering-role-dispatch/spec.md\",\n          \"sha256\": \"0c2ac77851f57a1fec0e5d6b3959927c7c59646fe485f9dddbf6d1f2e2e4ed1b\"\n        },\n        {\n          \"path\": \"openspec/changes/frade-standard-workflow/specs/engineering-progress-publication/spec.md\",\n          \"sha256\": \"c023d6c5ba9b65dc49e5d63e1690e8fa9e0b46f950052f13dd157b7aeebd4481\"\n        }\n      ],\n      \"scope\": \"Accept concrete W01 policy/cadence/control plan and continue implementation subject to mandatory formal PRE; existing model/destination approvals persist\",\n      \"doesNotApprove\": [\n        \"Skipping PRE/RED/checks/Verify/POST\",\n        \"Main merge or other ref\",\n        \"Automatic later numbered change\",\n        \"Foreign active-owner adoption\"\n      ]\n    }\n  },\n  \"proposedPendingConcretePolicyDecision\": [],\n  \"limitations\": [\n    \"No foreign active worktree modifications authorized by this checkpoint\",\n    \"Request metadata is not independent PRE\",\n    \"D03 accepts the concrete plan; implementation still requires fresh formal PRE and closure barriers. Historical model-only approval retains its original bounded authority.\"\n  ],\n  \"previouslyProposedNowAccepted\": [\n    \"Exact eight-section dashboard and lifecycle contract\",\n    \"Task/checkpoint/blocker commit+push cadence and combining same-candidate events\",\n    \"Bootstrap/validator contract and staged per-owner adoption\"\n  ]\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "show",
+        "9c974da812e7f120cace9defcdca69dd6154254b:openspec/changes/frade-standard-workflow/design.md"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "# Design: uniform Frade direction workflow\n\n## Context\n\nOwner: codex/frade-standard-workflow, E:/dev/codex/frade-worktrees/frade-standard-workflow.\nOriginal/cumulative baseline: 98f387f96b51b0ad139e3507c376ff1c3e8dec09.\nGit common: E:/dev/codex/frade/.git. Shared release v1.1 a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0.\nPolicy raw SHA256: 6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb.\nRead evidence/repository-audit.json and evidence/user-decisions.json. User instructions override local skill assumptions; this package is planning only until coherent plan approval and independent PRE. The numbered W01 checkpoint never starts a later change autonomously.\n\nObserved: one pnpm/Turbo monorepo, 20 package manifests at the committed baseline, 9 active changes there, additional UI/Routing process files only in their owning dirty worktrees. Common CLI exposes status/probe/run/publish, not direction bootstrap or writer execution. Baseline root AGENTS lacks later shared policy; exact user-provided instructions and shared public policy are adopted as process evidence, without foreign product source.\n\n## Goals / Non-Goals\n\nGoals: one external lifecycle; minimal routine human relay; precise role dispatch; executable fail-closed guards; understandable fixed dashboards; repeatable onboarding; all packages assigned applicable checks; consistent publication; preservation of stricter program contracts and historical evidence.\n\nNon-goals: repairing Routing R04, completing Repo Core, closing UI P01, imposing a uniform geometry tolerance or performance budget, retroactive model claims, automatically accepting visual baselines, copying dirty branches, account-wide settings, foreign repositories, force pushing or automatic main merge. No absolute quality guarantee is claimed from a process.\n\n## Decisions\n\n### 1. Direction taxonomy and identities\n\nA direction is a bounded engineering objective, not a physical package. A direction owns stable ID, goal, branch/worktree, immutable origin, current approved checkpoint, versioned rules and numbered stages. A stage owns one OpenSpec change or explicit mapping of existing change artifacts; tasks carry stable IDs, type, dependencies, acceptance/evidence and ordered steps. Phases are lifecycle activities, separate from stage numbers and health. Legacy Routing R01-R10 and UI P01-P07 keep their names and origins. A small feature uses one stage with the same barriers; it cannot skip research/checks silently, but applicable evidence can be bounded.\n\nDo not create empty product packages for planning. Proposed metadata layout: docs/engineering/directions/<id>/{direction.json,ROADMAP.md,AGENTS.md,DIRECTION-STATUS.md,decisions/}. Use a legacy owner status path when present and render it in the common layout. Each OpenSpec change retains its own artifacts/evidence. Internal direction AGENTS extends root/scoped contracts; it never weakens them. Root loader references the active direction manifest so rules apply outside the docs subtree.\n\n### 1a. Phase-bounded scope and closure destinations\n\nPlanning may write only the owning change and docs/engineering/BRANCH-STATUS.md. Implementation uses the reviewed explicit control/docs path set; this is not permission to write foreign direction metadata. Closure permissions are separate and remain inactive until required checks, formal Verify and current independent POST PASS plus the human policy decision. W01 closure allows only `openspec/specs/engineering-direction-lifecycle/spec.md`, `openspec/specs/engineering-role-dispatch/spec.md`, `openspec/specs/engineering-progress-publication/spec.md` and the dated directory openspec/changes/archive/<actual-archive-date>-frade-standard-workflow/**. The archive date is recorded at execution, canonically validated, and never expands the owner ID or matches another change. Sync is limited to W01 delta requirements; archive moves exactly this owning change, retains raw hashes, and relocates owned relative references and role-source paths/hash bindings. Historical immutable receipts keep their original paths/hashes and gain an explicit origin-to-archive mapping; they are never rewritten. All unrelated specs, archives, product/frozen files and owner process state remain excluded.\n\nAdd positive actual temporary-Git sync/archive/reference-relocation controls and negative early-closure, foreign-spec, foreign-archive, unsafe date/path, stale approval and broken-reference controls. No real sync/archive occurs in this planning repair.\n\n### 2. Initial command and standard lifecycle\n\nUser command: \"Открой направление <name>: <goal>\". The owner performs dry-run inventory first, resolves the canonical Git common and selected explicit committed baseline, validates ID/path/remote/ref, verifies available shared policy/runtime, refuses an existing mismatched direction/branch, creates one isolated registered worktree and branch codex/<id>, and seeds intake, research, requirements, roadmap, manifest, rules, status, decision register and OpenSpec planning. No user input is guessed for irreversible product scope or external publication. If origin/baseline/destination is ambiguous, it blocks only dependent steps; safe research proceeds.\n\nPhases: INTAKE -> RESEARCH -> REQUIREMENTS -> PLANNING -> PRE_REVIEW -> BDD_TDD -> IMPLEMENTATION -> CHECKS -> VERIFICATION -> POST_REVIEW -> ARCHIVE -> CLOSED. Integration to a shared target is a separately authorized candidate after closure or an explicitly bounded integration checkpoint; merged candidate receives applicable regression/control revalidation. Unknown phases, skipped barriers and stale approvals fail.\n\nHealth is separate: NOT_RUN, RUNNING, PASS, FAIL, BLOCKED, PAUSED. PAUSED requires human instruction. Applicability is REQUIRED or NOT_APPLICABLE with contract-based reason, decided before execution; N/A cannot waive a current applicable FAIL. PRE/POST unavailable/invalid transport is BLOCKED; valid reviewer verdict is exactly PASS/FAIL. Stage/tasks checked-count is administrative progress only, not product readiness.\n\n### 3. Discovery, research and requirements\n\nIntake captures problem, users, expected outcome, constraints, exclusions, original baseline, quality-first priority, publication destination and human decision boundary. Research retains dated primary/local sources, current behavior, reproducible gaps, alternatives/tradeoffs, risks, unknowns and capability limitations. Browsing stays outside confined reviews; selected relevant public/source evidence enters packet.\n\nRequirements use stable IDs, mandatory behavior/invariants, explicit acceptance cases, compatibility/preservation constraints and measurable limits. Each requirement links to BDD scenario -> task -> meaningful test/assertion -> actual source-bound evidence. Critical invariants, failure/cancel/recovery states and security boundaries require positive, negative and boundary controls. Qualitative usability/visual decisions remain human. Numerical limits are approved per contract before measurement, not fitted to observed failures. Existing actual evidence may be reused only with source/toolchain/config applicability proof; failed obsolete runs remain retained.\n\n### 4. Exact role assignments (approved for this direction)\n\nUser authorized the following exact assignments on 2 October 2026 via the question/reply saved in evidence/user-decisions.json. This is the W01 stage plan, not a global model default.\n\n| Stage | Role | Model | Effort |\n|---|---|---|---|\n| W01 | planning-architecture | gpt-6-astra | high |\n| W01 | independent-PRE | gpt-6-astra | xhigh |\n| W01 | tooling-tests | gpt-6-sol | high |\n| W01 | formal-Verify | gpt-6-astra | high |\n| W01 | independent-POST | gpt-6-astra | xhigh |\n\nCheckpoint/publication is a deterministic authorized orchestration action, not a new LLM reasoning assignment. Drafting onboarding/requirements belongs to planning-architecture; schema/CLI/test implementation belongs to tooling-tests.\n\nFor future directions, approved stage task-type assignment resolves one pair; a reviewed task-specific exception overrides only its own task and role. Resolver must emit stage, task, type/role, exact pair, source path/raw hash/excerpt, assignment revision and override reason/approval. No \"Luna/Sol\", \"high/xhigh\", dynamic choice, universal strongest model, silent fallback or request-self-approval. Missing mappings block dispatch. Recommended pairs in templates are proposals and never authorize execution. Executor and reviewer assignments are separate. The current chat model cannot be silently changed; launch exact approved workers through supported tooling only after actual runtime/confinement proof. Review worker is fresh, independent and read-only; a writable implementation worker is confined to its own owner scope, gets no reviewer credentials and cannot self-certify PRE/POST. Initial tooling must report writer dispatch NOT_IMPLEMENTED rather than pretend it exists.\n\n### 5. Fixed dashboard and metrics\n\nExactly eight primary sections, same order: 1 Decision/Next Action; 2 Identity/Scope; 3 Stage Roadmap; 4 Active Tasks/Steps; 5 Checks/Gates/Quality; 6 Models/Execution; 7 Dependencies/Decisions/Blockers; 8 Git/Publication/Evidence. Current projection renders validated structured state; dated raw history remains separate. Legacy dashboards can retain append-only historical tail after these sections, with a clear snapshot boundary; no rewrite of old evidence. A tracked required status path is recorded in manifest.\n\nTop row: UTC update, direction/stage/phase/health, exact next permitted action, human decision or NONE. Counts use explicit complete/total/remaining requirements/tasks/checks; missing evidence cannot increase acceptance. Report invariant failures, executed scenario coverage, negative-control coverage, regression state, approved performance/security/visual gates, stale evidence, open blocker age, failed fix attempts, baseline/source fingerprints, last checkpoint SHA and verified remote SHA. No invented quality score, arbitrary 100% code coverage mandate or universal latency budget.\n\nRefresh on start/resume, scope/decision, task/blocker/check batch, PRE/POST/Verify/archive/publication. Freeze defers status writes. Render after receipt unfreeze; open right panel and distinguish queued/visible. Hash the input records used to produce the projection. A record claiming PASS is not evidence: validator checks declared evidence bindings and review receipts; actual gate execution stays authoritative.\n\n### 6. Commit/push cadence and remote safety\n\nRecommended normative cadence: one commit and push after each coherent completed task whose required checks pass; additionally commit/push planning approval, PRE/POST receipt, stage close/archive and reproduced blocker/RCA checkpoint when new evidence exists. Combine events belonging to the same frozen candidate into one checkpoint; do not create empty commits. Do not push every shell command, failed local patch or intermediate edit. A work-in-progress diagnostic checkpoint must label incomplete/FAIL/BLOCKED and cannot satisfy GREEN/closure. Preserve RED locally before repair; a durable RED checkpoint can be published with explicit non-ready status.\n\nOpening a direction captures explicit human remote/ref authorization once; routine subsequent publication uses it. This direction is authorized only git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow. Validate URL/ref plus actual branch/upstream; explicit scoped staging; scan prohibited/sensitive files; refuse unexpected staging or unauthorized paths; no blind git add .; no force/reset/clean. Push exact local checkpoint SHA to exact approved ref and verify remote SHA by fresh ls-remote. Remote divergence, unavailable transport, permissions or mismatch = publication BLOCKED, never PUBLISHED; retain checkpoint locally. Push cannot mutate main or another direction. Publication receipt is append-only after verification; avoid self-referential \"this commit\" hashes by pointing to the preceding source checkpoint and record receipt in the next natural checkpoint, without infinite commits.\n\n### 7. Applicable controls for all packages\n\nGeneral contract baseline: applicable strict OpenSpec, lint/typecheck/build, unit/BDD/boundary tests and clean lockfile/reproducibility checks. Product changes require affected package checks plus required root regression per approved control matrix; docs/process-only changes require actual process/control tests, strict validation, content/hash/link checks and proven unchanged product tree, not an invented product GREEN. New schema/CLI/CI controls need integration tests on actual temporary Git/worktrees and adversarial controls, not just schema examples.\n\nPer subsystem: Routing geometry/property/parity/mutation/compiler/frozen gates; UI theme/density/keyboard/contrast/visual/preservation; Repository profiles/identity/revisions/authorization/atomicity/recovery; Metamodel composition/inheritance/imports/fingerprints; Runtime sender/DTO/isolation/lifecycle; adapters actual filesystem/SQL/Git behavior; host browser/Electron real integration. Existing thresholds and narrower constraints prevail. Each area must have declared scope owner and actual applicability, including shared manifests/CI/AGENTS. No unrelated FAIL blocks an independent direction, but a failing truly applicable check cannot be relabelled unrelated.\n\n### 8. Bootstrap and validators\n\nProposed entry: node scripts/directions/cli.mjs plan <request.json>; create <approved-request.json>; check <manifest>; status <manifest>; review <manifest> PRE|POST; checkpoint <manifest> <event>; publish <receipt>. User commands map to these deterministically. plan is read-only and outputs exact creation/destination/unknowns; create is idempotent only when owner/baseline/hash match. Creation uses argv APIs without shell interpolation, validates canonical path containment/reparse points/case collisions, Git ownership/modes and branch/ref collisions; partial operations return recoverable receipts and never delete existing work. Registry is branch-local/versioned; common service remains review transport. Do not assume common network capability grants reviewer network.\n\nValidator detects unresolved models, missing evidence/task order/approval, unknown status, forged/stale bindings, scope drift, semantic weakening, changed source during review, incomplete stream, missing checks/remote SHA and circular dependencies. Machine checks complement independent semantic review; false plan approval cannot be verified merely by a JSON true. Adoption of new public controls needs PRE/RED/implementation/checks/Verify/POST and immutable release publish, then consumer-owned migration. No rewriting release v1.1.\n\n### 9. Adoption and integration\n\nNew directions use the new standard after reviewed release adoption. Existing Routing/UI/Repo Core keep approved origin and evidence; add mapping records and common dashboard header through owning planning revalidation. Adopt one direction at a time in separate worktrees. Archived historical changes remain historical, not reopened or renamed without a new authorized scope. Completed checkboxes without Verify/POST/archive map to IMPLEMENTED_PENDING_CLOSURE, never CLOSED. Future stages with ambiguous model matrices are PLANNING_BLOCKED, not automatically assigned today's models.\n\nShared release is published only after actual successful complete POST of public supplier controls; registration/bundle hashes and discovery/confinement are verified from registered owners. Per-owner control adoption may fail independently and does not prevent supplier closure. A reviewed standard alone does not claim all directions migrated. CI definitions and branch protection distinguish LOCAL_ONLY, REMOTE_VERIFIED and NOT_CONFIGURED.\n\nIntegration captures target commit/ref, resolved conflicts, preserved supplier/consumer approvals, final diff and tests on actual merged candidate, independent integration POST as applicable and explicit merge permission. No auto main merge. Pre-merge feature POST cannot certify a later conflicting merge tree.\n\n## Risks / Trade-offs\n\nFrequent task publication improves recoverability but creates evidence volume: keep relevant minimal packets, never recursively select copied historical packets; raw receipts immutable and storage budgets measured before reviews. Strong controls cost time; quality remains first, human interaction second, not test count maximization. Proposed model assignments require availability, not aliases or unattested claims. Existing docs are inconsistent/stale; mapping must use observed source path/hash/time and separate owner status, never infer closure.\n\n## Migration Plan\n\n1. This W01 planning package + audited user decisions + exact public-policy adoption; actual strict validation; independent PRE on approved scope.\n2. Implement docs/templates/schema/lifecycle/role/status/bootstrap/publication controls in the sole owning workspace after meaningful RED. Run targeted and required general control checks.\n3. Formal Verify -> independent POST -> immutable common release/control publication under allowed destinations -> W01 archive/checkpoint -> STOP.\n4. Routing, UI and Repo Core migration are separately authorized owner checkpoints; preserve frozen origins and conduct their affected PRE/POST. Record NOT_STARTED until actual adoption.\n5. Main integration is separately authorized and revalidated; no next numbered engineering change automatically.\n\n## Verification Strategy\n\nBDD requirements cover creation collision/foreign root, ambiguous role/task overrides, task/barrier ordering, drifted/forged review, UNKNOWN/N/A misuse, dashboard count integrity, blocked publication/divergent remote, schema version/adoption, public-release hash and unchanged product behavior. Use deterministic Node tests plus actual disposable Git repositories/worktrees/remotes for mutations. Run commands/exits/hashes, positive/negative controls, strict OpenSpec and changed-path audit. Existing shared CLI is consumed unchanged; regression-test any new wrappers and scoped root loader. Root product check:all applicability must be declared with contract proof before implementation; no false product PASS from docs-only tests.\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "config",
+        "--name-only",
+        "--list",
+        "--includes"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "core.repositoryformatversion\ncore.filemode\ncore.bare\ncore.logallrefupdates\ncore.ignorecase\nremote.origin.url\nremote.origin.fetch\nbranch.main.remote\nbranch.main.merge\nbranch.main.vscode-merge-base\npull.ff\npush.default\nfetch.prune\nextensions.worktreeconfig\nbranch.codex/frade-ui-design-contract.remote\nbranch.codex/frade-ui-design-contract.merge\nbranch.codex/frade-standard-workflow.remote\nbranch.codex/frade-standard-workflow.merge\nuser.name\nuser.email\ncore.autocrlf\ncore.hookspath\ncore.fsmonitor\ncore.attributesfile\ncore.sshcommand\ncredential.helper\nprotocol.ext.allow\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "config",
+        "--get",
+        "remote.origin.url"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "git@github.com:leonmaks/frade.git\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "remote",
+        "get-url",
+        "--all",
+        "origin"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "git@github.com:leonmaks/frade.git\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "remote",
+        "get-url",
+        "--push",
+        "--all",
+        "origin"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "git@github.com:leonmaks/frade.git\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "for-each-ref",
+        "--format=%(upstream:short)",
+        "refs/heads/codex/frade-standard-workflow"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "origin/codex/frade-standard-workflow\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "ls-files",
+        "--",
+        ".gitattributes",
+        ":(glob)**/.gitattributes"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "openspec/changes/frade-standard-workflow/.gitattributes\nopenspec/changes/frade-standard-workflow/evidence/implementation-runs/task-2.4-repair/work/evidence/task24-repair/source-before-snapshot/tests/directions/authority-fixtures/.gitattributes\nopenspec/changes/frade-standard-workflow/evidence/reviews/task25-diagnostic-02/.gitattributes\nopenspec/changes/frade-standard-workflow/evidence/task25-calibration3/native/.gitattributes\nopenspec/changes/frade-standard-workflow/evidence/task25-calibration3/raw/.gitattributes\nopenspec/changes/frade-standard-workflow/evidence/task25-repaired-owner/.gitattributes\nopenspec/changes/frade-standard-workflow/evidence/task25-runtime-20261004/.gitattributes\nopenspec/changes/routing-v2-04-orthogonal-router/evidence/.gitattributes\ntests/directions/authority-fixtures/.gitattributes\ntests/directions/shared-core-fixture/.gitattributes\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "-z"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "ls-remote",
+        "git@github.com:leonmaks/frade.git",
+        "refs/heads/codex/frade-standard-workflow"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "9fcdced7bfd3e1ae3e6895de050466417b19d8c1\trefs/heads/codex/frade-standard-workflow\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "merge-base",
+        "--is-ancestor",
+        "9fcdced7bfd3e1ae3e6895de050466417b19d8c1",
+        "1bfcc149d00e38c7a2a8efa482a160d65a84f8fc"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "args": [
+        "push",
+        "git@github.com:leonmaks/frade.git",
+        "1bfcc149d00e38c7a2a8efa482a160d65a84f8fc:refs/heads/codex/frade-standard-workflow"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "To github.com:leonmaks/frade.git\n   9fcdced7..1bfcc149  1bfcc149d00e38c7a2a8efa482a160d65a84f8fc -> codex/frade-standard-workflow\n",
+      "error": null
+    },
+    {
+      "args": [
+        "ls-remote",
+        "git@github.com:leonmaks/frade.git",
+        "refs/heads/codex/frade-standard-workflow"
+      ],
+      "exitCode": 0,
+      "status": 0,
+      "signal": null,
+      "stdout": "1bfcc149d00e38c7a2a8efa482a160d65a84f8fc\trefs/heads/codex/frade-standard-workflow\n",
+      "stderr": "",
+      "error": null
+    }
+  ],
+  "atUtc": "2026-10-05T08:13:22.487Z"
+}

@@ -1,0 +1,71 @@
+{
+  "id": "W01-TASK41-REPAIR-FOLLOWUP-20261005",
+  "status": "REPAIR_STAGED_NATIVE_GREEN_PENDING",
+  "approvedModel": "gpt-6-sol",
+  "approvedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "acceptedDesignSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "nativeRed": {
+    "path": "../input/native-repair-fail.json",
+    "platform": "win32",
+    "node": "v24.18.0",
+    "exitCode": 1,
+    "passed": 196,
+    "total": 198,
+    "failures": [
+      "FWE-013 W01 legacy BRANCH-STATUS remains mapped to its registered origin: ORIGIN_MISMATCH",
+      "FWE-016 current W01 review control source checkpoints through public guard: pinned SHA mismatch"
+    ],
+    "historicalOwnerNativeReplay": "PASSED freeze/write/restore in prior parent execution; not rerun in this isolated worker"
+  },
+  "rca": {
+    "path": "RCA.json",
+    "sha256": "101a06e944b0d8363b106892d3f281a944424c144e78cb319abb7af0867f1d1a",
+    "classification": ["STATE_TRANSITION", "ABSTRACTION_BOUNDARY"],
+    "firstIncorrectDecision": "Selecting bootstrap.checkedOrigin for every W01 status write by ID applied creation requestShape admission to existing journal-backed status owners.",
+    "repair": "Preserve status.verifyOrigin for ordinary complete journals. Only W01 missing-journal states enter bootstrap.checkedOrigin, which authenticates the fixed historical owner when both journals are absent and rejects partial states. Dynamically import it to remove the static status/bootstrap cycle."
+  },
+  "publicationDecision": {
+    "path": "TEST-SPEC-DECISION.json",
+    "sha256": "452d3cba08c21df82973278c1e20c0254a38632750d5444fedf987f72e70975a",
+    "approved": true,
+    "implementation": "Preserved the old exact 3eb07b29 source bytes and hardcoded SHA assertion as a historical public checkpoint regression; added a distinct current review.mjs regression pinned to authenticated 26aca7b7 output."
+  },
+  "changedPathsSha256": {
+    "RCA.json": "101a06e944b0d8363b106892d3f281a944424c144e78cb319abb7af0867f1d1a",
+    "scripts/directions/status.mjs": "45a3ed3202892a428ab0447ce3ea65a93deb3707cdd5ac94be40f8f0cebd8d55",
+    "tests/directions/status.test.mjs": "ad7aa1db2be0c5ddd46a5037f6c20e9d702a098d1d1485b9fe5ca1f376ebcb20",
+    "tests/directions/publication.test.mjs": "42b370eea0c79106ff9628c40d066ce88a7107890d6b9539c477bbac6e263e8e",
+    "tests/directions/authority-fixtures/w01-review-historical.snapshot": "3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa"
+  },
+  "oldAssertionsAndFixtures": "The original FWE-013 W01 legacy BRANCH-STATUS assertions and fixture remain unchanged. All original publication checkpoint assertions remain in the historical case; exact historical source bytes are retained in a new snapshot. No test was deleted, weakened, skipped or marked only in source.",
+  "priorFixesPreserved": {
+    "scripts/directions/bootstrap.mjs": "57984bab561fe353563ee854f0c4e4dc9df86e1941d91c8b90a2079220c4c799",
+    "scripts/directions/review.mjs": "26aca7b752e4bd00212d6a6d5fe6f9eac5d328a607aa40ad760c57d926ad691f",
+    "docs/engineering/directions/frade-standard-workflow/direction.json": "611c44f4a74379b0056d37e7520505a4058accdff4985fd7674fa65ab20217d0"
+  },
+  "commands": [
+    { "argv": ["node", "tests/directions/status.test.mjs"], "beforeProductionEditExit": 0, "afterProductionEditExit": 0, "afterResult": "19/19 passed locally; native Windows pre-fix failure remains RED source" },
+    { "argv": ["node", "--test-name-pattern=FWE-016 historical W01|FWE-016 authenticated current W01", "tests/directions/publication.test.mjs"], "exit": 1, "result": "Both pinned source SHA assertions passed; both public checkpoint probes blocked at TRUSTED_COMMON_UNAVAILABLE because local sandbox Git spawnSync returned EPERM" },
+    { "argv": ["node", "tests/directions/bootstrap-repair.test.mjs"], "exit": 0, "result": "27/27 passed locally" },
+    { "argv": ["node", "tests/directions/bootstrap.test.mjs"], "exit": 0, "result": "17/17 passed locally" },
+    { "argv": ["node", "tests/directions/w01-origin-admission.test.mjs"], "exit": 1, "result": "1/3 passed; two CLI child spawns failed with sandbox EPERM" },
+    { "argv": ["node", "--check", "scripts/directions/status.mjs"], "exit": 0 },
+    { "argv": ["node", "--check", "scripts/directions/bootstrap.mjs"], "exit": 0 },
+    { "argv": ["node", "--check", "tests/directions/status.test.mjs"], "exit": 0 },
+    { "argv": ["node", "--check", "tests/directions/publication.test.mjs"], "exit": 0 },
+    { "argv": ["git", "status", "--short"], "exit": 128, "result": "Staging directory is not a Git repository; direct input/work diffs inspected instead" },
+    { "argv": ["git", "diff", "--", "scripts/directions/status.mjs", "tests/directions/status.test.mjs", "tests/directions/publication.test.mjs"], "exit": 129, "result": "Staging directory is not a Git repository; direct input/work diffs inspected instead" }
+  ],
+  "unresolvedBlockers": [
+    "Fresh native Windows full regression and original-owner historical replay against this candidate must be performed by parent; this worker cannot claim native GREEN.",
+    "Local Node is v18.19.1 while product requires Node 24.x; sandbox blocks some child Git and Node spawns with EPERM.",
+    "Formal Verify, POST and archive remain blocked pending required owner execution and gates."
+  ],
+  "readyForFormalVerify": false,
+  "task41Complete": false,
+  "postOrArchiveAdvanced": false,
+  "ownerGitIndexTouched": false,
+  "foreignOrNetworkTouched": false
+}

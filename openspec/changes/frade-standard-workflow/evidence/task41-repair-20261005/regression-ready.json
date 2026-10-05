@@ -1,0 +1,73 @@
+{
+  "phase": "RED_READY_PRODUCTION_UNCHANGED",
+  "designSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "sourceHead": "1bfcc149d00e38c7a2a8efa482a160d65a84f8fc",
+  "sourceUnchanged": true,
+  "originalAssertionPolicy": "All existing tests retained; bootstrap.test.mjs has only an import and an added V-03 test.",
+  "redSourceSnapshot": "red-source/",
+  "readOnlyInputSha256": {
+    "scripts/directions/bootstrap.mjs": "dc6844ce8dca197cf5a4bcb701c39074e159cc3d23b8ab21dbb13f66d415913b",
+    "scripts/directions/review.mjs": "3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa",
+    "scripts/directions/roles.mjs": "9fb5da92a87fc9fd173765857f61c36fcd4855bf572bd74f7145f4efbd4f2341",
+    "scripts/directions/status.mjs": "c0a83640e7b9bfa27cb4fbf91a6475d27f9f5295c55cd7b17ec3477a1bd69a67",
+    "docs/engineering/directions/frade-standard-workflow/direction.json": "1deaa13693e65249eed27d2cd4399b0c389062e9c324b77903da8602a3fcf82b",
+    "docs/engineering/templates/task-2.3-bootstrap.md": "103709b5e4872b75c42303d6103a745a1d05ee8fd85e2d6eb1be9ede80e52f24",
+    "docs/engineering/newcomer-guide.md": "342607561909c16ae8e7ad85c970d32f29a8f80ab040e87da28188e025b9063c",
+    "tests/directions/bootstrap.test.mjs": "e0529db1eb462fb8e2c6ff6bbda438f031a9fd6c482a9864257eb0fca9e9cc25",
+    "openspec/changes/frade-standard-workflow/proposal.md": "97a26d30bf7dd54d5503000ebd754fa6ceb728d45a0d17c2ccb33e12e10c4d22",
+    "openspec/changes/frade-standard-workflow/design.md": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+    "openspec/changes/frade-standard-workflow/tasks.md": "d1d2194dfc62a625955778f95e6346286a24d35211a218f7286b5313f48d6e1a",
+    "openspec/changes/frade-standard-workflow/specs/engineering-direction-lifecycle/spec.md": "fc0b8cec6ab51ccd03a902ec2874aca49c1814cc42464a0a3d3c25b35aa6b204",
+    "openspec/changes/frade-standard-workflow/specs/engineering-role-dispatch/spec.md": "0c2ac77851f57a1fec0e5d6b3959927c7c59646fe485f9dddbf6d1f2e2e4ed1b",
+    "openspec/changes/frade-standard-workflow/specs/engineering-progress-publication/spec.md": "c023d6c5ba9b65dc49e5d63e1690e8fa9e0b46f950052f13dd157b7aeebd4481",
+    "openspec/changes/frade-standard-workflow/evidence/policy-acceptance.json": "98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239",
+    "openspec/changes/frade-standard-workflow/evidence/user-decisions.json": "126589d990e2e44b04efe8825b5ec4d90582205ba6c729375528c383ccbaf186",
+    "../input/verify-fail/VERIFY-REPORT.md": "c21c83aa11f6061cc801e5a5f404bb3ab2abc193d00a3886677a6c7bd5a96abc",
+    "../input/verify-fail/VERIFY-REPORT.json": "a536bfecc5353a36068d3964e96978d48384b4630c175a6c0a3fffde20d0f795"
+  },
+  "regressions": {
+    "V-01": {
+      "classification": "INTEGRATION",
+      "firstIncorrectDecision": "review.mjs W01_ALLOWED admits a workflow wildcard while the installed approved manifest grants only the exact ci.yml path; literal pattern membership rejects the installed scope before owner admission.",
+      "test": "tests/directions/task41-installed-red.test.mjs: V-01 installed exact scope passes review source preflight; widened and foreign scope fail",
+      "localAssertion": "expected result.code != REVIEW_SOURCE, actual REVIEW_SOURCE"
+    },
+    "V-02": {
+      "classification": "ABSTRACTION_BOUNDARY",
+      "firstIncorrectDecision": "The installed roleAuthority records a design hash and humanDecision path but omits canonical revision and a separately hash-bound D03 decision descriptor required by roles.mjs.",
+      "test": "tests/directions/task41-installed-red.test.mjs: V-02 all five installed roles resolve only through raw design and D03 decision",
+      "localAssertion": "planning-architecture expected RESOLVED, actual ROLE_SOURCE; four further roles are asserted by the same loop"
+    },
+    "V-03": {
+      "classification": "INTEGRATION",
+      "firstIncorrectDecision": "bootstrap.mjs seeds S01.1–S01.4 although the approved status task parser accepts numeric dotted IDs, then hides those tasks by projecting an empty string.",
+      "test": "tests/directions/bootstrap.test.mjs: V-03 actual temporary Git plan/create/check/status uses four numeric seeded task IDs",
+      "localAssertion": "actual temporary Git plan/create/check succeeded; parseTasks on generated tasks threw TASK_MALFORMED"
+    },
+    "V-04": {
+      "classification": "STATE_TRANSITION",
+      "firstIncorrectDecision": "status.mjs has a separate journal-only write validator while checkDirection authenticates the original historical W01 origin from fixed owner/common and source-bound evidence when both journals are absent.",
+      "test": "tests/directions/task41-native-owner.replay.mjs: V-04 native registered historical W01 refuses frozen write then refreshes after release",
+      "nativePending": true,
+      "expectedRedAssertion": "With a test-only freeze marker, refreshStatus(write=true) must return FROZEN; unchanged source returns BLOCKED because historical journals are absent."
+    }
+  },
+  "testSha256": {
+    "tests/directions/task41-installed-red.test.mjs": "761188cc25906ab222854f4b6058d1e8c84238c49dc539d459d07a1776a64694",
+    "tests/directions/bootstrap.test.mjs": "d9d5f31925891bc81f166b7e308877fe1f3123f2a4e0d11ab7c252d8dec3d15c",
+    "tests/directions/task41-native-owner.replay.mjs": "d9950d1d9345f63a2ba72876a09a4387c37ab05aa8053af949bbfba7754721cf"
+  },
+  "localCommands": [
+    { "argv": ["node", "tests/directions/task41-installed-red.test.mjs"], "exit": 1, "meaning": "Two assertion failures, V-01 and V-02" },
+    { "argv": ["node", "--test-name-pattern=V-03", "tests/directions/bootstrap.test.mjs"], "exit": 1, "meaning": "Actual Git bootstrap chain reached generated TASK_MALFORMED" },
+    { "argv": ["node", "--check", "tests/directions/task41-native-owner.replay.mjs"], "exit": 0, "meaning": "Syntax only; native replay not run locally" }
+  ],
+  "nativeCommandArgv": [
+    ["node", "tests/directions/task41-installed-red.test.mjs"],
+    ["node", "--test-name-pattern=V-03", "tests/directions/bootstrap.test.mjs"],
+    ["node", "tests/directions/task41-native-owner.replay.mjs", "E:/dev/codex/frade-worktrees/frade-standard-workflow"]
+  ],
+  "nativeCwd": "E:/dev/codex/frade-worker-staging/w01-task41-repair-20261005/work",
+  "nativeSafety": "Native replay reads registered owner and original check, imports staged status implementation, requires both historical journals absent, preserves exact owner status bytes and Git HEAD/index/status, creates only an absent freeze marker with wx and removes it after verifying exact marker bytes in finally. No origin approval or journal is created.",
+  "limitations": ["Linux staged work is not a registered W01 owner; V-04 requires parent native Windows replay.", "Node --test subprocess mode in local sandbox collapsed child failure output; direct node test invocation preserved assertion details."]
+}

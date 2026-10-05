@@ -459,6 +459,24 @@ test('FWE-013-S02 and FWE-015-S01 actual Git owner, freeze, legacy history, queu
   assert.equal(readFileSync(statusPath, 'utf8'), retained)
 })
 
+test('W-02 first generated status keeps a complete manual eight-section snapshot as history', async () => {
+  const { owner, m, statusPath } = actualOwner()
+  const manual =
+    '# Manual W01-style status\n\n' +
+    HEADINGS.map((heading) => `${heading}\n\nHistorical dated evidence.\n`).join('\n')
+  writeFileSync(statusPath, manual)
+  const first = await refreshStatus({ ...input({ manifest: m }), ownerRoot: owner, write: true })
+  assert.equal(first.status, 'WRITTEN', JSON.stringify(first))
+  const generated = readFileSync(statusPath, 'utf8')
+  assert.ok(generated.includes('PROJECTION_SOURCE_SHA256:'))
+  assert.ok(generated.endsWith(`${LEGACY_BOUNDARY}\n${manual}`))
+  const second = await refreshStatus({ ...input({ manifest: m }), ownerRoot: owner, write: true })
+  assert.equal(second.status, 'WRITTEN', JSON.stringify(second))
+  const repeated = readFileSync(statusPath, 'utf8')
+  assert.equal(repeated.split(LEGACY_BOUNDARY).length, 2)
+  assert.ok(repeated.endsWith(`${LEGACY_BOUNDARY}\n${manual}`))
+})
+
 test('one direction freeze defers real status write for a distinct owning stage change', async () => {
   const { common, owner, m, statusPath } = actualOwner('alpha-direction')
   m.stages.push({ ...m.stages[0], id: 'B02', change: 'beta-change', dependencies: [] })
@@ -576,6 +594,25 @@ test('FWE-013 W01 legacy BRANCH-STATUS remains mapped to its registered origin',
   const result = await refreshStatus({ ...input({ manifest: m }), ownerRoot: owner, write: true })
   assert.equal(result.status, 'WRITTEN', JSON.stringify(result))
   assert.match(readFileSync(join(owner, m.statusPath), 'utf8'), /W01 historical status/)
+})
+
+test('FWE-013 W01 partial origin journal never writes the legacy status', async () => {
+  const { common, owner, m, origin } = actualOwner('frade-standard-workflow')
+  m.statusPath = 'docs/engineering/BRANCH-STATUS.md'
+  m.scope.planningAllowed.push(m.statusPath)
+  const statusPath = join(owner, m.statusPath)
+  mkdirSync(join(owner, 'docs/engineering'), { recursive: true })
+  const original = 'W01 historical status must remain intact\n'
+  writeFileSync(statusPath, original)
+  const retained = join(common, 'frade-workflow/intents/frade-standard-workflow.json')
+  const complete = join(common, 'frade-workflow/intents/frade-standard-workflow.complete.json')
+  for (const missing of [retained, complete]) {
+    unlinkSync(missing)
+    const result = await refreshStatus({ ...input({ manifest: m }), ownerRoot: owner, write: true })
+    assert.equal(result.status, 'BLOCKED', JSON.stringify(result))
+    assert.equal(readFileSync(statusPath, 'utf8'), original)
+    writeFileSync(missing, JSON.stringify(origin))
+  }
 })
 
 test('FWE-015 freeze arriving during awaited trusted proof defers the write', async () => {

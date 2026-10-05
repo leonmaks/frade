@@ -1,0 +1,90 @@
+{
+  "status": "REPAIR_STAGED_NATIVE_GREEN_PENDING",
+  "change": "frade-standard-workflow task 4.1 V-01–V-04 and W-01/W-02",
+  "designSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "nativeRed": {
+    "path": "NATIVE-RED.json",
+    "sha256": "ef9e9e5e71547e31f30fc5a51747d02ad91a7a98666ac256d32cff38e4425996",
+    "all4Reproduced": true,
+    "meaningfulAssertionFailures": true,
+    "sourceUnchanged": true,
+    "ownerRestored": true
+  },
+  "rcaAndRepair": {
+    "V-01": {
+      "class": "INTEGRATION",
+      "firstIncorrectDecision": "Review's hard-coded W01 scope contained .github/workflows/** while the installed approved manifest and root loader used only .github/workflows/ci.yml. Literal pattern membership rejected exact approved scope.",
+      "repair": "Use the exact approved ci.yml entry in review's W01 path-pattern set; keep pathMatches semantics and reject widened or foreign paths.",
+      "regression": "Installed manifest preflight passes REVIEW_SOURCE boundary; wildcard, packages/** and foreign packet path remain rejected. No reviewer dispatch."
+    },
+    "V-02": {
+      "class": "ABSTRACTION_BOUNDARY",
+      "firstIncorrectDecision": "Installed roleAuthority omitted the canonical D03 revision and separately hash-bound decision descriptor required by the existing fail-closed resolver.",
+      "repair": "Add revision D03 and exact existing policy-acceptance.json path/SHA256 descriptor to installed roleAuthority, preserving original hash, humanDecision and all five pairs.",
+      "regression": "All five installed roles resolve against raw approved design and D03; source binding drift, decision byte drift and non-approving authority block. No metadata boolean grants approval."
+    },
+    "V-03": {
+      "class": "INTEGRATION",
+      "firstIncorrectDecision": "Bootstrap seeded S01.* task IDs outside the numeric dotted parser contract and sent an empty task source to the first status projection.",
+      "repair": "Seed numeric 1.1–1.4 and project the exact generated task bytes at creation.",
+      "regression": "Real temporary Git plan/create/check/status path yields four open tasks and no TASK_MALFORMED; malformed and duplicate parser controls remain."
+    },
+    "V-04": {
+      "class": "STATE_TRANSITION",
+      "firstIncorrectDecision": "Status write used journal-only origin verification although checkDirection admits the fixed historical W01 owner from raw source-bound evidence when both bootstrap journals are absent.",
+      "repair": "For W01 status writes call the same checkedOrigin admission used by checkDirection, including journal partial-state refusal and fixed historical owner/common/source/hash/checkpoint checks. Retain the existing non-W01 journal validator and its historical regression fixtures.",
+      "regression": "Native original-owner replay tests check VALID, journal absence, freeze refusal, write after release, exact status restoration and unchanged HEAD/index/porcelain. Native GREEN is pending parent execution; portable existing historical tamper and non-W01 freeze/origin tests retained."
+    },
+    "W-01": {
+      "class": "DOCUMENTATION",
+      "repair": "Bootstrap template and newcomer guide now show current CLI arguments, installed W01-only review admission, origin exception and unsupported writer boundary."
+    },
+    "W-02": {
+      "class": "STATE_TRANSITION",
+      "repair": "First generated status projection appends a prior complete manual status after the legacy boundary; subsequent writes retain one copy. Parent can generate a source-bound current header without discarding historical text. No owner status file was edited here.",
+      "regression": "Actual temporary Git status test preserves complete manual eight-section snapshot across first and repeated writes."
+    }
+  },
+  "changedPathsSha256": {
+    "scripts/directions/review.mjs": "26aca7b752e4bd00212d6a6d5fe6f9eac5d328a607aa40ad760c57d926ad691f",
+    "scripts/directions/bootstrap.mjs": "57984bab561fe353563ee854f0c4e4dc9df86e1941d91c8b90a2079220c4c799",
+    "scripts/directions/status.mjs": "fcd9eb9b9e9b97a53959792c97008f696bde48e88ad5ecdcdf52f245fb38390d",
+    "docs/engineering/directions/frade-standard-workflow/direction.json": "611c44f4a74379b0056d37e7520505a4058accdff4985fd7674fa65ab20217d0",
+    "docs/engineering/templates/task-2.3-bootstrap.md": "3e8bfce49387a512359050cb2b51095af4abeaf74bdc663b21b6f3af4c1abef9",
+    "docs/engineering/newcomer-guide.md": "bef24782196d2365fd20ae680cf5e4823c123c81311e1d0eba68087ed9a8c716",
+    "tests/directions/bootstrap.test.mjs": "d9d5f31925891bc81f166b7e308877fe1f3123f2a4e0d11ab7c252d8dec3d15c",
+    "tests/directions/status.test.mjs": "14c29bb4d30bba0e4db7efdc0b420e00038f04f6e19e3b28efe6a3711ded45b2",
+    "tests/directions/task41-installed-red.test.mjs": "761188cc25906ab222854f4b6058d1e8c84238c49dc539d459d07a1776a64694",
+    "tests/directions/task41-native-owner.replay.mjs": "d9950d1d9345f63a2ba72876a09a4387c37ab05aa8053af949bbfba7754721cf"
+  },
+  "redSource": {
+    "path": "red-source/",
+    "snapshotCount": 8,
+    "allSnapshotsMatchReadOnlyInput": true,
+    "originalTestAssertionsAndFixtures": "Preserved: bootstrap.test.mjs has one import plus one appended test; status.test.mjs has one added test only. No original assertion or fixture removed or weakened."
+  },
+  "localCommands": [
+    { "argv": ["node", "tests/directions/task41-installed-red.test.mjs"], "exit": 0, "result": "2/2 V-01/V-02 GREEN" },
+    { "argv": ["node", "--test-name-pattern=V-03", "tests/directions/bootstrap.test.mjs"], "exit": 0, "result": "1/1 V-03 GREEN; 16 existing tests skipped by pattern in this targeted invocation" },
+    { "argv": ["node", "tests/directions/status.test.mjs"], "exit": 0, "result": "18/18 GREEN including W-02 and retained historical assertions" },
+    { "argv": ["node", "tests/directions/roles.test.mjs"], "exit": 0, "result": "15/15 GREEN" },
+    { "argv": ["node", "--test-name-pattern=approved W01 raw source|W01 review scope", "tests/directions/review.test.mjs"], "exit": 0, "result": "1/1 focused review GREEN; 21 skipped by pattern" },
+    { "argv": ["node", "tests/directions/bootstrap-repair.test.mjs"], "exit": 0, "result": "27/27 in staged sequential local sweep" },
+    { "argv": ["node", "tests/directions/bootstrap.test.mjs"], "exit": 0, "result": "17/17 in staged sequential local sweep" },
+    { "argv": ["node", "tests/directions/check-applicability.test.mjs"], "exit": 1, "result": "Local sandbox Git child spawnSync EPERM from fixture; 3/3 environment failures" },
+    { "argv": ["node", "tests/directions/ci-scope.test.mjs"], "exit": 1, "result": "Staging lacks .github/workflows/ci.yml (outside writable subset)" },
+    { "argv": ["node", "tests/directions/w01-origin-admission.test.mjs"], "exit": 1, "result": "Historical evidence test passed; two public CLI child spawns failed EPERM in local sandbox" },
+    { "argv": ["node", "tests/directions/root-loader.test.mjs"], "exit": 1, "result": "9/9 fixture Git child spawns EPERM in local sandbox" },
+    { "argv": ["node", "--check", "scripts/directions/bootstrap.mjs"], "exit": 0 },
+    { "argv": ["node", "--check", "scripts/directions/status.mjs"], "exit": 0 },
+    { "argv": ["node", "--check", "scripts/directions/review.mjs"], "exit": 0 },
+    { "argv": ["node", "--check", "tests/directions/task41-native-owner.replay.mjs"], "exit": 0 }
+  ],
+  "limitations": [
+    "Native Windows GREEN for V-04, full193+new, lint/format/type/build/boundaries/strict and fresh formal Verify remain parent work.",
+    "The sequential local full sweep was interrupted during publication.test.mjs after >2 minutes; its 21 local failures and other failures are not represented as passed. Local Node is 18.19.1; product requires Node 24.x. Some staging fixtures cannot spawn child processes or read omitted checkout files.",
+    "No original W01 owner status, journal, origin approval, common supplier, archive, POST, closure flag, foreign owner, product package or network destination was edited.",
+    "Actual backend/effort remain NOT_CONFIRMED. This repair does not mark task4.1 complete or certify Verify/POST."
+  ],
+  "readyForFreshVerify": false
+}

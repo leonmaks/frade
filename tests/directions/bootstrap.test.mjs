@@ -16,6 +16,7 @@ import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { safeOwnerPath } from '../../scripts/directions/contracts.mjs'
+import { refreshStatus, parseTasks } from '../../scripts/directions/status.mjs'
 
 const cli = fileURLToPath(new URL('../../scripts/directions/cli.mjs', import.meta.url))
 const sha = (value) => createHash('sha256').update(value).digest('hex')
@@ -613,4 +614,47 @@ test('I23-08 foreign malformed manifest is rejected as unowned before JSON parsi
   const rejected = await invoke(f.root, 'check', malformed)
   assert.equal(rejected.status, 2, JSON.stringify(rejected.body))
   assert.match(rejected.body.detail, /MANIFEST_OWNER_PATH/)
+})
+
+test('V-03 actual temporary Git plan/create/check/status uses four numeric seeded task IDs', async () => {
+  const f = fixture()
+  f.authorize()
+  const planned = await invoke(f.root, 'plan', f.requestFile)
+  assert.equal(planned.status, 0, JSON.stringify(planned.body))
+  const created = await invoke(f.root, 'create', f.requestFile)
+  assert.equal(created.status, 0, JSON.stringify(created.body))
+  const owner = created.body.worktree
+  const manifestPath = join(owner, 'docs/engineering/directions', f.request.id, 'direction.json')
+  const checked = await invoke(f.root, 'check', manifestPath)
+  assert.equal(checked.status, 0, JSON.stringify(checked.body))
+  const manifest = JSON.parse(readFileSync(manifestPath))
+  const tasksText = readFileSync(join(owner, 'openspec/changes', f.request.id, 'tasks.md'), 'utf8')
+  const seeded = parseTasks(tasksText)
+  assert.equal(seeded.length, 4)
+  assert.deepEqual(
+    seeded.map((item) => item.id),
+    ['1.1', '1.2', '1.3', '1.4'],
+  )
+  const initial = readFileSync(join(owner, manifest.statusPath), 'utf8')
+  assert.match(initial, /TASKS_COMPLETE\/TOTAL\/REMAINING: 0\/4\/4/)
+  assert.doesNotMatch(initial, /TASK_MALFORMED/)
+  const status = await refreshStatus({
+    manifest,
+    ownerRoot: owner,
+    tasksText,
+    snapshot: {
+      sourceSha256: sha(readFileSync(manifestPath)),
+      configSha256: manifest.policy.sha256,
+    },
+    updatedAt: '2026-10-05T00:00:00.000Z',
+    write: false,
+  })
+  assert.equal(status.status, 'PREVIEW', JSON.stringify(status))
+  assert.deepEqual(status.projection.metrics.tasks, { complete: 0, total: 4, remaining: 4 })
+  assert.equal(
+    status.projection.issues.some((item) => item.code === 'TASK_MALFORMED'),
+    false,
+  )
+  assert.throws(() => parseTasks('- [ ] S01.1 Invalid\n'), /TASK_MALFORMED/)
+  assert.throws(() => parseTasks('- [ ] 1.1 One\n- [ ] 1.1 Duplicate\n'), /TASK_DUPLICATE/)
 })

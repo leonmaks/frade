@@ -1,6 +1,96 @@
+# Единый workflow Frade — статус
+
+UPDATED_AT_UTC: 2026-10-05T09:14:42.272Z
+PROJECTION_SOURCE_SHA256: 17e28d608aea9b17dd8b33013f98ff2baa6c7c96e711c56bb84909d52b30b67b
+POLICY_VERSION: 1.1 / 6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb
+
+## 1. Решение / следующий шаг
+
+STAGE: W01 | PHASE: VERIFICATION | HEALTH: BLOCKED
+NEXT_PERMITTED_ACTION: Resolve listed blockers and refresh source-bound evidence.
+HUMAN_DECISION: NONE
+READY_FOR_IMPLEMENTATION: NO | current PRE and checkpoint proof required
+READY_FOR_ARCHIVE: NO | current checks, Verify, POST and publication proof required
+
+## 2. Идентичность / scope
+
+| Direction / change | Branch / worktree / Git common | Original origin | Approved checkpoint | Scope / exclusions / rules |
+|---|---|---|---|---|
+| frade-standard-workflow / frade-standard-workflow | codex/frade-standard-workflow; E:/dev/codex/frade-worktrees/frade-standard-workflow; E:/dev/codex/frade/.git | 98f387f96b51b0ad139e3507c376ff1c3e8dec09 | NOT_RUN | docs/engineering/**, openspec/changes/frade-standard-workflow/**, scripts/directions/**, tests/directions/**, AGENTS.md, package.json, .github/workflows/ci.yml; frozen packages/**, apps/**, pnpm-lock.yaml, scripts/routing-v2-architecture-ga |
+
+## 3. Roadmap этапов
+
+| Stage | Goal / OpenSpec change | Dependencies | Phase / health | PRE / Verify / POST / archive |
+|---|---|---|---|---|
+| W01 | frade-standard-workflow | NONE | VERIFICATION / BLOCKED | NOT_VERIFIED |
+
+## 4. Активные задачи / шаги
+
+| Task / type | Required ordered steps | Acceptance | Status | Source-bound evidence |
+|---|---|---|---|---|
+| 1.1 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 1.2 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 1.3 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 1.4 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 1.5 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.1 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.2 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.3 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.4 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.5 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.6 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.7 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 3.1 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 3.2 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 4.1 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | OPEN | NOT_VERIFIED unless listed below |
+| 4.2 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | OPEN | NOT_VERIFIED unless listed below |
+| 4.3 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | OPEN | NOT_VERIFIED unless listed below |
+| 4.4 / UNRESOLVED | NOT_RECORDED | NOT_RECORDED | OPEN | NOT_VERIFIED unless listed below |
+TASKS_COMPLETE/TOTAL/REMAINING: 14/18/4
+REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18
+
+## 5. Проверки / gates / качество
+
+| Check / contract | Applicability + reason | Result | Command / run / source / environment | Limit / actual / gaps |
+|---|---|---|---|---|
+CHECKS_COMPLETE/TOTAL/REMAINING: 0/0/0
+SCENARIOS_EXECUTED/TOTAL: 0/46
+NEGATIVE_EXECUTED: 0; BOUNDARY_EXECUTED: 0; HUMAN_PENDING: 0
+INVARIANT_FAILURES / STALE_EVIDENCE: 0 / 0
+REGRESSION_STATE: NOT_RUN
+GAP: TRACE_SHAPE $
+
+## 6. Модели / исполнение
+
+| Stage / task / role | Approved exact pair | Authority path/hash/excerpt | Invoked pair/runtime | Actual backend/effort | Override |
+|---|---|---|---|---|
+| W01 / planning-architecture | DECLARED_NOT_VERIFIED gpt-6-astra / high | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
+| W01 / tooling-tests | DECLARED_NOT_VERIFIED gpt-6-sol / high | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
+| W01 / formal-Verify | DECLARED_NOT_VERIFIED gpt-6-astra / high | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
+| W01 / independent-PRE | DECLARED_NOT_VERIFIED gpt-6-astra / xhigh | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
+| W01 / independent-POST | DECLARED_NOT_VERIFIED gpt-6-astra / xhigh | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
+
+## 7. Зависимости / решения / blockers
+
+| ID | Consumer owner / affected scope | State / age | Evidence / fix attempts / RCA | Required decision / next action |
+|---|---|---|---|---|
+| FRESH_VERIFY_PENDING | frade-standard-workflow | OPEN; 0 days | openspec/changes/frade-standard-workflow/evidence/task41-repair-20261005/repair-receipt.json; attempts 0; V01-V04 repair passed200 native tests and original-owner replay; previous Verify FAIL remains historical gate evidence | Publish checked repair checkpoint and run fresh formal Verify gpt-6-astra/high before independent POST |
+
+## 8. Git / публикация / evidence
+
+SOURCE_CHECKPOINT_SHA: 1bfcc149d00e38c7a2a8efa482a160d65a84f8fc
+COMMIT_STATE: NOT_VERIFIED
+AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow
+PUSH_STATE: NOT_VERIFIED
+VERIFIED_REMOTE_SHA: NOT_VERIFIED
+CURRENT_EVIDENCE: NONE
+PANEL_STATE: NOT_OPENED | display confirmation requires Codex UI controller receipt
+HISTORICAL_EVIDENCE: retained below boundary when present
+
+<!-- LEGACY HISTORY: historical only -->
 # Frade standard workflow — статус
 
-UPDATED_AT_UTC: 2026-10-05T08:06:54.508Z
+UPDATED_AT_UTC: 2026-10-05T08:14:20.861Z
 POLICY_VERSION: v1.1 / a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0
 Это собственный dashboard нового направления; общий стандарт ACCEPTED_FOR_IMPLEMENTATION, ещё не deployed.
 
@@ -110,12 +200,12 @@ Task2.1–2.5 PUBLISHED; task2.5 complete: actual Windows146/146 and focused PRE
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 9fcdced7bfd3e1ae3e6895de050466417b19d8c1 (task3.1–3.2 implementation/check checkpoint).
-COMMIT_STATE: task3.1–3.2 9fcdced7bfd3e1ae3e6895de050466417b19d8c1 CHECKPOINTED/PUBLISHED; this receipt/status refresh joins the next natural gate checkpoint.
+SOURCE_CHECKPOINT_SHA: 1bfcc149d00e38c7a2a8efa482a160d65a84f8fc (diagnostic BLOCKER checkpoint; formal Verify FAIL refers to implementation source9fcdced7bfd3e1ae3e6895de050466417b19d8c1).
+COMMIT_STATE: 1bfcc149d00e38c7a2a8efa482a160d65a84f8fc CHECKPOINTED/PUBLISHED; post-publication receipt/status refresh joins the next natural repair checkpoint, no receipt-only commit.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: PUBLISHED; canonical task3.2 publish PASS; fresh exact remote SHA 9fcdced7bfd3e1ae3e6895de050466417b19d8c1 verified.
-VERIFIED_SOURCE_REMOTE_SHA: 9fcdced7bfd3e1ae3e6895de050466417b19d8c1.
-SOURCE_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publication/frade-standard-workflow/9fcdced7bfd3e1ae3e6895de050466417b19d8c1.publish.json.
+PUSH_STATE: PUBLISHED; canonical diagnostic checkpoint publish PASS; fresh exact remote SHA 1bfcc149d00e38c7a2a8efa482a160d65a84f8fc verified. Verify remains FAIL; publication does not grant POST/archive readiness.
+VERIFIED_SOURCE_REMOTE_SHA: 1bfcc149d00e38c7a2a8efa482a160d65a84f8fc.
+SOURCE_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publication/frade-standard-workflow/1bfcc149d00e38c7a2a8efa482a160d65a84f8fc.publish.json.
 PRE_ADMISSION_PUBLICATION_RECEIPT: E:/dev/codex/frade/.git/frade-workflow/publications/frade-standard-workflow/formal-pre-admission-20261002.json; require PUBLISHED/sourceSha=live HEAD before first task2.1 owner code write.
 Current task2.6 evidence: openspec/changes/frade-standard-workflow/evidence/task26-runtime-20261005/origins.json; final native command logs and all historical failed/blocked streams retained. Previous task2.5 publication receipt joins this natural implementation checkpoint. Complete raw run trees remain in canonical Git common.
 Reviewable standard/onboarding/status/manifest/adoption: openspec/changes/frade-standard-workflow/drafts/.
@@ -134,3 +224,5 @@ Final task3 checks: task32-final-20261005/completion.json and traceability-run-b
 Task3.1–3.2 publication refresh 2026-10-05: final193/193 PASS, original23 publication tests retained and27 current PASS, boundary19/19+4, owner replay1/1, strict16/16, current source bindings verified. Checkpoint 9fcdced7bfd3e1ae3e6895de050466417b19d8c1 PUBLISHED; canonical receipt stored in task32-final-20261005/publication-result.json. Prior auto-review rejection retained outside candidate; user explicitly permitted this payload/destination. Verify starts only on the refreshed frozen packet; tasks4.1–4.4 remain incomplete, consumer adoption NOT_STARTED, shared v1.1 unchanged, writer dispatch NOT_IMPLEMENTED.
 
 Formal Verify result 2026-10-05: RECEIVED_VALID_FAIL; all18 requirements and46 scenarios inspected, four correctness/coherence blockers V-01–V-04 prevent POST. Raw reports, events, exits and provenance are immutable and retained; stopped worker and unchanged source/index/HEAD/packet proven before freeze release. Public evidence: openspec/changes/frade-standard-workflow/evidence/formal-verify-20261005/receipt.json. Native193/193 remains actual historical GREEN and does not waive current semantic FAIL. Dashboard is an administrative BLOCKED update, not a generated source-bound projection; W-02 remains open until authenticated status-write repair. Tasks4.1–4.4 remain incomplete, no production repair, POST, archive or consumer adoption performed during this review.
+
+Diagnostic publication refresh 2026-10-05: user explicitly permitted checkpoint 1bfcc149d00e38c7a2a8efa482a160d65a84f8fc and the exact remote/ref; canonical push and fresh remote SHA verification PASS. Formal Verify remains FAIL with V-01–V-04; progression stopped, tasks4.1–4.4 incomplete. Publication receipt retained in formal-verify-20261005/diagnostic-publication-result.json and joins the next natural repair checkpoint. READY_FOR_VERIFY: NO; POST/archive NOT_RUN.

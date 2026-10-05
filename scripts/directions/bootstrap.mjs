@@ -364,10 +364,18 @@ async function seed(r, target, policyBytes, rootAgents, baselineCommittedAt) {
     '',
   ].join('\n')
   const md = (...lines) => Buffer.from(`${lines.join('\n').trimEnd()}\n`)
+  const seededTasks = md(
+    `# Tasks: ${r.title}`,
+    '',
+    '- [ ] 1.1 Complete source-bound research.',
+    '- [ ] 1.2 Resolve requirements and acceptance decisions.',
+    '- [ ] 1.3 Validate planning and obtain independent PRE.',
+    '- [ ] 1.4 Write RED, implement, check, Verify and POST before closure.',
+  )
   const starterStatus = renderStatus(
     await projectStatus({
       manifest,
-      tasksText: '',
+      tasksText: seededTasks.toString('utf8'),
       snapshot: { sourceSha256: hash(JSON.stringify(manifest)), configSha256: r.policy.sha256 },
       updatedAt: 'NOT_RUN',
       humanDecision: 'D-001 acceptance; D-002 exact roles; D-003 numeric limits; D-004 publication',
@@ -485,14 +493,7 @@ async function seed(r, target, policyBytes, rootAgents, baselineCommittedAt) {
       '',
       'See research and decision register.',
     ),
-    [`${change}/tasks.md`]: md(
-      `# Tasks: ${r.title}`,
-      '',
-      '- [ ] S01.1 Complete source-bound research.',
-      '- [ ] S01.2 Resolve requirements and acceptance decisions.',
-      '- [ ] S01.3 Validate planning and obtain independent PRE.',
-      '- [ ] S01.4 Write RED, implement, check, Verify and POST before closure.',
-    ),
+    [`${change}/tasks.md`]: seededTasks,
     [`${change}/specs/${id}/spec.md`]: md(
       `# ${r.title} specification`,
       '',
@@ -881,7 +882,7 @@ async function checkedHistoricalW01(common, id, owner, manifest, control) {
       throw new Error('W01_HISTORICAL_CHECKPOINT_STALE')
   }
 }
-async function checkedOrigin(common, id, owner, manifest, control) {
+export async function checkedOrigin(common, id, owner, manifest, control) {
   const journal = await intentPath(common, id)
   const retained = await loadIntent(journal)
   const completion = await loadIntent(journal.replace(/\.json$/, '.complete.json'))

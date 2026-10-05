@@ -766,11 +766,24 @@ test('FWE-016 benign identifiers, functions, objects and regex checkpoint throug
   assert.equal(git(f.root, 'show', 'HEAD:' + path), source.trim())
 })
 
-test('FWE-016 current W01 review control source checkpoints through public guard', async (t) => {
+test('FWE-016 historical W01 review control source checkpoints through public guard', async (t) => {
+  const f = fixture(t)
+  const sourcePath = 'scripts/directions/review.mjs'
+  const source = readFileSync(
+    resolve('tests/directions/authority-fixtures/w01-review-historical.snapshot'),
+  )
+  assert.equal(hash(source), '3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa')
+  bindCandidate(f, sourcePath, source)
+  const cp = await invoke(f, 'checkpoint')
+  assert.equal(cp.exit, 0, JSON.stringify(cp))
+  assert.equal(hash(git(f.root, 'show', 'HEAD:' + sourcePath) + '\n'), hash(source))
+})
+
+test('FWE-016 authenticated current W01 review control source checkpoints through public guard', async (t) => {
   const f = fixture(t)
   const sourcePath = 'scripts/directions/review.mjs'
   const source = readFileSync(resolve(sourcePath))
-  assert.equal(hash(source), '3eb07b29ebcf3d45a1246b2eccae3416f2cdc613b1442b6a997942580b1f87aa')
+  assert.equal(hash(source), '26aca7b752e4bd00212d6a6d5fe6f9eac5d328a607aa40ad760c57d926ad691f')
   bindCandidate(f, sourcePath, source)
   const cp = await invoke(f, 'checkpoint')
   assert.equal(cp.exit, 0, JSON.stringify(cp))

@@ -548,7 +548,19 @@ export async function refreshStatus(input) {
       { cwd: root },
     )
     if (ancestor.status !== 0) throw new Error('ORIGIN_ANCESTRY')
-    if (input.write) await verifyOrigin(common, m, root)
+    if (input.write) {
+      try {
+        await verifyOrigin(common, m, root)
+      } catch (error) {
+        if (m.id !== 'frade-standard-workflow' || error.code !== 'ENOENT') throw error
+        const { checkedOrigin } = await import('./bootstrap.mjs')
+        await checkedOrigin(common, m.id, root, m, {
+          release: m.policy.release,
+          policyVersion: m.policy.version,
+          policySha256: m.policy.sha256,
+        })
+      }
+    }
     const frozen = await freezePresent(common, m.id)
     if (frozen && input.write) return { ok: false, status: 'FROZEN', code: 'REVIEW_FREEZE' }
     const target = await targetPath(root, m.statusPath)
@@ -559,6 +571,7 @@ export async function refreshStatus(input) {
       try {
         legacy = parseStatus(prior).legacy
         priorHash = /^PROJECTION_SOURCE_SHA256: ([a-f0-9]{64})$/m.exec(prior)?.[1]
+        if (!legacy && !priorHash) legacy = `${LEGACY_BOUNDARY}\n${prior}`
       } catch (error) {
         if (HEADINGS.some((heading) => prior.includes(heading))) throw error
         legacy = `${LEGACY_BOUNDARY}\n${prior}`
