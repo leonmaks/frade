@@ -84,7 +84,7 @@
       "id": "W01",
       "change": "frade-standard-workflow",
       "phase": "VERIFICATION",
-      "health": "RUNNING",
+      "health": "BLOCKED",
       "dependencies": [],
       "roleAssignments": [
         {
@@ -129,8 +129,8 @@
         "policyDecision": "ACCEPTED_D03",
         "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
         "formalPRE": "PASS_9c974da8",
-        "Verify": "PASS_1086b867_RECEIVED_VALID",
-        "POST": "NOT_RUN",
+        "Verify": "FWE014_REPAIR_CHECKS_PASS_FRESH_VERIFY_PENDING",
+        "POST": "INACTIVE_CURRENT_REPAIR_REVERIFY_REQUIRED",
         "archive": "NOT_RUN"
       }
     }
@@ -195,5 +195,16 @@
     "currentCheckpoint": "882a9980fcaa1a3508097a1edaf5369bf42513f4",
     "closureActivated": false
   },
-  "blockers": []
+  "blockers": [
+    {
+      "id": "FRESH_VERIFY_AND_POST_PENDING",
+      "owner": "frade-standard-workflow",
+      "state": "OPEN",
+      "openedAt": "2026-10-05T11:23:14.390Z",
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/task42-trace-repair-20261005/repair-receipt.json",
+      "failedFixes": 0,
+      "rca": "Native RED7/8 then GREEN208/208; contracts/status boundary repaired by approved Sol/high role. Unadmitted POST observation retained without relaxing guard.",
+      "nextAction": "Publish checked repair; fresh exact Astra/high Verify and Astra/xhigh cumulative POST before closure"
+    }
+  ]
 }

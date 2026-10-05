@@ -404,6 +404,16 @@ export function validateTraceability(t, { action = 'IMPLEMENTATION' } = {}) {
     )
       add(issues, 'TRACE_ASSERTION', s?.id, 'Executable assertion missing')
   }
+  for (const task of t.tasks)
+    if (
+      !Array.isArray(task?.scenarioIds) ||
+      !task.scenarioIds.length ||
+      task.scenarioIds.some((id) => {
+        const scenario = maps.scenarios.get(id)
+        return !scenario || !Array.isArray(scenario.taskIds) || !scenario.taskIds.includes(task?.id)
+      })
+    )
+      add(issues, 'TRACE_TASK_SCENARIO', task?.id, 'Nonempty reciprocal scenario links required')
   for (const a of t.assertions)
     if (!maps.runs.has(a?.runId)) add(issues, 'TRACE_RUN', a?.id, 'Actual run missing')
   for (const r of t.runs)

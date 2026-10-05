@@ -213,13 +213,26 @@ export async function projectStatus(input) {
     checks: { complete: passed, total: required.length, remaining: required.length - passed },
   }
   if (
-    tasks.some(
-      (t) =>
-        t.complete &&
-        (trace.tasks ?? []).some(
-          (a) => a.id === t.id && a.scenarioIds?.some((id) => !proven.has(id)),
-        ),
-    )
+    tasks.some((t) => {
+      if (!t.complete) return false
+      const mapping = (trace.tasks ?? []).find((a) => a?.id === t.id)
+      return (
+        !Array.isArray(mapping?.scenarioIds) ||
+        !mapping.scenarioIds.length ||
+        mapping.scenarioIds.some((id) => {
+          const scenario = (trace.scenarios ?? []).find((s) => s?.id === id)
+          return (
+            !scenario ||
+            !Array.isArray(scenario.taskIds) ||
+            !scenario.taskIds.includes(t.id) ||
+            (['human', 'future'].includes(scenario.control)
+              ? typeof scenario.boundaryReason !== 'string' ||
+                scenario.boundaryReason.trim().length < 20
+              : !proven.has(id))
+          )
+        })
+      )
+    })
   )
     issues.push(issue('TASK_ACCEPTANCE_GAP', 'tasks'))
   const sourceInputSha256 = sha(

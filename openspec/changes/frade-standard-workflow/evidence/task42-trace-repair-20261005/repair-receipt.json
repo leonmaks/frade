@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "status": "NATIVE_REGRESSION_REPAIR_PASS_FRESH_GATES_PENDING",
+  "sourceHead": "661f872226425fac84606e201ac7677d7b0e504d",
+  "classification": [
+    "STATE_TRANSITION",
+    "ABSTRACTION_BOUNDARY"
+  ],
+  "finding": "FWE-014-S01 missing/empty/omitted completed task mapping; supporting outgoing reciprocity FWE-004",
+  "nativeRED": {
+    "tests": 8,
+    "failures": 7,
+    "positivePass": 1,
+    "skipped": 0,
+    "receiptSha256": "7a3032d311ce64b0565fdd51ff49ff487650f776539eb997f9018189f234cb55"
+  },
+  "nativeGREEN": {
+    "tests": 208,
+    "pass": 208,
+    "fail": 0,
+    "skipped": 0,
+    "historicalOwnerReplay": 1
+  },
+  "sourceAfter": {
+    "scripts/directions/contracts.mjs": "c28552cb0ab4e939c4d605078bb7dff2de16f864a60a0b5a4d25fce62f3afb58",
+    "scripts/directions/status.mjs": "acfe740859dd918bd879180402de89714c5e3f5d49d9b75cbcc6567f9961d6ca",
+    "tests/directions/task42-trace-gap.test.mjs": "88099cf27acc8001cd43f502991e784feef8434ae13009875b41a84b244a8e9c"
+  },
+  "reviewObservation": "UNADMITTED POST FAIL retained; strict review guard unchanged; old valid Verify applies to previous source only",
+  "formalVerify": "NOT_RUN_CURRENT_REPAIR",
+  "POST": "NOT_RUN_CURRENT_REPAIR",
+  "task41Complete": false,
+  "task42Complete": false,
+  "archive": "INACTIVE",
+  "writerDispatcher": "NOT_IMPLEMENTED",
+  "consumerAdoption": "NOT_STARTED"
+}

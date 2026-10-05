@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "classification": ["STATE_TRANSITION", "ABSTRACTION_BOUNDARY"],
+  "defect": "A completed checklist task with no meaningful outgoing trace mapping can be reported as administratively complete without TASK_ACCEPTANCE_GAP.",
+  "firstIncorrectPredicate": {
+    "path": "scripts/directions/status.mjs",
+    "location": "projectStatus completed-task acceptance predicate after metrics",
+    "currentBehavior": "The existential search requires a present trace task and then a present unproven scenario ID. Missing task records, empty scenarioIds, and omitted scenarioIds make the predicate false.",
+    "requiredBehavior": "For every completed checklist task, require a matching trace task with at least one valid reciprocal scenario link; executable links require trusted current proof and explicitly justified human/future links stay pending. Report TASK_ACCEPTANCE_GAP on failure."
+  },
+  "responsibleLayers": [
+    {
+      "path": "scripts/directions/contracts.mjs",
+      "responsibility": "Validate every trace task's outgoing scenarioIds for nonempty reciprocal links, including dangling references, independent of a checklist."
+    },
+    {
+      "path": "scripts/directions/status.mjs",
+      "responsibility": "Join completed checklist tasks to validated trace mappings and trusted scenario proof before reporting task acceptance consistency."
+    }
+  ],
+  "scopeBoundary": "No review transport, renderer, CLI, schema, specification, evidence materialization, or frozen product changes.",
+  "reviewObservationStatus": "UNADMITTED; wrapper BLOCKED by read-only temporary heredoc failure; no formal gate verdict admitted"
+}
