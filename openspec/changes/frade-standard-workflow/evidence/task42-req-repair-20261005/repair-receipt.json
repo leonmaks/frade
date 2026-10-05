@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "NATIVE_REGRESSION_REPAIR_PASS_FRESH_GATES_PENDING",
+  "sourceHead": "bb980612e519fabcfbdb76a76a432dcf074c1689",
+  "classification": [
+    "INVARIANT",
+    "ABSTRACTION_BOUNDARY"
+  ],
+  "finding": "FWE-004/FWE-014 incomplete requirement/scenario reciprocity and false accepted requirement count",
+  "nativeRED": {
+    "tests": 13,
+    "failures": 6,
+    "positivePass": 7,
+    "skipped": 0,
+    "receiptSha256": "71b9fadeb836aecf4cc330c50301e4409a4fee6f9a16f6ef63ffbcedd039ee48"
+  },
+  "candidateNativeRED": {
+    "tests": 35,
+    "failures": 2,
+    "positivePass": 33,
+    "skipped": 0,
+    "productionNotAdopted": true
+  },
+  "nativeGREEN": {
+    "tests": 221,
+    "pass": 221,
+    "fail": 0,
+    "skipped": 0,
+    "historicalOwnerReplay": 1
+  },
+  "sourceAfter": {
+    "scripts/directions/contracts.mjs": "4544365bcaa81ae29cfaf14b58666c1bbe75379b0cc079682f61761ba8e0403c",
+    "scripts/directions/status.mjs": "4260d562377ac8543564146b16015890c0600c979ac3dbc56278b2c03a8879b2",
+    "tests/directions/task42-requirement-reciprocity.test.mjs": "3478b9c968349e5f19ca9594e109f26ac8994785563333d72a1a16ee66e02b6d"
+  },
+  "reviewObservation": "ADMITTED POST FAIL retained; strict review guard unchanged; historical Verify applies to a71 source only",
+  "formalVerify": "NOT_RUN_CURRENT_REPAIR",
+  "POST": "NOT_RUN_CURRENT_REPAIR",
+  "task41Complete": false,
+  "task42Complete": false,
+  "archive": "INACTIVE",
+  "writerDispatcher": "NOT_IMPLEMENTED",
+  "consumerAdoption": "NOT_STARTED"
+}

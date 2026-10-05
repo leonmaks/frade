@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "EVIDENCE_SCOPE_REJECTION_REPAIRED_WITH_EXACT_HISTORICAL_COPIES",
+  "classification": "INTEGRATION",
+  "failure": "Prepared event referenced two already committed historical evidence paths outside its staged path set. Publication guard correctly blocked before staging/commit.",
+  "rejectedInvocationSha256": "ed27a788d03fe9f3f8dc35abb63332e8a33993c75acd74a5f13aebeaf5577c4f",
+  "origins": [
+    {
+      "originalPath": "openspec/changes/frade-standard-workflow/evidence/post-attempt-20261005/recovery-receipt.json",
+      "copyPath": "openspec/changes/frade-standard-workflow/evidence/task42-req-repair-20261005/historical-origin/post-attempt-recovery-receipt.json",
+      "sha256": "6585172c82095567f1cdf9200df7b1878fd951faef255de0088b28cc2aa9e33c",
+      "originalUnchanged": true
+    },
+    {
+      "originalPath": "openspec/changes/frade-standard-workflow/evidence/formal-verify-repair-20261005/publication-result.json",
+      "copyPath": "openspec/changes/frade-standard-workflow/evidence/task42-req-repair-20261005/historical-origin/historical-verify-publication-result.json",
+      "sha256": "bdb4671faded179c475a0c711da54585dbb0b4968102800f71ab4676c5758fd9",
+      "originalUnchanged": true
+    }
+  ],
+  "reviewGuardUnchanged": true,
+  "testsAssertionsSourceUnchanged": true,
+  "requiredChecks": 21,
+  "formalVerify": "PENDING",
+  "POST": "PENDING",
+  "archive": "INACTIVE"
+}

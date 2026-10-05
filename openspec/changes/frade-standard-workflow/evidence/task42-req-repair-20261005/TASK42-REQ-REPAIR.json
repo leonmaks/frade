@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGED_REPAIR_COMPLETE_READY_FOR_OWNER_VERIFY",
+  "role": "tooling-tests",
+  "requestedModel": "gpt-6-sol",
+  "requestedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "publishedOwnerHead": "bb980612e519fabcfbdb76a76a432dcf074c1689",
+  "implementationHead": "a71a7bedc41beac16ce1c374509281b4e9feca79",
+  "originalBaseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "acceptedDesignSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "plan": {
+    "path": "openspec/changes/frade-standard-workflow/tasks.md",
+    "sha256": "d1d2194dfc62a625955778f95e6346286a24d35211a218f7286b5313f48d6e1a",
+    "task": "4.2 scoped requirement reconciliation; task 4.1 remains incomplete"
+  },
+  "rca": {
+    "path": "RCA.json",
+    "sha256": "aaada1c261c88e5bcfb73bbfb5d69dc6088fc1dc3c12f2a3a729b6f232a75016",
+    "classification": [
+      "INVARIANT",
+      "ABSTRACTION_BOUNDARY"
+    ],
+    "firstIncorrectDecision": "Status used a local requirement predicate without preserving the unknown-owner structural guard.",
+    "historical": "Removed S2 and assertion leave completed 2.2 with empty or omitted scenarioIds and no assignable owner; accepted count stays zero.",
+    "newCase": "Malformed identified REQ-001 stays unaccepted; independent reciprocal REQ-002 retains trusted acceptance.",
+    "specConflict": false
+  },
+  "nativeRed": {
+    "path": "../input/candidate-native-red.json",
+    "sha256": "d2188bd6f5442542424815b6f029495e318ea7c8c70462dd2c7ddca4c8f5289a",
+    "platform": "win32",
+    "node": "v24.18.0",
+    "command": "node --test tests/directions/task42-requirement-reciprocity.test.mjs tests/directions/task42-trace-gap.test.mjs tests/directions/contracts.test.mjs",
+    "exit": 1,
+    "tests": 35,
+    "pass": 33,
+    "fail": 2,
+    "skipped": 0,
+    "sourceBindingsCheckedBeforeEdit": 59,
+    "sourceBindingMismatches": 0,
+    "seededContractsSha256": "32b168e3871cf0d6c62fb778d2b49022d6f8016188465d71825b1e3f836f7fec",
+    "seededStatusSha256": "092013aad15531fd70ecb0128309027fda4d9acd398e5507818890487c1e1388",
+    "oldTestSha256": "88099cf27acc8001cd43f502991e784feef8434ae13009875b41a84b244a8e9c",
+    "newTestSha256": "9df7c277e34e3310fdad6b3f565cf14ce80759bde0f7319bf43985d2056b7ce0",
+    "contractsTestSha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182"
+  },
+  "seededLinuxReproduction": {
+    "platform": "linux",
+    "node": "v18.19.1",
+    "commands": [
+      {
+        "command": "node tests/directions/task42-trace-gap.test.mjs",
+        "raw": "TASK42-RAW/initial-task42-trace-gap.log",
+        "exit": 1,
+        "tests": 8,
+        "pass": 6,
+        "fail": 2,
+        "skipped": 0
+      },
+      {
+        "command": "node tests/directions/task42-requirement-reciprocity.test.mjs",
+        "raw": "TASK42-RAW/initial-task42-requirement-reciprocity.log",
+        "exit": 0,
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "skipped": 0
+      },
+      {
+        "command": "node tests/directions/contracts.test.mjs",
+        "raw": "TASK42-RAW/initial-contracts.log",
+        "exit": 0,
+        "tests": 14,
+        "pass": 14,
+        "fail": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "finalStagedChecks": {
+    "platform": "linux",
+    "node": "v18.19.1",
+    "commands": [
+      {
+        "command": "node tests/directions/task42-trace-gap.test.mjs",
+        "raw": "TASK42-RAW/final-task42-trace-gap.log",
+        "exitPath": "TASK42-RAW/final-task42-trace-gap.exit",
+        "exit": 0,
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "skipped": 0
+      },
+      {
+        "command": "node tests/directions/task42-requirement-reciprocity.test.mjs",
+        "raw": "TASK42-RAW/final-task42-requirement-reciprocity.log",
+        "exitPath": "TASK42-RAW/final-task42-requirement-reciprocity.exit",
+        "exit": 0,
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "skipped": 0
+      },
+      {
+        "command": "node tests/directions/contracts.test.mjs",
+        "raw": "TASK42-RAW/final-contracts.log",
+        "exitPath": "TASK42-RAW/final-contracts.exit",
+        "exit": 0,
+        "tests": 14,
+        "pass": 14,
+        "fail": 0,
+        "skipped": 0
+      },
+      {
+        "command": "node tests/directions/status.test.mjs",
+        "raw": "TASK42-RAW/final-status.log",
+        "exitPath": "TASK42-RAW/final-status.exit",
+        "exit": 0,
+        "tests": 19,
+        "pass": 19,
+        "fail": 0,
+        "skipped": 0
+      },
+      {
+        "command": "node tests/directions/budget-boundary.test.mjs",
+        "raw": "TASK42-RAW/final-budget-boundary.log",
+        "exitPath": "TASK42-RAW/final-budget-boundary.exit",
+        "exit": 0,
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0
+      },
+      {
+        "command": "node tests/directions/repair.test.mjs",
+        "raw": "TASK42-RAW/final-repair.log",
+        "exitPath": "TASK42-RAW/final-repair.exit",
+        "exit": 0,
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0
+      }
+    ],
+    "total": 63,
+    "pass": 63,
+    "fail": 0,
+    "skipped": 0,
+    "syntax": [
+      {
+        "command": "node --check scripts/directions/contracts.mjs",
+        "exit": 0,
+        "raw": "TASK42-RAW/final-check-contracts.log"
+      },
+      {
+        "command": "node --check scripts/directions/status.mjs",
+        "exit": 0,
+        "raw": "TASK42-RAW/final-check-status.log"
+      }
+    ],
+    "guardProbe": {
+      "command": "node TASK42-RAW/guard-probe.mjs",
+      "exit": 0,
+      "raw": "TASK42-RAW/final-guard-probe.log"
+    },
+    "scopeAudit": {
+      "command": "node TASK42-RAW/scope-audit.mjs",
+      "exit": 0,
+      "path": "TASK42-RAW/scope-audit.json",
+      "compared": 88,
+      "unchanged": 86,
+      "changedOnly": [
+        "scripts/directions/contracts.mjs",
+        "scripts/directions/status.mjs"
+      ],
+      "unexpectedChanges": 0,
+      "missingInput": 0
+    }
+  },
+  "testsAdded": 0,
+  "testsChanged": 0,
+  "readOnlyInputs": {
+    "../input/AGENTS.md": "d87c0bdf8de56ec43e05309982febd46dc7568956ac01239934c17826c9b9ee6",
+    "../input/admitted-post-fail/POST-REPORT.md": "82cd49157c21c14e647254ed31c222e3644f1077cf0c051069abb74056145243",
+    "../input/admitted-post-fail/receipt.json": "a0635a2ac472a143640af9847f0ee7819ae28993abf9edddd2a06192ac203a8d",
+    "../input/candidate-native-red.json": "d2188bd6f5442542424815b6f029495e318ea7c8c70462dd2c7ddca4c8f5289a",
+    "../input/parent-reconciliation-rca.json": "109e97d2d3ed936818ca0c4d3731a6bd8b91bcb7bbbe674b7d732cf7033cffbd",
+    "../input/previous-interrupted-RCA.json": "9f51e11d3724d1591b1583493246d497563648792e988fbba419cc333236eec1",
+    "../input/reconciliation-capacity-abort.json": "001945c2499b09adc00bd9556b701f990eeefae994ec30bb8231cd5900ec227e",
+    "../input/prior-candidate-reception.json": "d08d0f87a80d0baf108564df8f775640a17723e818c8d7c73d7872edb2e2e1c4",
+    "../input/prior-candidate/work/TASK42-REQ-REPAIR.json": "289cda7badd29cdef213444c8287574322d1e265c874aa1fe5330b84df8570cc",
+    "../input/prior-candidate/work/TASK42-REQ-REPAIR.md": "c4b546dcda423f83c04585fa51191f0c4d7059f594ee162bd0e1e8aa2c9ab502",
+    "docs/engineering/directions/frade-standard-workflow/AGENTS.md": "7222f96b4cd184f915339b96e13d58d7a3b042743aebf0dd6fdc6f048ae64536",
+    "openspec/changes/frade-standard-workflow/proposal.md": "97a26d30bf7dd54d5503000ebd754fa6ceb728d45a0d17c2ccb33e12e10c4d22",
+    "openspec/changes/frade-standard-workflow/design.md": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+    "openspec/changes/frade-standard-workflow/tasks.md": "d1d2194dfc62a625955778f95e6346286a24d35211a218f7286b5313f48d6e1a",
+    "openspec/changes/frade-standard-workflow/specs/engineering-direction-lifecycle/spec.md": "fc0b8cec6ab51ccd03a902ec2874aca49c1814cc42464a0a3d3c25b35aa6b204",
+    "openspec/changes/frade-standard-workflow/specs/engineering-progress-publication/spec.md": "c023d6c5ba9b65dc49e5d63e1690e8fa9e0b46f950052f13dd157b7aeebd4481",
+    "openspec/changes/frade-standard-workflow/specs/engineering-role-dispatch/spec.md": "0c2ac77851f57a1fec0e5d6b3959927c7c59646fe485f9dddbf6d1f2e2e4ed1b"
+  },
+  "deliverables": {
+    "scripts/directions/contracts.mjs": "81b2676695f11cde969801faa51b6b377d6c1f1a27db0a602cd23d4279c1a3ac",
+    "scripts/directions/status.mjs": "29e081a1905d41103364b81592c2853604c0f0a4b0d5b37cea08c7ebea3df50f",
+    "RCA.json": "aaada1c261c88e5bcfb73bbfb5d69dc6088fc1dc3c12f2a3a729b6f232a75016",
+    "TASK42-ORIGINALS/contracts.mjs": "32b168e3871cf0d6c62fb778d2b49022d6f8016188465d71825b1e3f836f7fec",
+    "TASK42-ORIGINALS/status.mjs": "092013aad15531fd70ecb0128309027fda4d9acd398e5507818890487c1e1388",
+    "TASK42-REQ-REPAIR.md": "d1a09b8cf2463fa4158da797d12ecda30403ded0f0b253a5be7be6124ea4f51f",
+    "TASK42-RAW/build-report.mjs": "27839afe746fa8aa8c16fde13e78c311a2a554d158d13b1494e2db9e1e3172c6",
+    "TASK42-RAW/check-applicability.exit": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "TASK42-RAW/check-applicability.log": "2973cd9f67bc8c72880d97ddfd744cc0e99bdd7b370b03250c4473b3f2a77a69",
+    "TASK42-RAW/check-contracts.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/check-contracts.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TASK42-RAW/check-status.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/check-status.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TASK42-RAW/final-budget-boundary.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/final-budget-boundary.log": "ee5eadde43bae6cfd378054df539938a8c35100f70d015b60fcf79793cc32d64",
+    "TASK42-RAW/final-check-contracts.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/final-check-contracts.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TASK42-RAW/final-check-status.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/final-check-status.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TASK42-RAW/final-contracts.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/final-contracts.log": "3a7fa0a09e1f6604c561f2ce43af883e26f03d86ed304a1cfb144b8e914788f8",
+    "TASK42-RAW/final-guard-probe.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/final-guard-probe.log": "54192c3c8655cf84aa3ab9459cc98805e2250ba14e43fc8da5a4f4a0fbd6eb9d",
+    "TASK42-RAW/final-repair.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/final-repair.log": "a6bb496c3addfa2194c69500ffac30f49102f47ec245389c19be1dcb655e3bdc",
+    "TASK42-RAW/final-status.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/final-status.log": "37d1040730e7998a6df8478e764c9985f02d02e7ccfe22b797da808dfd5ac429",
+    "TASK42-RAW/final-task42-requirement-reciprocity.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/final-task42-requirement-reciprocity.log": "395f680b82b284cc942fffc01a3f50b670780df76417c2cec9810dbc412e7007",
+    "TASK42-RAW/final-task42-trace-gap.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/final-task42-trace-gap.log": "c3fb940ea22961893d77def4a9e856ae02f918fbeab6bc20a66cd8a9daa35ca7",
+    "TASK42-RAW/green-budget-boundary.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/green-budget-boundary.log": "ac21e7c7db68c0787f163dc8f365c28a9136a46423d09acfd321605ec5c2c54a",
+    "TASK42-RAW/green-contracts.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/green-contracts.log": "187903d8bd6c303b175631397637c2eb915c741b0198b5fffbceb639467ce84d",
+    "TASK42-RAW/green-repair.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/green-repair.log": "d716d4f8253ec1067f88141871d527d5f7c365400e4e3d47cdcfbcef4526ff42",
+    "TASK42-RAW/green-status.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/green-status.log": "9188cb30069ded8b2122412f78c6ac4ea2f593d437bc92f37e5a07f046ea4b5d",
+    "TASK42-RAW/green-task42-requirement-reciprocity.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/green-task42-requirement-reciprocity.log": "90691eecdcc00db0f97f4a66fab6920995d808ac538f4ef8a23ea89c3f440d81",
+    "TASK42-RAW/green-task42-trace-gap.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/green-task42-trace-gap.log": "61b0bbcf1017b2d8ca79a56879e444878b0929c5408af3fb26d08dfe663c41c8",
+    "TASK42-RAW/guard-probe.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/guard-probe.log": "3e3a80d76f89b7bee5ed88cb4d519061c8663148ce4971c214ecc63f39163840",
+    "TASK42-RAW/guard-probe.mjs": "36a6215030f5dab51e2531301b08f07224b66e9801f23df7ea9582d3738dc44a",
+    "TASK42-RAW/initial-contracts.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/initial-contracts.log": "63770b27853a95be8f8c3aaad88b145240365d83a10e47ae1bd8f5b95d9196f0",
+    "TASK42-RAW/initial-task42-requirement-reciprocity.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/initial-task42-requirement-reciprocity.log": "515b4620acec27bcc75f7bfa07ad3b07de677fa3210594b4c2838b6d0eba308a",
+    "TASK42-RAW/initial-task42-trace-gap.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "TASK42-RAW/initial-task42-trace-gap.log": "f8d762e883d6c0df2080e0610566c4487d7c368049e30556b98d8faa2e0a9c3f",
+    "TASK42-RAW/scope-audit-final.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "TASK42-RAW/scope-audit-final.log": "75fdd0b6b5da1e3566dfc987903106d858735fad925579a4c31b0672019cfd77",
+    "TASK42-RAW/scope-audit.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "TASK42-RAW/scope-audit.json": "75fdd0b6b5da1e3566dfc987903106d858735fad925579a4c31b0672019cfd77",
+    "TASK42-RAW/scope-audit.log": "42103da9fab8c1dabcb2c3f003cd33009a84d1abc8116a73884259fde615fe3d",
+    "TASK42-RAW/scope-audit.mjs": "d509ad486cc9001c3e7fed56c54c17ac7d375fadb26bd2514761c19e31a9a4f3",
+    "TASK42-RAW/manifest.json": "a913e34b3b7767f62fa3d49703051a2aef0016c4e18cfb3dd57d7e59cfeb95cc"
+  },
+  "blockers": [],
+  "environmentLimitations": [
+    "Staged check-applicability returned BLOCKED/exit 2 because the packet has no owning Git metadata; owner check is required.",
+    "Prettier is unavailable in the packet; owner formatting check is required.",
+    "Linux Node 18 staged checks do not substitute for native Windows Node 24 owner regression."
+  ],
+  "readyForVerify": "YES",
+  "readyForVerifyScope": "staged repair only, conditional on parent binding and owner checks",
+  "ownerProductionImported": false,
+  "task41Complete": false,
+  "formalVerifyCurrent": "NOT_RUN",
+  "currentPOST": "NOT_RUN",
+  "latestAdmittedPOST": "FAIL",
+  "newGate": false,
+  "archive": "INACTIVE",
+  "productWriter": "NOT_IMPLEMENTED",
+  "foreignAdoption": "NOT_STARTED",
+  "selfHashExcluded": true
+}

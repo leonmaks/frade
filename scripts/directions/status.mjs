@@ -7,6 +7,7 @@ import {
   safeRepoPath,
   validateManifest,
   validateTraceability,
+  acceptedRequirementCount,
   validateApplicability,
 } from './contracts.mjs'
 import { verifyGate } from './evidence.mjs'
@@ -143,40 +144,44 @@ export async function projectStatus(input) {
   )
     issues.push(issue('PHASE_PROOF', 'stage'))
   const runProof = new Map()
-  for (const run of trace.runs ?? []) {
+  const traceRuns = Array.isArray(trace?.runs) ? trace.runs : []
+  const traceAssertions = Array.isArray(trace?.assertions) ? trace.assertions : []
+  const traceScenarios = Array.isArray(trace?.scenarios) ? trace.scenarios : []
+  const traceTasks = Array.isArray(trace?.tasks) ? trace.tasks : []
+  for (const run of traceRuns) {
     const verified =
-      run.sourceSha256 === snapshot.sourceSha256 &&
-      run.configSha256 === snapshot.configSha256 &&
+      run?.sourceSha256 === snapshot.sourceSha256 &&
+      run?.configSha256 === snapshot.configSha256 &&
+      typeof run?.environment === 'string' &&
+      run.environment.trim().length > 0 &&
+      traceRuns.filter((candidate) => candidate?.id === run?.id).length === 1 &&
       (await verifyGate(boundary, 'run', run, {
         sourceSha256: snapshot.sourceSha256,
         configSha256: snapshot.configSha256,
       }))
-    runProof.set(run.id, verified)
-    if (!verified) issues.push(issue('RUN_NOT_VERIFIED', run.id))
+    runProof.set(run?.id, verified)
+    if (!verified) issues.push(issue('RUN_NOT_VERIFIED', run?.id))
   }
-  const assertions = new Map((trace.assertions ?? []).map((a) => [a.id, a])),
+  const assertions = new Map(traceAssertions.map((a) => [a?.id, a])),
     proven = new Set()
-  for (const s of trace.scenarios ?? []) {
-    if (['human', 'future'].includes(s.control)) continue
+  for (const s of traceScenarios) {
+    if (['human', 'future'].includes(s?.control)) continue
     if (
+      typeof s?.id === 'string' &&
+      traceScenarios.filter((other) => other?.id === s.id).length === 1 &&
       Array.isArray(s.assertionIds) &&
       s.assertionIds.length &&
-      s.assertionIds.every((id) => runProof.get(assertions.get(id)?.runId) === true)
+      s.assertionIds.every(
+        (id) =>
+          traceAssertions.filter((a) => a?.id === id).length === 1 &&
+          runProof.get(assertions.get(id)?.runId) === true,
+      )
     )
       proven.add(s.id)
   }
-  const accepted = traceValidation.ok
-    ? (trace.requirements ?? []).filter(
-        (r) =>
-          !r.unresolved?.length &&
-          Array.isArray(r.scenarioIds) &&
-          r.scenarioIds.length &&
-          r.scenarioIds.every((id) => proven.has(id)) &&
-          !(trace.scenarios ?? []).some(
-            (s) => s.requirementId === r.id && ['human', 'future'].includes(s.control),
-          ),
-      ).length
-    : 0
+  const accepted = acceptedRequirementCount(trace, proven, runProof, {
+    action: stage?.phase ?? 'INTAKE',
+  })
   const complete = tasks.filter((t) => t.complete).length,
     required = checks.filter((c) => c.applicability === 'REQUIRED')
   const checkRows = []
@@ -195,32 +200,29 @@ export async function projectStatus(input) {
     tasks: { complete, total: tasks.length, remaining: tasks.length - complete },
     requirements: {
       accepted,
-      total: trace.requirements?.length ?? 0,
-      uncovered: (trace.requirements?.length ?? 0) - accepted,
+      total: Array.isArray(trace?.requirements) ? trace.requirements.length : 0,
+      uncovered: (Array.isArray(trace?.requirements) ? trace.requirements.length : 0) - accepted,
     },
     scenarios: {
       executed: proven.size,
-      total: trace.scenarios?.length ?? 0,
-      negativeExecuted: (trace.scenarios ?? []).filter(
-        (s) => s.control === 'negative' && proven.has(s.id),
-      ).length,
-      boundaryExecuted: (trace.scenarios ?? []).filter(
-        (s) => s.control === 'boundary' && proven.has(s.id),
-      ).length,
-      humanPending: (trace.scenarios ?? []).filter((s) => ['human', 'future'].includes(s.control))
+      total: traceScenarios.length,
+      negativeExecuted: traceScenarios.filter((s) => s?.control === 'negative' && proven.has(s.id))
         .length,
+      boundaryExecuted: traceScenarios.filter((s) => s?.control === 'boundary' && proven.has(s.id))
+        .length,
+      humanPending: traceScenarios.filter((s) => ['human', 'future'].includes(s?.control)).length,
     },
     checks: { complete: passed, total: required.length, remaining: required.length - passed },
   }
   if (
     tasks.some((t) => {
       if (!t.complete) return false
-      const mapping = (trace.tasks ?? []).find((a) => a?.id === t.id)
+      const mapping = traceTasks.find((a) => a?.id === t.id)
       return (
         !Array.isArray(mapping?.scenarioIds) ||
         !mapping.scenarioIds.length ||
         mapping.scenarioIds.some((id) => {
-          const scenario = (trace.scenarios ?? []).find((s) => s?.id === id)
+          const scenario = traceScenarios.find((s) => s?.id === id)
           return (
             !scenario ||
             !Array.isArray(scenario.taskIds) ||

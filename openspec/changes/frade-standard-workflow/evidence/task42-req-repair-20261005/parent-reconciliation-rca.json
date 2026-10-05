@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "status": "RCA_RECORDED_NO_FURTHER_PRODUCTION_EDIT_OR_PHASE_ADVANCEMENT",
+  "classification": [
+    "INVARIANT",
+    "ABSTRACTION_BOUNDARY"
+  ],
+  "sourceHead": "bb980612e519fabcfbdb76a76a432dcf074c1689",
+  "acceptedDesignSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "roleReceiptSha256": "d08d0f87a80d0baf108564df8f775640a17723e818c8d7c73d7872edb2e2e1c4",
+  "blockedReportSha256": "289cda7badd29cdef213444c8287574322d1e265c874aa1fe5330b84df8570cc",
+  "oldRegressionSha256": "88099cf27acc8001cd43f502991e784feef8434ae13009875b41a84b244a8e9c",
+  "newRegressionSha256": "9df7c277e34e3310fdad6b3f565cf14ce80759bde0f7319bf43985d2056b7ce0",
+  "observed": {
+    "originalNativeRED": {
+      "tests": 13,
+      "fail": 6,
+      "pass": 7,
+      "skipped": 0
+    },
+    "candidateLinuxNew": {
+      "tests": 13,
+      "pass": 13,
+      "fail": 0
+    },
+    "candidateLinuxOldTaskGap": {
+      "tests": 8,
+      "pass": 6,
+      "fail": 2
+    },
+    "candidateNativeRegression": "NOT_EXECUTED_APPROVAL_REVIEW_CAPACITY",
+    "ownerProductionImported": false
+  },
+  "firstIncorrectDecision": "Candidate replaces global trace validity with hand-written local acceptance but does not preserve the historical guard for invalid orphan task rows whose requirement owner cannot be established.",
+  "caseDistinction": {
+    "historical": "Old fixture removes S2 and its assertion, leaves completed task 2.2 with empty or absent scenarioIds. The task cannot be assigned to a proven requirement. Existing TRACE_TASK_SCENARIO and zero accepted count assertions must be preserved.",
+    "new": "Other requirement remains identified through scenarios.requirementId while an outgoing requirement scenarioIds link is missing or nonreciprocal. The independently valid requirement can be evaluated without accepting the invalid identified requirement."
+  },
+  "interpretation": "These fixtures are structurally different. The staged report labels a TEST/SPEC_CONFLICT, but does not prove that retaining both expectations is impossible. No test/spec/expected-value change is approved or made; preserve the old unknown-owner barrier and new known-owner reciprocity controls.",
+  "additionalReviewTargets": [
+    "Stable requirement ID remains required",
+    "Duplicate or ambiguous IDs must not create accepted metrics",
+    "Positive/negative/boundary critical controls remain required",
+    "Malformed task/assertion/run rows and stale/forged proof remain blocked",
+    "Unknown-owner structural defects remain fail-closed",
+    "Do not introduce a second independent interpretation of graph invariants in presentation code"
+  ],
+  "nextRepair": {
+    "approvedRole": "tooling-tests",
+    "requestedModel": "gpt-6-sol",
+    "requestedEffort": "high",
+    "scope": [
+      "scripts/directions/contracts.mjs",
+      "scripts/directions/status.mjs"
+    ],
+    "testChangesAllowed": false,
+    "mustReadThisRCABeforeAnyProductionEdit": true,
+    "mustNativeReproduceCandidateOldFailuresBeforeFurtherEdit": true,
+    "requiredChecks": "Preserve all 24 prior test/helper files and unchanged 13-case standalone test; targeted old8+new13+contracts14, then full actual owner regression and fresh Verify/POST",
+    "modelFallbackAllowed": false,
+    "invoked": false
+  },
+  "environmentBlocker": {
+    "classification": "ENVIRONMENT",
+    "action": "Read-only registered owner root-loader",
+    "requiredBy": "AGENTS.md section18",
+    "attempts": 3,
+    "actionExecuted": false,
+    "automaticReviewReason": "Selected model is at capacity. The action was not executed because automatic approval review could not be completed. Review failure, not determination that action is unsafe.",
+    "bypassAllowed": false,
+    "userAuthorizationAlreadyRetained": true
+  },
+  "taskCompletion": false,
+  "readyForVerify": "NO",
+  "archive": "INACTIVE",
+  "formalVerify": "NO_NEW_VERIFY",
+  "POST": "LATEST_ADMITTED_FAIL"
+}

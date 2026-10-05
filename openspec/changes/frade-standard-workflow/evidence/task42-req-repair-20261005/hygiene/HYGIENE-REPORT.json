@@ -1,0 +1,73 @@
+{
+  "status": "LOCAL_REPAIR_VERIFIED_OWNER_CHECKS_PENDING",
+  "task": "W01 task4.2 requirement repair: one unused new-test binding, no assertion or production changes",
+  "approvedModel": "gpt-6-sol",
+  "approvedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "sourceHead": "bb980612e519fabcfbdb76a76a432dcf074c1689",
+  "rca": {
+    "classification": "TEST",
+    "cause": "The new FWE-014-S01 case destructured trace from the fixture but never used it.",
+    "nativeEvidence": "../input/current-native-lint-fail.json: exit 1; line 187:11 reports unused trace under @typescript-eslint/no-unused-vars.",
+    "priorFullEvidence": "../input/current-native-full-pass.json: 221 tests, 221 pass, exit 0; this is prior native evidence, not a post-repair run."
+  },
+  "changedPaths": [
+    "tests/directions/task42-requirement-reciprocity.test.mjs"
+  ],
+  "beforeSha256": "654d5cc9fd5c5b34dab7cf2184609b472ac41097e14d0d473610e6797188c170",
+  "afterSha256": "3478b9c968349e5f19ca9594e109f26ac8994785563333d72a1a16ee66e02b6d",
+  "exactReplacement": true,
+  "assertionsUnchanged": true,
+  "stagedChecks": [
+    {
+      "command": "node --test tests/directions/task42-requirement-reciprocity.test.mjs tests/directions/task42-trace-gap.test.mjs tests/directions/contracts.test.mjs",
+      "exitCode": 0,
+      "tap": { "tests": 3, "pass": 3, "fail": 0, "cancelled": 0, "skipped": 0, "todo": 0 },
+      "interpretation": "Node v18.19.1 reported three file-level subtests, not the 35 individual cases.",
+      "stdout": { "path": "HYGIENE-TEST.stdout.log", "bytes": 1038, "sha256": "447d64a1caec77e383aaef1c2eea80760f0869438d8f7a7903fb75bfbff530bc" },
+      "stderr": { "path": "HYGIENE-TEST.stderr.log", "bytes": 0, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" }
+    },
+    {
+      "command": "node --check tests/directions/task42-requirement-reciprocity.test.mjs",
+      "exitCode": 0,
+      "tap": null,
+      "stdout": { "path": "HYGIENE-CHECK.stdout.log", "bytes": 0, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
+      "stderr": { "path": "HYGIENE-CHECK.stderr.log", "bytes": 0, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" }
+    },
+    {
+      "command": "node tests/directions/task42-requirement-reciprocity.test.mjs",
+      "exitCode": 0,
+      "tap": { "tests": 13, "pass": 13, "fail": 0, "cancelled": 0, "skipped": 0, "todo": 0 },
+      "stdout": { "path": "HYGIENE-DIRECT-RECIPROCITY.stdout.log", "bytes": 2790, "sha256": "b8d6d67fed138f500cc20a13fe06db3f0f55968d244f2ce94089f9bdbbfeff43" },
+      "stderr": { "path": "HYGIENE-DIRECT-RECIPROCITY.stderr.log", "bytes": 0, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" }
+    },
+    {
+      "command": "node tests/directions/task42-trace-gap.test.mjs",
+      "exitCode": 0,
+      "tap": { "tests": 8, "pass": 8, "fail": 0, "cancelled": 0, "skipped": 0, "todo": 0 },
+      "stdout": { "path": "HYGIENE-DIRECT-TRACE.stdout.log", "bytes": 1850, "sha256": "84cf5ca14f1f642934d7b080c00d90b0afab2b55139a1a9fe42854eca871d2cb" },
+      "stderr": { "path": "HYGIENE-DIRECT-TRACE.stderr.log", "bytes": 0, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" }
+    },
+    {
+      "command": "node tests/directions/contracts.test.mjs",
+      "exitCode": 0,
+      "tap": { "tests": 14, "pass": 14, "fail": 0, "cancelled": 0, "skipped": 0, "todo": 0 },
+      "stdout": { "path": "HYGIENE-DIRECT-CONTRACTS.stdout.log", "bytes": 3162, "sha256": "2f4e32935aa856faf5245706b8fdd491741f143af4a7e771f923f0152817b516" },
+      "stderr": { "path": "HYGIENE-DIRECT-CONTRACTS.stderr.log", "bytes": 0, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" }
+    }
+  ],
+  "individualCaseTotals": { "tests": 35, "pass": 35, "fail": 0, "cancelled": 0, "skipped": 0, "todo": 0 },
+  "observations": [
+    "An initial Node spawnSync wrapper returned EPERM before launching either check. Its empty provisional logs were replaced by the direct command logs listed above.",
+    "The supplied native lint failure and prior native full pass remain unchanged."
+  ],
+  "remainingOwnerChecks": [
+    "Repeat native scoped lint after this repair.",
+    "Repeat native full direction test suite after this repair.",
+    "Complete applicable owner Verify, POST and closure gates in their own process; this repair advances no phase."
+  ],
+  "blockers": [
+    "The staged Node v18.19.1 --test invocation did not expose individual case TAP counts; the 35 cases passed in separate direct invocations. Native owner checks and gates remain pending."
+  ]
+}

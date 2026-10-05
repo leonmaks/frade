@@ -1,7 +1,7 @@
 # Единый workflow Frade — статус
 
-UPDATED_AT_UTC: 2026-10-05T12:15:25.545Z
-PROJECTION_SOURCE_SHA256: 13e103ab0455dd0f82f50e66ede1d1fe4045f14770f3b00f45bf9386588ff221
+UPDATED_AT_UTC: 2026-10-05T14:36:56.779Z
+PROJECTION_SOURCE_SHA256: 8c030d0bfd31f120c8fb0368044e9e9e7f748d4e61ab63a07af724bdb34d3e19
 POLICY_VERSION: 1.1 / 6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb
 
 ## 1. Решение / следующий шаг
@@ -75,11 +75,11 @@ GAP: TASK_ACCEPTANCE_GAP tasks
 
 | ID | Consumer owner / affected scope | State / age | Evidence / fix attempts / RCA | Required decision / next action |
 |---|---|---|---|---|
-| REQUIREMENT_SCENARIO_RECIPROCITY | frade-standard-workflow | OPEN; 0 days | openspec/changes/frade-standard-workflow/evidence/independent-post-repaired-20261005/receipt.json; attempts 0; INVARIANT / ABSTRACTION_BOUNDARY: scenario.requirementId can name a requirement whose outgoing list omits that failed scenario; s | Regression-first native RED, approved Sol/high contracts/status repair, current applicable checks, fresh Verify and fresh cumulative POST; closure remains inactive |
+| FRESH_VERIFY_AND_POST_PENDING | frade-standard-workflow | OPEN; 0 days | openspec/changes/frade-standard-workflow/evidence/task42-req-repair-20261005/repair-receipt.json; attempts 0; Native RED6/13 then GREEN221/221; contracts/status boundary repaired by approved Sol/high role. Admitted POST FAIL retained withou | Publish checked repair; fresh exact Astra/high Verify and Astra/xhigh cumulative POST before closure |
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 42cb1cbe4a81ef6a775b03cd7712183055540fda
+SOURCE_CHECKPOINT_SHA: bb980612e519fabcfbdb76a76a432dcf074c1689
 COMMIT_STATE: NOT_VERIFIED
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow
 PUSH_STATE: NOT_VERIFIED

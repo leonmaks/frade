@@ -1,0 +1,42 @@
+{
+  "status": "CLASSIFIED_BEFORE_PRODUCTION_EDIT",
+  "classification": ["INVARIANT", "ABSTRACTION_BOUNDARY"],
+  "authority": {
+    "publishedHead": "bb980612e519fabcfbdb76a76a432dcf074c1689",
+    "acceptedDesignSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+    "specs": ["FWE-004-S01", "FWE-014-S01"],
+    "parentRcaPath": "../input/parent-reconciliation-rca.json",
+    "parentRcaSha256": "109e97d2d3ed936818ca0c4d3731a6bd8b91bcb7bbbe674b7d732cf7033cffbd"
+  },
+  "authenticatedNativeRed": {
+    "path": "../input/candidate-native-red.json",
+    "sha256": "d2188bd6f5442542424815b6f029495e318ea7c8c70462dd2c7ddca4c8f5289a",
+    "platform": "win32",
+    "node": "v24.18.0",
+    "exit": 1,
+    "tests": 35,
+    "pass": 33,
+    "fail": 2,
+    "skipped": 0,
+    "boundSourceHashesChecked": 59,
+    "boundSourceHashMismatches": 0,
+    "candidateContractsSha256": "32b168e3871cf0d6c62fb778d2b49022d6f8016188465d71825b1e3f836f7fec",
+    "candidateStatusSha256": "092013aad15531fd70ecb0128309027fda4d9acd398e5507818890487c1e1388",
+    "oldTestSha256": "88099cf27acc8001cd43f502991e784feef8434ae13009875b41a84b244a8e9c",
+    "newTestSha256": "9df7c277e34e3310fdad6b3f565cf14ce80759bde0f7319bf43985d2056b7ce0",
+    "contractsTestSha256": "ec437f658f80e62c913185e9d3a3c2fe0a8619de3a943e65f39fe42c91593182"
+  },
+  "failedVariants": [
+    "The first candidate kept the old global traceValidation.ok acceptance gate and therefore erased an independently valid identified requirement when another requirement had an incomplete reciprocal mapping.",
+    "The second candidate replaced that gate with a handwritten per-requirement predicate. It counted a valid requirement despite an empty or omitted mapping on a completed orphan task whose requirement owner cannot be determined. Two historical old-test assertions failed."
+  ],
+  "firstIncorrectDecision": "projectStatus replaced authoritative whole-graph validation with an independently written requirement predicate, without classifying validation failures by whether their requirement owner is identifiable.",
+  "caseDistinction": {
+    "historical": "Remove S2 and its assertion, leave completed task 2.2 with empty or omitted scenarioIds. TRACE_TASK_SCENARIO remains and accepted requirements must be zero because that structural orphan cannot be assigned to a requirement.",
+    "new": "S2 still identifies defective REQ-001 through requirementId. Independently reciprocal and proven REQ-002 still counts one while REQ-001 remains unaccepted."
+  },
+  "reconciledInvariant": "Unassignable or ambiguous structural records bar acceptance globally. Identified relationship defects bar their owning requirement, while independently valid identified requirements remain eligible. Each eligible requirement still needs stable unique ID, complete reciprocal scenario/task/assertion/run graph, critical controls, no unresolved acceptance, and current trusted proof for every executable scenario. Human and future boundaries remain pending.",
+  "specConflict": false,
+  "testChangesAllowed": false,
+  "productionScope": ["scripts/directions/contracts.mjs", "scripts/directions/status.mjs"]
+}

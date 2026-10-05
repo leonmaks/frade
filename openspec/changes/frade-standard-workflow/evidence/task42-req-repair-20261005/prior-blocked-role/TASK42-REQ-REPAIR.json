@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "status": "BLOCKED_TEST_SPEC_CONFLICT",
+  "role": "W01 tooling-tests",
+  "approvedModel": "gpt-6-sol",
+  "approvedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "publishedHead": "bb980612e519fabcfbdb76a76a432dcf074c1689",
+  "implementationCheckpoint": "a71a7bedc41beac16ce1c374509281b4e9feca79",
+  "originalBaseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "acceptedDesignSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "rca": {
+    "path": "RCA.json",
+    "sha256": "41c7330dbcd8778604985db0b214274fa985a391e481d68aada3b4a3872d8d8c",
+    "classification": [
+      "INVARIANT",
+      "ABSTRACTION_BOUNDARY"
+    ],
+    "summary": "Scenario requirementId lacked reverse membership validation; status counted incomplete outgoing list. Per-requirement complete graph and trusted proof now control acceptance."
+  },
+  "testReady": {
+    "path": "TEST_READY.json",
+    "sha256": "3d6474d3517e9a60c3c97f8c44004af648fbdf2028204e69f606d4ef853f6be3"
+  },
+  "originalProductionSourceSha256": {
+    "scripts/directions/contracts.mjs": "c28552cb0ab4e939c4d605078bb7dff2de16f864a60a0b5a4d25fce62f3afb58",
+    "scripts/directions/status.mjs": "acfe740859dd918bd879180402de89714c5e3f5d49d9b75cbcc6567f9961d6ca"
+  },
+  "unchangedSourceRED": [
+    {
+      "command": "node --test tests/directions/task42-requirement-reciprocity.test.mjs",
+      "path": "TASK42-RAW/linux-unchanged-source-red.txt",
+      "exitPath": "TASK42-RAW/linux-unchanged-source-red.exit",
+      "exit": 1,
+      "rawSha256": "34b80b2575aa29fa51068853196b84bad4348d1f4ae715ec99663149908d2c1e",
+      "observation": "Node 18 file-level aggregate failure; inner cases not reported"
+    },
+    {
+      "command": "node tests/directions/task42-requirement-reciprocity.test.mjs",
+      "path": "TASK42-RAW/linux-unchanged-source-red-direct.txt",
+      "exitPath": "TASK42-RAW/linux-unchanged-source-red-direct.exit",
+      "exit": 1,
+      "tests": 13,
+      "failures": 6,
+      "positivePasses": 7,
+      "skipped": 0,
+      "rawSha256": "777331262ed5884abbe36eb82068aa4ceda95cd7c69ae77482f1bb06f11a5c44"
+    }
+  ],
+  "nativeRelease": {
+    "path": "../NATIVE-RED.json",
+    "sha256": "71b9fadeb836aecf4cc330c50301e4409a4fee6f9a16f6ef63ffbcedd039ee48",
+    "status": "NATIVE_RED_CONFIRMED",
+    "actualWindowsExitCode": 1,
+    "nativeTests": 13,
+    "expectedFailures": 6,
+    "positiveControlPasses": 7,
+    "skipped": 0,
+    "rawCommandRecord": {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task27-resume-checks-20261005/task42-req-native-red.json",
+      "sha256": "8080583f84381879dc878046b8532524b63751d5094924c97f9cd06604c09e9e"
+    }
+  },
+  "fix": {
+    "productionPaths": [
+      "scripts/directions/contracts.mjs",
+      "scripts/directions/status.mjs"
+    ],
+    "newTest": "tests/directions/task42-requirement-reciprocity.test.mjs",
+    "originals": [
+      "TASK42-ORIGINALS/contracts.mjs",
+      "TASK42-ORIGINALS/status.mjs"
+    ]
+  },
+  "checks": [
+    {
+      "command": "node tests/directions/task42-requirement-reciprocity.test.mjs",
+      "platform": "linux",
+      "node": "v18.19.1",
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0,
+      "exit": 0,
+      "raw": "TASK42-RAW/linux-task42-requirement-reciprocity-after-null-fix.txt",
+      "rawSha256": "9122c2108f3539d642a5fc0f0793f9df6d4bc32e666eca8ce388dbecf7de329f"
+    },
+    {
+      "command": "node tests/directions/contracts.test.mjs",
+      "platform": "linux",
+      "node": "v18.19.1",
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0,
+      "exit": 0,
+      "raw": "TASK42-RAW/linux-contracts-after-null-fix.txt",
+      "rawSha256": "97a7bce6cf291300331549d7120ec4c65739a800b520aa003ceb4087925456f9"
+    },
+    {
+      "command": "node tests/directions/status.test.mjs",
+      "platform": "linux",
+      "node": "v18.19.1",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "exit": 0,
+      "raw": "TASK42-RAW/linux-status-final.txt",
+      "rawSha256": "d835b9e1e033154f72e69f56c471a13e5d530a2cdc6739d579d0693508a9d3e7"
+    },
+    {
+      "command": "node tests/directions/task42-trace-gap.test.mjs",
+      "platform": "linux",
+      "node": "v18.19.1",
+      "tests": 8,
+      "pass": 6,
+      "fail": 2,
+      "skipped": 0,
+      "exit": 1,
+      "raw": "TASK42-RAW/linux-task42-trace-gap-after-null-fix.txt",
+      "rawSha256": "7c0dfcb4be69a9a2c075f12f7e685316a72710dbf15db6b766dd956ab4de6b6a"
+    },
+    {
+      "command": "node tests/directions/budget-boundary.test.mjs",
+      "platform": "linux",
+      "node": "v18.19.1",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "exit": 0,
+      "raw": "TASK42-RAW/linux-budget-boundary-final.txt",
+      "rawSha256": "2c5eba2644435a426fe52b9155b55b72e295c2f052ffddf4f6960a89ecd69359"
+    },
+    {
+      "command": "node tests/directions/repair.test.mjs",
+      "platform": "linux",
+      "node": "v18.19.1",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "exit": 0,
+      "raw": "TASK42-RAW/linux-repair-final.txt",
+      "rawSha256": "56ab85e5104a0f486254f4043ed0db9828e6e80137088f8021e7d65ffe7ba8f2"
+    }
+  ],
+  "otherChecks": [
+    {
+      "command": "node --check scripts/directions/contracts.mjs && node --check scripts/directions/status.mjs && node --check tests/directions/task42-requirement-reciprocity.test.mjs",
+      "platform": "linux",
+      "node": "v18.19.1",
+      "exit": 0
+    },
+    {
+      "command": "node scripts/directions/root-loader.mjs <seeded contracts path>",
+      "platform": "linux",
+      "node": "v18.19.1",
+      "exit": 2,
+      "code": "PUBLIC_COMMON"
+    },
+    {
+      "command": "prettier --check",
+      "status": "UNAVAILABLE",
+      "reason": "No node_modules/.bin/prettier in seeded workspace"
+    }
+  ],
+  "testSpecConflict": {
+    "oldSuite": "tests/directions/task42-trace-gap.test.mjs",
+    "cases": [
+      "completed task with empty mapping",
+      "completed task with omitted mapping"
+    ],
+    "observedAccepted": 1,
+    "oldExpectedAccepted": 0,
+    "reason": "Independent requirement has reciprocal S1 and trusted proof; old assertions depended on globally zeroed acceptance for an unrelated orphan completed task.",
+    "testsUnchanged": true,
+    "blocker": true
+  },
+  "readOnlyInputsUnchanged": true,
+  "readOnlyBindingsAudit": {
+    "checked": 148,
+    "changed": 0,
+    "missing": 0,
+    "path": "TASK42-RAW/scope-audit.json",
+    "sha256": "2936d43e77ca1e8d9d04529eec779400e4856a84c43dfd222a58a842c5692749"
+  },
+  "scopeAudit": {
+    "productionOnly": [
+      "scripts/directions/contracts.mjs",
+      "scripts/directions/status.mjs"
+    ],
+    "repoTestAdditionOnly": "tests/directions/task42-requirement-reciprocity.test.mjs",
+    "existingTestsHelpersFixturesUnchanged": true,
+    "documentsPlansManifestPackageCIGuardBootstrapPublicationRootLoaderCommonReleaseUnchanged": true,
+    "gitStatus": "UNAVAILABLE_SEEDED_NO_GIT"
+  },
+  "deliverables": [
+    {
+      "path": "scripts/directions/contracts.mjs",
+      "sha256": "32b168e3871cf0d6c62fb778d2b49022d6f8016188465d71825b1e3f836f7fec"
+    },
+    {
+      "path": "scripts/directions/status.mjs",
+      "sha256": "092013aad15531fd70ecb0128309027fda4d9acd398e5507818890487c1e1388"
+    },
+    {
+      "path": "tests/directions/task42-requirement-reciprocity.test.mjs",
+      "sha256": "9df7c277e34e3310fdad6b3f565cf14ce80759bde0f7319bf43985d2056b7ce0"
+    },
+    {
+      "path": "RCA.json",
+      "sha256": "41c7330dbcd8778604985db0b214274fa985a391e481d68aada3b4a3872d8d8c"
+    },
+    {
+      "path": "TEST_READY.json",
+      "sha256": "3d6474d3517e9a60c3c97f8c44004af648fbdf2028204e69f606d4ef853f6be3"
+    },
+    {
+      "path": "TASK42-REQ-REPAIR.md",
+      "sha256": "c4b546dcda423f83c04585fa51191f0c4d7059f594ee162bd0e1e8aa2c9ab502"
+    },
+    {
+      "path": "TASK42-ORIGINALS/contracts.mjs",
+      "sha256": "c28552cb0ab4e939c4d605078bb7dff2de16f864a60a0b5a4d25fce62f3afb58"
+    },
+    {
+      "path": "TASK42-ORIGINALS/status.mjs",
+      "sha256": "acfe740859dd918bd879180402de89714c5e3f5d49d9b75cbcc6567f9961d6ca"
+    },
+    {
+      "path": "TASK42-RAW/linux-budget-boundary-final.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "TASK42-RAW/linux-budget-boundary-final.txt",
+      "sha256": "2c5eba2644435a426fe52b9155b55b72e295c2f052ffddf4f6960a89ecd69359"
+    },
+    {
+      "path": "TASK42-RAW/linux-budget-boundary-green.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "TASK42-RAW/linux-budget-boundary-green.txt",
+      "sha256": "ca48e3ba99e2269d377f69498109e3750062129eb332808bd36c8bb18d797a44"
+    },
+    {
+      "path": "TASK42-RAW/linux-contracts-after-null-fix.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "TASK42-RAW/linux-contracts-after-null-fix.txt",
+      "sha256": "97a7bce6cf291300331549d7120ec4c65739a800b520aa003ceb4087925456f9"
+    },
+    {
+      "path": "TASK42-RAW/linux-contracts-green.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "TASK42-RAW/linux-contracts-green.txt",
+      "sha256": "a390d559de497827e54272e41aca692873dd5615e068f76772bdff8713f15364"
+    },
+    {
+      "path": "TASK42-RAW/linux-repair-final.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "TASK42-RAW/linux-repair-final.txt",
+      "sha256": "56ab85e5104a0f486254f4043ed0db9828e6e80137088f8021e7d65ffe7ba8f2"
+    },
+    {
+      "path": "TASK42-RAW/linux-repair-green.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "TASK42-RAW/linux-repair-green.txt",
+      "sha256": "a7d2acfa4500942aeb53e590459b045b9bae2e79726841be048c5a5ebfeda605"
+    },
+    {
+      "path": "TASK42-RAW/linux-status-final.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "TASK42-RAW/linux-status-final.txt",
+      "sha256": "d835b9e1e033154f72e69f56c471a13e5d530a2cdc6739d579d0693508a9d3e7"
+    },
+    {
+      "path": "TASK42-RAW/linux-status-green.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "TASK42-RAW/linux-status-green.txt",
+      "sha256": "c8288be6f5ff4d5b8863d266c75c4e25b2162b7a9de9e0baff0589dfdf29cf14"
+    },
+    {
+      "path": "TASK42-RAW/linux-targeted-green.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "TASK42-RAW/linux-targeted-green.txt",
+      "sha256": "c11f068eb5481e9a8b1781d2486ff6a4529a7f6b222bf972de20f30c1443acd0"
+    },
+    {
+      "path": "TASK42-RAW/linux-task42-requirement-reciprocity-after-null-fix.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "TASK42-RAW/linux-task42-requirement-reciprocity-after-null-fix.txt",
+      "sha256": "9122c2108f3539d642a5fc0f0793f9df6d4bc32e666eca8ce388dbecf7de329f"
+    },
+    {
+      "path": "TASK42-RAW/linux-task42-trace-gap-after-null-fix.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "TASK42-RAW/linux-task42-trace-gap-after-null-fix.txt",
+      "sha256": "7c0dfcb4be69a9a2c075f12f7e685316a72710dbf15db6b766dd956ab4de6b6a"
+    },
+    {
+      "path": "TASK42-RAW/linux-task42-trace-gap-green.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "TASK42-RAW/linux-task42-trace-gap-green.txt",
+      "sha256": "c6c4ec6db8bd1c50c61b858d37d043e6b5976001b39b6cb59eee2a04c09f918c"
+    },
+    {
+      "path": "TASK42-RAW/linux-unchanged-source-red-direct.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "TASK42-RAW/linux-unchanged-source-red-direct.txt",
+      "sha256": "777331262ed5884abbe36eb82068aa4ceda95cd7c69ae77482f1bb06f11a5c44"
+    },
+    {
+      "path": "TASK42-RAW/linux-unchanged-source-red.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "TASK42-RAW/linux-unchanged-source-red.txt",
+      "sha256": "34b80b2575aa29fa51068853196b84bad4348d1f4ae715ec99663149908d2c1e"
+    },
+    {
+      "path": "TASK42-RAW/scope-audit.json",
+      "sha256": "2936d43e77ca1e8d9d04529eec779400e4856a84c43dfd222a58a842c5692749"
+    }
+  ],
+  "selfHashExcluded": true,
+  "readyForVerify": "NO",
+  "formalVerify": "HISTORICAL_PASS_A71_CURRENT_NOT_RUN",
+  "post": "ADMITTED_FAIL_NO_NEW_POST",
+  "architectureGate": "NOT_RUN",
+  "archive": "INACTIVE_NOT_RUN",
+  "taskCompletion": "NOT_CLAIMED",
+  "productWriter": "NOT_IMPLEMENTED",
+  "foreignAdoption": "NOT_STARTED",
+  "nativeWindowsFullSuite": "PARENT_OWNED_NOT_RUN_BY_WORKER"
+}

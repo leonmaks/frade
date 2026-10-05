@@ -1,0 +1,32 @@
+{
+  "status": "NATIVE_RED_CONFIRMED",
+  "classification": [
+    "INVARIANT",
+    "ABSTRACTION_BOUNDARY"
+  ],
+  "finding": "Incomplete requirement/scenario reciprocity yields false accepted count",
+  "testPath": "tests/directions/task42-requirement-reciprocity.test.mjs",
+  "testSha256": "9df7c277e34e3310fdad6b3f565cf14ce80759bde0f7319bf43985d2056b7ce0",
+  "nativeTests": 13,
+  "expectedFailures": 6,
+  "positiveControlPasses": 7,
+  "skipped": 0,
+  "actualWindowsExitCode": 1,
+  "productionUnchangedBeforeRED": true,
+  "productionBefore": {
+    "scripts/directions/contracts.mjs": "c28552cb0ab4e939c4d605078bb7dff2de16f864a60a0b5a4d25fce62f3afb58",
+    "scripts/directions/status.mjs": "acfe740859dd918bd879180402de89714c5e3f5d49d9b75cbcc6567f9961d6ca"
+  },
+  "rawCommandRecord": {
+    "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task27-resume-checks-20261005/task42-req-native-red.json",
+    "sha256": "8080583f84381879dc878046b8532524b63751d5094924c97f9cd06604c09e9e"
+  },
+  "readOnlyInputsUnchanged": true,
+  "allowedRepairPaths": [
+    "scripts/directions/contracts.mjs",
+    "scripts/directions/status.mjs"
+  ],
+  "allExistingTestsMustRemainUnchanged": true,
+  "reviewGuardMustRemainUnchanged": true,
+  "scope": "Original approved W01 FWE-004/FWE-014 repair; specs/decisions unchanged"
+}

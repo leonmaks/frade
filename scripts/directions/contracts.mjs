@@ -378,6 +378,11 @@ export function validateTraceability(t, { action = 'IMPLEMENTATION' } = {}) {
   for (const s of t.scenarios) {
     if (!maps.requirements.has(s?.requirementId))
       add(issues, 'TRACE_REQUIREMENT', s?.id, 'Unknown requirement')
+    else if (
+      !Array.isArray(maps.requirements.get(s?.requirementId)?.scenarioIds) ||
+      !maps.requirements.get(s?.requirementId)?.scenarioIds.includes(s?.id)
+    )
+      add(issues, 'TRACE_REQUIREMENT_SCENARIO', s?.id, 'Reciprocal requirement link missing')
     if (!['positive', 'negative', 'boundary', 'human', 'future'].includes(s?.control))
       add(issues, 'TRACE_CONTROL', s?.id, 'Control class required')
     if (
@@ -426,6 +431,131 @@ export function validateTraceability(t, { action = 'IMPLEMENTATION' } = {}) {
     )
       add(issues, 'RUN_BINDING', r?.id, 'Source/config/environment binding required')
   return outcome(issues)
+}
+
+// A malformed row with no identifiable requirement makes every acceptance count
+// ambiguous. Once an owner is known, its defect affects only that requirement.
+export function acceptedRequirementCount(
+  trace,
+  proven,
+  runProof,
+  { action = 'IMPLEMENTATION' } = {},
+) {
+  const validation = validateTraceability(trace, { action })
+  if (
+    !Array.isArray(trace?.requirements) ||
+    !Array.isArray(trace?.scenarios) ||
+    !Array.isArray(trace?.tasks) ||
+    !Array.isArray(trace?.assertions) ||
+    !Array.isArray(trace?.runs)
+  )
+    return 0
+  const { requirements, scenarios, tasks, assertions, runs } = trace
+  const rows = [requirements, scenarios, tasks, assertions, runs]
+  if (rows.some((items) => items.some((item) => typeof item?.id !== 'string' || !item.id))) return 0
+  const blocked = new Set()
+  let unassignable = false
+  const scenarioOwners = (id) => scenarios.filter((s) => s.id === id).map((s) => s.requirementId)
+  const taskOwners = (id) => {
+    const task = tasks.find((t) => t.id === id)
+    return Array.isArray(task?.scenarioIds) && task.scenarioIds.length
+      ? task.scenarioIds.flatMap(scenarioOwners)
+      : []
+  }
+  const assertionOwners = (id) =>
+    scenarios
+      .filter((s) => Array.isArray(s.assertionIds) && s.assertionIds.includes(id))
+      .map((s) => s.requirementId)
+  const runOwners = (id) =>
+    assertions.filter((a) => a.runId === id).flatMap((a) => assertionOwners(a.id))
+  for (const finding of validation.issues) {
+    let owners = []
+    if (
+      [
+        'TRACE_SCENARIO',
+        'UNRESOLVED_ACCEPTANCE',
+        'CONTROL_POSITIVE',
+        'CONTROL_NEGATIVE',
+        'CONTROL_BOUNDARY',
+      ].includes(finding.code)
+    )
+      owners = [finding.path]
+    else if (
+      [
+        'TRACE_REQUIREMENT_SCENARIO',
+        'TRACE_CONTROL',
+        'TRACE_BOUNDARY_REASON',
+        'TRACE_TASK',
+        'TRACE_ASSERTION',
+      ].includes(finding.code)
+    )
+      owners = scenarioOwners(finding.path)
+    else if (finding.code === 'TRACE_TASK_SCENARIO') owners = taskOwners(finding.path)
+    else if (finding.code === 'TRACE_RUN') owners = assertionOwners(finding.path)
+    else if (finding.code === 'RUN_BINDING') owners = runOwners(finding.path)
+    if (!owners.length || owners.some((id) => requirements.filter((r) => r.id === id).length !== 1))
+      unassignable = true
+    else owners.forEach((id) => blocked.add(id))
+  }
+  if (unassignable) return 0
+  return requirements.filter((r) => {
+    if (
+      blocked.has(r.id) ||
+      r.unresolved?.length ||
+      !/^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/.test(r.id) ||
+      r.id.length > 80 ||
+      requirements.filter((other) => other.id === r.id).length !== 1 ||
+      !Array.isArray(r.scenarioIds) ||
+      !r.scenarioIds.length ||
+      new Set(r.scenarioIds).size !== r.scenarioIds.length
+    )
+      return false
+    const linked = scenarios.filter((s) => s.requirementId === r.id)
+    if (
+      linked.length !== r.scenarioIds.length ||
+      !r.scenarioIds.every((id) => linked.filter((s) => s.id === id).length === 1) ||
+      (r.critical &&
+        ['positive', 'negative', 'boundary'].some(
+          (control) => !linked.some((s) => s.control === control),
+        ))
+    )
+      return false
+    return linked.every((s) => {
+      if (
+        !['positive', 'negative', 'boundary'].includes(s.control) ||
+        !proven.has(s.id) ||
+        !Array.isArray(s.taskIds) ||
+        !s.taskIds.length ||
+        new Set(s.taskIds).size !== s.taskIds.length ||
+        !s.taskIds.every((id) => {
+          const matching = tasks.filter((task) => task.id === id)
+          return (
+            matching.length === 1 &&
+            Array.isArray(matching[0].scenarioIds) &&
+            matching[0].scenarioIds.includes(s.id)
+          )
+        }) ||
+        tasks.some(
+          (task) =>
+            Array.isArray(task.scenarioIds) &&
+            task.scenarioIds.includes(s.id) &&
+            !s.taskIds.includes(task.id),
+        ) ||
+        !Array.isArray(s.assertionIds) ||
+        !s.assertionIds.length ||
+        new Set(s.assertionIds).size !== s.assertionIds.length
+      )
+        return false
+      return s.assertionIds.every((id) => {
+        const matching = assertions.filter((a) => a.id === id)
+        return (
+          matching.length === 1 &&
+          runs.filter((run) => run.id === matching[0].runId).length === 1 &&
+          runProof.get(matching[0].runId) === true
+        )
+      })
+    })
+  }).length
 }
 
 export async function verifyTraceability(

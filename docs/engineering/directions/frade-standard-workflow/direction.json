@@ -129,8 +129,8 @@
         "policyDecision": "ACCEPTED_D03",
         "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
         "formalPRE": "PASS_9c974da8",
-        "Verify": "HISTORICAL_PASS_A71_REQ_RECIPROCITY_REPAIR_REVERIFY_REQUIRED",
-        "POST": "FAIL_42CB1CBE_RECEIVED_VALID",
+        "Verify": "FWE014_REPAIR_CHECKS_PASS_FRESH_VERIFY_PENDING",
+        "POST": "INACTIVE_CURRENT_REPAIR_REVERIFY_REQUIRED",
         "archive": "NOT_RUN"
       }
     }
@@ -208,14 +208,14 @@
   },
   "blockers": [
     {
-      "id": "REQUIREMENT_SCENARIO_RECIPROCITY",
+      "id": "FRESH_VERIFY_AND_POST_PENDING",
       "owner": "frade-standard-workflow",
       "state": "OPEN",
-      "openedAt": "2026-10-05T12:15:24.643Z",
-      "evidence": "openspec/changes/frade-standard-workflow/evidence/independent-post-repaired-20261005/receipt.json",
+      "openedAt": "2026-10-05T14:36:44.171Z",
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/task42-req-repair-20261005/repair-receipt.json",
       "failedFixes": 0,
-      "rca": "INVARIANT / ABSTRACTION_BOUNDARY: scenario.requirementId can name a requirement whose outgoing list omits that failed scenario; structurally accepted trace yields false accepted count. Previous completed-task gap is resolved and preserved.",
-      "nextAction": "Regression-first native RED, approved Sol/high contracts/status repair, current applicable checks, fresh Verify and fresh cumulative POST; closure remains inactive"
+      "rca": "Native RED6/13 then GREEN221/221; contracts/status boundary repaired by approved Sol/high role. Admitted POST FAIL retained without relaxing guard.",
+      "nextAction": "Publish checked repair; fresh exact Astra/high Verify and Astra/xhigh cumulative POST before closure"
     }
   ]
 }
