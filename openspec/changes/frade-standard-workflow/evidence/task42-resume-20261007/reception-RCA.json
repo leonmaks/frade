@@ -1,0 +1,58 @@
+{
+  "status": "REPRODUCED_BY_INDEPENDENT_POST_REPAIR_PENDING",
+  "classification": "INTEGRATION",
+  "atUtc": "2026-10-07T20:10:05.984Z",
+  "sourceCheckpoint": "62b9e0fbfd55f8b2e99f8ea210786fc6c9f01fd0",
+  "source": {
+    "path": "scripts/directions/review.mjs",
+    "sha256": "26aca7b752e4bd00212d6a6d5fe6f9eac5d328a607aa40ad760c57d926ad691f",
+    "firstIncorrectDecision": "Terminal command acceptance checks only Number.isInteger(exit_code), so1/2 are accepted when item.status is completed. Clean reviewer inspection failure is not distinguished from deliberately tested child failure."
+  },
+  "rawEventsSha256": "9cb59171b84f40b45a84a0f8766ee84b1f294fcdd2300b7a1cc4e0ddbb5b5560",
+  "reproduction": {
+    "type": "item.completed",
+    "item": {
+      "id": "item_27",
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"node -e 'const assert=require(\\\"node:assert/strict\\\"); import(\\\"./scripts/directions/review.mjs\\\").then(({verifyRawReview})=>{const report=\\\"GATE_STATUS: PASS\\\\n\\\"; const base=[{type:\\\"thread.started\\\",thread_id:\\\"independent-probe\\\"},{type:\\\"turn.started\\\"}]; for(const code of [0,1,2]) { const events=[...base,{type:\\\"item.started\\\",item:{id:\\\"inspect\\\",type:\\\"command_execution\\\",command:\\\"required-inspection\\\",status:\\\"in_progress\\\"}},{type:\\\"item.completed\\\",item:{id:\\\"inspect\\\",type:\\\"command_execution\\\",command:\\\"required-inspection\\\",status:\\\"completed\\\",exit_code:code}},{type:\\\"item.completed\\\",item:{id:\\\"final\\\",type:\\\"agent_message\\\",text:report}},{type:\\\"turn.completed\\\"}].map(x=>JSON.stringify(x)).join(\\\"\\\\n\\\"); const result=verifyRawReview({events,report,exit:0}); assert.equal(result.status,\\\"PASS\\\"); console.log(JSON.stringify({probe:\\\"nonzero-command-admission\\\",commandExit:code,observedAdmission:result.status,expectedAdmission:code===0?\\\"PASS\\\":\\\"BLOCKED\\\",defectReproduced:code\"'!==0})); } })'\"'\"",
+      "aggregated_output": "{\"probe\":\"nonzero-command-admission\",\"commandExit\":0,\"observedAdmission\":\"PASS\",\"expectedAdmission\":\"PASS\",\"defectReproduced\":false}\n{\"probe\":\"nonzero-command-admission\",\"commandExit\":1,\"observedAdmission\":\"PASS\",\"expectedAdmission\":\"BLOCKED\",\"defectReproduced\":true}\n{\"probe\":\"nonzero-command-admission\",\"commandExit\":2,\"observedAdmission\":\"PASS\",\"expectedAdmission\":\"BLOCKED\",\"defectReproduced\":true}\n",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  },
+  "observed": [
+    {
+      "probe": "nonzero-command-admission",
+      "commandExit": 0,
+      "observedAdmission": "PASS",
+      "expectedAdmission": "PASS",
+      "defectReproduced": false
+    },
+    {
+      "probe": "nonzero-command-admission",
+      "commandExit": 1,
+      "observedAdmission": "PASS",
+      "expectedAdmission": "BLOCKED",
+      "defectReproduced": true
+    },
+    {
+      "probe": "nonzero-command-admission",
+      "commandExit": 2,
+      "observedAdmission": "PASS",
+      "expectedAdmission": "BLOCKED",
+      "defectReproduced": true
+    }
+  ],
+  "scopeOfProof": "Local verifyRawReview false acceptance only; no end-to-end shared runner bypass claim",
+  "verificationConflict": {
+    "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-req-repair-20261005/receipt.json",
+    "historicalStatus": "RECEIVED_VALID_PASS",
+    "currentAdmission": "BLOCKED_RECEPTION_CONFLICT",
+    "required": "Preserve raw/history; perform fresh clean Verify after regression-first repair, current checks and applicable new PRE"
+  },
+  "requiredRegression": "Completed inspection exits1/2 MUST BLOCK; positive clean PASS/FAIL remain accepted; expected-negative child fixture is asserted inside successful inspection harness, never retroactive relabelling. Missing/truncated/error/mutated streams remain BLOCKED.",
+  "implementation": "NOT_STARTED",
+  "newRegressionExecutedByController": false,
+  "gateStatus": "FAIL",
+  "next": "D05 coherent plan approval + fresh PRE before production repair and automatic executor implementation"
+}

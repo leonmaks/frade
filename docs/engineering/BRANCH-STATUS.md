@@ -6,8 +6,8 @@ STATUS_SOURCE: manually reconciled from retained raw evidence; not an automatica
 ## 1. Решение / следующий шаг
 
 STAGE: W01 | PHASE: POST_REVIEW | HEALTH: FAIL
-NEXT_PERMITTED_ACTION: согласовать конкретное дополнение W01; после утверждения — strict validation и fresh independent PRE, затем regression-first repair/automation, проверки, clean formal Verify и cumulative POST.
-HUMAN_DECISION: новый scope автоматических исполнителей и уточнённые planning artifacts; существующие D01–D04/точные пары моделей сохраняются.
+NEXT_PERMITTED_ACTION: получить одно материальное D05 approval для конкретных 11 prospective artifacts; после утверждения — strict validation и fresh independent PRE, затем regression-first repair/automation, проверки, clean formal Verify и cumulative POST.
+HUMAN_DECISION: D05 ready — openspec/changes/frade-standard-workflow/evidence/d05-planning-proposal-20261007/PLAN-AMENDMENT.md; exact prospective package 594d1a7a3b2928f2e9b74d4287b9d9cdb8f8e56bd3028da94ec2b4f8f0aebebb. 11 artifacts / 28 tasks / 25 requirements / 83 scenarios. Existing D01–D04 and exact role pairs preserved; approval not yet received.
 READY_FOR_ARCHIVE: NO. Task 4.2 не закрыта; переход к 4.3/4.4 запрещён.
 
 ## 2. Идентичность / scope
@@ -39,7 +39,7 @@ STOP после W01. Автоматизация внутри направлен�
 | 4.2 | OPEN / POST FAIL | reception repair + fresh checks/Verify/POST; 2–6 ч без новой автоматизации |
 | 4.3 | OPEN / WAITING 4.2 | reviewed release/discovery; 30–90 мин после PASS |
 | 4.4 | OPEN / WAITING 4.3 | три spec sync, W01-only archive, ссылки, публикация; 45–120 мин после gates |
-| Дополнение автоматизации | DRAFT / NOT_APPROVED / NOT_IMPLEMENTED | конкретный план готовится; трудоёмкость отдельная |
+| Дополнение автоматизации | MACHINE_VALID_DRAFT / NOT_APPROVED / NOT_IMPLEMENTED | 1.6→1.7→2.8–2.13→3.3–3.4→4.1→4.2; оценка полного нового scope74–152ч, automation48–96ч, reception6–12ч; ожидания и4.3/4.4 отдельно |
 
 ADMINISTRATIVE_TASKS: 15/18. Этот счётчик не означает accepted requirements или readiness.
 
@@ -69,7 +69,7 @@ ADMINISTRATIVE_TASKS: 15/18. Этот счётчик не означает accep
 | independent-POST | gpt-6-astra / xhigh | design D03; фактически запрошена текущим POST |
 
 Authority: openspec/changes/frade-standard-workflow/design.md; raw SHA256 501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a.
-ACTUAL_BACKEND / ACTUAL_EFFORT: NOT_CONFIRMED. Запрошенная пара не является backend attestation. Writer dispatcher: NOT_IMPLEMENTED.
+ACTUAL_BACKEND / ACTUAL_EFFORT: NOT_CONFIRMED. Запрошенная пара не является backend attestation. Writer dispatcher: NOT_IMPLEMENTED. Planning revision gpt-6-astra/high executed successfully: complete stream, exit0, immutable inputs, zero tool/command/file writes; staging machine audit strict/parser/schema PASS does not grant PRE.
 
 ## 7. Зависимости / решения / blockers
 
@@ -79,18 +79,19 @@ ACTUAL_BACKEND / ACTUAL_EFFORT: NOT_CONFIRMED. Запрошенная пара �
 | POST-20261007-02 | OPEN: Verify receipt противоречит retained inspection failures | сохранить историю, новый clean Verify |
 | POST-20261007-03 | OPEN: truncated outputs/corrected inspection mistakes в текущем review | новый clean cumulative POST |
 | AUTOMATIC-WRITER-SCOPE | DECISION_PENDING: full auto provisioning отсутствует | согласовать coherent amendment, fresh PRE до production |
-| Planning sandbox launcher | предыдущий staging draft BLOCKED, source не менялся | последовательный retry с финальным JSON, без write-tools |
+| Planning sandbox launcher | первый staging draft BLOCKED, последовательный retry выполнил draft без commands; уточнение плана в работе | последовательный retry с финальным JSON, без write-tools |
 
 Foreign owner FAIL не блокирует supplier; чужие scope/adoption не выполнялись.
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 62b9e0fbfd55f8b2e99f8ea210786fc6c9f01fd0.
-COMMIT_STATE: local evidence/status changes pending; inherited Oct5 uncommitted preparation retained.
+SOURCE_CHECKPOINT_SHA: cf66ee3480351a12911584b3a9520bb720b036a3 at this status refresh; reviewed candidate remains62b9e0fb above.
+COMMIT_STATE: evidence/status checkpoint cf66ee3480351a12911584b3a9520bb720b036a3 committed/pushed; current planning/publication-status refresh pending its bounded checkpoint.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: NOT_RUN_THIS_RESUME; актуальный remote SHA пока не проверен.
+PUSH_STATE: PUBLISHED cf66ee3480351a12911584b3a9520bb720b036a3; fresh exact remote SHA verified by publication broker. Receipt: openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/publication-result.json. Following receipt/status maintenance is not a new engineering task or gate PASS.
 CURRENT_EVIDENCE: openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/resume-summary.json; POST-REPORT.md; receipt.json; raw-index.json; argv-red-green.json; preflight.json.
 PRIVATE_RAW: Git common run 2026-10-07T19-22-17-357Z-351c9b51-46a3-48ba-ad02-9c94329c3822; сохранён runner-ом до интерпретации.
+D05_REVIEWABLE_PACKAGE: openspec/changes/frade-standard-workflow/evidence/d05-planning-proposal-20261007/approval-request.json; prospective artifact copies under artifacts/; effective OpenSpec proposal/design/tasks/specs unchanged.
 PANEL_STATE: NOT_OPENED; доступного UI-controller для правой панели сейчас нет.
 HISTORICAL_EVIDENCE: старый tail ниже сохранён; его FAIL/PASS относятся к указанным историческим кандидатам.
 
