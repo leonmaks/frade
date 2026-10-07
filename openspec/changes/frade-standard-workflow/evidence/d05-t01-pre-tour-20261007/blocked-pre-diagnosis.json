@@ -1,0 +1,128 @@
+{
+  "atUtc": "2026-10-07T22:26:23.702Z",
+  "run": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-07T22-07-45-325Z-2f968195-43a4-4fb1-a591-43a28ccf7e88",
+  "sharedRun": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-07T22-08-16-058Z-28f437f4-bccb-4eb9-9623-e75870753c06",
+  "sourceUnchanged": true,
+  "head": "830bd9036522214b68f28e23ae8afd13b09f37c2",
+  "snapshotSha256": "445e7be307dffb1ba6f5232eb22b8560483f6471e5b6b3581765ea1176d9cda6",
+  "indexSha256": "ca0cd21b3780c402a654347b787fe6de108e652f35e65b4570401daec7e84460",
+  "requestUnchanged": true,
+  "packetUnchanged": true,
+  "retainedArtifactsVerified": 227,
+  "rawExit": {
+    "exit": 0,
+    "timedOut": false
+  },
+  "rawReception": {
+    "ok": false,
+    "status": "BLOCKED",
+    "code": "REVIEW_EVENTS",
+    "detail": ""
+  },
+  "eventTypes": {
+    "thread.started": 1,
+    "turn.started": 1,
+    "item.completed": 136,
+    "item.started": 126,
+    "turn.completed": 1
+  },
+  "eventIssues": [
+    {
+      "line": 44,
+      "event": {
+        "type": "item.completed",
+        "item": {
+          "id": "item_21",
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'python3 openspec/changes/frade-standard-workflow/evidence/d05-t01-accepted-20261007/decision.json 0'",
+          "aggregated_output": "Traceback (most recent call last):\n  File \"/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-07T22-08-16-058Z-28f437f4-bccb-4eb9-9623-e75870753c06/prepared/packet/openspec/changes/frade-standard-workflow/evidence/d05-t01-accepted-20261007/decision.json\", line 21, in <module>\n    \"changed\": true\n               ^^^^\nNameError: name 'true' is not defined. Did you mean: 'True'?\n",
+          "exit_code": 1,
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "line": 166,
+      "event": {
+        "type": "item.completed",
+        "item": {
+          "id": "item_84",
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"python3 - <<'PY'\nimport json,pathlib,hashlib,base64,runpy\nroot=pathlib.Path.cwd(); h=lambda b:hashlib.sha256(b).hexdigest()\ne=root/'openspec/changes/frade-standard-workflow/evidence'; manifest=json.loads((root/'REVIEW-PACKET-MANIFEST.json').read_bytes()); errors=[]\ndef check(path,size,digest):\n p=root/path\n if p.is_absolute() and not p.is_relative_to(root): errors.append(['outside',path]); return\n if any(x.is_symlink() for x in [p,*p.parents] if x.is_relative_to(root)): errors.append(['link',path]); return\n if not p.is_file(): errors.append(['missing',path]); return\n b=p.read_bytes()\n if len(b)\"'!=size or h(b)!=digest: errors.append(['\"'mismatch',path])\nfor a in manifest['artifacts']: check(a['path'],a['bytes'],a['sha256'])\nd=json.loads((e/'d05-t01-accepted-20261007/decision.json').read_bytes()); o=json.loads((e/'d05-accepted-20261007/decision.json').read_bytes())\nfor a in d['approvedArtifacts']: check(str((e/'d05-order-proposal-20261007/artifacts'/a['path']).relative_to(root)),a['proposedBytes'],a['proposedSha256'])\nfor a in o['approvedArtifacts']: check(str((e/'d05-planning-proposal-20261007/artifacts'/a['path']).relative_to(root)),a['proposedBytes'],a['proposedSha256'])\nm=json.loads((e/'d05-order-proposal-20261007/historical-replay-mapping.json').read_bytes())\nfor a in m['inventory']:\n check(str((e/'d05-order-proposal-20261007/historical-replay/tree'/a['originalPath']).relative_to(root)),a['bytes'],a['sha256'])\n check(a['originalPath'],a['bytes'],a['sha256'])\nb=json.loads((e/'d05-t01-accepted-20261007/strict-validation-inputs.json').read_bytes()); overlay={a['path']:a for a in d['approvedArtifacts']}; matched=0; embedded=0\nfor a in b['inputs']:\n data=base64.b64decode(a['data'],validate=True)\n if len(data)\"'!=a['\"'bytes'] or h(data)\"'!=a['\"'sha256']: errors.append(['bundle',a['path']])\n if a['correctedOverlay']:\n  if data\"'!=(e/'\"'d05-order-proposal-20261007/artifacts'/a['path']).read_bytes() or a['sha256']\"'!=overlay[a['\"'path']]['proposedSha256']: errors.append(['overlay',a['path']])\n elif a['sha256']\"'!=a['\"'installedOwnerSha256']: errors.append(['installed-binding',a['path']])\n p=root/a['path']\n if p.is_file():\n  matched+=1\n  if h(p.read_bytes())\"'!=a['\"'installedOwnerSha256']: errors.append(['installed-bytes',a['path']])\n else: embedded+=1\nresult={'manifestEntries':len(manifest['artifacts']),'uniqueManifestPaths':len({a['path'] for a in manifest['artifacts']}),'correctedArtifactsVerified':len(d['approvedArtifacts']),'originalD05ArtifactsVerified':len(o['approvedArtifacts']),'historicalMappingEntriesVerifiedAgainstBothReplayAndInstalled':len(m['inventory']),'validationInputs':len(b['inputs']),'uniqueValidationPaths':len({a['path'] for a in b['inputs']}),'overlayCorrespondences':sum(a['correctedOverlay'] for a in b['inputs']),'installedBytesAvailable':matched,'additionalInputsVerifiedFromEmbeddedBytes':embedded,'errors':errors}\nrunpy.run_path(str(e/'d05-t01-pre-retry-20261007/packet-read.py'))['page'](json.dumps(result,indent=2),0,'independent-byte-binding-audit',h((root/'REVIEW-PACKET-MANIFEST.json').read_bytes()))\nPY\"",
+          "aggregated_output": "zsh:1: can't create temp file for here document: no such file or directory\n",
+          "exit_code": 1,
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "line": 238,
+      "event": {
+        "type": "item.completed",
+        "item": {
+          "id": "item_121",
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"python3 -c 'import pathlib,json,hashlib,re,base64,runpy\nroot=pathlib.Path.cwd(); e=root/\\\"openspec/changes/frade-standard-workflow/evidence\\\"; corrected=e/\\\"d05-order-proposal-20261007/artifacts\\\"; original=e/\\\"d05-planning-proposal-20261007/artifacts\\\"; change=pathlib.Path(\\\"openspec/changes/frade-standard-workflow\\\"); h=lambda b:hashlib.sha256(b).hexdigest(); bundle=json.loads((e/\\\"d05-t01-accepted-20261007/strict-validation-inputs.json\\\").read_bytes()); audit=json.loads((e/\\\"d05-order-proposal-20261007/draft-audit.json\\\").read_bytes()); current=json.loads((e/\\\"d05-t01-pre-retry-20261007/current-strict-validation.json\\\").read_bytes())\nexpected={\\\"change:\\\"+pathlib.PurePosixPath(x[\\\"path\\\"]).parts[2] for x in bundle[\\\"inputs\\\"] if x[\\\"path\\\"].startswith(\\\"openspec/changes/\\\") and len(pathlib.PurePosixPath(x[\\\"path\\\"]).parts)>3 and pathlib.PurePosixPath(x[\\\"path\\\"]).parts[2]\"'!=\"archive\"}|{\"spec:\"+pathlib.PurePosixPath(x[\"path\"]).parts[2] for x in bundle[\"inputs\"] if x[\"path\"].startswith(\"openspec/specs/\") and len(pathlib.PurePosixPath(x[\"path\"]).parts)>3}\nactual={i[\"type\"]+\":\"+i[\"id\"] for i in json.loads(current[\"checks\"][3][\"stdout\"])[\"items\"]}\ndef ids(base,pattern):\n return re.findall(pattern,\"'\"\\\\n\\\".join((base/change/\\\"specs\\\"/name/\\\"spec.md\\\").read_text() for name in (\\\"engineering-direction-lifecycle\\\",\\\"engineering-role-dispatch\\\",\\\"engineering-progress-publication\\\")),re.M)\nreq=r\\\"\"'^### Requirement: (FWE-'\"\\\\d+)\\\\b\\\"; sc=r\\\"\"'^#### Scenario: (FWE-'\"\\\\d+-S\\\\d+)\\\\b\\\"; tasks=lambda base:re.findall(r\\\"\"'^- '\"\\\\[[ x]\\\\] (\\\\d+\\\\.\\\\d+)\\\\b\\\",(base/change/\\\"tasks.md\\\").read_text(),re.M)\ninv=[{k:x[k] for k in (\\\"path\\\",\\\"sha256\\\",\\\"bytes\\\")} for x in bundle[\\\"inputs\\\"]]; control=json.loads((root/\\\"REVIEW-PACKET-MANIFEST.json\\\").read_bytes())[\\\"artifacts\\\"]; control=[{\\\"path\\\":x[\\\"path\\\"],\\\"sha256\\\":x[\\\"sha256\\\"]} for x in control if x[\\\"path\\\"].startswith(\\\"scripts/directions/\\\")]\nraws=[]; errors=[]\nfor x in json.loads((root/\\\"REVIEW-PACKET-MANIFEST.json\\\").read_bytes())[\\\"artifacts\\\"]:\n if x[\\\"path\\\"].endswith(\\\".raw-base64.json\\\"):\n  v=json.loads((root/x[\\\"path\\\"]).read_bytes()); data=base64.b64decode(v[\\\"data\\\"],validate=True); raws.append(x[\\\"path\\\"])\n  if len(data)\"'!=v[\"bytes\"] or h(data)!=v[\"sha256\"]: errors.append(x[\"path\"])\nresult={\"correctedRequirements\":len(ids(corrected,req)),\"uniqueRequirements\":len(set(ids(corrected,req))),\"correctedScenarios\":len(ids(corrected,sc)),\"uniqueScenarios\":len(set(ids(corrected,sc))),\"tasks\":tasks(corrected),\"originalD05RequirementAndScenarioIDsPreserved\":ids(corrected,req)==ids(original,req) and ids(corrected,sc)==ids(original,sc),\"D03RequirementAndScenarioIDsRetained\":set(ids(root,req))<=set(ids(corrected,req)) and set(ids(root,sc))<=set(ids(corrected,sc)),\"D03TaskIDsRetained\":set(tasks(root))<=set(tasks(corrected)),\"operationalDesignIsExactPrefixOfReviewedCorrectedDesign\":(corrected/change/\"design.md\").read_bytes().startswith((root/change/\"design.md\").read_bytes()),\"all174ValidationBindingsMatchDraftInventory\":inv==audit[\"validationInputs\"],\"strictItemInventoryExcludingGitkeepMatches\":expected==actual,\"currentControlsCount\":len(control),\"currentControlsDigest\":h(json.dumps(control,sort_keys=True,separators=(\",\",\":\")).encode()),\"rawBase64WrappersVerified\":len(raws),\"rawErrors\":errors}\nrunpy.run_path(str(e/\"d05-t01-pre-retry-20261007/packet-read.py\"))[\"page\"](json.dumps(result,indent=2),0,\"independent-plan-counts-and-raw-bindings\",h((root/\"REVIEW-PACKET-MANIFEST.json\").read_bytes()))'\"'\"",
+          "aggregated_output": "Traceback (most recent call last):\n  File \"<string>\", line 12, in <module>\nKeyError: 'data'\n",
+          "exit_code": 1,
+          "status": "failed"
+        }
+      }
+    }
+  ],
+  "nonzeroCommands": [
+    {
+      "line": 44,
+      "id": "item_21",
+      "exit": 1,
+      "status": "failed",
+      "command": "/usr/bin/zsh -lc 'python3 openspec/changes/frade-standard-workflow/evidence/d05-t01-accepted-20261007/decision.json 0'",
+      "output": "Traceback (most recent call last):\n  File \"/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-07T22-08-16-058Z-28f437f4-bccb-4eb9-9623-e75870753c06/prepared/packet/openspec/changes/frade-standard-workflow/evidence/d05-t01-accepted-20261007/decision.json\", line 21, in <module>\n    \"changed\": true\n               ^^^^\nNameError: name 'true' is not defined. Did you mean: 'True'?\n"
+    },
+    {
+      "line": 166,
+      "id": "item_84",
+      "exit": 1,
+      "status": "failed",
+      "command": "/usr/bin/zsh -lc \"python3 - <<'PY'\nimport json,pathlib,hashlib,base64,runpy\nroot=pathlib.Path.cwd(); h=lambda b:hashlib.sha256(b).hexdigest()\ne=root/'openspec/changes/frade-standard-workflow/evidence'; manifest=json.loads((root/'REVIEW-PACKET-MANIFEST.json').read_bytes()); errors=[]\ndef check(path,size,digest):\n p=root/path\n if p.is_absolute() and not p.is_relative_to(root): errors.append(['outside',path]); return\n if any(x.is_symlink() for x in [p,*p.parents] if x.is_relative_to(root)): errors.append(['link',path]); return\n if not p.is_file(): errors.append(['missing',path]); return\n b=p.read_bytes()\n if len(b)\"'!=size or h(b)!=digest: errors.append(['\"'mismatch',path])\nfor a in manifest['artifacts']: check(a['path'],a['bytes'],a['sha256'])\nd=json.loads((e/'d05-t01-accepted-20261007/decision.json').read_bytes()); o=json.loads((e/'d05-accepted-20261007/decision.json').read_bytes())\nfor a in d['approvedArtifacts']: check(str((e/'d05-order-proposal-20261007/artifacts'/a['path']).relative_to(root)),a['proposedBytes'],a['proposedSha256'])\nfor a in o['approvedArtifacts']: check(str((e/'d05-planning-proposal-20261007/artifacts'/a['path']).relative_to(root)),a['proposedBytes'],a['proposedSha256'])\nm=json.loads((e/'d05-order-proposal-20261007/historical-replay-mapping.json').read_bytes())\nfor a in m['inventory']:\n check(str((e/'d05-order-proposal-20261007/historical-replay/tree'/a['originalPath']).relative_to(root)),a['bytes'],a['sha256'])\n check(a['originalPath'],a['bytes'],a['sha256'])\nb=json.loads((e/'d05-t01-accepted-20261007/strict-validation-inputs.json').read_bytes()); overlay={a['path']:a for a in d['approvedArtifacts']}; matched=0; embedded=0\nfor a in b['inputs']:\n data=base64.b64decode(a['data'],validate=True)\n if len(data)\"'!=a['\"'bytes'] or h(data)\"'!=a['\"'sha256']: errors.append(['bundle',a['path']])\n if a['correctedOverlay']:\n  if data\"'!=(e/'\"'d05-order-proposal-20261007/artifacts'/a['path']).read_bytes() or a['sha256']\"'!=overlay[a['\"'path']]['proposedSha256']: errors.append(['overlay',a['path']])\n elif a['sha256']\"'!=a['\"'installedOwnerSha256']: errors.append(['installed-binding',a['path']])\n p=root/a['path']\n if p.is_file():\n  matched+=1\n  if h(p.read_bytes())\"'!=a['\"'installedOwnerSha256']: errors.append(['installed-bytes',a['path']])\n else: embedded+=1\nresult={'manifestEntries':len(manifest['artifacts']),'uniqueManifestPaths':len({a['path'] for a in manifest['artifacts']}),'correctedArtifactsVerified':len(d['approvedArtifacts']),'originalD05ArtifactsVerified':len(o['approvedArtifacts']),'historicalMappingEntriesVerifiedAgainstBothReplayAndInstalled':len(m['inventory']),'validationInputs':len(b['inputs']),'uniqueValidationPaths':len({a['path'] for a in b['inputs']}),'overlayCorrespondences':sum(a['correctedOverlay'] for a in b['inputs']),'installedBytesAvailable':matched,'additionalInputsVerifiedFromEmbeddedBytes':embedded,'errors':errors}\nrunpy.run_path(str(e/'d05-t01-pre-retry-20261007/packet-read.py'))['page'](json.dumps(result,indent=2),0,'independent-byte-binding-audit',h((root/'REVIEW-PACKET-MANIFEST.json').read_bytes()))\nPY\"",
+      "output": "zsh:1: can't create temp file for here document: no such file or directory\n"
+    },
+    {
+      "line": 238,
+      "id": "item_121",
+      "exit": 1,
+      "status": "failed",
+      "command": "/usr/bin/zsh -lc \"python3 -c 'import pathlib,json,hashlib,re,base64,runpy\nroot=pathlib.Path.cwd(); e=root/\\\"openspec/changes/frade-standard-workflow/evidence\\\"; corrected=e/\\\"d05-order-proposal-20261007/artifacts\\\"; original=e/\\\"d05-planning-proposal-20261007/artifacts\\\"; change=pathlib.Path(\\\"openspec/changes/frade-standard-workflow\\\"); h=lambda b:hashlib.sha256(b).hexdigest(); bundle=json.loads((e/\\\"d05-t01-accepted-20261007/strict-validation-inputs.json\\\").read_bytes()); audit=json.loads((e/\\\"d05-order-proposal-20261007/draft-audit.json\\\").read_bytes()); current=json.loads((e/\\\"d05-t01-pre-retry-20261007/current-strict-validation.json\\\").read_bytes())\nexpected={\\\"change:\\\"+pathlib.PurePosixPath(x[\\\"path\\\"]).parts[2] for x in bundle[\\\"inputs\\\"] if x[\\\"path\\\"].startswith(\\\"openspec/changes/\\\") and len(pathlib.PurePosixPath(x[\\\"path\\\"]).parts)>3 and pathlib.PurePosixPath(x[\\\"path\\\"]).parts[2]\"'!=\"archive\"}|{\"spec:\"+pathlib.PurePosixPath(x[\"path\"]).parts[2] for x in bundle[\"inputs\"] if x[\"path\"].startswith(\"openspec/specs/\") and len(pathlib.PurePosixPath(x[\"path\"]).parts)>3}\nactual={i[\"type\"]+\":\"+i[\"id\"] for i in json.loads(current[\"checks\"][3][\"stdout\"])[\"items\"]}\ndef ids(base,pattern):\n return re.findall(pattern,\"'\"\\\\n\\\".join((base/change/\\\"specs\\\"/name/\\\"spec.md\\\").read_text() for name in (\\\"engineering-direction-lifecycle\\\",\\\"engineering-role-dispatch\\\",\\\"engineering-progress-publication\\\")),re.M)\nreq=r\\\"\"'^### Requirement: (FWE-'\"\\\\d+)\\\\b\\\"; sc=r\\\"\"'^#### Scenario: (FWE-'\"\\\\d+-S\\\\d+)\\\\b\\\"; tasks=lambda base:re.findall(r\\\"\"'^- '\"\\\\[[ x]\\\\] (\\\\d+\\\\.\\\\d+)\\\\b\\\",(base/change/\\\"tasks.md\\\").read_text(),re.M)\ninv=[{k:x[k] for k in (\\\"path\\\",\\\"sha256\\\",\\\"bytes\\\")} for x in bundle[\\\"inputs\\\"]]; control=json.loads((root/\\\"REVIEW-PACKET-MANIFEST.json\\\").read_bytes())[\\\"artifacts\\\"]; control=[{\\\"path\\\":x[\\\"path\\\"],\\\"sha256\\\":x[\\\"sha256\\\"]} for x in control if x[\\\"path\\\"].startswith(\\\"scripts/directions/\\\")]\nraws=[]; errors=[]\nfor x in json.loads((root/\\\"REVIEW-PACKET-MANIFEST.json\\\").read_bytes())[\\\"artifacts\\\"]:\n if x[\\\"path\\\"].endswith(\\\".raw-base64.json\\\"):\n  v=json.loads((root/x[\\\"path\\\"]).read_bytes()); data=base64.b64decode(v[\\\"data\\\"],validate=True); raws.append(x[\\\"path\\\"])\n  if len(data)\"'!=v[\"bytes\"] or h(data)!=v[\"sha256\"]: errors.append(x[\"path\"])\nresult={\"correctedRequirements\":len(ids(corrected,req)),\"uniqueRequirements\":len(set(ids(corrected,req))),\"correctedScenarios\":len(ids(corrected,sc)),\"uniqueScenarios\":len(set(ids(corrected,sc))),\"tasks\":tasks(corrected),\"originalD05RequirementAndScenarioIDsPreserved\":ids(corrected,req)==ids(original,req) and ids(corrected,sc)==ids(original,sc),\"D03RequirementAndScenarioIDsRetained\":set(ids(root,req))<=set(ids(corrected,req)) and set(ids(root,sc))<=set(ids(corrected,sc)),\"D03TaskIDsRetained\":set(tasks(root))<=set(tasks(corrected)),\"operationalDesignIsExactPrefixOfReviewedCorrectedDesign\":(corrected/change/\"design.md\").read_bytes().startswith((root/change/\"design.md\").read_bytes()),\"all174ValidationBindingsMatchDraftInventory\":inv==audit[\"validationInputs\"],\"strictItemInventoryExcludingGitkeepMatches\":expected==actual,\"currentControlsCount\":len(control),\"currentControlsDigest\":h(json.dumps(control,sort_keys=True,separators=(\",\",\":\")).encode()),\"rawBase64WrappersVerified\":len(raws),\"rawErrors\":errors}\nrunpy.run_path(str(e/\"d05-t01-pre-retry-20261007/packet-read.py\"))[\"page\"](json.dumps(result,indent=2),0,\"independent-plan-counts-and-raw-bindings\",h((root/\"REVIEW-PACKET-MANIFEST.json\").read_bytes()))'\"'\"",
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 12, in <module>\nKeyError: 'data'\n"
+    }
+  ],
+  "commandCount": 126,
+  "termination": {
+    "stopped": true,
+    "method": "wsl-run-pgrep",
+    "runId": "2026-10-07T22-08-16-058Z-28f437f4-bccb-4eb9-9623-e75870753c06",
+    "recordSha256": "771fbc41862cb2d012cb56facfb8e574d8912e979d6c1df3c6752b82ed3efd8d",
+    "sharedRun": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-07T22-08-16-058Z-28f437f4-bccb-4eb9-9623-e75870753c06",
+    "probes": [
+      {
+        "argv": [
+          "-d",
+          "Ubuntu-22.04_E",
+          "--exec",
+          "/usr/bin/pgrep",
+          "-af",
+          "--",
+          "2026-10-07T22-08-16-058Z-28f437f4-bccb-4eb9-9623-e75870753c06"
+        ],
+        "pid": 452,
+        "exit": 1,
+        "stdout": "",
+        "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000A\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000y\u0000 \u0000c\u0000o\u0000n\u0000f\u0000i\u0000g\u0000u\u0000r\u0000a\u0000t\u0000i\u0000o\u0000n\u0000 \u0000w\u0000a\u0000s\u0000 \u0000d\u0000e\u0000t\u0000e\u0000c\u0000t\u0000e\u0000d\u0000 \u0000b\u0000u\u0000t\u0000 \u0000n\u0000o\u0000t\u0000 \u0000m\u0000i\u0000r\u0000r\u0000o\u0000r\u0000e\u0000d\u0000 \u0000i\u0000n\u0000t\u0000o\u0000 \u0000W\u0000S\u0000L\u0000.\u0000 \u0000W\u0000S\u0000L\u0000 \u0000i\u0000n\u0000 \u0000N\u0000A\u0000T\u0000 \u0000m\u0000o\u0000d\u0000e\u0000 \u0000d\u0000o\u0000e\u0000s\u0000 \u0000n\u0000o\u0000t\u0000 \u0000s\u0000u\u0000p\u0000p\u0000o\u0000r\u0000t\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000i\u0000e\u0000s\u0000.\u0000\r\u0000\n\u0000",
+        "signal": null,
+        "killed": false
+      }
+    ]
+  },
+  "freezeStillPresent": true,
+  "reviewAdmitted": false
+}

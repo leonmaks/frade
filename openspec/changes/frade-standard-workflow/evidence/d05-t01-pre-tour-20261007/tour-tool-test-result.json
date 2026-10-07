@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "evidenceKind": "ACTUAL_EXEC_TOOL_RESULT_RECORDED_BY_OWNER",
+  "execSession": 65169,
+  "exitCode": 0,
+  "command": "wsl.exe -d Ubuntu-22.04_E --exec /usr/bin/env PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -B /mnt/e/dev/codex/frade-worker-staging/w01-pre-tour-20261007/check-tour.py",
+  "cwd": "E:/dev/codex/frade-worker-staging/w01-pre-tour-20261007/packet-v2",
+  "toolResult": {
+    "status": "PASS",
+    "completeTourPages": 135,
+    "completeSemanticPaths": 44,
+    "tourCharacters": 531015,
+    "verification": {
+      "packetManifestSha256": "9eae4c979c984eda9aa3429195c2eee658b6a0092e9a6c60ee04c2a061e264c7",
+      "artifactsVerified": 203,
+      "artifactBytesVerified": 5477703,
+      "validationInputsDecodedVerified": 174,
+      "correctedArtifactsCrossBound": 11,
+      "exactHistoricalReplayBindings": 8,
+      "strictOverlayCorrespondences": 7,
+      "retainedRawPayloadsDecodedVerified": 24,
+      "meaning": "mechanical byte verification, no gate approval"
+    },
+    "literalNextCommandsExecuted": 134,
+    "assertedCorruptCloneDenial": 1,
+    "ownerCandidateChanged": false,
+    "reviewAdmitted": false
+  },
+  "limitations": "Complete successful structured stdout is recorded from the exec tool result; no claim of separately captured exact process stdout/stderr bytes. Initial WSL localhost-proxy warning was observed. The 203-file disposable fixture is the exact200-file public PRE packet plus3 preparation inputs; it is not a new actual independent review.",
+  "currentPREAdmitted": false,
+  "productionChanged": false
+}

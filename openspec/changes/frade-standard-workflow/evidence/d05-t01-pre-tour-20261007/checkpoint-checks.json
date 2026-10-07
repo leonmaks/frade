@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "atUtc": "2026-10-07T22:49:45.496Z",
+  "scope": "D05-R01 recovery/preparation evidence and status only; approved11 artifacts, all original controls/tests/consumers unchanged",
+  "checks": [
+    {
+      "exe": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "scripts/directions/cli.mjs",
+        "check",
+        "E:/dev/codex/frade-worktrees/frade-standard-workflow/docs/engineering/directions/frade-standard-workflow/direction.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"ok\":true,\"status\":\"VALID\",\"id\":\"frade-standard-workflow\",\"owner\":{\"branch\":\"codex/frade-standard-workflow\",\"worktree\":\"E:/dev/codex/frade-worktrees/frade-standard-workflow\",\"gitCommon\":\"E:/dev/codex/frade/.git\"},\"baseline\":\"98f387f96b51b0ad139e3507c376ff1c3e8dec09\"}\n",
+      "stderr": ""
+    },
+    {
+      "exe": "git",
+      "args": [
+        "-c",
+        "core.autocrlf=false",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "semanticTourTestExitCode": 0
+}
