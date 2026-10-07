@@ -1,0 +1,106 @@
+{
+  "atUtc": "2026-10-07T21:54:00.911Z",
+  "run": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-07T21-36-01-541Z-b10e8e8c-9989-439f-94b6-fb7f086dd7c3",
+  "sharedRun": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-07T21-36-25-354Z-9ef4b01c-2946-4ae4-9d02-36c53ce668ac",
+  "sourceUnchanged": true,
+  "head": "22c72496e39044a2595d9ee5f2993e12b2462ec9",
+  "snapshotSha256": "5009da109191f558f444c73f0645363312f84faa99224a214c16b4c7dff715d8",
+  "indexSha256": "c64414b3a93a847ab483063ba577e28db7ad207e03229cd339eac47c37d73903",
+  "requestUnchanged": true,
+  "packetUnchanged": true,
+  "retainedArtifactsVerified": 199,
+  "rawExit": {
+    "exit": 0,
+    "timedOut": false
+  },
+  "rawReception": {
+    "ok": false,
+    "status": "BLOCKED",
+    "code": "REVIEW_EVENTS",
+    "detail": ""
+  },
+  "eventTypes": {
+    "thread.started": 1,
+    "turn.started": 1,
+    "item.completed": 170,
+    "item.started": 163,
+    "turn.completed": 1
+  },
+  "eventIssues": [
+    {
+      "line": 40,
+      "event": {
+        "type": "item.completed",
+        "item": {
+          "id": "item_19",
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"python3 -c 'from pathlib import Path; import json; d=json.loads(Path(\\\"REVIEW-PACKET-MANIFEST.json\\\").read_text()); s=json.dumps({\\\"start\\\":35,\\\"end\\\":80,\\\"paths\\\":[x[\\\"path\\\"] for x in d[\\\"artifacts\\\"][35:80]]}); assert len(s.encode())<=5800; print(s)'\"",
+          "aggregated_output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nAssertionError\n",
+          "exit_code": 1,
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "line": 170,
+      "event": {
+        "type": "item.completed",
+        "item": {
+          "id": "item_85",
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"python3 -c 'from pathlib import Path; import json; d=json.loads(Path(\\\"openspec/changes/frade-standard-workflow/evidence/d05-t01-accepted-20261007/current-strict-validation.json\\\").read_text()); p=json.loads(d[\\\"checks\\\"][3][\\\"stdout\\\"]); s=json.dumps({\\\"checks\\\":[1,3],\\\"semanticEqualityPreviouslyVerified\\\":True,\\\"range\\\":[12,16],\\\"items\\\":p[\\\"items\\\"][12:16]},ensure_ascii=False); assert len(s.encode())<=5800; print(s)'\"",
+          "aggregated_output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nAssertionError\n",
+          "exit_code": 1,
+          "status": "failed"
+        }
+      }
+    }
+  ],
+  "nonzeroCommands": [
+    {
+      "line": 40,
+      "id": "item_19",
+      "exit": 1,
+      "status": "failed",
+      "command": "/usr/bin/zsh -lc \"python3 -c 'from pathlib import Path; import json; d=json.loads(Path(\\\"REVIEW-PACKET-MANIFEST.json\\\").read_text()); s=json.dumps({\\\"start\\\":35,\\\"end\\\":80,\\\"paths\\\":[x[\\\"path\\\"] for x in d[\\\"artifacts\\\"][35:80]]}); assert len(s.encode())<=5800; print(s)'\"",
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nAssertionError\n"
+    },
+    {
+      "line": 170,
+      "id": "item_85",
+      "exit": 1,
+      "status": "failed",
+      "command": "/usr/bin/zsh -lc \"python3 -c 'from pathlib import Path; import json; d=json.loads(Path(\\\"openspec/changes/frade-standard-workflow/evidence/d05-t01-accepted-20261007/current-strict-validation.json\\\").read_text()); p=json.loads(d[\\\"checks\\\"][3][\\\"stdout\\\"]); s=json.dumps({\\\"checks\\\":[1,3],\\\"semanticEqualityPreviouslyVerified\\\":True,\\\"range\\\":[12,16],\\\"items\\\":p[\\\"items\\\"][12:16]},ensure_ascii=False); assert len(s.encode())<=5800; print(s)'\"",
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nAssertionError\n"
+    }
+  ],
+  "commandCount": 163,
+  "termination": {
+    "stopped": true,
+    "method": "wsl-run-pgrep",
+    "runId": "2026-10-07T21-36-25-354Z-9ef4b01c-2946-4ae4-9d02-36c53ce668ac",
+    "recordSha256": "324dd0b6cc9d494152a192f6999c955fc286f3a21c4e7118eda904a8e004332a",
+    "sharedRun": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-07T21-36-25-354Z-9ef4b01c-2946-4ae4-9d02-36c53ce668ac",
+    "probes": [
+      {
+        "argv": [
+          "-d",
+          "Ubuntu-22.04_E",
+          "--exec",
+          "/usr/bin/pgrep",
+          "-af",
+          "--",
+          "2026-10-07T21-36-25-354Z-9ef4b01c-2946-4ae4-9d02-36c53ce668ac"
+        ],
+        "pid": 28820,
+        "exit": 1,
+        "stdout": "",
+        "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000A\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000y\u0000 \u0000c\u0000o\u0000n\u0000f\u0000i\u0000g\u0000u\u0000r\u0000a\u0000t\u0000i\u0000o\u0000n\u0000 \u0000w\u0000a\u0000s\u0000 \u0000d\u0000e\u0000t\u0000e\u0000c\u0000t\u0000e\u0000d\u0000 \u0000b\u0000u\u0000t\u0000 \u0000n\u0000o\u0000t\u0000 \u0000m\u0000i\u0000r\u0000r\u0000o\u0000r\u0000e\u0000d\u0000 \u0000i\u0000n\u0000t\u0000o\u0000 \u0000W\u0000S\u0000L\u0000.\u0000 \u0000W\u0000S\u0000L\u0000 \u0000i\u0000n\u0000 \u0000N\u0000A\u0000T\u0000 \u0000m\u0000o\u0000d\u0000e\u0000 \u0000d\u0000o\u0000e\u0000s\u0000 \u0000n\u0000o\u0000t\u0000 \u0000s\u0000u\u0000p\u0000p\u0000o\u0000r\u0000t\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000i\u0000e\u0000s\u0000.\u0000\r\u0000\n\u0000",
+        "signal": null,
+        "killed": false
+      }
+    ]
+  },
+  "freezeStillPresent": true,
+  "reviewAdmitted": false
+}

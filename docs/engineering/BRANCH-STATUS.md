@@ -1,6 +1,6 @@
 # Frade — единый workflow: статус W01
 
-UPDATED_AT_UTC: 2026-10-07T21:33:49.930Z
+UPDATED_AT_UTC: 2026-10-07T22:01:16.403Z
 STATUS_SOURCE: manually reconciled from retained raw evidence; not an automatically attested metrics projection.
 
 ## 1. Решение / следующий шаг
@@ -25,7 +25,7 @@ Scope: собственные process controls/docs/tests/evidence. Product/fore
 
 | Этап | Фактическое состояние | PRE / Verify / POST / archive |
 |---|---|---|
-| W01 | PLANNING / PRE_REQUIRED; D05-T01 accepted, implementation blocked on fresh PRE | historical POST/PRE FAIL retained; fresh amended PRE NOT_RUN; new Verify/POST/archive NOT_RUN |
+| W01 | PLANNING / PRE_REQUIRED; D05-T01 accepted, implementation blocked on fresh PRE | historical POST/PRE FAIL retained; accepted-package PRE raw FAIL / reception BLOCKED retained; fresh retry QUEUED; new Verify/POST/archive NOT_RUN |
 | Existing-owner adoption | NOT_STARTED; отдельные owner checkpoints | собственные applicable gates |
 | Main integration | NOT_STARTED; не разрешена автоматически | merge и revalidation отдельно |
 
@@ -42,19 +42,19 @@ STOP после W01. Автоматизация внутри направлен�
 | 4.4 | OPEN / WAITING 4.3 | три spec sync, W01-only archive, ссылки, публикация; 45–120 мин после gates |
 | Дополнение автоматизации | D05_T01_ACCEPTED / FRESH_PRE_REQUIRED / NOT_IMPLEMENTED | 1.6→1.7→2.8–2.13→3.3–3.4→4.1→4.2; оценка полного нового scope74–152ч, automation48–96ч, reception6–12ч; ожидания и4.3/4.4 отдельно |
 | 1.6 | COMPLETE in external accepted-scope evidence; old live checkbox unchanged | accepted exact package/mapping; current strict selected/all PASS; supported preparation READY |
-| 1.7 | QUEUED_FOR_AUTOMATIC_DISPATCH; actual reviewer not yet started; prior FAIL retained | after acceptance commit/push verified, freeze and fresh full independent Astra/xhigh |
+| 1.7 | OPEN: last full PRE raw FAIL / reception BLOCKED; retry QUEUED, not yet dispatched | publish recovery/preparation checkpoint, then fresh full Astra/xhigh PRE |
 | 2.8–2.9 | NOT_STARTED / WAITING fresh1.7 | reception RED/repair under D03 operational pins;6–12h estimate |
 | 2.10–2.13 | NOT_STARTED / WAITING predecessors | service/atomic adoption/transport/ingestion/broker;38–76h estimate |
 | 3.3–3.4 | NOT_STARTED / WAITING implementation | two actual E2E + cumulative checks;14–28h estimate |
 
-ADMINISTRATIVE_TASKS: live D03 checkbox history15/18; D05 approved overlay28tasks, historical4.1 reopened, task1.6 completion evidence recorded externally pending exact plan adoption. Neither count grants readiness. Task1.7 new full PRE NOT_RUN after D05-T01 acceptance; prior PRE FAIL is immutable history. Operational D03 unchanged; corrected scope25requirements/83scenarios/28tasks accepted, not implemented.
+ADMINISTRATIVE_TASKS: live D03 checkbox history15/18; D05 approved overlay28tasks, historical4.1 reopened, task1.6 completion evidence recorded externally pending exact plan adoption. Neither count grants readiness. Task1.7 last full accepted-package PRE raw FAIL / reception BLOCKED (two failed output-size inspections); next clean retry NOT_RUN. All prior reports remain immutable history. Operational D03 unchanged; corrected scope25requirements/83scenarios/28tasks accepted, not implemented.
 
 ## 5. Проверки / gates / качество
 
 | Проверка | Факт / ограничение |
 |---|---|
 | Write preflight | все три корня Create/Read/Delete PASS через auto-reviewed escalation; обычный sandbox helper setup падает до команды |
-| Исполнители / freeze | no parallel owning W01 executor; independent R04 tests observed separately; owning freeze absent at preflight; fresh PRE not started |
+| Исполнители / freeze | no parallel owning W01 executor; independent R04 tests observed separately; completed BLOCKED PRE freeze archived/released by explicit one-time permission after source/index/HEAD/request/packet/termination proofs; next PRE not started |
 | ENAMETOOLONG | RED:33270 chars rejected; GREEN:28741 chars launch exit0; 277files/7,389,082bytes сохранили все прежние273files+4 |
 | OpenSpec | current exact pinned1.14.0: installed D03 selected/all PASS + exact accepted D05-T01 selected/all PASS;174input bytes/hashes available; no global/guard change |
 | Текущий independent POST | GATE_STATUS: FAIL; complete raw stream сохранён; candidate/packet unchanged; inspection limitations не дают PASS |
@@ -84,21 +84,24 @@ ACTUAL_BACKEND / ACTUAL_EFFORT: NOT_CONFIRMED. Запрошенная пара �
 | POST-20261007-01 | OPEN: verifyRawReview принимает PASS со command exit1/2 | regression-first correction без ослабления clean-stream rule |
 | POST-20261007-02 | OPEN: Verify receipt противоречит retained inspection failures | сохранить историю, новый clean Verify |
 | POST-20261007-03 | OPEN: truncated outputs/corrected inspection mistakes в текущем review | новый clean cumulative POST |
-| AUTOMATIC-WRITER-SCOPE | D05_ACCEPTED / PRE_FAIL / NOT_IMPLEMENTED | plan ordering repair + fresh PRE; no manual per-direction settings required by target |
+| AUTOMATIC-WRITER-SCOPE | D05_T01_ACCEPTED / FRESH_PRE_REQUIRED / NOT_IMPLEMENTED | automatic full clean PRE; manual per-direction sessions/settings excluded by accepted target |
 | D05-AUTHORITY-ORDER | exact D05-T01 timing/mapping ACCEPTED; old conflict reproduction retained | keep D03 through2.10; atomic2.11 only after full clean PRE/RED; no failure exclusions |
 | D05-PRE-20261007 | independent verdict FAIL; truncated inspections and missing current strict-all in reviewed packet | current strict-all now PASS in staging; fresh complete PRE still required |
+| D05-T01-PRE-RECEPTION | OPEN: raw FAIL, reception REVIEW_EVENTS; output-size assertions failed twice; normal release REVIEW_RAW_INCOMPLETE | explicit exceptional freeze recovery completed; pretested automatic bounded pagination; fresh full PRE, no production |
 | Planning sandbox launcher | historical first draft BLOCKED; later exact Astra/high drafts complete/exit0/unchanged inputs; actual Sol/high confined admission preflight PASS | task2.11 still requires delivered namespace/crash recovery; no parallel authenticated worker launch during review |
 
 Foreign owner FAIL не блокирует supplier; чужие scope/adoption не выполнялись.
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 7671763ad29bd0f8710115ffa5d22d14c60742d0 at specific D05-T01 acceptance; prior reviewed candidates retained separately.
-COMMIT_STATE: proposal7671763ad29bd0f8710115ffa5d22d14c60742d0 PUBLISHED; preparing acceptance/current preflight checkpoint; no implementation or early adoption.
+SOURCE_CHECKPOINT_SHA: 22c72496e39044a2595d9ee5f2993e12b2462ec9 reviewed by failed PRE; acceptance commit/push verified. Retry checkpoint publication pending.
+COMMIT_STATE: acceptance22c72496e39044a2595d9ee5f2993e12b2462ec9 PUBLISHED; recovery/preparation checkpoint pending; production unchanged.
+PREVIOUS_PUBLICATION_RECEIPT: source22c72496e39044a2595d9ee5f2993e12b2462ec9; verified22c72496e39044a2595d9ee5f2993e12b2462ec9; exact receipt openspec/changes/frade-standard-workflow/evidence/d05-t01-pre-retry-20261007/prior-publication-receipt.json.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: proposal7671763ad29bd0f8710115ffa5d22d14c60742d0 verified authorized remote/ref; acceptance publication pending separate receipt.
+PUSH_STATE: acceptance22c72496e39044a2595d9ee5f2993e12b2462ec9 verified authorized remote/ref; recovery/preparation publication pending separate receipt.
 CURRENT_EVIDENCE: openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/resume-summary.json; POST-REPORT.md; receipt.json; raw-index.json; argv-red-green.json; preflight.json.
 PRIVATE_RAW: Git common run 2026-10-07T19-22-17-357Z-351c9b51-46a3-48ba-ad02-9c94329c3822; сохранён runner-ом до интерпретации.
+D05_T01_PRE_RETRY: openspec/changes/frade-standard-workflow/evidence/d05-t01-pre-retry-20261007/previous-raw-index.json; PREVIOUS-PRE-REPORT.md; blocked-pre-diagnosis.json; freeze-release.json; current-strict-validation.json; reader-check.json. Raw FAIL / admission BLOCKED; no production. New full PRE queued only after checkpoint publication.
 D05_T01_ACCEPTED_DECISION: openspec/changes/frade-standard-workflow/evidence/d05-t01-accepted-20261007/decision.json; preflight.json; proposal-publication-result.json. Exact package/mapping accepted; fresh clean PRE required.
 D05_T01_REVIEWABLE_PACKAGE: openspec/changes/frade-standard-workflow/evidence/d05-order-proposal-20261007/APPROVAL.md; approval-request.json; draft-audit.json; historical-replay-mapping.json. Machine validation is not approval/PRE.
 D05_PRE_RESULT: openspec/changes/frade-standard-workflow/evidence/d05-pre-20261007/receipt.json; PRE-REPORT.md; exact raw events/report/exit/provenance retained as verified base64. No accepted gate.
