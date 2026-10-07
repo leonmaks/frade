@@ -1,98 +1,92 @@
-# Frade — единый workflow: статус W01
+# Единый workflow Frade — статус
 
-UPDATED_AT_UTC: 2026-10-07T19:50:11.636Z
-STATUS_SOURCE: manually reconciled from retained raw evidence; not an automatically attested metrics projection.
+UPDATED_AT_UTC: 2026-10-05T15:52:24.542Z
+PROJECTION_SOURCE_SHA256: 5becd5c74caeb30a860848d0659fda3e39d00668e96dda490fdf41dfd280d3ba
+POLICY_VERSION: 1.1 / 6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb
 
 ## 1. Решение / следующий шаг
 
-STAGE: W01 | PHASE: POST_REVIEW | HEALTH: FAIL
-NEXT_PERMITTED_ACTION: согласовать конкретное дополнение W01; после утверждения — strict validation и fresh independent PRE, затем regression-first repair/automation, проверки, clean formal Verify и cumulative POST.
-HUMAN_DECISION: новый scope автоматических исполнителей и уточнённые planning artifacts; существующие D01–D04/точные пары моделей сохраняются.
-READY_FOR_ARCHIVE: NO. Task 4.2 не закрыта; переход к 4.3/4.4 запрещён.
+STAGE: W01 | PHASE: POST_REVIEW | HEALTH: RUNNING
+NEXT_PERMITTED_ACTION: Resolve listed blockers and refresh source-bound evidence.
+HUMAN_DECISION: NONE
+READY_FOR_IMPLEMENTATION: NO | current PRE and checkpoint proof required
+READY_FOR_ARCHIVE: NO | current checks, Verify, POST and publication proof required
 
 ## 2. Идентичность / scope
 
-Branch: codex/frade-standard-workflow.
-Worktree: E:/dev/codex/frade-worktrees/frade-standard-workflow.
-Git common: E:/dev/codex/frade/.git.
-Original baseline: 98f387f96b51b0ad139e3507c376ff1c3e8dec09.
-Reviewed HEAD: 62b9e0fbfd55f8b2e99f8ea210786fc6c9f01fd0; reviewed snapshot: 76d198aa36733bab083e8165447bf38e919ae2518f40f84ef23225cae2309a12. После завершённого gate изменился index stat-cache; source/HEAD/staged content не менялись, точное сравнение сохранено в post-snapshot-diagnostic.json.
-Policy v1.1: a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0.
-Scope: собственные process controls/docs/tests/evidence. Product/foreign owners/main integration исключены. Общий release не изменён.
+| Direction / change                                | Branch / worktree / Git common                                                                               | Original origin                          | Approved checkpoint | Scope / exclusions / rules                                                                                                                                                                                                                       |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| frade-standard-workflow / frade-standard-workflow | codex/frade-standard-workflow; E:/dev/codex/frade-worktrees/frade-standard-workflow; E:/dev/codex/frade/.git | 98f387f96b51b0ad139e3507c376ff1c3e8dec09 | NOT_RUN             | docs/engineering/**, openspec/changes/frade-standard-workflow/**, scripts/directions/**, tests/directions/**, AGENTS.md, package.json, .github/workflows/ci.yml; frozen packages/**, apps/**, pnpm-lock.yaml, scripts/routing-v2-architecture-ga |
 
 ## 3. Roadmap этапов
 
-| Этап | Фактическое состояние | PRE / Verify / POST / archive |
-|---|---|---|
-| W01 | POST_REVIEW / FAIL; исправление приёма + согласование полной автоматизации | прежний PRE PASS — история; formal Verify PASS admission оспорен; новый POST FAIL; archive NOT_RUN |
-| Existing-owner adoption | NOT_STARTED; отдельные owner checkpoints | собственные applicable gates |
-| Main integration | NOT_STARTED; не разрешена автоматически | merge и revalidation отдельно |
-
-STOP после W01. Автоматизация внутри направления не разрешает следующий нумерованный этап.
+| Stage | Goal / OpenSpec change  | Dependencies | Phase / health        | PRE / Verify / POST / archive |
+| ----- | ----------------------- | ------------ | --------------------- | ----------------------------- |
+| W01   | frade-standard-workflow | NONE         | POST_REVIEW / RUNNING | NOT_VERIFIED                  |
 
 ## 4. Активные задачи / шаги
 
-| Задачи | Статус | Следующий шаг / оценка (не обещание) |
-|---|---|---|
-| 1.1–1.5, 2.1–2.7, 3.1–3.2 | административно выполнены; историческое evidence сохранено | новая область требует отдельной повторной проверки |
-| 4.1 | исторически отмечена выполненной; clean formal Verify сейчас не установлен | повтор после исправления/расширения; 30–90 мин без ремонта |
-| 4.2 | OPEN / POST FAIL | reception repair + fresh checks/Verify/POST; 2–6 ч без новой автоматизации |
-| 4.3 | OPEN / WAITING 4.2 | reviewed release/discovery; 30–90 мин после PASS |
-| 4.4 | OPEN / WAITING 4.3 | три spec sync, W01-only archive, ссылки, публикация; 45–120 мин после gates |
-| Дополнение автоматизации | DRAFT / NOT_APPROVED / NOT_IMPLEMENTED | конкретный план готовится; трудоёмкость отдельная |
-
-ADMINISTRATIVE_TASKS: 15/18. Этот счётчик не означает accepted requirements или readiness.
+| Task / type                                    | Required ordered steps | Acceptance   | Status         | Source-bound evidence            |
+| ---------------------------------------------- | ---------------------- | ------------ | -------------- | -------------------------------- |
+| 1.1 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 1.2 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 1.3 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 1.4 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 1.5 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.1 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.2 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.3 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.4 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.5 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.6 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 2.7 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 3.1 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 3.2 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 4.1 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | ADMIN_COMPLETE | NOT_VERIFIED unless listed below |
+| 4.2 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | OPEN           | NOT_VERIFIED unless listed below |
+| 4.3 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | OPEN           | NOT_VERIFIED unless listed below |
+| 4.4 / UNRESOLVED                               | NOT_RECORDED           | NOT_RECORDED | OPEN           | NOT_VERIFIED unless listed below |
+| TASKS_COMPLETE/TOTAL/REMAINING: 15/18/3        |
+| REQUIREMENTS_ACCEPTED/TOTAL/UNCOVERED: 0/18/18 |
 
 ## 5. Проверки / gates / качество
 
-| Проверка | Факт / ограничение |
-|---|---|
-| Write preflight | все три корня Create/Read/Delete PASS через auto-reviewed escalation; обычный sandbox helper setup падает до команды |
-| Исполнители / freeze | чужого executor при resume не найдено; POST завершён, runner снял freeze; кандидат не менялся во время gate |
-| ENAMETOOLONG | RED:33270 chars rejected; GREEN:28741 chars launch exit0; 277files/7,389,082bytes сохранили все прежние273files+4 |
-| OpenSpec | isolated pinned1.14.0; guards/global install не менялись; strict selected PASS и strict all16/16 PASS в текущем POST |
-| Текущий independent POST | GATE_STATUS: FAIL; complete raw stream сохранён; candidate/packet unchanged; inspection limitations не дают PASS |
-| Исторические native tests | 221/221; 204 unique; zero skip; targeted35/35; owner1/1 — исходные записи, нового native полного прогона не было |
-| Текущий reviewer tests | actual readonly Linux35/35; zero skip |
-| General lint/type/build | прежние20/20 each cached; uncached check:all / remote CI / protection NOT_RUN |
-| Formal Verify | прежний RECEIVED_VALID_PASS сохранён; новый POST выявил exits2/1 inspection — clean admission BLOCKED, rerun required |
-| Метрики |18requirements/46scenarios; planning-only projection 0 accepted/0 executed не заменяет raw assertions/runs; автоматический ingest ещё не доставлен |
+| Check / contract                                             | Applicability + reason | Result | Command / run / source / environment | Limit / actual / gaps |
+| ------------------------------------------------------------ | ---------------------- | ------ | ------------------------------------ | --------------------- |
+| CHECKS_COMPLETE/TOTAL/REMAINING: 0/0/0                       |
+| SCENARIOS_EXECUTED/TOTAL: 0/46                               |
+| NEGATIVE_EXECUTED: 0; BOUNDARY_EXECUTED: 0; HUMAN_PENDING: 0 |
+| INVARIANT_FAILURES / STALE_EVIDENCE: 0 / 0                   |
+| REGRESSION_STATE: NOT_RUN                                    |
+| GAP: TRACE_SHAPE $                                           |
+| GAP: TASK_ACCEPTANCE_GAP tasks                               |
 
 ## 6. Модели / исполнение
 
-| Роль W01 | Точная утверждённая пара | Authority |
-|---|---|---|
-| planning-architecture | gpt-6-astra / high | design D03 |
-| tooling-tests | gpt-6-sol / high | design D03 |
-| formal-Verify | gpt-6-astra / high | design D03 |
-| independent-PRE | gpt-6-astra / xhigh | design D03 |
-| independent-POST | gpt-6-astra / xhigh | design D03; фактически запрошена текущим POST |
-
-Authority: openspec/changes/frade-standard-workflow/design.md; raw SHA256 501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a.
-ACTUAL_BACKEND / ACTUAL_EFFORT: NOT_CONFIRMED. Запрошенная пара не является backend attestation. Writer dispatcher: NOT_IMPLEMENTED.
+| Stage / task / role | Approved exact pair | Authority path/hash/excerpt | Invoked pair/runtime | Actual backend/effort | Override |
+|---|---|---|---|---|
+| W01 / planning-architecture | DECLARED_NOT_VERIFIED gpt-6-astra / high | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
+| W01 / tooling-tests | DECLARED_NOT_VERIFIED gpt-6-sol / high | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
+| W01 / formal-Verify | DECLARED_NOT_VERIFIED gpt-6-astra / high | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
+| W01 / independent-PRE | DECLARED_NOT_VERIFIED gpt-6-astra / xhigh | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
+| W01 / independent-POST | DECLARED_NOT_VERIFIED gpt-6-astra / xhigh | NOT_RUN / NOT_RUN / NOT_RUN | NOT_RUN | NOT_CONFIRMED | NONE |
 
 ## 7. Зависимости / решения / blockers
 
-| ID | Состояние / причина | Действие |
-|---|---|---|
-| POST-20261007-01 | OPEN: verifyRawReview принимает PASS со command exit1/2 | regression-first correction без ослабления clean-stream rule |
-| POST-20261007-02 | OPEN: Verify receipt противоречит retained inspection failures | сохранить историю, новый clean Verify |
-| POST-20261007-03 | OPEN: truncated outputs/corrected inspection mistakes в текущем review | новый clean cumulative POST |
-| AUTOMATIC-WRITER-SCOPE | DECISION_PENDING: full auto provisioning отсутствует | согласовать coherent amendment, fresh PRE до production |
-| Planning sandbox launcher | предыдущий staging draft BLOCKED, source не менялся | последовательный retry с финальным JSON, без write-tools |
-
-Foreign owner FAIL не блокирует supplier; чужие scope/adoption не выполнялись.
+| ID   | Consumer owner / affected scope | State / age       | Evidence / fix attempts / RCA | Required decision / next action |
+| ---- | ------------------------------- | ----------------- | ----------------------------- | ------------------------------- |
+| NONE | frade-standard-workflow         | NONE; AGE_UNKNOWN | NOT_RUN; attempts 0; NONE     | NONE                            |
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 62b9e0fbfd55f8b2e99f8ea210786fc6c9f01fd0.
-COMMIT_STATE: local evidence/status changes pending; inherited Oct5 uncommitted preparation retained.
-AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: NOT_RUN_THIS_RESUME; актуальный remote SHA пока не проверен.
-CURRENT_EVIDENCE: openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/resume-summary.json; POST-REPORT.md; receipt.json; raw-index.json; argv-red-green.json; preflight.json.
-PRIVATE_RAW: Git common run 2026-10-07T19-22-17-357Z-351c9b51-46a3-48ba-ad02-9c94329c3822; сохранён runner-ом до интерпретации.
-PANEL_STATE: NOT_OPENED; доступного UI-controller для правой панели сейчас нет.
-HISTORICAL_EVIDENCE: старый tail ниже сохранён; его FAIL/PASS относятся к указанным историческим кандидатам.
+SOURCE_CHECKPOINT_SHA: 62b9e0fbfd55f8b2e99f8ea210786fc6c9f01fd0
+COMMIT_STATE: NOT_VERIFIED
+AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow
+PUSH_STATE: NOT_VERIFIED
+VERIFIED_REMOTE_SHA: NOT_VERIFIED
+CURRENT_EVIDENCE: NONE
+PANEL_STATE: NOT_OPENED | display confirmation requires Codex UI controller receipt
+HISTORICAL_EVIDENCE: retained below boundary when present
 
 <!-- LEGACY HISTORY: historical only -->
 

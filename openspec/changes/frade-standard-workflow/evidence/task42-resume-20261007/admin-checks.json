@@ -1,0 +1,79 @@
+{
+  "status": "ADMINISTRATIVE_CHECKS_PASS_POST_REMAINS_FAIL",
+  "atUtc": "2026-10-07T19:53:38.761Z",
+  "checks": [
+    {
+      "id": "owner",
+      "exe": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "scripts/directions/cli.mjs",
+        "check",
+        "E:/dev/codex/frade-worktrees/frade-standard-workflow/docs/engineering/directions/frade-standard-workflow/direction.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "{\"ok\":true,\"status\":\"VALID\",\"id\":\"frade-standard-workflow\",\"owner\":{\"branch\":\"codex/frade-standard-workflow\",\"worktree\":\"E:/dev/codex/frade-worktrees/frade-standard-workflow\",\"gitCommon\":\"E:/dev/codex/frade/.git\"},\"baseline\":\"98f387f96b51b0ad139e3507c376ff1c3e8dec09\"}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "id": "strict",
+      "exe": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "E:/dev/codex/frade-worker-staging/w01-resume-20261007/openspec-1.14.0/node_modules/@fission-ai/openspec/bin/openspec.js",
+        "validate",
+        "frade-standard-workflow",
+        "--strict",
+        "--json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "{\n  \"items\": [\n    {\n      \"id\": \"frade-standard-workflow\",\n      \"type\": \"change\",\n      \"valid\": true,\n      \"issues\": [],\n      \"durationMs\": 34\n    }\n  ],\n  \"summary\": {\n    \"totals\": {\n      \"items\": 1,\n      \"passed\": 1,\n      \"failed\": 0\n    },\n    \"byType\": {\n      \"change\": {\n        \"items\": 1,\n        \"passed\": 1,\n        \"failed\": 0\n      }\n    }\n  },\n  \"version\": \"1.0\",\n  \"root\": {\n    \"path\": \"E:\\\\dev\\\\codex\\\\frade-worktrees\\\\frade-standard-workflow\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "id": "diff-check",
+      "exe": "git",
+      "args": [
+        "-c",
+        "core.autocrlf=false",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "id": "product-unchanged",
+      "exe": "git",
+      "args": [
+        "-c",
+        "core.autocrlf=false",
+        "diff",
+        "--name-only",
+        "HEAD",
+        "--",
+        "packages",
+        "apps",
+        "pnpm-lock.yaml",
+        "docs/routing-v2",
+        "vendor"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "error": null
+    }
+  ],
+  "legacyTailUnchanged": true,
+  "sectionCount": 8,
+  "productionChanged": false,
+  "fullNativeRerun": false,
+  "gateStatus": "FAIL",
+  "READY_FOR_VERIFY": "NO"
+}

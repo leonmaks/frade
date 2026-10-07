@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "classification": "INTEGRATION",
+  "purpose": "Observed data shape facts prevent accidental inspection errors; no scope, spec, check, guard or verdict waiver",
+  "immutablePacketManifest": {
+    "file": "REVIEW-PACKET-MANIFEST.json",
+    "version": 3,
+    "entriesKey": "artifacts",
+    "fields": [
+      "path",
+      "bytes",
+      "sha256"
+    ],
+    "notAnExistingKey": "files"
+  },
+  "formalReport": {
+    "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-req-repair-20261005/VERIFY-REPORT.json",
+    "runBindingsType": "object keyed by native-full etc",
+    "titleOccurrencesType": "array of {title,occurrences}",
+    "example": {
+      "title": "CLI 0.159.3 command completed with in_progress status and null exit blocks independently",
+      "occurrences": 1
+    },
+    "scenarioTestFields": [
+      "assertionId",
+      "path",
+      "line",
+      "sha256",
+      "title",
+      "assertion",
+      "assertionSamples",
+      "runBinding",
+      "passingOccurrences"
+    ]
+  },
+  "actualCapabilitySpecs": [
+    "openspec/changes/frade-standard-workflow/specs/engineering-direction-lifecycle/spec.md",
+    "openspec/changes/frade-standard-workflow/specs/engineering-role-dispatch/spec.md",
+    "openspec/changes/frade-standard-workflow/specs/engineering-progress-publication/spec.md"
+  ],
+  "nonexistentInventedPath": "openspec/changes/frade-standard-workflow/specs/workflow-evidence/spec.md",
+  "readingProtocol": "Inspect keys/types and manifest paths before dereferencing; derive actual paths rather than inventing names. A genuine missing required input remains a FAIL blocker. Preserve every error; no catches that fake checks or filter stream.",
+  "priorReview": "Unadmitted FAIL due three inspection mistakes, full raw retained; no additional candidate-code defect reproduced. This is history, not current gate approval.",
+  "strictReception": "Unchanged; current fresh stream must have every tool completed/exit0 and full terminal report/exit/source/index/packet proof",
+  "sameApprovedPair": "gpt-6-astra/xhigh",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED"
+}

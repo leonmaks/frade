@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "status": "UNADMITTED_FAIL_THREE_INSPECTION_ERRORS_RETAINED_REVIEWER_STOPPED",
+  "classification": "INTEGRATION",
+  "gateVerdictAdmitted": false,
+  "wrapperStatus": "BLOCKED",
+  "wrapperCode": "REVIEW_RECEPTION_INCOMPLETE",
+  "strictReceiver": {
+    "ok": false,
+    "status": "BLOCKED",
+    "code": "REVIEW_EVENTS",
+    "detail": ""
+  },
+  "reviewerReportedVerdict": "FAIL",
+  "sourceCheckpoint": "62b9e0fbfd55f8b2e99f8ea210786fc6c9f01fd0",
+  "verifiedImplementation": "eadd32026c0f71a82ce3981ae3e6cdd16f924e26",
+  "candidateUnchanged": true,
+  "exactRawIndexUnchanged": true,
+  "exactRawIndexSha256": "2340ae0e44d06f69a76cf4d4939278f76fa10ed14a8b640775ace382584b4109",
+  "packetUnchanged": true,
+  "packetFiles": 268,
+  "completeTerminalStream": true,
+  "finalReportBound": true,
+  "streamClean": false,
+  "failedItems": [
+    {
+      "id": "item_7",
+      "exitCode": 1,
+      "status": "failed",
+      "command": "/usr/bin/zsh -lc \"python3 -c 'import pathlib,json,hashlib; h=lambda b:hashlib.sha256(b).hexdigest(); root=pathlib.Path(\\\".\\\"); m=json.loads((root/\\\"REVIEW-PACKET-MANIFEST.json\\\").read_text()); print(\\\"MANIFEST META\\\",{k:v for k,v in m.items() if k\"'!=\"files\"}); entries=m[\"files\"]; bad=[]; total=0\nfor e in entries:\n p=root/e[\"path\"]; b=p.read_bytes(); total+=len(b); b.decode(\"utf-8\");\n if h(b)!=e[\"sha256\"] or len(b)!=e[\"bytes\"]: bad.append(e[\"path\"])\nprint(\"ALL_PACKET_READ\",len(entries),\"bytes\",total,\"hash_errors\",bad); p=root/\"openspec/changes/frade-standard-workflow/evidence/task42-req-post-repair-preparation-20261005\"; s=json.loads((p/\"candidate-summary.json\").read_text()); c=json.loads((p/\"cumulative-controls.json\").read_text()); b=c[\"rawUTF8\"].encode(\"utf-8\"); print(\"DIFF\",len(b),c[\"bytes\"],h(b),c[\"rawSha256\"],s[\"cumulativeDiff\"][\"rawSha256\"]); print(\"DIFF MEMBERS\",[x for x in c[\"rawUTF8\"].splitlines() if x.startswith(\"diff --git \")]); print(\"SOURCE_BINDINGS\",len(s[\"sourceBindings\"]),[(x[\"path\"],h((root/x[\"path\"]).read_bytes())==x[\"sha256\"]) for x in s[\"sourceBindings\"] if h((root/x[\"path\"]).read_bytes())!=x[\"sha256\"]]); print(\"REQUIRED_ARTIFACTS\",len(s[\"requiredChecks\"]));\nfor x in s[\"requiredChecks\"]:\n p=root/x[\"artifact\"][\"path\"]; j=json.loads(p.read_text()); print(x[\"id\"],\"HASH\",h(p.read_bytes())==x[\"artifact\"][\"sha256\"],\"RESULT\",x[\"exitCode\"],x[\"result\"],\"KEYS\",list(j))\nprint(\"FORMAL FILES\",[str(p) for p in (root/\"openspec/changes/frade-standard-workflow/evidence/formal-verify-req-repair-20261005\").iterdir()])'\"'\"",
+      "outputTail": ", {'path': 'tests/directions/w01-origin-admission.test.mjs', 'bytes': 7089, 'sha256': 'c3469c75f7132020371baca58117b21e7c4168b82e899dc688121cb49148b092'}, {'path': 'tests/directions/w01-origin-native.replay.mjs', 'bytes': 2055, 'sha256': 'e3bfccd4adfa99a90ffc739b446d3c1ea4b37208218d0063564ae4a8adcfac29'}]}Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nKeyError: 'files'\n\n"
+    },
+    {
+      "id": "item_38",
+      "exitCode": 1,
+      "status": "failed",
+      "command": "/usr/bin/zsh -lc \"python3 -c 'import pathlib,json,re,hashlib; base=pathlib.Path(\\\"openspec/changes/frade-standard-workflow/evidence\\\"); j=json.loads((base/\\\"formal-verify-req-repair-20261005/VERIFY-REPORT.json\\\").read_text()); ts={t[\\\"assertionId\\\"]:t for s in j[\\\"scenarios\\\"] for t in s[\\\"tests\\\"]}; errors=[]; count=0\nfor aid,t in ts.items():\n lines=pathlib.Path(t[\\\"path\\\"]).read_text().splitlines()\n for q in t[\\\"assertionSamples\\\"]:\n  count+=1; expected=q[\\\"text\\\"]; actual=\\\"\\\\n\\\".join(lines[q[\\\"line\\\"]-1:q[\\\"line\\\"]-1+len(expected.splitlines())]);\n  if actual.rstrip()\"'!=expected.rstrip(): errors.append((aid,q[\"line\"],repr(expected),repr(actual)))\n run=j[\"runBindings\"][t[\"runBinding\"]];\n if t[\"passingOccurrences\"]!=run.get(\"titleOccurrences\",{}).get(t[\"title\"]): print(\"TITLE_BINDING\",aid,t[\"title\"],run.get(\"titleOccurrences\",{}).get(t[\"title\"]))\nprint(\"SAMPLES\",count,\"errors\",errors); d=json.loads((base/\"task42-req-post-repair-preparation-20261005/cumulative-controls.json\").read_text())[\"rawUTF8\"]; bad=[]; count=0\nfor block in re.split(r\"(?=''^diff --git )\",d,flags=re.M):\n if not block: continue\n p=re.search(r\"''^diff --git a/(.+) b/(.+)$\",block,re.M).group(2); idx=re.search(r\"''^index ([a-f0-9]+)'\"\\\\.\\\\.([a-f0-9]+)\\\",block,re.M); raw=pathlib.Path(p).read_bytes(); blob=hashlib.sha1(b\\\"blob \\\"+str(len(raw)).encode()+bytes([0])+raw).hexdigest(); count+=1\n if not blob.startswith(idx.group(2)): bad.append(p)\nprint(\\\"DIFF_BLOB_PREFIX_CHECK\\\",count,bad)\nfor f in [\\\"task42-req-repair-20261005/checkpoint-recovery-rca.json\\\",\\\"task42-req-repair-20261005/checkpoint-publication-recovery-rca.json\\\",\\\"task42-req-repair-20261005/native-red-receipt.json\\\",\\\"task42-req-repair-20261005/parent-reconciliation-rca.json\\\"]: print(\\\"FILE\\\",f,(base/f).read_text())'\"",
+      "outputTail": "Traceback (most recent call last):\n  File \"<string>\", line 8, in <module>\nAttributeError: 'list' object has no attribute 'get'\n"
+    },
+    {
+      "id": "item_53",
+      "exitCode": 2,
+      "status": "failed",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,240p' openspec/changes/frade-standard-workflow/specs/workflow-evidence/spec.md\"",
+      "outputTail": "sed: can't read openspec/changes/frade-standard-workflow/specs/workflow-evidence/spec.md: No such file or directory\n"
+    }
+  ],
+  "rootCauses": [
+    "Manifest version3 uses artifacts, not files",
+    "runBindings[].titleOccurrences is array of {title,occurrences}, not dictionary",
+    "workflow-evidence spec path was invented; three actual capability paths are in packet manifest"
+  ],
+  "candidateAssessment": "Reviewer found no additional reproduced code/architecture blocker; observation only, not clean gate approval",
+  "requestedModel": "gpt-6-astra",
+  "requestedEffort": "xhigh",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "reviewerStopped": true,
+  "terminationProbe": {
+    "stopped": true,
+    "method": "wsl-run-pgrep",
+    "runId": "2026-10-05T15-07-20-882Z-fc29d61f-7122-488e-87b3-d4b5af9dc999",
+    "recordSha256": "450e79aa7e17e233d3bdc6bab10ca6d3b2e1bea6811f7d01b2fd14e9591785c5",
+    "sharedRun": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-07-20-882Z-fc29d61f-7122-488e-87b3-d4b5af9dc999",
+    "probes": [
+      {
+        "argv": [
+          "-d",
+          "Ubuntu-22.04_E",
+          "--exec",
+          "/usr/bin/pgrep",
+          "-af",
+          "--",
+          "2026-10-05T15-07-20-882Z-fc29d61f-7122-488e-87b3-d4b5af9dc999"
+        ],
+        "pid": 63092,
+        "exit": 1,
+        "stdout": "",
+        "stderr": "w\u0000s\u0000l\u0000:\u0000 \u0000A\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000y\u0000 \u0000c\u0000o\u0000n\u0000f\u0000i\u0000g\u0000u\u0000r\u0000a\u0000t\u0000i\u0000o\u0000n\u0000 \u0000w\u0000a\u0000s\u0000 \u0000d\u0000e\u0000t\u0000e\u0000c\u0000t\u0000e\u0000d\u0000 \u0000b\u0000u\u0000t\u0000 \u0000n\u0000o\u0000t\u0000 \u0000m\u0000i\u0000r\u0000r\u0000o\u0000r\u0000e\u0000d\u0000 \u0000i\u0000n\u0000t\u0000o\u0000 \u0000W\u0000S\u0000L\u0000.\u0000 \u0000W\u0000S\u0000L\u0000 \u0000i\u0000n\u0000 \u0000N\u0000A\u0000T\u0000 \u0000m\u0000o\u0000d\u0000e\u0000 \u0000d\u0000o\u0000e\u0000s\u0000 \u0000n\u0000o\u0000t\u0000 \u0000s\u0000u\u0000p\u0000p\u0000o\u0000r\u0000t\u0000 \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000p\u0000r\u0000o\u0000x\u0000i\u0000e\u0000s\u0000.\u0000\r\u0000\n\u0000",
+        "signal": null,
+        "killed": false
+      }
+    ]
+  },
+  "guardUnchanged": true,
+  "sharedRawIndexSha256": "3c2f2725e28b16121f0bc8422147e9ffd08a65510d1aef0562d7004416a4bfc8",
+  "sharedRawRetainedAt": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/shared-raw",
+  "sharedReleaseUnchanged": "a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0",
+  "exactLiveFreezeSha256": "e311dedb14dbe59aab95efa0e589f635ed906ddb9782198cae620609a1e5e7e9",
+  "retained": [
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/freeze.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/freeze.json",
+      "sha256": "e311dedb14dbe59aab95efa0e589f635ed906ddb9782198cae620609a1e5e7e9",
+      "bytes": 1166
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/candidate-before.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/candidate-before.json",
+      "sha256": "eb2914416a5f3954e02c019375d50a69477beb918dd3868ba0e5236fef5dffcf",
+      "bytes": 1505044
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/request.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/request.json",
+      "sha256": "26320956c0b409829e9c3cf8daad1536525e567777f4bb221d6bad53fc7e3e43",
+      "bytes": 31665
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/external-request.raw.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/external-request.raw.json",
+      "sha256": "26320956c0b409829e9c3cf8daad1536525e567777f4bb221d6bad53fc7e3e43",
+      "bytes": 31665
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/packet-files.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/packet-files.json",
+      "sha256": "cc3488a2ce55dd6025cf761cffd46ae826fd95f363a8864f21dda45639ff435e",
+      "bytes": 57561
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/strict-1.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/strict-1.json",
+      "sha256": "0bb6dd5d7423c958fbc1c793ae287cdc8344306979ed121dafc1399d27197338",
+      "bytes": 2137
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/strict-2.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/strict-2.json",
+      "sha256": "11bec8b5b6724a3c8a4446959a57e1e757358f7ffdecada094e3761dc50c9fc9",
+      "bytes": 13293
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/wrapper-error.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/wrapper-error.json",
+      "sha256": "aa2d1abfe706845df17640038c5e97ec0cb9da7644e2f5139728c40696443e86",
+      "bytes": 91
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/events.jsonl",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/events.jsonl",
+      "sha256": "5877a8e48d068febc3b4c65a2df677bd8e7f738010c128e330e32944acde36e8",
+      "bytes": 1579480
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/result.md",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/result.md",
+      "sha256": "dcba4895096b30db0f11f8dd9d448447c8228edf6e5007ab3581d3a15970ad45",
+      "bytes": 6845
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/stderr.txt",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/stderr.txt",
+      "sha256": "ab3fa8d50ef1cef82ab68c8cc777ed0a8a449d020f78fd2b521d9cff7c5ca578",
+      "bytes": 260
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/exit.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/exit.json",
+      "sha256": "f715f6b104b81785299329b6af5adaaa9c1e1492a2fcb36f69f2559bbded3e71",
+      "bytes": 28
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/shared-raw-index.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/shared-raw-index.json",
+      "sha256": "fba2652bbbb829ced9243cf42048d5cee54d2ddb1db7fa69d3257f01106acc8e",
+      "bytes": 65846
+    },
+    {
+      "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-unadmitted-20261005/shared-runtime-exclusions.json",
+      "origin": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-05T15-06-56-579Z-d6896460-54c6-47ce-9cd2-17aadd341770/shared-runtime-exclusions.json",
+      "sha256": "d469306c724e654ddd1d210593502aa7b22344835877505c66242bebeafededc",
+      "bytes": 1809
+    }
+  ],
+  "freezeRecovery": "Manual controller release of exact ended-review marker only after all source/index/packet/raw/termination proofs; not releaseReviewFreeze PASS and not gate admission",
+  "nextAction": "Fresh independent same-pair POST with explicit observed schemas/paths; no production or assertion repair needed",
+  "archive": "INACTIVE",
+  "consumerAdoption": "NOT_STARTED",
+  "exactEndedReviewMarkerReleased": true
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-07T19:06:50.367Z",
+  "classification": "ENVIRONMENT/INTEGRATION",
+  "red": {
+    "payloadChars": 33270,
+    "status": null,
+    "error": "ENAMETOOLONG",
+    "stdout": "",
+    "stderr": ""
+  },
+  "green": {
+    "payloadChars": 28741,
+    "status": 0,
+    "error": null,
+    "stdout": "28741",
+    "stderr": ""
+  },
+  "failed": {
+    "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-predispatch-20261005/external-request.raw.json",
+    "sha256": "4d3b66dda2bbb029acad69be72690b7059c9bb6f793c02b1885f495329c222ef",
+    "paths": 273,
+    "promptChars": 6856
+  },
+  "request": {
+    "path": "E:/dev/codex/frade/.git/frade-workflow/implementations/task42-req-post-repaired-request-retry2-20261005.json",
+    "sha256": "7fb9f954287a170a8c82d02e43d4c02b07f4089ccb52649ad19ee780eec1cedc",
+    "paths": 277,
+    "promptChars": 1854
+  },
+  "retainedEveryOldPacketMember": true,
+  "addedPaths": [
+    "openspec/changes/frade-standard-workflow/evidence/task42-req-post-retry2-preparation-20261005/candidate-summary.json",
+    "openspec/changes/frade-standard-workflow/evidence/task42-req-post-retry2-preparation-20261005/cumulative-controls.json",
+    "openspec/changes/frade-standard-workflow/evidence/task42-req-post-retry2-preparation-20261005/predispatch-recovery.json",
+    "openspec/changes/frade-standard-workflow/evidence/task42-req-post-retry2-preparation-20261005/review-obligations.md"
+  ],
+  "packetFiles": 277,
+  "packetBytes": 7389082,
+  "snapshotSha256": "76d198aa36733bab083e8165447bf38e919ae2518f40f84ef23225cae2309a12",
+  "sourceCheckpoint": "62b9e0fbfd55f8b2e99f8ea210786fc6c9f01fd0",
+  "approvedAssignment": {
+    "stage": "W01",
+    "task": "4.2",
+    "taskType": "independent-POST",
+    "role": "independent-POST",
+    "executionKind": "reviewer",
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "source": {
+      "path": "openspec/changes/frade-standard-workflow/design.md",
+      "sha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+      "excerpt": "| W01 | independent-POST | gpt-6-astra | xhigh |",
+      "revision": "D03"
+    },
+    "exception": null
+  },
+  "productionChanged": false,
+  "sharedReleaseChanged": false,
+  "reviewerStarted": false,
+  "externalTransferPerformed": false,
+  "previousDiagnostic": "prepare-short-post.mjs incorrectly treated already-short retry2 as failing original; assertion failed, no model/source write; original external draft retained",
+  "status": "NATIVE_RED_GREEN_EXISTING_RETRY2_PASS"
+}
