@@ -1,13 +1,13 @@
 # Frade — единый workflow: статус W01
 
-UPDATED_AT_UTC: 2026-10-07T20:49:04.894Z
+UPDATED_AT_UTC: 2026-10-07T21:02:02.526Z
 STATUS_SOURCE: manually reconciled from retained raw evidence; not an automatically attested metrics projection.
 
 ## 1. Решение / следующий шаг
 
 STAGE: W01 | PHASE: PLANNING | HEALTH: BLOCKED
 PHASE_SOURCE: accepted D05 effective overlay; live D03 manifest/plan pins intentionally preserved until fresh PRE PASS and exact reviewed adoption.
-NEXT_PERMITTED_ACTION: task1.7 fresh independent PRE of accepted D05 via supported unmodified adapter; apply exact reviewed11 artifact bytes only after PASS; no production before that gate.
+NEXT_PERMITTED_ACTION: reconcile reproduced SPEC_CONFLICT in D03→D05 adoption order; preserve all historical assertions; current strict-all D05 PASS now retained; prepare coherent reviewed amendment then fresh clean task1.7 PRE. No production or live artifact adoption.
 HUMAN_DECISION: NONE; D05 ACCEPTED by direct reply «Подтверждаю», exact package594d1a7a3b2928f2e9b74d4287b9d9cdb8f8e56bd3028da94ec2b4f8f0aebebb; decision openspec/changes/frade-standard-workflow/evidence/d05-accepted-20261007/decision.json. D01–D04 and exact pairs preserved.
 READY_FOR_ARCHIVE: NO. Task 4.2 не закрыта; переход к 4.3/4.4 запрещён.
 
@@ -40,9 +40,9 @@ STOP после W01. Автоматизация внутри направлен�
 | 4.2 | OPEN / POST FAIL | reception repair + fresh checks/Verify/POST; 2–6 ч без новой автоматизации |
 | 4.3 | OPEN / WAITING 4.2 | reviewed release/discovery; 30–90 мин после PASS |
 | 4.4 | OPEN / WAITING 4.3 | три spec sync, W01-only archive, ссылки, публикация; 45–120 мин после gates |
-| Дополнение автоматизации | D05_ACCEPTED / PRE_PENDING / NOT_IMPLEMENTED | 1.6→1.7→2.8–2.13→3.3–3.4→4.1→4.2; оценка полного нового scope74–152ч, automation48–96ч, reception6–12ч; ожидания и4.3/4.4 отдельно |
+| Дополнение автоматизации | D05_ACCEPTED / PRE_FAIL / NOT_IMPLEMENTED | 1.6→1.7→2.8–2.13→3.3–3.4→4.1→4.2; оценка полного нового scope74–152ч, automation48–96ч, reception6–12ч; ожидания и4.3/4.4 отдельно |
 
-ADMINISTRATIVE_TASKS: live D03 checkbox history15/18; D05 approved overlay28tasks, historical4.1 reopened, task1.6 completion evidence recorded externally pending exact plan adoption. Neither count grants readiness. Task1.7 NOT_RUN until actual dispatch.
+ADMINISTRATIVE_TASKS: live D03 checkbox history15/18; D05 approved overlay28tasks, historical4.1 reopened, task1.6 completion evidence recorded externally pending exact plan adoption. Neither count grants readiness. Task1.7 actual PRE FAIL; clean admission BLOCKED; remains incomplete. Exact D05 overlay unchanged.
 
 ## 5. Проверки / gates / качество
 
@@ -79,19 +79,22 @@ ACTUAL_BACKEND / ACTUAL_EFFORT: NOT_CONFIRMED. Запрошенная пара �
 | POST-20261007-01 | OPEN: verifyRawReview принимает PASS со command exit1/2 | regression-first correction без ослабления clean-stream rule |
 | POST-20261007-02 | OPEN: Verify receipt противоречит retained inspection failures | сохранить историю, новый clean Verify |
 | POST-20261007-03 | OPEN: truncated outputs/corrected inspection mistakes в текущем review | новый clean cumulative POST |
-| AUTOMATIC-WRITER-SCOPE | D05_ACCEPTED: full auto provisioning пока отсутствует | fresh PRE before production; exact approved overlay and direct decision in evidence |
+| AUTOMATIC-WRITER-SCOPE | D05_ACCEPTED / PRE_FAIL / NOT_IMPLEMENTED | plan ordering repair + fresh PRE; no manual per-direction settings required by target |
+| D05-AUTHORITY-ORDER | SPEC_CONFLICT reproduced in staging: unchanged V-02 fails exact D05 live adoption before2.9 GREEN; transition later2.11 | preserve original assertions/history; coherent sequence before production |
+| D05-PRE-20261007 | independent verdict FAIL; truncated inspections and missing current strict-all in reviewed packet | current strict-all now PASS in staging; fresh complete PRE still required |
 | Planning sandbox launcher | первый staging draft BLOCKED, последовательный retry выполнил draft без commands; уточнение плана в работе | последовательный retry с финальным JSON, без write-tools |
 
 Foreign owner FAIL не блокирует supplier; чужие scope/adoption не выполнялись.
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: bb832d5f6aa4944fbab868072f12b566f51faae6 at D05 acceptance refresh; historical POST candidate62b9e0fb retained.
-COMMIT_STATE: D05 proposal checkpointbb832d5f6aa4944fbab868072f12b566f51faae6 PUBLISHED; acceptance/preflight/status checkpoint is being prepared without plan/production mutation.
+SOURCE_CHECKPOINT_SHA: 19021057dc809dc7757539fcccdcd2e035f42c7f reviewed by D05 PRE; candidate/packet unchanged; process termination proved; freeze released. Historical POST candidate62b9e0fb retained.
+COMMIT_STATE: acceptance19021057dc809dc7757539fcccdcd2e035f42c7f PUBLISHED; retaining actual PRE FAIL/current BLOCKED and isolated plan-order/strict-all evidence as an incomplete checkpoint.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: PUBLISHED bb832d5f6aa4944fbab868072f12b566f51faae6, exact remote SHA verified; receipt openspec/changes/frade-standard-workflow/evidence/d05-accepted-20261007/proposal-publication-result.json. Acceptance checkpoint will have its own common publication receipt; no recursive receipt commits.
+PUSH_STATE: acceptance19021057dc809dc7757539fcccdcd2e035f42c7f verified at authorized remote/ref; next diagnostic/planning checkpoint pending, no closure.
 CURRENT_EVIDENCE: openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/resume-summary.json; POST-REPORT.md; receipt.json; raw-index.json; argv-red-green.json; preflight.json.
 PRIVATE_RAW: Git common run 2026-10-07T19-22-17-357Z-351c9b51-46a3-48ba-ad02-9c94329c3822; сохранён runner-ом до интерпретации.
+D05_PRE_RESULT: openspec/changes/frade-standard-workflow/evidence/d05-pre-20261007/receipt.json; PRE-REPORT.md; exact raw events/report/exit/provenance retained as verified base64. No accepted gate.
 D05_ACCEPTED_DECISION: openspec/changes/frade-standard-workflow/evidence/d05-accepted-20261007/decision.json; supported-transition-preflight.json; PRE-OBLIGATIONS.md.
 D05_REVIEWABLE_PACKAGE: openspec/changes/frade-standard-workflow/evidence/d05-planning-proposal-20261007/approval-request.json; prospective artifact copies under artifacts/; effective OpenSpec proposal/design/tasks/specs unchanged.
 PANEL_STATE: NOT_OPENED; доступного UI-controller для правой панели сейчас нет.

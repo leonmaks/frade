@@ -1,0 +1,25 @@
+{
+  "status": "REPRODUCED_PLAN_ORDER_CONFLICT",
+  "atUtc": "2026-10-07T20:56:31.245Z",
+  "classification": "SPEC_CONFLICT",
+  "exe": "E:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "--test",
+    "--test-name-pattern=^V-02",
+    "tests/directions/task41-installed-red.test.mjs"
+  ],
+  "cwd": "E:\\dev\\codex\\frade-worker-staging\\w01-d05-accepted-20261007\\historical-regression-overlay-probe",
+  "exitCode": 1,
+  "signal": null,
+  "error": null,
+  "source": {
+    "path": "tests/directions/task41-installed-red.test.mjs",
+    "sha256": "ae2ad7cc8583760fb32aa9b540149d65972c91307cf91f086fec7cd0a4a2d220",
+    "copiedBytesUnchanged": true
+  },
+  "overlayDesignSha256": "4d1dfc52532ab239b03b89e50b6a1994aa5ee68bff49d98f3bffc650d39d8fe2",
+  "candidateModified": false,
+  "fixAttempt": false,
+  "independentPRE": "RUNNING_NO_INJECTION",
+  "conclusion": "Exact D05 adoption changes live design before task2.9 requires full control GREEN; unchanged V-02 requires immutable D03 bytes at that live path. Authority transition is ordered later at2.11. Preserve historical assertion and resolve plan dependency before production; no test weakening or pin swap."
+}
