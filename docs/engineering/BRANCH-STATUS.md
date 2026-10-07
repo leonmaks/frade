@@ -1,14 +1,14 @@
 # Frade — единый workflow: статус W01
 
-UPDATED_AT_UTC: 2026-10-07T21:02:02.526Z
+UPDATED_AT_UTC: 2026-10-07T21:18:00.650Z
 STATUS_SOURCE: manually reconciled from retained raw evidence; not an automatically attested metrics projection.
 
 ## 1. Решение / следующий шаг
 
 STAGE: W01 | PHASE: PLANNING | HEALTH: BLOCKED
 PHASE_SOURCE: accepted D05 effective overlay; live D03 manifest/plan pins intentionally preserved until fresh PRE PASS and exact reviewed adoption.
-NEXT_PERMITTED_ACTION: reconcile reproduced SPEC_CONFLICT in D03→D05 adoption order; preserve all historical assertions; current strict-all D05 PASS now retained; prepare coherent reviewed amendment then fresh clean task1.7 PRE. No production or live artifact adoption.
-HUMAN_DECISION: NONE; D05 ACCEPTED by direct reply «Подтверждаю», exact package594d1a7a3b2928f2e9b74d4287b9d9cdb8f8e56bd3028da94ec2b4f8f0aebebb; decision openspec/changes/frade-standard-workflow/evidence/d05-accepted-20261007/decision.json. D01–D04 and exact pairs preserved.
+NEXT_PERMITTED_ACTION: specific D05-T01 order/context-mapping decision on exact package945d306d4404565f0533cbda901d57cbe1df13b45c7885e9b455f00b58df6466; after acceptance run fresh complete clean task1.7 PRE. No production/live D05 adoption before required barriers.
+HUMAN_DECISION: D05 accepted and preserved; D05-T01 technical adoption timing + exact historical test mapping PROPOSED_NOT_APPROVED; concrete package openspec/changes/frade-standard-workflow/evidence/d05-order-proposal-20261007/APPROVAL.md. Existing model/host/remote permissions persist; no per-task reauthorization.
 READY_FOR_ARCHIVE: NO. Task 4.2 не закрыта; переход к 4.3/4.4 запрещён.
 
 ## 2. Идентичность / scope
@@ -80,7 +80,7 @@ ACTUAL_BACKEND / ACTUAL_EFFORT: NOT_CONFIRMED. Запрошенная пара �
 | POST-20261007-02 | OPEN: Verify receipt противоречит retained inspection failures | сохранить историю, новый clean Verify |
 | POST-20261007-03 | OPEN: truncated outputs/corrected inspection mistakes в текущем review | новый clean cumulative POST |
 | AUTOMATIC-WRITER-SCOPE | D05_ACCEPTED / PRE_FAIL / NOT_IMPLEMENTED | plan ordering repair + fresh PRE; no manual per-direction settings required by target |
-| D05-AUTHORITY-ORDER | SPEC_CONFLICT reproduced in staging: unchanged V-02 fails exact D05 live adoption before2.9 GREEN; transition later2.11 | preserve original assertions/history; coherent sequence before production |
+| D05-AUTHORITY-ORDER | SPEC_CONFLICT reproduced; exact D05-T01 correction machine-validated, NOT_APPROVED | approve atomic2.11 timing + precise unchanged8file replay mapping; then fresh PRE |
 | D05-PRE-20261007 | independent verdict FAIL; truncated inspections and missing current strict-all in reviewed packet | current strict-all now PASS in staging; fresh complete PRE still required |
 | Planning sandbox launcher | первый staging draft BLOCKED, последовательный retry выполнил draft без commands; уточнение плана в работе | последовательный retry с финальным JSON, без write-tools |
 
@@ -88,12 +88,13 @@ Foreign owner FAIL не блокирует supplier; чужие scope/adoption �
 
 ## 8. Git / публикация / evidence
 
-SOURCE_CHECKPOINT_SHA: 19021057dc809dc7757539fcccdcd2e035f42c7f reviewed by D05 PRE; candidate/packet unchanged; process termination proved; freeze released. Historical POST candidate62b9e0fb retained.
-COMMIT_STATE: acceptance19021057dc809dc7757539fcccdcd2e035f42c7f PUBLISHED; retaining actual PRE FAIL/current BLOCKED and isolated plan-order/strict-all evidence as an incomplete checkpoint.
+SOURCE_CHECKPOINT_SHA: 04f2306202a7697a4775e2dedfbe03fba2516c29 at correction proposal; reviewed PRE candidate19021057 remains unchanged in its history.
+COMMIT_STATE: PRE failure/strict-all/conflict evidence04f2306202a7697a4775e2dedfbe03fba2516c29 PUBLISHED; preparing exact D05-T01 proposal checkpoint, no source implementation.
 AUTHORIZED_REMOTE_REF: git@github.com:leonmaks/frade.git refs/heads/codex/frade-standard-workflow.
-PUSH_STATE: acceptance19021057dc809dc7757539fcccdcd2e035f42c7f verified at authorized remote/ref; next diagnostic/planning checkpoint pending, no closure.
+PUSH_STATE: PUBLISHED04f2306202a7697a4775e2dedfbe03fba2516c29 verified authorized remote/ref; proposal publication pending its separate receipt.
 CURRENT_EVIDENCE: openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/resume-summary.json; POST-REPORT.md; receipt.json; raw-index.json; argv-red-green.json; preflight.json.
 PRIVATE_RAW: Git common run 2026-10-07T19-22-17-357Z-351c9b51-46a3-48ba-ad02-9c94329c3822; сохранён runner-ом до интерпретации.
+D05_T01_REVIEWABLE_PACKAGE: openspec/changes/frade-standard-workflow/evidence/d05-order-proposal-20261007/APPROVAL.md; approval-request.json; draft-audit.json; historical-replay-mapping.json. Machine validation is not approval/PRE.
 D05_PRE_RESULT: openspec/changes/frade-standard-workflow/evidence/d05-pre-20261007/receipt.json; PRE-REPORT.md; exact raw events/report/exit/provenance retained as verified base64. No accepted gate.
 D05_ACCEPTED_DECISION: openspec/changes/frade-standard-workflow/evidence/d05-accepted-20261007/decision.json; supported-transition-preflight.json; PRE-OBLIGATIONS.md.
 D05_REVIEWABLE_PACKAGE: openspec/changes/frade-standard-workflow/evidence/d05-planning-proposal-20261007/approval-request.json; prospective artifact copies under artifacts/; effective OpenSpec proposal/design/tasks/specs unchanged.

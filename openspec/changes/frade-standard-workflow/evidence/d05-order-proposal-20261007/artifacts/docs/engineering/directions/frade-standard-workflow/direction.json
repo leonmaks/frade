@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 2,
+  "status": "IMPLEMENTATION_PENDING_W01_CLOSURE",
+  "id": "frade-standard-workflow",
+  "title": "Единый workflow Frade",
+  "owner": {
+    "branch": "codex/frade-standard-workflow",
+    "worktree": "E:/dev/codex/frade-worktrees/frade-standard-workflow",
+    "gitCommon": "E:/dev/codex/frade/.git"
+  },
+  "originalBaseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "approvedCheckpoint": "9c974da812e7f120cace9defcdca69dd6154254b",
+  "policy": {
+    "version": "1.1",
+    "release": "a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0",
+    "sha256": "6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb",
+    "artifact": "openspec/changes/frade-standard-workflow/evidence/shared-policy/agent-workflow.md"
+  },
+  "scope": {
+    "allowed": [
+      "docs/engineering/**",
+      "openspec/changes/frade-standard-workflow/**",
+      "scripts/directions/**",
+      "tests/directions/**",
+      "AGENTS.md",
+      "package.json",
+      ".github/workflows/ci.yml"
+    ],
+    "frozen": [
+      "packages/**",
+      "apps/**",
+      "pnpm-lock.yaml",
+      "scripts/routing-v2-architecture-gate.mjs",
+      "docs/routing-v2/**",
+      "vendor/**",
+      "openspec/changes/bundle-integration-flow-management/**",
+      "openspec/changes/frade-draw-document-roundtrip/**",
+      "openspec/changes/frade-electron-runtime/**",
+      "openspec/changes/frade-ka-workbench-pilot/**",
+      "openspec/changes/frade-metamodel-compiler/**",
+      "openspec/changes/frade-metamodel-domain/**",
+      "openspec/changes/frade-repo-core/**",
+      "openspec/changes/frade-repository-diagrams/**",
+      "openspec/changes/routing-v2-04-orthogonal-router/**"
+    ],
+    "mode": "IMPLEMENTATION",
+    "planningAllowed": [
+      "openspec/changes/frade-standard-workflow/**",
+      "docs/engineering/BRANCH-STATUS.md"
+    ],
+    "closure": {
+      "enabled": false,
+      "requires": [
+        "humanPolicyDecision",
+        "requiredChecksPASS",
+        "formalVerifyPASS",
+        "currentIndependentPOSTPASS"
+      ],
+      "specDestinations": [
+        "openspec/specs/engineering-direction-lifecycle/spec.md",
+        "openspec/specs/engineering-role-dispatch/spec.md",
+        "openspec/specs/engineering-progress-publication/spec.md"
+      ],
+      "archiveDestination": "openspec/changes/archive/<actual-archive-date>-frade-standard-workflow/**",
+      "archiveOwner": "frade-standard-workflow",
+      "operations": [
+        "Sync only W01 delta requirements into exactly the three declared specs",
+        "Move only this active W01 change to its canonically validated dated archive directory",
+        "Relocate owned references and current role-source path/raw hash bindings; preserve immutable receipt origins using an explicit mapping"
+      ],
+      "excludes": "Every unrelated specification/archive, foreign direction, product and frozen control remains excluded"
+    }
+  },
+  "statusPath": "docs/engineering/BRANCH-STATUS.md",
+  "publication": {
+    "authorization": "openspec/changes/frade-standard-workflow/evidence/user-decisions.json",
+    "remote": "git@github.com:leonmaks/frade.git",
+    "ref": "refs/heads/codex/frade-standard-workflow",
+    "cadence": "completed-tested-task_or_significant_checkpoint",
+    "autoMainMerge": false
+  },
+  "stages": [
+    {
+      "id": "W01",
+      "change": "frade-standard-workflow",
+      "phase": "PLANNING",
+      "health": "BLOCKED",
+      "dependencies": [],
+      "roleAssignments": [
+        {
+          "role": "planning-architecture",
+          "model": "gpt-6-astra",
+          "effort": "high"
+        },
+        {
+          "role": "tooling-tests",
+          "model": "gpt-6-sol",
+          "effort": "high"
+        },
+        {
+          "role": "formal-Verify",
+          "model": "gpt-6-astra",
+          "effort": "high"
+        },
+        {
+          "role": "independent-PRE",
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
+        },
+        {
+          "role": "independent-POST",
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
+        }
+      ],
+      "roleAuthority": {
+        "path": "openspec/changes/frade-standard-workflow/design.md",
+        "hash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+        "humanDecision": "openspec/changes/frade-standard-workflow/evidence/user-decisions.json",
+        "revision": "D03",
+        "decision": {
+          "path": "openspec/changes/frade-standard-workflow/evidence/policy-acceptance.json",
+          "sha256": "98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239"
+        }
+      },
+      "taskOverrides": [],
+      "tasksAuthority": "openspec/changes/frade-standard-workflow/tasks.md",
+      "admission": {
+        "policyDecision": "ACCEPTED_D03",
+        "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
+        "formalPRE": "PASS_9c974da8",
+        "Verify": "CURRENT_CLEAN_ADMISSION_UNESTABLISHED_HISTORICAL_PASS_RETAINED",
+        "POST": "FAIL_20261007_D05_FRESH_PRE_VERIFY_POST_REQUIRED",
+        "archive": "NOT_RUN"
+      },
+      "admissionHistory": [
+        {
+          "atUtc": "2026-10-07T20:04:17.174Z",
+          "sourceCheckpoint": "cf66ee3480351a12911584b3a9520bb720b036a3",
+          "prior": {
+            "policyDecision": "ACCEPTED_D03",
+            "draftPlanningReview": "PASS_DRAFT_ONLY_faf69d33",
+            "formalPRE": "PASS_9c974da8",
+            "Verify": "PASS_EADD320_RECEIVED_VALID",
+            "POST": "RUNNING_TASK42_REQ_REPAIRED_RETRY2",
+            "archive": "NOT_RUN"
+          },
+          "supersededCurrentFields": [
+            "Verify",
+            "POST"
+          ],
+          "evidence": "openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/POST-REPORT.md.raw-base64.json",
+          "reason": "Append-only correction of current admission fields; no raw receipt/plan/role authority change"
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "acceptedRequirements": 0,
+    "requirementsTotal": 25,
+    "qualityScore": null,
+    "numericalBudgets": "Owning stage contracts, not universal process defaults"
+  },
+  "existingOwnerAdoption": [
+    {
+      "owner": "routing-v2",
+      "status": "NOT_STARTED"
+    },
+    {
+      "owner": "ui-design-contract",
+      "status": "NOT_STARTED"
+    },
+    {
+      "owner": "repo-core",
+      "status": "NOT_STARTED"
+    }
+  ],
+  "implementationCapabilities": {
+    "directionCLI": "PLAN_CREATE_CHECK_STATUS_REVIEW_CHECKPOINT_PUBLISH_IMPLEMENTED;TASK26_ACTUAL_W01_PUBLICATION_PASS;TASK27_ROOT_LOADER_PACKAGE_CI_LOCAL_PASS",
+    "statusValidator": "IMPLEMENTED_TASK24",
+    "writerDispatcher": "NOT_IMPLEMENTED",
+    "reviewTransport": "AVAILABLE_v1.1_exact_selected_role"
+  },
+  "policyAcceptance": {
+    "artifact": "openspec/changes/frade-standard-workflow/evidence/policy-acceptance.json",
+    "sha256": "98511f4a32f358b668809fa2e910d090b56617b5c05da1f332ac3517d2ff3239"
+  },
+  "reviewReceipts": {
+    "formalPRE": {
+      "path": "openspec/changes/frade-standard-workflow/evidence/reviews/formal-pre-01-pass/receipt.json",
+      "sha256": "437220ab5bca7e7274fa042c6b8a9508730c75bae8a0e1c7ddffa34de3b00f46",
+      "candidate": "9c974da812e7f120cace9defcdca69dd6154254b",
+      "planHash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a"
+    },
+    "formalVerify": {
+      "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-req-repair-20261005/receipt.json",
+      "sha256": "5fa0b536a0be6a46a8d58bd962fbc71c43a88ec7bf92176966acb457fca0f410",
+      "candidate": "eadd32026c0f71a82ce3981ae3e6cdd16f924e26",
+      "planHash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+      "reports": [
+        {
+          "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-req-repair-20261005/VERIFY-REPORT.json",
+          "sha256": "cf44d91c99a7c6e3acc1d681e080846c3f0c526df52b45a75a7a31661567573e"
+        },
+        {
+          "path": "openspec/changes/frade-standard-workflow/evidence/formal-verify-req-repair-20261005/VERIFY-REPORT.md",
+          "sha256": "3edc9d1197e2bb78cb5df6d32ce2fe547ff638f056342c13857dcfbc2fb78074"
+        }
+      ]
+    },
+    "independentPOST": {
+      "path": "openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/receipt.json",
+      "sha256": "b5c8f91b43ca46b099e35bde4354db159cb9f8647a322e533b158b7c28133b02",
+      "candidate": "62b9e0fbfd55f8b2e99f8ea210786fc6c9f01fd0",
+      "planHash": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+      "status": "FAIL",
+      "report": {
+        "path": "openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/POST-REPORT.md",
+        "sha256": "9bc9c967b1477e8765f8e174d02cc5a83b3356088e46270934ec300129f60f9d"
+      }
+    }
+  },
+  "provisioning": {
+    "source": "Original D03/D04/D05 records remain immutable. Corrected D05 scope requires a separate exact-package human decision and fresh clean PRE. Through 2.10 installed operational authority remains D03; every worker receipt separately binds operational source/hash/excerpt and approved corrected overlay scope/hash/task excerpts. No source label grants admission.",
+    "scope": "Existing W01 scope/grants/limits remain unchanged. Exact eleven-artifact adoption and current-authority migration occur only in 2.11 after meaningful RED, with mixed states blocked. This exact manifest retains roleAuthority, policyAcceptance and historical receipts as D03 origin evidence; migrated consumers derive a separate current runtime authority/task projection from the protected accepted decision and corrected package bindings under design D05.3. Historical fields never substitute for current gates. Required unchanged D03 replay and migrated current controls plus additive D05 denials must both execute successfully.",
+    "currentCheckpoint": "882a9980fcaa1a3508097a1edaf5369bf42513f4",
+    "closureActivated": false
+  },
+  "blockers": [
+    {
+      "id": "POST-20261007-01",
+      "owner": "frade-standard-workflow",
+      "state": "OPEN",
+      "openedAt": "2026-10-07T19:50:11.636Z",
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/POST-REPORT.md",
+      "failedFixes": 0,
+      "rca": "INTEGRATION",
+      "nextAction": "verifyRawReview accepts completed command nonzero exits1/2 in otherwise passing streams; reviewer independently reproduced. No end-to-end shared-runner bypass claimed."
+    },
+    {
+      "id": "POST-20261007-02",
+      "owner": "frade-standard-workflow",
+      "state": "OPEN",
+      "openedAt": "2026-10-07T19:50:11.636Z",
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/POST-REPORT.md",
+      "failedFixes": 0,
+      "rca": "INTEGRATION",
+      "nextAction": "Historical formal Verify receipt claims RECEIVED_VALID_PASS while report retains nonzero inspection failures; preserve old record, current clean admission unestablished; fresh verification required."
+    },
+    {
+      "id": "POST-20261007-03",
+      "owner": "frade-standard-workflow",
+      "state": "OPEN",
+      "openedAt": "2026-10-07T19:50:11.636Z",
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/POST-REPORT.md",
+      "failedFixes": 0,
+      "rca": "ENVIRONMENT",
+      "nextAction": "Current reviewer retained truncated outputs and corrected audit mistakes; stream cannot certify clean exhaustive inspection."
+    },
+    {
+      "id": "AUTOMATIC-WRITER-SCOPE",
+      "owner": "frade-standard-workflow",
+      "state": "DECISION_PENDING",
+      "openedAt": "2026-10-07T19:50:11.636Z",
+      "evidence": "openspec/changes/frade-standard-workflow/evidence/task42-resume-20261007/resume-summary.json",
+      "failedFixes": 0,
+      "rca": "SPEC_CONFLICT",
+      "nextAction": "Original D05 scope acceptance is retained. Obtain specific human approval of the exact material order correction and finite historical-test mapping, then fresh complete clean PRE; retain live D03 through 2.10 and migrate exact artifacts/current authority only in 2.11 after RED. Unsupported dual-binding or worker route remains BLOCKED; exact model assignments and existing grants are preserved."
+    }
+  ]
+}

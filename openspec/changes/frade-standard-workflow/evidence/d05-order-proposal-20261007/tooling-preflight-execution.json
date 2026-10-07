@@ -1,0 +1,115 @@
+{
+  "atUtc": "2026-10-07T21:16:33.522Z",
+  "role": "tooling-tests",
+  "stage": "W01",
+  "approvedModel": "gpt-6-sol",
+  "approvedEffort": "high",
+  "requestedModel": "gpt-6-sol",
+  "requestedEffort": "high",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "planSha256": "501168ced50a35e128a0fc86e79bab6ac9aa31cd343eca3eedac56f81570978a",
+  "probeSha256": "8222ed9513c9da07730c3fc31cebad5c34d902c2278d3a59367ce49ac41df610",
+  "promptSha256": "68a3d2477646109d77a755df8102eb5f66c362004d86a047b61d30a25e221f0a",
+  "args": [
+    "-d",
+    "Ubuntu-22.04_E",
+    "--exec",
+    "/usr/bin/env",
+    "CODEX_HOME=/mnt/c/Users/NVISEN/.codex",
+    "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime/node_modules/.bin/codex",
+    "exec",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--ephemeral",
+    "--skip-git-repo-check",
+    "--model",
+    "gpt-6-sol",
+    "-c",
+    "default_permissions=\"frade-worker\"",
+    "-c",
+    "permissions={frade-worker={extends=\":read-only\",filesystem={\":root\"=\"deny\",\":minimal\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-d05-tooling-preflight-20261007\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-d05-tooling-preflight-20261007/work\"=\"write\",\"/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime\"=\"read\",\"/mnt/e/dev/codex/frade-worker-staging/w01-d05-tooling-preflight-20261007/input\"=\"read\"},network={enabled=false}}}",
+    "-c",
+    "model_reasoning_effort=\"high\"",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-c",
+    "apps._default.enabled=false",
+    "-c",
+    "project_doc_max_bytes=0",
+    "-c",
+    "project_doc_fallback_filenames=[]",
+    "-c",
+    "shell_environment_policy.inherit=\"none\"",
+    "-c",
+    "shell_environment_policy.set={PATH=\"/usr/bin:/bin\",HOME=\"/mnt/e/dev/codex/frade-worker-staging/w01-d05-tooling-preflight-20261007/work/home\",TMPDIR=\"/mnt/e/dev/codex/frade-worker-staging/w01-d05-tooling-preflight-20261007/work/tmp\",LANG=\"C.UTF-8\",LC_ALL=\"C.UTF-8\",GIT_CONFIG_GLOBAL=\"/dev/null\",GIT_CONFIG_SYSTEM=\"/dev/null\"}",
+    "-C",
+    "/mnt/e/dev/codex/frade-worker-staging/w01-d05-tooling-preflight-20261007/work",
+    "--json",
+    "--color",
+    "never",
+    "--output-last-message",
+    "/mnt/e/dev/codex/frade-worker-staging/w01-d05-tooling-preflight-20261007/result.json",
+    "-"
+  ],
+  "status": "RUNTIME_PREFLIGHT_AVAILABLE",
+  "candidateWritesAuthorized": false,
+  "exitCode": 0,
+  "completeStream": true,
+  "finalReportBound": true,
+  "inputUnchanged": true,
+  "noCommands": false,
+  "purpose": "Existing adapter exact approved tooling pair availability/confinement preflight only; no task2.8 execution or production authorization",
+  "productionChanged": false,
+  "implementationAuthorized": false,
+  "commands": [
+    {
+      "command": "/usr/bin/zsh -lc '/usr/bin/node /mnt/e/dev/codex/frade-worker-staging/w01-d05-tooling-preflight-20261007/input/probe.cjs'",
+      "exitCode": 0,
+      "output": "{\"rows\":[{\"name\":\"allowed\",\"read\":true},{\"name\":\"source\",\"read\":false,\"error\":\"ENOENT\"},{\"name\":\"common\",\"read\":false,\"error\":\"ENOENT\"},{\"name\":\"other\",\"read\":false,\"error\":\"ENOENT\"},{\"name\":\"auth\",\"read\":false,\"error\":\"ENOENT\"},{\"name\":\"settings\",\"read\":false,\"error\":\"ENOENT\"}],\"ownWrite\":true,\"inputWrite\":false,\"outsideWrite\":false,\"network\":{\"denied\":true},\"status\":\"PASS\"}\n"
+    }
+  ],
+  "measured": {
+    "rows": [
+      {
+        "name": "allowed",
+        "read": true
+      },
+      {
+        "name": "source",
+        "read": false,
+        "error": "ENOENT"
+      },
+      {
+        "name": "common",
+        "read": false,
+        "error": "ENOENT"
+      },
+      {
+        "name": "other",
+        "read": false,
+        "error": "ENOENT"
+      },
+      {
+        "name": "auth",
+        "read": false,
+        "error": "ENOENT"
+      },
+      {
+        "name": "settings",
+        "read": false,
+        "error": "ENOENT"
+      }
+    ],
+    "ownWrite": true,
+    "inputWrite": false,
+    "outsideWrite": false,
+    "network": {
+      "denied": true
+    },
+    "status": "PASS"
+  },
+  "endedAtUtc": "2026-10-07T21:17:09.164Z"
+}
