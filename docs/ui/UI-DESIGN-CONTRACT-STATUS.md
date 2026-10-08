@@ -1,6 +1,6 @@
 # P01: prefix-context PRE FAIL; runner repair required
 
-Обновлено 2026-10-08T21:28:40.301Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T21:28:54.128Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -32,7 +32,7 @@
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: Prefix-context PRE FAIL checkpoint publication in progress. Previous4b2809506deec9113688dd7db722de2fc59bfeea verified. Authorized UI ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
+Git: Prefix-context PRE FAIL checkpoint bb61ba2db08de50972e497c90dafef549f2067ac COMMITTED/PUSHED; remote SHA VERIFIED 2026-10-08T21:28:54.122Z. Following metadata commit tracks this receipt. Runtime NOT_RUN; authorized UI ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
