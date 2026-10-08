@@ -1,6 +1,6 @@
 # P01: prefix-context PRE FAIL; runner repair required
 
-Обновлено 2026-10-08T20:52:26.866Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T21:28:40.301Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -32,7 +32,7 @@
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: Prefix-context PRE FAIL checkpoint 37692e085266f1a4d91bb09090bb1ba91b5b6105 COMMITTED/PUSHED; remote SHA VERIFIED 2026-10-08T20:52:26.861Z. Following metadata commit tracks this receipt. Runtime NOT_RUN; authorized UI ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
+Git: Prefix-context PRE FAIL checkpoint publication in progress. Previous4b2809506deec9113688dd7db722de2fc59bfeea verified. Authorized UI ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
@@ -45,6 +45,8 @@ B05 preflight: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence
 B05 completed diagnostic: [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/report.md), [journal analysis](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/journal-analysis.json), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/summary.json).1PASS; old B05/focus FAIL remain open, root cause NOT_PROVEN. Five fresh hashed artifacts; original tests restored. Environmental blocker resolved for this run.
 
 Prefix-context PRE: [FAIL report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/output--result.md), [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/verification.json).272packet files/60events; candidate/packet/plan unchanged. Four runner/control completeness defects; no scope conflict/assertion weakening; app NOT_RUN.
+
+Prefix-context PRE: [FAIL report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/output--result.md), [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/verification.json).331packet files/60events; candidate/packet/plan unchanged. One assertion-time evidence completeness defect; no scope conflict/assertion weakening; app NOT_RUN.
 
 ## История (неизменённые прежние записи)
 
