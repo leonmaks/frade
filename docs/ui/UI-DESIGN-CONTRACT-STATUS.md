@@ -1,6 +1,6 @@
 # P01: diagnostic134PASS/1FAIL; B05 restoration RCA
 
-Обновлено 2026-10-08T18:15:46.856Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T18:18:28.774Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -31,7 +31,7 @@
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: PRE checkpoint a715b57f70c59b350ae19440bfd9ea00db56e7ae already PUSHED_REMOTE_SHA_VERIFIED. Completed diagnostic134PASS/1B05FAIL evidence/status await authorized commit/push. Product diff empty. Branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
+Git: desktop-context diagnostic checkpoint 6ee4adbe99ba8dbd209aa25727ebe275c4f34273 COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-08T18:18:28.771Z. Publication receipt/status tracked in a follow-up metadata checkpoint. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
