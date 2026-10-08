@@ -1,0 +1,52 @@
+{
+  "atUtc": "2026-10-08T20:20:10.766Z",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "status",
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "status",
+        "--short"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "product-diff",
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "diff",
+        "--exit-code",
+        "--",
+        "apps",
+        "packages",
+        "scripts",
+        "tests"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0
+    }
+  ]
+}
