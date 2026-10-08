@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_FOCUS_DIAGNOSTIC_PRE_PASS_CONTROL_NEXT",
+  "phase": "P01_FOCUS_DIAGNOSTIC_NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -1861,7 +1861,7 @@
   },
   "currentFocusRca": {
     "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z",
-    "status": "PRE_PASS",
+    "status": "ROOT_CAUSE_NOT_PROVEN",
     "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/diagnostic-plan.md",
     "pre": "PASS",
     "model": "gpt-6-astra",
@@ -1904,5 +1904,23 @@
       "actualEffort": "NOT_CONFIRMED",
       "scope": "Focused PRE of passive diagnosis only for two current original View-focus failures. No production repair, assertion/deadline/interaction changes, scope exception, gate waiver or cumulative closure."
     }
+  },
+  "currentFocusDiagnostic": {
+    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z",
+    "mode": "clones",
+    "status": "NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN",
+    "fixedControlExecutions": 2,
+    "fixedCloneExecutions": 6,
+    "pre": "PASS",
+    "fullRoot": "FAIL2",
+    "sourceChanges": "NONE_AFTER_EXACT_RESTORATION",
+    "controls": "2PASS",
+    "clones": "6PASS",
+    "evidenceIntegrity": "PASS",
+    "sourceRestore": "3479sources4pinsEXACT",
+    "discovery": "135original0diagnostic",
+    "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/summary.json",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/report.md",
+    "next": "STOP_REPAIR; further full-context diagnosis requires bounded plan/fresh PRE; no green-seeking full rerun"
   }
 }

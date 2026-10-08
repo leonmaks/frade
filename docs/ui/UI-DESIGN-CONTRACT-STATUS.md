@@ -1,6 +1,6 @@
-# P01: benchmark PASS; full root FAIL — two focus blockers
+# P01: benchmark PASS; focus diagnosis8PASS, cause not proved
 
-Обновлено 2026-10-08T05:43:30.899Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T06:06:11.913Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -17,8 +17,8 @@
 | Popup / body focus / pending focus | Popup5/6; body focus5/6; pending6/6 PASS;2required failures stay blockers |
 | New blocker1 | Dark/Comfortable popup: first View anchor inactive after original focus(),10000ms |
 | New blocker2 | Light/Comfortable body focus: baseline3passed; first View focus after wide viewport inactive,10000ms |
-| RCA | OPEN; passive diagnostic PRE PASS;17raw/87packet/84events/candidate+packet unchanged. No repair; two full failures remain |
-| Source / binary / display endpoints | 3479source hashes unchanged; same source as prior4K29Hz root; same main binary; before/after1440p60 equal |
+| RCA | PRE PASS; controls2/2 + passive clones6/6 PASS; NOT_REPRODUCED / ROOT_CAUSE_NOT_PROVEN. Original2FAIL remain open |
+| Source / binary / display endpoints | Exact whole E2E restored;3479sources +4pins exact;135production tests/0diagnostic names;2560×1440/60Hz endpoints unchanged |
 | Evidence integrity | 4687fresh artifacts copied, hashes verified;520310275bytes |
 | Legacy / foundation preservation | Other122entries exact;2accepted transitions exact;6foundation pins exact; pendingRuntime historical exact |
 | Structural OpenSpec repair | Exact accepted78b34... applied; PRE PASS; strict1.14.1 PASS,47requirements/70unique scenarios (106occurrences) |
@@ -26,13 +26,15 @@
 | Tasks2.4 /2.5 /3.1 | OPEN; applicable focus FAIL blocks closure; human visual NOT_APPROVED |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: опубликовать PRE checkpoint и выполнить точный диагностический protocol: два unchanged controls x1, два passive clones x3; все outcomes сохраняются, production/assertions/timeouts не меняются. Current2FAIL не закрываются повторным PASS. P02 не начинается.
+Следующий шаг: STOP repair по диагностическому плану; подготовить дальнейшую диагностику условий полного запуска, которых нет в focused cases, с новым bounded plan/PRE. Причина не доказана; повторный full root для поиска зелёного запрещён. P02 не начинается. Действий человека с дисплеем сейчас не требуется.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: FAIL checkpoint 1365fc30dd55d995d09f4d31c799563eab372e71 COMMITTED/PUSHED; remote SHA VERIFIED 2026-10-08T05:15:24.072Z. Diagnostic plan/PRE preparation UNCOMMITTED. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only, no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued, visibility unconfirmed.
+Git: PRE checkpoint64f8f6cf2ed203c03199e447ba44035c01e20a19 PUSHED_REMOTE_SHA_VERIFIED2026-10-08T05:44:19.715Z. Diagnostic8PASS/ROOT_CAUSE_NOT_PROVEN checkpoint awaiting commit/push. Authorized UI origin/ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
+
+Диагностика: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/report.md), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/summary.json), [источники и discovery](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/discovery-completion.json). Всего280artifacts;6complete passive captures/18contexts. Persisted files/identity exact; whole031 live-view dy/scroll changes match original viewport control.
 
 ## История (неизменённые прежние записи)
 

@@ -1,0 +1,123 @@
+{
+  "atUtc": "2026-10-08T05:57:07.272Z",
+  "parserVersion": "5.9.3",
+  "originalSha256": "7c3e52a69c1b8346a78f4297774f5c2342a3ecdaeb05a2611465d2f09c546f43",
+  "originalBytes": 279962,
+  "tailSha256": "6fcc475a019f3d1a66ab4eb0bcce11841a69d9783256f5c09775dc96488fa708",
+  "candidateSha256": "19a0edc67c14a59538bda202ed8973f10f4721deed172162d74dd7af7490a1b3",
+  "prefixExact": true,
+  "parseDiagnostics": 0,
+  "pass": true,
+  "clones": [
+    {
+      "code": "028",
+      "sourceStart": 237527,
+      "sourceEnd": 244765,
+      "sourceByteStart": 239855,
+      "sourceBytes": 7238,
+      "originalSha256": "2e2e2cd081901dda1708bef091082be2f59a754d9611c423c14f26e294ba0173",
+      "cloneSha256": "1d76306926957dcd84621ca19cc41cb919b5beb0b60c95b1a6fd6fbf65095bea",
+      "reversedSha256": "2e2e2cd081901dda1708bef091082be2f59a754d9611c423c14f26e294ba0173",
+      "exactReverse": true,
+      "edits": [
+        {
+          "at": 177,
+          "remove": "P01-UPPER-028",
+          "insert": "P01-FOCUS-DIAGNOSTIC-028",
+          "kind": "diagnostic-name",
+          "generatedAt": 177
+        },
+        {
+          "at": 464,
+          "remove": "",
+          "insert": "let __p01Diag: P01FocusDiagnostic | undefined, __p01OriginalError: unknown; let __p01OriginalFailed=false\n    ",
+          "kind": "diagnostic-private-locals",
+          "generatedAt": 475
+        },
+        {
+          "at": 581,
+          "remove": "",
+          "insert": ";__p01Diag=await p01StartPassiveFocusDiagnostic(f,targets,info)",
+          "kind": "passive-observer-setup",
+          "generatedAt": 702
+        },
+        {
+          "at": 6944,
+          "remove": "",
+          "insert": " catch (__p01Error) { __p01OriginalFailed=true; __p01OriginalError=__p01Error; throw __p01Error }",
+          "kind": "original-failure-preservation",
+          "generatedAt": 7128
+        },
+        {
+          "at": 6954,
+          "remove": "",
+          "insert": "let __p01CaptureError: unknown;try{__p01CaptureError=__p01Diag?await __p01Diag.finish(__p01OriginalError):new Error(\"DIAGNOSTIC_SETUP_NOT_REACHED\")}catch(__p01Error){__p01CaptureError=__p01Error}try{",
+          "kind": "final-passive-capture-before-original-teardown",
+          "generatedAt": 7235
+        },
+        {
+          "at": 7230,
+          "remove": "",
+          "insert": "}finally{if(__p01CaptureError){console.error(\"P01_PASSIVE_CAPTURE_ERROR \"+JSON.stringify({error:String(__p01CaptureError),originalFailed:__p01OriginalFailed,originalError:String(__p01OriginalError)}));if(!__p01OriginalFailed)throw __p01CaptureError}}",
+          "kind": "preserve-teardown-and-observation-failure",
+          "generatedAt": 7710
+        }
+      ]
+    },
+    {
+      "code": "031",
+      "sourceStart": 244866,
+      "sourceEnd": 255197,
+      "sourceByteStart": 247194,
+      "sourceBytes": 10384,
+      "originalSha256": "75c7025655492bf01f048a6994e608c3c5ca7c597f3dc080d464d380b903599b",
+      "cloneSha256": "08eb556bfa103511119fa9894aa9f945215b9ae9083b76fe9e5f47fc67090eea",
+      "reversedSha256": "75c7025655492bf01f048a6994e608c3c5ca7c597f3dc080d464d380b903599b",
+      "exactReverse": true,
+      "edits": [
+        {
+          "at": 177,
+          "remove": "P01-UPPER-031",
+          "insert": "P01-FOCUS-DIAGNOSTIC-031",
+          "kind": "diagnostic-name",
+          "generatedAt": 177
+        },
+        {
+          "at": 605,
+          "remove": "",
+          "insert": "let __p01Diag: P01FocusDiagnostic | undefined, __p01OriginalError: unknown; let __p01OriginalFailed=false\n    ",
+          "kind": "diagnostic-private-locals",
+          "generatedAt": 616
+        },
+        {
+          "at": 722,
+          "remove": "",
+          "insert": ";__p01Diag=await p01StartPassiveFocusDiagnostic(f,targets,info)",
+          "kind": "passive-observer-setup",
+          "generatedAt": 843
+        },
+        {
+          "at": 10092,
+          "remove": "",
+          "insert": " catch (__p01Error) { __p01OriginalFailed=true; __p01OriginalError=__p01Error; throw __p01Error }",
+          "kind": "original-failure-preservation",
+          "generatedAt": 10276
+        },
+        {
+          "at": 10102,
+          "remove": "",
+          "insert": "let __p01CaptureError: unknown;try{__p01CaptureError=__p01Diag?await __p01Diag.finish(__p01OriginalError):new Error(\"DIAGNOSTIC_SETUP_NOT_REACHED\")}catch(__p01Error){__p01CaptureError=__p01Error}try{",
+          "kind": "final-passive-capture-before-original-teardown",
+          "generatedAt": 10383
+        },
+        {
+          "at": 10269,
+          "remove": "",
+          "insert": "}finally{if(__p01CaptureError){console.error(\"P01_PASSIVE_CAPTURE_ERROR \"+JSON.stringify({error:String(__p01CaptureError),originalFailed:__p01OriginalFailed,originalError:String(__p01OriginalError)}));if(!__p01OriginalFailed)throw __p01CaptureError}}",
+          "kind": "preserve-teardown-and-observation-failure",
+          "generatedAt": 10749
+        }
+      ]
+    }
+  ]
+}
