@@ -1,6 +1,6 @@
-# P01: B05 prefix-context PRE PASS; runtime pending
+# P01: prefix-context 57PASS/0FAIL/0SKIPPED; NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN
 
-Обновлено 2026-10-08T21:52:27.226Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T22:11:52.400Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -12,7 +12,7 @@
 | --- | --- |
 | Ownership repair / units / FUI / BDD | IMPLEMENTED; current-source85 unit /12FUI /111BDD PASS; original RED and PRE retained |
 | Full root at2560×1440/60Hz | FAIL: Draw215PASS; desktop133PASS/2FAIL,135completed; root exit1 |
-| Current benchmark | Diagnostic PASS p95=130.9ms<=150,100samples/recomputed; previous full root126.4ms and focused145.7ms PASS. Historical4K29Hz203.5ms FAIL retained |
+| Previous benchmarks | Diagnostic PASS p95=130.9ms<=150,100samples/recomputed; previous full root126.4ms and focused145.7ms PASS. Historical4K29Hz203.5ms FAIL retained |
 | Glyph matrices / actions / keyboard | Ordinary6 + expanded6 + actions6 + keyboard6 PASS |
 | Popup / body focus / pending focus | Original full root: popup5/6, body5/6, pending6/6. Current diagnostic:6/6 each; original2FAIL remain unresolved |
 | New blocker1 | Dark/Comfortable popup: first View anchor inactive after original focus(),10000ms |
@@ -20,19 +20,22 @@
 | New blocker3 | Diagnostic case57 B05: exact lower-popup restoration FAIL; inline left expected65px/actual0px. Identity/menuGone/vendor classes pass; later B05 assertions NOT_REACHED. Cause NOT_PROVEN |
 | RCA | Previous desktop context134PASS/1B05FAIL, focus12PASS/36contexts. Current single B051PASS/complete passive journal; prior B05 and focus FAIL NOT_REPRODUCED / ROOT_CAUSE_NOT_PROVEN |
 | Source / binary / display endpoints |3479sources+4pins exact; original279962-byte E2E restored; discovery135/0diagnostic. Current completed run2560×1440/WMI60Hz unchanged; prior29Hz block retained |
-| Evidence integrity | Current B055fresh hashed artifacts/1048623bytes,210records/2roots/40nodes. Previous desktop4753artifacts and original full4687artifacts retained |
+| Previous evidence integrity | Single B055fresh hashed artifacts/1048623bytes,210records/2roots/40nodes. Previous desktop4753artifacts and original full4687artifacts retained |
 | Legacy / foundation preservation | Other122entries exact;2accepted transitions exact;6foundation pins exact; pendingRuntime historical exact |
 | Structural OpenSpec repair | Exact accepted78b34... applied; PRE PASS; strict1.14.1 PASS,47requirements/70unique scenarios (106occurrences) |
 | UI compliance / static / build / boundaries | PASS in root; Turbo cache hits disclosed;26contract tests/102pairs/positive-negative/EOL controls retained |
 | Tasks2.4 /2.5 /3.1 | OPEN; original full focus FAIL2 and previous desktop-context B05 restoration FAIL unresolved. Human visual NOT_APPROVED |
 | B05 diagnostic PRE / runtime | Independent PRE PASS; single runtime1PASS,210records/2roots/40nodes, no capture error/overflow. Exact original restoration PASS. Earlier65px→0px FAIL NOT_REPRODUCED; cause unresolved |
+| Latest prefix-context diagnostic |57PASS/0FAIL/0skip/0retry; first56+B05 worker0; all4observations/210records complete; oldFAIL NOT_REPRODUCED / cause NOT_PROVEN; budget1/1 exhausted |
+| Latest controls / automatic PRE | RED2FAIL before repair;22GREEN/strict/syntax PASS; V4 independent PRE PASS378files/52events; earlierFAIL/BLOCKED retained |
+| Latest benchmark / evidence | Recomputed p95=145.4ms<=150;20warmups+100samples;1972runtime artifacts/2011final-cutoff files; screenshots inspected, humanNOT_APPROVED |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: independent PRE PASS for NEW one-shot57-case prefix-context diagnosis. Publish review checkpoint, then verify exact discovery174/57/display/source before one runtime. All earlier failures remain open.
+Следующий шаг: STOP more runtime/repair under exhausted prefix-context plan; assess saved journal and actual root-cause limits before any new method/repair decision. Prior focus/B05 failures and gates remain open.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: Prefix-context PRE PASS checkpoint 8c392b5ce88a49305052dc87003077f159aa53fa COMMITTED/PUSHED; remote SHA VERIFIED 2026-10-08T21:52:27.220Z. Following metadata commit records receipt. Runtime NOT_RUN; original raw RED log exact; authorized UI ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
+Git: Completed prefix-context diagnostic evidence/status awaiting checkpoint publication. Previous PRE checkpoint publication retained in execution context. Authorized UI origin/ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
@@ -47,6 +50,8 @@ B05 completed diagnostic: [report](../../openspec/changes/frade-p01-theme-core/e
 Prefix-context PRE: [FAIL report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/output--result.md), [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/verification.json).272packet files/60events; candidate/packet/plan unchanged. Four runner/control completeness defects; no scope conflict/assertion weakening; app NOT_RUN.
 
 Prefix-context PRE: [FAIL report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/output--result.md), [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/verification.json).331packet files/60events; candidate/packet/plan unchanged. One assertion-time evidence completeness defect; no scope conflict/assertion weakening; app NOT_RUN.
+
+B05 prefix-context diagnosis: [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/report.md), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/summary.json), [journal](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/journal-analysis.json). 57PASS/0FAIL/0SKIPPED; NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN. First56 worker0=true, captureComplete=true. Original source restored; old failures not waived.
 
 ## История (неизменённые прежние записи)
 

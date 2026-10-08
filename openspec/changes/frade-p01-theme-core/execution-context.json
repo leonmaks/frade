@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_B05_PREFIX_CONTEXT_PRE_PASS",
+  "phase": "P01_B05_PREFIX_CONTEXT_DIAGNOSTIC_COMPLETE_RCA_OPEN",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -2194,7 +2194,7 @@
           "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
         }
       },
-      "runtime": "NOT_RUN",
+      "runtime": "COMPLETED_DIAGNOSTIC_ONLY",
       "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-b05-prefix-pre-request-20261008T202830Z-v5.json",
       "runtimeProtocol": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-plan-20261008T202830Z/runtime-protocol.mjs",
       "runtimeSha256": "86371a5d0b3c7f5c0ce3975775748fd5e80e5fd88f77c3839c17fed40bc48089",
@@ -2233,7 +2233,7 @@
       "blockers": [
         "Missing or malformed original assertion-time observations can still yield exit0 despite mandatory evidence"
       ],
-      "next": "Technical evidence-only observation completeness repair with meaningful RED, then V4 controls, preserve V1 and FAIL, fresh automatic independent PRE before one runtime",
+      "next": "STOP_MORE_RUNTIME_AND_REPAIR_UNDER_THIS_PLAN; assess actual journal before any proposed new method/decision",
       "failPublication": {
         "atUtc": "2026-10-08T21:28:54.122Z",
         "status": "PUSHED_REMOTE_SHA_VERIFIED",
@@ -2255,6 +2255,34 @@
         "ref": "refs/heads/codex/frade-ui-design-contract",
         "scope": "PRE_PASS_EXACT57_DIAGNOSTIC_RUNTIME_NOT_RUN",
         "rawEvidencePreserved": true
+      },
+      "run": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z",
+      "diagnosis": "NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN",
+      "counts": {
+        "selected": 57,
+        "executions": 57,
+        "passed": 57,
+        "failed": 0,
+        "timedOut": 0,
+        "skipped": 0,
+        "interrupted": 0,
+        "retries": 0
+      },
+      "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/summary.json",
+      "analysis": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/journal-analysis.json",
+      "report": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/report.md",
+      "runtimeInvocationsUsed": 1,
+      "ownerAssessment": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/owner-assessment.json",
+      "latestBenchmark": {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/artifacts/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/performance-result.json",
+        "sha256": "f03e133e648d7205a7d5b706fe11b370f286817796d03d5e4c10be57f5eb1d07",
+        "rawObservations": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/artifacts/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/all-observations.ndjson",
+        "warmups": 20,
+        "samples": 100,
+        "reportedP95": 145.40000000596046,
+        "recomputedP95": 145.40000000596046,
+        "budget": 150,
+        "status": "PASS"
       }
     }
   }
