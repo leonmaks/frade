@@ -1,6 +1,6 @@
 # P01: benchmark PASS; focus diagnosis8PASS, cause not proved
 
-Обновлено 2026-10-08T06:07:25.002Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T07:15:54.793Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -17,7 +17,7 @@
 | Popup / body focus / pending focus | Popup5/6; body focus5/6; pending6/6 PASS;2required failures stay blockers |
 | New blocker1 | Dark/Comfortable popup: first View anchor inactive after original focus(),10000ms |
 | New blocker2 | Light/Comfortable body focus: baseline3passed; first View focus after wide viewport inactive,10000ms |
-| RCA | PRE PASS; controls2/2 + passive clones6/6 PASS; NOT_REPRODUCED / ROOT_CAUSE_NOT_PROVEN. Original2FAIL remain open |
+| RCA | V2 PRE FAIL B1 retained; V3 independent PRE PASS, verified raw/packet/candidate. One135-case context diagnostic NEXT; app execution NOT_RUN |
 | Source / binary / display endpoints | Exact whole E2E restored;3479sources +4pins exact;135production tests/0diagnostic names;2560×1440/60Hz endpoints unchanged |
 | Evidence integrity | 4687fresh artifacts copied, hashes verified;520310275bytes |
 | Legacy / foundation preservation | Other122entries exact;2accepted transitions exact;6foundation pins exact; pendingRuntime historical exact |
@@ -26,11 +26,11 @@
 | Tasks2.4 /2.5 /3.1 | OPEN; applicable focus FAIL blocks closure; human visual NOT_APPROVED |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: STOP repair по диагностическому плану; подготовить дальнейшую диагностику условий полного запуска, которых нет в focused cases, с новым bounded plan/PRE. Причина не доказана; повторный full root для поиска зелёного запрещён. P02 не начинается. Действий человека с дисплеем сейчас не требуется.
+Следующий шаг: опубликовать PRE checkpoint, проверить actual135-case mapping и выполнить единственный desktop-context diagnostic. Original2FAIL не закрываются; production/оригинальные тесты пока неизменны.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: diagnostic checkpoint fdcada9bcb076bd997ede3eb44bd607343ae9322 COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-08T06:07:25.000Z. Publication receipt/status tracked in a follow-up metadata checkpoint. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
+Git: published checkpoint d9aeb19a5cf274fe9e5a30832b855fb660336a86; clean on resume. New diagnostic planning UNCOMMITTED/PRE_REQUIRED. Authorized UI origin/ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 

@@ -1,0 +1,4 @@
+async function run(){ const f={},targets=[],info={},contourSamples=[]; let __p01Diag: P01FocusDiagnostic | undefined, __p01OriginalError: unknown, __p01CaptureError: unknown; let __p01OriginalFailed=false
+     try { ;__p01Diag=await p01StartPassiveFocusDiagnostic(f,targets,info);events.push('body');if(fault.body)throw errors.body; } catch (__p01Error) { __p01OriginalFailed=true; __p01OriginalError=__p01Error; throw __p01Error }finally{try{__p01CaptureError=__p01Diag?await __p01Diag.finish(__p01OriginalError):new Error("DIAGNOSTIC_SETUP_NOT_REACHED")}catch(__p01Error){__p01CaptureError=__p01Error}if(__p01CaptureError)console.error("P01_PASSIVE_CAPTURE_ERROR "+JSON.stringify({error:String(__p01CaptureError),originalFailed:__p01OriginalFailed,originalError:String(__p01OriginalError)}));events.push('teardown');if(fault.teardown)throw errors.teardown;} 
+    if(__p01CaptureError)throw __p01CaptureError
+ await upperFocusContourProof(contourSamples,info); };run()
