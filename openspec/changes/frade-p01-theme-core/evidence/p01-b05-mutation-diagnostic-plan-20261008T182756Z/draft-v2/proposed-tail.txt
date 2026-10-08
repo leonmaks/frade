@@ -1,0 +1,186 @@
+
+
+// Temporary evidence-only B05 diagnostic copy; original callbacks above are exact.
+// Proposed evidence-only B05 journal. No app action or writer hook.
+type P01B05Diagnostic = { finish: (originalError: unknown) => Promise<Error | null> }
+async function p01StartB05MutationDiagnostic(f: FuiFixture, info: Parameters<typeof upperCalibrate>[2]): Promise<P01B05Diagnostic> {
+  const key='__fradeP01B05MutationDiagnostic20261008', errors:{stage:string;message:string}[]=[]
+  const frame=f.page.frames().find(value=>value.url().startsWith('frade://drawio/'))
+  let installed=false
+  const fail=(stage:string,e:unknown)=>{if(errors.length<64)errors.push({stage,message:String(e).slice(0,4096)})}
+  try {
+    if(!frame)throw new Error('OWN_FRAME_MISSING')
+    await frame.evaluate(k=>{
+      const host=window as unknown as Record<string,any>
+      if(k in host)throw new Error('B05_DIAGNOSTIC_KEY_COLLISION')
+      const ui=host.__p01Ui,graph=ui?.editor?.graph
+      if(!ui||!graph)throw new Error('B05_DIAGNOSTIC_UI_NOT_READY')
+      const ids=new WeakMap<object,number>(), roots=new Map<HTMLElement,{instance:object;parent:HTMLElement|null;row:HTMLElement|null}>(), tracked=new Set<Element>()
+      let nextId=1,sequence=0,batch=0,overflow=false,firstChainRetired=false
+      let adoptedMenu:object|undefined
+      const records:Record<string,unknown>[]=[],errors:string[]=[],limit=2000,nodeLimit=512
+      const id=(value:object|null|undefined)=>{if(!value)return null;if(!ids.has(value))ids.set(value,nextId++);return ids.get(value)!}
+      const track=(node:Element)=>{if(tracked.size>=nodeLimit&&!tracked.has(node)){overflow=true;return}tracked.add(node)}
+      const label=(node:Node|null|undefined)=>node?{id:id(node),nodeName:node.nodeName,connected:node.isConnected,...(node instanceof Element?{class:node.getAttribute('class')}: {})}:null
+      const style=(node:HTMLElement)=>({raw:node.getAttribute('style'),properties:Array.from(node.style).map(name=>({name,value:node.style.getPropertyValue(name),priority:node.style.getPropertyPriority(name)}))})
+      const current=()=>ui.currentMenu
+      const rootState=()=>Array.from(roots,([node,proof])=>({node:label(node),instanceId:id(proof.instance),parent:label(proof.parent),row:label(proof.row),marker:node.getAttribute('data-frade-lower-menu'),role:node.getAttribute('role'),style:style(node),currentRoot:current()?.div===node}))
+      const context=()=>({dateNow:Date.now(),timeOrigin:performance.timeOrigin,performanceNow:performance.now(),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},fontStatus:document.fonts.status,uiSame:ui===host.__p01Ui,graphSame:graph===host.__p01Ui?.editor?.graph,currentMenuId:id(current()),adoptedMenuId:id(adoptedMenu),firstChainRetired,currentMenuRoot:label(current()?.div),roots:rootState()})
+      const issue=(e:unknown)=>{if(errors.length<64)errors.push(String(e).slice(0,4096));else overflow=true}
+      const append=(data:Record<string,unknown>)=>{if(records.length>=limit){overflow=true;return}records.push({sequence:sequence++,...data})}
+      const options:MutationObserverInit={subtree:true,childList:true,attributes:true,attributeOldValue:true,attributeFilter:['style','role','aria-label','aria-disabled','tabindex','aria-haspopup','aria-expanded','aria-checked','aria-hidden','data-frade-lower-menu']}
+      const discover=()=>{
+        if(ui!==host.__p01Ui||graph!==host.__p01Ui?.editor?.graph)throw new Error('B05_DIAGNOSTIC_UI_IDENTITY_CHANGED')
+        const menu=current()
+        if(adoptedMenu&&roots.size===2&&Array.from(roots.keys()).every(node=>!node.isConnected)&&menu!==adoptedMenu)firstChainRetired=true
+        if(firstChainRetired||(adoptedMenu&&menu!==adoptedMenu))return
+        const visit=(scope:any,node:HTMLElement,parent:HTMLElement|null,row:HTMLElement|null)=>{
+          if(!(node instanceof HTMLElement)||!scope?.tbody||!node.contains(scope.tbody))return
+          if(!node.hasAttribute('data-frade-lower-menu'))return
+          if(!adoptedMenu)adoptedMenu=menu
+          if(!roots.has(node)){
+            if(roots.size>=8){overflow=true;throw new Error('B05_DIAGNOSTIC_ROOT_LIMIT')}
+            roots.set(node,{instance:menu,parent,row});track(node);observer.observe(node,options)
+            append({kind:'positive-root-discovery',batch,node:label(node),instanceId:id(menu),parent:label(parent),row:label(row),marker:node.getAttribute('data-frade-lower-menu'),discoveryTiming:'At observer/event callback; not the instant a bridge property lease was acquired',...context()})
+          }
+          const active=scope.activeRow
+          if(active?.div instanceof HTMLElement&&active.tbody&&active.parentNode===scope.tbody&&active.div.isConnected)visit(active,active.div,node,active)
+        }
+        if(menu?.div instanceof HTMLElement&&menu.tbody&&menu.div.isConnected)visit(menu,menu.div,null,null)
+      }
+      const owner=(node:Node)=>Array.from(roots.keys()).find(root=>root===node||root.contains(node))
+      const consume=(mutations:MutationRecord[])=>{
+        batch++
+        try{
+          discover()
+          const state=context()
+          for(let index=0;index<mutations.length;index++){
+            const mutation=mutations[index],node=mutation.target
+            const known=owner(node),removed=Array.from(mutation.removedNodes).filter(n=>Array.from(roots.keys()).some(root=>n===root||n.contains(root)))
+            if(!known&&!removed.length)continue
+            if(node instanceof Element)track(node)
+            if(mutation.addedNodes.length>32||mutation.removedNodes.length>32)overflow=true
+            append({kind:'mutation',batch,index,type:mutation.type,node:label(node),root:label(known),attribute:mutation.attributeName,oldValue:mutation.oldValue,valueAtBatchEnd:node instanceof Element&&mutation.attributeName?node.getAttribute(mutation.attributeName):null,added:Array.from(mutation.addedNodes).slice(0,32).map(label),removed:Array.from(mutation.removedNodes).slice(0,32).map(label),...state})
+          }
+        }catch(e){issue(e)}
+      }
+      const observer=new MutationObserver(consume)
+      const record=(kind:string)=>{try{consume(observer.takeRecords());discover();append({kind,batch,...context()})}catch(e){issue(e)}}
+      const resize=()=>record('window-resize'),fonts=(event:Event)=>record('fonts-'+event.type)
+      const state={finish(){
+        let originalObserverMap:unknown=null,finalNodes:unknown=null
+        try{
+          record('final')
+          const original=host.__p01B05
+          if(!original||!(original.prior instanceof Map)||!Array.isArray(original.roots))throw new Error('ORIGINAL_B05_OBSERVER_STATE_MISSING')
+          originalObserverMap={uiSame:original.ui===ui,graphSame:original.graph===graph,roots:original.roots.map((node:HTMLElement)=>({node:label(node),known:roots.has(node),style:style(node)})),prior:Array.from(original.prior as Map<Element,Map<string,string|null>>,([node,attrs])=>{track(node);return {node:label(node),attributes:Array.from(attrs,([name,value])=>({name,firstOldValue:value,currentValue:node.getAttribute(name)}))}}),classes:(original.classes||[]).map((item:{node:Element;value:string|null})=>({node:label(item.node),before:item.value,current:item.node.getAttribute('class')}))}
+          finalNodes=Array.from(tracked,node=>({node:label(node),attributes:Array.from(node.attributes,a=>({name:a.name,value:a.value})),style:node instanceof HTMLElement?style(node):null}))
+          if(original.roots.length!==2||roots.size!==2||!original.roots.every((node:HTMLElement)=>roots.has(node)))throw new Error('B05_EXPECTED_ROOTS_NOT_OBSERVED')
+        }catch(e){issue(e)}
+        let disposed=false
+        try{
+          observer.disconnect();window.removeEventListener('resize',resize);document.fonts.removeEventListener('loadingdone',fonts);document.fonts.removeEventListener('loadingerror',fonts)
+          if(host[k]!==state)throw new Error('B05_DIAGNOSTIC_OWNER_CHANGED')
+          delete host[k];disposed=true
+        }catch(e){issue(e)}
+        return {records,errors,overflow,limit,nodeLimit,knownRoots:roots.size,trackedNodes:tracked.size,originalObserverMap,finalNodes,finalPresent:records.some(value=>value.kind==='final'),disposed,limitations:['Positive discovery occurs at callback time; earlier records in the same batch may precede marker/lease creation.','Raw mutation order does not identify the synchronous writer.','Observer delivery and reads may change scheduling.','Only the first positively proven lower-menu instance/chain is admitted; later original retry menus are ignored.','Final currentValue reads are end-of-callback observations, not the original restoration-assertion instant when the body continues. Use original b05-observations.json for that assertion result.']}
+      }}
+      Object.defineProperty(host,k,{value:state,configurable:true})
+      try{observer.observe(document.body,options);window.addEventListener('resize',resize);document.fonts.addEventListener('loadingdone',fonts);document.fonts.addEventListener('loadingerror',fonts);record('initial')}catch(e){observer.disconnect();window.removeEventListener('resize',resize);document.fonts.removeEventListener('loadingdone',fonts);document.fonts.removeEventListener('loadingerror',fonts);if(host[k]===state)delete host[k];throw e}
+    },key)
+    installed=true
+  }catch(e){fail('setup',e)}
+  return {async finish(originalError:unknown){
+    let journal:{records?:unknown[];errors?:unknown[];overflow?:boolean;knownRoots?:number;finalPresent?:boolean;disposed?:boolean}|null=null
+    if(frame&&installed)try{journal=await frame.evaluate(k=>{const host=window as unknown as Record<string,{finish:()=>any}>;if(!Object.hasOwn(host,k))throw new Error('B05_DIAGNOSTIC_STATE_MISSING');return host[k].finish()},key)}catch(e){fail('final',e)}
+    if(!journal||journal.errors?.length||journal.overflow||journal.knownRoots!==2||!journal.finalPresent||!journal.disposed)fail('integrity','Missing journal/roots/final/disposal or error/overflow')
+    const data={scope:'B05_PASSIVE_DIAGNOSTIC_NOT_GATE',title:info.title,repeatEachIndex:info.repeatEachIndex,status:errors.length?'BLOCKED':'CAPTURE_COMPLETE',completedAtUtc:new Date().toISOString(),originalError:originalError instanceof Error?{name:originalError.name,message:originalError.message,stack:originalError.stack}:originalError===undefined?null:String(originalError),errors,journal}
+    await writeFile(info.outputPath('b05-passive-mutation-diagnostic.json'),JSON.stringify(data,null,2))
+    return errors.length?new Error('B05_PASSIVE_DIAGNOSTIC_BLOCKED '+JSON.stringify(errors)):null
+  }}
+}
+
+
+
+// eslint-disable-next-line no-empty-pattern
+test("P01-B05-MUTATION-DIAGNOSTIC "+('P01-B05 actual settled lower refusal stays live through failed publication, preserves semantics and permits original feasible retry'), async ({}, info) => {
+  test.setTimeout(120000)
+  const f=await diagramFixture('frame',{mode:'light',density:'comfortable'}),observations:unknown[]=[]
+  let __p01B05Diagnostic: P01B05Diagnostic | undefined, __p01B05OriginalError: unknown, __p01B05CaptureError: unknown; let __p01B05OriginalFailed=false
+  try {
+    const frame=f.page.frameLocator('iframe'),host=f.page.locator('iframe'),fileBefore=await readFile(f.file,'utf8')
+    const settingsPath=join(f.fixture.destination,'p01-frame-profile','presentation-settings.json'),settingsBefore=await readFile(settingsPath,'utf8')
+    await expect.poll(()=>frame.locator('body').evaluate(()=>!!(window as any).__p01Ui)).toBe(true)
+    try{__p01B05Diagnostic=await p01StartB05MutationDiagnostic(f,info)}catch(__p01B05SetupError){__p01B05CaptureError=__p01B05SetupError;console.error("P01_B05_DIAGNOSTIC_SETUP_ERROR "+String(__p01B05SetupError))}
+
+    const semantics=()=>frame.locator('body').evaluate(()=>{const ui=(window as any).__p01Ui,g=ui.editor.graph
+      return {xml:(window as any).mxUtils.getXml(new (window as any).mxCodec().encode(g.getModel())),undo:ui.editor.undoManager.indexOfNextAdd,history:ui.editor.undoManager.history.length,selection:g.getSelectionCells().map((c:any)=>c.id),background:g.background,grid:g.gridSize,preferences:{...localStorage}}})
+    const before=await semantics(),revision=await host.getAttribute('data-frade-revision')
+    await f.page.evaluate(()=>{const frame=document.querySelector('iframe')!,records=((window as any).__p01B05Replies=[] as Record<string,unknown>[])
+      window.addEventListener('message',event=>{if(event.source!==frame.contentWindow||event.origin!=='frade://drawio'||typeof event.data!=='string')return
+        const data=JSON.parse(event.data);if(data.event==='fradePresentation'&&data.status==='REFUSED')records.push(data)
+      })
+    })
+    await frame.locator('body').evaluate(()=>{const ui=(window as any).__p01Ui
+      const refs=((window as any).__p01B05={ui,graph:ui.editor.graph,roots:[] as HTMLElement[],prior:new Map<Element,Map<string,string|null>>(),observer:undefined as MutationObserver|undefined})
+      refs.observer=new MutationObserver((records)=>{for(const record of records){const node=record.target as HTMLElement,name=record.attributeName!
+        if(name==='data-frade-lower-menu' && node.hasAttribute(name) && !refs.roots.includes(node))refs.roots.push(node)
+        if(!refs.roots.some((root:HTMLElement)=>root===node||root.contains(node)))continue
+        const attrs=refs.prior.get(node)??new Map<string,string|null>();if(!attrs.has(name))attrs.set(name,record.oldValue);refs.prior.set(node,attrs)
+      }})
+      refs.observer.observe(document.body,{subtree:true,attributes:true,attributeOldValue:true,attributeFilter:['style','role','aria-label','aria-disabled','tabindex','aria-haspopup','aria-expanded','aria-checked','aria-hidden','data-frade-lower-menu']})
+    })
+    const opener=frame.locator('.geTabContainer .geControlTab[aria-haspopup="menu"]')
+    await opener.focus();await f.page.keyboard.press('Enter')
+    await frame.locator('[data-frade-lower-menu] [aria-haspopup="menu"][aria-disabled="false"]').first().focus();await f.page.keyboard.press('ArrowRight')
+    await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(2)
+    await frame.locator('body').evaluate(()=>{const refs=(window as any).__p01B05;refs.classes=refs.roots.flatMap((root:HTMLElement)=>[root,...root.querySelectorAll('*')]).map((node:Element)=>({node,value:node.getAttribute('class')}))})
+    // Genuine iframe capacity, no forged reply or production test API.
+    const originalStyle=await host.getAttribute('style')
+    await host.evaluate(node=>node.style.width='88px')
+    await expect.poll(()=>frame.locator('body').evaluate(()=>innerWidth)).toBe(88)
+    const live=f.page.getByRole('status').filter({hasText:'Меню страниц не помещается'})
+    await expect(live).toBeVisible();await expect(live).toHaveAttribute('aria-live','polite')
+    await expect(host).toBeVisible();await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+    await expect(opener).toHaveAttribute('aria-expanded','false')
+    const restored=await frame.locator('body').evaluate(async()=>{const refs=(window as any).__p01B05;await new Promise<void>(r=>requestAnimationFrame(()=>r()))
+      refs.observer.disconnect()
+      return {sameIdentity:refs.ui===(window as any).__p01Ui&&refs.graph===(window as any).__p01Ui.editor.graph,menuGone:!(window as any).__p01Ui.currentMenu,
+        restored:refs.roots.every((root:HTMLElement)=>!root.isConnected)&&Array.from(refs.prior as Map<Element,Map<string,string|null>>).every(([node,attrs])=>Array.from(attrs).every(([name,value])=>node.getAttribute(name)===value)),
+        vendorClassesPreserved:refs.classes.every(({node,value}:{node:Element;value:string|null})=>node.getAttribute('class')===value),
+        mismatches:Array.from(refs.prior as Map<Element,Map<string,string|null>>).flatMap(([node,attrs])=>Array.from(attrs).filter(([name,value])=>node.getAttribute(name)!==value).map(([name,value])=>({node:node.tagName,class:node.className,name,before:value,after:node.getAttribute(name)}))),
+        roots:refs.roots.length,focus:document.activeElement?.getAttribute('aria-label')}
+    })
+    observations.push({label:'actual-refusal',restored});expect(restored.sameIdentity).toBe(true);expect(restored.menuGone).toBe(true);expect(restored.restored).toBe(true);expect(restored.vendorClassesPreserved).toBe(true);expect(restored.roots).toBe(2);expect(await f.page.evaluate(()=>(window as any).__p01B05Replies.filter((r:any)=>r.message?.startsWith('LOWER_MENU_REFLOW_UNAVAILABLE')).length)).toBe(1)
+    expect(await semantics()).toEqual(before);expect(await host.getAttribute('data-frade-revision')).toBe(revision)
+    expect(await readFile(f.file,'utf8')).toBe(fileBefore);expect(await readFile(settingsPath,'utf8')).toBe(settingsBefore)
+    await f.page.screenshot({path:info.outputPath('b05-live-refusal.png')})
+    await host.evaluate((node,style)=>{if(style===null)node.removeAttribute('style');else node.setAttribute('style',style)},originalStyle)
+    await expect.poll(()=>frame.locator('body').evaluate(()=>innerWidth)).toBeGreaterThan(88)
+    await opener.focus();await f.page.keyboard.press('Enter')
+    await expect(frame.locator('[data-frade-lower-menu][role="menu"]')).toHaveCount(1)
+    await expect(live).toBeVisible() // feasible reopen is not an unauthenticated parent recovery ACK
+    await f.page.keyboard.press('Escape');await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
+    await frame.locator('body').evaluate(()=>{(window as any).__p01RefuseDark=true})
+    await f.page.getByRole('button',{name:'Меню Файл'}).click();await f.page.getByRole('menuitem',{name:'Выбрать тему…'}).click();await f.page.getByRole('option',{name:/Dark/}).click()
+    await expect(f.page.getByRole('status').filter({hasText:'Controlled current frame refusal'})).toBeVisible()
+    await expect(live).toBeVisible();await expect(host).toBeVisible()
+    expect(await host.getAttribute('data-frade-revision')).toBe(revision)
+    observations.push({label:'failed-same-revision-publication',revision,liveRetained:true})
+    await f.page.keyboard.press('Escape');await expect(f.page.getByRole('dialog',{name:'Выбор темы'})).toHaveCount(0)
+    await expect.poll(()=>host.getAttribute('data-frade-revision')).not.toBe(revision)
+    await expect(host).toHaveAttribute('data-frade-revision',(await f.page.locator('html').getAttribute('data-frade-revision'))!)
+    await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+    await expect(live).toHaveCount(0)
+    observations.push({label:'successful-authoritative-cancel-boundary',revision:await host.getAttribute('data-frade-revision'),oldDiagnosticCleared:true})
+    await frame.locator('body').evaluate(()=>{(window as any).__p01RefuseDark=false})
+    await previewDark(f.page);await expect(host).toHaveAttribute('data-frade-revision',(await f.page.locator('html').getAttribute('data-frade-revision'))!)
+    await expect(live).toHaveCount(0)
+    await f.page.keyboard.press('Escape');await expect(f.page.getByRole('dialog',{name:'Выбор темы'})).toHaveCount(0)
+    expect(await semantics()).toEqual(before);expect(await readFile(f.file,'utf8')).toBe(fileBefore);expect(await readFile(settingsPath,'utf8')).toBe(settingsBefore)
+    await f.page.screenshot({path:info.outputPath('b05-feasible-retry.png')})
+    observations.push({label:'feasible-retry-and-authoritative-owner-boundary',semanticPreservation:true,durablePreservation:true})
+  } catch(__p01B05Error){__p01B05OriginalFailed=true;__p01B05OriginalError=__p01B05Error;throw __p01B05Error}  finally {try{const __p01B05FinishError=__p01B05Diagnostic?await __p01B05Diagnostic.finish(__p01B05OriginalError):new Error("B05_DIAGNOSTIC_SETUP_NOT_REACHED");if(__p01B05FinishError)__p01B05CaptureError=__p01B05FinishError}catch(__p01B05Error){__p01B05CaptureError=__p01B05Error}if(__p01B05CaptureError)console.error("P01_B05_PASSIVE_CAPTURE_ERROR "+JSON.stringify({error:String(__p01B05CaptureError),originalFailed:__p01B05OriginalFailed,originalError:String(__p01B05OriginalError)}));await writeFile(info.outputPath('b05-observations.json'),JSON.stringify({observations,visualApproval:'NOT_APPROVED'},null,2));await finishDiagramFixture(f.app)}
+
+  if(__p01B05CaptureError)throw __p01B05CaptureError
+})

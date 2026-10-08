@@ -1,6 +1,6 @@
 # P01: diagnostic134PASS/1FAIL; B05 restoration RCA
 
-Обновлено 2026-10-08T18:18:28.774Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T18:58:34.565Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -27,11 +27,11 @@
 | Tasks2.4 /2.5 /3.1 | OPEN; original full focus FAIL2 unresolved; new diagnostic B05 restoration FAIL. Human visual NOT_APPROVED |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: RCA B05 по сохранённому actual FAIL; отличить property lease/rollback адаптера от baseline whole-attribute observer в тесте. Cause NOT_PROVEN. Новая executable диагностика/repair — только bounded plan + fresh PRE; исходное утверждение не ослаблять. Focus sampling завершён; P02 не начинается. Действий человека с дисплеем сейчас не нужно.
+Следующий шаг: B05 mutation diagnostic PRE PASS; проверить точный discovery1/136, затем один разрешённый B05 запуск, exact restore и анализ. Production/исходные assertions неизменны; текущие FAIL не закрываются.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: desktop-context diagnostic checkpoint 6ee4adbe99ba8dbd209aa25727ebe275c4f34273 COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-08T18:18:28.771Z. Publication receipt/status tracked in a follow-up metadata checkpoint. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
+Git: diagnostic checkpoint6ee4adbe99ba8dbd209aa25727ebe275c4f34273 and metadata9dc293ce379c0839fe1333fe5b0269fd636ffb81 COMMITTED/PUSHED; remote SHA VERIFIED2026-10-08T18:18:33.046Z. New B05 diagnostic plan UNCOMMITTED/PRE_REQUIRED. Authorized UI origin/ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
