@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_B05_CONTROLLED_ORDER_V2_PRE_READY",
+  "phase": "P01_B05_CONTROLLED_ORDER_V2_FAIL_PRODUCER_RCA",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -2341,8 +2341,21 @@
       "virtualChecks": "PASS",
       "strict": "PASS",
       "syntax": "PASS",
-      "pre": "REQUIRED",
-      "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-b05-controlled-order-pre-20261008T223431Z-v2.json"
+      "pre": {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T233417Z",
+        "status": "FAIL",
+        "remaining": 4,
+        "resolved": [
+          "B4",
+          "B6"
+        ]
+      },
+      "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-b05-controlled-order-pre-20261008T223431Z-v3.json",
+      "checkpoint": "d5e038bb4293e5db545ea0507f5920fcf73d43c6",
+      "published": true,
+      "producerRca": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/producer-contract-rca.json",
+      "target": "NOT_RUN",
+      "budget": "0/1"
     },
     "publication": {
       "atUtc": "2026-10-08T23:12:38.472Z",

@@ -1,6 +1,6 @@
-# P01: B05 evidence protocol V2 — RED3 /44controls /virtual+strict PASS; fresh PRE_REQUIRED
+# P01: controlled-unit PRE V2 FAIL4; producer-contract RCA; target NOT_RUN0/1
 
-Обновлено 2026-10-08T23:12:38.478Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T23:37:40.590Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -31,7 +31,7 @@
 | Latest benchmark / evidence | Recomputed p95=145.4ms<=150;20warmups+100samples;1972runtime artifacts/2011final-cutoff files; screenshots inspected, humanNOT_APPROVED |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: автоматический fresh PRE V2 exact control repair; unit0/1 unused, fixture NOT_INSTALLED/NOT_RUN. Original3FAIL stay open; no product repair or Electron repeat.
+Следующий шаг: STOP local predicate patches; producer-bound report/capture/stream/executable/setup contract and meaningful RED, then coherent repair + fresh independent PRE. V2 closes B4/B6 only; target0/1unused;3historicalFAIL open.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
@@ -58,6 +58,8 @@ B05 prefix-context diagnosis: [report](../../openspec/changes/frade-p01-theme-co
 Controlled-unit PRE: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z/output--result.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z/output--result.md), FAIL6;17raw/51events/candidate+packet+plan exact. Append-only fixture scope accepted; method budget0/1. Finalizer RED3FAIL before repair; classificationTEST.
 
 V2 evidence control repair: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md); actual44controls PASS, source-bound virtual TS/ESLint/strict PASS, final syntax PASS. Historical missing journal paths added. New candidate logs unchanged assertion outcome; full original95454 prefix exact. Fresh PRE_REQUIRED, model budget0/1.
+
+V2 independent PRE: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T233417Z/output--result.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T233417Z/output--result.md), FAIL4;17raw/59events/218hashes/candidate+packet+plan exact. B4/B6 addressed, B1/B2/B3/B5 remain. [Producer RCA](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/producer-contract-rca.md), classificationABSTRACTION_BOUNDARY/TEST; actual Vitest reporter inspected, valid file ancestry absent in V2 short-fullName expectation. No target unit or Electron run; budget0/1.
 
 ## История (неизменённые прежние записи)
 
