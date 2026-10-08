@@ -1,6 +1,6 @@
 # P01: structural PRE и strict PASS; performance FAIL
 
-Обновлено 2026-10-08T00:23:42.401Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T03:24:36.305Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -17,7 +17,7 @@
 | Historical hover FAIL | Retained; current original full case PASS,52 raster proofs; exact hover13.03:1; historical cause NOT_PROVEN |
 | Benchmark | FAIL: p95 203.5 ms >150 ms;100/100 measured requests exceed limit |
 | Performance diagnosis | Observed4K/29Hz and RAF33.4ms versus prior9.4ms; environment/scheduling hypothesis, cause NOT_PROVEN |
-| Display-mode decision | Awaiting user reply: required4K/30Hz or available60Hz+ diagnostic control. OS settings unchanged |
+| Display-mode decision | ACCEPTED: diagnostic60Hz+ allowed. Current4K/29Hz; benchmark NOT_RUN. Windows Settings has no targetable window in Computer Use; manual mode selection needed. OS settings unchanged |
 | P01-OPENSPEC-STRUCTURE-01 | USER_ACCEPTED; independent PRE PASS; exact accepted draft APPLIED;24→47 requirements,70 original scenarios preserved |
 | Active OpenSpec strict1.14.1 | PASS,0issues; draft SHA78b34deb77654aeab708050926876cc66ddb53ca98641be067cc95ebe6c12f80 |
 | Post-application UI compliance / diff | PASS:26 tests,102contrast pairs, positive/negative drift/color controls and8 EOL rules; diff PASS |
@@ -25,11 +25,13 @@
 | Open tasks2.4 /2.5 /3.1 | Cumulative adapter closure / visual acceptance and benchmark / all required checks remain open |
 | Tasks3.2 /3.3 | Verify BLOCKED; cumulative POST NOT_RUN; human visuals NOT_APPROVED; archive BLOCKED |
 
-Следующий шаг: уточнить доступный/обязательный режим дисплея и доказать причину benchmark FAIL. При разрешённом контрольном режиме — один неизменённый benchmark с сохранёнными условиями; результат не отменяет предыдущий FAIL. Production/порог/paint protocol без доказанной причины и применимого PRE не меняются. P02 не начинается.
+Следующий шаг: пользователь выбирает доступный режим60Hz+ в расширенных параметрах дисплея и сообщает разрешение/частоту. Затем read-only проверка фактического режима и один неизменённый original benchmark20warmups/100requests. Descriptor монитора перечисляет3840×2160≈59.997Hz; доступность на текущем подключении не подтверждена. Historical203.5ms FAIL остаётся; порог150ms и paint protocol неизменны. P02 не начинается.
 
 Evidence: [structural PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z/output--result.md), [application and checks](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z/result.json), [full root](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json), [performance observations](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/analysis.json). Все прежние FAIL и raw evidence сохранены.
 
-Git: UI checkpoint af5a0f206c8a5c61f8c4f331a11baf49eba7f344 COMMITTED, PUSHED; actual remote SHA VERIFIED (2026-10-08T00:22:42.611Z). Точный spec SHA сохранён в commit. Подтверждение публикации и этот dashboard входят в следующий служебный checkpoint. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel request queued, visibility unconfirmed.
+Git: latest checkpoint e90ec8c27fdb68bc5f5352d92abe3e62ebd1ec39 PUSHED/remote SHA VERIFIED in preceding checkpoint. Current accepted diagnostic decision/evidence awaits its documentation checkpoint. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued, visibility unconfirmed.
+
+Диагностическое решение и ограничение: [evidence](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z/acceptance.json), [tool result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z/automation-result.json).
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
