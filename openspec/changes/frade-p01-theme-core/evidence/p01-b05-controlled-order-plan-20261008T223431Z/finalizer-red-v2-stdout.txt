@@ -1,0 +1,73 @@
+✖ RED: four PASS cannot complete the exact 3PASS/1FAIL controlled signature (3.0258ms)
+✖ RED: report FAIL with process exit0 must block interpretation (0.6774ms)
+✖ RED: malformed phases and final left65/top999 cannot prove final left0 mechanism (0.4295ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.9678
+
+✖ failing tests:
+
+test at openspec\changes\frade-p01-theme-core\evidence\p01-b05-controlled-order-plan-20261008T223431Z\finalizer-red-v2.test.mjs:4:1
+✖ RED: four PASS cannot complete the exact 3PASS/1FAIL controlled signature (3.0258ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2.test.mjs:4:94)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at openspec\changes\frade-p01-theme-core\evidence\p01-b05-controlled-order-plan-20261008T223431Z\finalizer-red-v2.test.mjs:5:1
+✖ RED: report FAIL with process exit0 must block interpretation (0.6774ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2.test.mjs:5:82)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at openspec\changes\frade-p01-theme-core\evidence\p01-b05-controlled-order-plan-20261008T223431Z\finalizer-red-v2.test.mjs:6:1
+✖ RED: malformed phases and final left65/top999 cannot prove final left0 mechanism (0.4295ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to:
+  
+  'CONTROLLED_MECHANISM_REPRODUCED_HISTORICAL_CAUSE_NOT_PROVEN'
+      at TestContext.<anonymous> (file:///C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2.test.mjs:6:101)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'CONTROLLED_MECHANISM_REPRODUCED_HISTORICAL_CAUSE_NOT_PROVEN',
+    expected: 'CONTROLLED_MECHANISM_REPRODUCED_HISTORICAL_CAUSE_NOT_PROVEN',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }

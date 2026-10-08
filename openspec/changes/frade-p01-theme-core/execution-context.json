@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_B05_PREFIX_CONTEXT_DIAGNOSTIC_COMPLETE_RCA_OPEN",
+  "phase": "P01_B05_CONTROLLED_ORDER_V2_PRE_READY",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -2311,6 +2311,38 @@
         "immutableRuntimeInventorySha256": "3127de101c63e844dc52b32b64caf11eaf46dba3afb9fddf64b2f67ff6f789dc",
         "runtimeInvocationsUsed": 1
       }
+    }
+  },
+  "currentLowerB05ControlledOrder": {
+    "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan.md",
+    "candidateSha256": "b051ce886be46cf4073829854caeb29d3f2131984017da4069b12880a4cbc7f1",
+    "method": "ONE_UNIT_INVOCATION_FOUR_CONTROLLED_SCHEDULES",
+    "runtime": "NOT_RUN",
+    "production": "UNCHANGED",
+    "historicalFailures": 3,
+    "reviewModel": "gpt-6-astra",
+    "reviewEffort": "xhigh",
+    "pre": {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z",
+      "status": "FAIL",
+      "blocks": 6
+    },
+    "protocolRca": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/protocol-rca.json",
+    "red": "3FAIL",
+    "fixture": "NOT_RUN",
+    "scope": "NO_NEW_HUMAN_DECISION_NEEDED_BY_PRE",
+    "budget": "0/1",
+    "v2": {
+      "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md",
+      "runner": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/unit-protocol-v2.mjs",
+      "candidateSha256": "097e01cb744d1b20e6f59ebf28ae77c5019c33aa5b7cbc755908155c2c496933",
+      "red": "3FAIL",
+      "controls": "44PASS",
+      "virtualChecks": "PASS",
+      "strict": "PASS",
+      "syntax": "PASS",
+      "pre": "REQUIRED",
+      "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-b05-controlled-order-pre-20261008T223431Z-v2.json"
     }
   }
 }

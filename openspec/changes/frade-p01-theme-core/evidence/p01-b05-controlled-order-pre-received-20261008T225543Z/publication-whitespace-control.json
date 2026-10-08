@@ -1,0 +1,55 @@
+{
+  "atUtc": "2026-10-08T23:12:06.100Z",
+  "classification": "IMMUTABLE_EVIDENCE_FORMAT",
+  "originalCommand": [
+    "git",
+    "-c",
+    "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "originalResult": {
+    "exitCode": 2,
+    "stdout": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223252Z/preparation-repair-source.mjs:138: new blank line at EOF.\nopenspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2-stdout.txt:18: trailing whitespace.\n+  \nopenspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2-stdout.txt:20: trailing whitespace.\n+  \nopenspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2-stdout.txt:37: trailing whitespace.\n+  \nopenspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2-stdout.txt:39: trailing whitespace.\n+  \nopenspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2-stdout.txt:58: trailing whitespace.\n+  \nopenspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2.test.mjs:7: new blank line at EOF.\n",
+    "stderr": ""
+  },
+  "exactExceptions": [
+    {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223252Z/preparation-repair-source.mjs",
+      "bytes": 33153,
+      "sha256": "2f0b3ef3f3a51c876e7e40015a76922679c2a00efcedec73e4050fa0439fc537",
+      "reason": "Raw historical deterministic RED output/source and preparation source copy: preserve exact recorded origin bytes; exception only to evidence-format whitespace check. Active source/runner formatting is checked; no assertion, Gitconfig or glob waiver."
+    },
+    {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2-stdout.txt",
+      "bytes": 3680,
+      "sha256": "f6943e7299bd928ce066b87372d581b587d536f0798ea59de1034d19c32ba3e5",
+      "reason": "Raw historical deterministic RED output/source and preparation source copy: preserve exact recorded origin bytes; exception only to evidence-format whitespace check. Active source/runner formatting is checked; no assertion, Gitconfig or glob waiver."
+    },
+    {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2.test.mjs",
+      "bytes": 2125,
+      "sha256": "f0249a612bfc8275a979273c4360132f569e95cc341cf2da9449e65f3c3a26b9",
+      "reason": "Raw historical deterministic RED output/source and preparation source copy: preserve exact recorded origin bytes; exception only to evidence-format whitespace check. Active source/runner formatting is checked; no assertion, Gitconfig or glob waiver."
+    }
+  ],
+  "correctedCommand": [
+    "git",
+    "-c",
+    "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+    "diff",
+    "--cached",
+    "--check",
+    "--",
+    ".",
+    ":(exclude)openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223252Z/preparation-repair-source.mjs",
+    ":(exclude)openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2-stdout.txt",
+    ":(exclude)openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/finalizer-red-v2.test.mjs"
+  ],
+  "correctedResult": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "classification": "UNRESOLVED: TEST_OR_STATE_TRANSITION_OR_ABSTRACTION_BOUNDARY",
+  "facts": [
+    {
+      "path": "apps/desktop/vendor/drawio/index.html",
+      "line": 25,
+      "fact": "bootstrap.js is the actual entry loader"
+    },
+    {
+      "path": "apps/desktop/vendor/drawio/js/bootstrap.js",
+      "fact": "non-development loadAppJS loads js/app.min.js"
+    },
+    {
+      "path": "apps/desktop/vendor/drawio/js/app.min.js",
+      "fact": "Exact compiled showMenu queues mxUtils.fit(this.div) via setTimeout(...,0); this.div is not cleared by hideMenu"
+    },
+    {
+      "path": "apps/desktop/vendor/drawio/js/app.min.js",
+      "fact": "Exact compiled fit sets left=max(scrollLeft+margin,right-width) when offsetLeft+offsetWidth>right"
+    },
+    {
+      "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "line": 521,
+      "fact": "Style leases capture per-property previous values only when projected"
+    },
+    {
+      "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "line": 539,
+      "fact": "Restoration restores leased properties, not the whole style attribute"
+    },
+    {
+      "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "line": 1242,
+      "fact": "lowerResize synchronously reconciles; controlled narrow-before-resize must change viewport before emitting resize, not insert fit after event"
+    }
+  ],
+  "hypothesis": "A pending original vendor fit observes the new narrow viewport before bridge resize cancellation; an unleased left value becomes0 while a leased top restores. Not observed in historical failed trace; only a controlled scheduling model will be tested.",
+  "historical": "Three old FAIL remain; earlier complete Electron diagnostics NOT_REPRODUCED; exhausted plans not reused."
+}

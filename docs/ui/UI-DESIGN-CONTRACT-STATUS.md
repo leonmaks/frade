@@ -1,6 +1,6 @@
-# P01: prefix-context 57PASS/0FAIL/0SKIPPED; NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN
+# P01: B05 evidence protocol V2 — RED3 /44controls /virtual+strict PASS; fresh PRE_REQUIRED
 
-Обновлено 2026-10-08T22:14:17.568Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T23:08:56.436Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -31,7 +31,7 @@
 | Latest benchmark / evidence | Recomputed p95=145.4ms<=150;20warmups+100samples;1972runtime artifacts/2011final-cutoff files; screenshots inspected, humanNOT_APPROVED |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: STOP more runtime/repair under exhausted prefix-context plan; assess saved journal and actual root-cause limits before any new method/repair decision. Prior focus/B05 failures and gates remain open.
+Следующий шаг: автоматический fresh PRE V2 exact control repair; unit0/1 unused, fixture NOT_INSTALLED/NOT_RUN. Original3FAIL stay open; no product repair or Electron repeat.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
@@ -52,6 +52,12 @@ Prefix-context PRE: [FAIL report](../../openspec/changes/frade-p01-theme-core/ev
 Prefix-context PRE: [FAIL report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/output--result.md), [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/verification.json).331packet files/60events; candidate/packet/plan unchanged. One assertion-time evidence completeness defect; no scope conflict/assertion weakening; app NOT_RUN.
 
 B05 prefix-context diagnosis: [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/report.md), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/summary.json), [journal](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/journal-analysis.json). 57PASS/0FAIL/0SKIPPED; NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN. First56 worker0=true, captureComplete=true. Original source restored; old failures not waived.
+
+Новый метод: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan.md), controlled unit4schedules; virtual TS/ESLint/strict PASS; fixture NOT_INSTALLED/NOT_RUN. Исходное тело vendor fit подтверждено в app.min.js и mxClient.js; порядок исторического FAIL не доказан. Старые планы1/1 исчерпаны.
+
+Controlled-unit PRE: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z/output--result.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z/output--result.md), FAIL6;17raw/51events/candidate+packet+plan exact. Append-only fixture scope accepted; method budget0/1. Finalizer RED3FAIL before repair; classificationTEST.
+
+V2 evidence control repair: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md); actual44controls PASS, source-bound virtual TS/ESLint/strict PASS, final syntax PASS. Historical missing journal paths added. New candidate logs unchanged assertion outcome; full original95454 prefix exact. Fresh PRE_REQUIRED, model budget0/1.
 
 ## История (неизменённые прежние записи)
 
