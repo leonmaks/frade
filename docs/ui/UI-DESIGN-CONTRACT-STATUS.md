@@ -1,6 +1,6 @@
 # P01: structural PRE и strict PASS; performance FAIL
 
-Обновлено 2026-10-08T00:17:37.529Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T00:23:42.401Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -29,7 +29,7 @@
 
 Evidence: [structural PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z/output--result.md), [application and checks](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z/result.json), [full root](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json), [performance observations](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/analysis.json). Все прежние FAIL и raw evidence сохранены.
 
-Git: HEAD a894702a2429ad33c6168a64e0f9759462b8d3b3 previously PUSHED/VERIFIED. Current authorized repair/evidence checkpoint is UNCOMMITTED; publication follows checks. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel request queued, visibility unconfirmed.
+Git: UI checkpoint af5a0f206c8a5c61f8c4f331a11baf49eba7f344 COMMITTED, PUSHED; actual remote SHA VERIFIED (2026-10-08T00:22:42.611Z). Точный spec SHA сохранён в commit. Подтверждение публикации и этот dashboard входят в следующий служебный checkpoint. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel request queued, visibility unconfirmed.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 

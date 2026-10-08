@@ -1693,7 +1693,9 @@
     "structuralPre": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z",
     "structuralApplication": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z",
     "displayDecision": "AWAITING_USER_REPLY_NO_OS_SETTINGS_CHANGED",
-    "checkpoint": "UNCOMMITTED"
+    "checkpoint": "af5a0f206c8a5c61f8c4f331a11baf49eba7f344",
+    "publication": "PUSHED_REMOTE_SHA_VERIFIED",
+    "publicationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-checkpoint-publication-20261008T002000Z/publication.json"
   },
   "previousCurrentCheckObservations": [
     {
@@ -1743,5 +1745,33 @@
       "proposalStatus": "USER_ACCEPTED_PRE_PENDING",
       "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-proposal-20261007T222823Z/acceptance.json"
     }
-  ]
+  ],
+  "currentCheckpointPublication": {
+    "startedAtUtc": "2026-10-08T00:22:10.631Z",
+    "finishedAtUtc": "2026-10-08T00:22:42.611Z",
+    "command": [
+      "git",
+      "-c",
+      "core.longpaths=true",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "url.https://github.com/leonmaks/frade.git.insteadOf=git@github.com:leonmaks/frade.git",
+      "-c",
+      "pack.threads=1",
+      "-c",
+      "pack.windowMemory=64m",
+      "push",
+      "--progress",
+      "origin",
+      "af5a0f206c8a5c61f8c4f331a11baf49eba7f344:refs/heads/codex/frade-ui-design-contract"
+    ],
+    "exitCode": 0,
+    "verifyExitCode": 0,
+    "local": "af5a0f206c8a5c61f8c4f331a11baf49eba7f344",
+    "remote": "af5a0f206c8a5c61f8c4f331a11baf49eba7f344",
+    "status": "PUSHED_REMOTE_SHA_VERIFIED",
+    "transport": "per-command HTTPS rewrite to the same authorized GitHub repository; persistent config unchanged",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-checkpoint-publication-20261008T002000Z/publication.json"
+  }
 }
