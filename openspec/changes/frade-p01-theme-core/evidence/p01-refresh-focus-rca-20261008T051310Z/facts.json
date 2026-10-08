@@ -1,0 +1,72 @@
+{
+  "atUtc": "2026-10-08T05:13:10.589Z",
+  "status": "RCA_OPEN_NO_REPAIR",
+  "rootResult": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json",
+  "sourceUnchanged": true,
+  "sourceCount": 3479,
+  "performance": {
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/desktop-artifacts/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/performance-result.json",
+    "sha256": "0b7321131fa42ca933457e154689abbe56da26c1bd4fe3c8febc281bf8a3656e",
+    "status": "PASS",
+    "p95Ms": 126.39999999850988,
+    "budgetMs": 150,
+    "samples": 100,
+    "medianMs": 111.55000000074506,
+    "minMs": 100.59999999403954,
+    "maxMs": 162.10000000149012,
+    "above150": 1,
+    "nearestRankRecomputed": true
+  },
+  "displayBeforeAfterEqual": true,
+  "productionChanges": [],
+  "testChanges": [],
+  "failures": [
+    {
+      "case": "P01-UPPER-028 dark comfortable",
+      "source": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "actualSourceLine": 4259,
+      "operation": "Original locator.focus() followed by original toBeFocused",
+      "failure": "Expected focused; received inactive through10000ms",
+      "stage": "First View anchor; no completed popup/focus observations",
+      "trace": {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/desktop-artifacts/ui-contract-theme-P01-UPPE-d9b05-cus-raster-dark-comfortable/trace.zip",
+        "sha256": "20a715802e8064273ad6cf912674f9f0e4a161be3590f3a35ef5cb7b0480b387"
+      },
+      "screenshot": {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/desktop-artifacts/ui-contract-theme-P01-UPPE-d9b05-cus-raster-dark-comfortable/test-failed-1.png",
+        "sha256": "6c0dcdc682e471a9cdd36c05c96d52f4e3a6e66c7b584068527a91be74c75129"
+      }
+    },
+    {
+      "case": "P01-UPPER-031 light comfortable",
+      "source": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "actualSourceLine": 4340,
+      "operation": "Original locator.focus() followed by original toBeFocused",
+      "failure": "Expected focused; received inactive through10000ms",
+      "stage": "Baseline three anchors passed; next wide viewport then first View anchor failed",
+      "trace": {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/desktop-artifacts/ui-contract-theme-P01-UPPE-d916d-and-modal-light-comfortable/trace.zip",
+        "sha256": "6ebbe4ce755f6e3e0251df59b4c9ae1255a100fedf5289abf64ee2eee40af8a6"
+      },
+      "screenshot": {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/desktop-artifacts/ui-contract-theme-P01-UPPE-d916d-and-modal-light-comfortable/test-failed-1.png",
+        "sha256": "6461aa02878e4147503666a7439d5df4805452a1be0c516d56dc44d38ed6a8e9"
+      }
+    }
+  ],
+  "assertionSemantics": {
+    "installedVersion": "playwright-core1.57.0",
+    "source": "node_modules/.pnpm/playwright-core@1.57.0/node_modules/playwright-core/lib/generated/injectedScriptSource.js",
+    "sourceSha256": "17f415019175f56bcf5e8e62155eaafbf580d89e48647ee40be405da1bba0732",
+    "rawEscapedExcerpt": "_activelyFocused(node) {\\n    const activeElement = node.getRootNode().activeElement;\\n    const isFocused = activeElement === node && !!node.ownerDocument && node.ownerDocument.hasFocus();\\n    return { activeElement, isFocused };\\n  }\\n  focusNode(node, resetSelectionIfNotFocused) {\\n    if (!node.isConnected)\\n      return \"error:notconnected\";\\n    if (node.nodeType !== Node.ELEMENT_NODE)\\n      throw this.createStacklessError(\"Node is not an element\");\\n    const { activeElement, isFocused: wasFocused } = this._activelyFocused(node);\\n    if (node.isContentEditable && !wasFocused && activ",
+    "meaning": "isFocused requires activeElement===node AND ownerDocument.hasFocus(). inactive alone does not identify the failed conjunct."
+  },
+  "classification": "UNRESOLVED: TEST / ENVIRONMENT / STATE_TRANSITION hypotheses require causal observation; no proven first incorrect decision.",
+  "limits": [
+    "Native Electron focus and DOM activeElement at failure are not jointly recorded by these failing assertions.",
+    "No automatic retry, timeout/tolerance change, focus correction or production repair has been executed.",
+    "Historical4K29Hz full run failed performance only; both current focus cases passed there. Earlier FAIL evidence remains immutable.",
+    "New fuller diagnostic must preserve exact original interactions/assertions and observe own fixture window only."
+  ],
+  "next": "Prepare passive diagnostic scope/plan and automatic exact-stage PRE before executing new instrumented runtime fixture; no cumulative POST/archive/P02."
+}

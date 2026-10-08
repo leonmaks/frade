@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_REFRESH_DIAGNOSTIC_PASS_FULL_ROOT_NEXT",
+  "phase": "P01_REFRESH_FULL_ROOT_FAIL_FOCUS_RCA_OPEN",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -1677,25 +1677,19 @@
     "next": "Resolve actual benchmark environment/cause; full verification and cumulative POST remain blocked"
   },
   "currentCheckObservation": {
-    "atUtc": "2026-10-08T00:17:37.529Z",
-    "phase": "STRUCTURE_PRE_PASS_APPLIED_STRICT_AND_COMPLIANCE_PASS_PERFORMANCE_OPEN",
-    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z",
-    "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json",
+    "atUtc": "2026-10-08T05:13:10.589Z",
+    "phase": "P01_REFRESH_FULL_ROOT_FAIL_FOCUS_RCA_OPEN",
+    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json",
     "drawPassed": 215,
-    "desktopPassed": 134,
-    "desktopFailed": 1,
-    "sourceCount": 3479,
+    "desktopPassed": 133,
+    "desktopFailed": 2,
+    "p95Ms": 126.39999999850988,
     "sourceUnchanged": true,
-    "performanceP95Ms": 203.5,
-    "cumulativeVerify": "BLOCKED",
+    "rca": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z",
+    "cumulativeVerify": "BLOCKED_REQUIRED_FOCUS_FAIL",
     "post": "NOT_RUN",
-    "visual": "NOT_APPROVED",
-    "structuralPre": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z",
-    "structuralApplication": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z",
-    "displayDecision": "USER_APPLIED_2560x1440_60HZ_DIAGNOSTIC_PASS",
-    "checkpoint": "af5a0f206c8a5c61f8c4f331a11baf49eba7f344",
-    "publication": "PUSHED_REMOTE_SHA_VERIFIED",
-    "publicationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-checkpoint-publication-20261008T002000Z/publication.json"
+    "visual": "NOT_APPROVED"
   },
   "previousCurrentCheckObservations": [
     {
@@ -1730,6 +1724,46 @@
       "cumulativeVerify": "BLOCKED",
       "post": "NOT_RUN",
       "visual": "NOT_APPROVED"
+    },
+    {
+      "atUtc": "2026-10-08T00:17:37.529Z",
+      "phase": "STRUCTURE_PRE_PASS_APPLIED_STRICT_AND_COMPLIANCE_PASS_PERFORMANCE_OPEN",
+      "run": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z",
+      "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json",
+      "drawPassed": 215,
+      "desktopPassed": 134,
+      "desktopFailed": 1,
+      "sourceCount": 3479,
+      "sourceUnchanged": true,
+      "performanceP95Ms": 203.5,
+      "cumulativeVerify": "BLOCKED",
+      "post": "NOT_RUN",
+      "visual": "NOT_APPROVED",
+      "structuralPre": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z",
+      "structuralApplication": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z",
+      "displayDecision": "USER_APPLIED_2560x1440_60HZ_DIAGNOSTIC_PASS",
+      "checkpoint": "af5a0f206c8a5c61f8c4f331a11baf49eba7f344",
+      "publication": "PUSHED_REMOTE_SHA_VERIFIED",
+      "publicationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-checkpoint-publication-20261008T002000Z/publication.json"
+    },
+    {
+      "atUtc": "2026-10-08T05:04:26.905Z",
+      "phase": "FULL_ROOT_RUNNING_1440P60HZ",
+      "run": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z",
+      "diagnosticP95Ms": 145.70000000298023,
+      "sourceChanges": "NONE",
+      "cumulativeVerify": "BLOCKED_PENDING_FULL_CHECK",
+      "post": "NOT_RUN",
+      "visual": "NOT_APPROVED",
+      "draw215Pass": true,
+      "desktopExpected": 135,
+      "desktopCompleted": 102,
+      "desktopPassed": 100,
+      "desktopFailures": [
+        "x   96 tests\\e2e\\ui-contract-theme.spec.ts:5798:3 › P01-UPPER-028 actual owned popup foreground contrast and focus raster dark comfortable (14.2s)",
+        "x  100 tests\\e2e\\ui-contract-theme.spec.ts:6038:3 › P01-UPPER-031 actual body focus bounds media neighbors and modal light comfortable (19.4s)"
+      ],
+      "status": "RUNNING_NOT_FINAL"
     }
   ],
   "previousStrictValidations": [
@@ -1807,14 +1841,12 @@
     "blocker": null,
     "next": "Fresh full check:all",
     "publication": {
-      "atUtc": "2026-10-08T03:25:25.441Z",
+      "atUtc": "2026-10-08T03:39:41.087Z",
       "status": "PUSHED_REMOTE_SHA_VERIFIED",
-      "head": "95adbfbe4030ca3e533ceca07eba58426001f8a8",
-      "remote": "95adbfbe4030ca3e533ceca07eba58426001f8a8",
+      "head": "d95893a0ca932e6704693e8f9f0a17cdd31b09d2",
+      "remote": "d95893a0ca932e6704693e8f9f0a17cdd31b09d2",
       "ref": "refs/heads/codex/frade-ui-design-contract",
-      "push": "",
-      "taskProgress": "5/10",
-      "benchmark": "NOT_RUN_TARGET_DISPLAY_MODE_NOT_ESTABLISHED"
+      "performance": "DIAGNOSTIC_PASS145.7MS_FULL_ROOT_STILL_PENDING"
     },
     "publicationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z/publication.json",
     "userReportedMode": "2560x1440@60.01Hz",
@@ -1826,5 +1858,11 @@
     "sourceUnchanged": true,
     "binaryUnchanged": true,
     "displayUnchanged": true
+  },
+  "currentFocusRca": {
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z",
+    "status": "OPEN_NO_REPAIR",
+    "plan": "NOT_PREPARED",
+    "pre": "NOT_RUN"
   }
 }

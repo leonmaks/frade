@@ -1,37 +1,36 @@
-# P01: diagnostic benchmark PASS145.7ms; full check next
+# P01: benchmark PASS; full root FAIL — two focus blockers
 
-Обновлено 2026-10-08T03:38:59.067Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T05:13:10.589Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
-| Foundation / обязательный UI contract | ARCHIVED |
-| P01 resolver / preview | IN_PROGRESS, 5/10 задач |
-| P02 installer; P03 VS Code import; P04 icons; P05 browser host; P06 native APIs; P07 registry/profiles/policy | NOT_STARTED |
+| Foundation | ARCHIVED |
+| P01 resolver / preview | IN_PROGRESS5/10; full gate FAIL |
+| P02–P07 | NOT_STARTED |
 
 | Текущая задача P01 | Статус |
 | --- | --- |
-| Ownership guard / meaningful RED / unit | IMPLEMENTED; independent PRE PASS; historical-source RED10 FAIL/4guards PASS; GREEN85 PASS |
-| B02 native/frame / FUI / BDD | 2 PASS /12 PASS,2positive+14negative controls /111 PASS |
-| Full root check:all | COMPLETE FAIL: static/unit/BDD/build/boundaries/compliance PASS; Draw215 PASS; Electron134 PASS/1 FAIL;3479 source files unchanged |
-| Six theme/density visual/a11y matrices | Canonical6 + expanded6, actions6, keyboard6, popup6, focus6, pending6 PASS in full run |
-| Historical hover FAIL | Retained; current original full case PASS,52 raster proofs; exact hover13.03:1; historical cause NOT_PROVEN |
-| Benchmark | Current diagnostic PASS: p95 145.7ms <=150ms,20+100,one attempt/retries0; historical4K/29Hz FAIL203.5ms retained |
-| Performance diagnosis | New2560×1440/60Hz configuration yields lower p95; refresh and resolution changed together; isolated causality/stability NOT_PROVEN |
-| Display-mode decision | ACCEPTED/APPLIED BY USER; actual2560×1440/60Hz before/after unchanged. No further user action currently needed; keep mode during full run |
-| P01-OPENSPEC-STRUCTURE-01 | USER_ACCEPTED; independent PRE PASS; exact accepted draft APPLIED;24→47 requirements,70 original scenarios preserved |
-| Active OpenSpec strict1.14.1 | PASS,0issues; draft SHA78b34deb77654aeab708050926876cc66ddb53ca98641be067cc95ebe6c12f80 |
-| Post-application UI compliance / diff | PASS:26 tests,102contrast pairs, positive/negative drift/color controls and8 EOL rules; diff PASS |
-| Source preservation during structural repair | PASS: production/test/binary/proposal/design/tasks hashes unchanged |
-| Open tasks2.4 /2.5 /3.1 | Cumulative adapter closure / visual acceptance and benchmark / all required checks remain open |
-| Tasks3.2 /3.3 | Verify BLOCKED; cumulative POST NOT_RUN; human visuals NOT_APPROVED; archive BLOCKED |
+| Ownership repair / units / FUI / BDD | IMPLEMENTED; current-source85 unit /12FUI /111BDD PASS; original RED and PRE retained |
+| Full root at2560×1440/60Hz | FAIL: Draw215PASS; desktop133PASS/2FAIL,135completed; root exit1 |
+| Current benchmark | PASS p95=126.4ms<=150;20warmups+100requests; independent diagnostic145.7PASS; historical4K29Hz203.5FAIL retained |
+| Glyph matrices / actions / keyboard | Ordinary6 + expanded6 + actions6 + keyboard6 PASS |
+| Popup / body focus / pending focus | Popup5/6; body focus5/6; pending6/6 PASS;2required failures stay blockers |
+| New blocker1 | Dark/Comfortable popup: first View anchor inactive after original focus(),10000ms |
+| New blocker2 | Light/Comfortable body focus: baseline3passed; first View focus after wide viewport inactive,10000ms |
+| RCA | OPEN; DOM activeElement and native/document focus not jointly proven. No repair or repeat-until-green |
+| Source / binary / display endpoints | 3479source hashes unchanged; same source as prior4K29Hz root; same main binary; before/after1440p60 equal |
+| Evidence integrity | 4687fresh artifacts copied, hashes verified;520310275bytes |
+| Legacy / foundation preservation | Other122entries exact;2accepted transitions exact;6foundation pins exact; pendingRuntime historical exact |
+| Structural OpenSpec repair | Exact accepted78b34... applied; PRE PASS; strict1.14.1 PASS,47requirements/70unique scenarios (106occurrences) |
+| UI compliance / static / build / boundaries | PASS in root; Turbo cache hits disclosed;26contract tests/102pairs/positive-negative/EOL controls retained |
+| Tasks2.4 /2.5 /3.1 | OPEN; applicable focus FAIL blocks closure; human visual NOT_APPROVED |
+| Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: один свежий полный check:all при текущем2560×1440/60Hz; после результата source/display integrity, verification и cumulative POST по обязательным gates. Historical FAIL сохраняется; диагностический PASS не закрывает full root или P01. P02 не начинается.
+Следующий шаг: сохранить и опубликовать FAIL checkpoint; пассивная диагностика двух focus failures после автоматического PRE по действующему плану. Production/assertions/timeouts не менялись. Новый полный прогон и visual acceptance пока не назначены. P02 не начинается.
 
-Evidence: [structural PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z/output--result.md), [application and checks](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z/result.json), [full root](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json), [performance observations](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/analysis.json). Все прежние FAIL и raw evidence сохранены.
+Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: diagnostic acceptance/environment checkpoint 95adbfbe4030ca3e533ceca07eba58426001f8a8 COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-08T03:25:25.441Z. This dashboard and publication receipt are recorded in the following documentation checkpoint. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued, visibility unconfirmed.
-
-Диагностическое решение и ограничение: [evidence](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z/acceptance.json), [tool result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z/automation-result.json).
+Git: HEADd95893a0ca932e6704693e8f9f0a17cdd31b09d2 previously COMMITTED/PUSHED and remote verified. Current full-result/RCA/status UNCOMMITTED; next checkpoint pending. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only, no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued, visibility unconfirmed.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
