@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_REFRESH_DIAGNOSTIC_WAITING_DISPLAY_MODE",
+  "phase": "P01_REFRESH_DIAGNOSTIC_PASS_FULL_ROOT_NEXT",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -1692,7 +1692,7 @@
     "visual": "NOT_APPROVED",
     "structuralPre": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z",
     "structuralApplication": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z",
-    "displayDecision": "ACCEPTED_60HZ_DIAGNOSTIC_PENDING_MANUAL_DISPLAY_MODE",
+    "displayDecision": "USER_APPLIED_2560x1440_60HZ_DIAGNOSTIC_PASS",
     "checkpoint": "af5a0f206c8a5c61f8c4f331a11baf49eba7f344",
     "publication": "PUSHED_REMOTE_SHA_VERIFIED",
     "publicationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-checkpoint-publication-20261008T002000Z/publication.json"
@@ -1779,7 +1779,7 @@
     "id": "P01-REFRESH-DIAGNOSTIC-60HZ-01",
     "authority": "Direct user message in owning UI chat",
     "verbatim": "Допустим диагностический прогон при 60 Гц и выше",
-    "status": "ACCEPTED_DIAGNOSTIC_CONTROL_ONLY",
+    "status": "PASS_DIAGNOSTIC_CONTROL_NOT_FULL_ROOT_CLOSURE",
     "branch": "codex/frade-ui-design-contract",
     "baselineHead": "e90ec8c27fdb68bc5f5352d92abe3e62ebd1ec39",
     "scope": "One unchanged original benchmark after verifying actual 60Hz-or-higher diagnostic display mode; retain original 29Hz FAIL; no gate threshold, test assertion, paint protocol, production or domain modification",
@@ -1804,8 +1804,8 @@
       }
     ],
     "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z",
-    "blocker": "SETTINGS_WINDOW_NOT_TARGETABLE_ACTUAL_DISPLAY_29HZ",
-    "next": "User selects supported60Hz+ mode; verify actual mode and execute unchanged benchmark",
+    "blocker": null,
+    "next": "Fresh full check:all",
     "publication": {
       "atUtc": "2026-10-08T03:25:25.441Z",
       "status": "PUSHED_REMOTE_SHA_VERIFIED",
@@ -1816,6 +1816,15 @@
       "taskProgress": "5/10",
       "benchmark": "NOT_RUN_TARGET_DISPLAY_MODE_NOT_ESTABLISHED"
     },
-    "publicationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z/publication.json"
+    "publicationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z/publication.json",
+    "userReportedMode": "2560x1440@60.01Hz",
+    "observedMode": "2560x1440@60Hz_WMI",
+    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-benchmark-20261008T033500Z",
+    "interpretationLimit": "Resolution and refresh changed together; individual cause not isolated",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-benchmark-20261008T033500Z/summary.json",
+    "p95Ms": 145.70000000298023,
+    "sourceUnchanged": true,
+    "binaryUnchanged": true,
+    "displayUnchanged": true
   }
 }

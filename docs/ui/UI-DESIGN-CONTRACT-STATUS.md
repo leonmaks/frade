@@ -1,6 +1,6 @@
-# P01: structural PRE и strict PASS; performance FAIL
+# P01: diagnostic benchmark PASS145.7ms; full check next
 
-Обновлено 2026-10-08T03:24:36.305Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T03:38:59.067Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -15,9 +15,9 @@
 | Full root check:all | COMPLETE FAIL: static/unit/BDD/build/boundaries/compliance PASS; Draw215 PASS; Electron134 PASS/1 FAIL;3479 source files unchanged |
 | Six theme/density visual/a11y matrices | Canonical6 + expanded6, actions6, keyboard6, popup6, focus6, pending6 PASS in full run |
 | Historical hover FAIL | Retained; current original full case PASS,52 raster proofs; exact hover13.03:1; historical cause NOT_PROVEN |
-| Benchmark | FAIL: p95 203.5 ms >150 ms;100/100 measured requests exceed limit |
-| Performance diagnosis | Observed4K/29Hz and RAF33.4ms versus prior9.4ms; environment/scheduling hypothesis, cause NOT_PROVEN |
-| Display-mode decision | ACCEPTED: diagnostic60Hz+ allowed. Current4K/29Hz; benchmark NOT_RUN. Windows Settings has no targetable window in Computer Use; manual mode selection needed. OS settings unchanged |
+| Benchmark | Current diagnostic PASS: p95 145.7ms <=150ms,20+100,one attempt/retries0; historical4K/29Hz FAIL203.5ms retained |
+| Performance diagnosis | New2560×1440/60Hz configuration yields lower p95; refresh and resolution changed together; isolated causality/stability NOT_PROVEN |
+| Display-mode decision | ACCEPTED/APPLIED BY USER; actual2560×1440/60Hz before/after unchanged. No further user action currently needed; keep mode during full run |
 | P01-OPENSPEC-STRUCTURE-01 | USER_ACCEPTED; independent PRE PASS; exact accepted draft APPLIED;24→47 requirements,70 original scenarios preserved |
 | Active OpenSpec strict1.14.1 | PASS,0issues; draft SHA78b34deb77654aeab708050926876cc66ddb53ca98641be067cc95ebe6c12f80 |
 | Post-application UI compliance / diff | PASS:26 tests,102contrast pairs, positive/negative drift/color controls and8 EOL rules; diff PASS |
@@ -25,7 +25,7 @@
 | Open tasks2.4 /2.5 /3.1 | Cumulative adapter closure / visual acceptance and benchmark / all required checks remain open |
 | Tasks3.2 /3.3 | Verify BLOCKED; cumulative POST NOT_RUN; human visuals NOT_APPROVED; archive BLOCKED |
 
-Следующий шаг: пользователь выбирает доступный режим60Hz+ в расширенных параметрах дисплея и сообщает разрешение/частоту. Затем read-only проверка фактического режима и один неизменённый original benchmark20warmups/100requests. Descriptor монитора перечисляет3840×2160≈59.997Hz; доступность на текущем подключении не подтверждена. Historical203.5ms FAIL остаётся; порог150ms и paint protocol неизменны. P02 не начинается.
+Следующий шаг: один свежий полный check:all при текущем2560×1440/60Hz; после результата source/display integrity, verification и cumulative POST по обязательным gates. Historical FAIL сохраняется; диагностический PASS не закрывает full root или P01. P02 не начинается.
 
 Evidence: [structural PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z/output--result.md), [application and checks](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z/result.json), [full root](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json), [performance observations](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/analysis.json). Все прежние FAIL и raw evidence сохранены.
 

@@ -1,0 +1,63 @@
+{
+  "atUtc": "2026-10-08T03:38:59.067Z",
+  "status": "PASS_DIAGNOSTIC_CONTROL_NOT_FULL_ROOT_CLOSURE",
+  "warmups": 20,
+  "measured": 100,
+  "benchmarkAttempts": 1,
+  "retries": 0,
+  "display": {
+    "reported": "2560x1440@60.01Hz",
+    "observed": "2560x1440@60Hz_WMI"
+  },
+  "total": {
+    "n": 100,
+    "min": 104.70000000298023,
+    "median": 122.39999999850988,
+    "p95": 145.70000000298023,
+    "max": 161.89999999850988
+  },
+  "frameReadyToPainted": {
+    "n": 100,
+    "min": 86.09999999403954,
+    "median": 96.90000000596046,
+    "p95": 114.19999999552965,
+    "max": 116.30000000447035
+  },
+  "outsideReadyToPainted": {
+    "n": 100,
+    "min": 18.299999997019768,
+    "median": 27.100000001490116,
+    "p95": 37.100000001490116,
+    "max": 47.099999994039536
+  },
+  "exceeded150": 2,
+  "budgetMs": 150,
+  "marginMs": 4.299999997019768,
+  "sourceCount": 3479,
+  "sourceUnchanged": true,
+  "binaryUnchanged": true,
+  "displayUnchanged": true,
+  "previous": {
+    "source": "openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/analysis.json",
+    "sha256": "ee8f04d1a7da230a626c56d29a4465cf72f0de6b1f749c52651429ae59206296",
+    "status": "FAIL_RETAINED",
+    "display": "3840x2160@29Hz",
+    "total": {
+      "min": 184.59999999962747,
+      "median": 192.59999999962747,
+      "p95": 203.5,
+      "max": 229.40000000037253,
+      "n": 100
+    },
+    "frameReadyToPainted": {
+      "min": 168.59999999962747,
+      "median": 176.40000000037253,
+      "p95": 180.59999999962747,
+      "max": 210.30000000074506,
+      "n": 100
+    },
+    "exceeded150": 100
+  },
+  "interpretation": "Changed display configuration coincides with a lower observed p95. Resolution and refresh changed together, and separate execution load is uncontrolled. This does not isolate refresh as root cause or prove stability. Original FAIL remains immutable. No source/assertion/threshold/paint modification; fresh full root remains required.",
+  "next": "One fresh full check:all at the current user-selected display mode; no repeat-until-green policy."
+}
