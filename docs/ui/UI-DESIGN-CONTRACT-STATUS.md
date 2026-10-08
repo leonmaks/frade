@@ -1,6 +1,6 @@
-# P01: diagnostic134PASS/1FAIL; B05 restoration RCA
+# P01: B05 PRE PASS; diagnostic blocked by display29Hz
 
-Обновлено 2026-10-08T18:58:34.565Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T19:14:39.630Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -19,25 +19,28 @@
 | New blocker2 | Light/Comfortable body focus: baseline3passed; first View focus after wide viewport inactive,10000ms |
 | New blocker3 | Diagnostic case57 B05: exact lower-popup restoration FAIL; inline left expected65px/actual0px. Identity/menuGone/vendor classes pass; later B05 assertions NOT_REACHED. Cause NOT_PROVEN |
 | RCA | Desktop diagnostic134PASS/1B05FAIL; all12focus cases PASS/36complete contexts. Original focus NOT_REPRODUCED / ROOT_CAUSE_NOT_PROVEN; new B05 cause OPEN |
-| Source / binary / display endpoints | Exact original whole E2E restored;3479sources +4pins exact at completion and analysis; original discovery135/0diagnostic;2560×1440/60Hz endpoints unchanged |
+| Source / binary / display endpoints |3479sources+4pins exact; original279962-byte E2E unchanged; discovery135/0diagnostic. Current preflight WMI3840×2160/29Hz, required2560×1440/≥60Hz; ENVIRONMENT BLOCKED |
 | Evidence integrity | Current diagnostic4753fresh hashed artifacts/530082961bytes;12complete focus captures/36contexts. Original full4687artifacts retained |
 | Legacy / foundation preservation | Other122entries exact;2accepted transitions exact;6foundation pins exact; pendingRuntime historical exact |
 | Structural OpenSpec repair | Exact accepted78b34... applied; PRE PASS; strict1.14.1 PASS,47requirements/70unique scenarios (106occurrences) |
 | UI compliance / static / build / boundaries | PASS in root; Turbo cache hits disclosed;26contract tests/102pairs/positive-negative/EOL controls retained |
 | Tasks2.4 /2.5 /3.1 | OPEN; original full focus FAIL2 unresolved; new diagnostic B05 restoration FAIL. Human visual NOT_APPROVED |
+| B05 diagnostic PRE / runtime | Independent PRE PASS; one Electron run NOT_RUN, candidate NOT_INSTALLED; ENVIRONMENT BLOCKED until display is restored |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: B05 mutation diagnostic PRE PASS; проверить точный discovery1/136, затем один разрешённый B05 запуск, exact restore и анализ. Production/исходные assertions неизменны; текущие FAIL не закрываются.
+Следующий шаг: человек восстанавливает2560×1440/60.01Гц(или≥60Гц) и сообщает готовность. Затем повторно проверить display/source integrity и выполнить ещё НЕ запускавшийся единственный B05 diagnostic. Сейчас WMI3840×2160/29Гц; Electron/candidate NOT_RUN/NOT_INSTALLED.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: diagnostic checkpoint6ee4adbe99ba8dbd209aa25727ebe275c4f34273 and metadata9dc293ce379c0839fe1333fe5b0269fd636ffb81 COMMITTED/PUSHED; remote SHA VERIFIED2026-10-08T18:18:33.046Z. New B05 diagnostic plan UNCOMMITTED/PRE_REQUIRED. Authorized UI origin/ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
+Git: B05 PRE checkpoint54fcbd5bacd0665abb5ec1de2756527043524618 COMMITTED/PUSHED, remote SHA VERIFIED. Environment-blocked checkpoint publication in progress. Authorized UI origin/ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
 Диагностика: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/report.md), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/summary.json), [источники и discovery](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/discovery-completion.json). Всего280artifacts;6complete passive captures/18contexts. Persisted files/identity exact; whole031 live-view dy/scroll changes match original viewport control.
 
 Текущий diagnostic: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/report.md), [assessment](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/assessment.json), [B05 RCA](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/b05-rca-facts.json). 134PASS/1FAIL; этот результат не закрывает historical full gateFAIL2.
+
+B05 preflight: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/report.md), [actual display](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/display-before.json), [independent PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-pre-received-20261008T185653Z/output--result.md). Это ограничение окружения, не дополнительный UI FAIL. PRE PASS не закрывает ранее сохранённые UI failures.
 
 ## История (неизменённые прежние записи)
 

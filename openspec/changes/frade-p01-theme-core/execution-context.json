@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_B05_MUTATION_DIAGNOSTIC_PRE_PASS",
+  "phase": "P01_B05_DIAGNOSTIC_BLOCKED_ENVIRONMENT_DISPLAY",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -2077,11 +2077,11 @@
       "actualLeft": "0px"
     },
     "sourceChanged": false,
-    "next": "ONE_B05_DIAGNOSTIC_AFTER_EXACT_DISCOVERY",
+    "next": "WAIT_FOR_USER_DISPLAY_RESTORE_THEN_PREFLIGHT_BEFORE_UNUSED_SINGLE_RUNTIME",
     "diagnosticPlan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-plan-20261008T182756Z/diagnostic-plan-v2.md",
     "candidateSha256": "ec0ae82cdff8e66f6c41d9cbdf83e1c5136c56f93bf0e00ceace6d5d44d1eae9",
     "static": "TYPECHECK_LINT_STRICT_PASS",
-    "runtime": "NOT_RUN",
+    "runtime": "NOT_RUN_BLOCKED_ENVIRONMENT",
     "reviewPolicy": {
       "stage": "P01 accepted B05 lower restoration passive mutation diagnostic",
       "phase": "PRE",
@@ -2120,6 +2120,38 @@
       "actualBackend": "NOT_CONFIRMED",
       "actualEffort": "NOT_CONFIRMED",
       "scope": "Fresh lower-B05 diagnostic PRE: one appended exact B05 copy, passive first-owned-menu mutation journal, original assertions/actions/prefix and product/binary unchanged. No repair, gate waiver, extra sampling or scope/model change."
-    }
+    },
+    "environmentPreflight": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/assessment.json",
+    "environmentDisplay": {
+      "atUtc": "2026-10-08T19:14:39.629Z",
+      "command": "Get-CimInstance Win32_VideoController | Select-Object Name,CurrentHorizontalResolution,CurrentVerticalResolution,CurrentRefreshRate,VideoModeDescription | ConvertTo-Json -Depth 3",
+      "controllers": [
+        {
+          "Name": "Intel(R) UHD Graphics 630",
+          "CurrentHorizontalResolution": 3840,
+          "CurrentVerticalResolution": 2160,
+          "CurrentRefreshRate": 29,
+          "VideoModeDescription": "3840 x 2160 x 4294967296 colors"
+        },
+        {
+          "Name": "NVIDIA GeForce GTX 1650",
+          "CurrentHorizontalResolution": null,
+          "CurrentVerticalResolution": null,
+          "CurrentRefreshRate": null,
+          "VideoModeDescription": null
+        }
+      ]
+    },
+    "prePublication": {
+      "atUtc": "2026-10-08T18:58:49.075Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "54fcbd5bacd0665abb5ec1de2756527043524618",
+      "remote": "54fcbd5bacd0665abb5ec1de2756527043524618",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "files": 43,
+      "scope": "B05_ONE_DIAGNOSTIC_PRE_PASS_RUNTIME_NOT_RUN_ORIGINAL_FAILS_OPEN"
+    },
+    "resumeRunner": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/resume-preflight-runner.mjs",
+    "resumeRunnerProvenance": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/resume-preflight-provenance.json"
   }
 }
