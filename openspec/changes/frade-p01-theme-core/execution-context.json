@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_FOCUS_CONTEXT_DIAGNOSTIC_V3_PRE_PASS",
+  "phase": "P01_DIAGNOSTIC_FAIL_B05_RESTORATION_RCA",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -1935,11 +1935,11 @@
   "currentFocusContextDiagnostic": {
     "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-plan-20261008T063000Z/diagnostic-plan-v3.md",
     "candidateSha256": "cef8dd32c6299ae7aa7145322bd6abbf01739ed11dde5accf8185d7c14f09ab9",
-    "status": "PRE_PASS_V3",
+    "status": "COMPLETED_FAIL_B05_FOCUS_NOT_REPRODUCED",
     "previousPreFail": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-pre-received-20261008T065045Z",
     "static": "VIRTUAL_TYPESCRIPT_ESLINT_PASS",
     "strict": "PASS",
-    "execution": "NOT_RUN",
+    "execution": "COMPLETED",
     "fullRoot": "FAIL2",
     "model": "gpt-6-astra",
     "effort": "xhigh",
@@ -1970,6 +1970,113 @@
       "actualBackend": "NOT_CONFIRMED",
       "actualEffort": "NOT_CONFIRMED",
       "scope": "Focused PRE of one full-desktop-context passive focus diagnosis:135 mapped cases in original desktop order,92 appended exact copies+43 original tests, passive observers only in12variants of028/031. No product repair, new gate result, forced focus, assertion/deadline change or waiver."
-    }
+    },
+    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z",
+    "publication": {
+      "atUtc": "2026-10-08T07:16:09.623Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "a715b57f70c59b350ae19440bfd9ea00db56e7ae",
+      "remote": "a715b57f70c59b350ae19440bfd9ea00db56e7ae",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "files": 76,
+      "scope": "FULL_DESKTOP_DIAGNOSTIC_V3_PRE_PASS_RUNTIME_NOT_RUN_FULL_GATE_FAIL2"
+    },
+    "preVerification": {
+      "atUtc": "2026-10-08T07:15:01.828Z",
+      "status": "PASS",
+      "rawArtifacts": 17,
+      "packetFiles": 148,
+      "gateStatus": "PASS",
+      "threadId": "01a11a52-7a91-7411-88bf-cc2997bb6959",
+      "reportSha256": "b5298549a19393f0632d44db0dfc02050545781a5fac9170df39890e5538eebd",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "sourcePlanUnchanged": true,
+      "eventCount": 72,
+      "reviewPolicy": {
+        "stage": "P01 upper-three keyboard repair",
+        "phase": "PRE",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "xhigh",
+        "source": {
+          "path": "openspec/changes/frade-p01-theme-core/tasks.md",
+          "sha256": "4a9580a3cd027f5f567afd6389fc978d433f46b7e5a5e7f9cd8f1ed1203ae26c",
+          "excerpt": "Stage P01 upper-three keyboard repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three keyboard repair POST reviewer: gpt-6-astra; reasoning xhigh."
+        }
+      },
+      "actualBackend": "NOT_CONFIRMED",
+      "actualEffort": "NOT_CONFIRMED",
+      "scope": "Focused PRE of one full-desktop-context passive focus diagnosis:135 mapped cases in original desktop order,92 appended exact copies+43 original tests, passive observers only in12variants of028/031. No product repair, new gate result, forced focus, assertion/deadline change or waiver."
+    },
+    "progress": {
+      "atUtc": "2026-10-08T08:14:15.539Z",
+      "startedOrdinal": 135,
+      "total": 135,
+      "title": "[135/135] tests\\e2e\\workbench.spec.ts:9:1 › KA opens through UI, edits a card, saves original YAML and restores workspace",
+      "completedOutcomes": "134PASS_1B05FAIL",
+      "finishedAtUtc": "2026-10-08T08:14:32.014Z"
+    },
+    "counts": {
+      "cases": 135,
+      "executions": 135,
+      "passed": 134,
+      "failed": 1,
+      "timedOut": 0,
+      "skipped": 0,
+      "interrupted": 0,
+      "unexpected": 1,
+      "retries": 0
+    },
+    "completion": {
+      "atUtc": "2026-10-08T08:14:32.014Z",
+      "runtime": {
+        "atUtc": "2026-10-08T08:14:25.486Z",
+        "exitCode": 1,
+        "error": null,
+        "report": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-focus-context-diagnostic-run-20261008T071630Z\\runtime-report.json"
+      },
+      "error": null,
+      "progressErrors": [],
+      "restored": true,
+      "sourcePass": true,
+      "sourceCount": 3479,
+      "displayEndpointsUnchanged": true,
+      "discovery": {
+        "atUtc": "2026-10-08T08:14:32.014Z",
+        "command": [
+          "E:\\Program Files\\nodejs\\node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/desktop",
+          "exec",
+          "playwright",
+          "test",
+          "--list",
+          "--reporter=json"
+        ],
+        "exitCode": 0,
+        "count": 135,
+        "diagnosticNames": 0,
+        "exact": true
+      },
+      "selectionPassed": true,
+      "scope": "DIAGNOSTIC_ONLY_ORIGINAL_FULL_ROOT_FAIL2_REMAINS"
+    },
+    "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/summary.json",
+    "assessment": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/assessment.json",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/report.md",
+    "sourceAtAnalysis": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/source-at-analysis.json",
+    "focus": "12PASS_36COMPLETE_CONTEXTS_ROOT_CAUSE_NOT_PROVEN"
+  },
+  "currentLowerB05RestorationRca": {
+    "status": "OPEN_REPRODUCED_ASSERTION_FAILURE_ROOT_CAUSE_NOT_PROVEN",
+    "facts": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/b05-rca-facts.json",
+    "actual": {
+      "case": 57,
+      "expectedLeft": "65px",
+      "actualLeft": "0px"
+    },
+    "sourceChanged": false,
+    "next": "READ_ONLY_CAUSE_AUDIT_THEN_BOUNDED_PLAN_FRESH_PRE_BEFORE_NEW_EXECUTABLE_DIAGNOSTIC_OR_REPAIR"
   }
 }

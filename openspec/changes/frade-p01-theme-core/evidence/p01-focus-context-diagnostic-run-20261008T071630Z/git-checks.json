@@ -1,0 +1,69 @@
+{
+  "atUtc": "2026-10-08T18:15:48.412Z",
+  "checks": [
+    {
+      "name": "status",
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "status",
+        "--short",
+        "--branch"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "diff-stat",
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "diff",
+        "--stat"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "product-diff",
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "diff",
+        "--exit-code",
+        "--",
+        "apps",
+        "packages",
+        "scripts",
+        "tests",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "turbo.json"
+      ],
+      "exitCode": 0
+    }
+  ]
+}

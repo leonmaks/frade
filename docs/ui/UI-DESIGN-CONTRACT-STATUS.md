@@ -1,6 +1,6 @@
-# P01: benchmark PASS; focus diagnosis8PASS, cause not proved
+# P01: diagnostic134PASS/1FAIL; B05 restoration RCA
 
-Обновлено 2026-10-08T07:15:54.793Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T18:15:46.856Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -12,29 +12,32 @@
 | --- | --- |
 | Ownership repair / units / FUI / BDD | IMPLEMENTED; current-source85 unit /12FUI /111BDD PASS; original RED and PRE retained |
 | Full root at2560×1440/60Hz | FAIL: Draw215PASS; desktop133PASS/2FAIL,135completed; root exit1 |
-| Current benchmark | PASS p95=126.4ms<=150;20warmups+100requests; independent diagnostic145.7PASS; historical4K29Hz203.5FAIL retained |
+| Current benchmark | Diagnostic PASS p95=130.9ms<=150,100samples/recomputed; previous full root126.4ms and focused145.7ms PASS. Historical4K29Hz203.5ms FAIL retained |
 | Glyph matrices / actions / keyboard | Ordinary6 + expanded6 + actions6 + keyboard6 PASS |
-| Popup / body focus / pending focus | Popup5/6; body focus5/6; pending6/6 PASS;2required failures stay blockers |
+| Popup / body focus / pending focus | Original full root: popup5/6, body5/6, pending6/6. Current diagnostic:6/6 each; original2FAIL remain unresolved |
 | New blocker1 | Dark/Comfortable popup: first View anchor inactive after original focus(),10000ms |
 | New blocker2 | Light/Comfortable body focus: baseline3passed; first View focus after wide viewport inactive,10000ms |
-| RCA | V2 PRE FAIL B1 retained; V3 independent PRE PASS, verified raw/packet/candidate. One135-case context diagnostic NEXT; app execution NOT_RUN |
-| Source / binary / display endpoints | Exact whole E2E restored;3479sources +4pins exact;135production tests/0diagnostic names;2560×1440/60Hz endpoints unchanged |
-| Evidence integrity | 4687fresh artifacts copied, hashes verified;520310275bytes |
+| New blocker3 | Diagnostic case57 B05: exact lower-popup restoration FAIL; inline left expected65px/actual0px. Identity/menuGone/vendor classes pass; later B05 assertions NOT_REACHED. Cause NOT_PROVEN |
+| RCA | Desktop diagnostic134PASS/1B05FAIL; all12focus cases PASS/36complete contexts. Original focus NOT_REPRODUCED / ROOT_CAUSE_NOT_PROVEN; new B05 cause OPEN |
+| Source / binary / display endpoints | Exact original whole E2E restored;3479sources +4pins exact at completion and analysis; original discovery135/0diagnostic;2560×1440/60Hz endpoints unchanged |
+| Evidence integrity | Current diagnostic4753fresh hashed artifacts/530082961bytes;12complete focus captures/36contexts. Original full4687artifacts retained |
 | Legacy / foundation preservation | Other122entries exact;2accepted transitions exact;6foundation pins exact; pendingRuntime historical exact |
 | Structural OpenSpec repair | Exact accepted78b34... applied; PRE PASS; strict1.14.1 PASS,47requirements/70unique scenarios (106occurrences) |
 | UI compliance / static / build / boundaries | PASS in root; Turbo cache hits disclosed;26contract tests/102pairs/positive-negative/EOL controls retained |
-| Tasks2.4 /2.5 /3.1 | OPEN; applicable focus FAIL blocks closure; human visual NOT_APPROVED |
+| Tasks2.4 /2.5 /3.1 | OPEN; original full focus FAIL2 unresolved; new diagnostic B05 restoration FAIL. Human visual NOT_APPROVED |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: опубликовать PRE checkpoint, проверить actual135-case mapping и выполнить единственный desktop-context diagnostic. Original2FAIL не закрываются; production/оригинальные тесты пока неизменны.
+Следующий шаг: RCA B05 по сохранённому actual FAIL; отличить property lease/rollback адаптера от baseline whole-attribute observer в тесте. Cause NOT_PROVEN. Новая executable диагностика/repair — только bounded plan + fresh PRE; исходное утверждение не ослаблять. Focus sampling завершён; P02 не начинается. Действий человека с дисплеем сейчас не нужно.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: published checkpoint d9aeb19a5cf274fe9e5a30832b855fb660336a86; clean on resume. New diagnostic planning UNCOMMITTED/PRE_REQUIRED. Authorized UI origin/ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
+Git: PRE checkpoint a715b57f70c59b350ae19440bfd9ea00db56e7ae already PUSHED_REMOTE_SHA_VERIFIED. Completed diagnostic134PASS/1B05FAIL evidence/status await authorized commit/push. Product diff empty. Branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
 Диагностика: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/report.md), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/summary.json), [источники и discovery](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/discovery-completion.json). Всего280artifacts;6complete passive captures/18contexts. Persisted files/identity exact; whole031 live-view dy/scroll changes match original viewport control.
+
+Текущий diagnostic: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/report.md), [assessment](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/assessment.json), [B05 RCA](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/b05-rca-facts.json). 134PASS/1FAIL; этот результат не закрывает historical full gateFAIL2.
 
 ## История (неизменённые прежние записи)
 

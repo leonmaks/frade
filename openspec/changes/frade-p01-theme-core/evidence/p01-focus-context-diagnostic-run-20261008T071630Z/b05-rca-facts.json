@@ -1,0 +1,149 @@
+{
+  "atUtc": "2026-10-08T18:15:46.846Z",
+  "status": "OPEN_REPRODUCED_ASSERTION_FAILURE_ROOT_CAUSE_NOT_PROVEN",
+  "runtimeCase": 57,
+  "result": [
+    {
+      "workerIndex": 0,
+      "parallelIndex": 0,
+      "status": "failed",
+      "duration": 5488,
+      "error": {
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:7471:162",
+        "location": {
+          "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+          "column": 162,
+          "line": 7471
+        },
+        "snippet": "  7469 |         roots:refs.roots.length,focus:document.activeElement?.getAttribute('aria-label')}\n  7470 |     })\n> 7471 |     observations.push({label:'actual-refusal',restored});expect(restored.sameIdentity).toBe(true);expect(restored.menuGone).toBe(true);expect(restored.restored).toBe(true);expect(restored.vendorClassesPreserved).toBe(true);expect(restored.roots).toBe(2);expect(await f.page.evaluate(()=>(window as any).__p01B05Replies.filter((r:any)=>r.message?.startsWith('LOWER_MENU_REFLOW_UNAVAILABLE')).length)).toBe(1)\n       |                                                                                                                                                                  ^\n  7472 |     expect(await semantics()).toEqual(before);expect(await host.getAttribute('data-frade-revision')).toBe(revision)\n  7473 |     expect(await readFile(f.file,'utf8')).toBe(fileBefore);expect(await readFile(settingsPath,'utf8')).toBe(settingsBefore)\n  7474 |     await f.page.screenshot({path:info.outputPath('b05-live-refusal.png')})"
+      },
+      "errors": [
+        {
+          "location": {
+            "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+            "column": 162,
+            "line": 7471
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  7469 |         roots:refs.roots.length,focus:document.activeElement?.getAttribute('aria-label')}\n  7470 |     })\n> 7471 |     observations.push({label:'actual-refusal',restored});expect(restored.sameIdentity).toBe(true);expect(restored.menuGone).toBe(true);expect(restored.restored).toBe(true);expect(restored.vendorClassesPreserved).toBe(true);expect(restored.roots).toBe(2);expect(await f.page.evaluate(()=>(window as any).__p01B05Replies.filter((r:any)=>r.message?.startsWith('LOWER_MENU_REFLOW_UNAVAILABLE')).length)).toBe(1)\n       |                                                                                                                                                                  ^\n  7472 |     expect(await semantics()).toEqual(before);expect(await host.getAttribute('data-frade-revision')).toBe(revision)\n  7473 |     expect(await readFile(f.file,'utf8')).toBe(fileBefore);expect(await readFile(settingsPath,'utf8')).toBe(settingsBefore)\n  7474 |     await f.page.screenshot({path:info.outputPath('b05-live-refusal.png')})\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:7471:162"
+        }
+      ],
+      "stdout": [],
+      "stderr": [],
+      "retry": 0,
+      "startTime": "2026-10-08T07:30:53.673Z",
+      "annotations": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-focus-context-diagnostic-run-20261008T071630Z\\artifacts\\ui-contract-theme-P01-CONT-e8421-its-original-feasible-retry\\test-failed-1.png"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-focus-context-diagnostic-run-20261008T071630Z\\artifacts\\ui-contract-theme-P01-CONT-e8421-its-original-feasible-retry\\trace.zip"
+        }
+      ],
+      "errorLocation": {
+        "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+        "column": 162,
+        "line": 7471
+      }
+    }
+  ],
+  "observation": {
+    "label": "actual-refusal",
+    "restored": {
+      "sameIdentity": true,
+      "menuGone": true,
+      "restored": false,
+      "vendorClassesPreserved": true,
+      "mismatches": [
+        {
+          "node": "DIV",
+          "class": "mxPopupMenu",
+          "name": "style",
+          "before": "display: inline; z-index: 10006; left: 65px; top: 617px; overflow: hidden auto; max-height: 635px;",
+          "after": "display: inline; z-index: 10006; left: 0px; top: 617px; overflow: hidden auto; max-height: 635px;"
+        }
+      ],
+      "roots": 2,
+      "focus": "Страницы"
+    }
+  },
+  "source": {
+    "test": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+    "line": 3437,
+    "sha256": "7c3e52a69c1b8346a78f4297774f5c2342a3ecdaeb05a2611465d2f09c546f43",
+    "bridge": "apps/desktop/src/main/drawio-theme-bridge.ts",
+    "bridgeSha256": "53901d117d50c9efc5abf3d4590f8e1ba699a28a042641f9bccdb070e64e218a"
+  },
+  "trace": {
+    "path": "artifacts/ui-contract-theme-P01-CONT-e8421-its-original-feasible-retry/trace.zip",
+    "sha256": "377a3815d9fe2fd982aec3822bb372149b4ff993b2fd7c89aba078632a7d8fe8",
+    "entries": [
+      {
+        "name": "resources/src@540b44db646a8e97ddab33c1c220f95b3bbd7c96.txt",
+        "bytes": 496444
+      },
+      {
+        "name": "resources/1e89b4b33e4731559781cce80ade5cdf09a43eae",
+        "bytes": 43532
+      },
+      {
+        "name": "test.trace",
+        "bytes": 29017
+      }
+    ],
+    "observed": "expect@69 fails restored boolean; earlier live status/iframe/menu count/aria-expanded/identity/menuGone assertions pass. Trace has test API steps and source/screenshot, no per-writer DOM mutation provenance."
+  },
+  "classification": "UNRESOLVED between TEST baseline capture and adapter STATE_TRANSITION/ABSTRACTION_BOUNDARY; no ENVIRONMENT or product defect attribution proved",
+  "hypotheses": [
+    {
+      "kind": "TEST",
+      "text": "Existing MutationObserver retains the first oldValue for each entire attribute; that may include vendor or earlier-layout writes rather than the specific bridge-owned property lease. Actual writer/timing is not captured."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "text": "Bridge projectStyle saves per-property value/priority; restoreMenuLayout restores/deletes layout entries before remeasurement, and forgetPopup cancels then restores remaining records. A lease loss/order defect needs direct proof."
+    }
+  ],
+  "staticReferences": [
+    {
+      "file": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "lines": [
+        521,
+        539,
+        624,
+        744,
+        761,
+        818
+      ]
+    },
+    {
+      "file": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "lines": [
+        3408,
+        3430,
+        3437
+      ]
+    },
+    {
+      "file": "apps/desktop/vendor/drawio/mxgraph/src/util/mxPopupMenu.js",
+      "lines": [
+        434,
+        591
+      ]
+    },
+    {
+      "file": "apps/desktop/vendor/drawio/mxgraph/src/util/mxUtils.js",
+      "lines": [
+        1838
+      ]
+    }
+  ],
+  "notReached": "B05 assertions after restored equality, persisted semantic checks, failed publication and feasible retry tail were not executed in this case; no preservation/retry PASS is inferred for B05.",
+  "repair": "NOT_IMPLEMENTED; do not change expected65px to0px or weaken whole restoration assertion",
+  "next": "Read-only causality audit then a bounded approved diagnostic plan/fresh PRE if additional observations are needed. Existing accepted lower reflow/refusal contracts remain exact; no source change under focus diagnostic authority."
+}
