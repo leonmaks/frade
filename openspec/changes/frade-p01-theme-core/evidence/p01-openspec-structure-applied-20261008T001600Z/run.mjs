@@ -1,0 +1,30 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const root=process.cwd(),base='openspec/changes/frade-p01-theme-core',p=base+'/evidence/p01-openspec-structure-proposal-20261007T222823Z',review=base+'/evidence/p01-openspec-structure-pre-received-20261008T001400Z',dest=base+'/evidence/p01-openspec-structure-applied-20261008T001600Z';
+if(root.replaceAll('\\','/')!=='C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade')throw Error('WRONG_ROOT');
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex'),read=f=>fs.readFileSync(f),json=f=>JSON.parse(read(f));
+const target=base+'/specs/theme-core/spec.md',map=json(p+'/mapping.json'),receipt=json(review+'/verification.json');
+if(receipt.status!=='PASS'||!receipt.candidateUnchanged||!receipt.packetUnchanged||!receipt.sourcePlanUnchanged)throw Error('PRE_NOT_PASS');
+if(sha(read(review+'/output--result.md'))!==receipt.reportSha256)throw Error('REPORT_DRIFT');
+if(sha(read(target))!==map.sourceSha256||sha(read(p+'/spec.before.md'))!==map.sourceSha256)throw Error('BASE_DRIFT');
+const proposed=read(p+'/spec.proposed.md');
+if(sha(proposed)!=='78b34deb77654aeab708050926876cc66ddb53ca98641be067cc95ebe6c12f80'||map.proposedSha256!==sha(proposed))throw Error('DRAFT_DRIFT');
+for(const a of json(p+'/draft-validation.json').manifest.filter(a=>a.source!==p+'/spec.proposed.md'))if(sha(read(a.source))!==a.sha256)throw Error('PLAN_DRIFT:'+a.source);
+let reversed=proposed.toString();
+for(const d of map.deltas){if(reversed.split(d.replacement).length!==2)throw Error('REVERSE_AMBIGUOUS');reversed=reversed.replace(d.replacement,d.original);}
+if(!Buffer.from(reversed).equals(read(target)))throw Error('REVERSE_MISMATCH');
+const monitored=['apps/desktop/src/main/drawio-theme-bridge.ts','apps/desktop/tests/unit/drawio-theme.test.ts','apps/desktop/tests/e2e/ui-contract-theme.spec.ts','packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx','apps/desktop/out/main/index.cjs',base+'/proposal.md',base+'/design.md',base+'/tasks.md'];
+for(const f of monitored)if(!fs.existsSync(f))throw Error('MISSING:'+f);
+const before=monitored.map(file=>({file,sha256:sha(read(file))}));
+fs.mkdirSync(dest);fs.copyFileSync(process.argv[1],dest+'/run.mjs',fs.constants.COPYFILE_EXCL);
+fs.writeFileSync(target,proposed);
+const applied={atUtc:new Date().toISOString(),target,beforeSha256:map.sourceSha256,approvedSha256:sha(proposed),actualSha256:sha(read(target)),exactAcceptedBytes:true,reverseRestoresEveryByte:true,oldRequirements:24,newRequirements:47,originalScenarios:70,pre:review,preReportSha256:receipt.reportSha256,scope:'Exact approved editorial replacement only; no other active plan or implementation changes.'};
+fs.writeFileSync(dest+'/application.json',JSON.stringify(applied,null,2)+'\n',{flag:'wx'});
+const env={...process.env,PATH:path.resolve(base+'/evidence/p01-current-full-root-20261007T222505Z/runtime-bin')+path.delimiter+path.dirname(process.execPath)+path.delimiter+process.env.PATH};
+const commands=[['strict',process.execPath,['E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js','validate','frade-p01-theme-core','--strict','--json']],['ui-compliance',process.execPath,['C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs','ui:compliance']],['diff-check','git',['-c','core.longpaths=true','-c','core.autocrlf=false','-c','core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol','diff','--check']]];
+const runs=[];
+for(const [name,exe,args] of commands){const startedAtUtc=new Date().toISOString(),r=spawnSync(exe,args,{cwd:root,env,encoding:'utf8',maxBuffer:20*1024*1024,timeout:600000});fs.writeFileSync(dest+'/'+name+'.stdout.txt',r.stdout??'',{flag:'wx'});fs.writeFileSync(dest+'/'+name+'.stderr.txt',r.stderr??'',{flag:'wx'});const one={name,command:[exe,...args],startedAtUtc,finishedAtUtc:new Date().toISOString(),exitCode:r.status,signal:r.signal,error:r.error?.message};runs.push(one);console.log(JSON.stringify(one));}
+const after=monitored.map(file=>({file,sha256:sha(read(file))})),unchanged=JSON.stringify(before)===JSON.stringify(after),status=runs.every(r=>r.exitCode===0)&&unchanged&&sha(read(target))===map.proposedSha256?'PASS':'FAIL';
+const result={atUtc:new Date().toISOString(),status,application:applied,runs,monitoredBefore:before,monitoredAfter:after,monitoredUnchanged:unchanged,fullRoot:'NOT_RERUN_FOR_EDITORIAL_ONLY_CHANGE; previous actual full root 134 PASS / 1 performance FAIL retained',testsAdded:0,readyForVerify:false,remainingBlockers:['Actual full-root p95 203.5ms exceeds 150ms','Full verification and cumulative POST pending','Human visual approval pending']};fs.writeFileSync(dest+'/result.json',JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({dest,status,monitoredUnchanged:unchanged}));process.exitCode=status==='PASS'?0:1;

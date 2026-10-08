@@ -1,6 +1,83 @@
-# P01: B02 retained-ownership plan validated; repeat PRE ready
+# P01: structural PRE и strict PASS; performance FAIL
 
-Updated 2026-10-04T01:25:25.699Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing independent.
+Обновлено 2026-10-08T00:17:37.529Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; исходный baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+
+| Этап | Фактический статус |
+| --- | --- |
+| Foundation / обязательный UI contract | ARCHIVED |
+| P01 resolver / preview | IN_PROGRESS, 5/10 задач |
+| P02 installer; P03 VS Code import; P04 icons; P05 browser host; P06 native APIs; P07 registry/profiles/policy | NOT_STARTED |
+
+| Текущая задача P01 | Статус |
+| --- | --- |
+| Ownership guard / meaningful RED / unit | IMPLEMENTED; independent PRE PASS; historical-source RED10 FAIL/4guards PASS; GREEN85 PASS |
+| B02 native/frame / FUI / BDD | 2 PASS /12 PASS,2positive+14negative controls /111 PASS |
+| Full root check:all | COMPLETE FAIL: static/unit/BDD/build/boundaries/compliance PASS; Draw215 PASS; Electron134 PASS/1 FAIL;3479 source files unchanged |
+| Six theme/density visual/a11y matrices | Canonical6 + expanded6, actions6, keyboard6, popup6, focus6, pending6 PASS in full run |
+| Historical hover FAIL | Retained; current original full case PASS,52 raster proofs; exact hover13.03:1; historical cause NOT_PROVEN |
+| Benchmark | FAIL: p95 203.5 ms >150 ms;100/100 measured requests exceed limit |
+| Performance diagnosis | Observed4K/29Hz and RAF33.4ms versus prior9.4ms; environment/scheduling hypothesis, cause NOT_PROVEN |
+| Display-mode decision | Awaiting user reply: required4K/30Hz or available60Hz+ diagnostic control. OS settings unchanged |
+| P01-OPENSPEC-STRUCTURE-01 | USER_ACCEPTED; independent PRE PASS; exact accepted draft APPLIED;24→47 requirements,70 original scenarios preserved |
+| Active OpenSpec strict1.14.1 | PASS,0issues; draft SHA78b34deb77654aeab708050926876cc66ddb53ca98641be067cc95ebe6c12f80 |
+| Post-application UI compliance / diff | PASS:26 tests,102contrast pairs, positive/negative drift/color controls and8 EOL rules; diff PASS |
+| Source preservation during structural repair | PASS: production/test/binary/proposal/design/tasks hashes unchanged |
+| Open tasks2.4 /2.5 /3.1 | Cumulative adapter closure / visual acceptance and benchmark / all required checks remain open |
+| Tasks3.2 /3.3 | Verify BLOCKED; cumulative POST NOT_RUN; human visuals NOT_APPROVED; archive BLOCKED |
+
+Следующий шаг: уточнить доступный/обязательный режим дисплея и доказать причину benchmark FAIL. При разрешённом контрольном режиме — один неизменённый benchmark с сохранёнными условиями; результат не отменяет предыдущий FAIL. Production/порог/paint protocol без доказанной причины и применимого PRE не меняются. P02 не начинается.
+
+Evidence: [structural PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z/output--result.md), [application and checks](../../openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z/result.json), [full root](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json), [performance observations](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/analysis.json). Все прежние FAIL и raw evidence сохранены.
+
+Git: HEAD a894702a2429ad33c6168a64e0f9759462b8d3b3 previously PUSHED/VERIFIED. Current authorized repair/evidence checkpoint is UNCOMMITTED; publication follows checks. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel request queued, visibility unconfirmed.
+
+Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
+
+## История (неизменённые прежние записи)
+
+# P01: ownership guard — 85 unit and original B02 PASS; runtime matrix running
+
+Updated 2026-10-04T02:30:40.063Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing independent.
+
+| Stage | Actual status |
+| --- | --- |
+| Foundation / mandatory UI contract | ARCHIVED; evidence retained |
+| P01 theme resolver / preview | IN_PROGRESS5/10 |
+| P02 transactional installer | NOT_STARTED |
+| P03 VS Code theme import | NOT_STARTED |
+| P04 icon registries | NOT_STARTED |
+| P05 isolated browser host | NOT_STARTED |
+| P06 native contribution APIs | NOT_STARTED |
+| P07 registry / profiles / policy | NOT_STARTED |
+
+| Current P01 task | Actual status |
+| --- | --- |
+| Two-fixture native readiness exception | ACCEPTED / IMPLEMENTED; previous7PASS /36receipts; exact reverse retained |
+| Pending-focus repair | IMPLEMENTED; earlier71unit /6actual states /12after-READY comparisons PASS |
+| B02 cause | ABSTRACTION_BOUNDARY: unrelated native Fullscreen/Format resources incorrectly vetoed owned-three paint |
+| Corrective plan / independent PRE | First FAIL retained; stronger retained ownership plan repeat PRE PASS;17raw/candidate/packet/plan unchanged |
+| Meaningful RED | Corrected historical-source10FAIL /4guardsPASS; production untouched by historical test; temporary clone removed |
+| Sole-bridge guard | IMPLEMENTED: exact admitted sources plus retained projection record, marker, values and priorities |
+| Unit/static/build | 85/85 PASS; desktop typecheck/lint/build PASS |
+| Test fixture correction | TEST: JSDOM custom-property priority was a no-op; new-tail position mutation asserts before/after priority; initial83PASS/2FAIL retained |
+| Actual original B02 frade/drawio | 2/2 PASS; six themes/density, forced colors, original viewports; source/binary unchanged |
+| Current V6/actions/keyboard/focus/lower/reflow/pending | RUNNING49 cases after latest bridge; prior source31+6 PASS retained |
+| Current FUI/controls/BDD | NOT_RUN after latest bridge; previous-source12 /2positive+14negative /111 PASS retained |
+| Strict / UI compliance / boundaries | PASS;26contract tests,102contrast pairs and isolated positive/negative controls |
+| Fresh full root | NOT_RUN; historical116PASS/13FAIL and aborted37case run retained |
+| Verify / independent POST / human visuals / archive | BLOCKED / NOT_RUN / NOT_APPROVED / BLOCKED |
+
+Next: current-source49-case matrix, then FUI/bindings/controls/BDD/full root, verification and automatic POST. No assertion or deadline relaxation; vendor/domain/routing unchanged. No P02. Reviewer assignment remains approved stage gpt-6-astra/xhigh; actual backend NOT_CONFIRMED.
+
+Git: local HEADa894702a2429ad33c6168a64e0f9759462b8d3b3; current repair/evidence UNCOMMITTED. Remote a894702a2429ad33c6168a64e0f9759462b8d3b3 VERIFIED; all four pending checkpoints PUSHED. Earlier timeout records retained; current repair still uncommitted. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibility unconfirmed.
+
+Evidence: openspec/changes/frade-p01-theme-core/evidence/p01-upper-paint-boundary-repeat-pre-received-20261004T021000Z; p01-upper-priority-fixture-repair-20261004T022600Z; p01-upper-paint-boundary-green-20261004T022800Z; p01-upper-boundary-b02-20261004T023000Z.
+
+## History
+
+# P01: ownership guard implemented; priority fixture corrected; GREEN checks next
+
+Updated 2026-10-04T02:27:28.152Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing independent.
 
 | Stage | Actual status |
 | --- | --- |
@@ -26,13 +103,13 @@ Updated 2026-10-04T01:25:25.699Z. Branch codex/frade-ui-design-contract; worktre
 | Corrective glyph ACK plan | Four artifacts + BDD coherent; sole exact-three-source final guard; production NOT_CHANGED |
 | Current FUI / BDD / controls | 12PASS /111PASS /2positive+14exact negative PASS; one authorized literal reverse proven |
 | Corrective planning validation | Strict OpenSpec / UI compliance / UI typecheck / lint PASS |
-| Fresh independent boundary PRE | First PRE FAIL retained; coherent ownership-record/marker/properties correction + strict/compliance/static PASS; repeat PRE READY_FOR_DISPATCH, gpt-6-astra/xhigh |
+| Fresh independent boundary PRE | First PRE FAIL retained; coherent ownership-record/marker/properties correction + strict/compliance/static PASS; repeat PRE PASS,17raw; candidate/packet/plan unchanged, gpt-6-astra/xhigh; new14RED cases prepared, production unchanged |
 | Fresh V6 / full root | NOT_RUN after current repair; historical root116PASS/13FAIL and aborted37case run retained |
 | OpenSpec verify / POST / human visual / archive | BLOCKED / NOT_RUN / NOT_APPROVED / BLOCKED |
 
-Next: automatically repeat read-only PRE on validated corrected plan; only after PASS append deterministic RED and implement sole-bridge final ownership guard. Current after-READY6/FUI12/BDD111/16controls/static PASS; production unchanged. No new target, native/vendor/domain/routing change or assertion relaxation. A material specification conflict requires a human decision; PRE is not user authorization. No P02.
+Next: run all85 bridge unit checks, affected static/build, actual B02 and current-source matrices. Repeat PRE PASS; historical-source corrected RED10FAIL/4guardsPASS. New guard implemented; first GREEN83PASS/2FAIL traced to a custom-property priority no-op in JSDOM. Test-only repair proves real position priority loss; prior FAIL retained. No new target, native/vendor/domain/routing change or assertion relaxation. A material specification conflict requires a human decision; PRE is not user authorization. No P02.
 
-Git: local checkpoint 312c992dcf8281914326b22737afb12f7c53f884 COMMITTED; focus repair/runtime/diagnostics/coherent boundary plan saved. PRE dispatch candidate includes this status/receipt update. Sequential publication verified d2ce1504 and e5edd771; next eedbf406 timed out. Last verified remote e5edd7719431d09125eb610fbdd0cdbb789ee32f; later checkpoints NOT_PUBLISHED. Destination remains origin git@github.com:leonmaks/frade.git, only refs/heads/codex/frade-ui-design-contract. No force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibility unconfirmed.
+Git: local checkpoint a894702a2429ad33c6168a64e0f9759462b8d3b3 COMMITTED; corrected measurement/stronger ownership plan and PRE FAIL saved. Repeat PRE candidate includes this status/receipt update. Sequential publication verified d2ce1504 and e5edd771; next eedbf406 timed out. Last verified remote e5edd7719431d09125eb610fbdd0cdbb789ee32f; later checkpoints NOT_PUBLISHED. Destination remains origin git@github.com:leonmaks/frade.git, only refs/heads/codex/frade-ui-design-contract. No force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibility unconfirmed.
 
 Evidence: openspec/changes/frade-p01-theme-core/evidence/p01-pending-focus-runtime-six-20261004T005900Z/audit.json; p01-pending-focus-original-regression-20261004T010000Z/runtime-command.json; p01-b02-glyph-diagnostic-20261004T011300Z/causal-audit.json; p01-fui-runtime-20261004T011700Z; p01-upper-paint-boundary-planning-20261004T012000Z.
 

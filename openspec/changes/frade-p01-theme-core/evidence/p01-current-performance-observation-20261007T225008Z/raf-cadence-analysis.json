@@ -1,0 +1,31 @@
+{
+  "atUtc": "2026-10-07T23:01:02.926Z",
+  "status": "OBSERVED_DIFFERENT_RENDER_CADENCE_CAUSE_NOT_PROVEN",
+  "comparison": [
+    {
+      "source": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-full-root-20261003T200130Z/desktop-artifacts/ui-contract-theme-performa-7a707-ewport-and-frame-scheduling/viewport-scheduling.json",
+      "sha256": "1959b12eefdf3e46eac3c2c7e6e0506b84fcfbcf33e3004b9f7d1a21f1ea99dc",
+      "count": 56,
+      "intervalFilterMs": "0 < interval < 100; excludes parked intervals; not a benchmark sample filter",
+      "medianAdjacentRafMs": 9.400000000000091,
+      "min": 9.099999999999909,
+      "max": 38.80000000000018,
+      "frameVisibility": "visible",
+      "variant": "opaque"
+    },
+    {
+      "source": "apps/desktop/test-results/ui-contract-theme-performa-7a707-ewport-and-frame-scheduling/viewport-scheduling.json",
+      "sha256": "c472d87a12372b487a5c6ebd6a0a8e682b4eff4060746563277ba67189755d71",
+      "count": 51,
+      "intervalFilterMs": "0 < interval < 100; excludes parked intervals; not a benchmark sample filter",
+      "medianAdjacentRafMs": 33.399999999999636,
+      "min": 33.19999999999982,
+      "max": 33.5,
+      "frameVisibility": "visible",
+      "variant": "opaque"
+    }
+  ],
+  "method": "Original diagnostic fixture loops native requestAnimationFrame and records its timestamp. No synthetic rate or production modification. Separate diagnostic after each benchmark, not instrumentation inside its100 samples.",
+  "displayObservation": "openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/display-observation.json",
+  "interpretation": "Current OS display reports29Hz at4K; actual adjacent RAF interval33.4ms is consistent. Historical run was9.4ms. This supports a scheduling/environment hypothesis, but does not establish historical display mode or waive150ms. Required original benchmark remainsFAIL."
+}

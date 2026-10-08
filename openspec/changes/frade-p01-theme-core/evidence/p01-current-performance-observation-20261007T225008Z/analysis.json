@@ -1,0 +1,58 @@
+{
+  "atUtc": "2026-10-07T22:50:08.059Z",
+  "status": "FAIL_OBSERVED_CAUSE_NOT_PROVEN",
+  "rootRun": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z",
+  "rootStillRunning": true,
+  "files": [
+    {
+      "source": "apps/desktop/test-results/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/performance-result.json",
+      "file": "openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/performance-result.json",
+      "sha256": "53a9eb37633da1edcb9c2a9ca39594eba4830514df915c284032934cfd37d7dc",
+      "bytes": 15224
+    },
+    {
+      "source": "apps/desktop/test-results/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/all-observations.ndjson",
+      "file": "openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/all-observations.ndjson",
+      "sha256": "15496955eaa50b36db74d8aba1160463f418150a8e49cd48fb7a6463a4fe977a",
+      "bytes": 140775
+    },
+    {
+      "source": "apps/desktop/test-results/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/dataset-hardware-pin.json",
+      "file": "openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/dataset-hardware-pin.json",
+      "sha256": "7beb90d8ed0353da37e488d51daffdad6babeddb6bee10b8855f4fb323923d59",
+      "bytes": 13435
+    },
+    {
+      "source": "apps/desktop/test-results/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/actual-hardware-before-measurement.json",
+      "file": "openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z/actual-hardware-before-measurement.json",
+      "sha256": "4d62ec9903bc447b9baffbae5f6210904dfb3564f51808c52f0af54233aa3a24",
+      "bytes": 407
+    }
+  ],
+  "warmups": 20,
+  "total": {
+    "min": 184.59999999962747,
+    "median": 192.59999999962747,
+    "p95": 203.5,
+    "max": 229.40000000037253,
+    "n": 100
+  },
+  "frameReadyToPainted": {
+    "min": 168.59999999962747,
+    "median": 176.40000000037253,
+    "p95": 180.59999999962747,
+    "max": 210.30000000074506,
+    "n": 100
+  },
+  "outsideReadyToPainted": {
+    "min": 13.400000000372529,
+    "median": 16.299999998882413,
+    "p95": 22.000000001862645,
+    "max": 32,
+    "n": 100
+  },
+  "exceeded150": 100,
+  "interpretation": "All100 measured samples exceed150ms; most observed latency lies between frame READY and PAINTED. This interval includes parent/IPC/renderer/layout/paint and is not proof of the first incorrect operation or an environment cause. No production, threshold or test modification. No waiver or retry performed.",
+  "historicalRca": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-performance-rca-20261002T125530Z/rca.json",
+  "next": "Finish original full run; inspect complete failures and source integrity. Then bounded read-only comparison/unchanged diagnostic if needed before any repair plan/PRE."
+}

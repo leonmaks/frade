@@ -1,0 +1,19 @@
+{
+  "atUtc": "2026-10-04T02:15:59.508Z",
+  "beforeSha256": "3923f389a6a0f294dcdec33ae341264846a265d43fab1276a3d46834754d529f",
+  "afterSha256": "53901d117d50c9efc5abf3d4590f8e1ba699a28a042641f9bccdb070e64e218a",
+  "edits": [
+    [
+      "    const beforePaint = upperCandidates(true)",
+      "    const beforePaint = upperCandidates(true).filter(source => upperVerified.has(source.bytes))\n      .map(source => ({ ...source, owner: upperOwners.get(source.node) }))"
+    ],
+    [
+      "      const afterPaint = upperCandidates(true)\n      if (afterPaint.length !== beforePaint.length || afterPaint.some((source, i) => source.node !== beforePaint[i].node || source.image !== beforePaint[i].image || source.bytes !== beforePaint[i].bytes))",
+      "      const afterPaint = upperCandidates(true).filter(source => upperVerified.has(source.bytes))\n      if (afterPaint.length !== beforePaint.length || afterPaint.some((source, i) => {\n        const before = beforePaint[i], saved = before.owner\n        return source.node !== before.node || source.image !== before.image || source.bytes !== before.bytes ||\n          !saved || upperOwners.get(source.node) !== saved || saved.node !== source.node ||\n          saved.image !== source.image || saved.bytes !== source.bytes || source.node.className !== saved.className ||\n          source.node.getAttribute('data-frade-upper-glyph') !== '1' ||\n          Array.from(saved.properties).some(([name, value]) => !upperPropertyMatches(source.node, name, value))\n      }))"
+    ]
+  ],
+  "reverseEveryByte": true,
+  "pre": "p01-upper-paint-boundary-repeat-pre-received-20261004T021000Z PASS",
+  "red": "p01-upper-paint-boundary-red-20261004T021200Z:10FAIL/4PASS guards;71filtered",
+  "scope": "Only final paint ownership proof; discovery/digests/deadlines/rendering unchanged."
+}

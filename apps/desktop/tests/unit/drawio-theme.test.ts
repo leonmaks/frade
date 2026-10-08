@@ -1471,3 +1471,94 @@ for (const invalidation of ['geometry', 'resource', 'owner', 'queued-disposal'] 
     f.callbacks.forEach(callback => expect(callback).not.toHaveBeenCalled()); f.assertSemantic()
   })
 }
+
+const upperUnownedPaintImages = ["url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjMDAwMDAwIj48cGF0aCBkPSJNMTIwLTEyMHYtMjAwaDgwdjEyMGgxMjB2ODBIMTIwWm01MjAgMHYtODBoMTIwdi0xMjBoODB2MjAwSDY0MFpNMTIwLTY0MHYtMjAwaDIwMHY4MEgyMDB2MTIwaC04MFptNjQwIDB2LTEyMEg2NDB2LTgwaDIwMHYyMDBoLTgwWiIvPjwvc3ZnPg==\")","url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjMDAwMDAwIj48cGF0aCBkPSJNMjQwLTEyMHYtMTIwSDEyMHYtODBoMjAwdjIwMGgtODBabTQwMCAwdi0yMDBoMjAwdjgwSDcyMHYxMjBoLTgwWk0xMjAtNjQwdi04MGgxMjB2LTEyMGg4MHYyMDBIMTIwWm01MjAgMHYtMjAwaDgwdjEyMGgxMjB2ODBINjQwWiIvPjwvc3ZnPg==\")"] as const
+
+
+// P01-UPPER-034/035: final paint ACK belongs to actual retained projections.
+async function upperPaintBoundaryCase(operation: 'apply' | 'rollback', change: (f: Awaited<ReturnType<typeof upperGlyphFixture>>, native: HTMLElement | undefined) => void, nativeImages?: readonly [string, string]) {
+  const f = await upperGlyphFixture()
+  let native: HTMLElement | undefined
+  if (nativeImages) {
+    native = document.createElement('a'); native.className = 'geButton upper-original-0'; native.title = 'Original unowned native resource'
+    native.style.backgroundImage = nativeImages[0]
+    native.getBoundingClientRect = () => new DOMRect(180, 20, 28, 28)
+    f.toolbar.firstElementChild!.append(native)
+  }
+  f.send('prepare'); f.send('apply'); await f.settle(); f.assertOwned()
+  if (native) expect(native.hasAttribute('data-frade-upper-glyph')).toBe(false)
+  f.send('release', context('apply'))
+  const enqueue = f.raf.getMockImplementation()!
+  let changed = false, digestCallsAtChange = -1
+  f.raf.mockImplementation(callback => enqueue(time => {
+    if (!changed) { changed = true; digestCallsAtChange = f.digest.mock.calls.length; change(f, native) }
+    callback(time)
+  }))
+  if (operation === 'apply') { f.send('prepare', context('prepare', 2, 2), snapshot('light', 2)); f.send('apply', context('apply', 2, 2)) }
+  else f.send('rollback', context('rollback', 2, 2), snapshot('light', 2))
+  const currentReplies = () => f.replies().filter(reply => reply.operation === operation && reply.context.generation === 2 && reply.context.revision === 2)
+  await vi.waitFor(async () => {
+    await f.paint()
+    expect(changed).toBe(true)
+    expect(currentReplies().some(reply => ['PAINTED', 'REFUSED'].includes(reply.status))).toBe(true)
+  })
+  await f.paint(); await f.paint()
+  expect(f.digest).toHaveBeenCalledTimes(digestCallsAtChange)
+  f.callbacks.forEach(callback => expect(callback).not.toHaveBeenCalled())
+  f.assertSemantic()
+  return { ...f, native, currentReplies }
+}
+
+for (const operation of ['apply', 'rollback'] as const) {
+  it('P01-UPPER-034 unrelated native resource transition does not veto owned paint during ' + operation, async () => {
+    const f = await upperPaintBoundaryCase(operation, (_f, native) => { native!.style.backgroundImage = upperUnownedPaintImages[1] }, upperUnownedPaintImages)
+    expect(f.currentReplies().map(reply => reply.status)).toEqual(['PAINTED'])
+    f.assertOwned()
+    expect(f.native!.hasAttribute('data-frade-upper-glyph')).toBe(false)
+    expect(f.native!.style.backgroundImage).toBe(upperUnownedPaintImages[1])
+    const nativeAfter = f.native!.outerHTML
+    f.dispose(); expect(f.targets.map(node => node.outerHTML)).toEqual(f.original); expect(f.native!.outerHTML).toBe(nativeAfter); f.assertSemantic()
+  })
+
+  for (const loss of ['original-background', 'marker', 'owned-priority', 'owner-class'] as const) {
+    it('P01-UPPER-035 same source cannot hide projection loss ' + loss + ' during ' + operation, async () => {
+      const f = await upperPaintBoundaryCase(operation, current => {
+        const node = current.targets[0]
+        if (loss === 'original-background') node.style.backgroundImage = 'url("' + upperOriginalUrls[0] + '")'
+        else if (loss === 'marker') node.removeAttribute('data-frade-upper-glyph')
+        else if (loss === 'owned-priority') {
+          const value = node.style.getPropertyValue('position')
+          expect(value).toBe('relative'); expect(node.style.getPropertyPriority('position')).toBe('important')
+          node.style.setProperty('position', value, '')
+          expect(node.style.getPropertyValue('position')).toBe(value); expect(node.style.getPropertyPriority('position')).toBe('')
+        }
+        else node.classList.add('native-state-change')
+      })
+      expect(f.currentReplies().map(reply => reply.status)).toEqual(['REFUSED'])
+      expect(f.currentReplies()[0].message).toBe('Upper glyph ownership changed before painted acknowledgement')
+      expect(f.targets[0].hasAttribute('data-frade-upper-glyph')).toBe(false)
+      expect(getComputedStyle(f.targets[0]).backgroundImage).toBe('url("' + upperOriginalUrls[0] + '")')
+      if (loss === 'owned-priority') {
+        expect(f.targets[0].style.getPropertyValue('position')).toBe('relative')
+        expect(f.targets[0].style.getPropertyPriority('position')).toBe('')
+      }
+      const revoked = f.targets[0].outerHTML
+      f.dispose(); expect(f.targets[0].outerHTML).toBe(revoked); expect(f.targets.slice(1).map(node => node.outerHTML)).toEqual(f.original.slice(1)); f.assertSemantic()
+    })
+  }
+  for (const mutation of ['resource', 'replacement'] as const) {
+    it('P01-UPPER-035 admitted ' + mutation + ' mutation remains refused during ' + operation, async () => {
+      let original: HTMLElement | undefined
+      const f = await upperPaintBoundaryCase(operation, current => {
+        const node = current.targets[0]
+        if (mutation === 'resource') node.style.backgroundImage = upperUnownedPaintImages[0]
+        else { original = node; const replacement = node.cloneNode(true) as HTMLElement; replacement.getBoundingClientRect = node.getBoundingClientRect; node.replaceWith(replacement) }
+      })
+      expect(f.currentReplies().map(reply => reply.status)).toEqual(['REFUSED'])
+      expect(f.currentReplies()[0].message).toBe('Upper glyph ownership changed before painted acknowledgement')
+      if (original) expect(original.outerHTML).toBe(f.original[0])
+      else expect(f.targets[0].style.backgroundImage).toBe(upperUnownedPaintImages[0])
+      f.dispose(); f.assertSemantic()
+    })
+  }
+}

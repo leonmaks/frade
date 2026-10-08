@@ -1,0 +1,120 @@
+{
+  "atUtc": "2026-10-07T22:18:44.680Z",
+  "method": "Unmodified actual checker and control callbacks transpiled in read-only VM; exact 14 actual rejection codes asserted; Vitest BDD follows",
+  "source": {
+    "file": "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+    "sha256": "c25a1e58252dc2cedf598b9887967884be8b46e6958ff172b317452f421b4f77",
+    "extractedTailSha256": "a70e24371c7975f57471dc5e3438c282cd9eeea3f893a39f0c719df23a71dbe6"
+  },
+  "results": [
+    {
+      "name": "P01 FUI actual fullRuntimeBindings require all seven examples independently of pending declarations",
+      "rejections": [],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI valid actual source and named execution packet passes integrity only",
+      "rejections": [],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects missing-example",
+      "rejections": [
+        "EXAMPLE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects duplicate-example",
+      "rejections": [
+        "EXAMPLE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects stale-source",
+      "rejections": [
+        "SOURCE_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects stale-callback",
+      "rejections": [
+        "CALLBACK_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects dropped-assertion",
+      "rejections": [
+        "CALLBACK_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects wrong-case",
+      "rejections": [
+        "CASE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects missing-kind",
+      "rejections": [
+        "CASE_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects wrong-scope",
+      "rejections": [
+        "SCOPE"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects unapproved-file",
+      "rejections": [
+        "SOURCE_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects escaping-evidence",
+      "rejections": [
+        "EVIDENCE_PATH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects stale-evidence",
+      "rejections": [
+        "EVIDENCE_HASH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects forged-success",
+      "rejections": [
+        "EXECUTION"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects failed-record",
+      "rejections": [
+        "RESULT_STATUS"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "P01 FUI negative control rejects wrong-record",
+      "rejections": [
+        "RESULT_CASE"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS_2_POSITIVE_14_EXACT_NEGATIVE"
+}

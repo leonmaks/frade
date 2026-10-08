@@ -1,0 +1,16 @@
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import {spawnSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
+const dir=path.dirname(fileURLToPath(import.meta.url)), root=process.cwd(), hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const files=['apps/desktop/tests/e2e/ui-contract-theme.spec.ts','apps/desktop/src/main/drawio-theme-bridge.ts','apps/desktop/out/main/index.cjs'];
+const snapshot=()=>Object.fromEntries(files.map(p=>[p,hash(p)])),sourceBefore=snapshot();
+const command=[process.execPath,'E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js','--filter','@frade/desktop','exec','playwright','test','tests/e2e/ui-contract-theme.spec.ts','--grep','P01-UPPER-017 expanded real viewport text and media raster light comfortable$','--reporter=json','--output='+path.join(dir,'artifacts')];
+const receipt={startedAtUtc:new Date().toISOString(),command,sourceBefore,status:'RUNNING'};
+const out=fs.openSync(path.join(dir,'runtime.stdout.json'),'wx'),err=fs.openSync(path.join(dir,'runtime.stderr.txt'),'wx');
+fs.writeFileSync(path.join(dir,'runtime-command.json'),JSON.stringify(receipt,null,2)+'\n');
+console.log(JSON.stringify({status:'RUNNING',dir,command}));
+const result=spawnSync(command[0],command.slice(1),{cwd:root,env:process.env,stdio:['ignore',out,err],windowsHide:true});
+fs.closeSync(out);fs.closeSync(err);
+Object.assign(receipt,{finishedAtUtc:new Date().toISOString(),exitCode:result.status,signal:result.signal,error:result.error?.message,sourceAfter:snapshot()});
+receipt.sourceUnchanged=JSON.stringify(receipt.sourceBefore)===JSON.stringify(receipt.sourceAfter);
+receipt.status=result.status===0&&receipt.sourceUnchanged?'PASS':'FAIL';
+fs.writeFileSync(path.join(dir,'runtime-command.json'),JSON.stringify(receipt,null,2)+'\n');
+console.log(JSON.stringify(receipt));process.exitCode=result.status??2;

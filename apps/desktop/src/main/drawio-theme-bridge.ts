@@ -1678,11 +1678,19 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     const verification = verifyUpper(request, token)
     if (verification) await verification
     if (!upperLive(request, token)) return
-    const beforePaint = upperCandidates(true)
+    const beforePaint = upperCandidates(true).filter(source => upperVerified.has(source.bytes))
+      .map(source => ({ ...source, owner: upperOwners.get(source.node) }))
     await paint()
     if (upperLive(request, token)) {
-      const afterPaint = upperCandidates(true)
-      if (afterPaint.length !== beforePaint.length || afterPaint.some((source, i) => source.node !== beforePaint[i].node || source.image !== beforePaint[i].image || source.bytes !== beforePaint[i].bytes))
+      const afterPaint = upperCandidates(true).filter(source => upperVerified.has(source.bytes))
+      if (afterPaint.length !== beforePaint.length || afterPaint.some((source, i) => {
+        const before = beforePaint[i], saved = before.owner
+        return source.node !== before.node || source.image !== before.image || source.bytes !== before.bytes ||
+          !saved || upperOwners.get(source.node) !== saved || saved.node !== source.node ||
+          saved.image !== source.image || saved.bytes !== source.bytes || source.node.className !== saved.className ||
+          source.node.getAttribute('data-frade-upper-glyph') !== '1' ||
+          Array.from(saved.properties).some(([name, value]) => !upperPropertyMatches(source.node, name, value))
+      }))
         throw Error('Upper glyph ownership changed before painted acknowledgement')
       active.upperPending = false
       upperPaintedRequest = request

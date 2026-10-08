@@ -1,0 +1,95 @@
+{
+  "startedAtUtc": "2026-10-04T02:00:00.256Z",
+  "phase": "PRE",
+  "scope": "Corrective exact-three-resource final paint ACK with retained projection ownership records, marker/properties/class/source proof; unowned native resource transitions isolated. Prior cache-only PRE FAIL repaired in plan, no glyph production change.",
+  "requestedModel": "gpt-6-astra",
+  "requestedEffort": "xhigh",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "candidate": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+  "packet": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-04T01-57-39-595Z-5544af67-743e-4999-ad5d-fcf8df1fdd40\\prepared\\packet",
+  "run": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-04T01-57-39-595Z-5544af67-743e-4999-ad5d-fcf8df1fdd40\\output",
+  "status": "PASS",
+  "gateStatus": "PASS",
+  "authorization": "docs/engineering/agent-workflow.md",
+  "toolchain": [
+    {
+      "path": "integrity.mjs",
+      "sha256": "2fc3b036930871f010a6850f86dfc79c3234975e437124fc020a73d73d277395"
+    },
+    {
+      "path": "policy.mjs",
+      "sha256": "ddb10e74b15c971571d9c4a5deecab250f62e6be16a3985a700d7dd46a1fef1f"
+    },
+    {
+      "path": "prepare-review.mjs",
+      "sha256": "62e59325cf4b5fbb7ca9d1da08ccb745555121d2f76967bd71683112e73bfd84"
+    },
+    {
+      "path": "invoke-review.mjs",
+      "sha256": "6d66c0b8def0ed4b8d6f70333720679b85ef23082086729bfd0993690d0d8fea"
+    },
+    {
+      "path": "transport.test.mjs",
+      "sha256": "5a441aa1e187db1a79b9b5230d9f0857a5441022fd965c73a015ff602745a0e2"
+    }
+  ],
+  "readConfinementProbeSha256": "1365ab264176ebca9c92e1b7b706bbeecade43a16394a37cfdec54f9d43b5ec2",
+  "packetManifestSha256": "061ab51e562ed5007458da0c6e33c8ab6a6d9cb5152c69bec65c621e39b16d42",
+  "verifiedSourceFiles": 1493,
+  "promptSha256": "20a1194c21ca2c677a88dbffa00113b7cbb1ee84e0ad6c25a1294d0d694e593f",
+  "cli": {
+    "launcher": "wsl.exe",
+    "args": [
+      "-d",
+      "Ubuntu-22.04_E",
+      "--exec",
+      "/usr/bin/env",
+      "CODEX_HOME=/mnt/c/Users/NVISEN/.codex",
+      "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime/node_modules/.bin/codex",
+      "exec",
+      "--ignore-user-config",
+      "--ignore-rules",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--model",
+      "gpt-6-astra",
+      "-c",
+      "default_permissions=\"frade-review\"",
+      "-c",
+      "permissions={frade-review={extends=\":read-only\",filesystem={\":root\"=\"deny\",\":minimal\"=\"read\",\":workspace_roots\"={\".\"=\"read\"},\"/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime\"=\"read\"},network={enabled=false}}}",
+      "-c",
+      "project_doc_max_bytes=0",
+      "-c",
+      "project_doc_fallback_filenames=[]",
+      "-c",
+      "model_reasoning_effort=\"xhigh\"",
+      "-c",
+      "approval_policy=\"never\"",
+      "-c",
+      "web_search=\"disabled\"",
+      "-c",
+      "apps._default.enabled=false",
+      "-c",
+      "shell_environment_policy.inherit=\"none\"",
+      "-c",
+      "shell_environment_policy.set={PATH=\"/usr/bin:/bin\",HOME=\"/tmp\",TMPDIR=\"/tmp\",LANG=\"C.UTF-8\",LC_ALL=\"C.UTF-8\"}",
+      "-C",
+      "/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-04T01-57-39-595Z-5544af67-743e-4999-ad5d-fcf8df1fdd40/prepared/packet",
+      "--json",
+      "--color",
+      "never",
+      "--output-last-message",
+      "/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-04T01-57-39-595Z-5544af67-743e-4999-ad5d-fcf8df1fdd40/output/result.md",
+      "-"
+    ],
+    "version": "0.159.3"
+  },
+  "signal": null,
+  "exitCode": 0,
+  "threadId": "01a104a4-e652-70d0-9b28-ecdefc8392f8",
+  "resultSha256": "d0c3bffce552324c5ed3de9ceaf1d872d7a1cf723f1a5bc14e3ea4f3c0611217",
+  "candidateUnchanged": true,
+  "packetUnchanged": true,
+  "endedAtUtc": "2026-10-04T02:08:39.868Z"
+}

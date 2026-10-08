@@ -1,0 +1,153 @@
+
+
+for (const mode of ['light'] as const) for (const density of ['comfortable'] as const) {
+  // eslint-disable-next-line no-empty-pattern
+  test('P01-HOVER-DIAGNOSTIC expanded real viewport text and media raster ' + mode + ' ' + density, async ({}, info) => {
+    test.setTimeout(600000)
+    const f = await diagramFixture('frame',{mode,density},page=>page.setViewportSize({width:1280,height:850}))
+
+    // Temporary passive diagnostic clone; original callback/assertions are preserved.
+    await f.page.frameLocator('iframe').locator('body').evaluate(() => {
+      const entries: unknown[] = [];
+      const describe=(v:EventTarget|null)=>v instanceof Element?{tag:v.tagName,class:v.className,title:v.getAttribute('title')}:String(v);
+      const record=(e:Event)=>{
+        const mouse=e instanceof MouseEvent?{x:e.clientX,y:e.clientY,screenX:e.screenX,screenY:e.screenY,buttons:e.buttons,related:describe(e.relatedTarget)}:{};
+        entries.push({at:performance.now(),wall:Date.now(),type:e.type,trusted:e.isTrusted,target:describe(e.target),focused:document.hasFocus(),visibility:document.visibilityState,...mouse});
+        if(entries.length>1000)entries.shift();
+      };
+      (window as any).__p01ScreenshotDiagnostic={entries};
+      for(const name of ['pointermove','pointerover','pointerout','pointerleave','mousemove','mouseover','mouseout','mouseleave','focus','blur','resize','visibilitychange'])window.addEventListener(name,record,{capture:true,passive:true});
+    });
+    await f.app.evaluate(({BrowserWindow,screen})=>{
+      const log:unknown[]=[];(globalThis as any).__p01WindowDiagnostic=log;
+      for(const w of BrowserWindow.getAllWindows())for(const type of ['focus','blur','move','resize','show','hide','minimize','restore'])w.on(type as any,()=>log.push({at:Date.now(),type,id:w.id,focused:w.isFocused(),bounds:w.getBounds(),pointer:screen.getCursorScreenPoint()}));
+    });
+    const diagnosticState=async()=>({
+      iframe:await f.page.frameLocator('iframe').locator('body').evaluate(()=>{
+        const describe=(n:Element|null)=>n?{tag:n.tagName,class:n.className,title:n.getAttribute('title')}:null;
+        return {at:performance.now(),wall:Date.now(),focused:document.hasFocus(),visibility:document.visibilityState,active:describe(document.activeElement),
+          targets:[...document.querySelectorAll<HTMLElement>('.geToolbarContainer .geToolbar a.geButton[data-frade-upper-glyph]')].map(n=>({title:n.title,hover:n.matches(':hover'),active:n.matches(':active'),focus:n.matches(':focus'),background:getComputedStyle(n).backgroundColor,foreground:getComputedStyle(n,'::before').backgroundColor,rect:n.getBoundingClientRect().toJSON()})),
+          events:(window as any).__p01ScreenshotDiagnostic.entries.splice(0)};
+      }),
+      outer:await f.page.evaluate(()=>({wall:Date.now(),focused:document.hasFocus(),visibility:document.visibilityState})),
+      native:await f.app.evaluate(({BrowserWindow,screen})=>({wall:Date.now(),pointer:screen.getCursorScreenPoint(),windows:BrowserWindow.getAllWindows().map(w=>({id:w.id,focused:w.isFocused(),bounds:w.getBounds(),contentBounds:w.getContentBounds()})),events:(globalThis as any).__p01WindowDiagnostic.splice(0)}))
+    });
+    const originalScreenshot=f.page.screenshot.bind(f.page);
+    f.page.screenshot=async options=>{
+      const before=await diagnosticState(),raw=await originalScreenshot(options),after=await diagnosticState();
+      await writeFile(String(options?.path)+'.diagnostic.json',JSON.stringify({before,after,screenshotSha256:fuiHash(raw)}));
+      return raw;
+    };
+
+    const samples: {name:string;record:UpperObservation;raw:Buffer}[] = [], limitations: unknown[] = [], preservation: unknown[] = []
+    const narrowAbsent = new Set<string>()
+    let mediaSession: Awaited<ReturnType<ReturnType<Page['context']>['newCDPSession']>> | undefined
+    try {
+      const targets = await upperTargets(f); expect(targets).toHaveLength(3); await upperPinIdentity(f,targets)
+      const frame = f.page.frameLocator('iframe')
+      for (const scenario of ['wide','narrow','restored','text200','forced-coarse-reduced-text200']) {
+        await f.page.setViewportSize(scenario==='wide'?{width:1600,height:900}:scenario==='narrow'?{width:850,height:650}:{width:1280,height:850})
+        if (scenario==='text200') {
+          const fonts = await frame.locator('body').evaluate(() => {
+            const nodes = [...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')]
+            const before = nodes.map(node=>parseFloat(getComputedStyle(node).fontSize))
+            nodes.forEach((node,i)=>node.style.setProperty('font-size',before[i]*2+'px','important'))
+            return nodes.map((node,i)=>({before:before[i],after:parseFloat(getComputedStyle(node).fontSize)}))
+          })
+          expect(fonts.length).toBeGreaterThan(3); for(const font of fonts) expect(font.after).toBe(font.before*2)
+          await writeFile(info.outputPath('actual-text200.json'),JSON.stringify(fonts))
+        }
+        if (scenario.startsWith('forced')) {
+          const previousRevision = await frame.locator('html').getAttribute('data-frade-frame-revision')
+          await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'})
+          mediaSession = await f.page.context().newCDPSession(f.page.frames().find(frame=>frame.url().startsWith('frade://drawio/'))!)
+          await mediaSession.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1})
+          await expect.poll(()=>frame.locator('html').evaluate(node=>({forced:matchMedia('(forced-colors:active)').matches,coarse:matchMedia('(pointer:coarse)').matches,reduced:matchMedia('(prefers-reduced-motion:reduce)').matches,theme:node.getAttribute('data-frade-frame-theme')}))).toEqual({forced:true,coarse:true,reduced:true,theme:mode})
+          await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-revision')).not.toBe(previousRevision)
+          await expect.poll(()=>frame.locator('html').evaluate(node=>getComputedStyle(node).getPropertyValue('--frade-frame-text-primary').trim())).toBe('CanvasText')
+          await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+        }
+        // Native responsive layout settles asynchronously after resize; preserve the full settled state.
+        const readiness: { at:number; state:unknown; frame:unknown }[]=[]
+        let stable=0, previous=''
+        await expect.poll(async()=>{
+          const state=await fuiSemantics(f,'frame'),box=await f.page.locator('iframe').boundingBox(),current=JSON.stringify({state,box})
+          readiness.push({at:Date.now(),state,frame:box});stable=current===previous?stable+1:0;previous=current;return stable
+        },{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5)
+        await writeFile(info.outputPath(scenario+'-readiness.json'),JSON.stringify(readiness))
+        const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f),identity:await upperCheckIdentity(f)}
+        expect((before.semantics as any).uiIdentity).toBe(true);expect((before.semantics as any).graphIdentity).toBe(true)
+        expect(await upperTargets(f)).toEqual(targets)
+        if(scenario==='restored')expect([...narrowAbsent].sort()).toEqual(['insert','insertFreehand'])
+        for(const target of targets) {
+          const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index)
+          if(scenario==='narrow' && (target.key==='insert'||target.key==='insertFreehand')) {
+            const original = await node.evaluate(node => {
+              const css=getComputedStyle(node),rect=node.getBoundingClientRect()
+              return {connected:node.isConnected,display:css.display,rect:rect.toJSON(),minWidth:node.getAttribute('data-min-width'),owned:node.hasAttribute('data-frade-upper-glyph'),inlineProjection:node.style.getPropertyValue('--frade-upper-icon-image'),computedProjection:css.getPropertyValue('--frade-upper-icon-image').trim(),backgroundImage:css.backgroundImage,mask:getComputedStyle(node,'::before').maskImage}
+            })
+            expect(original.connected).toBe(true);expect(original.display).toBe('none')
+            expect(original.rect.width).toBe(0);expect(original.rect.height).toBe(0)
+            expect(original.minWidth).toBe(target.key==='insert'?'630':'930')
+            expect(original.owned).toBe(false);expect(original.inlineProjection).toBe('');expect(original.computedProjection).toBe('')
+            expect(original.mask).toBe('none');expect(original.backgroundImage).toBe('url("'+target.url+'")')
+            expect(await node.isVisible()).toBe(false)
+            expect(await node.evaluate(node=>{node.focus();return document.activeElement===node}), 'Original responsive-hidden anchor must remain unfocusable').toBe(false)
+            const raw=await f.page.screenshot({path:info.outputPath(scenario+'-'+target.key+'-original-hidden.png')})
+            const classification={scenario,key:target.key,resourceSha256:target.hash,status:'NOT_RENDERED_ORIGINAL_RESPONSIVE',original,identity:await upperCheckIdentity(f),screenshotSha256:fuiHash(raw),numericalContrast:'NOT_APPLICABLE_NO_RENDERED_GLYPH',visualApproval:'NOT_APPROVED'}
+            await writeFile(info.outputPath(scenario+'-'+target.key+'-original-hidden.json'),JSON.stringify(classification))
+            limitations.push(classification);narrowAbsent.add(target.key)
+            continue
+          }
+          await expect(node).toBeVisible()
+          if(scenario==='restored') {
+            await expect(node).toHaveAttribute('data-frade-upper-glyph','1')
+            const restored=await upperObservation(f,target);upperAssertComposition(restored)
+            await writeFile(info.outputPath('restored-'+target.key+'-identity.json'),JSON.stringify({identity:await upperCheckIdentity(f),resource:target,record:restored,restoredFromOriginalResponsiveAbsence:narrowAbsent.has(target.key)}))
+          }
+          for(const state of ['default','hover','pressed'] as const) {
+            if(state==='default')await f.page.mouse.move(1,1)
+            if(state==='hover')await node.hover()
+            if(state==='pressed')await f.page.mouse.down()
+            const record=await upperObservation(f,target),name=scenario+'-'+target.key+'-'+state,raw=await f.page.screenshot({path:info.outputPath(name+'.png')})
+            await writeFile(info.outputPath(name+'.json'),JSON.stringify({record,screenshotSha256:fuiHash(raw),visualApproval:'NOT_APPROVED'}))
+            if(state==='pressed')expect(record.actualState.active).toBe(true)
+            samples.push({name,record,raw})
+          }
+          await f.page.mouse.move(1,1);await f.page.mouse.up();await f.page.keyboard.press('Escape')
+          const focus=await node.evaluate(node=>{node.focus();return{focused:document.activeElement===node,tabIndex:node.tabIndex,tabIndexAttribute:node.getAttribute('tabindex'),href:node.getAttribute('href')}})
+          expect(focus.focused, 'Accepted upper keyboard scope requires every rendered enabled anchor to focus').toBe(true)
+          if(!focus.focused) {
+            expect(focus.tabIndexAttribute).toBeNull();expect(focus.href).toBeNull()
+            limitations.push({scenario,key:target.key,resourceSha256:target.hash,state:'focus',status:'BLOCKED_ORIGINAL_FOCUS_UNAVAILABLE',actual:focus,identity:await upperCheckIdentity(f),owner:'P01-UPPER-KEYBOARD-ACCESSIBILITY',cumulativeClosure:'BLOCKED'})
+          }
+          else {
+            const record=await upperObservation(f,target),name=scenario+'-'+target.key+'-focus',raw=await f.page.screenshot({path:info.outputPath(name+'.png')})
+            await writeFile(info.outputPath(name+'.json'),JSON.stringify({record,screenshotSha256:fuiHash(raw),visualApproval:'NOT_APPROVED'}));samples.push({name,record,raw})
+            await node.evaluate(node=>node.blur())
+          }
+          limitations.push({scenario,key:target.key,state:'disabled',status:'NOT_RUN_NO_ORIGINAL_DISABLED_TRIGGER_YET'})
+        }
+        if(scenario==='narrow')expect([...narrowAbsent].sort()).toEqual(['insert','insertFreehand'])
+        const after={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f),identity:await upperCheckIdentity(f)}
+        preservation.push({scenario,before,after});expect(after).toEqual(before)
+      }
+    } finally {
+      await writeFile(info.outputPath('expanded-preservation.json'),JSON.stringify(preservation))
+      await writeFile(info.outputPath('capability-limitations.json'),JSON.stringify(limitations))
+      if(mediaSession)await mediaSession.detach()
+      await finishDiagramFixture(f.app)
+    }
+    for(const sample of samples)upperAssertComposition(sample.record)
+    const reference=await upperReferenceHost(),cache=new Map<string,{atlas:UpperAtlas;name:string}>()
+    try {for(const sample of samples) {
+      const r=sample.record
+      const key=JSON.stringify({identity:r.identity,dimensions:[r.style.rect.width,r.style.rect.height],glyph:[r.pseudo.width,r.pseudo.height,r.pseudo.x-r.style.rect.x,r.pseudo.y-r.style.rect.y],target:r.target,underlying:r.underlying,opacity:r.style.opacity,foreground:r.foreground,media:r.media,dpr:r.dpr,fonts:r.fonts,alpha:r.alpha})
+      let calibration=cache.get(key)
+      if(!calibration){calibration={atlas:await upperCalibrate(reference.page,r,info,sample.name),name:sample.name};cache.set(key,calibration)}
+      const bound=upperBounds(upperDecodePng(sample.raw),r.x,r.y,r.alpha,calibration.atlas,r.foreground)
+      await writeFile(info.outputPath(sample.name+'-proof.json'),JSON.stringify({actualScreenshotSha256:fuiHash(sample.raw),bound,calibration:calibration.name,exactCalibrationKeySha256:fuiHash(key)}))
+      expect(r.capability.enabled).toBe(true);expect(bound.status).toBe('PASS');expect(bound.canonicalMember).toBe(true);expect(bound.min).toBeGreaterThanOrEqual(3)
+    }}finally{await reference.app.close()}
+  })
+}

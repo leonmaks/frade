@@ -1,0 +1,16 @@
+{
+  "beforeSha256": "62375ac06d7bc6d6a7dafff17d13186b9383f802606b0d5c0de4f34a4db5afb5",
+  "afterSha256": "0badcdf4e787d8c3bf148c397f16f5046c6bfc55196aa32fc60a7b6ca99eb2e4",
+  "edits": [
+    [
+      "else if (loss === 'owned-priority') node.style.setProperty('--frade-upper-icon-image', node.style.getPropertyValue('--frade-upper-icon-image'), '')",
+      "else if (loss === 'owned-priority') {\n          const value = node.style.getPropertyValue('position')\n          expect(value).toBe('relative'); expect(node.style.getPropertyPriority('position')).toBe('important')\n          node.style.setProperty('position', value, '')\n          expect(node.style.getPropertyValue('position')).toBe(value); expect(node.style.getPropertyPriority('position')).toBe('')\n        }"
+    ],
+    [
+      "if (loss === 'owned-priority') expect(f.targets[0].style.getPropertyPriority('--frade-upper-icon-image')).toBe('')",
+      "if (loss === 'owned-priority') {\n        expect(f.targets[0].style.getPropertyValue('position')).toBe('relative')\n        expect(f.targets[0].style.getPropertyPriority('position')).toBe('')\n      }"
+    ]
+  ],
+  "reverseEveryByte": true,
+  "scope": "new P01-UPPER-035 tail only"
+}
