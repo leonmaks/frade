@@ -1,6 +1,6 @@
 # P01: benchmark PASS; full root FAIL — two focus blockers
 
-Обновлено 2026-10-08T05:13:10.589Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T05:43:30.899Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -17,7 +17,7 @@
 | Popup / body focus / pending focus | Popup5/6; body focus5/6; pending6/6 PASS;2required failures stay blockers |
 | New blocker1 | Dark/Comfortable popup: first View anchor inactive after original focus(),10000ms |
 | New blocker2 | Light/Comfortable body focus: baseline3passed; first View focus after wide viewport inactive,10000ms |
-| RCA | OPEN; DOM activeElement and native/document focus not jointly proven. No repair or repeat-until-green |
+| RCA | OPEN; passive diagnostic PRE PASS;17raw/87packet/84events/candidate+packet unchanged. No repair; two full failures remain |
 | Source / binary / display endpoints | 3479source hashes unchanged; same source as prior4K29Hz root; same main binary; before/after1440p60 equal |
 | Evidence integrity | 4687fresh artifacts copied, hashes verified;520310275bytes |
 | Legacy / foundation preservation | Other122entries exact;2accepted transitions exact;6foundation pins exact; pendingRuntime historical exact |
@@ -26,11 +26,11 @@
 | Tasks2.4 /2.5 /3.1 | OPEN; applicable focus FAIL blocks closure; human visual NOT_APPROVED |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: сохранить и опубликовать FAIL checkpoint; пассивная диагностика двух focus failures после автоматического PRE по действующему плану. Production/assertions/timeouts не менялись. Новый полный прогон и visual acceptance пока не назначены. P02 не начинается.
+Следующий шаг: опубликовать PRE checkpoint и выполнить точный диагностический protocol: два unchanged controls x1, два passive clones x3; все outcomes сохраняются, production/assertions/timeouts не меняются. Current2FAIL не закрываются повторным PASS. P02 не начинается.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: HEADd95893a0ca932e6704693e8f9f0a17cdd31b09d2 previously COMMITTED/PUSHED and remote verified. Current full-result/RCA/status UNCOMMITTED; next checkpoint pending. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only, no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued, visibility unconfirmed.
+Git: FAIL checkpoint 1365fc30dd55d995d09f4d31c799563eab372e71 COMMITTED/PUSHED; remote SHA VERIFIED 2026-10-08T05:15:24.072Z. Diagnostic plan/PRE preparation UNCOMMITTED. Authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract only, no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued, visibility unconfirmed.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
