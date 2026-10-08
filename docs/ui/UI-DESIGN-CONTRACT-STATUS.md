@@ -1,6 +1,6 @@
-# P01: B05 diagnostic1PASS; root cause unresolved
+# P01: prefix-context PRE FAIL; runner repair required
 
-Обновлено 2026-10-08T20:21:46.872Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T20:52:13.511Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -28,11 +28,11 @@
 | B05 diagnostic PRE / runtime | Independent PRE PASS; single runtime1PASS,210records/2roots/40nodes, no capture error/overflow. Exact original restoration PASS. Earlier65px→0px FAIL NOT_REPRODUCED; cause unresolved |
 | Verify / cumulative POST / archive | BLOCKED / NOT_RUN / BLOCKED |
 
-Следующий шаг: STOP repair/additional sampling under exhausted B05 plan. Prepare a new bounded RCA plan and fresh independent PRE before any further diagnosis; no additional runtime or production fix authorized by this diagnostic PASS.
+Следующий шаг: repair only diagnostic runner/packet bindings, plan-identity guard and evidence finalizer; preserve PRE FAIL and obtain fresh independent PRE. Runtime/source installation NOT_RUN. No material scope conflict found.
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: Completed B05 diagnostic checkpoint 77e2b99807c68f96caf5c54bfd2ce48193d888e5 COMMITTED/PUSHED; remote SHA VERIFIED 2026-10-08T20:21:46.867Z. This tracked receipt is finalized in a following metadata checkpoint. Authorized UI origin/ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
+Git: Prefix-context PRE FAIL checkpoint publication in progress. Previous727c6a1dcf66c035bac3c36b798dd126d5b44d6d verified. Authorized UI ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
@@ -43,6 +43,8 @@ Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED
 B05 preflight: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/report.md), [actual display](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/display-before.json), [independent PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-pre-received-20261008T185653Z/output--result.md). Это ограничение окружения, не дополнительный UI FAIL. PRE PASS не закрывает ранее сохранённые UI failures.
 
 B05 completed diagnostic: [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/report.md), [journal analysis](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/journal-analysis.json), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/summary.json).1PASS; old B05/focus FAIL remain open, root cause NOT_PROVEN. Five fresh hashed artifacts; original tests restored. Environmental blocker resolved for this run.
+
+Prefix-context PRE: [FAIL report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/output--result.md), [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/verification.json).272packet files/60events; candidate/packet/plan unchanged. Four runner/control completeness defects; no scope conflict/assertion weakening; app NOT_RUN.
 
 ## История (неизменённые прежние записи)
 

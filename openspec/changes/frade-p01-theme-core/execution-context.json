@@ -3,7 +3,7 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_B05_DIAGNOSTIC_COMPLETE_NOT_REPRODUCED_RCA_BLOCKED",
+  "phase": "P01_B05_PREFIX_CONTEXT_PRE_FAIL_RUNNER_REPAIR",
   "taskCounts": {
     "completed": 5,
     "total": 10
@@ -2077,7 +2077,7 @@
       "actualLeft": "0px"
     },
     "sourceChanged": false,
-    "next": "New bounded RCA plan and fresh independent PRE before any additional diagnosis; no further execution under this plan",
+    "next": "FRESH_INDEPENDENT_PRE_BEFORE_NEW_ONE57CASE_PREFIX_CONTEXT_DIAGNOSIS",
     "diagnosticPlan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-plan-20261008T182756Z/diagnostic-plan-v2.md",
     "candidateSha256": "ec0ae82cdff8e66f6c41d9cbdf83e1c5136c56f93bf0e00ceace6d5d44d1eae9",
     "static": "TYPECHECK_LINT_STRICT_PASS",
@@ -2178,6 +2178,65 @@
       "files": 57,
       "scope": "SINGLE_B05_DIAGNOSTIC_PASS_PRIOR_FAILS_OPEN_NO_PRODUCT_REPAIR",
       "checks": "SOURCE3479_PINS4_EXACT_DISCOVERY135_CAPTURE_COMPLETE_PRODUCT_DIFF_EMPTY_STAGED_WHITESPACE_PASS"
+    },
+    "prefixContext": {
+      "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-plan-20261008T202830Z/diagnostic-plan.md",
+      "candidateSha256": "1dd5e6fd145bd7755a2f42a94e2fc23ee0f02f74406febdfd9c4e977124b8bbb",
+      "static": "TYPECHECK_LINT_STRICT_PASS",
+      "reviewPolicy": {
+        "stage": "P01 accepted lower-B05 prefix-context passive restoration diagnosis",
+        "phase": "PRE",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "xhigh",
+        "source": {
+          "path": "openspec/changes/frade-p01-theme-core/design.md",
+          "sha256": "373ada002d03a81cd1ea03a5e1c8fc954157f8fae19f138dd07d636a81ef109b",
+          "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+        }
+      },
+      "runtime": "NOT_RUN",
+      "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-b05-prefix-pre-request-20261008T202830Z-v2.json",
+      "runtimeProtocol": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-plan-20261008T202830Z/runtime-protocol.mjs",
+      "runtimeSha256": "88c5b8257a54a88a7278cc831b33b44580050c5a0a6a4a1ff1d96a4d22332c85",
+      "pre": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z",
+      "preVerification": {
+        "atUtc": "2026-10-08T20:49:15.976Z",
+        "status": "FAIL",
+        "rawArtifacts": 17,
+        "packetFiles": 272,
+        "gateStatus": "FAIL",
+        "threadId": "01a11d3e-6c27-7531-8ff3-dcdd18817879",
+        "reportSha256": "df0090b8e44dafbace56b30d42f102051c1ea8d5abecf1964b71128bda40dd59",
+        "candidateUnchanged": true,
+        "packetUnchanged": true,
+        "sourcePlanUnchanged": true,
+        "eventCount": 60,
+        "reviewPolicy": {
+          "stage": "P01 accepted lower-B05 prefix-context passive restoration diagnosis",
+          "phase": "PRE",
+          "model": "gpt-6-astra",
+          "reasoningEffort": "xhigh",
+          "source": {
+            "path": "openspec/changes/frade-p01-theme-core/design.md",
+            "sha256": "373ada002d03a81cd1ea03a5e1c8fc954157f8fae19f138dd07d636a81ef109b",
+            "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+          }
+        },
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED",
+        "scope": "NEW one-shot57-case exact prefix-context diagnosis of prior B05 restoration FAIL, passive B05 only. No repair, assertion weakening, extra run, full gate closure or model/scope exception.",
+        "planSha256": "b87ed440e6352ccdcc9a01254d30d50018208ed7d03cd3d49da6497d9f53834f",
+        "runtimeSha256": "88c5b8257a54a88a7278cc831b33b44580050c5a0a6a4a1ff1d96a4d22332c85",
+        "candidateSha256": "1dd5e6fd145bd7755a2f42a94e2fc23ee0f02f74406febdfd9c4e977124b8bbb"
+      },
+      "preStatus": "FAIL",
+      "blockers": [
+        "Missing immutable pre-selection/binding packet inputs",
+        "Current execution bytes/control hashes not directly bound to received PRE artifact manifest",
+        "Single-runtime consumption scoped to receipt path instead of immutable plan identity",
+        "Completion finalizer lacks enforced display/worker/reachability/evidence inventory conditions"
+      ],
+      "next": "Technical evidence-only V2 repair, preserve V1 and FAIL, fresh automatic independent PRE before one runtime"
     }
   }
 }
