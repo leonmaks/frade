@@ -1,6 +1,6 @@
 # P01: prefix-context 57PASS/0FAIL/0SKIPPED; NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN
 
-Обновлено 2026-10-08T22:11:52.400Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-08T22:14:17.568Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
@@ -35,7 +35,7 @@
 
 Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
-Git: Completed prefix-context diagnostic evidence/status awaiting checkpoint publication. Previous PRE checkpoint publication retained in execution context. Authorized UI origin/ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
+Git: Prefix-context diagnostic checkpoint d92f5b8baba527df455b298ba59e5046ff24eb7a COMMITTED/PUSHED; remote SHA VERIFIED 2026-10-08T22:14:17.561Z. Following metadata checkpoint records receipt. One runtime consumed, old FAIL/gates open; authorized UI ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
