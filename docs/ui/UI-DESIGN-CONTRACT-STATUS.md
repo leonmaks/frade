@@ -21,7 +21,7 @@
 
 Следующий шаг: сверить все remaining requirements с actual source-bound executions → cumulative POST → archive only after gates. Другие FAIL/missing coverage блокируют владельца; три принятых дефекта не требуют ремонта для этого checkpoint. STOP before P02.
 
-Git: last verified published metadata HEAD a24b7091890d2c086d6ed43970fddede967de876; current PRE receipt/acceptance/progress UNCOMMITTED. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed. READY_FOR_VERIFY: YES; READY_FOR_ARCHIVE: NO; cumulative POST pending.
+Git: current acceptance/verification checkpoint d5507f2bf6c8c9d7a7ce976c4608da61c3f69b5c COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-09T05:11:49.995Z. Following metadata commit records receipt; POST pending. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed. READY_FOR_VERIFY: YES; READY_FOR_ARCHIVE: NO.
 
 [Cumulative verification mapping](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/requirement-scenario-mapping.json); [technical audit](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/technical-evidence-audit.json). Updated 2026-10-09T05:07:01.743Z. Actual rootFAIL preserved; checks executed with exact accepted exceptions, no unconditional product/A11Y PASS.
 
