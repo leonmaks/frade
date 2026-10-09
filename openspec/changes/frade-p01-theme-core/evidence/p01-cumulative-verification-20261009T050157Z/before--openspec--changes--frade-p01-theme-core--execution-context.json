@@ -1,0 +1,2471 @@
+{
+  "activeChange": "frade-p01-theme-core",
+  "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+  "branch": "codex/frade-ui-design-contract",
+  "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "phase": "P01_REMAINING_OBLIGATION_VERIFICATION",
+  "taskCounts": {
+    "completed": 5,
+    "total": 10
+  },
+  "implementation": "SOLE_BRIDGE_REPAIR_IMPLEMENTED_RUNTIME_MATRIX_AND_FULL_GATES_OPEN",
+  "preReview": "PRE-P01-B02-20260930T185730Z",
+  "preStatus": "PASS",
+  "readyForImplementation": false,
+  "independentReviewerThread": "01a0f3ae-b5cd-7b10-9400-a69bc5ed39bd",
+  "requestedModel": "gpt-6-astra",
+  "requestedEffort": "xhigh",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "reviewTransport": "AUTOMATIC_READ_ONLY_COMPLETED_UNCHANGED",
+  "currentScopeRepair": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-repair-v2.proposed.md",
+  "currentScopeRepairSha256": "5372993a796683ae34d350fd53264cf50fa1a0fa6320289d696a7c133bbe4d4f",
+  "scopeRepairAcceptance": "USER_ACCEPTED",
+  "repeatPre": "COMPLETED_PASS_CANDIDATE_UNCHANGED",
+  "foundationPrerequisite": "FULFILLED_ARCHIVED_21_OF_21_POST_PASS",
+  "routingPrerequisite": false,
+  "blockers": [
+    {
+      "id": "PRE-P01-B01",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "PRE-P01-B02",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "PRE-P01-B03",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "PRE-P01-B04",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "PRE-P01-B05",
+      "status": "RESOLVED_AS_PLANNING_BLOCKER_BY_INDEPENDENT_PRE_B02"
+    },
+    {
+      "id": "P01-FRAME-DETACH-01",
+      "status": "RESOLVED_GREEN",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-detached-frame-green-20261001T034121Z.json"
+    },
+    {
+      "id": "P01-ROOT-REGRESSION-01",
+      "status": "RESOLVED_CURRENT_FULL_ROOT_PASS_HISTORICAL_FAIL_PRESERVED",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-full-regression-20261001T034358Z.json",
+      "repeat": "openspec/changes/frade-p01-theme-core/evidence/p01-existing-regression-direct-20261001T040132Z.json",
+      "details": "Root pnpm check:all exit1: desktop64PASS5FAIL; unchanged existing retry1PASS2FAIL. Native segment FAIL did not recur in isolated retry; readonly drop and WB006/007 still FAIL.",
+      "currentEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json",
+      "currentDetails": "Current accepted minimal source: Draw215PASS desktop71PASS, exit0; all538 source hashes unchanged. Other coverage/visual/SaveAs decisions remain separately visible."
+    },
+    {
+      "id": "P01-READONLY-STATE-01",
+      "status": "ACCEPTED_DELTA_RUNTIME_PASS",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-read-only-state.proposed.md"
+    },
+    {
+      "id": "P01-FRAME-B02-FIXTURE-01",
+      "status": "RESOLVED_TEST_RCA_GREEN",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-readiness-checks-20261001T041334Z.json",
+      "details": "B02 current frame SVG detaches during scroll preparation; no production repair or correctness waiver.",
+      "currentEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-rca-green-20261001T070923Z.json"
+    },
+    {
+      "id": "P01-BUNDLE-FRAME-COMPAT-01",
+      "status": "RESOLVED_TARGETED_AND_FULL_ROOT_PASS",
+      "source": "apps/desktop/tests/e2e/bundle-flows.spec.ts",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-bundle-frame-readiness.proposed.md",
+      "reproduction": "openspec/changes/frade-p01-theme-core/evidence/p01-bundle-frame-unchanged-reproduction-20261001T073825Z.json",
+      "currentEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z.json"
+    },
+    {
+      "id": "P01-WORKSPACE-SAVEAS-READINESS-01",
+      "status": "REPEAT_PRE_FAIL_SCOPE_DECISION_REQUIRED",
+      "source": "apps/desktop/tests/e2e/workbench-multiroot.spec.ts",
+      "failedResult": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-readiness-targeted-20261001T085708Z.json",
+      "unchangedRetry": "PASS_openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-minimal-verify-20261001T090249Z.json",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-workspace-saveas-readiness.proposed.md",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json",
+      "preFailure": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-received-20261001T111840Z",
+      "inputRepair": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-input-repair-20261001T113009Z.json",
+      "repeatPre": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z"
+    },
+    {
+      "id": "P01-FRAME-BOTTOM-CHROME-01",
+      "status": "CONFLICT_ADDRESSED_BY_ACCEPTED_KEYBOARD_PLAN_NEW_PRE_PENDING",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-chrome-observation-20261001T101428Z/result.json",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md",
+      "sha256": "e829e59637b43929f35acfaec85cd869ff61c6a0ddb7992037dbf65abd1129b7",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json",
+      "preFailure": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-received-20261001T111840Z",
+      "inputRepair": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-input-repair-20261001T113009Z.json",
+      "repeatPre": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z",
+      "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard-accepted-20261001T115657Z.json"
+    },
+    {
+      "id": "P01-REFLOW-B05",
+      "status": "RESOLVED_CURRENT_ROOT4_VERIFY2_POST3_PASS",
+      "classification": "INTEGRATION / STATE_TRANSITION",
+      "rca": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z",
+      "proposed": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal.proposed.md",
+      "sha256": "15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal-accepted-20261002T074100Z.json",
+      "currentEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post3-received-20261002T110939Z",
+      "historicalFailPreserved": true
+    },
+    {
+      "id": "P01-INDEPENDENT-REVIEW-USAGE-LIMIT",
+      "status": "BLOCKED",
+      "classification": "ENVIRONMENT",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-blocked-received-20261002T174959Z/interpretation.json",
+      "resolution": "Restore access to approved P01 reviewer; run fresh confined PRE before method implementation. No model substitution."
+    },
+    {
+      "id": "P01-INDEPENDENT-REVIEW-USAGE-LIMIT-RESUME",
+      "status": "RESOLVED_CURRENT_REVIEW_PASS_PRIOR_BLOCKED_RETAINED",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-received-20261002T182051Z/interpretation.json"
+    },
+    {
+      "id": "P01-UPPER-THREE-GLYPH-CONTRAST",
+      "status": "REPRODUCED_REQUIRED_A11Y_FAIL",
+      "classification": "ABSTRACTION_BOUNDARY",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-glyph-defect-20261002T183231Z/rca.json",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-glyph-paint.proposed.md",
+      "proposalSha256": "4fa0062a9c8d717f0b540bd5f65568b2f934b009947954e4ee7931e01df6808e"
+    }
+  ],
+  "humanDecisions": [
+    {
+      "id": "P01-READONLY-STATE-01",
+      "status": "USER_ACCEPTED",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-read-only-state.proposed.md",
+      "reason": "Accepted B02 prohibits feature behavior/source changes; AGENTS6 prohibits removing meaningful assertions without a specification decision.",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-readonly-readiness-accepted-20261001T055229Z.json"
+    },
+    {
+      "id": "P01-COMPAT-READINESS-01",
+      "status": "USER_ACCEPTED",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-existing-fixture-readiness.proposed.md",
+      "reason": "Accepted closed P01 paths exclude these two existing fixture files; exact stronger readiness addition requires a scope decision and focused PRE.",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-readonly-readiness-accepted-20261001T055229Z.json"
+    },
+    {
+      "id": "P01-CURRENT-CANDIDATE-EGRESS-01",
+      "status": "RESOLVED_BY_EXPLICIT_PACKET_AUTHORIZATION",
+      "reason": "Automatic approval review denied external reviewer launch twice; direct approval requested for current candidate.",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-readiness-pre-transport-blocked-20261001T055725Z.json",
+      "authorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-packet-authorization-20261001T061101Z.json"
+    },
+    {
+      "id": "P01-BUNDLE-FRAME-COMPAT-01",
+      "status": "USER_ACCEPTED",
+      "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-bundle-frame-readiness-accepted-20261001T075310Z.json"
+    },
+    {
+      "id": "P01-WORKSPACE-SAVEAS-READINESS-01",
+      "status": "USER_ACCEPTED",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-workspace-saveas-readiness.proposed.md",
+      "sha256": "b57e035fa8b104e62d9e14ecb952f0cadc2322d8e6040d10cef6660799a99dfa",
+      "reason": "Current accepted WB delta permits rename-dialog-hidden only; SaveAs existence preconditions require a separate exact scope decision.",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json"
+    },
+    {
+      "id": "P01-FRAME-BOTTOM-CHROME-01",
+      "status": "USER_ACCEPTED",
+      "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md",
+      "sha256": "e829e59637b43929f35acfaec85cd869ff61c6a0ddb7992037dbf65abd1129b7",
+      "reason": "The accepted closed matrix and private stylesheet omit the actual lower div chrome; exact additional targets/properties and coverage must be explicitly reviewed before production repair.",
+      "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json"
+    }
+  ],
+  "laterHumanDecision": "New per-surface visual baseline approval after actual implementation evidence",
+  "nextAction": "Fresh automatic exact-stage keyboard PRE; candidate frozen from dispatch until receipt. Production/tests unchanged.",
+  "sourceAndOriginalPlanningUnchanged": false,
+  "scopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-scope-v2-accepted-20260930T180721Z.json",
+  "scopeAcceptanceRecordedAtUtc": "2026-09-30T18:07:21.024Z",
+  "productionSourceUnchanged": false,
+  "originalPlanningRawPreserved": true,
+  "repeatPreReview": "PRE-P01-B02-20260930T185730Z",
+  "reviewTransportAuthorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-transport-authorization-20260930T182032Z.json",
+  "previousTransportBlocker": "Automatic approval reviewer denied two identical Codex CLI launch requests because source transmission to external model service needs explicit user egress approval.",
+  "previousPreReviews": [
+    {
+      "id": "PRE-P01-20260930T171207Z",
+      "status": "FAIL",
+      "reviewerThread": "01a0f34d-1598-7660-8cb5-eb31c492ccc0"
+    },
+    {
+      "id": "PRE-P01-R2-20260930T182032Z",
+      "status": "FAIL",
+      "reviewerThread": "01a0f38c-f890-7153-a467-2dfd3554747d",
+      "report": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-received-PRE-P01-R2-20260930T182032Z.md",
+      "reportSha256": "ba964d8cccc91f495b8ccac3f0bae715ceec0d8f242f85e1c073e70993d1b47c"
+    }
+  ],
+  "reviewReport": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-received-PRE-P01-B02-20260930T185730Z.md",
+  "reviewReportSha256": "444388837f4fdaa21d6bee5ea01ae2850e62f44919599e9bae698c290565a9d5",
+  "transportBlockerResolved": true,
+  "b02ScopeAcceptance": "USER_ACCEPTED",
+  "b02ScopeAcceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-b02-color-closure-accepted-20260930T185351Z.json",
+  "b02ScopeAcceptanceRecordedAtUtc": "2026-09-30T18:53:51.021Z",
+  "currentScopeAddition": "openspec/changes/frade-p01-theme-core/decisions/p01-b02-color-closure.proposed.md",
+  "currentScopeAdditionSha256": "cd12aef78aa19f38028c357d3622d34768d83d9c52f8f530f1dea283fa95d802",
+  "latestImplementationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-repair-status-20261001T041931Z.md",
+  "performance": {
+    "status": "PASS_REFERENCE_LOCAL_HARDWARE",
+    "p95Ms": 118.5,
+    "budgetMs": 150,
+    "warmups": 20,
+    "samples": 100,
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z-artifacts/apps/desktop/test-results/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/performance-result.json",
+    "hardwareWitness": "LIVE_LOCAL_NODE_OS_SAME_HOST_AS_LAUNCHED_ELECTRON",
+    "actualHardware": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz",
+    "remoteCiStatus": "NOT_RUN"
+  },
+  "visualBaselineApproval": "NOT_APPROVED",
+  "readyForVerify": false,
+  "postStatus": "NOT_RUN",
+  "remaining": [
+    "Task2.4 full FUI005–009 adapter/consumer/lifecycle traceability closure",
+    "Task2.5 full applicable accessibility/state coverage and human visual baseline approval",
+    "Task3.2 cumulative OpenSpec verification and independent automatic POST",
+    "Task3.3 archive only after all required PASS; STOP before P02"
+  ],
+  "lastUpdatedAtUtc": "2026-10-03T22:17:58.896Z",
+  "currentDocsChecks": {
+    "atUtc": "2026-10-01T19:34:14.257Z",
+    "strict": {
+      "command": "openspec validate frade-p01-theme-core --strict --json",
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    "bdd": {
+      "command": "pnpm --filter @frade/ui-workspace test:bdd",
+      "exitCode": 0,
+      "status": "PASS",
+      "passed": 95
+    },
+    "compliance": {
+      "command": "pnpm ui:compliance",
+      "exitCode": 0,
+      "status": "PASS",
+      "passed": 26,
+      "namedContrastPairs": 102,
+      "positiveNegativeFixturesRemoved": true
+    },
+    "sourcePreservation": "PASS: four production/test raw hashes unchanged",
+    "diffCheck": {
+      "command": "git -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol diff --check",
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    "pre": "NOT_RUN",
+    "tasks": "5/10"
+  },
+  "focusedDeltaPre": {
+    "status": "PASS",
+    "acceptanceRecord": "openspec/changes/frade-p01-theme-core/decisions/p01-readonly-readiness-accepted-20261001T055229Z.json",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "id": "PRE-P01-READONLY-READINESS-PACKET-20261001T061101Z",
+    "prompt": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-readiness-pre-20261001T055434Z-prompt.md",
+    "manifest": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-readiness-pre-20261001T055434Z-manifest.json",
+    "checks": "openspec/changes/frade-p01-theme-core/evidence/p01-accepted-delta-checks-20261001T055257Z.json",
+    "gateStatus": "PASS",
+    "reviewStarted": true,
+    "transportEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-readiness-pre-transport-blocked-20261001T055725Z.json",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-received-PRE-P01-READONLY-READINESS-PACKET-20261001T061101Z.md",
+    "reportSha256": "1091202fb09fcdb2700df1ccc4f142400823dbd3d1dec86170805511e499b3cf",
+    "provenance": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-pre-provenance-20261001T064615Z.json",
+    "threadId": "01a0f62c-fbfa-7ab3-83fe-ce86b2fda327",
+    "candidateUnchanged": true,
+    "packetUnchanged": true
+  },
+  "readyForDeltaImplementation": true,
+  "packetAuthorization": "openspec/changes/frade-p01-theme-core/decisions/p01-review-packet-authorization-20261001T061101Z.json",
+  "reviewPacketTransport": {
+    "status": "PASS_LOCAL_FOCUSED_PRE",
+    "packetFiles": 1205,
+    "packetBytes": 29105916,
+    "localCandidateFiles": 9990,
+    "rootDenied": true,
+    "scope": "P01 relevant packet plus minimal public runtime; exact shell canary read/write confinement verified",
+    "proof": "openspec/changes/frade-p01-theme-core/evidence/p01-review-packet-pre-provenance-20261001T064615Z.json"
+  },
+  "currentRootResult": null,
+  "currentRootSummary": {
+    "status": "NOT_RUN_CURRENT_SOURCE",
+    "reason": "Required upper original Escape regression FAIL; old full-root PASS retained in dated evidence and snapshot."
+  },
+  "acceptedDeltaRuntime": {
+    "readonlyNative": "PASS",
+    "readonlyFrame": "PASS",
+    "compatibilityTwoPaths": "PASS_TARGETED_AND_FULL",
+    "source": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+    "sha256": "ca658de7150110d1bf985f0904c085e23ba1d09e71c2781c2a8478f1216fa64d",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-readonly-rca-green-20261001T070923Z.json",
+    "rootArtifacts": "openspec/changes/frade-p01-theme-core/evidence/p01-current-root-artifacts-20261001T073825Z",
+    "readonlyCaptureCounts": {
+      "nativePending": 36,
+      "nativeDraft": 36,
+      "framePending": 36,
+      "frameDraft": 36
+    },
+    "benchmark": {
+      "p95Ms": 126.59999996423721,
+      "budgetMs": 150,
+      "status": "PASS",
+      "actualHardware": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz"
+    },
+    "humanVisualApproval": "NOT_APPROVED",
+    "fullFuiClosure": false
+  },
+  "reviewAutomationV3": {
+    "source": "openspec/changes/frade-p01-theme-core/evidence/p01-review-automation-v3-20261001T074223Z",
+    "tests": "15_OF_15_PASS",
+    "actualSandbox": "PASS_ALLOWED_PACKET_DENIED_SOURCE_ROUTING_AUTH_CONFIG_WRITE_SOCKET",
+    "phaseSupport": [
+      "PRE",
+      "POST"
+    ],
+    "focusedTransportPost": "NOT_RUN",
+    "productPost": "NOT_RUN"
+  },
+  "readyForThirdFixtureImplementation": true,
+  "thirdFixtureAcceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-bundle-frame-readiness-accepted-20261001T075310Z.json",
+  "thirdFixturePre": {
+    "status": "PASS",
+    "scope": "P01-BUNDLE-FRAME-COMPAT-01 accepted exact E2E-07 test-only diagnostic/readiness focused PRE; no P01 closure",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-third-fixture-pre-received-20261001T081700Z/result.md",
+    "sha256": "f03add63ddfeb74e46c8d3c0b18efc380194da5ff6b5bb2e4a0019fb9ea80153",
+    "provenance": "openspec/changes/frade-p01-theme-core/evidence/p01-third-fixture-pre-received-20261001T081700Z/PROVENANCE.json",
+    "threadId": "01a0f67f-adc2-7e70-beec-30687f1ca590",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED"
+  },
+  "thirdFixtureDiagnostics": {
+    "first": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-diagnostic-20261001T081752Z.json",
+    "event": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-event-diagnostic-20261001T082206Z.json",
+    "status": "FRAME_INPUT_BLOCKED_DURING_PRESENTATION_CURTAIN",
+    "repairStatus": "MINIMAL_TARGETED_AND_FULL_ROOT_PASS",
+    "classification": "INTEGRATION",
+    "rootCause": "UNESTABLISHED",
+    "scopePreserved": true,
+    "rca": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-failure-20261001T085452Z/RCA.json",
+    "source": "apps/desktop/tests/e2e/bundle-flows.spec.ts",
+    "sha256": "80a3fe5af430da2b513ddc2f46b5dda8f8d568bea5976e9a9ce29d588eeb9711",
+    "diagnosticsRemoved": true
+  },
+  "latestMinimalChecks": {
+    "status": "PASS",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z.json",
+    "completedAtUtc": "2026-10-01T09:21:29.262Z",
+    "targetedTests": "3_OF_3_PASS",
+    "fullRootCurrentSource": "NOT_RUN",
+    "doesNotCloseTasks": true
+  },
+  "progressDashboard": {
+    "path": "docs/ui/UI-DESIGN-CONTRACT-STATUS.md",
+    "ownerBranch": "codex/frade-ui-design-contract",
+    "updateEvents": [
+      "SCOPE_DECISION",
+      "PRE_RESULT",
+      "TASK_DONE_OR_BLOCKED",
+      "CHECK_BATCH_COMPLETED",
+      "BLOCKER_CHANGED",
+      "VISUAL_APPROVAL",
+      "VERIFY",
+      "POST_RESULT",
+      "ARCHIVE"
+    ],
+    "updateOnlyAfterFrozenReview": true,
+    "historicalEvidenceImmutable": true,
+    "latestChecks": {
+      "status": "PARTIAL_PASS_MATRIX_FAIL",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/repair-checkpoint-report.json"
+    }
+  },
+  "currentVerificationRun": {
+    "status": "BLOCKED",
+    "reason": "Original upper Escape FAIL and keyboard scope decision pending; current root NOT_RUN."
+  },
+  "frameBottomCoverage": {
+    "atUtc": "2026-10-01T10:05:35.894Z",
+    "id": "P01-FRAME-BOTTOM-COVERAGE-01",
+    "status": "ACTUAL_SIX_OF_SIX_TOKEN_MISMATCH_FAIL",
+    "classification": "TEST_AND_PRESENTATION_COVERAGE",
+    "observed": [
+      "Real Dark/compact iframe screenshot has a light bottom page/status strip",
+      "Actual vendor creates div.geTabContainer.geTabItem; visible page/control tabs are div.geTab, not only a/button",
+      "Owned presentation bridge styles geFooterContainer but not geTabContainer; current measurement query omits geTabContainer/geTab controls"
+    ],
+    "notEstablished": [
+      "Current repaired lower chrome compliance (implementation NOT_RUN)",
+      "CSS-only keyboard/focus contract feasibility (repeat PRE pending)",
+      "Human visual approval"
+    ],
+    "diagnostic": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-chrome-diagnostic-20261001T100318Z.mjs",
+    "diagnosticStatus": "FAIL",
+    "witnesses": [
+      {
+        "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+        "bytes": 22358,
+        "sha256": "54beb8dee2e59937935de32f43d6f1d4f8b173e7228f3e098c4edab021b84a6a"
+      },
+      {
+        "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+        "bytes": 104210,
+        "sha256": "ca658de7150110d1bf985f0904c085e23ba1d09e71c2781c2a8478f1216fa64d"
+      },
+      {
+        "path": "apps/desktop/vendor/drawio/styles/grapheditor.css",
+        "bytes": 75954,
+        "sha256": "b660bcd355fdb3257635c95c23445e24a49b54875805b662f63a15354bba4989"
+      },
+      {
+        "path": "apps/desktop/vendor/drawio/js/app.min.js",
+        "bytes": 9754351,
+        "sha256": "0a0152fccee4c6d826435f0dd5b14e38f17257e132918850f20ef45e6821a899"
+      },
+      {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-current-root-artifacts-20261001T073825Z/ui-contract-theme-P01-matrix-dark-compact-frame/frame-diagram.png",
+        "bytes": 51078,
+        "sha256": "c7b463c073146bb66979b3fdb518c3dc399a775163b352c7068a2ac13cabb969"
+      }
+    ],
+    "productionChanged": false,
+    "visualApproval": "NOT_APPROVED",
+    "fullRootStatus": "PASS_PRE_DELTA",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-chrome-observation-20261001T101428Z/result.json",
+    "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md",
+    "proposalSha256": "e829e59637b43929f35acfaec85cd869ff61c6a0ddb7992037dbf65abd1129b7",
+    "currentFocusObservation": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-focus-observation-20261001T112450Z/result.json",
+    "currentFocusability": "0_OF_60_DIRECT_FOCUS"
+  },
+  "previousFullRootResult": "openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-owned-port-diagnostic-20261001T083513Z.json",
+  "scopeDecisionQuestion": {
+    "status": "BOTH_CONFIRMED_BY_HUMAN",
+    "ids": [
+      "P01-WORKSPACE-SAVEAS-READINESS-01",
+      "P01-FRAME-BOTTOM-CHROME-01"
+    ],
+    "atUtc": "2026-10-01T10:22:00.551Z",
+    "toolDispatchIsNotHumanAcceptance": true,
+    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json"
+  },
+  "saveAsBottomAcceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json",
+  "saveAsBottomPre": {
+    "status": "FAIL",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "scope": "P01-WORKSPACE-SAVEAS-READINESS-01 + P01-FRAME-BOTTOM-CHROME-01 focused PRE, not P01 closure",
+    "request": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-pre-20261001T110658Z-request.json",
+    "prepared": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-pre-20261001T110658Z-prepared",
+    "run": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-pre-20261001T110658Z-run",
+    "planChecks": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-plan-checks-20261001T105822Z.json",
+    "packagingProvenance": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-selected-runtime-20261001T110658Z/provenance.json",
+    "gateStatus": "FAIL",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-received-20261001T111840Z",
+    "blocker": "INPUT_COMPLETENESS: full pinned vendor constructors/layout plus actual lower-control keyboard/focus properties required",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "inputRepair": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-input-repair-20261001T113009Z.json",
+    "repeatStatus": "PENDING_PREPARATION",
+    "repeat": {
+      "status": "FAIL",
+      "request": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-repeat-pre-20261001T113202Z-request.json",
+      "prepared": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-repeat-pre-20261001T113202Z-prepared",
+      "run": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/saveas-bottom-repeat-pre-20261001T113202Z-run",
+      "requestedModel": "gpt-6-astra",
+      "requestedEffort": "xhigh",
+      "scopeUnchanged": true,
+      "checks": "openspec/changes/frade-p01-theme-core/evidence/p01-pre-input-repair-checks-20261001T113035Z.json",
+      "gateStatus": "FAIL",
+      "received": "openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "blocker": "SPEC_CONFLICT / ABSTRACTION_BOUNDARY: keyboard/focus required, DOM semantics prohibited"
+    }
+  },
+  "lowerKeyboardDecision": {
+    "id": "P01-FRAME-LOWER-KEYBOARD-01",
+    "status": "USER_ACCEPTED_PRE_PENDING",
+    "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard.proposed.md",
+    "sha256": "458361c95f36f02a2f438082dd52befc825413b928266722c494b9580c9d0874",
+    "reason": "Repeat PRE confirms CSS-only focus/keyboard scope conflict",
+    "productionRepair": "NOT_RUN",
+    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard-accepted-20261001T115657Z.json"
+  },
+  "commitPolicy": {
+    "authority": "User: Делай коммиты и пуши по каждому этапу",
+    "branchOnly": "codex/frade-ui-design-contract",
+    "mode": "Commit/push each completed engineering checkpoint; failed/incomplete feature status remains explicit",
+    "initialCheckpoint": "Accumulated foundation + P01 work, P01 INCOMPLETE / prior PRE FAIL / accepted keyboard repair PRE pending",
+    "status": "PASS_REMOTE_SHA_VERIFIED",
+    "initialRecord": "openspec/changes/frade-p01-theme-core/evidence/p01-ui-git-checkpoint-started-20261001T120237Z.json",
+    "localCheckpoint": "257b3a31cf04c4c06583618381ab492d68060c5e",
+    "origin": "git@github.com:leonmaks/frade.git",
+    "pushStatus": "PASS_REMOTE_SHA_VERIFIED",
+    "latestRecord": "openspec/changes/frade-p01-theme-core/evidence/p01-ui-checkpoint-published-20261001T124448Z.json",
+    "destinationAuthorization": "Разрешаю публикацию указанного UI checkpoint и следующих UI checkpoints в эту ветку",
+    "lastVerifiedMetadataCheckpoint": "c2fa3ba9151cb375238286577aad41be969c5b7b",
+    "remoteShaVerified": "3a56ed601990d0c0ad3a2b3548435cd0d6835356",
+    "currentCheckpoint": "Focused FUI tests/docs POST PASS; wholeP01 6/10 and humanvisual/cumulative/archive OPEN",
+    "lastVerifiedEngineeringCheckpoint": "3a56ed601990d0c0ad3a2b3548435cd0d6835356",
+    "latestPublicationRecord": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-closure-20261002T140734Z/publication.json"
+  },
+  "lowerKeyboardPre": {
+    "status": "FAIL",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "request": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/lower-keyboard-pre-20261001T124847Z-request.json",
+    "prepared": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/lower-keyboard-pre-20261001T124847Z-prepared",
+    "run": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/lower-keyboard-pre-20261001T124847Z-run",
+    "head": "c2fa3ba9151cb375238286577aad41be969c5b7b",
+    "checks": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-keyboard-resume-checks-20261001T124448Z.json",
+    "diffCorrection": "openspec/changes/frade-p01-theme-core/evidence/p01-resume-dashboard-eol-check-20261001T124649Z.json",
+    "sourceCount": 538,
+    "productionDelta": "NOT_RUN",
+    "gateStatus": "FAIL",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-keyboard-pre-received-20261001T130510Z",
+    "resultSha256": "6736062c8e23b3218a6afd4d42094ca9db265d44816f01fcdb5430b836b4b0de",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "blocker": "B01 SPEC_CONFLICT/ABSTRACTION_BOUNDARY: required lower-origin popup keyboard actions outside accepted .geTabContainer scope"
+  },
+  "lowerOriginPopupDecision": {
+    "id": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
+    "status": "USER_ACCEPTED_FRESH_PRE_PASS",
+    "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard.proposed.md",
+    "sha256": "8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a",
+    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard-accepted-20261001T193045Z.json"
+  },
+  "sharedReviewPolicy": {
+    "version": "1.1",
+    "release": "a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0",
+    "policyArtifact": "docs/engineering/agent-workflow.md",
+    "modelSelection": "APPROVED_OWNING_STAGE_PLAN_REQUIRED",
+    "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01"
+  },
+  "planningCheckpoint": {
+    "head": "3d5927ec87eb5ac293ff3c241e6c8ea940a2e454",
+    "published": true,
+    "remoteShaVerified": true,
+    "publication": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-planning-20261001T193045Z/publication.json"
+  },
+  "lowerOriginPopupPre1": {
+    "status": "FAIL",
+    "classification": "INPUT_COMPLETENESS",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-pre1-fail-received-20261001T194730Z/result.md",
+    "resultSha256": "98f6bc35f27b9c5bb2c327137fe9cc58cb8f9dc472dc9dbc3d8e49037f5eed2e",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-pre1-fail-received-20261001T194730Z/receipt.json",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true
+  },
+  "lowerOriginPopupPre2": {
+    "status": "PASS",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-pre2-pass-received-20261001T200707Z/result.md",
+    "resultSha256": "79ec6f2553e0099f013b7078a6831ec54dd1626444f4c8f7f03f3a203d631169",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-pre2-pass-received-20261001T200707Z/receipt.json",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "reviewPolicy": {
+      "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
+      "phase": "PRE",
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "source": {
+        "path": "openspec/changes/frade-p01-theme-core/design.md",
+        "sha256": "3c9874e95c86b2dc7e66e55d2424546ba78b5e0154d9aa0e1be23174289b3216",
+        "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+      }
+    },
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED"
+  },
+  "currentDeltaRuntime": {
+    "at": "2026-10-01T22:51:14.329Z",
+    "red": "p01-lower-runtime-red-20261001T202101Z",
+    "unit": {
+      "passed": 23,
+      "total": 23
+    },
+    "electronEntry": "PASS_XML_UNDO_SELECTION_VIEWPORT_FILE_PRESERVED",
+    "originalActions": "PASS_CURRENT_LOWER3_AND_UNCHANGED_BUNDLE_CHORD3",
+    "saveAs": "PASS_WB006007_ORIGINAL_WORKLOAD_EXACT_TWO_PRECONDITIONS",
+    "fullRoot": "NOT_RUN_CURRENT_REPAIR_REQUIRED_MATRIX_FAIL",
+    "visualApproval": "NOT_APPROVED",
+    "post": "FAIL_B01_B02_B03_B04",
+    "currentTargetedEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z",
+    "asyncPrepareRegression": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-async-prepare-red-20261001T213547Z",
+    "fullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T223210Z",
+    "priorFullRootFail": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T213855Z",
+    "rootBaseChecks": "PASS_CURRENT_RUN_UNCHANGED_PACKAGES_USE_REPORTED_TURBO_CACHE",
+    "currentBlocker": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md",
+    "secondBlocker": null,
+    "performance": {
+      "status": "PASS",
+      "p95Ms": 118.19999998807907,
+      "budgetMs": 150,
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T223210Z/desktop-artifacts/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/performance-result.json"
+    },
+    "gridRca": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-grid-offset-red-20261001T220703Z/root-cause.json",
+    "gridRepair": "WRONG_RELATIVE_INSET_REMOVED_ORIGINAL_FIXTURE_POINTS_UNCHANGED",
+    "gridGreen": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-grid-green-20261001T220849Z",
+    "styleLifecycle": {
+      "status": "UNIT20_LINT_TYPECHECK_BUILD_ELECTRON11_PASS",
+      "red": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-style-lifecycle-red-20261001T222052Z",
+      "unit": "2_FAIL_18_PASS_BEFORE_REPAIR",
+      "rootCause": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-style-lifecycle-red-20261001T222052Z/root-cause.json",
+      "green": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-style-green-20261001T222844Z"
+    },
+    "styleGreen": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-style-green-20261001T222844Z",
+    "drawRegression": "PASS_215_CURRENT_RUN",
+    "desktopRegression": "PASS_79_CURRENT_RUN",
+    "historicalCanvasBlockers": [
+      "openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T214051Z/early-bundle-failure/finding.json",
+      "openspec/changes/frade-p01-theme-core/evidence/p01-lower-full-root-20261001T214051Z/early-frame-chord-failure/finding.json"
+    ],
+    "focusedVerification": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-focused-verify-20261001T225306Z/verification.json",
+    "focusedVerify": "HISTORICAL_CHECKPOINT_PASS_REPAIR_VERIFY_PENDING",
+    "fullVerify": "INCOMPLETE_OPEN_TASKS",
+    "checkpoint": {
+      "commit": "eeca8e159edade32d85baaae8dd1298bf50d7c5e",
+      "push": "DONE",
+      "remoteShaVerified": "eeca8e159edade32d85baaae8dd1298bf50d7c5e",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/publication.json",
+      "featureStatus": "INCOMPLETE5_OF_10_MATRIX_FAIL6_OF_6"
+    },
+    "postReceipt": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-origin-popup-post1-fail-received-20261001T232558Z/receipt.json",
+    "postRepair": {
+      "at": "2026-10-02T00:22:33.649Z",
+      "change": "frade-p01-theme-core",
+      "status": "INCOMPLETE_SCOPE_DECISION_REQUIRED",
+      "progress": "5/10",
+      "guideVersion": "1.0",
+      "tokenVersion": "1.0.0",
+      "checks": {
+        "generatedBridgeUnit": {
+          "status": "PASS",
+          "count": 23
+        },
+        "desktopAllUnit": {
+          "status": "PASS",
+          "count": 66
+        },
+        "lint": "PASS",
+        "typecheck": "PASS",
+        "buildAndPinned2851": "PASS",
+        "bdd95": "PASS",
+        "ui26Contrast102PositiveNegativeRemoved": "PASS",
+        "boundaries": "PASS",
+        "strict": "PASS",
+        "actualLowerActionsEscapeOverflow3": "PASS",
+        "unchangedBundleAndFrameChord3": "PASS",
+        "matrix": {
+          "status": "FAIL",
+          "cases": 6,
+          "observations": 990,
+          "geometryViolations": 90
+        },
+        "currentFullRoot": "NOT_RUN_AFTER_REQUIRED_MATRIX_FAIL",
+        "newFocusedPost": "NOT_RUN_AFTER_REQUIRED_MATRIX_FAIL",
+        "lastIndependentPost": "FAIL_B01_B02_B03_B04_PRESERVED",
+        "visualApproval": "NOT_APPROVED"
+      },
+      "scopeAudit": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/scope-integrity-current.json",
+      "proposedDecision": {
+        "path": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md",
+        "sha256": "6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17",
+        "status": "PROPOSED_NOT_ACCEPTED",
+        "productionPlacementChanged": false
+      },
+      "source": [
+        {
+          "file": "apps/desktop/src/main/drawio-theme-bridge.ts",
+          "sha256": "95eca54fc8aad45384415c7b8fc17138015b6ab13e111afd547561a1464ee831",
+          "bytes": 51865
+        },
+        {
+          "file": "apps/desktop/tests/unit/drawio-theme.test.ts",
+          "sha256": "ade2d859f0b885794ad2f3487d1ed1ee1b09483b50fe6a00f7e5b4171019fe9f",
+          "bytes": 31398
+        },
+        {
+          "file": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+          "sha256": "5f5fd58930c3dcef7055a3365c49ec1050a43366bfebaa6c8f8c4858f0d1af27",
+          "bytes": 146479
+        }
+      ],
+      "applicableRules": [
+        "FDS-003",
+        "FDS-004",
+        "FDS-005",
+        "FDS-008",
+        "FDS-009",
+        "A11Y-001",
+        "A11Y-002",
+        "A11Y-003",
+        "A11Y-004",
+        "A11Y-005",
+        "A11Y-007",
+        "A11Y-008",
+        "A11Y-009"
+      ],
+      "branchProtection": "LOCAL_ONLY/NOT_CONFIGURED",
+      "readyForVerify": false
+    },
+    "reflowDecision": {
+      "id": "P01-LOWER-ORIGIN-POPUP-REFLOW-01",
+      "path": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md",
+      "sha256": "6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17",
+      "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow-accepted-20261002T014550Z.json",
+      "status": "USER_ACCEPTED_FRESH_PRE_NOT_RUN",
+      "beforeEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-planning-20261002T014550Z",
+      "productionPlacementChanged": false,
+      "permanentActualRED": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/matrix-all2-result.json",
+      "newUnitRED": "NOT_RUN_BEFORE_PRE",
+      "implementation": "NOT_RUN_BEFORE_PRE"
+    },
+    "previousCheckpoint": {
+      "commit": "6a49d5d1ae5e1acb7701831a10af0fe2a4177bee",
+      "push": "DONE",
+      "remoteShaVerified": "6a49d5d1ae5e1acb7701831a10af0fe2a4177bee",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-checkpoint-publication-20261001T230915Z"
+    }
+  },
+  "lowerOriginPopupReflowDecision": {
+    "id": "P01-LOWER-ORIGIN-POPUP-REFLOW-01",
+    "path": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md",
+    "sha256": "6bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17",
+    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow-accepted-20261002T014550Z.json",
+    "status": "USER_ACCEPTED_FRESH_PRE_NOT_RUN",
+    "beforeEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-planning-20261002T014550Z",
+    "productionPlacementChanged": false,
+    "permanentActualRED": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/matrix-all2-result.json",
+    "newUnitRED": "NOT_RUN_BEFORE_PRE",
+    "implementation": "NOT_RUN_BEFORE_PRE"
+  },
+  "currentReview": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-received-20261002T182051Z",
+  "currentReflowPlanningChecks": {
+    "atUtc": "2026-10-02T01:47:14.390Z",
+    "results": [
+      {
+        "id": "strict",
+        "command": [
+          "E:\\Program Files\\nodejs\\node.exe",
+          "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+          "validate",
+          "frade-p01-theme-core",
+          "--strict",
+          "--json"
+        ],
+        "startedAtUtc": "2026-10-02T01:46:39.598Z",
+        "finishedAtUtc": "2026-10-02T01:46:45.187Z",
+        "exitCode": 0,
+        "error": null,
+        "status": "PASS"
+      },
+      {
+        "id": "bdd",
+        "command": [
+          "E:\\Program Files\\nodejs\\node.exe",
+          "E:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
+          "--filter",
+          "@frade/ui-workspace",
+          "test:bdd"
+        ],
+        "startedAtUtc": "2026-10-02T01:46:45.188Z",
+        "finishedAtUtc": "2026-10-02T01:46:55.604Z",
+        "exitCode": 0,
+        "error": null,
+        "status": "PASS"
+      },
+      {
+        "id": "compliance",
+        "command": [
+          "E:\\Program Files\\nodejs\\node.exe",
+          "E:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
+          "ui:compliance"
+        ],
+        "startedAtUtc": "2026-10-02T01:46:55.604Z",
+        "finishedAtUtc": "2026-10-02T01:47:14.385Z",
+        "exitCode": 0,
+        "error": null,
+        "status": "PASS"
+      }
+    ],
+    "sourceUnchanged": true,
+    "bddPassed": 95,
+    "uiContractPassed": 26,
+    "namedContrastPairs": 102,
+    "fullRoot": "NOT_RUN_REQUIRED_LAYOUT_FAIL",
+    "pre": "NOT_RUN"
+  },
+  "currentReflowPlanningCheckpoint": {
+    "commit": "5e14e06f34dd5aad44cb507da8ba229e564d71f0",
+    "remoteSha": "5e14e06f34dd5aad44cb507da8ba229e564d71f0",
+    "push": "VERIFIED",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-planning-20261002T014550Z/publication-receipt.json"
+  },
+  "lowerOriginPopupReflowPre1": {
+    "status": "FAIL",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre1-received-20261002T020210Z/result.md",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre1-received-20261002T020210Z/receipt.json",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true,
+    "blocker": "B01_SAME_INVOCATION_FRESH_CANARY_NOT_SELECTED_IN_PACKET",
+    "contentReview": "No other planning blocker found",
+    "rawCanarySupplement": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre-input-repair-20261002T020616Z/pre1-actual-fresh-canary-raw.json"
+  },
+  "currentInputRepairCheckpoint": {
+    "commit": "f9910e51948e45af62f873abcd67674ab3cf73e9",
+    "push": "VERIFIED",
+    "remoteSha": "f9910e51948e45af62f873abcd67674ab3cf73e9"
+  },
+  "lowerOriginPopupReflowPre2": {
+    "status": "PASS",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre2-received-20261002T022132Z/receipt.json",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-pre2-received-20261002T022132Z/result.md",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true,
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED"
+  },
+  "currentReflowChecks": {
+    "atUtc": "2026-10-02T04:53:52.083Z",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-checks-20261002T045033Z",
+    "unit": "PASS_27",
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "build": "PASS_PINNED_2851",
+    "matrix": "PASS_6_OF_6_990_OBSERVATIONS_0_VIOLATIONS",
+    "fullRoot": "PASS_DRAW215_DESKTOP81_SOURCE635_UNCHANGED",
+    "post": "PREPARING_FRESH_AUTOMATIC_READ_ONLY",
+    "desktopUnit": "PASS_70",
+    "bdd": "PASS_95",
+    "compliance": "PASS",
+    "targeted": "PASS_ORIGINAL_6_AND_OPEN_CHAIN_1",
+    "fullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-full-root-20261002T051421Z",
+    "performance": "PASS_P95_110.79999999981374",
+    "scopeAudit": "PASS",
+    "verify": "FOCUSED_PASS_FULL_P01_INCOMPLETE",
+    "verifyEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-verify-20261002T053331Z"
+  },
+  "lowerReflowRefusalDecision": {
+    "status": "USER_ACCEPTED_PRE_REQUIRED",
+    "path": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal.proposed.md",
+    "sha256": "15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01",
+    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal-accepted-20261002T074100Z.json",
+    "planning": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-planning-20261002T074100Z",
+    "productionRepair": "NOT_IMPLEMENTED",
+    "pre": "NOT_RUN"
+  },
+  "b05MetadataChecks": {
+    "status": "PASS",
+    "bdd": 6,
+    "complianceExit": 0,
+    "strictExit": 0,
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/metadata-checks.json"
+  },
+  "currentReflowPublication": {
+    "head": "f3ee2659b06f0f8dcf3a9201bad54a40dc780173",
+    "status": "COMMITTED_PUSHED_REMOTE_SHA_VERIFIED",
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/publication.json",
+    "gate": "FAIL_B05",
+    "metadataPublication": "ACCOMPANYING_STATUS_AND_RECEIPT_CHECKPOINT",
+    "rawStagedBytesVerified": 3296,
+    "authoredWhitespace": "PASS",
+    "rawEvidenceWhitespaceExit": 2
+  },
+  "b05PlanningChecks": {
+    "status": "PASS",
+    "strictExit": 0,
+    "bdd6": true,
+    "complianceExit": 0,
+    "sharedStatus": "AVAILABLE",
+    "sourceUnchanged": true,
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-planning-20261002T074100Z/planning-checks.json"
+  },
+  "b05Pre1": {
+    "status": "BLOCKED_ENVIRONMENT_ENOSPC",
+    "reviewerInvoked": false,
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-pre1-environment-blocked-20261002T075042Z",
+    "temporaryDuplicateCleanup": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-pre1-environment-blocked-20261002T075042Z/duplicate-cleanup.json"
+  },
+  "b05Pre2": {
+    "status": "PASS",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-pre2-received-20261002T080845Z",
+    "resultSha256": "3337ef37ff3e976800f74653e12b298674640e7170127e0ee9a50dfd42dad2ad",
+    "packetFiles": 754,
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true,
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED"
+  },
+  "b05Implementation": "EXACT3PRODUCTION_PATHS_IMPLEMENTED_AFTER_PERMANENT_RED",
+  "b05Red": {
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-red-20261002T081250Z",
+    "bridge": "2FAIL27PASS",
+    "parent": "2FAIL34PASS"
+  },
+  "b05Checks": {
+    "targeted": "PASS_38_PARENT_73_DESKTOP_UNITS_AFFECTED_TYPE_LINT",
+    "actualElectron": "PASS",
+    "electronEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-full-root4-20261002T100844Z/artifacts-manifest.json",
+    "matrix": "PASS_6_OF_6_990_OBSERVATIONS_0_VIOLATIONS_690_PNG_CURRENT_ROOT",
+    "fullRoot": "PASS_CURRENT_ROOT4_DRAW215_ELECTRON82_SOURCE538_UNCHANGED",
+    "post": "PASS_FOCUSED_B05_POST3",
+    "visual": "NOT_APPROVED",
+    "bridgeUnit": "PASS_30",
+    "originalAssertions": "PASS_EXACT_ORIGINAL27BRIDGE_20E2E_33PARENT_AND_PRIOR37PARENT",
+    "matrixEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-full-root4-20261002T100844Z/artifacts-manifest.json",
+    "fullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-full-root4-20261002T100844Z",
+    "fullRootPreparation1": "BLOCKED_ENVIRONMENT_ENOBUFS_BEFORE_TESTS",
+    "fullRoot2": "FAIL_TEST_FIXTURE_TYPECHECK_RAW_PRESERVED",
+    "desktopUnits": 73,
+    "workspaceUnits": 184,
+    "performance": "PASS_P95_110.30000000074506",
+    "verify": "CURRENT_FOCUSED_VERIFY2_PASS_FULL_P01_INCOMPLETE",
+    "verifyEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-verify2-20261002T103242Z",
+    "parentUnits": 38
+  },
+  "b05Source": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-current-20261002T084000Z",
+  "b05Verification": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-verify2-20261002T103242Z",
+  "b05PostRequest": {
+    "path": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/b05-post2-20261002T092811Z-request.json",
+    "selection": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post2-input-20261002T092811Z/selection.json",
+    "reviewPolicy": {
+      "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
+      "phase": "POST",
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "source": {
+        "path": "openspec/changes/frade-p01-theme-core/design.md",
+        "sha256": "e2609dfa5204c604f40d394fa55b4373642e7ca30415011e5de8c3817c1f546a",
+        "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | POST | gpt-6-astra | xhigh |"
+      }
+    }
+  },
+  "b05Post1": {
+    "status": "BLOCKED_GIT_IGNORED_RUNTIME_EVIDENCE",
+    "reviewerInvoked": false,
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post1-blocked-received-20261002T092639Z",
+    "repair": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-current-runtime-raw-20261002T092811Z/raw-copy-manifest.json"
+  },
+  "b05Post2": {
+    "status": "FAIL",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post2-fail-received-20261002T095150Z",
+    "resultSha256": "1529e4d4a75f63deb5cffe0876ab4aaaf96a5634dc8c2f59a450cca07a271e5d",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true,
+    "blocker": "FAILURE_COMPENSATION_DIFFERENT_REVISION_CLEARS_DIAGNOSTIC"
+  },
+  "b05FailureRepair": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-failure-publication-rca-20261002T095836Z",
+  "b05FailureRepairChecks": {
+    "status": "CURRENT_ROOT4_PASS",
+    "parentUnits": 38,
+    "uiLint": "PASS",
+    "uiType": "PASS",
+    "desktopType": "PASS",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-failure-publication-rca-20261002T095836Z/checks3.json",
+    "productionFix": "EXISTING_SUCCESS_ONLY_SERVICE_SUBSCRIPTION",
+    "fullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-full-root4-20261002T100844Z",
+    "verifyEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-verify2-20261002T103242Z",
+    "performance": 110.30000000074506,
+    "lowerMatrix": "PASS_6_OF_6_990_0_690"
+  },
+  "b05PacketRetention": {
+    "manifest": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post2-packet-retained-20261002T101026Z/raw-transfer-manifest.json",
+    "status": "EXACT_COMPLETED_POST2_PACKET_RETAINED_DUPLICATE_REMOVED",
+    "files": 2889,
+    "bytes": 195162817
+  },
+  "b05Post3": {
+    "status": "PASS_FOCUSED_B05_ONLY",
+    "request": "C:/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/b05-post3-20261002T104752Z-request.json",
+    "selection": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post3-input-20261002T104752Z/selection.json",
+    "reviewPolicy": {
+      "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
+      "phase": "POST",
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "source": {
+        "path": "openspec/changes/frade-p01-theme-core/design.md",
+        "sha256": "e2609dfa5204c604f40d394fa55b4373642e7ca30415011e5de8c3817c1f546a",
+        "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | POST | gpt-6-astra | xhigh |"
+      }
+    },
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post3-received-20261002T110939Z",
+    "resultSha256": "eacd1dddab118e6cee08a5c0967ca7ed564161f0578b6370387aa517c41f0dfc",
+    "eventCount": 91,
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true,
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "retainedPacket": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post3-packet-retained-20261002T111021Z"
+  },
+  "b05Closure": {
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-closure-20261002T111335Z",
+    "post": {
+      "status": "PASS_FOCUSED_B05_ONLY",
+      "received": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post3-received-20261002T110939Z",
+      "resultSha256": "eacd1dddab118e6cee08a5c0967ca7ed564161f0578b6370387aa517c41f0dfc",
+      "eventCount": 91,
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "sourcePlanUnchanged": true,
+      "reviewPolicy": {
+        "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
+        "phase": "POST",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "xhigh",
+        "source": {
+          "path": "openspec/changes/frade-p01-theme-core/design.md",
+          "sha256": "e2609dfa5204c604f40d394fa55b4373642e7ca30415011e5de8c3817c1f546a",
+          "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | POST | gpt-6-astra | xhigh |"
+        }
+      },
+      "actualBackend": "NOT_CONFIRMED",
+      "actualEffort": "NOT_CONFIRMED",
+      "retainedPacket": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-post3-packet-retained-20261002T111021Z"
+    },
+    "screenshots": [
+      {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-full-root4-20261002T100844Z/desktop-artifacts/ui-contract-theme-P01-B05--452aa-its-original-feasible-retry/b05-feasible-retry.png",
+        "sha256": "f7bc5899b8e5c6da426b16c6ea94abc1dab4fc4e2dfd71e2e26a4081988a167d"
+      },
+      {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-full-root4-20261002T100844Z/desktop-artifacts/ui-contract-theme-P01-B05--452aa-its-original-feasible-retry/b05-live-refusal.png",
+        "sha256": "e5953e72a131d5d049c6134f8f08f3599411a61a48df5a4204fa817f39c5993c"
+      }
+    ],
+    "checkpoint": {
+      "commit": "6e5c63405bdc9995ec56cac373d10444f38d075c",
+      "remoteShaVerified": "6e5c63405bdc9995ec56cac373d10444f38d075c",
+      "publication": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-closure-20261002T111335Z/publication-source.json"
+    }
+  },
+  "fuiPre": {
+    "status": "PASS",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-pre-received-20261002T120622Z",
+    "resultSha256": "f1b05a2ca8f57af0bcd1c47fbd6bf5239edb0969ae68a837e29581476e0988f0"
+  },
+  "fuiRuntime": {
+    "status": "PASS",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261002T130053Z",
+    "caseCount": 12,
+    "requiredAdapterRoles": 31
+  },
+  "fuiBindings": {
+    "status": "GREEN",
+    "exampleCount": 7,
+    "negativeControls": 14,
+    "red": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-binding-red-20261002T122842Z",
+    "integrity": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-integrity-20261002T130619Z"
+  },
+  "fuiAffectedChecks": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-binding-green-20261002T130355Z",
+  "fuiFullRoot": {
+    "status": "PASS",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-full-root-20261002T130619Z",
+    "sourceCount": 543,
+    "sourceUnchanged": true,
+    "desktopPassed": 93,
+    "drawPassed": 215,
+    "p95Ms": 137.80000000074506,
+    "budgetMs": 150,
+    "priorFail": "RETAINED",
+    "variationCause": "NOT_PROVEN"
+  },
+  "fuiPerformanceRca": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-performance-rca-20261002T125530Z",
+  "fuiPerformanceControl": {
+    "status": "PASS",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-performance-control-20261002T125634Z",
+    "p95Ms": 147.90000000223517,
+    "rootFailureWaived": false,
+    "environmentCause": "NOT_PROVEN"
+  },
+  "fuiFocusedVerification": {
+    "status": "PASS",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-verify-20261002T132921Z"
+  },
+  "fuiHumanVisual": {
+    "status": "NOT_APPROVED",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-visual-review-20261002T144214Z",
+    "baselineCount": 372,
+    "manifestSha256": "a0940ab0631e762e12752b005a190d071548cb1177d05a5247f45616fd766706",
+    "old60Preserved": true
+  },
+  "fuiFocusedPost": {
+    "status": "PASS",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-post-received-20261002T140329Z",
+    "resultSha256": "54ff4afaa7e7c0fee42a06d0e4a28678adc23d6e2454e01e915ddabfc38fe35c",
+    "eventCount": 82,
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true
+  },
+  "fuiClosure": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-closure-20261002T140734Z",
+  "previousCurrentRootSummary": {
+    "status": "PASS",
+    "draw": {
+      "passed": 215,
+      "failed": 0
+    },
+    "desktop": {
+      "passed": 71,
+      "failed": 0
+    },
+    "sourceVariant": "final minimal approved readiness source",
+    "sourceUnchanged": true,
+    "currentMinimalSourceFullRoot": "PASS",
+    "artifactFiles": 1242
+  },
+  "previousCurrentVerificationRun": {
+    "status": "PASS",
+    "command": "pnpm check:all",
+    "log": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.txt",
+    "startedAtUtc": "2026-10-01T09:55:45.158Z",
+    "drawPort": 56670,
+    "sourceManifest": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z-started.json",
+    "finishedAtUtc": "2026-10-01T10:12:25.958Z",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json"
+  },
+  "checkpointPublication": {
+    "head": "45d078352382e1fc2edff93d9c052c1e862ead3e",
+    "remote": "git@github.com:leonmaks/frade.git",
+    "ref": "refs/heads/codex/frade-ui-design-contract",
+    "remoteVerified": true,
+    "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-checkpoint-20261002T195324Z/publication.json",
+    "status": "PUBLISHED_ACCEPTED_PLAN_FOCUSED_PRE_PASS"
+  },
+  "nextReviewEnvironment": {
+    "status": "RESOLVED_MEASURED_VOLUME_RESERVE",
+    "volume": "E:",
+    "freeBytesAtResume": 20088201216,
+    "atUtc": "2026-10-02T14:27:14.787Z",
+    "previousBlocker": "INSUFFICIENT_GIT_COMMON_VOLUME_RESERVE_RETAINED_HISTORY",
+    "userMessage": "Место освобождено"
+  },
+  "cumulativeAudit": {
+    "status": "PASS_BOUNDED_TECHNICAL_EVIDENCE_PENDING_GLYPH_DIAGNOSTIC",
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z",
+    "strict": "PASS",
+    "sharedPolicy": "AVAILABLE",
+    "taskCounts": {
+      "total": 10,
+      "complete": 6,
+      "remaining": 4
+    },
+    "productionChanged": false,
+    "technicalReport": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/technical-evidence-audit.json",
+    "namedUnits": 303,
+    "b02Matrix": 1044,
+    "contrastChecks": 40731,
+    "possibleGap": "Upper toolbar raster glyph contrast/enabled state NOT_MEASURED; HC screenshot hypothesis, no measured defect or product repair authority",
+    "next": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/execution-plan.md"
+  },
+  "finalCoveragePre": {
+    "status": "FAIL_RETAINED_REPAIR_PREPARING",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-final-coverage-pre-received-20261002T153428Z",
+    "repair": "openspec/changes/frade-p01-theme-core/evidence/p01-final-coverage-pre-repair-20261002T151542Z/execution-plan-v2.md",
+    "scope": "diagnostic/tests/evidence only; production not authorized",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "repeatStatus": "PASS_RECEIVED_121_EVENTS_17_RAW",
+    "diagnosticStatus": "RUNTIME_6_PASS_PRESERVATION_GLYPH_NOT_MEASURED",
+    "diagnostic": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/v2-analysis.json",
+    "extensionPlan": "openspec/changes/frade-p01-theme-core/evidence/p01-glyph-compositor-pre-20261002T155056Z/execution-plan-v3.md",
+    "extensionStatus": "PASS_81_EVENTS_17_RAW_SOURCE_UNCHANGED",
+    "extensionReceipt": "openspec/changes/frade-p01-theme-core/evidence/p01-glyph-compositor-pre-received-20261002T162020Z",
+    "extensionReference": "PASS_12_COMPOSITOR_PLUS_1_ORIGINAL24_REFERENCE",
+    "v3Diagnostic": "126NOT_MEASURED_CORELESS_13REFERENCES6RUNTIME_PRESERVATION_PASS",
+    "v3Analysis": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/compositor-v3/analysis-v3.json",
+    "boundPlan": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-20261002T171512Z/execution-plan-v4.md",
+    "boundStatus": "PASS_60_EVENTS_17_RAW",
+    "boundReceipt": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-received-20261002T182051Z",
+    "boundImplementation": "REFERENCE19_PASS_APPLICATION12_ENABLED_FAIL_114_NOT_MEASURED",
+    "boundResume": "openspec/changes/frade-p01-theme-core/evidence/p01-solid-source-bound-pre-resume-20261002T175842Z",
+    "boundAnalysis": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/runtime-diagnostic/black-bound-v4/application-analysis.json"
+  },
+  "checkpoint": {
+    "sourceSha": "4be1c67720522f647043965ec58c14658d7aa024",
+    "publishedRemoteSha": "4be1c67720522f647043965ec58c14658d7aa024",
+    "ref": "refs/heads/codex/frade-ui-design-contract",
+    "status": "PUBLISHED_EXACT_SHA",
+    "metadataPending": true
+  },
+  "currentReviewStatus": "PASS",
+  "currentScopeDecision": {
+    "id": "P01-UPPER-THREE-GLYPH-PAINT-01",
+    "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-glyph-paint.proposed.md",
+    "sha256": "4fa0062a9c8d717f0b540bd5f65568b2f934b009947954e4ee7931e01df6808e",
+    "status": "USER_ACCEPTED",
+    "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-glyph-paint-accepted-20261002T190409Z.json"
+  },
+  "upperThreePlanning": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-planning-20261002T190409Z",
+  "upperThreePre": {
+    "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-upper-three-pre-1790968101435.json",
+    "planSource": {
+      "path": "openspec/changes/frade-p01-theme-core/tasks.md",
+      "sha256": "a4d232c1670d60e42a81301371f911c3e7915822125d3fac51c0d17665e4f2b3",
+      "excerpt": "Stage P01 upper-three repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three repair POST reviewer: gpt-6-astra; reasoning xhigh. Exact task-source raw hash/excerpt accompanies each fresh automatic packet-confined review."
+    },
+    "selectedFiles": 779,
+    "status": "FAIL",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-received-20261002T192637Z",
+    "events": 103,
+    "rawArtifacts": 17,
+    "reportSha256": "efefd4743852c74944efb5a86a1f5a8c76cedf57885e5d603f024eacd24d0ec3",
+    "findings": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-repair-20261002T192946Z/review-messages.json",
+    "repair": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-repair-20261002T192946Z",
+    "repeat": {
+      "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-upper-three-repeat-pre-1790969868555.json",
+      "status": "PASS",
+      "planSource": {
+        "path": "openspec/changes/frade-p01-theme-core/tasks.md",
+        "sha256": "e95d846a7bf4f6567c29e13fd687630e98e86a53521ca8a435cb0432ad3f7d4e",
+        "excerpt": "Stage P01 upper-three repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three repair POST reviewer: gpt-6-astra; reasoning xhigh. Exact task-source raw hash/excerpt accompanies each fresh automatic packet-confined review."
+      },
+      "currentSourceManifest": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-repair-20261002T192946Z/current-source-manifest.json",
+      "checks": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-repair-20261002T192946Z/commands2.json",
+      "received": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-repeat-pre-received-20261002T195202Z",
+      "atUtc": "2026-10-02T19:52:02.885Z",
+      "events": 80,
+      "rawArtifacts": 17,
+      "resultSha256": "c09c72ab9ceac2fb171162d6d81676d64d4a820ae488c1f9040537e8112d9ed7",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "sourcePlanUnchanged": true,
+      "scope": "Repeat focused upper-three implementation PRE only; no cumulative closure or visual acceptance",
+      "actualBackend": "NOT_CONFIRMED",
+      "actualEffort": "NOT_CONFIRMED"
+    }
+  },
+  "upperThreeImplementation": {
+    "status": "IMPLEMENTED_TARGETED_GREEN_FULL_MATRIX_RUNNING",
+    "next": "Same-Electron V5 controls then permanent meaningful RED before sole-bridge repair",
+    "checkpoint": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-pre-checkpoint-20261002T195324Z",
+    "reference": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v5-controls-v2-20261002T200504Z",
+    "firstReference": "FAIL_NAVIGATION_READINESS_BEFORE_MEASUREMENT_RETAINED",
+    "permanentRED": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-permanent-red-20261002T211135Z",
+    "production": "SOLE_BRIDGE_IMPLEMENTED",
+    "v5Reference": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v5-controls-v2-20261002T200504Z",
+    "v5ReferenceResults": "36ATLAS_360CASES_18SYNTHETIC_NEGATIVE_PASS_RECORDED_SUBSET",
+    "composition": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-composition-20261002T201102Z",
+    "compositionResults": "6RUNTIME_PASS_54OBSERVATIONS_24UNSUPPORTED_BY_V5",
+    "v6Planning": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v6-planning-20261002T201504Z",
+    "green": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-green4-20261002T215815Z",
+    "unit": "36/36 PASS",
+    "electronFocused": "DARK_COMPACT_9_GLYPH_STATE_PASS",
+    "sixState": {
+      "status": "RUNNING",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-six-state-20261002T220241Z"
+    },
+    "remaining": [
+      "lifecycle and actual media/viewport/text/interaction coverage",
+      "fresh root and current source bindings",
+      "verify and independent POST",
+      "human visual and cumulative closure"
+    ],
+    "updatedAtUtc": "2026-10-02T22:13:39.018Z"
+  },
+  "upperThreeV6Pre": {
+    "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-upper-three-v6-pre-1790972601543.json",
+    "planSource": {
+      "path": "openspec/changes/frade-p01-theme-core/tasks.md",
+      "sha256": "8e9f1936becaf94fc1eda8eaba17b935f9525ea8ca1800b95092d9eeb141df79",
+      "excerpt": "Stage P01 upper-three repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three repair POST reviewer: gpt-6-astra; reasoning xhigh. Exact task-source raw hash/excerpt accompanies each fresh automatic packet-confined review."
+    },
+    "status": "PASS",
+    "currentSourceManifest": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v6-planning-20261002T201504Z/current-source-manifest.json",
+    "atUtc": "2026-10-02T20:35:56.540Z",
+    "events": 102,
+    "rawArtifacts": 17,
+    "resultSha256": "19ad28fb3c198367d2cac2569cb955255ff3c4be0e474f4971ac9ee285d12f06",
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "sourcePlanUnchanged": true,
+    "scope": "V6 technical implementation PRE only",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v6-pre-received-20261002T203556Z"
+  },
+  "upperThreeV6Controls": {
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-v6-controls-v3-20261002T205922Z/controls-audit.json",
+    "status": "PASS",
+    "colorCases": 720,
+    "outcomeCounts": {
+      "FAIL": 357,
+      "PASS": 359,
+      "NOT_MEASURED": 4
+    },
+    "productRepair": "NOT_RUN"
+  },
+  "upperThreePermanentRed": {
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-permanent-red-20261002T211135Z",
+    "unit": "5_EXPECTED_ASSERTION_FAILURES",
+    "electron": "6_EXPECTED_ABSENT_PROJECTION_FAILURES_AFTER_COLLECTOR_REPAIR",
+    "oldPrefixesAndCallbacks": "UNCHANGED",
+    "production": "IMPLEMENTED_SOLE_BRIDGE_RUNTIME_UNVERIFIED"
+  },
+  "upperThreeChecks": {
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-green2-20261002T213615Z",
+    "unit": {
+      "pass": 35,
+      "fail": 0
+    },
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "actualRaster": "NOT_RUN_CURRENT_IMPLEMENTATION",
+    "fullRoot": "NOT_RUN_CURRENT_IMPLEMENTATION",
+    "post": "NOT_RUN"
+  },
+  "currentPhase": "P01_UPPER_FOCUS_TARGETED_PASS_FULL_REGRESSION_PENDING",
+  "upperThreeCurrentCheckpoint": {
+    "atUtc": "2026-10-02T22:47:22.326Z",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-checkpoint-20261002T223801Z",
+    "production": "IMPLEMENTED_SOLE_BRIDGE",
+    "unit": "91/91_DESKTOP_48/48_BRIDGE_PASS",
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "compliance": "PASS",
+    "boundaries": "PASS",
+    "fui": "12/12_CURRENT_SOURCE_PASS",
+    "bdd": "110PASS_1FAIL_HISTORICAL_CONTROL_SOURCE_HASH",
+    "expanded": "FAIL_ORIGINAL_NARROW_TARGET_HIDDEN",
+    "diagnostic": "6/6_COLLECTION_PRESERVATION_PASS_72OBS_NO_NUMERICAL_CLAIM",
+    "decisions": [
+      {
+        "id": "P01-UPPER-FUI-CONTROL-REVALIDATION-01",
+        "status": "PENDING"
+      },
+      {
+        "id": "P01-UPPER-STATE-APPLICABILITY-01",
+        "status": "PENDING"
+      }
+    ],
+    "fullRoot": "NOT_RUN",
+    "verify": "BLOCKED",
+    "post": "NOT_RUN",
+    "visual": "NOT_APPROVED",
+    "readyForVerify": false,
+    "published": "470833af707ce3939293bdd61796ef561b4d29a3",
+    "currentCommit": "470833af707ce3939293bdd61796ef561b4d29a3",
+    "currentPush": "PASS_REMOTE_SHA_VERIFIED",
+    "sixState": {
+      "status": "PASS",
+      "proofs": 54,
+      "minimum": 4.797672908386502,
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-six-state-current-20261002T224323Z/results-audit.json",
+      "sourceUnchanged": true
+    },
+    "currentPhase": "BLOCKED_PENDING_TWO_SCOPE_DECISIONS",
+    "publication": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-checkpoint-20261002T223801Z/publication.json"
+  },
+  "currentUpperControlState": {
+    "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-scope-acceptance-20261003T010923Z/acceptance.json",
+    "planning": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-accepted-planning-20261003T012018Z",
+    "pre": "PASS",
+    "dependentImplementation": "APPROVED_ASSERTION_CONTROL_REVALIDATION_COMPLETE_REQUIRED_ORIGINAL_ESCAPE_FAIL",
+    "keyboard": "BLOCKED_ORIGINAL_ESCAPE_FROM_BODY_AND_CANVAS",
+    "reviewModel": "gpt-6-astra",
+    "reviewEffort": "xhigh",
+    "received": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-accepted-pre-received-20261003T014255Z",
+    "keyboardProposal": "openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-keyboard-owned-popups.proposed.md",
+    "keyboardProposalAcceptance": "ACCEPTED",
+    "knownFailure": "Required original menu Escape assertion remains FAIL; production unchanged",
+    "currentChecks": {
+      "fui": "12/12_PASS",
+      "bdd": "111/111_PASS",
+      "positive": "2/2_PASS",
+      "negativeCauses": "14/14_PASS",
+      "desktopTypecheck": "PASS",
+      "desktopLint": "PASS",
+      "uiTypecheck": "PASS",
+      "uiLint": "PASS",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261003T021505Z",
+      "compliance": "PASS",
+      "boundaries": "PASS",
+      "strict": "PASS",
+      "checkpointEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/checks.json"
+    },
+    "expanded": {
+      "status": "PASS_RENDERED_ONLY",
+      "cases": 6,
+      "proofs": 234,
+      "minimum": 4.797672908386502,
+      "hiddenOriginal": 12,
+      "blockedFocus": 78,
+      "disabledNotRun": 78,
+      "preservationChecks": 30,
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-expanded-current-20261003T022037Z/results-audit.json"
+    },
+    "integrity": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/source-integrity-v2.json",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/report.md",
+    "publication": {
+      "atUtc": "2026-10-03T09:58:41.766Z",
+      "status": "PASS_REMOTE_SHA_VERIFIED",
+      "commit": "661a777a4a9431ff3cccbc2d9fedccf398674547",
+      "destination": "git@github.com:leonmaks/frade.git",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/publication.json"
+    }
+  },
+  "currentHistoricalClaimsPreservedAt": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/context-before.json",
+  "upperKeyboard": {
+    "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/acceptance.json",
+    "proposalSha256": "6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34",
+    "planning": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z",
+    "pre": "PASS",
+    "production": "UNCHANGED",
+    "implementation": "IMPLEMENTED_TARGETED_UNIT_GREEN",
+    "reviewModel": "gpt-6-astra",
+    "reviewEffort": "xhigh",
+    "planRow": "Stage P01 upper-three keyboard repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three keyboard repair POST reviewer: gpt-6-astra; reasoning xhigh.",
+    "checks": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/checks.json",
+    "preRequest": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-upper-three-keyboard-pre-1791025637788.json",
+    "planSource": {
+      "path": "openspec/changes/frade-p01-theme-core/tasks.md",
+      "sha256": "ba535c03f3e58210117412123ee198f2add3f25e83c4f8c80e004718912fab65",
+      "excerpt": "Stage P01 upper-three keyboard repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three keyboard repair POST reviewer: gpt-6-astra; reasoning xhigh."
+    },
+    "pre1": {
+      "status": "BLOCKED",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-pre-blocked-20261003T114545Z",
+      "report": "MISSING",
+      "candidateUnchanged": true,
+      "packetUnchanged": true
+    },
+    "planningPublication": {
+      "commit": "7f911b957c7a68250362829ce8c559f5742c2770",
+      "status": "PUSHED_VERIFIED",
+      "receipt": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-pre-blocked-20261003T114545Z/planning-publication.json"
+    },
+    "pre2": {
+      "status": "PASS",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-pre-received-20261003T123505Z",
+      "resultSha256": "0efbfbf835c5fca9744c57abaa6a01e09fafebf302867db01fe09fe70f72818b"
+    },
+    "next": "Complete final-source raster/media/zoom/focus and popup contrast, then final-source FUI12/control/BDD/full checks/verify/POST",
+    "unitChecks": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-check2-20261003T143600Z/checks.json",
+    "originalActionRuntime": {
+      "status": "PASS",
+      "coverage": "light compact only",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-original-runtime2-20261003T143900Z"
+    },
+    "originalActions": "6_THEME_DENSITY_CASES_PASS_SOURCE_BOUND_RUNS",
+    "keyboardPaths": "6_THEME_DENSITY_CASES_PASS_SOURCE_BOUND_RUNS",
+    "expandedRaster": {
+      "status": "PASS",
+      "proofs": 312,
+      "minimum": 4.797672908386502,
+      "runs": [
+        "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-raster-current-20261003T150039Z",
+        "openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-raster-five-20261003T150842Z"
+      ],
+      "scope": "Glyph contrast including focus glyph only; popup/focus ring not measured"
+    },
+    "phase": "P01_UPPER_FOCUS_TARGETED_PASS_FULL_REGRESSION_PENDING",
+    "latestChecks": {
+      "bridgeUnits": "60/60 PASS",
+      "build": "PASS",
+      "typecheck": "PASS",
+      "lint": "PASS",
+      "compliance": "PASS",
+      "boundaries": "PASS",
+      "assets": "PASS",
+      "strict": "PASS",
+      "focusRuntime": "6/6 PERMANENT PASS /96CONTOURS /12POSITIVE /36NEGATIVE",
+      "fui": "12/12 PASS",
+      "bdd": "111/111 PASS",
+      "fuiControls": "2POSITIVE /14INTENDED_NEGATIVE PASS",
+      "fullRoot": "NOT_RUN_FINAL_SOURCE",
+      "post": "NOT_RUN",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-checkpoint-20261003T175031Z"
+    },
+    "focusDecision": {
+      "status": "ACCEPTED",
+      "path": "openspec/changes/frade-p01-theme-core/decisions/p01-upper-focus-unclipped-projection.proposed.md",
+      "sha256": "32ddae6f2896fe57bbdb506337fd70199d477f7ea7992e7739a5bae563d47f0b",
+      "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z/acceptance.json"
+    },
+    "focusExtension": {
+      "implementation": "IMPLEMENTED",
+      "pre": "PASS",
+      "planningEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z",
+      "preEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-pre-received-20261003T165728Z",
+      "preResultSha256": "a3313dd6304a415c9cef900c591847abe157d64672ddbe830b6e10b40e626a3b",
+      "currentRuntime": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-expanded2-20261003T174121Z",
+      "completeContour": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-contour-20261003T174530Z",
+      "permanentTimeout": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-permanent-20261003T181745Z",
+      "permanentRetest": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-permanent-retest-20261003T185222Z",
+      "permanentRemaining": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-permanent-five-20261003T190444Z",
+      "permanentStatus": "PASS_6CASES_96CONTOURS",
+      "post": "BLOCKED_APPLICABLE_FULL_FAIL",
+      "fullRoot": "FAIL_DESKTOP116PASS_13FAIL",
+      "fuiRun": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261003T193349Z",
+      "fui": "12/12 PASS",
+      "bdd": "111/111 PASS",
+      "fullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-full-root-20261003T200130Z"
+    },
+    "checkpointPublication": {
+      "atUtc": "2026-10-03T16:34:53.934Z",
+      "checkpoint": "cd93819cb7b1d02e474e01c664e8654c04af5ca9",
+      "publication": "BLOCKED_ENVIRONMENT",
+      "lastVerifiedRemote": "7f911b957c7a68250362829ce8c559f5742c2770",
+      "latestRemoteRead": "FAILED",
+      "attempts": [
+        "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z/publication-attempt1.json",
+        "openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-planning-20261003T161542Z/publication-attempt2.json"
+      ],
+      "explanation": "SSH443 disconnected; longer per-call keepalive retry hit180s process timeout and final ls-remote failed. No force or config change. Remote publication unverified, local checkpoint safe.",
+      "permissionReview": "One evidence-save command automatic approval review timed out before execution; single permitted retry succeeded. No user approval or safety rejection was inferred.",
+      "next": "Proceed local authorized independent PRE; retry authorized publication after environment recovers."
+    }
+  },
+  "nativeResizeSettlement": {
+    "decision": "P01-NATIVE-RESIZE-SETTLEMENT-FIXTURE-01",
+    "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-planning-20261003T211000Z/acceptance.json",
+    "pre": "PASS",
+    "implementation": "READINESS_ONLY_IMPLEMENTED",
+    "scope": "TWO_FROZEN_FIXTURE_READINESS",
+    "planReviewerStage": "P01 upper-three keyboard repair",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "previousFullFail": "evidence/p01-upper-focus-full-root-20261003T200130Z",
+    "control": "evidence/p01-upper-focus-full-failure-control-20261003T205400Z",
+    "preEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-pre-received-20261003T215800Z",
+    "preResultSha256": "fbb6a4a2c4484cb80658a20cfe3243e9fdd233b402b6f636ec64075756ee6c28",
+    "diagnostic": "evidence/p01-native-resize-diagnostic-20261003T220400Z",
+    "diagnostics": [
+      "evidence/p01-native-resize-diagnostic-20261003T220400Z",
+      "evidence/p01-native-format-diagnostic-20261003T223200Z"
+    ],
+    "repairEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-repair-20261003T223400Z",
+    "static": "TYPECHECK_LINT_PASS",
+    "targeted": "PASS_7_CASES_36_OBSERVATIONS",
+    "scopeIntegrity": "PASS_REVERSE_EVERY_BYTE",
+    "fullRegression": "NOT_RUN_FINAL",
+    "remainingRegression": "NOT_COMPLETED_OWNER_ABORT_KNOWN_FOCUS_RED_B02_REPEATED_FAIL",
+    "currentFui": "PASS_12",
+    "currentBddControls": "PASS_111_2POSITIVE_14INTENDED_NEGATIVE",
+    "currentFuiEvidence": "evidence/p01-fui-runtime-20261003T232700Z"
+  },
+  "pendingFocusRepair": {
+    "authority": "Existing P01-UPPER-FOCUS-UNCLIPPED-PROJECTION-01",
+    "planning": "evidence/p01-pending-focus-planning-20261003T225400Z",
+    "red": "7FAIL",
+    "pre": "PASS",
+    "implementation": "SOLE_BRIDGE_LEASE_VALIDITY_REPAIR",
+    "scope": "SAME_CURRENT_ANCHOR_LEASE_VALIDATION_NO_NEW_VISUAL_AUTHORITY",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "checks": "UNIT_TYPECHECK_LINT_BUILD_PASS",
+    "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-pending-focus-pre-1791070889076.json",
+    "checkpoint": "aad13b9a15e477c7b14b16bcb8b0d4404f207b06",
+    "publication": "BLOCKED_ENVIRONMENT_SSH_TIMEOUT_HTTPS_408_REMOTE_cd93819c_VERIFIED",
+    "preEvidence": "evidence/p01-pending-focus-pre-received-20261004T001300Z",
+    "preResultSha256": "b784112d1b35d80adf1b460037862b324c0499de4b6b7b09a69ba00e8a429ecf",
+    "unit": "PASS_71",
+    "runtime": "PASS_6_CASES_12_INVALIDATIONS_AND_ORIGINAL_31",
+    "newSourceFui": "PASS_12_BDD111_2POSITIVE_14EXACT_NEGATIVE",
+    "runtimeEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-pending-focus-ready-measurement-20261004T014600Z",
+    "runtimePurity": "PASS_AFTER_ORIGINAL_READY_6_CASES_12_OBSERVATIONS"
+  },
+  "upperPaintBoundaryRepair": {
+    "classification": "ABSTRACTION_BOUNDARY",
+    "planning": "evidence/p01-upper-paint-boundary-planning-20261004T012000Z",
+    "production": "IMPLEMENTED_SOLE_BRIDGE",
+    "pre": "FAIL_RETAINED_PROJECTION_PROOF_REQUIRED",
+    "red": "CORRECTED_HISTORICAL_SOURCE_10FAIL_4GUARDS_PASS",
+    "scope": "EXISTING_EXACT_THREE_RESOURCE_PROJECTION",
+    "reviewer": "gpt-6-astra/xhigh",
+    "request": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-upper-boundary-repeat-pre-1791078947209.json",
+    "preEvidence": "evidence/p01-upper-paint-boundary-pre-received-20261004T014400Z",
+    "repairPlanning": "evidence/p01-upper-paint-boundary-pre-repair-20261004T014800Z",
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "examples": [
+      "P01-RT-UPPER-OWNERSHIP-034",
+      "P01-RT-UPPER-OWNERSHIP-035"
+    ],
+    "repeatPre": "PASS",
+    "repeatPreEvidence": "evidence/p01-upper-paint-boundary-repeat-pre-received-20261004T021000Z",
+    "firstGreen": "83PASS_2FAIL_TEST_PRIORITY_NO_OP",
+    "fixtureRepair": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-priority-fixture-repair-20261004T022600Z",
+    "checks": "UNIT85_TYPECHECK_LINT_BUILD_PASS",
+    "checksEvidence": "evidence/p01-upper-paint-boundary-green-20261004T022800Z",
+    "actualB02": "PASS_2_SOURCE_BINARY_UNCHANGED",
+    "actualB02Evidence": "evidence/p01-upper-boundary-b02-20261004T023000Z",
+    "productionSha256": "53901d117d50c9efc5abf3d4590f8e1ba699a28a042641f9bccdb070e64e218a",
+    "matrix": "FAIL_48PASS_1FAIL",
+    "matrixEvidence": "evidence/p01-upper-boundary-regression-20261004T023500Z",
+    "staticValidation": "STRICT_COMPLIANCE_BOUNDARIES_PASS",
+    "staticEvidence": "evidence/p01-upper-boundary-validation-20261004T024100Z",
+    "checkpointPublication": {
+      "status": "PASS",
+      "head": "a894702a2429ad33c6168a64e0f9759462b8d3b3",
+      "remote": "a894702a2429ad33c6168a64e0f9759462b8d3b3",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-publication-catchup-20261004T024240Z/publication.json",
+      "currentRepair": "UNCOMMITTED"
+    },
+    "hoverDiagnostic": {
+      "status": "CURRENT_ORIGINAL_FULL_CASE_PASS_HISTORICAL_FAIL_RETAINED",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-hover-diagnostic-adoption-20261007T220430Z",
+      "sourceUnchanged": true,
+      "permission": "SCOPED_ESCALATION_RESTORED",
+      "next": "PERFORMANCE_RCA",
+      "originalRepeat": {
+        "status": "PASS",
+        "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-hover-original-repeat-20261007T220626Z",
+        "rootCause": "NOT_PROVEN"
+      },
+      "passiveDiagnostic": {
+        "status": "PASS_52_PROOFS_54_CAPTURES_SOURCE_RESTORED",
+        "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-hover-passive-diagnostic-20261007T221000Z"
+      },
+      "fullRootEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z",
+      "rootCause": "NOT_PROVEN"
+    },
+    "currentFui": {
+      "status": "PASS_12_BDD111_2POSITIVE_14EXACT_NEGATIVE",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261007T221459Z"
+    },
+    "fullRoot": {
+      "status": "COMPLETE_FAIL_PERFORMANCE_ONLY",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z",
+      "previousEnvironmentalFail": "evidence/p01-current-full-root-20261007T222219Z",
+      "previousStalePinFail": "evidence/p01-current-full-root-20261007T222505Z",
+      "drawPassed": 215,
+      "desktopPassed": 134,
+      "desktopFailed": 1,
+      "sourceUnchanged": true,
+      "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json"
+    }
+  },
+  "currentStrictValidation": {
+    "status": "PASS",
+    "toolVersion": "1.14.1",
+    "issues": 0,
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z",
+    "productionDelta": "NONE",
+    "acceptedSpecSha256": "78b34deb77654aeab708050926876cc66ddb53ca98641be067cc95ebe6c12f80",
+    "independentPre": "PASS",
+    "preEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z",
+    "next": "Resolve actual benchmark environment/cause; full verification and cumulative POST remain blocked"
+  },
+  "currentCheckObservation": {
+    "atUtc": "2026-10-08T05:13:10.589Z",
+    "phase": "P01_REFRESH_FULL_ROOT_FAIL_FOCUS_RCA_OPEN",
+    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json",
+    "drawPassed": 215,
+    "desktopPassed": 133,
+    "desktopFailed": 2,
+    "p95Ms": 126.39999999850988,
+    "sourceUnchanged": true,
+    "rca": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z",
+    "cumulativeVerify": "BLOCKED_REQUIRED_FOCUS_FAIL",
+    "post": "NOT_RUN",
+    "visual": "NOT_APPROVED"
+  },
+  "previousCurrentCheckObservations": [
+    {
+      "atUtc": "2026-10-07T23:06:06.727Z",
+      "phase": "FULL_ROOT_RUNNING_WITH_PERFORMANCE_FAIL_STRUCTURAL_PRE_PENDING",
+      "run": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z",
+      "completed": 71,
+      "passed": 70,
+      "failed": 1,
+      "failureLines": [
+        "  x   17 tests\\e2e\\ui-contract-theme-performance.spec.ts:217:1 › P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms (50.0s)"
+      ],
+      "sourceMutations": "NONE_DURING_RUN",
+      "performanceEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-current-performance-observation-20261007T225008Z",
+      "structuralAcceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-proposal-20261007T222823Z/acceptance.json",
+      "formatPre": "REQUEST_PREPARED_WAITING_FOR_CANDIDATE_WRITES_TO_SETTLE",
+      "cumulativeVerify": "BLOCKED",
+      "post": "NOT_RUN",
+      "visual": "NOT_APPROVED"
+    },
+    {
+      "atUtc": "2026-10-07T23:58:05.666Z",
+      "phase": "FULL_ROOT_COMPLETE_PERFORMANCE_FAIL_STRUCTURE_PRE_READY",
+      "run": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z",
+      "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json",
+      "drawPassed": 215,
+      "desktopPassed": 134,
+      "desktopFailed": 1,
+      "sourceCount": 3479,
+      "sourceUnchanged": true,
+      "performanceP95Ms": 203.5,
+      "cumulativeVerify": "BLOCKED",
+      "post": "NOT_RUN",
+      "visual": "NOT_APPROVED"
+    },
+    {
+      "atUtc": "2026-10-08T00:17:37.529Z",
+      "phase": "STRUCTURE_PRE_PASS_APPLIED_STRICT_AND_COMPLIANCE_PASS_PERFORMANCE_OPEN",
+      "run": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z",
+      "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-current-full-root-20261007T223204Z/summary.json",
+      "drawPassed": 215,
+      "desktopPassed": 134,
+      "desktopFailed": 1,
+      "sourceCount": 3479,
+      "sourceUnchanged": true,
+      "performanceP95Ms": 203.5,
+      "cumulativeVerify": "BLOCKED",
+      "post": "NOT_RUN",
+      "visual": "NOT_APPROVED",
+      "structuralPre": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-pre-received-20261008T001400Z",
+      "structuralApplication": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-applied-20261008T001600Z",
+      "displayDecision": "USER_APPLIED_2560x1440_60HZ_DIAGNOSTIC_PASS",
+      "checkpoint": "af5a0f206c8a5c61f8c4f331a11baf49eba7f344",
+      "publication": "PUSHED_REMOTE_SHA_VERIFIED",
+      "publicationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-checkpoint-publication-20261008T002000Z/publication.json"
+    },
+    {
+      "atUtc": "2026-10-08T05:04:26.905Z",
+      "phase": "FULL_ROOT_RUNNING_1440P60HZ",
+      "run": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z",
+      "diagnosticP95Ms": 145.70000000298023,
+      "sourceChanges": "NONE",
+      "cumulativeVerify": "BLOCKED_PENDING_FULL_CHECK",
+      "post": "NOT_RUN",
+      "visual": "NOT_APPROVED",
+      "draw215Pass": true,
+      "desktopExpected": 135,
+      "desktopCompleted": 102,
+      "desktopPassed": 100,
+      "desktopFailures": [
+        "x   96 tests\\e2e\\ui-contract-theme.spec.ts:5798:3 › P01-UPPER-028 actual owned popup foreground contrast and focus raster dark comfortable (14.2s)",
+        "x  100 tests\\e2e\\ui-contract-theme.spec.ts:6038:3 › P01-UPPER-031 actual body focus bounds media neighbors and modal light comfortable (19.4s)"
+      ],
+      "status": "RUNNING_NOT_FINAL"
+    }
+  ],
+  "previousStrictValidations": [
+    {
+      "status": "FAIL",
+      "toolVersion": "1.14.1",
+      "issues": 16,
+      "kind": "REQUIREMENT_BODY_LENGTH",
+      "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-current-static-20261007T221913Z",
+      "productionDelta": "NONE",
+      "next": "Finish running checks before freeze; automatic independent PRE; exact apply after PASS",
+      "proposal": "evidence/p01-openspec-structure-proposal-20261007T222823Z",
+      "proposalStatus": "USER_ACCEPTED_PRE_PENDING",
+      "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-openspec-structure-proposal-20261007T222823Z/acceptance.json"
+    }
+  ],
+  "currentCheckpointPublication": {
+    "startedAtUtc": "2026-10-08T00:22:10.631Z",
+    "finishedAtUtc": "2026-10-08T00:22:42.611Z",
+    "command": [
+      "git",
+      "-c",
+      "core.longpaths=true",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "url.https://github.com/leonmaks/frade.git.insteadOf=git@github.com:leonmaks/frade.git",
+      "-c",
+      "pack.threads=1",
+      "-c",
+      "pack.windowMemory=64m",
+      "push",
+      "--progress",
+      "origin",
+      "af5a0f206c8a5c61f8c4f331a11baf49eba7f344:refs/heads/codex/frade-ui-design-contract"
+    ],
+    "exitCode": 0,
+    "verifyExitCode": 0,
+    "local": "af5a0f206c8a5c61f8c4f331a11baf49eba7f344",
+    "remote": "af5a0f206c8a5c61f8c4f331a11baf49eba7f344",
+    "status": "PUSHED_REMOTE_SHA_VERIFIED",
+    "transport": "per-command HTTPS rewrite to the same authorized GitHub repository; persistent config unchanged",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-checkpoint-publication-20261008T002000Z/publication.json"
+  },
+  "currentRefreshDiagnostic": {
+    "atUtc": "2026-10-08T03:24:36.305Z",
+    "id": "P01-REFRESH-DIAGNOSTIC-60HZ-01",
+    "authority": "Direct user message in owning UI chat",
+    "verbatim": "Допустим диагностический прогон при 60 Гц и выше",
+    "status": "PASS_DIAGNOSTIC_CONTROL_NOT_FULL_ROOT_CLOSURE",
+    "branch": "codex/frade-ui-design-contract",
+    "baselineHead": "e90ec8c27fdb68bc5f5352d92abe3e62ebd1ec39",
+    "scope": "One unchanged original benchmark after verifying actual 60Hz-or-higher diagnostic display mode; retain original 29Hz FAIL; no gate threshold, test assertion, paint protocol, production or domain modification",
+    "benchmark": "NOT_RUN_TARGET_DISPLAY_MODE_NOT_ESTABLISHED",
+    "reviewRequiredForProduction": "No production repair is authorized or performed by this diagnostic acceptance",
+    "sourceHashes": [
+      {
+        "path": "apps/desktop/tests/e2e/ui-contract-theme-performance.spec.ts",
+        "sha256": "1f867cb6901378a91a470682483c9eb97f559df72e8da871d7b8d4dafd3419e2"
+      },
+      {
+        "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+        "sha256": "7c3e52a69c1b8346a78f4297774f5c2342a3ecdaeb05a2611465d2f09c546f43"
+      },
+      {
+        "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+        "sha256": "53901d117d50c9efc5abf3d4590f8e1ba699a28a042641f9bccdb070e64e218a"
+      },
+      {
+        "path": "apps/desktop/out/main/index.cjs",
+        "sha256": "d0a3bb1920e8464543e732ca5b7ced13583a5b0b8300432b17f3d7ab7d2853a9"
+      }
+    ],
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z",
+    "blocker": null,
+    "next": "Fresh full check:all",
+    "publication": {
+      "atUtc": "2026-10-08T03:39:41.087Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "d95893a0ca932e6704693e8f9f0a17cdd31b09d2",
+      "remote": "d95893a0ca932e6704693e8f9f0a17cdd31b09d2",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "performance": "DIAGNOSTIC_PASS145.7MS_FULL_ROOT_STILL_PENDING"
+    },
+    "publicationEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-diagnostic-acceptance-20261008T032400Z/publication.json",
+    "userReportedMode": "2560x1440@60.01Hz",
+    "observedMode": "2560x1440@60Hz_WMI",
+    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-benchmark-20261008T033500Z",
+    "interpretationLimit": "Resolution and refresh changed together; individual cause not isolated",
+    "result": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-benchmark-20261008T033500Z/summary.json",
+    "p95Ms": 145.70000000298023,
+    "sourceUnchanged": true,
+    "binaryUnchanged": true,
+    "displayUnchanged": true
+  },
+  "currentFocusRca": {
+    "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z",
+    "status": "ROOT_CAUSE_NOT_PROVEN",
+    "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/diagnostic-plan.md",
+    "pre": "PASS",
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "publication": {
+      "atUtc": "2026-10-08T05:15:24.072Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "1365fc30dd55d995d09f4d31c799563eab372e71",
+      "remote": "1365fc30dd55d995d09f4d31c799563eab372e71",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "files": 4722,
+      "checks": "FULL_FAIL133PASS2FOCUSFAIL_PERFORMANCE_PASS126.4MS",
+      "sourceChanges": "NONE"
+    },
+    "preEvidence": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-diagnostic-pre-received-20261008T054219Z",
+    "preVerification": {
+      "atUtc": "2026-10-08T05:42:20.394Z",
+      "status": "PASS",
+      "rawArtifacts": 17,
+      "packetFiles": 87,
+      "gateStatus": "PASS",
+      "threadId": "01a11a00-d46b-7c92-a7ca-8c28d23f9849",
+      "reportSha256": "fcc121c731ad211b8da8c259b157b403fdf95d5029ddf1c109bc4f6ed5425e09",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "sourcePlanUnchanged": true,
+      "eventCount": 84,
+      "reviewPolicy": {
+        "stage": "P01 upper-three keyboard repair",
+        "phase": "PRE",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "xhigh",
+        "source": {
+          "path": "openspec/changes/frade-p01-theme-core/tasks.md",
+          "sha256": "4a9580a3cd027f5f567afd6389fc978d433f46b7e5a5e7f9cd8f1ed1203ae26c",
+          "excerpt": "Stage P01 upper-three keyboard repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three keyboard repair POST reviewer: gpt-6-astra; reasoning xhigh."
+        }
+      },
+      "actualBackend": "NOT_CONFIRMED",
+      "actualEffort": "NOT_CONFIRMED",
+      "scope": "Focused PRE of passive diagnosis only for two current original View-focus failures. No production repair, assertion/deadline/interaction changes, scope exception, gate waiver or cumulative closure."
+    }
+  },
+  "currentFocusDiagnostic": {
+    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z",
+    "mode": "clones",
+    "status": "NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN",
+    "fixedControlExecutions": 2,
+    "fixedCloneExecutions": 6,
+    "pre": "PASS",
+    "fullRoot": "FAIL2",
+    "sourceChanges": "NONE_AFTER_EXACT_RESTORATION",
+    "controls": "2PASS",
+    "clones": "6PASS",
+    "evidenceIntegrity": "PASS",
+    "sourceRestore": "3479sources4pinsEXACT",
+    "discovery": "135original0diagnostic",
+    "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/summary.json",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/report.md",
+    "next": "STOP_REPAIR; further full-context diagnosis requires bounded plan/fresh PRE; no green-seeking full rerun",
+    "publication": {
+      "atUtc": "2026-10-08T06:07:25.000Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "fdcada9bcb076bd997ede3eb44bd607343ae9322",
+      "remote": "fdcada9bcb076bd997ede3eb44bd607343ae9322",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "files": 329,
+      "scope": "DIAGNOSTIC8PASS_ROOT_CAUSE_NOT_PROVEN_FULL_ROOT_FAIL2"
+    }
+  },
+  "currentFocusContextDiagnostic": {
+    "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-plan-20261008T063000Z/diagnostic-plan-v3.md",
+    "candidateSha256": "cef8dd32c6299ae7aa7145322bd6abbf01739ed11dde5accf8185d7c14f09ab9",
+    "status": "COMPLETED_FAIL_B05_FOCUS_NOT_REPRODUCED",
+    "previousPreFail": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-pre-received-20261008T065045Z",
+    "static": "VIRTUAL_TYPESCRIPT_ESLINT_PASS",
+    "strict": "PASS",
+    "execution": "COMPLETED",
+    "fullRoot": "FAIL2",
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "pre": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-pre-received-20261008T071501Z",
+    "verification": {
+      "atUtc": "2026-10-08T07:15:01.828Z",
+      "status": "PASS",
+      "rawArtifacts": 17,
+      "packetFiles": 148,
+      "gateStatus": "PASS",
+      "threadId": "01a11a52-7a91-7411-88bf-cc2997bb6959",
+      "reportSha256": "b5298549a19393f0632d44db0dfc02050545781a5fac9170df39890e5538eebd",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "sourcePlanUnchanged": true,
+      "eventCount": 72,
+      "reviewPolicy": {
+        "stage": "P01 upper-three keyboard repair",
+        "phase": "PRE",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "xhigh",
+        "source": {
+          "path": "openspec/changes/frade-p01-theme-core/tasks.md",
+          "sha256": "4a9580a3cd027f5f567afd6389fc978d433f46b7e5a5e7f9cd8f1ed1203ae26c",
+          "excerpt": "Stage P01 upper-three keyboard repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three keyboard repair POST reviewer: gpt-6-astra; reasoning xhigh."
+        }
+      },
+      "actualBackend": "NOT_CONFIRMED",
+      "actualEffort": "NOT_CONFIRMED",
+      "scope": "Focused PRE of one full-desktop-context passive focus diagnosis:135 mapped cases in original desktop order,92 appended exact copies+43 original tests, passive observers only in12variants of028/031. No product repair, new gate result, forced focus, assertion/deadline change or waiver."
+    },
+    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z",
+    "publication": {
+      "atUtc": "2026-10-08T18:18:28.771Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "6ee4adbe99ba8dbd209aa25727ebe275c4f34273",
+      "remote": "6ee4adbe99ba8dbd209aa25727ebe275c4f34273",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "files": 4800,
+      "scope": "NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN; HISTORICAL_FULL_ROOT_FAIL2_REMAINS"
+    },
+    "preVerification": {
+      "atUtc": "2026-10-08T07:15:01.828Z",
+      "status": "PASS",
+      "rawArtifacts": 17,
+      "packetFiles": 148,
+      "gateStatus": "PASS",
+      "threadId": "01a11a52-7a91-7411-88bf-cc2997bb6959",
+      "reportSha256": "b5298549a19393f0632d44db0dfc02050545781a5fac9170df39890e5538eebd",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "sourcePlanUnchanged": true,
+      "eventCount": 72,
+      "reviewPolicy": {
+        "stage": "P01 upper-three keyboard repair",
+        "phase": "PRE",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "xhigh",
+        "source": {
+          "path": "openspec/changes/frade-p01-theme-core/tasks.md",
+          "sha256": "4a9580a3cd027f5f567afd6389fc978d433f46b7e5a5e7f9cd8f1ed1203ae26c",
+          "excerpt": "Stage P01 upper-three keyboard repair PRE reviewer: gpt-6-astra; reasoning xhigh. Stage P01 upper-three keyboard repair POST reviewer: gpt-6-astra; reasoning xhigh."
+        }
+      },
+      "actualBackend": "NOT_CONFIRMED",
+      "actualEffort": "NOT_CONFIRMED",
+      "scope": "Focused PRE of one full-desktop-context passive focus diagnosis:135 mapped cases in original desktop order,92 appended exact copies+43 original tests, passive observers only in12variants of028/031. No product repair, new gate result, forced focus, assertion/deadline change or waiver."
+    },
+    "progress": {
+      "atUtc": "2026-10-08T08:14:15.539Z",
+      "startedOrdinal": 135,
+      "total": 135,
+      "title": "[135/135] tests\\e2e\\workbench.spec.ts:9:1 › KA opens through UI, edits a card, saves original YAML and restores workspace",
+      "completedOutcomes": "134PASS_1B05FAIL",
+      "finishedAtUtc": "2026-10-08T08:14:32.014Z"
+    },
+    "counts": {
+      "cases": 135,
+      "executions": 135,
+      "passed": 134,
+      "failed": 1,
+      "timedOut": 0,
+      "skipped": 0,
+      "interrupted": 0,
+      "unexpected": 1,
+      "retries": 0
+    },
+    "completion": {
+      "atUtc": "2026-10-08T08:14:32.014Z",
+      "runtime": {
+        "atUtc": "2026-10-08T08:14:25.486Z",
+        "exitCode": 1,
+        "error": null,
+        "report": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-focus-context-diagnostic-run-20261008T071630Z\\runtime-report.json"
+      },
+      "error": null,
+      "progressErrors": [],
+      "restored": true,
+      "sourcePass": true,
+      "sourceCount": 3479,
+      "displayEndpointsUnchanged": true,
+      "discovery": {
+        "atUtc": "2026-10-08T08:14:32.014Z",
+        "command": [
+          "E:\\Program Files\\nodejs\\node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/desktop",
+          "exec",
+          "playwright",
+          "test",
+          "--list",
+          "--reporter=json"
+        ],
+        "exitCode": 0,
+        "count": 135,
+        "diagnosticNames": 0,
+        "exact": true
+      },
+      "selectionPassed": true,
+      "scope": "DIAGNOSTIC_ONLY_ORIGINAL_FULL_ROOT_FAIL2_REMAINS"
+    },
+    "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/summary.json",
+    "assessment": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/assessment.json",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/report.md",
+    "sourceAtAnalysis": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/source-at-analysis.json",
+    "focus": "12PASS_36COMPLETE_CONTEXTS_ROOT_CAUSE_NOT_PROVEN"
+  },
+  "currentLowerB05RestorationRca": {
+    "status": "OPEN_PRIOR_FAIL_NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN",
+    "facts": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/b05-rca-facts.json",
+    "actual": {
+      "case": 57,
+      "expectedLeft": "65px",
+      "actualLeft": "0px"
+    },
+    "sourceChanged": false,
+    "next": "FRESH_INDEPENDENT_PRE_BEFORE_NEW_ONE57CASE_PREFIX_CONTEXT_DIAGNOSIS",
+    "diagnosticPlan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-plan-20261008T182756Z/diagnostic-plan-v2.md",
+    "candidateSha256": "ec0ae82cdff8e66f6c41d9cbdf83e1c5136c56f93bf0e00ceace6d5d44d1eae9",
+    "static": "TYPECHECK_LINT_STRICT_PASS",
+    "runtime": "COMPLETED_PASS1_DIAGNOSTIC_ONLY",
+    "reviewPolicy": {
+      "stage": "P01 accepted B05 lower restoration passive mutation diagnostic",
+      "phase": "PRE",
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "source": {
+        "path": "openspec/changes/frade-p01-theme-core/design.md",
+        "sha256": "373ada002d03a81cd1ea03a5e1c8fc954157f8fae19f138dd07d636a81ef109b",
+        "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+      }
+    },
+    "diagnosticPre": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-pre-received-20261008T185653Z",
+    "preVerification": {
+      "atUtc": "2026-10-08T18:56:53.959Z",
+      "status": "PASS",
+      "rawArtifacts": 17,
+      "packetFiles": 193,
+      "gateStatus": "PASS",
+      "threadId": "01a11cd7-ce00-74d1-afbd-c2da88777148",
+      "reportSha256": "46ba24ae328521260235d80d2715c7dcfba8f45a9d59e8d8355a00b7902c7544",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "sourcePlanUnchanged": true,
+      "eventCount": 49,
+      "reviewPolicy": {
+        "stage": "P01 accepted B05 lower restoration passive mutation diagnostic",
+        "phase": "PRE",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "xhigh",
+        "source": {
+          "path": "openspec/changes/frade-p01-theme-core/design.md",
+          "sha256": "373ada002d03a81cd1ea03a5e1c8fc954157f8fae19f138dd07d636a81ef109b",
+          "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+        }
+      },
+      "actualBackend": "NOT_CONFIRMED",
+      "actualEffort": "NOT_CONFIRMED",
+      "scope": "Fresh lower-B05 diagnostic PRE: one appended exact B05 copy, passive first-owned-menu mutation journal, original assertions/actions/prefix and product/binary unchanged. No repair, gate waiver, extra sampling or scope/model change."
+    },
+    "environmentPreflight": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/assessment.json",
+    "environmentDisplay": {
+      "atUtc": "2026-10-08T20:16:38.226Z",
+      "command": "Get-CimInstance Win32_VideoController | Select-Object Name,CurrentHorizontalResolution,CurrentVerticalResolution,CurrentRefreshRate,VideoModeDescription | ConvertTo-Json -Depth 3",
+      "controllers": [
+        {
+          "Name": "Intel(R) UHD Graphics 630",
+          "CurrentHorizontalResolution": 2560,
+          "CurrentVerticalResolution": 1440,
+          "CurrentRefreshRate": 60,
+          "VideoModeDescription": "2560 x 1440 x 4294967296 colors"
+        },
+        {
+          "Name": "NVIDIA GeForce GTX 1650",
+          "CurrentHorizontalResolution": null,
+          "CurrentVerticalResolution": null,
+          "CurrentRefreshRate": null,
+          "VideoModeDescription": null
+        }
+      ]
+    },
+    "prePublication": {
+      "atUtc": "2026-10-08T18:58:49.075Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "54fcbd5bacd0665abb5ec1de2756527043524618",
+      "remote": "54fcbd5bacd0665abb5ec1de2756527043524618",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "files": 43,
+      "scope": "B05_ONE_DIAGNOSTIC_PRE_PASS_RUNTIME_NOT_RUN_ORIGINAL_FAILS_OPEN"
+    },
+    "resumeRunner": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/resume-preflight-runner.mjs",
+    "resumeRunnerProvenance": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/resume-preflight-provenance.json",
+    "environmentCheckpointPublication": {
+      "atUtc": "2026-10-08T19:15:31.667Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "b24ef02475be4d0527819a4d0bc9735919ce1ebc",
+      "remote": "b24ef02475be4d0527819a4d0bc9735919ce1ebc",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "files": 33,
+      "scope": "ENVIRONMENT_BLOCKED_DISPLAY_3840x2160_29HZ_B05_RUNTIME_NOT_RUN_PRODUCT_UNCHANGED"
+    },
+    "run": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z",
+    "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/summary.json",
+    "analysis": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/journal-analysis.json",
+    "report": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/report.md",
+    "capture": "COMPLETE210_RECORDS2_ROOTS40_NODES",
+    "runtimeExecutionsUsed": 1,
+    "environmentStatus": "RESOLVED_FOR_COMPLETED_RUN",
+    "diagnosticPublication": {
+      "atUtc": "2026-10-08T20:21:46.867Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "77e2b99807c68f96caf5c54bfd2ce48193d888e5",
+      "remote": "77e2b99807c68f96caf5c54bfd2ce48193d888e5",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "files": 57,
+      "scope": "SINGLE_B05_DIAGNOSTIC_PASS_PRIOR_FAILS_OPEN_NO_PRODUCT_REPAIR",
+      "checks": "SOURCE3479_PINS4_EXACT_DISCOVERY135_CAPTURE_COMPLETE_PRODUCT_DIFF_EMPTY_STAGED_WHITESPACE_PASS"
+    },
+    "prefixContext": {
+      "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-plan-20261008T202830Z/diagnostic-plan.md",
+      "candidateSha256": "1dd5e6fd145bd7755a2f42a94e2fc23ee0f02f74406febdfd9c4e977124b8bbb",
+      "static": "TYPECHECK_LINT_STRICT_PASS",
+      "reviewPolicy": {
+        "stage": "P01 accepted lower-B05 prefix-context passive restoration diagnosis",
+        "phase": "PRE",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "xhigh",
+        "source": {
+          "path": "openspec/changes/frade-p01-theme-core/design.md",
+          "sha256": "373ada002d03a81cd1ea03a5e1c8fc954157f8fae19f138dd07d636a81ef109b",
+          "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+        }
+      },
+      "runtime": "COMPLETED_DIAGNOSTIC_ONLY",
+      "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-b05-prefix-pre-request-20261008T202830Z-v5.json",
+      "runtimeProtocol": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-plan-20261008T202830Z/runtime-protocol.mjs",
+      "runtimeSha256": "86371a5d0b3c7f5c0ce3975775748fd5e80e5fd88f77c3839c17fed40bc48089",
+      "pre": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T215057Z",
+      "preVerification": {
+        "atUtc": "2026-10-08T21:50:58.285Z",
+        "status": "PASS",
+        "rawArtifacts": 17,
+        "packetFiles": 378,
+        "gateStatus": "PASS",
+        "threadId": "01a11d77-fcf5-7430-8206-d09aeb639b10",
+        "reportSha256": "c97d5647f56ca07f8cd022bdcdef14228be1a4ec42ce89549e8ebcf7740ab5b2",
+        "candidateUnchanged": true,
+        "packetUnchanged": true,
+        "sourcePlanUnchanged": true,
+        "eventCount": 52,
+        "reviewPolicy": {
+          "stage": "P01 accepted lower-B05 prefix-context passive restoration diagnosis",
+          "phase": "PRE",
+          "model": "gpt-6-astra",
+          "reasoningEffort": "xhigh",
+          "source": {
+            "path": "openspec/changes/frade-p01-theme-core/design.md",
+            "sha256": "373ada002d03a81cd1ea03a5e1c8fc954157f8fae19f138dd07d636a81ef109b",
+            "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+          }
+        },
+        "actualBackend": "NOT_CONFIRMED",
+        "actualEffort": "NOT_CONFIRMED",
+        "scope": "Fresh PRE V4 mandatory assertion observation integrity repair for same unused57-case B05 diagnosis; no production/scope/model/runtime extension.",
+        "planSha256": "daa7a6bb610fe9416ef985d7ba6a96c48123e9350f309f0b7cea535d9bb87298",
+        "runtimeSha256": "86371a5d0b3c7f5c0ce3975775748fd5e80e5fd88f77c3839c17fed40bc48089",
+        "candidateSha256": "1dd5e6fd145bd7755a2f42a94e2fc23ee0f02f74406febdfd9c4e977124b8bbb"
+      },
+      "preStatus": "PASS",
+      "blockers": [
+        "Missing or malformed original assertion-time observations can still yield exit0 despite mandatory evidence"
+      ],
+      "next": "STOP_MORE_RUNTIME_AND_REPAIR_UNDER_THIS_PLAN; assess actual journal before any proposed new method/decision",
+      "failPublication": {
+        "atUtc": "2026-10-08T21:28:54.122Z",
+        "status": "PUSHED_REMOTE_SHA_VERIFIED",
+        "head": "bb61ba2db08de50972e497c90dafef549f2067ac",
+        "remote": "bb61ba2db08de50972e497c90dafef549f2067ac",
+        "ref": "refs/heads/codex/frade-ui-design-contract",
+        "files": 72,
+        "scope": "PREFIX_CONTEXT_PRE_FAIL1_OBSERVATION_INTEGRITY_BLOCKER_APP_NOT_RUN"
+      },
+      "operativePlan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-plan-20261008T202830Z/diagnostic-plan-v4.md",
+      "operativeRuntime": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-plan-20261008T202830Z/runtime-protocol-v4.mjs",
+      "controls": "RED2FAIL_GREEN22PASS_STRICT_SYNTAX_PASS",
+      "blockedPreparation": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T210549Z",
+      "prePublication": {
+        "atUtc": "2026-10-08T21:52:27.220Z",
+        "status": "PUSHED_REMOTE_SHA_VERIFIED",
+        "head": "8c392b5ce88a49305052dc87003077f159aa53fa",
+        "remote": "8c392b5ce88a49305052dc87003077f159aa53fa",
+        "ref": "refs/heads/codex/frade-ui-design-contract",
+        "scope": "PRE_PASS_EXACT57_DIAGNOSTIC_RUNTIME_NOT_RUN",
+        "rawEvidencePreserved": true
+      },
+      "run": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z",
+      "diagnosis": "NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN",
+      "counts": {
+        "selected": 57,
+        "executions": 57,
+        "passed": 57,
+        "failed": 0,
+        "timedOut": 0,
+        "skipped": 0,
+        "interrupted": 0,
+        "retries": 0
+      },
+      "summary": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/summary.json",
+      "analysis": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/journal-analysis.json",
+      "report": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/report.md",
+      "runtimeInvocationsUsed": 1,
+      "ownerAssessment": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/owner-assessment.json",
+      "latestBenchmark": {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/artifacts/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/performance-result.json",
+        "sha256": "f03e133e648d7205a7d5b706fe11b370f286817796d03d5e4c10be57f5eb1d07",
+        "rawObservations": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/artifacts/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/all-observations.ndjson",
+        "warmups": 20,
+        "samples": 100,
+        "reportedP95": 145.40000000596046,
+        "recomputedP95": 145.40000000596046,
+        "budget": 150,
+        "status": "PASS"
+      },
+      "publication": {
+        "atUtc": "2026-10-08T22:14:17.561Z",
+        "status": "PUSHED_REMOTE_SHA_VERIFIED",
+        "head": "d92f5b8baba527df455b298ba59e5046ff24eb7a",
+        "remote": "d92f5b8baba527df455b298ba59e5046ff24eb7a",
+        "ref": "refs/heads/codex/frade-ui-design-contract",
+        "files": 2028,
+        "scope": "ONE57CASE_DIAGNOSTIC_ACTUAL_OUTCOME_OLD_FAILS_OPEN",
+        "counts": {
+          "selected": 57,
+          "executions": 57,
+          "passed": 57,
+          "failed": 0,
+          "timedOut": 0,
+          "skipped": 0,
+          "interrupted": 0,
+          "retries": 0
+        },
+        "diagnosis": "NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN",
+        "finalizer": {
+          "actualTestExit": 0,
+          "interpretation": "NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN",
+          "exitCode": 0
+        },
+        "immutableRuntimeInventorySha256": "3127de101c63e844dc52b32b64caf11eaf46dba3afb9fddf64b2f67ff6f789dc",
+        "runtimeInvocationsUsed": 1
+      }
+    }
+  },
+  "currentLowerB05ControlledOrder": {
+    "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan.md",
+    "candidateSha256": "b051ce886be46cf4073829854caeb29d3f2131984017da4069b12880a4cbc7f1",
+    "method": "ONE_UNIT_INVOCATION_FOUR_CONTROLLED_SCHEDULES",
+    "runtime": "NOT_RUN",
+    "production": "UNCHANGED",
+    "historicalFailures": 3,
+    "reviewModel": "gpt-6-astra",
+    "reviewEffort": "xhigh",
+    "pre": {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z",
+      "status": "FAIL",
+      "blocks": 6
+    },
+    "protocolRca": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/protocol-rca.json",
+    "red": "3FAIL",
+    "fixture": "NOT_RUN",
+    "scope": "NO_NEW_HUMAN_DECISION_NEEDED_BY_PRE",
+    "budget": "0/1",
+    "v2": {
+      "plan": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md",
+      "runner": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/unit-protocol-v2.mjs",
+      "candidateSha256": "097e01cb744d1b20e6f59ebf28ae77c5019c33aa5b7cbc755908155c2c496933",
+      "red": "3FAIL",
+      "controls": "44PASS",
+      "virtualChecks": "PASS",
+      "strict": "PASS",
+      "syntax": "PASS",
+      "pre": {
+        "path": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T233417Z",
+        "status": "FAIL",
+        "remaining": 4,
+        "resolved": [
+          "B4",
+          "B6"
+        ]
+      },
+      "request": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-b05-controlled-order-pre-20261008T223431Z-v3.json",
+      "checkpoint": "d5e038bb4293e5db545ea0507f5920fcf73d43c6",
+      "published": true,
+      "producerRca": "openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/producer-contract-rca.json",
+      "target": "NOT_RUN",
+      "budget": "0/1"
+    },
+    "publication": {
+      "atUtc": "2026-10-08T23:41:23.093Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "14aeca23cec112e043d847801b0f1b9608c117f1",
+      "remote": "14aeca23cec112e043d847801b0f1b9608c117f1",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "scope": "PRE_FAIL6_RETAINED_PROTOCOL_RCA_RED3_GREEN44_V2_PRE_FAIL4_PRODUCER_RCA_STOP_NOT_EXECUTED"
+    }
+  },
+  "acceptedMinorDeferral": {
+    "id": "P01-MINOR-DEFERRAL-01",
+    "acceptance": "openspec/changes/frade-p01-theme-core/evidence/p01-minor-deferral-20261009T040325Z/acceptance.json",
+    "decision": "openspec/changes/frade-p01-theme-core/decisions/p01-minor-deferral-20261009T040325Z.md",
+    "defects": [
+      {
+        "id": "P01-DEFERRED-FOCUS-DARK-01",
+        "status": "OPEN_ACCEPTED_DEFERRED"
+      },
+      {
+        "id": "P01-DEFERRED-FOCUS-LIGHT-01",
+        "status": "OPEN_ACCEPTED_DEFERRED"
+      },
+      {
+        "id": "P01-DEFERRED-LOWER-LEFT-01",
+        "status": "OPEN_ACCEPTED_DEFERRED"
+      }
+    ],
+    "optionalControlledUnit": "WITHDRAWN_NOT_RUN0/1",
+    "review": "REPEAT_PRE_PASS",
+    "visual": "HUMAN_ACCEPTED_EXACT_SET_WITH_DISCLOSED_EXCEPTIONS",
+    "publication": {
+      "atUtc": "2026-10-09T04:08:09.309Z",
+      "status": "PUSHED_REMOTE_SHA_VERIFIED",
+      "head": "65025cfe1d5bad00364d14b37fd0e381f1204af1",
+      "remote": "65025cfe1d5bad00364d14b37fd0e381f1204af1",
+      "ref": "refs/heads/codex/frade-ui-design-contract",
+      "scope": "USER_ACCEPTED_THREE_MINOR_DEFECT_DEFERRAL_PLANNING_ONLY_PRE_REQUIRED"
+    },
+    "firstPre": {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-minor-deferral-pre-received-20261009T042902Z",
+      "status": "FAIL",
+      "blockers": 1,
+      "reason": "Packet omitted existing raw V2 FAIL4 records; planning otherwise coherent.",
+      "publication": {
+        "atUtc": "2026-10-09T04:34:23.340Z",
+        "status": "PUSHED_REMOTE_SHA_VERIFIED",
+        "head": "e9300348e553df5fbfdf59ac7ed035bb41dbfd7c",
+        "remote": "e9300348e553df5fbfdf59ac7ed035bb41dbfd7c",
+        "ref": "refs/heads/codex/frade-ui-design-contract",
+        "scope": "PRE_FAIL1_PACKET_COMPLETENESS_FIXED_CURRENT_GALLERY_NOT_APPROVED_REPEAT_PRE_REQUIRED"
+      }
+    },
+    "visualGallery": {
+      "index": "openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md",
+      "manifest": "openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/baseline-manifest.json",
+      "sha256": "06c79710f22631a87a1cf834181ca60fa8a4291a4b00c1cfcd1592f81a8a6c15",
+      "status": "HUMAN_ACCEPTED_EXACT_SET_WITH_DISCLOSED_EXCEPTIONS",
+      "fullScreens": 288,
+      "crops": 84,
+      "acceptance": "openspec/changes/frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json"
+    },
+    "repeatPre": {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-minor-deferral-pre-received-20261009T045409Z",
+      "atUtc": "2026-10-09T04:54:10.449Z",
+      "status": "PASS",
+      "gateStatus": "PASS",
+      "rawArtifacts": 17,
+      "packetFiles": 288,
+      "eventCount": 53,
+      "threadId": "01a11efa-af9a-7f51-9dd5-986deecc0470",
+      "reportSha256": "3a26ef655b00e325dcaae0e5bc0ea906d375ebfa01a3a4ea01bc89364653ade1",
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "sourcePlanUnchanged": true,
+      "decisionUnchanged": true,
+      "finalMessageEqualsReport": true,
+      "actualCliMatchesSelection": true,
+      "reviewPolicy": {
+        "stage": "P01 accepted upper-focus/lower-B05 checkpoint acceptance amendment",
+        "phase": "PRE",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "xhigh",
+        "source": {
+          "path": "openspec/changes/frade-p01-theme-core/design.md",
+          "sha256": "98ba8f361e8408ff5976eb15d2bd6c931579f867c9ae74c6eaf263dc46606c9e",
+          "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+        }
+      },
+      "actualBackend": "NOT_CONFIRMED",
+      "actualEffort": "NOT_CONFIRMED",
+      "scope": "Repeat P01-MINOR-DEFERRAL-01 PRE: fix sole missing immutable raw V2 FAIL4 evidence; original amendment unchanged, no new waiver/production/test/runtime scope."
+    }
+  },
+  "visualAcceptanceCurrent": {
+    "id": "P01-VISUAL-BASELINES-ACCEPTED-01",
+    "recordedAtUtc": "2026-10-09T04:59:20.384Z",
+    "observedAtUtc": "2026-10-09 04:39:06 UTC",
+    "manifestSha256": "06c79710f22631a87a1cf834181ca60fa8a4291a4b00c1cfcd1592f81a8a6c15",
+    "answer": "Принимаю точный набор с раскрытыми исключениями",
+    "gallery": "openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z",
+    "rawQuestion": "Примете ли вы точные визуальные baselines P01 после просмотра [галереи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md)? Это 372 исходных PNG (288 экранов и 84 фрагмента), Light/Dark/HC × compact/comfortable; manifest SHA256 `06c79710f22631a87a1cf834181ca60fa8a4291a4b00c1cfcd1592f81a8a6c15`. Три отложенных FAIL и ранее раскрытые исключения сохраняются. Это отдельное визуальное решение по задаче 2.5; автоматические PRE/POST я выполняю сам.",
+    "status": "HUMAN_ACCEPTED_EXACT_SET_WITH_DISCLOSED_EXCEPTIONS",
+    "manifest": "openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/baseline-manifest.json",
+    "counts": {
+      "total": 372,
+      "fullScreens1280x850": 288,
+      "originalTestCrops": 84
+    },
+    "scope": "Exact Light/Dark/HC x compact/comfortable gallery. Retained geometry/native/placement limitations and three OPEN_ACCEPTED_DEFERRED defects remain. No general A11Y PASS, machine/root PASS, independent POST, archive or P02 authorization.",
+    "recording": "Received during review freeze; recorded after completed unchanged PRE PASS. Immutable original gallery and raw review are unchanged."
+  }
+}

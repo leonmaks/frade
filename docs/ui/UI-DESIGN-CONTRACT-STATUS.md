@@ -1,3 +1,32 @@
+# P01: визуальные baselines приняты; PRE PASS; сверка оставшихся требований
+
+Обновлено 2026-10-09T04:59:20.384Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+
+| Этап | Фактический статус |
+| --- | --- |
+| Foundation | ARCHIVED |
+| P01 resolver / preview | IN_PROGRESS8/10; verification/check batch → cumulative POST |
+| P02–P07 | NOT_STARTED |
+
+| Задача | Статус |
+| --- | --- |
+| Три точных FAIL | OPEN_ACCEPTED_DEFERRED; MINOR priority; cause NOT_PROVEN; repair NOT_STARTED |
+| Controlled unit / V2 protocol | WITHDRAWN_NOT_RUN0/1; raw FAIL6/FAIL4 retained |
+| Повторный независимый PRE | PASS; 288files/53events; candidate/packet/plan unchanged; gpt-6-astra/xhigh requested, backend NOT_CONFIRMED |
+| Визуальное решение | HUMAN_ACCEPTED exact372PNG:288screens+84crops; manifest06c79710f22631a87a1cf834181ca60fa8a4291a4b00c1cfcd1592f81a8a6c15; disclosed exceptions retained |
+| Задачи2.4/2.5/3.1 | EXECUTION_COMPLETE under exact exceptions;49requirements/108scenario occurrences mapped |
+| OpenSpec verify / cumulative POST / archive | OWNER_MAPPING_COMPLETE / PREPARED_NOT_RUN / NOT_RUN |
+
+[Принятое визуальное решение](../../openspec/changes/frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json); [repeat PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-minor-deferral-pre-received-20261009T045409Z/verification.json); [галерея](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md). Gallery NOT_APPROVED at creation remains historical; this separate decision is current authority. Original root exit1 remains FAIL; no whole-case exemption or assertion weakening.
+
+Следующий шаг: сверить все remaining requirements с actual source-bound executions → cumulative POST → archive only after gates. Другие FAIL/missing coverage блокируют владельца; три принятых дефекта не требуют ремонта для этого checkpoint. STOP before P02.
+
+Git: last verified published metadata HEAD a24b7091890d2c086d6ed43970fddede967de876; current PRE receipt/acceptance/progress UNCOMMITTED. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed. READY_FOR_VERIFY: YES; READY_FOR_ARCHIVE: NO; cumulative POST pending.
+
+[Cumulative verification mapping](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/requirement-scenario-mapping.json); [technical audit](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/technical-evidence-audit.json). Updated 2026-10-09T05:07:01.743Z. Actual rootFAIL preserved; checks executed with exact accepted exceptions, no unconditional product/A11Y PASS.
+
+## Предыдущие записи сохранены
+
 # P01: три FAIL приняты как минорные открытые дефекты; новый PRE_REQUIRED
 
 Обновлено 2026-10-09T04:03:25.982Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; guide1.0 / tokens1.0.0. Routing независим.
@@ -17,7 +46,7 @@
 | Исходные tests/assertions/production | UNCHANGED; raw rootFAIL и diagnosticFAIL сохранены |
 | Controlled unit / V2 protocol | WITHDRAWN_NOT_RUN0/1; PRE_FAIL6/FAIL4 не исправлены и не используются |
 | Согласование proposal/design/spec/tasks | APPLIED; strict validation PASS |
-| Новый независимый PRE | First FAIL1 evidence-packet completeness only; repeat PRE_REQUIRED; strict / UI compliance / source3479 integrity PASS |
+| Новый независимый PRE | First FAIL1 evidence-packet completeness only; repeat PRE_RUNNING candidate frozen; strict / UI compliance / source3479 integrity PASS |
 | Задачи2.4/2.5/3.1 | OPEN; remaining-requirement evidence audit после PRE |
 | Verify / cumulative POST | NOT_RUN / NOT_RUN |
 | Human visual / archive | NOT_APPROVED, [current372 gallery](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md) / BLOCKED pending remaining gates |
