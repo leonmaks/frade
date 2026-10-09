@@ -15,7 +15,7 @@
 | Повторный независимый PRE | PASS; 288files/53events; candidate/packet/plan unchanged; gpt-6-astra/xhigh requested, backend NOT_CONFIRMED |
 | Визуальное решение | HUMAN_ACCEPTED exact372PNG:288screens+84crops; manifest06c79710f22631a87a1cf834181ca60fa8a4291a4b00c1cfcd1592f81a8a6c15; disclosed exceptions retained |
 | Задачи2.4/2.5/3.1 | EXECUTION_COMPLETE under exact exceptions;49requirements/108scenario occurrences mapped |
-| OpenSpec verify / cumulative POST / archive | OWNER_MAPPING_COMPLETE / PREPARED_NOT_RUN / NOT_RUN |
+| OpenSpec verify / cumulative POST / archive | OWNER_MAPPING_COMPLETE / FIRST_FAIL1_PACKET_COMPLETENESS_REPEAT_REQUIRED / NOT_RUN |
 
 [Принятое визуальное решение](../../openspec/changes/frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json); [repeat PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-minor-deferral-pre-received-20261009T045409Z/verification.json); [галерея](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md). Gallery NOT_APPROVED at creation remains historical; this separate decision is current authority. Original root exit1 remains FAIL; no whole-case exemption or assertion weakening.
 
@@ -24,6 +24,8 @@
 Git: current acceptance/verification checkpoint d5507f2bf6c8c9d7a7ce976c4608da61c3f69b5c COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-09T05:11:49.995Z. Following metadata commit records receipt; POST pending. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed. READY_FOR_VERIFY: YES; READY_FOR_ARCHIVE: NO.
 
 [Cumulative verification mapping](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/requirement-scenario-mapping.json); [technical audit](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/technical-evidence-audit.json). Updated 2026-10-09T05:07:01.743Z. Actual rootFAIL preserved; checks executed with exact accepted exceptions, no unconditional product/A11Y PASS.
+
+Cumulative POST1 2026-10-09T05:39:37.202Z: FAIL1 missing original ownership RED/test-integrity records;17raw/232events, candidate/packet/plan unchanged, exact stage selection. Existing unchanged rawrecords added; corrected10FAIL/4guardPASS verified. No source/test change or withdrawn diagnostic. [POST1 report](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T053743Z/output--result.md); [packet repair](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/post-packet-completeness-repair.json). Exact visual acceptance and3deferrals honored. Tasks8/10; archive/P02 NOT_RUN.
 
 ## Предыдущие записи сохранены
 
