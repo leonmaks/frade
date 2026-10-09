@@ -27,7 +27,7 @@ Evidence: [audit](../../openspec/changes/frade-p02-transactional-installer/evide
 
 Next: exact scope + model decision → coherent plan refresh → strict → automatic independent PRE → RED/implementation only after PASS.
 
-Git: P01 checkpoint/metadata published623feae8/d876a773; current P02 planning audit publication PENDING. Destination authorization remains origin git@github.com:leonmaks/frade.git refs/heads/codex/frade-ui-design-contract. Right panel queued previously; current opening requested after status update.
+Git: P01 checkpoint/metadata published623feae8/d876a773; current P02 planning audit checkpoint 4e224d940a7ac2e8ba36cdbe37a6044103982017 COMMITTED/PUSHED; remoteSHA verified 2026-10-09T23:48:19.457Z; following metadata commit records receipt. Destination authorization remains origin git@github.com:leonmaks/frade.git refs/heads/codex/frade-ui-design-contract. Right panel queued previously; current opening requested after status update.
 
 ## Предыдущие записи сохранены
 
