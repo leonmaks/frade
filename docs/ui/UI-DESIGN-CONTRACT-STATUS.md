@@ -27,7 +27,7 @@
 |3.3 archive locator/sync/archive/postchecks | COMPLETE; PRE/RED/GREEN/static/root/verify/POST/sync/archive/postchecksPASS |
 |3minor defects | OPEN_ACCEPTED_DEFERRED; causeNOT_PROVEN/repairNOT_STARTED; no generalUI/A11YPASS |
 
-Archive: [P01 tasks](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/tasks.md); [final report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/report.md); [actual post-archive checks](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/post-archive-verification.json); [canonical spec](../../openspec/specs/theme-core/spec.md); [archive POST](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/output--result.md); [verified receipt](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/verification.json); [accepted gallery](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md).
+Archive: [P01 tasks](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/tasks.md); [final report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/published-report.md); [actual post-archive checks](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/post-archive-verification.json); [canonical spec](../../openspec/specs/theme-core/spec.md); [archive POST](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/output--result.md); [verified receipt](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/verification.json); [accepted gallery](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md).
 
 Current archive checks:21filesystemGREEN + original2positive/14negativeGREEN; fresh workspaceunit221/BDD132/typecheck/lint and rootpnpmcheckPASS; post-archive UIcompliance/workspaceBDD/mainstrict/link/source/372PNG/rawbytesPASS.49requirements/108scenario occurrences/72unique preserved. Protected production/Main/vendor/originalE2E unchanged. No fresh app/check:all/screenshots/benchmark; raw historical fullrootexit1 and diagnosticB05FAIL remainFAIL.
 
@@ -35,10 +35,10 @@ Current archive checks:21filesystemGREEN + original2positive/14negativeGREEN; fr
 
 Reviewer assigned by approved stage plan: gpt-6-astra/xhigh; exact CLI/confinement/rawstream/integrity verified; actualbackend/effortNOT_CONFIRMED. Merge protectionLOCAL_ONLY/NOT_CONFIGURED..frade-extension remains future installer fixture; executable VS Code extension API compatibility is not claimed.
 
-Git: P01 archive checkpoint PENDING_ENVIRONMENT_INDEX_RECOVERY; authorized origin/ref only. Right panel queued, visibility unconfirmed.
+Git: P01 archive checkpoint 623feae8ea98f98a5428b31c15557577125860ba COMMITTED/PUSHED; remoteSHA VERIFIED 2026-10-09T23:28:59.935Z. Following metadata commit records publication receipt; authorized UI ref only. Right panel queued, visibility unconfirmed.
 
-Следующий шаг: завершить commit/push и проверить remoteSHA; затем STOPbeforeP02. P02–P07NOT_STARTED.
-Publication environment: original Git launcher timeout300s; confirmed owned orphaned add was stopped, its unchanged empty lock removed after PID exit. Source/tests/history preserved. Exact raw Git object/mode recovery RUNNING; no second writer, no reset/clean/force. [Actual RCA](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/publication-timeout-rca.json).
+Следующий шаг: STOPbeforeP02. P02–P07NOT_STARTED; ожидается отдельная команда на следующий numbered checkpoint.
+Publication environment: original Git launcher timeout300s; confirmed owned orphaned add was stopped, its unchanged empty lock removed after PID exit. Source/tests/history preserved. Exact raw Git object/mode recovery PASS:91259raw hashes/OIDs/modes; refreshExit0;3969ignoredphysicalfiles preserved; no second writer, no reset/clean/force. [Actual RCA](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/publication-timeout-rca.json).
 
 
 ## Предыдущие записи сохранены
