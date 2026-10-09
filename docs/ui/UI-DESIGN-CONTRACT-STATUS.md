@@ -24,7 +24,7 @@
 
 Следующий шаг: repeat PRE with existing raw V2 FAIL4 records → remaining-obligation audit/verify → cumulative POST/visual/archive. Ремонт трёх дефектов отложен; новые FAIL и отсутствующие другие evidence остаются blockers. Решение не даёт полного UI/A11Y PASS и не меняет CI exits.
 
-Git: accepted minor-deferral checkpoint 65025cfe1d5bad00364d14b37fd0e381f1204af1 COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-09T04:08:09.309Z. Following metadata commit records receipt. Only authorized UI ref; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued.
+Git: PRE FAIL1 and gallery checkpoint e9300348e553df5fbfdf59ac7ed035bb41dbfd7c COMMITTED/PUSHED; remote SHA VERIFIED 2026-10-09T04:34:23.340Z. Metadata commit records receipt; repeat PRE_REQUIRED. Authorized UI ref only; branch protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
 
 READY_FOR_VERIFY: NO. No tests/app run in this amendment.
 
