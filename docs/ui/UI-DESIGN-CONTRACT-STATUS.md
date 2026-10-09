@@ -1,4 +1,49 @@
-# P01:9/10; archive implementation/checks PASS; POST_REQUIRED
+# UI Design Contract: P01 ARCHIVED —10/10; STOP before P02
+
+Обновлено 2026-10-09T22:30:31.270Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; guide1.0 / tokens1.0.0. Routing независим.
+
+| Этап | Фактический статус |
+| --- | --- |
+| Foundation | ARCHIVED21/21 |
+| P01 resolver/preview | ARCHIVED10/10; exact disclosed exceptions |
+| P02 transactional installer | NOT_STARTED |
+| P03 VS Code theme import | NOT_STARTED |
+| P04 icon registries | NOT_STARTED |
+| P05 isolated browser host | NOT_STARTED |
+| P06 native contribution APIs | NOT_STARTED |
+| P07 registry/profiles/policy | NOT_STARTED |
+
+| Задачи P01 | Статус |
+| --- | --- |
+|1.1 audit/accepted scope | COMPLETE |
+|1.2 coherent validation/PRE | COMPLETE; historical FAIL retained |
+|2.1 resolver BDD/RED/property tests | COMPLETE |
+|2.2 resolver/registry/tokens docs | COMPLETE |
+|2.3 transaction service/ownership | COMPLETE |
+|2.4 adapter/DTO/filesystem/bootstrap/keyboard/overlay | COMPLETE with exact3accepted defects |
+|2.5 runtime/media/visual/performance | COMPLETE;372PNG accepted; original p95126.4ms<=150 |
+|3.1 applicable integration checks | EXECUTED; raw fullrootFAIL retained under exact exception |
+|3.2 verification/cumulativePOST | COMPLETE; independent cumulativePOST PASS |
+|3.3 archive locator/sync/archive/postchecks | COMPLETE; PRE/RED/GREEN/static/root/verify/POST/sync/archive/postchecksPASS |
+|3minor defects | OPEN_ACCEPTED_DEFERRED; causeNOT_PROVEN/repairNOT_STARTED; no generalUI/A11YPASS |
+
+Archive: [P01 tasks](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/tasks.md); [final report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/report.md); [actual post-archive checks](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/post-archive-verification.json); [canonical spec](../../openspec/specs/theme-core/spec.md); [archive POST](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/output--result.md); [verified receipt](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/verification.json); [accepted gallery](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md).
+
+Current archive checks:21filesystemGREEN + original2positive/14negativeGREEN; fresh workspaceunit221/BDD132/typecheck/lint and rootpnpmcheckPASS; post-archive UIcompliance/workspaceBDD/mainstrict/link/source/372PNG/rawbytesPASS.49requirements/108scenario occurrences/72unique preserved. Protected production/Main/vendor/originalE2E unchanged. No fresh app/check:all/screenshots/benchmark; raw historical fullrootexit1 and diagnosticB05FAIL remainFAIL.
+
+Открытые3дефекта: DarkComfortable firstView focus; LightComfortable firstView afterwide viewport; sameDIV lower-popup inlineleft65px→0px restoration. AcceptedMINOR, causeNOT_PROVEN; UI follow-up remains separate. Legacy geometry/native/placement, runtime cache/context/hardware limits retained.
+
+Reviewer assigned by approved stage plan: gpt-6-astra/xhigh; exact CLI/confinement/rawstream/integrity verified; actualbackend/effortNOT_CONFIRMED. Merge protectionLOCAL_ONLY/NOT_CONFIGURED..frade-extension remains future installer fixture; executable VS Code extension API compatibility is not claimed.
+
+Git: P01 archive checkpoint PENDING_ENVIRONMENT_INDEX_RECOVERY; authorized origin/ref only. Right panel queued, visibility unconfirmed.
+
+Следующий шаг: завершить commit/push и проверить remoteSHA; затем STOPbeforeP02. P02–P07NOT_STARTED.
+Publication environment: original Git launcher timeout300s; confirmed owned orphaned add was stopped, its unchanged empty lock removed after PID exit. Source/tests/history preserved. Exact raw Git object/mode recovery RUNNING; no second writer, no reset/clean/force. [Actual RCA](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/publication-timeout-rca.json).
+
+
+## Предыдущие записи сохранены
+
+# P01:9/10; archive POST_PASS; sync/archive/postchecks required
 
 Обновлено 2026-10-09T06:04:12.455Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0; Routing независим.
 
@@ -21,20 +66,20 @@
 |2.5 runtime/media/visual/performance | COMPLETE with disclosed exceptions; exact372PNG humanaccepted; p95full126.4ms<=150 |
 |3.1 applicable checks | EXECUTED; strict/UIcompliance PASS; raw fullroot exit1 staysFAIL withexact2acceptedfocus defects; staticcache/context limits retained |
 |3.2 verify/cumulativePOST | COMPLETE;49requirements/108scenariooccurrences/72uniquenames;1874files/103events; candidate/packet/plan exact |
-|3.3 sync/archive/post-archivechecks | NOT_RUN; PRE_PASS; test-only locator implemented/checks PASS; POST_REQUIRED |
+|3.3 sync/archive/post-archivechecks | NOT_RUN; independent archive POST_PASS |
 |3minor defects | OPEN_ACCEPTED_DEFERRED;causeNOT_PROVEN/repairNOT_STARTED; controlledunitwithdrawn0/1 |
 
-[POST PASS](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/output--result.md); [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/verification.json); [accepted gallery](../../openspec/changes/frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json); [archive proposal](../../openspec/changes/frade-p01-theme-core/decisions/p01-archive-evidence-locator.proposed.md); [isolated archive proof](../../openspec/changes/frade-p01-theme-core/evidence/p01-archive-readiness-20261009T060412Z/archive-readiness-proof.json).
+[POST PASS](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/output--result.md); [verified receipt](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/verification.json); [accepted gallery](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json); [archive proposal](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-archive-evidence-locator.proposed.md); [isolated archive proof](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-readiness-20261009T060412Z/archive-readiness-proof.json).
 
-Archive exactscope/date replacement accepted 2026-10-09T21:05:15.729Z: [decision](../../openspec/changes/frade-p01-theme-core/decisions/p01-archive-date-accepted-20261009T210515Z.json), SHA256 8df25895ac83b26d271dcd48b930ca7e388aefce4df16d3e727ced464d1deab0. Effective exact archive root2026-10-10-frade-p01-theme-core. Old acceptance/draft/dateSTOP evidence unchanged. PRE/RED/GREEN/requiredchecks/verify complete. Next: automatic gpt-6-astra/xhigh POST → sync/archive/postchecks/publication. No helper/production modification beforePREPASS; exact372visuals/3minoropen remain; STOPbeforeP02.
+Archive exactscope/date replacement accepted 2026-10-09T21:05:15.729Z: [decision](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-archive-date-accepted-20261009T210515Z.json), SHA256 8df25895ac83b26d271dcd48b930ca7e388aefce4df16d3e727ced464d1deab0. Effective exact archive root2026-10-10-frade-p01-theme-core. Old acceptance/draft/dateSTOP evidence unchanged. PRE/RED/GREEN/requiredchecks/verify complete. Next: automatic gpt-6-astra/xhigh POST → sync/archive/postchecks/publication. No helper/production modification beforePREPASS; exact372visuals/3minoropen remain; STOPbeforeP02.
 
-Final bookkeeping check batch: strict/apply/status/UIcompliance/scope PASS; actual9/10. [Raw checks](../../openspec/changes/frade-p01-theme-core/evidence/p01-implementation-closure-20261009T060412Z/check-batch.json). No runtime rerun or test/helper/production change.
+Final bookkeeping check batch: strict/apply/status/UIcompliance/scope PASS; actual9/10. [Raw checks](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-implementation-closure-20261009T060412Z/check-batch.json). No runtime rerun or test/helper/production change.
 
 Reviewer: approved gpt-6-astra/xhigh; actualbackend/effort NOT_CONFIRMED. Retained geometry/native/placement and3defects do not receive generalUI/A11YPASS.
 
-Git: current test-only archive implementation checkpoint 43bc75e264dc4238a08bae924c611f96ee063b83 COMMITTED/PUSHED; remoteSHA VERIFIED 2026-10-09T21:53:22.160Z. Following metadata commit records receipt. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued. POST_PREPARED; READY_FOR_ARCHIVE: NO.
+Git: current test-only archive implementation checkpoint 43bc75e264dc4238a08bae924c611f96ee063b83 COMMITTED/PUSHED; remoteSHA VERIFIED 2026-10-09T21:53:22.160Z. Following metadata commit records receipt. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued. POST_PASS; sync/archive/postchecks pending; READY_FOR_ARCHIVE: YES.
 
-Archive delta actualchecks 2026-10-09T21:42:56.082Z: RED21FAIL → fs21GREEN + original2positive/14negativeGREEN; workspaceunit221/BDD132/typecheck/lint/rootcheck/strictPASS. Source/registry reversebyte-exact; 3477/3479 originalsourcefiles unchanged, accepted changed support only; protectedmain/bridge/unit/E2E/vendorasset bytesexact. [Owner verify](../../openspec/changes/frade-p01-theme-core/evidence/p01-archive-locator-implementation-20261009T212951Z/verification.md). No new app/runtime/screenshots;372accepted baselines/3minoropen unchanged. IndependentPOST/sync/archive/postchecks pending; STOPbeforeP02.
+Archive delta actualchecks 2026-10-09T21:42:56.082Z: RED21FAIL → fs21GREEN + original2positive/14negativeGREEN; workspaceunit221/BDD132/typecheck/lint/rootcheck/strictPASS. Source/registry reversebyte-exact; 3477/3479 originalsourcefiles unchanged, accepted changed support only; protectedmain/bridge/unit/E2E/vendorasset bytesexact. [Owner verify](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-locator-implementation-20261009T212951Z/verification.md). No new app/runtime/screenshots;372accepted baselines/3minoropen unchanged. IndependentPOST/sync/archive/postchecks pending; STOPbeforeP02.
 
 ## Предыдущие записи сохранены
 
@@ -50,7 +95,7 @@ Archive delta actualchecks 2026-10-09T21:42:56.082Z: RED21FAIL → fs21GREEN + o
 
 | Текущая задача | Фактический статус |
 | --- | --- |
-| Решение пользователя по трём FAIL | ACCEPTED; [P01-MINOR-DEFERRAL-01](../../openspec/changes/frade-p01-theme-core/decisions/p01-minor-deferral-20261009T040325Z.md) |
+| Решение пользователя по трём FAIL | ACCEPTED; [P01-MINOR-DEFERRAL-01](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-minor-deferral-20261009T040325Z.md) |
 | Dark/Comfortable first View popup focus | OPEN_ACCEPTED_DEFERRED; cause NOT_PROVEN |
 | Light/Comfortable first View focus after wide viewport | OPEN_ACCEPTED_DEFERRED; cause NOT_PROVEN |
 | B05 left65px→0px restoration | OPEN_ACCEPTED_DEFERRED; cause NOT_PROVEN |
@@ -60,7 +105,7 @@ Archive delta actualchecks 2026-10-09T21:42:56.082Z: RED21FAIL → fs21GREEN + o
 | Новый независимый PRE | First FAIL1 evidence-packet completeness only; repeat PRE_RUNNING candidate frozen; strict / UI compliance / source3479 integrity PASS |
 | Задачи2.4/2.5/3.1 | OPEN; remaining-requirement evidence audit после PRE |
 | Verify / cumulative POST | NOT_RUN / NOT_RUN |
-| Human visual / archive | NOT_APPROVED, [current372 gallery](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md) / BLOCKED pending remaining gates |
+| Human visual / archive | NOT_APPROVED, [current372 gallery](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md) / BLOCKED pending remaining gates |
 
 Следующий шаг: repeat PRE with existing raw V2 FAIL4 records → remaining-obligation audit/verify → cumulative POST/visual/archive. Ремонт трёх дефектов отложен; новые FAIL и отсутствующие другие evidence остаются blockers. Решение не даёт полного UI/A11Y PASS и не меняет CI exits.
 
@@ -105,33 +150,33 @@ READY_FOR_VERIFY: NO. No tests/app run in this amendment.
 
 Следующий шаг: STOP local predicate patches; producer-bound report/capture/stream/executable/setup contract and meaningful RED, then coherent repair + fresh independent PRE. V2 closes B4/B6 only; target0/1unused;3historicalFAIL open.
 
-Evidence: [full result](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
+Evidence: [full result](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/summary.json), [RCA facts](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-refresh-focus-rca-20261008T051310Z/facts.json), [report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/report.md). Previous FAIL/NOT_RUN сохранены.
 
 Git: Controlled B05 PRE FAIL / V2 plan checkpoint 14aeca23cec112e043d847801b0f1b9608c117f1 COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-08T23:41:23.093Z. Following metadata checkpoint records receipt. V2 PRE FAIL4 / producer-contract RCA; unit NOT_RUN0/1; old3FAIL open; authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued.
 
 Reviewer по плану: gpt-6-astra/xhigh; actual backend/effort NOT_CONFIRMED. READY_FOR_VERIFY: NO.
 
-Диагностика: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/report.md), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/summary.json), [источники и discovery](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/discovery-completion.json). Всего280artifacts;6complete passive captures/18contexts. Persisted files/identity exact; whole031 live-view dy/scroll changes match original viewport control.
+Диагностика: [отчёт](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/report.md), [summary](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/summary.json), [источники и discovery](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-focus-passive-diagnostic-20261008T055500Z/discovery-completion.json). Всего280artifacts;6complete passive captures/18contexts. Persisted files/identity exact; whole031 live-view dy/scroll changes match original viewport control.
 
-Предыдущий desktop-context diagnostic: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/report.md), [assessment](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/assessment.json), [B05 RCA](../../openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/b05-rca-facts.json). 134PASS/1FAIL; этот результат не закрывает historical full gateFAIL2.
+Предыдущий desktop-context diagnostic: [отчёт](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/report.md), [assessment](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/assessment.json), [B05 RCA](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/b05-rca-facts.json). 134PASS/1FAIL; этот результат не закрывает historical full gateFAIL2.
 
-B05 preflight: [отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/report.md), [actual display](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/display-before.json), [independent PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-pre-received-20261008T185653Z/output--result.md). Это ограничение окружения, не дополнительный UI FAIL. PRE PASS не закрывает ранее сохранённые UI failures.
+B05 preflight: [отчёт](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/report.md), [actual display](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T190225Z/display-before.json), [independent PRE](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-mutation-pre-received-20261008T185653Z/output--result.md). Это ограничение окружения, не дополнительный UI FAIL. PRE PASS не закрывает ранее сохранённые UI failures.
 
-B05 completed diagnostic: [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/report.md), [journal analysis](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/journal-analysis.json), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/summary.json).1PASS; old B05/focus FAIL remain open, root cause NOT_PROVEN. Five fresh hashed artifacts; original tests restored. Environmental blocker resolved for this run.
+B05 completed diagnostic: [report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/report.md), [journal analysis](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/journal-analysis.json), [summary](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-mutation-diagnostic-run-20261008T201617Z/summary.json).1PASS; old B05/focus FAIL remain open, root cause NOT_PROVEN. Five fresh hashed artifacts; original tests restored. Environmental blocker resolved for this run.
 
-Prefix-context PRE: [FAIL report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/output--result.md), [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/verification.json).272packet files/60events; candidate/packet/plan unchanged. Four runner/control completeness defects; no scope conflict/assertion weakening; app NOT_RUN.
+Prefix-context PRE: [FAIL report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/output--result.md), [verified receipt](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T204914Z/verification.json).272packet files/60events; candidate/packet/plan unchanged. Four runner/control completeness defects; no scope conflict/assertion weakening; app NOT_RUN.
 
-Prefix-context PRE: [FAIL report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/output--result.md), [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/verification.json).331packet files/60events; candidate/packet/plan unchanged. One assertion-time evidence completeness defect; no scope conflict/assertion weakening; app NOT_RUN.
+Prefix-context PRE: [FAIL report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/output--result.md), [verified receipt](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-prefix-context-pre-received-20261008T212738Z/verification.json).331packet files/60events; candidate/packet/plan unchanged. One assertion-time evidence completeness defect; no scope conflict/assertion weakening; app NOT_RUN.
 
-B05 prefix-context diagnosis: [report](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/report.md), [summary](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/summary.json), [journal](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/journal-analysis.json). 57PASS/0FAIL/0SKIPPED; NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN. First56 worker0=true, captureComplete=true. Original source restored; old failures not waived.
+B05 prefix-context diagnosis: [report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/report.md), [summary](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/summary.json), [journal](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-prefix-context-run-20261008T215252Z/journal-analysis.json). 57PASS/0FAIL/0SKIPPED; NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN. First56 worker0=true, captureComplete=true. Original source restored; old failures not waived.
 
-Новый метод: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan.md), controlled unit4schedules; virtual TS/ESLint/strict PASS; fixture NOT_INSTALLED/NOT_RUN. Исходное тело vendor fit подтверждено в app.min.js и mxClient.js; порядок исторического FAIL не доказан. Старые планы1/1 исчерпаны.
+Новый метод: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan.md](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan.md), controlled unit4schedules; virtual TS/ESLint/strict PASS; fixture NOT_INSTALLED/NOT_RUN. Исходное тело vendor fit подтверждено в app.min.js и mxClient.js; порядок исторического FAIL не доказан. Старые планы1/1 исчерпаны.
 
-Controlled-unit PRE: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z/output--result.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z/output--result.md), FAIL6;17raw/51events/candidate+packet+plan exact. Append-only fixture scope accepted; method budget0/1. Finalizer RED3FAIL before repair; classificationTEST.
+Controlled-unit PRE: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z/output--result.md](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T225543Z/output--result.md), FAIL6;17raw/51events/candidate+packet+plan exact. Append-only fixture scope accepted; method budget0/1. Finalizer RED3FAIL before repair; classificationTEST.
 
-V2 evidence control repair: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md); actual44controls PASS, source-bound virtual TS/ESLint/strict PASS, final syntax PASS. Historical missing journal paths added. New candidate logs unchanged assertion outcome; full original95454 prefix exact. Fresh PRE_REQUIRED, model budget0/1.
+V2 evidence control repair: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/diagnostic-plan-v2.md); actual44controls PASS, source-bound virtual TS/ESLint/strict PASS, final syntax PASS. Historical missing journal paths added. New candidate logs unchanged assertion outcome; full original95454 prefix exact. Fresh PRE_REQUIRED, model budget0/1.
 
-V2 independent PRE: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T233417Z/output--result.md](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T233417Z/output--result.md), FAIL4;17raw/59events/218hashes/candidate+packet+plan exact. B4/B6 addressed, B1/B2/B3/B5 remain. [Producer RCA](../../openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/producer-contract-rca.md), classificationABSTRACTION_BOUNDARY/TEST; actual Vitest reporter inspected, valid file ancestry absent in V2 short-fullName expectation. No target unit or Electron run; budget0/1.
+V2 independent PRE: [openspec/changes/frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T233417Z/output--result.md](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-controlled-order-pre-received-20261008T233417Z/output--result.md), FAIL4;17raw/59events/218hashes/candidate+packet+plan exact. B4/B6 addressed, B1/B2/B3/B5 remain. [Producer RCA](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-b05-controlled-order-plan-20261008T223431Z/producer-contract-rca.md), classificationABSTRACTION_BOUNDARY/TEST; actual Vitest reporter inspected, valid file ancestry absent in V2 short-fullName expectation. No target unit or Electron run; budget0/1.
 
 ## История (неизменённые прежние записи)
 
@@ -233,7 +278,7 @@ Evidence: openspec/changes/frade-p01-theme-core/evidence/p01-pending-focus-runti
 | Other B02/focus FAIL and pending-prepare lease question | OPEN; no environment or production attribution assumed |
 | Focus/cumulative POST, human visuals, archive | BLOCKED / NOT_APPROVED / BLOCKED |
 
-[Текущий full-check отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-focus-verification-20261003T201400Z/report.md); [принятый scope](../../openspec/changes/frade-p01-theme-core/decisions/p01-native-resize-settlement-fixture.proposed.md); [acceptance](../../openspec/changes/frade-p01-theme-core/evidence/p01-native-resize-planning-20261003T211000Z/acceptance.json).
+[Текущий full-check отчёт](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-upper-focus-verification-20261003T201400Z/report.md); [принятый scope](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-native-resize-settlement-fixture.proposed.md); [acceptance](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-native-resize-planning-20261003T211000Z/acceptance.json).
 
 Next: original two fixtures/all six lower states, then remaining current-source regressions and FUI controls. Reverse delta restores every byte; only two named callbacks changed, production/vendor unchanged. Review completed and candidate unfrozen. Existing model assignment unchanged; discussion of Sol did not approve a review-model change.
 
@@ -267,7 +312,7 @@ Next: expanded real focus bounds/occlusion/complete-contour evidence and media; 
 2026-10-03T12:03:53.461Z. Ветка codex/frade-ui-design-contract; UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; change frade-p01-theme-core; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0; P01 5/10.
 
 - Принятый keyboard scope и согласованный план сохранены. Planning checkpoint7f911b957c7a68250362829ce8c559f5742c2770 COMMITTED/PUSHED, remote SHA проверен.
-- Первый PRE: BLOCKED_ENVIRONMENT — DNS/обрывы сети и таймаут30мин; финального отчёта нет. Сохранены16raw артефактов; candidate/packet unchanged, sandbox canary PASS. [RCA](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-keyboard-pre-blocked-20261003T114545Z/rca.json). Это не FAIL/PASS UI.
+- Первый PRE: BLOCKED_ENVIRONMENT — DNS/обрывы сети и таймаут30мин; финального отчёта нет. Сохранены16raw артефактов; candidate/packet unchanged, sandbox canary PASS. [RCA](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-upper-keyboard-pre-blocked-20261003T114545Z/rca.json). Это не FAIL/PASS UI.
 - Сеть повторно проверена: DNS/TLS ответили; HTTP403 публичного HEAD не доказывает доступность authenticated Codex. Готов повтор PRE, gpt-6-astra/xhigh из текущего stage plan. Настройки/изоляция/таймаут не меняются. После dispatch кандидат заморожен до квитанции.
 - Permanent RED / bridge keyboard repair / новые runtime и full checks / verify / POST: NOT_RUN. Original Escape FAIL остаётся. Human visual NOT_APPROVED; cumulative/archive BLOCKED; P02–P07 NOT_STARTED. Routing независим.
 - Новые receipt/RCA/status UNCOMMITTED/UNPUSHED до завершения текущего review checkpoint. Панель queued; видимость не подтверждена.
@@ -278,7 +323,7 @@ Next: expanded real focus bounds/occlusion/complete-contour evidence and media; 
 
 2026-10-03T11:04:18.916Z. UI branch codex/frade-ui-design-contract / worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade / common E:/dev/codex/frade/.git. Change frade-p01-theme-core, original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; guide1.0/tokens1.0.0; P01 5/10.
 
-- ACCEPTED: P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01, exact SHA6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34. [Квитанция](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/acceptance.json).
+- ACCEPTED: P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01, exact SHA6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34. [Квитанция](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/acceptance.json).
 - План proposal/design/spec/tasks и BDD/trace/docs согласован: только три anchors и доказанный View/Insert popup, sole bridge. Vendor/domain/routing/geometry/Freehand window вне ремонта.
 - Сейчас: strict validation → свежий автоматический read-only PRE. По текущему stage plan: gpt-6-astra / xhigh для PRE и POST. Strict/compliance/diff PASS; PRE READY_FOR_DISPATCH, затем RUNNING с полной заморозкой candidate до квитанции. Production/tests unchanged.
 - После PASS: permanent RED → bridge repair → actual keyboard/action/lifecycle six-state evidence → current FUI12/control/BDD111/14negative и full checks → verify/POST. Все эти шаги на repaired source NOT_RUN.
@@ -316,7 +361,7 @@ Next: expanded real focus bounds/occlusion/complete-contour evidence and media; 
 
 12исходно скрытых контролов имеют доказательство восстановления;78недоступных focus-состояний BLOCKED и78disabled NOT_RUN. Новых guide exceptions нет. Visual NOT_APPROVED; остальные toolbar glyphs и требования полной миграции открыты. Production этого checkpoint не менялся.
 
-[Полный отчёт](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/report.md). [Решение keyboard scope](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-keyboard-owned-popups.proposed.md), SHA6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34 — NOT_ACCEPTED. Уточнение границы нужно потому, что текущий paint scope прямо запрещает keyboard/ARIA/upper-popup изменения. После решения: coherent plan/strict/автоматический PRE, затем RED/repair/checks/POST. P01 задачи2.4/2.5/3.1/3.2/3.3 открыты; P02 STOP. Routing независим. Protection LOCAL_ONLY/NOT_CONFIGURED.
+[Полный отчёт](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/report.md). [Решение keyboard scope](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-upper-three-keyboard-owned-popups.proposed.md), SHA6087da74572ba6665cfbe1471edbc67d17cab0b5e94784e3a7e41c3ed3821e34 — NOT_ACCEPTED. Уточнение границы нужно потому, что текущий paint scope прямо запрещает keyboard/ARIA/upper-popup изменения. После решения: coherent plan/strict/автоматический PRE, затем RED/repair/checks/POST. P01 задачи2.4/2.5/3.1/3.2/3.3 открыты; P02 STOP. Routing независим. Protection LOCAL_ONLY/NOT_CONFIGURED.
 
 Checkpoint661a777a4a9431ff3cccbc2d9fedccf398674547 COMMITTED/PUSHED в origin git@github.com:leonmaks/frade.git, только refs/heads/codex/frade-ui-design-contract; remoteSHA проверен. Квитанция openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-control-state-checkpoint-20261003T023200Z/publication.json. Этот статус и квитанция сохраняются отдельным metadata commit; product/test source прежний. Правая панель queued, видимость не подтверждена.
 
@@ -406,7 +451,7 @@ Checkpoint661a777a4a9431ff3cccbc2d9fedccf398674547 COMMITTED/PUSHED в origin gi
 
 Обновлено 2026-10-03T01:09:23.283Z. Ветка codex/frade-ui-design-contract; UI-worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Active change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. Последний опубликованный metadata checkpoint e0655eea11b3c56bd8cb4b39ca98cbda6e7245b5; реализация470833af707ce3939293bdd61796ef561b4d29a3.
 
-- ACCEPTED: P01-UPPER-FUI-CONTROL-REVALIDATION-01 и P01-UPPER-STATE-APPLICABILITY-01, точные исходные SHA сохранены в [квитанции утверждения](../../openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-scope-acceptance-20261003T010923Z/acceptance.json). Исходные proposed-файлы и исторические FAIL неизменны.
+- ACCEPTED: P01-UPPER-FUI-CONTROL-REVALIDATION-01 и P01-UPPER-STATE-APPLICABILITY-01, точные исходные SHA сохранены в [квитанции утверждения](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-upper-three-scope-acceptance-20261003T010923Z/acceptance.json). Исходные proposed-файлы и исторические FAIL неизменны.
 - Следующий шаг: согласовать proposal/design/tasks/specs с принятыми решениями, выполнить strict validation и свежий независимый read-only PRE. Новый PRE: NOT_RUN. Назначение из tasks.md:90 — gpt-6-astra, reasoning xhigh; последующий POST — та же пара. Проверки выполняются автоматически.
 - До нового PRE PASS зависимые изменения тестов/control loader не выполняются. Статусы текущих проверок прежние: desktop lint/typecheck/unit91/91 PASS; обычная raster-матрица54/54 PASS; FUI12/12 PASS; BDD110PASS/1FAIL; expanded matrix FAIL; current root NOT_RUN, verify BLOCKED, POST NOT_RUN.
 - P01 остаётся5/10;2.4,2.5,3.1,3.2,3.3 открыты. Недоступный исходный keyboard focus остаётся отдельным открытым UI-подэтапом; cumulative/archive BLOCKED, human visual NOT_APPROVED. Foundation завершён; P02–P07 не начаты. Routing независим. Три прежних исключения; protection LOCAL_ONLY/NOT_CONFIGURED.
@@ -432,7 +477,7 @@ Checkpoint661a777a4a9431ff3cccbc2d9fedccf398674547 COMMITTED/PUSHED в origin gi
 | Current root check:all / verify / POST |NOT_RUN / BLOCKED / NOT_RUN |
 | Human visual / cumulative / archive |NOT_APPROVED / OPEN / BLOCKED |
 
-Решения ожидаются: [одна строка FUI control loader](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-fui-control-revalidation.proposed.md), SHA8b8b257ee9e13e086b762f98e5b80a3334d852250db8185c04020bd820f57a68; [граница paint-delta и исходных недоступных состояний](../../openspec/changes/frade-p01-theme-core/decisions/p01-upper-three-state-applicability.proposed.md), SHA529ac017072531211abd257ecffe12f33811cc497ef69e1b0625da00b36c2bb7. Ни одна ещё не принята. Production/новые assertions за эту границу не расширяются.
+Решения ожидаются: [одна строка FUI control loader](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-upper-three-fui-control-revalidation.proposed.md), SHA8b8b257ee9e13e086b762f98e5b80a3334d852250db8185c04020bd820f57a68; [граница paint-delta и исходных недоступных состояний](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-upper-three-state-applicability.proposed.md), SHA529ac017072531211abd257ecffe12f33811cc497ef69e1b0625da00b36c2bb7. Ни одна ещё не принята. Production/новые assertions за эту границу не расширяются.
 
 P01 остаётся5/10:2.4,2.5,3.1,3.2,3.3 открыты. Foundation завершён; P02–P07 и последующая миграция не начаты. UI/Routing независимы. Три прежних исключения сохранены; protection LOCAL_ONLY/NOT_CONFIGURED. Checkpoint реализации470833af COMMITTED/PUSHED; remote SHA проверен, квитанция openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-checkpoint-20261002T223801Z/publication.json. Последующий metadata commit сохраняет эту запись и квитанции без изменения source/tests. Next: дождаться двух решений; после решений coherentplan/strict/freshPRE перед зависимыми изменениями. Правая панель queued, видимость не подтверждена.
 
@@ -778,11 +823,11 @@ Exact B05 scope принят человеком: SHA15ca9631c072adf7cb32ff8fcd4c
 
 Рекомендуемое решение: разрешить только bounded refusal handling в existing bridge, frameParticipant.ts и DiagramView.tsx; существующий REFUSED DTO и transaction/barrier/health keys не менять. Parent доставляет matching current painted-owner diagnostic через optional callback в existing themeError live region (role=status/aria-live=polite), bridge STOP/cancel/restoration; без frame reload или semantic действий. После acceptance — coherent four artifacts/strict, fresh automatic PRE, permanent meaningful bridge→parent RED, repair/required checks/fresh full root/verify/automatic POST.
 
-[Точный proposed B05 scope](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-reflow-refusal.proposed.md) · [Independent POST FAIL](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-post2-fail-received-20261002T060636Z/result.md) · [Actual RCA](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/result.json) · [Actual screenshots, human NOT_APPROVED](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-checks-20261002T045033Z/actual-visual-candidates.md).
+[Точный proposed B05 scope](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-lower-reflow-refusal.proposed.md) · [Independent POST FAIL](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-popup-reflow-post2-fail-received-20261002T060636Z/result.md) · [Actual RCA](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/result.json) · [Actual screenshots, human NOT_APPROVED](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-popup-reflow-checks-20261002T045033Z/actual-visual-candidates.md).
 
 Applicable FDS003/004/005/008/009, A11Y001–005/007–009; exactly3approved exceptions. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Production parent/vendor/routing/domain не изменены. Scope ограничен UI; consumer-owned future shared fresh-proof packaging не создаёт Routing dependency. READY_FOR_VERIFY:NO (whole P01). Raw staged evidence whitespace FAIL exit2 сохранён, authored code/docs PASS;3296staged files verified byte-identical.
 
-[Publication receipt](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/publication.json). Следующий шаг требует только принятия exact B05 scope; automatic PRE/POST и authorized commit/push не требуют отдельного подтверждения.
+[Publication receipt](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-popup-reflow-b05-rca-20261002T061037Z/publication.json). Следующий шаг требует только принятия exact B05 scope; automatic PRE/POST и authorized commit/push не требуют отдельного подтверждения.
 
 ## Предыдущие сохранённые checkpoint записи
 
@@ -810,7 +855,7 @@ Applicable FDS003/004/005/008/009, A11Y001–005/007–009; exactly3approved exc
 | Full FUI / human visual / cumulative verify / POST / archive | OPEN; visual NOT_APPROVED |
 | Current checkpoint commit / push | NOT_DONE; prior f9910e5 published and verified |
 
-Current checks: [evidence](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-reflow-checks-20261002T045033Z). Prior actual matrix FAIL6/6 remains historical evidence, not current GREEN. Applicable FDS003/004/005/008/009 and A11Y001–005/007–009; exactly3 approved exceptions. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Routing/vendor/domain не изменены; production delta только в existing bridge.
+Current checks: [evidence](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-popup-reflow-checks-20261002T045033Z). Prior actual matrix FAIL6/6 remains historical evidence, not current GREEN. Applicable FDS003/004/005/008/009 and A11Y001–005/007–009; exactly3 approved exceptions. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Routing/vendor/domain не изменены; production delta только в existing bridge.
 
 Следом: focused verification → freeze and automatic independent POST → checkpoint commit/push. Полное P01 closure требует FUI binding, human visual/cumulative verify/POST/archive. STOP перед P02.
 
@@ -838,7 +883,7 @@ Current checks: [evidence](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/f
 
 Применимые FDS003/004/005/008/009, A11Y001–005/007–009. Ровно3approved legacy exceptions; merge protection LOCAL_ONLY/NOT_CONFIGURED. Не закрываются full FUI005–009, visual acceptance, cumulative verify/POST/archive. STOP перед P02.
 
-Raw staged whitespace FAIL exit2 в неизменённых исходных logs/evidence; authored code/docs whitespace PASS0. Raw bytes не нормализованы. [Publication receipt](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/publication.json).
+Raw staged whitespace FAIL exit2 в неизменённых исходных logs/evidence; authored code/docs whitespace PASS0. Raw bytes не нормализованы. [Publication receipt](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/publication.json).
 
 ## Оставшиеся задачи
 
@@ -850,9 +895,9 @@ Raw staged whitespace FAIL exit2 в неизменённых исходных lo
 |3.2 verify/POST | OPEN; focused POST1FAIL preserved; repeat only after all applicable checks |
 |3.3 archive | OPEN; after required verification/POST/human visual acceptance |
 
-Точный proposed scope: [P01-LOWER-ORIGIN-POPUP-REFLOW-01](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md); SHA2566bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17. Причина: design224/235/252 сохраняет vendor placement/fit и требует STOP при невозможности выполнить bounds/occlusion. Draft разрешает только proven lower popup DOM reflow; никаких vendor/domain/routing APIs, новых paths/exception или ослаблений тестов.
+Точный proposed scope: [P01-LOWER-ORIGIN-POPUP-REFLOW-01](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-lower-origin-popup-reflow.proposed.md); SHA2566bdd2cfe1e48f1fb67122cdb35bceaba8e17bc333c4a01ce352b4bf2dfb58b17. Причина: design224/235/252 сохраняет vendor placement/fit и требует STOP при невозможности выполнить bounds/occlusion. Draft разрешает только proven lower popup DOM reflow; никаких vendor/domain/routing APIs, новых paths/exception или ослаблений тестов.
 
-[Фактический repair report](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/repair-checkpoint-report.md) · [Реальные screenshots](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/actual-visual-candidates.md). После human scope decision: coherent artifacts/strict → automatic PRE → RED/sole bridge reflow → targeted/full → verify/automatic POST. Сейчас координаты/fit меню не изменены.
+[Фактический repair report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/repair-checkpoint-report.md) · [Реальные screenshots](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-popup-post-repair-targeted-20261001T235128Z/actual-visual-candidates.md). После human scope decision: coherent artifacts/strict → automatic PRE → RED/sole bridge reflow → targeted/full → verify/automatic POST. Сейчас координаты/fit меню не изменены.
 
 ## Предыдущие сохранённые checkpoint записи
 
@@ -871,15 +916,15 @@ Raw staged whitespace FAIL exit2 в неизменённых исходных lo
 | Canonical sync/archive/post-archive | DONE: exact2 requirements, total5/7 scenarios; strict10/10; ARCHIVED6/6; runner15/15 and UI26/26/control PASS |
 | Commit/push/remote SHA | DONE:7fc4c9c published; exact UI ref SHA verified; status metadata checkpoint preparing |
 
-Shared installed release a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0. [Закрытие](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-10-01-frade-stage-review-policy/evidence/closure-report.md). Общие изменения доступны зарегистрированным worktree без настройки аккаунта; активный агент выполняет своё adoption/control revalidation. Routing files/handoff не менялись. Guide v1.0/tokens1.0.0/product source unchanged. **P01 остаётся5/10**, lower-origin popup NOT_USER_ACCEPTED; этот supplier не закрывает P01/Routing и не начинает следующий numbered change.
+Shared installed release a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0. [Закрытие](../../openspec/changes/archive/2026-10-01-frade-stage-review-policy/evidence/closure-report.md). Общие изменения доступны зарегистрированным worktree без настройки аккаунта; активный агент выполняет своё adoption/control revalidation. Routing files/handoff не менялись. Guide v1.0/tokens1.0.0/product source unchanged. **P01 остаётся5/10**, lower-origin popup NOT_USER_ACCEPTED; этот supplier не закрывает P01/Routing и не начинает следующий numbered change.
 
-Git full whitespace check: **FAIL**,3 findings in preserved raw RED log / archived reviewed spec. Authored source/rules/canonical spec/tests whitespace **PASS**. [Actual finding](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-10-01-frade-stage-review-policy/evidence/checkpoint-whitespace.json); raw evidence не исправлялось задним числом.
+Git full whitespace check: **FAIL**,3 findings in preserved raw RED log / archived reviewed spec. Authored source/rules/canonical spec/tests whitespace **PASS**. [Actual finding](../../openspec/changes/archive/2026-10-01-frade-stage-review-policy/evidence/checkpoint-whitespace.json); raw evidence не исправлялось задним числом.
 
 ## Сохранённый P01 checkpoint — PRE FAIL / решение по lower-origin popup
 
 Независимый accepted keyboard PRE завершён **FAIL**, один blocker B01: меню/подменю страниц находятся вне ранее разрешённого subtree. Candidate/packet unchanged;1396 hashes verified. SaveAs новых блокеров не имеет; общий gate FAIL. Production/permanent RED этого delta **NOT_RUN**, P01 **5/10**, READY_FOR_VERIFY **NO**.
 
-[Последний raw PRE](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-lower-keyboard-pre-received-20261001T130510Z/result.md). [Точный scope amendment](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard.proposed.md), SHA 8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a: **PROPOSED / NOT_USER_ACCEPTED**. Решение требуется только для доказанно lower-origin popup/menu DOM; общий vendor keyboard/routing scope не добавляется. После acceptance: coherent plan/BDD → strict → fresh automatic PRE → RED → bounded repair/checks. Четыре approved artifacts сейчас не меняются.
+[Последний raw PRE](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-lower-keyboard-pre-received-20261001T130510Z/result.md). [Точный scope amendment](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-lower-origin-popup-keyboard.proposed.md), SHA 8994a7e062dd9c5265492574ca0174b6aa9cf8957856e1d77bf32c3c65c8e33a: **PROPOSED / NOT_USER_ACCEPTED**. Решение требуется только для доказанно lower-origin popup/menu DOM; общий vendor keyboard/routing scope не добавляется. После acceptance: coherent plan/BDD → strict → fresh automatic PRE → RED → bounded repair/checks. Четыре approved artifacts сейчас не меняются.
 
 Git checkpoints **257b3a3** и **c2fa3ba** committed/pushed, SHA обоих проверены на origin. Source/test/scripts538 unchanged. Последний root PASS остаётся pre-delta; новые popup A11Y/visual checks NOT_RUN.
 
@@ -894,8 +939,8 @@ Git checkpoints **257b3a3** и **c2fa3ba** committed/pushed, SHA обоих пр
 | Worktree | C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade |
 | Исходный baseline commit | 98f387f96b51b0ad139e3507c376ff1c3e8dec09 |
 | Guide / tokens | v1.0 / 1.0.0 |
-| Authority | [P01 tasks](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/tasks.md), [execution context](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/execution-context.json), [traceability](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/docs/ui/decisions/p01-theme-traceability.json) |
-| Правила текущего P01 | FDS-003/008/009/015, A11Y-001–009; точный scope и исключения — в [design](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/design.md) |
+| Authority | [P01 tasks](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/tasks.md), [execution context](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/execution-context.json), [traceability](decisions/p01-theme-traceability.json) |
+| Правила текущего P01 | FDS-003/008/009/015, A11Y-001–009; точный scope и исключения — в [design](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/design.md) |
 
 Это обновляемый обзор фактического состояния, а не замена OpenSpec, approvals или evidence. Счётчик показывает закрытые пункты tasks.md, а не процент реализации. Все записи принадлежат этой UI-ветке. Routing не является её predecessor; принятие её изменений и revalidation остаются у потребителя на routing-ветке.
 
@@ -903,21 +948,21 @@ Git checkpoints **257b3a3** и **c2fa3ba** committed/pushed, SHA обоих пр
 
 | Этап | Закрыто | Фактическое состояние / следующий checkpoint |
 | --- | --- | --- |
-| Foundation: audit, WB-001, guide, AGENTS, tokens, checks, CI definition | 21/21 | ARCHIVED; независимый POST и post-archive compliance PASS. [Закрытие](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-09-30-frade-ui-design-contract/evidence/foundation-closure-report-2026-09-30.md) |
+| Foundation: audit, WB-001, guide, AGENTS, tokens, checks, CI definition | 21/21 | ARCHIVED; независимый POST и post-archive compliance PASS. [Закрытие](../../openspec/changes/archive/2026-09-30-frade-ui-design-contract/evidence/foundation-closure-report-2026-09-30.md) |
 | P01: resolver / preview / settings / density, Light + Dark + HC + System | 5/10 | ACTIVE; runtime реализован; fresh full regression PASS; bottom chrome FAIL и visual/verify/POST/archive ещё открыты |
-| P02: transactional installer | 0/9 | PLANNING_ONLY; ждёт P01 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p02-transactional-installer/tasks.md) |
-| P03: VS Code theme import | 0/8 | PLANNING_ONLY; ждёт P02 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p03-vscode-theme-import/tasks.md) |
-| P04: icon registries | 0/8 | PLANNING_ONLY; ждёт P03 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p04-icon-registries/tasks.md) |
-| P05: isolated browser host | 0/9 | PLANNING_ONLY; ждёт P04 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p05-isolated-browser-host/tasks.md) |
-| P06: native contribution APIs | 0/9 | PLANNING_ONLY; ждёт P05 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p06-native-contributions/tasks.md) |
-| P07: registry / profiles / policy | 0/9 | PLANNING_ONLY; ждёт P06 CLOSED; [задачи](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p07-registry-profiles-policy/tasks.md) |
+| P02: transactional installer | 0/9 | PLANNING_ONLY; ждёт P01 CLOSED; [задачи](../../openspec/changes/frade-p02-transactional-installer/tasks.md) |
+| P03: VS Code theme import | 0/8 | PLANNING_ONLY; ждёт P02 CLOSED; [задачи](../../openspec/changes/frade-p03-vscode-theme-import/tasks.md) |
+| P04: icon registries | 0/8 | PLANNING_ONLY; ждёт P03 CLOSED; [задачи](../../openspec/changes/frade-p04-icon-registries/tasks.md) |
+| P05: isolated browser host | 0/9 | PLANNING_ONLY; ждёт P04 CLOSED; [задачи](../../openspec/changes/frade-p05-isolated-browser-host/tasks.md) |
+| P06: native contribution APIs | 0/9 | PLANNING_ONLY; ждёт P05 CLOSED; [задачи](../../openspec/changes/frade-p06-native-contributions/tasks.md) |
+| P07: registry / profiles / policy | 0/9 | PLANNING_ONLY; ждёт P06 CLOSED; [задачи](../../openspec/changes/frade-p07-registry-profiles-policy/tasks.md) |
 | Миграция 1: shell / basic controls | — | NOT_STARTED; отдельный утверждённый scope → PRE → implementation → checks → verify / POST → archive |
 | Миграция 2: tree / tabs | — | NOT_STARTED; после предыдущего checkpoint |
 | Миграция 3: forms / tables / LoV | — | NOT_STARTED; включает consumer-owned UI-DRAW-READONLY-INSPECT-01 |
 | Миграция 4: Draw / flow manager | — | NOT_STARTED; UI состояния отдельно от domain paint / persisted semantics; семантика routing не меняется |
 | Миграция 5: AI | — | NOT_STARTED; provider integration не заявлена |
 
-Порядок P01–P07 и последовательность визуальных миграций сохранены. Переход к следующему numbered change требует отдельного checkpoint, автоматически он не начинается. Полная API-совместимость с исполняемыми VS Code extensions не заявляется; .frade-extension остаётся fixture будущего installer. [Исходная roadmap](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/archive/2026-09-30-frade-ui-design-contract/roadmap.md) и [migration inventory](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/docs/ui/migration.md) описывают starting scope, а не текущий runtime P01.
+Порядок P01–P07 и последовательность визуальных миграций сохранены. Переход к следующему numbered change требует отдельного checkpoint, автоматически он не начинается. Полная API-совместимость с исполняемыми VS Code extensions не заявляется; .frade-extension остаётся fixture будущего installer. [Исходная roadmap](../../openspec/changes/archive/2026-09-30-frade-ui-design-contract/roadmap.md) и [migration inventory](migration.md) описывают starting scope, а не текущий runtime P01.
 
 ## Детализация текущего P01
 
@@ -939,17 +984,17 @@ Git checkpoints **257b3a3** и **c2fa3ba** committed/pushed, SHA обоих пр
 | Шаг | Статус | Evidence / результат |
 | --- | --- | --- |
 | Зафиксировать full и isolated FAIL старого E2E-07 | DONE | Исходные source / logs / trace / screenshots сохранены |
-| Принять точный P01-BUNDLE-FRAME-COMPAT-01 scope | DONE | [Acceptance](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-bundle-frame-readiness-accepted-20261001T075310Z.json) |
-| Coherent plan / strict validation / frozen packet / automatic focused PRE | DONE | [PRE PASS](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-third-fixture-pre-received-20261001T081700Z/result.md); candidate и packet unchanged |
-| Actual point / frame events / screenshot → RCA | DONE | [RCA](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-failure-20261001T085452Z/RCA.json): TEST; readiness отсутствовала. Перехват ввода curtain в момент жеста — inference из screenshot и отсутствия frame events |
+| Принять точный P01-BUNDLE-FRAME-COMPAT-01 scope | DONE | [Acceptance](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-bundle-frame-readiness-accepted-20261001T075310Z.json) |
+| Coherent plan / strict validation / frozen packet / automatic focused PRE | DONE | [PRE PASS](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-third-fixture-pre-received-20261001T081700Z/result.md); candidate и packet unchanged |
+| Actual point / frame events / screenshot → RCA | DONE | [RCA](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-e2e07-full-failure-20261001T085452Z/RCA.json): TEST; readiness отсутствовала. Перехват ввода curtain в момент жеста — inference из screenshot и отсутствия frame events |
 | Минимальный разрешённый readiness delta, убрать временную диагностику | DONE | Тот же видимый frame, current revision, hidden curtain, fonts + two RAF; исходные действия/assertions/tolerances сохранены. Production в этом repair не менялся |
-| Финальный targeted regression | PASS | Native bundle + Draw.io bundle + Draw.io navigator drop: 3/3; [log](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-compat.txt) |
+| Финальный targeted regression | PASS | Native bundle + Draw.io bundle + Draw.io navigator drop: 3/3; [log](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-compat.txt) |
 | Отдельный Save As intermittent ENOENT | USER_ACCEPTED / COMBINED_PRE_FAIL | Исходный test не изменён; unchanged isolated retry PASS не закрывает воспроизведённый full/targeted blocker |
 | Новый полный root check:all / закрытие 2.4, 2.5, 3.1 | ROOT_PASS_CLOSURE_OPEN | Full root PASS; bottom chrome FAIL; final coverage closure ещё не завершено |
 
 ## Последние выполненные проверки
 
-[Raw command/result record](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z.json) — завершён 01.10.2026 12:21:29 MSK. PASS относится только к перечисленным командам и их проверенному scope.
+[Raw command/result record](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z.json) — завершён 01.10.2026 12:21:29 MSK. PASS относится только к перечисленным командам и их проверенному scope.
 
 | Проверка / команда | Результат |
 | --- | --- |
@@ -960,8 +1005,8 @@ Git checkpoints **257b3a3** и **c2fa3ba** committed/pushed, SHA обоих пр
 | pnpm --filter @frade/ui-workspace test:bdd | PASS, exit 0 |
 | pnpm ui:compliance, включая positive / negative controls | PASS, exit 0 |
 | git diff --check | PASS, exit 0 |
-| Последний полный root check:all, вариант до минимального readiness repair | FAIL: Draw 215 PASS / desktop 70 PASS + 1 FAIL; [исторический результат](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-owned-port-diagnostic-20261001T083513Z.json) |
-| Полный root check:all на окончательных текущих исходниках | PASS, exit 0; Draw215/215 + desktop71/71; 538 source hashes unchanged; [raw result](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json) |
+| Последний полный root check:all, вариант до минимального readiness repair | FAIL: Draw 215 PASS / desktop 70 PASS + 1 FAIL; [исторический результат](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-e2e07-full-owned-port-diagnostic-20261001T083513Z.json) |
+| Полный root check:all на окончательных текущих исходниках | PASS, exit 0; Draw215/215 + desktop71/71; 538 source hashes unchanged; [raw result](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-final-minimal-full-root-20261001T095545Z.json) |
 | OpenSpec verify / product POST / P01 archive | NOT_RUN |
 | Новый визуальный baseline | NOT_APPROVED; bottom chrome actual FAIL6/6 |
 | Actual lower frame token diagnostic | FAIL6/6; document files unchanged |
@@ -970,17 +1015,17 @@ Git checkpoints **257b3a3** и **c2fa3ba** committed/pushed, SHA обоих пр
 
 Независимые reviews вызываются автоматически в разрешённом read-only packet scope. Requested model **gpt-6-astra**, reasoning **xhigh**; фактический backend/effort сервисом не подтверждены. Transport v3: 15/15 control tests PASS; canary подтвердил разрешённый packet и отказ доступа к source/routing/auth/config, записи и command sockets. Это не заменяет product POST, который ещё NOT_RUN.
 
-Проверка самого dashboard/process update: BDD, strict OpenSpec, git diff --check и git status выполнены, exit 0; [raw results](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-dashboard-checks-20261001T093117Z.json). Production и routing checkout этим обновлением не изменялись.
+Проверка самого dashboard/process update: BDD, strict OpenSpec, git diff --check и git status выполнены, exit 0; [raw results](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-dashboard-checks-20261001T093117Z.json). Production и routing checkout этим обновлением не изменялись.
 
 ## Дополнительный coverage finding
 
-P01-FRAME-BOTTOM-COVERAGE-01: реальный Dark screenshot показывает светлую нижнюю page/status панель Draw.io. Vendor DOM содержит geTabContainer/geTab; они не входят в текущие private chrome selectors и consumer measurement query. [Witnesses и hashes](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-frame-bottom-coverage-gap-20261001T100535Z.json). Статус: **FAIL6/6** actual Electron DOM token checks; все шесть XML files unchanged. [Diagnostic и screenshots](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-frame-chrome-observation-20261001T101428Z/result.json). [Точный repair scope](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md), USER_ACCEPTED / NOT_PRE_PASS. Production не исправлялся. Визуальное утверждение до исправления этой области не запрашивается.
+P01-FRAME-BOTTOM-COVERAGE-01: реальный Dark screenshot показывает светлую нижнюю page/status панель Draw.io. Vendor DOM содержит geTabContainer/geTab; они не входят в текущие private chrome selectors и consumer measurement query. [Witnesses и hashes](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-frame-bottom-coverage-gap-20261001T100535Z.json). Статус: **FAIL6/6** actual Electron DOM token checks; все шесть XML files unchanged. [Diagnostic и screenshots](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-frame-chrome-observation-20261001T101428Z/result.json). [Точный repair scope](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-frame-bottom-chrome.proposed.md), USER_ACCEPTED / NOT_PRE_PASS. Production не исправлялся. Визуальное утверждение до исправления этой области не запрашивается.
 
-Проверки после данного status/proposal update: BDD / strict OpenSpec / compliance / diff / status — PASS, exit0; [raw results](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z.json). Proposed scopes ещё не реализованы.
+Проверки после данного status/proposal update: BDD / strict OpenSpec / compliance / diff / status — PASS, exit0; [raw results](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-full-root-diagnostic-process-checks-20261001T101959Z.json). Proposed scopes ещё не реализованы.
 
 ## Blockers и решения
 
-1. **P01-WORKSPACE-SAVEAS-READINESS-01 USER_ACCEPTED; общий repeat PRE FAIL (scope conflict).** [Точный proposed delta](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-workspace-saveas-readiness.proposed.md): existsSync + два ожидания существования atomically published workspace/alternate перед неизменными JSON assertions. Текущее разрешение на WB test покрывает rename-dialog readiness; новый delta принят; source implementation ещё BLOCKED до focused PRE. Accepted artifacts validated; repeat freeze → automatic focused PRE → только после PASS реализация.
+1. **P01-WORKSPACE-SAVEAS-READINESS-01 USER_ACCEPTED; общий repeat PRE FAIL (scope conflict).** [Точный proposed delta](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-workspace-saveas-readiness.proposed.md): existsSync + два ожидания существования atomically published workspace/alternate перед неизменными JSON assertions. Текущее разрешение на WB test покрывает rename-dialog readiness; новый delta принят; source implementation ещё BLOCKED до focused PRE. Accepted artifacts validated; repeat freeze → automatic focused PRE → только после PASS реализация.
 2. **Fresh полная регрессия PASS.** Старый FAIL сохранён; новый full PASS на тех же окончательных исходниках закрывает current full-root blocker. Отдельная bottom chrome проверка завершилась FAIL6/6; repair scope и исторический intermittent Save As остаются открытыми.
 3. **Визуальный baseline требует решения человека** по фактическим screen evidence; общий статус NOT_APPROVED.
 4. **Закрытие P01:** final traceability/coverage → verify → independent POST → archive; до этого READY_FOR_VERIFY: NO.
@@ -991,9 +1036,9 @@ P01-FRAME-BOTTOM-COVERAGE-01: реальный Dark screenshot показыва�
 
 ## Где смотреть реальные screenshots
 
-- [P01 real runtime screens и captures](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-current-root-artifacts-20261001T073825Z) — theme/density/B02/readonly/viewport evidence до final readiness repair; baseline NOT_APPROVED.
-- [Полный failing run с исходной curtain screenshot и artifacts](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-e2e07-full-failure-20261001T085452Z/artifacts) — сохранён до повторных запусков.
-- [Окончательный targeted run artifacts](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-artifacts) — 3/3 PASS, без заявления полного visual approval.
+- [P01 real runtime screens и captures](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-current-root-artifacts-20261001T073825Z) — theme/density/B02/readonly/viewport evidence до final readiness repair; baseline NOT_APPROVED.
+- [Полный failing run с исходной curtain screenshot и artifacts](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-e2e07-full-failure-20261001T085452Z/artifacts) — сохранён до повторных запусков.
+- [Окончательный targeted run artifacts](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-final-minimal-readiness-checks-20261001T091954Z-artifacts) — 3/3 PASS, без заявления полного visual approval.
 
 ## Когда обновляется этот файл
 
@@ -1010,7 +1055,7 @@ P01-FRAME-BOTTOM-COVERAGE-01: реальный Dark screenshot показыва�
 | 01.10.2026, 13:14:27 | pnpm check:all PASS: Draw215/215, desktop71/71; sources unchanged; artifacts1242 | Read-only bottom chrome diagnostic; visual/scope решения и FUI closure ещё открыты |
 | 01.10.2026, 13:18:46 | Full root PASS, fresh p95=118.5ms; separate bottom DOM diagnostic FAIL6/6; exact scope proposal подготовлен | Accepted scopes → automatic focused PRE → regression-first repair; visual/verify/POST/archive остаются открыты |
 | 01.10.2026, 13:22:00 | Post-update BDD/OpenSpec/compliance/diff/status PASS; два точных scope решения запрошены | После acceptance: coherent artifacts → automatic PRE; implementation только после PASS |
-| 01.10.2026, 13:57:29 | Оба exact delta подтверждены; [acceptance](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json); четыре artifacts/BDD/registry обновлены | Strict validation → fresh packet → automatic focused PRE; source не меняется до PASS |
+| 01.10.2026, 13:57:29 | Оба exact delta подтверждены; [acceptance](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-saveas-bottom-accepted-20261001T105729Z.json); четыре artifacts/BDD/registry обновлены | Strict validation → fresh packet → automatic focused PRE; source не меняется до PASS |
 | 01.10.2026, 14:01:09 | Accepted plan strict/BDD/compliance/diff PASS; PRE packet preparing; implementation BLOCKED | Frozen automatic gpt-6-astra/xhigh review → receive result → update status |
 
 READY_FOR_VERIFY: **NO**
@@ -1021,7 +1066,7 @@ READY_FOR_VERIFY: **NO**
 
 - 20261001T113009Z: PRE input repair завершён: full pinned vendor/constructors/layout + actual six-case focus0/60. Attributes-only XML/file/view/undo/selection/prefs unchanged. Earlier actual Tab test changed only selection via existing canvas behavior; diagnostic FAIL и RCA сохранены. Production/tests четыре source hashes unchanged. Repeat PRE pending; tasks5/10. openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-pre-input-repair-20261001T113009Z.json
 
-- 2026-10-01T11:47:08.222Z: repeat independent PRE **FAIL**, input completeness resolved; SPEC_CONFLICT / ABSTRACTION_BOUNDARY: обязательный lower focus/keyboard vs запрет DOM semantics. Candidate/packet unchanged. SaveAs без найденных блокеров, общий gate FAIL. [Raw report](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z/result.md). Новый exact [keyboard scope proposal](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard.proposed.md) SHA 458361c95f36f02a2f438082dd52befc825413b928266722c494b9580c9d0874 **NOT_USER_ACCEPTED**. Production/permanent RED NOT_RUN; tasks5/10; READY_FOR_VERIFY NO.
+- 2026-10-01T11:47:08.222Z: repeat independent PRE **FAIL**, input completeness resolved; SPEC_CONFLICT / ABSTRACTION_BOUNDARY: обязательный lower focus/keyboard vs запрет DOM semantics. Candidate/packet unchanged. SaveAs без найденных блокеров, общий gate FAIL. [Raw report](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-saveas-bottom-repeat-pre-received-20261001T114414Z/result.md). Новый exact [keyboard scope proposal](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-frame-lower-keyboard.proposed.md) SHA 458361c95f36f02a2f438082dd52befc825413b928266722c494b9580c9d0874 **NOT_USER_ACCEPTED**. Production/permanent RED NOT_RUN; tasks5/10; READY_FOR_VERIFY NO.
 
 - 2026-10-01T11:56:57.319Z: человек **Разрешаю** — exact P01-FRAME-LOWER-KEYBOARD-01 принят; openspec/changes/frade-p01-theme-core/decisions/p01-frame-lower-keyboard-accepted-20261001T115657Z.json; четыре artifacts/BDD согласованы. Scope конфликт адресован планом, новый PRE pending, implementation/RED NOT_RUN.
 - Git policy USER_ACCEPTED: commit + push каждого завершённого checkpoint в этой UI-ветке. Первый накопленный checkpoint содержит foundation и незавершённый P01 с честными gate/tasks статусами; не объявляет P01 завершённым.
@@ -1034,7 +1079,7 @@ READY_FOR_VERIFY: **NO**
 
 P01-FRAME-LOWER-KEYBOARD-01 **USER_ACCEPTED / NEW_PRE_PREPARING**. Scope решение уже принято; повторный исторический PRE FAIL остаётся историей, новая implementation authority появится только после fresh PRE PASS. Permanent RED/production delta NOT_RUN; visual/verify/cumulative POST/archive NOT_RUN. Подготовка PRE не зависит от push или Routing.
 
-[Фактический checkpoint/source/push record](C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-ui-checkpoint-local-push-blocked-20261001T124226Z.json)
+[Фактический checkpoint/source/push record](../../openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-ui-checkpoint-local-push-blocked-20261001T124226Z.json)
 
 - 2026-10-01T12:44:48.473Z: точное human разрешение на UI payload/destination получено; push checkpoint257b3a3 **PASS**, actual remote SHA exact. Исторический отказ сохранён. Новый lower keyboard PRE готовится; code/test538 unchanged; P01 5/10.
 

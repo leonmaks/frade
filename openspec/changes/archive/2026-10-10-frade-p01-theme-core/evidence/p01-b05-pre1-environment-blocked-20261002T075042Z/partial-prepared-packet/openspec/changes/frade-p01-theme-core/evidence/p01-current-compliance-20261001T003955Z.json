@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-10-01T00:40:12.940Z",
+  "results": [
+    {
+      "label": "ui-compliance",
+      "command": "pnpm ui:compliance",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-current-compliance-20261001T003955Z-ui-compliance.txt"
+    },
+    {
+      "label": "presentation-boundaries",
+      "command": "node --test tests/contract/presentation-boundaries.test.mjs",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-current-compliance-20261001T003955Z-presentation-boundaries.txt"
+    },
+    {
+      "label": "openspec",
+      "command": "openspec validate frade-p01-theme-core --strict --json",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-current-compliance-20261001T003955Z-openspec.txt"
+    }
+  ]
+}

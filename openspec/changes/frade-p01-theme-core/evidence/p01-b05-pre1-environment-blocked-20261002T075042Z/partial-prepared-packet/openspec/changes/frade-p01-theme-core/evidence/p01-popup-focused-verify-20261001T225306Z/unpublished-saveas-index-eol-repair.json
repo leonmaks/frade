@@ -1,9 +1,0 @@
-{
-  "at": "2026-10-01T23:00:47.187Z",
-  "classification": "INTEGRATION",
-  "unpublishedProvisionalCommit": "9df943e33a4fcac4fb15cdb68ae1052d2a5e8bfe",
-  "cause": "Byte-preserving false for evidence also stored CRLF fixture unlike its prior LF Git blob. Normal add with changed autocrlf reused unchanged index stat; explicit path renormalization is necessary.",
-  "repair": "Renormalize only the existing SaveAs index to its prior Git LF using per-command core.autocrlf=true; unchanged workspace CRLF/source bytes and raw logs. Amend only own unpublished checkpoint.",
-  "workingSha256Before": "b5da22905aac1d1a2583cf71e4942a2944893b407c1c26002d0e7d86b4028aed",
-  "rawEvidenceUntouched": true
-}

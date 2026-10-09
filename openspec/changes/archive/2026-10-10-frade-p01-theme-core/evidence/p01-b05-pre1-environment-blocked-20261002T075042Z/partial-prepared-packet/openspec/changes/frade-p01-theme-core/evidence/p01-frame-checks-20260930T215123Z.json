@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-09-30T21:51:23.026Z",
+  "results": [
+    {
+      "label": "target",
+      "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/participants.test.ts",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-checks-20260930T215123Z-target.txt"
+    },
+    {
+      "label": "typecheck",
+      "command": "pnpm --filter @frade/ui-workspace typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-checks-20260930T215123Z-typecheck.txt"
+    },
+    {
+      "label": "lint",
+      "command": "pnpm --filter @frade/ui-workspace lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-checks-20260930T215123Z-lint.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+      "sha256": "70d79465285bf1cc66ba35b5e31f623588f75d5f3e25ee09f07a17e5e2caf663"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+      "sha256": "b514d3de8720099aa095633df096d04b0fc4ce88b53e0fb6de2db847a337b697"
+    }
+  ],
+  "pinnedFrameBridge": "NOT_IMPLEMENTED",
+  "electronXMLOracle": "NOT_RUN"
+}

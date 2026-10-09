@@ -1,8 +1,0 @@
-{
-  "classification": "ABSTRACTION_BOUNDARY",
-  "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-first-apply-rca-20261002T214450Z/correct-cwd-artifacts",
-  "confirmed": "Chromium computes original background-size:18px as 18px auto; first implementation accepted only 18px and 18px 18px, so all candidates were filtered before native crypto (actual digestCalls0).",
-  "geometry": "All three pinned original assets have square24x24 intrinsic dimensions; 18px auto is exactly the already-approved18x18 paint geometry. No new size/resource/opacity authority.",
-  "fix": "Accept the real computed equivalent form only for the same exact hash-verified original resources. Add deterministic RED before modifying the guard.",
-  "initialDiagnosticFailure": "Wrong cwd entry path; original timeout preserved, corrected cwd uses same fixture source and passes collection."
-}

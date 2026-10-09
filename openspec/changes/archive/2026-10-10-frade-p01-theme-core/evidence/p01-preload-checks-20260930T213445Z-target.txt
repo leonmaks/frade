@@ -1,0 +1,40 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/presentation-bridge.test.ts (9 tests | 1 failed) 45ms
+   × validated cached boot is synchronous, immutable, owned and never calls transport 11ms
+     → (0 , createPresentationApi)(...) is not a function
+   ✓ rejects invalid boot before exposing any capability or reading accessors 4ms
+   ✓ intent announces a validated request and rejects stale or malformed generation replies 6ms
+   ✓ input phase, session, choice and bounds are checked before any IPC call 3ms
+   ✓ persist ACK requires durable selection, owner and increasing CAS revision 8ms
+   ✓ explicit REFUSED and UNKNOWN preserve bounded truthful error text without exposing extra fields 3ms
+   ✓ reconcile permits exact last publication or owned compensation; forged change cannot become authoritative 5ms
+   ✓ ready accepts only matched boot/root revisions and a narrow host acknowledgement 2ms
+   ✓ response parser bounds and owns data before exposing it to preload or renderer 1ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  00:34:46
+   Duration  1.16s (transform 198ms, setup 0ms, collect 240ms, tests 45ms, environment 0ms, prepare 343ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/presentation-bridge.test.ts > validated cached boot is synchronous, immutable, owned and never calls transport
+TypeError: (0 , createPresentationApi)(...) is not a function
+ ❯ tests/unit/presentation-bridge.test.ts:53:5
+     51|       invoke,
+     52|       () => 'window/ready',
+     53|     )(input.diagnostics as string[]).push('external mutation')
+       |     ^
+     54|   expect(api.getBoot().diagnostics).toEqual([])
+     55|   expect(Object.isFrozen(api.getBoot().snapshot.colors)).toBe(true)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

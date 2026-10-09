@@ -1,0 +1,31 @@
+{
+  "atUtc": "2026-10-01T12:45:25.969Z",
+  "phase": "PRE_PLANNING",
+  "rows": [
+    {
+      "name": "openspec",
+      "command": "pnpm exec openspec validate frade-p01-theme-core --strict --json",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-keyboard-resume-checks-20261001T124448Z-openspec.txt"
+    },
+    {
+      "name": "bdd",
+      "command": "pnpm --filter @frade/ui-workspace test:bdd",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-keyboard-resume-checks-20261001T124448Z-bdd.txt"
+    },
+    {
+      "name": "compliance",
+      "command": "pnpm ui:compliance",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-keyboard-resume-checks-20261001T124448Z-compliance.txt"
+    },
+    {
+      "name": "diff",
+      "command": "git -c core.longpaths=true diff --check",
+      "exit": 2,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-lower-keyboard-resume-checks-20261001T124448Z-diff.txt"
+    }
+  ],
+  "productionDelta": "NOT_RUN"
+}

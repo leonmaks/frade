@@ -1,0 +1,69 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\e2e\ui-contract-theme.spec.ts:2412:1 › P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport (35.6s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:2412:1 › P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('iframe').contentFrame().locator('.geDiagramContainer')[22m
+    [2m    - locator resolved to <div tabindex="0" class="geDiagramContainer">…</div>[22m
+    [2m  - attempting click action[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <a class="geButton" data-min-width="630" title="Вставить (Нажмите дважды, чтобы вставить текст)"></a> from <div class="geToolbarContainer">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <a class="geButton" data-min-width="630" title="Вставить (Нажмите дважды, чтобы вставить текст)"></a> from <div class="geToolbarContainer">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m    55 × waiting for element to be visible, enabled and stable[22m
+    [2m       - element is visible, enabled and stable[22m
+    [2m       - scrolling into view if needed[22m
+    [2m       - done scrolling[22m
+    [2m       - <a class="geButton" data-min-width="630" title="Вставить (Нажмите дважды, чтобы вставить текст)"></a> from <div class="geToolbarContainer">…</div> subtree intercepts pointer events[22m
+    [2m     - retrying click action[22m
+    [2m       - waiting 500ms[22m
+
+
+      2254 |       return { xml: globals.mxUtils.getXml(new globals.mxCodec().encode(g.getModel())), selection: g.getSelectionCells().map((c: any) => c.id), undo: ui.editor.undoManager.indexOfNextAdd, scale: g.view.scale, translate: { x: g.view.translate.x, y: g.view.translate.y }, prefs: localStorage.getItem('mxGraph') }
+      2255 |     })
+    > 2256 |     await frame.locator('.geDiagramContainer').click({ position: { x: 30, y: 30 } })
+           |                                                ^
+      2257 |     const before = await observe()
+      2258 |     await f.page.keyboard.press('F6')
+      2259 |     await expect.poll(() => frame.locator('body').evaluate(() => {
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2256:48
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-green-entry-20261001T203025Z\electron-artifacts\ui-contract-theme-P01-LOWE-54c9a-selection-undo-and-viewport\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-green-entry-20261001T203025Z\electron-artifacts\ui-contract-theme-P01-LOWE-54c9a-selection-undo-and-viewport\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-lower-green-entry-20261001T203025Z\electron-artifacts\ui-contract-theme-P01-LOWE-54c9a-selection-undo-and-viewport\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:2412:1 › P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport 
+(node:37632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:37632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:37632) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

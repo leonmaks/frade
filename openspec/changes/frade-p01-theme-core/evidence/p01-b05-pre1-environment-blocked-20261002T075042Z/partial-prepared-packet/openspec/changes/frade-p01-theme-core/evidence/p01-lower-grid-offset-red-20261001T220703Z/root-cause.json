@@ -1,7 +1,0 @@
-{
-  "classification": "ABSTRACTION_BOUNDARY",
-  "actual": "Pinned Draw.io31.5.2 .geEditor uses CSS Grid min-content rows; .geDiagramContainer position relative. Applying bottom49 offsets grid item top by-49, occludes original canvas20/20 and30/30 with toolbar.",
-  "witness": "openspec/changes/frade-p01-theme-core/evidence/p01-canvas-hit-diagnostic-20261001T220227Z",
-  "repair": "Remove wrong manual bottom offset for actual grid. Original grid automatically accommodates lower min-content row; do not change original fixture clicks/assertions or invoke graph/view APIs.",
-  "previousDiagnosisCorrection": "Earlier point-focused TEST classification was incomplete; actual cause is owned bridge geometry projection. Historical RCA/raw failures remain unchanged."
-}

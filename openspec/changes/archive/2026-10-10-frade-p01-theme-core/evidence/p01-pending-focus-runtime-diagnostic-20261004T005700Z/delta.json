@@ -1,0 +1,25 @@
+{
+  "classification": "TEST_DIAGNOSTIC",
+  "purpose": "Save held READY and actual transaction before first assertion; preserve all actions/assertions and production.",
+  "beforeSha256": "d1a988ce2a428b5472c41f46539b6b18eb2e87f97355e0adeb3a5abc70be5e0f",
+  "afterSha256": "c048700b6e0ae1fcc57b0e8635453f6865917a9bf47f0c27afa7b5a79874ed64",
+  "edits": [
+    [
+      "const gate = { armed: false, held:",
+      "const gate = { messages: [] as any[], armed: false, held:"
+    ],
+    [
+      "if (!gate.armed || gate.held || event.source !== frame.contentWindow || event.origin !== 'frade://drawio' || typeof event.data !== 'string') return",
+      "if (event.source !== frame.contentWindow || event.origin !== 'frade://drawio' || typeof event.data !== 'string') return"
+    ],
+    [
+      "if (data?.event === 'fradePresentation' && data.operation === 'prepare' && data.status === 'READY') {",
+      "if (data?.event === 'fradePresentation') gate.messages.push({ data, at: performance.now(), armed: gate.armed, alreadyHeld: !!gate.held })\n          if (gate.armed && !gate.held && data?.event === 'fradePresentation' && data.operation === 'prepare' && data.status === 'READY') {"
+    ],
+    [
+      "expect(retained.revision).toBe(revision);",
+      "observations.push({ stage: 'retained-before-assertions', revision, retained, gate: await f.page.evaluate(() => (window as any).__p01PendingFocusGate.gate), telemetry: await frame.locator('body').evaluate(() => (window as any).__p01Telemetry.messages) })\n        expect(retained.revision).toBe(revision);"
+    ]
+  ],
+  "oldPrefixExact": true
+}

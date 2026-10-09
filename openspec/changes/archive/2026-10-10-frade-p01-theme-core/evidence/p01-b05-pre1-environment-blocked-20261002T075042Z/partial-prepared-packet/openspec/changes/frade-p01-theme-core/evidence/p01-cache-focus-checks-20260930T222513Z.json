@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-09-30T22:25:13.492Z",
+  "results": [
+    {
+      "label": "host-target",
+      "command": "pnpm --filter @frade/desktop exec vitest run tests/unit/presentation-settings.test.ts",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-cache-focus-checks-20260930T222513Z-host-target.txt"
+    },
+    {
+      "label": "overlay-target",
+      "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/overlays.test.tsx tests/ui-contract/shortcuts.test.ts",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-cache-focus-checks-20260930T222513Z-overlay-target.txt"
+    },
+    {
+      "label": "desktop-typecheck",
+      "command": "pnpm --filter @frade/desktop typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-cache-focus-checks-20260930T222513Z-desktop-typecheck.txt"
+    },
+    {
+      "label": "ui-typecheck",
+      "command": "pnpm --filter @frade/ui-workspace typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-cache-focus-checks-20260930T222513Z-ui-typecheck.txt"
+    },
+    {
+      "label": "desktop-lint",
+      "command": "pnpm --filter @frade/desktop lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-cache-focus-checks-20260930T222513Z-desktop-lint.txt"
+    },
+    {
+      "label": "ui-lint",
+      "command": "pnpm --filter @frade/ui-workspace lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-cache-focus-checks-20260930T222513Z-ui-lint.txt"
+    },
+    {
+      "label": "desktop-unit",
+      "command": "pnpm --filter @frade/desktop test",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-cache-focus-checks-20260930T222513Z-desktop-unit.txt"
+    },
+    {
+      "label": "ui-tests",
+      "command": "pnpm --filter @frade/ui-workspace test",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-cache-focus-checks-20260930T222513Z-ui-tests.txt"
+    },
+    {
+      "label": "ui-bdd",
+      "command": "pnpm --filter @frade/ui-workspace test:bdd",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-cache-focus-checks-20260930T222513Z-ui-bdd.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "apps/desktop/src/main/presentation-settings.ts",
+      "sha256": "e639180b841481ff869034a7c355648be70f4fc752e2bb519d8aebbfdacfaeef"
+    },
+    {
+      "path": "apps/desktop/tests/unit/presentation-settings.test.ts",
+      "sha256": "405e44ba4f25ea60d47df04c25c19dc38dc55c461a6b6fcc7f7d9b367fef4c02"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/overlays.ts",
+      "sha256": "1fcadbd0e7ba86c8864e3ba9e86c65aa3b5058de606bde26a9572f80e2e6cb5a"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/overlays.test.tsx",
+      "sha256": "f189c780feff42765dc8a8350cb29e0c7c85d189e08d4fd775e9e61e1c804862"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/shortcuts.ts",
+      "sha256": "2a7256aac6bde14d8c7f296b345a36bd23862d66fb22f07c6d1cf60a4d64bf64"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/shortcuts.test.ts",
+      "sha256": "9635933d09dd2fa6c17380a8e8bcf4bb6b47368951f662e7a39397e6ba9eaa8f"
+    }
+  ],
+  "electronWiring": "NOT_IMPLEMENTED",
+  "readyForVerify": false
+}

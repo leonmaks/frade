@@ -1,0 +1,50 @@
+
+Running 1 test using 1 worker
+
+(node:1876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1876) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds (5.0s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds 
+
+    Error: lower-hover-focus actual canonical glyph paint at contrast >=3
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      2927 |                   effectivePixels,
+      2928 |                   state + ' actual canonical glyph paint at contrast >=3',
+    > 2929 |                 ).toBeGreaterThan(0)
+           |                   ^
+      2930 |                 expect(
+      2931 |                   uiContrast(values.ink, values.background),
+      2932 |                   state + ' actual icon contrast',
+        at checkState (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2929:19)
+        at capture (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2947:13)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3054:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

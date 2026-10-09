@@ -1,0 +1,59 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/participants.test.ts (38 tests | 1 failed) 466ms
+   ✓ boot root projection installs only the complete role data and theme/density/revision metadata 9ms
+   ✓ prepare is side-effect-free; apply waits for subsequent paint and rollback restores the committed snapshot 8ms
+   ✓ invalidated/disposed handles cannot mutate or acknowledge a later root revision 4ms
+   ✓ joining root is hidden until its accepted paint and restores preexisting visibility ownership 1ms
+   ✓ forced root projection installs final system keywords without persisting them into palette input 2ms
+   ✓ neutral curtain owns full client-area node, stays until reveal and exposes accessible recovery without discarding editor DOM 15ms
+   ✓ native prepare does not write view or document; painted apply and rollback change only UI canvas/grid 23ms
+   ✓ native projection retains authored image/options and keeps user grid visibility/size through palette rollback 2ms
+   ✓ native disposal restores owned view settings and visibility without changing semantic model or removing another owner state 2ms
+   ✓ native late/aborted handles and mismatched phase cannot mutate graph view 1ms
+   ✓ native forced projection uses trusted system colors and never writes them into semantic paint 1ms
+   ✓ frame prepare waits for matching READY; apply waits for actual painted ACK and preserves semantic APIs 17ms
+   ✓ frame rejects foreign source/origin, stale generation/membership/session and extra fields before satisfying prepare 9ms
+   ✓ frame rollback carries previous snapshot with new owner and requires its painted ACK before revealing 8ms
+   ✓ frame abort, disposal and navigation reject waiting work and invalidate old generation 8ms
+   ✓ frame refusal remains an explicit error and join visibility is owned until ACK 8ms
+   ✓ frame forwards only validated presentation keys for its current painted owner and never save/close 8ms
+   ✓ OS refresh updates the System committed view atomically without persisting selection; later cancel retains current OS 6ms
+   ✓ OS refresh preserves explicit live preview and density, but Escape restores newly resolved System baseline 4ms
+   ✓ forced OS refresh is final in explicit preview and updates cancel baseline without persisting system keywords 5ms
+   ✓ cancel resolves current environment while superseding an unpublished OS refresh and never writes its selection 4ms
+   ✓ recovery restores current OS projection under the retained curtain before publishing success 6ms
+   ✓ render-dependent join paints its neutral cover before frame rendering and retains it through matching ACK 65ms
+   ✓ failed neutral join cover keeps a required frame hidden and produces explicit recovery before apply 2ms
+   ✓ covered frame apply permits rendering for its paint but leaves reveal ownership until the exact ACK 7ms
+   ✓ parked surface lease starts only in covered apply and survives rollback until reveal or disposal 9ms
+   ✓ unavailable parked paint surface refuses before sending apply and cannot fabricate an ACK 8ms
+   ✓ parked frame requests its own apply only after parent staging paint and still requires the exact subsequent frame ACK 68ms
+   ✓ aborted parent staging paint cannot send a late apply into a newer frame owner 6ms
+   ✓ removed frame cleanup rejects pending prepare, restores owned visibility and revision, and sends no detach to a missing window 7ms
+   ✓ prepared handle and leased frame dispose after DOM removal without losing lease or restoring a fabricated ACK 6ms
+   ✓ aborting a removed frame pending command rejects without throwing from the release notification or permitting late work 5ms
+   ✓ active frame prepare with missing content window still refuses and cannot be treated as an optional cleanup notification 5ms
+   ✓ P01-B05 painted diagnostic survives normal prepared release without re-settling or invalidating the participant 7ms
+   ✓ P01-B05 rejects forged, malformed, unrelated, detached and superseded settled diagnostics while preserving pending refusal 7ms
+   ✓ P01-B05 late refusal from an older painted owner is rejected during a new prepare before any diagnostic was reported 8ms
+   ✓ P01-B05 detached painted frame cannot deliver a first late diagnostic 5ms
+   × P01-B05 failed preview compensating to a different revision retains the actual DiagramView diagnostic until successful publication 96ms
+     → expected "spy" to not be called with arguments: [ undefined ]
+
+Received: 
+
+  1st spy call:
+
+Compared values have no visual difference.
+
+
+Number of calls: 1
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 37 passed (38)
+   Start at  13:00:22
+   Duration  2.63s (transform 197ms, setup 0ms, collect 633ms, tests 466ms, environment 859ms, prepare 274ms)
+

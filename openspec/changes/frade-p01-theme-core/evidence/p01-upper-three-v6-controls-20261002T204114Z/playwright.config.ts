@@ -1,1 +1,0 @@
-import {defineConfig} from "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/node_modules/@playwright/test/index.mjs";export default defineConfig({testDir:".",testMatch:"reference.spec.ts",workers:1,timeout:300000,reporter:"json",use:{trace:"retain-on-failure",screenshot:"only-on-failure"}});

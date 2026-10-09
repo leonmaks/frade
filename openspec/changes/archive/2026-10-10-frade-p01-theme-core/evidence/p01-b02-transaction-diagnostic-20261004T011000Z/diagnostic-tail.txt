@@ -1,0 +1,694 @@
+
+
+// Temporary P01 B02 diagnostic clone: original actions/assertions preserved.
+{
+  const format = 'drawio' as const
+  // eslint-disable-next-line no-empty-pattern
+  test('P01-B02 diagnostic unchanged flow manager states drawio', async ({}, info) => {
+      test.setTimeout(360000)
+      const fixture = await createFlowFixture(),
+        profile = join(fixture.destination, 'p01-profile')
+      let app = await electron.launch({
+        args: [resolve('out/main/index.cjs')],
+        env: { ...process.env, FRADE_USER_DATA: profile },
+      })
+      const observations: unknown[] = [],
+        violations: unknown[] = []
+      let activePage: Page | undefined
+      const file = join(fixture.dataRoot, '_diagrams/Flows.' + format),
+        diskBefore = await readFile(file, 'utf8'),
+        repoBefore = await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')
+      try {
+        const page = await app.firstWindow()
+        activePage = page
+
+        // Temporary read-only B02 transaction observer. No event cancellation or state writes.
+        page.on('console', message => {
+          const prefix = 'P01_B02_DIAGNOSTIC:'
+          if (message.text().startsWith(prefix))
+            observations.push({ state: 'transaction-diagnostic', data: JSON.parse(message.text().slice(prefix.length)) })
+        })
+        const observe = () => {
+          const emit = (kind: string, data: unknown) => console.info('P01_B02_DIAGNOSTIC:' + JSON.stringify({ origin: location.origin, at: performance.now(), kind, data }))
+          window.addEventListener('message', event => {
+            if (typeof event.data !== 'string') return
+            let data: any
+            try { data = JSON.parse(event.data) } catch { return }
+            if (data?.action === 'fradePresentation' || data?.event === 'fradePresentation')
+              emit('message', data)
+          })
+          if (location.origin !== 'frade://app') return
+          const state = () => ({
+            theme: document.documentElement.getAttribute('data-frade-theme'),
+            density: document.documentElement.getAttribute('data-frade-density'),
+            revision: document.documentElement.getAttribute('data-frade-revision'),
+            barrier: document.querySelector('.frade-theme-commit-barrier')?.outerHTML,
+            status: document.querySelector('#frade-presentation-status')?.textContent,
+            radios: [...document.querySelectorAll<HTMLInputElement>('.frade-presentation-settings input')].map(input => ({ label: input.parentElement?.textContent, checked: input.checked, disabled: input.disabled })),
+          })
+          document.addEventListener('click', event => {
+            const target = event.target as HTMLElement
+            if (target.closest('.frade-presentation-settings')) {
+              emit('settings-click', { target: target.outerHTML, state: state() })
+              queueMicrotask(() => emit('settings-click-microtask', state()))
+            }
+          }, true)
+          new MutationObserver(() => emit('root-attributes', state())).observe(document.documentElement, { attributes: true, attributeFilter: ['data-frade-theme','data-frade-density','data-frade-revision'] })
+        }
+        await page.evaluate(observe)
+        await page.addInitScript(observe)
+        await page.addInitScript(() => {
+          if (location.host !== 'drawio') return
+          window.addEventListener('message', (event) => {
+            let data
+            try {
+              data = typeof event.data === 'string' ? JSON.parse(event.data) : undefined
+            } catch {
+              return
+            }
+            const Editor = (window as any).EditorUi
+            if (data?.action !== 'configure' || !Editor || Editor.prototype.init.__p01FlowCapture)
+              return
+            const original = Editor.prototype.init
+            const capture = function (this: any, ...args: unknown[]) {
+              const result = original.apply(this, args)
+              ;(window as any).__p01FlowUi = this
+              return result
+            }
+            capture.__p01FlowCapture = true
+            Editor.prototype.init = capture
+          })
+        })
+        page.on('pageerror', (error) =>
+          observations.push({
+            state: 'actual-pageerror',
+            message: error.message,
+            stack: error.stack,
+          }),
+        )
+        await page.setViewportSize({ width: 1600, height: 900 })
+        await expect(page.getByRole('status')).toHaveText('Backend: ready')
+        await app.evaluate(
+          ({ dialog }, paths) => {
+            let index = 0
+            dialog.showOpenDialog = (async () => ({
+              canceled: false,
+              filePaths: [paths[index++]],
+            })) as typeof dialog.showOpenDialog
+          },
+          [fixture.dataRoot, fixture.metadataRoot],
+        )
+        await page.getByRole('button', { name: 'Открыть KA', exact: true }).click()
+        await expect(page.locator('.status-message')).toContainText('9 объектов', {
+          timeout: 30000,
+        })
+        await page
+          .getByRole('treeitem')
+          .filter({ hasText: /^_diagrams$/ })
+          .click()
+        await page
+          .getByRole('treeitem')
+          .filter({ hasText: new RegExp('^Flows[.]' + format + '$') })
+          .dblclick()
+        const canvas = () =>
+          format === 'frade'
+            ? page.locator('.diagram-slot .x6-graph')
+            : page.locator('.diagram-slot iframe').contentFrame().locator('.geDiagramContainer')
+        const node = (id: string) => canvas().getByText(id, { exact: true })
+        await expect(node('A')).toBeVisible({ timeout: 20000 })
+        const a = await node('A').boundingBox(),
+          b = await node('B').boundingBox()
+        if (!a || !b) throw Error('Actual system nodes unavailable')
+        await page.mouse.move(a.x + a.width / 2, a.y + a.height / 2)
+        await page.mouse.move(
+          a.x + a.width / 2 + (format === 'frade' ? 82 : 90),
+          a.y + a.height / 2,
+          { steps: 5 },
+        )
+        await page.mouse.down()
+        await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2, { steps: 20 })
+        await page.mouse.up()
+        await expect(page.locator('.bundle-hint')).toContainText(/Найдено 3 потоков между A и B/)
+        await captureB02Matrix(
+          page,
+          info,
+          'bundle-hint-' + format,
+          '.bundle-hint button',
+          observations,
+          violations,
+        )
+        await installActualRequestGate(app)
+        await gateActualRequest(app, 'integrationFlows', 'hold')
+        await page.getByRole('button', { name: 'Выбрать потоки', exact: true }).click()
+        const manager = page.getByRole('complementary', { name: 'Интеграционные потоки' })
+        await expect(manager.getByText('Загрузка потоков…', { exact: true })).toBeVisible()
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-loading-' + format,
+          '.flow-manager input[aria-label="Поиск потоков"]',
+          observations,
+          violations,
+        )
+        await gateActualRequest(app, 'integrationFlows', 'normal')
+        await expect(manager.getByRole('checkbox', { name: 'В жгуте: Payload F1' })).toBeVisible()
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-populated-' + format,
+          '.flow-manager tr[tabindex]',
+          observations,
+          violations,
+        )
+        await manager.getByRole('checkbox', { name: 'В жгуте: Payload F1' }).check()
+        await expect(manager.getByRole('checkbox', { name: 'В жгуте: Payload F1' })).toBeChecked()
+        const dirty = await page.locator('.dirty-dot').count()
+        expect(dirty).toBe(1)
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-dirty-' + format,
+          '.flow-manager tr[tabindex]',
+          observations,
+          violations,
+        )
+        expect(await page.locator('.dirty-dot').count()).toBe(dirty)
+        await manager.getByLabel('Поиск потоков', { exact: true }).fill('p01 no matching flow')
+        await expect(
+          manager.getByText('По заданным условиям потоки не найдены.', { exact: true }),
+        ).toBeVisible()
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-empty-' + format,
+          '.flow-manager input[aria-label="Поиск потоков"]',
+          observations,
+          violations,
+        )
+        await gateActualRequest(app, 'integrationFlows', 'error')
+        await manager.getByLabel('Поиск потоков', { exact: true }).fill('')
+        await expect(manager.getByRole('alert')).toContainText('REPOSITORY_UNAVAILABLE')
+        observations.push({
+          state: 'flow-error',
+          fixture:
+            'Declared test-only IPC transport refusal; normal path calls original backend with actual data.',
+        })
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-error-' + format,
+          '.flow-manager button',
+          observations,
+          violations,
+        )
+        await gateActualRequest(app, 'integrationFlows', 'normal')
+        await manager.getByRole('button', { name: 'Повторить запрос', exact: true }).click()
+        await expect(manager.getByRole('checkbox', { name: 'В жгуте: Payload F1' })).toBeChecked()
+        await manager.getByRole('row', { name: 'Поток: Payload F1', exact: true }).hover()
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-hover-focus-' + format,
+          '.flow-manager tr[tabindex]',
+          observations,
+          violations,
+        )
+        await manager.getByRole('button', { name: '+ Новый поток', exact: true }).click()
+        await manager.getByLabel('ID потока', { exact: true }).fill('F99')
+        await manager.getByLabel('description', { exact: true }).fill('Unsaved P01 flow draft')
+        await manager.getByRole('button', { name: 'Закрыть менеджер потоков' }).click()
+        await expect(manager.locator('.flow-warning')).toContainText(
+          'Есть несохранённые изменения формы.',
+        )
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-unsaved-warning-' + format,
+          '.flow-warning button',
+          observations,
+          violations,
+        )
+        await manager
+          .getByRole('button', { name: 'Продолжить редактирование', exact: true })
+          .click()
+        expect(await manager.getByLabel('description', { exact: true }).inputValue()).toBe(
+          'Unsaved P01 flow draft',
+        )
+        expect(await readFile(file, 'utf8')).toBe(diskBefore)
+        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(repoBefore)
+        // Finish the real unsaved form guard before inspecting existing native overlays.
+        await manager.getByRole('button', { name: 'Закрыть менеджер потоков' }).click()
+        await manager
+          .getByRole('button', { name: 'Продолжить без сохранения', exact: true })
+          .click()
+        await expect(manager).toBeHidden()
+        await canvas().evaluate(async () => {
+          await new Promise<void>((resolve) =>
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+            ),
+          )
+        })
+        if (format === 'drawio') {
+          await node('B').scrollIntoViewIfNeeded()
+          await node('C').scrollIntoViewIfNeeded()
+          await expect(node('B')).toBeInViewport()
+          await expect(node('C')).toBeInViewport()
+        }
+        await expect(canvas().locator('path[stroke="#404040" i]')).toHaveCount(1)
+        const line = canvas().locator('path[stroke="#404040" i]').first()
+        const point = async (fraction: number) => {
+          const local = await line.evaluate((node, fraction) => {
+            const path = node as SVGPathElement,
+              p = path.getPointAtLength(path.getTotalLength() * fraction),
+              q = new DOMPoint(p.x, p.y).matrixTransform(path.getScreenCTM()!)
+            return { x: q.x, y: q.y }
+          }, fraction)
+          const box =
+            format === 'drawio'
+              ? await page.locator('.diagram-slot iframe').boundingBox()
+              : undefined
+          return { x: local.x + (box?.x ?? 0), y: local.y + (box?.y ?? 0) }
+        }
+        const openActual = async () => {
+          if (format === 'drawio') {
+            await expect(page.locator('.diagram-slot iframe')).toHaveAttribute(
+              'data-frade-revision',
+              (await page.locator('html').getAttribute('data-frade-revision')) as string,
+            )
+            await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+            await expect(
+              page
+                .locator('.diagram-slot .editor-actions')
+                .getByRole('button', { name: 'Сохранить', exact: true }),
+            ).toBeEnabled()
+            await canvas().evaluate(async () => {
+              await document.fonts.ready
+              await new Promise<void>((resolve) =>
+                requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+              )
+            })
+            await line.evaluate((node) =>
+              node.scrollIntoView({ block: 'nearest', inline: 'nearest' }),
+            )
+            await canvas().evaluate(async () => {
+              await new Promise<void>((resolve) =>
+                requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+              )
+            })
+          }
+          const p = await point(0.5)
+          const surface = await canvas().boundingBox()
+          if (!surface) throw Error('Actual bundle inspection surface unavailable')
+          expect(p.x).toBeGreaterThanOrEqual(surface.x)
+          expect(p.x).toBeLessThanOrEqual(surface.x + surface.width)
+          expect(p.y).toBeGreaterThanOrEqual(surface.y)
+          expect(p.y).toBeLessThanOrEqual(surface.y + surface.height)
+          await page.mouse.dblclick(p.x, p.y)
+          await expect(manager).toBeVisible()
+        }
+        if (format === 'frade') {
+          const p = await point(0.5)
+          await page.mouse.click(p.x, p.y, { button: 'right' })
+          await expect(page.locator('.bundle-reconnect[role="menu"]')).toBeVisible()
+          await captureB02Matrix(
+            page,
+            info,
+            'bundle-context-menu-' + format,
+            '.bundle-reconnect button',
+            observations,
+            violations,
+          )
+          await page.getByRole('button', { name: 'Закрыть меню', exact: true }).click()
+        }
+        const p = await point(0.5)
+        await page.mouse.click(p.x, p.y)
+        await page.waitForTimeout(100)
+        const frameSemantic = async () =>
+          canvas().evaluate(() => {
+            const globals = window as any,
+              ui = globals.__p01FlowUi,
+              graph = ui.editor.graph
+            return {
+              modelXml: globals.mxUtils.getXml(new globals.mxCodec().encode(graph.getModel())),
+              selection: graph.getSelectionCells().map((cell: any) => cell.id),
+              undo: ui.editor.undoManager.history.length,
+              cursor: ui.editor.undoManager.indexOfNextAdd,
+            }
+          })
+        const beforeSemantic = format === 'drawio' ? await frameSemantic() : undefined
+        const beforePath = await line.getAttribute('d'),
+          end = await point(1),
+          c = await node('C').boundingBox()
+        if (!c) throw Error('Actual C target missing')
+        await page.mouse.move(end.x, end.y)
+        await page.mouse.down()
+        await page.mouse.move(
+          c.x + c.width / 2 + (format === 'drawio' ? 65 : 0),
+          c.y + c.height / 2,
+          { steps: 25 },
+        )
+        await page.mouse.up()
+        const warning = page.getByRole('alertdialog', { name: 'Изменение конца жгута' })
+        await expect(warning).toBeVisible()
+        await captureB02Matrix(
+          page,
+          info,
+          'bundle-reconnect-warning-' + format,
+          '.bundle-reconnect button',
+          observations,
+          violations,
+        )
+        await warning.getByRole('button', { name: 'Отмена', exact: true }).click()
+        await expect(warning).toBeHidden()
+        if (format === 'drawio') {
+          expect(await frameSemantic()).toEqual(beforeSemantic)
+          observations.push({
+            state: 'frame-reconnect-cancel-domain-preserved',
+            beforeSemantic,
+            projectedBefore: beforePath,
+            projectedAfter: await line.getAttribute('d'),
+            note: 'Viewport/scroll projection may move; exact model/selection/undo cannot.',
+          })
+        } else await expect(line).toHaveAttribute('d', beforePath!)
+        await openActual()
+        await expect(manager.getByRole('checkbox', { name: 'В жгуте: Payload F1' })).toBeChecked()
+        await manager.getByRole('button', { name: 'Закрыть менеджер потоков' }).click()
+        await page
+          .locator('.diagram-slot .editor-actions')
+          .getByRole('button', { name: 'Сохранить', exact: true })
+          .click()
+        await expect(page.locator('.diagram-slot .editor-actions')).toContainText(
+          'Все изменения сохранены',
+        )
+        await page.getByRole('button', { name: 'Закрыть Flows.' + format, exact: true }).click()
+        // Explicit temporary data fixture: broken and no-longer-eligible references.
+        const saved = await readFile(file, 'utf8')
+        let modified = saved
+        if (format === 'frade') {
+          const document = JSON.parse(saved),
+            refs = document.graph.edges[0].bundle.integrationFlowRefs
+          refs.push({ repositoryId: refs[0].repositoryId, objectId: 'Missing' })
+          modified = JSON.stringify(document)
+        } else
+          modified = saved.replace(/fradeIntegrationFlowRefs="([^"\n]*)"/, (_all, encoded) => {
+            const refs = JSON.parse(encoded.replaceAll('&quot;', '"').replaceAll('&amp;', '&'))
+            refs.push({ repositoryId: refs[0].repositoryId, objectId: 'Missing' })
+            return (
+              'fradeIntegrationFlowRefs="' +
+              JSON.stringify(refs).replaceAll('&', '&amp;').replaceAll('"', '&quot;') +
+              '"'
+            )
+          })
+        expect(modified).not.toBe(saved)
+        await writeFile(file, modified)
+        const flows = await fixture.readFlows()
+        flows.F1.producer = 'C'
+        const modifiedRepo = JSON.stringify({ 'custom.flows': flows }, null, 2)
+        await writeFile(join(fixture.dataRoot, 'flows.yaml'), modifiedRepo)
+        await page
+          .getByRole('textbox', { name: 'Поиск объектов', exact: true })
+          .fill('Flows.' + format)
+        await page
+          .getByRole('treeitem')
+          .filter({ hasText: new RegExp('^Flows[.]' + format + '$') })
+          .dblclick()
+        await expect(node('A')).toBeVisible({ timeout: 20000 })
+        await openActual()
+        await expect(manager.getByText('Недоступный поток: Missing', { exact: true })).toBeVisible()
+        await expect(
+          manager.getByText('Поток больше не связывает системы жгута: F1', { exact: true }),
+        ).toBeVisible()
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-invalid-members-warning-' + format,
+          '.flow-warning button',
+          observations,
+          violations,
+        )
+        expect(await readFile(file, 'utf8')).toBe(modified)
+        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(modifiedRepo)
+        observations.push({
+          temporaryFixture: true,
+          file,
+          kind: 'actual saved bundle references and actual repository endpoints',
+          savedBytes: saved,
+          modifiedBytes: modified,
+          originalRepository: repoBefore,
+          modifiedRepository: modifiedRepo,
+        })
+        if (format === 'drawio') {
+          await manager.getByRole('button', { name: 'Закрыть менеджер потоков' }).click()
+          await page.getByRole('button', { name: 'Закрыть Flows.' + format, exact: true }).click()
+          const invalid = modified.replace(
+            /fradeIntegrationFlowRefs="[^"]*"/,
+            'fradeIntegrationFlowRefs="not-json"',
+          )
+          expect(invalid).not.toBe(modified)
+          await writeFile(file, invalid)
+          await page
+            .getByRole('treeitem')
+            .filter({ hasText: /^Flows[.]drawio$/ })
+            .dblclick()
+          await expect(node('A')).toBeVisible({ timeout: 20000 })
+          await openActual()
+          await expect(manager.getByRole('alert')).toContainText('Состав жгута повреждён')
+          await expect(
+            manager.getByRole('checkbox', {
+              name: 'Включить все подходящие потоки из текущей выборки',
+            }),
+          ).toBeDisabled()
+          await captureB02Matrix(
+            page,
+            info,
+            'flow-corrupt-members-warning-' + format,
+            '.flow-warning button',
+            observations,
+            violations,
+          )
+          expect(await readFile(file, 'utf8')).toBe(invalid)
+          await manager.getByRole('button', { name: 'Закрыть менеджер потоков' }).click()
+          await page.getByRole('button', { name: 'Закрыть Flows.' + format, exact: true }).click()
+          await writeFile(file, modified)
+        }
+        // P01-RT-READONLY-001: real already-open manager, actual diagram write/DTO.
+        if (format === 'drawio') {
+          await page
+            .getByRole('treeitem')
+            .filter({ hasText: /^Flows[.]drawio$/ })
+            .dblclick()
+          await expect(node('A')).toBeVisible({ timeout: 20000 })
+          await openActual()
+        }
+        await expect(manager).toBeVisible()
+        const addedMember = manager.getByRole('checkbox', {
+          name: 'В жгуте: Payload F2',
+          exact: true,
+        })
+        await addedMember.check()
+        await expect(addedMember).toBeChecked()
+        const readonlyDiskBefore = await readFile(file, 'utf8')
+        const readonlyRepoBefore = await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')
+        const readonlyFrameBeforeSave = format === 'drawio' ? await frameSemantic() : undefined
+        await page.locator('.diagram-slot iframe,.diagram-slot .x6-graph').evaluate((node) => {
+          ;(window as any).__p01ReadonlyCanvas = node
+        })
+        await manager.evaluate((node) => {
+          ;(window as any).__p01ReadonlyManager = node
+        })
+        await gateActualRequest(app, 'diagram', 'hold')
+        await page
+          .locator('.diagram-slot .editor-actions')
+          .getByRole('button', { name: 'Сохранить', exact: true })
+          .click()
+        await expect
+          .poll(() => app.evaluate(() => (globalThis as any).__p01IpcGate.pending))
+          .toBe(1)
+        const held = await app.evaluate(() => (globalThis as any).__p01IpcGate.requests[0])
+        const actualRequest = held.value.request ?? held.value
+        expect(actualRequest.operation).toBe('diagram')
+        expect(actualRequest.payload.action).toBe('write')
+        expect(actualRequest.payload.path).toBe('_diagrams/Flows.' + format)
+        expect(typeof actualRequest.payload.xml).toBe('string')
+        await expect(addedMember).toBeChecked()
+        await expect(addedMember).toBeDisabled()
+        // Capture after the actual Save/readOnly transition; theme changes must preserve this state.
+        const readonlyFrameBefore = format === 'drawio' ? await frameSemantic() : undefined
+        if (format === 'drawio') {
+          expect(readonlyFrameBefore?.modelXml).toBe(readonlyFrameBeforeSave?.modelXml)
+          expect(readonlyFrameBefore?.undo).toBe(readonlyFrameBeforeSave?.undo)
+          expect(readonlyFrameBefore?.cursor).toBe(readonlyFrameBeforeSave?.cursor)
+          observations.push({
+            state: 'actual-Save-readonly-transition',
+            before: readonlyFrameBeforeSave,
+            after: readonlyFrameBefore,
+            note: 'The existing editor can clear selection when Save enters readOnly. Full semantic equality remains required across the following theme transactions.',
+          })
+        }
+        await expect(
+          manager.getByRole('button', { name: '+ Новый поток', exact: true }),
+        ).toBeEnabled()
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-read-only-pending-' + format,
+          '.flow-manager input[aria-label="Поиск потоков"]',
+          observations,
+          violations,
+        )
+        await expect(manager).toBeVisible()
+        await expect(addedMember).toBeChecked()
+        await expect(addedMember).toBeDisabled()
+        expect(await readFile(file, 'utf8')).toBe(readonlyDiskBefore)
+        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(
+          readonlyRepoBefore,
+        )
+        expect(await app.evaluate(() => (globalThis as any).__p01IpcGate.requests[0])).toEqual(held)
+        await manager.getByRole('button', { name: '+ Новый поток', exact: true }).click()
+        await manager.getByLabel('ID потока', { exact: true }).fill('F99')
+        await manager
+          .getByLabel('description', { exact: true })
+          .fill('Actual readonly diagram retains repository form draft')
+        const readonlyDraft = await manager.getByLabel('description', { exact: true }).inputValue()
+        await captureB02Matrix(
+          page,
+          info,
+          'flow-read-only-draft-' + format,
+          '.flow-manager input',
+          observations,
+          violations,
+        )
+        expect(await manager.getByLabel('ID потока', { exact: true }).inputValue()).toBe('F99')
+        expect(await manager.getByLabel('description', { exact: true }).inputValue()).toBe(
+          readonlyDraft,
+        )
+        expect(await readFile(file, 'utf8')).toBe(readonlyDiskBefore)
+        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(
+          readonlyRepoBefore,
+        )
+        if (format === 'drawio') expect(await frameSemantic()).toEqual(readonlyFrameBefore)
+        expect(
+          await page
+            .locator('.diagram-slot iframe,.diagram-slot .x6-graph')
+            .evaluate((node) => node === (window as any).__p01ReadonlyCanvas),
+        ).toBe(true)
+        expect(
+          await manager.evaluate((node) => node === (window as any).__p01ReadonlyManager),
+        ).toBe(true)
+        await expect(
+          page
+            .locator('.diagram-slot .editor-actions')
+            .getByRole('button', { name: 'Сохранить', exact: true }),
+        ).toBeDisabled()
+        observations.push({
+          state: 'actual-diagram-readonly-pending-or-unknown',
+          heldOriginalRequest: held,
+          membership: 'F2 checked and disabled; repository New Flow remains enabled',
+          readonlyDraft,
+          readonlyDiskBefore,
+          readonlyRepoBefore,
+          frameSemantic: readonlyFrameBefore,
+          originalHandlerStatus: 'HELD_NOT_CALLED',
+          note: 'Disk/model unchanged during theme transactions; one original Save write is allowed only after gate release.',
+        })
+        expect(
+          await app.evaluate(() => (globalThis as any).__p01IpcGate.originalCallsForHeld),
+        ).toBe(0)
+        await gateActualRequest(app, 'diagram', 'normal')
+        await expect
+          .poll(() => readFile(file, 'utf8'), { timeout: 20000 })
+          .toBe(actualRequest.payload.xml)
+        expect(
+          await app.evaluate(() => (globalThis as any).__p01IpcGate.originalCallsForHeld),
+        ).toBe(1)
+        observations.push({
+          state: 'original-held-save-completed-once',
+          originalCalls: 1,
+          actualSavedXml: actualRequest.payload.xml,
+        })
+        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(
+          readonlyRepoBefore,
+        )
+        // P01-RT-RESTORED-002 remains a separate real workspace permission test.
+        await finishDiagramFixture(app)
+        // Explicit temporary data fixture restoration after the one resumed original Save.
+        await writeFile(file, modified)
+        const profileFile = join(profile, 'frade-workspace.json'),
+          workspace = JSON.parse(await readFile(profileFile, 'utf8'))
+        expect(workspace.roots.length).toBe(1)
+        workspace.roots[0].readOnly = true
+        await writeFile(profileFile, JSON.stringify(workspace))
+        app = await electron.launch({
+          args: [resolve('out/main/index.cjs')],
+          env: { ...process.env, FRADE_USER_DATA: profile },
+        })
+        const roPage = await app.firstWindow()
+        activePage = roPage
+        await roPage.setViewportSize({ width: 1600, height: 900 })
+        await expect(roPage.getByRole('status')).toHaveText('Backend: ready')
+        await expect(roPage.locator('.tree-row').filter({ hasText: 'data' }).first()).toBeVisible({
+          timeout: 30000,
+        })
+        await roPage
+          .getByRole('textbox', { name: 'Поиск объектов', exact: true })
+          .fill('Flows.' + format)
+        await roPage
+          .getByRole('treeitem')
+          .filter({ hasText: new RegExp('^Flows[.]' + format + '$') })
+          .dblclick()
+        const roCanvas =
+          format === 'frade'
+            ? roPage.locator('.diagram-slot .x6-graph')
+            : roPage.locator('.diagram-slot iframe').contentFrame().locator('.geDiagramContainer')
+        await expect(roCanvas.getByText('A', { exact: true })).toBeVisible({ timeout: 20000 })
+        await expect(
+          roPage
+            .locator('.diagram-slot .editor-actions')
+            .getByRole('button', { name: 'Сохранить', exact: true }),
+        ).toBeDisabled()
+        const roPath = roCanvas.locator('path[stroke="#404040" i]').first(),
+          pos = await roPath.evaluate((node) => {
+            const path = node as SVGPathElement,
+              p = path.getPointAtLength(path.getTotalLength() / 2),
+              q = new DOMPoint(p.x, p.y).matrixTransform(path.getScreenCTM()!)
+            return { x: q.x, y: q.y }
+          }),
+          box =
+            format === 'drawio'
+              ? await roPage.locator('.diagram-slot iframe').boundingBox()
+              : undefined
+        await roPage.mouse.dblclick(pos.x + (box?.x ?? 0), pos.y + (box?.y ?? 0))
+        // The unavailable restored-workspace inspector entry is preserved as historical raw evidence.
+        // Actual blocked input and original Save/byte/dirty protections remain mandatory.
+        await expect(roPage.locator('.diagram-readonly').filter({ visible: true })).toBeVisible()
+        const roA = await roCanvas.getByText('A', { exact: true }).boundingBox()
+        if (!roA) throw Error('Actual readonly A input target unavailable')
+        await roPage.mouse.move(roA.x + roA.width / 2, roA.y + roA.height / 2)
+        await roPage.mouse.down()
+        await roPage.mouse.move(roA.x + roA.width / 2 + 50, roA.y + roA.height / 2 + 30, {
+          steps: 12,
+        })
+        await roPage.mouse.up()
+        expect(await readFile(file, 'utf8')).toBe(modified)
+        expect(await readFile(join(fixture.dataRoot, 'flows.yaml'), 'utf8')).toBe(modifiedRepo)
+        await expect(roPage.locator('.dirty-dot')).toHaveCount(0)
+        expect(violations).toEqual([])
+      } catch (error) {
+        observations.push({ state: 'actual-failure', message: String(error) })
+        if (activePage)
+          await activePage.screenshot({ path: info.outputPath('actual-live-failure.png') })
+        throw error
+      } finally {
+        await writeFile(
+          info.outputPath('b02-flow-observations.json'),
+          JSON.stringify(
+            { format, observations, violations, visualApproval: 'NOT_APPROVED' },
+            null,
+            2,
+          ),
+        )
+        await finishDiagramFixture(app)
+      }
+    })
+}

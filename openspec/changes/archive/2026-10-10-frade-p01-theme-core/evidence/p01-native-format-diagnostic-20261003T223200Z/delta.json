@@ -1,0 +1,26 @@
+{
+  "before": "525d4bb07ac72d22e35ca32c371862cfefe8fda6019311f70ce15b3311ba8c53",
+  "after": "6cbc51c6ef7f3ab70e639726c961bab9c49d6420e67536630ccf76e67e52f77f",
+  "patches": [
+    [
+      "focused: document.hasFocus(), stack:",
+      "format: { box: box(ui.formatContainer), inline: ui.formatContainer.getAttribute('style'), width: ui.formatWidth, transition: getComputedStyle(ui.formatContainer).transition }, focused: document.hasFocus(), stack:"
+    ],
+    [
+      "resizeListener = () => sample('window.resize')",
+      "resizeListener = () => sample('window.resize'), formatListener = () => sample('formatWidthChanged')"
+    ],
+    [
+      "ui.addListener('shapesPanelChanged', shapesListener);",
+      "ui.addListener('formatWidthChanged', formatListener); ui.addListener('shapesPanelChanged', shapesListener);"
+    ],
+    [
+      "observer.observe(ui.sidebarContainer, { attributes: true, attributeFilter: ['style'] }); sample('armed')",
+      "observer.observe(ui.sidebarContainer, { attributes: true, attributeFilter: ['style'] }); observer.observe(ui.formatContainer, { attributes: true, attributeFilter: ['style'] }); sample('armed')"
+    ],
+    [
+      "ui.removeListener(shapesListener);",
+      "ui.removeListener(shapesListener); ui.removeListener(formatListener);"
+    ]
+  ]
+}

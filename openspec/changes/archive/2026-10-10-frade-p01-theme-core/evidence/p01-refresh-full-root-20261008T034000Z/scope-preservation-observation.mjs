@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';import {createHash} from 'node:crypto';
+const sha=b=>createHash('sha256').update(b).digest('hex'),read=async p=>JSON.parse(await fs.readFile(p,'utf8')),must=(v,m)=>{if(!v)throw Error(m)};
+const old='openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-audit-20261002T142714Z/verify-current-evidence2.mjs',text=await fs.readFile(old,'utf8');
+const start=text.indexOf('const acceptance='),end=text.indexOf('const units=[];');must(start>=0&&end>start,'AUDIT_SEGMENT_NOT_FOUND');
+const segment=text.slice(start,end),run=new Function('read','sha','must','fs','return (async()=>{'+segment+'return {other122Exact:true,twoAcceptedTransitionsExact:true,foundationPinsExact:fui.frozen.length,pendingRuntimeHistoricalExact:true};})()');
+const result=await run(read,sha,must,fs),dir='openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z',atUtc=new Date().toISOString(),out={atUtc,status:'PASS_SCOPED_PRESERVATION_OBSERVATION',scope:'Legacy two-entry chain/other122, frozen foundation pins and historical pendingRuntime only; full check still running; not OpenSpec verify or POST.',sourceScript:old,sourceScriptSha256:sha(await fs.readFile(old)),executedSegmentSha256:sha(Buffer.from(segment)),result};
+await fs.writeFile(dir+'/scope-preservation-observation.json',JSON.stringify(out,null,2)+'\n',{flag:'wx'});await fs.copyFile(process.argv[1],dir+'/scope-preservation-observation.mjs');console.log(JSON.stringify(out));

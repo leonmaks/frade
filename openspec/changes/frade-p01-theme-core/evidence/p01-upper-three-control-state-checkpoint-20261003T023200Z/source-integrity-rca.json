@@ -1,7 +1,0 @@
-{
-  "classification": "TEST",
-  "failure": "Audit indexed callbacks by getStart while immutable original manifest stores TypeScript node.pos including leading trivia.",
-  "proof": "afterEach pos=getStart561; first it pos6636 getStart6637 but fn.getText SHA exactly b984791b3c910fe6932dad58e812a3c3f8eb07db681cd5dde1f0c97e56fe0bfd as original. Both raw prefixes were already byte-identical.",
-  "repair": "Audit only uses original pos convention with unchanged getText hash; no source/tests/baseline edits.",
-  "priorAuditPreserved": true
-}

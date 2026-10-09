@@ -1,0 +1,31 @@
+{
+  "atUtc": "2026-10-01T07:20:43.608Z",
+  "runs": [
+    {
+      "command": "node --check integrity.mjs",
+      "exit": 0,
+      "log": "final-check-0.txt"
+    },
+    {
+      "command": "node --check policy.mjs",
+      "exit": 0,
+      "log": "final-check-1.txt"
+    },
+    {
+      "command": "node --check prepare-review.mjs",
+      "exit": 0,
+      "log": "final-check-2.txt"
+    },
+    {
+      "command": "node --check invoke-review.mjs",
+      "exit": 0,
+      "log": "final-check-3.txt"
+    },
+    {
+      "command": "node --test transport.test.mjs",
+      "exit": 0,
+      "log": "final-check-4.txt"
+    }
+  ],
+  "status": "PASS"
+}

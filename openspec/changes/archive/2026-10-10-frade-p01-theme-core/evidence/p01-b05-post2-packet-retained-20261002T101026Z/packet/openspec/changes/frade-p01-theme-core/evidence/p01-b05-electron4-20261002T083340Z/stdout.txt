@@ -1,0 +1,43 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\e2e\ui-contract-theme.spec.ts:3555:1 › P01-B05 actual settled lower refusal stays live through failed publication, preserves semantics and permits original feasible retry (14.3s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:3555:1 › P01-B05 actual settled lower refusal stays live through failed publication, preserves semantics and permits original feasible retry 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('status').filter({ hasText: 'Меню страниц не помещается' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('status').filter({ hasText: 'Меню страниц не помещается' })[22m
+
+
+      3448 |     await expect(live).toBeVisible();await expect(host).toBeVisible()
+      3449 |     await f.page.keyboard.press('Escape');await expect(f.page.getByRole('dialog',{name:'Выбор темы'})).toHaveCount(0)
+    > 3450 |     await expect(live).toBeVisible()
+           |                        ^
+      3451 |     await frame.locator('body').evaluate(()=>{(window as any).__p01RefuseDark=false})
+      3452 |     await previewDark(f.page);await expect(host).toHaveAttribute('data-frade-revision',(await f.page.locator('html').getAttribute('data-frade-revision'))!)
+      3453 |     await expect(live).toHaveCount(0)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3450:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b05-electron4-20261002T083340Z\results\ui-contract-theme-P01-B05--452aa-its-original-feasible-retry\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b05-electron4-20261002T083340Z\results\ui-contract-theme-P01-B05--452aa-its-original-feasible-retry\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b05-electron4-20261002T083340Z\results\ui-contract-theme-P01-B05--452aa-its-original-feasible-retry\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:3555:1 › P01-B05 actual settled lower refusal stays live through failed publication, preserves semantics and permits original feasible retry 

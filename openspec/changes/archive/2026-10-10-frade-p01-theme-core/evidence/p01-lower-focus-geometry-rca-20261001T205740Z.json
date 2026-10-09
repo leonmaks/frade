@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-01T20:57:40.967Z",
+  "classification": [
+    "ABSTRACTION_BOUNDARY",
+    "TEST"
+  ],
+  "runtime": "p01-lower-matrix-runtime-20261001T205330Z",
+  "originalFullActions": "PASS",
+  "facts": "Focused icon uses mask on interactive element, foreground/background reported same, mask clips outline. At resize capture original view translate changed and popup vendor fit not yet painted.",
+  "repair": "Move unchanged original image into owned CSS pseudo glyph; keep actual button background/focus unmasked. Before focus preservation baseline wait for six stable actual resize/view RAF signatures, then after popup opening two actual RAF. Keep exact semantic assertions. Popup measurements retain lower records but active hit-test assertions follow existing approved popup key precedence: lower layer is suspended until popup closes. No menu relocation/exception/semantic API."
+}

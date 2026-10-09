@@ -1,0 +1,7 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const d='openspec/changes/frade-p01-theme-core/evidence/p01-upper-boundary-regression-20261004T023500Z',sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const command=JSON.parse(fs.readFileSync(d+'/runtime-command.json')),report=JSON.parse(fs.readFileSync(d+'/runtime.stdout.json'));
+const live=Object.fromEntries(Object.keys(command.sourceAfter).map(p=>[p,sha(fs.readFileSync(p))]));
+const proofs=[],preservation=[];
+for(const folder of fs.readdirSync(d+'/artifacts',{withFileTypes:true}).filter(x=>x.isDirectory())){const root=d+'/artifacts/'+folder.name;for(const file of fs.readdirSync(root)){if(file.endsWith('-proof.json')){const r=JSON.parse(fs.readFileSync(root+'/'+file));if(r.bound)proofs.push({case:folder.name,file,status:r.bound.status,reason:r.bound.reason,ratio:r.bound.min})}if(file==='expanded-preservation.json'){const r=JSON.parse(fs.readFileSync(root+'/'+file));preservation.push({case:folder.name,scenarios:r.length,exactBeforeAfter:r.every(s=>JSON.stringify(s.before)===JSON.stringify(s.after))})}}}
+console.log(JSON.stringify({stats:report.stats,sourceStillUnchanged:JSON.stringify(command.sourceAfter)===JSON.stringify(live),source:live,proofs:{count:proofs.length,pass:proofs.filter(x=>x.status==='PASS').length,nonpass:proofs.filter(x=>x.status!=='PASS')},preservation,reportSha256:sha(fs.readFileSync(d+'/runtime.stdout.json')),commandSha256:sha(fs.readFileSync(d+'/runtime-command.json'))},null,2));

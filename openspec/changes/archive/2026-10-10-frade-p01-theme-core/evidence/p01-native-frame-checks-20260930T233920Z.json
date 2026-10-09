@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-09-30T23:42:13.335Z",
+  "results": [
+    {
+      "label": "ui-typecheck",
+      "command": "pnpm --filter @frade/ui-workspace typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-native-frame-checks-20260930T233920Z-ui-typecheck.txt"
+    },
+    {
+      "label": "ui-lint",
+      "command": "pnpm --filter @frade/ui-workspace lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-native-frame-checks-20260930T233920Z-ui-lint.txt"
+    },
+    {
+      "label": "adapter-tests",
+      "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/participants.test.ts tests/ui-contract/picker.test.tsx",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-native-frame-checks-20260930T233920Z-adapter-tests.txt"
+    },
+    {
+      "label": "colors",
+      "command": "pnpm ui:colors:check",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-native-frame-checks-20260930T233920Z-colors.txt"
+    },
+    {
+      "label": "desktop-build",
+      "command": "pnpm --filter @frade/desktop build",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-native-frame-checks-20260930T233920Z-desktop-build.txt"
+    },
+    {
+      "label": "electron",
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme.spec.ts --output C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-native-frame-checks-20260930T233920Z-artifacts",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-native-frame-checks-20260930T233920Z-electron.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "packages/ui-workspace/src/FradeDiagramView.tsx",
+      "sha256": "1422adc938fa0606486de293b5f42a2a0fc0bfa84dcc9fee66ddfe167445534e"
+    },
+    {
+      "path": "packages/ui-workspace/src/DiagramView.tsx",
+      "sha256": "67ab43a067ef25f034dacfd692fed48dffedc5392ef09b74d00bdfeffb497f1a"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/index.ts",
+      "sha256": "4488b35179d8df3f94f805a41fccd2339736eb4845eaa3ee2810aa0b280f9313"
+    },
+    {
+      "path": "docs/ui/decisions/legacy-colors.json",
+      "sha256": "c5ac3f58e3a974ada34eb90118efc0bcbd32633821c000ec591a9df88fc83720"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "sha256": "85871519c690a7e4416cdd98e8a7db07f1104b464145d22c2a5159bb3fec5407"
+    }
+  ]
+}

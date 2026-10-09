@@ -1,0 +1,48 @@
+Independent read-only focused POST for accepted P01-LOWER-REFLOW-REFUSAL-01 (B05), Frade UI only. Review actual current implementation and execution evidence. Give exactly one standalone GATE_STATUS: PASS or FAIL; correctness/architecture/scope/applicable-check blockers mean FAIL. Do not modify packet or use outside candidate/network/apps/auth/global settings. Requested stage/model/effort derives from complete owning design (P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 POST gpt-6-astra/xhigh); no universal default or backend attestation claim.
+
+Authority: user's exact acceptance of immutable draft SHA15ca9631c072adf7cb32ff8fcd4c73f5fdab5ccc3f647e125b0854c3d4262e01; separate dated acceptance; coherent four artifacts, guide1.0, shared workflow1.1. B05 PRE2 passed with complete74events/exit0, candidate/packet/plan unchanged and754files; raw17 copied before interpretation, result3337ef37ff3e976800f74653e12b298674640e7170127e0ee9a50dfd42dad2ad. PRE1 environment ENOSPC before reviewer, prior POST2 FAIL B05 a204eeb25ba1eabca5c44659ae05b52124a0cd35ef86480958bdfbecc668feb3, all FAIL/RCA preserved. Mandatory meaningful permanent RED4 failures before production in p01-b05-red-20261002T081250Z.
+
+Only three production paths changed against accepted planning e1e97975346e2556c7af8c0801b8a59b2cff5e4d: drawio-theme-bridge.ts, frameParticipant.ts, DiagramView.tsx. Three assertion paths only drawio-theme.test.ts, participants.test.ts, ui-contract-theme.spec.ts. No vendor, WB/bundle fixture, dependency, token/exception/CI/domain/routing/persisted-semantics change. Scope audit openspec/changes/frade-p01-theme-core/evidence/p01-b05-verify-20261002T091831Z/scope-audit.json and final exact old assertion callback audit retain27bridge/33parent/20Electron byte-identically; new7unit+1Electron.
+
+Inspect bridge STOP propagation for impossible root/submenu keyboard/mouse/resize/media; original current hide/cancellation, exact owned styles/priorities/presence/attributes restoration, connected opener focus, no observer/RAF reinterpretation of refusal, dedup per current lease, normal feasible retry. Inspect actual wire-to-parent integration after painted settlement and normal prepared-handle release. Optional in-process diagnostic accepts only exact known bounded existing REFUSED, exact event/source/origin/id/generation/painted phase/operation; rejects malformed/extra/wrong/stale/in-flight superseded/disposed/detached/duplicates. Existing pending rejection and settled promises/barriers/durable/health remain unchanged. New required command ends old diagnostic eligibility before ACK; normal release does not. Diagram existing role=status aria-live=polite message keeps graph/identity visible, no reload/rejoin/draft/semantic work; same-owner/failure publication cannot clear diagnostic, successful existing matching new painted/published revision can end old lease without claiming geometric recovery. PRE's three implementation notes must be met.
+
+Current full root evidence openspec/changes/frade-p01-theme-core/evidence/p01-b05-full-root3-20261002T085100Z: check:all exit0, actualDraw215/desktop82, source538 raw hashes unchanged; workspace units183/desktop73, affected bridge30/parent37. All1952 artifact hashes verified, source mtimes freshly written during root; lower6matrix ×165 =990 observations/0violations/690PNG. Current performance actual100samples/20warmups nearestRank95 recomputed110.59999999962747ms<=150, dataset raw pin hash a04681ddad45fe458916a5188d09d375da1b8400931dda7ded1f9d03f613ab3d, live i9-9880H Windows hardware. Cache hits for unaffected turbo tasks disclosed, actual Draw/desktop runtime not cache claimed. openspec/changes/frade-p01-theme-core/evidence/p01-b05-verify-20261002T091831Z/runtime-audit.json independently recomputes/verifies. Actual B05 Electron receipt after real width88 two-panel impossibility proves readable live/status, cancel/restoration/vendorclasses preserved, settledrevision unchanged, normalfeasibleretry, same-revisionfailed publication retainsdiagnostic, successful newrevisioncancel clearsoldlease, XML/undo/selection/preferences/model/file/settingsbyte preservation. Current root B05 screenshots/observations selected. No screenshot baseline approval.
+
+Retained fixture failures have TEST RCA: vendor hover class is original gesture, observer records only owned attrs/styles and separately asserts vendorclasses at invocation; root test receiptobserver explicitly installed before actual gesture; successful cancel changes matching painted root/frame revision and legally ends old diagnostic lease, while actualfailedsame-owner retention asserted; single root88 fits80px, permanent impossible-root test40px and two-panel chain88 retained. No production edits for these TEST fixes, no old assertion weakening. Root1 environment ENOBUFS before tests; root2 actual typecheck fail new receipt-array never[] with all stale artifact copies explicitly PREEXISTING_NOT_CURRENT_RUNTIME, final typed Record array fixes only new test. Do not score root2 stale copies. All current executed source matches final root3 pins.
+
+OpenSpec actual list/status/apply/strict logs in openspec/changes/frade-p01-theme-core/evidence/p01-b05-verify-20261002T091831Z;17requirements/42scenarios, six of ten tasks complete, fourB05scenarios mapped in verification-corrected.json. First report parser used wrong isComplete key; explicit correction preserves original/raw reports, actual done fields give exactly four open2.4/2.5/3.2/3.3. Strict and metadataBDD6/compliance rerun PASS after traceability update. Focused verification is limited: full FUI005–009 bindings, human visuals, cumulative verify/POST/archive remain open; STOP before P02. Do not grant cumulative closure or invent exception/future capabilities. A focused PASS can close only this accepted B05 repair; if boundary/actual check/evidence completeness blocker found report precise cause. Raw fresh same-invocation confinement/version proof is materialized by unchanged exported shared wrapper before final freeze and appended to prompt/selection.
+
+
+CURRENT INVOCATION fresh canary input: {
+  "run": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-02T09-24-56-645Z-858096f0-f4f0-4e10-900f-85ca66b53aa4",
+  "publicRaw": "openspec/changes/frade-p01-theme-core/evidence/p01-reflow-review-canary-2026-10-02T09-24-56-645Z-858096f0-f4f0-4e10-900f-85ca66b53aa4/fresh-confinement-version-raw.json",
+  "binding": "openspec/changes/frade-p01-theme-core/evidence/p01-reflow-review-canary-2026-10-02T09-24-56-645Z-858096f0-f4f0-4e10-900f-85ca66b53aa4/invocation-binding.json",
+  "rawSha256": "89688ecb4b2db6b2108bfd4f2849b817d20765122972c1cbad07629ea4986e6a",
+  "phase": "POST",
+  "selection": {
+    "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
+    "phase": "POST",
+    "model": "gpt-6-astra",
+    "reasoningEffort": "xhigh",
+    "source": {
+      "path": "openspec/changes/frade-p01-theme-core/design.md",
+      "sha256": "e2609dfa5204c604f40d394fa55b4373642e7ca30415011e5de8c3817c1f546a",
+      "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | POST | gpt-6-astra | xhigh |"
+    }
+  }
+}
+Inspect raw fresh version/exits/deny/write/network proof and exact invocation binding. Prior PRE1 raw remains FAIL. Shared immutable bundle and generated transport are unchanged; owner sequencing adds public proof before freeze, not a sandbox fallback. Request/candidate/packet are immutable after prepare.
+
+
+Approved owning stage selection (metadata is not approval):
+{
+  "stage": "P01-LOWER-ORIGIN-POPUP-KEYBOARD-01",
+  "phase": "POST",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "source": {
+    "path": "openspec/changes/frade-p01-theme-core/design.md",
+    "sha256": "e2609dfa5204c604f40d394fa55b4373642e7ca30415011e5de8c3817c1f546a",
+    "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | POST | gpt-6-astra | xhigh |"
+  }
+}

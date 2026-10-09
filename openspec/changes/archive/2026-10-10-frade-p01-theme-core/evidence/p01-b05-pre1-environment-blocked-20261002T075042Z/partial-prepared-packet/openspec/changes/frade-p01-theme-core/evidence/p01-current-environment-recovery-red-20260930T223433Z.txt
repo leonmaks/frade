@@ -1,0 +1,64 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/participants.test.ts (22 tests | 2 failed) 148ms
+   ✓ boot root projection installs only the complete role data and theme/density/revision metadata 8ms
+   ✓ prepare is side-effect-free; apply waits for subsequent paint and rollback restores the committed snapshot 6ms
+   ✓ invalidated/disposed handles cannot mutate or acknowledge a later root revision 4ms
+   ✓ joining root is hidden until its accepted paint and restores preexisting visibility ownership 0ms
+   ✓ forced root projection installs final system keywords without persisting them into palette input 1ms
+   ✓ neutral curtain owns full client-area node, stays until reveal and exposes accessible recovery without discarding editor DOM 14ms
+   ✓ native prepare does not write view or document; painted apply and rollback change only UI canvas/grid 17ms
+   ✓ native projection retains authored image/options and keeps user grid visibility/size through palette rollback 3ms
+   ✓ native disposal restores owned view settings and visibility without changing semantic model or removing another owner state 2ms
+   ✓ native late/aborted handles and mismatched phase cannot mutate graph view 1ms
+   ✓ native forced projection uses trusted system colors and never writes them into semantic paint 1ms
+   ✓ frame prepare waits for matching READY; apply waits for actual painted ACK and preserves semantic APIs 17ms
+   ✓ frame rejects foreign source/origin, stale generation/membership/session and extra fields before satisfying prepare 8ms
+   ✓ frame rollback carries previous snapshot with new owner and requires its painted ACK before revealing 8ms
+   ✓ frame abort, disposal and navigation reject waiting work and invalidate old generation 11ms
+   ✓ frame refusal remains an explicit error and join visibility is owned until ACK 7ms
+   ✓ frame forwards only validated presentation keys for its current painted owner and never save/close 7ms
+   ✓ OS refresh updates the System committed view atomically without persisting selection; later cancel retains current OS 6ms
+   ✓ OS refresh preserves explicit live preview and density, but Escape restores newly resolved System baseline 4ms
+   ✓ forced OS refresh is final in explicit preview and updates cancel baseline without persisting system keywords 4ms
+   × cancel resolves current environment while superseding an unpublished OS refresh and never writes its selection 11ms
+     → expected 'light' to be 'high-contrast' // Object.is equality
+   × recovery restores current OS projection under the retained curtain before publishing success 6ms
+     → expected 'light' to be 'high-contrast' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 20 passed (22)
+   Start at  01:34:34
+   Duration  1.62s (transform 152ms, setup 0ms, collect 187ms, tests 148ms, environment 646ms, prepare 245ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > cancel resolves current environment while superseding an unpublished OS refresh and never writes its selection
+AssertionError: expected 'light' to be 'high-contrast' // Object.is equality
+
+Expected: "high-contrast"
+Received: "light"
+
+ ❯ tests/ui-contract/participants.test.ts:681:150
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > recovery restores current OS projection under the retained curtain before publishing success
+AssertionError: expected 'light' to be 'high-contrast' // Object.is equality
+
+Expected: "high-contrast"
+Received: "light"
+
+ ❯ tests/ui-contract/participants.test.ts:689:90
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

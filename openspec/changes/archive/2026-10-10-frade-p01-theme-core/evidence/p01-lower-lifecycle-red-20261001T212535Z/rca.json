@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-01T21:25:41.736Z",
+  "exit": 1,
+  "classification": "STATE_TRANSITION",
+  "causes": [
+    "Tab returns to opener but event bubbles to vendor key handler instead of preserving native focus-only transition",
+    "Applied new presentation forgets menu ownership without canceling captured original menu; stale popup remains unowned"
+  ],
+  "repair": [
+    "Stop owned Tab propagation without preventing default",
+    "Invoke captured original UI hide only for connected same-instance cancellation on apply/detach/disposal; prepare stays DOM side-effect free"
+  ]
+}

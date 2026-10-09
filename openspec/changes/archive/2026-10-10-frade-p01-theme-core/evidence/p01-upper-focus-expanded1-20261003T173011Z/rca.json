@@ -1,0 +1,23 @@
+{
+  "atUtc": "2026-10-03T17:37:16.189Z",
+  "classification": "INTEGRATION",
+  "findings": [
+    {
+      "defect": "Outer panel backing covers adjacent target edge",
+      "evidence": "baseline-insert.json: anchor right282, neighbor left286, decoration right287; raw screenshot retained.",
+      "repair": "Keep canonical ring at offset2/width2. Clip only own optional outer backing by1px horizontally, leaving 4px horizontal /5px vertical extent. 0px horizontal outer backing is within accepted at-most1px; no native clipping/layout changes. Actual painted bounds and all existing contrast checks remain required."
+    },
+    {
+      "defect": "Forced-color panel border overridden",
+      "evidence": "Pinned vendor styles/high-contrast.css generic border-color !important overrides private border token: actual black panel backing against Highlight ring min1.3876028.",
+      "repair": "Own decoration border-color uses canonical surface.panel with inline important; remove own extraneous outline/shadow and retain canonical system-color paint."
+    },
+    {
+      "classification": "TEST",
+      "defect": "New P031 hardcoded non-coarse target28",
+      "evidence": "Unchanged prior p01-upper-keyboard-raster-five-20261003T150842Z forced-coarse-reduced-text200-viewPanels-focus.json records44x44 at x10,y44 for all5cases.",
+      "repair": "New assertion matches original observed44x44 only when actual coarse=true; retain28x28/36 for fine. No production target changes."
+    }
+  ],
+  "scope": "All repairs stay within exact32ddae6f at-most backing bounds; new tests add actual own-clip and original-state assertions. No source geometry or test prefix changes."
+}

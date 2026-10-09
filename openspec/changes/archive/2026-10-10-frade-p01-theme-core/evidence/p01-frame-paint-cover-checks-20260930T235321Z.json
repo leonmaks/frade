@@ -1,0 +1,51 @@
+{
+  "timestamp": "2026-09-30T23:53:43.625Z",
+  "results": [
+    {
+      "label": "participants",
+      "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/participants.test.ts tests/ui-contract/service.test.ts tests/ui-contract/picker.test.tsx",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-paint-cover-checks-20260930T235321Z-participants.txt"
+    },
+    {
+      "label": "ui-typecheck",
+      "command": "pnpm --filter @frade/ui-workspace typecheck",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-paint-cover-checks-20260930T235321Z-ui-typecheck.txt"
+    },
+    {
+      "label": "ui-lint",
+      "command": "pnpm --filter @frade/ui-workspace lint",
+      "exit": 0,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-paint-cover-checks-20260930T235321Z-ui-lint.txt"
+    },
+    {
+      "label": "desktop-build",
+      "command": "pnpm --filter @frade/desktop build",
+      "exit": 1,
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-frame-paint-cover-checks-20260930T235321Z-desktop-build.txt"
+    }
+  ],
+  "source": [
+    {
+      "path": "packages/ui-workspace/src/design/theme/service.ts",
+      "sha256": "08664c14080682eb7ab037c32d1a4c81eb133fa7acf4c20345e05aec3e6d2350"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+      "sha256": "f1beb6586dcd97ab76dc6783401dedc82e6cbc156f2e1810094dd49cc1a6d4b7"
+    },
+    {
+      "path": "packages/ui-workspace/src/DiagramView.tsx",
+      "sha256": "2dd4693ccc5d5117f1e94db08a32b96462643d197eb53ef124e075e50ffc4028"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+      "sha256": "53bde3ae434704404244a228f836c06e3e856276fda35ba01e41a625e6214978"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "sha256": "c0b60910350c143f76c5eca7eb7d91ecdb9f930b60f96bb8b31c7113b88ed8a7"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/service.test.ts (20 tests | 2 failed) 57ms
+   ✓ P01 controlled transaction service > joins hidden, waits for current applied-paint ACK, previews without persistence and cancels to published state 9ms
+   ✓ P01 controlled transaction service > keeps curtain through apply ACK and durable publication; emits exactly one authoritative change 4ms
+   ✓ P01 controlled transaction service > refusal in prepare restores all view/durable snapshots, dirty draft, selection and undo 2ms
+   ✓ P01 controlled transaction service > refusal in apply restores all view/durable snapshots, dirty draft, selection and undo 2ms
+   ✓ P01 controlled transaction service > refusal in persist restores all view/durable snapshots, dirty draft, selection and undo 2ms
+   ✓ P01 controlled transaction service > unknown response reconciles already-renamed settings before restoring/revealing; no false Saved 1ms
+   ✓ P01 controlled transaction service > unprovable rollback retains recovery curtain and dirty editors with no success/reveal 2ms
+   ✓ P01 controlled transaction service > unprovable readback retains recovery curtain and dirty editors with no success/reveal 1ms
+   ✓ P01 controlled transaction service > A B C supersession during preparation ignores late A, never writes B and publishes C only 2ms
+   ✓ P01 controlled transaction service > C accepted during A rename reconciles A in the current ownership before any C write/ACK 2ms
+   ✓ P01 controlled transaction service > join during PREPARING invalidates membership and safely reprepares once 2ms
+   ✓ P01 controlled transaction service > join during BARRIER_AWAIT_PAINT invalidates membership and safely reprepares once 2ms
+   × P01 controlled transaction service > join during APPLYING invalidates membership and safely reprepares once 9ms
+     → expected 'REFUSED' to be 'COMMITTED' // Object.is equality
+   ✓ P01 controlled transaction service > join during PERSISTING invalidates membership and safely reprepares once 2ms
+   ✓ P01 controlled transaction service > ongoing membership churn is bounded and cancels instead of retrying indefinitely 2ms
+   × P01 controlled transaction service > leave and generation replacement reject a removed participant ACK 2ms
+     → expected 'REFUSED' to be 'COMMITTED' // Object.is equality
+   ✓ P01 controlled transaction service > paint barrier is mandatory before apply, and forged ACK cannot publish or reveal 1ms
+   ✓ P01 controlled transaction service > prepare deadline is 2s; a late handle is disposed and never applied 4ms
+   ✓ P01 controlled transaction service > commit paint deadline is 2s and host/readback deadlines are 5s; unknown host outcome remains safely covered 3ms
+   ✓ P01 controlled transaction service > cancel during persistence reconciles first, then permits close/dirty-guard continuation 2ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 18 passed (20)
+   Start at  23:04:28
+   Duration  827ms (transform 133ms, setup 0ms, collect 164ms, tests 57ms, environment 0ms, prepare 260ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > join during APPLYING invalidates membership and safely reprepares once
+AssertionError: expected 'REFUSED' to be 'COMMITTED' // Object.is equality
+
+Expected: "COMMITTED"
+Received: "REFUSED"
+
+ ❯ tests/ui-contract/service.test.ts:380:39
+    378|       expect(b.hidden()).toBe(true)
+    379|       wait.resolve()
+    380|       expect((await applying).status).toBe('COMMITTED')
+       |                                       ^
+    381|       await joined.ready
+    382|       expect(p.view().kind).toBe('dark')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 controlled transaction service > leave and generation replacement reject a removed participant ACK
+AssertionError: expected 'REFUSED' to be 'COMMITTED' // Object.is equality
+
+Expected: "COMMITTED"
+Received: "REFUSED"
+
+ ❯ tests/ui-contract/service.test.ts:423:35
+    421|       joined = f.service.register(next.p)
+    422|     applying.resolve()
+    423|     expect((await result).status).toBe('COMMITTED')
+       |                                   ^
+    424|     await joined.ready
+    425|     expect(next.view().kind).toBe('dark')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

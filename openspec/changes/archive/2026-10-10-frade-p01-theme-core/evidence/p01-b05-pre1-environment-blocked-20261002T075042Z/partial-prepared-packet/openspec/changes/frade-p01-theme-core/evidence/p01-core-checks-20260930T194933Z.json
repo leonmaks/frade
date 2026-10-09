@@ -1,0 +1,189 @@
+{
+  "createdAt": "2026-09-30T19:50:17.526Z",
+  "scope": "P01 tasks2.1/2.2 pure core; runtime not implemented",
+  "results": [
+    {
+      "name": "resolver-green",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@frade/ui-workspace",
+        "exec",
+        "vitest",
+        "run",
+        "tests/ui-contract/resolver.test.ts",
+        "tests/ui-contract/p01.bdd.test.tsx"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-resolver-green-20260930T194933Z.txt",
+      "sha256": "4d97b6502b2b288bdb5e92ff358a68ed83b39ee940de2612ac4dfde12f41390b"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@frade/ui-workspace",
+        "typecheck"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-typecheck-20260930T194933Z.txt",
+      "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@frade/ui-workspace",
+        "lint"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-lint-20260930T194933Z.txt",
+      "sha256": "f742f989be94e529cde1c75bc31645378f1840908710384b8406b93407d056d9"
+    },
+    {
+      "name": "package-tests",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@frade/ui-workspace",
+        "test"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-package-tests-20260930T194933Z.txt",
+      "sha256": "5c626ac955c54eb4541aa3705bb1f5c8a3b7173c338078a1bdf1bc53d8d8d4e7"
+    },
+    {
+      "name": "bdd",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@frade/ui-workspace",
+        "test:bdd"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-bdd-20260930T194933Z.txt",
+      "sha256": "5c826d2abdcf1488d783db09c4be2b4a1ce7c3f037fe8b5299754b6c6638a999"
+    },
+    {
+      "name": "tokens",
+      "command": [
+        "node",
+        "scripts/ui/tokens.mjs"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-tokens-20260930T194933Z.txt",
+      "sha256": "ea352fa76f2e64e75e01e7e4cd6a1002ac81e569f14051dd12d69f139a7c2c23"
+    },
+    {
+      "name": "colors",
+      "command": [
+        "node",
+        "scripts/ui/colors.mjs"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-colors-20260930T194933Z.txt",
+      "sha256": "68377dd9ced3caa4b5dcd25a18cf3dc18ae688873fc0e5a78e1ff26e692beaab"
+    },
+    {
+      "name": "traceability",
+      "command": [
+        "node",
+        "scripts/ui/traceability.mjs"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-traceability-20260930T194933Z.txt",
+      "sha256": "2abf503f17b52dbed47f07507ac829ac962aefc57783b6ee7be7033d1f3d992c"
+    },
+    {
+      "name": "boundaries",
+      "command": [
+        "pnpm",
+        "check:boundaries"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-boundaries-20260930T194933Z.txt",
+      "sha256": "e7b2ea7b9929a02a25cf186532134ef535b5ca4e25eaa45a2dc770da0195bacc"
+    },
+    {
+      "name": "openspec",
+      "command": [
+        "openspec",
+        "validate",
+        "frade-p01-theme-core",
+        "--strict",
+        "--json"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-openspec-20260930T194933Z.txt",
+      "sha256": "ac4d3c42d92d0b49568bf96126ef37bef2208d105b34deb87eff693e44c96a2d"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-diff-check-20260930T194933Z.txt",
+      "sha256": "2b210bc18a36fffc6f2bfb665b7c1aac61fada6fd3930ea3406eac0a11ed3ffb"
+    }
+  ],
+  "sources": [
+    {
+      "file": "packages/ui-workspace/src/design/theme/types.ts",
+      "sha256": "db28b40a35342a0fb2047c8a0ea6a7476e785dc5e10c757d60a171824c2df3b3"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/registry.ts",
+      "sha256": "d9d5706b0fb84f5d1f30765dd85ae06a4416e8577f62fe1fa05aa29947b7d74b"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/contrast.ts",
+      "sha256": "6c8f58cecc41159033890af8ffbff2837543c88ac5849625b51df63301c9279c"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/resolver.ts",
+      "sha256": "aaf7e6949c8384cf04921050d6aaeae904928a7aba100a42c46662ec67a05ba5"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/resolver.test.ts",
+      "sha256": "a82c75a954b70d1a87b1c03d316d540de2cf795bca14e9142115c86dfb06f63d"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+      "sha256": "4607f2490e97b7428fa5de10b1d50b3673e68144f8d536e27e62b89dfcb6a989"
+    },
+    {
+      "file": "docs/ui/bdd/p01-theme-core.feature",
+      "sha256": "59577307e7d2a0f1e2d74dd0fee6a802170af63df6268ef4c1da90d91add5b46"
+    },
+    {
+      "file": "docs/ui/decisions/p01-theme-traceability.json",
+      "sha256": "2ba4b1d735f391fbb3fa16c00415a07af3805437437df684e88b69ac900fbcae"
+    },
+    {
+      "file": "docs/ui/theme-core.md",
+      "sha256": "7048e2fd8dbc12c8780ee0beb5c31db6bc6cf742b7d7cbe42b437d36454cf7e5"
+    },
+    {
+      "file": "packages/ui-workspace/package.json",
+      "sha256": "e06eb58934c1cad78247e5ae925ad332ca5c64ca3e93ae8faac79ce1f965f972"
+    }
+  ],
+  "propertyRuns": 200,
+  "propertySeed": 20260930
+}

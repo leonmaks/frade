@@ -1,0 +1,39 @@
+
+Running 4 tests using 1 worker
+
+(node:60728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:60728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:60728) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  ok 1 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: frade (13.5s)
+  ok 2 tests\e2e\bundle-flows.spec.ts:7:3 › bundle flow management full lifecycle: drawio (19.9s)
+  ok 3 tests\e2e\diagrams.spec.ts:588:3 › drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only (12.5s)
+  x  4 tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel (12.2s)
+
+
+  1) tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel 
+
+    Error: ENOENT: no such file or directory, open 'C:\Users\NVISEN\AppData\Local\Temp\frade-sberea-fixture-wrqlML\alternate\moved.frade-workspace'
+
+      158 |     await command(page, 'Сохранить рабочее пространство как…')
+      159 |     await expect
+    > 160 |       .poll(async () => JSON.parse(await readFile(alternate, 'utf8')).roots.length)
+          |                                    ^
+      161 |       .toBe(3)
+      162 |     const rebased = JSON.parse(await readFile(alternate, 'utf8'))
+      163 |     expect(resolve(alternateDirectory, rebased.roots[0].dataRoot)).toBe(resolve(b.dataRoot))
+        at Object.generator (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\workbench-multiroot.spec.ts:160:36)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\workbench-multiroot.spec.ts:159:5
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-e2e07-readiness-targeted-20261001T085708Z-artifacts\workbench-multiroot-WB-006-987d5-ths-and-dirty-Remove-Cancel\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-e2e07-readiness-targeted-20261001T085708Z-artifacts\workbench-multiroot-WB-006-987d5-ths-and-dirty-Remove-Cancel\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\workbench-multiroot.spec.ts:45:1 › WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel 
+  3 passed (60.0s)

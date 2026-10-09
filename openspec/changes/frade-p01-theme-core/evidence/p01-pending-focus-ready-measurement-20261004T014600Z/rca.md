@@ -1,5 +1,0 @@
-# Actual prepare measurement correction
-
-The original six runtime cases passed focus-retention/invalidation/restoration and semantic/file/identity assertions. Their queueMicrotask before/after comparison is not valid proof of actual prepare purity: a native Window message dispatch can checkpoint microtasks before the next listener. The passive glyph diagnostic corroborates this: after-apply-microtask still reads compact, whereas the synchronous bridge apply writes comfortable before its first await. Earlier raw reports are retained; the six-case runtime purity claim is withdrawn pending this corrected run (unit prepare-purity coverage remains separate).
-
-Only the new P01-UPPER-033 tail changes. Capture the unchanged HTML before original prepare; after the parent has actually captured the original READY, read HTML in the original child and compare it to the capture. Bind the original prepare context to that actual READY context. Existing equality/focus/pending/semantic assertions and deadlines remain exact; add context/measurement assertions. No arbitrary delay, event fabrication, production or frozen callback changes.

@@ -1,0 +1,31 @@
+{
+  "command": [
+    "pnpm",
+    "--filter",
+    "@frade/desktop",
+    "exec",
+    "playwright",
+    "test",
+    "tests/e2e/ui-contract-theme.spec.ts",
+    "--grep",
+    "P01-LOWER",
+    "--output",
+    "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-lower-actions-return-20261001T204500Z\\electron-artifacts"
+  ],
+  "exit": 1,
+  "at": "2026-10-01T20:45:27.126Z",
+  "after": [
+    {
+      "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "sha256": "d8ea811b66330b824f3cf4d53203139e175098a0c775dea71f4b317a63a592b2"
+    },
+    {
+      "path": "apps/desktop/tests/unit/drawio-theme.test.ts",
+      "sha256": "b5c5691b408e404849c5123935068284d7760f2c274bbb4da375524012586567"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "sha256": "296f13d79e16bc64834130c22e4babb95cb02c7ce2020c818721a58bb03ed521"
+    }
+  ]
+}

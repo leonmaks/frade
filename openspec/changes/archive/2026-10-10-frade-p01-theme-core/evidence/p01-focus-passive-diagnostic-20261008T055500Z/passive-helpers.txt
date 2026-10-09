@@ -1,0 +1,56 @@
+// PRE-approved temporary evidence-only helpers. No activation or action is added.
+type P01FocusDiagnostic = { finish: (originalError: unknown) => Promise<Error | null> }
+async function p01StartPassiveFocusDiagnostic(f: FuiFixture, targets: Awaited<ReturnType<typeof upperTargets>>, info: Parameters<typeof upperCalibrate>[2]): Promise<P01FocusDiagnostic> {
+  const key='__fradeP01PassiveFocusDiagnostic20261008', errors: {stage:string;message:string}[]=[], data: Record<string,unknown>={scope:'PASSIVE_DIAGNOSTIC_NOT_GATE',title:info.title,repeatEachIndex:info.repeatEachIndex,limitPerContext:2000,clockWarning:'Process arrival order is not causal proof; observer work may affect scheduling.'}
+  const failure=(stage:string,e:unknown)=>{errors.push({stage,message:String(e)})}
+  const frame=f.page.frames().find(frame=>frame.url().startsWith('frade://drawio/'))
+  let nativeInstalled=false
+  let native: Awaited<ReturnType<ElectronApplication['browserWindow']>> | undefined
+  const installed: (Page | NonNullable<typeof frame>)[]=[]
+  const capturePreserved=async(label:string)=>{try{data[label]={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f),identity:await upperCheckIdentity(f)}}catch(e){failure(label,e)}}
+  function installDom(input:{key:string;label:string;targets:{key:string;index:number;url:string}[]}) {
+    const host=window as unknown as Record<string,unknown>
+    if(input.key in host)throw new Error('DOM_DIAGNOSTIC_KEY_COLLISION')
+    const ids=new WeakMap<Node,number>();let nextId=1,overflow=false
+    const records:unknown[]=[],errors:string[]=[],initialNodes=Array.from(document.querySelectorAll<HTMLElement>('.geToolbarContainer .geToolbar a.geButton'))
+    const identity=(n:Node|null)=>{if(!n)return null;if(!ids.has(n))ids.set(n,nextId++);return {nodeId:ids.get(n),nodeName:n.nodeName,connected:n.isConnected,...(n instanceof Element?{id:n.id,role:n.getAttribute('role'),title:n.getAttribute('title'),label:n.getAttribute('aria-label')}: {})}}
+    const read=(n:HTMLElement|undefined)=>{if(!n)return null;const r=n.getBoundingClientRect(),s=getComputedStyle(n);return {identity:identity(n),rect:{x:r.x,y:r.y,width:r.width,height:r.height},visible:n.isConnected&&r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none',disabled:n.getAttribute('aria-disabled'),tabIndex:n.tabIndex,owned:n.getAttribute('data-frade-upper-control'),glyphOwned:n.getAttribute('data-frade-upper-glyph'),activeElement:n===document.activeElement,focus:n.matches(':focus'),focusVisible:n.matches(':focus-visible'),iconImage:s.backgroundImage==='none'?s.getPropertyValue('--frade-upper-icon-image').trim():s.backgroundImage}}
+    const snapshot=()=>{const current=Array.from(document.querySelectorAll<HTMLElement>('.geToolbarContainer .geToolbar a.geButton'));return {context:input.label,dateNow:Date.now(),timeOrigin:performance.timeOrigin,performanceNow:performance.now(),hasFocus:document.hasFocus(),visibility:document.visibilityState,activeElement:identity(document.activeElement),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},revision:document.documentElement.getAttribute('data-frade-frame-revision')||document.documentElement.getAttribute('data-frade-revision'),runtime:document.documentElement.getAttribute('data-frade-frame-runtime'),targets:input.targets.map(t=>{const n=current[t.index],original=initialNodes[t.index];return {key:t.key,index:t.index,sameNode:n===original,original:read(original),current:read(n),currentResourceMatches:!!n&&(getComputedStyle(n).backgroundImage===`url("${t.url}")`||getComputedStyle(n).getPropertyValue('--frade-upper-icon-image').trim()===`url("${t.url}")`)}})}}
+    const record=(kind:string,event?:Event)=>{if(records.length>=2000){overflow=true;return}try{records.push({kind,eventTarget:identity(event?.target instanceof Node?event.target:null),eventTimeStamp:event?.timeStamp,...snapshot()})}catch(e){if(errors.length<2000)errors.push(String(e));else overflow=true}}
+    const listener=(e:Event)=>record(e.type,e),events=['focus','blur','focusin','focusout','resize']
+    const state={finish(){record('final');for(const name of events)window.removeEventListener(name,listener,true);document.removeEventListener('visibilitychange',listener,true);if(host[input.key]!==state)throw new Error('DOM_DIAGNOSTIC_OWNER_CHANGED');delete host[input.key];return {records,errors,overflow,finalPresent:(records.at(-1) as {kind?:string}|undefined)?.kind==='final',disposed:true}}}
+    Object.defineProperty(host,input.key,{value:state,configurable:true})
+    for(const name of events)window.addEventListener(name,listener,true)
+    document.addEventListener('visibilitychange',listener,true);record('initial')
+  }
+  try {
+    native=await f.app.browserWindow(f.page)
+    await native.evaluate((w,input)=>{
+      const host=w as unknown as Record<string,unknown>;if(input in host)throw new Error('NATIVE_DIAGNOSTIC_KEY_COLLISION')
+      const wc=w.webContents,records:unknown[]=[],errors:string[]=[];let overflow=false
+      const read=()=>({dateNow:Date.now(),clock:'Electron-main Date.now',windowId:w.id,windowDestroyed:w.isDestroyed(),windowFocused:!w.isDestroyed()?w.isFocused():null,windowVisible:!w.isDestroyed()?w.isVisible():null,windowMinimized:!w.isDestroyed()?w.isMinimized():null,bounds:!w.isDestroyed()?w.getBounds():null,webContentsId:wc.id,webContentsDestroyed:wc.isDestroyed(),webContentsFocused:!wc.isDestroyed()?wc.isFocused():null})
+      const record=(kind:string)=>{if(records.length>=2000){overflow=true;return}try{records.push({kind,...read()})}catch(e){if(errors.length<2000)errors.push(String(e));else overflow=true}}
+      const winFocus=()=>record('window-focus'),winBlur=()=>record('window-blur'),winClosed=()=>record('window-closed'),wcFocus=()=>record('webcontents-focus'),wcBlur=()=>record('webcontents-blur'),wcClosed=()=>record('webcontents-destroyed')
+      const state={finish(){record('final');w.removeListener('focus',winFocus);w.removeListener('blur',winBlur);w.removeListener('closed',winClosed);wc.removeListener('focus',wcFocus);wc.removeListener('blur',wcBlur);wc.removeListener('destroyed',wcClosed);if(host[input]!==state)throw new Error('NATIVE_DIAGNOSTIC_OWNER_CHANGED');delete host[input];return {records,errors,overflow,finalPresent:(records.at(-1) as {kind?:string}|undefined)?.kind==='final',disposed:true}}}
+      Object.defineProperty(host,input,{value:state,configurable:true});w.on('focus',winFocus);w.on('blur',winBlur);w.on('closed',winClosed);wc.on('focus',wcFocus);wc.on('blur',wcBlur);wc.on('destroyed',wcClosed);record('initial')
+    },key)
+    nativeInstalled=true
+    await f.page.evaluate(installDom,{key,label:'root',targets:[]});installed.push(f.page)
+    if(!frame)throw new Error('OWN_FRAME_MISSING')
+    await frame.evaluate(installDom,{key,label:'frame',targets:targets.map(t=>({key:t.key,index:t.index,url:t.url}))});installed.push(frame)
+    await capturePreserved('preservedInitial')
+  } catch(e){failure('setup',e)}
+  return {async finish(originalError:unknown){
+    data.originalError=originalError instanceof Error?{name:originalError.name,message:originalError.message,stack:originalError.stack}:originalError===undefined?null:String(originalError)
+    for(const [i,context] of installed.entries())try{data[i===0?'root':'frame']=await context.evaluate(k=>{const host=window as unknown as Record<string,{finish:()=>unknown}>;if(!Object.hasOwn(host,k))throw new Error('DOM_DIAGNOSTIC_STATE_MISSING');return host[k].finish()},key)}catch(e){failure('DOM-final-'+i,e)}
+    if(native&&nativeInstalled)try{data.native=await native.evaluate((w,k)=>{const host=w as unknown as Record<string,{finish:()=>unknown}>;if(!Object.hasOwn(host,k))throw new Error('NATIVE_DIAGNOSTIC_STATE_MISSING');return host[k].finish()},key)}catch(e){failure('native-final',e)}
+    await capturePreserved('preservedFinal')
+    if(native)try{await native.dispose()}catch(e){failure('native-handle-dispose',e)}
+    for(const name of ['root','frame','native']){const part=data[name] as {overflow?:boolean;errors?:unknown[];finalPresent?:boolean;disposed?:boolean}|undefined;if(!part||part.overflow||part.errors?.length||!part.finalPresent||!part.disposed)failure(name+'-integrity','Missing final / observer error / overflow / cleanup failure')}
+    data.errors=errors;data.status=errors.length?'BLOCKED':'CAPTURE_COMPLETE';data.completedAtUtc=new Date().toISOString()
+    await writeFile(info.outputPath('passive-focus-diagnostic.json'),JSON.stringify(data,null,2))
+    return errors.length?new Error('PASSIVE_FOCUS_DIAGNOSTIC_BLOCKED '+JSON.stringify(errors)):null
+  }}
+}
+
+

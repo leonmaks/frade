@@ -1,0 +1,66 @@
+{
+  "atUtc": "2026-10-08T18:35:00.391Z",
+  "scope": "PROPOSAL_ONLY_NOT_INSTALLED_NOT_EXECUTED",
+  "prefix": "P01-B05-MUTATION-DIAGNOSTIC ",
+  "source": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+  "sourceBytes": 279962,
+  "sourceSha256": "7c3e52a69c1b8346a78f4297774f5c2342a3ecdaeb05a2611465d2f09c546f43",
+  "candidateSha256": "ec0ae82cdff8e66f6c41d9cbdf83e1c5136c56f93bf0e00ceace6d5d44d1eae9",
+  "tailSha256": "3972766a2357c6e77f3348fe55f4fea1c0327bc362ab6e28fb1387c651b0e195",
+  "helperSha256": "77d7472d8e71aa744d2eec4244e568bf0887711cd900a07f62bd18fe8c1145e1",
+  "sourceStart": 156405,
+  "sourceEnd": 164994,
+  "registrationSourceSha256": "7490c0f6653560b6abac55fe8da3ddf7c0aa50d07fe5bf2bf0f2311fd169a94e",
+  "copySha256": "b120938a6d0a82f7f8801a17421ee54d2bf3ddbe93f51222f25d6c88e225d5e8",
+  "reversedSha256": "7490c0f6653560b6abac55fe8da3ddf7c0aa50d07fe5bf2bf0f2311fd169a94e",
+  "exactReverse": true,
+  "prefixExact": true,
+  "title": "P01-B05 actual settled lower refusal stays live through failed publication, preserves semantics and permits original feasible retry",
+  "diagnosticTitle": "P01-B05-MUTATION-DIAGNOSTIC P01-B05 actual settled lower refusal stays live through failed publication, preserves semantics and permits original feasible retry",
+  "edits": [
+    {
+      "at": 52,
+      "insert": "\"P01-B05-MUTATION-DIAGNOSTIC \"+(",
+      "kind": "diagnostic-title",
+      "generatedAt": 52
+    },
+    {
+      "at": 185,
+      "insert": ")",
+      "kind": "diagnostic-title-end",
+      "generatedAt": 217
+    },
+    {
+      "at": 340,
+      "insert": "let __p01B05Diagnostic: P01B05Diagnostic | undefined, __p01B05OriginalError: unknown, __p01B05CaptureError: unknown; let __p01B05OriginalFailed=false\n  ",
+      "kind": "diagnostic-private-locals",
+      "generatedAt": 373
+    },
+    {
+      "at": 713,
+      "insert": "\n    try{__p01B05Diagnostic=await p01StartB05MutationDiagnostic(f,info)}catch(__p01B05SetupError){__p01B05CaptureError=__p01B05SetupError;console.error(\"P01_B05_DIAGNOSTIC_SETUP_ERROR \"+String(__p01B05SetupError))}\n",
+      "kind": "passive-setup-after-original-readiness",
+      "generatedAt": 898
+    },
+    {
+      "at": 8416,
+      "insert": " catch(__p01B05Error){__p01B05OriginalFailed=true;__p01B05OriginalError=__p01B05Error;throw __p01B05Error} ",
+      "kind": "preserve-original-body-error",
+      "generatedAt": 8816
+    },
+    {
+      "at": 8426,
+      "insert": "try{const __p01B05FinishError=__p01B05Diagnostic?await __p01B05Diagnostic.finish(__p01B05OriginalError):new Error(\"B05_DIAGNOSTIC_SETUP_NOT_REACHED\");if(__p01B05FinishError)__p01B05CaptureError=__p01B05FinishError}catch(__p01B05Error){__p01B05CaptureError=__p01B05Error}if(__p01B05CaptureError)console.error(\"P01_B05_PASSIVE_CAPTURE_ERROR \"+JSON.stringify({error:String(__p01B05CaptureError),originalFailed:__p01B05OriginalFailed,originalError:String(__p01B05OriginalError)}));",
+      "kind": "capture-before-all-original-teardown",
+      "generatedAt": 8933
+    },
+    {
+      "at": 8587,
+      "insert": "\n  if(__p01B05CaptureError)throw __p01B05CaptureError\n",
+      "kind": "diagnostic-error-after-all-original-work",
+      "generatedAt": 9571
+    }
+  ],
+  "parseDiagnostics": 0,
+  "pass": true
+}

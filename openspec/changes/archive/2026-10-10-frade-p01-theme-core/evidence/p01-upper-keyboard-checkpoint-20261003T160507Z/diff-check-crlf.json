@@ -1,0 +1,18 @@
+{
+  "atUtc": "2026-10-03T16:10:59.663Z",
+  "command": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "-c",
+    "core.autocrlf=false",
+    "-c",
+    "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+    "diff",
+    "--check"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "",
+  "explanation": "Prior default check flagged preserved CRLF carriage returns as whitespace. Per-command cr-at-eol recognizes required raw EOL while retaining blank-at-eol/blank-at-eof/space-before-tab; no file normalization and no global setting change."
+}

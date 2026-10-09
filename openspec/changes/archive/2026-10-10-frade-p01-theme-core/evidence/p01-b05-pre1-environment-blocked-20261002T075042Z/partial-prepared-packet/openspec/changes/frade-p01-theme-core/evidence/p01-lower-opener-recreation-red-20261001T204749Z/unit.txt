@@ -1,0 +1,53 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/drawio-theme.test.ts (15 tests | 1 failed) 1120ms
+   ✓ serialized bridge prepare leaves DOM/prefs/model untouched; apply ACK occurs only after subsequent paint 85ms
+   ✓ bridge rejects untrusted origin/source, incomplete roles, arbitrary CSS, unknown fields and stale owner 14ms
+   ✓ bridge rollback accepts new intent and restores presentation while retaining paper/image/node/edge paint and preferences 28ms
+   ✓ bridge owned grid follows view scale/translate and repairs vendor DOM redraw with a fresh paint acknowledgement 19ms
+   ✓ bridge final forced projection uses only canonical trusted keywords while authored paper and paint stay unchanged 24ms
+   ✓ bridge forwards contextual presentation chord only, respecting text/IME and existing vendor save/close 23ms
+   ✓ bridge teardown restores precisely owned DOM values and listener registrations without changing vendor state 15ms
+   ✓ separate presentation channel never reaches downstream vendor semantic handler, while unrelated actions still do 15ms
+   ✓ P01-LOWER serialized F6 enters from idle canvas shim, arrows only focus and Enter runs original DOM action once 202ms
+   ✓ P01-LOWER captured original popup provides focus-only rows, original submenu gestures, exactly-once activation and Escape/Tab cleanup 280ms
+   ✓ P01-LOWER editing/IME, unowned and stale menus cannot acquire lower ownership or activate actions 75ms
+   ✓ P01-LOWER real capability removal and restoration, hidden controls and regenerated DOM retain exact original handlers 84ms
+   ✓ P01-LOWER pointer registrations execute one original family only and menu DOM ownership restores exact prior values 99ms
+   ✓ P01-LOWER original action recreating the strip returns focus to a connected proven replacement 99ms
+   × P01-LOWER original lower opening that recreates its opener binds only a unique connected DOM-identical replacement 56ms
+     → expected null to be 'menu' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 14 passed (15)
+   Start at  23:47:50
+   Duration  3.15s (transform 245ms, setup 0ms, collect 294ms, tests 1.12s, environment 859ms, prepare 362ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-theme.test.ts > P01-LOWER original lower opening that recreates its opener binds only a unique connected DOM-identical replacement
+AssertionError: expected null to be 'menu' // Object.is equality
+
+- Expected: 
+"menu"
+
++ Received: 
+null
+
+ ❯ tests/unit/drawio-theme.test.ts:689:43
+    687|   f.pages.focus(); f.key(f.pages, 'Enter')
+    688|   expect(f.pages.isConnected).toBe(false)
+    689|   expect(f.menu.div.getAttribute('role')).toBe('menu')
+       |                                           ^
+    690|   expect(document.activeElement).toBe(f.rename)
+    691|   f.key(f.rename, 'Escape')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

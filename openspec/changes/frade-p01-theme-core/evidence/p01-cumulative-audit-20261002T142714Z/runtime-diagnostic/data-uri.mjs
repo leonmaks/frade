@@ -1,1 +1,0 @@
-export function dataUriBytes(url) {const comma=url.indexOf(',');if(!url.startsWith('data:')||comma<0)throw Error('INVALID_DATA_URI');const header=url.slice(5,comma),payload=url.slice(comma+1);if(/;base64$/i.test(header))return Uint8Array.from(atob(payload),c=>c.charCodeAt(0));return new TextEncoder().encode(decodeURIComponent(payload));}

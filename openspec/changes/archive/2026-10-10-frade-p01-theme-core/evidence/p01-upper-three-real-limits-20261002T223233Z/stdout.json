@@ -1,0 +1,417 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\playwright.config.ts",
+    "rootDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-real-limits-20261002T223233Z",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-real-limits-20261002T223233Z/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-real-limits-20261002T223233Z",
+        "testIgnore": [],
+        "testMatch": [
+          "diagnostic.spec.ts"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "diagnostic.spec.ts",
+      "file": "diagnostic.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P01 upper real limits light compact",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11966,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mh\u001b[27migh\u001b[7m-contras\u001b[27mt\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7ml\u001b[27might\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mh\u001b[27migh\u001b[7m-contras\u001b[27mt\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7ml\u001b[27might\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts:354:306",
+                    "location": {
+                      "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                      "column": 306,
+                      "line": 354
+                    },
+                    "snippet": "  352 |  await f.page.setViewportSize(state==='wide'?{width:1600,height:900}:state==='narrow'?{width:850,height:650}:{width:1280,height:850});\n  353 |  if(state==='text200'){const sizes=await frame.locator('body').evaluate(()=>{const nodes=[...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')],before=nodes.map(n=>parseFloat(getComputedStyle(n).fontSize));nodes.forEach((n,i)=>n.style.setProperty('font-size',before[i]*2+'px','important'));return nodes.map((n,i)=>({before:before[i],after:parseFloat(getComputedStyle(n).fontSize)}))});expect(sizes.every(s=>s.after===s.before*2)).toBe(true);}\n> 354 |  if(state.startsWith('forced')){await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'});session=await f.page.context().newCDPSession(f.page.frames().find(p=>p.url().startsWith('frade://drawio/'))!);await session.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-theme')).toBe('high-contrast');await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden();}\n      |                                                                                                                                                                                                                                                                                                                  ^\n  355 |  let stable=0,previous='';await expect.poll(async()=>{const current=JSON.stringify({state:await fuiSemantics(f,'frame'),box:await f.page.locator('iframe').boundingBox()});stable=current===previous?stable+1:0;previous=current;return stable},{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5);\n  356 |  const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)};\n  357 |  for(const target of targets){const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index);await f.page.mouse.move(1,1);const record=await upperObservation(f,target),focus=await node.evaluate(n=>{const prior=document.activeElement;n.focus();const result={focused:document.activeElement===n,tabIndex:n.tabIndex,tabIndexAttribute:n.getAttribute('tabindex'),href:n.getAttribute('href'),minWidth:n.getAttribute('data-min-width')};if(document.activeElement===n)n.blur();if(prior instanceof HTMLElement)prior.focus();return result});observations.push({state,target:target.key,record,focus});}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                        "column": 306,
+                        "line": 354
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mh\u001b[27migh\u001b[7m-contras\u001b[27mt\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7ml\u001b[27might\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  352 |  await f.page.setViewportSize(state==='wide'?{width:1600,height:900}:state==='narrow'?{width:850,height:650}:{width:1280,height:850});\n  353 |  if(state==='text200'){const sizes=await frame.locator('body').evaluate(()=>{const nodes=[...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')],before=nodes.map(n=>parseFloat(getComputedStyle(n).fontSize));nodes.forEach((n,i)=>n.style.setProperty('font-size',before[i]*2+'px','important'));return nodes.map((n,i)=>({before:before[i],after:parseFloat(getComputedStyle(n).fontSize)}))});expect(sizes.every(s=>s.after===s.before*2)).toBe(true);}\n> 354 |  if(state.startsWith('forced')){await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'});session=await f.page.context().newCDPSession(f.page.frames().find(p=>p.url().startsWith('frade://drawio/'))!);await session.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-theme')).toBe('high-contrast');await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden();}\n      |                                                                                                                                                                                                                                                                                                                  ^\n  355 |  let stable=0,previous='';await expect.poll(async()=>{const current=JSON.stringify({state:await fuiSemantics(f,'frame'),box:await f.page.locator('iframe').boundingBox()});stable=current===previous?stable+1:0;previous=current;return stable},{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5);\n  356 |  const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)};\n  357 |  for(const target of targets){const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index);await f.page.mouse.move(1,1);const record=await upperObservation(f,target),focus=await node.evaluate(n=>{const prior=document.activeElement;n.focus();const result={focused:document.activeElement===n,tabIndex:n.tabIndex,tabIndexAttribute:n.getAttribute('tabindex'),href:n.getAttribute('href'),minWidth:n.getAttribute('data-min-width')};if(document.activeElement===n)n.blur();if(prior instanceof HTMLElement)prior.focus();return result});observations.push({state,target:target.key,record,focus});}\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts:354:306"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:29432) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-02T22:32:35.914Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\artifacts\\diagnostic-P01-upper-real-limits-light-compact\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                    "column": 306,
+                    "line": 354
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "92257fb6bc5544758cc3-afb5ed501e5649845a9c",
+          "file": "diagnostic.spec.ts",
+          "line": 483,
+          "column": 106
+        },
+        {
+          "title": "P01 upper real limits light comfortable",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12201,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mh\u001b[27migh\u001b[7m-contras\u001b[27mt\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7ml\u001b[27might\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mh\u001b[27migh\u001b[7m-contras\u001b[27mt\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7ml\u001b[27might\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts:354:306",
+                    "location": {
+                      "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                      "column": 306,
+                      "line": 354
+                    },
+                    "snippet": "  352 |  await f.page.setViewportSize(state==='wide'?{width:1600,height:900}:state==='narrow'?{width:850,height:650}:{width:1280,height:850});\n  353 |  if(state==='text200'){const sizes=await frame.locator('body').evaluate(()=>{const nodes=[...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')],before=nodes.map(n=>parseFloat(getComputedStyle(n).fontSize));nodes.forEach((n,i)=>n.style.setProperty('font-size',before[i]*2+'px','important'));return nodes.map((n,i)=>({before:before[i],after:parseFloat(getComputedStyle(n).fontSize)}))});expect(sizes.every(s=>s.after===s.before*2)).toBe(true);}\n> 354 |  if(state.startsWith('forced')){await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'});session=await f.page.context().newCDPSession(f.page.frames().find(p=>p.url().startsWith('frade://drawio/'))!);await session.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-theme')).toBe('high-contrast');await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden();}\n      |                                                                                                                                                                                                                                                                                                                  ^\n  355 |  let stable=0,previous='';await expect.poll(async()=>{const current=JSON.stringify({state:await fuiSemantics(f,'frame'),box:await f.page.locator('iframe').boundingBox()});stable=current===previous?stable+1:0;previous=current;return stable},{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5);\n  356 |  const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)};\n  357 |  for(const target of targets){const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index);await f.page.mouse.move(1,1);const record=await upperObservation(f,target),focus=await node.evaluate(n=>{const prior=document.activeElement;n.focus();const result={focused:document.activeElement===n,tabIndex:n.tabIndex,tabIndexAttribute:n.getAttribute('tabindex'),href:n.getAttribute('href'),minWidth:n.getAttribute('data-min-width')};if(document.activeElement===n)n.blur();if(prior instanceof HTMLElement)prior.focus();return result});observations.push({state,target:target.key,record,focus});}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                        "column": 306,
+                        "line": 354
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mh\u001b[27migh\u001b[7m-contras\u001b[27mt\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7ml\u001b[27might\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  352 |  await f.page.setViewportSize(state==='wide'?{width:1600,height:900}:state==='narrow'?{width:850,height:650}:{width:1280,height:850});\n  353 |  if(state==='text200'){const sizes=await frame.locator('body').evaluate(()=>{const nodes=[...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')],before=nodes.map(n=>parseFloat(getComputedStyle(n).fontSize));nodes.forEach((n,i)=>n.style.setProperty('font-size',before[i]*2+'px','important'));return nodes.map((n,i)=>({before:before[i],after:parseFloat(getComputedStyle(n).fontSize)}))});expect(sizes.every(s=>s.after===s.before*2)).toBe(true);}\n> 354 |  if(state.startsWith('forced')){await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'});session=await f.page.context().newCDPSession(f.page.frames().find(p=>p.url().startsWith('frade://drawio/'))!);await session.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-theme')).toBe('high-contrast');await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden();}\n      |                                                                                                                                                                                                                                                                                                                  ^\n  355 |  let stable=0,previous='';await expect.poll(async()=>{const current=JSON.stringify({state:await fuiSemantics(f,'frame'),box:await f.page.locator('iframe').boundingBox()});stable=current===previous?stable+1:0;previous=current;return stable},{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5);\n  356 |  const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)};\n  357 |  for(const target of targets){const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index);await f.page.mouse.move(1,1);const record=await upperObservation(f,target),focus=await node.evaluate(n=>{const prior=document.activeElement;n.focus();const result={focused:document.activeElement===n,tabIndex:n.tabIndex,tabIndexAttribute:n.getAttribute('tabindex'),href:n.getAttribute('href'),minWidth:n.getAttribute('data-min-width')};if(document.activeElement===n)n.blur();if(prior instanceof HTMLElement)prior.focus();return result});observations.push({state,target:target.key,record,focus});}\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts:354:306"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:30448) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-02T22:32:48.797Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\artifacts\\diagnostic-P01-upper-real-limits-light-comfortable\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                    "column": 306,
+                    "line": 354
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "92257fb6bc5544758cc3-bd1f3866ff61889f7a4a",
+          "file": "diagnostic.spec.ts",
+          "line": 483,
+          "column": 106
+        },
+        {
+          "title": "P01 upper real limits dark compact",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12027,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"high-contrast\"\u001b[39m\nReceived: \u001b[31m\"dark\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"high-contrast\"\u001b[39m\nReceived: \u001b[31m\"dark\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts:354:306",
+                    "location": {
+                      "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                      "column": 306,
+                      "line": 354
+                    },
+                    "snippet": "  352 |  await f.page.setViewportSize(state==='wide'?{width:1600,height:900}:state==='narrow'?{width:850,height:650}:{width:1280,height:850});\n  353 |  if(state==='text200'){const sizes=await frame.locator('body').evaluate(()=>{const nodes=[...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')],before=nodes.map(n=>parseFloat(getComputedStyle(n).fontSize));nodes.forEach((n,i)=>n.style.setProperty('font-size',before[i]*2+'px','important'));return nodes.map((n,i)=>({before:before[i],after:parseFloat(getComputedStyle(n).fontSize)}))});expect(sizes.every(s=>s.after===s.before*2)).toBe(true);}\n> 354 |  if(state.startsWith('forced')){await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'});session=await f.page.context().newCDPSession(f.page.frames().find(p=>p.url().startsWith('frade://drawio/'))!);await session.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-theme')).toBe('high-contrast');await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden();}\n      |                                                                                                                                                                                                                                                                                                                  ^\n  355 |  let stable=0,previous='';await expect.poll(async()=>{const current=JSON.stringify({state:await fuiSemantics(f,'frame'),box:await f.page.locator('iframe').boundingBox()});stable=current===previous?stable+1:0;previous=current;return stable},{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5);\n  356 |  const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)};\n  357 |  for(const target of targets){const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index);await f.page.mouse.move(1,1);const record=await upperObservation(f,target),focus=await node.evaluate(n=>{const prior=document.activeElement;n.focus();const result={focused:document.activeElement===n,tabIndex:n.tabIndex,tabIndexAttribute:n.getAttribute('tabindex'),href:n.getAttribute('href'),minWidth:n.getAttribute('data-min-width')};if(document.activeElement===n)n.blur();if(prior instanceof HTMLElement)prior.focus();return result});observations.push({state,target:target.key,record,focus});}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                        "column": 306,
+                        "line": 354
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"high-contrast\"\u001b[39m\nReceived: \u001b[31m\"dark\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  352 |  await f.page.setViewportSize(state==='wide'?{width:1600,height:900}:state==='narrow'?{width:850,height:650}:{width:1280,height:850});\n  353 |  if(state==='text200'){const sizes=await frame.locator('body').evaluate(()=>{const nodes=[...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')],before=nodes.map(n=>parseFloat(getComputedStyle(n).fontSize));nodes.forEach((n,i)=>n.style.setProperty('font-size',before[i]*2+'px','important'));return nodes.map((n,i)=>({before:before[i],after:parseFloat(getComputedStyle(n).fontSize)}))});expect(sizes.every(s=>s.after===s.before*2)).toBe(true);}\n> 354 |  if(state.startsWith('forced')){await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'});session=await f.page.context().newCDPSession(f.page.frames().find(p=>p.url().startsWith('frade://drawio/'))!);await session.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-theme')).toBe('high-contrast');await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden();}\n      |                                                                                                                                                                                                                                                                                                                  ^\n  355 |  let stable=0,previous='';await expect.poll(async()=>{const current=JSON.stringify({state:await fuiSemantics(f,'frame'),box:await f.page.locator('iframe').boundingBox()});stable=current===previous?stable+1:0;previous=current;return stable},{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5);\n  356 |  const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)};\n  357 |  for(const target of targets){const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index);await f.page.mouse.move(1,1);const record=await upperObservation(f,target),focus=await node.evaluate(n=>{const prior=document.activeElement;n.focus();const result={focused:document.activeElement===n,tabIndex:n.tabIndex,tabIndexAttribute:n.getAttribute('tabindex'),href:n.getAttribute('href'),minWidth:n.getAttribute('data-min-width')};if(document.activeElement===n)n.blur();if(prior instanceof HTMLElement)prior.focus();return result});observations.push({state,target:target.key,record,focus});}\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts:354:306"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:17628) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-02T22:33:02.030Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\artifacts\\diagnostic-P01-upper-real-limits-dark-compact\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                    "column": 306,
+                    "line": 354
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "92257fb6bc5544758cc3-8b2c84137e951e17bc3e",
+          "file": "diagnostic.spec.ts",
+          "line": 483,
+          "column": 106
+        },
+        {
+          "title": "P01 upper real limits dark comfortable",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12134,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"high-contrast\"\u001b[39m\nReceived: \u001b[31m\"dark\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"high-contrast\"\u001b[39m\nReceived: \u001b[31m\"dark\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts:354:306",
+                    "location": {
+                      "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                      "column": 306,
+                      "line": 354
+                    },
+                    "snippet": "  352 |  await f.page.setViewportSize(state==='wide'?{width:1600,height:900}:state==='narrow'?{width:850,height:650}:{width:1280,height:850});\n  353 |  if(state==='text200'){const sizes=await frame.locator('body').evaluate(()=>{const nodes=[...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')],before=nodes.map(n=>parseFloat(getComputedStyle(n).fontSize));nodes.forEach((n,i)=>n.style.setProperty('font-size',before[i]*2+'px','important'));return nodes.map((n,i)=>({before:before[i],after:parseFloat(getComputedStyle(n).fontSize)}))});expect(sizes.every(s=>s.after===s.before*2)).toBe(true);}\n> 354 |  if(state.startsWith('forced')){await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'});session=await f.page.context().newCDPSession(f.page.frames().find(p=>p.url().startsWith('frade://drawio/'))!);await session.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-theme')).toBe('high-contrast');await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden();}\n      |                                                                                                                                                                                                                                                                                                                  ^\n  355 |  let stable=0,previous='';await expect.poll(async()=>{const current=JSON.stringify({state:await fuiSemantics(f,'frame'),box:await f.page.locator('iframe').boundingBox()});stable=current===previous?stable+1:0;previous=current;return stable},{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5);\n  356 |  const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)};\n  357 |  for(const target of targets){const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index);await f.page.mouse.move(1,1);const record=await upperObservation(f,target),focus=await node.evaluate(n=>{const prior=document.activeElement;n.focus();const result={focused:document.activeElement===n,tabIndex:n.tabIndex,tabIndexAttribute:n.getAttribute('tabindex'),href:n.getAttribute('href'),minWidth:n.getAttribute('data-min-width')};if(document.activeElement===n)n.blur();if(prior instanceof HTMLElement)prior.focus();return result});observations.push({state,target:target.key,record,focus});}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                        "column": 306,
+                        "line": 354
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"high-contrast\"\u001b[39m\nReceived: \u001b[31m\"dark\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  352 |  await f.page.setViewportSize(state==='wide'?{width:1600,height:900}:state==='narrow'?{width:850,height:650}:{width:1280,height:850});\n  353 |  if(state==='text200'){const sizes=await frame.locator('body').evaluate(()=>{const nodes=[...document.querySelectorAll<HTMLElement>('.geToolbarContainer,.geToolbarContainer *')],before=nodes.map(n=>parseFloat(getComputedStyle(n).fontSize));nodes.forEach((n,i)=>n.style.setProperty('font-size',before[i]*2+'px','important'));return nodes.map((n,i)=>({before:before[i],after:parseFloat(getComputedStyle(n).fontSize)}))});expect(sizes.every(s=>s.after===s.before*2)).toBe(true);}\n> 354 |  if(state.startsWith('forced')){await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'});session=await f.page.context().newCDPSession(f.page.frames().find(p=>p.url().startsWith('frade://drawio/'))!);await session.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-theme')).toBe('high-contrast');await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden();}\n      |                                                                                                                                                                                                                                                                                                                  ^\n  355 |  let stable=0,previous='';await expect.poll(async()=>{const current=JSON.stringify({state:await fuiSemantics(f,'frame'),box:await f.page.locator('iframe').boundingBox()});stable=current===previous?stable+1:0;previous=current;return stable},{timeout:5000,intervals:[100]}).toBeGreaterThanOrEqual(5);\n  356 |  const before={semantics:await fuiSemantics(f,'frame'),files:await fuiFiles(f)};\n  357 |  for(const target of targets){const node=frame.locator('.geToolbarContainer .geToolbar a.geButton').nth(target.index);await f.page.mouse.move(1,1);const record=await upperObservation(f,target),focus=await node.evaluate(n=>{const prior=document.activeElement;n.focus();const result={focused:document.activeElement===n,tabIndex:n.tabIndex,tabIndexAttribute:n.getAttribute('tabindex'),href:n.getAttribute('href'),minWidth:n.getAttribute('data-min-width')};if(document.activeElement===n)n.blur();if(prior instanceof HTMLElement)prior.focus();return result});observations.push({state,target:target.key,record,focus});}\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts:354:306"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:34772) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-02T22:33:14.918Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\artifacts\\diagnostic-P01-upper-real-limits-dark-comfortable\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-upper-three-real-limits-20261002T223233Z\\diagnostic.spec.ts",
+                    "column": 306,
+                    "line": 354
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "92257fb6bc5544758cc3-3f97954840417a0752b4",
+          "file": "diagnostic.spec.ts",
+          "line": 483,
+          "column": 106
+        },
+        {
+          "title": "P01 upper real limits high-contrast compact",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8130,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:34180) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-02T22:33:28.011Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "92257fb6bc5544758cc3-68259a69da62601943b4",
+          "file": "diagnostic.spec.ts",
+          "line": 483,
+          "column": 106
+        },
+        {
+          "title": "P01 upper real limits high-contrast comfortable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11465,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T22:33:36.159Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "92257fb6bc5544758cc3-fb14dbf41b5e9674f774",
+          "file": "diagnostic.spec.ts",
+          "line": 483,
+          "column": 106
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T22:32:34.943Z",
+    "duration": 72731.681,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "atUtc": "2026-10-03T15:45:05.234Z",
+  "classification": "ABSTRACTION_BOUNDARY",
+  "status": "REPRODUCED_RED",
+  "defect": "Owned native popup shortcut spans retain original inline gray while rows/td use canonical text role; nested span bypasses projection.",
+  "actual": {
+    "lightMinimum": 3.3048812120621367,
+    "darkMinimum": 3.381581011478653,
+    "required": 4.5
+  },
+  "authority": "Accepted keyboard design permits canonical UI foreground/background on the exact owned popup chain.",
+  "repair": "Include nested text spans within exact owned menu selector, inheriting canonical enabled/disabled row text. Original inline values, labels, placement and bytes remain untouched; CSS ceases when ownership marker is restored.",
+  "sourceEvidence": "stdout.json; artifacts/*/popup-focus-observations.json",
+  "otherRequirements": "Focus ring and checkmark/submenu arrows remain open; text repair grants no numerical or cumulative closure."
+}

@@ -1,0 +1,85 @@
+
+Running 2 tests using 1 worker
+
+(node:54876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:54876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:54876) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\ui-contract-theme.spec.ts:2674:1 › P01-POST-B03 actual many-page overflow reveals focused target and outline without changing semantic viewport (5.5s)
+(node:58456) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:58456) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:58456) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  2 tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds (4.2s)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:2674:1 › P01-POST-B03 actual many-page overflow reveals focused target and outline without changing semantic viewport 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      2667 |     expect(bounds.overflow).toBe(true)
+      2668 |     expect(bounds.focused).toBe(true)
+    > 2669 |     expect(bounds.scroll).toBeGreaterThan(0)
+           |                           ^
+      2670 |     expect(bounds.left - 4).toBeGreaterThanOrEqual(bounds.clip.left)
+      2671 |     expect(bounds.right + 4).toBeLessThanOrEqual(bounds.clip.right)
+      2672 |     expect(bounds.top - 4).toBeGreaterThanOrEqual(bounds.clip.top)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2669:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-POST-5d0c6--changing-semantic-viewport\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-POST-5d0c6--changing-semantic-viewport\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-POST-5d0c6--changing-semantic-viewport\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds 
+
+    Error: lower-focus actual canonical foreground pixels
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      2919 |                   }),
+      2920 |                 })
+    > 2921 |                 expect(pixels, state + ' actual canonical foreground pixels').toBeGreaterThan(0)
+           |                                                                               ^
+      2922 |                 expect(
+      2923 |                   uiContrast(values.ink, values.background),
+      2924 |                   state + ' actual icon contrast',
+        at checkState (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2921:79)
+        at capture (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:2937:13)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:3046:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-theme-P01-LOWE-ad07c-arget-focus-contrast-bounds\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\ui-contract-theme.spec.ts:2674:1 › P01-POST-B03 actual many-page overflow reveals focused target and outline without changing semantic viewport 
+    tests\e2e\ui-contract-theme.spec.ts:2776:3 › P01-LOWER-matrix dark comfortable actual lower and popup target focus contrast bounds 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

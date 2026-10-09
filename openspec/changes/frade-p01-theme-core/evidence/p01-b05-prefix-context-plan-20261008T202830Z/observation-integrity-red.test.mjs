@@ -1,4 +1,0 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {completionPolicy} from './runtime-guards-v3.mjs';
-const c={runtime:{exitCode:0},error:null,restored:true,sourcePass:true,displayEndpointsUnchanged:true,discovery:{exact:true,count:135,diagnosticNames:0}},s={prefixExact56PassedSameWorker0:true,targetReached:true,targetWorker0:true,captureComplete:true,diagnosis:'NOT_REPRODUCED_ROOT_CAUSE_NOT_PROVEN',counts:{passed:57,failed:0,timedOut:0,skipped:0}};
-test('missing mandatory assertion-time artifact blocks runtime0',()=>assert.equal(completionPolicy(c,{...s,assertionTimeObservations:null,assertionTimeObservationsComplete:false}).exitCode,2));
-test('malformed mandatory assertion-time artifact blocks runtime0',()=>assert.equal(completionPolicy(c,{...s,assertionTimeObservations:{observations:'malformed'},assertionTimeObservationsComplete:false}).exitCode,2));

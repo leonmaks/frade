@@ -1,0 +1,55 @@
+
+Running 2 tests using 1 worker
+
+  ok 1 tests\e2e\ui-contract-theme.spec.ts:1457:3 › P01-B02 actual flow manager states frade across six themes and forced colors (1.2m)
+  x  2 tests\e2e\ui-contract-theme.spec.ts:1457:3 › P01-B02 actual flow manager states drawio across six themes and forced colors (1.2m)
+
+
+  1) tests\e2e\ui-contract-theme.spec.ts:1457:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('alertdialog', { name: 'Изменение конца жгута' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('alertdialog', { name: 'Изменение конца жгута' })[22m
+
+
+      1589 |         await page.mouse.up()
+      1590 |         const warning = page.getByRole('alertdialog', { name: 'Изменение конца жгута' })
+    > 1591 |         await expect(warning).toBeVisible()
+           |                               ^
+      1592 |         await captureB02Matrix(
+      1593 |           page,
+      1594 |           info,
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:1591:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-complete-states-20261001T025653Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-complete-states-20261001T025653Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-b02-complete-states-20261001T025653Z-artifacts\ui-contract-theme-P01-B02--29fc6-ix-themes-and-forced-colors\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-theme.spec.ts:1457:3 › P01-B02 actual flow manager states drawio across six themes and forced colors 
+  1 passed (2.4m)
+(node:17936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17936) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

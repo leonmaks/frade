@@ -1,0 +1,15 @@
+{
+  "atUtc": "2026-10-08T20:20:41.709Z",
+  "status": "FAIL",
+  "command": [
+    "E:/Program Files/nodejs/node.exe",
+    "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-b05-analyze-completed-20261008.mjs"
+  ],
+  "processExitCode": 1,
+  "error": "AssertionError:5 !==4 at artifact count guard",
+  "scriptSha256": "f02c7910f7d969313298d54366cf01d4170dac5543e0c4c85cd6588204d669ef",
+  "classification": "ANALYSIS_EXPECTED_ARTIFACT_INVENTORY",
+  "rootCause": "Initial rg --files inventory omitted hidden Playwright artifacts/.last-run.json; recursive fs inventory correctly found5 fresh files.",
+  "correction": "Retain and hash all5 files including hidden45-byte .last-run.json. Freshness/capture/original test assertions unchanged; original source-at-analysis and failed analyzer preserved. v2 analysis saved separately.",
+  "runtimeRerun": false
+}

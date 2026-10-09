@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-10-01T03:42:00.241Z",
+  "results": [
+    {
+      "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/participants.test.ts",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/ui-workspace typecheck",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/ui-workspace lint",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop build",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme.spec.ts --grep \"P01 actual frame close and reopen\" --output \"C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade/openspec/changes/frade-p01-theme-core/evidence/p01-detached-frame-green-20261001T034121Z-artifacts\"",
+      "exit": 0
+    }
+  ]
+}

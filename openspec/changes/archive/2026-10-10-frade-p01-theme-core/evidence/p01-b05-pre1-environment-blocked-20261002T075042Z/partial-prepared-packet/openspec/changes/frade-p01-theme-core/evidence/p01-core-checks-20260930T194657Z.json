@@ -1,0 +1,99 @@
+{
+  "createdAt": "2026-09-30T19:47:31.019Z",
+  "scope": "P01 tasks2.1/2.2 pure core; runtime not implemented",
+  "results": [
+    {
+      "name": "resolver-green",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@frade/ui-workspace",
+        "exec",
+        "vitest",
+        "run",
+        "tests/ui-contract/resolver.test.ts",
+        "tests/ui-contract/p01.bdd.test.tsx"
+      ],
+      "startedAt": "2026-09-30T19:46:57.748Z",
+      "endedAt": "2026-09-30T19:46:59.897Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-resolver-green-20260930T194657Z.txt",
+      "sha256": "be0d6e64cdc9659f4955383986dfc141912af9772cd5c136dd7a62bbb87cacfa"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@frade/ui-workspace",
+        "typecheck"
+      ],
+      "startedAt": "2026-09-30T19:46:59.898Z",
+      "endedAt": "2026-09-30T19:47:05.385Z",
+      "exit": 0,
+      "status": "PASS",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-typecheck-20260930T194657Z.txt",
+      "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@frade/ui-workspace",
+        "lint"
+      ],
+      "startedAt": "2026-09-30T19:47:05.385Z",
+      "endedAt": "2026-09-30T19:47:31.015Z",
+      "exit": 1,
+      "status": "FAIL",
+      "log": "openspec/changes/frade-p01-theme-core/evidence/p01-core-lint-20260930T194657Z.txt",
+      "sha256": "78f0a817a73fc408cb3768a7a038d89b54fcc93eab4bca072af5283cf82c0a25"
+    }
+  ],
+  "sources": [
+    {
+      "file": "packages/ui-workspace/src/design/theme/types.ts",
+      "sha256": "9f92b9a2394a588524757e2509ae8eb832762bbc49a7959a809fd55fc791f051"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/registry.ts",
+      "sha256": "04ec0376e3d84e3dfbd083b92310c07974a6211f98ee38a47b205e53bc3393db"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/contrast.ts",
+      "sha256": "e4ec02e1013233beffd2760419305ac7d5fc29bcd2dbf98b309a669382f41c54"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/resolver.ts",
+      "sha256": "ade8fc04861a177ee5b0a20a4062ca51dfb1df002f2cca31c7b838cbb2250762"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/resolver.test.ts",
+      "sha256": "a82c75a954b70d1a87b1c03d316d540de2cf795bca14e9142115c86dfb06f63d"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+      "sha256": "4607f2490e97b7428fa5de10b1d50b3673e68144f8d536e27e62b89dfcb6a989"
+    },
+    {
+      "file": "docs/ui/bdd/p01-theme-core.feature",
+      "sha256": "59577307e7d2a0f1e2d74dd0fee6a802170af63df6268ef4c1da90d91add5b46"
+    },
+    {
+      "file": "docs/ui/decisions/p01-theme-traceability.json",
+      "sha256": "2ba4b1d735f391fbb3fa16c00415a07af3805437437df684e88b69ac900fbcae"
+    },
+    {
+      "file": "docs/ui/theme-core.md",
+      "sha256": "7048e2fd8dbc12c8780ee0beb5c31db6bc6cf742b7d7cbe42b437d36454cf7e5"
+    },
+    {
+      "file": "packages/ui-workspace/package.json",
+      "sha256": "e06eb58934c1cad78247e5ae925ad332ca5c64ca3e93ae8faac79ce1f965f972"
+    }
+  ],
+  "propertyRuns": 200,
+  "propertySeed": 20260930
+}

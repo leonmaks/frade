@@ -1,0 +1,30 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/participants.test.ts > P01-B05 failed preview compensating to a different revision retains the actual DiagramView diagnostic until successful publication
+AssertionError: expected "spy" to not be called with arguments: [ undefined ]
+
+Received: 
+
+  1st spy call:
+
+Compared values have no visual difference.
+
+
+Number of calls: 1
+
+ ❯ tests/ui-contract/participants.test.ts:1291:36
+    1289|     expect(service.state().phase).toBe('IDLE'); expect(service.state()…
+    1290|     expect(f.frame.dataset.fradeRevision).toBe('0')
+    1291|     expect(view.setThemeError).not.toHaveBeenCalledWith(undefined)
+       |                                    ^
+    1292|     expect(view.setThemeReady).not.toHaveBeenCalled()
+    1293|     expect(f.invalidated).not.toHaveBeenCalled(); expect(persist).not.…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\ui-workspace
+

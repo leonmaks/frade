@@ -1,0 +1,57 @@
+[
+  {
+    "name": "compliance",
+    "command": [
+      "E:\\Program Files\\nodejs\\node.exe",
+      "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+      "ui:compliance"
+    ],
+    "startedAtUtc": "2026-10-03T02:31:23.711Z",
+    "finishedAtUtc": "2026-10-03T02:31:42.581Z",
+    "exitCode": 0,
+    "status": "PASS"
+  },
+  {
+    "name": "boundaries",
+    "command": [
+      "E:\\Program Files\\nodejs\\node.exe",
+      "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+      "check:boundaries"
+    ],
+    "startedAtUtc": "2026-10-03T02:31:42.582Z",
+    "finishedAtUtc": "2026-10-03T02:31:43.439Z",
+    "exitCode": 0,
+    "status": "PASS"
+  },
+  {
+    "name": "strict",
+    "command": [
+      "E:\\Program Files\\nodejs\\node.exe",
+      "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+      "validate",
+      "frade-p01-theme-core",
+      "--strict",
+      "--json"
+    ],
+    "startedAtUtc": "2026-10-03T02:31:43.439Z",
+    "finishedAtUtc": "2026-10-03T02:31:44.659Z",
+    "exitCode": 0,
+    "status": "PASS"
+  },
+  {
+    "name": "diff",
+    "command": [
+      "git",
+      "-c",
+      "core.longpaths=true",
+      "-c",
+      "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+      "diff",
+      "--check"
+    ],
+    "startedAtUtc": "2026-10-03T02:31:44.659Z",
+    "finishedAtUtc": "2026-10-03T02:31:44.905Z",
+    "exitCode": 0,
+    "status": "PASS"
+  }
+]

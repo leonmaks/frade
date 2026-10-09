@@ -1,0 +1,126 @@
+
+Running 2 tests using 1 worker
+
+  x  1 ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\bundle-diagnostic.spec.ts:7:3 › bundle flow management full lifecycle: drawio (38.3s)
+  x  2 ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\theme-diagnostic.spec.ts:483:1 › P01 real frame chord, Settings, System media and preview window-close preserve dirty KA and durable ownership (36.7s)
+
+
+  1) ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\bundle-diagnostic.spec.ts:7:3 › bundle flow management full lifecycle: drawio › E2E-02 exclusion undo redo 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.diagram-slot iframe').contentFrame().locator('.geDiagramContainer')[22m
+    [2m    - locator resolved to <div tabindex="0" class="geDiagramContainer">…</div>[22m
+    [2m  - attempting click action[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <a class="geButton" disabled="disabled" title="Вернуть (Ctrl+Y)"></a> from <div class="geToolbarContainer">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <a class="geButton" disabled="disabled" title="Вернуть (Ctrl+Y)"></a> from <div class="geToolbarContainer">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m    55 × waiting for element to be visible, enabled and stable[22m
+    [2m       - element is visible, enabled and stable[22m
+    [2m       - scrolling into view if needed[22m
+    [2m       - done scrolling[22m
+    [2m       - <a class="geButton" disabled="disabled" title="Вернуть (Ctrl+Y)"></a> from <div class="geToolbarContainer">…</div> subtree intercepts pointer events[22m
+    [2m     - retrying click action[22m
+    [2m       - waiting 500ms[22m
+
+
+      200 |           await page.screenshot({path:info.outputPath('before-original-canvas-focus.png')})
+      201 |         }
+    > 202 |         await canvas().click({ position: { x: 20, y: 20 } })
+          |                        ^
+      203 |         await page.keyboard.press('Control+z')
+      204 |         await openActual()
+      205 |         await expect(manager.getByRole('checkbox', { name: 'В жгуте: Payload F1' })).toBeChecked()
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\bundle-diagnostic.spec.ts:202:24
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\bundle-diagnostic.spec.ts:184:7
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\artifacts\bundle-diagnostic-bundle-f-43669-ement-full-lifecycle-drawio\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\artifacts\bundle-diagnostic-bundle-f-43669-ement-full-lifecycle-drawio\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\theme-diagnostic.spec.ts:483:1 › P01 real frame chord, Settings, System media and preview window-close preserve dirty KA and durable ownership 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('iframe').contentFrame().locator('.geDiagramContainer')[22m
+    [2m    - locator resolved to <div tabindex="0" class="geDiagramContainer">…</div>[22m
+    [2m  - attempting click action[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <a class="geButton" data-min-width="630" title="Вставить (Нажмите дважды, чтобы вставить текст)"></a> from <div class="geToolbarContainer">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <a class="geButton" data-min-width="630" title="Вставить (Нажмите дважды, чтобы вставить текст)"></a> from <div class="geToolbarContainer">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m    54 × waiting for element to be visible, enabled and stable[22m
+    [2m       - element is visible, enabled and stable[22m
+    [2m       - scrolling into view if needed[22m
+    [2m       - done scrolling[22m
+    [2m       - <a class="geButton" data-min-width="630" title="Вставить (Нажмите дважды, чтобы вставить текст)"></a> from <div class="geToolbarContainer">…</div> subtree intercepts pointer events[22m
+    [2m     - retrying click action[22m
+    [2m       - waiting 500ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+
+
+      461 |     await writeFile(info.outputPath('canvas-focus-hit.json'),JSON.stringify(hit,null,2))
+      462 |     await f.page.screenshot({path:info.outputPath('before-original-canvas-focus.png')})
+    > 463 |     await frame.locator('.geDiagramContainer').click({ position: { x: 30, y: 30 } })
+          |                                                ^
+      464 |     await f.page.keyboard.press('Control+k')
+      465 |     await f.page.keyboard.press('Control+t')
+      466 |     await expect(f.page.getByRole('dialog', { name: 'Выбор темы' })).toBeVisible()
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\theme-diagnostic.spec.ts:463:48
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\artifacts\theme-diagnostic-P01-real--0a185-ty-KA-and-durable-ownership\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\artifacts\theme-diagnostic-P01-real--0a185-ty-KA-and-durable-ownership\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\artifacts\theme-diagnostic-P01-real--0a185-ty-KA-and-durable-ownership\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\bundle-diagnostic.spec.ts:7:3 › bundle flow management full lifecycle: drawio 
+    ..\..\openspec\changes\frade-p01-theme-core\evidence\p01-canvas-hit-diagnostic-20261001T220227Z\theme-diagnostic.spec.ts:483:1 › P01 real frame chord, Settings, System media and preview window-close preserve dirty KA and durable ownership 
+
+(node:64772) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:64772) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:64772) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(node:49368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49368) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

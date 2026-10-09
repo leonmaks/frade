@@ -1,1 +1,0 @@
-The requestSha256 in selection.json is the exact preliminary request before attaching selection.json itself. It is historical draft identity, not final dispatched request identity. Shared same-run input/request/control/receipt hashes bind the final request. This note explicitly retains the draft bytes and prevents a self-referential request digest claim.

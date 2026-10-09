@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-10-01T03:26:16.782Z",
+  "scope": "Affected core regression; B02 readonly opening remains explicitly FAIL/BLOCKED pending human scope decision; grep exclusion does not satisfy full required Electron suite.",
+  "results": [
+    {
+      "command": "pnpm --filter @frade/desktop typecheck",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop lint",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme.spec.ts --grep \"P01-B02 actual repository metadata\" --output \"C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade/openspec/changes/frade-p01-theme-core/evidence/p01-current-regression-20261001T032023Z-artifacts/metadata\"",
+      "exit": 0
+    },
+    {
+      "command": "pnpm check",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop test",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop build",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme.spec.ts --grep-invert \"P01-B02\" --output \"C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade/openspec/changes/frade-p01-theme-core/evidence/p01-current-regression-20261001T032023Z-artifacts/core\"",
+      "exit": 0
+    },
+    {
+      "command": "pnpm --filter @frade/desktop exec playwright test tests/e2e/ui-contract-theme-performance.spec.ts --output \"C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade/openspec/changes/frade-p01-theme-core/evidence/p01-current-regression-20261001T032023Z-artifacts/performance\"",
+      "exit": 0
+    }
+  ]
+}

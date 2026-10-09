@@ -1,0 +1,30 @@
+{
+  "atUtc": "2026-10-08T22:34:32.139Z",
+  "fit": {
+    "source": "apps/desktop/vendor/drawio/js/app.min.js",
+    "sourceSha256": "0a0152fccee4c6d826435f0dd5b14e38f17257e132918850f20ef45e6821a899",
+    "startCharacter": 169803,
+    "endCharacter": 170148,
+    "raw": "fit:function(a,b){b=b||0;var c=mxUtils.getDocumentSize(),d=parseInt(a.offsetLeft),e=parseInt(a.offsetWidth),\nf=mxUtils.getDocumentScrollOrigin(a.ownerDocument),g=f.x;f=f.y;var k=g+c.width-b;d+e>k&&(a.style.left=Math.max(g+b,k-e)+\"px\");d=parseInt(a.offsetTop);e=parseInt(a.offsetHeight);c=f+c.height-b;d+e>c&&(a.style.top=Math.max(f+b,c-e)+\"px\")}",
+    "rawSha256": "0b4175958e335e6b3164ae2fd632688f55edee1026b714ca9a5f41a390dc9622",
+    "functionText": "function(a,b){b=b||0;var c=mxUtils.getDocumentSize(),d=parseInt(a.offsetLeft),e=parseInt(a.offsetWidth),\nf=mxUtils.getDocumentScrollOrigin(a.ownerDocument),g=f.x;f=f.y;var k=g+c.width-b;d+e>k&&(a.style.left=Math.max(g+b,k-e)+\"px\");d=parseInt(a.offsetTop);e=parseInt(a.offsetHeight);c=f+c.height-b;d+e>c&&(a.style.top=Math.max(f+b,c-e)+\"px\")}",
+    "functionSha256": "9c272f4a3f02251d15d650b96ddd312a2de54f58fd4049451bc01fe7d8d1f24b"
+  },
+  "show": {
+    "source": "apps/desktop/vendor/drawio/js/app.min.js",
+    "sourceSha256": "0a0152fccee4c6d826435f0dd5b14e38f17257e132918850f20ef45e6821a899",
+    "startCharacter": 273529,
+    "endCharacter": 273754,
+    "raw": "mxPopupMenu.prototype.showMenu=function(){9<=document.documentMode&&(this.div.style.filter=\"none\");document.body.appendChild(this.div);window.setTimeout(mxUtils.bind(this,function(){null!=this.div&&mxUtils.fit(this.div)}),0)}",
+    "rawSha256": "fda74c10a6e1c34de819570aa62c72ef1df045643b27555193d70415e08f5b26",
+    "functionText": "function(){9<=document.documentMode&&(this.div.style.filter=\"none\");document.body.appendChild(this.div);window.setTimeout(mxUtils.bind(this,function(){null!=this.div&&mxUtils.fit(this.div)}),0)}",
+    "functionSha256": "2d0ccd6517eeeb8bb5197173d509a92e807a67bbd28111a19a3873769ec7d5f6"
+  },
+  "compiledSourcesExact": true,
+  "showMenuWrapper": {
+    "source": "apps/desktop/vendor/drawio/js/app.min.js",
+    "excerpt": "Format())};(function(){var b=mxPopupMenu.prototype.showMenu;mxPopupMenu.prototype.showMenu=function(){this.div.style.overflowY=\"auto\";this.div.style.overflowX=\"hidden\";this.div.style.maxHeight=Math.max(document.body.clientHeight,document.documentElement.clientHeight)-(EditorUi.isElectronApp?50:10)+\"px\";b.apply(this,arguments)};Menus.flowModelOrder=\"NODES_AND_EDGES\";Menus.layoutContainers=function(){var m=fu",
+    "note": "Later wrapper captures original showMenu as b and delegates b.apply(this,arguments); scheduling fixture does not claim historical effective instance provenance"
+  },
+  "mxClientSha256": "19c60dbc496e51bbe3498719e5e66420b305edec6432f455b4b654e63e1186d6"
+}

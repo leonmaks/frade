@@ -1,0 +1,97 @@
+{
+  "atUtc": "2026-10-09T21:32:30.673Z",
+  "classification": "INTEGRATION_EVIDENCE_PATH",
+  "failed": 21,
+  "passed": 0,
+  "originalCasesExcludedByTargetedSelector": 22,
+  "fixtureRootIgnoredByOldOneArgumentReader": true,
+  "oldExternalArchiveProof": "Existing exact original read expression already produced ENOENT after isolated fixture archive; preserved separately.",
+  "meaningfulDiscrimination": "Fixture uses original command bytes plus distinct valid JSON whitespace; must not read actual worktree instead.",
+  "cases": [
+    {
+      "name": "P01-ARCHIVE-FS-001 active preserves exact fixture bytes for command.json",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-001 active preserves exact fixture bytes for runtime.stdout.json",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-001 active preserves exact fixture bytes for control-valid-bindings.json",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-001 archived preserves exact fixture bytes for command.json",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-001 archived preserves exact fixture bytes for runtime.stdout.json",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-001 archived preserves exact fixture bytes for control-valid-bindings.json",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-002 missing evidence fails explicitly",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-003 duplicate locations fail even for identical bytes",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-004 rejects unapproved evidence suffix ../command.json",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-004 rejects unapproved evidence suffix command.json/child",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-004 rejects unapproved evidence suffix runtime.other.json",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-004 rejects unapproved evidence suffix ..\\command.json",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-004 rejects unapproved evidence suffix control-valid-bindings.json/..",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-005 physical archive path is not a permitted logical ID",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-006 rejects unsupported runtime directory",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-007 regular-file evidence required",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-008 rejects actual leaf link in active location",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-008 rejects actual ancestor link in active location",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-008 rejects actual leaf link in archived location",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-008 rejects actual ancestor link in archived location",
+      "status": "failed"
+    },
+    {
+      "name": "P01-ARCHIVE-FS-009 rejects linked fixture root and escaped realpath",
+      "status": "failed"
+    }
+  ],
+  "helperChangedBeforeRed": false
+}

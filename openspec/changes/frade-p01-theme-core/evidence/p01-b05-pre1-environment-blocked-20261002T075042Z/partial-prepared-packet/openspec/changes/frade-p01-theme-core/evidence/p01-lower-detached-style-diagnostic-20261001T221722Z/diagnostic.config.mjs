@@ -1,1 +1,0 @@
-export default {root:"C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p01-theme-core/evidence/p01-lower-detached-style-diagnostic-20261001T221722Z",test:{include:["ownership.test.ts"],environment:"jsdom"}}

@@ -1,0 +1,49 @@
+[
+  {
+    "name": "strict2",
+    "command": [
+      "E:\\Program Files\\nodejs\\node.exe",
+      "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+      "validate",
+      "frade-p01-theme-core",
+      "--strict",
+      "--json"
+    ],
+    "startedAtUtc": "2026-10-02T19:35:20.541Z",
+    "finishedAtUtc": "2026-10-02T19:35:21.613Z",
+    "exitCode": 0
+  },
+  {
+    "name": "bdd2",
+    "command": [
+      "E:\\Program Files\\nodejs\\node.exe",
+      "E:/Program Files/nodejs/node_modules/corepack/dist/pnpm.js",
+      "--filter",
+      "@frade/ui-workspace",
+      "test:bdd"
+    ],
+    "startedAtUtc": "2026-10-02T19:35:21.614Z",
+    "finishedAtUtc": "2026-10-02T19:35:30.371Z",
+    "exitCode": 0
+  },
+  {
+    "name": "diff2",
+    "command": [
+      "git",
+      "-c",
+      "core.longpaths=true",
+      "diff",
+      "--check",
+      "--",
+      "openspec/changes/frade-p01-theme-core/proposal.md",
+      "openspec/changes/frade-p01-theme-core/design.md",
+      "openspec/changes/frade-p01-theme-core/tasks.md",
+      "openspec/changes/frade-p01-theme-core/specs/theme-core/spec.md",
+      "docs/ui/bdd/p01-theme-core.feature",
+      "docs/ui/decisions/p01-theme-traceability.json"
+    ],
+    "startedAtUtc": "2026-10-02T19:35:30.371Z",
+    "finishedAtUtc": "2026-10-02T19:35:30.489Z",
+    "exitCode": 0
+  }
+]
