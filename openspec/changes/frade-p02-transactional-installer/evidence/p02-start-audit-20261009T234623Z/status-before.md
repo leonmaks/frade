@@ -1,36 +1,3 @@
-# UI Design Contract: P02 start — planning audit,0/9
-
-Обновлено 2026-10-09T23:46:28.418Z (Europe/Moscow: 10.10.2026, 02:46:28). Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Current P02 baseline d876a773282700abf515c9c4fbc14a0b219359af; original program baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. Routing independent.
-
-| Этап | Статус |
-|---|---|
-| Foundation | ARCHIVED21/21 |
-| P01 resolver/preview | ARCHIVED10/10; UI remoteSHA d876a773 verified;3minor OPEN_ACCEPTED_DEFERRED |
-| P02 transactional installer | STARTED_PLANNING_AUDIT;0/9; NO_IMPLEMENTATION |
-| P03–P07 | NOT_STARTED |
-
-| Задача P02 | Фактический статус |
-|---|---|
-|1.1 predecessor/audit/baseline/scope | P01 closure and current audit PASS; exact integration scope PROPOSED; checkbox not closed |
-|1.2 strict/PRE | strict PASS; runner AVAILABLE; PRE NOT_RUN/BLOCKED_MODEL_ASSIGNMENT |
-|2.1 RED/ZIP/semver/fixture | NOT_RUN; original1356bytes/SHA verified and preserved |
-|2.2 contracts/service/bridge | NOT_RUN; no new product packages |
-|2.3 crash/recovery/rollback | NOT_RUN |
-|2.4 Extensions UI/P01 fallback | NOT_RUN; real integration gaps documented |
-|3.1 checks/a11y/visual | NOT_RUN; no fresh app/screenshots/root suite |
-|3.2 verify/POST | NOT_RUN |
-|3.3 archive/close | NOT_RUN; STOPbeforeP03 |
-
-Blockers/decisions: exact stage PRE/POST model/effort is absent from P02 artifacts and roadmap, human question pending under Frade §20–21. Exact existing Workbench/P01 registry/bootstrap/host/root-check integration omitted from initial narrow paths: [scope proposal](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-integration-scope.proposed.md), SHA256 e0821a4e7e1676e772a191061c94e3fc6384df2fd82cbfd62251ce6ffd33c947; NOT_ACCEPTED. Active original four planning artifacts remain unchanged. No default model, self-approval or historical PRE reuse.
-
-Evidence: [audit](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/audit.md), [baseline/raw hashes](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/baseline.json), [immutable sample provenance](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/original-input-provenance.json), [actual strict validation](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-3-execution.json), [runner](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/review-runner-status.json). No production/test/lockfile/boundary changes. No new UI visual acceptance or executableVSCode compatibility. P01 raw FAIL/3open defects remain; no P02 blanket waiver. Merge protection LOCAL_ONLY/NOT_CONFIGURED.
-
-Next: exact scope + model decision → coherent plan refresh → strict → automatic independent PRE → RED/implementation only after PASS.
-
-Git: P01 checkpoint/metadata published623feae8/d876a773; current P02 planning audit publication PENDING. Destination authorization remains origin git@github.com:leonmaks/frade.git refs/heads/codex/frade-ui-design-contract. Right panel queued previously; current opening requested after status update.
-
-## Предыдущие записи сохранены
-
 # UI Design Contract: P01 ARCHIVED —10/10; STOP before P02
 
 Обновлено 2026-10-09T22:30:31.270Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; guide1.0 / tokens1.0.0. Routing независим.
