@@ -1,0 +1,30 @@
+{
+  "atUtc": "2026-10-09T05:44:46.629Z",
+  "scope": "External isolated archive path-readiness proof only; no candidate/source/index/HEAD/request/packet mutation during ongoing POST.",
+  "source": {
+    "path": "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+    "sha256": "c25a1e58252dc2cedf598b9887967884be8b46e6958ff172b317452f421b4f77",
+    "readExpression": "readFileSync(resolve(root, file))",
+    "pinRegex": "/^openspec\\/changes\\/frade-p01-theme-core\\/evidence\\/p01-fui-runtime-[0-9TZ]+\\/(command\\.json|runtime\\.stdout\\.json)$/",
+    "literal": "openspec/changes/frade-p01-theme-core/evidence/p01-fui-runtime-20261007T221459Z"
+  },
+  "fixture": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-p01-archive-read-proof-DSzCG1",
+  "activeRead": {
+    "status": "PASS",
+    "sha256": "f0847b39e63d4de4bc4c1169e0d9648a2f01bb90195816d177de2a88f0985576"
+  },
+  "afterFixtureArchive": {
+    "status": "EXPECTED_FAIL",
+    "error": {
+      "code": "ENOENT",
+      "message": "ENOENT: no such file or directory, open 'C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-ui-p01-archive-read-proof-DSzCG1\\openspec\\changes\\frade-p01-theme-core\\evidence\\p01-fui-runtime-20261007T221459Z\\command.json'"
+    },
+    "physicalBytesExact": true,
+    "physicalArchivePathRejectedByExistingEvidenceGuard": true
+  },
+  "classification": "INTEGRATION_EVIDENCE_PATH",
+  "productionChanged": false,
+  "testsChanged": false,
+  "technicalLimitation": "Current direct fuiRead relies on active change path. Merely changing logical evidence paths would also violate existing EVIDENCE_PATH guard. No resolver or assertion change implemented.",
+  "fixtureRemoved": true
+}

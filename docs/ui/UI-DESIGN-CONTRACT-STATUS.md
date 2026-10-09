@@ -1,31 +1,38 @@
-# P01: визуальные baselines приняты; PRE PASS; сверка оставшихся требований
+# P01: cumulative POST PASS;9/10; archive scope decision
 
-Обновлено 2026-10-09T04:59:20.384Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
+Обновлено 2026-10-09T06:04:12.455Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0; Routing независим.
 
 | Этап | Фактический статус |
 | --- | --- |
 | Foundation | ARCHIVED |
-| P01 resolver / preview | IN_PROGRESS8/10; verification/check batch → cumulative POST |
-| P02–P07 | NOT_STARTED |
+| P01 resolver / preview | IMPLEMENTATION_ACCEPTED_POST_PASS;9/10; archive pending |
+| P02 installer | NOT_STARTED |
+| P03 VS Code theme import | NOT_STARTED |
+| P04 icon registries | NOT_STARTED |
+| P05 isolated browser host | NOT_STARTED |
+| P06 native contribution APIs | NOT_STARTED |
+| P07 registry/profiles/policy | NOT_STARTED |
 
-| Задача | Статус |
+| Текущая задача P01 | Статус |
 | --- | --- |
-| Три точных FAIL | OPEN_ACCEPTED_DEFERRED; MINOR priority; cause NOT_PROVEN; repair NOT_STARTED |
-| Controlled unit / V2 protocol | WITHDRAWN_NOT_RUN0/1; raw FAIL6/FAIL4 retained |
-| Повторный независимый PRE | PASS; 288files/53events; candidate/packet/plan unchanged; gpt-6-astra/xhigh requested, backend NOT_CONFIRMED |
-| Визуальное решение | HUMAN_ACCEPTED exact372PNG:288screens+84crops; manifest06c79710f22631a87a1cf834181ca60fa8a4291a4b00c1cfcd1592f81a8a6c15; disclosed exceptions retained |
-| Задачи2.4/2.5/3.1 | EXECUTION_COMPLETE under exact exceptions;49requirements/108scenario occurrences mapped |
-| OpenSpec verify / cumulative POST / archive | OWNER_MAPPING_COMPLETE / FIRST_FAIL1_PACKET_COMPLETENESS_REPEAT_REQUIRED / NOT_RUN |
+|1.1 /1.2 scope/PRE | COMPLETE; historical FAIL retained; latest exception PRE PASS |
+|2.1–2.3 resolver/service/BDD/TDD | COMPLETE |
+|2.4 adapter/DTO/filesystem/bootstrap/keyboard/overlay | COMPLETE under exact3deferrals; other covered obligations verified |
+|2.5 runtime/media/visual/performance | COMPLETE with disclosed exceptions; exact372PNG humanaccepted; p95full126.4ms<=150 |
+|3.1 applicable checks | EXECUTED; strict/UIcompliance PASS; raw fullroot exit1 staysFAIL withexact2acceptedfocus defects; staticcache/context limits retained |
+|3.2 verify/cumulativePOST | COMPLETE;49requirements/108scenariooccurrences/72uniquenames;1874files/103events; candidate/packet/plan exact |
+|3.3 sync/archive/post-archivechecks | NOT_RUN; BLOCKED_SCOPE_DECISION for exact archive evidence reader repair |
+|3minor defects | OPEN_ACCEPTED_DEFERRED;causeNOT_PROVEN/repairNOT_STARTED; controlledunitwithdrawn0/1 |
 
-[Принятое визуальное решение](../../openspec/changes/frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json); [repeat PRE](../../openspec/changes/frade-p01-theme-core/evidence/p01-minor-deferral-pre-received-20261009T045409Z/verification.json); [галерея](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md). Gallery NOT_APPROVED at creation remains historical; this separate decision is current authority. Original root exit1 remains FAIL; no whole-case exemption or assertion weakening.
+[POST PASS](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/output--result.md); [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/verification.json); [accepted gallery](../../openspec/changes/frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json); [archive proposal](../../openspec/changes/frade-p01-theme-core/decisions/p01-archive-evidence-locator.proposed.md); [isolated archive proof](../../openspec/changes/frade-p01-theme-core/evidence/p01-archive-readiness-20261009T060412Z/archive-readiness-proof.json).
 
-Следующий шаг: сверить все remaining requirements с actual source-bound executions → cumulative POST → archive only after gates. Другие FAIL/missing coverage блокируют владельца; три принятых дефекта не требуют ремонта для этого checkpoint. STOP before P02.
+Archive finding: existing FUI evidence reader is bound to activechange paths; moving unchangedfixturebytes causes ENOENT. Existing design permits only one control literal and forbids helper/import edits. Proposal is concrete NOT_ACCEPTED/NOT_IMPLEMENTED, SHA2560cffdc65767d3bdaa4af3d9c8b3f865faa873cce9f1c4b2c1f8420357a24572d. Next: human exactscope decision → coherentarchiveplan/strict → automatic PRE → meaningful test-only locator repair/checks/POST → sync/archive/postchecks. No production/source/testrepair yet; no extra runtime for deferred defects; no Routing wait. STOP beforeP02.
 
-Git: current acceptance/verification checkpoint e4271e5d4fd429bc7487b8926cd9fd5c6cdfa1c3 COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-09T05:40:31.009Z. Following metadata commit records receipt; POST pending. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed. READY_FOR_VERIFY: YES; READY_FOR_ARCHIVE: NO.
+Final bookkeeping check batch: strict/apply/status/UIcompliance/scope PASS; actual9/10. [Raw checks](../../openspec/changes/frade-p01-theme-core/evidence/p01-implementation-closure-20261009T060412Z/check-batch.json). No runtime rerun or test/helper/production change.
 
-[Cumulative verification mapping](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/requirement-scenario-mapping.json); [technical audit](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/technical-evidence-audit.json). Updated 2026-10-09T05:07:01.743Z. Actual rootFAIL preserved; checks executed with exact accepted exceptions, no unconditional product/A11Y PASS.
+Reviewer: approved gpt-6-astra/xhigh; actualbackend/effort NOT_CONFIRMED. Retained geometry/native/placement and3defects do not receive generalUI/A11YPASS.
 
-Cumulative POST1 2026-10-09T05:39:37.202Z: FAIL1 missing original ownership RED/test-integrity records;17raw/232events, candidate/packet/plan unchanged, exact stage selection. Existing unchanged rawrecords added; corrected10FAIL/4guardPASS verified. No source/test change or withdrawn diagnostic. [POST1 report](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T053743Z/output--result.md); [packet repair](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/post-packet-completeness-repair.json). Exact visual acceptance and3deferrals honored. Tasks8/10; archive/P02 NOT_RUN.
+Git: last actual verified published metadata2da978372e5998c64aa5ac01477dd7bd174c5603; current POSTPASS/9of10/archiveproposal UNCOMMITTED. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. READY_FOR_VERIFY: YES; READY_FOR_ARCHIVE: NO.
 
 ## Предыдущие записи сохранены
 

@@ -3,12 +3,12 @@
   "workspace": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
   "branch": "codex/frade-ui-design-contract",
   "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
-  "phase": "P01_CUMULATIVE_POST_PREPARED",
+  "phase": "P01_IMPLEMENTATION_POST_PASS_ARCHIVE_SCOPE_DECISION_REQUIRED",
   "taskCounts": {
-    "completed": 8,
+    "completed": 9,
     "total": 10
   },
-  "implementation": "SOLE_BRIDGE_REPAIR_IMPLEMENTED_RUNTIME_MATRIX_AND_FULL_GATES_OPEN",
+  "implementation": "P01_IMPLEMENTATION_ACCEPTED_WITH_EXACT_DISCLOSED_EXCEPTIONS_POST_PASS",
   "preReview": "PRE-P01-B02-20260930T185730Z",
   "preStatus": "PASS",
   "readyForImplementation": false,
@@ -2470,10 +2470,21 @@
   },
   "currentVerification": {
     "path": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z",
-    "status": "CORRECTNESS_MAPPING_COMPLETE_CHECK_BATCH_PENDING_POST_NOT_RUN",
+    "status": "COMPLETE_INDEPENDENT_CUMULATIVE_POST_PASS",
     "checkBatch": "PASS",
     "readyForPost": true,
-    "independentPost": "REPEAT_PREPARED_NOT_RUN",
+    "independentPost": {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z",
+      "status": "PASS",
+      "reportSha256": "aa34605090297a238efa8b10359781ee1fe9a5b93046afa6a314a3d6f86a578f",
+      "files": 1874,
+      "events": 103,
+      "candidateUnchanged": true,
+      "packetUnchanged": true,
+      "actualBackend": "NOT_CONFIRMED",
+      "requestedModel": "gpt-6-astra",
+      "requestedEffort": "xhigh"
+    },
     "publication": {
       "atUtc": "2026-10-09T05:40:31.009Z",
       "status": "PUSHED_REMOTE_SHA_VERIFIED",
@@ -2489,8 +2500,25 @@
       "classification": "EVIDENCE_COMPLETENESS",
       "repair": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/post-packet-completeness-repair.json",
       "repeat": "REQUIRED",
-      "productionRepair": "NOT_REQUIRED"
+      "productionRepair": "NOT_REQUIRED",
+      "repeatCompleted": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z"
+    },
+    "readyForArchive": false,
+    "postComplete": true,
+    "finalBookkeepingChecks": {
+      "status": "PASS",
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-implementation-closure-20261009T060412Z/check-batch.json",
+      "atUtc": "2026-10-09T06:13:02.386Z"
     }
   },
-  "readyForArchive": false
+  "readyForArchive": false,
+  "archiveReadiness": {
+    "status": "BLOCKED_SCOPE_DECISION",
+    "owningTask": "3.3",
+    "proposal": "openspec/changes/frade-p01-theme-core/decisions/p01-archive-evidence-locator.proposed.md",
+    "sha256": "0cffdc65767d3bdaa4af3d9c8b3f865faa873cce9f1c4b2c1f8420357a24572d",
+    "evidence": "openspec/changes/frade-p01-theme-core/evidence/p01-archive-readiness-20261009T060412Z",
+    "classification": "INTEGRATION_EVIDENCE_PATH",
+    "implementation": "NOT_STARTED"
+  }
 }
