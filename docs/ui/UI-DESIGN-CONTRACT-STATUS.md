@@ -17,12 +17,12 @@
 | Исходные tests/assertions/production | UNCHANGED; raw rootFAIL и diagnosticFAIL сохранены |
 | Controlled unit / V2 protocol | WITHDRAWN_NOT_RUN0/1; PRE_FAIL6/FAIL4 не исправлены и не используются |
 | Согласование proposal/design/spec/tasks | APPLIED; strict validation PASS |
-| Новый независимый PRE | PREPARED; strict / UI compliance / source3479 integrity PASS; existing stage gpt-6-astra/xhigh |
+| Новый независимый PRE | First FAIL1 evidence-packet completeness only; repeat PRE_REQUIRED; strict / UI compliance / source3479 integrity PASS |
 | Задачи2.4/2.5/3.1 | OPEN; remaining-requirement evidence audit после PRE |
 | Verify / cumulative POST | NOT_RUN / NOT_RUN |
-| Human visual / archive | NOT_APPROVED / BLOCKED pending remaining gates |
+| Human visual / archive | NOT_APPROVED, [current372 gallery](../../openspec/changes/frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/INDEX.md) / BLOCKED pending remaining gates |
 
-Следующий шаг: strict validation → fresh automatic independent PRE → evidence-led completion of remaining obligations → verify/POST/visual/archive. Ремонт трёх дефектов отложен; новые FAIL и отсутствующие другие evidence остаются blockers. Решение не даёт полного UI/A11Y PASS и не меняет CI exits.
+Следующий шаг: repeat PRE with existing raw V2 FAIL4 records → remaining-obligation audit/verify → cumulative POST/visual/archive. Ремонт трёх дефектов отложен; новые FAIL и отсутствующие другие evidence остаются blockers. Решение не даёт полного UI/A11Y PASS и не меняет CI exits.
 
 Git: accepted minor-deferral checkpoint 65025cfe1d5bad00364d14b37fd0e381f1204af1 COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-09T04:08:09.309Z. Following metadata commit records receipt. Only authorized UI ref; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued.
 

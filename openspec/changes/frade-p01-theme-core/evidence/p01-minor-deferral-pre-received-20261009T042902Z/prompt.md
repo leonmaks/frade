@@ -1,0 +1,14 @@
+Perform an independent read-only PRE for P01-MINOR-DEFERRAL-01 only. The human directly authorized accepting the three existing FAIL as minor open defects and moving on; their message and immutable acceptance are selected. Review the coherent acceptance exception, not the rejected optional controlled-unit protocol: it is explicitly withdrawn, never installed/run, and its PRE FAIL6/FAIL4 remain history. Do not request or fix or run that diagnostic. Verify authority, exact three defect contexts/assertions, complete immutable original-artifact copies, recorded source3479 continuity and protected production/tests/vendor/binary pins, raw historical FAIL retention, and consistency of proposal/design/spec/tasks. Check the amendment really supersedes conflicting no-waiver closure claims only for the exact three failures and does not grant broad case/CI exemption, weaken assertions, mark NOT_REACHED coverage as PASS, fabricate severity/root-cause, approve visual baselines or waive independent POST. User priority is MINOR; technical cause remains NOT_PROVEN. Every other requirement stays mandatory; task count remains5/10 until actual remaining coverage/verify/POST/visual. Assess a practical evidence-led next closure path under the explicit user priority without demanding further reproduction/repair of the deferred three. New/different assertions, semantic failures and genuinely missing non-deferred evidence remain blockers. Scope: planning/status/evidence only; no production/test/runtime/UI implementation changes; fresh strict and UI compliance actual PASS. Review exact existing stage-selected gpt-6-astra/xhigh policy, no model substitution; backend NOT_CONFIRMED. No archive/P02 in this packet. Distinguish PRE acceptance of coherent planning from implementation/cumulative closure. Provide blockers or explicit absence, affected scope and exactly one standalone GATE_STATUS: PASS or GATE_STATUS: FAIL. No writes, network/apps, candidate or other-worktree/credential access.
+
+Approved owning stage selection (verify semantic plan approval; metadata is not approval):
+{
+  "stage": "P01 accepted upper-focus/lower-B05 checkpoint acceptance amendment",
+  "phase": "PRE",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "source": {
+    "path": "openspec/changes/frade-p01-theme-core/design.md",
+    "sha256": "98ba8f361e8408ff5976eb15d2bd6c931579f867c9ae74c6eaf263dc46606c9e",
+    "excerpt": "| P01-LOWER-ORIGIN-POPUP-KEYBOARD-01 | PRE | gpt-6-astra | xhigh |"
+  }
+}
