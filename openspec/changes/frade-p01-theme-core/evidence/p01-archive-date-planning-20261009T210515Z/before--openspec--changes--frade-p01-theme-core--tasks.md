@@ -257,8 +257,3 @@ Task3.3 substeps (remain one tracked task): coherent archive plan/strict; exact 
 | --- | --- | --- | --- |
 | P01 archive evidence locator | PRE | gpt-6-astra | xhigh |
 | P01 archive evidence locator | POST | gpt-6-astra | xhigh |
-
-
-## Accepted archive date-key replacement — 2026-10-09T21:05:15.729Z
-
-Authority: [exact date replacement acceptance](decisions/p01-archive-date-accepted-20261009T210515Z.json), proposedSHA256 8df25895ac83b26d271dcd48b930ca7e388aefce4df16d3e727ced464d1deab0. The human accepted the sole archive date key09→10; original acceptance/proposal/date STOP proof remain immutable history. Effective exact physical archive root is openspec/changes/archive/2026-10-10-frade-p01-theme-core. All other P01-ARCHIVE-EVIDENCE-LOCATOR-01 limits, logical evidence IDs, raw-byte/control integrity, model/effort and required order remain unchanged. No helper or production implementation yet; fresh automatic PRE required.
