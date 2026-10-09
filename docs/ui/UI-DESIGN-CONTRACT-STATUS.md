@@ -32,7 +32,7 @@ Final bookkeeping check batch: strict/apply/status/UIcompliance/scope PASS; actu
 
 Reviewer: approved gpt-6-astra/xhigh; actualbackend/effort NOT_CONFIRMED. Retained geometry/native/placement and3defects do not receive generalUI/A11YPASS.
 
-Git: last published cd042a86e5b21f2a9ef320e7a756f632761511bf remoteSHAverified; current archive acceptance/plan UNCOMMITTED. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed. READY_FOR_ARCHIVE: NO.
+Git: archive acceptance/plan/date-boundary checkpoint 1b4a1a9372db23198638a1572b2330ed6375ef90 COMMITTED/PUSHED; remoteSHA VERIFIED 2026-10-09T21:03:45.303Z. Following metadata commit records receipt. Only authorized UI ref; protection LOCAL_ONLY/NOT_CONFIGURED; rightpanel queued. PRE NOT_DISPATCHED; READY_FOR_ARCHIVE: NO.
 
 ## Предыдущие записи сохранены
 
