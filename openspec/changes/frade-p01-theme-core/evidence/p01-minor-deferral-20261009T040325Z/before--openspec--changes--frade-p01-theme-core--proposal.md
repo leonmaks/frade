@@ -1,6 +1,6 @@
 # Proposal — P01 Theme Core
 
-Current acceptance precedence: P01-MINOR-DEFERRAL-01 at the end of this artifact governs only the three explicitly accepted deferred assertion failures. Earlier dated statuses and raw FAIL remain historical. All other scope/gates and original behavior targets remain mandatory.
+Current scope precedence: the effective accepted P01-UPPER-THREE-KEYBOARD-OWNED-POPUPS-01 amendment at the end of this artifact governs only its exact delta. Earlier dated execution statuses remain historical; current P01 is5/10, new keyboard PRE/implementation NOT_RUN. Authority openspec/changes/frade-p01-theme-core/evidence/p01-upper-three-keyboard-planning-20261003T105545Z/acceptance.json.
 
 
 ## Why
@@ -191,13 +191,3 @@ Keep all previously stated bounds, pending verification failures, positive-only 
 After fresh PRE PASS, meaningful appended RED must cover same-node/same-original-URL/same-bytes loss of projected background-image, private marker and another owned property/priority during paint, alongside admitted node/resource replacement and the unrelated-native-resource success case. Assert actual current matching REFUSED/no matching PAINTED, no repair/repaint/digest or native/semantic action, and intact original resource restoration/teardown. Exercise both apply and rollback where applicable. Superseded/released/disposed work remains inert. Existing tests are immutable; new cases must expose the old false acknowledgement instead of merely restating implementation. Then implement the smallest sole-bridge guard and run all previously required actual/regression/full/verify/POST steps.
 
 Evidence precision correction: the first six-case pending-focus runtime record's queueMicrotask comparison did not establish that the original prepare handler had executed. Historical raw PASS records remain unchanged, but that specific actual-runtime purity claim is withdrawn. A new-tail-only fixture repair reads the original child DOM only after the parent observed actual original READY, correlates exact contexts and retains all original assertions/deadlines. Current actual six-state and final-source FUI/controls/static revalidation are required for that test delta. Unit prepare-purity evidence is distinct and remains unchanged.
-
-## Accepted P01-MINOR-DEFERRAL-01 checkpoint exception
-
-Authority: [p01-minor-deferral-20261009T040325Z.md](decisions/p01-minor-deferral-20261009T040325Z.md), decision SHA256 b308ce5e4f1a58005c0105ea3dc3bcbe2574a988003b80f49110adf86bc920b1; immutable acceptance record openspec/changes/frade-p01-theme-core/evidence/p01-minor-deferral-20261009T040325Z/acceptance.json. The direct user decision accepts exactly three existing assertion failures as minor open follow-up defects. This amendment supersedes earlier unconditional closure-blocking claims only for those exact failures, never their raw FAIL or expected behavior. No production/test/assertion/timeout/snapshot/CI modification. Tasks remain5/10 pending remaining evidence, fresh PRE, verification, cumulative POST and human visual acceptance.
-
-- P01-DEFERRED-FOCUS-DARK-01: First View anchor remains inactive after original focus(), 10000ms.
-- P01-DEFERRED-FOCUS-LIGHT-01: First View anchor remains inactive after baseline3PASS and wide viewport, 10000ms.
-- P01-DEFERRED-LOWER-LEFT-01: Whole-style restoration false for the same DIV.mxPopupMenu: inline left expected65px/actual0px. Identity/menuGone/vendor classes pass. Later assertions in the failed execution NOT_REACHED.
-
-All three are OPEN_ACCEPTED_DEFERRED with cause NOT_PROVEN and repair NOT_STARTED. No repair/diagnosis of them is required for P01 closure. The unused four-schedule unit diagnosis and rejected V2 evidence protocol are WITHDRAWN_NOT_RUN0/1; earlier PRE FAIL6/FAIL4 and controls remain unchanged and supply no approval. Every other requirement and applicable failure still blocks. NOT_REACHED assertions require actual separate evidence; no whole-case exemption or green-seeking rerun. Original root exit1 stays FAIL. Acceptance with disclosed exceptions can be assessed only through fresh PRE, remaining-requirement evidence/verify, independent cumulative POST and actual human visual acceptance. No P02 is started by this amendment. Repair follow-up stays UI-owned.

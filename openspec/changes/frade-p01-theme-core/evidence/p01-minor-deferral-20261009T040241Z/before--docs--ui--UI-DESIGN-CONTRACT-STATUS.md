@@ -1,35 +1,3 @@
-# P01: три FAIL приняты как минорные открытые дефекты; новый PRE_REQUIRED
-
-Обновлено 2026-10-09T04:03:25.982Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; guide1.0 / tokens1.0.0. Routing независим.
-
-| Этап | Статус |
-| --- | --- |
-| Foundation | ARCHIVED |
-| P01 resolver / preview | IN_PROGRESS5/10; amended acceptance PRE_REQUIRED |
-| P02–P07 | NOT_STARTED |
-
-| Текущая задача | Фактический статус |
-| --- | --- |
-| Решение пользователя по трём FAIL | ACCEPTED; [P01-MINOR-DEFERRAL-01](../../openspec/changes/frade-p01-theme-core/decisions/p01-minor-deferral-20261009T040325Z.md) |
-| Dark/Comfortable first View popup focus | OPEN_ACCEPTED_DEFERRED; cause NOT_PROVEN |
-| Light/Comfortable first View focus after wide viewport | OPEN_ACCEPTED_DEFERRED; cause NOT_PROVEN |
-| B05 left65px→0px restoration | OPEN_ACCEPTED_DEFERRED; cause NOT_PROVEN |
-| Исходные tests/assertions/production | UNCHANGED; raw rootFAIL и diagnosticFAIL сохранены |
-| Controlled unit / V2 protocol | WITHDRAWN_NOT_RUN0/1; PRE_FAIL6/FAIL4 не исправлены и не используются |
-| Согласование proposal/design/spec/tasks | APPLIED; strict validation PASS |
-| Новый независимый PRE | PREPARED; strict / UI compliance / source3479 integrity PASS; existing stage gpt-6-astra/xhigh |
-| Задачи2.4/2.5/3.1 | OPEN; remaining-requirement evidence audit после PRE |
-| Verify / cumulative POST | NOT_RUN / NOT_RUN |
-| Human visual / archive | NOT_APPROVED / BLOCKED pending remaining gates |
-
-Следующий шаг: strict validation → fresh automatic independent PRE → evidence-led completion of remaining obligations → verify/POST/visual/archive. Ремонт трёх дефектов отложен; новые FAIL и отсутствующие другие evidence остаются blockers. Решение не даёт полного UI/A11Y PASS и не меняет CI exits.
-
-Git: checkpoint preparation UNCOMMITTED; previous c023969c98d7a35127f4880618699ca0e41005aa published and verified by retained receipt. Only authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract; no force. Branch protection LOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibility unconfirmed.
-
-READY_FOR_VERIFY: NO. No tests/app run in this amendment.
-
-## Предыдущие записи сохранены
-
 # P01: controlled-unit PRE V2 FAIL4; producer-contract RCA; target NOT_RUN0/1
 
 Обновлено 2026-10-08T23:41:23.098Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Change frade-p01-theme-core; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0 / tokens1.0.0. Routing независим.
