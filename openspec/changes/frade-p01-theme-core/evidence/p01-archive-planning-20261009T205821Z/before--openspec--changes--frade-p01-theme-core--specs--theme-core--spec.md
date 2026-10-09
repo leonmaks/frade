@@ -502,7 +502,7 @@ P01 SHALL honor the accepted control/state amendments recorded at openspec/chang
 
 ### Requirement: Exact accepted upper glyph applicability and FUI control revalidation - Source-bound FUI control refresh
 
-Only one fuiControlRun literal in the named BDD test support file MAY change after fresh PRE and actual12-case successful runtime on final full source. Historical evidence and original callbacks SHALL remain unchanged. The separate accepted P01-ARCHIVE-EVIDENCE-LOCATOR-01 permits only test-only evidence location resolution at the exact active or 2026-10-09 archive root, without changing logical IDs, raw bytes, assertions or negative controls.
+Only one fuiControlRun literal in the named BDD test support file MAY change after fresh PRE and actual12-case successful runtime on final full source. Historical evidence and original callbacks SHALL remain unchanged.
 
 #### Scenario: Fresh valid FUI controls follow the final assertion source
 - **WHEN** all12original FUI cases actually pass on the final unchanged full Electron assertion source after fresh PRE

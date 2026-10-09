@@ -1,4 +1,4 @@
-# P01:9/10; archive scope accepted; date boundary decision
+# P01: cumulative POST PASS;9/10; archive scope decision
 
 Обновлено 2026-10-09T06:04:12.455Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0; Routing независим.
 
@@ -21,18 +21,18 @@
 |2.5 runtime/media/visual/performance | COMPLETE with disclosed exceptions; exact372PNG humanaccepted; p95full126.4ms<=150 |
 |3.1 applicable checks | EXECUTED; strict/UIcompliance PASS; raw fullroot exit1 staysFAIL withexact2acceptedfocus defects; staticcache/context limits retained |
 |3.2 verify/cumulativePOST | COMPLETE;49requirements/108scenariooccurrences/72uniquenames;1874files/103events; candidate/packet/plan exact |
-|3.3 sync/archive/post-archivechecks | NOT_RUN; exact scope ACCEPTED; archive date boundary BLOCKED before PRE |
+|3.3 sync/archive/post-archivechecks | NOT_RUN; BLOCKED_SCOPE_DECISION for exact archive evidence reader repair |
 |3minor defects | OPEN_ACCEPTED_DEFERRED;causeNOT_PROVEN/repairNOT_STARTED; controlledunitwithdrawn0/1 |
 
 [POST PASS](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/output--result.md); [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/verification.json); [accepted gallery](../../openspec/changes/frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json); [archive proposal](../../openspec/changes/frade-p01-theme-core/decisions/p01-archive-evidence-locator.proposed.md); [isolated archive proof](../../openspec/changes/frade-p01-theme-core/evidence/p01-archive-readiness-20261009T060412Z/archive-readiness-proof.json).
 
-Archive scope accepted: [decision](../../openspec/changes/frade-p01-theme-core/decisions/p01-archive-evidence-locator-accepted-20261009T205821Z.json), SHA256 0cffdc65767d3bdaa4af3d9c8b3f865faa873cce9f1c4b2c1f8420357a24572d. Coherent plan/strict/UIcompliance PASS; no helper/test/production delta. Moscow date now2026-10-10; realOpenSpec formatLocalDate returns2026-10-10, accepted exactroot2026-10-09 differs. Accepted explicit STOP applies before implementation. [Exact replacement draft](../../openspec/changes/frade-p01-theme-core/decisions/p01-archive-evidence-locator-date-20261010.proposed.md), SHA256 8df25895ac83b26d271dcd48b930ca7e388aefce4df16d3e727ced464d1deab0; only archive date key changes, all other scope/tests/14controls/old evidence preserved. PRE prepared but NOT_DISPATCHED; POST/helper/sync/archive NOT_RUN. Human narrow date decision → coherentplan/strict → automatic assigned PRE/repair/checks/POST/archive; no human relay. [Actual date proof](../../openspec/changes/frade-p01-theme-core/evidence/p01-archive-planning-20261009T205821Z/archive-date-proof.json). STOP beforeP02.
+Archive finding: existing FUI evidence reader is bound to activechange paths; moving unchangedfixturebytes causes ENOENT. Existing design permits only one control literal and forbids helper/import edits. Proposal is concrete NOT_ACCEPTED/NOT_IMPLEMENTED, SHA2560cffdc65767d3bdaa4af3d9c8b3f865faa873cce9f1c4b2c1f8420357a24572d. Next: human exactscope decision → coherentarchiveplan/strict → automatic PRE → meaningful test-only locator repair/checks/POST → sync/archive/postchecks. No production/source/testrepair yet; no extra runtime for deferred defects; no Routing wait. STOP beforeP02.
 
 Final bookkeeping check batch: strict/apply/status/UIcompliance/scope PASS; actual9/10. [Raw checks](../../openspec/changes/frade-p01-theme-core/evidence/p01-implementation-closure-20261009T060412Z/check-batch.json). No runtime rerun or test/helper/production change.
 
 Reviewer: approved gpt-6-astra/xhigh; actualbackend/effort NOT_CONFIRMED. Retained geometry/native/placement and3defects do not receive generalUI/A11YPASS.
 
-Git: last published cd042a86e5b21f2a9ef320e7a756f632761511bf remoteSHAverified; current archive acceptance/plan UNCOMMITTED. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed. READY_FOR_ARCHIVE: NO.
+Git: current implementation POSTPASS/9of10/archiveproposal checkpoint 04234c18284075569924e684913e644c6a07e3f9 COMMITTED/PUSHED; actual remote SHA VERIFIED 2026-10-09T06:14:20.899Z. Following metadata commit records receipt. Authorized UI ref only; protection LOCAL_ONLY/NOT_CONFIGURED; right panel queued, visibility unconfirmed. READY_FOR_VERIFY: YES; READY_FOR_ARCHIVE: NO.
 
 ## Предыдущие записи сохранены
 

@@ -245,15 +245,3 @@ Human acceptance openspec/changes/frade-p01-theme-core/decisions/p01-visual-base
 Task3.2 complete: fresh independent cumulative POST PASS at openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z, reportSHA256aa34605090297a238efa8b10359781ee1fe9a5b93046afa6a314a3d6f86a578f,1874files/103events; candidate/packet/plan/decision unchanged, exactgpt-6-astra/xhigh CLIselection, backendNOT_CONFIRMED. The firstcumulativePOST FAIL1 missingrawREDrecords remainsunchanged; restoredrecords substantiate10REDFAIL/4guardPASS and85GREEN.49requirements/108scenariooccurrences/72unique names and downstreamcontext limits reconfirmed. Exact372PNG humanacceptance and3acceptedminoropen defects honored. Root/diagnostic rawFAIL remainFAIL; no generalA11Ycertification or stability/fix claim.
 
 Current9/10: task3.3archive remainsNOT_RUN. Isolated external archivefixture demonstrated currentdirectfuiRead ENOENT after moving the samebytes and existinglogicalpinguard rejectsphysicalpath rewrite. Fixture removed; no production/test change. Proposal openspec/changes/frade-p01-theme-core/decisions/p01-archive-evidence-locator.proposed.md SHA2560cffdc65767d3bdaa4af3d9c8b3f865faa873cce9f1c4b2c1f8420357a24572d is NOT_ACCEPTED/NOT_IMPLEMENTED. Currentdesign explicitly forbids other helpers/import edits beyondsinglefuiControlRunliteral, so exacthumanarchive scope decision is required before newplan/PRE/repair. ExistingcumulativeimplementationPASS isnotapprovalforthatnewdelta. NoP02 advancement.
-
-
-## Accepted P01 archive evidence location — 2026-10-09T20:58:21.610Z
-
-Authority: [P01-ARCHIVE-EVIDENCE-LOCATOR-01 acceptance](decisions/p01-archive-evidence-locator-accepted-20261009T205821Z.json), exact unchanged proposed SHA256 0cffdc65767d3bdaa4af3d9c8b3f865faa873cce9f1c4b2c1f8420357a24572d. The proposed document remains immutable history; this acceptance supersedes its PROPOSED status only for the exact bounded archive delta. Current implementation cumulative POST PASS and exact372PNG visual acceptance remain valid for unchanged production/runtime source. Three OPEN_ACCEPTED_DEFERRED defects and legacy geometry/native/placement exceptions remain disclosed; raw FAIL never becomes PASS. This amendment controls only task3.3; earlier dated process states remain historical. Routing independent; STOP before P02.
-
-Task3.3 substeps (remain one tracked task): coherent archive plan/strict; exact stage-assigned automatic PRE; RED/fs security controls; test-only helper and five derived support hashes; actual workspace/root checks and preservation; verification/automatic POST; inline sync; exact archive move; actual post-archive checks; then final checkbox/publication/STOP.
-
-| Stage | Role | Model | Reasoning |
-| --- | --- | --- | --- |
-| P01 archive evidence locator | PRE | gpt-6-astra | xhigh |
-| P01 archive evidence locator | POST | gpt-6-astra | xhigh |
