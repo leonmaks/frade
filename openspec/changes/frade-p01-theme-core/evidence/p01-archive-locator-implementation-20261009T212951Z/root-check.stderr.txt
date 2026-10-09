@@ -1,0 +1,26 @@
+$ pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries && pnpm ui:compliance
+$ turbo lint
+• turbo 2.11.2
+$ turbo typecheck
+• turbo 2.11.2
+$ turbo test --concurrency=2
+• turbo 2.11.2
+ WARNING  no output files found for task @frade/desktop#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/ui-workspace#test. Please check your `outputs` key in `turbo.json`
+$ pnpm --filter @frade/draw test:bdd && pnpm --filter @frade/metamodel-domain test:bdd && pnpm --filter @frade/metamodel-compiler test:bdd && node scripts/check-repo-traceability.mjs && pnpm --filter @frade/repository-application test:bdd && node scripts/check-ka-traceability.mjs && pnpm --filter @frade/ui-workspace test:bdd
+$ vitest run tests/unit/bdd-mapping.test.ts tests/unit/bdd-contract.test.ts
+$ vitest run tests/bdd
+$ vitest run tests/bdd
+$ vitest run tests/acceptance tests/bdd
+$ vitest run tests/bundle-flows.bdd.test.tsx tests/ui-contract/p01.bdd.test.tsx tests/ui-contract/service.test.ts tests/ui-contract/picker.test.tsx
+$ node --test tests/contract/*.test.mjs
+$ turbo build
+• turbo 2.11.2
+$ node scripts/check-boundaries.mjs && node scripts/check-runtime-boundaries.mjs && node scripts/check-repository-boundaries.mjs && node scripts/check-workbench-boundaries.mjs
+$ pnpm ui:tokens:check && pnpm ui:colors:check && pnpm ui:traceability:check && pnpm test:ui-contract && pnpm ui:controls && pnpm ui:checkout:check
+$ node scripts/ui/tokens.mjs
+$ node scripts/ui/colors.mjs
+$ node scripts/ui/traceability.mjs
+$ node --test tests/ui-contract/*.test.mjs
+$ node scripts/ui/controls.mjs
+$ node scripts/ui/checkout.mjs

@@ -1,5 +1,5 @@
 import { it, expect } from 'vitest'
-import { readFileSync } from 'node:fs'
+import { lstatSync, readFileSync, realpathSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { resolve } from 'node:path'
@@ -90,7 +90,38 @@ const fuiRequired = [
   { example: 'FUI-009', prefix: 'P01-FUI009 ', cases: ['native', 'frame'].map(kind => 'P01-FUI009 dark comfortable selected and restored ' + kind) },
 ]
 const fuiDigest = (raw: Buffer | string) => createHash('sha256').update(raw).digest('hex')
-const fuiRead = (file: string) => readFileSync(resolve(root, file))
+const fuiRead = (file: string, evidenceRoot = root) => {
+  if (!file.startsWith('openspec/changes/')) return readFileSync(resolve(root, file))
+  const match = /^openspec\/changes\/frade-p01-theme-core\/evidence\/(p01-fui-runtime-[0-9TZ]+\/(?:command\.json|runtime\.stdout\.json|control-valid-bindings\.json))$/.exec(file)
+  if (!match) throw new Error('FUI_LOCATION_PATH')
+  const anchor = resolve(evidenceRoot)
+  const samePath = (left: string, right: string) => process.platform === 'win32' ? left.toLowerCase() === right.toLowerCase() : left === right
+  const inspect = (physical: string) => {
+    const anchorStat = lstatSync(anchor, { throwIfNoEntry: false })
+    if (!anchorStat || anchorStat.isSymbolicLink() || !anchorStat.isDirectory() || !samePath(realpathSync(anchor), anchor)) throw new Error('FUI_LOCATION_UNSAFE')
+    let current = anchor
+    const parts = physical.split('/')
+    for (const [index, part] of parts.entries()) {
+      current = resolve(current, part)
+      const stat = lstatSync(current, { throwIfNoEntry: false })
+      if (!stat) return undefined
+      const validType = index === parts.length - 1 ? stat.isFile() : stat.isDirectory()
+      if (stat.isSymbolicLink() || !validType || !samePath(realpathSync(current), current)) throw new Error('FUI_LOCATION_UNSAFE')
+    }
+    return current
+  }
+  const physical = [
+    'openspec/changes/frade-p01-theme-core/evidence/' + match[1],
+    'openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/' + match[1],
+  ]
+  const locations = physical.map(inspect).filter((value): value is string => value !== undefined)
+  if (!locations.length) throw new Error('FUI_LOCATION_MISSING')
+  if (locations.length !== 1) throw new Error('FUI_LOCATION_DUPLICATE')
+  const bytes = readFileSync(locations[0])
+  const after = physical.map(inspect).filter((value): value is string => value !== undefined)
+  if (JSON.stringify(after) !== JSON.stringify(locations)) throw new Error('FUI_LOCATION_UNSAFE')
+  return bytes
+}
 const fuiDemand = (condition: unknown, code: string) => { if (!condition) throw new Error(code) }
 function checkFuiBindings(bindings: FuiBinding[], read: (file: string) => Buffer = fuiRead) {
   fuiDemand(Array.isArray(bindings) && bindings.length === 7, 'EXAMPLE_SET')
@@ -177,3 +208,77 @@ for (const defect of ['missing-example', 'duplicate-example', 'stale-source', 's
     })
     expect(() => checkFuiBindings(bindings, file => overrides.get(file) ?? fuiRead(file))).toThrow()
   })
+
+// P01-ARCHIVE-EVIDENCE-LOCATOR-01: isolated filesystem oracles; no runtime success fabrication.
+type ArchiveLocationFixture = { root: string; outside: string; fs: typeof import('node:fs'); logical: string; active: string; archived: string; bytes: Buffer; put: (physical: string) => void }
+async function withArchiveLocationFixture(run: (fixture: ArchiveLocationFixture) => void | Promise<void>) {
+  const fs = await import('node:fs'), paths = await import('node:path'), os = await import('node:os')
+  const parent = fs.realpathSync(os.tmpdir()), owned = fs.mkdtempSync(resolve(parent, 'frade-p01-archive-test-'))
+  const fixtureRoot = resolve(owned, 'root'), outside = resolve(owned, 'outside')
+  fs.mkdirSync(fixtureRoot); fs.mkdirSync(outside)
+  const logical = fuiControlRun + '/command.json'
+  const active = logical, archived = logical.replace('openspec/changes/frade-p01-theme-core/', 'openspec/changes/archive/2026-10-10-frade-p01-theme-core/')
+  // Distinct valid JSON whitespace proves that the reader used this fixture, not the actual worktree.
+  const bytes = Buffer.concat([fuiRead(logical), Buffer.from('\n\n')])
+  const put = (physical: string) => { const target = resolve(fixtureRoot, physical); fs.mkdirSync(paths.dirname(target), { recursive: true }); fs.writeFileSync(target, bytes) }
+  try { await run({ root: fixtureRoot, outside, fs, logical, active, archived, bytes, put }) }
+  finally {
+    expect(paths.dirname(owned)).toBe(parent)
+    expect(paths.basename(owned).startsWith('frade-p01-archive-test-')).toBe(true)
+    expect(fs.lstatSync(owned).isSymbolicLink()).toBe(false)
+    expect(fs.realpathSync(owned)).toBe(owned)
+    fs.rmSync(owned, { recursive: true })
+    expect(fs.existsSync(owned)).toBe(false)
+  }
+}
+const readArchiveFixture = (logical: string, fixtureRoot: string) => (fuiRead as (file: string, fixtureRoot: string) => Buffer)(logical, fixtureRoot)
+for (const location of ['active', 'archived'] as const)
+  for (const filename of ['command.json', 'runtime.stdout.json', 'control-valid-bindings.json'])
+    it('P01-ARCHIVE-FS-001 ' + location + ' preserves exact fixture bytes for ' + filename, () => withArchiveLocationFixture(f => {
+      const logical = f.logical.replace('/command.json', '/' + filename), physical = f[location].replace('/command.json', '/' + filename)
+      f.put(physical)
+      expect(readArchiveFixture(logical, f.root)).toEqual(f.bytes)
+    }))
+it('P01-ARCHIVE-FS-002 missing evidence fails explicitly', () => withArchiveLocationFixture(f => {
+  expect(() => readArchiveFixture(f.logical, f.root)).toThrow('FUI_LOCATION_MISSING')
+}))
+it('P01-ARCHIVE-FS-003 duplicate locations fail even for identical bytes', () => withArchiveLocationFixture(f => {
+  f.put(f.active); f.put(f.archived)
+  expect(() => readArchiveFixture(f.logical, f.root)).toThrow('FUI_LOCATION_DUPLICATE')
+}))
+for (const invalid of ['../command.json', 'command.json/child', 'runtime.other.json', '..\\command.json', 'control-valid-bindings.json/..'])
+  it('P01-ARCHIVE-FS-004 rejects unapproved evidence suffix ' + invalid, () => withArchiveLocationFixture(f => {
+    f.put(f.active)
+    expect(() => readArchiveFixture(f.logical.replace('command.json', invalid), f.root)).toThrow('FUI_LOCATION_PATH')
+  }))
+it('P01-ARCHIVE-FS-005 physical archive path is not a permitted logical ID', () => withArchiveLocationFixture(f => {
+  f.put(f.archived)
+  expect(() => readArchiveFixture(f.archived, f.root)).toThrow('FUI_LOCATION_PATH')
+}))
+it('P01-ARCHIVE-FS-006 rejects unsupported runtime directory', () => withArchiveLocationFixture(f => {
+  f.put(f.active)
+  expect(() => readArchiveFixture(f.logical.replace('p01-fui-runtime-', 'p01-other-runtime-'), f.root)).toThrow('FUI_LOCATION_PATH')
+}))
+it('P01-ARCHIVE-FS-007 regular-file evidence required', () => withArchiveLocationFixture(f => {
+  f.fs.mkdirSync(resolve(f.root, f.active), { recursive: true })
+  expect(() => readArchiveFixture(f.logical, f.root)).toThrow('FUI_LOCATION_UNSAFE')
+}))
+for (const location of ['active', 'archived'] as const)
+  for (const position of ['leaf', 'ancestor'] as const)
+    it('P01-ARCHIVE-FS-008 rejects actual ' + position + ' link in ' + location + ' location', async () => withArchiveLocationFixture(async f => {
+      const paths = await import('node:path'), physical = resolve(f.root, f[location])
+      const link = position === 'leaf' ? physical : paths.dirname(physical)
+      f.fs.mkdirSync(paths.dirname(link), { recursive: true })
+      const type = process.platform === 'win32' ? 'junction' : position === 'leaf' ? 'file' : 'dir'
+      const target = type === 'file' ? resolve(f.outside, 'command.json') : f.outside
+      f.fs.writeFileSync(resolve(f.outside, 'command.json'), f.bytes)
+      f.fs.symlinkSync(target, link, type)
+      expect(f.fs.lstatSync(link).isSymbolicLink()).toBe(true)
+      expect(() => readArchiveFixture(f.logical, f.root)).toThrow('FUI_LOCATION_UNSAFE')
+    }))
+it('P01-ARCHIVE-FS-009 rejects linked fixture root and escaped realpath', () => withArchiveLocationFixture(f => {
+  const linked = resolve(f.outside, 'linked-root')
+  f.fs.symlinkSync(f.root, linked, process.platform === 'win32' ? 'junction' : 'dir')
+  expect(f.fs.lstatSync(linked).isSymbolicLink()).toBe(true)
+  expect(() => readArchiveFixture(f.logical, linked)).toThrow('FUI_LOCATION_UNSAFE')
+}))

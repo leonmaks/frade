@@ -1,6 +1,6 @@
 # Frade Theme Core — P01
 
-Guide version: 1.0. Token version: 1.0.0. This document describes the implemented pure core, transaction service, Main/filesystem host, desktop participants and Settings/picker. Six actual functional Electron oracles, twelve base theme/density cases, actual resize/media cases and the pinned hot-commit benchmark pass. Text-only stress and filesystem-refusal/restart have separately passed. Complete task2.4 B02/lifecycle states, broader accessibility and human baseline acceptance remain pending. The APIs below do not imply package installation or executable VS Code extension compatibility.
+Guide version: 1.0. Token version: 1.0.0. P01 implements the pure theme core, transaction service, Main/filesystem host, desktop participants and Settings/picker. Cumulative implementation POST and the exact372-image human baseline set are accepted with three minor open defects and disclosed geometry/native/placement exceptions; raw failures remain failures. The separate archive evidence locator has21filesystem regressions and two positive/fourteen negative FUI controls passing, workspace221unit/132BDD and root pnpm check passing; its independent archive-readiness POST, sync and post-archive checks are still pending. Existing unchanged-source runtime/performance/visual evidence is reused honestly; no new desktop run is claimed. The APIs below do not imply P02 package installation or executable VS Code extension compatibility.
 
 ## Ownership and API
 

@@ -1,0 +1,13 @@
+{
+  "atUtc": "2026-10-09T21:33:46.567Z",
+  "classification": "TEST_EVIDENCE_LOCATION",
+  "reason": "New fixture bootstrap direct active path would fail after archive. Only new appended test data read uses the same default safe logical locator; byte-discrimination assertions unchanged. Not an application defect or additional waiver.",
+  "beforeSha256": "63e2866c07a05e0bceb29adf55162dfbdf375a718c986fc375e545d0732d9657",
+  "afterSha256": "4705fa82a2ffe2b9169a6846de70ca97f60a503e8ce887033ac1fa0f318f4343",
+  "oldExpression": "Buffer.concat([readFileSync(resolve(root, logical)), Buffer.from('\\n\\n')])",
+  "newExpression": "Buffer.concat([fuiRead(logical), Buffer.from('\\n\\n')])",
+  "reverseEntireOriginalSourceExact": true,
+  "reverseSha256": "c25a1e58252dc2cedf598b9887967884be8b46e6958ff172b317452f421b4f77",
+  "assertionsAndOriginalCallbacksUnchanged": true,
+  "firstGreenPreserved": true
+}

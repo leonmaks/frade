@@ -1,4 +1,4 @@
-# P01:9/10; archive date replacement accepted; PRE_REQUIRED
+# P01:9/10; archive implementation/checks PASS; POST_REQUIRED
 
 Обновлено 2026-10-09T06:04:12.455Z. Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0; Routing независим.
 
@@ -21,18 +21,20 @@
 |2.5 runtime/media/visual/performance | COMPLETE with disclosed exceptions; exact372PNG humanaccepted; p95full126.4ms<=150 |
 |3.1 applicable checks | EXECUTED; strict/UIcompliance PASS; raw fullroot exit1 staysFAIL withexact2acceptedfocus defects; staticcache/context limits retained |
 |3.2 verify/cumulativePOST | COMPLETE;49requirements/108scenariooccurrences/72uniquenames;1874files/103events; candidate/packet/plan exact |
-|3.3 sync/archive/post-archivechecks | NOT_RUN; exact scope/date replacement ACCEPTED; PRE_REQUIRED |
+|3.3 sync/archive/post-archivechecks | NOT_RUN; PRE_PASS; test-only locator implemented/checks PASS; POST_REQUIRED |
 |3minor defects | OPEN_ACCEPTED_DEFERRED;causeNOT_PROVEN/repairNOT_STARTED; controlledunitwithdrawn0/1 |
 
 [POST PASS](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/output--result.md); [verified receipt](../../openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-post-received-20261009T060151Z/verification.json); [accepted gallery](../../openspec/changes/frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json); [archive proposal](../../openspec/changes/frade-p01-theme-core/decisions/p01-archive-evidence-locator.proposed.md); [isolated archive proof](../../openspec/changes/frade-p01-theme-core/evidence/p01-archive-readiness-20261009T060412Z/archive-readiness-proof.json).
 
-Archive exactscope/date replacement accepted 2026-10-09T21:05:15.729Z: [decision](../../openspec/changes/frade-p01-theme-core/decisions/p01-archive-date-accepted-20261009T210515Z.json), SHA256 8df25895ac83b26d271dcd48b930ca7e388aefce4df16d3e727ced464d1deab0. Effective exact archive root2026-10-10-frade-p01-theme-core. Old acceptance/draft/dateSTOP evidence unchanged. Next: coherentplan/strict → automatic gpt-6-astra/xhigh PRE → meaningfultest-only RED/GREEN/checks/POST → sync/archive/postchecks/publication. No helper/production modification beforePREPASS; exact372visuals/3minoropen remain; STOPbeforeP02.
+Archive exactscope/date replacement accepted 2026-10-09T21:05:15.729Z: [decision](../../openspec/changes/frade-p01-theme-core/decisions/p01-archive-date-accepted-20261009T210515Z.json), SHA256 8df25895ac83b26d271dcd48b930ca7e388aefce4df16d3e727ced464d1deab0. Effective exact archive root2026-10-10-frade-p01-theme-core. Old acceptance/draft/dateSTOP evidence unchanged. PRE/RED/GREEN/requiredchecks/verify complete. Next: automatic gpt-6-astra/xhigh POST → sync/archive/postchecks/publication. No helper/production modification beforePREPASS; exact372visuals/3minoropen remain; STOPbeforeP02.
 
 Final bookkeeping check batch: strict/apply/status/UIcompliance/scope PASS; actual9/10. [Raw checks](../../openspec/changes/frade-p01-theme-core/evidence/p01-implementation-closure-20261009T060412Z/check-batch.json). No runtime rerun or test/helper/production change.
 
 Reviewer: approved gpt-6-astra/xhigh; actualbackend/effort NOT_CONFIRMED. Retained geometry/native/placement and3defects do not receive generalUI/A11YPASS.
 
-Git: archive acceptance/plan/date-boundary checkpoint e460e5d3f9c07f11e27dc3f47e232d6ee601f56f COMMITTED/PUSHED; remoteSHA VERIFIED 2026-10-09T21:07:15.671Z. Following metadata commit records receipt. Only authorized UI ref; protection LOCAL_ONLY/NOT_CONFIGURED; rightpanel queued. PRE_PREPARED; READY_FOR_ARCHIVE: NO.
+Git: archive acceptance/plan/date-boundary checkpoint e460e5d3f9c07f11e27dc3f47e232d6ee601f56f COMMITTED/PUSHED; remoteSHA VERIFIED 2026-10-09T21:07:15.671Z. Following metadata commit records receipt. Only authorized UI ref; protection LOCAL_ONLY/NOT_CONFIGURED; rightpanel queued. POST_REQUIRED; READY_FOR_ARCHIVE: NO.
+
+Archive delta actualchecks 2026-10-09T21:42:56.082Z: RED21FAIL → fs21GREEN + original2positive/14negativeGREEN; workspaceunit221/BDD132/typecheck/lint/rootcheck/strictPASS. Source/registry reversebyte-exact; 3477/3479 originalsourcefiles unchanged, accepted changed support only; protectedmain/bridge/unit/E2E/vendorasset bytesexact. [Owner verify](../../openspec/changes/frade-p01-theme-core/evidence/p01-archive-locator-implementation-20261009T212951Z/verification.md). No new app/runtime/screenshots;372accepted baselines/3minoropen unchanged. IndependentPOST/sync/archive/postchecks pending; STOPbeforeP02.
 
 ## Предыдущие записи сохранены
 
