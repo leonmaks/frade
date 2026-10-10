@@ -1,0 +1,21 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.deployment.test.ts (9 tests | 2 failed) 2412ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > copies the exact built helper/metadata into a sibling of main and survives main-output cleanup  333ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses source drift before replacing prior output  317ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses executable drift before replacing prior output 290ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses protocol drift before replacing prior output  399ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses platform drift before replacing prior output 295ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses bytes drift before replacing prior output  462ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses missing drift before replacing prior output 289ms
+   × P02FS005: actual named package hooks in isolated layout > build:filesystem compiles current source and records fresh source/compiler/artifact integrity 14ms
+     → PNPM_TEST_RUNTIME_MISSING
+   × P02FS005: actual named package hooks in isolated layout > copy:filesystem runs the fail-closed copy using exact built bytes 11ms
+     → PNPM_TEST_RUNTIME_MISSING
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 7 passed (9)
+   Start at  12:35:22
+   Duration  3.48s (transform 91ms, setup 0ms, collect 85ms, tests 2.41s, environment 0ms, prepare 304ms)
+

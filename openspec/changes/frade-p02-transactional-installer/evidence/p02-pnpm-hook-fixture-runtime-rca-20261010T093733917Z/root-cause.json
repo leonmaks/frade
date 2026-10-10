@@ -1,0 +1,10 @@
+{
+  "classification": "TEST_ENVIRONMENT",
+  "actual": "pnpm exec lacks npm_execpath; pnpm run sets it to native pnpm-native.exe, not JavaScript launcher.",
+  "raw": [
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-deployment-hooks9-red-current-20261010T093521056Z",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-deployment-hooks9-package-script-red-20261010T093555792Z"
+  ],
+  "repair": "Run package test script; spawn exact supplied native executable directly without shell, or Node for actual JavaScript path. No hardcoded account runtime/global config or loosened assertions. Missing hooks still expected real RED before manifest changes.",
+  "productionChanged": false
+}

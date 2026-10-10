@@ -1,0 +1,7 @@
+$ node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility && pnpm build:filesystem && pnpm copy:filesystem
+$ tsc --noEmit
+$ vite build --config vite.utility.config.ts
+$ pnpm --filter @frade/extension-service build:filesystem
+$ node scripts/build-windows-filesystem.mjs
+$ pnpm --filter @frade/extension-service copy:filesystem
+$ node scripts/copy-windows-filesystem.mjs

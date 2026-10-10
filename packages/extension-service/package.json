@@ -7,11 +7,13 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && pnpm build:filesystem",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src tests",
-    "test": "vitest run",
-    "test:bdd": "vitest run tests/*.bdd.test.ts"
+    "test": "node scripts/build-windows-filesystem.mjs --test",
+    "test:bdd": "node scripts/build-windows-filesystem.mjs --bdd",
+    "build:filesystem": "node scripts/build-windows-filesystem.mjs",
+    "copy:filesystem": "node scripts/copy-windows-filesystem.mjs"
   },
   "dependencies": {
     "@frade/extension-contracts": "workspace:*",

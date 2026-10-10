@@ -1,0 +1,23 @@
+$ node scripts/build-windows-filesystem.mjs --test
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.windows.test.ts > retains the complete original guard set through missing-root and overlapping handoff windows
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/filesystem.windows.test.ts:452:1
+    450| 
+    451| 
+    452| it('retains the complete original guard set through missing-root and o…
+       | ^
+    453|   const base = await fs.realpath(path.dirname(f.root)), temp = await f…
+    454|   if (path.dirname(base).toLowerCase() !== temp.toLowerCase() || !path…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+[ELIFECYCLE] Test failed. See above for more details.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in C:\Users\NVISEN\.codex\worktrees\ui-design-
+  │ contract\frade\packages\extension-service
+

@@ -1,0 +1,91 @@
+import { describe, expect, it } from 'vitest'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import os from 'node:os'
+import { spawnSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
+import { fileURLToPath } from 'node:url'
+const packageRoot = fileURLToPath(new URL('../', import.meta.url))
+const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
+async function removeDeploymentFixture(root: string, temp: string) {
+  if (path.dirname(root).toLowerCase() !== temp.toLowerCase() || !path.basename(root).startsWith('frade-p02-deployment-')) throw Error('UNSAFE_DEPLOYMENT_CLEANUP')
+  await fs.rm(root, { recursive: true })
+}
+async function deploymentFixture(run: (f: { root: string; service: string; output: string; copy: () => ReturnType<typeof spawnSync> }) => Promise<void>) {
+  if (process.platform !== 'win32' || process.arch !== 'x64') throw Error('WINDOWS_DEPLOYMENT_NOT_RUN_UNSUPPORTED_HOST')
+  const temp = await fs.realpath(os.tmpdir()), root = await fs.mkdtemp(path.join(temp, 'frade-p02-deployment-'))
+  const service = path.join(root, 'packages', 'extension-service'), output = path.join(root, 'apps', 'desktop', 'out', 'extension-filesystem')
+  try {
+    await fs.mkdir(path.join(service, 'scripts'), { recursive: true })
+    await fs.mkdir(path.join(service, 'native')); await fs.mkdir(path.join(service, 'dist', 'native'), { recursive: true })
+    await fs.mkdir(path.join(root, 'apps', 'desktop', 'out'), { recursive: true })
+    await fs.copyFile(path.join(packageRoot, 'scripts', 'copy-windows-filesystem.mjs'), path.join(service, 'scripts', 'copy-windows-filesystem.mjs'))
+    await fs.copyFile(path.join(packageRoot, 'scripts', 'build-windows-filesystem.mjs'), path.join(service, 'scripts', 'build-windows-filesystem.mjs'))
+    await fs.copyFile(path.join(packageRoot, 'package.json'), path.join(service, 'package.json'))
+    for (const file of ['frade-filesystem.exe', 'integrity.json']) await fs.copyFile(path.join(packageRoot, 'dist', 'native', file), path.join(service, 'dist', 'native', file))
+    await fs.copyFile(path.join(packageRoot, 'native', 'windows-filesystem.cs'), path.join(service, 'native', 'windows-filesystem.cs'))
+    const copy = () => spawnSync(process.execPath, [path.join(service, 'scripts', 'copy-windows-filesystem.mjs')], { cwd: root, encoding: 'utf8', windowsHide: true, timeout: 10000 })
+    await run({ root, service, output, copy })
+  } finally {
+    await removeDeploymentFixture(root, temp)
+  }
+}
+describe('P02FS005: exact build-output integrity and fail-closed copy', () => {
+  it('copies the exact built helper/metadata into a sibling of main and survives main-output cleanup', () => deploymentFixture(async f => {
+    const result = f.copy(); expect(result.error).toBeUndefined(); expect(result.status, String(result.stdout) + String(result.stderr)).toBe(0)
+    const actual = await fs.readFile(path.join(f.output, 'frade-filesystem.exe')), original = await fs.readFile(path.join(f.service, 'dist', 'native', 'frade-filesystem.exe'))
+    expect(actual).toEqual(original)
+    expect(await fs.readFile(path.join(f.output, 'integrity.json'))).toEqual(await fs.readFile(path.join(f.service, 'dist', 'native', 'integrity.json')))
+    const meta = JSON.parse(await fs.readFile(path.join(f.output, 'integrity.json'), 'utf8'))
+    expect(meta.executableSha256).toBe(sha(actual)); expect(meta.runtimeCapabilities).toBe('NOT_VERIFIED')
+    const main = path.join(f.root, 'apps', 'desktop', 'out', 'main')
+    await fs.mkdir(main); await fs.writeFile(path.join(main, 'old'), 'old')
+    // Vite cleanup behavior is separate existing evidence; here only exact sibling lifetime is asserted.
+    expect(path.dirname(main)).toBe(path.dirname(f.output))
+    await fs.rm(main, { recursive: true })
+    expect(await fs.readFile(path.join(f.output, 'frade-filesystem.exe'))).toEqual(original)
+  }))
+  for (const corruption of ['source', 'executable', 'protocol', 'platform', 'bytes', 'missing'] as const) it('refuses ' + corruption + ' drift before replacing prior output', () => deploymentFixture(async f => {
+    expect(f.copy().status).toBe(0)
+    const oldExe = await fs.readFile(path.join(f.output, 'frade-filesystem.exe')), oldMetadata = await fs.readFile(path.join(f.output, 'integrity.json'))
+    const input = path.join(f.service, 'dist', 'native'), file = path.join(input, 'frade-filesystem.exe')
+    if (corruption === 'source') await fs.appendFile(path.join(f.service, 'native', 'windows-filesystem.cs'), '\n// drift\n')
+    else if (corruption === 'executable') await fs.appendFile(file, Buffer.from('drift'))
+    else if (corruption === 'missing') await fs.unlink(file)
+    else {
+      const metadata = JSON.parse(await fs.readFile(path.join(input, 'integrity.json'), 'utf8'))
+      if (corruption === 'protocol') metadata.protocol = 2
+      if (corruption === 'platform') metadata.platform = 'windows-arm64'
+      if (corruption === 'bytes') metadata.executableBytes += 1
+      await fs.writeFile(path.join(input, 'integrity.json'), JSON.stringify(metadata))
+    }
+    const result = f.copy(); expect(result.error).toBeUndefined(); expect(result.status).not.toBe(0)
+    expect(await fs.readFile(path.join(f.output, 'frade-filesystem.exe'))).toEqual(oldExe)
+    expect(await fs.readFile(path.join(f.output, 'integrity.json'))).toEqual(oldMetadata)
+    expect((await fs.readdir(f.output)).sort()).toEqual(['frade-filesystem.exe', 'integrity.json'])
+  }))
+})
+
+
+function namedHook(service: string, name: string) {
+  if (!process.env.npm_execpath) throw Error('PNPM_TEST_RUNTIME_MISSING')
+  return spawnSync(process.execPath, [process.env.npm_execpath, 'run', name], { cwd: service, encoding: 'utf8', windowsHide: true, timeout: 20000 })
+}
+describe('P02FS005: actual named package hooks in isolated layout', () => {
+  it('build:filesystem compiles current source and records fresh source/compiler/artifact integrity', () => deploymentFixture(async f => {
+    const before = Date.now(), result = namedHook(f.service, 'build:filesystem')
+    expect(result.error).toBeUndefined(); expect(result.status, String(result.stdout) + String(result.stderr)).toBe(0)
+    const meta = JSON.parse(await fs.readFile(path.join(f.service, 'dist', 'native', 'integrity.json'), 'utf8'))
+    expect(Date.parse(meta.compiledAtUtc)).toBeGreaterThanOrEqual(before)
+    expect(meta.sourceSha256).toBe(sha(await fs.readFile(path.join(f.service, 'native', 'windows-filesystem.cs'))))
+    expect(meta.executableSha256).toBe(sha(await fs.readFile(path.join(f.service, 'dist', 'native', 'frade-filesystem.exe'))))
+    expect(meta.compilerSha256).toBe(sha(await fs.readFile(meta.compiler)))
+    expect(meta.platform).toBe('windows-x64'); expect(meta.runtimeCapabilities).toBe('NOT_VERIFIED')
+  }))
+  it('copy:filesystem runs the fail-closed copy using exact built bytes', () => deploymentFixture(async f => {
+    const result = namedHook(f.service, 'copy:filesystem')
+    expect(result.error).toBeUndefined(); expect(result.status, String(result.stdout) + String(result.stderr)).toBe(0)
+    expect(await fs.readFile(path.join(f.output, 'frade-filesystem.exe'))).toEqual(await fs.readFile(path.join(f.service, 'dist', 'native', 'frade-filesystem.exe')))
+    expect(await fs.readFile(path.join(f.output, 'integrity.json'))).toEqual(await fs.readFile(path.join(f.service, 'dist', 'native', 'integrity.json')))
+  }))
+})

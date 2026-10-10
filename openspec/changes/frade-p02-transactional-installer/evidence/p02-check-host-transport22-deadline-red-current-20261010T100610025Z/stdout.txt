@@ -1,0 +1,33 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.transport.test.ts (22 tests | 1 failed) 7787ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > negotiates native clock/session capabilities without promoting NOT_VERIFIED and releases on dispose 296ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > serializes actual bounded writes, seal, publication and exact readback over owned stdio  336ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses source asset drift before root binding effects 12ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses executable asset drift before root binding effects 9ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses protocol asset drift before root binding effects 9ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses platform asset drift before root binding effects 9ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses bytes asset drift before root binding effects 9ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses an invalid path locally and closes the session without a child effect 269ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > rejects concurrent admission instead of queueing a second mutation  372ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed wrong-version instead of accepting a bind  373ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed wrong-session instead of accepting a bind  357ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed wrong-generation instead of accepting a bind  451ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed wrong-request instead of accepting a bind  499ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed negative-clock instead of accepting a bind  425ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed fractional-clock instead of accepting a bind  813ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed unknown-field instead of accepting a bind  850ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed noncanonical-body instead of accepting a bind  373ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed invalid-utf8 instead of accepting a bind  370ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed helper-exit instead of accepting a bind  446ms
+   × refuses deadline-clock as a reply outside the admitted operation contract 561ms
+     → promise resolved "WindowsFilesystemTransport{ …(12) }" instead of rejecting
+   ✓ refuses oversized-frame as a reply outside the admitted operation contract  386ms
+   ✓ refuses double-cr as a reply outside the admitted operation contract  556ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 21 passed (22)
+   Start at  13:06:10
+   Duration  9.18s (transform 120ms, setup 0ms, collect 134ms, tests 7.79s, environment 0ms, prepare 297ms)
+

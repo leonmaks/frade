@@ -5,14 +5,16 @@
   "type": "module",
   "main": "out/main/index.cjs",
   "scripts": {
-    "dev": "pnpm build:utility && electron-vite dev",
-    "start": "electron .",
-    "build": "node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility",
+    "dev": "pnpm build:utility && pnpm build:filesystem && pnpm copy:filesystem && electron-vite dev",
+    "start": "pnpm copy:filesystem && electron .",
+    "build": "node ../../scripts/check-drawio-assets.mjs && pnpm typecheck && electron-vite build && pnpm build:utility && pnpm build:filesystem && pnpm copy:filesystem",
     "build:utility": "vite build --config vite.utility.config.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src tests *.ts",
     "test": "vitest run tests/unit",
-    "test:e2e": "pnpm build && playwright test"
+    "test:e2e": "pnpm build && playwright test",
+    "build:filesystem": "pnpm --filter @frade/extension-service build:filesystem",
+    "copy:filesystem": "pnpm --filter @frade/extension-service copy:filesystem"
   },
   "dependencies": {
     "@frade/adapter-yaml": "workspace:*",

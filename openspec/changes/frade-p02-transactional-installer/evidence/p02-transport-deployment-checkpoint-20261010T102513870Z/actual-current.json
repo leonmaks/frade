@@ -1,0 +1,322 @@
+{
+  "atUtc": "2026-10-10T10:25:13.870Z",
+  "branch": "codex/frade-ui-design-contract",
+  "headBefore": "a384bafb41ca43777c3450fb1dd2c73cc94e1dd8",
+  "baseline": "0ecaf44938382bd8daa7d512887dda8a8ee9b372",
+  "guideVersion": "1.0",
+  "authority": "openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff-accepted-20261010T073434608Z.json",
+  "PRE": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T080608Z",
+  "reviewPolicy": {
+    "stage": "P02",
+    "PRE": "gpt-6-sol/xhigh",
+    "POST": "gpt-6-sol/xhigh",
+    "actualBackendEffort": "NOT_CONFIRMED"
+  },
+  "files": [
+    {
+      "file": "apps/desktop/package.json",
+      "sha256": "7c8084d6ea1609e8eecab95026ac5a095c0ce1a8ba44256e47d540da80189954"
+    },
+    {
+      "file": "packages/extension-service/package.json",
+      "sha256": "455d13aade612a9c1363f600d9fcefd947adde21219e1f4a951b7388952aa592"
+    },
+    {
+      "file": "packages/extension-service/scripts/build-windows-filesystem.mjs",
+      "sha256": "6a7b4136aa82001d7923dc6a43d8ba836d199fb66720a7f023c2dc13114666e9"
+    },
+    {
+      "file": "packages/extension-service/scripts/copy-windows-filesystem.mjs",
+      "sha256": "c0a6cfad717d92f7d4e3b5d93ece92aba9219d2ef1d33166ef3a851a4d5b2dcf"
+    },
+    {
+      "file": "packages/extension-service/src/filesystem/windows.ts",
+      "sha256": "ff0e8fffa2e15acbf8bbaf3408211bf40c39ab46c2e3566112f9d4778d99fde5"
+    },
+    {
+      "file": "packages/extension-service/tests/filesystem.deployment.test.ts",
+      "sha256": "a7aaca47d09ed177fa0de4b7bbd3c49773a2b05dbe15b2def02098c2410f2d0f"
+    },
+    {
+      "file": "packages/extension-service/tests/filesystem.transport.test.ts",
+      "sha256": "421f8dc90209b90d7573cc0ed8bdfbd3e0252203893ea2836c816cd7c17f8859"
+    },
+    {
+      "file": "packages/extension-service/tests/fixtures/windows-malformed-reply-helper.cs",
+      "sha256": "7a614b3961bdf99fb4e5447426bc729609566c63777a0e55e199008492613c43"
+    }
+  ],
+  "checks": [
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service222-file-serial-current-20261010T101631603Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:17:33.510Z",
+        "label": "service222-file-serial-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "test"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "6d0aaa51c476fc5ce1eed3e7b388ed1772761994a18492e04bc64787abef860c",
+        "stderrSha256": "353492a78766087f035a399990ea1cefd2474288375b811541823639bfbe8c94"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service222-bdd-file-serial-current-20261010T102201739Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:23:07.226Z",
+        "label": "service222-bdd-file-serial-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "test:bdd"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "0cd5cbf15fdce2086a4cedf426c4eda48accd455e633be09febaf85445084984",
+        "stderrSha256": "88551cf807283b50304c052418beb5da3d54ede71a7921939ee9ac5a5685c72b"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-transport22-deadline-fixed-current-20261010T100730208Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:07:39.769Z",
+        "label": "host-transport22-deadline-fixed-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "exec",
+          "vitest",
+          "run",
+          "tests/filesystem.transport.test.ts"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "1b9bdee124ad8fff1be47ecc7d496c1b99a137bce3ed597b70dd35bd8d261520",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-deployment-hooks9-current-20261010T093848098Z",
+      "execution": {
+        "atUtc": "2026-10-10T09:38:56.639Z",
+        "label": "deployment-hooks9-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "run",
+          "test",
+          "tests/filesystem.deployment.test.ts"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "8172afc5026369ca754b8824f45c06d20f2adc3f39844c24acc5d62fcf4ecb28",
+        "stderrSha256": "e7d7339f26484ba8a69eecfb9e3a0c5d5d274955df60a97516d3e170841a6ab7"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service-build-transport-current-20261010T101121260Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:11:22.925Z",
+        "label": "service-build-transport-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "exec",
+          "tsc",
+          "-p",
+          "tsconfig.build.json"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-desktop-build-deployment-hooks-current-20261010T094634168Z",
+      "execution": {
+        "atUtc": "2026-10-10T09:47:35.552Z",
+        "label": "desktop-build-deployment-hooks-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/desktop",
+          "build"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "c689e820b6276fbe4a03e533a3dfc44deb3b4353150db94e905acba74fd4fe46",
+        "stderrSha256": "59b4b6337f4d59aee1827e7eacbe4b2b762399b50d3cb34bcf00c3418f320354"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-type-host-transport22-current-20261010T100915180Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:09:19.919Z",
+        "label": "type-host-transport22-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "typecheck"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-lint-host-transport22-current-20261010T100912346Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:09:19.346Z",
+        "label": "lint-host-transport22-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "lint"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "f742f989be94e529cde1c75bc31645378f1840908710384b8406b93407d056d9"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-desktop-type-deployment-hooks-current-20261010T093935471Z",
+      "execution": {
+        "atUtc": "2026-10-10T09:39:48.079Z",
+        "label": "desktop-type-deployment-hooks-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/desktop",
+          "typecheck"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-desktop-lint-deployment-hooks-current-20261010T094041641Z",
+      "execution": {
+        "atUtc": "2026-10-10T09:40:49.359Z",
+        "label": "desktop-lint-deployment-hooks-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/desktop",
+          "lint"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "785b223160c30fda735920637fb1bfa85adcdae9e934f0483a3822ab1002f952"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-strict-transport-copy-current-20261010T100910563Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:09:12.094Z",
+        "label": "strict-transport-copy-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+          "validate",
+          "frade-p02-transactional-installer",
+          "--strict"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "a56f6a1542e7b2de16505408befecd7afe8e6deb4c5f252195344b158007a5df",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-boundaries-transport-copy-current-20261010T100917893Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:09:19.706Z",
+        "label": "boundaries-transport-copy-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "check:boundaries"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "20ac408d28f07f362b82b85bf66a093881846c9defb27aab466f3884ea0f8dc0",
+        "stderrSha256": "11689d4067818dbbb751832cc7eeb7ee1508995980b21d0d168ed0f300f4df1f"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-transport-copy-current-20261010T101123821Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:11:54.292Z",
+        "label": "ui-compliance-transport-copy-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "ui:compliance"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "5bceb92baac09a769858d4117b35b4eecaf241d50d8927c227399e30ae9c9651",
+        "stderrSha256": "a9969ed6b164cf14846cf1d768ecbbd67bbb554e640c7722dbeffabde1402265"
+      }
+    }
+  ],
+  "native89OriginalPrefix": "7dce6193dc7cedb7b12077945a5c040a669cab1c75cfbfbdfdc29304a7f56526",
+  "actualCounts": {
+    "archive": 59,
+    "protocol": 43,
+    "native": 89,
+    "deployment": 9,
+    "transport": 22,
+    "total": 222
+  },
+  "priorFullFAIL": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service222-platform-current-20261010T101126231Z",
+  "executionRCA": "openspec/changes/frade-p02-transactional-installer/evidence/p02-native-suite-execution-rca-20261010T101631514Z",
+  "classification": "ENVIRONMENT",
+  "conclusion": "Combined file-parallel run timed out one existing controlled-handoff fixture; file-serial test and BDD both pass all222 with unchanged tests/assertions/default5s/helper10s. Consistent with cross-file compiler/CLR contention; no separate resource profiler or unique-cause claim.",
+  "capabilities": "NOT_VERIFIED",
+  "runtimeDeployment": "MAIN_DEV_INITIAL_REBUILD_START_NOT_RUN",
+  "nonWindows": "NOT_RUN",
+  "installer": "STAGING_JOURNAL_RECOVERY_IPC_EXTENSIONS_UI_NOT_IMPLEMENTED",
+  "POST": "NOT_RUN",
+  "tasks": "3/9",
+  "READY_FOR_VERIFY": "NO"
+}

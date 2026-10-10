@@ -1,0 +1,9 @@
+{
+  "classification": "INTEGRATION_TEST",
+  "rawFAIL": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service-bdd-before-platform-hook-20261010T094308433Z",
+  "rootCause": "Windows package script passes literal wildcard to Vitest which reports no test files; hook also failed to include accepted portable/native proofs.",
+  "repair": "Existing authorized build script owns exact --test/--bdd modes; build first on Windows, dispatch explicit archive/protocol/native/deployment via installed Vitest direct Node no shell. Non-Windows explicit portable and WINDOWS_NATIVE_NOT_RUN; no test skips or success masks. Unknown mode refused. No new path/dependency/global setting.",
+  "scope": "P02 accepted exact service package manifest/native build script purposes; desktop existing hooks unchanged",
+  "capabilities": "NOT_VERIFIED",
+  "notClaimed": "Actual non-Windows execution/dev/start/runtime transport/installer integration"
+}

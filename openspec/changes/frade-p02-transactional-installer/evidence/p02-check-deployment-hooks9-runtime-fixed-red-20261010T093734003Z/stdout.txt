@@ -1,0 +1,31 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.deployment.test.ts (9 tests | 2 failed) 2453ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > copies the exact built helper/metadata into a sibling of main and survives main-output cleanup  336ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses source drift before replacing prior output  324ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses executable drift before replacing prior output 285ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses protocol drift before replacing prior output 273ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses platform drift before replacing prior output  320ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses bytes drift before replacing prior output 282ms
+   ✓ P02FS005: exact build-output integrity and fail-closed copy > refuses missing drift before replacing prior output  302ms
+   × P02FS005: actual named package hooks in isolated layout > build:filesystem compiles current source and records fresh source/compiler/artifact integrity 252ms
+     → Error: ERR_PNPM_NO_SCRIPT
+
+  × Missing script: build:filesystem
+  help: Command "build:filesystem" not found.
+
+: expected 1 to be +0 // Object.is equality
+   × P02FS005: actual named package hooks in isolated layout > copy:filesystem runs the fail-closed copy using exact built bytes 75ms
+     → Error: ERR_PNPM_NO_SCRIPT
+
+  × Missing script: copy:filesystem
+  help: Command "copy:filesystem" not found.
+
+: expected 1 to be +0 // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 7 passed (9)
+   Start at  12:37:34
+   Duration  3.56s (transform 93ms, setup 0ms, collect 90ms, tests 2.45s, environment 0ms, prepare 249ms)
+

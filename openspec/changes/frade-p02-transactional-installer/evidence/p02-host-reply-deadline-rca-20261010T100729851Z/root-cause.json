@@ -1,0 +1,7 @@
+{
+  "classification": "INVARIANT",
+  "actualRED": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-transport22-deadline-red-current-20261010T100610025Z",
+  "result": "21PASS1FAIL: ACK with helper clock exactly equal to admitted deadline was accepted; excess bytes/doubleCR already refused.",
+  "rootCause": "Strict reply identity/schema checked but reply clock did not compare to exact pending deadline; watchdog alone may be delayed by event loop.",
+  "repair": "Require reply helper clock strictly before pending deadline, and actual host elapsed <= existing MAX_OPERATION_MS. Pending host sentAt is transient transport evidence, not persisted semantic state. No timeout increase/skip/assertion weakening."
+}

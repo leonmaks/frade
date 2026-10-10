@@ -1,0 +1,36 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.deployment.test.ts > P02FS005: actual named package hooks in isolated layout > build:filesystem compiles current source and records fresh source/compiler/artifact integrity
+Error: PNPM_TEST_RUNTIME_MISSING
+ ❯ namedHook tests/filesystem.deployment.test.ts:71:40
+     69| 
+     70| function namedHook(service: string, name: string) {
+     71|   if (!process.env.npm_execpath) throw Error('PNPM_TEST_RUNTIME_MISSIN…
+       |                                        ^
+     72|   return spawnSync(process.execPath, [process.env.npm_execpath, 'run',…
+     73| }
+ ❯ tests/filesystem.deployment.test.ts:76:41
+ ❯ deploymentFixture tests/filesystem.deployment.test.ts:28:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/filesystem.deployment.test.ts > P02FS005: actual named package hooks in isolated layout > copy:filesystem runs the fail-closed copy using exact built bytes
+Error: PNPM_TEST_RUNTIME_MISSING
+ ❯ namedHook tests/filesystem.deployment.test.ts:71:40
+     69| 
+     70| function namedHook(service: string, name: string) {
+     71|   if (!process.env.npm_execpath) throw Error('PNPM_TEST_RUNTIME_MISSIN…
+       |                                        ^
+     72|   return spawnSync(process.execPath, [process.env.npm_execpath, 'run',…
+     73| }
+ ❯ tests/filesystem.deployment.test.ts:86:20
+ ❯ deploymentFixture tests/filesystem.deployment.test.ts:28:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

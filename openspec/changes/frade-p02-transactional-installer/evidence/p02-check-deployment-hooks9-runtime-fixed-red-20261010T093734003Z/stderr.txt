@@ -1,0 +1,60 @@
+$ vitest run "tests/filesystem.deployment.test.ts"
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.deployment.test.ts > P02FS005: actual named package hooks in isolated layout > build:filesystem compiles current source and records fresh source/compiler/artifact integrity
+AssertionError: Error: ERR_PNPM_NO_SCRIPT
+
+  × Missing script: build:filesystem
+  help: Command "build:filesystem" not found.
+
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/filesystem.deployment.test.ts:79:112
+     77|   it('build:filesystem compiles current source and records fresh sourc…
+     78|     const before = Date.now(), result = namedHook(f.service, 'build:fi…
+     79|     expect(result.error).toBeUndefined(); expect(result.status, String…
+       |                                                                                                                ^
+     80|     const meta = JSON.parse(await fs.readFile(path.join(f.service, 'di…
+     81|     expect(Date.parse(meta.compiledAtUtc)).toBeGreaterThanOrEqual(befo…
+ ❯ deploymentFixture tests/filesystem.deployment.test.ts:28:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/filesystem.deployment.test.ts > P02FS005: actual named package hooks in isolated layout > copy:filesystem runs the fail-closed copy using exact built bytes
+AssertionError: Error: ERR_PNPM_NO_SCRIPT
+
+  × Missing script: copy:filesystem
+  help: Command "copy:filesystem" not found.
+
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/filesystem.deployment.test.ts:89:112
+     87|   it('copy:filesystem runs the fail-closed copy using exact built byte…
+     88|     const result = namedHook(f.service, 'copy:filesystem')
+     89|     expect(result.error).toBeUndefined(); expect(result.status, String…
+       |                                                                                                                ^
+     90|     expect(await fs.readFile(path.join(f.output, 'frade-filesystem.exe…
+     91|     expect(await fs.readFile(path.join(f.output, 'integrity.json'))).t…
+ ❯ deploymentFixture tests/filesystem.deployment.test.ts:28:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+[ELIFECYCLE] Test failed. See above for more details.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in C:\Users\NVISEN\.codex\worktrees\ui-design-
+  │ contract\frade\packages\extension-service
+

@@ -1,0 +1,88 @@
+$ vitest run "--" "tests/filesystem.deployment.test.ts"
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.deployment.test.ts > P02FS005: actual named package hooks in isolated layout > build:filesystem compiles current source and records fresh source/compiler/artifact integrity
+AssertionError: node:internal/modules/esm/get_format:236
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".exe" for C:\Users\NVISEN\AppData\Local\node\corepack\v1\pnpm\12.6.0\pnpm-native.exe
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:236:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:262:36)
+    at defaultLoadSync (node:internal/modules/esm/load:161:16)
+    at #loadAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:802:12)
+    at #loadSync (node:internal/modules/esm/loader:834:53)
+    at ModuleLoader.load (node:internal/modules/esm/loader:783:26)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:494:31)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:560:36)
+    at afterResolve (node:internal/modules/esm/loader:607:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:613:12) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v24.18.0
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/filesystem.deployment.test.ts:77:112
+     75|   it('build:filesystem compiles current source and records fresh sourc…
+     76|     const before = Date.now(), result = namedHook(f.service, 'build:fi…
+     77|     expect(result.error).toBeUndefined(); expect(result.status, String…
+       |                                                                                                                ^
+     78|     const meta = JSON.parse(await fs.readFile(path.join(f.service, 'di…
+     79|     expect(Date.parse(meta.compiledAtUtc)).toBeGreaterThanOrEqual(befo…
+ ❯ deploymentFixture tests/filesystem.deployment.test.ts:28:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/filesystem.deployment.test.ts > P02FS005: actual named package hooks in isolated layout > copy:filesystem runs the fail-closed copy using exact built bytes
+AssertionError: node:internal/modules/esm/get_format:236
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".exe" for C:\Users\NVISEN\AppData\Local\node\corepack\v1\pnpm\12.6.0\pnpm-native.exe
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:236:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:262:36)
+    at defaultLoadSync (node:internal/modules/esm/load:161:16)
+    at #loadAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:802:12)
+    at #loadSync (node:internal/modules/esm/loader:834:53)
+    at ModuleLoader.load (node:internal/modules/esm/loader:783:26)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:494:31)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:560:36)
+    at afterResolve (node:internal/modules/esm/loader:607:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:613:12) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v24.18.0
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/filesystem.deployment.test.ts:87:112
+     85|   it('copy:filesystem runs the fail-closed copy using exact built byte…
+     86|     const result = namedHook(f.service, 'copy:filesystem')
+     87|     expect(result.error).toBeUndefined(); expect(result.status, String…
+       |                                                                                                                ^
+     88|     expect(await fs.readFile(path.join(f.output, 'frade-filesystem.exe…
+     89|     expect(await fs.readFile(path.join(f.output, 'integrity.json'))).t…
+ ❯ deploymentFixture tests/filesystem.deployment.test.ts:28:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+[ELIFECYCLE] Test failed. See above for more details.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in C:\Users\NVISEN\.codex\worktrees\ui-design-
+  │ contract\frade\packages\extension-service
+

@@ -1,3 +1,52 @@
+# Frade UI Design Contract — P02 transport/deployment component
+
+Обновлено 2026-10-10T10:25:13.870Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Program origin98f387f96b51b0ad139e3507c376ff1c3e8dec09; P02 baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; guide v1.0. Routing независим.
+
+| Этап | Статус |
+| --- | --- |
+| Audit/planning/foundation | CLOSED/ARCHIVED |
+| P01 resolver/preview | CLOSED/ARCHIVED; точные3minor OPEN_ACCEPTED_DEFERRED сохранены |
+| P02 transactional installer | 3/9; 2.2 IN_PROGRESS |
+| P03 import → P04 icons → P05 browser host → P06 native APIs → P07 registry/profiles/policy | NOT_STARTED; STOP before P03 |
+| Shell → tree/tabs → forms/tables/LoV → Draw/flow → AI | NOT_STARTED отдельные migration checkpoints |
+
+| Задача P02 | Статус |
+| --- | --- |
+| 1.1 Audit/predecessor/baseline/scope | DONE |
+| 1.2 Strict/independent PRE | DONE; current amendment fresh PRE PASS |
+| 2.1 Archive/path/limit/semver RED | DONE |
+| 2.2 Backend/staging/journal/Main picker bridge | IN_PROGRESS; native89, transport22, deployment9 checked; staging/journal/Main integration не готовы |
+| 2.3 Transaction crash/recovery/rollback/Windows locks | NOT_DONE |
+| 2.4 Extensions UI/P01 lifecycle/fallback/dirty work | NOT_DONE |
+| 3.1 Full root/general/P01/security/a11y/visual | NOT_DONE; выполненные component checks ниже |
+| 3.2 OpenSpec verify/cumulative POST | NOT_RUN |
+| 3.3 Archive | NOT_RUN |
+
+## Фактический checkpoint
+
+- Test и BDD: каждый **222 PASS**, пять файлов без skip/retry/ослабления assertions/увеличения таймаутов. Archive59 + protocol43 + native89 + deployment9 + transport22. Full параллельный 221PASS/1FAIL сохранён; после RCA sequential file policy устранила наблюдаемый timeout в обоих реальных прогонах. Не объявляем отдельное доказательство единственной причины без профилирования.
+- Host-only transport: exact metadata/source/PE/hash до spawn; closed bounded canonical request/reply, session/generation/order/deadline, одно pending request, dispose/UNKNOWN. Actual native positive/readback/release и негативные drift/protocol fixtures PASS. Malformed-reply helper — first-party transport fixture, не filesystem capability proof.
+- Build/copy scripts и service/desktop named hooks: точные assets в out/extension-filesystem sibling main/preload/renderer. Реальный desktop production build PASS. Dev initial/rebuild/start через Main ещё NOT_RUN; hooks не означают готовую интеграцию.
+- Service/desktop typecheck/lint, service TS build, strict, boundaries и UI compliance PASS. Evidence: openspec/changes/frade-p02-transactional-installer/evidence/p02-transport-deployment-checkpoint-20261010T102513870Z/actual-current.json; raw logs/hashes неизменны.
+- Accepted ancestor scope и fresh PRE PASS сохранены. Stage reviews gpt-6-sol/xhigh по plan; actual backend/effort NOT_CONFIRMED; runner policy1.1 AVAILABLE. Cumulative POST ещё NOT_RUN.
+- Capabilities **NOT_VERIFIED**; factory и runtime capability binding не готовы. Installer use запрещён до proof. Journal/staging/recovery/IPC/Extensions UI не реализованы. Hardware power-loss NOT_PROVEN; non-Windows actual run NOT_RUN.
+
+## Следующий шаг / блокеры
+
+Выполненный component batch GREEN; прежние raw FAIL сохраняются, P01 minor waiver не распространяется на P02. Далее runtime capability/factory и реальный Main/dev/build/start lifecycle proof; затем journal/staging/transactions/recovery/IPC/UI, full checks/OpenSpec verify/automatic POST/archive. READY_FOR_VERIFY: NO. Решений человека сейчас не требуется. UI экранов эти изменения не затрагивают; новых screenshots нет; guide/tokens/brand/P01 baselines/domain/routing сохранены.
+
+## Commit/push/панель
+
+Последний опубликованный HEAD a384bafb41ca43777c3450fb1dd2c73cc94e1dd8; current transport/deployment checkpoint publication PENDING. Только authorized origin git@github.com:leonmaks/frade.git, refs/heads/codex/frade-ui-design-contract; no force, remote SHA verification обязателен. Right panel queued/visibility unconfirmed. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Dashboard не approval/historical evidence.
+
+## Предыдущие записи — неизменная история
+
+# P02 current full regression blocker — 221 PASS / 1 FAIL
+
+2026-10-10T10:16:31.520Z: controlled handoff test default5s timeout in combined parallel file run. Native89 and transport22 isolated PASS; copy9/desktop build/type/lint/boundaries/strict/UIcompliance PASS. Raw openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service222-platform-current-20261010T101126231Z retained. RCA openspec/changes/frade-p02-transactional-installer/evidence/p02-native-suite-execution-rca-20261010T101631514Z/root-cause.json. Explicit file-serial revalidation pending, with every selected test/assertion/default timeout unchanged. Capabilities NOT_VERIFIED; tasks3/9,2.2IN_PROGRESS; STOP integration progression/POST/archive/P03. Current transport/deployment checkpoint uncommitted; last published a384bafb41ca43777c3450fb1dd2c73cc94e1dd8. No human action needed at present.
+
+## Previous projection
+
 # Frade UI Design Contract — P02 native/security component GREEN
 
 Обновлено 2026-10-10T09:31:28.783Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Origins program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 сохранены. Guide v1.0; Routing независим.

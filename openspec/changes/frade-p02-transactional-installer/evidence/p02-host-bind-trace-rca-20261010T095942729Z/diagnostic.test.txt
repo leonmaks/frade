@@ -1,0 +1,26 @@
+import { it, vi } from 'vitest'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import os from 'node:os'
+import { createHash } from 'node:crypto'
+import { WindowsFilesystemTransport } from '../src/filesystem/windows'
+it('captures actual unmodified transport bind reply for RCA only', async () => {
+  const parent = await fs.realpath(os.tmpdir()), base = await fs.mkdtemp(path.join(parent, 'frade-p02-transport-trace-')), root = path.join(base, 'extensions'), distribution = path.join(base, 'distribution')
+  const observations: object[] = [], prototype = WindowsFilesystemTransport.prototype as any, original = prototype.reply
+  const spy = vi.spyOn(prototype, 'reply').mockImplementation(function(this: any, chunk: any) {
+    observations.push({ request: this.pending?.command, wireBase64: chunk.toString('base64'), wire: chunk.toString('utf8') })
+    return original.call(this, chunk)
+  })
+  try {
+    await fs.mkdir(root); await fs.mkdir(distribution)
+    for (const file of ['frade-filesystem.exe', 'integrity.json']) await fs.copyFile(new URL('../dist/native/' + file, import.meta.url), path.join(distribution, file))
+    const sourceSha256 = createHash('sha256').update(await fs.readFile(new URL('../native/windows-filesystem.cs', import.meta.url))).digest('hex')
+    let outcome = ''
+    try { const port = await WindowsFilesystemTransport.connect({ installationRoot: root, distributionDirectory: distribution, sourceSha256, generation: 1 }); await port.dispose(); outcome = 'connected' } catch (error) { outcome = String(error) }
+    console.log(JSON.stringify({ proof: 'RCA_TRACE_ONLY_NOT_SECURITY_PASS', outcome, observations, rootEntries: await fs.readdir(root) }))
+  } finally {
+    spy.mockRestore()
+    if (path.dirname(base).toLowerCase() !== parent.toLowerCase() || !path.basename(base).startsWith('frade-p02-transport-trace-')) throw Error('UNSAFE_TRACE_CLEANUP')
+    await fs.rm(base, { recursive: true })
+  }
+})

@@ -1,0 +1,23 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.transport.test.ts (9 tests | 4 failed) 1459ms
+   × P02FS004/005: actual verified-asset closed host transport, no installer capability claim > negotiates native clock/session capabilities without promoting NOT_VERIFIED and releases on dispose 361ms
+     → INVALID_FILESYSTEM_REPLY
+   × P02FS004/005: actual verified-asset closed host transport, no installer capability claim > serializes actual bounded writes, seal, publication and exact readback over owned stdio 335ms
+     → INVALID_FILESYSTEM_REPLY
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses source asset drift before root binding effects 19ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses executable asset drift before root binding effects 13ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses protocol asset drift before root binding effects 14ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses platform asset drift before root binding effects 15ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses bytes asset drift before root binding effects 15ms
+   × P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses an invalid path locally and closes the session without a child effect 346ms
+     → INVALID_FILESYSTEM_REPLY
+   × P02FS004/005: actual verified-asset closed host transport, no installer capability claim > rejects concurrent admission instead of queueing a second mutation 338ms
+     → INVALID_FILESYSTEM_REPLY
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 5 passed (9)
+   Start at  12:57:24
+   Duration  2.58s (transform 184ms, setup 0ms, collect 198ms, tests 1.46s, environment 0ms, prepare 454ms)
+

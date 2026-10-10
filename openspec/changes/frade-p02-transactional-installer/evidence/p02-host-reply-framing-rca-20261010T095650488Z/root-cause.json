@@ -1,0 +1,18 @@
+{
+  "atUtc": "2026-10-10T09:56:51.156Z",
+  "classification": "INTEGRATION",
+  "rawFAIL": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-transport9-current-20261010T095532466Z",
+  "probe": {
+    "exit": 0,
+    "lastBytes": [
+      34,
+      125,
+      13,
+      10
+    ],
+    "canonicalBody": true,
+    "status": "ACK"
+  },
+  "rootCause": "Windows Console.WriteLine emits CRLF. New host removed only LF, so canonical-body equality rejected trailing delimiter CR, before successful bind transport.",
+  "repair": "Recognize exactly LF or one CRLF frame delimiter in replies, preserving body canonical equality, all frame bytes in max bound, exact schemas, UTF8 fatal and request framing LF. No whitespace trim or protocol/security waiver; native/P01 unchanged."
+}

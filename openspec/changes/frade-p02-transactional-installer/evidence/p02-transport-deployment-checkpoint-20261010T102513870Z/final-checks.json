@@ -1,0 +1,58 @@
+{
+  "atUtc": "2026-10-10T10:26:34.222Z",
+  "checks": [
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-strict-transport-checkpoint-current-20261010T102534868Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:25:35.964Z",
+        "label": "strict-transport-checkpoint-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "E:\\Users\\NVISEN\\AppData\\Roaming\\npm\\node_modules\\@fission-ai\\openspec\\bin\\openspec.js",
+          "validate",
+          "frade-p02-transactional-installer",
+          "--strict"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "a56f6a1542e7b2de16505408befecd7afe8e6deb4c5f252195344b158007a5df",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-syntax-native-build-file-serial-current-20261010T102531167Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:25:31.273Z",
+        "label": "syntax-native-build-file-serial-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "--check",
+          "packages/extension-service/scripts/build-windows-filesystem.mjs"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-syntax-native-copy-current-20261010T102532855Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:25:32.989Z",
+        "label": "syntax-native-copy-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "--check",
+          "packages/extension-service/scripts/copy-windows-filesystem.mjs"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

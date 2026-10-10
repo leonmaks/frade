@@ -3,10 +3,13 @@ import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { spawnSync } from 'node:child_process'
+import { createRequire } from 'node:module'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const source = path.join(root, 'native/windows-filesystem.cs')
 const output = path.join(root, 'dist/native')
 const sha = value => crypto.createHash('sha256').update(value).digest('hex')
+const modes = process.argv.slice(2)
+if (modes.length > 1 || (modes.length === 1 && !['--test', '--bdd'].includes(modes[0]))) throw Error('INVALID_BUILD_MODE')
 if (process.platform !== 'win32') {
   console.log(JSON.stringify({ status: 'NOT_APPLICABLE_HOST', native: 'NOT_RUN' }))
 } else {
@@ -41,4 +44,14 @@ if (process.platform !== 'win32') {
     runtimeCapabilities: 'NOT_VERIFIED', publisherTrust: 'NOT_ASSERTED' }
   fs.writeFileSync(path.join(output, 'integrity.json'), JSON.stringify(metadata, null, 2) + '\n')
   console.log(JSON.stringify({ status: 'BUILT_INTEGRITY_ONLY', ...metadata }))
+}
+
+if (modes.length === 1) {
+  const files = ['tests/archive.bdd.test.ts', 'tests/filesystem.protocol.test.ts']
+  if (process.platform === 'win32') files.push('tests/filesystem.windows.test.ts', 'tests/filesystem.deployment.test.ts', 'tests/filesystem.transport.test.ts')
+  else console.log(JSON.stringify({ status: 'WINDOWS_NATIVE_NOT_RUN', portable: 'RUNNING', mode: modes[0] }))
+  const runner = createRequire(import.meta.url).resolve('vitest/vitest.mjs')
+  const result = spawnSync(process.execPath, [runner, 'run', '--fileParallelism=false', ...files], { cwd: root, stdio: 'inherit', windowsHide: true, timeout: 240000 })
+  if (result.error) throw result.error
+  if (result.status !== 0) process.exit(result.status ?? 1)
 }

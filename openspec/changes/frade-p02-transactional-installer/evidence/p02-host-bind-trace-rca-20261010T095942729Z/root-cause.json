@@ -1,0 +1,11 @@
+{
+  "classification": "ABSTRACTION_BOUNDARY",
+  "actualTrace": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-bind-trace-rca-only-20261010T095942851Z",
+  "originalFramingFAIL": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-transport9-current-20261010T095532466Z",
+  "retainedFramingFixedFAIL": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-transport9-framing-fixed-current-20261010T095722835Z",
+  "actual": "First bind deadlineMs10157 while helperClock55; native returned REFUSED EXPIRED_DEADLINE/sessionnull/generation0, no root entries.",
+  "rootCause": "New host incorrectly counted its own initialization/spawn latency as helper elapsed time before the first clock negotiation. Epochs differ; first deadline exceeded helper now+10s.",
+  "repair": "Initial bind uses helper epoch0 and deadline10000. Only after bound reply clock negotiate helperClock plus monotonic elapsed since receipt. Request/reply matching, <=10s bound, canonical framing and all tests stay.",
+  "NoPatchLoop": "STOP and complete request/reply trace performed before this next production repair.",
+  "diagnostic": "Trace-only spy fixture/code retained in evidence; removed from production tests, not a security gate or regression fixture deletion."
+}

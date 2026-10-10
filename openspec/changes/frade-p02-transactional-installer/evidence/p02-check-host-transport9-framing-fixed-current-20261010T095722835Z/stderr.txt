@@ -1,0 +1,25 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.transport.test.ts > P02FS004/005: actual verified-asset closed host transport, no installer capability claim > negotiates native clock/session capabilities without promoting NOT_VERIFIED and releases on dispose
+ FAIL  tests/filesystem.transport.test.ts > P02FS004/005: actual verified-asset closed host transport, no installer capability claim > serializes actual bounded writes, seal, publication and exact readback over owned stdio
+ FAIL  tests/filesystem.transport.test.ts > P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses an invalid path locally and closes the session without a child effect
+ FAIL  tests/filesystem.transport.test.ts > P02FS004/005: actual verified-asset closed host transport, no installer capability claim > rejects concurrent admission instead of queueing a second mutation
+FilesystemTransportError: INVALID_FILESYSTEM_REPLY
+ ❯ WindowsFilesystemTransport.fail src/filesystem/windows.ts:92:22
+     90|     if (pending) {
+     91|       clearTimeout(pending.timer); this.gate.complete(pending.command.…
+     92|       pending.reject(new FilesystemTransportError(['read', 'list', 'ca…
+       |                      ^
+     93|     }
+     94|     if (this.child.exitCode === null && this.child.signalCode === null…
+ ❯ WindowsFilesystemTransport.reply src/filesystem/windows.ts:129:20
+ ❯ Socket.<anonymous> src/filesystem/windows.ts:66:58
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

@@ -1,0 +1,8 @@
+{
+  "classification": "TEST_ENVIRONMENT",
+  "actualFAIL": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service222-platform-current-20261010T101126231Z",
+  "actual": "221PASS1FAIL: controlled handoff default5s timeout in full concurrent file run; native89 isolated and full200 prior PASS; transport22 target PASS. Multiple native and malformed-reply fixture compiler/CLR jobs plus archive actual201MiB workload overlapped.",
+  "diagnosis": "New combined suite introduces cross-file first-party compiler/startup contention; no assertion/production error is reported. Sequential revalidation is required to confirm, not assumed PASS.",
+  "repair": "Existing authorized platform hook sets Vitest fileParallelism=false: all exact selected files/tests/assertions/default5s/helper10s run, no skip/retry/timeout increase. Test fixture code and native/transport production unchanged.",
+  "remaining": "If same failure persists, preserve FAIL and continue RCA; no capability or stage progression."
+}
