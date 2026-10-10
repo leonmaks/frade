@@ -19,7 +19,7 @@
 
 [Raw current PRE](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T052148Z/output--result.md), [verified receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T052148Z/verification.json), [exact packet retention](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T052148Z/packet-retention.json).306files/76events/17raw. ExactCLI gpt-6-sol/xhigh; readonlyconfinement/source/packet/plan/request/twoaccepteddecisionsPASS, actualbackend/effortNOT_CONFIRMED. Next nativefilesystem RED then implementation within accepted scope. No backend code/screenshots/newvisualapproval. Compiler metadata exists; actualnativebuild/dev/start/capability testsNOT_RUN.
 
-Git: planning198c7a7e/sealed864a6a09 COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint publicationPENDING. Authorized UI origin/ref only; noforce. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. Dashboard updated afterunfreeze; earlier records remainbelow.
+Git: planning198c7a7e/sealed864a6a09 COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint feedcde48c20d6c589e9e50b94047880b593db03 COMMITTED/PUSHED; remoteSHAverified; metadata receipt follows. Authorized UI origin/ref only; noforce. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. Dashboard updated afterunfreeze; earlier records remainbelow.
 
 ## Предыдущие записи сохранены
 
