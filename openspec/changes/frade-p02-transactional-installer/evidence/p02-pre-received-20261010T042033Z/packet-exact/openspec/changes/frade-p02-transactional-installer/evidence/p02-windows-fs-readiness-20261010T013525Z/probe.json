@@ -1,0 +1,37 @@
+{
+  "atUtc": "2026-10-10T01:35:25.939Z",
+  "platform": "win32",
+  "node": "v24.18.0",
+  "root": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-fs-readiness-1zQ4v8",
+  "installation": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-fs-readiness-1zQ4v8\\installation",
+  "outsideFixture": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-fs-readiness-1zQ4v8\\outside-project-fixture",
+  "productionUsed": false,
+  "rows": [
+    {
+      "operation": "exclusive file write+sync+same-directory rename",
+      "status": "PASS",
+      "sha256": "febb0018207df4becac0c4e43b377168498a14ed2ad7936c26ea446a613c0956"
+    },
+    {
+      "operation": "directory metadata sync through Node fs",
+      "status": "UNAVAILABLE",
+      "error": {
+        "code": "EPERM",
+        "message": "EPERM: operation not permitted, fsync"
+      }
+    },
+    {
+      "operation": "static junction lstat detection",
+      "status": "PASS",
+      "realPath": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-fs-readiness-1zQ4v8\\outside-project-fixture"
+    },
+    {
+      "operation": "Node O_NOFOLLOW with junction ancestor",
+      "status": "FOLLOWED_ANCESTOR",
+      "O_NOFOLLOW": "UNDEFINED",
+      "outsideFixtureCreated": true,
+      "sha256": "0cd1e60a7fc84d65d42db6b3e01cf9fc7f4d6158e68c24bbbdebf93b08e99ced"
+    }
+  ],
+  "interpretation": "File sync/rename availability is distinct from metadata durability and ancestor handle confinement. A pre-write lstat alone cannot defend replacement between check and open. This probe is an owned Temp negative fixture, never a user project."
+}
