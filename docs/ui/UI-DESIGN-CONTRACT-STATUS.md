@@ -1,3 +1,15 @@
+# P02 — S2 planning checkpoint published; PRE FAIL / decision required
+
+2026-10-10T21:56:07.829Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372. Guide1.0. Checkpoint **48bce90b81fc02040c4816adb39207ada9dfa069** pushed to authorized origin/refs/heads/codex/frade-ui-design-contract; actual remote SHA verified. [Publication receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-publication-20261010T215607829Z/publication.json). This docs commit records completed publication.
+
+[S2 scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-scheme-20261010T212938373Z/s2-scheme.md); strict PASS; independent PRE gpt-6-sol/xhigh **FAIL**, [report](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-pre-received-20261010T214959084Z/output--result.md).105completeevents/17rawartifacts, source/packet/request unchanged. Blockers: swap precedes changed=true; no registry-only ACK/COMMITTED-before-reveal path; full PresentationRecord needs reservation before STAGING. Production unchanged,99source controls verified.
+
+**Decision required:** [P02-S2-PRESENTATION-HOOKS-01](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-presentation-hooks.proposed.md), SHA256a10ebe39ac088d32de8dbf27b331017e1a420a450a4346b0aabca347597e3dab, NOT_ACCEPTED. Preferred repair adds only service.ts for3 optional awaited integration hooks; private Main reservation uses already accepted files. Scope requirement comes from accepted design/integration table which freezes service.ts. After acceptance: reconcile all planning artifacts → strict → automatic fresh PRE; no production before PASS. No human prompt/result relay.
+
+P02 remains **3/9**.2.2S1completed; S2staging/journal/filepicker/bridge unfinished.2.3actualcrash/recovery/rollback unfinished.2.4ExtensionsUI/fallback unfinished.3.1fullchecks/a11y/visual unfinished.3.2fullverify/cumulativePOST unfinished.3.3archive unfinished. S2RED/GREEN/runtime/POST **NOT_RUN**; fullREADY_FOR_VERIFY:**NO**. CurrentS1POSTPASS separate; P02-D01 historicalFAIL causeNOT_PROVEN retained. NoP03/Routingdependency. RightpanelQUEUED/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
 # P02 — S2 PRE FAIL; proposed boundary awaiting decision
 
 2026-10-10T21:54:37.632Z; codex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. [Exact scope](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-presentation-hooks.proposed.md), SHAa10ebe39ac088d32de8dbf27b331017e1a420a450a4346b0aabca347597e3dab, NOT_ACCEPTED:3 optional hooks in frozen service.ts and private Main record reservation. PREFAIL/checkpoint3/9;99production/source controls unchanged; new code/tests NOT_RUN. Source/gate receipt follows below; publication pending.
