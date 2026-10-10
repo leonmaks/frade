@@ -1,0 +1,39 @@
+{
+  "startedAtUtc": "2026-10-10T13:38:52.424Z",
+  "finishedAtUtc": "2026-10-10T13:38:52.608Z",
+  "head": "47c2b3eee7138106d4bc3cf0a88ba4e68425e9ae",
+  "sourceSha256": "73ec4d15c7a91abb4d0dcc0d11b88bf2b91e209f222514cad4a24f1654580377",
+  "executableSha256": "7e228f94fa8d598a27a954375c35f17f45d5ae63b490f373e5b6598145604c9d",
+  "limits": {
+    "oneHelper": true,
+    "oneOwnedTempRoot": true,
+    "maxWallMs": 60000,
+    "maxOperationMs": 10000,
+    "maxFrameBytes": 131072,
+    "productionWrites": 0
+  },
+  "durationMs": 184.5319,
+  "status": "REPRODUCED_UNKNOWN_CHILD_RECURSIVE_DELETE",
+  "leaf": {
+    "originalId": "f4fc2195001c0000001339c7",
+    "replacementId": "f4fc2195001c0000001339c7",
+    "genuineSwap": false,
+    "swapError": {
+      "code": "EBUSY",
+      "message": "EBUSY: resource busy or locked, rename 'C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-bootstrap-ownership-DOouDN\\extensions\\probe\\final.bin' -> 'C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-bootstrap-ownership-DOouDN\\extensions\\probe\\retained-original.bin'"
+    },
+    "swapClaim": "NOT_PROVEN_FAILED_SETUP",
+    "removeStatus": "ACK",
+    "replacementDeleted": true,
+    "originalBytesPreservedBeforeDirectoryProbe": true
+  },
+  "directory": {
+    "genuineUnknownChildCreated": true,
+    "removeStatus": "ACK",
+    "probeDirectoryDeleted": true
+  },
+  "implication": "Current checked remove proves actual object type/confinement but does not compare a caller-expected prior identity or provide empty-only directory deletion. Source-only inspection was insufficient; concrete bootstrap cleanup needs a contract decision.",
+  "cleanup": "REMOVED_OWNED_TEMP_FIXTURE",
+  "outsideBytesAndCount": "UNCHANGED",
+  "kind": "Bounded diagnostic against exact shipped-source helper, not a changed regression assertion, live user profile or capability certification"
+}

@@ -1,0 +1,180 @@
+[
+  {
+    "command": {
+      "version": 1,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "requestId": 1,
+      "deadlineMs": 10000,
+      "operation": "bind",
+      "root": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-bootstrap-ownership-VHvJQv\\extensions"
+    }
+  },
+  {
+    "reply": {
+      "version": 1,
+      "requestId": 1,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "clockMs": 151,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "requestId": 2,
+      "deadlineMs": 10151,
+      "operation": "mkdir",
+      "path": [
+        "probe"
+      ]
+    }
+  },
+  {
+    "reply": {
+      "version": 1,
+      "requestId": 2,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "clockMs": 156,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "requestId": 3,
+      "deadlineMs": 10156,
+      "operation": "write-open",
+      "path": [
+        "probe",
+        "pending.tmp"
+      ],
+      "maxBytes": 24
+    }
+  },
+  {
+    "reply": {
+      "handle": "7bd2a8a8725e4b2f8e05580f79c9391b",
+      "version": 1,
+      "requestId": 3,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "clockMs": 158,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "requestId": 4,
+      "deadlineMs": 10158,
+      "operation": "write-chunk",
+      "handle": "7bd2a8a8725e4b2f8e05580f79c9391b",
+      "offset": 0,
+      "data": "b3duZWQtY2FwYWJpbGl0eS1wYXlsb2Fk"
+    }
+  },
+  {
+    "reply": {
+      "offset": 24,
+      "version": 1,
+      "requestId": 4,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "clockMs": 161,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "requestId": 5,
+      "deadlineMs": 10161,
+      "operation": "write-close",
+      "handle": "7bd2a8a8725e4b2f8e05580f79c9391b",
+      "sha256": "9f6e9546de49f97406cabd8da16b12c8436f6fdf929d506661cd3d239bab154a"
+    }
+  },
+  {
+    "reply": {
+      "sha256": "9f6e9546de49f97406cabd8da16b12c8436f6fdf929d506661cd3d239bab154a",
+      "version": 1,
+      "requestId": 5,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "clockMs": 174,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "requestId": 6,
+      "deadlineMs": 10174,
+      "operation": "replace",
+      "handle": "7bd2a8a8725e4b2f8e05580f79c9391b",
+      "parent": [
+        "probe"
+      ],
+      "name": "final.bin",
+      "sha256": "9f6e9546de49f97406cabd8da16b12c8436f6fdf929d506661cd3d239bab154a"
+    }
+  },
+  {
+    "reply": {
+      "sha256": "9f6e9546de49f97406cabd8da16b12c8436f6fdf929d506661cd3d239bab154a",
+      "version": 1,
+      "requestId": 6,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "clockMs": 178,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "requestId": 7,
+      "deadlineMs": 10178,
+      "operation": "list",
+      "path": [
+        "probe"
+      ],
+      "limit": 128,
+      "cursor": null
+    }
+  },
+  {
+    "reply": {
+      "entries": [
+        {
+          "name": "final.bin",
+          "kind": "file",
+          "bytes": 24,
+          "identity": "f4fc2195000a000000134f47"
+        }
+      ],
+      "cursor": null,
+      "version": 1,
+      "requestId": 7,
+      "session": "24e2809f-155d-40eb-9b3c-1b0d13674781",
+      "generation": 1,
+      "clockMs": 186,
+      "status": "ACK"
+    }
+  }
+]

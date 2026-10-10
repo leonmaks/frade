@@ -1,3 +1,19 @@
+# Frade UI Design Contract — P02 S0 bootstrap: требуется точное решение
+
+Обновлено 2026-10-10T13:44:23.647Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Program origin98f387f96b51b0ad139e3507c376ff1c3e8dec09; P02 baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; guide v1.0. Routing независим.
+
+Bootstrap-схема PREPARATION_COMPLETE: openspec/changes/frade-p02-transactional-installer/evidence/p02-bootstrap-scheme-20261010T134423647Z/bootstrap-scheme.md. Предложение **P02-BOOTSTRAP-OWNED-CLEANUP-01**, SHA256 3e7379aae95d49644c269c3633aaa8a3e8a0a4c084492fc94104b5901b6426ed, PROPOSED/NOT_ACCEPTED. Закрытый remove дополняется expectedIdentity и emptyOnly:true для удаления точного объекта/только пустого каталога; один root/команды/привилегии/MUST сохраняются. Это material contract decision, не повторное approval review.
+
+Bounded diagnostic: настоящий неизвестный обычный child был создан извне под held probe directory и удалён текущим recursive remove. Root confinement/outside sentinel/count сохранены; own Temp fixtures удалены. Leaf replacement setup EBUSY — **NOT_PROVEN**, не security FAIL/PASS. Raw receipts/interpretation openspec/changes/frade-p02-transactional-installer/evidence/p02-bootstrap-scheme-20261010T134423647Z/probe-interpretation.json сохраняются; новый consumer cleanup не должен опираться на pre-list+recursive delete. Класс ABSTRACTION_BOUNDARY.
+
+Свежая strict validation текущего активного OpenSpec PASS (не утверждение proposal). Required S0 PRE **BLOCKED_PENDING_SCOPE_ACCEPTANCE**, not executed. Harness AVAILABLE; пара по design **gpt-6-sol/xhigh**, automatic dispatch/reception после exact acceptance/coherent active artifacts/actual strict. Драфт prompt готов; источники/packet будут sealed только после решения. Никто не relay prompts. Production/native/factory/Main/approved proposal/design/spec/tasks сейчас не изменены.
+
+P02 **3/9**,2.2 IN_PROGRESS; capabilities NOT_VERIFIED. Previous226 test/226 BDD и component checks — historical actual PASS, новых suite runs нет. Main/runtime/dev/start/journal/recovery/Extensions UI/full checks/verify/cumulative POST/archive открыты. READY_FOR_VERIFY:NO; STOP beforeP03. Следующий шаг: решение по точному scope, затем coherent refinement → strict → fresh automatic PRE.
+
+Последний verified published HEAD 47c2b3eee7138106d4bc3cf0a88ba4e68425e9ae. Bootstrap scheme docs checkpoint publication PENDING; authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи
+
 # Frade UI Design Contract — P02: стратегия и точное правило приняты
 
 Обновлено 2026-10-10T13:23:33.400Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Program origin98f387f96b51b0ad139e3507c376ff1c3e8dec09; P02 baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; guide v1.0. Routing независим.

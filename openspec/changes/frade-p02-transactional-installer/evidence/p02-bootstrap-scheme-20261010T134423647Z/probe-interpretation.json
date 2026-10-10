@@ -1,0 +1,30 @@
+{
+  "atUtc": "2026-10-10T13:44:23.647Z",
+  "classification": "ABSTRACTION_BOUNDARY",
+  "decisionRequired": "Closed filesystem cleanup contract extension for the new runtime-proof consumer",
+  "probe1": {
+    "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-bootstrap-delete-ownership-probe-20261010T133734895Z/probe.json",
+    "sha256": "33a9ee2ea2c8d36f972444df8504ecc3160fbafe67caecbe4cedca160c4d4b68",
+    "status": "BLOCKED_PROBE",
+    "reason": "External Node leaf rename EBUSY, attack setup failed; leaf replacement vulnerability NOT_PROVEN."
+  },
+  "probe2": {
+    "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-bootstrap-delete-ownership-probe-20261010T133852418Z/probe.json",
+    "sha256": "ee45e7448036dcbfc8a1ca9b6a2ae9c5f34e69e4d18818dfb22d0957d9acce27",
+    "status": "REPRODUCED_UNKNOWN_CHILD_RECURSIVE_DELETE",
+    "facts": {
+      "outsideBytesAndCount": "UNCHANGED",
+      "genuineExternalOrdinaryChildCreation": true,
+      "recursiveDirectoryRemove": "ACK",
+      "unknownOrdinaryChildDeleted": true
+    },
+    "leafReplacement": "NOT_PROVEN_FAILED_SETUP",
+    "discardedClaimFields": [
+      "leaf.replacementDeleted refers to deletion of the original file because replacement setup failed; it is not a replacement deletion proof.",
+      "leaf.originalBytesPreservedBeforeDirectoryProbe is not relied on; it was inherited from the first diagnostic and is not a validated assertion in the failed-swap branch."
+    ]
+  },
+  "productionChanged": false,
+  "existingGeneralRecursiveDelete": "The existing primitive is intentionally recursive; this is a new consumer ownership mismatch, not a demonstrated existing package regression or outside-root breach.",
+  "times": "532.6348ms/184.5319ms are diagnostic helper-sequence wall durations before command process exit, not complete launch cost or security certification."
+}

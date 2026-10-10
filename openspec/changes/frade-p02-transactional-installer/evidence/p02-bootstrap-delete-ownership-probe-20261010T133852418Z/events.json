@@ -1,0 +1,342 @@
+[
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 1,
+      "deadlineMs": 10000,
+      "operation": "bind",
+      "root": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-bootstrap-ownership-DOouDN\\extensions"
+    }
+  },
+  {
+    "reply": {
+      "version": 1,
+      "requestId": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 70,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 2,
+      "deadlineMs": 10070,
+      "operation": "mkdir",
+      "path": [
+        "probe"
+      ]
+    }
+  },
+  {
+    "reply": {
+      "version": 1,
+      "requestId": 2,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 77,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 3,
+      "deadlineMs": 10077,
+      "operation": "write-open",
+      "path": [
+        "probe",
+        "pending.tmp"
+      ],
+      "maxBytes": 24
+    }
+  },
+  {
+    "reply": {
+      "handle": "3e5e6dd9ac524777925fe105ef5ecbf8",
+      "version": 1,
+      "requestId": 3,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 78,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 4,
+      "deadlineMs": 10078,
+      "operation": "write-chunk",
+      "handle": "3e5e6dd9ac524777925fe105ef5ecbf8",
+      "offset": 0,
+      "data": "b3duZWQtY2FwYWJpbGl0eS1wYXlsb2Fk"
+    }
+  },
+  {
+    "reply": {
+      "offset": 24,
+      "version": 1,
+      "requestId": 4,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 82,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 5,
+      "deadlineMs": 10082,
+      "operation": "write-close",
+      "handle": "3e5e6dd9ac524777925fe105ef5ecbf8",
+      "sha256": "9f6e9546de49f97406cabd8da16b12c8436f6fdf929d506661cd3d239bab154a"
+    }
+  },
+  {
+    "reply": {
+      "sha256": "9f6e9546de49f97406cabd8da16b12c8436f6fdf929d506661cd3d239bab154a",
+      "version": 1,
+      "requestId": 5,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 89,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 6,
+      "deadlineMs": 10089,
+      "operation": "replace",
+      "handle": "3e5e6dd9ac524777925fe105ef5ecbf8",
+      "parent": [
+        "probe"
+      ],
+      "name": "final.bin",
+      "sha256": "9f6e9546de49f97406cabd8da16b12c8436f6fdf929d506661cd3d239bab154a"
+    }
+  },
+  {
+    "reply": {
+      "sha256": "9f6e9546de49f97406cabd8da16b12c8436f6fdf929d506661cd3d239bab154a",
+      "version": 1,
+      "requestId": 6,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 92,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 7,
+      "deadlineMs": 10092,
+      "operation": "list",
+      "path": [
+        "probe"
+      ],
+      "limit": 128,
+      "cursor": null
+    }
+  },
+  {
+    "reply": {
+      "entries": [
+        {
+          "name": "final.bin",
+          "kind": "file",
+          "bytes": 24,
+          "identity": "f4fc2195001c0000001339c7"
+        }
+      ],
+      "cursor": null,
+      "version": 1,
+      "requestId": 7,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 97,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 8,
+      "deadlineMs": 10097,
+      "operation": "list",
+      "path": [
+        "probe"
+      ],
+      "limit": 128,
+      "cursor": null
+    }
+  },
+  {
+    "reply": {
+      "entries": [
+        {
+          "name": "final.bin",
+          "kind": "file",
+          "bytes": 24,
+          "identity": "f4fc2195001c0000001339c7"
+        }
+      ],
+      "cursor": null,
+      "version": 1,
+      "requestId": 8,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 98,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 9,
+      "deadlineMs": 10098,
+      "operation": "remove",
+      "path": [
+        "probe",
+        "final.bin"
+      ],
+      "kind": "file"
+    }
+  },
+  {
+    "reply": {
+      "version": 1,
+      "requestId": 9,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 101,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 10,
+      "deadlineMs": 10101,
+      "operation": "list",
+      "path": [
+        "probe"
+      ],
+      "limit": 128,
+      "cursor": null
+    }
+  },
+  {
+    "reply": {
+      "entries": [],
+      "cursor": null,
+      "version": 1,
+      "requestId": 10,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 103,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 11,
+      "deadlineMs": 10103,
+      "operation": "remove",
+      "path": [
+        "probe"
+      ],
+      "kind": "directory"
+    }
+  },
+  {
+    "reply": {
+      "version": 1,
+      "requestId": 11,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 110,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 12,
+      "deadlineMs": 10110,
+      "operation": "list",
+      "path": [],
+      "limit": 128,
+      "cursor": null
+    }
+  },
+  {
+    "reply": {
+      "entries": [
+        {
+          "name": ".coordinator.lock",
+          "kind": "file",
+          "bytes": 0,
+          "identity": "f4fc219500180000001339c5"
+        }
+      ],
+      "cursor": null,
+      "version": 1,
+      "requestId": 12,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 111,
+      "status": "ACK"
+    }
+  },
+  {
+    "command": {
+      "version": 1,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "requestId": 13,
+      "deadlineMs": 10111,
+      "operation": "dispose"
+    }
+  },
+  {
+    "reply": {
+      "version": 1,
+      "requestId": 13,
+      "session": "a37673d9-0771-44d2-8d3a-3d70220d52c6",
+      "generation": 1,
+      "clockMs": 113,
+      "status": "ACK"
+    }
+  }
+]
