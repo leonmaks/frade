@@ -11,7 +11,7 @@
 | Задача P02 | Статус |
 |---|---|
 |1.1 audit/baseline/accepted scope | COMPLETE |
-|1.2 strict/PRE | strict/UIcompliancePASS; firstPRE FAIL; canonical input repaired; freshPRE NOT_RUN |
+|1.2 strict/PRE | strict/UIcompliancePASS; firstPRE FAIL; canonical input repaired; freshPRE DISPATCH_READY; candidate freezes at dispatch |
 |2.1 RED | NOT_RUN |
 |2.2 contracts/service/bridge | NOT_RUN |
 |2.3 crash/recovery/rollback | NOT_RUN |
@@ -24,7 +24,7 @@
 
 Blocker: canonical openspec/specs/theme-core/spec.md was absent from first packet; exact existing source SHAfc5def679bd51324b15fa00b407a44ca0922d0d606d1f2846fc62759faf203bf now selected. No code/design/spec or accepted scope/model changes; no new human permission required. Original FAIL never relabelled. Next: publish repair/FAIL checkpoint -> new fullfreeze/automatic freshPRE -> RED only after PASS. Merge protectionLOCAL_ONLY/NOT_CONFIGURED; right panel queued/visibilityunconfirmed.
 
-Git: accepted plan c123c79a/metadata6e48bbc2 published; PRE FAIL and completeness repair checkpoint publication PENDING. Authorized UI origin/ref only.
+Git: accepted plan c123c79a/metadata6e48bbc2 published; PRE FAIL/completeness checkpoint 3a7a16807ce294c34fad0dcc271c9b3a317609dd COMMITTED/PUSHED; remoteSHA verified; following metadata commit stores receipt. Authorized UI origin/ref only.
 
 ## Предыдущие записи сохранены
 
