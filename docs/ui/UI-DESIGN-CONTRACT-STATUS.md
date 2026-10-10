@@ -22,7 +22,7 @@ Updated 2026-10-10T01:27:56.844Z; branch codex/frade-ui-design-contract; owning 
 
 Current archive diagnostic/lint blockers resolved; historical52/53FAIL retained. Applicable archive checks59/59 + service/leaf typecheck + lint PASS. Next: actual filesystem containment/durability/readiness RED for staging and journal. [Raw failure/RCA](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-green1-fail-20261010T012751Z/root-cause.json). First failure52/53 retained, original assertions unchanged; repair passed exact original assertions before proceeding. No human decision needed. PRE PASS does not approve behavior or visuals; actual backend/effortNOT_CONFIRMED. Existing P01controls untouched. No blanket waiver. Right panelqueued; protectionLOCAL_ONLY/NOT_CONFIGURED.
 
-Git: PRE checkpoint793a8f51/metadataed05fa98 COMMITTED/PUSHED and remoteSHAverified; current3/9 archive validator checkpoint publication PENDING. Only authorized UI origin/ref.
+Git: PRE checkpoint793a8f51/metadataed05fa98 COMMITTED/PUSHED and remoteSHAverified; current3/9 archive component checkpoint 19cf95bffebd5c8ce42097cf0a108861274d0920 COMMITTED/PUSHED; remoteSHAverified; remainingP02 NOT_COMPLETE. Only authorized UI origin/ref.
 
 ## Previous records preserved
 
