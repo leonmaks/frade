@@ -32,7 +32,7 @@ Native production metadata handoffNOT_APPLIED. Current native9:4PASS/5FAIL — M
 
 Следующий шаг при PRE PASS: exact accepted production repair → unchanged native9 GREEN → expanded actual guard/adversary/protocol/lifecycle/death/deploy tests. При FAIL: RCA/coherent plan repair/strict/fresh PRE; production STOP. Staging/journal/recovery/IPC/UI, actual dev/rebuild/build/start, root/general/P01/BDD/security/a11y/visual/verify/cumulative POST/archive остаются открыты. READY_FOR_VERIFY:NO. Новых UI screenshots нет, инфраструктурный repair; P01 images/evidence неизменны.
 
-Git: planning checkpoint87ec6171/seal351722f4COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint publicationPENDING. Только origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, no force. Rightpanelqueued/visibilityunconfirmed; merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не является approval/evidence.
+Git: planning checkpoint87ec6171/seal351722f4COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint dfd69b6b918cd7ad312f27928c4759f5586fe05c COMMITTED/PUSHED; remoteSHAverified; metadata receipt follows. Только origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, no force. Rightpanelqueued/visibilityunconfirmed; merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не является approval/evidence.
 
 ## Предыдущие записи
 
