@@ -37,7 +37,7 @@
 
 ## Commit/push/панель
 
-Последний опубликованный HEAD a384bafb41ca43777c3450fb1dd2c73cc94e1dd8; current transport/deployment checkpoint publication PENDING. Только authorized origin git@github.com:leonmaks/frade.git, refs/heads/codex/frade-ui-design-contract; no force, remote SHA verification обязателен. Right panel queued/visibility unconfirmed. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Dashboard не approval/historical evidence.
+Последний опубликованный HEAD a384bafb41ca43777c3450fb1dd2c73cc94e1dd8; current transport/deployment checkpoint 915d674fc6a8444de30ce625120caa3677d45204 COMMITTED/PUSHED; remote SHA verified; publication metadata follows. Только authorized origin git@github.com:leonmaks/frade.git, refs/heads/codex/frade-ui-design-contract; no force, remote SHA verification обязателен. Right panel queued/visibility unconfirmed. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Dashboard не approval/historical evidence.
 
 ## Предыдущие записи — неизменная история
 
