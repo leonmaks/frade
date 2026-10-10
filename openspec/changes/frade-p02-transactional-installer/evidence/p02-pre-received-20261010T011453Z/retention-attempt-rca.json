@@ -1,0 +1,10 @@
+{
+  "atUtc": "2026-10-10T01:16:41.018Z",
+  "classification": "ENVIRONMENT",
+  "status": "PUBLICATION_HELPER_BINARY_ENCODING_DEFECT",
+  "failedChunk": "8ab751",
+  "cause": "Helper decoded a ZIP fixture as UTF8 while retaining binary packet; exact-byte guard rejected it before task/dashboard/Git edits. Original review and raw source remain unchanged.",
+  "action": "Preserve partial packet folder and failed helper immutably; create packet-exact with binary writes and verify every original size/hash before publication.",
+  "PRE": "PASS_UNCHANGED",
+  "productionChanged": false
+}

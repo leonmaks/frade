@@ -1,3 +1,31 @@
+# UI Design Contract: P02 PRE PASS;2/9 — BDD/TDD starting
+
+Updated 2026-10-10T01:16:41.703Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Original program98f387f and P02 baseline0ecaf449 retained; Guide1.0/tokens1.0.0; Routing independent.
+
+| Stage | Status |
+|---|---|
+| Foundation/P01 | ARCHIVED;3minor OPEN_ACCEPTED_DEFERRED/rawFAIL retained |
+| P02 transactional installer |2/9; freshPRE PASS; BDD/TDD next |
+| P03–P07 | NOT_STARTED; STOPbeforeP03 |
+
+| P02 task | Actual status |
+|---|---|
+|1.1 audit/scope/baseline | COMPLETE |
+|1.2 strict/independent PRE | COMPLETE; P02/canonical strict PASS; retryPRE PASS |
+|2.1 archive/semver fixtures RED | NEXT; NOT_RUN |
+|2.2 contracts/service/bridge | NOT_RUN |
+|2.3 crash/recovery/rollback | NOT_RUN |
+|2.4 Extensions UI/fallback | NOT_RUN |
+|3.1 checks/a11y/visual | NOT_RUN; no new screens/baselines |
+|3.2 verify/POST | NOT_RUN; gpt-6-sol/xhigh |
+|3.3 archive | NOT_RUN |
+
+[Raw PRE PASS](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T011453Z/output--result.md), [verified receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T011453Z/verification.json).203selectedfiles/135events/17raw; source/packet/request/plan/decision unchanged, exact CLI and confinement verified. Actual backend/effort NOT_CONFIRMED. First completenessFAIL remains immutable; no product/visual approval or generalP01waiver. Scope/model accepted; no pending human decision. Next meaningfulRED, then scopedimplementation. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibilityunconfirmed.
+
+Git: previousrepaircheckpoint3a7a1680/metadata86c473b3 published/remoteSHAverified. PRE PASS checkpoint PENDING publication. Authorized UI origin/ref only.
+
+## Previous records preserved
+
 # UI Design Contract: P02 PRE FAIL — packet completeness repair;1/9
 
 Обновлено 2026-10-10T00:52:04.681Z (Europe/Moscow). Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original baseline98f387f retained. Guide1.0/tokens1.0.0; Routing independent.
