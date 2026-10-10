@@ -1,12 +1,12 @@
-# Frade UI Design Contract — P02: требуется решение по защите ancestors
+# Frade UI Design Contract — P02: ancestor scope принят; fresh PRE DISPATCH_READY
 
-Обновлено 2026-10-10T07:19:03.542Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Исходный program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 сохранены. Guide v1.0. Routing независим; чужие ветки/код не изменены.
+Обновлено 2026-10-10T07:34:34.608Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Исходный program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 сохранены. Guide v1.0. Routing независим; чужие ветки/код не изменены.
 
 | Этап | Фактический статус |
 | --- | --- |
 | Audit/planning repair/foundation | CLOSED / ARCHIVED |
 | P01 theme resolver/preview | CLOSED / ARCHIVED; точные3minorOPEN_ACCEPTED_DEFERRED и rawFAIL сохранены |
-| P02 transactional installer | 3/9;2.2IN_PROGRESS/BLOCKED: native guard/owned-object defects, требуется архитектурное решение |
+| P02 transactional installer | 3/9;2.2IN_PROGRESS/BLOCKED: native guard/owned-object defects, scope принят, fresh PRE DISPATCH_READY |
 | P03 VS Code theme import | NOT_STARTED |
 | P04 icon registries | NOT_STARTED |
 | P05 isolated browser host | NOT_STARTED |
@@ -37,15 +37,17 @@
 - CapabilitiesNOT_VERIFIED; no shipping installer/native runtime integration claim. Full adversarial/protocol/death/deploy/dev/build/start/general/P01/security/UI/a11y/visual/verify/POST NOT_RUN.
 - Изменённых UI экранов нет: текущий ремонт инфраструктурный; новых screenshots нет. P01 baselines/evidence сохранены.
 
-## Необходимое решение
+## Принятое решение
 
-[Точный P02-ANCESTOR-METADATA-HANDOFF-01](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff.proposed.md), SHA256f3a9e8c266f1939d9b7d5012e064bd37291ac501108696e82ada012f44350c23. Предлагается после полного исходного bind/strong root/lease удерживать ту же внешнюю цепочку через перекрывающиеся metadata handles, сохранив все share masks и сильные root/child/source handles. Это меняет механизм защиты всей цепочки, а текущий design:217 разрешает только immediate parent. Диагностика нового варианта положительна для Main/sibling и проверенных атак, но не является полным security PASS. Native production/current active design не изменены в его пользу.
+[Точный P02-ANCESTOR-METADATA-HANDOFF-01](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff.proposed.md), SHA256f3a9e8c266f1939d9b7d5012e064bd37291ac501108696e82ada012f44350c23. Принято после полного исходного bind/strong root/lease удерживать ту же внешнюю цепочку через перекрывающиеся metadata handles, сохранив все share masks и сильные root/child/source handles. Это меняет механизм защиты всей цепочки, а текущий design:217 разрешает только immediate parent. Диагностика нового варианта положительна для Main/sibling и проверенных атак, но не является полным security PASS. Active proposal/design/spec/tasks согласованы; production native не изменён. Acceptance openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff-accepted-20261010T073434608Z.json.
 
-После принятия: точный acceptance → coherent plan → strict → automatic independent PRE gpt-6-sol/xhigh → actual TDD repair/native GREEN/full remaining checks. Если безопасность не доказана, STOP; ни одного waiver. Во всех случаях owned-object listing/cleanup сохраняют lease/guards и meaningful tests.
+Strict PASS; UI compliance PASS. Следующий шаг: automatic independent PRE gpt-6-sol/xhigh → actual TDD repair/native GREEN/full remaining checks. Если безопасность не доказана, STOP; ни одного waiver. Во всех случаях owned-object listing/cleanup сохраняют lease/guards и meaningful tests.
 
 ## Git и панель
 
-Guard decision/RED/checks checkpoint 035bfdd48ae4886b8abd4d0edddb6eb9e35fadd0 COMMITTED/PUSHED remoteSHAverified; metadata receipt follows. Публикация только в user-authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, безforce, с remote SHAverification. Rightpanelqueued/visibilityunconfirmed. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не заменяет approvals/raw evidence.
+Предыдущий decision checkpoint 299eaa0a036bdcb5fefa8bc7ec7d7c1f70db2bd4 COMMITTED/PUSHED remoteSHAverified; Current source/plan/evidence checkpoint publication preparing. Публикация только в user-authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, безforce, с remote SHAverification. Rightpanelqueued/visibilityunconfirmed. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не заменяет approvals/raw evidence.
+
+Точный accepted proposal SHA f3a9e8c266f1939d9b7d5012e064bd37291ac501108696e82ada012f44350c23. Review model по плану P02: PRE и POST gpt-6-sol/xhigh. Human acceptance не является test/gate/capability PASS; все5FAIL остаются открыты.
 
 ## Предыдущие записи
 
