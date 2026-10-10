@@ -170,3 +170,39 @@ Listing and cleanup SHALL reuse an already-held owned object only after exact pa
 
 - **WHEN** bounded enumeration encounters the exact held root lease, cached directory or pending file
 - **THEN** identity-checked reuse avoids self-conflicting reopen, borrowed pins remain held and cleanup preserves protected objects while reporting only actual checked deletion
+
+### Requirement: Identity-bound optional removal
+
+The existing remove operation SHALL accept optional expectedIdentity as24 lowercase hex and compare it with the actual held target before deletion. Missing, unsafe or mismatched targets MUST refuse before deletion. Invalid types/IDs and unknown fields MUST reject before effects. With no optional fields the original recursive contract SHALL remain unchanged.
+
+#### Scenario: Genuine identity mismatch during owned cleanup
+
+- **WHEN** a caller supplies a captured identity and the actual checked target differs, is missing or unsafe
+- **THEN** deletion refuses without removing the changed target or unknown bytes, retaining the checked parent and honest session outcome
+
+### Requirement: Empty-only checked directory removal
+
+Optional emptyOnly SHALL accept only literal true for directories. It MUST attempt only kernel empty-directory deletion and never recursively remove children. File plus emptyOnly and emptyOnly false MUST reject before effects. Nonempty or late-child refusal/uncertainty SHALL retain all unknown bytes and report REFUSED/UNKNOWN honestly.
+
+#### Scenario: Unknown child in held bootstrap directory
+
+- **WHEN** a genuine unknown child exists or arrives before empty-only deletion of the exact held directory
+- **THEN** the child is never recursively deleted and the directory cleanup refuses or reports UNKNOWN according to actual possible effects
+
+### Requirement: Bounded volatile bootstrap proof
+
+The Main-owned backend SHALL use only the accepted finite non-authoritative .frade-runtime-probe fixture under its bound root. Bounds SHALL remain3 ordinary entries,16KiB payload,4KiB owner/proof JSON,48 commands,60s overall and10s per command. VERIFIED MUST remain private and volatile, source/root/helper/generation-bound, and require complete checked proof and identity-bound empty-only cleanup. Query/build metadata SHALL remain NOT_VERIFIED.
+
+#### Scenario: Fresh successful bootstrap and interrupted fixture
+
+- **WHEN** a fresh absent fixture completes checked write/flush/same-parent publication/readback and normal cleanup, or startup finds a stale/unsafe/interrupted fixture
+- **THEN** only the fully successful current live context may become VERIFIED; stale or uncertain fixture blocks and preserves bytes without prefix cleanup, retry, reuse or persisted certificate
+
+### Requirement: Preserved coordinator authority during bootstrap
+
+Bootstrap metadata SHALL remain non-authoritative and write no package/state registry, presentation, staging, version, journal or COMMITTED marker. Package/state effects MUST retain the one coordinator's durable intent and valid COMMITTED authority. Installed-state recovery MUST complete before first paint; bootstrap proof MUST NOT substitute for it.
+
+#### Scenario: Bootstrap unavailable and installed state
+
+- **WHEN** bootstrap is unavailable or Main closes while installed state or a transaction exists
+- **THEN** no mixed generation or preference reset bypasses coordinated recovery, and shutdown invalidates callbacks and awaits actual helper disposal without weakening the dirty-work guard
