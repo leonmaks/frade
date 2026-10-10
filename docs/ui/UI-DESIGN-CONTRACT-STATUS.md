@@ -45,7 +45,7 @@ Strict PASS; UI compliance PASS. Следующий шаг: automatic independen
 
 ## Git и панель
 
-Предыдущий decision checkpoint 299eaa0a036bdcb5fefa8bc7ec7d7c1f70db2bd4 COMMITTED/PUSHED remoteSHAverified; Current source/plan/evidence checkpoint publication preparing. Публикация только в user-authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, безforce, с remote SHAverification. Rightpanelqueued/visibilityunconfirmed. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не заменяет approvals/raw evidence.
+Предыдущий decision checkpoint 299eaa0a036bdcb5fefa8bc7ec7d7c1f70db2bd4 COMMITTED/PUSHED remoteSHAverified; Current source/plan/evidence checkpoint 87ec6171be42f6283ce9b55c5e7229de98c8d7be COMMITTED/PUSHED; remoteSHAverified; metadata follows. Публикация только в user-authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, безforce, с remote SHAverification. Rightpanelqueued/visibilityunconfirmed. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не заменяет approvals/raw evidence.
 
 Точный accepted proposal SHA f3a9e8c266f1939d9b7d5012e064bd37291ac501108696e82ada012f44350c23. Review model по плану P02: PRE и POST gpt-6-sol/xhigh. Human acceptance не является test/gate/capability PASS; все5FAIL остаются открыты.
 
