@@ -1,0 +1,9 @@
+{
+  "classification": "TEST",
+  "defect": "new controlled-window fixture direct throw in finally violates no-unsafe-finally; non-EEXIST marker error could prevent child release",
+  "rawFAIL": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-lint-native42-window-20261010T090850559Z",
+  "repair": "Extract cleanup helper; attempt every marker, retain non-EEXIST first error, release child before propagating error. No assertions/deadlines/production changes.",
+  "beforeSHA": "bb93c11725332bf89dac75a8cd6315e95d1507153a19c47d9027a374c2421b8c",
+  "afterSHA": "578d45ffced138985a82bb4c4e4ec400b7c01cd2972049c5f5cfd4976a4252cc",
+  "original9PrefixUnchanged": true
+}

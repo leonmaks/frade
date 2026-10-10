@@ -496,16 +496,6 @@ it('retains the complete original guard set through missing-root and overlapping
     pending = resolve
     child.stdin.write(JSON.stringify({ version: 1, session, generation: 1, requestId: ++requestId, deadlineMs: 10000, operation, ...fields }) + '\n')
   })
-  const releaseWindowFixture = async () => {
-    let failure: unknown
-    for (const phase of phases) {
-      try { await fs.writeFile(prefix + phase, 'close', { flag: 'wx' }) } catch (error) {
-        if ((error as NodeJS.ErrnoException).code !== 'EEXIST') failure ??= error
-      }
-    }
-    if (child.exitCode === null && child.signalCode === null) { child.kill(); await closed }
-    if (failure) throw failure
-  }
   const observations: object[] = []
   try {
     const root = path.join(f.root, 'window-installed'), bind = send('bind', { root })
@@ -530,6 +520,11 @@ it('retains the complete original guard set through missing-root and overlapping
     expect(await fs.readFile(path.join(f.outside, 'sentinel'), 'utf8')).toBe('outside-original')
     console.log(JSON.stringify({ proof: 'INSTRUMENTED_FIXTURE_ONLY_NOT_RUNTIME_CAPABILITY', productionSourceSha256: sha(Buffer.from(production)), fixtureSourceSha256: sha(Buffer.from(instrumented)), compiler, buildArgs, phaseObservations: observations, originalNativeProductionUnchanged: true }))
   } finally {
-    await releaseWindowFixture()
+    for (const phase of phases) {
+      try { await fs.writeFile(prefix + phase, 'close', { flag: 'wx' }) } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== 'EEXIST') throw error
+      }
+    }
+    if (child.exitCode === null && child.signalCode === null) { child.kill(); await closed }
   }
 }))

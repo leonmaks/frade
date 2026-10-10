@@ -1,0 +1,193 @@
+{
+  "atUtc": "2026-10-10T09:10:57.718Z",
+  "authority": "openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff-accepted-20261010T073434608Z.json",
+  "PRE": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T080608Z",
+  "PREReportSha256": "70604f86bbda783a746ef2bfcd349739c428153df6acfb91aacfce1b92d2d321",
+  "nativeSourceSha256": "73ec4d15c7a91abb4d0dcc0d11b88bf2b91e209f222514cad4a24f1654580377",
+  "nativeTestSha256": "578d45ffced138985a82bb4c4e4ec400b7c01cd2972049c5f5cfd4976a4252cc",
+  "originalNative9PrefixByteIdentical": "7dce6193dc7cedb7b12077945a5c040a669cab1c75cfbfbdfdc29304a7f56526",
+  "actors": [
+    {
+      "file": "packages/extension-service/tests/fixtures/windows-nt-rename-actor.cs",
+      "sha256": "2bb6360d213aed3322839ccd4d7daefabb0a464ec2e35931dbe57b8038535f95",
+      "scope": "Each actual actor succeeds unbound and restores before bound attack; target guards restrict exact owned Temp fixture; closes checked"
+    },
+    {
+      "file": "packages/extension-service/tests/fixtures/windows-reparse-actor.cs",
+      "sha256": "bd506f19139772c217124ddc90daeaa42e9c49bad9ef2262e79d421c39ba5d31",
+      "scope": "Each actual actor succeeds unbound and restores before bound attack; target guards restrict exact owned Temp fixture; closes checked"
+    },
+    {
+      "file": "packages/extension-service/tests/fixtures/windows-preexisting-writer-actor.cs",
+      "sha256": "dda155ab67560c476051e498484e46b9be11e723efddd8312688e568e8f6ff75",
+      "scope": "Each actual actor succeeds unbound and restores before bound attack; target guards restrict exact owned Temp fixture; closes checked"
+    }
+  ],
+  "native": "42PASS",
+  "portableArchive": "102PASS",
+  "checks": [
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-native-canonical-codec-hex-build-current-20261010T082655599Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:26:56.465Z",
+        "label": "native-canonical-codec-hex-build-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "packages/extension-service/scripts/build-windows-filesystem.mjs"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "26b5b623d69c8e3915a4dc58a9e64ab75bf852b3d8f99acec1d9787a7c64d423",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-native42-window-cleanup-current-20261010T090959519Z",
+      "execution": {
+        "atUtc": "2026-10-10T09:10:17.619Z",
+        "label": "native42-window-cleanup-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "exec",
+          "vitest",
+          "run",
+          "tests/filesystem.windows.test.ts"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "6cfd71216f4274acd63fc8edcec8ed5f3c52119ce912ace438b8c795cbf0df3c",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-portable-native33-canonical-20261010T082920461Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:29:28.565Z",
+        "label": "portable-native33-canonical",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "exec",
+          "vitest",
+          "run",
+          "tests/archive.bdd.test.ts",
+          "tests/filesystem.protocol.test.ts"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "2826adeee26c08758ba2aa0a1ac8352c448aeff93950c3d166abb65a514a68c7",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-type-native42-window-cleanup-20261010T090957308Z",
+      "execution": {
+        "atUtc": "2026-10-10T09:10:00.114Z",
+        "label": "type-native42-window-cleanup",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "typecheck"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-lint-native42-window-cleanup-20261010T090955547Z",
+      "execution": {
+        "atUtc": "2026-10-10T09:09:59.918Z",
+        "label": "lint-native42-window-cleanup",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "lint"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "f742f989be94e529cde1c75bc31645378f1840908710384b8406b93407d056d9"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-strict-native39-actual-mutation-20261010T083514232Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:35:15.644Z",
+        "label": "strict-native39-actual-mutation",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+          "validate",
+          "frade-p02-transactional-installer",
+          "--strict"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "a56f6a1542e7b2de16505408befecd7afe8e6deb4c5f252195344b158007a5df",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-native39-actual-mutation-20261010T083506244Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:35:32.640Z",
+        "label": "ui-compliance-native39-actual-mutation",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "ui:compliance"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "3941025717819103b6d5913681a2e33ff857bc48fb13b5f0efdb89a98594090d",
+        "stderrSha256": "a9969ed6b164cf14846cf1d768ecbbd67bbb554e640c7722dbeffabde1402265"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-boundaries-native39-canonical-20261010T084141851Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:41:42.969Z",
+        "label": "boundaries-native39-canonical",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "check:boundaries"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "20ac408d28f07f362b82b85bf66a093881846c9defb27aab466f3884ea0f8dc0",
+        "stderrSha256": "11689d4067818dbbb751832cc7eeb7ee1508995980b21d0d168ed0f300f4df1f"
+      }
+    }
+  ],
+  "oldFAILPreserved": [
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-native-extended-guard-protocol-red-20261010T082009762Z",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-native-canonical-codec-rca-20261010T082350327Z",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-outer-metadata-compile-rca-20261010T081155520Z"
+  ],
+  "capabilities": "NOT_VERIFIED",
+  "remainingNativeProof": "Identity/case/drive-map changes, native chunks/deadline/frame/fault/kill/reopen/close and actual deployment/dev/build/start",
+  "installer": "STAGING_JOURNAL_RECOVERY_IPC_EXTENSIONS_UI_NOT_IMPLEMENTED",
+  "tasks": "3/9",
+  "POST": "NOT_RUN",
+  "READY_FOR_VERIFY": "NO"
+}
