@@ -1,3 +1,17 @@
+# Frade UI Design Contract — P02 S0 independent PRE PASS
+
+Обновлено 2026-10-10T14:25:42.438Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Guide1.0; original98f387f96b51b0ad139e3507c376ff1c3e8dec09; P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372. Routing независим.
+
+P02-BOOTSTRAP-OWNED-CLEANUP-01 ACCEPTED; exact scope/hash/complete scheme приняты, proposal/design/spec/tasks согласованы. Strict amended plan **PASS**. Automatic independent PRE **PASS** через shared confined harness, selected gpt-6-sol/xhigh. 85events/17raw/184packetfiles. Actual backend/effort NOT_CONFIRMED; CLI parameters проверены отдельно. Receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-bootstrap-pre-received-20261010T142456464Z/verification.json; raw report openspec/changes/frade-p02-transactional-installer/evidence/p02-bootstrap-pre-received-20261010T142456464Z/output--result.md. Блокеров S1 плана не найдено; checked identity/empty-only cleanup и non-authoritative bootstrap согласованы, historical leaf-swap EBUSY остаётся NOT_PROVEN.
+
+Focused PRE разрешает только принятый S1; не capability certificate, не закрытие P02/POST/visual. Production/native/Main в этом checkpoint не изменены; старые FAIL/NOT_RUN сохранены. P02 **3/9**,2.2 IN_PROGRESS; runtime/factory/Main/dev/start/staging/journal/recovery/Extensions UI/general/root/P01/a11y/visual/verify/cumulative POST/archive остаются открыты. Capabilities NOT_VERIFIED; READY_FOR_VERIFY:NO; STOPbeforeP03.
+
+Следующий шаг: Meaningful RED для expectedIdentity/emptyOnly и bounded bootstrap factory; затем S1 Main runtime/lifetime, действующие проверки по плану.
+
+Последний verified published HEAD 070a077a49f2ca98ab39b3a1ae21bc3d3cb078a0; PRE result checkpoint PENDING. Only authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи
+
 # Frade UI Design Contract — P02 S0: scope принят, подготовка PRE
 
 Обновлено 2026-10-10T14:04:38.413Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Original98f387f96b51b0ad139e3507c376ff1c3e8dec09; P02 baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; guide v1.0. Routing независим.
