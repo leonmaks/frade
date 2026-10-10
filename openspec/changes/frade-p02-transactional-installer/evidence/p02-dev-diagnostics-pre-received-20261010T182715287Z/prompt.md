@@ -1,0 +1,25 @@
+Независимый read-only PRE конкретного принятого P02-DEV-PRESENTATION-TIMING-DIAGNOSTICS-01. Reviewer exact approved plan: gpt-6-sol / xhigh. Active openspec/changes/frade-p02-transactional-installer; scope acceptance openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics-accepted-20261010T180630047Z.json, unchanged proposal SHA256ff75e18bad97b8c9e10da44c6404ec2a0e3539c34ef36a03b9c2a9b3355f283a. No UI/routing/installer closure. All earlier PROPOSED markers are immutable history superseded only by explicit acceptance. Inspect complete current proposal/design/spec/tasks and exact new decision. Require feasible coherent PLAN before source change, not future runtime proof already achieved.
+
+Current state supplied explicitly in openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-accepted-planning-20261010T180630047Z/review-current-state.json. S1guards/factory/Main alreadyimplemented. Previous independentPOST FAIL openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-received-20261010T165324969Z/output--result.md is binding historical/current blocker: real dev5000ms timeout cause unresolved, Mainquit despite rejectedhelperclose. Main actualcallback meaningfulRED→GREEN repaired,141unit/6canonicalruntime/type/lint/build actualPASS. Old service266/BDD266 PASS and old per-run records stay historical; new records include632source before/after. Current amended planning hashes intentionally differ from those pre-amendment records; actual unchanged production17paths have exact controls in planning provenance. New diagnostics have NOT been implemented; original renderer SHAc3161f1b0ced4d2036e524c6ca9d779041ef41d6ceab8924cad11ce814f1227f remainsunchanged.
+
+Assess exact narrow P01consumer adoption: renderer presentation-bootstrap inline import.meta.env.DEV fixedphase numeric console markers, at most10perboot, no newfunction/API/options/IPC/schema/message/network/storage, no session/document/path/settings/secret data; preserve existing operation order/await/error/listener/controllerinputs. Main/index devmonotonic markers around existing native/window/navigation/visibility/onReady/failure and strict fixedlabel/numeric-only forward to existing stdout; no new renderer privileges/IPC. Only existing new P02unit/e2e may append assertions and capture output. Production logging eliminated and absence checked. No5000ms/startpoint/reveal/ready/semantics/testtimeout/retry/assertion/Vite/dependency/domain/routing/P01archivetest/evidence changes. Genuine sourcebehavior preservation via AST removal of approved console statements plus dynamic existingcallback/renderer asserts, productionbundle absence and exact frozen controls. No mirror assertions weakened to hide failures.
+
+Historical cold/warm probes actualPASS (27.8/15.4s), HTTPinitial4423/1741ms ≠controllerpaint readiness. Do not treat them or latest passingcanonicalbatch as historicalfailure cause/waiver. Chosen strategy bounds at most3 canonical dev/rebuild45stest/240command, reassess afterfirst, STOP/NOT_PROVEN if no failure. Diagnostics only: any furtherrepair needs explicitscope+meaningfulRED. Do not declare all P02ready/verified/archive/P03. Missing future execution is not a PLAN completenessfailure; missing relevant inputs to judge plan is a blocker.
+
+Review correctness/architecture/approvedscope/coherence/testintegrity/isolation/provenance and whether limited observation can produce useful causal evidence without altering contract. Report only actual materialblockers with path/line/impact/minimalrepair; preferences are not blockers. Explicitly assess boundedmarker/privacy/DEV/build/actualMainreadyfilter semantics risks and stopcriteria. Full remainingtransaction/journal/recovery/lifecycle/UI/root/P01/a11y/visual/cumulativeverify/POST/archive are mandatory, out of focusedPRE not waived. Routing independent, no supplierwaiting. CLI selection exactplan; actualbackend/effortNOT_CONFIRMED.
+
+Use concise Russian findings with assessedscope/limitations, exactly one standalone line GATE_STATUS: PASS or GATE_STATUS: FAIL. Reviewer confined immutableauthorizedpacket; originalcheckout/otherworktrees/auth/globalsettings writes/network/apps denied by verified external harness; no testsrequiringwrites, no modifications or externalcalls. Owner verifies complete rawstream/exits/candidate/packet/request/plan/decisions hashes and preserves report unchanged.
+
+
+Approved owning stage selection (verify semantic plan approval; metadata is not approval):
+{
+  "stage": "P02 transactional installer",
+  "phase": "PRE",
+  "model": "gpt-6-sol",
+  "reasoningEffort": "xhigh",
+  "source": {
+    "path": "openspec/changes/frade-p02-transactional-installer/design.md",
+    "sha256": "fc8723f59ef3c6691dcff5739c2eed369cec439629ac6da079ac357196d73aa7",
+    "excerpt": "| P02 transactional installer | PRE | gpt-6-sol | xhigh |"
+  }
+}

@@ -1,0 +1,46 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/p02-extension-host.test.ts > DEV renderer records at most ten private numeric phases while preserving deferred ready and disposal
+AssertionError: expected [] to have a length of 10 but got +0
+
+- Expected
++ Received
+
+- 10
++ 0
+
+ ❯ tests/unit/p02-extension-host.test.ts:138:22
+    136|   f.instance.dispose(); f.instance.dispose()
+    137|   expect(f.controller.dispose).toHaveBeenCalledTimes(1)
+    138|   expect(f.messages).toHaveLength(10)
+       |                      ^
+    139|   expect(f.messages.map(row => row[1])).toEqual(rendererPhases)
+    140|   for (const row of f.messages) { expect(row).toHaveLength(3); expect(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/p02-extension-host.test.ts > actual Main diagnostic relay accepts only a bounded fixed renderer phase and finite numeric timing
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/unit/p02-extension-host.test.ts:157:34
+    155|     ts.forEachChild(node, visit)
+    156|   }
+    157|   visit(tree); expect(callbacks).toHaveLength(1)
+       |                                  ^
+    158|   const log = vi.fn(), code = ts.transpileModule('(' + callbacks[0].ge…
+    159|   const callback = vm.runInNewContext(code, { console: { info: log }, …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

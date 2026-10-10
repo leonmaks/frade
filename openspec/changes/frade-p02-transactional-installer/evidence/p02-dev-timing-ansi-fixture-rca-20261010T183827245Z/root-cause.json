@@ -1,0 +1,24 @@
+{
+  "atUtc": "2026-10-10T18:38:27.245Z",
+  "classification": "TEST",
+  "failure": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z",
+  "status": "5PASS1FAIL",
+  "cause": "Node console.info with FORCE_COLOR wraps numeric Main clock in ANSI SGR; new parser assumes adjacent plain number, therefore misses all genuine relay rows",
+  "actualBoots": 2,
+  "rendererRows": 19,
+  "visibilityTimings": [
+    {
+      "visibilityBefore": 1352.4314,
+      "show": 3575.7276,
+      "elapsedToShow": 2223.2962
+    },
+    {
+      "visibilityBefore": 536.1132,
+      "show": 1094.6424,
+      "elapsedToShow": 558.5292
+    }
+  ],
+  "historicalTimeout": "NOT_REPRODUCED, causeNOT_PROVEN",
+  "productionRepair": "none",
+  "plannedFixtureRepair": "strip only ANSI SGR for structured timing interpretation; original raw log retained, no env/global/logger/timeout/assertion changes"
+}

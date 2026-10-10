@@ -206,3 +206,17 @@ Bootstrap metadata SHALL remain non-authoritative and write no package/state reg
 
 - **WHEN** bootstrap is unavailable or Main closes while installed state or a transaction exists
 - **THEN** no mixed generation or preference reset bypasses coordinated recovery, and shutdown invalidates callbacks and awaits actual helper disposal without weakening the dirty-work guard
+
+### Requirement: Bounded DEV presentation timing diagnostics
+
+Development diagnostics SHALL emit only the accepted fixed phase labels and numeric timings, with at most ten renderer markers per boot. Diagnostics MUST preserve operation order, awaits, listeners, error propagation, readiness and the existing timeout. They MUST NOT add APIs, IPC, schemas or expose document, session, path, settings or credential payloads. Production logging MUST be eliminated.
+
+#### Scenario: Development phase observation and production preservation
+
+- **WHEN** the existing dev boot, ready acknowledgement and disposal execute, or the production bundle is built
+- **THEN** only bounded development markers may be captured, production omits them, and original behavior, APIs, timeout and regression assertions remain unchanged
+
+#### Scenario: Unreproduced historical timing failure
+
+- **WHEN** at most three approved instrumented canonical dev/rebuild attempts do not reproduce the earlier failure
+- **THEN** diagnostics report NOT_PROVEN and stop for reassessment without attributing a cause, waiving FAIL or changing timeout or assertions

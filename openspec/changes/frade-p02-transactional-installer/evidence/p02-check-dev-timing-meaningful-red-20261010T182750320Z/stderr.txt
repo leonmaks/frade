@@ -1,0 +1,50 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/p02-extension-host.test.ts > DEV renderer records at most ten private numeric phases while preserving deferred ready and disposal
+AssertionError: expected "spy" to be called with arguments: [ 7, 99 ]
+
+Number of calls: 0
+
+ ❯ tests/unit/p02-extension-host.test.ts:133:23
+    131|   expect(f.controller.refreshEnvironment).not.toHaveBeenCalled()
+    132|   f.resolveController(); await Promise.resolve(); await Promise.resolv…
+    133|   expect(f.api.ready).toHaveBeenCalledWith(7, 99); expect(f.controller…
+       |                       ^
+    134|   f.resolveHost(); await ready
+    135|   expect(f.controller.refreshEnvironment).toHaveBeenCalledTimes(1)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/unit/p02-extension-host.test.ts > production renderer retains ready and disposal but emits no diagnostic markers
+TypeError: hostReady is not a function
+ ❯ Object.resolveHost tests/unit/p02-extension-host.test.ts:122:145
+
+ ❯ tests/unit/p02-extension-host.test.ts:147:78
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/unit/p02-extension-host.test.ts > actual Main diagnostic relay accepts only a bounded fixed renderer phase and finite numeric timing
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/unit/p02-extension-host.test.ts:157:34
+    155|     ts.forEachChild(node, visit)
+    156|   }
+    157|   visit(tree); expect(callbacks).toHaveLength(1)
+       |                                  ^
+    158|   const log = vi.fn(), code = ts.transpileModule('(' + callbacks[0].ge…
+    159|   const callback = vm.runInNewContext(code, { console: { info: log }, …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

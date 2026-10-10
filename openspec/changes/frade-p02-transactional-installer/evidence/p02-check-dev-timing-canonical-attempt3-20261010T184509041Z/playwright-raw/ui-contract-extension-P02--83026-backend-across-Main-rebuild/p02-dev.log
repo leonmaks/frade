@@ -1,0 +1,134 @@
+$ pnpm build:utility && pnpm build:filesystem && pnpm copy:filesystem && electron-vite dev "--watch" "--inspect" "61768"
+$ vite build --config vite.utility.config.ts
+(node:47092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+vite v6.1.0 building for production...
+transforming...
+✓ 150 modules transformed.
+rendering chunks...
+computing gzip size...
+out/utility/index.cjs             0.05 kB │ gzip:  0.07 kB
+out/utility/paged-D9TBU87N.cjs   35.79 kB │ gzip: 11.22 kB
+out/utility/index-YDtQzKPC.cjs  288.97 kB │ gzip: 89.24 kB
+✓ built in 1.32s
+$ pnpm --filter @frade/extension-service build:filesystem
+$ node scripts/build-windows-filesystem.mjs
+{"status":"BUILT_INTEGRITY_ONLY","schemaVersion":1,"protocol":1,"platform":"windows-x64","source":"native/windows-filesystem.cs","sourceSha256":"145bad6cbc6a8c364e0952268c9ebe5a935a546be4b334ebb092df1556ba3d86","executable":"frade-filesystem.exe","executableSha256":"bc858b5c48989e990e77a9844a20aabaa2ce76ad274dab919b578d3264ad6fb4","executableBytes":30208,"compiler":"C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe","compilerSha256":"46809206887326d2d24db1eff1f3064de972c3451abe766b49111450a5e08e00","compilerVersion":"4.8.9221.0 built by: NET481REL1LAST_25H2","command":["C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe","/nologo","/target:exe","/platform:x64","/optimize+","/warnaserror+","/reference:System.Web.Extensions.dll","/out:C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\packages\\extension-service\\dist\\native\\frade-filesystem.exe","C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\packages\\extension-service\\native\\windows-filesystem.cs"],"compiledAtUtc":"2026-10-10T18:45:16.585Z","runtimeCapabilities":"NOT_VERIFIED","publisherTrust":"NOT_ASSERTED"}
+$ pnpm --filter @frade/extension-service copy:filesystem
+$ node scripts/copy-windows-filesystem.mjs
+{"status":"COPIED_INTEGRITY_ONLY","output":"C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\out\\extension-filesystem","sourceSha256":"145bad6cbc6a8c364e0952268c9ebe5a935a546be4b334ebb092df1556ba3d86","executableSha256":"bc858b5c48989e990e77a9844a20aabaa2ce76ad274dab919b578d3264ad6fb4","runtimeCapabilities":"NOT_VERIFIED","publisherTrust":"NOT_ASSERTED"}
+(node:41468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+vite v6.1.0 building SSR bundle for development...
+
+watching for file changes...
+
+build started...
+transforming...
+✓ 105 modules transformed.
+rendering chunks...
+out/main/index.cjs  334.96 kB
+built in 917ms.
+
+electron main process built successfully
+
+-----
+
+vite v6.1.0 building SSR bundle for development...
+
+watching for file changes...
+
+build started...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+out/preload/index.cjs  34.99 kB
+built in 140ms.
+
+electron preload scripts built successfully
+
+-----
+
+dev server running for the electron renderer process at:
+
+  ➜  Local:   http://127.0.0.1:5173/
+
+starting electron app...
+
+
+Debugger listening on ws://127.0.0.1:61768/9c28a518-3da0-4d96-9444-2c2b8203f40b
+For help, see: https://nodejs.org/learn/getting-started/debugging
+[frade:p02:main] native.before [33m115.8148[39m
+(node:49080) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `electron --trace-warnings ...` to show where the warning was created)
+[frade:p02:main] native.after [33m591.079[39m
+Frade extension backend {"state":"BACKEND_VERIFIED","installer":"NOT_IMPLEMENTED"}
+[frade:p02:main] window.before [33m597.12[39m
+[frade:p02:main] window.after [33m622.5035[39m
+[frade:p02:main] presentation.boot.before [33m624.6327[39m
+[frade:p02:main] presentation.boot.after [33m632.1672[39m
+[frade:p02:main] visibility.before [33m632.3249[39m
+[frade:p02:main] load.before [33m633.3986[39m
+[frade:p02:main] load.start [33m647.2928[39m
+Debugger attached.
+[frade:p02:relay] [33m1952.0094[39m [frade:p02:renderer] boot.enter 1318
+[frade:p02:relay] [33m1952.2338[39m [frade:p02:renderer] boot.input.before 1318.0999999940395
+[frade:p02:relay] [33m1953.4866[39m [frade:p02:renderer] boot.input.after 1319.5999999940395
+[frade:p02:relay] [33m1953.9317[39m [frade:p02:renderer] controller.before 1320.0999999940395
+[frade:p02:relay] [33m1955.0617[39m [frade:p02:renderer] controller.after 1321.2999999821186
+[frade:p02:relay] [33m1957.6179[39m [frade:p02:renderer] ready.enter 1323.699999988079
+[frade:p02:main] load.dom [33m1959.1128[39m
+[frade:p02:main] native.ready [33m1959.5055[39m
+[frade:p02:main] load.finish [33m1960.2449[39m
+[frade:p02:main] load.after [33m1960.3808[39m
+[frade:p02:relay] [33m2134.2558[39m [frade:p02:renderer] ready.controller.settled 1500.2999999821186
+[frade:p02:relay] [33m2134.4884[39m [frade:p02:renderer] ready.host.before 1500.2999999821186
+[frade:p02:main] presentation.ready [33m2134.9571[39m
+[frade:p02:main] visibility.show [33m2135.0578[39m
+[frade:p02:relay] [33m2160.9208[39m [frade:p02:renderer] ready.host.after 1526.0999999940395
+Debugger ending on ws://127.0.0.1:61768/9c28a518-3da0-4d96-9444-2c2b8203f40b
+For help, see: https://nodejs.org/learn/getting-started/debugging
+
+build started...
+✓ 0 modules transformed.
+out/main/index.cjs  334.96 kB
+built in 528ms.
+
+electron main process rebuilt successfully
+
+restarting electron app...
+
+
+Debugger listening on ws://127.0.0.1:61768/155cd7bf-4c45-4043-9ef3-3b30ab579965
+For help, see: https://nodejs.org/learn/getting-started/debugging
+[frade:p02:main] native.before [33m163.4749[39m
+(node:46336) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `electron --trace-warnings ...` to show where the warning was created)
+[frade:p02:main] native.after [33m406.8738[39m
+Frade extension backend {"state":"BACKEND_VERIFIED","installer":"NOT_IMPLEMENTED"}
+[frade:p02:main] window.before [33m412.7149[39m
+[frade:p02:main] window.after [33m434.1578[39m
+[frade:p02:main] presentation.boot.before [33m435.6594[39m
+[frade:p02:main] presentation.boot.after [33m446.1447[39m
+[frade:p02:main] visibility.before [33m446.3446[39m
+[frade:p02:main] load.before [33m447.7664[39m
+[frade:p02:main] load.start [33m456.1652[39m
+[frade:p02:relay] [33m730.7979[39m [frade:p02:renderer] boot.enter 282.5
+[frade:p02:relay] [33m731.0198[39m [frade:p02:renderer] boot.input.before 282.69999998807907
+[frade:p02:relay] [33m732.297[39m [frade:p02:renderer] boot.input.after 284.19999998807907
+[frade:p02:relay] [33m732.6722[39m [frade:p02:renderer] controller.before 284.59999999403954
+[frade:p02:relay] [33m733.83[39m [frade:p02:renderer] controller.after 285.69999998807907
+[frade:p02:relay] [33m736.4312[39m [frade:p02:renderer] ready.enter 288.2999999821186
+[frade:p02:main] load.dom [33m737.7045[39m
+[frade:p02:main] native.ready [33m738.0235[39m
+[frade:p02:main] load.finish [33m738.5957[39m
+[frade:p02:main] load.after [33m738.6951[39m
+[frade:p02:relay] [33m937.0674[39m [frade:p02:renderer] ready.controller.settled 488.89999997615814
+[frade:p02:relay] [33m937.2479[39m [frade:p02:renderer] ready.host.before 489
+[frade:p02:main] presentation.ready [33m937.8398[39m
+[frade:p02:main] visibility.show [33m937.9598[39m
+[frade:p02:relay] [33m962.3668[39m [frade:p02:renderer] ready.host.after 513.8999999761581
+Debugger attached.
+Debugger ending on ws://127.0.0.1:61768/155cd7bf-4c45-4043-9ef3-3b30ab579965
+For help, see: https://nodejs.org/learn/getting-started/debugging
+[frade:p02:relay] [33m3132.7176[39m [frade:p02:renderer] dispose 2684.5999999940395

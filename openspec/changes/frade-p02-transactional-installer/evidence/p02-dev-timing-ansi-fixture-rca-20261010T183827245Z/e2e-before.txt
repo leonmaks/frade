@@ -1,0 +1,164 @@
+import { test, expect, _electron as electron } from '@playwright/test'
+import fs from 'node:fs/promises'
+import { createHash } from 'node:crypto'
+import { createServer } from 'node:net'
+import { tmpdir } from 'node:os'
+import { resolve, join, dirname, basename } from 'node:path'
+import { spawn, spawnSync } from 'node:child_process'
+// eslint-disable-next-line no-empty-pattern
+test('P02 S1 built Main owns verified backend before paint and releases actual helper on shutdown', async ({}) => {
+  const parent = await fs.realpath(tmpdir()), profile = await fs.mkdtemp(join(parent, 'frade-p02-electron-'))
+  const app = await electron.launch({ args: [resolve('out/main/index.cjs')], env: { ...process.env, FRADE_USER_DATA: profile } })
+  let helperPid: number | undefined
+  try {
+    const page = await app.firstWindow()
+    await expect(page.getByRole('status')).toHaveText('Backend: ready')
+    await expect.poll(async () => { try { return await fs.readdir(join(profile, 'extensions')) } catch (e) { if ((e as NodeJS.ErrnoException).code === 'ENOENT') return []; throw e } }).toEqual(['.coordinator.lock'])
+    const parentPid = await app.evaluate(() => process.pid)
+    const ps = join(process.env.WINDIR!, 'System32/WindowsPowerShell/v1.0/powershell.exe')
+    const result = spawnSync(ps, ['-NoProfile', '-NonInteractive', '-Command', 'Get-CimInstance Win32_Process -Filter "ParentProcessId = ' + parentPid + '" | Where-Object { $_.Name -eq "frade-filesystem.exe" } | Select-Object -ExpandProperty ProcessId'], { encoding: 'utf8', windowsHide: true, timeout: 10000 })
+    expect(result.status, result.stderr).toBe(0)
+    const pids = result.stdout.trim().split(/\s+/).filter(Boolean).map(Number)
+    expect(pids).toHaveLength(1); helperPid = pids[0]; expect(helperPid).toBeGreaterThan(0)
+    expect(await fs.readdir(join(profile, 'extensions'))).not.toContain('.frade-runtime-probe')
+    await page.screenshot({ path: test.info().outputPath('p02-main.png'), fullPage: true })
+    expect(await page.evaluate(() => ({ node: typeof (window as any).require, ipc: typeof (window.frade as any).ipcRenderer }))).toEqual({ node: 'undefined', ipc: 'undefined' })
+  } finally {
+    await app.close()
+    if (helperPid) await expect.poll(() => { try { process.kill(helperPid!, 0); return true } catch { return false } }).toBe(false)
+    await cleanupProfile(profile, parent)
+  }
+})
+
+async function cleanupProfile(profile: string, parent: string) {
+    const root = join(profile, 'extensions')
+    try { await fs.rename(root, root + '-released'); await fs.rename(root + '-released', root) } catch (e) { if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e }
+    const actual = await fs.realpath(profile)
+    if (dirname(actual).toLowerCase() !== parent.toLowerCase() || !basename(actual).startsWith('frade-p02-electron-')) throw Error('UNSAFE_ELECTRON_PROFILE_CLEANUP')
+    await fs.rm(actual, { recursive: true })
+}
+
+
+class MainInspector {
+  private next = 1
+  private pending = new Map<number, { resolve: (v: any) => void; reject: (e: Error) => void }>()
+  private constructor(private readonly socket: WebSocket) {
+    socket.addEventListener('message', event => {
+      const row = JSON.parse(String(event.data)), pending = this.pending.get(row.id)
+      if (!pending) return
+      this.pending.delete(row.id)
+      if (row.error || row.result?.exceptionDetails) pending.reject(Error(JSON.stringify(row)))
+      else pending.resolve(row.result?.result?.value)
+    })
+    socket.addEventListener('close', () => { for (const p of this.pending.values()) p.reject(Error('OWNED_INSPECTOR_CLOSED')); this.pending.clear() })
+  }
+  static async connect(url: string) {
+    const socket = new WebSocket(url)
+    await new Promise<void>((resolve, reject) => { socket.addEventListener('open', () => resolve(), { once: true }); socket.addEventListener('error', () => reject(Error('OWNED_INSPECTOR_UNAVAILABLE')), { once: true }) })
+    return new MainInspector(socket)
+  }
+  ask(expression: string) {
+    const id = this.next++
+    return new Promise<any>((resolve, reject) => { this.pending.set(id, { resolve, reject }); this.socket.send(JSON.stringify({ id, method: 'Runtime.evaluate', params: { expression, returnByValue: true, awaitPromise: true } })) })
+  }
+  close() { this.socket.close() }
+}
+const electronApi = 'process.mainModule.require("electron")'
+async function helperOf(parentPid: number): Promise<number> {
+  const ps = join(process.env.WINDIR!, 'System32/WindowsPowerShell/v1.0/powershell.exe')
+  const row = spawnSync(ps, ['-NoProfile', '-NonInteractive', '-Command', 'Get-CimInstance Win32_Process -Filter "ParentProcessId = ' + parentPid + '" | Where-Object { $_.Name -eq "frade-filesystem.exe" } | Select-Object -ExpandProperty ProcessId'], { encoding: 'utf8', windowsHide: true, timeout: 10000 })
+  expect(row.status, row.stderr).toBe(0)
+  const pids = row.stdout.trim().split(/\s+/).filter(Boolean).map(Number)
+  expect(pids).toHaveLength(1); expect(pids[0]).toBeGreaterThan(0); return pids[0]
+}
+const alive = (pid: number) => { try { process.kill(pid, 0); return true } catch { return false } }
+for (const hook of ['start', 'dev'] as const) {
+  // eslint-disable-next-line no-empty-pattern
+  test('P02 S1 actual named ' + hook + ' hook owns backend' + (hook === 'dev' ? ' across Main rebuild' : ''), async ({}) => {
+    const workspace = resolve('../..'), source = join(workspace, 'apps/desktop/src/main/index.ts'), original = await fs.readFile(source), stat = await fs.stat(source)
+    const node = process.execPath
+    const manager = spawnSync('pnpm', ['--version'], { cwd: workspace, shell: process.platform === 'win32', windowsHide: true, encoding: 'utf8', timeout: 10000 })
+    expect(manager.status, manager.stderr).toBe(0)
+    expect('pnpm@' + manager.stdout.trim()).toBe(JSON.parse(await fs.readFile(join(workspace, 'package.json'), 'utf8')).packageManager)
+    const parent = await fs.realpath(tmpdir()), profile = await fs.mkdtemp(join(parent, 'frade-p02-electron-'))
+    const port = await freeInspectorPort()
+    const args = ['--filter', '@frade/desktop', hook, ...(hook === 'dev' ? ['--watch', '--inspect', String(port)] : ['--inspect=' + port])]
+    const child = spawn('pnpm', args, { cwd: workspace, windowsHide: true, shell: process.platform === 'win32', env: { ...process.env, FRADE_USER_DATA: profile, PATH: dirname(node) + ';' + process.env.PATH }, stdio: ['ignore', 'pipe', 'pipe'] })
+    let logs = '', exitCode: number | null | undefined, inspector: MainInspector | undefined
+    child.stdout.on('data', b => { logs += b.toString() }); child.stderr.on('data', b => { logs += b.toString() }); child.on('exit', code => { exitCode = code })
+    const urls = () => [...logs.matchAll(/Debugger listening on (ws:\/\/127\.0\.0\.1:\d+\/[^\s]+)/g)].map(m => m[1])
+    const ready = () => (logs.match(/"state":"BACKEND_VERIFIED"/g) ?? []).length
+    const footprint = async () => expect(await fs.readdir(join(profile, 'extensions'))).toEqual(['.coordinator.lock'])
+    const visible = async () => {
+      await expect.poll(() => inspector!.ask(electronApi + '.BrowserWindow.getAllWindows().some(w => w.isVisible())')).toBe(true)
+      await expect.poll(() => inspector!.ask(electronApi + '.BrowserWindow.getAllWindows()[0].webContents.executeJavaScript(\'document.querySelector("[role=status]").textContent\')')).toBe('Backend: ready')
+    }
+    let success = false
+    try {
+      await expect.poll(ready, { timeout: 30000 }).toBe(1)
+      expect(urls()).toHaveLength(1); inspector = await MainInspector.connect(urls()[0])
+      const firstMain = await inspector.ask('process.pid'), firstHelper = await helperOf(firstMain)
+      await footprint(); await visible()
+      const asset = await fs.readFile(resolve('out/extension-filesystem/frade-filesystem.exe')), assetSha = createHash('sha256').update(asset).digest('hex')
+      if (hook === 'dev') {
+        inspector.close(); inspector = undefined
+        await fs.utimes(source, new Date(), new Date()) // Real watch event, source bytes unchanged.
+        await expect.poll(ready, { timeout: 10000 }).toBe(2)
+        expect(logs).toContain('restarting electron app'); expect(urls()).toHaveLength(2)
+        inspector = await MainInspector.connect(urls()[1])
+        const nextMain = await inspector.ask('process.pid'), nextHelper = await helperOf(nextMain)
+        expect(nextMain).not.toBe(firstMain); expect(nextHelper).not.toBe(firstHelper)
+        await expect.poll(() => alive(firstHelper)).toBe(false)
+        await footprint(); await visible()
+        expect(createHash('sha256').update(await fs.readFile(resolve('out/extension-filesystem/frade-filesystem.exe'))).digest('hex')).toBe(assetSha)
+        expect(await fs.readFile(source)).toEqual(original)
+      }
+      const main = await inspector.ask('process.pid'), helper = await helperOf(main)
+      const png = await inspector.ask(electronApi + '.BrowserWindow.getAllWindows()[0].webContents.capturePage().then(img => img.toPNG().toString("base64"))')
+      await fs.writeFile(test.info().outputPath('p02-' + hook + '.png'), Buffer.from(png, 'base64'))
+      const ownedTree = treeOf(child.pid!)
+      await inspector.ask('setTimeout(() => ' + electronApi + '.app.quit(), 0); true')
+      inspector.close(); inspector = undefined
+      await expect.poll(() => alive(helper)).toBe(false)
+      await expect.poll(() => exitCode).toBe(0)
+      await expect.poll(() => ownedTree.filter(alive)).toEqual([])
+      expect(logs).not.toMatch(/shutdown unconfirmed|helper close unconfirmed/)
+      if (hook === 'dev') {
+        const rendererRows = [...logs.matchAll(/\[frade:p02:relay\] ([0-9]+(?:\.[0-9]+)?) \[frade:p02:renderer\] ([a-z.]+) ([0-9]+(?:\.[0-9]+)?)/g)]
+        expect(rendererRows.filter(row => row[2] === 'boot.enter')).toHaveLength(2)
+        for (const phase of ['boot.input.before', 'boot.input.after', 'controller.before', 'controller.after', 'ready.enter', 'ready.controller.settled', 'ready.host.before', 'ready.host.after']) expect(rendererRows.filter(row => row[2] === phase)).toHaveLength(2)
+        expect(rendererRows.length).toBeLessThanOrEqual(20)
+        expect([...logs.matchAll(/\[frade:p02:main\] presentation.ready /g)]).toHaveLength(2)
+      } else expect(logs).not.toMatch(/\[frade:p02:(?:renderer|main|relay)\]/)
+      await footprint(); success = true
+    } finally {
+      inspector?.close()
+      await fs.writeFile(test.info().outputPath('p02-' + hook + '.log'), logs)
+      const timingRows = [...logs.matchAll(/\[frade:p02:(main|relay)\] (?:([a-z.]+) )?([0-9]+(?:\.[0-9]+)?)(?: \[frade:p02:renderer\] ([a-z.]+) ([0-9]+(?:\.[0-9]+)?))?/g)].map(row => ({ source: row[1], phase: row[4] ?? row[2], mainClock: Number(row[3]), ...(row[5] ? { rendererClock: Number(row[5]) } : {}) }))
+      await fs.writeFile(test.info().outputPath('p02-' + hook + '-timing.json'), JSON.stringify({ clock: 'performance.now resets per Main/renderer generation; not cross-clock causal proof', timingRows }, null, 2))
+      if (!success && child.pid && exitCode === undefined) {
+        // Failure-only cleanup of this exact owned launch tree; never evidence of graceful close.
+        const ownedTree = treeOf(child.pid)
+        spawnSync(join(process.env.WINDIR!, 'System32/taskkill.exe'), ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true, timeout: 10000 })
+        await expect.poll(() => ownedTree.filter(alive)).toEqual([])
+      }
+      await fs.utimes(source, stat.atime, stat.mtime)
+      expect(await fs.readFile(source)).toEqual(original)
+      await cleanupProfile(profile, parent)
+    }
+  })
+}
+
+async function freeInspectorPort() {
+  const server = createServer()
+  await new Promise<void>((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', () => resolve()) })
+  const port = (server.address() as { port: number }).port
+  await new Promise<void>((resolve, reject) => server.close(error => error ? reject(error) : resolve()))
+  return port
+}
+function treeOf(launchPid: number): number[] {
+  const script = '$rows = @(Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId); $owned = @(' + launchPid + '); for ($pass = 0; $pass -lt 8; $pass++) { foreach ($row in $rows) { if (($owned -contains $row.ParentProcessId) -and !($owned -contains $row.ProcessId)) { $owned += $row.ProcessId } } }; $owned -join " "'
+  const row = spawnSync(join(process.env.WINDIR!, 'System32/WindowsPowerShell/v1.0/powershell.exe'), ['-NoProfile', '-NonInteractive', '-Command', script], { encoding: 'utf8', windowsHide: true, timeout: 10000 })
+  expect(row.status, row.stderr).toBe(0)
+  return row.stdout.trim().split(/\s+/).filter(Boolean).map(Number)
+}

@@ -123,10 +123,21 @@ for (const hook of ['start', 'dev'] as const) {
       await expect.poll(() => exitCode).toBe(0)
       await expect.poll(() => ownedTree.filter(alive)).toEqual([])
       expect(logs).not.toMatch(/shutdown unconfirmed|helper close unconfirmed/)
+      const timingText = logs.replace(new RegExp(String.fromCharCode(27) + '\\[[0-9;]*m', 'g'), '')
+      if (hook === 'dev') {
+        const rendererRows = [...timingText.matchAll(/\[frade:p02:relay\] ([0-9]+(?:\.[0-9]+)?) \[frade:p02:renderer\] ([a-z.]+) ([0-9]+(?:\.[0-9]+)?)/g)]
+        expect(rendererRows.filter(row => row[2] === 'boot.enter')).toHaveLength(2)
+        for (const phase of ['boot.input.before', 'boot.input.after', 'controller.before', 'controller.after', 'ready.enter', 'ready.controller.settled', 'ready.host.before', 'ready.host.after']) expect(rendererRows.filter(row => row[2] === phase)).toHaveLength(2)
+        expect(rendererRows.length).toBeLessThanOrEqual(20)
+        expect([...logs.matchAll(/\[frade:p02:main\] presentation.ready /g)]).toHaveLength(2)
+      } else expect(logs).not.toMatch(/\[frade:p02:(?:renderer|main|relay)\]/)
       await footprint(); success = true
     } finally {
       inspector?.close()
       await fs.writeFile(test.info().outputPath('p02-' + hook + '.log'), logs)
+      const timingText = logs.replace(new RegExp(String.fromCharCode(27) + '\\[[0-9;]*m', 'g'), '')
+      const timingRows = [...timingText.matchAll(/\[frade:p02:(main|relay)\] (?:([a-z.]+) )?([0-9]+(?:\.[0-9]+)?)(?: \[frade:p02:renderer\] ([a-z.]+) ([0-9]+(?:\.[0-9]+)?))?/g)].map(row => ({ source: row[1], phase: row[4] ?? row[2], mainClock: Number(row[3]), ...(row[5] ? { rendererClock: Number(row[5]) } : {}) }))
+      await fs.writeFile(test.info().outputPath('p02-' + hook + '-timing.json'), JSON.stringify({ clock: 'performance.now resets per Main/renderer generation; not cross-clock causal proof', timingRows }, null, 2))
       if (!success && child.pid && exitCode === undefined) {
         // Failure-only cleanup of this exact owned launch tree; never evidence of graceful close.
         const ownedTree = treeOf(child.pid)

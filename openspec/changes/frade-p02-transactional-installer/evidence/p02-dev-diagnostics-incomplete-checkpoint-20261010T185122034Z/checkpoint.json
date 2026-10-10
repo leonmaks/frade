@@ -1,0 +1,104 @@
+{
+  "atUtc": "2026-10-10T18:51:22.034Z",
+  "status": "INCOMPLETE_CHECKPOINT",
+  "baseline": "e4d408cd318b792c2c0b098c29166fc5721ddaa5",
+  "scope": "openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics-accepted-20261010T180630047Z.json",
+  "PRE": {
+    "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z",
+    "run": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-10T18-09-32-751Z-1f5db23c-1560-4d0d-bdf1-ed9e64e9ced6",
+    "atUtc": "2026-10-10T18:27:16.548Z",
+    "status": "PASS",
+    "gateStatus": "PASS",
+    "rawArtifacts": 17,
+    "packetFiles": 202,
+    "eventCount": 95,
+    "threadId": "01a1270b-ada2-7d40-baa2-8206fef5d378",
+    "reportSha256": "b8b73ffc6f08de5d0dfcffef4fef8470d81a40079b8941c853045d69fbbe3d4d",
+    "sourcePlanUnchanged": true,
+    "decisionUnchanged": true,
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "requestUnchanged": true,
+    "finalMessageEqualsReport": true,
+    "actualCliMatchesSelection": true,
+    "reviewPolicy": {
+      "stage": "P02 transactional installer",
+      "phase": "PRE",
+      "model": "gpt-6-sol",
+      "reasoningEffort": "xhigh",
+      "source": {
+        "path": "openspec/changes/frade-p02-transactional-installer/design.md",
+        "sha256": "fc8723f59ef3c6691dcff5739c2eed369cec439629ac6da079ac357196d73aa7",
+        "excerpt": "| P02 transactional installer | PRE | gpt-6-sol | xhigh |"
+      }
+    },
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "scope": "Exact accepted P02 DEV presentation timing diagnostics only; no repair/timeout/assertion/installer closure"
+  },
+  "partialVerification": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-stop-assessment-20261010T184907927Z/REPORT.md",
+  "currentInputManifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-02645d8c78f01164ea61f77fd4aa196f3ef18e4ae0e6b4a6d57d6ed05b0e262a/inputs.json",
+  "inputFiles": 634,
+  "sourceFiles": [
+    {
+      "path": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+      "bytes": 3950,
+      "sha256": "e7cadb37181c8bdabc31f2421f8137b384c141af3bff5c3cc8c4d8d8c6f5f74c"
+    },
+    {
+      "path": "apps/desktop/src/main/index.ts",
+      "bytes": 17597,
+      "sha256": "a972750a505830e3058a84cda3d00e98b91e230e739f1aba4f02b856a884bbae"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-extension.spec.ts",
+      "bytes": 12863,
+      "sha256": "27ebd8982481254ea5c063a8ec41c3963c48c4e0323a35b256245c7762279e64"
+    },
+    {
+      "path": "apps/desktop/tests/unit/p02-extension-host.test.ts",
+      "bytes": 21377,
+      "sha256": "e8b447832abd746a647eb5b1b9e8bcd9e0548fd2677edd0c729357a2592dfe9b"
+    }
+  ],
+  "rawEvidence": [
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 7749,
+      "sha256": "3d033cc3163cdb657447697bda2ae89723813ebfc86f848cdc32955ec1d1d932"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/playwright-raw/ui-contract-extension-P02--9e35c-med-start-hook-owns-backend/p02-start.log",
+      "bytes": 1110,
+      "sha256": "29a8b23152ede5966bb84b9fe951d8a2f7e7f8f255bfe054c43aab94171355be"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt2-20261010T184352983Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 7765,
+      "sha256": "01e1008c76077a80420845757dc94e995a5169e04c2fc039065df656d148f09f"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt3-20261010T184509041Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 7762,
+      "sha256": "591cf0cab9d2c7ed3c2435410cb25d393dc2c7b7b2671854cb938c0b1ac13cc2"
+    }
+  ],
+  "gates": {
+    "PRE": "PASS",
+    "S1POST": "FAIL",
+    "newPOST": "NOT_RUN",
+    "fullReadyForVerify": false
+  },
+  "tasks": "3/9;2.2unchecked, noS2orarchive/P03 advancement",
+  "pendingDecision": {
+    "proposal": "openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk.proposed.md",
+    "sha256": "45f679ba135d23b2f5b39156374de8b890fa9f217a853635fb3eb0726288df48",
+    "approved": false
+  },
+  "publication": {
+    "remote": "origin",
+    "url": "git@github.com:leonmaks/frade.git",
+    "ref": "refs/heads/codex/frade-ui-design-contract",
+    "authorizedBy": "User specified UI checkpoint and following checkpoints only in this branch; secrets/credentials excluded"
+  }
+}

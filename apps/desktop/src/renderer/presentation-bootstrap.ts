@@ -8,7 +8,10 @@ export function bootstrapPresentation(
   root: HTMLElement,
   options: { paint?: () => Promise<void>; media?: (query: string) => MediaQueryList } = {},
 ): { controller: ThemeController; ready(): Promise<void>; dispose(): void } {
+  if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'boot.enter', performance.now())
+  if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'boot.input.before', performance.now())
   const boot = parsePresentationBoot(api.getBoot())
+  if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'boot.input.after', performance.now())
   const media = options.media ?? ((query: string) => window.matchMedia(query))
   const dark = media('(prefers-color-scheme: dark)'),
     contrast = media('(prefers-contrast: more)'),
@@ -19,6 +22,7 @@ export function bootstrapPresentation(
     forcedColors: forced.matches,
   })
   applyRootSnapshot(root, boot.snapshot)
+  if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'controller.before', performance.now())
   const controller = createThemeController({
     sessionId: boot.sessionId,
     root,
@@ -40,6 +44,7 @@ export function bootstrapPresentation(
         api.reconcile(context, { version: 1, ...lastPublished }),
     },
   })
+  if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'controller.after', performance.now())
   let disposed = false,
     acknowledged = false,
     environmentPending = false,
@@ -57,9 +62,13 @@ export function bootstrapPresentation(
     controller,
     ready: () =>
       (readiness ??= (async () => {
+        if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'ready.enter', performance.now())
         await controller.whenReady()
+        if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'ready.controller.settled', performance.now())
         if (disposed) throw Error('Presentation bootstrap disposed')
+        if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'ready.host.before', performance.now())
         await api.ready(boot.bootRevision, controller.state().snapshot.revision)
+        if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'ready.host.after', performance.now())
         acknowledged = true
         if (environmentPending) {
           environmentPending = false
@@ -68,6 +77,7 @@ export function bootstrapPresentation(
       })()),
     dispose: () => {
       if (disposed) return
+      if (import.meta.env.DEV) console.info('[frade:p02:renderer]', 'dispose', performance.now())
       disposed = true
       for (const query of [dark, contrast, forced]) query.removeEventListener('change', changed)
       controller.dispose()

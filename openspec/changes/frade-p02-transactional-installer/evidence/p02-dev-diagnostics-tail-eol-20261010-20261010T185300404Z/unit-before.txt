@@ -1,0 +1,219 @@
+import { join } from 'node:path'
+import { describe, it, expect, vi } from 'vitest'
+import { ExtensionInstallerHost } from '../../src/main/extension-installer'
+import type { VerifiedFilesystem, createVerifiedFilesystem } from '@frade/extension-service'
+const context = (names = ['.coordinator.lock']) => ({ state: 'VERIFIED', rootEntries: names.map(name => ({ name })), dispose: vi.fn(async () => {}), request: vi.fn() }) as unknown as VerifiedFilesystem
+const unavailable = () => Object.assign(Error('WINDOWS_BACKEND_UNAVAILABLE'), { status: 'BACKEND_UNAVAILABLE' })
+describe('P02 S1 Main ownership and pre-paint boundary', () => {
+  it('owns fixed root, trusted source, one generation/context and idempotent actual disposal', async () => {
+    const live = context(), open = vi.fn(async (options: Parameters<typeof createVerifiedFilesystem>[0]) => { void options; return live }), host = new ExtensionInstallerHost('C:/profile', 'C:/built/extension-filesystem', { open })
+    const a = host.initialize(); expect(host.initialize()).toBe(a)
+    expect(await a).toEqual({ state: 'BACKEND_VERIFIED', installer: 'NOT_IMPLEMENTED' })
+    expect(open).toHaveBeenCalledTimes(1)
+    expect(open.mock.calls[0][0]).toMatchObject({ installationRoot: join('C:/profile', 'extensions'), distributionDirectory: 'C:/built/extension-filesystem', generation: 1 })
+    expect(open.mock.calls[0][0].sourceSha256).toMatch(/^[a-f0-9]{64}$/)
+    const closing = host.dispose(); expect(host.dispose()).toBe(closing); await closing
+    expect(live.dispose).toHaveBeenCalledTimes(1); await expect(host.initialize()).rejects.toThrow('EXTENSION_HOST_CLOSED')
+  })
+  it('invalidates pending generation before late completion; shutdown waits for real close', async () => {
+    let ready!: (c: VerifiedFilesystem) => void, closed!: () => void
+    const live = context(); live.dispose = vi.fn(() => new Promise<void>(resolve => { closed = resolve }))
+    const host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: () => new Promise(resolve => { ready = resolve }) })
+    const opening = host.initialize(), rejected = expect(opening).rejects.toThrow('EXTENSION_HOST_CLOSED')
+    let settled = false; const disposal = host.dispose().then(() => { settled = true })
+    ready(live); await Promise.resolve(); await Promise.resolve(); expect(settled).toBe(false)
+    closed(); await rejected; await disposal; expect(live.dispose).toHaveBeenCalledTimes(1)
+  })
+  for (const name of ['journal', 'registry.json', '.frade-runtime-probe']) it('blocks installed/ambiguous ' + name + ' before paint and releases context', async () => {
+    const live = context(['.coordinator.lock', name]), host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: async () => live })
+    await expect(host.initialize()).rejects.toThrow('EXTENSION_RECOVERY_REQUIRED'); await host.dispose()
+    expect(live.dispose).toHaveBeenCalled()
+  })
+  it('permits built-ins only on typed pre-effect unavailable and absence diagnostic; never certifies', async () => {
+    const host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: async () => { throw unavailable() }, rootAbsent: async () => true })
+    expect(await host.initialize()).toEqual({ state: 'UNAVAILABLE', code: 'WINDOWS_BACKEND_UNAVAILABLE' }); await host.dispose()
+  })
+  it('blocks unavailable with existing/uncertain state without resetting preferences', async () => {
+    const host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: async () => { throw unavailable() }, rootAbsent: async () => false })
+    await expect(host.initialize()).rejects.toThrow('WINDOWS_BACKEND_UNAVAILABLE'); await host.dispose()
+  })
+  it('never treats UNKNOWN as unavailable fallback even on absent root', async () => {
+    const rootAbsent = vi.fn(async () => true), host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: async () => { throw Object.assign(Error('UNCERTAIN_EFFECT'), { status: 'UNKNOWN' }) }, rootAbsent })
+    await expect(host.initialize()).rejects.toThrow('UNCERTAIN_EFFECT'); expect(rootAbsent).not.toHaveBeenCalled(); await host.dispose()
+  })
+})
+
+it('pending Main shutdown propagates unconfirmed late helper close instead of resolving', async () => {
+  let ready!: (c: VerifiedFilesystem) => void
+  const live = context(); live.dispose = vi.fn(async () => { throw Error('FILESYSTEM_CLOSE_UNCONFIRMED') })
+  const host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: () => new Promise(resolve => { ready = resolve }) })
+  const opening = host.initialize(), failedOpening = expect(opening).rejects.toThrow('FILESYSTEM_CLOSE_UNCONFIRMED')
+  const closing = host.dispose(), failedClosing = expect(closing).rejects.toThrow('FILESYSTEM_CLOSE_UNCONFIRMED')
+  ready(live); await failedOpening; await failedClosing
+})
+
+// Execute the actual Main callbacks extracted by TypeScript AST; no mirrored handler implementation.
+async function mainCallback(kind: 'quit' | 'visibility', close: () => Promise<void>) {
+  const fs = await import('node:fs/promises'), vm = await import('node:vm'), ts = await import('typescript')
+  const source = await fs.readFile(new URL('../../src/main/index.ts', import.meta.url), 'utf8')
+  const tree = ts.createSourceFile('index.ts', source, ts.ScriptTarget.Latest, true), callbacks: import('typescript').Expression[] = []
+  const visit = (node: import('typescript').Node) => {
+    if (ts.isCallExpression(node)) {
+      if (kind === 'quit' && ts.isPropertyAccessExpression(node.expression) && node.expression.expression.getText(tree) === 'app' && node.expression.name.text === 'on' && ts.isStringLiteral(node.arguments[0]) && node.arguments[0].text === 'before-quit') callbacks.push(node.arguments[1])
+      if (kind === 'visibility' && ts.isIdentifier(node.expression) && node.expression.text === 'createPresentationVisibility') callbacks.push(node.arguments[2])
+    }
+    ts.forEachChild(node, visit)
+  }
+  visit(tree); expect(callbacks).toHaveLength(1)
+  const app = { quit: vi.fn(), exit: vi.fn() }, backend = { stop: vi.fn(async () => {}) }, repository = { close: vi.fn(async () => {}) }, extensionInstaller = { dispose: vi.fn(close) }, log = { error: vi.fn() }
+  const js = ts.transpileModule('(' + callbacks[0].getText(tree) + ')', { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText
+  const callback = vm.runInNewContext('let quitting = false, quitConfirmed = false; ' + js, { app, backend, repository, extensionInstaller, console: log, window: undefined, closeApproved: true, WORKBENCH_CLOSE_CHANNEL: 'owned-test-close' }, { timeout: 1000 })
+  return { app, backend, repository, extensionInstaller, log, callback }
+}
+const settleMain = () => new Promise<void>(resolve => setImmediate(resolve))
+it('actual Main before-quit refuses success and repeated exit when helper close is unconfirmed', async () => {
+  const f = await mainCallback('quit', async () => { throw Error('FILESYSTEM_CLOSE_UNCONFIRMED') }), event = { preventDefault: vi.fn() }
+  f.callback(event); await settleMain(); expect(f.app.quit).not.toHaveBeenCalled(); expect(f.log.error).toHaveBeenCalled()
+  f.callback(event); await settleMain(); expect(event.preventDefault).toHaveBeenCalledTimes(2); expect(f.app.quit).not.toHaveBeenCalled()
+})
+it('actual Main before-quit blocks concurrent exit until helper close is confirmed', async () => {
+  let done!: () => void
+  const f = await mainCallback('quit', () => new Promise<void>(resolve => { done = resolve })), event = { preventDefault: vi.fn() }
+  f.callback(event); f.callback(event); await settleMain(); expect(event.preventDefault).toHaveBeenCalledTimes(2); expect(f.app.quit).not.toHaveBeenCalled(); expect(f.extensionInstaller.dispose).toHaveBeenCalledTimes(1)
+  done(); await settleMain(); expect(f.app.quit).toHaveBeenCalledTimes(1)
+  f.callback(event); expect(event.preventDefault).toHaveBeenCalledTimes(2)
+})
+it('actual startup failure callback cannot force app.exit on unconfirmed helper close', async () => {
+  const f = await mainCallback('visibility', async () => { throw Error('FILESYSTEM_CLOSE_UNCONFIRMED') })
+  f.callback('owned deterministic presentation refusal'); await settleMain(); expect(f.app.exit).not.toHaveBeenCalled(); expect(f.log.error).toHaveBeenCalled()
+})
+it('actual startup failure callback exits with failure only after confirmed helper close', async () => {
+  let done!: () => void
+  const f = await mainCallback('visibility', () => new Promise<void>(resolve => { done = resolve }))
+  f.callback('owned deterministic presentation refusal'); await settleMain(); expect(f.app.exit).not.toHaveBeenCalled(); done(); await settleMain(); expect(f.app.exit).toHaveBeenCalledWith(1)
+})
+
+// P02 exact DEV timing diagnostics: execute the actual renderer with private injected ports.
+async function rendererTiming(dev: boolean) {
+  const fs = await import('node:fs/promises'), vm = await import('node:vm'), ts = await import('typescript')
+  const source = await fs.readFile(new URL('../../src/renderer/presentation-bootstrap.ts', import.meta.url), 'utf8')
+  const tree = ts.createSourceFile('presentation-bootstrap.ts', source, ts.ScriptTarget.Latest, true)
+  const transformed = ts.transform(tree, [context => node => {
+    const visit = (n: import('typescript').Node): import('typescript').Node => n.getText(tree) === 'import.meta.env.DEV' ? (dev ? ts.factory.createTrue() : ts.factory.createFalse()) : ts.visitEachChild(n, visit, context)
+    return ts.visitNode(node, visit) as import('typescript').SourceFile
+  }])
+  const printed = ts.createPrinter().printFile(transformed.transformed[0] as import('typescript').SourceFile)
+  transformed.dispose()
+  const code = ts.transpileModule(printed, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS } }).outputText
+  const messages: unknown[][] = [], calls: string[] = [], listeners: Array<() => void> = []
+  let controllerReady!: () => void, hostReady!: () => void, clock = 0
+  const boot = { sessionId: 'PRIVATE_SESSION_MARKER', bootRevision: 7, snapshot: { revision: 11 }, durable: { revision: 5, generation: 3, transactionId: 'PRIVATE_TRANSACTION_MARKER', selection: { privatePath: 'PRIVATE_PATH_MARKER' } }, diagnostics: ['PRIVATE_DIAGNOSTIC_MARKER'] }
+  const controller = { whenReady: vi.fn(() => new Promise<void>(resolve => { controllerReady = resolve })), state: vi.fn(() => ({ snapshot: { revision: 99 } })), refreshEnvironment: vi.fn(async () => {}), dispose: vi.fn() }
+  const create = vi.fn((options: unknown) => { void options; calls.push('controller'); return controller })
+  const media = vi.fn(() => ({ matches: false, addEventListener: vi.fn((_name: string, listener: () => void) => { listeners.push(listener) }), removeEventListener: vi.fn() }))
+  const api = { getBoot: vi.fn(() => { calls.push('getBoot'); return boot }), ready: vi.fn((bootRevision: number, rootRevision: number) => { void bootRevision; void rootRevision; calls.push('api.ready'); return new Promise<void>(resolve => { hostReady = resolve }) }) }
+  const exports = {} as { bootstrapPresentation: typeof import('../../src/renderer/presentation-bootstrap').bootstrapPresentation }
+  vm.runInNewContext(code, { exports, require: (name: string) => {
+    if (name === '@frade/runtime-contracts') return { parsePresentationBoot: (input: unknown) => { expect(input).toBe(boot); calls.push('parse'); return boot } }
+    if (name === '@frade/ui-workspace/design/theme') return { createThemeController: create, applyRootSnapshot: vi.fn(() => { calls.push('projection') }) }
+    throw Error('UNEXPECTED_DIAGNOSTIC_IMPORT ' + name)
+  }, console: { info: (...args: unknown[]) => messages.push(args) }, performance: { now: () => ++clock } }, { timeout: 1000 })
+  const instance = exports.bootstrapPresentation(api as unknown as import('@frade/runtime-contracts').PresentationApi, {} as HTMLElement, { media: media as unknown as (query: string) => MediaQueryList })
+  return { instance, api, controller, create, media, listeners, messages, calls, resolveController: () => controllerReady(), resolveHost: () => hostReady() }
+}
+const rendererPhases = ['boot.enter', 'boot.input.before', 'boot.input.after', 'controller.before', 'controller.after', 'ready.enter', 'ready.controller.settled', 'ready.host.before', 'ready.host.after', 'dispose']
+it('DEV renderer records at most ten private numeric phases while preserving deferred ready and disposal', async () => {
+  const f = await rendererTiming(true)
+  expect(f.calls).toEqual(['getBoot', 'parse', 'projection', 'controller'])
+  const ready = f.instance.ready(); expect(f.instance.ready()).toBe(ready)
+  expect(f.controller.whenReady).toHaveBeenCalledTimes(1); expect(f.api.ready).not.toHaveBeenCalled()
+  for (const listener of f.listeners) listener()
+  expect(f.controller.refreshEnvironment).not.toHaveBeenCalled()
+  f.resolveController(); await vi.waitFor(() => expect(f.api.ready).toHaveBeenCalledWith(7, 99))
+  expect(f.api.ready).toHaveBeenCalledWith(7, 99); expect(f.controller.refreshEnvironment).not.toHaveBeenCalled()
+  f.resolveHost(); await ready
+  expect(f.controller.refreshEnvironment).toHaveBeenCalledTimes(1)
+  f.instance.dispose(); f.instance.dispose()
+  expect(f.controller.dispose).toHaveBeenCalledTimes(1)
+  expect(f.messages).toHaveLength(10)
+  expect(f.messages.map(row => row[1])).toEqual(rendererPhases)
+  for (const row of f.messages) { expect(row).toHaveLength(3); expect(row[0]).toBe('[frade:p02:renderer]'); expect(typeof row[2]).toBe('number'); expect(Number.isFinite(row[2])).toBe(true) }
+  expect(JSON.stringify(f.messages)).not.toMatch(/PRIVATE_/)
+  expect(f.media).toHaveBeenCalledTimes(3)
+  for (const result of f.media.mock.results) expect(result.value.removeEventListener).toHaveBeenCalledTimes(1)
+})
+it('production renderer retains ready and disposal but emits no diagnostic markers', async () => {
+  const f = await rendererTiming(false), ready = f.instance.ready()
+  f.resolveController(); await vi.waitFor(() => expect(f.api.ready).toHaveBeenCalledWith(7, 99)); f.resolveHost(); await ready
+  f.instance.dispose(); expect(f.messages).toEqual([]); expect(f.api.ready).toHaveBeenCalledWith(7, 99); expect(f.controller.dispose).toHaveBeenCalledTimes(1)
+})
+it('actual Main diagnostic relay accepts only a bounded fixed renderer phase and finite numeric timing', async () => {
+  const fs = await import('node:fs/promises'), vm = await import('node:vm'), ts = await import('typescript')
+  const source = await fs.readFile(new URL('../../src/main/index.ts', import.meta.url), 'utf8'), tree = ts.createSourceFile('index.ts', source, ts.ScriptTarget.Latest, true), callbacks: import('typescript').Expression[] = []
+  const visit = (node: import('typescript').Node) => {
+    if (ts.isCallExpression(node) && node.expression.getText(tree) === 'wc.on' && ts.isStringLiteral(node.arguments[0]) && node.arguments[0].text === 'console-message') callbacks.push(node.arguments[1])
+    ts.forEachChild(node, visit)
+  }
+  visit(tree); expect(callbacks).toHaveLength(1)
+  const log = vi.fn(), code = ts.transpileModule('(' + callbacks[0].getText(tree) + ')', { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText
+  const callback = vm.runInNewContext(code, { console: { info: log }, performance: { now: () => 100 } }, { timeout: 1000 })
+  for (const phase of rendererPhases) callback({ message: '[frade:p02:renderer] ' + phase + ' 12.5' })
+  expect(log).toHaveBeenCalledTimes(10)
+  for (const row of log.mock.calls) { expect(row).toHaveLength(3); expect(row[0]).toBe('[frade:p02:relay]'); expect(row[1]).toBe(100); expect(row[2]).toMatch(/^\[frade:p02:renderer\] /) }
+  for (const message of ['PRIVATE_PATH_MARKER', '[frade:p02:renderer] bootXenter 1', '[frade:p02:renderer] ready.enter 1\n', '[frade:p02:renderer] unknown 1', '[frade:p02:renderer] ready.enter NaN', '[frade:p02:renderer] ready.enter Infinity', '[frade:p02:renderer] ready.enter -1', '[frade:p02:renderer] ready.enter 1 PRIVATE_SESSION_MARKER', '[frade:p02:renderer] ready.enter ' + '9'.repeat(1000), '[frade:p02:renderer] ready.enter 1\nPRIVATE_MARKER']) callback({ message })
+  expect(log).toHaveBeenCalledTimes(10)
+})
+// Normalize only the approved pure DEV markers/listeners and restore expression arrows.
+async function presentationDiagnosticAst(relative: string) {
+  const fs = await import('node:fs/promises'), ts = await import('typescript'), crypto = await import('node:crypto')
+  const source = await fs.readFile(new URL('../../src/' + relative, import.meta.url), 'utf8'), tree = ts.createSourceFile(relative, source, ts.ScriptTarget.Latest, true)
+  const guard = "typeof devTiming !== 'undefined' && devTiming"
+  const isDev = (node: import('typescript').Node) => ['import.meta.env.DEV', guard].includes(node.getText(tree))
+  const examine = (node: import('typescript').Node) => {
+    if (ts.isCallExpression(node)) {
+      const callee = node.expression.getText(tree)
+      if (callee === 'console.info') {
+        expect(node.arguments).toHaveLength(3)
+        expect(ts.isStringLiteral(node.arguments[0])).toBe(true)
+        expect(['[frade:p02:main]', '[frade:p02:renderer]', '[frade:p02:relay]']).toContain((node.arguments[0] as import('typescript').StringLiteral).text)
+      } else if (callee === 'wc.on') {
+        expect(ts.isStringLiteral(node.arguments[0])).toBe(true)
+        expect(['console-message', 'did-start-loading', 'dom-ready', 'did-finish-load', 'did-fail-load']).toContain((node.arguments[0] as import('typescript').StringLiteral).text)
+      } else expect(callee === 'performance.now' || callee === 'Number.isFinite' || callee === 'Number' || (ts.isPropertyAccessExpression(node.expression) && node.expression.name.text === 'exec' && ts.isRegularExpressionLiteral(node.expression.expression))).toBe(true)
+    }
+    if (ts.isBinaryExpression(node)) expect(node.operatorToken.kind < ts.SyntaxKind.FirstAssignment || node.operatorToken.kind > ts.SyntaxKind.LastAssignment).toBe(true)
+    expect(ts.isPostfixUnaryExpression(node) || ts.isDeleteExpression(node) || ts.isNewExpression(node)).toBe(false)
+    ts.forEachChild(node, examine)
+  }
+  const transformed = ts.transform(tree, [context => node => {
+    const visit = (n: import('typescript').Node): import('typescript').VisitResult<import('typescript').Node | undefined> => {
+      if (ts.isIfStatement(n) && isDev(n.expression)) { expect(n.elseStatement).toBeUndefined(); examine(n.thenStatement); return undefined }
+      if (ts.isVariableStatement(n) && n.declarationList.declarations.length === 1 && n.declarationList.declarations[0].name.getText(tree) === 'devTiming') {
+        expect(n.declarationList.declarations[0].initializer?.getText(tree)).toBe('import.meta.env.DEV'); return undefined
+      }
+      const visited = ts.visitEachChild(n, visit, context)
+      if (ts.isArrowFunction(visited) && ts.isBlock(visited.body) && visited.body.statements.length === 1 && ts.isReturnStatement(visited.body.statements[0]) && visited.body.statements[0].expression)
+        return ts.factory.updateArrowFunction(visited, visited.modifiers, visited.typeParameters, visited.parameters, visited.type, visited.equalsGreaterThanToken, visited.body.statements[0].expression)
+      return visited
+    }
+    return ts.visitNode(node, visit) as import('typescript').SourceFile
+  }])
+  const normalized = ts.createPrinter({ removeComments: true, newLine: ts.NewLineKind.LineFeed }).printFile(transformed.transformed[0] as import('typescript').SourceFile)
+  transformed.dispose(); return crypto.createHash('sha256').update(normalized).digest('hex')
+}
+it('approved renderer diagnostics preserve the exact pre-adoption operation AST', async () => {
+  expect(await presentationDiagnosticAst('renderer/presentation-bootstrap.ts')).toBe('14534e1e38f6d53cd7938679a56a9aebfefa70eb091745b3f94360452023ce0e')
+})
+it('approved Main diagnostics preserve all pre-adoption behavior and callbacks', async () => {
+  expect(await presentationDiagnosticAst('main/index.ts')).toBe('3e9fe4d5afbe7dab33eddd23c95fe0e554528784daa16068cd02fdedb55c328d')
+})
+
+it('actual runtime timing decoder removes only ANSI SGR and preserves every phase and numeric value', async () => {
+  const fs = await import('node:fs/promises'), vm = await import('node:vm'), ts = await import('typescript')
+  const source = await fs.readFile(new URL('../e2e/ui-contract-extension.spec.ts', import.meta.url), 'utf8'), tree = ts.createSourceFile('ui-contract-extension.spec.ts', source, ts.ScriptTarget.Latest, true), declarations: import('typescript').VariableDeclaration[] = []
+  const visit = (node: import('typescript').Node) => { if (ts.isVariableDeclaration(node) && node.name.getText(tree) === 'timingText') declarations.push(node); ts.forEachChild(node, visit) }
+  visit(tree); expect(declarations).toHaveLength(2)
+  const raw = '[frade:p02:relay] '+String.fromCharCode(27)+'[33m123.5'+String.fromCharCode(27)+'[39m [frade:p02:renderer] ready.host.after 45.25\n'
+  const expected = '[frade:p02:relay] 123.5 [frade:p02:renderer] ready.host.after 45.25\n'
+  for (const declaration of declarations) { const code = ts.transpileModule('const ' + declaration.getText(tree) + '; timingText', { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText; expect(vm.runInNewContext(code, { logs: raw }, { timeout: 1000 })).toBe(expected); const nonSgr = String.fromCharCode(27) + '33m'; expect(vm.runInNewContext(code, { logs: nonSgr }, { timeout: 1000 })).toBe(nonSgr) }
+})

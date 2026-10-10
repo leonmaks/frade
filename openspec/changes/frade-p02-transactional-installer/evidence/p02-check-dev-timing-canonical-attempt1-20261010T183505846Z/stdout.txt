@@ -1,0 +1,39 @@
+
+Running 6 tests using 1 worker
+
+  ok 1 tests\e2e\ui-contract-extension.spec.ts:9:1 › P02 S1 built Main owns verified backend before paint and releases actual helper on shutdown (6.1s)
+  ok 2 tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named start hook owns backend (8.4s)
+  x  3 tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named dev hook owns backend across Main rebuild (18.3s)
+  ok 4 tests\e2e\ui-contract-theme.spec.ts:483:1 › P01 real frame chord, Settings, System media and preview window-close preserve dirty KA and durable ownership (11.9s)
+  ok 5 tests\e2e\ui-contract-theme.spec.ts:656:1 › P01 actual required frame refusal restores prior presentation and exposes truthful live error without document writes (6.1s)
+  ok 6 tests\e2e\ui-contract-theme.spec.ts:1103:1 › P01 real staged filesystem obstruction refuses commit and restores before retry and restart (13.3s)
+
+
+  1) tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named dev hook owns backend across Main rebuild 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoHaveLength[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected length: [32m2[39m
+    Received length: [31m0[39m
+    Received array:  [31m[][39m
+
+      126 |       if (hook === 'dev') {
+      127 |         const rendererRows = [...logs.matchAll(/\[frade:p02:relay\] ([0-9]+(?:\.[0-9]+)?) \[frade:p02:renderer\] ([a-z.]+) ([0-9]+(?:\.[0-9]+)?)/g)]
+    > 128 |         expect(rendererRows.filter(row => row[2] === 'boot.enter')).toHaveLength(2)
+          |                                                                     ^
+      129 |         for (const phase of ['boot.input.before', 'boot.input.after', 'controller.before', 'controller.after', 'ready.enter', 'ready.controller.settled', 'ready.host.before', 'ready.host.after']) expect(rendererRows.filter(row => row[2] === phase)).toHaveLength(2)
+      130 |         expect(rendererRows.length).toBeLessThanOrEqual(20)
+      131 |         expect([...logs.matchAll(/\[frade:p02:main\] presentation.ready /g)]).toHaveLength(2)
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-extension.spec.ts:128:69
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-extension-P02--83026-backend-across-Main-rebuild\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-extension-P02--83026-backend-across-Main-rebuild\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named dev hook owns backend across Main rebuild 
+  5 passed (1.1m)

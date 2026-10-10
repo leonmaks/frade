@@ -1,3 +1,71 @@
+# P02 DEV diagnostics — incomplete checkpoint publication
+
+2026-10-10T18:51:22.034Z; owningUIbranch/worktree; accepteddiagnostics PREPASS+147unit/type/lint and bounded actualruntime evidence checked. STOP3/3 causeNOT_PROVEN; oldPOSTFAIL/newPOSTNOT_RUN, P02overall3/9. Checkpointcommitting/pushpending, priorpublishede4d408cd318b792c2c0b098c29166fc5721ddaa5. Exact634inputsverifiedbeforestaging;4approvedproduct/testpaths+4activeplanningfiles+acceptance/status/evidence, noforeignchanges. Originalrawlogs/traceforce-trackedexactly, noignorepolicyedit. openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-incomplete-checkpoint-20261010T185122034Z/checkpoint.json; completecurrentreportopenspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-stop-assessment-20261010T184907927Z/REPORT.md. PendingriskdecisionNOT_APPROVED openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk.proposed.md, SHA25645f679ba135d23b2f5b39156374de8b890fa9f217a853635fb3eb0726288df48; nowaiver.
+
+## Previous entries
+
+# P02 DEV diagnostics — bounded STOP / decision pending
+
+2026-10-10T18:49:07.927Z; owningcodex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; guide1.0; originalprogram98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372.
+
+| Stage/task | Actual status |
+| --- | --- |
+| Foundation/P01 | ARCHIVED, historicalexceptionspreserved |
+| P02overall | IN_PROGRESS3/9,2.2unchecked |
+| AcceptedDEVdiagnostics | IMPLEMENTED; exactscope/strict/automaticPREPASS;6newunitcases |
+| Currentchecks |147unit/19targeted/type/lintPASS; actualbuild/logabsence/AST135controls/boundaries/UIcompliancePASS |
+| Runtime |attempt1:5PASS1FAILnewTESTparserpreserved; decoderrepaired; attempts2/3:1PASS each, sixboots nooriginaltimeout |
+| Diagnosis |STOP3/3; historicalcauseNOT_PROVEN, nofourthattempt |
+| S1POST |HistoricalFAIL; Mainrepairchecked, freshPOSTNOT_RUN; noclosure |
+| Decision |NOT_APPROVED openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk.proposed.md, SHA25645f679ba135d23b2f5b39156374de8b890fa9f217a853635fb3eb0726288df48 |
+| Remaining2.2/2.3/2.4 |staging/journal/coordinator/filepicker/namedIPC/recovery/lifecycle/ExtensionsUINOT_DONE |
+|3.1–3.3 |fullroot/P01/a11y/visual/cumulativeverify/POST/archiveNOT_DONE |
+| P03–P07 |NOT_STARTED |
+
+FullREADY_FOR_VERIFY:NO; partialreportopenspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-stop-assessment-20261010T184907927Z/REPORT.md. Next exactriskdisposition or materiallydifferent boundedRCA plan. No expensivePOSTwhileknownblocker unresolved. CurrentdiagnosticcheckpointNOT_COMMITTED/NOT_PUSHED; priorpublishede4d408cd318b792c2c0b098c29166fc5721ddaa5. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. OldFAIL/NOT_RUN/evidenceimmutable.
+
+## Previous entries
+
+# P02 DEV diagnostics — final checksPASS, attempt3/3
+
+2026-10-10T18:46:43.040Z; owningUIbranch/worktree. Exactscopeaccepted/strictPREPASS. Finaltype/lint/fullunit147PASS;19targeteddiagnosticcasesPASS including exactANSI negative. ProductionMain/renderer unchanged since actualbundleabsence;135controls+ASTpreservationPASS. Sourcebinding634currentinputs. Firstbatch5PASS1FAIL newdecoderTEST defect, rawpreserved; correcteddevattempt2PASS, showcallback1659/507ms; historical5stimeoutNOT_REPRODUCED/causeNOT_PROVEN. Lastattempt3/3RUNNING, nofourthattemptauthorized.
+
+P02overall3/9,2.2unchecked; S1previousPOSTFAIL/Mainrepairchecked/freshPOSTNOT_RUN. No rootcausewaiver/fullverify/archive/P03. Next preserveattempt3evidence, STOP/reassess ifnorepro, thenpublishhonestincompletecheckpoint. Priorproductada11792/metadatae4d408cdPUSHED; diagnosticsNOT_COMMITTED/NOT_PUSHED. Rightpanelqueued, mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries
+
+# P02 DEV diagnostics — checksPASS, first canonical observation
+
+2026-10-10T18:35:05.737Z; own UI branch/worktree; guide1.0; exactaccepteddiagnostics strict/PREPASS. MeaningfulRED2FAIL16PASS→18targetedPASS; fullunit146PASS, final type/lint/build/boundaries/UIcompliancePASS. Type-only annotation correction emits byte-identical actualesbuildJS, reuse146PASS proof openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-visitor-type-rca-20261010T183149932Z/root-cause.json. ProductionMain+rendererbundles contain no diagnosticlabels;135selectedcontrolsunchanged and originalP02unitprefixpreserved. Current634sourceinputs before/after bound.
+
+Attempt1/3 scheduled: canonicalMain/start/devrebuild +originalP01coexistence6cases; no alteredtimeouts/assertions/retries/config. Reassess actualtimingsafterfirst; at most3instrumenteddevattempts. PreviousS1POSTFAIL/devcauseNOT_PROVEN stillopen; MainrepaircheckedbutfreshPOSTNOT_RUN. P02overall3/9,2.2unchecked; S2/fullroot/P01/a11y/visual/cumulativeverify/POST/archive remainopen, noP03. FullREADY_FOR_VERIFY:NO. NewdiagnosticscheckpointNOT_COMMITTED/NOT_PUSHED; lastpublishede4d408cd318b792c2c0b098c29166fc5721ddaa5. Rightpanelqueued/visibilityunconfirmed.
+
+## Previous entries
+
+# P02 DEV diagnostics — PRE PASS, meaningfulRED
+
+2026-10-10T18:27:38.517Z; own UI worktree/branch; exact user scope accepted, strictPASS and fresh read-onlyPRE Sol/xhigh PASS openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z, reportSHAb8b73ffc6f08de5d0dfcffef4fef8470d81a40079b8941c853045d69fbbe3d4d. Raw reports/events/exits preserved; candidate/packet/request/plan/decision unchanged; actualbackend/effortNOT_CONFIRMED. Existing new P02unit appended, production not yet changed. MeaningfulRED NOT_RUN. P02 remains3/9,2.2unchecked; previousS1POST FAIL/devcauseNOT_PROVEN retained; no waiver/fullverify/archive/P03.
+
+Next genuine RED then only accepted inlineDEV markers, source-boundchecks, production logging absence, bounded at most3canonicaldiagnostic attempts. Rightpanelqueued; currentacceptedplanning/REDcheckpoint NOT_COMMITTED/NOT_PUSHED, lastpublishede4d408cd318b792c2c0b098c29166fc5721ddaa5.
+
+## Previous entries
+
+# P02 DEV diagnostics — strictPASS, PRE prepared
+
+2026-10-10T18:08:39.090Z; own codex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; guide1.0. Exact user scope accepted; proposal/design/spec/tasks reconciled. StrictPASS openspec/changes/frade-p02-transactional-installer/evidence/p02-check-strict-dev-diagnostics-accepted-plan-20261010T180642832Z. Fresh automaticPRE Sol/xhigh PREPARED/NOT_RUN, 202files/2234658bytes. Productionunchanged, originalrendererc3161f1b0ced4d2036e524c6ca9d779041ef41d6ceab8924cad11ce814f1227f; no timeout/assertion change. P02 overall3/9,2.2unchecked; previousPOST FAIL/devcauseNOT_PROVEN/Mainrepairchecked retained. Full READY_FOR_VERIFY:NO.
+
+Strategy minimalexplicitpacket and unchanged requiredfullcandidate binding/canary; no redundant sandboxprobe or testbatch. Last fullharness~18min measured, forecastPRE8–20min notguarantee. Candidate/status/index frozen only duringdispatch; write outcomesafterunfreeze. Next automaticPRE, then meaningfulRED/only approvedDEVmarkers ifPASS. Planningcheckpoint NOT_COMMITTED/PUSHED; priorpublishede4d408cd318b792c2c0b098c29166fc5721ddaa5; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued.
+
+## Previous entries
+
+# P02 — exact diagnostic scope accepted, revalidation
+
+2026-10-10T18:06:30.047Z; own codex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; guide1.0; P02 remains3/9,2.2unchecked. Accepted openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics-accepted-20261010T180630047Z.json, exact proposalSHAff75e18bad97b8c9e10da44c6404ec2a0e3539c34ef36a03b9c2a9b3355f283a. Proposal/design/spec/tasks reconciled; original source unchanged, adoption hash captured. Strict/fresh automaticPRE Sol/xhigh NOT_RUN. PreviousS1POST FAIL and dev timeout causeNOT_PROVEN preserved, Mainclose repaired141unit/6runtime PASS but freshPOST NOT_RUN.
+
+Next strict validation → packet-bound read-only PRE → meaningfulRED before only acceptedDEV diagnostics. No5000ms/behavior/assertion change; at most3 attempts/reassess afterfirst. S2/fullchecks/verify/POST/archive/P03 remainopen. Productpublishedada11792, statuscheckpointpublishede4d408cd318b792c2c0b098c29166fc5721ddaa5; newacceptedplanning NOT_COMMITTED/NOT_PUSHED. Rightpanelqueued/visibilityunconfirmed, mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries
+
 # P02 S1 — checkpoint published, diagnostic decision pending
 
 2026-10-10T17:32:33.952Z; branch codex/frade-ui-design-contract; owning worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Guide1.0; originalProgram98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372.

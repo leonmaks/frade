@@ -1,0 +1,30 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/p02-extension-host.test.ts (19 tests | 1 failed) 701ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > owns fixed root, trusted source, one generation/context and idempotent actual disposal 5ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > invalidates pending generation before late completion; shutdown waits for real close 1ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > blocks installed/ambiguous journal before paint and releases context 1ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > blocks installed/ambiguous registry.json before paint and releases context 0ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > blocks installed/ambiguous .frade-runtime-probe before paint and releases context 0ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > permits built-ins only on typed pre-effect unavailable and absence diagnostic; never certifies 0ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > blocks unavailable with existing/uncertain state without resetting preferences 0ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > never treats UNKNOWN as unavailable fallback even on absent root 0ms
+   ✓ pending Main shutdown propagates unconfirmed late helper close instead of resolving 1ms
+   ✓ actual Main before-quit refuses success and repeated exit when helper close is unconfirmed  398ms
+   ✓ actual Main before-quit blocks concurrent exit until helper close is confirmed 17ms
+   ✓ actual startup failure callback cannot force app.exit on unconfirmed helper close 12ms
+   ✓ actual startup failure callback exits with failure only after confirmed helper close 13ms
+   ✓ DEV renderer records at most ten private numeric phases while preserving deferred ready and disposal 96ms
+   ✓ production renderer retains ready and disposal but emits no diagnostic markers 77ms
+   ✓ actual Main diagnostic relay accepts only a bounded fixed renderer phase and finite numeric timing 14ms
+   ✓ approved renderer diagnostics preserve the exact pre-adoption operation AST 10ms
+   ✓ approved Main diagnostics preserve all pre-adoption behavior and callbacks 28ms
+   × actual runtime timing decoder removes only ANSI SGR and preserves every phase and numeric value 23ms
+     → expected '' to be '\u001b33m' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 18 passed (19)
+   Start at  21:42:02
+   Duration  1.54s (transform 182ms, setup 0ms, collect 249ms, tests 701ms, environment 0ms, prepare 272ms)
+

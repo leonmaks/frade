@@ -1,0 +1,56 @@
+{
+  "atUtc": "2026-10-10T18:29:16.390Z",
+  "scope": "openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics-accepted-20261010T180630047Z.json",
+  "PRE": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z",
+  "RED": {
+    "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-meaningful-red-ready-20261010T182851839Z",
+    "status": "EXPECTED_RED",
+    "failed": 2,
+    "passed": 16,
+    "sourceBinding": {
+      "before": {
+        "atUtc": "2026-10-10T18:28:54.010Z",
+        "digest": "bca07c63c1511e418c91a35af69c760c12e2b6f02068e7ab3ba24facab90f10d",
+        "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-bca07c63c1511e418c91a35af69c760c12e2b6f02068e7ab3ba24facab90f10d/inputs.json",
+        "files": 634,
+        "bytes": 4499044
+      },
+      "after": {
+        "atUtc": "2026-10-10T18:28:57.890Z",
+        "digest": "bca07c63c1511e418c91a35af69c760c12e2b6f02068e7ab3ba24facab90f10d",
+        "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-bca07c63c1511e418c91a35af69c760c12e2b6f02068e7ab3ba24facab90f10d/inputs.json",
+        "files": 634,
+        "bytes": 4499044
+      },
+      "unchanged": true
+    }
+  },
+  "originalRendererSha256": "c3161f1b0ced4d2036e524c6ca9d779041ef41d6ceab8924cad11ce814f1227f",
+  "after": [
+    {
+      "path": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+      "bytes": 3950,
+      "sha256": "e7cadb37181c8bdabc31f2421f8137b384c141af3bff5c3cc8c4d8d8c6f5f74c"
+    },
+    {
+      "path": "apps/desktop/src/main/index.ts",
+      "bytes": 17597,
+      "sha256": "a972750a505830e3058a84cda3d00e98b91e230e739f1aba4f02b856a884bbae"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-extension.spec.ts",
+      "bytes": 12651,
+      "sha256": "d551a3036e2a917cac1150cd90e6271cc9f4bd11d82d3ac6acfb8d198911a36c"
+    },
+    {
+      "path": "apps/desktop/tests/unit/p02-extension-host.test.ts",
+      "bytes": 19967,
+      "sha256": "1226d6725625bee439b32a21e703b7a3ebc76bd86811008d07ee1e5244586675"
+    }
+  ],
+  "timeout": "unchanged5000ms and original startingpoint",
+  "behavior": "only exact DEV markers/observers; AST/dynamic preservation checks required",
+  "productionBundleAbsence": "NOT_RUN",
+  "runtimeAttempts": 0,
+  "remaining": "historicaldevcauseNOT_PROVEN/POSTFAIL/fullP02open"
+}

@@ -1,0 +1,32 @@
+{
+  "atUtc": "2026-10-10T18:27:38.517Z",
+  "acceptance": "openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics-accepted-20261010T180630047Z.json",
+  "PRE": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z",
+  "productionUnchanged": true,
+  "before": [
+    {
+      "path": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+      "bytes": 2901,
+      "sha256": "c3161f1b0ced4d2036e524c6ca9d779041ef41d6ceab8924cad11ce814f1227f"
+    },
+    {
+      "path": "apps/desktop/src/main/index.ts",
+      "bytes": 14838,
+      "sha256": "20ebcd6523c747efe0954709e0f9b2a91379782c0ae2070936ff5e4a6d873084"
+    },
+    {
+      "path": "apps/desktop/tests/unit/p02-extension-host.test.ts",
+      "bytes": 8649,
+      "sha256": "3d0bac0df3f752305bc5bc902a6348ee78bc29d8514eb29df0271bd084691370"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-extension.spec.ts",
+      "bytes": 11367,
+      "sha256": "1dc5ff78ec43603cff58c2b88ebf8215256a797cfd7c1885be2bc12b04883300"
+    }
+  ],
+  "appendedTestBytes": 11271,
+  "appendedTestSha256": "0ff5d9621bf09dac7bcd6a41e69684d174f82de2c12c39da760f4bbc41b79c3c",
+  "unitAfterSha256": "3a391712f4dfda24b34d2b573fdcc6521dfc0575a05dbfe38bb669d6a095ff7b",
+  "criteria": "actual renderer DEV phases/privacy/order/idempotent ready+dispose; production no logs; actual Main relay fixed/finite/private; precise AST behavior preservation"
+}

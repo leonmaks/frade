@@ -97,11 +97,14 @@ const backend = new BackendSupervisor(() => {
 })
 const extensionInstaller = new ExtensionInstallerHost(app.getPath('userData'), join(__dirname, '../extension-filesystem'))
 const devUrl = !app.isPackaged ? process.env.ELECTRON_RENDERER_URL : undefined
+const devTiming = import.meta.env.DEV
 app
   .whenReady()
   .then(async () => {
     if (devUrl && !trustedPage(devUrl, devUrl)) throw new Error('Invalid local development URL')
+    if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'native.before', performance.now())
     const extensionReadiness = await extensionInstaller.initialize()
+    if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'native.after', performance.now())
     console.info('Frade extension backend', JSON.stringify(extensionReadiness))
     const rendererRoot = join(__dirname, '../renderer')
     await protocol.handle('frade', async (request) => {
@@ -164,6 +167,7 @@ app
       callback(false),
     )
     session.defaultSession.setPermissionCheckHandler(() => false)
+    if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'window.before', performance.now())
     window = new BrowserWindow({
       width: 1280,
       minWidth: 620,
@@ -184,6 +188,19 @@ app
       },
     })
     const wc = window.webContents
+    if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'window.after', performance.now())
+    if (typeof devTiming !== 'undefined' && devTiming) {
+      wc.on('console-message', (event) => {
+        const message = event.message
+        if (message.length > 160) return
+        const matched = /^\[frade:p02:renderer\] (boot\.enter|boot\.input\.before|boot\.input\.after|controller\.before|controller\.after|ready\.enter|ready\.controller\.settled|ready\.host\.before|ready\.host\.after|dispose) ([0-9]+(?:\.[0-9]+)?)$/.exec(message)
+        if (matched && matched[0] === message && Number.isFinite(Number(matched[2]))) console.info('[frade:p02:relay]', performance.now(), message)
+      })
+      wc.on('did-start-loading', () => { console.info('[frade:p02:main]', 'load.start', performance.now()) })
+      wc.on('dom-ready', () => { console.info('[frade:p02:main]', 'load.dom', performance.now()) })
+      wc.on('did-finish-load', () => { console.info('[frade:p02:main]', 'load.finish', performance.now()) })
+      wc.on('did-fail-load', () => { console.info('[frade:p02:main]', 'load.fail', performance.now()) })
+    }
     const presentationEnvironment = {
       colorScheme: nativeTheme.shouldUseDarkColors ? ('dark' as const) : ('light' as const),
       highContrast: nativeTheme.shouldUseHighContrastColors,
@@ -201,16 +218,23 @@ app
       windowId: wc.id,
       devUrl,
       environment: presentationEnvironment,
-      onReady: (bootRevision, rootRevision) =>
-        visibility?.presentationReady(bootRevision, rootRevision),
+      onReady: (bootRevision, rootRevision) => {
+        if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'presentation.ready', performance.now())
+        return visibility?.presentationReady(bootRevision, rootRevision)
+      },
     })
+    if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'presentation.boot.before', performance.now())
     const presentationBoot = await presentation.initialize()
+    if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'presentation.boot.after', performance.now())
+    if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'visibility.before', performance.now())
     const visibility = createPresentationVisibility(
       presentationBoot,
       () => {
+        if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'visibility.show', performance.now())
         if (window && !window.isDestroyed()) window.show()
       },
       (reason) => {
+        if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'visibility.fail', performance.now())
         console.error('Presentation startup blocked', reason)
         void extensionInstaller.dispose().then(() => app.exit(1), (error) => { console.error('Extension helper close unconfirmed', error) })
       },
@@ -357,9 +381,14 @@ app
       void extensionInstaller.dispose().catch((error) => console.error('Extension helper close unconfirmed', error))
       window = undefined
     })
-    window.once('ready-to-show', () => visibility?.nativeReady())
+    window.once('ready-to-show', () => {
+      if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'native.ready', performance.now())
+      return visibility?.nativeReady()
+    })
     backend.start()
+    if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'load.before', performance.now())
     await window.loadURL(devUrl ?? 'frade://app/index.html')
+    if (typeof devTiming !== 'undefined' && devTiming) console.info('[frade:p02:main]', 'load.after', performance.now())
   })
   .catch((error) => {
     console.error('Desktop startup failed', error)
