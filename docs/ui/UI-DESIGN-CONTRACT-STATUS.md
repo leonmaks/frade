@@ -8,7 +8,7 @@ Additional OPEN blocker: Main settings atomics return EBUSY with all outer nativ
 
 Foundation/P01 ARCHIVED/3minorOPEN_ACCEPTED_DEFERRED/rawFAIL retained. P02 staging/journal/crash/recovery/IPC/ExtensionsUI/dev/build/start/full adversarial/static/root/P01/a11y/visual/verify/POST/archive NOT_RUN. P03–P07/later migration NOT_STARTED; STOPbeforeP03.
 
-Git planning09e71800/seal7b8330e8 COMMITTED/PUSHED remoteverified; currentPRE receipt checkpoint publicationPENDING. Only authorized UI origin/ref, noforce. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. Old reports and statuses remainbelow.
+Git planning09e71800/seal7b8330e8 COMMITTED/PUSHED remoteverified; currentPRE receipt checkpoint 3ae832f1c7174bdc681457967317cb10a49f1f93 COMMITTED/PUSHED; remoteSHAverified; metadata receipt follows. Only authorized UI origin/ref, noforce. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. Old reports and statuses remainbelow.
 
 ## Предыдущие записи
 
