@@ -1,0 +1,33 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+stdout | tests/filesystem.windows.test.ts > retains the complete original guard set through missing-root and overlapping handoff windows
+{"proof":"INSTRUMENTED_FIXTURE_ONLY_NOT_RUNTIME_CAPABILITY","productionSourceSha256":"73ec4d15c7a91abb4d0dcc0d11b88bf2b91e209f222514cad4a24f1654580377","fixtureSourceSha256":"eb00782a70ee239a2c5883e778aeb86444565f04c5b064b0edbce92e43495cc5","compiler":"C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe","buildArgs":["/nologo","/target:exe","/platform:x64","/optimize+","/warnaserror+","/reference:System.Web.Extensions.dll","/out:C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-native-z9VlnQ\\window-helper.exe","C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-native-z9VlnQ\\window-helper.cs"],"phaseObservations":[{"phase":"before-root-create","nt":{"stage":"open-delete","success":false,"error":32},"fsctl":{"stage":"open","success":false,"error":32}},{"phase":"full-bound","nt":{"stage":"open-delete","success":false,"error":32},"fsctl":{"stage":"open","success":false,"error":32}},{"phase":"replacement-set-overlap","nt":{"stage":"open-delete","success":false,"error":32},"fsctl":{"stage":"open","success":false,"error":32}},{"phase":"settled","nt":{"stage":"nt-same-parent-ancestor-rename","success":false,"error":5,"reparseRemoved":true,"restoreError":0},"fsctl":{"stage":"set-reparse","success":false,"error":145,"reparseRemoved":true,"deleteError":0}}],"originalNativeProductionUnchanged":true}
+
+ ✓ tests/filesystem.windows.test.ts (61 tests) 19574ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > binds an ordinary owned root and releases all directory handles on dispose  302ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > performs exclusive actual write, flush, same-parent absent-target rename and exact readback  599ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > retains the exclusive coordinator lease after owned-object enumeration  376ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native unknown field before a directory effect  331ms
+   ✓ P02FS004: canonical encoding keeps valid data and exact lexical rejection > still rejects duplicate native envelope keys before binding effects  439ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual nt-rename attempt on outer  568ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual nt-rename attempt on root  600ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual nt-rename attempt on child  608ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual reparse attempt on outer  698ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual reparse attempt on root  636ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual reparse attempt on child  771ms
+   ✓ P02FS001: preexisting writer refusal before guarded binding effects > refuses an incompatible writer on outer and releases a failed bind  869ms
+   ✓ P02FS001: preexisting writer refusal before guarded binding effects > refuses an incompatible writer on root and releases a failed bind  634ms
+   ✓ retains the complete original guard set through missing-root and overlapping handoff windows  2220ms
+   ✓ P02FS002/004: actual chunk, resource, publication and process-death boundaries > refuses chunk overflow without a file-byte effect  314ms
+   ✓ P02FS002/004: actual chunk, resource, publication and process-death boundaries > accepts exactly 64KiB chunks and contiguous offsets with exact final hash/readback  379ms
+   ✓ P02FS002/004: actual chunk, resource, publication and process-death boundaries > does not overwrite an existing directory publication target  498ms
+   ✓ P02FS002/004: actual chunk, resource, publication and process-death boundaries > reopens exact guarded bytes and root after real helper kill at open  301ms
+   ✓ P02FS002/004: actual chunk, resource, publication and process-death boundaries > reopens exact guarded bytes and root after real helper kill at sealed  314ms
+   ✓ P02FS002/004: actual chunk, resource, publication and process-death boundaries > reopens exact guarded bytes and root after real helper kill at published  464ms
+
+ Test Files  1 passed (1)
+      Tests  61 passed (61)
+   Start at  12:13:11
+   Duration  20.73s (transform 218ms, setup 0ms, collect 253ms, tests 19.57s, environment 0ms, prepare 434ms)
+

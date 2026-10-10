@@ -533,3 +533,212 @@ it('retains the complete original guard set through missing-root and overlapping
     await releaseWindowFixture()
   }
 }))
+
+
+async function expectNativeExit(child: ChildProcessWithoutNullStreams, code: number) {
+  if (child.exitCode !== null) { expect(child.exitCode).toBe(code); return }
+  const actual = await new Promise<number | null>((resolve, reject) => {
+    const timer = setTimeout(() => reject(Error('EXPECTED_NATIVE_EXIT_TIMEOUT')), 5000)
+    child.once('close', result => { clearTimeout(timer); resolve(result) })
+  })
+  expect(actual).toBe(code)
+}
+
+describe('P02FS002/004: actual chunk, resource, publication and process-death boundaries', () => {
+  const malformedChunks = [
+    ['wrong offset', { offset: 1, data: 'YQ==' }, 'INVALID_WRITE_OFFSET'],
+    ['empty bytes', { offset: 0, data: '' }, 'INVALID_CHUNK'],
+    ['noncanonical base64', { offset: 0, data: 'YR==' }, 'WRITE_LIMIT'],
+    ['invalid base64', { offset: 0, data: '!not-base64' }, 'INVALID_CHUNK'],
+    ['per-file overflow', { offset: 0, data: Buffer.from('ab').toString('base64') }, 'WRITE_LIMIT'],
+    ['chunk overflow', { offset: 0, data: Buffer.alloc(65537).toString('base64') }, 'WRITE_LIMIT'],
+  ] as const
+  for (const [name, fields, code] of malformedChunks) it('refuses ' + name + ' without a file-byte effect', () => fixture(async f => {
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    const opened = await f.send('write-open', { path: ['pending'], maxBytes: name === 'chunk overflow' ? 65537 : 1 })
+    expect(opened.status).toBe('ACK')
+    const refused = await f.send('write-chunk', { handle: opened.handle, ...fields })
+    expect(refused.status).toBe('REFUSED'); expect(refused.code).toBe(code)
+    await expectNativeExit(f.process, 2)
+    expect(await fs.readFile(path.join(f.root, 'pending'))).toEqual(Buffer.alloc(0))
+  }))
+  it('accepts exactly 64KiB chunks and contiguous offsets with exact final hash/readback', () => fixture(async f => {
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    const first = Buffer.alloc(65536, 37), last = Buffer.from('last'), bytes = Buffer.concat([first, last])
+    const opened = await f.send('write-open', { path: ['pending'], maxBytes: bytes.length })
+    expect(opened.status).toBe('ACK')
+    expect(await f.send('write-chunk', { handle: opened.handle, offset: 0, data: first.toString('base64') })).toMatchObject({ status: 'ACK', offset: first.length })
+    expect(await f.send('write-chunk', { handle: opened.handle, offset: first.length, data: last.toString('base64') })).toMatchObject({ status: 'ACK', offset: bytes.length })
+    expect((await f.send('write-close', { handle: opened.handle, sha256: sha(bytes), retainForPublication: false })).status).toBe('ACK')
+    const read = await f.send('read', { path: ['pending'], offset: first.length, length: last.length })
+    expect(read.status).toBe('ACK'); expect(Buffer.from(read.data, 'base64')).toEqual(last)
+    expect((await f.send('dispose')).status).toBe('ACK')
+    expect(await fs.readFile(path.join(f.root, 'pending'))).toEqual(bytes)
+  }))
+  it('refuses aggregate reserved byte overflow before creating another leaf', () => fixture(async f => {
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    expect((await f.send('write-open', { path: ['reserved'], maxBytes: 209715200 })).status).toBe('ACK')
+    expect(await f.send('write-open', { path: ['overflow'], maxBytes: 1 })).toMatchObject({ status: 'REFUSED', code: 'WRITE_RESOURCE_LIMIT' })
+    await expectNativeExit(f.process, 2)
+    expect((await fs.readdir(f.root)).sort()).toEqual(['.coordinator.lock', 'reserved'])
+    expect(await fs.readFile(path.join(f.root, 'reserved'))).toEqual(Buffer.alloc(0))
+  }))
+  it('refuses a wrong closing hash and releases the existing ordinary bytes', () => fixture(async f => {
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    const bytes = Buffer.from('original'), opened = await f.send('write-open', { path: ['pending'], maxBytes: bytes.length })
+    expect(opened.status).toBe('ACK')
+    expect((await f.send('write-chunk', { handle: opened.handle, offset: 0, data: bytes.toString('base64') })).status).toBe('ACK')
+    expect(await f.send('write-close', { handle: opened.handle, sha256: sha(Buffer.from('wrong')) })).toMatchObject({ status: 'REFUSED', code: 'HASH_MISMATCH' })
+    await expectNativeExit(f.process, 2)
+    expect(await fs.readFile(path.join(f.root, 'pending'))).toEqual(bytes)
+    await fs.rename(path.join(f.root, 'pending'), path.join(f.root, 'released'))
+    expect(await fs.readFile(path.join(f.root, 'released'))).toEqual(bytes)
+  }))
+  it('refuses writing a sealed held file without changing the sealed bytes', () => fixture(async f => {
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    const opened = await f.send('write-open', { path: ['pending'], maxBytes: 1 })
+    expect(opened.status).toBe('ACK')
+    expect((await f.send('write-close', { handle: opened.handle, sha256: sha(Buffer.alloc(0)) })).status).toBe('ACK')
+    expect(await f.send('write-chunk', { handle: opened.handle, offset: 0, data: 'YQ==' })).toMatchObject({ status: 'REFUSED', code: 'INVALID_WRITE_OFFSET' })
+    await expectNativeExit(f.process, 2)
+    expect(await fs.readFile(path.join(f.root, 'pending'))).toEqual(Buffer.alloc(0))
+  }))
+  it('refuses an exclusive write over an existing ordinary leaf', () => fixture(async f => {
+    const existing = path.join(f.root, 'existing'), bytes = Buffer.from('keep-original')
+    await fs.writeFile(existing, bytes)
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    expect((await f.send('write-open', { path: ['existing'], maxBytes: 1 })).status).toBe('REFUSED')
+    await expectNativeExit(f.process, 2)
+    expect(await fs.readFile(existing)).toEqual(bytes)
+  }))
+  for (const kind of ['ordinary', 'directory', 'junction', 'hardlink'] as const) it('does not overwrite an existing ' + kind + ' publication target', () => fixture(async f => {
+    const target = path.join(f.root, 'target'), old = Buffer.from('old-target')
+    if (kind === 'ordinary') await fs.writeFile(target, old)
+    if (kind === 'directory') { await fs.mkdir(target); await fs.writeFile(path.join(target, 'sentinel'), old) }
+    if (kind === 'junction') await fs.symlink(f.outside, target, 'junction')
+    if (kind === 'hardlink') await fs.link(path.join(f.outside, 'sentinel'), target)
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    const bytes = Buffer.from('new-source'), opened = await f.send('write-open', { path: ['pending'], maxBytes: bytes.length })
+    expect(opened.status).toBe('ACK')
+    expect((await f.send('write-chunk', { handle: opened.handle, offset: 0, data: bytes.toString('base64') })).status).toBe('ACK')
+    expect((await f.send('write-close', { handle: opened.handle, sha256: sha(bytes) })).status).toBe('ACK')
+    expect((await f.send('replace', { handle: opened.handle, parent: [], name: 'target', sha256: sha(bytes) })).status).toBe('UNKNOWN')
+    await expectNativeExit(f.process, 2)
+    expect(await fs.readFile(path.join(f.root, 'pending'))).toEqual(bytes)
+    if (kind === 'ordinary') expect(await fs.readFile(target)).toEqual(old)
+    if (kind === 'directory') expect(await fs.readFile(path.join(target, 'sentinel'))).toEqual(old)
+    if (kind === 'junction') expect((await fs.lstat(target)).isSymbolicLink()).toBe(true)
+    if (kind === 'hardlink') expect(await fs.readFile(target, 'utf8')).toBe('outside-original')
+  }))
+  it('refuses a different publication parent before an NT rename effect', () => fixture(async f => {
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    expect((await f.send('mkdir', { path: ['different'] })).status).toBe('ACK')
+    const opened = await f.send('write-open', { path: ['pending'], maxBytes: 0 })
+    expect(opened.status).toBe('ACK')
+    expect((await f.send('write-close', { handle: opened.handle, sha256: sha(Buffer.alloc(0)) })).status).toBe('ACK')
+    expect(await f.send('replace', { handle: opened.handle, parent: ['different'], name: 'target', sha256: sha(Buffer.alloc(0)) })).toMatchObject({ status: 'REFUSED', code: 'INVALID_PUBLICATION' })
+    await expectNativeExit(f.process, 2)
+    expect(await fs.readdir(path.join(f.root, 'different'))).toEqual([])
+    expect(await fs.readFile(path.join(f.root, 'pending'))).toEqual(Buffer.alloc(0))
+  }))
+  for (const point of ['open', 'sealed', 'published'] as const) it('reopens exact guarded bytes and root after real helper kill at ' + point, () => fixture(async f => {
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    const bytes = point === 'open' ? Buffer.alloc(0) : Buffer.from('survives-process-death')
+    const opened = await f.send('write-open', { path: ['pending'], maxBytes: bytes.length })
+    expect(opened.status).toBe('ACK')
+    if (point !== 'open') {
+      expect((await f.send('write-chunk', { handle: opened.handle, offset: 0, data: bytes.toString('base64') })).status).toBe('ACK')
+      expect((await f.send('write-close', { handle: opened.handle, sha256: sha(bytes) })).status).toBe('ACK')
+    }
+    if (point === 'published') expect((await f.send('replace', { handle: opened.handle, parent: [], name: 'final', sha256: sha(bytes) })).status).toBe('ACK')
+    const closed = new Promise<void>(resolve => f.process.once('close', () => resolve()))
+    expect(f.process.kill()).toBe(true); await closed
+    const name = point === 'published' ? 'final' : 'pending'
+    expect(await fs.readFile(path.join(f.root, name))).toEqual(bytes)
+    await fixture(async next => {
+      expect((await next.send('bind', { root: f.root })).status).toBe('ACK')
+      const read = await next.send('read', { path: [name], offset: 0, length: 65536 })
+      expect(read.status).toBe('ACK'); expect(Buffer.from(read.data, 'base64')).toEqual(bytes)
+      expect((await next.send('dispose')).status).toBe('ACK')
+    })
+    await fs.rename(f.root, f.root + '-released'); await fs.rename(f.root + '-released', f.root)
+    expect(await fs.readFile(path.join(f.root, name))).toEqual(bytes)
+  }))
+})
+
+
+async function actualMalformedFrame(f: Fixture, frame: Buffer, expected: { code?: string; errorType?: string }) {
+  const child = spawn(executable, [], { windowsHide: true, stdio: 'pipe' })
+  let output = ''
+  const closed = new Promise<number | null>(resolve => child.once('close', code => resolve(code)))
+  try {
+    const reply = new Promise<Record<string, any>>((resolve, reject) => {
+      const timer = setTimeout(() => { child.kill(); reject(Error('FRAME_FIXTURE_TIMEOUT')) }, 5000)
+      child.once('error', error => { clearTimeout(timer); reject(error) })
+      child.stdout.on('data', (bytes: Buffer) => {
+        output += bytes.toString('utf8')
+        if (output.length > 131072) { clearTimeout(timer); child.kill(); reject(Error('FRAME_REPLY_LIMIT')); return }
+        const end = output.indexOf('\n')
+        if (end >= 0) { clearTimeout(timer); try { resolve(JSON.parse(output.slice(0, end))) } catch (error) { reject(Error(String(error))) } }
+      })
+    })
+    child.stdin.end(frame)
+    expect(await reply).toMatchObject({ status: 'REFUSED', ...expected })
+    expect(await closed).toBe(2)
+    expect(await fs.readdir(f.root)).toEqual([])
+  } finally {
+    if (child.exitCode === null && child.signalCode === null) { child.kill(); await closed }
+  }
+}
+
+describe('P02FS004: actual native frame and cursor limits', () => {
+  it('refuses a frame beyond the actual 128KiB byte limit before binding', () => fixture(async f => {
+    await actualMalformedFrame(f, Buffer.concat([Buffer.alloc(131073, 32), Buffer.from('\n')]), { code: 'FRAME_LIMIT' })
+  }))
+  it('refuses a truncated frame at real stdin EOF without any root effect', () => fixture(async f => {
+    await actualMalformedFrame(f, Buffer.from('{"version":1'), { code: 'TRUNCATED_FRAME' })
+  }))
+  it('refuses malformed UTF8 rather than replacing invalid bytes', () => fixture(async f => {
+    await actualMalformedFrame(f, Buffer.from([0xc3, 0x28, 0x0a]), { errorType: 'DecoderFallbackException' })
+  }))
+  const envelopes = [
+    ['string generation', { generation: '1' }],
+    ['fractional generation', { generation: 1.5 }],
+    ['unsafe request number', { requestId: 9007199254740992 }],
+    ['future deadline', { deadlineMs: 60000 }],
+    ['unbound operation', { operation: 'mkdir', path: ['wrong'] }],
+  ] as const
+  for (const [name, fields] of envelopes) it('refuses ' + name + ' before binding effects', () => fixture(async f => {
+    const frame = JSON.stringify({ version: 1, session: randomUUID(), generation: 1, requestId: 1, deadlineMs: 10000, operation: 'bind', root: f.root, ...fields }) + '\n'
+    await actualMalformedFrame(f, Buffer.from(frame), {})
+  }))
+  it('paginates actual ordinary identities and invalidates the exhausted cursor', () => fixture(async f => {
+    const names = Array.from({ length: 130 }, (_, i) => 'item-' + String(i).padStart(3, '0'))
+    await Promise.all(names.map(name => fs.writeFile(path.join(f.root, name), name, { flag: 'wx' })))
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    const first = await f.send('list', { path: [], limit: 128, cursor: null })
+    expect(first.status).toBe('ACK'); expect(first.entries).toHaveLength(128)
+    expect(first.cursor).toMatch(/^[a-f0-9]{32}$/)
+    const second = await f.send('list', { path: [], limit: 128, cursor: first.cursor })
+    expect(second.status).toBe('ACK'); expect(second.entries).toHaveLength(3); expect(second.cursor).toBeNull()
+    const rows = [...first.entries, ...second.entries]
+    expect(rows.map((row: { name: string }) => row.name).sort()).toEqual(['.coordinator.lock', ...names])
+    expect(new Set(rows.map((row: { identity: string }) => row.identity)).size).toBe(131)
+    expect(await f.send('list', { path: [], limit: 128, cursor: first.cursor })).toMatchObject({ status: 'REFUSED', code: 'STALE_CURSOR' })
+    await expectNativeExit(f.process, 2)
+    for (const name of names) expect(await fs.readFile(path.join(f.root, name), 'utf8')).toBe(name)
+  }))
+  it('refuses a foreign cursor before returning directory contents', () => fixture(async f => {
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    expect(await f.send('list', { path: [], limit: 128, cursor: '0'.repeat(32) })).toMatchObject({ status: 'REFUSED', code: 'STALE_CURSOR' })
+    await expectNativeExit(f.process, 2)
+    expect(await fs.readdir(f.root)).toEqual(['.coordinator.lock'])
+  }))
+  it('refuses an excessive read before returning file bytes', () => fixture(async f => {
+    await fs.writeFile(path.join(f.root, 'ordinary'), 'original')
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    expect((await f.send('read', { path: ['ordinary'], offset: 0, length: 65537 })).status).toBe('REFUSED')
+    await expectNativeExit(f.process, 2)
+    expect(await fs.readFile(path.join(f.root, 'ordinary'), 'utf8')).toBe('original')
+  }))
+})

@@ -1,0 +1,27 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+stdout | tests/filesystem.windows.test.ts > retains the complete original guard set through missing-root and overlapping handoff windows
+{"proof":"INSTRUMENTED_FIXTURE_ONLY_NOT_RUNTIME_CAPABILITY","productionSourceSha256":"73ec4d15c7a91abb4d0dcc0d11b88bf2b91e209f222514cad4a24f1654580377","fixtureSourceSha256":"d81fa4f9b145852c84a45be551667116d1859ecaf51b6afc5347d9ee18b0d12e","compiler":"C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe","buildArgs":["/nologo","/target:exe","/platform:x64","/optimize+","/warnaserror+","/reference:System.Web.Extensions.dll","/out:C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-native-tooNBH\\window-helper.exe","C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-native-tooNBH\\window-helper.cs"],"phaseObservations":[{"phase":"before-root-create","nt":{"stage":"open-delete","success":false,"error":32},"fsctl":{"stage":"open","success":false,"error":32}},{"phase":"full-bound","nt":{"stage":"open-delete","success":false,"error":32},"fsctl":{"stage":"open","success":false,"error":32}},{"phase":"replacement-set-overlap","nt":{"stage":"open-delete","success":false,"error":32},"fsctl":{"stage":"open","success":false,"error":32}},{"phase":"settled","nt":{"stage":"nt-same-parent-ancestor-rename","success":false,"error":5,"reparseRemoved":true,"restoreError":0},"fsctl":{"stage":"set-reparse","success":false,"error":145,"reparseRemoved":true,"deleteError":0}}],"originalNativeProductionUnchanged":true}
+
+ ✓ tests/filesystem.windows.test.ts (72 tests) 19893ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > refuses an existing junction installation root without outside writes  319ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native expired deadline before a directory effect  316ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual nt-rename attempt on outer  526ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual nt-rename attempt on root  648ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual nt-rename attempt on child  835ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual reparse attempt on outer  627ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual reparse attempt on root  981ms
+   ✓ P02FS001: actual direct NT/FSCTL attacks with genuine setup proof > confines effects after actual reparse attempt on child  568ms
+   ✓ P02FS001: preexisting writer refusal before guarded binding effects > refuses an incompatible writer on outer and releases a failed bind  397ms
+   ✓ P02FS001: preexisting writer refusal before guarded binding effects > refuses an incompatible writer on root and releases a failed bind  408ms
+   ✓ retains the complete original guard set through missing-root and overlapping handoff windows  2440ms
+   ✓ P02FS002/004: actual chunk, resource, publication and process-death boundaries > accepts exactly 64KiB chunks and contiguous offsets with exact final hash/readback  548ms
+   ✓ P02FS002/004: actual chunk, resource, publication and process-death boundaries > reopens exact guarded bytes and root after real helper kill at open  322ms
+   ✓ P02FS004: actual native frame and cursor limits > paginates actual ordinary identities and invalidates the exhausted cursor  946ms
+
+ Test Files  1 passed (1)
+      Tests  72 passed (72)
+   Start at  12:15:12
+   Duration  21.21s (transform 237ms, setup 0ms, collect 274ms, tests 19.89s, environment 0ms, prepare 308ms)
+
