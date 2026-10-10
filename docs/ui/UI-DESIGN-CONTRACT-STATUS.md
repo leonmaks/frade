@@ -1,3 +1,15 @@
+# UI Design Contract: P02 journal planning repair strictPASS; freshPRE required;3/9
+
+Updated2026-10-10T04:26:46.700Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 retained; guide1.0. Routing independent.
+
+P02 task1.1/1.2(initial)/2.1 COMPLETE;2.2IN_PROGRESS/nativeNOT_IMPLEMENTED;2.3/2.4/3.1/3.2/3.3NOT_RUN. Foundation/P01ARCHIVED,3minor OPEN_ACCEPTED_DEFERRED/rawFAIL preserved; P03–P07NOT_STARTED.
+
+Windows PRE FAIL reportSHA6688c9d555397e16be4221c6dfeea0c851ae61adbac3cca19550409005529e3a preserved/published; one phase-publication protocol blocker. [Exact repair](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-journal-publication-planning-repair-20261010T042646Z/planning-repair.json): immutable phase records, absent targets/ReplaceIfExistsFALSE, old prefix retained, complete chain/validCOMMITTED authority, same-journal recoverydisposition. No scope expansion or waiver; strictPASS, freshPRE DISPATCH_READY; frozen at launch. Native tests/build/dev/start/staging/journal/UI/verify/POST/visual NOT_RUN. Compiler metadata exists; unchanged archive component59GREEN historical only.
+
+Next publish coherent repair -> freeze -> independent gpt-6-sol/xhigh PRE; nativeRED/implementation only afterPASS. No new human action currently needed. Current Git priorHEAD04e856b7d8c5d8fa93e4d243145c0b204ea6081a and WindowsPRE checkpoint5f147d630f6d4df60b605a6b92fe6c2eaf379824 COMMITTED/PUSHED/remoteSHAverified; repair publication preparing. Authorized UI origin/ref only; noforce. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. STOPbeforeP03.
+
+## Previous records retained
+
 # UI Design Contract: P02 Windows backend PRE FAIL;3/9
 
 Обновлено 2026-10-10T04:23:06.553Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved. Guide1.0. Routing independent.

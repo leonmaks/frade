@@ -37,7 +37,3 @@ Task2.1 complete: exact original/derived hashes and53 behavioral RED assertions 
 ## Windows backend fresh PRE result
 
 2026-10-10T04:20:34.732Z: GATE_STATUS FAIL; reportSHA6688c9d555397e16be4221c6dfeea0c851ae61adbac3cca19550409005529e3a;89completeevents/17raw/265files, exactCLI gpt-6-sol/xhigh and confinement/source/packet/request/decisionsPASS. Receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T042033Z/verification.json. Native backend remainsNOT_IMPLEMENTED; tasks3/9. One planning blocker: ambiguous existing journal target vs replace publication; specify one concrete phase publication/recovery protocol, strict and freshPRE before nativeRED/production. Actualbackend/effortNOT_CONFIRMED. OriginalFAIL/PASS preserved.
-
-## Journal publication planning repair
-
-2026-10-10T04:26:46.700Z: current Windows PRE FAIL preserved, one protocol ambiguity repaired in design within accepted P02-WINDOWS-FILESYSTEM-BACKEND-01. Tasks still3/9. Before task2.2 native RED/production: strict + fresh independentPRE gpt-6-sol/xhigh for immutable phase publication/authority/refusal/recovery algorithm. Task2.3 now explicitly maps existing/conflicting phase targets, actual chain validation, real kill/reopen before/after validCOMMITTED and RecoveryDisposition, with preserved old snapshots/hashes. Original task bodies/assertions unchanged; verify/POST/archive remainNOT_RUN; this plan repair is not gatePASS.

@@ -105,17 +105,3 @@ Frade SHALL build the first-party helper with an existing explicitly discovered 
 
 - **WHEN** compiler, CLR, architecture, supported filesystem, copied executable or integrity metadata is unavailable or inconsistent
 - **THEN** installer reports BACKEND_UNAVAILABLE or REFUSED without staging writes, while portable checks do not claim Windows PASS
-
-### Requirement: Unambiguous journal phase publication
-
-The single coordinator SHALL publish immutable ordered hash-linked phase records to previously absent final names with ReplaceIfExists false. Existing confirmed records MUST remain byte-present. Recovery SHALL validate the complete ordinal/hash/state chain and decide old versus new state only from a valid COMMITTED marker. Conflicts, gaps, forks and malformed authoritative records MUST block. Recovery dispositions SHALL share that journal and MUST NOT add a transaction phase.
-
-#### Scenario: Existing phase target and uncertain publication
-
-- **WHEN** a phase target exists, or rename or flush has an uncertain result
-- **THEN** publication never overwrites that target, confirmed prefix bytes remain and complete checked recovery recognizes a valid intent or blocks conflicting state without a false ACK
-
-#### Scenario: Valid commit marker and incomplete recovery
-
-- **WHEN** startup finds a valid incomplete transaction chain or a valid COMMITTED with a lost reply
-- **THEN** it restores old state before the marker or retains new state after it, verifies both durable stores before publishing a same-journal recovery disposition and refuses later operations until reconciliation completes
