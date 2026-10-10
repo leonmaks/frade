@@ -20,15 +20,6 @@ async function removeOwnedFixture(temp: string, tempParent: string) {
     !path.basename(resolved).startsWith('frade-p02-native-')) throw new Error('UNSAFE_FIXTURE_CLEANUP')
   await fs.rm(resolved, { recursive: true })
 }
-async function removeOwnedSiblings(source: string, target: string, tempParent: string) {
-  for (const owned of [source, target]) {
-    if (path.dirname(owned).toLowerCase() !== tempParent.toLowerCase() ||
-      !path.basename(owned).startsWith('frade-p02-owned-native-sibling-')) throw Error('UNSAFE_SIBLING_CLEANUP')
-    try { await fs.unlink(owned) } catch (error) {
-      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
-    }
-  }
-}
 async function fixture(run: (f: Fixture) => Promise<void>) {
   if (process.platform !== 'win32' || process.arch !== 'x64') throw new Error('WINDOWS_NATIVE_NOT_RUN_UNSUPPORTED_HOST')
   const integrity = JSON.parse(await fs.readFile(new URL('../dist/native/integrity.json', import.meta.url), 'utf8'))
@@ -142,63 +133,5 @@ describe('P02FS001–004: actual Windows checked handles and publication', () =>
     expect(restored.revision).toBeGreaterThan(committed.durable.revision)
     expect(JSON.parse(await fs.readFile(target, 'utf8'))).toEqual(restored)
     expect((await f.send('dispose')).status).toBe('ACK')
-  }))
-  it('lists the owned coordinator lease without reopening or releasing it', () => fixture(async f => {
-    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
-    const listing = await f.send('list', { path: [], limit: 128, cursor: null })
-    expect(listing.status).toBe('ACK')
-    expect(listing.entries).toHaveLength(1)
-    expect(listing.entries[0]).toMatchObject({ name: '.coordinator.lock', kind: 'file', bytes: 0 })
-    expect(listing.entries[0].identity).toMatch(/^[a-f0-9]{24}$/)
-    expect(listing.cursor).toBeNull()
-    expect((await f.send('dispose')).status).toBe('ACK')
-  }))
-  it('lists a retained checked child without relaxing its protection', () => fixture(async f => {
-    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
-    expect((await f.send('mkdir', { path: ['parent'] })).status).toBe('ACK')
-    expect((await f.send('mkdir', { path: ['parent', 'child'] })).status).toBe('ACK')
-    const listing = await f.send('list', { path: ['parent'], limit: 128, cursor: null })
-    expect(listing.status).toBe('ACK')
-    expect(listing.entries).toHaveLength(1)
-    expect(listing.entries[0]).toMatchObject({ name: 'child', kind: 'directory' })
-    expect(listing.entries[0].identity).toMatch(/^[a-f0-9]{24}$/)
-    await expect(fs.rename(path.join(f.root, 'parent', 'child'), path.join(f.root, 'parent', 'moved'))).rejects.toThrow()
-    expect((await f.send('dispose')).status).toBe('ACK')
-  }))
-  it('performs actual bounded recursive cleanup of held descendants', () => fixture(async f => {
-    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
-    expect((await f.send('mkdir', { path: ['parent'] })).status).toBe('ACK')
-    expect((await f.send('mkdir', { path: ['parent', 'child'] })).status).toBe('ACK')
-    const bytes = Buffer.from('owned-sealed-package-file')
-    const written = await f.send('write-open', { path: ['parent', 'child', 'owned.txt'], maxBytes: bytes.length })
-    expect(written.status).toBe('ACK')
-    expect((await f.send('write-chunk', { handle: written.handle, offset: 0, data: bytes.toString('base64') })).status).toBe('ACK')
-    expect((await f.send('write-close', { handle: written.handle, sha256: sha(bytes), retainForPublication: false })).status).toBe('ACK')
-    expect((await f.send('remove', { path: ['parent'], kind: 'directory' })).status).toBe('ACK')
-    await expect(fs.access(path.join(f.root, 'parent'))).rejects.toMatchObject({ code: 'ENOENT' })
-    expect(await fs.readdir(f.root)).toEqual(['.coordinator.lock'])
-    expect((await f.send('dispose')).status).toBe('ACK')
-  }))
-
-  it('does not block owned sibling rename under an outer ancestor outside install/userData', () => fixture(async f => {
-    const tempParent = await fs.realpath(os.tmpdir())
-    const source = path.join(tempParent, 'frade-p02-owned-native-sibling-' + randomUUID() + '.tmp')
-    const target = source + '.moved', bytes = Buffer.from('owned-sibling-original')
-    await fs.writeFile(source, bytes, { flag: 'wx' })
-    try {
-      expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
-      let renameError: unknown
-      try { await fs.rename(source, target) } catch (error) { renameError = error }
-      if (renameError) expect(await fs.readFile(source)).toEqual(bytes)
-      expect(renameError).toBeUndefined()
-      expect(await fs.readFile(target)).toEqual(bytes)
-      expect((await f.send('dispose')).status).toBe('ACK')
-    } finally {
-      if (f.process.exitCode === null && f.process.signalCode === null) {
-        const closed = new Promise<void>(resolve => f.process.once('close', () => resolve()))
-        f.process.kill(); await closed
-      }
-      await removeOwnedSiblings(source, target, tempParent)
-    }
   }))
 })

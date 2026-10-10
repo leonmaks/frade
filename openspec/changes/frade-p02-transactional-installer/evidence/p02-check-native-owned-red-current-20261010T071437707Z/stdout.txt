@@ -1,0 +1,24 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.windows.test.ts (9 tests | 5 failed) 2648ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > binds an ordinary owned root and releases all directory handles on dispose  305ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > performs exclusive actual write, flush, same-parent absent-target rename and exact readback  430ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > refuses an existing junction installation root without outside writes  542ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > pins an ancestor so an actual attempted rename cannot redirect a later child effect 213ms
+   × P02FS001–004: actual Windows checked handles and publication > keeps actual Main persistence, readback, restart and compensation working while native root is bound 217ms
+     → expected 'UNKNOWN' to be 'ACK' // Object.is equality
+   × P02FS001–004: actual Windows checked handles and publication > lists the owned coordinator lease without reopening or releasing it 227ms
+     → expected 'REFUSED' to be 'ACK' // Object.is equality
+   × P02FS001–004: actual Windows checked handles and publication > lists a retained checked child without relaxing its protection 279ms
+     → expected 'REFUSED' to be 'ACK' // Object.is equality
+   × P02FS001–004: actual Windows checked handles and publication > performs actual bounded recursive cleanup of held descendants 246ms
+     → expected 'REFUSED' to be 'ACK' // Object.is equality
+   × P02FS001–004: actual Windows checked handles and publication > does not block owned sibling rename under an outer ancestor outside install/userData 186ms
+     → expected Error: EBUSY: resource busy or locked, re… { …(5) } to be undefined
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 4 passed (9)
+   Start at  10:14:38
+   Duration  3.93s (transform 400ms, setup 0ms, collect 441ms, tests 2.65s, environment 0ms, prepare 364ms)
+

@@ -20,15 +20,6 @@ async function removeOwnedFixture(temp: string, tempParent: string) {
     !path.basename(resolved).startsWith('frade-p02-native-')) throw new Error('UNSAFE_FIXTURE_CLEANUP')
   await fs.rm(resolved, { recursive: true })
 }
-async function removeOwnedSiblings(source: string, target: string, tempParent: string) {
-  for (const owned of [source, target]) {
-    if (path.dirname(owned).toLowerCase() !== tempParent.toLowerCase() ||
-      !path.basename(owned).startsWith('frade-p02-owned-native-sibling-')) throw Error('UNSAFE_SIBLING_CLEANUP')
-    try { await fs.unlink(owned) } catch (error) {
-      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
-    }
-  }
-}
 async function fixture(run: (f: Fixture) => Promise<void>) {
   if (process.platform !== 'win32' || process.arch !== 'x64') throw new Error('WINDOWS_NATIVE_NOT_RUN_UNSUPPORTED_HOST')
   const integrity = JSON.parse(await fs.readFile(new URL('../dist/native/integrity.json', import.meta.url), 'utf8'))
@@ -198,7 +189,13 @@ describe('P02FS001–004: actual Windows checked handles and publication', () =>
         const closed = new Promise<void>(resolve => f.process.once('close', () => resolve()))
         f.process.kill(); await closed
       }
-      await removeOwnedSiblings(source, target, tempParent)
+      for (const owned of [source, target]) {
+        if (path.dirname(owned).toLowerCase() !== tempParent.toLowerCase() ||
+          !path.basename(owned).startsWith('frade-p02-owned-native-sibling-')) throw Error('UNSAFE_SIBLING_CLEANUP')
+        try { await fs.unlink(owned) } catch (error) {
+          if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
+        }
+      }
     }
   }))
 })
