@@ -10,7 +10,7 @@ P02 **3/9**, 2.2 IN_PROGRESS; precise runtime/Main S0 PRE **NOT_RUN**. Свеж�
 
 Следующий шаг: concrete S0 algorithm и scope mapping; затем actual strict и automatic independent PRE **gpt-6-sol/xhigh** по P02 plan до production. Решение человека только при доказанном изменении scope/spec/permission; стратегия не требует повторного approval.
 
-Последний verified published HEAD 95cdd4f72f3a62c26b5d8a3dd84dd6430b4ada1d. Rule-adoption docs checkpoint publication PENDING; только authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+Последний verified published HEAD 95cdd4f72f3a62c26b5d8a3dd84dd6430b4ada1d. Rule-adoption docs checkpoint 4c07f49d54760c37bd11e4e2f6f7f9f7ce61d90a COMMITTED/PUSHED; remote SHA verified, publication metadata follows; только authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
 
 ## Предыдущие записи
 
