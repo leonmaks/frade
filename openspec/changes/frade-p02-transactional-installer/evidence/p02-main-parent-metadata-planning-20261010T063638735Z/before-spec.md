@@ -138,12 +138,3 @@ Admission SHALL reserve bounded capacity for the full transaction outcome and re
 
 - **WHEN** a held checked ordinary journal source is published to an absent basename, or a caller requests another parent or a conflicting target
 - **THEN** publication remains in its original pinned directory without reopening an unlocked parent, conflicting targets and outside-root bytes stay unchanged, and errors without verified flush/readback never produce a durable ACK
-
-### Requirement: Existing Main persistence coexistence
-
-The verified extension filesystem binding SHALL preserve existing Main presentation persistence and recovery while retaining checked installation-root confinement. Any internal desired-access refinement MUST keep continuous checked parent identity and strong install-root/lease guards. It MUST NOT authorize sibling writes, release the guard chain or change existing Main presentation storage contracts.
-
-#### Scenario: Bound root and actual presentation persistence
-
-- **WHEN** the native helper remains bound while Main persists, readbacks, restarts or compensates a presentation selection
-- **THEN** existing settings semantics remain correct, unchanged checked installation-root effects stay confined and unsupported or uncertain guards block installation without reporting a false capability

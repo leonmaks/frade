@@ -1,3 +1,17 @@
+# UI Design Contract — P02 Main persistence repair;3/9
+
+Обновлено 2026-10-10T06:36:38.735Z; branch codex/frade-ui-design-contract/worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/common E:/dev/codex/frade/.git. Origins98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved. Guide1.0; Routing independent.
+
+P02 tasks3/9;2.2IN_PROGRESS. Native NT rename reviewed/repaired/current-build original4PASS. New actual Main persistence regression4PASS/1FAIL: UNKNOWN with old record retained, honest OPEN blocker. Portable43+archive59 current102PASS/typecheck/lintPASS; mistaken root build entry MODULE_NOT_FOUND preserved separately, actual package-local buildPASS. CapabilitiesNOT_VERIFIED.
+
+Plan openspec/changes/frade-p02-transactional-installer/evidence/p02-main-parent-metadata-planning-20261010T063638735Z/root-cause.json selects immediate userData-parent same-object metadata handoff after original full bind+strong root/lease. All object guards continuous; all share masks/root/other ancestor rights unchanged. Broad lifetime/reparse/NT probes diagnostic-only/removed; production metadata repairNOT_APPLIED. StrictPASS; fresh automaticPRE gpt-6-sol/xhigh DISPATCH_READY. No new human decision currently required inside accepted backend scope; any actual contract/scope conflict stops repair.
+
+Open: full native guard/protocol/real-kill/capability/deploy tests; staging/journal/reserve/recovery/IPC/ExtensionsUI; full general/P01/a11y/visual/verify/POST/archive. Foundation/P01 ARCHIVED with exact3minorOPEN_ACCEPTED_DEFERRED/rawFAIL retained. P03–P07/later migration NOT_STARTED; STOPbeforeP03.
+
+Last PRE published3ae832f1/seal2ea2d288 remoteSHAverified. Current source/plan/evidence checkpoint publication preparing. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. Old statuses/evidence retained below.
+
+## Предыдущие записи
+
 # UI Design Contract — P02 native repair PRE PASS;3/9
 
 Обновлено 2026-10-10T06:17:25.892Z. Branch codex/frade-ui-design-contract/worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/common E:/dev/codex/frade/.git; originals98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved. Guide1.0; Routing independent.

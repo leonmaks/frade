@@ -43,7 +43,3 @@ Raw retry FAILfe641067995eb11f855203b917d01272f897fd25c8abfdf2f9e7980eaf8ab055 s
 ## Actual native rename planning refinement
 
 2026-10-10T05:46:41.621Z: the first native implementation is partial, with an applicable checked-publication FAIL (Win32 87); no working installer is claimed. Actual owned matrix proves a documented NT same-source-directory rename avoids the wrapper/second-parent-open failure while retaining pinned source/parent, no-replace and no-path-fallback. Coherent design selects that mechanism within the accepted backend scope; fresh strict/PRE precedes production repair. No share-mask, privilege, operation, domain/routing, phase or durability waiver. Portable protocol43 and original archive59 remain components.
-
-## Main persistence coexistence refinement
-
-2026-10-10T06:36:38.735Z: the reviewed NT publication repair passes original4 native assertions; new actual Main persistence regression remainsFAIL with old bytes preserved. Plan chooses a same-object overlapping metadata handle handoff ONLY for install-root immediate parent after original full guarded bind/root lease. No lifetime/share-mask/root/API/write-authority/P01 schema change; broad diagnostic variants are excluded. Fresh strict and independent PRE before repair; working backend/installer NOT_VERIFIED.
