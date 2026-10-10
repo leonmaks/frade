@@ -1,0 +1,5 @@
+{
+  "classification": "STATE_TRANSITION",
+  "reason": "Context was not retained before pending generation invalidation; initialization rejection swallowed close uncertainty during shutdown.",
+  "repair": "Retain returned context immediately, converge all closes on one cached context disposal promise, propagate any unconfirmed native close."
+}

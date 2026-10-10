@@ -1,0 +1,6 @@
+{
+  "classification": "TEST",
+  "reason": "Actual Windows Playwright shell launcher PID differs from Electron Main PID; helper is actual direct child of Main, not launcher.",
+  "proof": "Diagnostic stdout contains launcher/actualMain PIDs and exact Get-CimInstance direct child frade-filesystem.exe.",
+  "repair": "Query process.pid through existing private Playwright Electron Main evaluate, preserve exact one-helper assertion, actual native close, root lease and byte/renderer assertions. No production repair."
+}

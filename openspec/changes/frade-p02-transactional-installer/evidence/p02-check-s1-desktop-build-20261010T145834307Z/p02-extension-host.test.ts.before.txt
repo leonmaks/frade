@@ -1,0 +1,43 @@
+import { describe, it, expect, vi } from 'vitest'
+import { ExtensionInstallerHost } from '../../src/main/extension-installer'
+import type { VerifiedFilesystem } from '@frade/extension-service'
+const context = (names = ['.coordinator.lock']) => ({ state: 'VERIFIED', rootEntries: names.map(name => ({ name })), dispose: vi.fn(async () => {}), request: vi.fn() }) as unknown as VerifiedFilesystem
+const unavailable = () => Object.assign(Error('WINDOWS_BACKEND_UNAVAILABLE'), { status: 'BACKEND_UNAVAILABLE' })
+describe('P02 S1 Main ownership and pre-paint boundary', () => {
+  it('owns fixed root, trusted source, one generation/context and idempotent actual disposal', async () => {
+    const live = context(), open = vi.fn(async () => live), host = new ExtensionInstallerHost('C:/profile', 'C:/built/extension-filesystem', { open })
+    const a = host.initialize(); expect(host.initialize()).toBe(a)
+    expect(await a).toEqual({ state: 'BACKEND_VERIFIED', installer: 'NOT_IMPLEMENTED' })
+    expect(open).toHaveBeenCalledTimes(1)
+    expect(open.mock.calls[0][0]).toMatchObject({ installationRoot: 'C:\\profile\\extensions', distributionDirectory: 'C:/built/extension-filesystem', generation: 1 })
+    expect(open.mock.calls[0][0].sourceSha256).toMatch(/^[a-f0-9]{64}$/)
+    const closing = host.dispose(); expect(host.dispose()).toBe(closing); await closing
+    expect(live.dispose).toHaveBeenCalledTimes(1); await expect(host.initialize()).rejects.toThrow('EXTENSION_HOST_CLOSED')
+  })
+  it('invalidates pending generation before late completion; shutdown waits for real close', async () => {
+    let ready!: (c: VerifiedFilesystem) => void, closed!: () => void
+    const live = context(); live.dispose = vi.fn(() => new Promise<void>(resolve => { closed = resolve }))
+    const host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: () => new Promise(resolve => { ready = resolve }) })
+    const opening = host.initialize(), rejected = expect(opening).rejects.toThrow('EXTENSION_HOST_CLOSED')
+    let settled = false; const disposal = host.dispose().then(() => { settled = true })
+    ready(live); await Promise.resolve(); await Promise.resolve(); expect(settled).toBe(false)
+    closed(); await rejected; await disposal; expect(live.dispose).toHaveBeenCalledTimes(1)
+  })
+  for (const name of ['journal', 'registry.json', '.frade-runtime-probe']) it('blocks installed/ambiguous ' + name + ' before paint and releases context', async () => {
+    const live = context(['.coordinator.lock', name]), host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: async () => live })
+    await expect(host.initialize()).rejects.toThrow('EXTENSION_RECOVERY_REQUIRED'); await host.dispose()
+    expect(live.dispose).toHaveBeenCalled()
+  })
+  it('permits built-ins only on typed pre-effect unavailable and absence diagnostic; never certifies', async () => {
+    const host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: async () => { throw unavailable() }, rootAbsent: async () => true })
+    expect(await host.initialize()).toEqual({ state: 'UNAVAILABLE', code: 'WINDOWS_BACKEND_UNAVAILABLE' }); await host.dispose()
+  })
+  it('blocks unavailable with existing/uncertain state without resetting preferences', async () => {
+    const host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: async () => { throw unavailable() }, rootAbsent: async () => false })
+    await expect(host.initialize()).rejects.toThrow('WINDOWS_BACKEND_UNAVAILABLE'); await host.dispose()
+  })
+  it('never treats UNKNOWN as unavailable fallback even on absent root', async () => {
+    const rootAbsent = vi.fn(async () => true), host = new ExtensionInstallerHost('C:/profile', 'C:/built', { open: async () => { throw Object.assign(Error('UNCERTAIN_EFFECT'), { status: 'UNKNOWN' }) }, rootAbsent })
+    await expect(host.initialize()).rejects.toThrow('UNCERTAIN_EFFECT'); expect(rootAbsent).not.toHaveBeenCalled(); await host.dispose()
+  })
+})

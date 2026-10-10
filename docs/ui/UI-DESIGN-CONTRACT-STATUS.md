@@ -1,3 +1,151 @@
+# P02 S1 — incomplete FAIL checkpoint publication
+
+2026-10-10T17:28:31.937Z; own codex/frade-ui-design-contract, C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Guide1.0; P02 overall3/9,2.2unchecked. IndependentPOST FAIL preserved; Main actual-close repaired and checked, freshPOST NOT_RUN. Current source-bound632inputs:141unit/6canonicalruntime/type/lint/buildPASS; prior service266/BDD266 historicalPASS, new bound rerun deferred. Cold/warm probesPASS, historicaldev5s root causeNOT_PROVEN.
+
+Checkpoint committing; publication pending, priorpublished922abf75aceec40204b03a80368f4dcd2cb97cab. Exact current source hashes632 verified, raw logs/trace selected only from own new evidence and force-tracked without changes/ignore policy edits. Evidence openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-incomplete-checkpoint-20261010T172831937Z. Proposed diagnostics NOT_APPROVED openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics.proposed.md, SHA256ff75e18bad97b8c9e10da44c6404ec2a0e3539c34ef36a03b9c2a9b3355f283a; originalP01renderer unchanged. Full READY_FOR_VERIFY:NO; S2/full cumulative gates/archive/P03 not advanced. Next human exact diagnostic scope decision, then coherent plan/validation/automaticPRE Sol/xhigh. Right panelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries
+
+# Frade UI Design Contract — P02 S1 repair checked, dev RCA blocked
+
+2026-10-10T17:20:49.951Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; guide1.0; originalProgram98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372.
+
+| Stage/task | Actual status |
+| --- | --- |
+| Foundation/P01 | ARCHIVED, all historical accepted exceptions retained |
+| P02 overall | IN_PROGRESS3/9,2.2 unchecked |
+| S1 guards/factory/Main | IMPLEMENTED; ownership RED→GREEN; actual-close RED3FAIL→13PASS |
+| Main current checks | source-bound632inputs, unit141PASS/runtime6PASS/type/lint/buildPASS |
+| Service | historicalfull266PASS/BDD266PASS/factory16PASS; new bound rerun deferred until scope settled |
+| IndependentS1POST | FAIL openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-received-20261010T165324969Z; no PASS closure |
+| Main close finding | repaired and checked; fresh independentPOST NOT_RUN |
+| Source provenance finding | new per-run before/afterhash records; old execution/evidence unchanged; original raw logs to track in checkpoint |
+| Dev timing finding | OPEN/NOT_PROVEN: cold/warmPASS, HTTP4423/1741ms not readiness proof, original5000msFAIL preserved |
+| Proposed diagnostics | NOT_APPROVED openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics.proposed.md, SHAff75e18bad97b8c9e10da44c6404ec2a0e3539c34ef36a03b9c2a9b3355f283a; original P01 renderer untouched |
+|2.2remaining/2.3/2.4 | staging/journal/recovery/filepicker/namedIPC/ExtensionsUI/lifecycle/fallback NOT_DONE |
+|3.1–3.3 | fullroot/P01/a11y/visual/cumulativeverify/POST/archive NOT_DONE |
+| P03–P07 | NOT_STARTED |
+
+Full READY_FOR_VERIFY:NO. No repeated expensive POST while dev blocker unresolved. Next exact renderer diagnostic scope decision under AGENTS§2/20 and accepted design frozen P01 boundary, then coherent validation/automaticPRE Sol/xhigh; no timeout/semantics changes authorized. Checkpoint NOT_COMMITTED/NOT_PUSHED, lastpublished922abf75aceec40204b03a80368f4dcd2cb97cab. Right panel queued/visibilityunconfirmed, merge protectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries
+
+# P02 S1 — independent POST FAIL, RCA/RED repair
+
+2026-10-10T16:58:39.899Z; owning UI branch/worktree; P02 overall3/9,2.2IN_PROGRESS. AutomaticPOST Sol/xhigh FAIL received p02-s1-post-received-20261010T165324969Z,17raw/109events, candidate/packet/request unchanged. Blockers: unresolved genuine dev5000ms handshake failure; Main app.quit despite unconfirmed helper disposal. Evidence concern: prior execution records lack per-run exact source binding. No gate/closure/waiver.
+
+Phase explicitly returned from read-only gate to authorized S1 repair. Actual Main callbacks exercised via TS AST in existing named unit fixture; production unchanged before RED. Next meaningful RED, Main confirmed-close state fix within accepted S1, bounded cold/warm dev diagnostic (no timeout/P01/Vite policy change), then source-bound actual checks and fresh automaticPOST. First preparationBLOCKED/raw logs aliases retained. Commit/push pending; lastpublished922abf75aceec40204b03a80368f4dcd2cb97cab.
+
+# P02 S1 — POST preparation BLOCKED, safe evidence repair
+
+2026-10-10T16:34:54.023Z; own codex/frade-ui-design-contract, P02 overall3/9. Current service266PASS/BDD266PASS/factory16PASS/unit137PASS/Electron11PASS/build/type/lintPASS. Source unchanged after checks. First POST preparation BLOCKED before model: SOURCE_NOT_IN_FULL_CANDIDATE for ignored raw .log. Seven raw artifacts preserved in p02-s1-post-received-20261010T163359387Z; no result/events/gate yet. Repair only evidence: exact byte copies .log.txt with path/SHA mapping and Git-candidate membership preflight; no .gitignore/production changes. Measured failed preparation244sec, reassess before rerun; full binding/canary remain required. Prior dev timing FAIL retained/no waiver, independent assessment pending. Checkpoint NOT_COMMITTED/NOT_PUSHED, lastpublished922abf75aceec40204b03a80368f4dcd2cb97cab. Next fresh POST Sol/xhigh; dashboard deferred during freeze.
+
+# Frade UI Design Contract — P02 S1 implemented, focused review preparation
+
+2026-10-10T16:28:24.915Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; guide1.0; original program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372. Routing independent.
+
+| Этап/задача | Статус |
+| --- | --- |
+| Foundation/P01 | ARCHIVED, previous accepted exceptions retained |
+| P02 overall | IN_PROGRESS3/9,2.2 unchecked |
+| S1 expectedIdentity/emptyOnly | implemented, meaningful RED→GREEN |
+| S1 volatile factory/bounds/lifetime | implemented, full test266PASS/BDD266PASS,16factory cases |
+| S1 Main | connected before window, unit137PASS, actual Main/start/dev/rebuild+P01 coexistence evidence |
+| S1 current dev timing | current batch11PASS; historical batch5PASS1FAIL and unchanged dev-only1PASS; causeNOT_CONFIRMED, OPEN_FOR_INDEPENDENT_ASSESSMENT, no waiver |
+| S1 focused verify/POST | partial verification openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-verification-20261010T162824915Z; automatic POST NOT_RUN pending seal |
+| S2 staging/journal/recovery/filepicker/IPC | NOT_IMPLEMENTED |
+| Extensions UI/fallback/fullroot/P01/a11y/visual/cumulative verify/POST/archive | NOT_DONE |
+| P03–P07 | NOT_STARTED; no next numbered advancement |
+
+Affected type/lint/build/strict/boundaries/UIcompliance PASS; original tests/pins/control hashes preserved. Query/buildNOT_VERIFIED, powerlossNOT_PROVEN; backend proof volatile, installerNOT_IMPLEMENTED. Full READY_FOR_VERIFY:NO. Checkpoint NOT_COMMITTED/NOT_PUSHED; lastpublished922abf75aceec40204b03a80368f4dcd2cb97cab. Next source-bound automatic focused POST Sol/xhigh; source frozen only after all writers finish. Strategy: minimal explicit current packet, preserved relevant RED/FAIL and original controls, reuse unchanged strict/boundary/UI checks; fresh source-dependent test/BDD/build/unit/runtime already executed. Previous full harness866sec measured; forecast8–20min dominated by four11.6GB candidate integrity scans, review ~1.5min measured previous. Full source binding and canary required, cannot substitute narrow snapshot; no duplicate probe or parallel writer. Reassess only on failed binding/runtime/timeout; preserve interrupted output. freeze dashboard during review, preserve raw FAIL and current risk. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи
+
+# P02 S1 — ownership RED repair
+
+2026-10-10T16:20:47.792Z; own UI branch/worktree, P02 overall3/9. Genuine same-bytes owner replacement RED confirmed; RCA openspec/changes/frade-p02-transactional-installer/evidence/p02-owner-identity-rca-20261010T162047792Z. Factory repair captures identity before seal; targeted/full checks pending. No new scope, no old FAIL erased. POST NOT_RUN; commit/push pending; lastpublished922abf75aceec40204b03a80368f4dcd2cb97cab. Dev timing risk remains OPEN.
+
+# Frade UI Design Contract — P02 S1 implemented, focused review preparation
+
+2026-10-10T16:05:10.776Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; guide1.0; original program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372. Routing independent.
+
+| Этап/задача | Статус |
+| --- | --- |
+| Foundation/P01 | ARCHIVED, previous accepted exceptions retained |
+| P02 overall | IN_PROGRESS3/9,2.2 unchecked |
+| S1 expectedIdentity/emptyOnly | implemented, meaningful RED→GREEN |
+| S1 volatile factory/bounds/lifetime | implemented, full test265PASS/BDD265PASS,15factory cases |
+| S1 Main | connected before window, unit137PASS, actual Main/start/dev/rebuild+P01 coexistence evidence |
+| S1 current dev timing | recent batch5PASS1FAIL; unchanged dev-only1PASS; causeNOT_CONFIRMED, OPEN_FOR_INDEPENDENT_ASSESSMENT, no waiver |
+| S1 focused verify/POST | partial verification openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-verification-20261010T160510776Z; automatic POST NOT_RUN pending seal |
+| S2 staging/journal/recovery/filepicker/IPC | NOT_IMPLEMENTED |
+| Extensions UI/fallback/fullroot/P01/a11y/visual/cumulative verify/POST/archive | NOT_DONE |
+| P03–P07 | NOT_STARTED; no next numbered advancement |
+
+Affected type/lint/build/strict/boundaries/UIcompliance PASS; original tests/pins/control hashes preserved. Query/buildNOT_VERIFIED, powerlossNOT_PROVEN; backend proof volatile, installerNOT_IMPLEMENTED. Full READY_FOR_VERIFY:NO. Checkpoint NOT_COMMITTED/NOT_PUSHED; lastpublished922abf75aceec40204b03a80368f4dcd2cb97cab. Next source-bound automatic focused POST Sol/xhigh; freeze dashboard during review, preserve raw FAIL and current risk. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи
+
+# Frade UI Design Contract — P02 S1 actual Main GREEN, dev fixture repair
+
+2026-10-10T15:16:22.578Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; guide1.0; history/baselines below retained. Tasks3/9,2.2IN_PROGRESS.
+
+Full service test264PASS/BDD264PASS; desktop unit137PASS; native/factory/actual built Main ownership+shutdownGREEN; affected type/lint/build/strict/boundaries/UI compliancePASS. Screenshot Main preserved. Actual named dev/start probe1PASS2FAIL: TEST/ENVIRONMENT RCA C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-hooks-probe-20261010T151226916Z/RCA.json; no production repair. Current derived Main build missing after failed watch teardown; new fixture ports/lifetime repaired, build/rerun pending. Old FAIL evidence preserved, no blanket waiver.
+
+Focused verify/POST and full P02 obligations remain open; READY_FOR_VERIFY:NO; noP03. Checkpoint NOT_COMMITTED/NOT_PUSHED; lastpublished922abf75aceec40204b03a80368f4dcd2cb97cab. Next fresh build → actual hooks rerun → focused verification/automatic POST Sol/xhigh.
+
+## Предыдущие записи
+
+# Frade UI Design Contract — P02 S1 Main подключён, проверки
+
+2026-10-10T15:06:24.346Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; guide1.0. Original program/P02 baselines and raw history below preserved.
+
+Task2.2 IN_PROGRESS,3/9. Guard67PASS; factory14PASS after deadline RED; desktop unit137PASS (9new Main cases); named service full264PASS. Actual build/typecheckPASS after preserved typingFAIL; lintPASS. Full BDD RUNNING, built Electron GREEN/dev initial/rebuild/start/shutdown NOT_RUN. Main fixed-root/pre-window lifecycle connected, renderer/installer actions absent. Backend proof volatile; metadata/queryNOT_VERIFIED; powerlossNOT_PROVEN. Existing/ambiguous installation state conservatively blocked pending S2 coordinator.
+
+Focused verify/POST NOT_RUN; full P02 staging/journal/recovery/IPC/UI/root/general/visual/verify/cumulative POST/archive OPEN. READY_FOR_VERIFY:NO; noP03. Canonical new e2e path ui-contract-extension.spec.ts aligned with approved integration list; original RED source/screenshots/trace retained. Current checkpoint NOT_COMMITTED/NOT_PUSHED; last published922abf75aceec40204b03a80368f4dcd2cb97cab.
+
+Next: current BDD → actual Electron GREEN → dev/start/rebuild evidence and affected boundaries/compliance → focused verification/automatic POST Sol/xhigh. Right panel queued, visibility not confirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи
+
+# Frade UI Design Contract — P02 S1 Main RED сохранён
+
+2026-10-10T14:54:42.894Z; branch codex/frade-ui-design-contract, owning UI worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; guide1.0. Baselines/history below retained. Tasks3/9;2.2IN_PROGRESS.
+
+Guard67PASS; factory13PASS; service typecheck/lintPASS after preserved fixture lint FAIL. Built Main actual RED1FAIL: missing extensions root/lease; screenshot and trace copied to openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-electron-red-20261010T145221228Z/playwright-raw. RCA INTEGRATION: original Main does not initialize factory. Hard deadline pre-bind instrumented regression added, RED NOT_RUN. Factory/Main integration/deployment/fullchecks/verify/POST/archive remain open, READY_FOR_VERIFY:NO.
+
+Checkpoint PENDING; last published HEAD922abf75aceec40204b03a80368f4dcd2cb97cab. Next hard deadline RED/GREEN → Main adapter and lifecycle checks; noP03.
+
+## Предыдущие записи
+
+# Frade UI Design Contract — P02 S1 factory GREEN, Main RED
+
+2026-10-10T14:46:54.372Z; UI owner codex/frade-ui-design-contract; exact worktree C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade; common E:/dev/codex/frade/.git. Guide1.0; baselines/old evidence below preserved.
+
+Guard targeted67PASS, factory13PASS after actual behavioral12FAIL/1PASS. Six actual helper kills/restart residue block tested; native query/build metadata NOT_VERIFIED; live volatile context proof is separate, integration NOT_VERIFIED until actual Main/dev/start. Affected service typecheckPASS, lint pending. Current Main source unchanged; new built Electron RED NOT_RUN. Tasks3/9,2.2IN_PROGRESS; staging/journal/lifecycle/UI/fullchecks/verify/cumulativePOST/archive open. READY_FOR_VERIFY:NO; noP03.
+
+CheckpointPENDING; published HEAD 922abf75aceec40204b03a80368f4dcd2cb97cab. Next actual built Main RED → Main wiring → full regression/deployment proof.
+
+## Предыдущие записи
+
+# Frade UI Design Contract — P02 S1 guard RED сохранён, implementation
+
+2026-10-10T14:36:41.945Z; branch codex/frade-ui-design-contract; worktree C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade; common E:/dev/codex/frade/.git. Guide1.0; baselines ниже. S0 accepted PRE PASS; task3/9,2.2IN_PROGRESS.
+
+Actual targeted RED61PASS/6FAIL, raw openspec/changes/frade-p02-transactional-installer/evidence/p02-check-cleanup-guards-red-20261010T143459296Z. RCA ABSTRACTION_BOUNDARY openspec/changes/frade-p02-transactional-installer/evidence/p02-owned-cleanup-red-20261010T143459041Z/RCA.json; новая closed-schema/held-target/empty-only ветвь реализована, GREEN NOT_RUN. Original tests prefix сохранён. Factory/Main/runtime capability ещё нет; остальные P02 obligations открыты. READY_FOR_VERIFY:NO; STOPbeforeP03. CheckpointPENDING, HEAD 922abf75aceec40204b03a80368f4dcd2cb97cab published/verified.
+
+## Предыдущие записи
+
+# Frade UI Design Contract — P02 S1 meaningful RED
+
+Обновлено 2026-10-10T14:34:59.041Z; owner codex/frade-ui-design-contract, C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Guide1.0; baseline/origin ниже сохранены. Tasks3/9,2.2IN_PROGRESS.
+
+S0 PRE PASS d9c20a91ef07a2ac9ab5fe98357accaa65b8da1bb6938026357c05587a4dfc6c, exact cleanup scope принят. Записаны новые behavioral guard cases; RED NOT_RUN, production native/host/factory/Main не изменены. C+G: targeted feedback → coherent full regression. Remaining factory/Main/deployment/journal/UI/verify/POST/archive открыты; READY_FOR_VERIFY:NO; noP03.
+
+HEAD 922abf75aceec40204b03a80368f4dcd2cb97cab published/verified; S1 checkpoint PENDING. Status открыт справа queued/visibility unconfirmed. Next: actual two-file RED, затем guarded production только после сохранения failure.
+
+## Предыдущие записи
+
 # Frade UI Design Contract — P02 S0 independent PRE PASS
 
 Обновлено 2026-10-10T14:25:42.438Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Guide1.0; original98f387f96b51b0ad139e3507c376ff1c3e8dec09; P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372. Routing независим.

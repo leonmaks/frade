@@ -1,0 +1,21 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.factory.test.ts > actual bootstrap maximum48 includes initial bind and final disposal under a large checked root
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/filesystem.factory.test.ts:123:1
+    121| })
+    122| 
+    123| it('actual bootstrap maximum48 includes initial bind and final disposa…
+       | ^
+    124|   // Owned setup before bind; bounded below the existing10000-entry li…
+    125|   for (let start = 0; start < 6000; start += 100) await Promise.all(Ar…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

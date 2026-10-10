@@ -21,7 +21,7 @@ export type FilesystemCommand = CommandEnvelope & (
   | { operation: 'write-chunk'; handle: string; offset: number; data: string }
   | { operation: 'write-close'; handle: string; sha256: string; retainForPublication?: boolean }
   | { operation: 'replace'; handle: string; parent: string[]; name: string; sha256: string }
-  | { operation: 'remove'; path: string[]; kind: 'file' | 'directory' }
+  | { operation: 'remove'; path: string[]; kind: 'file' | 'directory'; expectedIdentity?: string; emptyOnly?: true }
 )
 export type FilesystemFailure = 'REFUSED' | 'UNKNOWN' | 'BACKEND_UNAVAILABLE'
 export interface FilesystemCapabilities {

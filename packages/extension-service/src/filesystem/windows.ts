@@ -50,6 +50,7 @@ export class WindowsFilesystemTransport {
   private readonly gate: FilesystemCommandGate
   private nextId = 1
   private pending: Pending | null = null
+  private disposal: Promise<void> | undefined
   private unusable = false
   private bytes = Buffer.alloc(0)
   private stderrBytes = 0
@@ -133,9 +134,20 @@ export class WindowsFilesystemTransport {
       pending.resolve(reply)
     } catch { this.fail('INVALID_FILESYSTEM_REPLY') }
   }
-  async dispose(): Promise<void> {
-    if (!this.unusable && !this.pending) await this.request({ operation: 'dispose' })
-    else this.fail('FILESYSTEM_SESSION_CLOSED')
-    await this.exit
+  dispose(): Promise<void> {
+    return this.disposal ??= (async () => {
+      let failure: unknown
+      try {
+        if (!this.unusable && !this.pending) await this.request({ operation: 'dispose' })
+        else this.fail('FILESYSTEM_SESSION_CLOSED')
+      } catch (error) { failure = error; this.fail('FILESYSTEM_SESSION_CLOSED') }
+      let timer: ReturnType<typeof setTimeout> | undefined
+      try {
+        await Promise.race([this.exit, new Promise<never>((_resolve, reject) => {
+          timer = setTimeout(() => reject(new FilesystemTransportError('UNKNOWN', 'FILESYSTEM_CLOSE_UNCONFIRMED')), MAX_OPERATION_MS)
+        })])
+      } finally { clearTimeout(timer) }
+      if (failure) throw failure
+    })()
   }
 }

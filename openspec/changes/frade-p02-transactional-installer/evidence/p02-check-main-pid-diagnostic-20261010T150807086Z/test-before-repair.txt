@@ -1,0 +1,41 @@
+import { test, expect, _electron as electron } from '@playwright/test'
+import fs from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { resolve, join, dirname, basename } from 'node:path'
+import { spawnSync } from 'node:child_process'
+// eslint-disable-next-line no-empty-pattern
+test('P02 S1 built Main owns verified backend before paint and releases actual helper on shutdown', async ({}) => {
+  const parent = await fs.realpath(tmpdir()), profile = await fs.mkdtemp(join(parent, 'frade-p02-electron-'))
+  const app = await electron.launch({ args: [resolve('out/main/index.cjs')], env: { ...process.env, FRADE_USER_DATA: profile } })
+  let helperPid: number | undefined
+  try {
+    const page = await app.firstWindow()
+    await expect(page.getByRole('status')).toHaveText('Backend: ready')
+    await expect.poll(async () => { try { return await fs.readdir(join(profile, 'extensions')) } catch (e) { if ((e as NodeJS.ErrnoException).code === 'ENOENT') return []; throw e } }).toEqual(['.coordinator.lock'])
+    const parentPid = app.process().pid
+    const actualMainPid = await app.evaluate(() => process.pid)
+    console.log(JSON.stringify({ launcherPid: parentPid, actualMainPid }))
+    const ps = join(process.env.WINDIR!, 'System32/WindowsPowerShell/v1.0/powershell.exe')
+    const result = spawnSync(ps, ['-NoProfile', '-NonInteractive', '-Command', 'Get-CimInstance Win32_Process -Filter "ParentProcessId = ' + parentPid + '" | Where-Object { $_.Name -eq "frade-filesystem.exe" } | Select-Object -ExpandProperty ProcessId'], { encoding: 'utf8', windowsHide: true, timeout: 10000 })
+    const actualTree = spawnSync(ps, ['-NoProfile', '-NonInteractive', '-Command', 'Get-CimInstance Win32_Process -Filter "ParentProcessId = ' + actualMainPid + '" | Select-Object ProcessId,ParentProcessId,Name | ConvertTo-Json -Compress'], { encoding: 'utf8', windowsHide: true, timeout: 10000 })
+    console.log(JSON.stringify({ actualTreeStatus: actualTree.status, actualTree: actualTree.stdout, launcherQuery: result.stdout }))
+    expect(result.status, result.stderr).toBe(0)
+    const pids = result.stdout.trim().split(/\s+/).filter(Boolean).map(Number)
+    expect(pids).toHaveLength(1); helperPid = pids[0]; expect(helperPid).toBeGreaterThan(0)
+    expect(await fs.readdir(join(profile, 'extensions'))).not.toContain('.frade-runtime-probe')
+    await page.screenshot({ path: test.info().outputPath('p02-main.png'), fullPage: true })
+    expect(await page.evaluate(() => ({ node: typeof (window as any).require, ipc: typeof (window.frade as any).ipcRenderer }))).toEqual({ node: 'undefined', ipc: 'undefined' })
+  } finally {
+    await app.close()
+    if (helperPid) await expect.poll(() => { try { process.kill(helperPid!, 0); return true } catch { return false } }).toBe(false)
+    await cleanupProfile(profile, parent)
+  }
+})
+
+async function cleanupProfile(profile: string, parent: string) {
+    const root = join(profile, 'extensions')
+    try { await fs.rename(root, root + '-released'); await fs.rename(root + '-released', root) } catch (e) { if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e }
+    const actual = await fs.realpath(profile)
+    if (dirname(actual).toLowerCase() !== parent.toLowerCase() || !basename(actual).startsWith('frade-p02-electron-')) throw Error('UNSAFE_ELECTRON_PROFILE_CLEANUP')
+    await fs.rm(actual, { recursive: true })
+}

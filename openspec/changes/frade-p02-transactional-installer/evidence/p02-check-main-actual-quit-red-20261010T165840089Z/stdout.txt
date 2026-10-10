@@ -1,0 +1,48 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/p02-extension-host.test.ts (13 tests | 3 failed) 617ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > owns fixed root, trusted source, one generation/context and idempotent actual disposal 7ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > invalidates pending generation before late completion; shutdown waits for real close 1ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > blocks installed/ambiguous journal before paint and releases context 1ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > blocks installed/ambiguous registry.json before paint and releases context 1ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > blocks installed/ambiguous .frade-runtime-probe before paint and releases context 1ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > permits built-ins only on typed pre-effect unavailable and absence diagnostic; never certifies 1ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > blocks unavailable with existing/uncertain state without resetting preferences 0ms
+   ✓ P02 S1 Main ownership and pre-paint boundary > never treats UNKNOWN as unavailable fallback even on absent root 1ms
+   ✓ pending Main shutdown propagates unconfirmed late helper close instead of resolving 1ms
+   × actual Main before-quit refuses success and repeated exit when helper close is unconfirmed 541ms
+     → expected "spy" to not be called at all, but actually been called 1 times
+
+Received: 
+
+  1st spy call:
+
+    Array []
+
+
+Number of calls: 1
+
+   × actual Main before-quit blocks concurrent exit until helper close is confirmed 24ms
+     → expected "spy" to be called 2 times, but got 1 times
+   × actual startup failure callback cannot force app.exit on unconfirmed helper close 17ms
+     → expected "spy" to not be called at all, but actually been called 1 times
+
+Received: 
+
+  1st spy call:
+
+    Array [
+      1,
+    ]
+
+
+Number of calls: 1
+
+   ✓ actual startup failure callback exits with failure only after confirmed helper close 20ms
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 10 passed (13)
+   Start at  19:58:45
+   Duration  4.49s (transform 1.13s, setup 0ms, collect 1.92s, tests 617ms, environment 0ms, prepare 786ms)
+

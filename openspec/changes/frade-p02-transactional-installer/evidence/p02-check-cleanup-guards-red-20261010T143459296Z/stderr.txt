@@ -1,0 +1,129 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.cleanup.test.ts > P02 owned bootstrap cleanup: actual identity and empty-only guards > deletes only the exact ordinary file and exact empty held directory
+AssertionError: expected 'REFUSED' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "REFUSED"
+
+ ❯ tests/filesystem.cleanup.test.ts:94:120
+     92|     expect((await f.send('write-close', { handle: opened.handle, sha25…
+     93|     const fileId = await identity(f, ['probe'], 'owner.json'), dirId =…
+     94|     expect((await f.send('remove', { path: ['probe', 'owner.json'], ki…
+       |                                                                                                                        ^
+     95|     expect(await fs.readdir(path.join(f.root, 'probe'))).toEqual([])
+     96|     expect((await f.send('remove', { path: ['probe'], kind: 'directory…
+ ❯ fixture tests/filesystem.cleanup.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/filesystem.cleanup.test.ts > P02 owned bootstrap cleanup: actual identity and empty-only guards > refuses a genuinely changed same-path ordinary object using captured identity
+AssertionError: expected [Function] to throw error including 'TARGET_IDENTITY_MISMATCH' but got 'INVALID_FILESYSTEM_COMMAND'
+
+Expected: "TARGET_IDENTITY_MISMATCH"
+Received: "INVALID_FILESYSTEM_COMMAND"
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > admits directory cleanup with known guard fields {"expectedIdentity":"aaaaaaaaaaaaaaaaaaaaaaaa"}
+ FAIL  tests/filesystem.protocol.test.ts > P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > admits directory cleanup with known guard fields {"emptyOnly":true}
+AssertionError: expected null to deeply equal { version: 1, …(8) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "expectedIdentity": "aaaaaaaaaaaaaaaaaaaaaaaa",
+  "generation": 7,
+  "kind": "directory",
+  "operation": "remove",
+  "path": [
+    "probe",
+  ],
+  "requestId": 2,
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ tests/filesystem.protocol.test.ts:134:43
+    132|   ]) it('admits directory cleanup with known guard fields ' + JSON.str…
+    133|     const gate = bound(), value = command('remove', { path: ['probe'],…
+    134|     expect(gate.accept(frame(value), 10)).toEqual(value)
+       |                                           ^
+    135|     expect(gate.complete(2, true)).toBe(true)
+    136|     expect(gate.closed).toBe(false)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > admits directory cleanup with known guard fields {"expectedIdentity":"aaaaaaaaaaaaaaaaaaaaaaaa","emptyOnly":true}
+AssertionError: expected null to deeply equal { version: 1, …(9) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "emptyOnly": true,
+  "expectedIdentity": "aaaaaaaaaaaaaaaaaaaaaaaa",
+  "generation": 7,
+  "kind": "directory",
+  "operation": "remove",
+  "path": [
+    "probe",
+  ],
+  "requestId": 2,
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ tests/filesystem.protocol.test.ts:134:43
+    132|   ]) it('admits directory cleanup with known guard fields ' + JSON.str…
+    133|     const gate = bound(), value = command('remove', { path: ['probe'],…
+    134|     expect(gate.accept(frame(value), 10)).toEqual(value)
+       |                                           ^
+    135|     expect(gate.complete(2, true)).toBe(true)
+    136|     expect(gate.closed).toBe(false)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > admits exact-identity file deletion
+AssertionError: expected null to deeply equal { version: 1, …(8) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "expectedIdentity": "ffffffffffffffffffffffff",
+  "generation": 7,
+  "kind": "file",
+  "operation": "remove",
+  "path": [
+    "probe",
+    "owner.json",
+  ],
+  "requestId": 2,
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ tests/filesystem.protocol.test.ts:140:43
+    138|   it('admits exact-identity file deletion', () => {
+    139|     const gate = bound(), value = command('remove', { path: ['probe', …
+    140|     expect(gate.accept(frame(value), 10)).toEqual(value)
+       |                                           ^
+    141|     expect(gate.complete(2, true)).toBe(true)
+    142|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

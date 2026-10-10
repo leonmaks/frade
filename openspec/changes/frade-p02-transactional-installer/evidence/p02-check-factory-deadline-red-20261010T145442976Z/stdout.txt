@@ -1,0 +1,25 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.factory.test.ts (14 tests | 1 failed | 13 skipped) 19ms
+   ↓ P02 S1: actual volatile bounded bootstrap factory > proves live write/flush/publication/readback/cleanup before private VERIFIED and disposes once
+   ↓ P02 S1: actual volatile bounded bootstrap factory > preserves other root/package/state bytes and never writes an authoritative capability/journal
+   ↓ P02 S1: actual volatile bounded bootstrap factory > blocks preexisting directory fixture without stale cleanup/reuse
+   ↓ P02 S1: actual volatile bounded bootstrap factory > blocks preexisting file fixture without stale cleanup/reuse
+   ↓ P02 S1: actual volatile bounded bootstrap factory > refuses a late genuine ordinary child without recursively deleting it or certifying
+   ↓ P02 S1: actual volatile bounded bootstrap factory > actual helper kill at mkdir preserves residue and blocks fresh restart
+   ↓ P02 S1: actual volatile bounded bootstrap factory > actual helper kill at owner-open preserves residue and blocks fresh restart
+   ↓ P02 S1: actual volatile bounded bootstrap factory > actual helper kill at owner-write preserves residue and blocks fresh restart
+   ↓ P02 S1: actual volatile bounded bootstrap factory > actual helper kill at owner-seal preserves residue and blocks fresh restart
+   ↓ P02 S1: actual volatile bounded bootstrap factory > actual helper kill at proof-publish preserves residue and blocks fresh restart
+   ↓ P02 S1: actual volatile bounded bootstrap factory > actual helper kill at owner-cleanup preserves residue and blocks fresh restart
+   ↓ P02 S1: actual volatile bounded bootstrap factory > invalidates before further probe effects on an instrumented monotonic budget expiry
+   ↓ P02 S1: actual volatile bounded bootstrap factory > rejects stale source assets before any probe effect
+   × instrumented hard deadline settles a stalled pre-bind and disposes a late context without effects 18ms
+     → expected 'PENDING' to be 'BOOTSTRAP_BUDGET_EXCEEDED' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 13 skipped (14)
+   Start at  17:54:44
+   Duration  872ms (transform 179ms, setup 0ms, collect 271ms, tests 19ms, environment 0ms, prepare 267ms)
+

@@ -1,0 +1,52 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.factory.test.ts > does not adopt and delete a genuine same-bytes replacement after owner seal
+AssertionError: promise resolved "{ state: 'VERIFIED', …(4) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "capabilities": {
++     "checkedParents": true,
++     "exclusiveWrites": true,
++     "filesystem": "NTFS",
++     "platform": "windows-x64",
++     "protocol": 1,
++     "sameParentPublication": true,
++     "unconditionalPowerLoss": "NOT_PROVEN",
++     "writeThroughFlush": true,
++   },
++   "dispose": [Function dispose],
++   "request": [Function request],
++   "rootEntries": [
++     {
++       "bytes": 0,
++       "identity": "f4fc21950014000000142494",
++       "kind": "file",
++       "name": ".coordinator.lock",
++     },
++   ],
++   "state": "CLOSED",
+  }
+
+ ❯ tests/filesystem.factory.test.ts:139:28
+    137|   let replaced = false
+    138|   await fixture(async f => {
+    139|     await expect(f.create()).rejects.toMatchObject({ message: 'BOOTSTR…
+       |                            ^
+    140|     expect(replaced).toBe(true)
+    141|     const preserved = await fs.readFile(path.join(f.base, 'original-ow…
+ ❯ fixture tests/filesystem.factory.test.ts:37:15
+ ❯ tests/filesystem.factory.test.ts:138:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

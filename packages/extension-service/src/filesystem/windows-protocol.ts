@@ -52,7 +52,9 @@ function payload(value: Record<string, unknown>): boolean {
       (!Object.hasOwn(value, 'retainForPublication') || typeof value.retainForPublication === 'boolean')
     case 'replace': return token(value.handle) && components(value.parent, true) &&
       safeFilesystemComponent(value.name) && hash(value.sha256)
-    case 'remove': return components(value.path) && (value.kind === 'file' || value.kind === 'directory')
+    case 'remove': return components(value.path) && (value.kind === 'file' || value.kind === 'directory') &&
+      (!Object.hasOwn(value, 'expectedIdentity') || (typeof value.expectedIdentity === 'string' && /^[a-f0-9]{24}$/.test(value.expectedIdentity))) &&
+      (!Object.hasOwn(value, 'emptyOnly') || (value.emptyOnly === true && value.kind === 'directory'))
     default: return false
   }
 }
@@ -60,6 +62,7 @@ function validCommand(item: Record<string, unknown>, session: FilesystemSession,
     if (typeof item.operation !== 'string' || !Object.hasOwn(operationKeys, item.operation)) return false
     const keys = [...envelopeKeys, ...operationKeys[item.operation]]
     if (item.operation === 'write-close' && Object.hasOwn(item, 'retainForPublication')) keys.push('retainForPublication')
+    if (item.operation === 'remove') for (const key of ['expectedIdentity', 'emptyOnly']) if (Object.hasOwn(item, key)) keys.push(key)
     if (Object.keys(item).length !== keys.length || !keys.every(key => Object.hasOwn(item, key)) ||
       item.version !== 1 || item.session !== session.session || item.generation !== session.generation ||
       item.requestId !== nextId || !integer(item.requestId, 1, Number.MAX_SAFE_INTEGER) ||

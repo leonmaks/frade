@@ -1,0 +1,24 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.factory.test.ts > instrumented hard deadline settles a stalled pre-bind and disposes a late context without effects
+AssertionError: expected 'PENDING' to be 'BOOTSTRAP_BUDGET_EXCEEDED' // Object.is equality
+
+Expected: "BOOTSTRAP_BUDGET_EXCEEDED"
+Received: "PENDING"
+
+ ❯ tests/filesystem.factory.test.ts:117:21
+    115|   try {
+    116|     await vi.advanceTimersByTimeAsync(60_000)
+    117|     expect(outcome).toBe('BOOTSTRAP_BUDGET_EXCEEDED')
+       |                     ^
+    118|   } finally { await release() }
+    119|   expect(late.dispose).toHaveBeenCalledTimes(1)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

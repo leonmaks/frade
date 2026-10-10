@@ -1,0 +1,13 @@
+{
+  "classification": "ENVIRONMENT / TEST",
+  "reason": "pnpm12 exec did not populate npm_execpath; no hook was launched in this second probe.",
+  "boundedProbe": "Actual pnpm --version returned12.6.0; existing PATH resolves own pinned pnpm.cmd.",
+  "strategy": {
+    "rejected": [
+      "workstation-hardcoded runner breaks CI portability",
+      "mandatory injected path requires per-environment CI setup outside S1 frozen config"
+    ],
+    "selected": "Actual named pnpm CLI with exact workspace declared version preflight; fixed internal arguments; Windows shell only for .cmd launcher, not native helper; no config/global settings changes."
+  },
+  "productionUnchanged": true
+}

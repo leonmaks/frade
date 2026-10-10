@@ -1,0 +1,61 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/p02-extension-host.test.ts > actual Main before-quit refuses success and repeated exit when helper close is unconfirmed
+AssertionError: expected "spy" to not be called at all, but actually been called 1 times
+
+Received: 
+
+  1st spy call:
+
+    Array []
+
+
+Number of calls: 1
+
+ ❯ tests/unit/p02-extension-host.test.ts:76:65
+     74| it('actual Main before-quit refuses success and repeated exit when hel…
+     75|   const f = await mainCallback('quit', async () => { throw Error('FILE…
+     76|   f.callback(event); await settleMain(); expect(f.app.quit).not.toHave…
+       |                                                                 ^
+     77|   f.callback(event); await settleMain(); expect(event.preventDefault).…
+     78| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/unit/p02-extension-host.test.ts > actual Main before-quit blocks concurrent exit until helper close is confirmed
+AssertionError: expected "spy" to be called 2 times, but got 1 times
+ ❯ tests/unit/p02-extension-host.test.ts:82:90
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/unit/p02-extension-host.test.ts > actual startup failure callback cannot force app.exit on unconfirmed helper close
+AssertionError: expected "spy" to not be called at all, but actually been called 1 times
+
+Received: 
+
+  1st spy call:
+
+    Array [
+      1,
+    ]
+
+
+Number of calls: 1
+
+ ❯ tests/unit/p02-extension-host.test.ts:88:102
+     86| it('actual startup failure callback cannot force app.exit on unconfirm…
+     87|   const f = await mainCallback('visibility', async () => { throw Error…
+     88|   f.callback('owned deterministic presentation refusal'); await settle…
+       |                                                                                                      ^
+     89| })
+     90| it('actual startup failure callback exits with failure only after conf…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

@@ -1,0 +1,14 @@
+{
+  "classification": "TEST / ENVIRONMENT",
+  "observed": [
+    "dev named hook reaches BACKEND_VERIFIED but --inspect 0 is falsy in electron-vite CLI so no inspector",
+    "failure cleanup did not await the owned tree and restore-mtime retriggered watch",
+    "out/main/index.cjs observed absent after interrupted watch rebuild; following start had missing derived build input"
+  ],
+  "repair": [
+    "OS-assigned nonzero loopback inspector port, no sandbox/config change",
+    "collect exact owned PID subtree and await actual death; failed forced cleanup is never graceful PASS",
+    "restore mtime only after watchers closed; production start test precedes watch/dev test; fresh build before rerun"
+  ],
+  "productionBytesUnchanged": true
+}

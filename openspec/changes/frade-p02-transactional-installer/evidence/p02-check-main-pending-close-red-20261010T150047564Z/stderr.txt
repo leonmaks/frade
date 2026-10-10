@@ -1,0 +1,29 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/p02-extension-host.test.ts > pending Main shutdown propagates unconfirmed late helper close instead of resolving
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected: 
+Error {
+  "message": "rejected promise",
+}
+
++ Received: 
+undefined
+
+ ❯ tests/unit/p02-extension-host.test.ts:50:65
+     48|   const host = new ExtensionInstallerHost('C:/profile', 'C:/built', { …
+     49|   const opening = host.initialize(), failedOpening = expect(opening).r…
+     50|   const closing = host.dispose(), failedClosing = expect(closing).reje…
+       |                                                                 ^
+     51|   ready(live); await failedOpening; await failedClosing
+     52| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

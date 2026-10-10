@@ -1,0 +1,86 @@
+$ pnpm build:utility && pnpm build:filesystem && pnpm copy:filesystem && electron-vite dev "--watch" "--inspect" "61608" "--config" "C:/Users/NVISEN/AppData/Local/Temp/frade-p02-cold-dev-06Yjd7/vite.config.mjs"
+$ vite build --config vite.utility.config.ts
+(node:44588) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+vite v6.1.0 building for production...
+transforming...
+✓ 150 modules transformed.
+rendering chunks...
+computing gzip size...
+out/utility/index.cjs             0.05 kB │ gzip:  0.07 kB
+out/utility/paged-D9TBU87N.cjs   35.79 kB │ gzip: 11.22 kB
+out/utility/index-YDtQzKPC.cjs  288.97 kB │ gzip: 89.24 kB
+✓ built in 1.54s
+$ pnpm --filter @frade/extension-service build:filesystem
+$ node scripts/build-windows-filesystem.mjs
+{"status":"BUILT_INTEGRITY_ONLY","schemaVersion":1,"protocol":1,"platform":"windows-x64","source":"native/windows-filesystem.cs","sourceSha256":"145bad6cbc6a8c364e0952268c9ebe5a935a546be4b334ebb092df1556ba3d86","executable":"frade-filesystem.exe","executableSha256":"158eb7b4838d71cec0ccddeedf99073833048f4a74e31700f16ae64dbaa230ec","executableBytes":30208,"compiler":"C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe","compilerSha256":"46809206887326d2d24db1eff1f3064de972c3451abe766b49111450a5e08e00","compilerVersion":"4.8.9221.0 built by: NET481REL1LAST_25H2","command":["C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe","/nologo","/target:exe","/platform:x64","/optimize+","/warnaserror+","/reference:System.Web.Extensions.dll","/out:C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\packages\\extension-service\\dist\\native\\frade-filesystem.exe","C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\packages\\extension-service\\native\\windows-filesystem.cs"],"compiledAtUtc":"2026-10-10T17:05:51.965Z","runtimeCapabilities":"NOT_VERIFIED","publisherTrust":"NOT_ASSERTED"}
+$ pnpm --filter @frade/extension-service copy:filesystem
+$ node scripts/copy-windows-filesystem.mjs
+{"status":"COPIED_INTEGRITY_ONLY","output":"C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade\\apps\\desktop\\out\\extension-filesystem","sourceSha256":"145bad6cbc6a8c364e0952268c9ebe5a935a546be4b334ebb092df1556ba3d86","executableSha256":"158eb7b4838d71cec0ccddeedf99073833048f4a74e31700f16ae64dbaa230ec","runtimeCapabilities":"NOT_VERIFIED","publisherTrust":"NOT_ASSERTED"}
+(node:46556) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+vite v6.1.0 building SSR bundle for development...
+
+watching for file changes...
+
+build started...
+transforming...
+✓ 105 modules transformed.
+rendering chunks...
+out/main/index.cjs  332.93 kB
+built in 1262ms.
+
+electron main process built successfully
+
+-----
+
+vite v6.1.0 building SSR bundle for development...
+
+watching for file changes...
+
+build started...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+out/preload/index.cjs  34.99 kB
+built in 162ms.
+
+electron preload scripts built successfully
+
+-----
+
+20:06:00 [vite] (client) Forced re-optimization of dependencies
+dev server running for the electron renderer process at:
+
+  ➜  Local:   http://127.0.0.1:5173/
+
+starting electron app...
+
+
+Debugger listening on ws://127.0.0.1:61608/59518154-9e80-4c67-a13a-5a1fc90165c3
+For help, see: https://nodejs.org/learn/getting-started/debugging
+Frade extension backend {"state":"BACKEND_VERIFIED","installer":"NOT_IMPLEMENTED"}
+(node:35100) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `electron --trace-warnings ...` to show where the warning was created)
+Debugger attached.
+Debugger ending on ws://127.0.0.1:61608/59518154-9e80-4c67-a13a-5a1fc90165c3
+For help, see: https://nodejs.org/learn/getting-started/debugging
+
+build started...
+✓ 0 modules transformed.
+out/main/index.cjs  332.93 kB
+built in 592ms.
+
+electron main process rebuilt successfully
+
+restarting electron app...
+
+
+Debugger listening on ws://127.0.0.1:61608/32372e66-68be-4640-a23e-0dba8329ed46
+For help, see: https://nodejs.org/learn/getting-started/debugging
+Frade extension backend {"state":"BACKEND_VERIFIED","installer":"NOT_IMPLEMENTED"}
+(node:44768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `electron --trace-warnings ...` to show where the warning was created)
+Debugger attached.
+Debugger ending on ws://127.0.0.1:61608/32372e66-68be-4640-a23e-0dba8329ed46
+For help, see: https://nodejs.org/learn/getting-started/debugging

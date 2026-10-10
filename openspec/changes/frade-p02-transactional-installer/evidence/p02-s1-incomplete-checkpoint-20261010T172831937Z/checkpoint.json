@@ -1,0 +1,493 @@
+{
+  "atUtc": "2026-10-10T17:28:31.937Z",
+  "change": "frade-p02-transactional-installer",
+  "status": "INCOMPLETE_CHECKPOINT",
+  "baseline": "922abf75aceec40204b03a80368f4dcd2cb97cab",
+  "gate": "FAIL",
+  "review": {
+    "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-received-20261010T165324969Z",
+    "run": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-10T16-35-26-076Z-135029cd-d19f-46a5-8c4f-f5fcd57f97a3",
+    "atUtc": "2026-10-10T16:53:25.936Z",
+    "status": "FAIL",
+    "gateStatus": "FAIL",
+    "rawArtifacts": 17,
+    "packetFiles": 379,
+    "eventCount": 109,
+    "threadId": "01a126b5-048c-7950-b9ad-4a767d8534f5",
+    "reportSha256": "24a57e974d8f01136711665263ff2770f1f98a9aef06b7df431658a5bf94d4ea",
+    "sourcePlanUnchanged": true,
+    "decisionUnchanged": true,
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "requestUnchanged": true,
+    "finalMessageEqualsReport": true,
+    "actualCliMatchesSelection": true,
+    "reviewPolicy": {
+      "stage": "P02 transactional installer",
+      "phase": "POST",
+      "model": "gpt-6-sol",
+      "reasoningEffort": "xhigh",
+      "source": {
+        "path": "openspec/changes/frade-p02-transactional-installer/design.md",
+        "sha256": "e9d4f1b790d0b211ab2a3b58c140d50ac6544a3ea6160fd109cf1e2bfe6b15fd",
+        "excerpt": "| P02 transactional installer | POST | gpt-6-sol | xhigh |"
+      }
+    },
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "scope": "Focused accepted S1 guarded cleanup/finite volatile factory/Main/runtime; full P02 incomplete3/9, no cumulative closure or P03"
+  },
+  "sourceCatalog": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+  "verifiedInputFiles": 632,
+  "sourceFiles": [
+    {
+      "state": " M",
+      "path": "apps/desktop/package.json",
+      "bytes": 1779,
+      "sha256": "6df13860280a2634b25a1f761d66e6217c96880d9bd2384b95c7f0ccb0b8c5fe"
+    },
+    {
+      "state": " M",
+      "path": "apps/desktop/src/main/index.ts",
+      "bytes": 14838,
+      "sha256": "20ebcd6523c747efe0954709e0f9b2a91379782c0ae2070936ff5e4a6d873084"
+    },
+    {
+      "state": " M",
+      "path": "packages/extension-service/native/windows-filesystem.cs",
+      "bytes": 30086,
+      "sha256": "145bad6cbc6a8c364e0952268c9ebe5a935a546be4b334ebb092df1556ba3d86"
+    },
+    {
+      "state": " M",
+      "path": "packages/extension-service/scripts/build-windows-filesystem.mjs",
+      "bytes": 4140,
+      "sha256": "3194895d0771d53be25292f2ef3119d0a31a4a20134d7f7f876c9b3efd2cbf56"
+    },
+    {
+      "state": " M",
+      "path": "packages/extension-service/src/filesystem/types.ts",
+      "bytes": 1689,
+      "sha256": "332e8f7bef0cad09916c19896e948ddcd829cf70f4f65ea162fb46dbf821594a"
+    },
+    {
+      "state": " M",
+      "path": "packages/extension-service/src/filesystem/windows-protocol.ts",
+      "bytes": 7322,
+      "sha256": "c4282186749df57a3d5d850b48da192cdd277987aa734ecaa7df7a605769f6c3"
+    },
+    {
+      "state": " M",
+      "path": "packages/extension-service/src/filesystem/windows.ts",
+      "bytes": 12574,
+      "sha256": "becf1df559d710f75d5e1b637f381f6b62cc7b5c90aecbd048dba154d3f4524d"
+    },
+    {
+      "state": " M",
+      "path": "packages/extension-service/src/index.ts",
+      "bytes": 274,
+      "sha256": "315e12db0430cac3d3fbf19a6940c281cdad779030dd67a4324b389546f870fe"
+    },
+    {
+      "state": " M",
+      "path": "packages/extension-service/tests/filesystem.protocol.test.ts",
+      "bytes": 8581,
+      "sha256": "82cd190abb229c6e0467856c79671b4eb0921224f864f75459efaad56fc8f10a"
+    },
+    {
+      "state": " M",
+      "path": "pnpm-lock.yaml",
+      "bytes": 156156,
+      "sha256": "573861ad3637dcfacd364e731bdce4d652dd4d747171d5ba62cd6932c20be557"
+    },
+    {
+      "state": "??",
+      "path": "apps/desktop/src/main/extension-installer.ts",
+      "bytes": 3336,
+      "sha256": "808955f32958c96233e2b325fc03834eb2cf249e4d75f712bf5d36264baa3034"
+    },
+    {
+      "state": "??",
+      "path": "apps/desktop/tests/e2e/ui-contract-extension.spec.ts",
+      "bytes": 11367,
+      "sha256": "1dc5ff78ec43603cff58c2b88ebf8215256a797cfd7c1885be2bc12b04883300"
+    },
+    {
+      "state": "??",
+      "path": "apps/desktop/tests/unit/p02-extension-host.test.ts",
+      "bytes": 8649,
+      "sha256": "3d0bac0df3f752305bc5bc902a6348ee78bc29d8514eb29df0271bd084691370"
+    },
+    {
+      "state": "??",
+      "path": "packages/extension-service/src/filesystem/factory.ts",
+      "bytes": 7943,
+      "sha256": "71a7755b8db3d36b52d94912525ecbfa69575c5fc8e04867c68d69e9220d5362"
+    },
+    {
+      "state": "??",
+      "path": "packages/extension-service/tests/filesystem.cleanup.test.ts",
+      "bytes": 9226,
+      "sha256": "fb8f74df8c60d3d61a5456e38181819c4aa8e59b3d46cfc002827a512e473346"
+    },
+    {
+      "state": "??",
+      "path": "packages/extension-service/tests/filesystem.factory.test.ts",
+      "bytes": 11304,
+      "sha256": "fb11ea341e47edc0c296886240e5c3f1fe34285da12052bce04f601aa0cd90b7"
+    }
+  ],
+  "checks": [
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-quit-fixed-desktop-typecheck-20261010T171346669Z",
+      "atUtc": "2026-10-10T17:13:57.119Z",
+      "label": "quit-fixed-desktop-typecheck",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "typecheck"
+      ],
+      "cwd": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+      "head": "922abf75aceec40204b03a80368f4dcd2cb97cab",
+      "exitCode": 0,
+      "error": null,
+      "sourceBinding": {
+        "before": {
+          "atUtc": "2026-10-10T17:13:48.283Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "after": {
+          "atUtc": "2026-10-10T17:13:57.118Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "unchanged": true
+      },
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-quit-fixed-desktop-lint-20261010T171357251Z",
+      "atUtc": "2026-10-10T17:14:25.046Z",
+      "label": "quit-fixed-desktop-lint",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "lint"
+      ],
+      "cwd": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+      "head": "922abf75aceec40204b03a80368f4dcd2cb97cab",
+      "exitCode": 0,
+      "error": null,
+      "sourceBinding": {
+        "before": {
+          "atUtc": "2026-10-10T17:13:58.857Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "after": {
+          "atUtc": "2026-10-10T17:14:25.045Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "unchanged": true
+      },
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "785b223160c30fda735920637fb1bfa85adcdae9e934f0483a3822ab1002f952"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-quit-fixed-desktop-unit-20261010T171425358Z",
+      "atUtc": "2026-10-10T17:14:48.729Z",
+      "label": "quit-fixed-desktop-unit",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "test"
+      ],
+      "cwd": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+      "head": "922abf75aceec40204b03a80368f4dcd2cb97cab",
+      "exitCode": 0,
+      "error": null,
+      "sourceBinding": {
+        "before": {
+          "atUtc": "2026-10-10T17:14:27.153Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "after": {
+          "atUtc": "2026-10-10T17:14:48.728Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "unchanged": true
+      },
+      "stdoutSha256": "553aa761964b9afdb9b86c5b9b74f549011f24d5baff0437376d7f8a68a53685",
+      "stderrSha256": "dc5f1c789049423eeaf935d7aca00ad7deffb63dc39bba7b592d186c24df5014"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-quit-fixed-desktop-build-20261010T171449010Z",
+      "atUtc": "2026-10-10T17:15:24.873Z",
+      "label": "quit-fixed-desktop-build",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "build"
+      ],
+      "cwd": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+      "head": "922abf75aceec40204b03a80368f4dcd2cb97cab",
+      "exitCode": 0,
+      "error": null,
+      "sourceBinding": {
+        "before": {
+          "atUtc": "2026-10-10T17:14:50.645Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "after": {
+          "atUtc": "2026-10-10T17:15:24.871Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "unchanged": true
+      },
+      "stdoutSha256": "2e1139be4c5ce698ed6b9f0a07ef8286e4409443b6fa9534709fa9e2dedafd4b",
+      "stderrSha256": "59b4b6337f4d59aee1827e7eacbe4b2b762399b50d3cb34bcf00c3418f320354"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-quit-fixed-runtime-coexistence-20261010T171525011Z",
+      "atUtc": "2026-10-10T17:16:23.431Z",
+      "label": "quit-fixed-runtime-coexistence",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "exec",
+        "playwright",
+        "test",
+        "tests/e2e/ui-contract-extension.spec.ts",
+        "tests/e2e/ui-contract-theme.spec.ts",
+        "--grep",
+        "P02 S1|P01 real staged filesystem obstruction|P01 real frame chord|P01 actual required frame refusal"
+      ],
+      "cwd": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+      "head": "922abf75aceec40204b03a80368f4dcd2cb97cab",
+      "exitCode": 0,
+      "error": null,
+      "sourceBinding": {
+        "before": {
+          "atUtc": "2026-10-10T17:15:26.869Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "after": {
+          "atUtc": "2026-10-10T17:16:23.429Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "unchanged": true
+      },
+      "stdoutSha256": "c4f9cd998fa31265a0f02ae2fece8efb524ad7f4ba161ccc703e8918b5cfaf7f",
+      "stderrSha256": "c6ebd6cf91573ac70cbae6715f69025f8dfdd2c72e909507e316e184310820b5"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-isolated-cache-cold-20261010T170527349Z",
+      "atUtc": "2026-10-10T17:06:12.729Z",
+      "label": "dev-isolated-cache-cold",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "exec",
+        "playwright",
+        "test",
+        "--config",
+        "C:/Users/NVISEN/AppData/Local/Temp/frade-p02-cold-dev-06Yjd7/playwright.config.ts",
+        "--grep",
+        "actual named dev"
+      ],
+      "cwd": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+      "head": "922abf75aceec40204b03a80368f4dcd2cb97cab",
+      "exitCode": 0,
+      "error": null,
+      "sourceBinding": {
+        "before": {
+          "atUtc": "2026-10-10T17:05:31.606Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "after": {
+          "atUtc": "2026-10-10T17:06:12.728Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "unchanged": true
+      },
+      "stdoutSha256": "7265f6fc6d546387e614aa55a073b2ddfccdc79ad9b646b002bc4c025d61bfe2",
+      "stderrSha256": "9f82b35bb9a09273757db043fbb2ce4732d985259bef0ab2524ca7d56a4b4dfb"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-isolated-cache-warm-20261010T170714835Z",
+      "atUtc": "2026-10-10T17:07:34.882Z",
+      "label": "dev-isolated-cache-warm",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "exec",
+        "playwright",
+        "test",
+        "--config",
+        "C:/Users/NVISEN/AppData/Local/Temp/frade-p02-cold-dev-06Yjd7/playwright.config.ts",
+        "--grep",
+        "actual named dev"
+      ],
+      "cwd": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+      "head": "922abf75aceec40204b03a80368f4dcd2cb97cab",
+      "exitCode": 0,
+      "error": null,
+      "sourceBinding": {
+        "before": {
+          "atUtc": "2026-10-10T17:07:16.537Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "after": {
+          "atUtc": "2026-10-10T17:07:34.881Z",
+          "digest": "5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646",
+          "manifest": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-5928f630c90439f4656e931747815e3fdff9a7117c800056b0a9f827019d9646/inputs.json",
+          "files": 632,
+          "bytes": 4472605
+        },
+        "unchanged": true
+      },
+      "stdoutSha256": "0e7be014bad432c2cccfebf805362b6a9ad285f4a02357723e55a79536441250",
+      "stderrSha256": "35f5ff68add853a8358a391f2c5303151aa4a5d484ed8ea5e967dc8aa0c8af25"
+    }
+  ],
+  "proposal": {
+    "proposal": "openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics.proposed.md",
+    "sha256": "ff75e18bad97b8c9e10da44c6404ec2a0e3539c34ef36a03b9c2a9b3355f283a",
+    "original": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+    "originalSha256": "c3161f1b0ced4d2036e524c6ca9d779041ef41d6ceab8924cad11ce814f1227f",
+    "approved": false
+  },
+  "originalLogsTrackedWithoutByteChanges": [
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-owner-fixed-runtime-coexistence-20261010T162505005Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 4492,
+      "sha256": "335c3b41c08e36f812919bc46a7545edb2490bbd71e0e62e13c4289c5ceae264"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-owner-fixed-runtime-coexistence-20261010T162505005Z/playwright-raw/ui-contract-extension-P02--9e35c-med-start-hook-owns-backend/p02-start.log",
+      "bytes": 1110,
+      "sha256": "900d4d377b2079152daf3be8313b9b5c9727330fc5e438bc1c847a89d847d122"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-final-runtime-coexistence-20261010T153908765Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 4212,
+      "sha256": "4ddfdd70626164ddfbffd6d7ab9b91c1fcd20fc51382a8acc77a490daeb54063"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-final-runtime-coexistence-20261010T153908765Z/playwright-raw/ui-contract-extension-P02--9e35c-med-start-hook-owns-backend/p02-start.log",
+      "bytes": 1110,
+      "sha256": "d1a39a5ee9b66024c132dee7cc29fe097df907e68abb811b8f26867e6d7078ef"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-dev-handshake-diagnostic-20261010T154552626Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 4492,
+      "sha256": "7cf03d0f0b5b4e4625ca2e1585b0dd76278bb12b21a0b9228e750061b26fbf37"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-hooks-probe-20261010T151226916Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 3527,
+      "sha256": "7c62a231f5a8c92d6115a697f02877a7197c3825d9d34e8374b0faf8cb2e39b0"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-hooks-probe-20261010T151226916Z/playwright-raw/ui-contract-extension-P02--9e35c-med-start-hook-owns-backend/p02-start.log",
+      "bytes": 690,
+      "sha256": "688d5f82d72c8f7b06bbc5078dfd547df154c3030dc830f8f2741feaf2c8bf36"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-hooks-green2-20261010T152109803Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 4492,
+      "sha256": "1a6366bab791375c332c535315482bb98e34116d547d8c777cd2ce2073070952"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-hooks-green2-20261010T152109803Z/playwright-raw/ui-contract-extension-P02--9e35c-med-start-hook-owns-backend/p02-start.log",
+      "bytes": 1110,
+      "sha256": "ea3ca495b882473d5a5536dc76a24295d07d4ac990f45fa420279741e22b172f"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-quit-fixed-runtime-coexistence-20261010T171525011Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 4492,
+      "sha256": "0493d98e6d9aaf3b98135eb30b55806e6d0ff8fccc01c45f85e4aeb40786e459"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-quit-fixed-runtime-coexistence-20261010T171525011Z/playwright-raw/ui-contract-extension-P02--9e35c-med-start-hook-owns-backend/p02-start.log",
+      "bytes": 1110,
+      "sha256": "d2e094d1ead92b7a954215e556449c39d3d7ffebed6505c68f26ab11ddeaa975"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-cold-warm-probe-20261010T170445579Z/results-cold/cold-P02-S1-actual-named-d-c374b-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 4647,
+      "sha256": "bb8f4b3d41466d18aa9f423a2f956fac850702cf4d19d05aad286128b0acf420"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-cold-warm-probe-20261010T170445579Z/results-warm/cold-P02-S1-actual-named-d-c374b-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 4582,
+      "sha256": "b8bad8385563f046dffe5c59c4ba91e26140f75b3a05e6b14a82cdc73d2630de"
+    }
+  ],
+  "remaining": "P02 remains3/9; dev timeout root cause unresolved; no fresh POST or archive; S2 and full cumulative gates open",
+  "destination": {
+    "remote": "origin",
+    "url": "git@github.com:leonmaks/frade.git",
+    "ref": "refs/heads/codex/frade-ui-design-contract"
+  },
+  "authorization": "User permits specified UI checkpoint and following UI checkpoints in this destination; secrets/credentials/other repositories excluded"
+}

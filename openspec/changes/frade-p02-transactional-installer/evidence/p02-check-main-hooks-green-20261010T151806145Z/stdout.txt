@@ -1,0 +1,54 @@
+
+Running 3 tests using 1 worker
+
+  ok 1 tests\e2e\ui-contract-extension.spec.ts:9:1 › P02 S1 built Main owns verified backend before paint and releases actual helper on shutdown (3.2s)
+  x  2 tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named start hook owns backend (7ms)
+  x  3 tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named dev hook owns backend across Main rebuild (12ms)
+
+
+  1) tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named start hook owns backend ───
+
+    Error: P02_NAMED_HOOK_RUNNER_UNAVAILABLE
+
+      79 |     const workspace = resolve('../..'), source = join(workspace, 'apps/desktop/src/main/index.ts'), original = await fs.readFile(source), stat = await fs.stat(source)
+      80 |     const node = process.execPath, pnpm = process.env.npm_execpath
+    > 81 |     if (!pnpm) throw Error('P02_NAMED_HOOK_RUNNER_UNAVAILABLE')
+         |                      ^
+      82 |     const port = await freeInspectorPort()
+      83 |     const args = [pnpm, '--filter', '@frade/desktop', hook, ...(hook === 'dev' ? ['--watch', '--inspect', String(port)] : ['--inspect=' + port])]
+      84 |     const child = spawn(node, args, { cwd: workspace, windowsHide: true, shell: false, env: { ...process.env, FRADE_USER_DATA: profile, PATH: dirname(node) + ';' + process.env.PATH }, stdio: ['ignore', 'pipe', 'pipe'] })
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-extension.spec.ts:81:22
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-extension-P02--9e35c-med-start-hook-owns-backend\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-extension-P02--9e35c-med-start-hook-owns-backend\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named dev hook owns backend across Main rebuild 
+
+    Error: P02_NAMED_HOOK_RUNNER_UNAVAILABLE
+
+      79 |     const workspace = resolve('../..'), source = join(workspace, 'apps/desktop/src/main/index.ts'), original = await fs.readFile(source), stat = await fs.stat(source)
+      80 |     const node = process.execPath, pnpm = process.env.npm_execpath
+    > 81 |     if (!pnpm) throw Error('P02_NAMED_HOOK_RUNNER_UNAVAILABLE')
+         |                      ^
+      82 |     const port = await freeInspectorPort()
+      83 |     const args = [pnpm, '--filter', '@frade/desktop', hook, ...(hook === 'dev' ? ['--watch', '--inspect', String(port)] : ['--inspect=' + port])]
+      84 |     const child = spawn(node, args, { cwd: workspace, windowsHide: true, shell: false, env: { ...process.env, FRADE_USER_DATA: profile, PATH: dirname(node) + ';' + process.env.PATH }, stdio: ['ignore', 'pipe', 'pipe'] })
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-extension.spec.ts:81:22
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-extension-P02--83026-backend-across-Main-rebuild\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-extension-P02--83026-backend-across-Main-rebuild\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named start hook owns backend ────
+    tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named dev hook owns backend across Main rebuild 
+  1 passed (7.1s)

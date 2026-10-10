@@ -1,0 +1,51 @@
+
+Running 3 tests using 1 worker
+
+  ok 1 tests\e2e\ui-contract-extension.spec.ts:8:1 › P02 S1 built Main owns verified backend before paint and releases actual helper on shutdown (3.7s)
+  x  2 tests\e2e\ui-contract-extension.spec.ts:157:3 › P02 S1 actual named dev hook owns backend across Main rebuild (20.1s)
+  x  3 tests\e2e\ui-contract-extension.spec.ts:157:3 › P02 S1 actual named start hook owns backend (30.0s)
+
+
+  1) tests\e2e\ui-contract-extension.spec.ts:157:3 › P02 S1 actual named dev hook owns backend across Main rebuild 
+
+    Error: EBUSY: resource busy or locked, unlink 'C:\Users\NVISEN\AppData\Local\Temp\frade-p02-electron-eHebHc\DIPS'
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-extension-P02--83026-backend-across-Main-rebuild\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-extension-P02--83026-backend-across-Main-rebuild\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\ui-contract-extension.spec.ts:157:3 › P02 S1 actual named start hook owns backend ───
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m1[39m
+    Received: [31m0[39m
+
+    Call Log:
+    - Timeout 30000ms exceeded while waiting on the predicate
+
+      91 |     let success = false
+      92 |     try {
+    > 93 |       await expect.poll(ready, { timeout: 30000 }).toBe(1)
+         |       ^
+      94 |       expect(urls()).toHaveLength(1); inspector = await MainInspector.connect(urls()[0])
+      95 |       const firstMain = await inspector.ask('process.pid'), firstHelper = await helperOf(firstMain)
+      96 |       await footprint(); await visible()
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-extension.spec.ts:93:7
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-extension-P02--9e35c-med-start-hook-owns-backend\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-extension-P02--9e35c-med-start-hook-owns-backend\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\ui-contract-extension.spec.ts:157:3 › P02 S1 actual named dev hook owns backend across Main rebuild 
+    tests\e2e\ui-contract-extension.spec.ts:157:3 › P02 S1 actual named start hook owns backend ────
+  1 passed (58.2s)

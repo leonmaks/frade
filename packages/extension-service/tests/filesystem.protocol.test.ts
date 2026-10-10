@@ -123,3 +123,28 @@ describe('P02FS002: explicit write handle release', () => {
     handle: 'a'.repeat(32), sha256: 'b'.repeat(64), retainForPublication: 'false',
   }, 2), true))
 })
+
+
+describe('P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards', () => {
+  for (const fields of [
+    { expectedIdentity: 'a'.repeat(24) }, { emptyOnly: true },
+    { expectedIdentity: 'a'.repeat(24), emptyOnly: true },
+  ]) it('admits directory cleanup with known guard fields ' + JSON.stringify(fields), () => {
+    const gate = bound(), value = command('remove', { path: ['probe'], kind: 'directory', ...fields }, 2)
+    expect(gate.accept(frame(value), 10)).toEqual(value)
+    expect(gate.complete(2, true)).toBe(true)
+    expect(gate.closed).toBe(false)
+  })
+  it('admits exact-identity file deletion', () => {
+    const gate = bound(), value = command('remove', { path: ['probe', 'owner.json'], kind: 'file', expectedIdentity: 'f'.repeat(24) }, 2)
+    expect(gate.accept(frame(value), 10)).toEqual(value)
+    expect(gate.complete(2, true)).toBe(true)
+  })
+  for (const fields of [
+    { expectedIdentity: null }, { expectedIdentity: 24 }, { expectedIdentity: '' },
+    { expectedIdentity: 'a'.repeat(23) }, { expectedIdentity: 'a'.repeat(25) }, { expectedIdentity: 'A'.repeat(24) },
+    { emptyOnly: false }, { emptyOnly: null }, { emptyOnly: 1 }, { emptyOnly: 'true' },
+    { emptyOnly: true, kind: 'file' }, { expectedIdentity: 'a'.repeat(24), extra: true },
+  ]) it('rejects invalid guard before any effect ' + JSON.stringify(fields), () =>
+    refused(command('remove', { path: ['probe'], kind: 'directory', ...fields }, 2), true))
+})

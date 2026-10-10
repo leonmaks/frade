@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+{"launcherPid":36188,"actualMainPid":23640}
+{"actualTreeStatus":0,"actualTree":"[{\"ProcessId\":34400,\"ParentProcessId\":23640,\"Name\":\"electron.exe\"},{\"ProcessId\":35624,\"ParentProcessId\":23640,\"Name\":\"electron.exe\"},{\"ProcessId\":1028,\"ParentProcessId\":23640,\"Name\":\"frade-filesystem.exe\"},{\"ProcessId\":39860,\"ParentProcessId\":23640,\"Name\":\"electron.exe\"},{\"ProcessId\":45208,\"ParentProcessId\":23640,\"Name\":\"electron.exe\"}]\r\n","launcherQuery":""}
+  x  1 tests\e2e\ui-contract-extension.spec.ts:7:1 › P02 S1 built Main owns verified backend before paint and releases actual helper on shutdown (2.9s)
+
+
+  1) tests\e2e\ui-contract-extension.spec.ts:7:1 › P02 S1 built Main owns verified backend before paint and releases actual helper on shutdown 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoHaveLength[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected length: [32m1[39m
+    Received length: [31m0[39m
+    Received array:  [31m[][39m
+
+      22 |     expect(result.status, result.stderr).toBe(0)
+      23 |     const pids = result.stdout.trim().split(/\s+/).filter(Boolean).map(Number)
+    > 24 |     expect(pids).toHaveLength(1); helperPid = pids[0]; expect(helperPid).toBeGreaterThan(0)
+         |                  ^
+      25 |     expect(await fs.readdir(join(profile, 'extensions'))).not.toContain('.frade-runtime-probe')
+      26 |     await page.screenshot({ path: test.info().outputPath('p02-main.png'), fullPage: true })
+      27 |     expect(await page.evaluate(() => ({ node: typeof (window as any).require, ipc: typeof (window.frade as any).ipcRenderer }))).toEqual({ node: 'undefined', ipc: 'undefined' })
+        at C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-extension.spec.ts:24:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\ui-contract-extension-P02--ad85c-s-actual-helper-on-shutdown\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-extension-P02--ad85c-s-actual-helper-on-shutdown\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-extension-P02--ad85c-s-actual-helper-on-shutdown\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-extension.spec.ts:7:1 › P02 S1 built Main owns verified backend before paint and releases actual helper on shutdown 

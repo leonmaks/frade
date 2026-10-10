@@ -1,0 +1,35 @@
+
+Running 6 tests using 1 worker
+
+  ok 1 tests\e2e\ui-contract-extension.spec.ts:9:1 › P02 S1 built Main owns verified backend before paint and releases actual helper on shutdown (3.9s)
+  ok 2 tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named start hook owns backend (5.9s)
+  x  3 tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named dev hook owns backend across Main rebuild (17.2s)
+  ok 4 tests\e2e\ui-contract-theme.spec.ts:483:1 › P01 real frame chord, Settings, System media and preview window-close preserve dirty KA and durable ownership (9.5s)
+  ok 5 tests\e2e\ui-contract-theme.spec.ts:656:1 › P01 actual required frame refusal restores prior presentation and exposes truthful live error without document writes (7.0s)
+  ok 6 tests\e2e\ui-contract-theme.spec.ts:1103:1 › P01 real staged filesystem obstruction refuses commit and restores before retry and restart (7.2s)
+
+
+  1) tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named dev hook owns backend across Main rebuild 
+
+    Error: {"id":8,"error":{"code":-32000,"message":"Cannot find context with specified id"}}
+
+      48 |       if (!pending) return
+      49 |       this.pending.delete(row.id)
+    > 50 |       if (row.error || row.result?.exceptionDetails) pending.reject(Error(JSON.stringify(row)))
+         |                                                                     ^
+      51 |       else pending.resolve(row.result?.result?.value)
+      52 |     })
+      53 |     socket.addEventListener('close', () => { for (const p of this.pending.values()) p.reject(Error('OWNED_INSPECTOR_CLOSED')); this.pending.clear() })
+        at WebSocket.<anonymous> (C:\Users\NVISEN\.codex\worktrees\ui-design-contract\frade\apps\desktop\tests\e2e\ui-contract-extension.spec.ts:50:69)
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\ui-contract-extension-P02--83026-backend-across-Main-rebuild\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\ui-contract-extension-P02--83026-backend-across-Main-rebuild\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-extension.spec.ts:158:3 › P02 S1 actual named dev hook owns backend across Main rebuild 
+  5 passed (53.8s)

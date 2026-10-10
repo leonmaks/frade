@@ -1,0 +1,84 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.cleanup.test.ts (8 tests | 2 failed) 3157ms
+   × P02 owned bootstrap cleanup: actual identity and empty-only guards > deletes only the exact ordinary file and exact empty held directory 679ms
+     → expected 'REFUSED' to be 'ACK' // Object.is equality
+   ✓ P02 owned bootstrap cleanup: actual identity and empty-only guards > preserves genuinely new unknown child instead of recursive cleanup 274ms
+   × P02 owned bootstrap cleanup: actual identity and empty-only guards > refuses a genuinely changed same-path ordinary object using captured identity 731ms
+     → expected [Function] to throw error including 'TARGET_IDENTITY_MISMATCH' but got 'INVALID_FILESYSTEM_COMMAND'
+   ✓ P02 owned bootstrap cleanup: actual identity and empty-only guards > rejects invalid native guard fields before child effects {"expectedIdentity":"AAAAAAAAAAAAAAAAAAAAAAAA"}  718ms
+   ✓ P02 owned bootstrap cleanup: actual identity and empty-only guards > rejects invalid native guard fields before child effects {"expectedIdentity":"aaaaaaaaaaaaaaaaaaaaaaa"} 207ms
+   ✓ P02 owned bootstrap cleanup: actual identity and empty-only guards > rejects invalid native guard fields before child effects {"emptyOnly":false} 184ms
+   ✓ P02 owned bootstrap cleanup: actual identity and empty-only guards > rejects invalid native guard fields before child effects {"emptyOnly":true,"kind":"file"} 177ms
+   ✓ P02 owned bootstrap cleanup: actual identity and empty-only guards > rejects invalid native guard fields before child effects {"expectedIdentity":"aaaaaaaaaaaaaaaaaaaaaaaa","extra":true} 184ms
+ ❯ tests/filesystem.protocol.test.ts (59 tests | 4 failed) 39ms
+   ✓ P02FS004: closed installation-root protocol admission > admits one valid bind and capabilities in the same authenticated generation 3ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"version":2} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"generation":6} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"session":"another-session"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"requestId":0} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"requestId":2} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"requestId":1.5} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"deadlineMs":10} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"deadlineMs":10011} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"deadlineMs":-1} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"\\\\server\\share"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"relative"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"C:\\Frade-owned\\..\\extensions"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"C:\\Frade-owned\\extensions."} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"operation":"execute"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"extra":"field"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"C:\\CON\\extensions"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects capabilities before root bind 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects mkdir before root bind 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects read before root bind 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects list before root bind 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects dispose before root bind 0ms
+   ✓ P02FS004: closed installation-root protocol admission > allows only one in-flight command and invalidates a pipeline instead of queueing effects 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects replay, second bind and completion for another request 1ms
+   ✓ P02FS004: closed installation-root protocol admission > failed bind permanently refuses later operations and failed mutation cannot be silently retried 0ms
+   ✓ P02FS004: closed installation-root protocol admission > accepts every closed bounded operation after binding without leaking host paths 5ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component ".." without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "." without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "" without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "a/b" without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "a\\b" without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "a:b" without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "NUL" without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "COM1.txt" without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "last." without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "last " without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "x?" without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "x\u0000y" without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects unsafe path component "x<y" without forwarding any command 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects depth, component length, oversized reads/writes and unbounded directory listing 5ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects malformed UTF-8, oversized frames, duplicate JSON keys and ambiguous raw encodings 1ms
+   ✓ P02FS002: explicit write handle release > admits releasing a sealed package file while retaining root/coordinator handles 0ms
+   ✓ P02FS002: explicit write handle release > refuses a non-boolean hold policy 0ms
+   × P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > admits directory cleanup with known guard fields {"expectedIdentity":"aaaaaaaaaaaaaaaaaaaaaaaa"} 9ms
+     → expected null to deeply equal { version: 1, …(8) }
+   × P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > admits directory cleanup with known guard fields {"emptyOnly":true} 1ms
+     → expected null to deeply equal { version: 1, …(8) }
+   × P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > admits directory cleanup with known guard fields {"expectedIdentity":"aaaaaaaaaaaaaaaaaaaaaaaa","emptyOnly":true} 1ms
+     → expected null to deeply equal { version: 1, …(9) }
+   × P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > admits exact-identity file deletion 1ms
+     → expected null to deeply equal { version: 1, …(8) }
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"expectedIdentity":null} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"expectedIdentity":24} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"expectedIdentity":""} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"expectedIdentity":"aaaaaaaaaaaaaaaaaaaaaaa"} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"expectedIdentity":"aaaaaaaaaaaaaaaaaaaaaaaaa"} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"expectedIdentity":"AAAAAAAAAAAAAAAAAAAAAAAA"} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"emptyOnly":false} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"emptyOnly":null} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"emptyOnly":1} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"emptyOnly":"true"} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"emptyOnly":true,"kind":"file"} 0ms
+   ✓ P02-BOOTSTRAP-OWNED-CLEANUP-01: exact optional removal guards > rejects invalid guard before any effect {"expectedIdentity":"aaaaaaaaaaaaaaaaaaaaaaaa","extra":true} 0ms
+
+ Test Files  2 failed (2)
+      Tests  6 failed | 61 passed (67)
+   Start at  17:35:05
+   Duration  6.67s (transform 1.28s, setup 0ms, collect 1.35s, tests 3.20s, environment 0ms, prepare 1.25s)
+

@@ -1,0 +1,107 @@
+import { randomUUID, createHash } from 'node:crypto'
+import { WindowsFilesystemTransport, FilesystemTransportError } from './windows'
+import type { NativeTransportOptions, FilesystemPayload } from './windows'
+import type { FilesystemCapabilities } from './types'
+/** First-party source anchor: never adopt a renderer or integrity.json supplied expected hash. */
+export const NATIVE_FILESYSTEM_SOURCE_SHA256 = '145bad6cbc6a8c364e0952268c9ebe5a935a546be4b334ebb092df1556ba3d86'
+const PROBE = '.frade-runtime-probe'
+const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
+interface Entry { name: string; kind: 'file' | 'directory'; bytes: number; identity: string }
+interface Port {
+  readonly closed: boolean
+  request(payload: FilesystemPayload): Promise<Record<string, any>>
+  dispose(): Promise<void>
+}
+/** Private host ports for deterministic/adversarial tests, never a renderer bridge. */
+interface FactoryPorts { connect?: (options: NativeTransportOptions) => Promise<Port>; now?: () => number }
+export interface VerifiedFilesystem {
+  readonly state: 'VERIFIED' | 'CLOSED'
+  readonly capabilities: Readonly<FilesystemCapabilities>
+  readonly rootEntries: readonly Readonly<Entry>[]
+  request(payload: FilesystemPayload): Promise<Record<string, any>>
+  dispose(): Promise<void>
+}
+/** One live guard/lease context. Its volatile certificate is invalidated by any close/refusal. */
+export async function createVerifiedFilesystem(options: NativeTransportOptions, ports: FactoryPorts = {}): Promise<VerifiedFilesystem> {
+  const now = ports.now ?? (() => performance.now()), started = now()
+  let last = started, commands = 0, expired = false, port: Port | undefined
+  const refuse = (code: string): never => { throw new FilesystemTransportError('UNKNOWN', code) }
+  const budget = () => {
+    const t = now()
+    if (!Number.isFinite(t) || t < last || t - started >= 60_000 || expired || commands > 48) refuse('BOOTSTRAP_BUDGET_EXCEEDED')
+    last = t
+  }
+  const timer = setTimeout(() => { expired = true; void port?.dispose().catch(() => {}) }, 60_000)
+  const ask = async (payload: FilesystemPayload) => {
+    budget(); if (!port || port.closed) refuse('FILESYSTEM_CONTEXT_CLOSED')
+    commands++; budget()
+    const reply = await port!.request(payload)
+    budget(); if (port!.closed) refuse('FILESYSTEM_CONTEXT_CLOSED')
+    return reply
+  }
+  const list = async (parent: string[]): Promise<Entry[]> => {
+    const rows: Entry[] = []; let cursor: string | null = null
+    do {
+      const reply = await ask({ operation: 'list', path: parent, limit: 128, cursor })
+      rows.push(...reply.entries); cursor = reply.cursor
+      if (rows.length > 10_000) refuse('BOOTSTRAP_BUDGET_EXCEEDED')
+    } while (cursor !== null)
+    return rows
+  }
+  const identity = (entries: Entry[], name: string, kind: Entry['kind']) => {
+    const e = entries.find(e => e.name === name)
+    if (!e || e.kind !== kind || !/^[a-f0-9]{24}$/.test(e.identity)) refuse('BOOTSTRAP_IDENTITY_UNCERTAIN')
+    return e!.identity
+  }
+  const read = async (name: string, bytes: Buffer) => {
+    const reply = await ask({ operation: 'read', path: [PROBE, name], offset: 0, length: 4096 })
+    if (reply.size !== bytes.length || reply.bytes !== bytes.length || !Buffer.from(reply.data, 'base64').equals(bytes)) refuse('BOOTSTRAP_READBACK_MISMATCH')
+  }
+  const write = async (name: string, bytes: Buffer, retainForPublication: boolean) => {
+    if (bytes.length > 4096) refuse('BOOTSTRAP_BUDGET_EXCEEDED')
+    const opened = await ask({ operation: 'write-open', path: [PROBE, name], maxBytes: bytes.length })
+    await ask({ operation: 'write-chunk', handle: opened.handle, offset: 0, data: bytes.toString('base64') })
+    await ask({ operation: 'write-close', handle: opened.handle, sha256: sha(bytes), retainForPublication })
+    return opened.handle as string
+  }
+  try {
+    budget(); port = await (ports.connect ?? WindowsFilesystemTransport.connect)(options); budget()
+    await ask({ operation: 'capabilities' }) // Remains native NOT_VERIFIED, never the certificate.
+    const initial = await list([])
+    if (initial.some(e => e.name === PROBE)) throw new FilesystemTransportError('REFUSED', 'BOOTSTRAP_RECOVERY_BLOCKED')
+    await ask({ operation: 'mkdir', path: [PROBE] })
+    const dirId = identity(await list([]), PROBE, 'directory'), nonce = randomUUID()
+    const proof = Buffer.from(JSON.stringify({ schemaVersion: 1, probe: nonce, generation: options.generation, protocol: 1, sourceSha256: options.sourceSha256, payload: 'frade-runtime-proof' }))
+    const owner = Buffer.from(JSON.stringify({ schemaVersion: 1, probe: nonce, generation: options.generation, protocol: 1, sourceSha256: options.sourceSha256, plannedNames: ['owner.json', 'pending.tmp', 'proof.json'], proofSha256: sha(proof) }))
+    if (owner.length + proof.length > 16 * 1024) refuse('BOOTSTRAP_BUDGET_EXCEEDED')
+    await write('owner.json', owner, false); await read('owner.json', owner)
+    const ownerId = identity(await list([PROBE]), 'owner.json', 'file')
+    const handle = await write('pending.tmp', proof, true)
+    await ask({ operation: 'replace', handle, parent: [PROBE], name: 'proof.json', sha256: sha(proof) })
+    await read('proof.json', proof)
+    const entries = await list([PROBE])
+    if (entries.length !== 2 || entries.some(e => !['owner.json', 'proof.json'].includes(e.name))) refuse('BOOTSTRAP_UNEXPECTED_ENTRY')
+    if (identity(entries, 'owner.json', 'file') !== ownerId) refuse('BOOTSTRAP_IDENTITY_UNCERTAIN')
+    const proofId = identity(entries, 'proof.json', 'file')
+    await ask({ operation: 'remove', path: [PROBE, 'owner.json'], kind: 'file', expectedIdentity: ownerId })
+    await ask({ operation: 'remove', path: [PROBE, 'proof.json'], kind: 'file', expectedIdentity: proofId })
+    await ask({ operation: 'remove', path: [PROBE], kind: 'directory', expectedIdentity: dirId, emptyOnly: true })
+    const final = await list([])
+    if (final.some(e => e.name === PROBE) || final.length !== initial.length || initial.some(old => !final.some(e => e.name === old.name && e.kind === old.kind && e.identity === old.identity && e.bytes === old.bytes))) refuse('BOOTSTRAP_ROOT_CHANGED')
+    budget()
+    const live = port; let disposing: Promise<void> | undefined
+    const capabilities: Readonly<FilesystemCapabilities> = Object.freeze({ protocol: 1, platform: 'windows-x64', filesystem: 'NTFS', checkedParents: true, exclusiveWrites: true, sameParentPublication: true, writeThroughFlush: true, unconditionalPowerLoss: 'NOT_PROVEN' })
+    return Object.freeze({
+      get state() { return disposing || live.closed ? 'CLOSED' as const : 'VERIFIED' as const },
+      capabilities, rootEntries: Object.freeze(final.map(e => Object.freeze({ ...e }))),
+      request(payload: FilesystemPayload) {
+        if (disposing || live.closed) return Promise.reject(new FilesystemTransportError('REFUSED', 'FILESYSTEM_CONTEXT_CLOSED'))
+        return live.request(payload)
+      },
+      dispose() { return disposing ??= live.dispose() },
+    })
+  } catch (error) {
+    await port?.dispose()
+    throw error
+  } finally { clearTimeout(timer) }
+}

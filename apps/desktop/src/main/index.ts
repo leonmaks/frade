@@ -1,3 +1,4 @@
+import { ExtensionInstallerHost } from './extension-installer'
 import { drawioRepositoryBridge } from './drawio-bridge'
 import { drawioFlowBridge } from './drawio-flow-bridge'
 import { drawioThemeBridge } from './drawio-theme-bridge'
@@ -44,6 +45,7 @@ protocol.registerSchemesAsPrivileged([
 ])
 let window: BrowserWindow | undefined
 let quitting = false
+let quitConfirmed = false
 let closeApproved = false
 if (process.env.FRADE_USER_DATA) app.setPath('userData', process.env.FRADE_USER_DATA)
 const workbenchRelay = new WorkbenchRelay((value) => {
@@ -93,11 +95,14 @@ const backend = new BackendSupervisor(() => {
     },
   }
 })
+const extensionInstaller = new ExtensionInstallerHost(app.getPath('userData'), join(__dirname, '../extension-filesystem'))
 const devUrl = !app.isPackaged ? process.env.ELECTRON_RENDERER_URL : undefined
 app
   .whenReady()
   .then(async () => {
     if (devUrl && !trustedPage(devUrl, devUrl)) throw new Error('Invalid local development URL')
+    const extensionReadiness = await extensionInstaller.initialize()
+    console.info('Frade extension backend', JSON.stringify(extensionReadiness))
     const rendererRoot = join(__dirname, '../renderer')
     await protocol.handle('frade', async (request) => {
       try {
@@ -207,7 +212,7 @@ app
       },
       (reason) => {
         console.error('Presentation startup blocked', reason)
-        app.exit(1)
+        void extensionInstaller.dispose().then(() => app.exit(1), (error) => { console.error('Extension helper close unconfirmed', error) })
       },
     )
     const presentationSender = (event: Electron.IpcMainEvent | Electron.IpcMainInvokeEvent) => ({
@@ -349,6 +354,7 @@ app
       ipcMain.removeHandler(REPOSITORY_CHANNEL)
       ipcMain.removeHandler(REPOSITORY_OPEN_CHANNEL)
       void repository.close()
+      void extensionInstaller.dispose().catch((error) => console.error('Extension helper close unconfirmed', error))
       window = undefined
     })
     window.once('ready-to-show', () => visibility?.nativeReady())
@@ -361,13 +367,19 @@ app
   })
 app.on('window-all-closed', () => app.quit())
 app.on('before-quit', (event) => {
-  if (quitting) return
+  if (quitConfirmed) return
   if (window && !closeApproved) {
     event.preventDefault()
     window.webContents.send(WORKBENCH_CLOSE_CHANNEL)
     return
   }
   event.preventDefault()
+  if (quitting) return
   quitting = true
-  void Promise.allSettled([backend.stop(), repository.close()]).finally(() => app.quit())
+  void Promise.allSettled([backend.stop(), repository.close(), extensionInstaller.dispose()]).then((results) => {
+    for (const result of results) if (result.status === 'rejected') console.error('Desktop shutdown unconfirmed', result.reason)
+    if (results[2].status === 'rejected') { quitting = false; return }
+    quitConfirmed = true
+    app.quit()
+  })
 })
