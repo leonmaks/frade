@@ -22,7 +22,7 @@ Updated 2026-10-10T01:16:41.703Z; branch codex/frade-ui-design-contract; worktre
 
 [Raw PRE PASS](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T011453Z/output--result.md), [verified receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T011453Z/verification.json).203selectedfiles/135events/17raw; source/packet/request/plan/decision unchanged, exact CLI and confinement verified. Actual backend/effort NOT_CONFIRMED. First completenessFAIL remains immutable; no product/visual approval or generalP01waiver. Scope/model accepted; no pending human decision. Next meaningfulRED, then scopedimplementation. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Right panel queued; visibilityunconfirmed.
 
-Git: previousrepaircheckpoint3a7a1680/metadata86c473b3 published/remoteSHAverified. PRE PASS checkpoint PENDING publication. Authorized UI origin/ref only.
+Git: previousrepaircheckpoint3a7a1680/metadata86c473b3 published/remoteSHAverified. PRE PASS checkpoint 793a8f5104bf118ddb0abc64f090ad023fe8979e COMMITTED/PUSHED; remoteSHA verified; following metadata commit stores receipt. Authorized UI origin/ref only.
 
 ## Previous records preserved
 
