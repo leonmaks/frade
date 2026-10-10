@@ -1,3 +1,28 @@
+# P02 S1 — checkpoint published, diagnostic decision pending
+
+2026-10-10T17:32:33.952Z; branch codex/frade-ui-design-contract; owning worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Guide1.0; originalProgram98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372.
+
+Product checkpoint **ada1179256258fdc8f9f82784f3a053e40ce04b2 COMMITTED/PUSHED**, exact remoteSHA verified in openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-publication-20261010T173233952Z/publication.json. This status/publication report is supplementary documentation; no product/gate advancement. Current full report openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-publication-20261010T173233952Z/REPORT.md.
+
+| Stage/task | Actual status |
+| --- | --- |
+| Foundation/P01 | ARCHIVED; historical accepted exceptions preserved |
+| P02 | IN_PROGRESS3/9;2.2unchecked |
+| S1 guards/factory/Main | IMPLEMENTED; meaningful ownership/actual-close RED→GREEN |
+| Current checks |632source-boundinputs unchanged:141unit/6canonicalruntime/type/lint/buildPASS |
+| Service |266test/266BDD historicalPASS; fresh bound rerun deferred until settledscope |
+| IndependentPOST | FAIL; Mainclose repaired, freshPOST NOT_RUN; no closure |
+| Dev failure | OPEN/NOT_PROVEN; cold/warmPASS cannot attribute original5s timeout |
+| Scope decision | NOT_APPROVED openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics.proposed.md; SHA256ff75e18bad97b8c9e10da44c6404ec2a0e3539c34ef36a03b9c2a9b3355f283a; P01renderer untouched |
+|2.2remaining | staging/journal/coordinator/filepicker/namedIPC NOT_DONE |
+|2.3–2.4 | recovery/rollback/ExtensionsUI/lifecycle/P01fallback NOT_DONE |
+|3.1–3.3 | fullroot/P01/a11y/visual/cumulativeverify/POST/archive NOT_DONE |
+| P03–P07 | NOT_STARTED |
+
+Full READY_FOR_VERIFY:NO. Next exact diagnostic scope acceptance → coherent plan/strict → automaticPRE Sol/xhigh → bounded diagnostics. No further expensivePOST while rootcause unresolved. Right panelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. All original FAIL/BLOCKED/NOT_RUN preserved below and in immutable evidence.
+
+## Previous entries
+
 # P02 S1 — incomplete FAIL checkpoint publication
 
 2026-10-10T17:28:31.937Z; own codex/frade-ui-design-contract, C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Guide1.0; P02 overall3/9,2.2unchecked. IndependentPOST FAIL preserved; Main actual-close repaired and checked, freshPOST NOT_RUN. Current source-bound632inputs:141unit/6canonicalruntime/type/lint/buildPASS; prior service266/BDD266 historicalPASS, new bound rerun deferred. Cold/warm probesPASS, historicaldev5s root causeNOT_PROVEN.
