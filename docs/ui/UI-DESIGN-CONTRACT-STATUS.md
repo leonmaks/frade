@@ -8,7 +8,7 @@ Additional diagnostics after freeze, outside this PRE: own Temp sibling renameEB
 
 Open: full native adversarial/protocol/death/capability/dev/build/start; staging/journal/reserve/recovery/IPC/ExtensionsUI; general/P01/a11y/visual/verify/POST/archive. Foundation/P01ARCHIVED with exact3minorOPEN_ACCEPTED_DEFERRED/rawFAIL retained. P03–P07/later migrationNOT_STARTED; STOPbeforeP03.
 
-Planning e0b34f61/seal15311245 COMMITTED/PUSHED remoteverified. currentPRE receipt checkpoint publicationPENDING. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. Old states/evidence retained below.
+Planning e0b34f61/seal15311245 COMMITTED/PUSHED remoteverified. currentPRE receipt checkpoint d3993895db18aa2cbe156b9e59af860fe4a7940c COMMITTED/PUSHED; remoteSHAverified; metadata receipt follows. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. Old states/evidence retained below.
 
 ## Предыдущие записи
 
