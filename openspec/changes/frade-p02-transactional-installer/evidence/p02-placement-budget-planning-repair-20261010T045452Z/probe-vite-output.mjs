@@ -1,0 +1,14 @@
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const owner='C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade';assert.equal(process.cwd().replaceAll('\\','/'),owner);
+const temp=fs.realpathSync(os.tmpdir()),root=fs.mkdtempSync(path.join(temp,'frade-p02-vite-output-')),resolved=fs.realpathSync(root);
+assert(path.dirname(resolved)===temp&&path.basename(resolved).startsWith('frade-p02-vite-output-'));
+const entry=path.join(root,'entry.js'),main=path.join(root,'out/main'),sibling=path.join(root,'out/extension-filesystem'),nested=path.join(main,'extension-filesystem');
+fs.mkdirSync(nested,{recursive:true});fs.mkdirSync(sibling,{recursive:true});fs.writeFileSync(entry,'export const fixture = 1;\n');const bytes=Buffer.from('OWNED_VITE_OUTPUT_DIAGNOSTIC_FIXTURE_NOT_NATIVE_HELPER\n');
+for(const d of [nested,sibling])fs.writeFileSync(path.join(d,'helper.fixture'),bytes);
+const assetHash=crypto.createHash('sha256').update(bytes).digest('hex');
+const {build}=await import('file:///'+owner+'/apps/desktop/node_modules/vite/dist/node/index.js');
+await build({configFile:false,root,cacheDir:path.join(root,'cache'),publicDir:false,logLevel:'silent',build:{outDir:main,rollupOptions:{input:entry,output:{format:'cjs',entryFileNames:'index.cjs'}}}});
+const report={atUtc:new Date().toISOString(),kind:'ENVIRONMENT_BUILD_OUTPUT_DIAGNOSTIC',nativeBackendImplemented:false,fixtureRoot:root,fixtureSHA:assetHash,mainBuildOutputExists:fs.existsSync(path.join(main,'index.cjs')),nestedCopiedAssetSurvives:fs.existsSync(path.join(nested,'helper.fixture')),siblingCopiedAssetSurvives:fs.existsSync(path.join(sibling,'helper.fixture')),candidateWrites:false,meaning:'Actual Vite6.1 build with default output cleanup in isolated owned Temp fixture; no Electron/native helper implementation or integration proof.'};
+assert(report.mainBuildOutputExists);assert.equal(report.nestedCopiedAssetSurvives,false);assert.equal(report.siblingCopiedAssetSurvives,true);assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(sibling,'helper.fixture'))).digest('hex'),assetHash);
+const finalResolved=fs.realpathSync(root);assert.equal(finalResolved,resolved);assert(path.dirname(finalResolved)===temp&&path.basename(finalResolved).startsWith('frade-p02-vite-output-'));fs.rmSync(finalResolved,{recursive:true});report.cleanup='OWNED_FIXTURE_REMOVED_RESOLVED_TEMP_BOUNDARY_VERIFIED';
+const dest=path.join(temp,'frade-ui-p02-vite-output-probe-'+new Date().toISOString().replace(/[-:.]/g,'')+'.json');fs.writeFileSync(dest,JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({...report,report:dest}));

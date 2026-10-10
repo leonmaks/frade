@@ -35,7 +35,3 @@ Human acceptance: [p02-integration-scope-accepted-20261010T002712Z.json](decisio
 ## Journal publication PRE clarification
 
 Current Windows PRE FAIL is preserved (reportSHA6688c9d555397e16be4221c6dfeea0c851ae61adbac3cca19550409005529e3a). Design now selects one concrete logical journal: immutable ordered hash-linked phase files, atomic same-directory temp-to-new-final publication with ReplaceIfExists=FALSE, preserved confirmed prefix and deterministic recovery authority from valid COMMITTED. Recovery dispositions are same-journal bookkeeping; original seven phases and state/domain obligations stay unchanged. No scope/path expansion or durability waiver. New strict/freshPRE required; backend NOT_IMPLEMENTED.
-
-## PRE invariant/state-transition and output repair
-
-Raw retry FAILfe641067995eb11f855203b917d01272f897fd25c8abfdf2f9e7980eaf8ab055 stays immutable. Journal temp/final now use the same checked records parent; admission reserves a finite8-record/8MiB full outcome/recovery budget before STAGING and prevents duplicate cleanup/disposition writes. Helper copy target moves to sibling desktop out/extension-filesystem because an isolated real Vite probe disproved nested out/main survival. All paths/purposes remain accepted; original seven phases, old bytes, security/durability/package limits and domain behavior stay intact. No native production yet; strict + freshPRE required.

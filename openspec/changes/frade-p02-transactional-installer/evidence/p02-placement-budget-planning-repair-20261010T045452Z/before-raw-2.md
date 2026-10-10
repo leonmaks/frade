@@ -45,7 +45,3 @@ Task2.1 complete: exact original/derived hashes and53 behavioral RED assertions 
 ## Windows backend fresh PRE result
 
 2026-10-10T04:46:20.880Z: GATE_STATUS FAIL; reportSHAfe641067995eb11f855203b917d01272f897fd25c8abfdf2f9e7980eaf8ab055;79completeevents/17raw/283files, exactCLI gpt-6-sol/xhigh and confinement/source/packet/request/decisionsPASS. Receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T044619Z/verification.json. Native backend remainsNOT_IMPLEMENTED; tasks3/9. Prior ambiguity resolved; two current blockers: pending/final directories differ despite same-directory contract, and no admission reserve for complete outcome/recovery. RCA and coherent repair/strict/freshPRE before nativeRED/production. Actualbackend/effortNOT_CONFIRMED. OriginalFAIL/PASS preserved.
-
-## PRE placement/reservation repair
-
-2026-10-10T04:54:52.456Z: read-only RCAopenspec/changes/frade-p02-transactional-installer/evidence/p02-placement-budget-planning-repair-20261010T045452Z/root-cause.json before changes. Task2.2 native entry requires freshPRE after same-parent publication, finite full-closure reservation and sibling output refinement; actual native RED/capabilities/dev/build/start remainNOT_RUN. Task2.3 keeps all real kill/reopen tests plus quota-boundary/repeated-recovery/lockedcleanup no-new-record cases. Tasks3/9; unchanged original task obligations, oldFAIL preserved. No skip/waiver/scope expansion.

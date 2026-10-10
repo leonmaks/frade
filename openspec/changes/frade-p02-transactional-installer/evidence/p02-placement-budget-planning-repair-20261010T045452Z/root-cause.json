@@ -1,0 +1,25 @@
+{
+  "atUtc": "2026-10-10T04:54:52.456Z",
+  "status": "READ_ONLY_RCA_COMPLETED_BEFORE_PLAN_REPAIR",
+  "previousPRE": "fe641067995eb11f855203b917d01272f897fd25c8abfdf2f9e7980eaf8ab055",
+  "previousPublicationAmbiguity": "RESOLVED_IN_PRE_RETRY",
+  "findings": [
+    {
+      "classification": "INVARIANT",
+      "cause": "Temp and final were placed in sibling pending/records dirs while the accepted contract requires same-directory rename.",
+      "repair": "One checked journal/records parent with exact reserved pending names."
+    },
+    {
+      "classification": "STATE_TRANSITION",
+      "cause": "Quota threshold was checked without reserving closure and recovery headroom; repeated cleanup/disposition could consume unbounded records.",
+      "repair": "Reserve a finite eight-record/eight-MiB complete-outcome envelope before STAGING; at most seven phases plus one closing disposition, no journal writes for repeated physical cleanup."
+    },
+    {
+      "classification": "ENVIRONMENT",
+      "cause": "Default Vite output cleanup deletes pre-copied helper under out/main before dev launch.",
+      "repair": "Copy into sibling out/extension-filesystem, verified in isolated real Vite fixture; Main resolves only that exact output path."
+    }
+  ],
+  "productionChanged": false,
+  "scopeExpansion": false
+}

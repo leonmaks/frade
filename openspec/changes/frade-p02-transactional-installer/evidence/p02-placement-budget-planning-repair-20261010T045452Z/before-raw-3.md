@@ -119,17 +119,3 @@ The single coordinator SHALL publish immutable ordered hash-linked phase records
 
 - **WHEN** startup finds a valid incomplete transaction chain or a valid COMMITTED with a lost reply
 - **THEN** it restores old state before the marker or retains new state after it, verifies both durable stores before publishing a same-journal recovery disposition and refuses later operations until reconciliation completes
-
-### Requirement: Complete journal outcome reservation
-
-Admission SHALL reserve bounded capacity for the full transaction outcome and recovery before STAGING or package/state effects. Same-directory publication MUST use one checked parent for temp and final. Confirmed closing dispositions and cleanup intents SHALL be reused without appending duplicate journal records during retries or restart. Insufficient capacity MUST refuse admission while preserving committed state.
-
-#### Scenario: Near-limit admission and interrupted closure
-
-- **WHEN** remaining journal capacity cannot cover eight bounded records and eight MiB, or an admitted transaction is interrupted
-- **THEN** insufficient admission refuses before STAGING, while admitted recovery retains its remaining reservation, completes the chosen outcome within that envelope and never lets a later operation consume it
-
-#### Scenario: Same-parent publication and repeated locked cleanup
-
-- **WHEN** journal publication is interrupted or committed physical cleanup remains locked across retries and restarts
-- **THEN** temp and final remain entries of the same checked parent, confirmed chain/disposition is reused and physical retries preserve honest pending state without consuming new journal records

@@ -1,3 +1,15 @@
+# UI Design Contract: P02 placement/budget/output repair strictPASS; freshPRE required;3/9
+
+Updated2026-10-10T04:54:52.456Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372; guide1.0; Routing independent.
+
+P02 task1.1/1.2(initial)/2.1 COMPLETE;2.2IN_PROGRESS/nativeNOT_IMPLEMENTED;2.3/2.4/3.1/3.2/3.3NOT_RUN. Foundation/P01ARCHIVED,3minor OPEN_ACCEPTED_DEFERRED/rawFAIL preserved; P03–P07NOT_STARTED.
+
+Current PRE retryFAILfe641067995eb11f855203b917d01272f897fd25c8abfdf2f9e7980eaf8ab055: prior journal ambiguity resolved, two invariant/state-transition blockers. [RCA](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-placement-budget-planning-repair-20261010T045452Z/root-cause.json) and [coherent repair](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-placement-budget-planning-repair-20261010T045452Z/planning-repair.json): same retained parent for temp/final;8-record/8MiB full-outcome reserve before STAGING; one closing disposition/no duplicate retries; sibling copied helper output survives real Vite cleanup probe. StrictPASS; freshPRE DISPATCH_READY; frozen at launch; runtime/native/dev/build/start/journal/UI/verify/POST/visualNOT_RUN. No scope/test/durability waiver or production change; native RED only afterfreshPASS.
+
+Next publishrepair -> freeze -> automatic independentPRE gpt-6-sol/xhigh. No new human action required. Prior HEAD1898bc5e094760dc9f38c4d236ff795b2f691d9c published; retryFAILcheckpointdb2ef92765367a7f64b6e9ccaec374094c88a76b remoteSHAverified. repair publication preparing. OnlyauthorizedUI origin/ref, noforce. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. STOPbeforeP03.
+
+## Previous records retained
+
 # UI Design Contract: P02 Windows backend PRE FAIL;3/9
 
 Обновлено 2026-10-10T04:49:47.782Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved. Guide1.0. Routing independent.
