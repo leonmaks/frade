@@ -53,7 +53,3 @@ Task2.1 complete: exact original/derived hashes and53 behavioral RED assertions 
 ## Windows backend fresh PRE result
 
 2026-10-10T05:21:49.960Z: GATE_STATUS PASS; reportSHA3463d77ef02cfab9edda79f8791f1bf56dc00d82049f0d3492b0a63bc60ff70e;76completeevents/17raw/306files, exactCLI gpt-6-sol/xhigh and confinement/source/packet/request/decisionsPASS. Receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T052148Z/verification.json. Native backend remainsNOT_IMPLEMENTED; tasks3/9. Backend BDD/TDD may begin; no cumulative POST or visual/archive approval. Actualbackend/effortNOT_CONFIRMED. OriginalFAIL/PASS preserved.
-
-## Native rename repair entry gate
-
-2026-10-10T05:46:41.621Z: task2.2 remainsIN_PROGRESS and3/9. Native4 runtime3PASS/1FAIL after exact current build integrity check; raw FAIL kept in p02-check-native-array-runtime-current-20261010T054056349Z. Native abstraction-boundary RCA and scope-preserving same-source-parent algorithm are openspec/changes/frade-p02-transactional-installer/evidence/p02-native-source-parent-planning-repair-20261010T054641621Z/root-cause.json. Before production repair: strict+fresh independentPRE gpt-6-sol/xhigh; then targeted original native4 + expanded actual conflict/race/ABI/release/kill tests and portable43/archive59/static checks. Current first native capabilities areNOT_VERIFIED; no installer/Main/renderer exposure. Original tasks/recovery/visual/verify/POST/archive remainopen.

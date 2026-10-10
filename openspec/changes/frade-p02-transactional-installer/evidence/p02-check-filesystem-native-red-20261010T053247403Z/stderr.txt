@@ -1,0 +1,59 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > binds an ordinary owned root and releases all directory handles on dispose
+AssertionError: expected 'REFUSED' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "REFUSED"
+
+ ❯ tests/filesystem.windows.test.ts:62:61
+     60| describe('P02FS001–004: actual Windows checked handles and publication…
+     61|   it('binds an ordinary owned root and releases all directory handles …
+     62|     expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+       |                                                             ^
+     63|     expect((await f.send('dispose')).status).toBe('ACK')
+     64|   }))
+ ❯ fixture tests/filesystem.windows.test.ts:46:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > performs exclusive actual write, flush, same-parent absent-target rename and exact readback
+AssertionError: expected 'REFUSED' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "REFUSED"
+
+ ❯ tests/filesystem.windows.test.ts:66:61
+     64|   }))
+     65|   it('performs exclusive actual write, flush, same-parent absent-targe…
+     66|     expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+       |                                                             ^
+     67|     expect((await f.send('mkdir', { path: ['records'] })).status).toBe…
+     68|     const bytes = Buffer.from('first-owned-record')
+ ❯ fixture tests/filesystem.windows.test.ts:46:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > pins an ancestor so an actual attempted rename cannot redirect a later child effect
+AssertionError: expected 'REFUSED' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "REFUSED"
+
+ ❯ tests/filesystem.windows.test.ts:86:61
+     84|   it('pins an ancestor so an actual attempted rename cannot redirect a…
+     85|     await fs.mkdir(path.join(f.root, 'checked'))
+     86|     expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+       |                                                             ^
+     87|     expect((await f.send('list', { path: ['checked'], limit: 128, curs…
+     88|     await expect(fs.rename(path.join(f.root, 'checked'), path.join(f.r…
+ ❯ fixture tests/filesystem.windows.test.ts:46:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

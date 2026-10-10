@@ -133,8 +133,3 @@ Admission SHALL reserve bounded capacity for the full transaction outcome and re
 
 - **WHEN** journal publication is interrupted or committed physical cleanup remains locked across retries and restarts
 - **THEN** temp and final remain entries of the same checked parent, confirmed chain/disposition is reused and physical retries preserve honest pending state without consuming new journal records
-
-#### Scenario: Native same-source-parent confinement
-
-- **WHEN** a held checked ordinary journal source is published to an absent basename, or a caller requests another parent or a conflicting target
-- **THEN** publication remains in its original pinned directory without reopening an unlocked parent, conflicting targets and outside-root bytes stay unchanged, and errors without verified flush/readback never produce a durable ACK

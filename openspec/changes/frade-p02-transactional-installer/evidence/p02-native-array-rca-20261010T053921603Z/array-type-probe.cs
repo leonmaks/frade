@@ -1,0 +1,1 @@
+using System;using System.Collections.Generic;using System.Web.Script.Serialization;class Probe{static void Main(){var value=new JavaScriptSerializer().Deserialize<Dictionary<string,object>>("{\"path\":[\"records\"]}");Console.WriteLine(value["path"].GetType().FullName);}}

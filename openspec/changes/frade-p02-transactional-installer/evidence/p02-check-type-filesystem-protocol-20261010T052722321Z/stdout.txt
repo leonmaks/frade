@@ -1,0 +1,3 @@
+src/filesystem/windows-protocol.ts(93,20): error TS2352: Conversion of type 'Record<string, unknown>' to type 'FilesystemCommand' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'Record<string, unknown>' is not comparable to type 'CommandEnvelope & { operation: "replace"; handle: string; parent: string[]; name: string; sha256: string; }'.
+    Type 'Record<string, unknown>' is missing the following properties from type 'CommandEnvelope': version, requestId, deadlineMs, session, generation

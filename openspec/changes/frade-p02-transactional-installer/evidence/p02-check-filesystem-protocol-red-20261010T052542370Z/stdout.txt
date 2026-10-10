@@ -1,0 +1,70 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.protocol.test.ts (41 tests | 19 failed) 30ms
+   × P02FS004: closed installation-root protocol admission > admits one valid bind and capabilities in the same authenticated generation 11ms
+     → expected null to deeply equal { version: 1, …(6) }
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"version":2} 1ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"generation":6} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"session":"another-session"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"requestId":0} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"requestId":2} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"requestId":1.5} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"deadlineMs":10} 1ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"deadlineMs":10011} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"deadlineMs":-1} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"\\\\server\\share"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"relative"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"C:\\Frade-owned\\..\\extensions"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"C:\\Frade-owned\\extensions."} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"operation":"execute"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"extra":"field"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects invalid bind before issuing a command: {"root":"C:\\CON\\extensions"} 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects capabilities before root bind 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects mkdir before root bind 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects read before root bind 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects list before root bind 0ms
+   ✓ P02FS004: closed installation-root protocol admission > rejects dispose before root bind 0ms
+   × P02FS004: closed installation-root protocol admission > allows only one in-flight command and invalidates a pipeline instead of queueing effects 1ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects replay, second bind and completion for another request 1ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > failed bind permanently refuses later operations and failed mutation cannot be silently retried 1ms
+     → expected null not to be null
+   × P02FS004: closed installation-root protocol admission > accepts every closed bounded operation after binding without leaking host paths 2ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component ".." without forwarding any command 1ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "." without forwarding any command 1ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "" without forwarding any command 0ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "a/b" without forwarding any command 0ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "a\\b" without forwarding any command 1ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "a:b" without forwarding any command 1ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "NUL" without forwarding any command 0ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "COM1.txt" without forwarding any command 0ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "last." without forwarding any command 1ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "last " without forwarding any command 0ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "x?" without forwarding any command 0ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "x\u0000y" without forwarding any command 0ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects unsafe path component "x<y" without forwarding any command 0ms
+     → expected null to deeply equal { version: 1, …(6) }
+   × P02FS004: closed installation-root protocol admission > rejects depth, component length, oversized reads/writes and unbounded directory listing 1ms
+     → expected null to deeply equal { version: 1, …(6) }
+   ✓ P02FS004: closed installation-root protocol admission > rejects malformed UTF-8, oversized frames, duplicate JSON keys and ambiguous raw encodings 1ms
+
+ Test Files  1 failed (1)
+      Tests  19 failed | 22 passed (41)
+   Start at  08:25:46
+   Duration  2.36s (transform 842ms, setup 0ms, collect 859ms, tests 30ms, environment 0ms, prepare 798ms)
+

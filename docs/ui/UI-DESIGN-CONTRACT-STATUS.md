@@ -1,3 +1,19 @@
+# UI Design Contract — P02 native rename repair
+
+Обновлено 2026-10-10T05:46:41.621Z; owning branch codex/frade-ui-design-contract/worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/common E:/dev/codex/frade/.git; origins98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved.
+
+P02 tasks3/9;2.2IN_PROGRESS/BLOCKED by actual native rename FAIL. Protocol43PASS; original archive59 historicalPASS; typecheck/lint prior protocol41 repairedPASS, current43/native changed static NOT_RUN. Existing compiler first native buildPASS; actual Windows4:3PASS/1FAIL; raw old FAILs retained. Matrix-only NT same-source-parent positive is diagnostic, not runtime closure.
+
+Plan now preserves pins/sharing/root/no-replace but uses documented held-source same-directory NT rename; strictPASS; freshPRE DISPATCH_READY before production repair. No new human scope decision currently needed within accepted backend paths/purposes. Backend capabilitiesNOT_VERIFIED; staging/journal/IPC/UI/full native races/crash/dev/build/start/cumulative/verify/POST/visual/archive NOT_RUN. Foundation/P01 archived;3acceptedminorOPEN retained; P03–P07 and later UI migration notstarted. Next strict/coherent plan checkpoint, automaticPRE Sol/xhigh, then native repair afterPASS. Current source/plan/evidence checkpoint publication preparing. EarlierpublishedPRE feedcde4/sealeb899ded remoteverified; no P03 advance.
+
+## Предыдущие записи
+
+# UI Design Contract — P02 protocol component in progress
+
+Обновлено 2026-10-10T05:28:34.742Z. Native planning PRE PASS verified/published feedcde4, sealed eb899ded; gpt-6-sol/xhigh, actualbackend/effortNOT_CONFIRMED. P02 tasks3/9;2.2IN_PROGRESS. Protocol RED41:19FAIL/22PASS, firstGREEN41PASS. First typecheck/lint FAIL preserved; static RCA openspec/changes/frade-p02-transactional-installer/evidence/p02-filesystem-protocol-static-rca-20261010T052834735Z/root-cause.json, repair in progress. Native/build/runtime/crash/journal/IPC/UI/verify/POST/archive NOT_RUN. Next targeted tests + package static checks, then native behavioral fixtures. Routing independent. Current component checkpoint not committed/pushed yet.
+
+## Предыдущие записи
+
 # UI Design Contract: P02 Windows backend PRE PASS;3/9
 
 Обновлено 2026-10-10T05:22:31.349Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved. Guide1.0. Routing independent.
