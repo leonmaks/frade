@@ -1,0 +1,49 @@
+{
+  "atUtc": "2026-10-10T08:23:50.327Z",
+  "classification": "INTEGRATION",
+  "status": "REPRODUCED_CANONICAL_ENCODER_MISMATCH",
+  "currentNativeSourceSha256": "a9916584bf3709ab47e68283e83903b117539c46ebfb1794166f191c39cd105e",
+  "actualRed": "p02-check-native-extended-guard-protocol-current-20261010T082009876Z:26PASS/2FAIL; canonical native positive rejects valid component",
+  "contract": "Portable closed protocol WindowsFilesystemProtocol explicitly requires JSON.stringify canonical encoding; valid normalized safe apostrophe/ampersand components must be accepted. No lexical/duplicate-key/schema weakening authorized.",
+  "frameworkSerialized": "[\"\\u0027\",\"\\u0026\",\"\\u003c\",\"\\u003e\",\"\\u2028\",\"\\u2029\",\"\\\\u0027\",\"\\\\\\\\u0027\",\"O\\u0027Brien \\u0026 workshop\",\"\\\\\",\"quotes\\\"\"]",
+  "hostCanonical": "[\"'\",\"&\",\"<\",\">\",\" \",\" \",\"\\\\u0027\",\"\\\\\\\\u0027\",\"O'Brien & workshop\",\"\\\\\",\"quotes\\\"\"]",
+  "values": [
+    "'",
+    "&",
+    "<",
+    ">",
+    " ",
+    " ",
+    "\\u0027",
+    "\\\\u0027",
+    "O'Brien & workshop",
+    "\\",
+    "quotes\""
+  ],
+  "build": {
+    "command": "C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+    "args": [
+      "/nologo",
+      "/target:exe",
+      "/platform:x64",
+      "/warnaserror+",
+      "/reference:System.Web.Extensions.dll",
+      "/out:C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-owned-codec-TC2fdI\\codec.exe",
+      "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-owned-codec-TC2fdI\\codec.cs"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "sourceSha256": "f76ccd1a1f0763ff986f42f59ca8226f0e81354b55b063215c870a0e15c32633"
+  },
+  "run": {
+    "exit": 0,
+    "stdout": "[\"\\u0027\",\"\\u0026\",\"\\u003c\",\"\\u003e\",\"\\u2028\",\"\\u2029\",\"\\\\u0027\",\"\\\\\\\\u0027\",\"O\\u0027Brien \\u0026 workshop\",\"\\\\\",\"quotes\\\"\"]\r\n",
+    "stderr": ""
+  },
+  "cause": "Framework JavaScriptSerializer HTML-escapes apostrophe/ampersand/angle and U2028/U2029 unlike established host canonical JSON. Comparing its reserialization directly to host text rejects valid data.",
+  "repairBoundary": "Normalize ONLY the actual Framework-produced escape tokens during string encoding to established host canonical characters; scan escaped backslash pairs intact. Do not remove exact canonical comparison, duplicate-key/schema checks, byte limits, UTF8 strictness or change accepted logical data/root/operations.",
+  "fixtureRca": "Forged hardlink lease REFUSED response precedes helper-finally Release; readback must await actual normal helper exit2. Add bounded close wait only in this new tail, retain byte assertion and original9 prefix.",
+  "capabilities": "NOT_VERIFIED",
+  "ownedFixtureRemoved": true
+}

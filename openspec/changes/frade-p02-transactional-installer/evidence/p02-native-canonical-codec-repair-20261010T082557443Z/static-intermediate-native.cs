@@ -53,8 +53,8 @@ public static class FradeFilesystem {
     string encoded=Json.Serialize(value);var result=new StringBuilder(encoded.Length);
     for(int i=0;i<encoded.Length;i++){
       char c=encoded[i];if(c==(char)92&&i+1<encoded.Length){
-        if(encoded[i+1]=='u'&&i+5<encoded.Length){string token=encoded.Substring(i+2,4);char plain=(char)0;
-          switch(token){case "0027":plain=(char)39;break;case "0026":plain=(char)38;break;case "003c":plain=(char)60;break;case "003e":plain=(char)62;break;case "2028":plain=(char)0x2028;break;case "2029":plain=(char)0x2029;break;}
+        if(encoded[i+1]=='u'&&i+5<encoded.Length){string token=encoded.Substring(i,6);char plain=(char)0;
+          switch(token){case "\u0027":plain=(char)39;break;case "\u0026":plain=(char)38;break;case "\u003c":plain=(char)60;break;case "\u003e":plain=(char)62;break;case "\u2028":plain=(char)0x2028;break;case "\u2029":plain=(char)0x2029;break;}
           if(plain!=0){result.Append(plain);i+=5;continue;}
         }
         // An escaped backslash is consumed as a pair; literal "\\u0027" data stays literal.

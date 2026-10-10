@@ -48,21 +48,6 @@ public static class FradeFilesystem {
   [DllImport("kernel32.dll",SetLastError=true)] static extern bool WriteFile(IntPtr h,byte[] buffer,uint count,out uint written,IntPtr overlapped);
   [DllImport("kernel32.dll",SetLastError=true)] static extern bool FlushFileBuffers(IntPtr h);
   [DllImport("kernel32.dll",SetLastError=true)] static extern bool SetFileInformationByHandle(IntPtr h,int type,IntPtr buffer,uint length);
-  // Match the existing host JSON.stringify encoding without relaxing canonical/duplicate-key checks.
-  static string CanonicalJson(object value) {
-    string encoded=Json.Serialize(value);var result=new StringBuilder(encoded.Length);
-    for(int i=0;i<encoded.Length;i++){
-      char c=encoded[i];if(c==(char)92&&i+1<encoded.Length){
-        if(encoded[i+1]=='u'&&i+5<encoded.Length){string token=encoded.Substring(i+2,4);char plain=(char)0;
-          switch(token){case "0027":plain=(char)39;break;case "0026":plain=(char)38;break;case "003c":plain=(char)60;break;case "003e":plain=(char)62;break;case "2028":plain=(char)0x2028;break;case "2029":plain=(char)0x2029;break;}
-          if(plain!=0){result.Append(plain);i+=5;continue;}
-        }
-        // An escaped backslash is consumed as a pair; literal "\\u0027" data stays literal.
-        result.Append(c);result.Append(encoded[++i]);continue;
-      }
-      result.Append(c);
-    }return result.ToString();
-  }
   static void Check(bool value) { if(!value) throw new Win32Exception(Marshal.GetLastWin32Error()); }
   static void Refuse(string code) { throw new InvalidDataException(code); }
   static string S(Dictionary<string,object> v,string k) { object x; if(!v.TryGetValue(k,out x)||!(x is string)) Refuse("INVALID_"+k); return (string)x; }
@@ -174,8 +159,8 @@ public static class FradeFilesystem {
   public static int Main() {
     Console.OutputEncoding=new UTF8Encoding(false);int exit=0;
     try {using(var input=new BufferedStream(Console.OpenStandardInput(),8192)){while(true){Dictionary<string,object> request=null;Effect=false;try{
-      byte[] frame=Frame(input);if(frame==null)break;string text=Utf8.GetString(frame,0,frame.Length-1);if(text.IndexOf('\n')>=0)Refuse("AMBIGUOUS_FRAME");request=Json.Deserialize<Dictionary<string,object>>(text);if(request==null||CanonicalJson(request)!=text)Refuse("AMBIGUOUS_JSON");string operation=S(request,"operation");long id=N(request,"requestId",1,9007199254740991),generation=N(request,"generation",1,9007199254740991);string session=S(request,"session");if(!Regex.IsMatch(session,@"^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$")||N(request,"version",1,1)!=1||id!=NextId)Refuse("INVALID_ENVELOPE");long deadline=N(request,"deadlineMs",0,9007199254740991);if(deadline<=Clock.ElapsedMilliseconds||deadline>Clock.ElapsedMilliseconds+10000)Refuse("EXPIRED_DEADLINE");if(Session==null){if(operation!="bind")Refuse("ROOT_NOT_BOUND");Session=session;Generation=generation;}else if(Session!=session||Generation!=generation||operation=="bind")Refuse("STALE_SESSION");var result=Execute(request,operation);if(Clock.ElapsedMilliseconds>=deadline)Refuse("DEADLINE_AFTER_EFFECT");result.Add("version",1);result.Add("requestId",id);result.Add("session",session);result.Add("generation",generation);result.Add("clockMs",Clock.ElapsedMilliseconds);result.Add("status","ACK");string reply=CanonicalJson(result);if(Utf8.GetByteCount(reply)+1>MaxFrame)Refuse("REPLY_LIMIT");Console.WriteLine(reply);NextId++;if(operation=="dispose")break;
-    }catch(Exception e){var result=new Dictionary<string,object>{{"version",1},{"requestId",request!=null&&request.ContainsKey("requestId")?request["requestId"]:0},{"session",Session},{"generation",Generation},{"clockMs",Clock.ElapsedMilliseconds},{"status",Effect?"UNKNOWN":"REFUSED"},{"code",e is Win32Exception?"WIN32_"+((Win32Exception)e).NativeErrorCode:e.Message},{"errorType",e.GetType().Name}};Console.WriteLine(CanonicalJson(result));exit=2;break;}}}
+      byte[] frame=Frame(input);if(frame==null)break;string text=Utf8.GetString(frame,0,frame.Length-1);if(text.IndexOf('\n')>=0)Refuse("AMBIGUOUS_FRAME");request=Json.Deserialize<Dictionary<string,object>>(text);if(request==null||Json.Serialize(request)!=text)Refuse("AMBIGUOUS_JSON");string operation=S(request,"operation");long id=N(request,"requestId",1,9007199254740991),generation=N(request,"generation",1,9007199254740991);string session=S(request,"session");if(!Regex.IsMatch(session,@"^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$")||N(request,"version",1,1)!=1||id!=NextId)Refuse("INVALID_ENVELOPE");long deadline=N(request,"deadlineMs",0,9007199254740991);if(deadline<=Clock.ElapsedMilliseconds||deadline>Clock.ElapsedMilliseconds+10000)Refuse("EXPIRED_DEADLINE");if(Session==null){if(operation!="bind")Refuse("ROOT_NOT_BOUND");Session=session;Generation=generation;}else if(Session!=session||Generation!=generation||operation=="bind")Refuse("STALE_SESSION");var result=Execute(request,operation);if(Clock.ElapsedMilliseconds>=deadline)Refuse("DEADLINE_AFTER_EFFECT");result.Add("version",1);result.Add("requestId",id);result.Add("session",session);result.Add("generation",generation);result.Add("clockMs",Clock.ElapsedMilliseconds);result.Add("status","ACK");string reply=Json.Serialize(result);if(Utf8.GetByteCount(reply)+1>MaxFrame)Refuse("REPLY_LIMIT");Console.WriteLine(reply);NextId++;if(operation=="dispose")break;
+    }catch(Exception e){var result=new Dictionary<string,object>{{"version",1},{"requestId",request!=null&&request.ContainsKey("requestId")?request["requestId"]:0},{"session",Session},{"generation",Generation},{"clockMs",Clock.ElapsedMilliseconds},{"status",Effect?"UNKNOWN":"REFUSED"},{"code",e is Win32Exception?"WIN32_"+((Win32Exception)e).NativeErrorCode:e.Message},{"errorType",e.GetType().Name}};Console.WriteLine(Json.Serialize(result));exit=2;break;}}}
     }catch(Exception e){Console.Error.WriteLine(e.GetType().Name);exit=2;}finally{try{Release();}catch(Exception e){Console.Error.WriteLine("HANDLE_RELEASE_"+e.GetType().Name);exit=2;}}return exit;
   }
 }

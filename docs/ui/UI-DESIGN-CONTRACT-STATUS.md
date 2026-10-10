@@ -1,3 +1,58 @@
+# Frade UI Design Contract — P02 native/security component GREEN
+
+Обновлено 2026-10-10T08:44:43.453Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Origins program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 сохранены. Guide v1.0; Routing независим.
+
+| Этап | Статус |
+| --- | --- |
+| Audit/planning/foundation | CLOSED/ARCHIVED |
+| P01 theme resolver/preview | CLOSED/ARCHIVED; точные3minorOPEN_ACCEPTED_DEFERRED/rawFAIL сохранены |
+| P02 transactional installer | 3/9;2.2IN_PROGRESS; component checks GREEN, capabilityNOT_VERIFIED |
+| P03 VS Code theme import | NOT_STARTED |
+| P04 icon registries | NOT_STARTED |
+| P05 isolated browser host | NOT_STARTED |
+| P06 native contributions | NOT_STARTED |
+| P07 registry/profiles/policy | NOT_STARTED |
+| Shell → tree/tabs → forms/tables/LoV → Draw/flow → AI | NOT_STARTED отдельная последовательная миграция |
+
+| Задача P02 | Фактический статус |
+| --- | --- |
+|1.1 Audit/predecessor/scope/baseline | DONE |
+|1.2 Initial strict/independent PRE | DONE; amendments требуют своих свежих PRE |
+|2.1 Archive/path/limit/semver RED | DONE;59 actual componentPASS |
+|2.2 Native/staging/validation/journal/Main picker bridge | IN_PROGRESS;39Windows+43protocolPASS; archive59PASS; staging/journal/bridge не готовы |
+|2.3 Actual crash/recovery/rollback/Windows locks | NOT_DONE |
+|2.4 ExtensionsUI/lifecycle/P01 fallback/dirty state | NOT_DONE |
+|3.1 Full package/root/BDD/security/a11y/visual | NOT_DONE; current applicable batch ниже |
+|3.2 OpenSpec verify/cumulative POST | NOT_RUN |
+|3.3 Archive/close P02 | NOT_RUN; STOPbeforeP03 |
+
+## Текущая реализация и evidence
+
+- Exact scope P02-ANCESTOR-METADATA-HANDOFF-01 accepted, proposalSHAf3a9e8c266f1939d9b7d5012e064bd37291ac501108696e82ada012f44350c23; acceptance openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff-accepted-20261010T073434608Z.json. Current design original SHA2904fbbb4324ccbdea3597cb8002809ccdb0916b8fab660780491b2fc99212fa.
+- Fresh independent PREPASS, requested gpt-6-sol/xhigh по P02 plan: openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T080608Z/verification.json;114completeevents/547files/17raw, reportSHA70604f86bbda783a746ef2bfcd349739c428153df6acfb91aacfce1b92d2d321. CLI/confinement/candidate/packet/request/decisionsPASS; actualbackend/effortNOT_CONFIRMED. Это plan permission, не runtime/P02 closure.
+- Native реализует full original bind → complete overlapping outer metadata handoff → continuous original IDs/per-operation chain+root+lease verification. Strong root/child/source/lease shares сохраняются. Exact borrowed lease/cache/pending enumeration избегает self-conflict; cleanup сохраняет защищённые held objects. Native sourceSHA73ec4d15c7a91abb4d0dcc0d11b88bf2b91e209f222514cad4a24f1654580377.
+- Original9 prefix byte-identical/PASS; total39 actual WindowsPASS. Main actual persist/readback/restart/compensation, listing, recursive cleanup, owned outer sibling IO, lease exclusivity/forgery, retained pending publication, malformed/session/generation/sequence/deadline/path, canonical positives и duplicate/alternate encoding negatives проверены. Direct NT/FSCTL actors: сначала genuine unbound success+restore, потом outer/root/child attack refusal + confined checked effect + outside sentinel bytes/count unchanged.
+- Actual Framework canonical mismatch и fixture close-readback race RED26PASS/2FAIL сохранены: openspec/changes/frade-p02-transactional-installer/evidence/p02-native-canonical-codec-rca-20261010T082350327Z/root-cause.json. Private codec согласован с существующим hostJSON.stringify без удаления exact canonical/duplicate/schema/UTF8/byte checks; новый hardlink-tail ждёт bounded actual normal exit2 перед unchanged byte assertion. Все rawFAIL/compile/static intermediate bytes сохранены.
+- Current checks: native39PASS + portable/archive102PASS =141PASS; typecheck/lint/strict/UIcompliance/boundariesPASS. Fresh compiler/source/artifact integrity PASS. openspec/changes/frade-p02-transactional-installer/evidence/p02-native39-canonical-security-checkpoint-20261010T084443453Z/actual-current.json.
+
+## Осталось / next
+
+CapabilitiesNOT_VERIFIED: ещё нужны preexisting writer, check-open/missing-root/handoff windows, case/ID/finalpath/drive mapping, native chunk/frame/fault/death/lostACK/real kill-reopen/close и deployment/dev initial/rebuild/build/start. Затем native runtime/factory/copy hooks, staging/journal/reserve/recovery/IPC/ExtensionsUI и full root/general/P01/BDD/security/a11y/visual/OpenSpecverify/cumulative POST/archive. READY_FOR_VERIFY:NO; no P03. Текущих FAIL в выполненном batch нет; NOT_RUN не PASS.
+
+UI экранов этот native repair не меняет, новых screenshots нет; исходные P01 gallery/assets/tokens/evidence сохранены. Applicable FDS/A11Y mapping остаётся в approved P02 design; визуальные проверки actual Extensions UI ещё NOT_RUN.
+
+## Git / панель
+
+Planning87ec6171/seal351722f4, PREdfd69b6b/fd71c367 и native9c055e974/88dceafd COMMITTED/PUSHED remoteSHAverified. Current native39/codecs/security checkpoint publicationPENDING. Публикация только в origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, no force. Rightpanelqueued/visibilityunconfirmed. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не approval/evidence.
+
+## Предыдущие записи
+
+# P02 current blocker: extended native28 —26PASS/2FAIL
+
+Обновлено 2026-10-10T08:23:50.327Z. Exact native9GREEN checkpointc055e974/seal88dceafd published; original9 prefix byte-identical. New required actual28 tests:26PASS/2FAIL; raw p02-check-native-extended-guard-protocol-current-20261010T082009876Z. Canonical native mismatch is production INTEGRATION defect, not environment/UI error. Hardlink lease readback readiness is TEST; bounded actual normal-exit wait retains assertions. RCA openspec/changes/frade-p02-transactional-installer/evidence/p02-native-canonical-codec-rca-20261010T082350327Z/root-cause.json. All previous PASS/FAIL immutable. CapabilitiesNOT_VERIFIED; tasks3/9,2.2IN_PROGRESS; STOP integration advancement/POST/P03 until meaningful GREEN. Next exact contract-preserving codec repair + current build + targeted/full native/protocol/archive/static. No new human decision currently needed: no root/API/logical-schema/security/authority expansion. Current tests/RCA checkpoint publicationPENDING. Rightpanelqueued/visibilityunconfirmed.
+
+## Предыдущие записи
+
 # Frade UI Design Contract — P02: outer metadata PRE PASS
 
 Обновлено 2026-10-10T08:16:45.469Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 сохранены. Guide v1.0; Routing независим.

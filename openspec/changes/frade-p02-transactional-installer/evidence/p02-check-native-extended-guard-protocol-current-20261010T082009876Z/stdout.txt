@@ -1,0 +1,40 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.windows.test.ts (28 tests | 2 failed) 6777ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > binds an ordinary owned root and releases all directory handles on dispose  305ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > performs exclusive actual write, flush, same-parent absent-target rename and exact readback  650ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > refuses an existing junction installation root without outside writes  340ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > pins an ancestor so an actual attempted rename cannot redirect a later child effect  518ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > keeps actual Main persistence, readback, restart and compensation working while native root is bound 257ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > lists the owned coordinator lease without reopening or releasing it 178ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > lists a retained checked child without relaxing its protection 164ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > performs actual bounded recursive cleanup of held descendants 180ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > does not block owned sibling rename under an outer ancestor outside install/userData 154ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > retains the exclusive coordinator lease after owned-object enumeration  311ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > enumerates an exact retained pending file without releasing its publication handle 161ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses deletion of the exact held root lease without deleting its ordinary file 151ms
+   × P02FS001/002/004: actual guard ownership and native protocol boundaries > does not trust a forged hardlinked lease name at binding 289ms
+     → EBUSY: resource busy or locked, open 'C:\Users\NVISEN\AppData\Local\Temp\frade-p02-native-52W5A2\outside\sentinel'
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > rejects a reparse outer ancestor before creating the missing installation root 169ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > bootstraps only a missing last root using the fully checked parent 207ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses a missing outer ancestor without creating directories 147ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses unknown hardlinks in enumeration without changing outside bytes 187ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native session before a directory effect 291ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native generation before a directory effect 161ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native replayed request before a directory effect 179ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native expired deadline before a directory effect 163ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native version before a directory effect 176ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native unknown field before a directory effect  321ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native traversal before a directory effect 177ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native stream path before a directory effect 160ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native reserved name before a directory effect 298ms
+   ✓ P02FS001/002/004: actual guard ownership and native protocol boundaries > refuses native excessive depth before a directory effect 154ms
+   × P02FS001/002/004: actual guard ownership and native protocol boundaries > accepts valid portable component data containing apostrophe and ampersand 324ms
+     → expected 'REFUSED' to be 'ACK' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 26 passed (28)
+   Start at  11:20:10
+   Duration  7.96s (transform 189ms, setup 0ms, collect 232ms, tests 6.78s, environment 0ms, prepare 322ms)
+

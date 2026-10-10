@@ -1,0 +1,38 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001/002/004: actual guard ownership and native protocol boundaries > does not trust a forged hardlinked lease name at binding
+Error: EBUSY: resource busy or locked, open 'C:\Users\NVISEN\AppData\Local\Temp\frade-p02-native-52W5A2\outside\sentinel'
+ ❯ tests/filesystem.windows.test.ts:239:12
+    237|     await fs.link(path.join(f.outside, 'sentinel'), path.join(f.root, …
+    238|     expect((await f.send('bind', { root: f.root })).status).toBe('REFU…
+    239|     expect(await fs.readFile(path.join(f.outside, 'sentinel'), 'utf8')…
+       |            ^
+    240|   }))
+    241|   it('rejects a reparse outer ancestor before creating the missing ins…
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001/002/004: actual guard ownership and native protocol boundaries > accepts valid portable component data containing apostrophe and ampersand
+AssertionError: expected 'REFUSED' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "REFUSED"
+
+ ❯ tests/filesystem.windows.test.ts:284:62
+    282|     expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    283|     const name = "O'Brien & workshop"
+    284|     expect((await f.send('mkdir', { path: [name] })).status).toBe('ACK…
+       |                                                              ^
+    285|     expect((await f.send('dispose')).status).toBe('ACK')
+    286|     expect(await fs.readdir(f.root)).toEqual(['.coordinator.lock', nam…
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+
