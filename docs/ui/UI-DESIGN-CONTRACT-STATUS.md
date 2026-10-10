@@ -10,7 +10,7 @@
 
 Capabilities NOT_VERIFIED; factory/runtime capability/Main/dev initial/rebuild/start, staging/journal/recovery/IPC/Extensions UI и full root/general/P01/UI/verify/cumulative POST/archive ещё не готовы. READY_FOR_VERIFY: NO; STOP before P03. Required next PRE/POST по плану gpt-6-sol/xhigh, автоматически; no human relay. UI экраны/guide/tokens/brand/domain/routing не менялись, новых screenshots нет. Решений человека сейчас не требуется.
 
-Последний опубликованный transport checkpoint915d674fc6a8444de30ce625120caa3677d45204/metadata640eb33ac3be5c74f25c7bd86affb521c17fc22a. current transport/deployment checkpoint publication PENDING (typed unavailable repair). Только origin git@github.com:leonmaks/frade.git refs/heads/codex/frade-ui-design-contract; no force. Панель queued/visibility unconfirmed. Merge protection LOCAL_ONLY/NOT_CONFIGURED.
+Последний опубликованный transport checkpoint915d674fc6a8444de30ce625120caa3677d45204/metadata640eb33ac3be5c74f25c7bd86affb521c17fc22a. current transport/deployment checkpoint f0f4528378ea17a7a3e8053b789bcc410bb74e3a COMMITTED/PUSHED; remote SHA verified; publication metadata follows (typed unavailable repair). Только origin git@github.com:leonmaks/frade.git refs/heads/codex/frade-ui-design-contract; no force. Панель queued/visibility unconfirmed. Merge protection LOCAL_ONLY/NOT_CONFIGURED.
 
 ## Предыдущие записи
 
