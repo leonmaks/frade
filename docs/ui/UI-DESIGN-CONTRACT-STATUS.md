@@ -22,7 +22,7 @@
 
 [Windows scope acceptance](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-windows-filesystem-backend-accepted-20261010T035503Z.json); [new exact plan](../../openspec/changes/frade-p02-transactional-installer/design.md); [strict/delta evidence](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/planning-delta.json). Model per stage PRE/POST=gpt-6-sol/xhigh. Backend scope decision resolved; no new human action required. Next: publish amended-plan checkpoint, freeze and automatic PRE; native RED/code only after newPASS. Power-loss NOT_PROVEN, actual compiler/build/races/dev/build/start NOT_RUN. No new screenshots or visual acceptance.
 
-Git priorHEAD83ca13f6b815850f23cb451d6f90876af7c06a36 published; amended planning checkpoint publishing; remote verification receipt follows. Destination only origin UI ref; no force. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanel queued/visibilityunconfirmed. Dashboard frozen during review and updated after receipt.
+Git priorHEAD83ca13f6b815850f23cb451d6f90876af7c06a36 published; amended planning checkpoint 65c084fc8f688d75f4e489fc037574ea963db47c COMMITTED/PUSHED; remoteSHA verified; sealed metadata receipt follows. Destination only origin UI ref; no force. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanel queued/visibilityunconfirmed. Dashboard frozen during review and updated after receipt.
 
 ## Предыдущие записи сохранены
 
