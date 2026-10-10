@@ -1,0 +1,95 @@
+{
+  "startedAtUtc": "2026-10-10T04:37:10.582Z",
+  "phase": "PRE",
+  "scope": "Fresh P02 Windows backend PRE retry after one verified journal-publication planning FAIL: one immutable ordered phase-file coordinator journal, absent final targets/ReplaceIfExists=false, preserved confirmed bytes and validated chain/COMMITTED recovery. Exact accepted backend/integration scopes unchanged; no native/staging/journal/IPC/UI implementation.",
+  "requestedModel": "gpt-6-sol",
+  "requestedEffort": "xhigh",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "candidate": "C:\\Users\\NVISEN\\.codex\\worktrees\\ui-design-contract\\frade",
+  "packet": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-10T04-30-09-983Z-ba05e29d-451a-4ec0-b763-edc7c34629ca\\prepared\\packet",
+  "run": "E:\\dev\\codex\\frade\\.git\\frade-workflow\\runs\\2026-10-10T04-30-09-983Z-ba05e29d-451a-4ec0-b763-edc7c34629ca\\output",
+  "status": "FAIL",
+  "gateStatus": "FAIL",
+  "authorization": "docs/engineering/agent-workflow.md",
+  "toolchain": [
+    {
+      "path": "integrity.mjs",
+      "sha256": "2fc3b036930871f010a6850f86dfc79c3234975e437124fc020a73d73d277395"
+    },
+    {
+      "path": "policy.mjs",
+      "sha256": "ea7de09d2ab68d56c5cfb4ebcdbf420564d6a64418df676112ac3af4840456ad"
+    },
+    {
+      "path": "prepare-review.mjs",
+      "sha256": "62e59325cf4b5fbb7ca9d1da08ccb745555121d2f76967bd71683112e73bfd84"
+    },
+    {
+      "path": "invoke-review.mjs",
+      "sha256": "6e891d7f645830edadfe7a5d7d26ba7dea5a6019dfe718818bf81bd9eba6bb25"
+    },
+    {
+      "path": "transport.test.mjs",
+      "sha256": "5a441aa1e187db1a79b9b5230d9f0857a5441022fd965c73a015ff602745a0e2"
+    }
+  ],
+  "readConfinementProbeSha256": "fcdb19d0e1b8db728fe2125025db471af43dc9604664ad518e9950795d2537ce",
+  "packetManifestSha256": "c0d04e8721bb37fd742012e40477520235f3e69a61c9fa59ac8dca41a9f068d5",
+  "verifiedSourceFiles": 283,
+  "promptSha256": "b943fa653bc79cd9afe794c639f8cec1945e205456c3410de27f2428a52efd5c",
+  "cli": {
+    "launcher": "wsl.exe",
+    "args": [
+      "-d",
+      "Ubuntu-22.04_E",
+      "--exec",
+      "/usr/bin/env",
+      "CODEX_HOME=/mnt/c/Users/NVISEN/.codex",
+      "/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime/node_modules/.bin/codex",
+      "exec",
+      "--ignore-user-config",
+      "--ignore-rules",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--model",
+      "gpt-6-sol",
+      "-c",
+      "default_permissions=\"frade-review\"",
+      "-c",
+      "permissions={frade-review={extends=\":read-only\",filesystem={\":root\"=\"deny\",\":minimal\"=\"read\",\":workspace_roots\"={\".\"=\"read\"},\"/mnt/c/Users/NVISEN/.codex/review-automation/packet-v1-20261001T061101Z/linux-runtime\"=\"read\"},network={enabled=false}}}",
+      "-c",
+      "project_doc_max_bytes=0",
+      "-c",
+      "project_doc_fallback_filenames=[]",
+      "-c",
+      "model_reasoning_effort=\"xhigh\"",
+      "-c",
+      "approval_policy=\"never\"",
+      "-c",
+      "web_search=\"disabled\"",
+      "-c",
+      "apps._default.enabled=false",
+      "-c",
+      "shell_environment_policy.inherit=\"none\"",
+      "-c",
+      "shell_environment_policy.set={PATH=\"/usr/bin:/bin\",HOME=\"/tmp\",TMPDIR=\"/tmp\",LANG=\"C.UTF-8\",LC_ALL=\"C.UTF-8\"}",
+      "-C",
+      "/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-10T04-30-09-983Z-ba05e29d-451a-4ec0-b763-edc7c34629ca/prepared/packet",
+      "--json",
+      "--color",
+      "never",
+      "--output-last-message",
+      "/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-10T04-30-09-983Z-ba05e29d-451a-4ec0-b763-edc7c34629ca/output/result.md",
+      "-"
+    ],
+    "version": "0.159.3"
+  },
+  "signal": null,
+  "exitCode": 0,
+  "threadId": "01a1241d-364c-7870-9b5b-0f0e43a0284a",
+  "resultSha256": "fe641067995eb11f855203b917d01272f897fd25c8abfdf2f9e7980eaf8ab055",
+  "candidateUnchanged": true,
+  "packetUnchanged": true,
+  "endedAtUtc": "2026-10-10T04:45:51.227Z"
+}

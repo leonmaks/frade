@@ -1,3 +1,28 @@
+# UI Design Contract: P02 Windows backend PRE FAIL;3/9
+
+Обновлено 2026-10-10T04:49:47.782Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved. Guide1.0. Routing independent.
+
+| Этап/задача | Статус |
+|---|---|
+| Foundation/P01 | ARCHIVED;3minor OPEN_ACCEPTED_DEFERRED/rawFAIL preserved |
+| P02 |3/9; native backend BLOCKED by current PRE planning defect |
+|1.1 audit/scope | COMPLETE |
+|1.2 initial PRE | COMPLETE; initial historicalPASS distinct from currentamendment |
+|2.1 archive RED/fixtures | COMPLETE;59componentGREEN historical |
+|2.2 filesystem/staging/bridge | IN_PROGRESS; backendNOT_IMPLEMENTED; newPRE FAIL |
+|2.3 journal/crash/recovery | NOT_RUN |
+|2.4 Extensions UI/fallback | NOT_RUN |
+|3.1 cumulative checks/visual | NOT_RUN; amendedplan strict/UIcompliancePASS only |
+|3.2 verify/POST | NOT_RUN |
+|3.3 archive | NOT_RUN; STOPbeforeP03 |
+| P03–P07 | NOT_STARTED |
+
+[Raw current PRE](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T044619Z/output--result.md), [verified receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T044619Z/verification.json), [exact packet retention](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T044619Z/packet-retention.json).283files/79events/17raw. ExactCLI gpt-6-sol/xhigh; readonlyconfinement/source/packet/plan/request/twoaccepteddecisionsPASS, actualbackend/effortNOT_CONFIRMED. Blockers: same-directory pending/final placement and missing complete outcome/recovery admission reserve. Separate owned Vite probe also shows out/main asset cleanup. Next RCA/coherent plan repair/strict/freshPRE within accepted scope. No new human decision currently required. No backend code/screenshots/newvisualapproval. Compiler metadata exists; actualnativebuild/dev/start/capability testsNOT_RUN.
+
+Git: planning65c084fc/sealed8432dece COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint publicationPENDING. Authorized UI origin/ref only; noforce. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. Dashboard updated afterunfreeze; earlier records remainbelow.
+
+## Предыдущие записи сохранены
+
 # UI Design Contract: P02 journal planning repair strictPASS; freshPRE required;3/9
 
 Updated2026-10-10T04:26:46.700Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 retained; guide1.0. Routing independent.

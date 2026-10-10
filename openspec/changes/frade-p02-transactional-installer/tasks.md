@@ -41,3 +41,7 @@ Task2.1 complete: exact original/derived hashes and53 behavioral RED assertions 
 ## Journal publication planning repair
 
 2026-10-10T04:26:46.700Z: current Windows PRE FAIL preserved, one protocol ambiguity repaired in design within accepted P02-WINDOWS-FILESYSTEM-BACKEND-01. Tasks still3/9. Before task2.2 native RED/production: strict + fresh independentPRE gpt-6-sol/xhigh for immutable phase publication/authority/refusal/recovery algorithm. Task2.3 now explicitly maps existing/conflicting phase targets, actual chain validation, real kill/reopen before/after validCOMMITTED and RecoveryDisposition, with preserved old snapshots/hashes. Original task bodies/assertions unchanged; verify/POST/archive remainNOT_RUN; this plan repair is not gatePASS.
+
+## Windows backend fresh PRE result
+
+2026-10-10T04:46:20.880Z: GATE_STATUS FAIL; reportSHAfe641067995eb11f855203b917d01272f897fd25c8abfdf2f9e7980eaf8ab055;79completeevents/17raw/283files, exactCLI gpt-6-sol/xhigh and confinement/source/packet/request/decisionsPASS. Receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T044619Z/verification.json. Native backend remainsNOT_IMPLEMENTED; tasks3/9. Prior ambiguity resolved; two current blockers: pending/final directories differ despite same-directory contract, and no admission reserve for complete outcome/recovery. RCA and coherent repair/strict/freshPRE before nativeRED/production. Actualbackend/effortNOT_CONFIRMED. OriginalFAIL/PASS preserved.
