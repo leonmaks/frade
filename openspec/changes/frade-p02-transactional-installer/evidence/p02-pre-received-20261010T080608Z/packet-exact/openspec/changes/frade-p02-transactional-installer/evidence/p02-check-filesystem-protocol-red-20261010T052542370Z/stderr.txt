@@ -1,0 +1,202 @@
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 19 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > admits one valid bind and capabilities in the same authenticated generation
+AssertionError: expected null to deeply equal { version: 1, …(6) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "generation": 7,
+  "operation": "bind",
+  "requestId": 1,
+  "root": "C:\\Frade-owned\\extensions",
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ bound tests/filesystem.protocol.test.ts:12:40
+     10| function bound() {
+     11|   const gate = new FilesystemCommandGate(session)
+     12|   expect(gate.accept(frame(bind), 10)).toEqual(bind)
+       |                                        ^
+     13|   expect(gate.complete(1, true)).toBe(true)
+     14|   return gate
+ ❯ tests/filesystem.protocol.test.ts:24:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/19]⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > allows only one in-flight command and invalidates a pipeline instead of queueing effects
+AssertionError: expected null to deeply equal { version: 1, …(6) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "generation": 7,
+  "operation": "bind",
+  "requestId": 1,
+  "root": "C:\\Frade-owned\\extensions",
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ tests/filesystem.protocol.test.ts:41:42
+     39|   it('allows only one in-flight command and invalidates a pipeline ins…
+     40|     const gate = new FilesystemCommandGate(session)
+     41|     expect(gate.accept(frame(bind), 10)).toEqual(bind)
+       |                                          ^
+     42|     expect(gate.accept(frame(command('capabilities', {}, 2)), 10)).toB…
+     43|     expect(gate.closed).toBe(true)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/19]⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects replay, second bind and completion for another request
+AssertionError: expected null to deeply equal { version: 1, …(6) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "generation": 7,
+  "operation": "bind",
+  "requestId": 1,
+  "root": "C:\\Frade-owned\\extensions",
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ bound tests/filesystem.protocol.test.ts:12:40
+     10| function bound() {
+     11|   const gate = new FilesystemCommandGate(session)
+     12|   expect(gate.accept(frame(bind), 10)).toEqual(bind)
+       |                                        ^
+     13|   expect(gate.complete(1, true)).toBe(true)
+     14|   return gate
+ ❯ refused tests/filesystem.protocol.test.ts:17:28
+ ❯ tests/filesystem.protocol.test.ts:47:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/19]⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > failed bind permanently refuses later operations and failed mutation cannot be silently retried
+AssertionError: expected null not to be null
+ ❯ tests/filesystem.protocol.test.ts:56:46
+     54|   it('failed bind permanently refuses later operations and failed muta…
+     55|     const gate = new FilesystemCommandGate(session)
+     56|     expect(gate.accept(frame(bind), 10)).not.toBeNull()
+       |                                              ^
+     57|     expect(gate.complete(1, false)).toBe(true)
+     58|     expect(gate.closed).toBe(true)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/19]⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > accepts every closed bounded operation after binding without leaking host paths
+AssertionError: expected null to deeply equal { version: 1, …(6) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "generation": 7,
+  "operation": "bind",
+  "requestId": 1,
+  "root": "C:\\Frade-owned\\extensions",
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ bound tests/filesystem.protocol.test.ts:12:40
+     10| function bound() {
+     11|   const gate = new FilesystemCommandGate(session)
+     12|   expect(gate.accept(frame(bind), 10)).toEqual(bind)
+       |                                        ^
+     13|   expect(gate.complete(1, true)).toBe(true)
+     14|   return gate
+ ❯ tests/filesystem.protocol.test.ts:78:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/19]⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component ".." without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "." without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "" without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "a/b" without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "a\\b" without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "a:b" without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "NUL" without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "COM1.txt" without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "last." without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "last " without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "x?" without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "x\u0000y" without forwarding any command
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects unsafe path component "x<y" without forwarding any command
+AssertionError: expected null to deeply equal { version: 1, …(6) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "generation": 7,
+  "operation": "bind",
+  "requestId": 1,
+  "root": "C:\\Frade-owned\\extensions",
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ bound tests/filesystem.protocol.test.ts:12:40
+     10| function bound() {
+     11|   const gate = new FilesystemCommandGate(session)
+     12|   expect(gate.accept(frame(bind), 10)).toEqual(bind)
+       |                                        ^
+     13|   expect(gate.complete(1, true)).toBe(true)
+     14|   return gate
+ ❯ refused tests/filesystem.protocol.test.ts:17:28
+ ❯ tests/filesystem.protocol.test.ts:86:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/19]⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02FS004: closed installation-root protocol admission > rejects depth, component length, oversized reads/writes and unbounded directory listing
+AssertionError: expected null to deeply equal { version: 1, …(6) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "generation": 7,
+  "operation": "bind",
+  "requestId": 1,
+  "root": "C:\\Frade-owned\\extensions",
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ bound tests/filesystem.protocol.test.ts:12:40
+     10| function bound() {
+     11|   const gate = new FilesystemCommandGate(session)
+     12|   expect(gate.accept(frame(bind), 10)).toEqual(bind)
+       |                                        ^
+     13|   expect(gate.complete(1, true)).toBe(true)
+     14|   return gate
+ ❯ refused tests/filesystem.protocol.test.ts:17:28
+ ❯ tests/filesystem.protocol.test.ts:101:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/19]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

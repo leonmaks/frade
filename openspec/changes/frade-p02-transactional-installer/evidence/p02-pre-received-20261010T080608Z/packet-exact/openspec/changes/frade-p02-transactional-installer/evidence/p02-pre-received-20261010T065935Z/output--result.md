@@ -1,0 +1,5 @@
+План [Main coexistence](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-10T06-40-46-660Z-8cfa0c40-2de2-4b9c-a31f-0d9e39229c6b/prepared/packet/openspec/changes/frade-p02-transactional-installer/design.md:210) достаточно конкретен для **ограниченного production repair**: исходный полный bind и lease сохраняются до перекрывающей проверки того же immediate parent; сильный root и дочерние handles остаются, эффекты адресуются только относительно них. При сбое проверки bind не подтверждается. Это укладывается в принятый P02 scope и сохраняет P01 storage contract.
+
+Текущий Main regression остаётся RED (native 4 PASS / 1 FAIL); диагностические пробы не подтверждают capability. План прямо требует узкий actual RED/GREEN, проверки гонок и конфайнмента до её объявления. Strict validation прошла. Запрошенные CLI `gpt-6-sol/xhigh` подтверждены; фактические backend и effort — NOT_CONFIRMED. Остальные P02 gates открыты.
+
+GATE_STATUS: PASS

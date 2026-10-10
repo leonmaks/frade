@@ -1,0 +1,1605 @@
+{
+  "atUtc": "2026-10-10T04:01:40.485Z",
+  "status": "FINAL_CURRENT_WINDOWS_BACKEND_PRE_SELECTION",
+  "reviewPolicy": {
+    "stage": "P02 transactional installer",
+    "phase": "PRE",
+    "model": "gpt-6-sol",
+    "reasoningEffort": "xhigh",
+    "source": {
+      "path": "openspec/changes/frade-p02-transactional-installer/design.md",
+      "sha256": "ab771ffa3b94f3747fb15594714a006d08437db3f999eea2134b85aaa8291b24",
+      "excerpt": "| P02 transactional installer | PRE | gpt-6-sol | xhigh |"
+    }
+  },
+  "decisionSha256": "1800ba02a43bf3378ca488f947e61341503463eaa64fe3f10db8e2e6cfff2ae2",
+  "windowsDecisionSha256": "a72a3bcfb786571ce6b892bfe9b6a110157a75dc9c6cfdfab0f862438d54e230",
+  "paths": [
+    ".github/workflows/ci.yml",
+    "AGENTS.md",
+    "apps/desktop/electron.vite.config.ts",
+    "apps/desktop/package.json",
+    "apps/desktop/playwright.config.ts",
+    "apps/desktop/src/main/index.ts",
+    "apps/desktop/src/main/presentation-settings.ts",
+    "apps/desktop/src/main/security.ts",
+    "apps/desktop/src/main/workbench.ts",
+    "apps/desktop/src/preload/bridge.ts",
+    "apps/desktop/src/preload/index.ts",
+    "apps/desktop/src/preload/presentation-bridge.ts",
+    "apps/desktop/src/renderer/index.html",
+    "apps/desktop/src/renderer/main.tsx",
+    "apps/desktop/src/renderer/presentation-bootstrap.ts",
+    "apps/desktop/src/renderer/style.css",
+    "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+    "apps/desktop/tests/unit/presentation-bridge.test.ts",
+    "apps/desktop/tests/unit/presentation-settings.test.ts",
+    "apps/desktop/tests/unit/security.test.ts",
+    "apps/desktop/tsconfig.json",
+    "docs/engineering/agent-workflow.md",
+    "docs/engineering/parallel-feature-workflow.md",
+    "docs/ui/Frade-UI-Style-Guide.md",
+    "docs/ui/QA-Checklist.md",
+    "docs/ui/Themes-and-Plugins-Spec.md",
+    "docs/ui/UI-DESIGN-CONTRACT-STATUS.md",
+    "docs/ui/bdd/p01-theme-core.feature",
+    "docs/ui/bdd/p02-extension-installer.feature",
+    "docs/ui/bdd/ui-contracts.feature",
+    "docs/ui/components.md",
+    "docs/ui/decisions/p01-theme-traceability.json",
+    "docs/ui/decisions/ui-contract-traceability.json",
+    "docs/ui/theme-core.md",
+    "eslint.config.js",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-minor-deferral-20261009T040325Z.md",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/design.md",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/post-archive-verification.json",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/publication.json",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/published-report.md",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/output--result.md",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/verification.json",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/baseline-manifest.json",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/execution-context.json",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/proposal.md",
+    "openspec/changes/archive/2026-10-10-frade-p01-theme-core/tasks.md",
+    "openspec/changes/frade-p02-transactional-installer/decisions/p02-integration-scope-accepted-20261010T002712Z.json",
+    "openspec/changes/frade-p02-transactional-installer/decisions/p02-integration-scope.proposed.md",
+    "openspec/changes/frade-p02-transactional-installer/decisions/p02-windows-filesystem-backend-accepted-20261010T035503Z.json",
+    "openspec/changes/frade-p02-transactional-installer/decisions/p02-windows-filesystem-backend.proposed.md",
+    "openspec/changes/frade-p02-transactional-installer/design.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/accept-plan.mjs",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/apply-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/apply.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/apply.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/before/design.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/before/proposal.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/before/specs/extension-installer/spec.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/before/tasks.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-selection.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-semver7.8.5-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-types--semver7.8.0-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-types--yauzl3.4.0-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-yauzl3.4.0-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/original-obligations-proof.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/planning-check-batch.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/planning-update-proof.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/pre-input-path-discovery.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/pre-review-prompt.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/pre-selection-final.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/pre-selection.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/prepare-pre-before-path-discovery.mjs",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/status-before.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/status-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/status.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/status.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/strict-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/strict.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/strict.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/ui-compliance-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/ui-compliance.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/ui-compliance.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-validator-checkpoint-20261010T013426Z/checks.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-validator-checkpoint-20261010T013426Z/publication-controls.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-validator-checkpoint-20261010T013426Z/publication.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-validator-checkpoint-20261010T013426Z/sources.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-archive59-20261010T013103740Z/execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-archive59-20261010T013103740Z/stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-backend-plan-20261010T035617894Z/execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-backend-plan-20261010T035617894Z/stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-backend-plan-20261010T035617894Z/stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p01-canonical-strict-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p01-canonical-strict.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p01-canonical-strict.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p02-strict-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p02-strict.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p02-strict.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/pre-selection-retry-current.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/repair-proof.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/repair.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/output--result.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/packet-retention.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/received-provenance.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/verification.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T011453Z/output--result.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T011453Z/verification.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/adopted-agent-workflow.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/audit-publication-controls.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/audit.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/baseline.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/before/design.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/before/proposal.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/before/specs/extension-installer/spec.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/before/tasks.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-0-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-0.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-0.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-1-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-1.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-1.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-2-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-2.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-2.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-3-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-3.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-3.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/original-input-provenance.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/original-input.frade-extension",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/proposed-scope-hash.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/publication-status-parse-rca.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/publication.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/publish-audit-before-stat-parse.mjs",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/publish-audit.mjs",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/review-runner-status.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/source-tree-before.tsv",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/status-before.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/apply-instructions.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/author-plan-attempt-rca.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-0.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-1.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-2.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-3.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-0.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-1.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-2.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-3.md",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-retention-proof.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/list-before-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/list-before.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/list-before.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/planning-delta.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/pre-windows-selection.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/preservation-proof.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/seal-attempt-rca.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/snapshot-storage-root-cause.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-after-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-after.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-after.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-before-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-before.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-before.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/strict-after-execution.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/strict-after.stderr.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/strict-after.stdout.txt",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/fixture-cleanup.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/probe.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/publication-controls.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/publication.json",
+    "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/scope-proposal.json",
+    "openspec/changes/frade-p02-transactional-installer/proposal.md",
+    "openspec/changes/frade-p02-transactional-installer/specs/extension-installer/spec.md",
+    "openspec/changes/frade-p02-transactional-installer/tasks.md",
+    "openspec/config.yaml",
+    "openspec/specs/theme-core/spec.md",
+    "package.json",
+    "packages/extension-contracts/package.json",
+    "packages/extension-contracts/src/index.ts",
+    "packages/extension-contracts/tsconfig.build.json",
+    "packages/extension-contracts/tsconfig.json",
+    "packages/extension-service/package.json",
+    "packages/extension-service/src/archive.ts",
+    "packages/extension-service/src/index.ts",
+    "packages/extension-service/tests/archive.bdd.test.ts",
+    "packages/extension-service/tests/fixtures/compatible-light-dark.frade-extension",
+    "packages/extension-service/tests/fixtures/fixture-provenance.json",
+    "packages/extension-service/tests/fixtures/original-input.frade-extension",
+    "packages/extension-service/tests/zip-fixture.ts",
+    "packages/extension-service/tsconfig.build.json",
+    "packages/extension-service/tsconfig.json",
+    "packages/repository-api/package.json",
+    "packages/repository-api/src/workbench.ts",
+    "packages/runtime-contracts/package.json",
+    "packages/runtime-contracts/src/index.ts",
+    "packages/runtime-contracts/src/presentation.ts",
+    "packages/runtime-contracts/tests/contracts.test.ts",
+    "packages/runtime-contracts/tests/presentation.test.ts",
+    "packages/runtime-contracts/tsconfig.json",
+    "packages/ui-workspace/package.json",
+    "packages/ui-workspace/src/DiagramReferences.tsx",
+    "packages/ui-workspace/src/DiagramView.tsx",
+    "packages/ui-workspace/src/ElementAppearanceSettings.tsx",
+    "packages/ui-workspace/src/FlowManager.tsx",
+    "packages/ui-workspace/src/FradeDiagramView.tsx",
+    "packages/ui-workspace/src/Workbench.tsx",
+    "packages/ui-workspace/src/design/generated/tokens.css",
+    "packages/ui-workspace/src/design/generated/tokens.ts",
+    "packages/ui-workspace/src/design/theme/ThemePicker.tsx",
+    "packages/ui-workspace/src/design/theme/contrast.ts",
+    "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+    "packages/ui-workspace/src/design/theme/index.ts",
+    "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+    "packages/ui-workspace/src/design/theme/overlays.ts",
+    "packages/ui-workspace/src/design/theme/registry.ts",
+    "packages/ui-workspace/src/design/theme/resolver.ts",
+    "packages/ui-workspace/src/design/theme/rootParticipant.ts",
+    "packages/ui-workspace/src/design/theme/service.ts",
+    "packages/ui-workspace/src/design/theme/shortcuts.ts",
+    "packages/ui-workspace/src/design/theme/theme-consumers.css",
+    "packages/ui-workspace/src/design/theme/types.ts",
+    "packages/ui-workspace/src/diagramContent.ts",
+    "packages/ui-workspace/src/elementAppearance.ts",
+    "packages/ui-workspace/src/flowContracts.ts",
+    "packages/ui-workspace/src/index.ts",
+    "packages/ui-workspace/src/pointerDrag.ts",
+    "packages/ui-workspace/src/repositoryBundles.ts",
+    "packages/ui-workspace/src/repositoryDrop.ts",
+    "packages/ui-workspace/src/state.ts",
+    "packages/ui-workspace/src/styles.css",
+    "packages/ui-workspace/src/useBundleManager.tsx",
+    "packages/ui-workspace/tests/FlowManager.test.tsx",
+    "packages/ui-workspace/tests/bundle-flows.bdd.test.tsx",
+    "packages/ui-workspace/tests/elementAppearance.test.ts",
+    "packages/ui-workspace/tests/pointerDrag.test.ts",
+    "packages/ui-workspace/tests/repositoryDrop.test.ts",
+    "packages/ui-workspace/tests/state.test.ts",
+    "packages/ui-workspace/tests/ui-contract/overlays.test.tsx",
+    "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+    "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+    "packages/ui-workspace/tests/ui-contract/picker.test.tsx",
+    "packages/ui-workspace/tests/ui-contract/resolver.test.ts",
+    "packages/ui-workspace/tests/ui-contract/service.test.ts",
+    "packages/ui-workspace/tests/ui-contract/shortcuts.test.ts",
+    "packages/ui-workspace/tokens/theme.schema.json",
+    "packages/ui-workspace/tokens/tokens.json",
+    "packages/ui-workspace/tsconfig.build.json",
+    "packages/ui-workspace/tsconfig.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "scripts/check-boundaries.mjs",
+    "scripts/check-repository-boundaries.mjs",
+    "scripts/check-runtime-boundaries.mjs",
+    "scripts/check-workbench-boundaries.mjs",
+    "scripts/ui/checkout.mjs",
+    "scripts/ui/colors.mjs",
+    "scripts/ui/controls.mjs",
+    "scripts/ui/tokens.mjs",
+    "scripts/ui/traceability.mjs",
+    "tests/contract/presentation-boundaries.test.mjs",
+    "tests/contract/repository-boundaries.test.mjs",
+    "tests/contract/runtime-boundaries.test.mjs",
+    "tests/contract/workbench-boundaries.test.mjs",
+    "tsconfig.base.json",
+    "turbo.json"
+  ],
+  "selectedFiles": [
+    {
+      "file": ".github/workflows/ci.yml",
+      "bytes": 2096,
+      "sha256": "c5f8f62dfec5a99217f0f10fb5a37ce1027c62493acaf3f79610b45a460086d7"
+    },
+    {
+      "file": "AGENTS.md",
+      "bytes": 16655,
+      "sha256": "686221644bbdc2e9837aca807aa9362ca01329fa6519b2405a37900f79087174"
+    },
+    {
+      "file": "apps/desktop/electron.vite.config.ts",
+      "bytes": 938,
+      "sha256": "c33a9770bef1e1bd075fa32d013463516643c1eecb816def7f7164addfd30b28"
+    },
+    {
+      "file": "apps/desktop/package.json",
+      "bytes": 1490,
+      "sha256": "ac8276d3e40562f8939e3ac82c9cf5f73fbe4ea521b2c73f0dec874e1affac61"
+    },
+    {
+      "file": "apps/desktop/playwright.config.ts",
+      "bytes": 268,
+      "sha256": "07256af32ea304e07a366c4bd9aa564d61b2780a2ef9d0af7e140034a6ec600f"
+    },
+    {
+      "file": "apps/desktop/src/main/index.ts",
+      "bytes": 13942,
+      "sha256": "0dda036e508ed9e9f4f4cc86f9882d0e88be62778e23e32b2b5b12ddeb802ef2"
+    },
+    {
+      "file": "apps/desktop/src/main/presentation-settings.ts",
+      "bytes": 14914,
+      "sha256": "e639180b841481ff869034a7c355648be70f4fc752e2bb519d8aebbfdacfaeef"
+    },
+    {
+      "file": "apps/desktop/src/main/security.ts",
+      "bytes": 1852,
+      "sha256": "7ffb6b4c8529c5ebb5b89d99ca118a5148bdf332e83ae6a2105cea8837fc72c1"
+    },
+    {
+      "file": "apps/desktop/src/main/workbench.ts",
+      "bytes": 26048,
+      "sha256": "1d4bd4ac404666336075b076e40547cb8ff45e4b56d92fd493e34bb73196b4af"
+    },
+    {
+      "file": "apps/desktop/src/preload/bridge.ts",
+      "bytes": 1346,
+      "sha256": "bcf4368df28a3a20ad92c2f4a2093d5c0a981e7cf731809b67d1a91ac17cc832"
+    },
+    {
+      "file": "apps/desktop/src/preload/index.ts",
+      "bytes": 3086,
+      "sha256": "0e395618be2d193452b3fffa7a8cd19eb2f2f4a5bb041011a429412e0746950b"
+    },
+    {
+      "file": "apps/desktop/src/preload/presentation-bridge.ts",
+      "bytes": 2382,
+      "sha256": "61c43eff0f418f02433c1b8971d338a0a913dcd31721165614e7059d29bafba9"
+    },
+    {
+      "file": "apps/desktop/src/renderer/index.html",
+      "bytes": 289,
+      "sha256": "79dda55f40657fe01ae7d3758ab29695a17f93f88fc724f84dc17392f9934aef"
+    },
+    {
+      "file": "apps/desktop/src/renderer/main.tsx",
+      "bytes": 1869,
+      "sha256": "801df9c2a435f067557e5fd3cd7fc9369f8af8db37d9a41daced1cc141914e71"
+    },
+    {
+      "file": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+      "bytes": 2901,
+      "sha256": "c3161f1b0ced4d2036e524c6ca9d779041ef41d6ceab8924cad11ce814f1227f"
+    },
+    {
+      "file": "apps/desktop/src/renderer/style.css",
+      "bytes": 730,
+      "sha256": "d0fc4000f5e90075477ba2f1121475166a1a1ee9201a0dc861a7cfa6f8c803f7"
+    },
+    {
+      "file": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "bytes": 279962,
+      "sha256": "7c3e52a69c1b8346a78f4297774f5c2342a3ecdaeb05a2611465d2f09c546f43"
+    },
+    {
+      "file": "apps/desktop/tests/unit/presentation-bridge.test.ts",
+      "bytes": 12864,
+      "sha256": "619d52ccd49e13ad267d5cfab91021b11113a1b7c80ba96249c269d152880d1a"
+    },
+    {
+      "file": "apps/desktop/tests/unit/presentation-settings.test.ts",
+      "bytes": 19320,
+      "sha256": "405e44ba4f25ea60d47df04c25c19dc38dc55c461a6b6fcc7f7d9b367fef4c02"
+    },
+    {
+      "file": "apps/desktop/tests/unit/security.test.ts",
+      "bytes": 2101,
+      "sha256": "a48b39f47fa7baa7245b077959277d674e99724dcad1fc41d487fdba403d24b0"
+    },
+    {
+      "file": "apps/desktop/tsconfig.json",
+      "bytes": 227,
+      "sha256": "f6488f3ba8c1a0577a3f9984741b496a6f843ea76f59adf7e42a515450816740"
+    },
+    {
+      "file": "docs/engineering/agent-workflow.md",
+      "bytes": 12126,
+      "sha256": "6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb"
+    },
+    {
+      "file": "docs/engineering/parallel-feature-workflow.md",
+      "bytes": 5462,
+      "sha256": "98a1dbb621aed7574e0d19cf1603b9e41d5485860494c87643f458d8dc3674e6"
+    },
+    {
+      "file": "docs/ui/Frade-UI-Style-Guide.md",
+      "bytes": 70090,
+      "sha256": "6fe886be979a32d87c94f29f65ee3abdbc2acf86dd4c12fdfc4d00022139b109"
+    },
+    {
+      "file": "docs/ui/QA-Checklist.md",
+      "bytes": 2549,
+      "sha256": "22fb9287d6740a2613dac07e5ef656aa6edcc9e6e1eb4be5bb5bff3f042b0f9b"
+    },
+    {
+      "file": "docs/ui/Themes-and-Plugins-Spec.md",
+      "bytes": 31505,
+      "sha256": "f8fb35e715dd7e0c420768b855e991c96244279b637e6d4db5eb061514ec3e81"
+    },
+    {
+      "file": "docs/ui/UI-DESIGN-CONTRACT-STATUS.md",
+      "bytes": 185738,
+      "sha256": "bac50ec91d97a4d26a99f20bdb31fe82e9375358901e11a466b0f8ff00d243f4"
+    },
+    {
+      "file": "docs/ui/bdd/p01-theme-core.feature",
+      "bytes": 30737,
+      "sha256": "47c9dc9c6d01844fe176696a6ba7dd1bf5b46ff5728cf8cda1a2a196bca2c55a"
+    },
+    {
+      "file": "docs/ui/bdd/p02-extension-installer.feature",
+      "bytes": 1402,
+      "sha256": "576af8fb711b713ffbb2780342e471d725a9defe7c475fc66b67048f17676efd"
+    },
+    {
+      "file": "docs/ui/bdd/ui-contracts.feature",
+      "bytes": 9583,
+      "sha256": "5892b960f017940332a5dd1a0b9fbf4652e3f842ab449f0459ef31d8102b0eb3"
+    },
+    {
+      "file": "docs/ui/components.md",
+      "bytes": 7181,
+      "sha256": "041f75dd6d9e7f2d7ccc3d31d0f9834cfe0c6c34cb8c2088746df3c5b7cf34eb"
+    },
+    {
+      "file": "docs/ui/decisions/p01-theme-traceability.json",
+      "bytes": 62376,
+      "sha256": "d8b508d95f43dd6cd2090fa0318f91f0837aab0fad6c2591fb8750515d52e5ce"
+    },
+    {
+      "file": "docs/ui/decisions/ui-contract-traceability.json",
+      "bytes": 13323,
+      "sha256": "6e1f99d5b147212762dfd5d9216cd394b4becab3b6de9970191ebca3467da920"
+    },
+    {
+      "file": "docs/ui/theme-core.md",
+      "bytes": 33503,
+      "sha256": "724bbf34d9329e429a53a4033eec3be560b93705d5c5f8e9822c82e298233a9f"
+    },
+    {
+      "file": "eslint.config.js",
+      "bytes": 850,
+      "sha256": "13f6c7a6a85e2896773a890993a15fb500342725d8c3eb6683b7a4d00d506dc4"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-minor-deferral-20261009T040325Z.md",
+      "bytes": 4175,
+      "sha256": "b308ce5e4f1a58005c0105ea3dc3bcbe2574a988003b80f49110adf86bc920b1"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/decisions/p01-visual-baselines-accepted-20261009T045920Z.json",
+      "bytes": 1895,
+      "sha256": "d80954f1dc645df79a6f0f2099a1ad7b05631ad1083925a87daf4642e2e46fbc"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/design.md",
+      "bytes": 135367,
+      "sha256": "87916e5eaa680aee68bb06cee9a5c2430b690b03c944268fe459971949ca38d6"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/post-archive-verification.json",
+      "bytes": 1318,
+      "sha256": "d5fa291b7bd80892a0af1fcad26cab4e298d7fbfa5f0aba76570f5ffcaa309a1"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/publication.json",
+      "bytes": 472,
+      "sha256": "532940173842b985b310a7c7f570fee66b63d69931e6e0929e9bc1561f52a076"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-execution-20261009T221835Z/published-report.md",
+      "bytes": 3837,
+      "sha256": "08102d67b506fcade3dee4e8db1fef4ad398b3725e48d09d02c915881f713b2d"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/output--result.md",
+      "bytes": 1086,
+      "sha256": "083021b32c6a532fe1984a55367652c33089612414f724e757290178b8ad8329"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-archive-post-received-20261009T221749Z/verification.json",
+      "bytes": 1137,
+      "sha256": "74ad823a0a64aa37afabf0a41241dea4f12da6773ff614a9cbd81add27e5e6b0"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/evidence/p01-current-visual-review-20261009T043118Z/baseline-manifest.json",
+      "bytes": 257782,
+      "sha256": "06c79710f22631a87a1cf834181ca60fa8a4291a4b00c1cfcd1592f81a8a6c15"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/execution-context.json",
+      "bytes": 136887,
+      "sha256": "2811c12425445eececa7b20bce8e319320a0d67f72782c52d20b6359734a0737"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/proposal.md",
+      "bytes": 45455,
+      "sha256": "7695797cf5a4b24a628f9534351e36cb5bb840c45baefcbec1ac2e9f21171d4f"
+    },
+    {
+      "file": "openspec/changes/archive/2026-10-10-frade-p01-theme-core/tasks.md",
+      "bytes": 55128,
+      "sha256": "54a83debc4e1b641feb71b8758f02540bf9f27dbe865e46328968d40b857bcb8"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/decisions/p02-integration-scope-accepted-20261010T002712Z.json",
+      "bytes": 1116,
+      "sha256": "1800ba02a43bf3378ca488f947e61341503463eaa64fe3f10db8e2e6cfff2ae2"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/decisions/p02-integration-scope.proposed.md",
+      "bytes": 7383,
+      "sha256": "e0821a4e7e1676e772a191061c94e3fc6384df2fd82cbfd62251ce6ffd33c947"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/decisions/p02-windows-filesystem-backend-accepted-20261010T035503Z.json",
+      "bytes": 908,
+      "sha256": "a72a3bcfb786571ce6b892bfe9b6a110157a75dc9c6cfdfab0f862438d54e230"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/decisions/p02-windows-filesystem-backend.proposed.md",
+      "bytes": 8356,
+      "sha256": "8310cb500c9aeedfec91e3db2e6e01e39791f1625b144cb14495a99ab2dedc0e"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/design.md",
+      "bytes": 34609,
+      "sha256": "ab771ffa3b94f3747fb15594714a006d08437db3f999eea2134b85aaa8291b24"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/accept-plan.mjs",
+      "bytes": 28575,
+      "sha256": "7a0fd3a22c2ea8f66aed5420738d1af798476826024c121b41e92067568cfdd3"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/apply-execution.json",
+      "bytes": 487,
+      "sha256": "8d6f7c823fff10bae3c49fbfffcf83f876c22e1bc33f898e5a35fd49cc5f978d"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/apply.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/apply.stdout.txt",
+      "bytes": 5074,
+      "sha256": "7a2089b08d9742507ca433bfe4b74a4e59351bb7c5592327233be749a9ec60b4"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/before/design.md",
+      "bytes": 4169,
+      "sha256": "b7fc32b3306ed793bb2eda39e9f02c8e2041217ea67f31d6c821d71ccad8e498"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/before/proposal.md",
+      "bytes": 1207,
+      "sha256": "04c650bc00e34ecec3da519d66da44158aab127a93343a456c26637ca87a1f38"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/before/specs/extension-installer/spec.md",
+      "bytes": 2186,
+      "sha256": "113f709713ca093338ecb6ed01ce3a659a4ac822fc637ad6c825ed55eb1bd573"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/before/tasks.md",
+      "bytes": 1724,
+      "sha256": "e138c11c046c430e5bc5a495b4275093164dab486f037cbcf62be5edc831a6bc"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-selection.json",
+      "bytes": 1340,
+      "sha256": "facdb6e939f5f433b5a7bfc72f9748d6b8fe695725f950e88f4efcc4c72b3ea7"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-semver7.8.5-execution.json",
+      "bytes": 468,
+      "sha256": "9ee3ab433867e297502f5ebdb9b768a59fb0bbc39d44af105bf6266b74d37637"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-types--semver7.8.0-execution.json",
+      "bytes": 475,
+      "sha256": "e87bd70b9e165123c3fcc9795b7d6490a8bd87f0b2ef20e95d0b5e859aa08c3a"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-types--yauzl3.4.0-execution.json",
+      "bytes": 474,
+      "sha256": "4b50d9fb3d7b8fa6ad377d28da34aff3fae75db1cf06fd5d8d8343af18dbe642"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/dependency-yauzl3.4.0-execution.json",
+      "bytes": 467,
+      "sha256": "ce70b08ee606d63671a790b2524f243533fc544acac17001764c9eed0aad588d"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/original-obligations-proof.json",
+      "bytes": 2141,
+      "sha256": "417d5367b79b50c1d447ea820d4cc4fbd8db5b1a612a867cee1c5e553bf1ac33"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/planning-check-batch.json",
+      "bytes": 2306,
+      "sha256": "2cf6c8c7de39a826fdc3100f58bf9cfd3300e2967da213a39d4a88ad535b3e3d"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/planning-update-proof.json",
+      "bytes": 2063,
+      "sha256": "bd2c03ed0a40189b63e021f989e64a5963e620cc22e38181d3d600a72120e57c"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/pre-input-path-discovery.json",
+      "bytes": 554,
+      "sha256": "798f14049a9f38f08dc69fee3cc4147552b78f84eb11778f368d336485890f40"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/pre-review-prompt.md",
+      "bytes": 6834,
+      "sha256": "90480bbd710779d3a46f3e657a9671091b56337c5d3f3af0f9dd33f028281040"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/pre-selection-final.json",
+      "bytes": 54437,
+      "sha256": "35ab289a5c51eb994db54857f1d1b4e70b3c135b43f509b051d0d7fbde091f82"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/pre-selection.json",
+      "bytes": 54051,
+      "sha256": "c877ca384851e5512693b6dbb1a531479fe70eaffe82ae8b1042a3913a97bff4"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/prepare-pre-before-path-discovery.mjs",
+      "bytes": 12907,
+      "sha256": "cfcc3e77d48d6ab57796677066523a9cb500c445bd983d45cdd57a8d21993146"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/status-before.md",
+      "bytes": 171291,
+      "sha256": "a3b9431f56253c3287905640f08e2ae9fcfc55279756b8fff11b51f6411ed912"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/status-execution.json",
+      "bytes": 468,
+      "sha256": "b17c4ccde4cda2a11e190e8ee66ef287631ba1a1a820dcf1a432500dffcc267e"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/status.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/status.stdout.txt",
+      "bytes": 3563,
+      "sha256": "955d586927bb678826e1cd53971ce59dd3f2f1816dc57e9e51a7a8dbe6c6e3cc"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/strict-execution.json",
+      "bytes": 456,
+      "sha256": "98ec66ce9f5f726407e7b6c3ad7e51873b7e0a23bb4502c74b5d5ef6152d44ed"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/strict.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/strict.stdout.txt",
+      "bytes": 52,
+      "sha256": "a56f6a1542e7b2de16505408befecd7afe8e6deb4c5f252195344b158007a5df"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/ui-compliance-execution.json",
+      "bytes": 390,
+      "sha256": "8f4f3883780a3dbd6352ddcc4c256d7efc16a920f23d7ed36d801a9a5f0e9d2f"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/ui-compliance.stderr.txt",
+      "bytes": 346,
+      "sha256": "a9969ed6b164cf14846cf1d768ecbbd67bbb554e640c7722dbeffabde1402265"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/ui-compliance.stdout.txt",
+      "bytes": 9910,
+      "sha256": "7a92f5e2883cc0dc4fa6e159c838271c5452ffa3d38065f01155fd0780d4e8e2"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-validator-checkpoint-20261010T013426Z/checks.json",
+      "bytes": 3933,
+      "sha256": "0dba8145dea94bb3c99085bef44a8b7a31629e0dafed57e536acf76a0ade36e8"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-validator-checkpoint-20261010T013426Z/publication-controls.json",
+      "bytes": 12669,
+      "sha256": "363d4e0181ed0ea141bb11f44d13fda13c0a070bed6f975d62542cf8865b20b5"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-validator-checkpoint-20261010T013426Z/publication.json",
+      "bytes": 284,
+      "sha256": "254387cd7ed4d56198979b684f52277adb0580ffdedff3d0820b1930a8507e1b"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-validator-checkpoint-20261010T013426Z/sources.json",
+      "bytes": 989,
+      "sha256": "de35d1b6b158e11b6ada77969fa08470d3410ab41684c2d7d6efdc647e553086"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-archive59-20261010T013103740Z/execution.json",
+      "bytes": 508,
+      "sha256": "1f303af22d07da26b19afb9f45305ba110bb50d94dafdd71cf8699b577a6ec5a"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-archive59-20261010T013103740Z/stdout.txt",
+      "bytes": 478,
+      "sha256": "d287aeaf97af7f32b3073c8ca3d8378bb5b8edf921604b8549a81fa125a68617"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-backend-plan-20261010T035617894Z/execution.json",
+      "bytes": 468,
+      "sha256": "22d884e77ec22a3fd19064514f9bde016484eebb07eabf6c1b006e5ebaf38818"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-backend-plan-20261010T035617894Z/stderr.txt",
+      "bytes": 346,
+      "sha256": "a9969ed6b164cf14846cf1d768ecbbd67bbb554e640c7722dbeffabde1402265"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-backend-plan-20261010T035617894Z/stdout.txt",
+      "bytes": 9911,
+      "sha256": "0344c4e01f1b0aeb41af271ce173a4129fd2c9b10ea6a625ec759327e7072f59"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p01-canonical-strict-execution.json",
+      "bytes": 459,
+      "sha256": "210106c1a2702255dbb545dc7b86e4b5b5c100a75bb1764d4671cb799d4f38af"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p01-canonical-strict.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p01-canonical-strict.stdout.txt",
+      "bytes": 36,
+      "sha256": "a0da0ee3fb44145f77b23d50891e25c6115eec72e0bf80b03765d96e06807708"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p02-strict-execution.json",
+      "bytes": 456,
+      "sha256": "501b87e658707526a1d2b4fd87b887a72f9e454a10c5a856aaf08854090447cc"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p02-strict.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/p02-strict.stdout.txt",
+      "bytes": 52,
+      "sha256": "a56f6a1542e7b2de16505408befecd7afe8e6deb4c5f252195344b158007a5df"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/pre-selection-retry-current.json",
+      "bytes": 59631,
+      "sha256": "f71d148dee5bf106f827f35c42b916e15f296002dec6624247556ebb48625e07"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/repair-proof.json",
+      "bytes": 1016,
+      "sha256": "33bd2f6f8be03a8a78176cbfd64d69e64f32d668efec45afe3b8abe9d319eb6d"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/repair.md",
+      "bytes": 1322,
+      "sha256": "d02d52f5f8728fa93fa5eaaab342a334cbbedda58d8af39eeaa4aea484f611a9"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/output--result.md",
+      "bytes": 2794,
+      "sha256": "f4ec4717f1fcd43002adfec528943bfd476296fa7fec659dc41d72c042846db7"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/packet-retention.json",
+      "bytes": 39097,
+      "sha256": "c15fd68eb90db1d1caeffd8bd50439449b13f9a21b321cdfc1e234aad5310a79"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/received-provenance.json",
+      "bytes": 7127,
+      "sha256": "9dc9e438e11611844c47d596e1ee51a78e60dd9c28c220a28fcb1a45ca9bdc3d"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/verification.json",
+      "bytes": 1182,
+      "sha256": "899e6690bce50cafdb412aec0b51849345e2eb873d34247fba6a4de62fe907bb"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T011453Z/output--result.md",
+      "bytes": 1799,
+      "sha256": "c43ca6d195948e4f21b935a957a62c71b4fb933d98d28b91bea0b62583318721"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T011453Z/verification.json",
+      "bytes": 1183,
+      "sha256": "2f74327e9d98c22dcafdf387c131fc7eeda177a0ce65b84edf37bedcb002ad9e"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/adopted-agent-workflow.md",
+      "bytes": 12126,
+      "sha256": "6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/audit-publication-controls.json",
+      "bytes": 4355,
+      "sha256": "9bc65b4781f6f229e49b7bac92078f7c617c580ecb923eba8e2e9e3d816fb84e"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/audit.md",
+      "bytes": 4794,
+      "sha256": "ae3e287b2fada5ccb898ddad2b2846cf5b4267588f81c7b2200c4ee7fbd84629"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/baseline.json",
+      "bytes": 8449,
+      "sha256": "e7d8e536f87f12ea9d3001baed836c1bb0619d623cea6e4d49e635f7333d011e"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/before/design.md",
+      "bytes": 4169,
+      "sha256": "b7fc32b3306ed793bb2eda39e9f02c8e2041217ea67f31d6c821d71ccad8e498"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/before/proposal.md",
+      "bytes": 1207,
+      "sha256": "04c650bc00e34ecec3da519d66da44158aab127a93343a456c26637ca87a1f38"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/before/specs/extension-installer/spec.md",
+      "bytes": 2186,
+      "sha256": "113f709713ca093338ecb6ed01ce3a659a4ac822fc637ad6c825ed55eb1bd573"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/before/tasks.md",
+      "bytes": 1724,
+      "sha256": "e138c11c046c430e5bc5a495b4275093164dab486f037cbcf62be5edc831a6bc"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-0-execution.json",
+      "bytes": 3776,
+      "sha256": "b20c807519a59e03938a22fa19342c29ab8c4f1afaa8c9614bc61650b6f88845"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-0.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-0.stdout.txt",
+      "bytes": 2958,
+      "sha256": "cc2a21641e91935cf0c75e96324650f5e70e57df7ad615110f6c8cd9d9e62400"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-1-execution.json",
+      "bytes": 4617,
+      "sha256": "a37cc9788a940e9fe11bdfca498453edf8b99f40a0ce4dc31e3aaba9180f89c3"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-1.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-1.stdout.txt",
+      "bytes": 3563,
+      "sha256": "955d586927bb678826e1cd53971ce59dd3f2f1816dc57e9e51a7a8dbe6c6e3cc"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-2-execution.json",
+      "bytes": 6189,
+      "sha256": "bdfcbbac83e14f006dd675c00037c97ad280999e09fe7ee3d58cc6ac48176eb8"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-2.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-2.stdout.txt",
+      "bytes": 5075,
+      "sha256": "66bc69e8b0b7bfe8efcadff2f01180ef37dc12cfec165d070c754435f33a5408"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-3-execution.json",
+      "bytes": 541,
+      "sha256": "27b05f831a400ff35602ff62b69e86790f9cea9f9ca29a5dbce577c33e8c49e7"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-3.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/openspec-3.stdout.txt",
+      "bytes": 52,
+      "sha256": "a56f6a1542e7b2de16505408befecd7afe8e6deb4c5f252195344b158007a5df"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/original-input-provenance.json",
+      "bytes": 723,
+      "sha256": "297d7063b4d2707eb094e5e8631b5f8b8710e40122a2229c45571ea23e92bea0"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/original-input.frade-extension",
+      "bytes": 1356,
+      "sha256": "e6372222207f180fdd5f759f4cbd654f295ce11e91bc6a9e86e1d766b9f04475"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/proposed-scope-hash.json",
+      "bytes": 272,
+      "sha256": "e694ede9655c097524b83806e277d9a736abdf41353391732a1df55647460098"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/publication-status-parse-rca.json",
+      "bytes": 538,
+      "sha256": "642d301d47b7881fba016b1304436003a3c93ddfba5fb1cf253775e3b3d63c2f"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/publication.json",
+      "bytes": 315,
+      "sha256": "711732ce6247ac677a1b8ba5d70f1a2136f1ca0a1d8456c4269e0aa5cbaad287"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/publish-audit-before-stat-parse.mjs",
+      "bytes": 5341,
+      "sha256": "a1ca2ed0012eef5eff4e004d56a6c377139a9278b7149225e417ce5bbe1f61de"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/publish-audit.mjs",
+      "bytes": 5415,
+      "sha256": "f11055ccdbd35b651ddf6ded18ad1f1cc3e42ba9b02bd86319b3f837145fe8fd"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/review-runner-status.json",
+      "bytes": 942,
+      "sha256": "de14b4b4eefe264ab305769cc79cb3e3b88a6cf277588c53672d7c3c94dfcb6b"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/source-tree-before.tsv",
+      "bytes": 405101,
+      "sha256": "d23607922161c6621648ab6b43e7c26ba45fe5469446cb89a1e0d3307fbbc5c4"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-start-audit-20261009T234623Z/status-before.md",
+      "bytes": 167696,
+      "sha256": "94ea6313e21206334eb8dc6bad63540da57ed9bf3946939e7030ce8f5696ccee"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/apply-instructions.json",
+      "bytes": 5072,
+      "sha256": "a7419f6de9f0de619c69d936e401cc4c40fd20896bcc71f7e8338ecc81d3aa3a"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/author-plan-attempt-rca.json",
+      "bytes": 479,
+      "sha256": "af9d565c11216ef1c21cd1c137070c79092f05a18ab68b0b6e2266dc854fa005"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-0.md",
+      "bytes": 17752,
+      "sha256": "42bfb0e2035670fef84d5f3d656e4c610fc11ab2084c7edd6c5e081bc5ef023b"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-1.md",
+      "bytes": 32712,
+      "sha256": "5a8eb7f3d6ab373c5c8e91a5a64b8be905b7aa053a5b1b4bd45e4bbd9722045f"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-2.md",
+      "bytes": 177186,
+      "sha256": "f242e0b59d9136e1282e4b7deddbfc819785d98ba09287cbdaf75bdf29f1fe5c"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-3.md",
+      "bytes": 31290,
+      "sha256": "408a3b5e9a8cd43892f8a77e5d16c2988ccb93010e5b45e78cce1e80de79fa2a"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-0.md",
+      "bytes": 2063,
+      "sha256": "dbd6bcb937ce466130c7aed27d990f646861cc378a8140670126b1a22d196141"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-1.md",
+      "bytes": 3784,
+      "sha256": "ee9663dc7f1eb1d58fd197436a16fd652ee34a123af3bb20dc5d29690076a92b"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-2.md",
+      "bytes": 20465,
+      "sha256": "0cca6c7fe785036e4162f7aa2bccdcb84b17191906cc0acc6462ca9149d1495a"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-3.md",
+      "bytes": 3650,
+      "sha256": "cfad7c2172da445fb7e2d250d71d3bdd91f47352fe7f0c44e9381d3b2dc8feb6"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/before-raw-retention-proof.json",
+      "bytes": 2933,
+      "sha256": "518f3205caae5d2f6dd07c43b357aa0efb5fe2b1696480a6e03e3333fcd715de"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/list-before-execution.json",
+      "bytes": 412,
+      "sha256": "46fb827c526ff388c2be65940c0dfd2fd0063c7e50f1a2116c06062cd4616fc1"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/list-before.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/list-before.stdout.txt",
+      "bytes": 2958,
+      "sha256": "0d6f1eb686a0d436ab6a2e4fbe7ef5cd059db079064b8ac812832df94d44fa25"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/planning-delta.json",
+      "bytes": 2058,
+      "sha256": "dc236735de1e64ee855dbae1d523635fa08103ed585d232a5562d2a6533a3daf"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/pre-windows-selection.json",
+      "bytes": 81113,
+      "sha256": "6c097baed87b3145b8090b3019b0193918505c0015a6369db9552a4a2f1394af"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/preservation-proof.json",
+      "bytes": 2037,
+      "sha256": "a3739cc860a2e7e14f4b523f53bfe15285040c7005a87a3579b711bd7db537c8"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/seal-attempt-rca.json",
+      "bytes": 346,
+      "sha256": "445b9d8ac41f49bcf183a2cb2472d7c481aa771f2973d502915d41483a32d26a"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/snapshot-storage-root-cause.json",
+      "bytes": 1609,
+      "sha256": "c1d35bcf2c7e6c476ee4b06d193d10b47609d62a79041acbd5672b333ab0c52d"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-after-execution.json",
+      "bytes": 471,
+      "sha256": "7107b1dea10c91fb2ea8badc775b4f3b98584d8f3d385d3ea6aa4a782e0a6a89"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-after.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-after.stdout.txt",
+      "bytes": 3563,
+      "sha256": "955d586927bb678826e1cd53971ce59dd3f2f1816dc57e9e51a7a8dbe6c6e3cc"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-before-execution.json",
+      "bytes": 471,
+      "sha256": "fea0b98e8efe02f9ab6b661837249941368f39fa52cec8a773c0454d81b57928"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-before.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/status-before.stdout.txt",
+      "bytes": 3563,
+      "sha256": "955d586927bb678826e1cd53971ce59dd3f2f1816dc57e9e51a7a8dbe6c6e3cc"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/strict-after-execution.json",
+      "bytes": 459,
+      "sha256": "a3010fb79d9de765505ff94fcf4ce53641cfbf6f49b23dc30ceb625d2dca6430"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/strict-after.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/strict-after.stdout.txt",
+      "bytes": 52,
+      "sha256": "a56f6a1542e7b2de16505408befecd7afe8e6deb4c5f252195344b158007a5df"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/fixture-cleanup.json",
+      "bytes": 532,
+      "sha256": "ffdd7377f4e452b801155da169dc0cbb28ede7afdcc0719a28742c3e1c6b377d"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/probe.json",
+      "bytes": 1580,
+      "sha256": "747ffdb7661e0d499a62971ae64568c2cc1a244468c4f9fbac66a837cc77695c"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/publication-controls.json",
+      "bytes": 2081,
+      "sha256": "e6213d0fdeb02c8a55138f30a1e24dc6ab6f3c895d6acc7dc391af89b96b82a7"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/publication.json",
+      "bytes": 287,
+      "sha256": "a1c0dd6007a9bef7ddc1eb40dec84056ccdcd36e699466c0a84d2edf8545592d"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/scope-proposal.json",
+      "bytes": 624,
+      "sha256": "d91c4db25d9f2e0473b2099d6384a091d10a597fe268e778490097080128c489"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/proposal.md",
+      "bytes": 3272,
+      "sha256": "e89c5cac4ea9fcc056ca44b5c2fea2c2177ae6c0b87804b08043a42cf6db460a"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/specs/extension-installer/spec.md",
+      "bytes": 6972,
+      "sha256": "e690171f1c4028c9effc0c92fdb6cfcacdda168e14488a9e343777c2a4b4a2c6"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/tasks.md",
+      "bytes": 4623,
+      "sha256": "7b406fbd910cee26e77e3e6d29f2c3492e0c900180e0e74c94bf2bbb8733f2c5"
+    },
+    {
+      "file": "openspec/config.yaml",
+      "bytes": 954,
+      "sha256": "e9caf830990b4f7277d6f43a2b24d118382ac5e4061a3308f35f2a04e3109c55"
+    },
+    {
+      "file": "openspec/specs/theme-core/spec.md",
+      "bytes": 73565,
+      "sha256": "fc5def679bd51324b15fa00b407a44ca0922d0d606d1f2846fc62759faf203bf"
+    },
+    {
+      "file": "package.json",
+      "bytes": 2461,
+      "sha256": "574eab76e54f3a5a8f22484e9cb582cd94259cd6a24df89066f59f520eeba81e"
+    },
+    {
+      "file": "packages/extension-contracts/package.json",
+      "bytes": 430,
+      "sha256": "df2a303b53d0b8647cec1b53afcc4d519d0b6ab8bd4bf1dc777179538fa34809"
+    },
+    {
+      "file": "packages/extension-contracts/src/index.ts",
+      "bytes": 942,
+      "sha256": "ce41a85d0b43daf58ad1d12f7def2a18a3a0123744f5bf2b82c0b933d3231382"
+    },
+    {
+      "file": "packages/extension-contracts/tsconfig.build.json",
+      "bytes": 139,
+      "sha256": "6af7a41e2bf631bef8fa14034fca7185254c7aa6b546e5d4d9634d271564c02f"
+    },
+    {
+      "file": "packages/extension-contracts/tsconfig.json",
+      "bytes": 71,
+      "sha256": "d95933b4f2fb1912a251ee9901c7f0ad2e448bb08c2f2508fb1eea554ddbcf66"
+    },
+    {
+      "file": "packages/extension-service/package.json",
+      "bytes": 635,
+      "sha256": "7d0b14cb7267e6dcf6c344ac0307bdf04b0511d6c3449707d69339e138e4105e"
+    },
+    {
+      "file": "packages/extension-service/src/archive.ts",
+      "bytes": 20789,
+      "sha256": "a5e0c8fefb8be2cd5ca7963520d943f9e1ed3e05c23fb5a613ecd91f70689737"
+    },
+    {
+      "file": "packages/extension-service/src/index.ts",
+      "bytes": 114,
+      "sha256": "9ab4debd0c59e07e121d62c14306b77f5e8edf1fd0b28e05b55454ac49a07d83"
+    },
+    {
+      "file": "packages/extension-service/tests/archive.bdd.test.ts",
+      "bytes": 10474,
+      "sha256": "fb10f0ffccced1003293780dc791a123cd62132853fe52f6a388b3ad40968d78"
+    },
+    {
+      "file": "packages/extension-service/tests/fixtures/compatible-light-dark.frade-extension",
+      "bytes": 3025,
+      "sha256": "d04a72126c28321045dbaa0e600fbba9d6085fa15cddb3e4aaad1e57ff016926"
+    },
+    {
+      "file": "packages/extension-service/tests/fixtures/fixture-provenance.json",
+      "bytes": 1119,
+      "sha256": "838c70dfcfb31234f37d7ae61395389596c34f39bb5e012172106dae4ee1ba56"
+    },
+    {
+      "file": "packages/extension-service/tests/fixtures/original-input.frade-extension",
+      "bytes": 1356,
+      "sha256": "e6372222207f180fdd5f759f4cbd654f295ce11e91bc6a9e86e1d766b9f04475"
+    },
+    {
+      "file": "packages/extension-service/tests/zip-fixture.ts",
+      "bytes": 5192,
+      "sha256": "0969c429448bbe6f7601a6ca14d0be8fccbe1ac5f13e73c9395d927f23b4e7db"
+    },
+    {
+      "file": "packages/extension-service/tsconfig.build.json",
+      "bytes": 139,
+      "sha256": "6af7a41e2bf631bef8fa14034fca7185254c7aa6b546e5d4d9634d271564c02f"
+    },
+    {
+      "file": "packages/extension-service/tsconfig.json",
+      "bytes": 119,
+      "sha256": "63a212039ee48dc551b5c6d7e06737b6196f72adec16718320eedeb08ff1a50b"
+    },
+    {
+      "file": "packages/repository-api/package.json",
+      "bytes": 760,
+      "sha256": "389a05683887dd226e18fb04669a03a29a303744f594bf3e34b042524bf3707a"
+    },
+    {
+      "file": "packages/repository-api/src/workbench.ts",
+      "bytes": 18483,
+      "sha256": "fa7175662d7910cc9c374b0812584da247bc622b90b3070c89d57206acb70ca1"
+    },
+    {
+      "file": "packages/runtime-contracts/package.json",
+      "bytes": 456,
+      "sha256": "9c35764dc0cde8b0f122f3b2b275aad5e73642e2f2901b1a820966aea69780e4"
+    },
+    {
+      "file": "packages/runtime-contracts/src/index.ts",
+      "bytes": 4111,
+      "sha256": "bf637feec1e30c3b9c999356a4cbc2ac5f4c84174a535ed8eb631a72fc818ef4"
+    },
+    {
+      "file": "packages/runtime-contracts/src/presentation.ts",
+      "bytes": 16731,
+      "sha256": "1dcbde50237d57baeaa3754bbad6f074623612f2f669b5cf4dc03d9828ea43cc"
+    },
+    {
+      "file": "packages/runtime-contracts/tests/contracts.test.ts",
+      "bytes": 2006,
+      "sha256": "4a1324d11513b3bbf6c1683a2f25d3b5a436eecc7dc79e7a234a5b739f681bfe"
+    },
+    {
+      "file": "packages/runtime-contracts/tests/presentation.test.ts",
+      "bytes": 5691,
+      "sha256": "f4534dbb8ee1d5673fdc6907f4dbf3fe415fb3d262547cf75b9a7ef446f5f68f"
+    },
+    {
+      "file": "packages/runtime-contracts/tsconfig.json",
+      "bytes": 163,
+      "sha256": "ae5eb2e54651068c420948d7d19d19a2c20deefeae5d64743f25763f876ab48a"
+    },
+    {
+      "file": "packages/ui-workspace/package.json",
+      "bytes": 1668,
+      "sha256": "73156b0ee018cb5ad969c0e77c6f1b418bb6458ba7e707d67760f54aa20cf1c1"
+    },
+    {
+      "file": "packages/ui-workspace/src/DiagramReferences.tsx",
+      "bytes": 1074,
+      "sha256": "3e6f893249ba22dfb8abc79baa285f984ee614e49983b48ec855df653d88e887"
+    },
+    {
+      "file": "packages/ui-workspace/src/DiagramView.tsx",
+      "bytes": 26257,
+      "sha256": "2de4c308bd84cc045ea1c81521e5f62321fcddcd15c7d49b077f3d234eb252c9"
+    },
+    {
+      "file": "packages/ui-workspace/src/ElementAppearanceSettings.tsx",
+      "bytes": 8453,
+      "sha256": "7e1293d5754f057171d4e901269dad041a6a6ab8f21a23b5f7ea9583f20c15c8"
+    },
+    {
+      "file": "packages/ui-workspace/src/FlowManager.tsx",
+      "bytes": 36800,
+      "sha256": "9aaab9cd8d927c7019b8e808cc6ae1962d0778b301d97d71edffbcce128f9f6e"
+    },
+    {
+      "file": "packages/ui-workspace/src/FradeDiagramView.tsx",
+      "bytes": 24761,
+      "sha256": "1422adc938fa0606486de293b5f42a2a0fc0bfa84dcc9fee66ddfe167445534e"
+    },
+    {
+      "file": "packages/ui-workspace/src/Workbench.tsx",
+      "bytes": 93165,
+      "sha256": "7a9d9b4163e12f0e4d00db7bbd189b6b02b14a81b7187d48b5e0129e75a2517c"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/generated/tokens.css",
+      "bytes": 8970,
+      "sha256": "6a6b47b12f5090a66231ee2541387ada31a2435d76f245c6631ad4285ac784a4"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/generated/tokens.ts",
+      "bytes": 5246,
+      "sha256": "fbe1ced2cbb112f8073de4a5f8c612811ef087165514304f3820862c929fb63e"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/ThemePicker.tsx",
+      "bytes": 8764,
+      "sha256": "773264ef3d5fe1c89631d14cbeb8ca44628f8d50df0e8f81680a539d6ef0a4db"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/contrast.ts",
+      "bytes": 3226,
+      "sha256": "6c8f58cecc41159033890af8ffbff2837543c88ac5849625b51df63301c9279c"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+      "bytes": 13539,
+      "sha256": "e440c5fdb1c4ec1b3220fed13dd5e3e911c7bd5a150ec60d8a33e1a83594a740"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/index.ts",
+      "bytes": 11429,
+      "sha256": "4488b35179d8df3f94f805a41fccd2339736eb4845eaa3ee2810aa0b280f9313"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+      "bytes": 4379,
+      "sha256": "119790d7fb96cd808c983285e3f119e009cd525974e84b7b89e2fb9018c10897"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/overlays.ts",
+      "bytes": 8726,
+      "sha256": "1fcadbd0e7ba86c8864e3ba9e86c65aa3b5058de606bde26a9572f80e2e6cb5a"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/registry.ts",
+      "bytes": 5049,
+      "sha256": "d9d5706b0fb84f5d1f30765dd85ae06a4416e8577f62fe1fa05aa29947b7d74b"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/resolver.ts",
+      "bytes": 4551,
+      "sha256": "aaf7e6949c8384cf04921050d6aaeae904928a7aba100a42c46662ec67a05ba5"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/rootParticipant.ts",
+      "bytes": 8081,
+      "sha256": "ffc83e3cc8f95207a920d43edc9642ad21e5f7cb16b6fde07c6fb1014a3be1c7"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/service.ts",
+      "bytes": 24438,
+      "sha256": "e7d44a28ea2fa57a9130a2da6d042638fbb0546258b84cc238261dbd77ce33af"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/shortcuts.ts",
+      "bytes": 5049,
+      "sha256": "2a7256aac6bde14d8c7f296b345a36bd23862d66fb22f07c6d1cf60a4d64bf64"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/theme-consumers.css",
+      "bytes": 9240,
+      "sha256": "23bfc0bcff1c0398cfb2a11a0054e9b3146185eb0d4b90fc57ece7d6a0bf006e"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/types.ts",
+      "bytes": 2718,
+      "sha256": "db28b40a35342a0fb2047c8a0ea6a7476e785dc5e10c757d60a171824c2df3b3"
+    },
+    {
+      "file": "packages/ui-workspace/src/diagramContent.ts",
+      "bytes": 697,
+      "sha256": "bb7bf237e8aafede7fb7ca380bbd99c60f8cbb9721f500b8b03d4ad127a83b5c"
+    },
+    {
+      "file": "packages/ui-workspace/src/elementAppearance.ts",
+      "bytes": 6370,
+      "sha256": "5d32680c12eeae8c210b6471f45258fdc8ef87fdcd704dc79b498b02e74ee39c"
+    },
+    {
+      "file": "packages/ui-workspace/src/flowContracts.ts",
+      "bytes": 795,
+      "sha256": "19f1515030d66a8e43748385d99d5f4b106c71ce55e7b37e57eb39799b8a465b"
+    },
+    {
+      "file": "packages/ui-workspace/src/index.ts",
+      "bytes": 117,
+      "sha256": "d05f6dbade9e7d043d9f0c9c789b77221cb488eea0506e31f854d445d0b107d9"
+    },
+    {
+      "file": "packages/ui-workspace/src/pointerDrag.ts",
+      "bytes": 1803,
+      "sha256": "a7198b54a94a5246ac23083b763958709665e27b6f4077a533107c264f27ec9a"
+    },
+    {
+      "file": "packages/ui-workspace/src/repositoryBundles.ts",
+      "bytes": 2911,
+      "sha256": "eff5e57a5e3c7023e0834c644aad9e681cfa514bdcaac205d77fa882378a3771"
+    },
+    {
+      "file": "packages/ui-workspace/src/repositoryDrop.ts",
+      "bytes": 822,
+      "sha256": "0f7dc37bb34c9a1882477e3539ca87f3bf6e67d345565fc7445edca275105088"
+    },
+    {
+      "file": "packages/ui-workspace/src/state.ts",
+      "bytes": 5596,
+      "sha256": "af4e1c8a753f79cffe9c29e8654b0d98bd68fcdbf8f914e052c37b6d02099a01"
+    },
+    {
+      "file": "packages/ui-workspace/src/styles.css",
+      "bytes": 24233,
+      "sha256": "6a156874f161d81bc5bd24fa05272b86c386aedd3c47f53ed636f909c585c2ee"
+    },
+    {
+      "file": "packages/ui-workspace/src/useBundleManager.tsx",
+      "bytes": 7989,
+      "sha256": "1e1d2f8db22d1f257c73301d5c690d2d4874d97da5ae8eebca74aa5b618ade38"
+    },
+    {
+      "file": "packages/ui-workspace/tests/FlowManager.test.tsx",
+      "bytes": 4281,
+      "sha256": "39c82a43af28fb676e7ce08b2450189c7d763fb7686c7467a0d96dfd640fdb42"
+    },
+    {
+      "file": "packages/ui-workspace/tests/bundle-flows.bdd.test.tsx",
+      "bytes": 24955,
+      "sha256": "edd69f5f8054df494b118d7ad0b120c411b4f7f30b5ff867d1f7b60b7d6f826b"
+    },
+    {
+      "file": "packages/ui-workspace/tests/elementAppearance.test.ts",
+      "bytes": 4383,
+      "sha256": "49fd690adfd7a9f26583d50ad1386b79c246ea4cf4ad4f87a72d16eebc466ab4"
+    },
+    {
+      "file": "packages/ui-workspace/tests/pointerDrag.test.ts",
+      "bytes": 1529,
+      "sha256": "19c16e2ab488135a6daa059bde9c7c8c9cd8c8a7bb3cd8e7408a8421237255a4"
+    },
+    {
+      "file": "packages/ui-workspace/tests/repositoryDrop.test.ts",
+      "bytes": 1398,
+      "sha256": "361b03d9238a66897424da0cde7acd2f87508db763fd8d433370f4630d8407de"
+    },
+    {
+      "file": "packages/ui-workspace/tests/state.test.ts",
+      "bytes": 2960,
+      "sha256": "e2c6e8ac5f3eb6d331d76719e92783bf92fce1f4e29d205e2dbbca09ae2b0691"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/overlays.test.tsx",
+      "bytes": 8242,
+      "sha256": "f189c780feff42765dc8a8350cb29e0c7c85d189e08d4fd775e9e61e1c804862"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+      "bytes": 21219,
+      "sha256": "4705fa82a2ffe2b9169a6846de70ca97f60a503e8ce887033ac1fa0f318f4343"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+      "bytes": 53060,
+      "sha256": "29f447a2ae78496105b20c9c38e4448e1a02a6fe348f7dff2d6a2dac00b83cb7"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/picker.test.tsx",
+      "bytes": 17284,
+      "sha256": "ce18a8542ccb8d0a6f46f3020d1b964fb93b6ec9d72364599603293f22d18694"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/resolver.test.ts",
+      "bytes": 11592,
+      "sha256": "a82c75a954b70d1a87b1c03d316d540de2cf795bca14e9142115c86dfb06f63d"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/service.test.ts",
+      "bytes": 34042,
+      "sha256": "19952bcf556bc9960bc6a040f057b83dd40648b91a97e2899279d782112b00a4"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/shortcuts.test.ts",
+      "bytes": 5597,
+      "sha256": "9635933d09dd2fa6c17380a8e8bcf4bb6b47368951f662e7a39397e6ba9eaa8f"
+    },
+    {
+      "file": "packages/ui-workspace/tokens/theme.schema.json",
+      "bytes": 3825,
+      "sha256": "d0967fe506f13bbc506e48d92a8ff68c07cdcdcc119b6a15862c65b89d28d9f3"
+    },
+    {
+      "file": "packages/ui-workspace/tokens/tokens.json",
+      "bytes": 4849,
+      "sha256": "d02e342cd54dc98807778fcdf10e386080f5b97a5c0a8dc1245b0ee9191e2764"
+    },
+    {
+      "file": "packages/ui-workspace/tsconfig.build.json",
+      "bytes": 708,
+      "sha256": "9c59b035927af3894f7f32c45bdeca041eff5bbdc4d9d463d879e46834949cc5"
+    },
+    {
+      "file": "packages/ui-workspace/tsconfig.json",
+      "bytes": 204,
+      "sha256": "3947377ab782267ff9134b08564f66b9ef1db109962e6e24f04713eba10a5c1a"
+    },
+    {
+      "file": "pnpm-lock.yaml",
+      "bytes": 156036,
+      "sha256": "e250effcb8e09c35bd2f8c6ce5931e46c21a90ccca9493ed5706f82fc7f39ba0"
+    },
+    {
+      "file": "pnpm-workspace.yaml",
+      "bytes": 159,
+      "sha256": "a60521c70d68098d0d25b9f5defce6267f246f1dfff2df59f9406c0664272e3f"
+    },
+    {
+      "file": "scripts/check-boundaries.mjs",
+      "bytes": 3211,
+      "sha256": "7287e91d04b5d01b89c6c2691630320cbeb557628f3714a3a06aa98397e76967"
+    },
+    {
+      "file": "scripts/check-repository-boundaries.mjs",
+      "bytes": 3382,
+      "sha256": "f027de0ee08d30c1fc12b28e465e2b6388fcf52d6cb55baef7e95d9d434632a0"
+    },
+    {
+      "file": "scripts/check-runtime-boundaries.mjs",
+      "bytes": 5185,
+      "sha256": "8fb0210feec57531eca477bb55ca056dfd83a51b8636fa708273ce7c4d31d964"
+    },
+    {
+      "file": "scripts/check-workbench-boundaries.mjs",
+      "bytes": 3906,
+      "sha256": "94e327b1645d0ed68f6c4310b3dac30aa96a1017f5eacc76e47d3b82b3e79ee1"
+    },
+    {
+      "file": "scripts/ui/checkout.mjs",
+      "bytes": 8982,
+      "sha256": "e9594efcb540d57f495cb7f7bbd126c032c619955282f2c29ff27948dc08ee8a"
+    },
+    {
+      "file": "scripts/ui/colors.mjs",
+      "bytes": 7933,
+      "sha256": "da56ffbf6e75a8218306f2512df94057d28989160df1357be74c469a2a4b0ed1"
+    },
+    {
+      "file": "scripts/ui/controls.mjs",
+      "bytes": 6014,
+      "sha256": "b530b24e97e7a85b1dbd37305c81df46f6fb9befa94275aaba32e4cd877928ee"
+    },
+    {
+      "file": "scripts/ui/tokens.mjs",
+      "bytes": 10276,
+      "sha256": "bccc0b848827774215ed0d65e20de798aa5e91760bb1225e58eef7bbd6442db0"
+    },
+    {
+      "file": "scripts/ui/traceability.mjs",
+      "bytes": 7771,
+      "sha256": "d21a5fe4160c9d953170ce0a892b875c5300c50f6f6aa4e417732ca39b456078"
+    },
+    {
+      "file": "tests/contract/presentation-boundaries.test.mjs",
+      "bytes": 3527,
+      "sha256": "f1d9ca6689106804b8d9a9d3aa95e246ed3def3d56433e2e3b1a06be2aca7cbc"
+    },
+    {
+      "file": "tests/contract/repository-boundaries.test.mjs",
+      "bytes": 1445,
+      "sha256": "cc6ba83f9ac634fe793f16c59e6f81ea7a5f8c8abd0c3664862253ad10ba53ca"
+    },
+    {
+      "file": "tests/contract/runtime-boundaries.test.mjs",
+      "bytes": 1346,
+      "sha256": "983e40eb79a1fc52b8ef06b8ee01ba7cfee2204e417f3eb3f77e962945686b3c"
+    },
+    {
+      "file": "tests/contract/workbench-boundaries.test.mjs",
+      "bytes": 1949,
+      "sha256": "3deca1efe0493bd62917e38c198633f8d7a01132cbf1637a158ab50feac04a9c"
+    },
+    {
+      "file": "tsconfig.base.json",
+      "bytes": 375,
+      "sha256": "ddc0d8facdf0d0336fdc0951795040fd1529b5fbc15a88b9a54fd74e2b01bb2c"
+    },
+    {
+      "file": "turbo.json",
+      "bytes": 491,
+      "sha256": "808bb9cd323342bb7276601555313a6d7b49cec2c92cb9b7bae22045d9bf39af"
+    }
+  ]
+}

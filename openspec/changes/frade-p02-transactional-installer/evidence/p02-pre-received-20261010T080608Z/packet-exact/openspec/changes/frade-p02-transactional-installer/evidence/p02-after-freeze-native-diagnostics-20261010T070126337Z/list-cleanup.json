@@ -1,0 +1,192 @@
+{
+  "atUtc": "2026-10-10T06:42:15.893Z",
+  "classification": "INTEGRATION",
+  "sourceSha256": "06b443cdcff44055ac5b18322194e5a6796a74bbcd6950496661a2fd5e128e03",
+  "candidateUnchanged": true,
+  "scope": "External owned Temp current-native diagnostic during frozen PRE; not part of frozen packet and cannot be closed by its verdict",
+  "outcomes": [
+    {
+      "scenario": "root-list",
+      "replies": [
+        {
+          "operation": "bind",
+          "fields": {
+            "root": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-list-cleanup-probe-a8bcoz\\extensions"
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 1,
+            "session": "e12b4099-41d2-4fe1-aa17-05cb83b7a0d7",
+            "generation": 1,
+            "clockMs": 65,
+            "status": "ACK"
+          }
+        },
+        {
+          "operation": "list",
+          "fields": {
+            "path": [],
+            "limit": 128,
+            "cursor": null
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 2,
+            "session": "e12b4099-41d2-4fe1-aa17-05cb83b7a0d7",
+            "generation": 1,
+            "clockMs": 72,
+            "status": "REFUSED",
+            "code": "WIN32_32",
+            "errorType": "Win32Exception"
+          }
+        }
+      ],
+      "fixtureRemoved": true
+    },
+    {
+      "scenario": "cached-directory-list",
+      "replies": [
+        {
+          "operation": "bind",
+          "fields": {
+            "root": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-list-cleanup-probe-TZqMTz\\extensions"
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 1,
+            "session": "4feabb50-bbf9-4d75-bda2-a71966d5ddce",
+            "generation": 1,
+            "clockMs": 69,
+            "status": "ACK"
+          }
+        },
+        {
+          "operation": "mkdir",
+          "fields": {
+            "path": [
+              "parent"
+            ]
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 2,
+            "session": "4feabb50-bbf9-4d75-bda2-a71966d5ddce",
+            "generation": 1,
+            "clockMs": 73,
+            "status": "ACK"
+          }
+        },
+        {
+          "operation": "mkdir",
+          "fields": {
+            "path": [
+              "parent",
+              "child"
+            ]
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 3,
+            "session": "4feabb50-bbf9-4d75-bda2-a71966d5ddce",
+            "generation": 1,
+            "clockMs": 74,
+            "status": "ACK"
+          }
+        },
+        {
+          "operation": "list",
+          "fields": {
+            "path": [
+              "parent"
+            ],
+            "limit": 128,
+            "cursor": null
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 4,
+            "session": "4feabb50-bbf9-4d75-bda2-a71966d5ddce",
+            "generation": 1,
+            "clockMs": 77,
+            "status": "REFUSED",
+            "code": "WIN32_32",
+            "errorType": "Win32Exception"
+          }
+        }
+      ],
+      "fixtureRemoved": true
+    },
+    {
+      "scenario": "cached-recursive-cleanup",
+      "replies": [
+        {
+          "operation": "bind",
+          "fields": {
+            "root": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-list-cleanup-probe-d3axOs\\extensions"
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 1,
+            "session": "90cff424-c3b1-4e0e-a7a5-a7c12f18c462",
+            "generation": 1,
+            "clockMs": 72,
+            "status": "ACK"
+          }
+        },
+        {
+          "operation": "mkdir",
+          "fields": {
+            "path": [
+              "parent"
+            ]
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 2,
+            "session": "90cff424-c3b1-4e0e-a7a5-a7c12f18c462",
+            "generation": 1,
+            "clockMs": 76,
+            "status": "ACK"
+          }
+        },
+        {
+          "operation": "mkdir",
+          "fields": {
+            "path": [
+              "parent",
+              "child"
+            ]
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 3,
+            "session": "90cff424-c3b1-4e0e-a7a5-a7c12f18c462",
+            "generation": 1,
+            "clockMs": 77,
+            "status": "ACK"
+          }
+        },
+        {
+          "operation": "remove",
+          "fields": {
+            "path": [
+              "parent"
+            ],
+            "kind": "directory"
+          },
+          "reply": {
+            "version": 1,
+            "requestId": 4,
+            "session": "90cff424-c3b1-4e0e-a7a5-a7c12f18c462",
+            "generation": 1,
+            "clockMs": 83,
+            "status": "REFUSED",
+            "code": "WIN32_32",
+            "errorType": "Win32Exception"
+          }
+        }
+      ],
+      "fixtureRemoved": true
+    }
+  ]
+}

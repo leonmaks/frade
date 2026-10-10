@@ -1,0 +1,9 @@
+{
+  "atUtc": "2026-10-10T07:11:33.260Z",
+  "classification": "TEST",
+  "cause": "New sibling fixture used explicit cleanup safety throws lexically in finally, rejected by no-unsafe-finally",
+  "repair": "Extract identical verified owned-sibling cleanup body to async function; all guards/throws/catches/assertions remain, call still awaited in finally",
+  "productionUnchanged": true,
+  "testWeakening": false,
+  "RED": "Original native9 4PASS/5FAIL immutable"
+}

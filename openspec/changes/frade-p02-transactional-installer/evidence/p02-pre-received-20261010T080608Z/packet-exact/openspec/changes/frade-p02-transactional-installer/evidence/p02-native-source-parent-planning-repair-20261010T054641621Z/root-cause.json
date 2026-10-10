@@ -1,0 +1,23 @@
+{
+  "atUtc": "2026-10-10T05:46:41.621Z",
+  "classification": "ABSTRACTION_BOUNDARY",
+  "reproduction": "openspec/changes/frade-p02-transactional-installer/evidence/p02-native-rename-rca-20261010T054144663Z/replies.json",
+  "matrix": "openspec/changes/frade-p02-transactional-installer/evidence/p02-native-rename-rca-20261010T054144663Z/rename-matrix.json",
+  "currentNative": "3PASS/1FAIL with source/artifact freshness verified",
+  "cause": "Win32 FileRenameInfo wrapper fails87 with a parent handle; direct NT target-parent relative rename fails32 against the approved no-WRITE/DELETE-sharing pin. NT same-source-directory rename with NULL RootDirectory succeeds in an isolated actual fixture.",
+  "authority": "Exact accepted Windows backend/integration path+purpose scopes; no new privilege, operation, root, share mask or platform contract. Retain one-component same-parent/no-replace and checked source/parent semantics.",
+  "change": "Select documented NtSetInformationFile(FileRenameInformation) same-source-parent form, without a second target-parent open. No production repair until coherent strict and fresh PRE PASS.",
+  "probeOnly": "Matrix variants outside production; padded ABI alone did not repair Win32 call. Actual current source remains failing Win32 until PRE.",
+  "refs": [
+    {
+      "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntifs/ns-ntifs-_file_rename_information",
+      "checkedAtUtc": "2026-10-10T05:46:41.621Z",
+      "claim": "NULL RootDirectory + simple basename names same source directory; DELETE source access and no replace."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winbase/ns-winbase-file_rename_info",
+      "checkedAtUtc": "2026-10-10T05:46:41.621Z",
+      "claim": "Win32 structure/API description, actual returned87 retained."
+    }
+  ]
+}

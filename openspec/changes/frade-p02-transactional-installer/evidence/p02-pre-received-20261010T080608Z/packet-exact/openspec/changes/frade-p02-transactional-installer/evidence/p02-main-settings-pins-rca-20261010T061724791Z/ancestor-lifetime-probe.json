@@ -1,0 +1,44 @@
+{
+  "atUtc": "2026-10-10T06:05:58.270Z",
+  "response": {
+    "version": 1,
+    "requestId": 1,
+    "session": "440df258-4667-4974-8aab-0f22423b4b4b",
+    "generation": 1,
+    "clockMs": 196,
+    "status": "ACK"
+  },
+  "outcomes": [
+    {
+      "operation": "Main-settings-rename",
+      "status": "RENAMED",
+      "readback": "new-record"
+    },
+    {
+      "operation": "installation-root-rename",
+      "status": "REFUSED",
+      "code": "EBUSY"
+    },
+    {
+      "operation": "ancestor-userData-rename",
+      "status": "REFUSED",
+      "code": "EPERM"
+    }
+  ],
+  "fixtureRemoved": true,
+  "candidateUnchanged": true,
+  "originalSourceSha256": "da653ec943d1734e52a1a9cfa0fc5281712c15f8852fd3541ce18d93a9a4af9f",
+  "fixtureSourceSha256": "594b32527e0d9b1cdd3abacb1747be26798d5f83868cbe54d87e33c2440e6d77",
+  "command": [
+    "C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+    "/nologo",
+    "/target:exe",
+    "/platform:x64",
+    "/warnaserror+",
+    "/reference:System.Web.Extensions.dll",
+    "/out:C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-ancestor-lifetime-probe-TbwflN\\probe.exe",
+    "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-ancestor-lifetime-probe-TbwflN\\probe.cs"
+  ],
+  "buildExit": 0,
+  "scope": "Diagnostic-only releasing outer metadata handles AFTER full bind+exclusive root lease, retaining actual root and descendant handles unchanged. Main primitives plus Node root/ancestor rename attempts; NOT full adversarial guard proof or approval."
+}

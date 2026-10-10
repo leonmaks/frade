@@ -1,0 +1,25 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > keeps actual Main persistence, readback, restart and compensation working while native root is bound
+AssertionError: expected 'UNKNOWN' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "UNKNOWN"
+
+ ❯ tests/filesystem.windows.test.ts:126:30
+    124|     const committed = await store.persist(phase, choice('light', 'comf…
+    125|     if (committed.status !== 'ACK') expect(await fs.readFile(target)).…
+    126|     expect(committed.status).toBe('ACK')
+       |                              ^
+    127|     if (committed.status !== 'ACK') throw Error(committed.message)
+    128|     expect(JSON.parse(await fs.readFile(target, 'utf8'))).toEqual(comm…
+ ❯ fixture tests/filesystem.windows.test.ts:59:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

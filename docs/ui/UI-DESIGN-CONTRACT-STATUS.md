@@ -1,3 +1,41 @@
+# Frade UI Design Contract — P02: outer metadata PRE PASS
+
+Обновлено 2026-10-10T08:06:31.265Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 сохранены. Guide v1.0; Routing независим.
+
+| Этап | Статус |
+| --- | --- |
+| Audit/planning/foundation | CLOSED/ARCHIVED |
+| P01 theme resolver/preview | CLOSED/ARCHIVED; точные3minorOPEN_ACCEPTED_DEFERRED/rawFAIL сохранены |
+| P02 transactional installer | 3/9;2.2IN_PROGRESS, native9:4PASS/5FAIL |
+| P03 VS Code theme import | NOT_STARTED |
+| P04 icon registries | NOT_STARTED |
+| P05 isolated browser host | NOT_STARTED |
+| P06 native contributions | NOT_STARTED |
+| P07 registry/profiles/policy | NOT_STARTED |
+| Shell → tree/tabs → forms/tables/LoV → Draw/flow → AI | NOT_STARTED отдельная последовательная миграция |
+
+| Задача P02 | Статус |
+| --- | --- |
+|1.1 Audit/predecessor/scope/baseline | DONE |
+|1.2 Initial strict/independent PRE | DONE; amendments требуют свежих PRE |
+|2.1 Archive/path/limit/semver RED | DONE; компонент59PASS |
+|2.2 Staging/validation/journal/native/Main picker bridge | IN_PROGRESS; protocol43PASS, native9:4PASS/5FAIL; staging/journal/bridge не готовы |
+|2.3 Actual crash/recovery/rollback/Windows locks | NOT_DONE |
+|2.4 ExtensionsUI/lifecycle/P01 fallback/dirty state | NOT_DONE |
+|3.1 Full package/root/BDD/security/a11y/visual | NOT_DONE |
+|3.2 OpenSpec verify/cumulative POST | NOT_RUN |
+|3.3 Archive/close | NOT_RUN; STOPbeforeP03 |
+
+Fresh PRE PASS, requested gpt-6-sol/xhigh по approved P02 plan. Receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T080608Z/verification.json, 114 complete events/547 files, raw reports сохранены до интерпретации. CLI/confinement/candidate/packet/request/control hashesPASS; actualbackend/effortNOT_CONFIRMED. Принятый all-outer scope proposalSHAf3a9e8c266f1939d9b7d5012e064bd37291ac501108696e82ada012f44350c23. Предыдущий immediate-parent PRE остаётся focused history. Новый verdict оценивает принятый repair PLAN; он не закрывает native FAIL и весь P02.
+
+Native production metadata handoffNOT_APPLIED. Current native9:4PASS/5FAIL — Main persistence UNKNOWN сохраняет old bytes; own lease/cached-child listing и recursive cleanupREFUSED; own Temp sibling renameEBUSY. Original4 reviewed NT publication testsPASS. Portable43/archive59=102PASS; typecheck/lintPASS; новый strict/UIcompliancePASS. CapabilitiesNOT_VERIFIED. Все5FAIL обязательные, no waiver. Диагностика openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z не полная security certification.
+
+Следующий шаг при PRE PASS: exact accepted production repair → unchanged native9 GREEN → expanded actual guard/adversary/protocol/lifecycle/death/deploy tests. При FAIL: RCA/coherent plan repair/strict/fresh PRE; production STOP. Staging/journal/recovery/IPC/UI, actual dev/rebuild/build/start, root/general/P01/BDD/security/a11y/visual/verify/cumulative POST/archive остаются открыты. READY_FOR_VERIFY:NO. Новых UI screenshots нет, инфраструктурный repair; P01 images/evidence неизменны.
+
+Git: planning checkpoint87ec6171/seal351722f4COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint publicationPENDING. Только origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, no force. Rightpanelqueued/visibilityunconfirmed; merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не является approval/evidence.
+
+## Предыдущие записи
+
 # Frade UI Design Contract — P02: ancestor scope принят; fresh PRE DISPATCH_READY
 
 Обновлено 2026-10-10T07:34:34.608Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Исходный program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 сохранены. Guide v1.0. Routing независим; чужие ветки/код не изменены.

@@ -1,0 +1,7 @@
+**P02 PRE — план исправления согласован.** Точное принятие handoff подтверждено SHA `f3a9e8…44350c23`; активный [design.md](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-10T07-42-33-336Z-4459d267-9f74-4501-91f6-1a63bdc2a4ba/prepared/packet/openspec/changes/frade-p02-transactional-installer/design.md:210) сохраняет исходную полную привязку, сильные root/lease/child guards и требует проверки всей цепочки перед эффектами. Metadata `ShareRead` не выдается за самостоятельную защиту от записи или удаления. Противоречия, блокирующего реализацию точного плана, не найдено; strict validation в пакете завершилась с exit 0.
+
+**Обязательное исправление и доказательство остаются впереди:** текущие [native9](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-10T07-42-33-336Z-4459d267-9f74-4501-91f6-1a63bdc2a4ba/prepared/packet/openspec/changes/frade-p02-transactional-installer/evidence/p02-check-native-owned-red-current-20261010T071437707Z/stdout.txt) — 4 PASS / 5 FAIL. Нужно реализовать полный перекрывающий handoff и проверяемое повторное использование удержанных объектов, затем получить GREEN исходных девяти тестов и перечисленные в design проверки атак, Main, очистки и lifecycle. Диагностические пробы этого не заменяют. Capabilities остаются `NOT_VERIFIED`; P02, POST и переход к P03 не закрыты.
+
+Запрошенный CLI `gpt-6-sol/xhigh` и confinement аттестованы отдельно; фактический backend/effort — `NOT_CONFIRMED`. Проверка была только чтением пакета.
+
+GATE_STATUS: PASS

@@ -1,0 +1,49 @@
+{
+  "atUtc": "2026-10-10T06:50:49.663Z",
+  "response": {
+    "version": 1,
+    "requestId": 1,
+    "session": "d0483e02-1384-4801-bdbc-5adcfa5f4ad9",
+    "generation": 1,
+    "clockMs": 185,
+    "status": "ACK"
+  },
+  "outcomes": [
+    {
+      "operation": "outside-userData-Temp-sibling-rename",
+      "status": "RENAMED",
+      "readback": "owned-sibling"
+    },
+    {
+      "operation": "Main-settings-rename",
+      "status": "RENAMED",
+      "readback": "new-record"
+    },
+    {
+      "operation": "installation-root-rename",
+      "status": "REFUSED",
+      "code": "EBUSY"
+    },
+    {
+      "operation": "ancestor-userData-rename",
+      "status": "REFUSED",
+      "code": "EPERM"
+    }
+  ],
+  "fixtureRemoved": true,
+  "candidateUnchanged": true,
+  "originalSourceSha256": "06b443cdcff44055ac5b18322194e5a6796a74bbcd6950496661a2fd5e128e03",
+  "fixtureSourceSha256": "c2f096de4d1000e8890d10bb44f2e48bec9f2bee5088d21e59b2da521281343e",
+  "command": [
+    "C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+    "/nologo",
+    "/target:exe",
+    "/platform:x64",
+    "/warnaserror+",
+    "/reference:System.Web.Extensions.dll",
+    "/out:C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-post-bind-ancestors-metadata-probe-v2-uH7aoy\\probe.exe",
+    "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-post-bind-ancestors-metadata-probe-v2-uH7aoy\\probe.cs"
+  ],
+  "buildExit": 0,
+  "scope": "Diagnostic-only post-bind overlapping metadata handle handoff for all outer ancestors after original strong full bind/root+lease; strong installation root/child pins/share masks remain unchanged; no security certification or production approval."
+}

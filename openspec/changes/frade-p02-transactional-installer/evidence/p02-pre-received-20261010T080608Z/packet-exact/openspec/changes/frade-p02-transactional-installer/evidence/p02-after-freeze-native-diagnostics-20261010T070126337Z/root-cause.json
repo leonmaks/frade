@@ -1,0 +1,152 @@
+{
+  "atUtc": "2026-10-10T07:01:26.337Z",
+  "classification": "INTEGRATION",
+  "status": "OPEN_APPLICABLE_NATIVE_BLOCKERS",
+  "sourceSha256": "06b443cdcff44055ac5b18322194e5a6796a74bbcd6950496661a2fd5e128e03",
+  "discoveredDuringFrozenPRE": true,
+  "notCoveredByLatestPRE": true,
+  "blockers": [
+    {
+      "id": "NATIVE-ANCESTOR-SIBLING-IO",
+      "actual": "Current helper denies own Temp sibling rename EBUSY until disposal",
+      "cause": "Full READ_DATA outer ancestor handle with FILE_SHARE_READ obstructs destination directory reopen beyond installation root; immediate-parent-only handoff cannot fix higher ancestors",
+      "candidate": "Post-bind overlapping same-object metadata handoff of all outer ancestors only after original full guards/strong install-root/exclusive lease; current diagnostics positive for Main/sibling and tested NT/reparse denial, not full proof, no production change"
+    },
+    {
+      "id": "NATIVE-HELD-OBJECT-ENUMERATION",
+      "actual": "Root list/cached child list/recursive cleanup REFUSED WIN32_32",
+      "cause": "Enumerator reopens its owned exclusive lease or cached DELETE-directory handle with incompatible share, contradicting intended bounded owned-handle operations",
+      "candidate": "Reuse exact held owned objects with enumeration/fileID/type/final-path validation; never close lease/strong pins or loosen share masks. Need meaningful current-native RED before repair"
+    }
+  ],
+  "diagnosticCompileAndScopeGuardStops": "TEST fixture faults preserved, corrected external probes and safe cleanup recorded; never counted as runtime PASS",
+  "remaining": "Full adversarial/handoff/bind/case identity/previous writer/protocol/kill/capability/runtime/deploy/installer/verify/POST remain open",
+  "files": [
+    {
+      "source": "frade-ui-p02-list-cleanup-probe-20261010T064215895Z.json",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/list-cleanup.json",
+      "bytes": 5031,
+      "sha256": "f15146d0a233b0120c398ce1bb307e41338170c8fea001dcd3b803880d77b1c1"
+    },
+    {
+      "source": "frade-ui-p02-list-cleanup-probe.mjs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/list-cleanup.mjs",
+      "bytes": 3427,
+      "sha256": "6ea1b8eec055560c4f3e7c933f37068a0a8b00cfb46231eaf5fd4f0452df22f8"
+    },
+    {
+      "source": "frade-ui-p02-ancestor-sibling-probe-20261010T064722966Z.json",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/ancestor-sibling.json",
+      "bytes": 851,
+      "sha256": "5fe0f8a19e9a6e46321af81577b41235a1eb3a4cdaeee5efd7dd4f5f213d09f2"
+    },
+    {
+      "source": "frade-ui-p02-ancestor-sibling-probe.mjs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/ancestor-sibling.mjs",
+      "bytes": 2762,
+      "sha256": "96d01c8e741970ea2c759dc54a047078f2d6732945a334498f978b082ee32a96"
+    },
+    {
+      "source": "frade-ui-p02-post-bind-metadata-compile-fail.fixture.cs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-compile-fail.fixture.cs",
+      "bytes": 24718,
+      "sha256": "e46759ca0b357454c4df7b1b829d59cb28306e8e078cd3ca1df7ded5c8fe58a0"
+    },
+    {
+      "source": "frade-ui-p02-post-bind-metadata-compile-fail.json",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-compile-fail.json",
+      "bytes": 353,
+      "sha256": "c34ea9e165b40c5687dfd1c25d58052a0ca5295dc16d2ebc9c57da7c03f49b8a"
+    },
+    {
+      "source": "frade-ui-p02-postbind-guards-scope-rca.json",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/probe-scope-guard-rca.json",
+      "bytes": 478,
+      "sha256": "8fe3753fcb46e4b20f007076736c43c883aad058c57bcc3af9938bc04df60732"
+    },
+    {
+      "source": "frade-ui-p02-native-list-cleanup-next-red-append.txt",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/list-cleanup-next-red-draft.txt",
+      "bytes": 2588,
+      "sha256": "9f602323155485b5467a3cd282c4cfad332f77d3951d42ecb9f033ba8216e04b"
+    },
+    {
+      "source": "frade-ui-p02-post-bind-ancestors-metadata-probe-v2-20261010T065049661Z.json",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-metadata.json",
+      "bytes": 1662,
+      "sha256": "d319dcc0557777c80682e4a5f5dceb723db85d19b0135835750192a504faf943"
+    },
+    {
+      "source": "frade-ui-p02-post-bind-ancestors-metadata-probe-v2-20261010T065049661Z.fixture.cs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-metadata.fixture.cs",
+      "bytes": 24726,
+      "sha256": "c2f096de4d1000e8890d10bb44f2e48bec9f2bee5088d21e59b2da521281343e"
+    },
+    {
+      "source": "frade-ui-p02-postbind-reparse-guards-probe-v2-20261010T065248281Z.json",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-reparse.json",
+      "bytes": 5637,
+      "sha256": "21012ba06f4c1b094ae60ec9925ace90c3093205982618b74e589171bc6e4df5"
+    },
+    {
+      "source": "frade-ui-p02-postbind-reparse-guards-probe-v2-20261010T065248281Z.actor.cs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-reparse.actor.cs",
+      "bytes": 2036,
+      "sha256": "9520c297e0bff947a177afccefb3f24b526f6269518f1fda4bac6a489450849b"
+    },
+    {
+      "source": "frade-ui-p02-postbind-reparse-guards-probe-v2-20261010T065248281Z.helper-false.cs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-reparse.helper-false.cs",
+      "bytes": 23889,
+      "sha256": "06b443cdcff44055ac5b18322194e5a6796a74bbcd6950496661a2fd5e128e03"
+    },
+    {
+      "source": "frade-ui-p02-postbind-reparse-guards-probe-v2-20261010T065248281Z.helper-true.cs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-reparse.helper-true.cs",
+      "bytes": 24726,
+      "sha256": "c2f096de4d1000e8890d10bb44f2e48bec9f2bee5088d21e59b2da521281343e"
+    },
+    {
+      "source": "frade-ui-p02-postbind-nt-ancestor-guards-probe-v2-20261010T065252149Z.json",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-nt-ancestor.json",
+      "bytes": 5748,
+      "sha256": "73487bbd3eae618b96cd47218d1077c99f0633f4ee15b402a0dd9a117a364a47"
+    },
+    {
+      "source": "frade-ui-p02-postbind-nt-ancestor-guards-probe-v2-20261010T065252149Z.actor.cs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-nt-ancestor.actor.cs",
+      "bytes": 1770,
+      "sha256": "d60bebe3fe458812b3ad91feaf60f0f1f80d919767dff98dda8be20052af566e"
+    },
+    {
+      "source": "frade-ui-p02-postbind-nt-ancestor-guards-probe-v2-20261010T065252149Z.helper-false.cs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-nt-ancestor.helper-false.cs",
+      "bytes": 23889,
+      "sha256": "06b443cdcff44055ac5b18322194e5a6796a74bbcd6950496661a2fd5e128e03"
+    },
+    {
+      "source": "frade-ui-p02-postbind-nt-ancestor-guards-probe-v2-20261010T065252149Z.helper-true.cs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-nt-ancestor.helper-true.cs",
+      "bytes": 24726,
+      "sha256": "c2f096de4d1000e8890d10bb44f2e48bec9f2bee5088d21e59b2da521281343e"
+    },
+    {
+      "source": "frade-ui-p02-post-bind-ancestors-metadata-probe-v2.mjs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-metadata.mjs",
+      "bytes": 5621,
+      "sha256": "e35ffad7b9f6a6f07d9ba2ae8c192d70fd9242be18e07ebe3661b85bfc965907"
+    },
+    {
+      "source": "frade-ui-p02-postbind-reparse-guards-probe-v2.mjs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-reparse.mjs",
+      "bytes": 7213,
+      "sha256": "9177229638aced24990bbb2d8abfe476d5a1c69539ab30261e2cc197084519c1"
+    },
+    {
+      "source": "frade-ui-p02-postbind-nt-ancestor-guards-probe-v2.mjs",
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z/postbind-nt-ancestor.mjs",
+      "bytes": 6968,
+      "sha256": "99ba27974a06e4be87c8277462542c210d9e02c8fb80cf956bcfe9501047e9d5"
+    }
+  ]
+}

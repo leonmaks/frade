@@ -1,0 +1,60 @@
+function prepareOutDir(outDirs, emptyOutDir, environment) {
+  const { publicDir } = environment.config;
+  const outDirsArray = [...outDirs];
+  for (const outDir of outDirs) {
+    if (emptyOutDir !== false && fs__default.existsSync(outDir)) {
+      const skipDirs = outDirsArray.map((dir) => {
+        const relative = path$d.relative(outDir, dir);
+        if (relative && !relative.startsWith("..") && !path$d.isAbsolute(relative)) {
+          return relative;
+        }
+        return "";
+      }).filter(Boolean);
+      emptyDir(outDir, [...skipDirs, ".git"]);
+    }
+    if (environment.config.build.copyPublicDir && publicDir && fs__default.existsSync(publicDir)) {
+      if (!areSeparateFolders(outDir, publicDir)) {
+        environment.logger.warn(
+          colors$1.yellow(
+            `
+${colors$1.bold(
+              `(!)`
+            )} The public directory feature may not work correctly. outDir ${colors$1.white(
+              colors$1.dim(outDir)
+            )} and publicDir ${colors$1.white(
+              colors$1.dim(publicDir)
+            )} are not separate folders.
+`
+          )
+        );
+      }
+      copyDir(publicDir, outDir);
+    }
+  }
+}
+function resolveOutputJsExtension(format, type = "commonjs") {
+  if (type === "module") {
+    return format === "cjs" || format === "umd" ? "cjs" : "js";
+  } else {
+    return format === "es" ? "mjs" : "js";
+  }
+}
+function resolveLibFilename(libOptions, format, entryName, root, extension, packageCache) {
+  if (typeof libOptions.fileName === "function") {
+    return libOptions.fileName(format, entryName);
+  }
+  const packageJson = findNearestMainPackageData(root, packageCache)?.data;
+  const name = libOptions.fileName || (packageJson && typeof libOptions.entry === "string" ? getPkgName(packageJson.name) : entryName);
+  if (!name)
+    throw new Error(
+      'Name in package.json is required if option "build.lib.fileName" is not provided.'
+    );
+  extension ??= resolveOutputJsExtension(format, packageJson?.type);
+  if (format === "cjs" || format === "es") {
+    return `${name}.${extension}`;
+  }
+  return `${name}.${format}.${extension}`;
+}
+function resolveBuildOutputs(outputs, libOptions, logger) {
+  if (libOptions) {
+   

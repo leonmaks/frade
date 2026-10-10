@@ -1,0 +1,103 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > keeps actual Main persistence, readback, restart and compensation working while native root is bound
+AssertionError: expected 'UNKNOWN' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "UNKNOWN"
+
+ ❯ tests/filesystem.windows.test.ts:135:30
+    133|     const committed = await store.persist(phase, choice('light', 'comf…
+    134|     if (committed.status !== 'ACK') expect(await fs.readFile(target)).…
+    135|     expect(committed.status).toBe('ACK')
+       |                              ^
+    136|     if (committed.status !== 'ACK') throw Error(committed.message)
+    137|     expect(JSON.parse(await fs.readFile(target, 'utf8'))).toEqual(comm…
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > lists the owned coordinator lease without reopening or releasing it
+AssertionError: expected 'REFUSED' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "REFUSED"
+
+ ❯ tests/filesystem.windows.test.ts:149:28
+    147|     expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+    148|     const listing = await f.send('list', { path: [], limit: 128, curso…
+    149|     expect(listing.status).toBe('ACK')
+       |                            ^
+    150|     expect(listing.entries).toHaveLength(1)
+    151|     expect(listing.entries[0]).toMatchObject({ name: '.coordinator.loc…
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > lists a retained checked child without relaxing its protection
+AssertionError: expected 'REFUSED' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "REFUSED"
+
+ ❯ tests/filesystem.windows.test.ts:161:28
+    159|     expect((await f.send('mkdir', { path: ['parent', 'child'] })).stat…
+    160|     const listing = await f.send('list', { path: ['parent'], limit: 12…
+    161|     expect(listing.status).toBe('ACK')
+       |                            ^
+    162|     expect(listing.entries).toHaveLength(1)
+    163|     expect(listing.entries[0]).toMatchObject({ name: 'child', kind: 'd…
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > performs actual bounded recursive cleanup of held descendants
+AssertionError: expected 'REFUSED' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "REFUSED"
+
+ ❯ tests/filesystem.windows.test.ts:177:86
+    175|     expect((await f.send('write-chunk', { handle: written.handle, offs…
+    176|     expect((await f.send('write-close', { handle: written.handle, sha2…
+    177|     expect((await f.send('remove', { path: ['parent'], kind: 'director…
+       |                                                                                      ^
+    178|     await expect(fs.access(path.join(f.root, 'parent'))).rejects.toMat…
+    179|     expect(await fs.readdir(f.root)).toEqual(['.coordinator.lock'])
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > does not block owned sibling rename under an outer ancestor outside install/userData
+AssertionError: expected Error: EBUSY: resource busy or locked, re… { …(5) } to be undefined
+
+- Expected: 
+undefined
+
++ Received: 
+Error {
+  "message": "EBUSY: resource busy or locked, rename 'C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-owned-native-sibling-ff11eaad-72c9-4c74-9c1c-6bc4e04c18e9.tmp' -> 'C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-owned-native-sibling-ff11eaad-72c9-4c74-9c1c-6bc4e04c18e9.tmp.moved'",
+  "errno": -4082,
+  "code": "EBUSY",
+  "syscall": "rename",
+  "path": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-owned-native-sibling-ff11eaad-72c9-4c74-9c1c-6bc4e04c18e9.tmp",
+  "dest": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-owned-native-sibling-ff11eaad-72c9-4c74-9c1c-6bc4e04c18e9.tmp.moved",
+}
+
+ ❯ tests/filesystem.windows.test.ts:193:27
+    191|       try { await fs.rename(source, target) } catch (error) { renameEr…
+    192|       if (renameError) expect(await fs.readFile(source)).toEqual(bytes)
+    193|       expect(renameError).toBeUndefined()
+       |                           ^
+    194|       expect(await fs.readFile(target)).toEqual(bytes)
+    195|       expect((await f.send('dispose')).status).toBe('ACK')
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+
