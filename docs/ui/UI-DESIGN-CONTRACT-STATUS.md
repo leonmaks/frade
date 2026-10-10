@@ -1,4 +1,4 @@
-# UI Design Contract: P02 accepted planning —1/9; PRE preparation
+# UI Design Contract: P02 accepted planning —1/9; PRE dispatch ready — candidate freezes at dispatch
 
 Обновлено 2026-10-10T00:27:12.100Z (Europe/Moscow). Owning branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Current checkpoint 0ecaf44938382bd8daa7d512887dda8a8ee9b372; original98f387f96b51b0ad139e3507c376ff1c3e8dec09 retained. Guide1.0/tokens1.0.0; Routing independent.
 
@@ -25,7 +25,7 @@ Decisions: [exact scope/model acceptance](../../openspec/changes/frade-p02-trans
 
 Next: current strict validation -> commit planning checkpoint -> prepare relevant immutable packet -> automatic independent PRE; freeze candidate/dashboard through review. No implementation before fresh PRE PASS.
 
-Git: prior audit4e224d94/metadata0ecaf449 published; accepted plan checkpoint publication PENDING. Authorized origin UI ref only. Right panel previously queued; visibility unconfirmed.
+Git: prior audit4e224d94/metadata0ecaf449 published; accepted plan checkpoint c123c79a0eedb1ae6207cbcd88af646857b863a8 COMMITTED/PUSHED; remoteSHA verified; next metadata commit stores receipt. Authorized origin UI ref only. Right panel previously queued; visibility unconfirmed.
 
 ## Предыдущие записи сохранены
 
