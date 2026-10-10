@@ -1,3 +1,31 @@
+# UI Design Contract: P02 —3/9; Windows backend decision required
+
+Updated 2026-10-10T01:40:03.290Z; branch codex/frade-ui-design-contract; owning worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original98f387f/P02baseline0ecaf449 preserved. Guide1.0/tokens1.0.0; Routing independent.
+
+| Stage | Status |
+|---|---|
+| Foundation/P01 | ARCHIVED; exact3minor OPEN_ACCEPTED_DEFERRED/rawFAIL retained |
+| P02 installer |3/9; archive component GREEN; task2.2 BLOCKED_WINDOWS_BACKEND_DECISION |
+| P03–P07 | NOT_STARTED; STOPbeforeP03 |
+
+| P02 task | Actual status |
+|---|---|
+|1.1 audit/scope/baseline | COMPLETE |
+|1.2 strict/independent PRE | COMPLETE; gpt-6-sol/xhigh;135completeevents/203packetfiles |
+|2.1 archive fixtures/RED | COMPLETE;53behavioralRED; original+derivedSHA retained |
+|2.2 contracts/service/staging/IPC | Archive59/59/typecheck/lintPASS; actualWindowsprobe shows Node no-follow/directorysync limitation; staging/IPC NOT_IMPLEMENTED pendingbackenddecision |
+|2.3 journal/crash/recovery | NOT_RUN |
+|2.4 Extensions UI/fallback | NOT_RUN |
+|3.1 full checks/visual | CurrentUIcompliance/strictPASS; rootcheck:all/newa11y/screenshots NOT_RUN |
+|3.2 verify/POST | NOT_RUN; gpt-6-sol/xhigh |
+|3.3 archive | NOT_RUN |
+
+[Exact proposed decision](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-windows-filesystem-backend.proposed.md), SHA256 8310cb500c9aeedfec91e3db2e6e01e39791f1625b144cb14495a99ab2dedc0e; status PROPOSED. [Probe](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/probe.json), [fixture cleanup](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-fs-readiness-20261010T013525Z/fixture-cleanup.json). File sync/rename PASS; directorysyncEPERM; O_NOFOLLOWundefined/junction-follow witnessed only in ownedTemp fixture, removed. No new production installer/backend, no project access. This evidence does not justify weaker security or journal semantics. Human decision is for new shipped first-party backend/build/runtime boundary; PRE/POST afterwards automatic, same stage model. Actual backend/effortNOT_CONFIRMED. Historical FAIL retained; protectionLOCAL_ONLY/NOT_CONFIGURED. Rightpanelqueued/visibilityunconfirmed.
+
+Next: human scope decision -> coherent plan/strict -> freshautomaticPRE -> backendRED/implementation. Git: archive component19cf95bf/metadata950f0dc6 COMMITTED/PUSHED remoteSHAverified; currentFSreadiness/proposal checkpoint publication PENDING. AuthorizedUIorigin/ref only.
+
+## Previous records preserved
+
 # UI Design Contract: P02 BDD/TDD;3/9 — archive checks PASS
 
 Updated 2026-10-10T01:27:56.844Z; branch codex/frade-ui-design-contract; owning C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f/P02baseline0ecaf449 retained. Guide1.0/tokens1.0.0. Routing independent.
