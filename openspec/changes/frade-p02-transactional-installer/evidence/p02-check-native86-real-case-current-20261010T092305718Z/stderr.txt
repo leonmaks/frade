@@ -1,0 +1,61 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001: genuine NTFS per-directory case mode, no global setting changes > refuses an actual preexisting case-sensitive outer
+AssertionError: expected { stage: 'set-case', …(6) } to match object { success: true, before: +0, after: 1 }
+(4 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "after": 1,
++   "after": 0,
+    "before": 0,
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ tests/filesystem.windows.test.ts:899:39
+    897|     const target = location === 'outer' ? path.dirname(f.root) : locat…
+    898|     const actor = await actualCaseModeActor(f)
+    899|     expect(await actor(target, true)).toMatchObject({ success: true, b…
+       |                                       ^
+    900|     try {
+    901|       if (location === 'child') {
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001: genuine NTFS per-directory case mode, no global setting changes > refuses or confines a genuine post-bind case-mode mutation on outer
+ FAIL  tests/filesystem.windows.test.ts > P02FS001: genuine NTFS per-directory case mode, no global setting changes > refuses or confines a genuine post-bind case-mode mutation on root
+AssertionError: expected { stage: 'set-case', …(6) } to match object { success: true, before: +0, after: 1 }
+(4 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "after": 1,
++   "after": 0,
+    "before": 0,
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ tests/filesystem.windows.test.ts:915:39
+    913|     const target = location === 'outer' ? path.dirname(f.root) : locat…
+    914|     const actor = await actualCaseModeActor(f)
+    915|     expect(await actor(target, true)).toMatchObject({ success: true, b…
+       |                                       ^
+    916|     expect(await actor(target, false)).toMatchObject({ success: true, …
+    917|     expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

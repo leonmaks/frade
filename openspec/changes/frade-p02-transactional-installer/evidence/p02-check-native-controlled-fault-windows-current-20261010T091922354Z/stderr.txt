@@ -1,0 +1,75 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS003/004: controlled actual kill windows and injected failure disposition > reconciles bytes after real process kill at before-rename without treating a lost reply as ACK
+AssertionError: c:\Users\NVISEN\AppData\Local\Temp\frade-p02-native-UoRMag\fault-helper.cs(152,1031): error CS0162: Warning as Error: Unreachable code detected
+c:\Users\NVISEN\AppData\Local\Temp\frade-p02-native-UoRMag\fault-helper.cs(152,1430): error CS0162: Warning as Error: Unreachable code detected
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ instrumentedNative tests/filesystem.windows.test.ts:762:90
+    760|   const args = ['/nologo', '/target:exe', '/platform:x64', '/optimize+…
+    761|   const build = spawnSync(compiler, args, { encoding: 'utf8', windowsH…
+    762|   expect(build.error).toBeUndefined(); expect(build.status, build.stdo…
+       |                                                                                          ^
+    763|   const child = spawn(exe, [], { windowsHide: true, stdio: 'pipe' })
+    764|   const closed = new Promise<number | null>(resolve => child.once('clo…
+ ❯ tests/filesystem.windows.test.ts:819:5
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS003/004: controlled actual kill windows and injected failure disposition > reconciles bytes after real process kill at after-rename without treating a lost reply as ACK
+AssertionError: c:\Users\NVISEN\AppData\Local\Temp\frade-p02-native-R47wR1\fault-helper.cs(152,1430): error CS0162: Warning as Error: Unreachable code detected
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ instrumentedNative tests/filesystem.windows.test.ts:762:90
+    760|   const args = ['/nologo', '/target:exe', '/platform:x64', '/optimize+…
+    761|   const build = spawnSync(compiler, args, { encoding: 'utf8', windowsH…
+    762|   expect(build.error).toBeUndefined(); expect(build.status, build.stdo…
+       |                                                                                          ^
+    763|   const child = spawn(exe, [], { windowsHide: true, stdio: 'pipe' })
+    764|   const closed = new Promise<number | null>(resolve => child.once('clo…
+ ❯ tests/filesystem.windows.test.ts:819:5
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS003/004: controlled actual kill windows and injected failure disposition > reconciles bytes after real process kill at after-flush without treating a lost reply as ACK
+AssertionError: c:\Users\NVISEN\AppData\Local\Temp\frade-p02-native-QnoZHp\fault-helper.cs(152,1834): error CS0162: Warning as Error: Unreachable code detected
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ instrumentedNative tests/filesystem.windows.test.ts:762:90
+    760|   const args = ['/nologo', '/target:exe', '/platform:x64', '/optimize+…
+    761|   const build = spawnSync(compiler, args, { encoding: 'utf8', windowsH…
+    762|   expect(build.error).toBeUndefined(); expect(build.status, build.stdo…
+       |                                                                                          ^
+    763|   const child = spawn(exe, [], { windowsHide: true, stdio: 'pipe' })
+    764|   const closed = new Promise<number | null>(resolve => child.once('clo…
+ ❯ tests/filesystem.windows.test.ts:819:5
+ ❯ fixture tests/filesystem.windows.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

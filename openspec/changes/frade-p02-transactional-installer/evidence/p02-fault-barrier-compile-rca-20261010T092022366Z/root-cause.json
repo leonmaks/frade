@@ -1,0 +1,11 @@
+{
+  "classification": "TEST",
+  "rawFAIL": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-native-controlled-fault-windows-current-20261010T091922354Z",
+  "actual": "77PASS3FAIL: compiler CS0162 before-rename/after-rename/after-flush; beforeACK and injected flush/drift fixtures PASS",
+  "rootCause": "Compile-time constant infinite fixture barrier makes subsequent source statements unreachable under original warnaserror.",
+  "repair": "Use owned native Stopwatch.IsRunning runtime barrier, killed only after readiness observed; original warning policy/kill points/assertions unchanged; remove unused transform/type mirror assertion.",
+  "productionChanged": false,
+  "original9PrefixUnchanged": true,
+  "beforeSHA": "8072de6ac3569b36aecaa67dcdfb75d5d3ffda16fb437c0b01c6f76873f03c8d",
+  "afterSHA": "f8220655d9522712d28c35eb9e29e737c4e9059277263f17aa61bafef341dcb6"
+}

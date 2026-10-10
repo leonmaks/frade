@@ -892,40 +892,29 @@ async function actualCaseModeActor(f: Fixture) {
 
 describe('P02FS001: genuine NTFS per-directory case mode, no global setting changes', () => {
   for (const location of ['outer', 'root', 'child'] as const) it('refuses an actual preexisting case-sensitive ' + location, () => fixture(async f => {
-    const outer = path.join(f.root, 'case-outer')
-    if (location === 'outer') await fs.mkdir(outer)
-    const boundRoot = location === 'outer' ? path.join(outer, 'installed') : f.root
-    const child = path.join(boundRoot, 'checked')
+    const child = path.join(f.root, 'checked')
     if (location === 'child') await fs.mkdir(child)
-    const target = location === 'outer' ? outer : location === 'root' ? f.root : child
+    const target = location === 'outer' ? path.dirname(f.root) : location === 'root' ? f.root : child
     const actor = await actualCaseModeActor(f)
     expect(await actor(target, true)).toMatchObject({ success: true, before: 0, after: 1 })
-    if (location === 'outer') await fs.mkdir(boundRoot)
     try {
       if (location === 'child') {
         expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
         expect(await f.send('list', { path: ['checked'], limit: 128, cursor: null })).toMatchObject({ status: 'REFUSED', code: 'CASE_SENSITIVE_DIRECTORY' })
-      } else expect(await f.send('bind', { root: boundRoot })).toMatchObject({ status: 'REFUSED', code: 'CASE_SENSITIVE_DIRECTORY' })
+      } else expect(await f.send('bind', { root: f.root })).toMatchObject({ status: 'REFUSED', code: 'CASE_SENSITIVE_DIRECTORY' })
       await expectNativeExit(f.process, 2)
-      expect((await fs.readdir(boundRoot)).filter(name => name !== '.coordinator.lock')).toEqual(location === 'child' ? ['checked'] : [])
+      expect((await fs.readdir(f.root)).filter(name => name !== '.coordinator.lock')).toEqual(location === 'child' ? ['checked'] : [])
     } finally {
       expect(await actor(target, false)).toMatchObject({ success: true, before: 1, after: 0 })
     }
   }))
   for (const location of ['outer', 'root', 'child'] as const) it('refuses or confines a genuine post-bind case-mode mutation on ' + location, () => fixture(async f => {
-    const outer = path.join(f.root, 'case-outer')
-    if (location === 'outer') await fs.mkdir(outer)
-    const boundRoot = location === 'outer' ? path.join(outer, 'installed') : f.root
-    const child = path.join(boundRoot, 'checked')
-    if (location === 'child') await fs.mkdir(child)
-    const target = location === 'outer' ? outer : location === 'root' ? f.root : child
+    const child = path.join(f.root, 'checked'); await fs.mkdir(child)
+    const target = location === 'outer' ? path.dirname(f.root) : location === 'root' ? f.root : child
     const actor = await actualCaseModeActor(f)
-    // Genuine same-target positive setup while empty, before descendants/lease exist.
     expect(await actor(target, true)).toMatchObject({ success: true, before: 0, after: 1 })
     expect(await actor(target, false)).toMatchObject({ success: true, before: 1, after: 0 })
-    if (location === 'outer') await fs.mkdir(boundRoot)
-    if (location !== 'child') await fs.mkdir(child)
-    expect((await f.send('bind', { root: boundRoot })).status).toBe('ACK')
+    expect((await f.send('bind', { root: f.root })).status).toBe('ACK')
     expect((await f.send('list', { path: ['checked'], limit: 128, cursor: null })).status).toBe('ACK')
     const attack = await actor(target, true)
     try {
@@ -950,62 +939,3 @@ describe('P02FS001: genuine NTFS per-directory case mode, no global setting chan
     }
   }))
 })
-
-
-describe('P02FS001: preexisting deleter refusal before guarded binding effects', () => {
-  for (const targetKind of ['outer', 'root'] as const) it('refuses an incompatible deleter on ' + targetKind + ' and releases a failed bind', () => fixture(async f => {
-    const base = await fs.realpath(path.dirname(f.root)), temp = await fs.realpath(os.tmpdir())
-    if (path.dirname(base).toLowerCase() !== temp.toLowerCase() || !path.basename(base).startsWith('frade-p02-native-')) throw Error('UNSAFE_DELETER_OWNER')
-    const compiler = path.join(process.env.WINDIR ?? '', 'Microsoft.NET', 'Framework64', 'v4.0.30319', 'csc.exe')
-    const source = fileURLToPath(new URL('./fixtures/windows-preexisting-deleter-actor.cs', import.meta.url)), output = path.join(base, 'deleter-actor.exe')
-    const built = spawnSync(compiler, ['/nologo', '/target:exe', '/platform:x64', '/warnaserror+', '/reference:System.Web.Extensions.dll', '/out:' + output, source], { encoding: 'utf8', windowsHide: true, timeout: 10000 })
-    expect(built.error).toBeUndefined(); expect(built.status, built.stdout + built.stderr).toBe(0)
-    const target = targetKind === 'outer' ? base : f.root
-    const deleter = spawn(output, [target], { windowsHide: true, stdio: 'pipe' })
-    const deleterClosed = new Promise<number | null>(resolve => deleter.once('close', code => resolve(code)))
-    const helperClosed = new Promise<number | null>(resolve => f.process.once('close', code => resolve(code)))
-    try {
-      const ready = await new Promise<{ stage: string; success: boolean; error: number }>((resolve, reject) => {
-        let text = ''
-        const timer = setTimeout(() => { deleter.kill(); reject(Error('DELETER_SETUP_TIMEOUT')) }, 5000)
-        deleter.once('error', error => { clearTimeout(timer); reject(error) })
-        deleter.stdout.on('data', (bytes: Buffer) => {
-          text += bytes.toString('utf8')
-          if (text.length > 4096) { clearTimeout(timer); deleter.kill(); reject(Error('DELETER_SETUP_LIMIT')); return }
-          const end = text.indexOf('\n')
-          if (end >= 0) { clearTimeout(timer); try { resolve(JSON.parse(text.slice(0, end))) } catch (error) { reject(Error(String(error))) } }
-        })
-      })
-      expect(ready).toEqual({ stage: 'deleter-held', success: true, error: 0 })
-      const bound = await f.send('bind', { root: f.root })
-      expect(bound.status).toBe('REFUSED'); expect(bound.code).toBe('WIN32_32')
-      expect(await helperClosed).toBe(2)
-      expect(await fs.readdir(f.root)).toEqual([])
-      deleter.stdin.end('\n')
-      expect(await deleterClosed).toBe(0)
-      const moved = path.join(base, 'root-after-refusal')
-      await fs.rename(f.root, moved); await fs.rename(moved, f.root)
-      expect(await fs.readdir(f.outside)).toEqual(['sentinel'])
-    } finally {
-      if (deleter.exitCode === null && deleter.signalCode === null) { deleter.kill(); await deleterClosed }
-    }
-  }))
-})
-
-it('attempts all remaining handle releases after a real invalid-handle close failure in an instrumented fixture', () => fixture(async f => {
-  const transform = (source: string) => exactNativeTransform(source, 'case "dispose": Keys(v);Release();Bound=false;break;', 'case "dispose": Keys(v);Check(CloseHandle(Lease));Release();Bound=false;break;')
-  await instrumentedNative(f, 'deliberately-closed-lease-real-WIN32_6', transform, async shadow => {
-    expect((await shadow.send('bind', { root: f.root })).status).toBe('ACK')
-    expect((await shadow.send('mkdir', { path: ['held'] })).status).toBe('ACK')
-    const one = await shadow.send('write-open', { path: ['held', 'one'], maxBytes: 0 })
-    const two = await shadow.send('write-open', { path: ['held', 'two'], maxBytes: 0 })
-    expect(one.status).toBe('ACK'); expect(two.status).toBe('ACK')
-    expect(await shadow.send('dispose')).toMatchObject({ status: 'REFUSED', code: 'WIN32_6' })
-    await expectNativeExit(shadow.child, 2)
-    // Actual exclusive file opens and root rename after failure prove release, not just cleared dictionaries.
-    const handles = await Promise.all(['one', 'two'].map(name => fs.open(path.join(f.root, 'held', name), 'r+')))
-    await Promise.all(handles.map(handle => handle.close()))
-    await fs.rename(f.root, f.root + '-released'); await fs.rename(f.root + '-released', f.root)
-    expect((await fs.readdir(path.join(f.root, 'held'))).sort()).toEqual(['one', 'two'])
-  })
-}))

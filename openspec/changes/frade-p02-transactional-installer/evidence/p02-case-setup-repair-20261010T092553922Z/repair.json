@@ -1,0 +1,8 @@
+{
+  "classification": "TEST",
+  "probe": "openspec/changes/frade-p02-transactional-installer/evidence/p02-case-mode-setup-rca-20261010T092433288Z/probe.json",
+  "rootCause": "Current NTFS permits enabling case flag on empty directory, rejects files or subdirectories with STATUS_DIRECTORY_NOT_EMPTY/145. Original outer had compiled actor and fixture descendants, root mutation had checked child; setup failed before native attack.",
+  "repair": "Construct exact owned empty outer/root/child target, require enable/disable successful on SAME target before descendants and lease; add descendants/bind and perform actual attack. Preexisting outer flag set before descendant creation. Assertions and native outcomes retained; no skip or setup-failure-as-PASS.",
+  "original9Unchanged": true,
+  "productionChanged": false
+}

@@ -1,0 +1,10 @@
+using System;using System.Runtime.InteropServices;using System.Web.Script.Serialization;
+[assembly: DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
+class CaseMode {
+[StructLayout(LayoutKind.Sequential)]struct IoStatus{public IntPtr Status,Information;}
+[DllImport("kernel32.dll",CharSet=CharSet.Unicode,SetLastError=true)]static extern IntPtr CreateFileW(string p,uint a,uint s,IntPtr d,uint c,uint f,IntPtr t);
+[DllImport("kernel32.dll",SetLastError=true)]static extern bool CloseHandle(IntPtr h);
+[DllImport("kernel32.dll",SetLastError=true)]static extern bool GetFileInformationByHandleEx(IntPtr h,int c,IntPtr b,uint n);
+[DllImport("ntdll.dll")]static extern int NtSetInformationFile(IntPtr h,out IoStatus io,IntPtr b,uint n,int c);
+[DllImport("ntdll.dll")]static extern uint RtlNtStatusToDosError(int s);
+static int Main(string[] args){if(args.Length!=2||!(args[1]=="0"||args[1]=="1"))return 3;var json=new JavaScriptSerializer();IntPtr h=CreateFileW(args[0],0x180,7,IntPtr.Zero,3,0x02000000|0x00200000,IntPtr.Zero);if(h==new IntPtr(-1)){Console.WriteLine(json.Serialize(new {stage="open",success=false,error=Marshal.GetLastWin32Error()}));return 2;}IntPtr b=Marshal.AllocHGlobal(4);try{if(!GetFileInformationByHandleEx(h,23,b,4))throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());int before=Marshal.ReadInt32(b);Marshal.WriteInt32(b,Int32.Parse(args[1]));IoStatus io;int status=NtSetInformationFile(h,out io,b,4,71),completed=unchecked((int)io.Status.ToInt64());bool success=status==0&&completed==0;if(!GetFileInformationByHandleEx(h,23,b,4))throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());Console.WriteLine(json.Serialize(new {stage="set-case",success,status,completed,error=status<0?RtlNtStatusToDosError(status):completed<0?RtlNtStatusToDosError(completed):0,before,after=Marshal.ReadInt32(b)}));return success?0:2;}finally{Marshal.FreeHGlobal(b);if(!CloseHandle(h))throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());}}}
