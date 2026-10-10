@@ -1,0 +1,18 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import path from 'node:path';
+const original='C:/Users/NVISEN/AppData/Local/Temp/frade-ui-p02-accept-windows-plan.mjs',m=JSON.parse(fs.readFileSync('C:/Users/NVISEN/AppData/Local/Temp/frade-ui-p02-current.json'));
+const evidence=m.base+'/evidence',dirs=fs.readdirSync(evidence).filter(n=>n.startsWith('p02-windows-backend-planning-'));assert.equal(dirs.length,1);const dir=evidence+'/'+dirs[0],at=JSON.parse(fs.readFileSync(dir+'/list-before-execution.json')).atUtc,stamp=dirs[0].slice('p02-windows-backend-planning-'.length);
+fs.copyFileSync(original,dir+'/author-plan-attempt-failed.mjs',fs.constants.COPYFILE_EXCL);
+fs.writeFileSync(dir+'/author-plan-attempt-rca.json',JSON.stringify({atUtc:new Date().toISOString(),classification:'ENVIRONMENT',status:'FAILED_PLANNING_SCRIPT_NOT_PRODUCTION',cause:'OpenSpec existingOutputPaths use Windows backslashes; suffix /spec.md did not match. Proposal and separate acceptance were saved before guard aborted; remaining artifacts untouched.',repair:'Normalize concrete paths, finish exact pending writes without duplicating proposal or rewriting historical acceptance/before/raw records.'},null,2)+'\n',{flag:'wx'});
+let s=fs.readFileSync(original,'utf8');
+s=s.replace("at=new Date().toISOString(),stamp=at.replace(/[-:]/g,'').replace(/\\.\\d{3}Z$/,'Z')",`at=${JSON.stringify(at)},stamp=${JSON.stringify(stamp)}`);
+s=s.replace("assert.equal(git(['status','--porcelain']).stdout.trim(),'');", "assert(git(['status','--porcelain','-z','--untracked-files=all']).stdout.split('\\0').filter(Boolean).every(v=>v.slice(3).startsWith(m.base+'/')));");
+s=s.replace('fs.mkdirSync(dir);','assert(fs.existsSync(dir));');
+s=s.replace("function command(name,args){", "function command(name,args){if(fs.existsSync(dir+'/'+name+'-execution.json')){const e=JSON.parse(fs.readFileSync(dir+'/'+name+'-execution.json'));assert.equal(e.exitCode,0);return fs.readFileSync(dir+'/'+name+'.stdout.txt','utf8');}");
+s=s.replace('Object.values(status.artifactPaths).flatMap(x=>x.existingOutputPaths);',"Object.values(status.artifactPaths).flatMap(x=>x.existingOutputPaths).map(p=>p.replaceAll('\\\\','/'));");
+s=s.replace("for(const [i,p] of paths.entries())save('before-'+i+'.md',fs.readFileSync(p));", "for(const [i,p] of paths.entries())assert(fs.existsSync(dir+'/before-'+i+'.md')); ");
+s=s.replace("const before=paths.map(p=>({path:p.replaceAll('\\\\','/').slice(process.cwd().length+1),sha256:sha(fs.readFileSync(p))}));", "const before=paths.map((p,i)=>({path:p.slice(process.cwd().length+1),sha256:sha(fs.readFileSync(dir+'/before-'+i+'.md'))}));");
+const writeStart=s.indexOf('fs.writeFileSync(decision,');const writeEnd=s.indexOf("const relativeDecision=",writeStart);assert(writeStart>0&&writeEnd>writeStart);
+s=s.slice(0,writeStart)+"assert.equal(JSON.parse(fs.readFileSync(decision)).proposalSha256,m.windowsProposal.sha256);\n"+s.slice(writeEnd);
+s=s.replace("if(p.endsWith('proposal.md'))t+=proposalAdd;","if(p.endsWith('proposal.md')){assert(t.endsWith(proposalAdd));continue;}");
+const repaired='C:/Users/NVISEN/AppData/Local/Temp/frade-ui-p02-accept-windows-plan-format-repaired.mjs';fs.writeFileSync(repaired,s,{flag:'wx'});
+await import('file:///'+repaired);

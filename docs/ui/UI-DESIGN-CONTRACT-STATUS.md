@@ -1,3 +1,31 @@
+# UI Design Contract: P02 Windows backend accepted; fresh PRE required;3/9
+
+Обновлено 2026-10-10T03:55:05.161Z. Branch codex/frade-ui-design-contract; owning worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Original baseline98f387f; P02 accepted origin0ecaf44938382bd8daa7d512887dda8a8ee9b372; guide1.0. Routing independent.
+
+| Этап | Статус |
+|---|---|
+| Foundation/P01 | ARCHIVED;3minor OPEN_ACCEPTED_DEFERRED/rawFAIL preserved |
+| P02 transactional installer |3/9; accepted backend plan; strictPASS; new PRE DISPATCH_READY; freeze at launch |
+| P03–P07 | NOT_STARTED |
+
+| Задача P02 | Фактический статус |
+|---|---|
+|1.1 audit/scope | COMPLETE |
+|1.2 initial strict/PRE | COMPLETE; initial retryPASS historical; amendment newPRE DISPATCH_READY |
+|2.1 archive RED/fixtures | COMPLETE;53RED retained, validator59/59GREEN |
+|2.2 filesystem/staging/bridge | IN_PROGRESS; native backend NOT_IMPLEMENTED; accepted plan strictPASS |
+|2.3 journal/crash/rollback | NOT_RUN |
+|2.4 Extensions UI/fallback | NOT_RUN |
+|3.1 cumulative checks/visual | NOT_RUN; component typecheck/lint/UIcompliance historicalPASS only |
+|3.2 verify/POST | NOT_RUN |
+|3.3 archive | NOT_RUN; STOPbeforeP03 |
+
+[Windows scope acceptance](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-windows-filesystem-backend-accepted-20261010T035503Z.json); [new exact plan](../../openspec/changes/frade-p02-transactional-installer/design.md); [strict/delta evidence](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-windows-backend-planning-20261010T035503Z/planning-delta.json). Model per stage PRE/POST=gpt-6-sol/xhigh. Backend scope decision resolved; no new human action required. Next: publish amended-plan checkpoint, freeze and automatic PRE; native RED/code only after newPASS. Power-loss NOT_PROVEN, actual compiler/build/races/dev/build/start NOT_RUN. No new screenshots or visual acceptance.
+
+Git priorHEAD83ca13f6b815850f23cb451d6f90876af7c06a36 published; amended planning checkpoint publishing; remote verification receipt follows. Destination only origin UI ref; no force. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanel queued/visibilityunconfirmed. Dashboard frozen during review and updated after receipt.
+
+## Предыдущие записи сохранены
+
 # UI Design Contract: P02 —3/9; Windows backend decision required
 
 Updated 2026-10-10T01:40:03.290Z; branch codex/frade-ui-design-contract; owning worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original98f387f/P02baseline0ecaf449 preserved. Guide1.0/tokens1.0.0; Routing independent.
