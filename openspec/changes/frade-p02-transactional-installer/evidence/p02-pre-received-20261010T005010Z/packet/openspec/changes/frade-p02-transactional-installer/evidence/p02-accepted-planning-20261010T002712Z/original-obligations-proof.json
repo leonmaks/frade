@@ -1,0 +1,44 @@
+{
+  "atUtc": "2026-10-10T00:27:55.031Z",
+  "status": "PASS",
+  "requirements": 4,
+  "originalScenarios": 4,
+  "currentScenarios": 8,
+  "comparison": "Exact original names and normative bodies/scenario text, trim outer whitespace only",
+  "originalRequirements": [
+    {
+      "name": "Bounded declarative packages",
+      "body": "Offline file install SHALL validate archive structure, identity, semver engines, known contributions and native role data within declared resource/path limits. It MUST NOT execute JS or write project files. SHA256 SHALL describe integrity, not publisher trust."
+    },
+    {
+      "name": "Transactional lifecycle and recovery",
+      "body": "Install/update/rollback SHALL preserve last committed registry/version on validation or commit failure and recover across crashes through durable journal phases. Update capability increases MUST require a grant before use. Only one version per ID SHALL be active."
+    },
+    {
+      "name": "Fallback and safe removal",
+      "body": "Disable/uninstall SHALL atomically fallback active theme/icons and preserve dirty work. Unsafe custom-editor closure MUST block removal with save/convert/cancel. Physical cleanup SHALL follow commit and handle release; locked files MUST NOT produce false deletion success."
+    },
+    {
+      "name": "Honest extensions view",
+      "body": "Extensions view SHALL expose install-from-file, details, enabled state, updates, retained-version rollback, uninstall and diagnostics according to actual supported operations. Installing a theme package MUST NOT silently change active theme."
+    }
+  ],
+  "originalScenariosText": [
+    {
+      "name": "Incompatible sample fixture",
+      "body": "- **WHEN** the provided sample targeting Frade 1.x is installed in current 0.1 runtime"
+    },
+    {
+      "name": "Crash at swap",
+      "body": "- **WHEN** installation is interrupted at a journal phase"
+    },
+    {
+      "name": "Invalid update",
+      "body": "- **WHEN** v2 validation fails over installed v1"
+    },
+    {
+      "name": "Theme installation",
+      "body": "- **WHEN** a valid theme-only archive commits"
+    }
+  ]
+}

@@ -1,3 +1,33 @@
+# UI Design Contract: P02 PRE FAIL — packet completeness repair;1/9
+
+Обновлено 2026-10-10T00:52:04.681Z (Europe/Moscow). Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original baseline98f387f retained. Guide1.0/tokens1.0.0; Routing independent.
+
+| Этап | Статус |
+|---|---|
+| Foundation/P01 | ARCHIVED; exact3P01defects OPEN_ACCEPTED_DEFERRED, rawFAIL retained |
+| P02 installer |1/9; PRE FAIL1missingcanonicalcontract; fresh PRE packet preparing |
+| P03–P07 | NOT_STARTED |
+
+| Задача P02 | Статус |
+|---|---|
+|1.1 audit/baseline/accepted scope | COMPLETE |
+|1.2 strict/PRE | strict/UIcompliancePASS; firstPRE FAIL; canonical input repaired; freshPRE NOT_RUN |
+|2.1 RED | NOT_RUN |
+|2.2 contracts/service/bridge | NOT_RUN |
+|2.3 crash/recovery/rollback | NOT_RUN |
+|2.4 Extensions UI/fallback | NOT_RUN |
+|3.1 checks/visual | NOT_RUN; no fresh app/screenshots |
+|3.2 verify/POST | NOT_RUN |
+|3.3 archive | NOT_RUN; STOPbeforeP03 |
+
+[First PRE raw FAIL](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/output--result.md), [verified receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T005010Z/verification.json), [repair](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-completeness-repair-20261010T005204Z/repair.md). Reviewer gpt-6-sol/xhigh;73events/17raw/189packet; source/packet/plan/decision unchanged, complete stream and exact CLI/confinement verified, backend/effortNOT_CONFIRMED.
+
+Blocker: canonical openspec/specs/theme-core/spec.md was absent from first packet; exact existing source SHAfc5def679bd51324b15fa00b407a44ca0922d0d606d1f2846fc62759faf203bf now selected. No code/design/spec or accepted scope/model changes; no new human permission required. Original FAIL never relabelled. Next: publish repair/FAIL checkpoint -> new fullfreeze/automatic freshPRE -> RED only after PASS. Merge protectionLOCAL_ONLY/NOT_CONFIGURED; right panel queued/visibilityunconfirmed.
+
+Git: accepted plan c123c79a/metadata6e48bbc2 published; PRE FAIL and completeness repair checkpoint publication PENDING. Authorized UI origin/ref only.
+
+## Предыдущие записи сохранены
+
 # UI Design Contract: P02 accepted planning —1/9; PRE dispatch ready — candidate freezes at dispatch
 
 Обновлено 2026-10-10T00:27:12.100Z (Europe/Moscow). Owning branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Current checkpoint 0ecaf44938382bd8daa7d512887dda8a8ee9b372; original98f387f96b51b0ad139e3507c376ff1c3e8dec09 retained. Guide1.0/tokens1.0.0; Routing independent.
