@@ -1,0 +1,25 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.windows.test.ts > P02FS001–004: actual Windows checked handles and publication > performs exclusive actual write, flush, same-parent absent-target rename and exact readback
+AssertionError: expected 'UNKNOWN' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "UNKNOWN"
+
+ ❯ tests/filesystem.windows.test.ts:79:134
+     77|     expect((await f.send('write-chunk', { handle: opened.handle, offse…
+     78|     expect((await f.send('write-close', { handle: opened.handle, sha25…
+     79|     expect((await f.send('replace', { handle: opened.handle, parent: […
+       |                                                                                                                                      ^
+     80|     const read = await f.send('read', { path: ['records', 'final.json'…
+     81|     expect(read.status).toBe('ACK'); expect(Buffer.from(read.data, 'ba…
+ ❯ fixture tests/filesystem.windows.test.ts:52:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

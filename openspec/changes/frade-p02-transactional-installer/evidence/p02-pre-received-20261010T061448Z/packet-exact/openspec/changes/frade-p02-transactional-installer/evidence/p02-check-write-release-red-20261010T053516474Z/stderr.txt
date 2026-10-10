@@ -1,0 +1,37 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.protocol.test.ts > P02FS002: explicit write handle release > admits releasing a sealed package file while retaining root/coordinator handles
+AssertionError: expected null to deeply equal { version: 1, …(8) }
+
+- Expected: 
+{
+  "deadlineMs": 1000,
+  "generation": 7,
+  "handle": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "operation": "write-close",
+  "requestId": 2,
+  "retainForPublication": false,
+  "session": "fbd1ef36-884a-4c37-b12b-af508186d3f3",
+  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "version": 1,
+}
+
++ Received: 
+null
+
+ ❯ tests/filesystem.protocol.test.ts:118:43
+    116|   it('admits releasing a sealed package file while retaining root/coor…
+    117|     const gate = bound(), value = command('write-close', { handle: 'a'…
+    118|     expect(gate.accept(frame(value), 10)).toEqual(value)
+       |                                           ^
+    119|     expect(gate.complete(2, true)).toBe(true)
+    120|     expect(gate.closed).toBe(false)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

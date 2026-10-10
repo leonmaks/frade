@@ -1,3 +1,17 @@
+# UI Design Contract — P02 native repair PRE PASS;3/9
+
+Обновлено 2026-10-10T06:17:25.892Z. Branch codex/frade-ui-design-contract/worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/common E:/dev/codex/frade/.git; originals98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved. Guide1.0; Routing independent.
+
+Native source-parent repair PRE PASS, gpt-6-sol/xhigh, raw openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T061448Z/output--result.md and verified receipt. 96complete events/387files. Actualbackend/effortNOT_CONFIRMED. This allows exact NT rename repair only, not runtime/cumulative closure. P02 tasks3/9;2.2IN_PROGRESS; native4currently3PASS/1FAIL, capabilitiesNOT_VERIFIED. Portable43+archive59:102PASS; current affected typecheck/lint/buildscript/UIcompliance/strictPASS.
+
+Additional OPEN blocker: Main settings atomics return EBUSY with all outer native pins; old settings preserved. openspec/changes/frade-p02-transactional-installer/evidence/p02-main-settings-pins-rca-20261010T061724791Z/root-cause.json. External lifetime diagnostic repaired primitive rename and retained root/ancestor rename refusal, but in-place reparse/race/identity proof remainsNOT_RUN. Guard lifetime remains unchanged pending its own coherent PRE/decision if needed. Next implement exact NT repair, run actual native4, then continue owned lifetime RCA. No new human action currently required.
+
+Foundation/P01 ARCHIVED/3minorOPEN_ACCEPTED_DEFERRED/rawFAIL retained. P02 staging/journal/crash/recovery/IPC/ExtensionsUI/dev/build/start/full adversarial/static/root/P01/a11y/visual/verify/POST/archive NOT_RUN. P03–P07/later migration NOT_STARTED; STOPbeforeP03.
+
+Git planning09e71800/seal7b8330e8 COMMITTED/PUSHED remoteverified; currentPRE receipt checkpoint publicationPENDING. Only authorized UI origin/ref, noforce. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. Old reports and statuses remainbelow.
+
+## Предыдущие записи
+
 # UI Design Contract — P02 native rename repair
 
 Обновлено 2026-10-10T05:46:41.621Z; owning branch codex/frade-ui-design-contract/worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/common E:/dev/codex/frade/.git; origins98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved.

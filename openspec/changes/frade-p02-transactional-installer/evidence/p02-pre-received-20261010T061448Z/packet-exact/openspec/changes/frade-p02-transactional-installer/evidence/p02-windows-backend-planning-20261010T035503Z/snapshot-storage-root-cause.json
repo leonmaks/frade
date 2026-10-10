@@ -1,0 +1,31 @@
+{
+  "atUtc": "2026-10-10T04:01:28.143Z",
+  "classification": "TEST",
+  "status": "ROOT_CAUSE_VERIFIED_AFTER_TWO_DETERMINISTIC_GUARD_FAILURES",
+  "cause": "save(name,value) JSON.stringify serialized Buffer objects instead of writing bytes. Encoded snapshots match their retained hashes and losslessly decode to byte-exact unchanged HEAD blobs. Earlier trimming-only explanation was disproved.",
+  "affected": "New planning before snapshots and their misleading raw-hash labels only; not product, source plan, acceptance or historical review evidence.",
+  "repair": "Preserve encoded attempt/raw delta unchanged, retain separate decoded raw snapshots verified against actual Git bytes, consume correct proof in publisher/PRE.",
+  "checks": [
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/proposal.md",
+      "rawSHA": "dbd6bcb937ce466130c7aed27d990f646861cc378a8140670126b1a22d196141",
+      "gitBlobMatches": true
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/specs/extension-installer/spec.md",
+      "rawSHA": "ee9663dc7f1eb1d58fd197436a16fd652ee34a123af3bb20dc5d29690076a92b",
+      "gitBlobMatches": true
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/design.md",
+      "rawSHA": "0cca6c7fe785036e4162f7aa2bccdcb84b17191906cc0acc6462ca9149d1495a",
+      "gitBlobMatches": true
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/tasks.md",
+      "rawSHA": "cfad7c2172da445fb7e2d250d71d3bdd91f47352fe7f0c44e9381d3b2dc8feb6",
+      "gitBlobMatches": true
+    }
+  ],
+  "newPRE": "NOT_RUN"
+}
