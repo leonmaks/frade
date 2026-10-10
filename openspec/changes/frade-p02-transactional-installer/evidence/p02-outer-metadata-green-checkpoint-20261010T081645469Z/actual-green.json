@@ -1,0 +1,117 @@
+{
+  "atUtc": "2026-10-10T08:16:45.469Z",
+  "authority": "openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff-accepted-20261010T073434608Z.json",
+  "PRE": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T080608Z",
+  "PREReportSha256": "70604f86bbda783a746ef2bfcd349739c428153df6acfb91aacfce1b92d2d321",
+  "sourceSha256": "a9916584bf3709ab47e68283e83903b117539c46ebfb1794166f191c39cd105e",
+  "native9SourceUnchanged": "7dce6193dc7cedb7b12077945a5c040a669cab1c75cfbfbdfdc29304a7f56526",
+  "native9": "9PASS",
+  "portableArchive": "102PASS",
+  "checks": [
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-native-accepted-outer-metadata-build-fixed-20261010T081155621Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:11:56.459Z",
+        "label": "native-accepted-outer-metadata-build-fixed",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "packages/extension-service/scripts/build-windows-filesystem.mjs"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "2efadfaa16a0530e88cb2e85baef6e5cac2a1b88651a1b649b57bd83c2e56798",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-native9-accepted-outer-metadata-current-20261010T081219025Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:12:37.382Z",
+        "label": "native9-accepted-outer-metadata-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "exec",
+          "vitest",
+          "run",
+          "tests/filesystem.windows.test.ts"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "4709dce719c20cab11b4a5be7fba44e200c2cd6e450c3e22422a9ff8b170a1a8",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-portable-accepted-outer-metadata-20261010T081229017Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:12:41.237Z",
+        "label": "portable-accepted-outer-metadata",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "exec",
+          "vitest",
+          "run",
+          "tests/archive.bdd.test.ts",
+          "tests/filesystem.protocol.test.ts"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "641a2c1f62ea27f8901842624a45ecd04d76437756ab8c1dc4bedbcbbb3363e0",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-type-accepted-outer-metadata-20261010T081224427Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:12:31.326Z",
+        "label": "type-accepted-outer-metadata",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "typecheck"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-lint-accepted-outer-metadata-20261010T081221463Z",
+      "execution": {
+        "atUtc": "2026-10-10T08:12:43.484Z",
+        "label": "lint-accepted-outer-metadata",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "lint"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "f742f989be94e529cde1c75bc31645378f1840908710384b8406b93407d056d9"
+      }
+    }
+  ],
+  "firstCompileFAILPreserved": "openspec/changes/frade-p02-transactional-installer/evidence/p02-outer-metadata-compile-rca-20261010T081155520Z",
+  "capabilities": "NOT_VERIFIED",
+  "extendedAdversarialProtocolLifecycleDeploy": "NOT_RUN",
+  "tasks": "3/9",
+  "POST": "NOT_RUN",
+  "READY_FOR_VERIFY": "NO"
+}

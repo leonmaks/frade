@@ -1,5 +1,43 @@
 # Frade UI Design Contract — P02: outer metadata PRE PASS
 
+Обновлено 2026-10-10T08:16:45.469Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 сохранены. Guide v1.0; Routing независим.
+
+| Этап | Статус |
+| --- | --- |
+| Audit/planning/foundation | CLOSED/ARCHIVED |
+| P01 theme resolver/preview | CLOSED/ARCHIVED; точные3minorOPEN_ACCEPTED_DEFERRED/rawFAIL сохранены |
+| P02 transactional installer | 3/9;2.2IN_PROGRESS, native9:9PASS |
+| P03 VS Code theme import | NOT_STARTED |
+| P04 icon registries | NOT_STARTED |
+| P05 isolated browser host | NOT_STARTED |
+| P06 native contributions | NOT_STARTED |
+| P07 registry/profiles/policy | NOT_STARTED |
+| Shell → tree/tabs → forms/tables/LoV → Draw/flow → AI | NOT_STARTED отдельная последовательная миграция |
+
+| Задача P02 | Статус |
+| --- | --- |
+|1.1 Audit/predecessor/scope/baseline | DONE |
+|1.2 Initial strict/independent PRE | DONE; amendments требуют свежих PRE |
+|2.1 Archive/path/limit/semver RED | DONE; компонент59PASS |
+|2.2 Staging/validation/journal/native/Main picker bridge | IN_PROGRESS; protocol43PASS, native9:9PASS; staging/journal/bridge не готовы |
+|2.3 Actual crash/recovery/rollback/Windows locks | NOT_DONE |
+|2.4 ExtensionsUI/lifecycle/P01 fallback/dirty state | NOT_DONE |
+|3.1 Full package/root/BDD/security/a11y/visual | NOT_DONE |
+|3.2 OpenSpec verify/cumulative POST | NOT_RUN |
+|3.3 Archive/close | NOT_RUN; STOPbeforeP03 |
+
+Fresh PRE PASS, requested gpt-6-sol/xhigh по approved P02 plan. Receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T080608Z/verification.json, 114 complete events/547 files, raw reports сохранены до интерпретации. CLI/confinement/candidate/packet/request/control hashesPASS; actualbackend/effortNOT_CONFIRMED. Принятый all-outer scope proposalSHAf3a9e8c266f1939d9b7d5012e064bd37291ac501108696e82ada012f44350c23. Предыдущий immediate-parent PRE остаётся focused history. Новый verdict оценивает принятый repair PLAN; он не закрывает native FAIL и весь P02.
+
+Native production exact accepted handoff/guards/borrowed enumeration implemented after fresh PRE PASS. Native9 актуально9PASS без изменения assertions; пять прежних FAIL устранены на текущей свежей сборке, их raw RED сохранён. Actual Main persist/readback/restart/compensation, root/cache listing, recursive cleanup, owned outer sibling rename и original4 PASS. SourceSHAa9916584bf3709ab47e68283e83903b117539c46ebfb1794166f191c39cd105e. Compile FAIL из-за invalid C# char escaping сохранён; syntax RCA и corrected current buildPASS перед native9. Portable43/archive59=102PASS; typecheck/lintPASS. CapabilitiesNOT_VERIFIED: расширенные реальные attacks/protocol/death/deploy и интеграция ещё NOT_RUN. Evidence openspec/changes/frade-p02-transactional-installer/evidence/p02-outer-metadata-green-checkpoint-20261010T081645469Z/actual-green.json.
+
+Следующий шаг: expanded actual guard/adversary/native protocol/lifecycle/death/deploy tests; затем staging/journal/recovery/IPC/UI и remaining root/general/P01/BDD/security/a11y/visual/verify/cumulative POST/archive. Tasks3/9,2.2IN_PROGRESS; no P03. READY_FOR_VERIFY:NO. Новых UI screenshots нет, инфраструктурный repair; P01 images/evidence неизменны.
+
+Git: planning checkpoint87ec6171/seal351722f4COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint dfd69b6b918cd7ad312f27928c4759f5586fe05c COMMITTED/PUSHED; remoteSHAverified; metadata receipt follows. Только origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, no force. Rightpanelqueued/visibilityunconfirmed; merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не является approval/evidence.
+
+## Предыдущие записи
+
+# Frade UI Design Contract — P02: outer metadata PRE PASS
+
 Обновлено 2026-10-10T08:06:31.265Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Original program98f387f96b51b0ad139e3507c376ff1c3e8dec09/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 сохранены. Guide v1.0; Routing независим.
 
 | Этап | Статус |

@@ -19,14 +19,12 @@ public static class FradeFilesystem {
   static readonly UTF8Encoding Utf8=new UTF8Encoding(false,true);
   static readonly Dictionary<string,Dir> Dirs=new Dictionary<string,Dir>(StringComparer.OrdinalIgnoreCase);
   static readonly List<IntPtr> Outer=new List<IntPtr>();
-  static readonly List<Dir> Chain=new List<Dir>();
-  static readonly List<IntPtr> PendingOuter=new List<IntPtr>(), RedundantOuter=new List<IntPtr>();
   static readonly Dictionary<string,Written> Writes=new Dictionary<string,Written>();
   static readonly Dictionary<string,Listing> Lists=new Dictionary<string,Listing>();
-  static string Session, Volume, DriveMount; static long Generation, NextId=1; static uint Serial;
-  static FileInfo LeaseOriginal; static IntPtr Lease=IntPtr.Zero; static bool Bound, Effect; static int Created; static long OpenBudget;
-  class Dir { public IntPtr Handle; public string Final, Key; public FileInfo Original; }
-  class Written { public FileInfo Original; public IntPtr Handle; public Dir Parent; public string Name; public long Max, Length; public bool Sealed; public string Hash; }
+  static string Session, Volume; static long Generation, NextId=1; static uint Serial;
+  static IntPtr Lease=IntPtr.Zero; static bool Bound, Effect; static int Created; static long OpenBudget;
+  class Dir { public IntPtr Handle; public string Final, Key; }
+  class Written { public IntPtr Handle; public Dir Parent; public string Name; public long Max, Length; public bool Sealed; public string Hash; }
   class Listing { public string Key; public List<Dictionary<string,object>> Rows; public int Index; }
   [StructLayout(LayoutKind.Sequential)] struct UnicodeString { public ushort Length, MaximumLength; public IntPtr Buffer; }
   [StructLayout(LayoutKind.Sequential)] struct ObjectAttributes { public uint Length; public IntPtr RootDirectory, ObjectName; public uint Attributes; public IntPtr SecurityDescriptor, SecurityQualityOfService; }
@@ -58,74 +56,46 @@ public static class FradeFilesystem {
   static string Final(IntPtr h) {var b=new StringBuilder(4097);uint n=GetFinalPathNameByHandleW(h,b,4097,1);if(n==0||n>4096)throw new Win32Exception(Marshal.GetLastWin32Error());return b.ToString();}
   static FileInfo Identity(IntPtr h,bool directory,string expected) { FileInfo f;Check(GetFileInformationByHandle(h,out f));if((f.Attributes&(Reparse|0x40|0x1000|0x4000|0x200))!=0||((f.Attributes&0x10)!=0)!=directory||f.VolumeSerial!=Serial||(!directory&&f.Links!=1)||!String.Equals(Final(h),expected,StringComparison.OrdinalIgnoreCase))Refuse("UNSAFE_OBJECT_IDENTITY");if(directory){IntPtr buf=Marshal.AllocHGlobal(4);try{Check(GetFileInformationByHandleEx(h,23,buf,4));if(Marshal.ReadInt32(buf)!=0)Refuse("CASE_SENSITIVE_DIRECTORY");}finally{Marshal.FreeHGlobal(buf);}}return f; }
   static void Close(IntPtr h) {if(h!=IntPtr.Zero)Check(CloseHandle(h));}
-  static IntPtr Relative(IntPtr parent,string name,bool directory,uint disposition,bool writable,bool deletable,bool metadata=false) {
+  static IntPtr Relative(IntPtr parent,string name,bool directory,uint disposition,bool writable,bool deletable) {
     if(!Component(name))Refuse("INVALID_COMPONENT");IntPtr text=Marshal.StringToHGlobalUni(name),ptr=IntPtr.Zero,h;
-    try { var u=new UnicodeString {Length=checked((ushort)(name.Length*2)),MaximumLength=checked((ushort)((name.Length+1)*2)),Buffer=text};ptr=Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UnicodeString)));Marshal.StructureToPtr(u,ptr,false);var a=new ObjectAttributes {Length=(uint)Marshal.SizeOf(typeof(ObjectAttributes)),RootDirectory=parent,ObjectName=ptr,Attributes=0x40};IoStatus io;if(metadata&&(!directory||writable||deletable||disposition!=1))Refuse("INVALID_METADATA_OPEN");uint access=metadata?Sync|Attr:Sync|Attr|1|(writable?2u:0u)|(deletable?Delete:0u);int status=NtCreateFile(out h,access,ref a,out io,IntPtr.Zero,0x80,directory?1u:0u,disposition,0x200000|0x20|(directory?1u:0x40u)|(writable?2u:0u),IntPtr.Zero,0);if(status<0)throw new Win32Exception((int)RtlNtStatusToDosError(status));if(disposition==2 || io.Information.ToInt64()==2)Effect=true;return h;
+    try { var u=new UnicodeString {Length=checked((ushort)(name.Length*2)),MaximumLength=checked((ushort)((name.Length+1)*2)),Buffer=text};ptr=Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UnicodeString)));Marshal.StructureToPtr(u,ptr,false);var a=new ObjectAttributes {Length=(uint)Marshal.SizeOf(typeof(ObjectAttributes)),RootDirectory=parent,ObjectName=ptr,Attributes=0x40};IoStatus io;uint access=Sync|Attr|1|(writable?2u:0u)|(deletable?Delete:0u);int status=NtCreateFile(out h,access,ref a,out io,IntPtr.Zero,0x80,directory?1u:0u,disposition,0x200000|0x20|(directory?1u:0x40u)|(writable?2u:0u),IntPtr.Zero,0);if(status<0)throw new Win32Exception((int)RtlNtStatusToDosError(status));if(disposition==2 || io.Information.ToInt64()==2)Effect=true;return h;
     } finally {if(ptr!=IntPtr.Zero)Marshal.FreeHGlobal(ptr);Marshal.FreeHGlobal(text);}
   }
-  static void Same(FileInfo original,FileInfo current) {if(original.VolumeSerial!=current.VolumeSerial||original.IdHigh!=current.IdHigh||original.IdLow!=current.IdLow)Refuse("BOUND_IDENTITY_CHANGED");}
-  static Dir CheckedDir(IntPtr h,string final,string key) {return new Dir {Handle=h,Final=final,Key=key,Original=Identity(h,true,final)};}
-  static void VerifyDir(Dir dir) {Same(dir.Original,Identity(dir.Handle,true,dir.Final));}
-  static void VerifyBinding() {
-    var mapped=new StringBuilder(64);Check(GetVolumeNameForVolumeMountPointW(DriveMount,mapped,64));if(!String.Equals(mapped.ToString(),Volume,StringComparison.OrdinalIgnoreCase)||GetDriveTypeW(Volume)!=3)Refuse("BOUND_VOLUME_CHANGED");uint serial,component,flags;var fs=new StringBuilder(32);Check(GetVolumeInformationW(Volume,null,0,out serial,out component,out flags,fs,32));if(serial!=Serial||fs.ToString()!="NTFS")Refuse("BOUND_VOLUME_CHANGED");
-    foreach(var dir in Chain)VerifyDir(dir);Dir root=Dirs.ContainsKey("")?Dirs[""]:null;if(Chain.Count<2||root==null||root!=Chain[Chain.Count-1])Refuse("BOUND_ROOT_CHANGED");Same(LeaseOriginal,Identity(Lease,false,root.Final.TrimEnd((char)92)+"\\.coordinator.lock"));
-  }
-  static void HandoffOuter(string[] parts) {
-    VerifyBinding();int count=Chain.Count-1;
-    for(int i=0;i<count;i++){
-      IntPtr h;if(i==0){h=CreateFileW(Volume,Sync|Attr,1,IntPtr.Zero,3,0x02000000|0x00200000,IntPtr.Zero);if(h==new IntPtr(-1))throw new Win32Exception(Marshal.GetLastWin32Error());}
-      else h=Relative(Chain[i-1].Handle,parts[i-1],true,1,false,false,true);
-      PendingOuter.Add(h);Same(Chain[i].Original,Identity(h,true,Chain[i].Final));VerifyDir(Chain[i]);
-    }
-    // Complete replacement and original sets overlap; strong root/lease are excluded.
-    for(int i=0;i<count;i++)Same(Chain[i].Original,Identity(PendingOuter[i],true,Chain[i].Final));VerifyBinding();
-    for(int i=0;i<count;i++){RedundantOuter.Add(Outer[i]);Outer[i]=PendingOuter[i];Chain[i].Handle=PendingOuter[i];PendingOuter[i]=IntPtr.Zero;}PendingOuter.Clear();
-    for(int i=RedundantOuter.Count-1;i>=0;i--){Close(RedundantOuter[i]);RedundantOuter.RemoveAt(i);}VerifyBinding();
-  }
-  static Dir Directory(string[] parts) {
-    Dir d=Dirs[""];VerifyDir(d);string key="";foreach(string part in parts){key=key.Length==0?part:key+"\\"+part;Dir existing;if(Dirs.TryGetValue(key,out existing)){VerifyDir(existing);d=existing;continue;}IntPtr h=Relative(d.Handle,part,true,1,false,true);string final=d.Final.TrimEnd((char)92)+"\\"+part;try{d=CheckedDir(h,final,key);}catch{Close(h);throw;}Dirs.Add(key,d);}return d;
-  }
+  static Dir Directory(string[] parts) {Dir d=Dirs[""];string key="";foreach(string part in parts){key=key.Length==0?part:key+"\\"+part;Dir existing;if(Dirs.TryGetValue(key,out existing)){Identity(existing.Handle,true,existing.Final);d=existing;continue;}IntPtr h=Relative(d.Handle,part,true,1,false,true);string final=d.Final.TrimEnd('\\')+"\\"+part;try{Identity(h,true,final);}catch{Close(h);throw;}d=new Dir {Handle=h,Final=final,Key=key};Dirs.Add(key,d);}return d; }
   static void Bind(Dictionary<string,object> v) {
-    Keys(v,"root");string root=S(v,"root");if(!Environment.Is64BitProcess||!Regex.IsMatch(root,@"^[A-Za-z]:\\")||root.Length>4096)Refuse("UNSUPPORTED_ROOT");string[] parts=root.Substring(3).Split((char)92);if(parts.Length>32)Refuse("INVALID_ROOT_DEPTH");foreach(string p in parts)if(!Component(p))Refuse("INVALID_ROOT_COMPONENT");DriveMount=root.Substring(0,3);var volume=new StringBuilder(64);Check(GetVolumeNameForVolumeMountPointW(DriveMount,volume,64));Volume=volume.ToString();if(GetDriveTypeW(Volume)!=3)Refuse("NOT_LOCAL_FIXED_VOLUME");uint component,flags;var fs=new StringBuilder(32);Check(GetVolumeInformationW(Volume,null,0,out Serial,out component,out flags,fs,32));if(fs.ToString()!="NTFS")Refuse("UNSUPPORTED_FILESYSTEM");IntPtr h=CreateFileW(Volume,Sync|Attr|1,1,IntPtr.Zero,3,0x02000000|0x00200000,IntPtr.Zero);if(h==new IntPtr(-1))throw new Win32Exception(Marshal.GetLastWin32Error());Outer.Add(h);Chain.Add(CheckedDir(h,Volume,null));string final=Volume.TrimEnd((char)92);
-    for(int i=0;i<parts.Length;i++){IntPtr next;try{next=Relative(h,parts[i],true,1,false,false);}catch(Win32Exception e){if(i!=parts.Length-1||e.NativeErrorCode!=2)throw;next=Relative(h,parts[i],true,2,false,false);}Outer.Add(next);final+="\\"+parts[i];Chain.Add(CheckedDir(next,final,null));h=next;}
-    Dir install=Chain[Chain.Count-1];install.Key="";Dirs.Add("",install);Lease=Relative(h,".coordinator.lock",false,3,false,false);LeaseOriginal=Identity(Lease,false,final+"\\.coordinator.lock");HandoffOuter(parts);Bound=true;
+    Keys(v,"root");string root=S(v,"root");if(!Environment.Is64BitProcess||!Regex.IsMatch(root,@"^[A-Za-z]:\\")||root.Length>4096)Refuse("UNSUPPORTED_ROOT");string[] parts=root.Substring(3).Split('\\');if(parts.Length>32)Refuse("INVALID_ROOT_DEPTH");foreach(string p in parts)if(!Component(p))Refuse("INVALID_ROOT_COMPONENT");var volume=new StringBuilder(64);Check(GetVolumeNameForVolumeMountPointW(root.Substring(0,3),volume,64));Volume=volume.ToString();if(GetDriveTypeW(Volume)!=3)Refuse("NOT_LOCAL_FIXED_VOLUME");uint component,flags;var fs=new StringBuilder(32);Check(GetVolumeInformationW(Volume,null,0,out Serial,out component,out flags,fs,32));if(fs.ToString()!="NTFS")Refuse("UNSUPPORTED_FILESYSTEM");IntPtr h=CreateFileW(Volume,Sync|Attr|1,1,IntPtr.Zero,3,0x02000000|0x00200000,IntPtr.Zero);if(h==new IntPtr(-1))throw new Win32Exception(Marshal.GetLastWin32Error());Outer.Add(h);Identity(h,true,Volume);string final=Volume.TrimEnd('\\');
+    for(int i=0;i<parts.Length;i++){IntPtr next;try{next=Relative(h,parts[i],true,1,false,false);}catch(Win32Exception e){if(i!=parts.Length-1||e.NativeErrorCode!=2)throw;next=Relative(h,parts[i],true,2,false,false);}Outer.Add(next);final+="\\"+parts[i];Identity(next,true,final);h=next;}
+    Dirs.Add("",new Dir {Handle=h,Final=final,Key=""});Lease=Relative(h,".coordinator.lock",false,3,false,false);Identity(Lease,false,final+"\\.coordinator.lock");Bound=true;
   }
   static void Seek(IntPtr h,long offset) {long position;Check(SetFilePointerEx(h,offset,out position,0));if(position!=offset)Refuse("INVALID_OFFSET");}
   static long Size(FileInfo f) {return ((long)f.SizeHigh<<32)|f.SizeLow;}
   static byte[] Bytes(IntPtr h,long limit) {FileInfo info;Check(GetFileInformationByHandle(h,out info));long size=Size(info);if(size>limit)Refuse("SIZE_LIMIT");Seek(h,0);byte[] result=new byte[checked((int)size)];int offset=0;while(offset<result.Length){byte[] chunk=new byte[Math.Min(MaxChunk,result.Length-offset)];uint n;Check(ReadFile(h,chunk,(uint)chunk.Length,out n,IntPtr.Zero));if(n==0||n>chunk.Length)Refuse("TRUNCATED_READ");Buffer.BlockCopy(chunk,0,result,offset,(int)n);offset+=(int)n;}return result;}
   static string Hash(byte[] b) {using(var sha=SHA256.Create())return BitConverter.ToString(sha.ComputeHash(b)).Replace("-","").ToLowerInvariant();}
-  static Written WrittenFile(Dictionary<string,object> v) {string token=S(v,"handle");Written w;if(!Regex.IsMatch(token,@"^[a-f0-9]{32}$")||!Writes.TryGetValue(token,out w))Refuse("STALE_HANDLE");Written found=Writes[token];VerifyDir(found.Parent);Same(found.Original,Identity(found.Handle,false,found.Parent.Final.TrimEnd('\\')+"\\"+found.Name));return found;}
+  static Written WrittenFile(Dictionary<string,object> v) {string token=S(v,"handle");Written w;if(!Regex.IsMatch(token,@"^[a-f0-9]{32}$")||!Writes.TryGetValue(token,out w))Refuse("STALE_HANDLE");return Writes[token];}
   static void HashValue(Dictionary<string,object> v) {if(!Regex.IsMatch(S(v,"sha256"),@"^[a-f0-9]{64}$"))Refuse("INVALID_HASH");}
   static void Flush(IntPtr h) {Check(FlushFileBuffers(h));}
   static void Write(IntPtr h,byte[] b) {uint n;Effect=true;Check(WriteFile(h,b,(uint)b.Length,out n,IntPtr.Zero));if(n!=b.Length)Refuse("SHORT_WRITE");}
-  static IntPtr HeldEntry(Dir parent,string name,bool directory,string expected) {
-    VerifyDir(parent);if(!directory&&parent==Dirs[""]&&name==".coordinator.lock"&&Lease!=IntPtr.Zero){Same(LeaseOriginal,Identity(Lease,false,expected));return Lease;}
-    string key=parent.Key.Length==0?name:parent.Key+"\\"+name;Dir cached;if(directory&&Dirs.TryGetValue(key,out cached)){if(cached.Key!=key||!String.Equals(cached.Final,expected,StringComparison.OrdinalIgnoreCase))Refuse("OWNED_PARENT_MISMATCH");VerifyDir(cached);return cached.Handle;}
-    if(!directory)foreach(var w in Writes.Values)if(w.Parent.Handle==parent.Handle&&w.Name==name){Same(w.Original,Identity(w.Handle,false,expected));return w.Handle;}
-    return IntPtr.Zero;
-  }
   static List<Dictionary<string,object>> Enumerate(Dir dir) {
-    VerifyDir(dir);var rows=new List<Dictionary<string,object>>();IntPtr buffer=Marshal.AllocHGlobal(65536);try{bool first=true;while(true){bool success=GetFileInformationByHandleEx(dir.Handle,first?11:10,buffer,65536);first=false;if(!success){int error=Marshal.GetLastWin32Error();if(error==18)break;throw new Win32Exception(error);}int offset=0;while(true){int next=Marshal.ReadInt32(buffer,offset),length=Marshal.ReadInt32(buffer,offset+60);if(length<0||length>510||(length&1)!=0||offset+104+length>65536)Refuse("DIRECTORY_BUFFER_INVALID");string name=Marshal.PtrToStringUni(IntPtr.Add(buffer,offset+104),length/2);if(name!="."&&name!=".."){if(!Component(name)||rows.Count>=10000)Refuse("DIRECTORY_LIMIT");uint attrs=unchecked((uint)Marshal.ReadInt32(buffer,offset+56));if((attrs&Reparse)!=0)Refuse("REPARSE_ENTRY");bool directory=(attrs&0x10)!=0;string expected=dir.Final.TrimEnd((char)92)+"\\"+name;IntPtr child=HeldEntry(dir,name,directory,expected);bool borrowed=child!=IntPtr.Zero;if(!borrowed)child=Relative(dir.Handle,name,directory,1,false,false);FileInfo info;try{info=Identity(child,directory,expected);ulong enumerated=unchecked((ulong)Marshal.ReadInt64(buffer,offset+96)),held=((ulong)info.IdHigh<<32)|info.IdLow;if(enumerated!=held)Refuse("ENUMERATED_IDENTITY_CHANGED");}finally{if(!borrowed)Close(child);}rows.Add(new Dictionary<string,object>{{"name",name},{"kind",directory?"directory":"file"},{"bytes",Size(info)},{"identity",info.VolumeSerial.ToString("x8")+info.IdHigh.ToString("x8")+info.IdLow.ToString("x8")}});}if(next==0)break;if(next<104||(next&7)!=0||offset+next>65536-104)Refuse("DIRECTORY_BUFFER_INVALID");offset+=next;}}
+    var rows=new List<Dictionary<string,object>>();IntPtr buffer=Marshal.AllocHGlobal(65536);try{bool first=true;while(true){bool success=GetFileInformationByHandleEx(dir.Handle,first?11:10,buffer,65536);first=false;if(!success){int error=Marshal.GetLastWin32Error();if(error==18)break;throw new Win32Exception(error);}int offset=0;while(true){int next=Marshal.ReadInt32(buffer,offset),length=Marshal.ReadInt32(buffer,offset+60);if(length<0||length>510||(length&1)!=0||offset+104+length>65536)Refuse("DIRECTORY_BUFFER_INVALID");string name=Marshal.PtrToStringUni(IntPtr.Add(buffer,offset+104),length/2);if(name!="."&&name!=".."){if(!Component(name)||rows.Count>=10000)Refuse("DIRECTORY_LIMIT");uint attrs=unchecked((uint)Marshal.ReadInt32(buffer,offset+56));if((attrs&Reparse)!=0)Refuse("REPARSE_ENTRY");bool directory=(attrs&0x10)!=0;string expected=dir.Final.TrimEnd('\\')+"\\"+name;IntPtr child=Relative(dir.Handle,name,directory,1,false,false);FileInfo info;try{info=Identity(child,directory,expected);}finally{Close(child);}rows.Add(new Dictionary<string,object>{{"name",name},{"kind",directory?"directory":"file"},{"bytes",Size(info)},{"identity",info.VolumeSerial.ToString("x8")+info.IdHigh.ToString("x8")+info.IdLow.ToString("x8")}});}if(next==0)break;if(next<104||(next&7)!=0||offset+next>65536-104)Refuse("DIRECTORY_BUFFER_INVALID");offset+=next;}}
     }finally{Marshal.FreeHGlobal(buffer);}return rows;
   }
   static void Remove(Dir parent,string name,bool directory,int depth) {
-    if(depth>32)Refuse("CLEANUP_DEPTH");VerifyDir(parent);string final=parent.Final.TrimEnd((char)92)+"\\"+name,key=parent.Key.Length==0?name:parent.Key+"\\"+name;Dir cached;IntPtr h;
-    if(!directory&&HeldEntry(parent,name,false,final)!=IntPtr.Zero)Refuse("OWNED_OBJECT_PROTECTED");
-    if(directory&&Dirs.TryGetValue(key,out cached)){VerifyDir(cached);h=cached.Handle;}else h=Relative(parent.Handle,name,directory,1,false,true);
-    try {FileInfo original=Identity(h,directory,final);if(directory){var d=new Dir {Handle=h,Final=final,Key=key,Original=original};foreach(var row in Enumerate(d))Remove(d,(string)row["name"],(string)row["kind"]=="directory",depth+1);}IntPtr b=Marshal.AllocHGlobal(1);try{Marshal.WriteByte(b,1);Effect=true;Check(SetFileInformationByHandle(h,4,b,1));}finally{Marshal.FreeHGlobal(b);}}finally{if(directory)Dirs.Remove(key);Close(h);}
+    if(depth>32)Refuse("CLEANUP_DEPTH");string key=parent.Key.Length==0?name:parent.Key+"\\"+name;Dir cached;IntPtr h;
+    if(directory&&Dirs.TryGetValue(key,out cached)){h=cached.Handle;Dirs.Remove(key);}else h=Relative(parent.Handle,name,directory,1,false,true);
+    try {string final=parent.Final.TrimEnd('\\')+"\\"+name;Identity(h,directory,final);if(directory){var d=new Dir {Handle=h,Final=final,Key=key};foreach(var row in Enumerate(d))Remove(d,(string)row["name"],(string)row["kind"]=="directory",depth+1);}IntPtr b=Marshal.AllocHGlobal(1);try{Marshal.WriteByte(b,1);Effect=true;Check(SetFileInformationByHandle(h,4,b,1));}finally{Marshal.FreeHGlobal(b);}}finally{Close(h);}
   }
   static Dictionary<string,object> Execute(Dictionary<string,object> v,string operation) {
     var result=new Dictionary<string,object>();
     if(operation=="bind"){Bind(v);return result;}
-    if(!Bound)Refuse("ROOT_NOT_BOUND");if(operation!="dispose")VerifyBinding();
+    if(!Bound)Refuse("ROOT_NOT_BOUND");
     switch(operation){
       case "capabilities": Keys(v);result.Add("capabilities",new {protocol=1,platform="windows-x64",filesystem="NTFS",runtimeProof="NOT_VERIFIED",unconditionalPowerLoss="NOT_PROVEN"});break;
       case "dispose": Keys(v);Release();Bound=false;break;
       case "mkdir": {
-        Keys(v,"path");string[] parts=PathParts(v,"path",false);string name=parts[parts.Length-1];Dir parent=Directory(Sub(parts));string key=String.Join("\\",parts);if(Dirs.ContainsKey(key))Refuse("TARGET_EXISTS");IntPtr h=Relative(parent.Handle,name,true,2,false,true);string final=parent.Final.TrimEnd('\\')+"\\"+name;Dir created;try{created=CheckedDir(h,final,key);}catch{Close(h);throw;}Dirs.Add(key,created);break;
+        Keys(v,"path");string[] parts=PathParts(v,"path",false);string name=parts[parts.Length-1];Dir parent=Directory(Sub(parts));string key=String.Join("\\",parts);if(Dirs.ContainsKey(key))Refuse("TARGET_EXISTS");IntPtr h=Relative(parent.Handle,name,true,2,false,true);string final=parent.Final.TrimEnd('\\')+"\\"+name;try{Identity(h,true,final);}catch{Close(h);throw;}Dirs.Add(key,new Dir {Handle=h,Final=final,Key=key});break;
       }
       case "write-open": {
-        Keys(v,"path","maxBytes");string[] parts=PathParts(v,"path",false);long max=N(v,"maxBytes",0,MaxFile);if(Created>=10000||Writes.Count>=10000||OpenBudget+max>MaxFile)Refuse("WRITE_RESOURCE_LIMIT");Dir parent=Directory(Sub(parts));string name=parts[parts.Length-1];IntPtr h=Relative(parent.Handle,name,false,2,true,true);FileInfo original;try{original=Identity(h,false,parent.Final.TrimEnd('\\')+"\\"+name);}catch{Close(h);throw;}string token=Guid.NewGuid().ToString("N");Writes.Add(token,new Written {Handle=h,Parent=parent,Name=name,Max=max,Original=original});Created++;OpenBudget+=max;result.Add("handle",token);break;
+        Keys(v,"path","maxBytes");string[] parts=PathParts(v,"path",false);long max=N(v,"maxBytes",0,MaxFile);if(Created>=10000||Writes.Count>=10000||OpenBudget+max>MaxFile)Refuse("WRITE_RESOURCE_LIMIT");Dir parent=Directory(Sub(parts));string name=parts[parts.Length-1];IntPtr h=Relative(parent.Handle,name,false,2,true,true);try{Identity(h,false,parent.Final.TrimEnd('\\')+"\\"+name);}catch{Close(h);throw;}string token=Guid.NewGuid().ToString("N");Writes.Add(token,new Written {Handle=h,Parent=parent,Name=name,Max=max});Created++;OpenBudget+=max;result.Add("handle",token);break;
       }
       case "write-chunk": {
         Keys(v,"handle","offset","data");Written w=WrittenFile(v);if(w.Sealed||N(v,"offset",0,MaxFile)!=w.Length)Refuse("INVALID_WRITE_OFFSET");string data=S(v,"data");if(data.Length==0||data.Length>87384||!Regex.IsMatch(data,@"^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"))Refuse("INVALID_CHUNK");byte[] bytes=Convert.FromBase64String(data);if(bytes.Length==0||bytes.Length>MaxChunk||Convert.ToBase64String(bytes)!=data||w.Length+bytes.Length>w.Max)Refuse("WRITE_LIMIT");Identity(w.Handle,false,w.Parent.Final.TrimEnd('\\')+"\\"+w.Name);Seek(w.Handle,w.Length);Write(w.Handle,bytes);w.Length+=bytes.Length;result.Add("offset",w.Length);break;
@@ -150,11 +120,7 @@ public static class FradeFilesystem {
     }return result;
   }
   static string[] Sub(string[] a) {var r=new string[a.Length-1];Array.Copy(a,r,r.Length);return r;}
-  static void ReleaseHandle(IntPtr h,ref Exception error) {try{Close(h);}catch(Exception e){if(error==null)error=e;}}
-  static void Release() {
-    Bound=false;Exception error=null;foreach(var w in Writes.Values)ReleaseHandle(w.Handle,ref error);Writes.Clear();Lists.Clear();var directories=new List<Dir>(Dirs.Values);directories.Sort((a,b)=>b.Key.Length.CompareTo(a.Key.Length));foreach(var d in directories)if(d.Key.Length!=0)ReleaseHandle(d.Handle,ref error);Dirs.Clear();ReleaseHandle(Lease,ref error);Lease=IntPtr.Zero;
-    for(int i=PendingOuter.Count-1;i>=0;i--)ReleaseHandle(PendingOuter[i],ref error);PendingOuter.Clear();for(int i=RedundantOuter.Count-1;i>=0;i--)ReleaseHandle(RedundantOuter[i],ref error);RedundantOuter.Clear();for(int i=Outer.Count-1;i>=0;i--)ReleaseHandle(Outer[i],ref error);Outer.Clear();Chain.Clear();if(error!=null)throw error;
-  }
+  static void Release() {foreach(var w in Writes.Values)Close(w.Handle);Writes.Clear();Lists.Clear();var directories=new List<Dir>(Dirs.Values);directories.Sort((a,b)=>b.Key.Length.CompareTo(a.Key.Length));foreach(var d in directories)if(d.Key.Length!=0)Close(d.Handle);Dirs.Clear();Close(Lease);Lease=IntPtr.Zero;for(int i=Outer.Count-1;i>=0;i--)Close(Outer[i]);Outer.Clear();}
   static byte[] Frame(Stream input) {var bytes=new List<byte>();while(true){int value=input.ReadByte();if(value<0){if(bytes.Count!=0)Refuse("TRUNCATED_FRAME");return null;}bytes.Add((byte)value);if(bytes.Count>MaxFrame)Refuse("FRAME_LIMIT");if(value==10)return bytes.ToArray();}}
   public static int Main() {
     Console.OutputEncoding=new UTF8Encoding(false);int exit=0;
