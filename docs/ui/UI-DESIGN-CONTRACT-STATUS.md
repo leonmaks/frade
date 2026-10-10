@@ -1,3 +1,34 @@
+# Frade UI Design Contract — текущий статус
+
+Обновлено 2026-10-10T18:59:50.260Z. Ветка `codex/frade-ui-design-contract`; worktree `C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade`; общий Git `E:/dev/codex/frade/.git`. Guide v1.0. Исходный baseline программы `98f387f96b51b0ad139e3507c376ff1c3e8dec09`, P02 baseline `0ecaf44938382bd8daa7d512887dda8a8ee9b372`.
+
+Продуктовый checkpoint `4cff62f9aa35b0a40019640636ea70a7bbff5081` опубликован в `origin/ codex/frade-ui-design-contract`; фактический remote SHA проверен. Этот отдельный docs checkpoint сохраняет результат публикации и актуальный статус.
+
+| Этап / задача | Статус |
+| --- | --- |
+| Foundation и P01 | ARCHIVED; ранее принятые исключения сохранены |
+| P02 transactional installer | IN_PROGRESS — 3/9 задач, task 2.2 не закрыта |
+| 1.1 Audit / predecessor, 1.2 PRE, 2.1 archive RED | DONE в рамках соответствующих evidence |
+| 2.2 Backend / Main bootstrap | Реализованы компонентные части; staging / journal service / file-picker bridge остаются открытыми |
+| Точный DEV diagnostic scope | IMPLEMENTED; strict validation и независимый PRE PASS |
+| Текущие проверки | 147 unit, 19 targeted, typecheck, lint PASS; build / boundaries / UI compliance / production-log absence PASS на сохранённых соответствующих входах |
+| Три runtime попытки | Первая: 5 PASS / 1 FAIL нового ANSI parser; parser исправлен через RED → GREEN. Вторая и третья: по 1 PASS dev/rebuild |
+| Исторический dev5s timeout | FAIL сохранён; причина NOT_PROVEN, 3/3 diagnostic attempts исчерпаны, STOP |
+| Независимый S1 POST / новый POST | FAIL / NOT_RUN; Main-close repair проверен тестами, независимое закрытие остаётся открытым |
+| 2.3 Recovery / rollback | NOT_DONE |
+| 2.4 Extensions view / activation controls | NOT_DONE |
+| 3.1 Cumulative checks / a11y / visuals | NOT_DONE |
+| 3.2 Full verify / POST; 3.3 archive | NOT_DONE |
+| P03–P07 | NOT_STARTED; следующий numbered change не разрешён автоматически |
+
+Решение ожидается: [P02-DEV-TIMEOUT-DEFERRED-RISK-01](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk.proposed.md), SHA256 `45f679ba135d23b2f5b39156374de8b890fa9f217a853635fb3eb0726288df48`. Предлагается перенести только один исторический FAIL в отложенный риск P02-D01, сохранив timeout и assertions. **NOT_APPROVED**; переноса риска сейчас нет. После решения — согласование плана, strict validation и автоматические PRE/POST `gpt-6-sol / xhigh` по плану. Без решения дополнительные dev попытки и продвижение S1/S2 не выполняются.
+
+Evidence: [полный отчёт](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-stop-assessment-20261010T184907927Z/REPORT.md), [актуальные hashes и EOL equivalence](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-checkpoint-resume-20261010T185733228Z/resume.json), [проверка публикации](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-publication-20261010T185950260Z/publication.json). Исторические отчёты не переписаны. Новые unit-tail CRLF → LF изменили raw SHA теста, но сохранили исходный префикс и byte-identical emitted JS; отдельное evidence фиксирует reuse проверок. Screenshots сохранены в runtime evidence отчёта; новой визуальной baseline нет.
+
+READY_FOR_VERIFY: NO. Merge protection: LOCAL_ONLY / NOT_CONFIGURED. Routing не является зависимостью этой работы. Открытие статуса в правой панели запрашивается; видимость не подтверждена.
+
+## Предыдущие записи — сохранены
+
 # P02 DEV diagnostics — incomplete checkpoint publication
 
 2026-10-10T18:51:22.034Z; owningUIbranch/worktree; accepteddiagnostics PREPASS+147unit/type/lint and bounded actualruntime evidence checked. STOP3/3 causeNOT_PROVEN; oldPOSTFAIL/newPOSTNOT_RUN, P02overall3/9. Checkpointcommitting/pushpending, priorpublishede4d408cd318b792c2c0b098c29166fc5721ddaa5. Exact634inputsverifiedbeforestaging;4approvedproduct/testpaths+4activeplanningfiles+acceptance/status/evidence, noforeignchanges. Originalrawlogs/traceforce-trackedexactly, noignorepolicyedit. openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-incomplete-checkpoint-20261010T185122034Z/checkpoint.json; completecurrentreportopenspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-stop-assessment-20261010T184907927Z/REPORT.md. PendingriskdecisionNOT_APPROVED openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk.proposed.md, SHA25645f679ba135d23b2f5b39156374de8b890fa9f217a853635fb3eb0726288df48; nowaiver.
