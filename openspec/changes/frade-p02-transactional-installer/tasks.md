@@ -49,3 +49,7 @@ Task2.1 complete: exact original/derived hashes and53 behavioral RED assertions 
 ## PRE placement/reservation repair
 
 2026-10-10T04:54:52.456Z: read-only RCAopenspec/changes/frade-p02-transactional-installer/evidence/p02-placement-budget-planning-repair-20261010T045452Z/root-cause.json before changes. Task2.2 native entry requires freshPRE after same-parent publication, finite full-closure reservation and sibling output refinement; actual native RED/capabilities/dev/build/start remainNOT_RUN. Task2.3 keeps all real kill/reopen tests plus quota-boundary/repeated-recovery/lockedcleanup no-new-record cases. Tasks3/9; unchanged original task obligations, oldFAIL preserved. No skip/waiver/scope expansion.
+
+## Windows backend fresh PRE result
+
+2026-10-10T05:21:49.960Z: GATE_STATUS PASS; reportSHA3463d77ef02cfab9edda79f8791f1bf56dc00d82049f0d3492b0a63bc60ff70e;76completeevents/17raw/306files, exactCLI gpt-6-sol/xhigh and confinement/source/packet/request/decisionsPASS. Receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T052148Z/verification.json. Native backend remainsNOT_IMPLEMENTED; tasks3/9. Backend BDD/TDD may begin; no cumulative POST or visual/archive approval. Actualbackend/effortNOT_CONFIRMED. OriginalFAIL/PASS preserved.

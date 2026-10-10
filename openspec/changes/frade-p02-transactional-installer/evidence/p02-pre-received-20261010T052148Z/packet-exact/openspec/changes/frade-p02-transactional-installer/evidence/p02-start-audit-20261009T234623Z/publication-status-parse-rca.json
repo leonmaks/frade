@@ -1,0 +1,9 @@
+{
+  "atUtc": "2026-10-09T23:48:10.600Z",
+  "classification": "TEST_TOOLING",
+  "failedToolChunk": "2bf5b8",
+  "error": "AssertionError [ERR_ASSERTION]: FOREIGN_DIRTY_PATH",
+  "cause": "ok() trims whole porcelain output; first status leading blank removed before slice(3). Actual inspected paths all belong to authorized P02 audit/status.",
+  "mutationBeforeFailure": "NONE_INDEX_EMPTY_HEAD_UNCHANGED",
+  "correction": "Use successful raw NUL-delimited porcelain without trim; preserve exact status prefix parsing. No scope broadening."
+}
