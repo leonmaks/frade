@@ -8,7 +8,7 @@ Focused PRE разрешает только принятый S1; не capability
 
 Следующий шаг: Meaningful RED для expectedIdentity/emptyOnly и bounded bootstrap factory; затем S1 Main runtime/lifetime, действующие проверки по плану.
 
-Последний verified published HEAD 070a077a49f2ca98ab39b3a1ae21bc3d3cb078a0; PRE result checkpoint PENDING. Only authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+Последний verified published HEAD 070a077a49f2ca98ab39b3a1ae21bc3d3cb078a0; PRE result checkpoint 1b771a27de5954f3b1f6446c3825ce18ac5116b0 COMMITTED/PUSHED_REMOTE_SHA_VERIFIED; publication metadata follows. Only authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
 
 ## Предыдущие записи
 
