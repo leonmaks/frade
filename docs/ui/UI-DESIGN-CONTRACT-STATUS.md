@@ -8,7 +8,7 @@ Plan openspec/changes/frade-p02-transactional-installer/evidence/p02-main-parent
 
 Open: full native guard/protocol/real-kill/capability/deploy tests; staging/journal/reserve/recovery/IPC/ExtensionsUI; full general/P01/a11y/visual/verify/POST/archive. Foundation/P01 ARCHIVED with exact3minorOPEN_ACCEPTED_DEFERRED/rawFAIL retained. P03–P07/later migration NOT_STARTED; STOPbeforeP03.
 
-Last PRE published3ae832f1/seal2ea2d288 remoteSHAverified. Current source/plan/evidence checkpoint publication preparing. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. Old statuses/evidence retained below.
+Last PRE published3ae832f1/seal2ea2d288 remoteSHAverified. Current source/plan/evidence checkpoint e0b34f619be43750808079080fbb46c5f854c43b COMMITTED/PUSHED; remoteSHAverified; metadata follows. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. Old statuses/evidence retained below.
 
 ## Предыдущие записи
 
