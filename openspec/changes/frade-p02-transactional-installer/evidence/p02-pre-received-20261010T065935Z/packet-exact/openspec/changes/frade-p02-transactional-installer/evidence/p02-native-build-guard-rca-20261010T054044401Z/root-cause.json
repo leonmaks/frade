@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-10T05:40:44.407Z",
+  "classification": "INTEGRATION",
+  "cause": "Overbroad helper replacement a.Length also changed data.Length to data.Count, causing CS1061. Dependent runtime test command then ran stale prior artifact because outer PowerShell did not stop on nonzero build.",
+  "repair": "Restore only two data.Length accesses; native fixture now verifies source/artifact metadata before any owned filesystem work. Subsequent build/test calls are separate and only run tests after actual build exit0.",
+  "priorResult": "native-array-repaired-runtime is actual FAIL on stale prior artifact, not current candidate evidence; raw kept unchanged",
+  "testIntegrity": "Adds mandatory freshness precondition; existing assertions unchanged"
+}

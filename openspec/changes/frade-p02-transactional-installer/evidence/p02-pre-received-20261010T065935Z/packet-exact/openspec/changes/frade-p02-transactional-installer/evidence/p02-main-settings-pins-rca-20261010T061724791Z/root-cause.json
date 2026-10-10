@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-10-10T06:17:24.791Z",
+  "classification": "INTEGRATION",
+  "status": "OPEN_APPLICABLE_MAIN_PERSISTENCE_BLOCKER",
+  "cause": "Retained outer directory handles prevent current Main defaultFiles atomic rename while a descendant extensions root is bound: actual EBUSY, old record byte-preserved.",
+  "candidateNativeUnchanged": true,
+  "diagnostic": "Releasing only outer metadata handles after full root/lease binding permits the primitive Main rename; actual root and userData-ancestor rename attempts still refuse. This is diagnostic-only, not full in-place reparse/race/identity proof or approval.",
+  "next": "Preserve current pin lifetime until concrete guard proof and coherent fresh PRE, or request a material named Main-store scope if required. Source-parent NT rename PRE only grants its exact separate repair.",
+  "scope": "Owned Temp only; no app settings/project/credentials/global configuration writes",
+  "retained": [
+    {
+      "source": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-p02-presentation-pin-probe-20261010T055952500Z.json",
+      "destination": "openspec/changes/frade-p02-transactional-installer/evidence/p02-main-settings-pins-rca-20261010T061724791Z/main-settings-pin-probe.json",
+      "sha256": "ef7e32b2bd284ddaf9eda919f0d42398c45f50a23d7ec8a74d29c3e3ace541b8",
+      "bytes": 921
+    },
+    {
+      "source": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-p02-presentation-pin-probe.mjs",
+      "destination": "openspec/changes/frade-p02-transactional-installer/evidence/p02-main-settings-pins-rca-20261010T061724791Z/main-settings-pin-probe.mjs",
+      "sha256": "b85fd2ec0de50f66748743662fa902a0655263907358916fbf4fbfdd454a995a",
+      "bytes": 2592
+    },
+    {
+      "source": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-p02-ancestor-lifetime-probe-20261010T060558268Z.json",
+      "destination": "openspec/changes/frade-p02-transactional-installer/evidence/p02-main-settings-pins-rca-20261010T061724791Z/ancestor-lifetime-probe.json",
+      "sha256": "28e6c13174e1689553dc65528ae4a70edc6e2dd24cc1d79df98feedb12875a3f",
+      "bytes": 1501
+    },
+    {
+      "source": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-p02-ancestor-lifetime-probe-20261010T060558268Z.fixture.cs",
+      "destination": "openspec/changes/frade-p02-transactional-installer/evidence/p02-main-settings-pins-rca-20261010T061724791Z/ancestor-lifetime.fixture.cs",
+      "sha256": "594b32527e0d9b1cdd3abacb1747be26798d5f83868cbe54d87e33c2440e6d77",
+      "bytes": 23393
+    },
+    {
+      "source": "C:/Users/NVISEN/AppData/Local/Temp/frade-ui-p02-ancestor-lifetime-probe.mjs",
+      "destination": "openspec/changes/frade-p02-transactional-installer/evidence/p02-main-settings-pins-rca-20261010T061724791Z/ancestor-lifetime-probe.mjs",
+      "sha256": "3fb3d59f42c5fa3e77c38441f8ffbc431e2993047145070afdf545b7208b5b41",
+      "bytes": 4086
+    }
+  ]
+}

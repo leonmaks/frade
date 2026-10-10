@@ -1,0 +1,166 @@
+{
+  "atUtc": "2026-10-10T06:25:49.641Z",
+  "outcomes": [
+    {
+      "releaseOuter": false,
+      "kind": "outer-userData",
+      "bind": {
+        "version": 1,
+        "requestId": 1,
+        "session": "2760adf5-66ca-4ca1-ab43-321ee8cb7093",
+        "generation": 1,
+        "clockMs": 71,
+        "status": "ACK"
+      },
+      "result": {
+        "stage": "open",
+        "success": false,
+        "error": 32
+      }
+    },
+    {
+      "releaseOuter": false,
+      "kind": "installation-root",
+      "bind": {
+        "version": 1,
+        "requestId": 1,
+        "session": "2760adf5-66ca-4ca1-ab43-321ee8cb7093",
+        "generation": 1,
+        "clockMs": 71,
+        "status": "ACK"
+      },
+      "result": {
+        "stage": "open",
+        "success": false,
+        "error": 32
+      }
+    },
+    {
+      "releaseOuter": false,
+      "kind": "checked-child",
+      "bind": {
+        "version": 1,
+        "requestId": 1,
+        "session": "2760adf5-66ca-4ca1-ab43-321ee8cb7093",
+        "generation": 1,
+        "clockMs": 71,
+        "status": "ACK"
+      },
+      "result": {
+        "stage": "open",
+        "success": false,
+        "error": 32
+      }
+    },
+    {
+      "releaseOuter": true,
+      "kind": "outer-userData",
+      "bind": {
+        "version": 1,
+        "requestId": 1,
+        "session": "fa90dbfc-7a02-4b8b-826b-5575ecebe116",
+        "generation": 1,
+        "clockMs": 69,
+        "status": "ACK"
+      },
+      "result": {
+        "stage": "set-reparse",
+        "success": false,
+        "error": 145,
+        "reparseRemoved": true,
+        "deleteError": 0
+      }
+    },
+    {
+      "releaseOuter": true,
+      "kind": "installation-root",
+      "bind": {
+        "version": 1,
+        "requestId": 1,
+        "session": "fa90dbfc-7a02-4b8b-826b-5575ecebe116",
+        "generation": 1,
+        "clockMs": 69,
+        "status": "ACK"
+      },
+      "result": {
+        "stage": "open",
+        "success": false,
+        "error": 32
+      }
+    },
+    {
+      "releaseOuter": true,
+      "kind": "checked-child",
+      "bind": {
+        "version": 1,
+        "requestId": 1,
+        "session": "fa90dbfc-7a02-4b8b-826b-5575ecebe116",
+        "generation": 1,
+        "clockMs": 69,
+        "status": "ACK"
+      },
+      "result": {
+        "stage": "open",
+        "success": false,
+        "error": 32
+      }
+    }
+  ],
+  "builds": [
+    {
+      "name": "actor",
+      "command": [
+        "C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+        "/nologo",
+        "/target:exe",
+        "/platform:x64",
+        "/warnaserror+",
+        "/reference:System.Web.Extensions.dll",
+        "/out:C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-reparse-lifetime-probe-QTt9A1\\actor.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-reparse-lifetime-probe-QTt9A1\\actor.cs"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "sourceSha256": "9520c297e0bff947a177afccefb3f24b526f6269518f1fda4bac6a489450849b"
+    },
+    {
+      "name": "helper-false",
+      "command": [
+        "C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+        "/nologo",
+        "/target:exe",
+        "/platform:x64",
+        "/warnaserror+",
+        "/reference:System.Web.Extensions.dll",
+        "/out:C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-reparse-lifetime-probe-QTt9A1\\helper-false.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-reparse-lifetime-probe-QTt9A1\\helper-false.cs"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "sourceSha256": "06b443cdcff44055ac5b18322194e5a6796a74bbcd6950496661a2fd5e128e03"
+    },
+    {
+      "name": "helper-true",
+      "command": [
+        "C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+        "/nologo",
+        "/target:exe",
+        "/platform:x64",
+        "/warnaserror+",
+        "/reference:System.Web.Extensions.dll",
+        "/out:C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-reparse-lifetime-probe-QTt9A1\\helper-true.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-reparse-lifetime-probe-QTt9A1\\helper-true.cs"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "sourceSha256": "822ae128149e03ed5af854ce25ca948a8666c516f51d04948b4a8c6030b0a290"
+    }
+  ],
+  "fixtureRemoved": true,
+  "candidateUnchanged": true,
+  "originalSourceSha256": "06b443cdcff44055ac5b18322194e5a6796a74bbcd6950496661a2fd5e128e03",
+  "scope": "Owned Temp diagnostic of in-place mountpoint mutation; production and exact root/child share masks unchanged. Outer-lifetime variant not approved or shipped. Not full adversarial/security/runtime proof."
+}

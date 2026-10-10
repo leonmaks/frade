@@ -1,0 +1,86 @@
+{
+  "atUtc": "2026-10-10T01:34:26.593Z",
+  "status": "ARCHIVE_COMPONENT_CHECKS_PASS_NOT_P02_CLOSURE",
+  "checks": [
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-archive59-20261010T013103740Z/execution.json",
+      "sha256": "1f303af22d07da26b19afb9f45305ba110bb50d94dafdd71cf8699b577a6ec5a",
+      "atUtc": "2026-10-10T01:31:09.357Z",
+      "label": "archive59",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "packages/extension-service/node_modules/vitest/vitest.mjs",
+        "run",
+        "--root",
+        "packages/extension-service",
+        "tests/archive.bdd.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "d287aeaf97af7f32b3073c8ca3d8378bb5b8edf921604b8549a81fa125a68617",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-type-service-20261010T013057755Z/execution.json",
+      "sha256": "5dca4c62dd71708d6aea49c498ddef720b820c15c191386641aa20cb781e84de",
+      "atUtc": "2026-10-10T01:30:59.311Z",
+      "label": "type-service",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "packages/extension-service/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "packages/extension-service/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-type-contracts-20261010T013101529Z/execution.json",
+      "sha256": "5f7eaa90413d8bae7c2b730d850526f0825cf68c078daba20a15577938dda92d",
+      "atUtc": "2026-10-10T01:31:02.010Z",
+      "label": "type-contracts",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "packages/extension-contracts/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "packages/extension-contracts/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-lint-archive-20261010T013059694Z/execution.json",
+      "sha256": "54fc6fc139fe474fe7fad2c83d810382ab0d8b62c2942cf647e99ee74af909d1",
+      "atUtc": "2026-10-10T01:31:03.149Z",
+      "label": "lint-archive",
+      "status": "PASS",
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "node_modules/eslint/bin/eslint.js",
+        "packages/extension-service/src",
+        "packages/extension-service/tests",
+        "packages/extension-contracts/src"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "RED53": "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-red-expanded-20261010T012421Z",
+  "firstFail": "openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-green1-fail-20261010T012751Z",
+  "originalSHA": "e6372222207f180fdd5f759f4cbd654f295ce11e91bc6a9e86e1d766b9f04475",
+  "derivedSHA": "d04a72126c28321045dbaa0e600fbba9d6085fa15cddb3e4aaad1e57ff016926",
+  "productionScope": "New archive validator+portable DTO leaf only; no existing feature code",
+  "remaining": "Filesystem staging/journal/recovery/IPC/UI/fallback/full regressions/visual/verify/POST/archive NOT_IMPLEMENTED or NOT_RUN",
+  "tasks": "3/9"
+}

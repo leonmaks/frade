@@ -1,3 +1,17 @@
+# UI Design Contract — P02 focused PRE PASS;3/9
+
+Обновлено 2026-10-10T07:01:27.495Z; branch codex/frade-ui-design-contract/worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/common E:/dev/codex/frade/.git. Originals98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved; Guide1.0; Routing independent.
+
+Immediate-parent metadata repair PRE PASS, requested gpt-6-sol/xhigh; raw openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T065935Z/output--result.md and verification.json. 83 complete events/471 files; hashes/confinement/CLI verified. Actualbackend/effortNOT_CONFIRMED. Verdict covers frozen narrow PLAN, not capability/P02 closure. Tasks3/9;2.2IN_PROGRESS. Current native5:4PASS/1FAIL actual Main UNKNOWN with old bytes preserved; original4 reviewed NT repairPASS.102portable/archivePASS/typecheck/lint/strict/UIcompliancePASS.
+
+Additional diagnostics after freeze, outside this PRE: own Temp sibling renameEBUSY until helper disposal; root list/cached-child list/recursive cleanupWIN32_32. RCA openspec/changes/frade-p02-transactional-installer/evidence/p02-after-freeze-native-diagnostics-20261010T070126337Z. Wider post-bind overlapping metadata probe restores Main/sibling primitives and denies tested attacks, diagnostic-only/not full security proof. No metadata handoff implemented. Next reconcile reviewer findings with new blockers, preserve requirements and perform fresh coherent revalidation before any broader guard repair.
+
+Open: full native adversarial/protocol/death/capability/dev/build/start; staging/journal/reserve/recovery/IPC/ExtensionsUI; general/P01/a11y/visual/verify/POST/archive. Foundation/P01ARCHIVED with exact3minorOPEN_ACCEPTED_DEFERRED/rawFAIL retained. P03–P07/later migrationNOT_STARTED; STOPbeforeP03.
+
+Planning e0b34f61/seal15311245 COMMITTED/PUSHED remoteverified. currentPRE receipt checkpoint publicationPENDING. Rightpanelqueued/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. Old states/evidence retained below.
+
+## Предыдущие записи
+
 # UI Design Contract — P02 Main persistence repair;3/9
 
 Обновлено 2026-10-10T06:36:38.735Z; branch codex/frade-ui-design-contract/worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/common E:/dev/codex/frade/.git. Origins98f387f/P020ecaf44938382bd8daa7d512887dda8a8ee9b372 preserved. Guide1.0; Routing independent.

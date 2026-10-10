@@ -1,0 +1,16 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.windows.test.ts (5 tests | 1 failed) 1050ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > binds an ordinary owned root and releases all directory handles on dispose 184ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > performs exclusive actual write, flush, same-parent absent-target rename and exact readback  308ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > refuses an existing junction installation root without outside writes 202ms
+   ✓ P02FS001–004: actual Windows checked handles and publication > pins an ancestor so an actual attempted rename cannot redirect a later child effect 167ms
+   × P02FS001–004: actual Windows checked handles and publication > keeps actual Main persistence, readback, restart and compensation working while native root is bound 187ms
+     → expected 'UNKNOWN' to be 'ACK' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  09:33:04
+   Duration  2.27s (transform 250ms, setup 0ms, collect 289ms, tests 1.05s, environment 0ms, prepare 360ms)
+

@@ -1,0 +1,44 @@
+{
+  "atUtc": "2026-10-10T06:26:57.226Z",
+  "response": {
+    "version": 1,
+    "requestId": 1,
+    "session": "ee9dbf80-9d35-40e7-a7e3-c3f77d030f7c",
+    "generation": 1,
+    "clockMs": 67,
+    "status": "ACK"
+  },
+  "outcomes": [
+    {
+      "operation": "Main-settings-rename",
+      "status": "RENAMED",
+      "readback": "new-record"
+    },
+    {
+      "operation": "installation-root-rename",
+      "status": "REFUSED",
+      "code": "EBUSY"
+    },
+    {
+      "operation": "ancestor-userData-rename",
+      "status": "REFUSED",
+      "code": "EPERM"
+    }
+  ],
+  "fixtureRemoved": true,
+  "candidateUnchanged": true,
+  "originalSourceSha256": "06b443cdcff44055ac5b18322194e5a6796a74bbcd6950496661a2fd5e128e03",
+  "fixtureSourceSha256": "753def5afe924bddf006674f133ab5de71f9fbae28844cf4b4062edb1ef7f6a1",
+  "command": [
+    "C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+    "/nologo",
+    "/target:exe",
+    "/platform:x64",
+    "/warnaserror+",
+    "/reference:System.Web.Extensions.dll",
+    "/out:C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-ancestor-metadata-probe-Qoz7Pe\\probe.exe",
+    "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-ancestor-metadata-probe-Qoz7Pe\\probe.cs"
+  ],
+  "buildExit": 0,
+  "scope": "Diagnostic-only reducing non-install-root ancestor desired access to SYNCHRONIZE|FILE_READ_ATTRIBUTES; all handles/lifetimes/FILE_SHARE_READ retained, install root and descendants unchanged. Main primitives/root/ancestor rename attempts, NOT full proof or approved production."
+}
