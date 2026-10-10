@@ -12,7 +12,7 @@ Measured current service full test64s/BDD67s versus targeted host26≈11s; эт�
 
 P02 tasks **3/9**,2.2 IN_PROGRESS. Последние реальныe component checks test226PASS/BDD226PASS/type/lint/build/boundaries/UIcompliance/strictPASS сохраняются, новых test runs не заявляем. Capabilities NOT_VERIFIED; factory/Main/dev initial/rebuild/start/journal/recovery/Extensions UI/full checks/verify/cumulative POST/archive открыты. READY_FOR_VERIFY:NO; STOP beforeP03.
 
-Последний опубликованный HEAD6f7efb1ebb9a14457d8b3b01441cfdbb7a5397e6. Strategy docs checkpoint publication PENDING; destination только authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Rightpanelqueued/visibilityunconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED. Изменены только собственные analysis evidence/dashboard/tasks; product и historical evidence неизменны.
+Последний опубликованный HEAD6f7efb1ebb9a14457d8b3b01441cfdbb7a5397e6. Strategy docs checkpoint 59f24bf8764aa1dfe0190d5d745227e8c4be7f5a COMMITTED/PUSHED, remote SHA verified; publication metadata follows; destination только authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Rightpanelqueued/visibilityunconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED. Изменены только собственные analysis evidence/dashboard/tasks; product и historical evidence неизменны.
 
 ## Предыдущие записи
 
