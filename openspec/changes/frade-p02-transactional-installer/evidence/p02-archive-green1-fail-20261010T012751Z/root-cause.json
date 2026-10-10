@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-10-10T01:27:56.843Z",
+  "classification": "INTEGRATION",
+  "status": "REPRODUCED_SPECIFIC_DIAGNOSTIC_FAILURE",
+  "case": "P02PKG006 encrypted stored entry",
+  "cause": "yauzl validateEntrySizes rejects the encrypted stored size before emitting Entry, so late application isEncrypted guard never runs and broad parserError maps to SIZE_MISMATCH. Content is safely rejected but cause is misclassified.",
+  "repair": "Bounded redundant central transport preflight recognizes encryption/compression flags before parser entry-size error; retain validateEntrySizes=true and original specific diagnostic assertion.",
+  "scope": "Existing accepted P02 archive validator only",
+  "original53AssertionsUnchanged": true,
+  "patchAttempts": 0
+}

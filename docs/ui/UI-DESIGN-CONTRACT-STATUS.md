@@ -1,3 +1,31 @@
+# UI Design Contract: P02 BDD/TDD;3/9 — archive checks PASS
+
+Updated 2026-10-10T01:27:56.844Z; branch codex/frade-ui-design-contract; owning C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f/P02baseline0ecaf449 retained. Guide1.0/tokens1.0.0. Routing independent.
+
+| Stage | Status |
+|---|---|
+| Foundation/P01 | ARCHIVED;3accepted minor defects remain open; rawFAIL retained |
+| P02 |3/9; PRE PASS; archive validation component GREEN59/59; host integration NOT_IMPLEMENTED |
+| P03–P07 | NOT_STARTED |
+
+| Task | Actual status |
+|---|---|
+|1.1 audit/scope | COMPLETE |
+|1.2 strict/PRE | COMPLETE gpt-6-sol/xhigh;135events203files exactintegrityPASS |
+|2.1 fixtures/RED | COMPLETE53/53behavioralRED; original/compatibleLightDark hashes preserved; actual201MiB |
+|2.2 contracts/validation/staging/IPC | IN_PROGRESS; archive59PASS/typecheck/lintPASS; staging/IPC NOT_IMPLEMENTED |
+|2.3 journal/crash/rollback | NOT_RUN |
+|2.4 Extensions UI/fallback | NOT_RUN |
+|3.1 full checks/visual | NOT_RUN; no fresh screenshots |
+|3.2 verify/POST | NOT_RUN gpt-6-sol/xhigh |
+|3.3 archive | NOT_RUN; STOPbeforeP03 |
+
+Current archive diagnostic/lint blockers resolved; historical52/53FAIL retained. Applicable archive checks59/59 + service/leaf typecheck + lint PASS. Next: actual filesystem containment/durability/readiness RED for staging and journal. [Raw failure/RCA](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-green1-fail-20261010T012751Z/root-cause.json). First failure52/53 retained, original assertions unchanged; repair passed exact original assertions before proceeding. No human decision needed. PRE PASS does not approve behavior or visuals; actual backend/effortNOT_CONFIRMED. Existing P01controls untouched. No blanket waiver. Right panelqueued; protectionLOCAL_ONLY/NOT_CONFIGURED.
+
+Git: PRE checkpoint793a8f51/metadataed05fa98 COMMITTED/PUSHED and remoteSHAverified; current3/9 archive validator checkpoint publication PENDING. Only authorized UI origin/ref.
+
+## Previous records preserved
+
 # UI Design Contract: P02 PRE PASS;2/9 — BDD/TDD starting
 
 Updated 2026-10-10T01:16:41.703Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Original program98f387f and P02 baseline0ecaf449 retained; Guide1.0/tokens1.0.0; Routing independent.

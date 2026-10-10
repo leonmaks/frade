@@ -1,0 +1,21 @@
+import fs from 'node:fs';import {spawnSync} from 'node:child_process';import crypto from 'node:crypto';import assert from 'node:assert/strict';const meta='C:/Users/NVISEN/AppData/Local/Temp/frade-ui-p02-current.json',m=JSON.parse(fs.readFileSync(meta));const test='packages/extension-service/tests/archive.bdd.test.ts';fs.copyFileSync(test,m.redDir+'/archive49-red.test.ts',fs.constants.COPYFILE_EXCL);const helper='packages/extension-service/tests/zip-fixture.ts';fs.copyFileSync(helper,m.redDir+'/zip-fixture-red.ts',fs.constants.COPYFILE_EXCL);let code=fs.readFileSync(helper,'utf8');const start=code.indexOf('export function crc32('),end=code.indexOf('/** Independent',start);code=code.slice(0,start)+`const crcTable = Uint32Array.from({length:256}, (_,index)=>{let value=index;for(let bit=0;bit<8;bit++)value=(value>>>1)^(0xedb88320&-(value&1));return value>>>0})
+export function crc32(bytes: Uint8Array): number {
+  let crc=0xffffffff
+  for(const byte of bytes)crc=(crc>>>8)^crcTable[(crc^byte)&255]
+  return (crc^0xffffffff)>>>0
+}
+`+code.slice(end);fs.writeFileSync(helper,code);fs.appendFileSync(test,`
+describe('P02PKG003/006: expanded payload and local-header effects',()=>{
+  it('rejects actual201MiB expanded payload within compressed/ratio limits',async()=>{
+    const data=Buffer.alloc(201*1024*1024);let state=0x51cafe
+    for(let i=0;i<data.length;i+=16){state^=state<<13;state^=state>>>17;state^=state<<5;data[i]=state&255}
+    const archive=zipFixture([...entries,{name:'large.bin',data,method:8}])
+    expect(archive.length).toBeLessThan(50*1024*1024)
+    expect(data.length/ (archive.length-compatible.length)).toBeLessThan(100)
+    await reject(archive,'EXPANDED_LIMIT')
+  },60000)
+  it('rejects multi-volume EOCD',async()=>{const b=Buffer.from(compatible);b.writeUInt16LE(1,b.length-18);await reject(b,'UNSUPPORTED_ARCHIVE')})
+  it('rejects conflicting local CRC before decoding',async()=>{const b=Buffer.from(compatible);b.writeUInt32LE(0,14);await reject(b,'HEADER_MISMATCH')})
+  it('rejects aliasing local-header entry offsets',async()=>{const b=zipFixture(entries);const central=b.readUInt32LE(b.length-6);const second=central+46+b.readUInt16LE(central+28);b.writeUInt32LE(0,second+42);await reject(b,'HEADER_MISMATCH')})
+})
+`);const dir=m.base+'/evidence/p02-archive-red-expanded-'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z');fs.mkdirSync(dir);const args=['packages/extension-service/node_modules/vitest/vitest.mjs','run','--root','packages/extension-service','tests/archive.bdd.test.ts','--reporter=json','--outputFile='+process.cwd().replaceAll('\\','/')+'/'+dir+'/red.vitest.json'],e=spawnSync('E:/Program Files/nodejs/node.exe',args,{encoding:'utf8',windowsHide:true,timeout:180000,maxBuffer:24*1024*1024}),sha=b=>crypto.createHash('sha256').update(b).digest('hex');for(const k of ['stdout','stderr'])fs.writeFileSync(dir+'/red.'+k+'.txt',e[k]??'',{flag:'wx'});fs.writeFileSync(dir+'/execution.json',JSON.stringify({atUtc:new Date().toISOString(),command:['E:/Program Files/nodejs/node.exe',...args],exitCode:e.status,error:e.error?String(e.error):null,stdoutSha256:sha(e.stdout??''),stderrSha256:sha(e.stderr??''),preservedOriginal49Assertions:true,fixtureOptimization:'CRC lookup table accelerates >200MiB real payload creation; first49 RED source retained byte-exact; no assertion changed'},null,2)+'\n',{flag:'wx'});const j=JSON.parse(fs.readFileSync(dir+'/red.vitest.json'));assert.equal(j.numTotalTests,53);assert.equal(j.numFailedTests,53);const failures=j.testResults.flatMap(s=>s.assertionResults.filter(t=>t.status==='failed'));assert(failures.every(t=>t.failureMessages.some(s=>s.includes('NOT_IMPLEMENTED')||s.includes("'REJECTED' to be 'VALID'"))));fs.writeFileSync(dir+'/summary.json',JSON.stringify({status:'EXPECTED_BEHAVIORAL_RED',total:53,failed:53,importError:false,realExpandedPayload:true,original49AssertionsPreserved:true},null,2)+'\n',{flag:'wx'});fs.copyFileSync(process.argv[1],dir+'/expand-red.mjs',fs.constants.COPYFILE_EXCL);m.expandedRedDir=dir;m.phase='BDD_RED53_CONFIRMED';fs.writeFileSync(meta,JSON.stringify(m,null,2)+'\n');console.log(JSON.stringify({dir,total:53,failed:53,status:'BEHAVIORAL_RED_CONFIRMED'}));

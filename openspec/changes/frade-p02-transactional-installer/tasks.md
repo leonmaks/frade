@@ -7,7 +7,7 @@
 
 ## 2. BDD TDD and implementation
 
-- [ ] 2.1 Create RED archive/path/limit/semver and immutable-original-sample fixtures including compatible derived fixture; record original/derived SHA256 and rejection semantics.
+- [x] 2.1 Create RED archive/path/limit/semver and immutable-original-sample fixtures including compatible derived fixture; record original/derived SHA256 and rejection semantics.
 - [ ] 2.2 Implement injected staging/validation/journal service and Electron install-root/file-picker named bridge; verify zero project writes, actual byte limits and schema errors.
 - [ ] 2.3 Add RED crash-at-each-phase/invalid-update/postswap-failure/Windows-lock cases; implement recovery/rollback and verify previous state survives actual temp filesystem tests.
 - [ ] 2.4 Integrate shared Extensions view install/details/enable/disable/remove and P01 fallback; verify no surprise activation, offline install and preserved dirty work; document actual API/version baseline.
@@ -25,3 +25,7 @@ Baseline 0ecaf44938382bd8daa7d512887dda8a8ee9b372; [scope/model acceptance](deci
 ## Verified PRE checkpoint
 
 Fresh retry PRE PASS 2026-10-10T01:14:54.221Z; reportSHA c43ca6d195948e4f21b935a957a62c71b4fb933d98d28b91bea0b62583318721; 135 complete events, exact CLI gpt-6-sol/xhigh/confinement/candidate and packet checks PASS. Original first FAIL retained. Task1.2 closed;2/9. Implementation/checks/visual/POST/archive remain NOT_RUN; actual backend/effortNOT_CONFIRMED. Receipt: openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T011453Z/verification.json.
+
+## Archive RED checkpoint
+
+Task2.1 complete: exact original/derived hashes and53 behavioral RED assertions including actual201MiB fixture preserved in openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-red-20261010T012131Z and openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-red-expanded-20261010T012421Z.3/9. Task2.2 archive validator firstGREEN52PASS/1FAIL, raw openspec/changes/frade-p02-transactional-installer/evidence/p02-archive-green1-fail-20261010T012751Z; encryption diagnostic RCA before repair. No stage advance, staging/IPC/journal/UI/POST not implemented.
