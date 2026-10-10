@@ -1,3 +1,11 @@
+# P02 — current S1 checkpoint published
+
+2026-10-10T21:17:45.457Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Checkpoint c1e9f473e8e092cf844da7f9826a4f2c2658e399 published to origin/refs/heads/codex/frade-ui-design-contract; actualremoteSHA verified. openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-current-publication-20261010T211745457Z/publication.json. This separate docs checkpoint records that completed publication.
+
+Focused current S1 POST PASS; exact riskPREPASS; fresh266service/266BDD/type/lintPASS;634inputs/currentdesktop-runtimeapplicability proof retained. P02 overall3/9,2.2unchecked, fullREADY_FOR_VERIFY:NO. P02-D01 ACCEPTED onlyfor historicaldevFAIL, causeNOT_PROVEN; originalFAIL/POSTFAIL immutable, no currentFAIL waiver. Next: prepare existing P02 S2 staging/journal/recovery/bridge scheme and applicable automatic PRE before production. Fullstaging/journal/recovery/IPC/ExtensionsUI/root/P01/a11y/visual/cumulativeverify/POST/archive remainopen; noP03. Guide1.0; product/tests unchangedinriskadoption; diagnostics3/3exhausted/nofourthattempt. Completecurrentreport openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-current-post-outcome-20261010T211619883Z/REPORT.md. RightpanelQUEUED/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
 # Frade UI Design Contract — P02 current S1 POST PASS
 
 2026-10-10T21:16:19.883Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Guide1.0; originalprogram98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372.
