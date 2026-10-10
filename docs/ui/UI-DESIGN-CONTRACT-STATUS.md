@@ -1,3 +1,72 @@
+# Frade UI Design Contract — P02 current S1 POST PASS
+
+2026-10-10T21:16:19.883Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Guide1.0; originalprogram98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372.
+
+| Этап / задача | Фактический статус |
+| --- | --- |
+| Foundation/P01 | ARCHIVED, historical exceptions retained |
+| P02 overall | IN_PROGRESS3/9,2.2unchecked |
+| P02-D01 exact disposition | ACCEPTED; originaldevFAIL preserved, causeNOT_PROVEN |
+| Strict / riskPRE | PASS / PASS |
+| Current service tests / BDD / typecheck / lint |266PASS /266PASS /PASS /PASS;634beforeafter inputs identical |
+| Desktop/runtime reuse | Proven current applicability;147unit/19targeted/type/lint and datedbuild/logabsence/boundaries/UIcompliance/runtime evidence preserved |
+| S1 guards/factory/Main actual-close/DEVdiagnostics focusedPOST | PASS; openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-revalidation-post-received-20261010T211559325Z/verification.json |
+| Original S1POST | FAIL preserved as immutable history |
+| 2.2 staging/journal/file-picker bridge | NOT_DONE |
+| 2.3 recovery/rollback;2.4ExtensionsUI/fallback | NOT_DONE |
+| 3.1 cumulativechecks/a11y/visual;3.2fullverify/POST;3.3archive | NOT_DONE |
+| P03–P07 | No implementation started; no automatic next numbered change |
+
+Next: S1 focused checkpoint may be published; next existing P02 substep is S2 staging/journal/recovery and named bridge scheme, then applicable PRE before implementation. No automatic P03.
+
+Complete currentreport openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-current-post-outcome-20261010T211619883Z/REPORT.md. FullREADY_FOR_VERIFY:NO. Diagnostics3/3exhausted, nofourthattempt; anynewrequiredFAIL stops. Product/testsunchangedinriskadoption. Currentplanning/reviewcheckpoint NOT_COMMITTED/NOT_PUSHED; lastpublished881c546b6fff03a7b0486cf8894730a2cc8c48de. RightpanelQUEUED/visibilityunconfirmed. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — current S1 POST dispatch prepared
+
+2026-10-10T20:57:22.783Z; codex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; Guide1.0. RiskP02-D01accepted causeNOT_PROVEN; strict/freshPREPASS. Fresh266test/266BDD/type/lintPASS;634inputsverified, partialS1verification openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-current-verification-20261010T205524955Z/REPORT.md. Exactdesktop/runtimereuse and verifierFAIL/RCA/boundedGREEN preserved.
+
+Fresh independent POST gpt-6-sol/xhigh dispatchprepared: 302files/3207328bytes, openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-current-post-dispatch-20261010T205722783Z/post-selection.json. Freeze candidate/status/index on launch; updateoutcomeafterunfreeze. OldS1POSTFAIL preserved; Mainclose/diagnosticsindependentclosure pending. P02 overall3/9,2.2unchecked, fullREADY_FOR_VERIFY:NO; noS2progressionorP03beforeapplicablePOSTPASS. No fourthdiagnosticrun. Planning/evidenceNOT_COMMITTED/PUSHED, lastpublished881c546b6fff03a7b0486cf8894730a2cc8c48de; panelQUEUED/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — P02-D01 accepted, S1 partial verification
+
+2026-10-10T20:55:24.955Z; codex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; Guide1.0. Strict/freshriskPREPASS openspec/changes/frade-p02-transactional-installer/evidence/p02-deferred-risk-pre-received-20261010T204202118Z. Freshservice266test/266BDD/type/lintPASS,634inputsunchanged. Desktop147unit/19targeted/type/lint, build/logabsence/boundaries/UIcompliance and runtime evidence reusedwith exactinput/equivalence proof openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-current-verification-20261010T205524955Z/verification.json. No production/test changes; no fourthdiagnosticattempt.
+
+PartialS1verify openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-current-verification-20261010T205524955Z/REPORT.md; fullP02 remains3/9,2.2unchecked, READY_FOR_VERIFY:NO. Mainclose repair and diagnostics freshPOST NOT_RUN. HistoricaldevFAIL deferredP02-D01 causeNOT_PROVEN, originalFAIL/POSTFAIL preserved; anynewcurrentFAIL stops. Next fresh independentPOST gpt-6-sol/xhigh. AllS2/fullinstaller/recovery/UI/cumulativechecks/verify/POST/archive open; noP03. Currentplanning/evidenceNOT_COMMITTED/PUSHED; lastpublished881c546b6fff03a7b0486cf8894730a2cc8c48de; panelQUEUED/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — P02-D01 accepted, independent PRE PASS
+
+2026-10-10T20:42:21.251Z; owning branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; Guide1.0. Exact human acceptance openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk-accepted-20261010T202224072Z.json. Only historical dev5s FAIL deferredP02-D01, causeNOT_PROVEN; originalFAIL and S1POSTFAIL preserved, no timeout/assertion change or currentFAIL waiver.
+
+New PRE PASS: openspec/changes/frade-p02-transactional-installer/evidence/p02-deferred-risk-pre-received-20261010T204202118Z/verification.json; raw report SHA b4a1d80305bf070ff17d931dee32ff6262834e8889733879d4e836c2e96b3b3d; 89 complete events; requested exactmodel gpt-6-sol/xhigh, actual backend/effort NOT_CONFIRMED. Fresh S1POST NOT_RUN. P02 overall3/9,2.2unchecked; S2/full transaction/recovery/ExtensionsUI/cumulativechecks/verify/POST/archive open, noP03. Source unchanged.
+
+Next: Current exact-input / equivalence proof and necessary settled-source service checks → partial S1 verification → fresh independent POST gpt-6-sol/xhigh. Diagnostics3/3exhausted; nofourthattempt. Planning/reviewreceipt NOT_COMMITTED/PUSHED; lastpublished881c546b6fff03a7b0486cf8894730a2cc8c48de; panelQUEUED/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — P02-D01 accepted, strict PASS, PRE prepared
+
+2026-10-10T20:24:31.298Z; codex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; Guide1.0. Exactriskacceptance openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk-accepted-20261010T202224072Z.json. Only historicaldevFAIL deferredP02-D01, causeNOT_PROVEN; originalFAIL/POSTFAIL unchanged. Current plan strictPASS openspec/changes/frade-p02-transactional-installer/evidence/p02-check-d01-strict-20261010T202307120Z;634inputs before/afterunchanged. FreshPRE gpt-6-sol/xhigh PREPARED/NOT_RUN: 218files/2367314bytes. No productionchanges.
+
+P02 overall3/9,2.2unchecked. Mainclose/diagnosticsfreshPOST NOT_RUN. Runtimeprobe3/3exhausted; nofourthattempt. Freeze candidate/status/index during review; record outcomesafterunfreeze. Next dispatchfresh PRE → applicablechecks/partialS1verify → freshPOST. Fullstaging/journal/recovery/UI/verify/cumulativePOST/archive remainopen/noP03. PlanningNOT_COMMITTED/PUSHED; lastpublished881c546b6fff03a7b0486cf8894730a2cc8c48de; panelQUEUED/visibilityunconfirmed.
+
+## Previous entries
+
+# P02 — P02-D01 принят, revalidation
+
+2026-10-10T20:22:24.072Z; owning branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; Guide1.0. Exact decision openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk-accepted-20261010T202224072Z.json, proposal SHA256 45f679ba135d23b2f5b39156374de8b890fa9f217a853635fb3eb0726288df48. Только указанный исторический dev5s FAIL принят как отложенный риск P02-D01, причина NOT_PROVEN. Исходный FAIL и S1 POST FAIL сохранены; timeout/assertions не изменены. Новое падение блокирует работу.
+
+P02:3/9,2.2unchecked. План согласован; strict/PRE/новыйPOST NOT_RUN. Main close repair и DEV diagnostics реализованы и проверены компонентно, независимое закрытие остаётся открытым. Следующий шаг strict → автоматический PRE gpt-6-sol/xhigh → applicable exact-input checks/partial verify → новый S1 POST. Код не изменён. Три диагностические попытки исчерпаны; четвёртая не разрешена. Staging/journal/recovery/IPC/ExtensionsUI/fullchecks/verify/POST/archive не закрыты; P03 не начинается.
+
+Последний опубликованный checkpoint 881c546b6fff03a7b0486cf8894730a2cc8c48de, новые planning изменения NOT_COMMITTED/NOT_PUSHED. Rightpanel QUEUED, видимость не подтверждена; mergeprotection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи — сохранены
+
 # Frade UI Design Contract — текущий статус
 
 Обновлено 2026-10-10T18:59:50.260Z. Ветка `codex/frade-ui-design-contract`; worktree `C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade`; общий Git `E:/dev/codex/frade/.git`. Guide v1.0. Исходный baseline программы `98f387f96b51b0ad139e3507c376ff1c3e8dec09`, P02 baseline `0ecaf44938382bd8daa7d512887dda8a8ee9b372`.

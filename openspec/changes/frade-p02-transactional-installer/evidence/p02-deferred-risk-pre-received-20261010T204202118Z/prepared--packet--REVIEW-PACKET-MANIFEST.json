@@ -1,0 +1,1104 @@
+{
+  "version": 3,
+  "phase": "PRE",
+  "scope": "Exact accepted single historical dev timeout risk P02-D01 and coherent S1 revalidation strategy only, no implementation closure",
+  "authorization": "docs/engineering/agent-workflow.md",
+  "candidate": {
+    "head": "881c546b6fff03a7b0486cf8894730a2cc8c48de",
+    "branch": "codex/frade-ui-design-contract",
+    "digest": "da5e73289966889f2d251879765e164065de3e038c8f47cdd806a8ea716925f0"
+  },
+  "selection": "Explicit bounded paths from current registered Frade worktree; omitted inputs are a review blocker, not a waiver.",
+  "artifacts": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 2096,
+      "sha256": "c5f8f62dfec5a99217f0f10fb5a37ce1027c62493acaf3f79610b45a460086d7"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 16655,
+      "sha256": "686221644bbdc2e9837aca807aa9362ca01329fa6519b2405a37900f79087174"
+    },
+    {
+      "path": "apps/desktop/electron.vite.config.ts",
+      "bytes": 938,
+      "sha256": "c33a9770bef1e1bd075fa32d013463516643c1eecb816def7f7164addfd30b28"
+    },
+    {
+      "path": "apps/desktop/package.json",
+      "bytes": 1779,
+      "sha256": "6df13860280a2634b25a1f761d66e6217c96880d9bd2384b95c7f0ccb0b8c5fe"
+    },
+    {
+      "path": "apps/desktop/playwright.config.ts",
+      "bytes": 268,
+      "sha256": "07256af32ea304e07a366c4bd9aa564d61b2780a2ef9d0af7e140034a6ec600f"
+    },
+    {
+      "path": "apps/desktop/src/main/extension-installer.ts",
+      "bytes": 3336,
+      "sha256": "808955f32958c96233e2b325fc03834eb2cf249e4d75f712bf5d36264baa3034"
+    },
+    {
+      "path": "apps/desktop/src/main/index.ts",
+      "bytes": 17597,
+      "sha256": "a972750a505830e3058a84cda3d00e98b91e230e739f1aba4f02b856a884bbae"
+    },
+    {
+      "path": "apps/desktop/src/main/presentation-settings.ts",
+      "bytes": 14914,
+      "sha256": "e639180b841481ff869034a7c355648be70f4fc752e2bb519d8aebbfdacfaeef"
+    },
+    {
+      "path": "apps/desktop/src/main/repository.ts",
+      "bytes": 913,
+      "sha256": "b0490281cb23995208df893bdfa134ccf7457f53fa4ac9f28b3aafa77abab9e5"
+    },
+    {
+      "path": "apps/desktop/src/main/security.ts",
+      "bytes": 1852,
+      "sha256": "7ffb6b4c8529c5ebb5b89d99ca118a5148bdf332e83ae6a2105cea8837fc72c1"
+    },
+    {
+      "path": "apps/desktop/src/main/workbench.ts",
+      "bytes": 26048,
+      "sha256": "1d4bd4ac404666336075b076e40547cb8ff45e4b56d92fd493e34bb73196b4af"
+    },
+    {
+      "path": "apps/desktop/src/preload/bridge.ts",
+      "bytes": 1346,
+      "sha256": "bcf4368df28a3a20ad92c2f4a2093d5c0a981e7cf731809b67d1a91ac17cc832"
+    },
+    {
+      "path": "apps/desktop/src/preload/index.ts",
+      "bytes": 3086,
+      "sha256": "0e395618be2d193452b3fffa7a8cd19eb2f2f4a5bb041011a429412e0746950b"
+    },
+    {
+      "path": "apps/desktop/src/preload/presentation-bridge.ts",
+      "bytes": 2382,
+      "sha256": "61c43eff0f418f02433c1b8971d338a0a913dcd31721165614e7059d29bafba9"
+    },
+    {
+      "path": "apps/desktop/src/renderer/index.html",
+      "bytes": 289,
+      "sha256": "79dda55f40657fe01ae7d3758ab29695a17f93f88fc724f84dc17392f9934aef"
+    },
+    {
+      "path": "apps/desktop/src/renderer/main.tsx",
+      "bytes": 1869,
+      "sha256": "801df9c2a435f067557e5fd3cd7fc9369f8af8db37d9a41daced1cc141914e71"
+    },
+    {
+      "path": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+      "bytes": 3950,
+      "sha256": "e7cadb37181c8bdabc31f2421f8137b384c141af3bff5c3cc8c4d8d8c6f5f74c"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-extension.spec.ts",
+      "bytes": 12863,
+      "sha256": "27ebd8982481254ea5c063a8ec41c3963c48c4e0323a35b256245c7762279e64"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "bytes": 279962,
+      "sha256": "7c3e52a69c1b8346a78f4297774f5c2342a3ecdaeb05a2611465d2f09c546f43"
+    },
+    {
+      "path": "apps/desktop/tests/unit/p02-extension-host.test.ts",
+      "bytes": 21375,
+      "sha256": "c00730e10920e93dbf2cb037612e31cbbc6c00e485d28dcbe871d5ce6b62088a"
+    },
+    {
+      "path": "apps/desktop/tests/unit/presentation-bridge.test.ts",
+      "bytes": 12864,
+      "sha256": "619d52ccd49e13ad267d5cfab91021b11113a1b7c80ba96249c269d152880d1a"
+    },
+    {
+      "path": "apps/desktop/tests/unit/presentation-settings.test.ts",
+      "bytes": 19320,
+      "sha256": "405e44ba4f25ea60d47df04c25c19dc38dc55c461a6b6fcc7f7d9b367fef4c02"
+    },
+    {
+      "path": "apps/desktop/tests/unit/security.test.ts",
+      "bytes": 2101,
+      "sha256": "a48b39f47fa7baa7245b077959277d674e99724dcad1fc41d487fdba403d24b0"
+    },
+    {
+      "path": "apps/desktop/tsconfig.json",
+      "bytes": 227,
+      "sha256": "f6488f3ba8c1a0577a3f9984741b496a6f843ea76f59adf7e42a515450816740"
+    },
+    {
+      "path": "docs/engineering/agent-workflow.md",
+      "bytes": 12126,
+      "sha256": "6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb"
+    },
+    {
+      "path": "docs/engineering/parallel-feature-workflow.md",
+      "bytes": 5462,
+      "sha256": "98a1dbb621aed7574e0d19cf1603b9e41d5485860494c87643f458d8dc3674e6"
+    },
+    {
+      "path": "docs/ui/Frade-UI-Style-Guide.md",
+      "bytes": 70090,
+      "sha256": "6fe886be979a32d87c94f29f65ee3abdbc2acf86dd4c12fdfc4d00022139b109"
+    },
+    {
+      "path": "docs/ui/QA-Checklist.md",
+      "bytes": 2549,
+      "sha256": "22fb9287d6740a2613dac07e5ef656aa6edcc9e6e1eb4be5bb5bff3f042b0f9b"
+    },
+    {
+      "path": "docs/ui/Themes-and-Plugins-Spec.md",
+      "bytes": 31505,
+      "sha256": "f8fb35e715dd7e0c420768b855e991c96244279b637e6d4db5eb061514ec3e81"
+    },
+    {
+      "path": "docs/ui/bdd/p01-theme-core.feature",
+      "bytes": 30737,
+      "sha256": "47c9dc9c6d01844fe176696a6ba7dd1bf5b46ff5728cf8cda1a2a196bca2c55a"
+    },
+    {
+      "path": "docs/ui/bdd/p02-extension-installer.feature",
+      "bytes": 1402,
+      "sha256": "576af8fb711b713ffbb2780342e471d725a9defe7c475fc66b67048f17676efd"
+    },
+    {
+      "path": "docs/ui/bdd/ui-contracts.feature",
+      "bytes": 9583,
+      "sha256": "5892b960f017940332a5dd1a0b9fbf4652e3f842ab449f0459ef31d8102b0eb3"
+    },
+    {
+      "path": "docs/ui/components.md",
+      "bytes": 7181,
+      "sha256": "041f75dd6d9e7f2d7ccc3d31d0f9834cfe0c6c34cb8c2088746df3c5b7cf34eb"
+    },
+    {
+      "path": "docs/ui/decisions/p01-theme-traceability.json",
+      "bytes": 62376,
+      "sha256": "d8b508d95f43dd6cd2090fa0318f91f0837aab0fad6c2591fb8750515d52e5ce"
+    },
+    {
+      "path": "docs/ui/decisions/ui-contract-traceability.json",
+      "bytes": 13323,
+      "sha256": "6e1f99d5b147212762dfd5d9216cd394b4becab3b6de9970191ebca3467da920"
+    },
+    {
+      "path": "docs/ui/theme-core.md",
+      "bytes": 33503,
+      "sha256": "724bbf34d9329e429a53a4033eec3be560b93705d5c5f8e9822c82e298233a9f"
+    },
+    {
+      "path": "eslint.config.js",
+      "bytes": 850,
+      "sha256": "13f6c7a6a85e2896773a890993a15fb500342725d8c3eb6683b7a4d00d506dc4"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff-accepted-20261010T073434608Z.json",
+      "bytes": 1034,
+      "sha256": "b5c76e08bb35a785886ed0a0408d56fabf95998ef2d4221507966f1ca998d56b"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff.proposed.md",
+      "bytes": 12594,
+      "sha256": "f3a9e8c266f1939d9b7d5012e064bd37291ac501108696e82ada012f44350c23"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-bootstrap-owned-cleanup-accepted-20261010T140438413Z.json",
+      "bytes": 1383,
+      "sha256": "124d0f4d757577d485136a9aac0b2bb03dd1a69902e3f21f11a49b89b290d122"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-bootstrap-owned-cleanup.proposed.md",
+      "bytes": 5566,
+      "sha256": "3e7379aae95d49644c269c3633aaa8a3e8a0a4c084492fc94104b5901b6426ed"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics-accepted-20261010T180630047Z.json",
+      "bytes": 982,
+      "sha256": "a061bea28c871b17f6108010f1bc036156ee806935c577d54b302f54a4796870"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-presentation-timing-diagnostics.proposed.md",
+      "bytes": 4736,
+      "sha256": "ff75e18bad97b8c9e10da44c6404ec2a0e3539c34ef36a03b9c2a9b3355f283a"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk-accepted-20261010T202224072Z.json",
+      "bytes": 1166,
+      "sha256": "eed87f516d741a04e2332a343c0d96b0af6d5d824269a1b66e3c0e704a0cdba3"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-dev-timeout-deferred-risk.proposed.md",
+      "bytes": 4343,
+      "sha256": "45f679ba135d23b2f5b39156374de8b890fa9f217a853635fb3eb0726288df48"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-integration-scope-accepted-20261010T002712Z.json",
+      "bytes": 1116,
+      "sha256": "1800ba02a43bf3378ca488f947e61341503463eaa64fe3f10db8e2e6cfff2ae2"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-integration-scope.proposed.md",
+      "bytes": 7383,
+      "sha256": "e0821a4e7e1676e772a191061c94e3fc6384df2fd82cbfd62251ce6ffd33c947"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-windows-filesystem-backend-accepted-20261010T035503Z.json",
+      "bytes": 908,
+      "sha256": "a72a3bcfb786571ce6b892bfe9b6a110157a75dc9c6cfdfab0f862438d54e230"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/decisions/p02-windows-filesystem-backend.proposed.md",
+      "bytes": 8356,
+      "sha256": "8310cb500c9aeedfec91e3db2e6e01e39791f1625b144cb14495a99ab2dedc0e"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/design.md",
+      "bytes": 80782,
+      "sha256": "a35b327cdc38c09a90309f975380940ab3631b15b2841ddec68374e8b54f85c5"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-bootstrap-scheme-20261010T134423647Z/bootstrap-scheme.md",
+      "bytes": 15453,
+      "sha256": "32748eeb1fcb49bb763f464305cb1accafddb95ab4fa9e378d802bd96c2dda05"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-d01-strict-20261010T202307120Z/execution.json",
+      "bytes": 1942,
+      "sha256": "b94caa578fcbe2c352070b5a338cda6cd1ca7d5fa4e10c6d4173972c471acdd2"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-d01-strict-20261010T202307120Z/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-d01-strict-20261010T202307120Z/stdout.txt",
+      "bytes": 52,
+      "sha256": "a56f6a1542e7b2de16505408befecd7afe8e6deb4c5f252195344b158007a5df"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/execution.json",
+      "bytes": 2108,
+      "sha256": "ca47129fb007e27b2156cda0841bcdf1a49cc4bed33eae4087c6c93597ff15ed"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/playwright-raw/.last-run.json",
+      "bytes": 96,
+      "sha256": "cb8789b93bb4c5dcb4864ad4702a189475a2bb1dfbe01f1e88bf5818b353a808"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev-timing.json",
+      "bytes": 118,
+      "sha256": "7b0a7cb112d151e22035b64e94471b4c365194b51794e68bea15fa78e4e29660"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 7749,
+      "sha256": "3d033cc3163cdb657447697bda2ae89723813ebfc86f848cdc32955ec1d1d932"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/playwright-raw/ui-contract-extension-P02--9e35c-med-start-hook-owns-backend/p02-start-timing.json",
+      "bytes": 118,
+      "sha256": "7b0a7cb112d151e22035b64e94471b4c365194b51794e68bea15fa78e4e29660"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/playwright-raw/ui-contract-extension-P02--9e35c-med-start-hook-owns-backend/p02-start.log",
+      "bytes": 1110,
+      "sha256": "29a8b23152ede5966bb84b9fe951d8a2f7e7f8f255bfe054c43aab94171355be"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/stderr.txt",
+      "bytes": 1193,
+      "sha256": "dc5507b069c05ec804d82bc72de5e87e59e8e089bc93fe8abbe222daf24be6d0"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt1-20261010T183505846Z/stdout.txt",
+      "bytes": 3099,
+      "sha256": "a72e472bdceb26c92b7a1dd2de6da07a77ab2f9620deaa2cbf84f274d954463f"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt2-20261010T184352983Z/execution.json",
+      "bytes": 1993,
+      "sha256": "604e432d01cd66a5353e830317ed925a12a1c6ec93954289acf7736265322e3d"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt2-20261010T184352983Z/observation.json",
+      "bytes": 574,
+      "sha256": "201b6d7f255d9d958a4c58ae432f347de31eb57d61ad8cd20cca37b7ee8a5672"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt2-20261010T184352983Z/playwright-raw/.last-run.json",
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt2-20261010T184352983Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev-timing.json",
+      "bytes": 5753,
+      "sha256": "115831e626fe74dfb25528bd06467a0995abc28425712cdb1cf229320eb39565"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt2-20261010T184352983Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 7765,
+      "sha256": "01e1008c76077a80420845757dc94e995a5169e04c2fc039065df656d148f09f"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt2-20261010T184352983Z/stderr.txt",
+      "bytes": 517,
+      "sha256": "b6ce6f45e1661a54aa9fcb33f117afcf4795f1b9cb7532360712e80312c127ea"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt2-20261010T184352983Z/stdout.txt",
+      "bytes": 179,
+      "sha256": "c8238ab404e46bc66f7e7fdefbfee38503a33b6f3093578e3cbbf11d2f586395"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt3-20261010T184509041Z/execution.json",
+      "bytes": 1993,
+      "sha256": "f13adb01ef1bac9765f51577c2b307f903f9799e421322274ce2aee65eadfc62"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt3-20261010T184509041Z/observation.json",
+      "bytes": 414,
+      "sha256": "932882d9cf3b8c9e0b2d0862bc6280d0a4ca70c7667144d27995338e77195690"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt3-20261010T184509041Z/playwright-raw/.last-run.json",
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt3-20261010T184509041Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev-timing.json",
+      "bytes": 5750,
+      "sha256": "84ed4452614eff063af0647f96ab7234b834da4959eec8d4823146b788a876b2"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt3-20261010T184509041Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 7762,
+      "sha256": "591cf0cab9d2c7ed3c2435410cb25d393dc2c7b7b2671854cb938c0b1ac13cc2"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt3-20261010T184509041Z/stderr.txt",
+      "bytes": 517,
+      "sha256": "111d9715ced9f9131201ab9a7659db24acd2f9cb5ee2248515a5224562298eed"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-canonical-attempt3-20261010T184509041Z/stdout.txt",
+      "bytes": 179,
+      "sha256": "97f07236a37511efa72bf38461d3e470527f06ff4f7870404dfe0f3b19892cdb"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-decoder-final-lint-20261010T184259467Z/execution.json",
+      "bytes": 1866,
+      "sha256": "e58bf604cecc4da04060bb1807e62bcfee6fa3ed450bded61e14ce64efc31a9f"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-decoder-final-lint-20261010T184259467Z/stderr.txt",
+      "bytes": 24,
+      "sha256": "785b223160c30fda735920637fb1bfa85adcdae9e934f0483a3822ab1002f952"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-decoder-final-lint-20261010T184259467Z/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-decoder-final-typecheck-20261010T184257851Z/execution.json",
+      "bytes": 1876,
+      "sha256": "4d4fc94025146d234f6db6eef5bfe8999f5c21ebd54bca1ee4f1729818009b94"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-decoder-final-typecheck-20261010T184257851Z/stderr.txt",
+      "bytes": 15,
+      "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-decoder-final-typecheck-20261010T184257851Z/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-decoder-final-unit-20261010T184301292Z/execution.json",
+      "bytes": 1866,
+      "sha256": "1cc3ba5754d2da4de7cff60dee9ed185de731cdecccd597c0c9228a8c2364898"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-decoder-final-unit-20261010T184301292Z/stderr.txt",
+      "bytes": 24,
+      "sha256": "dc5f1c789049423eeaf935d7aca00ad7deffb63dc39bba7b592d186c24df5014"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-dev-timing-decoder-final-unit-20261010T184301292Z/stdout.txt",
+      "bytes": 5291,
+      "sha256": "7271d72931314a006f2d3ddae491814d3814b7f0be2d9b809c7a22cd509a11c0"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-actual-quit-green-20261010T170059285Z/execution.json",
+      "bytes": 563,
+      "sha256": "7261492dc9f785723bad2f9ce7a4c10a612ddad53e00b79824ed832f964a9a00"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-actual-quit-green-20261010T170059285Z/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-actual-quit-green-20261010T170059285Z/stdout.txt",
+      "bytes": 437,
+      "sha256": "d817532852212c2707d7db69e7ca11b60f3ba9eae3e227c3e4650b2dfc26c849"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-actual-quit-red-20261010T165840089Z/execution.json",
+      "bytes": 561,
+      "sha256": "f236fc17a96271438c6e10bda6c8d8dda4d346f40f04f5686c90270388e54b40"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-actual-quit-red-20261010T165840089Z/stderr.txt",
+      "bytes": 2277,
+      "sha256": "87b4da30bf64cc79cf73cc54a97f05eac977425115b9f614530cb7226943595e"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-main-actual-quit-red-20261010T165840089Z/stdout.txt",
+      "bytes": 2303,
+      "sha256": "2e1f7aaea6d6aafc3504693db4b9c391760f62cc05b558eff1121efac3cd85c4"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-final-runtime-coexistence-20261010T153908765Z/execution.json",
+      "bytes": 737,
+      "sha256": "bff2d9ac094820e902f062d289e34c6168471ac6eb8e4753bf1ca23f09efd6a5"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-final-runtime-coexistence-20261010T153908765Z/failure-interpretation.json",
+      "bytes": 612,
+      "sha256": "93b38781030e557874cb1c34bdb613d0589bc161a251e9d01edb43b97f578fd3"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-final-runtime-coexistence-20261010T153908765Z/playwright-raw/.last-run.json",
+      "bytes": 96,
+      "sha256": "cb8789b93bb4c5dcb4864ad4702a189475a2bb1dfbe01f1e88bf5818b353a808"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-final-runtime-coexistence-20261010T153908765Z/playwright-raw/ui-contract-extension-P02--83026-backend-across-Main-rebuild/p02-dev.log",
+      "bytes": 4212,
+      "sha256": "4ddfdd70626164ddfbffd6d7ab9b91c1fcd20fc51382a8acc77a490daeb54063"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-final-runtime-coexistence-20261010T153908765Z/playwright-raw/ui-contract-extension-P02--9e35c-med-start-hook-owns-backend/p02-start.log",
+      "bytes": 1110,
+      "sha256": "d1a39a5ee9b66024c132dee7cc29fe097df907e68abb811b8f26867e6d7078ef"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-final-runtime-coexistence-20261010T153908765Z/stderr.txt",
+      "bytes": 1193,
+      "sha256": "c20147e1f2aa6803f793fc066cdac24f8da39904fea37267fe6159cb5754b4cd"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s1-final-runtime-coexistence-20261010T153908765Z/stdout.txt",
+      "bytes": 2689,
+      "sha256": "243f4d3513eb12c290abeab18eb2734e32866d4dccaa1eff57c15b08e506ea59"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-source-03dca452f564100f60505c70ef9c31ddc18420f3043a05223e7288996cda95af/inputs.json",
+      "bytes": 110730,
+      "sha256": "03dca452f564100f60505c70ef9c31ddc18420f3043a05223e7288996cda95af"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-deferred-risk-accepted-planning-20261010T202224072Z/planning-provenance.json",
+      "bytes": 2986,
+      "sha256": "25a3eed9e5a395af9e4005731ffe1e3a80065980327f7f761b7f1870de248f6e"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-deferred-risk-accepted-planning-20261010T202224072Z/pre-prompt.md",
+      "bytes": 3668,
+      "sha256": "14787fa61eb4691aba60295be8b30a7a828ce0bbac47b3065479f547ed702ef6"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-deferred-risk-accepted-planning-20261010T202224072Z/review-current-state.json",
+      "bytes": 2996,
+      "sha256": "339808d544e27ea2a2473484f17f60372846928fb96a966eeb88c5e0559008bd"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-checkpoint-resume-20261010T185733228Z/current-inputs.json",
+      "bytes": 110730,
+      "sha256": "7b76ecd6507429ad4af5fcea98e6dbb3e397ffbae20d3d8eaebe545009207298"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-checkpoint-resume-20261010T185733228Z/resume.json",
+      "bytes": 2539,
+      "sha256": "eb1eb97724ff24ae29db8e6904ef01de2f022f3ca0edbfa89ccdce4b6ef496a2"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-control-proof-20261010T183408539Z/control-proof.json",
+      "bytes": 23952,
+      "sha256": "17950a39148f231b0c32390c89cce8851656c008414aa83b565586542f72387b"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-implementation-20261010T182916390Z/implementation-binding.json",
+      "bytes": 2471,
+      "sha256": "65318529089c34c3a73f775ebc190b8cefcd3c912fb755ce446db3d05a4b4b1c"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z/instance--offline-probe-b.json",
+      "bytes": 4616,
+      "sha256": "92781b964f2b34429caafe1d94adb241d954a3695194fa55253db412f18ecb29"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z/output--record.json",
+      "bytes": 3739,
+      "sha256": "35e1d729e9e35979d6f6cca6702a8a3c7b20020282688392a1dd54bc7e40f952"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z/output--result.md",
+      "bytes": 1991,
+      "sha256": "b8b73ffc6f08de5d0dfcffef4fef8470d81a40079b8941c853045d69fbbe3d4d"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z/receipt.json",
+      "bytes": 1879,
+      "sha256": "b012bc1f7a982d724203b7b089f0431e36a89653795e86578ca45e16dada5e82"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z/received-provenance.json",
+      "bytes": 7450,
+      "sha256": "90a3d8ccd0d215842bfd5cf6e9d2d4b7f87f5d0cf91d85631e012f53efa37a02"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-pre-received-20261010T182715287Z/verification.json",
+      "bytes": 1108,
+      "sha256": "d480fe62877fd2764fa274582af66afe0e199f2c2940f64062c3e69d2c7c0824"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-stop-assessment-20261010T184907927Z/REPORT.md",
+      "bytes": 7152,
+      "sha256": "bcff72a3bbaadc07be5d06012586cd8cccd19d04dbf61bdf636cee6b82d84cbb"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-stop-assessment-20261010T184907927Z/assessment.json",
+      "bytes": 29908,
+      "sha256": "e595a577af4cc3cc2bff13690a53edd1c5bcd3da825a7f34781b65d3b9b46fcf"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-tail-eol-20261010-20261010T185300404Z/eol-proof.json",
+      "bytes": 805,
+      "sha256": "d892a067dc15823f35b5107e6a8efc3e96a2b49f050e811ed484142e495c1381"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-dev-diagnostics-tail-eol-20261010-20261010T185300404Z/unit-before.txt",
+      "bytes": 21377,
+      "sha256": "e8b447832abd746a647eb5b1b9e8bcd9e0548fd2677edd0c729357a2592dfe9b"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-main-quit-rca-20261010T170058703Z/main-before.ts.txt",
+      "bytes": 14701,
+      "sha256": "7823b5fb605a77a5bd704d494994712886bf39e1c72fe3ade3132eb76b349e2a"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-main-quit-rca-20261010T170058703Z/main-red.test.ts.txt",
+      "bytes": 8649,
+      "sha256": "3d0bac0df3f752305bc5bc902a6348ee78bc29d8514eb29df0271bd084691370"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-main-quit-rca-20261010T170058703Z/rca.md",
+      "bytes": 943,
+      "sha256": "86a827b47c7ddc32ba550d3680395f7b0904051648b06fede2934535b3c86b38"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-received-20261010T165324969Z/instance--offline-probe-b.json",
+      "bytes": 4616,
+      "sha256": "b019074b94bc4bde688dc12b2a7e8dcc331dc3a6efe3f6917de8b56882e299f1"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-received-20261010T165324969Z/output--record.json",
+      "bytes": 3760,
+      "sha256": "ed105f8c3c04ee34051b6e25dfbca7aeabf24725322e3b823c897be6c7db5533"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-received-20261010T165324969Z/output--result.md",
+      "bytes": 3109,
+      "sha256": "24a57e974d8f01136711665263ff2770f1f98a9aef06b7df431658a5bf94d4ea"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-received-20261010T165324969Z/receipt.json",
+      "bytes": 1902,
+      "sha256": "3f8c2c30de60bce94876750431543e62162869d0fa1aa3d38d14d315904817c2"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-received-20261010T165324969Z/received-provenance.json",
+      "bytes": 7246,
+      "sha256": "e3b92f59b481464283bc43864d4a0213b69442205013eae2311af9c3c594a396"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-received-20261010T165324969Z/verification.json",
+      "bytes": 1131,
+      "sha256": "1f0d777d3cd0bfdd9d2e5f3d976981b4fecb28b71077d32193efc2113884bca3"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-repair-assessment-20261010T172049951Z/assessment.json",
+      "bytes": 17696,
+      "sha256": "57aff62e6c7cfad118859f9f912f396ecd44cc8d0e5a27cfebebeb5409a55de3"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-post-repair-assessment-20261010T172049951Z/proposal-binding.json",
+      "bytes": 399,
+      "sha256": "c02f61f54c2f547dfea5405e500bb262aa1150c1bdc03ebd925c060c55355bfd"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/proposal.md",
+      "bytes": 12537,
+      "sha256": "1a0e54973c67e95d9cb24d42ee21d019450dabeb671cd06d215a2c8bc021b5b7"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/specs/extension-installer/spec.md",
+      "bytes": 18039,
+      "sha256": "7468191b4055052287becf7377f114b9fd237057ec9dd64c3a4e7fe031c1c59a"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/tasks.md",
+      "bytes": 28409,
+      "sha256": "5022ea36c02709f2e5412e495bbef02f4d5c1419ea9f5abcc25be9eb68791b99"
+    },
+    {
+      "path": "openspec/config.yaml",
+      "bytes": 954,
+      "sha256": "e9caf830990b4f7277d6f43a2b24d118382ac5e4061a3308f35f2a04e3109c55"
+    },
+    {
+      "path": "openspec/specs/theme-core/spec.md",
+      "bytes": 73565,
+      "sha256": "fc5def679bd51324b15fa00b407a44ca0922d0d606d1f2846fc62759faf203bf"
+    },
+    {
+      "path": "package.json",
+      "bytes": 2461,
+      "sha256": "574eab76e54f3a5a8f22484e9cb582cd94259cd6a24df89066f59f520eeba81e"
+    },
+    {
+      "path": "packages/extension-contracts/package.json",
+      "bytes": 430,
+      "sha256": "df2a303b53d0b8647cec1b53afcc4d519d0b6ab8bd4bf1dc777179538fa34809"
+    },
+    {
+      "path": "packages/extension-contracts/src/index.ts",
+      "bytes": 942,
+      "sha256": "ce41a85d0b43daf58ad1d12f7def2a18a3a0123744f5bf2b82c0b933d3231382"
+    },
+    {
+      "path": "packages/extension-contracts/tsconfig.build.json",
+      "bytes": 139,
+      "sha256": "6af7a41e2bf631bef8fa14034fca7185254c7aa6b546e5d4d9634d271564c02f"
+    },
+    {
+      "path": "packages/extension-contracts/tsconfig.json",
+      "bytes": 71,
+      "sha256": "d95933b4f2fb1912a251ee9901c7f0ad2e448bb08c2f2508fb1eea554ddbcf66"
+    },
+    {
+      "path": "packages/extension-service/native/windows-filesystem.cs",
+      "bytes": 30086,
+      "sha256": "145bad6cbc6a8c364e0952268c9ebe5a935a546be4b334ebb092df1556ba3d86"
+    },
+    {
+      "path": "packages/extension-service/package.json",
+      "bytes": 851,
+      "sha256": "455d13aade612a9c1363f600d9fcefd947adde21219e1f4a951b7388952aa592"
+    },
+    {
+      "path": "packages/extension-service/scripts/build-windows-filesystem.mjs",
+      "bytes": 4140,
+      "sha256": "3194895d0771d53be25292f2ef3119d0a31a4a20134d7f7f876c9b3efd2cbf56"
+    },
+    {
+      "path": "packages/extension-service/scripts/copy-windows-filesystem.mjs",
+      "bytes": 3647,
+      "sha256": "c0a6cfad717d92f7d4e3b5d93ece92aba9219d2ef1d33166ef3a851a4d5b2dcf"
+    },
+    {
+      "path": "packages/extension-service/src/archive.ts",
+      "bytes": 20789,
+      "sha256": "a5e0c8fefb8be2cd5ca7963520d943f9e1ed3e05c23fb5a613ecd91f70689737"
+    },
+    {
+      "path": "packages/extension-service/src/filesystem/factory.ts",
+      "bytes": 7943,
+      "sha256": "71a7755b8db3d36b52d94912525ecbfa69575c5fc8e04867c68d69e9220d5362"
+    },
+    {
+      "path": "packages/extension-service/src/filesystem/types.ts",
+      "bytes": 1689,
+      "sha256": "332e8f7bef0cad09916c19896e948ddcd829cf70f4f65ea162fb46dbf821594a"
+    },
+    {
+      "path": "packages/extension-service/src/filesystem/windows-protocol.ts",
+      "bytes": 7322,
+      "sha256": "c4282186749df57a3d5d850b48da192cdd277987aa734ecaa7df7a605769f6c3"
+    },
+    {
+      "path": "packages/extension-service/src/filesystem/windows.ts",
+      "bytes": 12574,
+      "sha256": "becf1df559d710f75d5e1b637f381f6b62cc7b5c90aecbd048dba154d3f4524d"
+    },
+    {
+      "path": "packages/extension-service/src/index.ts",
+      "bytes": 274,
+      "sha256": "315e12db0430cac3d3fbf19a6940c281cdad779030dd67a4324b389546f870fe"
+    },
+    {
+      "path": "packages/extension-service/tests/archive.bdd.test.ts",
+      "bytes": 10474,
+      "sha256": "fb10f0ffccced1003293780dc791a123cd62132853fe52f6a388b3ad40968d78"
+    },
+    {
+      "path": "packages/extension-service/tests/filesystem.cleanup.test.ts",
+      "bytes": 9226,
+      "sha256": "fb8f74df8c60d3d61a5456e38181819c4aa8e59b3d46cfc002827a512e473346"
+    },
+    {
+      "path": "packages/extension-service/tests/filesystem.deployment.test.ts",
+      "bytes": 7623,
+      "sha256": "a7aaca47d09ed177fa0de4b7bbd3c49773a2b05dbe15b2def02098c2410f2d0f"
+    },
+    {
+      "path": "packages/extension-service/tests/filesystem.factory.test.ts",
+      "bytes": 11304,
+      "sha256": "fb11ea341e47edc0c296886240e5c3f1fe34285da12052bce04f601aa0cd90b7"
+    },
+    {
+      "path": "packages/extension-service/tests/filesystem.protocol.test.ts",
+      "bytes": 8581,
+      "sha256": "82cd190abb229c6e0467856c79671b4eb0921224f864f75459efaad56fc8f10a"
+    },
+    {
+      "path": "packages/extension-service/tests/filesystem.transport.test.ts",
+      "bytes": 9854,
+      "sha256": "5bb26632ade68f2d664303ba5bccf3e3274d530f984a47b7f55e76b9a7c8e495"
+    },
+    {
+      "path": "packages/extension-service/tests/filesystem.windows.test.ts",
+      "bytes": 70138,
+      "sha256": "051ae1f17b337b773311ebf538689da6b2d83d106379fba12e93970d90e359e2"
+    },
+    {
+      "path": "packages/extension-service/tests/fixtures/compatible-light-dark.frade-extension",
+      "bytes": 3025,
+      "sha256": "d04a72126c28321045dbaa0e600fbba9d6085fa15cddb3e4aaad1e57ff016926"
+    },
+    {
+      "path": "packages/extension-service/tests/fixtures/fixture-provenance.json",
+      "bytes": 1119,
+      "sha256": "838c70dfcfb31234f37d7ae61395389596c34f39bb5e012172106dae4ee1ba56"
+    },
+    {
+      "path": "packages/extension-service/tests/fixtures/original-input.frade-extension",
+      "bytes": 1356,
+      "sha256": "e6372222207f180fdd5f759f4cbd654f295ce11e91bc6a9e86e1d766b9f04475"
+    },
+    {
+      "path": "packages/extension-service/tests/fixtures/windows-case-mode-actor.cs",
+      "bytes": 2018,
+      "sha256": "ccf7566e31d7c4f34755b2033837e3e1ecb5748dbcce8e77ddb8ecf05a3fd4e6"
+    },
+    {
+      "path": "packages/extension-service/tests/fixtures/windows-malformed-reply-helper.cs",
+      "bytes": 1481,
+      "sha256": "7a614b3961bdf99fb4e5447426bc729609566c63777a0e55e199008492613c43"
+    },
+    {
+      "path": "packages/extension-service/tests/fixtures/windows-nt-rename-actor.cs",
+      "bytes": 1868,
+      "sha256": "2bb6360d213aed3322839ccd4d7daefabb0a464ec2e35931dbe57b8038535f95"
+    },
+    {
+      "path": "packages/extension-service/tests/fixtures/windows-preexisting-deleter-actor.cs",
+      "bytes": 970,
+      "sha256": "5bba9f38425426b5973de46267379cffb89d47a8d1e41f527c550cc24d2223d3"
+    },
+    {
+      "path": "packages/extension-service/tests/fixtures/windows-preexisting-writer-actor.cs",
+      "bytes": 970,
+      "sha256": "dda155ab67560c476051e498484e46b9be11e723efddd8312688e568e8f6ff75"
+    },
+    {
+      "path": "packages/extension-service/tests/fixtures/windows-reparse-actor.cs",
+      "bytes": 2134,
+      "sha256": "bd506f19139772c217124ddc90daeaa42e9c49bad9ef2262e79d421c39ba5d31"
+    },
+    {
+      "path": "packages/extension-service/tests/zip-fixture.ts",
+      "bytes": 5192,
+      "sha256": "0969c429448bbe6f7601a6ca14d0be8fccbe1ac5f13e73c9395d927f23b4e7db"
+    },
+    {
+      "path": "packages/extension-service/tsconfig.build.json",
+      "bytes": 139,
+      "sha256": "6af7a41e2bf631bef8fa14034fca7185254c7aa6b546e5d4d9634d271564c02f"
+    },
+    {
+      "path": "packages/extension-service/tsconfig.json",
+      "bytes": 119,
+      "sha256": "63a212039ee48dc551b5c6d7e06737b6196f72adec16718320eedeb08ff1a50b"
+    },
+    {
+      "path": "packages/repository-api/package.json",
+      "bytes": 760,
+      "sha256": "389a05683887dd226e18fb04669a03a29a303744f594bf3e34b042524bf3707a"
+    },
+    {
+      "path": "packages/repository-api/src/workbench.ts",
+      "bytes": 18483,
+      "sha256": "fa7175662d7910cc9c374b0812584da247bc622b90b3070c89d57206acb70ca1"
+    },
+    {
+      "path": "packages/runtime-contracts/package.json",
+      "bytes": 456,
+      "sha256": "9c35764dc0cde8b0f122f3b2b275aad5e73642e2f2901b1a820966aea69780e4"
+    },
+    {
+      "path": "packages/runtime-contracts/src/index.ts",
+      "bytes": 4111,
+      "sha256": "bf637feec1e30c3b9c999356a4cbc2ac5f4c84174a535ed8eb631a72fc818ef4"
+    },
+    {
+      "path": "packages/runtime-contracts/src/presentation.ts",
+      "bytes": 16731,
+      "sha256": "1dcbde50237d57baeaa3754bbad6f074623612f2f669b5cf4dc03d9828ea43cc"
+    },
+    {
+      "path": "packages/runtime-contracts/tests/contracts.test.ts",
+      "bytes": 2006,
+      "sha256": "4a1324d11513b3bbf6c1683a2f25d3b5a436eecc7dc79e7a234a5b739f681bfe"
+    },
+    {
+      "path": "packages/runtime-contracts/tests/presentation.test.ts",
+      "bytes": 5691,
+      "sha256": "f4534dbb8ee1d5673fdc6907f4dbf3fe415fb3d262547cf75b9a7ef446f5f68f"
+    },
+    {
+      "path": "packages/runtime-contracts/tsconfig.json",
+      "bytes": 163,
+      "sha256": "ae5eb2e54651068c420948d7d19d19a2c20deefeae5d64743f25763f876ab48a"
+    },
+    {
+      "path": "packages/ui-workspace/package.json",
+      "bytes": 1668,
+      "sha256": "73156b0ee018cb5ad969c0e77c6f1b418bb6458ba7e707d67760f54aa20cf1c1"
+    },
+    {
+      "path": "packages/ui-workspace/src/Workbench.tsx",
+      "bytes": 93165,
+      "sha256": "7a9d9b4163e12f0e4d00db7bbd189b6b02b14a81b7187d48b5e0129e75a2517c"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/ThemePicker.tsx",
+      "bytes": 8764,
+      "sha256": "773264ef3d5fe1c89631d14cbeb8ca44628f8d50df0e8f81680a539d6ef0a4db"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/contrast.ts",
+      "bytes": 3226,
+      "sha256": "6c8f58cecc41159033890af8ffbff2837543c88ac5849625b51df63301c9279c"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+      "bytes": 13539,
+      "sha256": "e440c5fdb1c4ec1b3220fed13dd5e3e911c7bd5a150ec60d8a33e1a83594a740"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/index.ts",
+      "bytes": 11429,
+      "sha256": "4488b35179d8df3f94f805a41fccd2339736eb4845eaa3ee2810aa0b280f9313"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+      "bytes": 4379,
+      "sha256": "119790d7fb96cd808c983285e3f119e009cd525974e84b7b89e2fb9018c10897"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/overlays.ts",
+      "bytes": 8726,
+      "sha256": "1fcadbd0e7ba86c8864e3ba9e86c65aa3b5058de606bde26a9572f80e2e6cb5a"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/registry.ts",
+      "bytes": 5049,
+      "sha256": "d9d5706b0fb84f5d1f30765dd85ae06a4416e8577f62fe1fa05aa29947b7d74b"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/resolver.ts",
+      "bytes": 4551,
+      "sha256": "aaf7e6949c8384cf04921050d6aaeae904928a7aba100a42c46662ec67a05ba5"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/rootParticipant.ts",
+      "bytes": 8081,
+      "sha256": "ffc83e3cc8f95207a920d43edc9642ad21e5f7cb16b6fde07c6fb1014a3be1c7"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/service.ts",
+      "bytes": 24438,
+      "sha256": "e7d44a28ea2fa57a9130a2da6d042638fbb0546258b84cc238261dbd77ce33af"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/shortcuts.ts",
+      "bytes": 5049,
+      "sha256": "2a7256aac6bde14d8c7f296b345a36bd23862d66fb22f07c6d1cf60a4d64bf64"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/theme-consumers.css",
+      "bytes": 9240,
+      "sha256": "23bfc0bcff1c0398cfb2a11a0054e9b3146185eb0d4b90fc57ece7d6a0bf006e"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/types.ts",
+      "bytes": 2718,
+      "sha256": "db28b40a35342a0fb2047c8a0ea6a7476e785dc5e10c757d60a171824c2df3b3"
+    },
+    {
+      "path": "packages/ui-workspace/src/index.ts",
+      "bytes": 117,
+      "sha256": "d05f6dbade9e7d043d9f0c9c789b77221cb488eea0506e31f854d445d0b107d9"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/overlays.test.tsx",
+      "bytes": 8242,
+      "sha256": "f189c780feff42765dc8a8350cb29e0c7c85d189e08d4fd775e9e61e1c804862"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+      "bytes": 21219,
+      "sha256": "4705fa82a2ffe2b9169a6846de70ca97f60a503e8ce887033ac1fa0f318f4343"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+      "bytes": 53060,
+      "sha256": "29f447a2ae78496105b20c9c38e4448e1a02a6fe348f7dff2d6a2dac00b83cb7"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/picker.test.tsx",
+      "bytes": 17284,
+      "sha256": "ce18a8542ccb8d0a6f46f3020d1b964fb93b6ec9d72364599603293f22d18694"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/resolver.test.ts",
+      "bytes": 11592,
+      "sha256": "a82c75a954b70d1a87b1c03d316d540de2cf795bca14e9142115c86dfb06f63d"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/service.test.ts",
+      "bytes": 34042,
+      "sha256": "19952bcf556bc9960bc6a040f057b83dd40648b91a97e2899279d782112b00a4"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/shortcuts.test.ts",
+      "bytes": 5597,
+      "sha256": "9635933d09dd2fa6c17380a8e8bcf4bb6b47368951f662e7a39397e6ba9eaa8f"
+    },
+    {
+      "path": "packages/ui-workspace/tokens/theme.schema.json",
+      "bytes": 3825,
+      "sha256": "d0967fe506f13bbc506e48d92a8ff68c07cdcdcc119b6a15862c65b89d28d9f3"
+    },
+    {
+      "path": "packages/ui-workspace/tokens/tokens.json",
+      "bytes": 4849,
+      "sha256": "d02e342cd54dc98807778fcdf10e386080f5b97a5c0a8dc1245b0ee9191e2764"
+    },
+    {
+      "path": "packages/ui-workspace/tsconfig.build.json",
+      "bytes": 708,
+      "sha256": "9c59b035927af3894f7f32c45bdeca041eff5bbdc4d9d463d879e46834949cc5"
+    },
+    {
+      "path": "packages/ui-workspace/tsconfig.json",
+      "bytes": 204,
+      "sha256": "3947377ab782267ff9134b08564f66b9ef1db109962e6e24f04713eba10a5c1a"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 156156,
+      "sha256": "573861ad3637dcfacd364e731bdce4d652dd4d747171d5ba62cd6932c20be557"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "bytes": 159,
+      "sha256": "a60521c70d68098d0d25b9f5defce6267f246f1dfff2df59f9406c0664272e3f"
+    },
+    {
+      "path": "scripts/check-boundaries.mjs",
+      "bytes": 3211,
+      "sha256": "7287e91d04b5d01b89c6c2691630320cbeb557628f3714a3a06aa98397e76967"
+    },
+    {
+      "path": "scripts/check-repository-boundaries.mjs",
+      "bytes": 3382,
+      "sha256": "f027de0ee08d30c1fc12b28e465e2b6388fcf52d6cb55baef7e95d9d434632a0"
+    },
+    {
+      "path": "scripts/check-runtime-boundaries.mjs",
+      "bytes": 5185,
+      "sha256": "8fb0210feec57531eca477bb55ca056dfd83a51b8636fa708273ce7c4d31d964"
+    },
+    {
+      "path": "scripts/check-workbench-boundaries.mjs",
+      "bytes": 3906,
+      "sha256": "94e327b1645d0ed68f6c4310b3dac30aa96a1017f5eacc76e47d3b82b3e79ee1"
+    },
+    {
+      "path": "scripts/ui/checkout.mjs",
+      "bytes": 8982,
+      "sha256": "e9594efcb540d57f495cb7f7bbd126c032c619955282f2c29ff27948dc08ee8a"
+    },
+    {
+      "path": "scripts/ui/colors.mjs",
+      "bytes": 7933,
+      "sha256": "da56ffbf6e75a8218306f2512df94057d28989160df1357be74c469a2a4b0ed1"
+    },
+    {
+      "path": "scripts/ui/controls.mjs",
+      "bytes": 6014,
+      "sha256": "b530b24e97e7a85b1dbd37305c81df46f6fb9befa94275aaba32e4cd877928ee"
+    },
+    {
+      "path": "scripts/ui/tokens.mjs",
+      "bytes": 10276,
+      "sha256": "bccc0b848827774215ed0d65e20de798aa5e91760bb1225e58eef7bbd6442db0"
+    },
+    {
+      "path": "scripts/ui/traceability.mjs",
+      "bytes": 7771,
+      "sha256": "d21a5fe4160c9d953170ce0a892b875c5300c50f6f6aa4e417732ca39b456078"
+    },
+    {
+      "path": "tests/contract/presentation-boundaries.test.mjs",
+      "bytes": 3527,
+      "sha256": "f1d9ca6689106804b8d9a9d3aa95e246ed3def3d56433e2e3b1a06be2aca7cbc"
+    },
+    {
+      "path": "tests/contract/repository-boundaries.test.mjs",
+      "bytes": 1445,
+      "sha256": "cc6ba83f9ac634fe793f16c59e6f81ea7a5f8c8abd0c3664862253ad10ba53ca"
+    },
+    {
+      "path": "tests/contract/runtime-boundaries.test.mjs",
+      "bytes": 1346,
+      "sha256": "983e40eb79a1fc52b8ef06b8ee01ba7cfee2204e417f3eb3f77e962945686b3c"
+    },
+    {
+      "path": "tests/contract/workbench-boundaries.test.mjs",
+      "bytes": 1949,
+      "sha256": "3deca1efe0493bd62917e38c198633f8d7a01132cbf1637a158ab50feac04a9c"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "bytes": 375,
+      "sha256": "ddc0d8facdf0d0336fdc0951795040fd1529b5fbc15a88b9a54fd74e2b01bb2c"
+    },
+    {
+      "path": "turbo.json",
+      "bytes": 491,
+      "sha256": "808bb9cd323342bb7276601555313a6d7b49cec2c92cb9b7bae22045d9bf39af"
+    }
+  ]
+}

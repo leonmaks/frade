@@ -1,0 +1,7 @@
+{
+  "atUtc": "2026-10-10T20:54:53.827Z",
+  "classification": "TEST",
+  "cause": "Overbroad recursive registry visitor reached unrelated for-of p inside cleanup helper and applied hook-only registry assertion. Actual registry is bounded: one top-level direct test and one top-level for-of hook start/dev containing one test. Test callback/helper bodies must not be enumerated as registrations.",
+  "repair": "Collect only SourceFile top-level registrations plus the one exact hook loop block; validate hooks and test count3. Retain byte-identical source projection and all existing hash/assertion invariants. No production/test change.",
+  "status": "ROOT_CAUSE_ESTABLISHED_BEFORE_REPAIR"
+}

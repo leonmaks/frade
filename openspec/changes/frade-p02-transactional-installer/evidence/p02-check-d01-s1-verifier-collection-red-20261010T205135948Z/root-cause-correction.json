@@ -1,0 +1,6 @@
+{
+  "atUtc": "2026-10-10T20:53:56.176Z",
+  "classification": "TEST",
+  "correction": "Actual AST is one static top-level test and for-of hook loop with computed name selecting start/dev. Initial RCA incorrectly named test.describe and zero entries. Collector returned only static case; dynamic name/loop are missing. No report or status was written.",
+  "repair": "Require exactly3 actual registrations via closed start/dev name expansion; compare entire current e2e source after removing only two known new timingText ANSI SGR declarations and replacing their two timingText.matchAll reads with original logs.matchAll. Preserve all assertions and behavior; raw old fixtureFAIL remains immutable."
+}

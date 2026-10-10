@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-10T20:52:04.341Z",
+  "classification": "TEST",
+  "cause": "Owner verification AST collector iterated only SourceFile.statements; actual three test registrations are nested inside test.describe callback. Returned zero test entries and correctly failed minimum-count assertion before report/status writes.",
+  "repair": "Walk AST recursively via ts.forEachChild, retain same registration predicate, require three cases and unchanged canonical AST for all non-dev test callbacks. Do not change production or originaltests/assertions.",
+  "status": "REPAIR_PENDING",
+  "productionUnchanged": true
+}

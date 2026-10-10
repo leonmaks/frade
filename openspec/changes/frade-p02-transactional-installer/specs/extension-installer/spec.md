@@ -220,3 +220,17 @@ Development diagnostics SHALL emit only the accepted fixed phase labels and nume
 
 - **WHEN** at most three approved instrumented canonical dev/rebuild attempts do not reproduce the earlier failure
 - **THEN** diagnostics report NOT_PROVEN and stop for reassessment without attributing a cause, waiving FAIL or changing timeout or assertions
+
+### Requirement: Exact accepted historical development risk
+
+Only the historical dev5s failure identified by accepted P02-DEV-TIMEOUT-DEFERRED-RISK-01 SHALL be deferred as P02-D01 with cause NOT_PROVEN. Original FAIL evidence MUST remain immutable. Every timeout, assertion and required current check MUST remain unchanged.
+
+#### Scenario: Accepted disposition after bounded diagnostics
+
+- **WHEN** three approved diagnostic attempts finish without reproducing that historical failure and the exact human decision is accepted
+- **THEN** the original diagnostic STOP and FAIL remain evidence, the causal-fix prerequisite for only that failure is removed, and coherent strict validation plus fresh applicable independent PRE/POST precede progression
+
+#### Scenario: New failure or historical recurrence
+
+- **WHEN** the deferred failure recurs or any required current check fails
+- **THEN** the owner stops for meaningful reproduction and RCA, P02-D01 grants no current failure waiver, and incomplete S1/S2 or cumulative P02 gates cannot be reported PASS
