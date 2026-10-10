@@ -19,7 +19,7 @@
 
 [Raw current PRE](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T044619Z/output--result.md), [verified receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T044619Z/verification.json), [exact packet retention](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T044619Z/packet-retention.json).283files/79events/17raw. ExactCLI gpt-6-sol/xhigh; readonlyconfinement/source/packet/plan/request/twoaccepteddecisionsPASS, actualbackend/effortNOT_CONFIRMED. Blockers: same-directory pending/final placement and missing complete outcome/recovery admission reserve. Separate owned Vite probe also shows out/main asset cleanup. Next RCA/coherent plan repair/strict/freshPRE within accepted scope. No new human decision currently required. No backend code/screenshots/newvisualapproval. Compiler metadata exists; actualnativebuild/dev/start/capability testsNOT_RUN.
 
-Git: planning65c084fc/sealed8432dece COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint publicationPENDING. Authorized UI origin/ref only; noforce. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. Dashboard updated afterunfreeze; earlier records remainbelow.
+Git: planning65c084fc/sealed8432dece COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint db2ef92765367a7f64b6e9ccaec374094c88a76b COMMITTED/PUSHED; remoteSHAverified; metadata receipt follows. Authorized UI origin/ref only; noforce. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. Dashboard updated afterunfreeze; earlier records remainbelow.
 
 ## Предыдущие записи сохранены
 
