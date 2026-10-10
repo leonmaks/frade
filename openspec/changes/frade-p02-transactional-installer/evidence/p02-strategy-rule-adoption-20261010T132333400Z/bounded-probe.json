@@ -1,0 +1,124 @@
+{
+  "startedAtUtc": "2026-10-10T13:23:33.402Z",
+  "finishedAtUtc": "2026-10-10T13:23:33.410Z",
+  "status": "COMPLETE_READ_ONLY",
+  "scope": "10 exact owning inputs; source inspection only, not runtime security proof",
+  "limits": {
+    "maxFiles": 10,
+    "maxFileBytes": 524288,
+    "maxTotalBytes": 5242880,
+    "readDeadlineMs": 60000,
+    "interpretationBudgetMinutes": 20,
+    "productionWrites": 0,
+    "fullSuites": 0,
+    "reviews": 0
+  },
+  "measured": {
+    "durationMs": 8.032300000000077,
+    "inputBytes": 171515,
+    "files": 10
+  },
+  "inputs": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 16655,
+      "sha256": "686221644bbdc2e9837aca807aa9362ca01329fa6519b2405a37900f79087174"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/proposal.md",
+      "bytes": 6939,
+      "sha256": "178daca41b9c5f951d8d8eb723f34d2b26f3ec625d9d5b3fa042551210cfdb48"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/design.md",
+      "bytes": 67200,
+      "sha256": "2904fbbb4324ccbdea3597cb8002809ccdb0916b8fab660780491b2fc99212fa"
+    },
+    {
+      "path": "openspec/changes/frade-p02-transactional-installer/tasks.md",
+      "bytes": 21173,
+      "sha256": "a5afefa991c45669b9c5f951314e15dc1d697e7a4c5551848755aee6896a5f05"
+    },
+    {
+      "path": "packages/extension-service/src/filesystem/types.ts",
+      "bytes": 1644,
+      "sha256": "6bdc52d8a00c616ccf8509f4f234481fd8fc1bf8a6ee01f0d58abe1ed3992b21"
+    },
+    {
+      "path": "packages/extension-service/src/filesystem/windows.ts",
+      "bytes": 11999,
+      "sha256": "c7a39d06b93f66caae2316e8477612f7e831566efbb3bfa574dc105a5823e443"
+    },
+    {
+      "path": "packages/extension-service/native/windows-filesystem.cs",
+      "bytes": 29380,
+      "sha256": "73ec4d15c7a91abb4d0dcc0d11b88bf2b91e209f222514cad4a24f1654580377"
+    },
+    {
+      "path": "apps/desktop/src/main/index.ts",
+      "bytes": 13942,
+      "sha256": "0dda036e508ed9e9f4f4cc86f9882d0e88be62778e23e32b2b5b12ddeb802ef2"
+    },
+    {
+      "path": "apps/desktop/package.json",
+      "bytes": 1732,
+      "sha256": "7c8084d6ea1609e8eecab95026ac5a095c0ce1a8ba44256e47d540da80189954"
+    },
+    {
+      "path": "packages/extension-service/package.json",
+      "bytes": 851,
+      "sha256": "455d13aade612a9c1363f600d9fcefd947adde21219e1f4a951b7388952aa592"
+    }
+  ],
+  "facts": {
+    "factoryExists": false,
+    "mainAdapterExists": false,
+    "mainHasExtensionService": false,
+    "nativeCapability": [
+      {
+        "line": 137,
+        "text": "      case \"capabilities\": Keys(v);result.Add(\"capabilities\",new {protocol=1,platform=\"windows-x64\",filesystem=\"NTFS\",runtimeProof=\"NOT_VERIFIED\",unconditionalPowerLoss=\"NOT_PROVEN\"});break;"
+      }
+    ],
+    "transportCapability": [
+      {
+        "line": 41,
+        "text": "      return exact(reply, [...base, 'capabilities']) && caps && typeof caps === 'object' && !Array.isArray(caps) && exact(caps, ['protocol', 'platform', 'filesystem', 'runtimeProof', 'unconditionalPowerLoss']) && caps.protocol === 1 && caps.platform === 'windows-x64' && caps.filesystem === 'NTFS' && caps.runtimeProof === 'NOT_VERIFIED' && caps.unconditionalPowerLoss === 'NOT_PROVEN'"
+      }
+    ],
+    "bootstrapContract": [
+      {
+        "line": 160,
+        "text": "- .pending entries (strict reserved basename pattern in the SAME records directory) are non-authoritative publication temporaries, never a phase/commit selection source. Only bounded recognized own-temp entries matching the exact reserved pattern/session and known journal operation may be safely removed by checked opened-object cleanup after reconciliation; a truncated temp from actual crash is not a corrupted authoritative record. Unknown entries, reparse/special objects or exceeded bounds block safe cleanup and keep diagnostics; they are not followed or silently erased. Expected final records cannot be dismissed as temporaries. Directory/root/bootstrap metadata establishment precedes STAGING but no package registry/presentation/staging effect precedes its durable intent."
+      }
+    ],
+    "deploymentContract": [
+      {
+        "line": 196,
+        "text": "Copy verified native helper and integrity metadata ONLY to apps/desktop/out/extension-filesystem/, a sibling of out/main, out/preload and out/renderer. Main resolves this exact application output-relative location (from its out/main code directory to ../extension-filesystem), never arbitrary PATH/renderer package data. Existing approved build/copy scripts and service/desktop manifest hooks own this placement; no CI/Electron/Vite config change, runtime compilation or fallback. Dev builds/copies before electron-vite dev; sibling placement survives its out/main cleanup. Production build copies after main/utility output exists; start verifies/copies the current built asset before electron. Missing/drifted metadata/executable still fails closed. Installed Vite6.1 diagnostic in an isolated owned Temp fixture actually deleted the pre-copied nested out/main asset and retained the sibling asset, then removed its fixture; this is build-output evidence, NOT native/Electron integration PASS. Required new build/dev/start tests prove exact asset resolution/hash/launch/disposal on Windows, including actual dev initial build/rebuild, before runtime capability or installer use is claimed."
+      }
+    ],
+    "capabilityExitContract": [
+      {
+        "line": 242,
+        "text": "Capabilities remain NOT_VERIFIED and installer use forbidden until required native/runtime/deploy proof. Full staging/journal/reserve/recovery/IPC/ExtensionsUI, dev initial/rebuild/build/start, affected/root/general/P01/BDD/security/a11y/visual/OpenSpec verify/cumulative POST/archive remain required. Tasks3/9,2.2IN_PROGRESS; STOPbeforeP03. Accepted paths/purposes only, no dependency/SDK/elevation/config or runtime compilation. Original proposals, raw FAILs, baseline and all scenarios retained."
+      }
+    ],
+    "mainStartup": [
+      {
+        "line": 98,
+        "text": "  .whenReady()"
+      }
+    ],
+    "mainShutdown": [
+      {
+        "line": 363,
+        "text": "app.on('before-quit', (event) => {"
+      }
+    ]
+  },
+  "capabilities": "NOT_VERIFIED",
+  "runtimeExecution": "NOT_RUN",
+  "PRE": "NOT_RUN",
+  "POST": "NOT_RUN"
+}

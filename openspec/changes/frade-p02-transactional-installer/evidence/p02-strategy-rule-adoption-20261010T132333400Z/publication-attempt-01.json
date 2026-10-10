@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-10T13:25:07.106Z",
+  "status": "FAIL",
+  "phase": "pre-stage path allowlist",
+  "cause": "Publication helper trimmed leading whitespace from porcelain output before parsing status columns; first modified path incorrectly rejected.",
+  "effect": "No staging, commits, pushes or production changes; guard stopped before mutation.",
+  "repair": "Preserve raw porcelain stdout when parsing status columns; allowlist is unchanged."
+}

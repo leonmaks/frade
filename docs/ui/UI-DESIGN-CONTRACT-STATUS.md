@@ -1,3 +1,19 @@
+# Frade UI Design Contract — P02: стратегия и точное правило приняты
+
+Обновлено 2026-10-10T13:23:33.400Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Program origin98f387f96b51b0ad139e3507c376ff1c3e8dec09; P02 baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; guide v1.0. Routing независим.
+
+Точный Strategy Before Expensive Work: **ADOPTED_FROM_USER_MESSAGE**, hash 20b578facb0fcbe6b58af15c8d110a8277c771f68a8a95a3155cb4879562d99a; source commit/path не предоставлены. Evidence openspec/changes/frade-p02-transactional-installer/evidence/p02-strategy-rule-adoption-20261010T132333400Z/analysis-addendum.md: alternatives A–I, forecasts времени/ресурсов/token cost, bounded probe и reassessment/STOP. Root AGENTS/common policy не перезаписаны; общая публикация NOT_VERIFIED. Старый NOT_LOCATED ниже — историческое состояние.
+
+Выбрана **C+G**: S0 concrete bootstrap/ownership/UNKNOWN design + strict/PRE → S1 реальный factory/runtime/Main → S2 install/journal/recovery → S3 lifecycle → S4 UI → S5 closure. Прогноз оставшегося P02 **23–71 часов активной инженерной работы**, не календарное обещание; после S0/S1 переоценка. Exact token usage/peak resources не измерены; ожидаемые token costs сравнительные. Measured test22664s/BDD67s/host26≈11s отдельно. Bounded source probe COMPLETE, не runtime proof.
+
+P02 **3/9**, 2.2 IN_PROGRESS; precise runtime/Main S0 PRE **NOT_RUN**. Свежая OpenSpec strict validation для документационного checkpoint PASS; последние реальные component checks226/226/type/lint/build/boundaries/UIcompliance/strictPASS сохранены; новых component runs/PRE/POST нет. Capabilities NOT_VERIFIED; Main/dev/start/journal/recovery/UI/full checks/verify/cumulative POST/archive открыты. Production/spec/design/guide/P01/routing не менялись. READY_FOR_VERIFY:NO; STOP beforeP03.
+
+Следующий шаг: concrete S0 algorithm и scope mapping; затем actual strict и automatic independent PRE **gpt-6-sol/xhigh** по P02 plan до production. Решение человека только при доказанном изменении scope/spec/permission; стратегия не требует повторного approval.
+
+Последний verified published HEAD 95cdd4f72f3a62c26b5d8a3dd84dd6430b4ada1d. Rule-adoption docs checkpoint publication PENDING; только authorized origin git@github.com:leonmaks/frade.git / refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи
+
 # Frade UI Design Contract — P02 strategy analysis
 
 Обновлено 2026-10-10T13:03:38.249Z. Owner codex/frade-ui-design-contract, C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade, common E:/dev/codex/frade/.git. Original baselines/full stage-task tables и raw evidence ниже сохранены. Guide v1.0; Routing независим.
