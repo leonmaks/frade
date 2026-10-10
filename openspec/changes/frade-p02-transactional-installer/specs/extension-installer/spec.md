@@ -234,3 +234,7 @@ Only the historical dev5s failure identified by accepted P02-DEV-TIMEOUT-DEFERRE
 
 - **WHEN** the deferred failure recurs or any required current check fails
 - **THEN** the owner stops for meaningful reproduction and RCA, P02-D01 grants no current failure waiver, and incomplete S1/S2 or cumulative P02 gates cannot be reported PASS
+
+## Implementation traceability for existing S2 requirements
+
+2026-10-10T21:29:38.373Z: [S2 scheme](../../evidence/p02-s2-scheme-20261010T212938373Z/s2-scheme.md) maps the unchanged requirements/scenarios to immutable exact archive storage, existing checked commands, one reserved seven-phase journal/closing disposition, COMMITTED-only recovery and named bridge/P01 ports. No new or weakened normative requirement or scenario; all original spec text above remains byte-present. Current focused S1 POST PASS does not prove these S2 obligations, which remain NOT_IMPLEMENTED/NOT_RUN until meaningful RED/GREEN and applicable gates.

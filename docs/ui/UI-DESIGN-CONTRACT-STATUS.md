@@ -1,3 +1,61 @@
+# P02 — S2 PRE FAIL; proposed boundary awaiting decision
+
+2026-10-10T21:54:37.632Z; codex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. [Exact scope](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-presentation-hooks.proposed.md), SHAa10ebe39ac088d32de8dbf27b331017e1a420a450a4346b0aabca347597e3dab, NOT_ACCEPTED:3 optional hooks in frozen service.ts and private Main record reservation. PREFAIL/checkpoint3/9;99production/source controls unchanged; new code/tests NOT_RUN. Source/gate receipt follows below; publication pending.
+
+# P02 — S2 planning checkpoint; PRE FAIL; publication pending
+
+2026-10-10T21:54:37.632Z; codex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
+
+S2 scheme/strictPASS/independent PRE FAIL; [report](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-pre-outcome-20261010T215120186Z/REPORT.md).99source controls unchanged; all S2 production/RED/GREEN/runtime/POST NOT_RUN. P023/9,2.2/2.3unchecked, fullREADY_FOR_VERIFY:NO. Exact P02-D01/historicalFAIL preserved; currentS1POSTPASS separate.
+
+Checkpoint source/evidence receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-checkpoint-20261010T215437632Z/checkpoint.json; commit/pushpending at creation. Authorized destination origin git@github.com:leonmaks/frade.git, refs/heads/codex/frade-ui-design-contract only; actual remote SHA must be verified later. Next STOP at PRE findings before production. PanelQUEUED/visibilityunconfirmed. NoP03/Routingdependency; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — S2 PRE FAIL; exact boundary decision required
+
+2026-10-10T21:53:45.300Z; codex/frade-ui-design-contract/C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
+
+S2 strictPASS; automatic PRE gpt-6-sol/xhigh FAIL, openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-pre-received-20261010T214959084Z;17rawartifacts/105completeevents, candidate/packet/request unchanged. Blockers: swap before changed flag; no registry-only commit-before-reveal hook; full record allocation before STAGING needs exact mechanism. Source controls unchanged; production untouched.
+
+[Exact proposed P02-S2-PRESENTATION-HOOKS-01](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-presentation-hooks.proposed.md), SHA256a10ebe39ac088d32de8dbf27b331017e1a420a450a4346b0aabca347597e3dab: add only frozen service.ts for3optional awaited hooks; private Main reservation within accepted files. Alternatives and cost/RCA recorded openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-port-boundary-analysis-20261010T215345300Z/analysis.json. Decision NOT_ACCEPTED; active S2 scheme remains initial FAIL version. After acceptance coherent planning/strict/fresh automaticPRE before any RED/production.
+
+P02 remains3/9;2.2S2service/bridge,2.3recovery,2.4UI,3.1fullchecks/visual,3.2verify/cumulativePOST,3.3archive unfinished. FullREADY_FOR_VERIFY:NO. P02-D01/historicalFAIL preserved; S1POSTPASS separate. NoP03/Routingdependency. Checkpoint publicationpending; lastpublishedfbdd5d454932362c4e983b574f9e63da4e332786; panelQUEUED/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — S2 scheme; independent PRE FAIL
+
+2026-10-10T21:51:20.186Z; branch codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; checkpointfbdd5d454932362c4e983b574f9e63da4e332786; Guide1.0.
+
+[S2 scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-scheme-20261010T212938373Z/s2-scheme.md); [outcome](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-pre-outcome-20261010T215120186Z/REPORT.md); strictPASS; new automatic PRE gpt-6-sol/xhigh **FAIL**, complete rawreceipt openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-pre-received-20261010T214959084Z; 105 events, reportSHAb77ed6efb12fa60455076324f874d6c9b89c3d8064e55d8bb856680dfdd2e6d4, actualbackend/effortNOT_CONFIRMED.99source controls unchanged; no product/test implementation. CurrentS1POSTPASS separate; originalFAIL/P02-D01causeNOT_PROVEN retained. OwnerpacketENOBUFS failure/repair and PowerShell parsing error preserved separately from UI/test failures.
+
+P02 remains3/9.2.2: S1complete, remainingS2storage/journal/filepicker/bridge.2.3:actualrecovery/rollbackmatrix unfinished.2.4:ExtensionsUI/fallback unfinished.3.1:fullchecks/P01/a11y/visual unfinished.3.2:fullverify/cumulativePOST unfinished.3.3:archive unfinished. S2RED/GREEN/runtimeprobe/POST NOT_RUN; fullREADY_FOR_VERIFY:NO.
+
+Next: STOP: review findings/limitations require root-cause planning repair or an actual material human decision; no S2 production. NoP03/Routingdependency. Checkpoint NOT_COMMITTED/PUSHED; lastpublishedfbdd5d454932362c4e983b574f9e63da4e332786; panelQUEUED/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — S2 strict PASS; automatic PRE dispatch prepared
+
+2026-10-10T21:31:58.688Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; checkpointfbdd5d454932362c4e983b574f9e63da4e332786; Guide1.0.
+
+S2 [scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-scheme-20261010T212938373Z/s2-scheme.md) complete, production unchanged;99source controls verified. Strict PASS openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2-strict-20261010T212938641Z. Automatic PRE gpt-6-sol/xhigh PREPARED: 198files/2315875bytes; exact current design hash/role and selection saved. Candidate/status/index/HEAD frozen during review; update only after completion/unfreeze. Current S1POSTPASS/historicalFAIL/P02-D01 causeNOT_PROVEN preserved.
+
+P02 remains3/9;2.2storage/journal/bridge and2.3recovery NOT_IMPLEMENTED;2.4UI/fullchecks/verify/POST/visual/archive open. Runtime feasibility probe/newRED/GREEN NOT_RUN. Next receive fresh PRE and record exact gate. NoP03/Routingdependency. Planning NOT_COMMITTED/PUSHED, lastpublishedfbdd5d454932362c4e983b574f9e63da4e332786; panelQUEUED/visibilityunconfirmed, mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — S2 scheme prepared; validation / PRE pending
+
+2026-10-10T21:29:38.373Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372. Guide1.0. Published checkpointfbdd5d454932362c4e983b574f9e63da4e332786.
+
+S1 current focused POST PASS; original historical FAIL and exact deferred P02-D01 causeNOT_PROVEN retained. S2 [scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-scheme-20261010T212938373Z/s2-scheme.md) prepared: existing backend, immutable ZIP bytes, one journal/reserve8records8MiB, COMMITTED-only recovery, P01 port guard and named Main bridge. No production edits; source controls saved. P023/9;2.2storage/journal/filepicker/bridge,2.3actualrecovery,2.4ExtensionsUI,3.1checks/visual,3.2fullverify/cumulativePOST,3.3archive unfinished.
+
+Next actual strict validation → automatic fresh PRE gpt-6-sol/xhigh → record result. S2 implementation/checks/POST NOT_RUN; fullREADY_FOR_VERIFY:NO. NoP03/Routingdependency. Planning NOT_COMMITTED/PUSHED; panel queued/visibilityunconfirmed. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
 # P02 — current S1 checkpoint published
 
 2026-10-10T21:17:45.457Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git. Checkpoint c1e9f473e8e092cf844da7f9826a4f2c2658e399 published to origin/refs/heads/codex/frade-ui-design-contract; actualremoteSHA verified. openspec/changes/frade-p02-transactional-installer/evidence/p02-s1-current-publication-20261010T211745457Z/publication.json. This separate docs checkpoint records that completed publication.
