@@ -6,7 +6,7 @@
 
 P02 **3/9**,2.2 IN_PROGRESS: следующий шаг strict → minimal sufficient sealed packet → automatic PRE → immutable reception. Статус замораживается во время review. Runtime/factory/Main/actual dev/start, staging/journal/recovery/Extensions UI/full checks/verify/cumulativePOST/archive не готовы; capabilities NOT_VERIFIED; READY_FOR_VERIFY:NO; STOPbeforeP03. Historical226 test/BDD226 PASS не заменяют новые проверки.
 
-Последний verified published HEAD c43c469dd591886c3e56d01f9bf0e51a48d6e8a6; accepted planning/packet checkpoint PENDING; selected184files/2569650bytes. Only origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+Последний verified published HEAD c43c469dd591886c3e56d01f9bf0e51a48d6e8a6; accepted planning/packet checkpoint b31df5afea282f02a1923b87dd536858d69f639c COMMITTED/PUSHED_REMOTE_SHA_VERIFIED; selected184files/2569650bytes. Only origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
 
 ## Предыдущие записи
 
