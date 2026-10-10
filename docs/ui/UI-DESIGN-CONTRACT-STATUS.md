@@ -10,7 +10,7 @@ Bounded diagnostic: настоящий неизвестный обычный chi
 
 P02 **3/9**,2.2 IN_PROGRESS; capabilities NOT_VERIFIED. Previous226 test/226 BDD и component checks — historical actual PASS, новых suite runs нет. Main/runtime/dev/start/journal/recovery/Extensions UI/full checks/verify/cumulative POST/archive открыты. READY_FOR_VERIFY:NO; STOP beforeP03. Следующий шаг: решение по точному scope, затем coherent refinement → strict → fresh automatic PRE.
 
-Последний verified published HEAD 47c2b3eee7138106d4bc3cf0a88ba4e68425e9ae. Bootstrap scheme docs checkpoint publication PENDING; authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+Последний verified published HEAD 47c2b3eee7138106d4bc3cf0a88ba4e68425e9ae. Bootstrap scheme docs checkpoint 460684b1db802251f00653ccbf4da53298df6bff COMMITTED/PUSHED; remote SHA verified, metadata follows; authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Right panel queued/visibility unconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED.
 
 ## Предыдущие записи
 
