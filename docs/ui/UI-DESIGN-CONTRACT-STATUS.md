@@ -46,7 +46,7 @@ UI экранов этот native repair не меняет, новых screensho
 
 ## Git / панель
 
-Planning87ec6171/seal351722f4, PREdfd69b6b/fd71c367 и native9c055e974/88dceafd COMMITTED/PUSHED remoteSHAverified. Current native89/codecs/security checkpoint publicationPENDING. Публикация только в origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, no force. Rightpanelqueued/visibilityunconfirmed. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не approval/evidence.
+Planning87ec6171/seal351722f4, PREdfd69b6b/fd71c367 и native9c055e974/88dceafd COMMITTED/PUSHED remoteSHAverified. Current native89/codecs/security checkpoint cc22cf052c7f5f5c11094729a49e32533a684970 COMMITTED/PUSHED remoteSHAverified; metadata follows. Публикация только в origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, no force. Rightpanelqueued/visibilityunconfirmed. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не approval/evidence.
 
 ## Предыдущие записи
 
