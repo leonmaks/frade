@@ -1,0 +1,221 @@
+{
+  "atUtc": "2026-10-10T13:00:00.284Z",
+  "owner": {
+    "root": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+    "branch": "codex/frade-ui-design-contract",
+    "common": "E:/dev/codex/frade/.git",
+    "head": "6f7efb1ebb9a14457d8b3b01441cfdbb7a5397e6"
+  },
+  "note": "Timestamp differences are recorded wall elapsed, not profiling or additive delivery estimates; concurrent runs cannot be summed.",
+  "checks": [
+    {
+      "label": "service222-platform-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service222-platform-current-20261010T101126231Z",
+      "status": "FAIL",
+      "exit": 1,
+      "elapsedSecondsFromRecordedTimestamps": 53.758,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/extension-service",
+        "test"
+      ]
+    },
+    {
+      "label": "service222-file-serial-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service222-file-serial-current-20261010T101631603Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 61.907,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/extension-service",
+        "test"
+      ]
+    },
+    {
+      "label": "service222-bdd-file-serial-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service222-bdd-file-serial-current-20261010T102201739Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 65.487,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+        "--filter",
+        "@frade/extension-service",
+        "test:bdd"
+      ]
+    },
+    {
+      "label": "service226-unavailable-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service226-unavailable-current-20261010T103256035Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 63.993,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+        "--filter",
+        "@frade/extension-service",
+        "test"
+      ]
+    },
+    {
+      "label": "service226-bdd-unavailable-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service226-bdd-unavailable-current-20261010T103440103Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 66.819,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+        "--filter",
+        "@frade/extension-service",
+        "test:bdd"
+      ]
+    },
+    {
+      "label": "host-unavailable26-red-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-unavailable26-red-current-20261010T103110852Z",
+      "status": "FAIL",
+      "exit": 1,
+      "elapsedSecondsFromRecordedTimestamps": 10.412,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+        "--filter",
+        "@frade/extension-service",
+        "exec",
+        "vitest",
+        "run",
+        "tests/filesystem.transport.test.ts"
+      ]
+    },
+    {
+      "label": "host-unavailable26-green-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-unavailable26-green-current-20261010T103205887Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 10.769,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+        "--filter",
+        "@frade/extension-service",
+        "exec",
+        "vitest",
+        "run",
+        "tests/filesystem.transport.test.ts"
+      ]
+    },
+    {
+      "label": "type-host-unavailable-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-type-host-unavailable-current-20261010T103251414Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 2.939,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+        "--filter",
+        "@frade/extension-service",
+        "typecheck"
+      ]
+    },
+    {
+      "label": "lint-host-unavailable-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-lint-host-unavailable-current-20261010T103253651Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 5.297,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+        "--filter",
+        "@frade/extension-service",
+        "lint"
+      ]
+    },
+    {
+      "label": "ui-compliance-unavailable-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-unavailable-current-20261010T103434764Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 28.388,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+        "ui:compliance"
+      ]
+    },
+    {
+      "label": "boundaries-unavailable-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-boundaries-unavailable-current-20261010T103437159Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 0.991,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+        "check:boundaries"
+      ]
+    },
+    {
+      "label": "desktop-build-deployment-hooks-current",
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-desktop-build-deployment-hooks-current-20261010T094634168Z",
+      "status": "PASS",
+      "exit": 0,
+      "elapsedSecondsFromRecordedTimestamps": 61.384,
+      "command": [
+        "E:/Program Files/nodejs/node.exe",
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "build"
+      ]
+    }
+  ],
+  "policySnapshots": [
+    {
+      "file": "AGENTS.md",
+      "sha256": "686221644bbdc2e9837aca807aa9362ca01329fa6519b2405a37900f79087174"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/design.md",
+      "sha256": "2904fbbb4324ccbdea3597cb8002809ccdb0916b8fab660780491b2fc99212fa"
+    },
+    {
+      "file": "openspec/changes/frade-p02-transactional-installer/tasks.md",
+      "sha256": "d97be63fe9c6994aaed06f2ccf2725126950495ae2d64e55c90bbf2c529f53cb"
+    },
+    {
+      "file": "docs/engineering/agent-workflow.md",
+      "sha256": "6c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb"
+    }
+  ],
+  "externalPolicyReadsOnly": [
+    {
+      "file": "E:/dev/codex/frade/AGENTS.md",
+      "sha256": "2e9aa32a3eb8826903cb339e805e2de84f250ef0fb12d24a91b2b7069620e761",
+      "transferred": false
+    },
+    {
+      "file": "C:/Users/NVISEN/.codex/worktrees/routing-v2/frade/AGENTS.md",
+      "sha256": "f1ecdda296b48a54bc48f29ae4c989d6e5f57089b2727261e19ccdcd4faac810",
+      "transferred": false
+    },
+    {
+      "file": "E:/dev/codex/frade-worktrees/frade-standard-workflow/AGENTS.md",
+      "sha256": "d87c0bdf8de56ec43e05309982febd46dc7568956ac01239934c17826c9b9ee6",
+      "transferred": false
+    }
+  ],
+  "strategyRule": "Not located in accessible root files; user direct instruction applies, exact rule adoption not claimed",
+  "capabilities": "NOT_VERIFIED",
+  "tasks": "3/9",
+  "productionChanged": false
+}

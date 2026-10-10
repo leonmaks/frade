@@ -109,3 +109,7 @@ Task2.1 complete: exact original/derived hashes and53 behavioral RED assertions 
 ## Typed pre-bind unavailable repair
 
 2026-10-10T10:36:50.479Z: missing executable/metadata and invalid JSON/UTF8 actualRED22PASS4FAIL then targeted26PASS; full test226PASS and BDD226PASS, type/lint/TSbuild/boundaries/UIcompliance PASS. Existing typed drift and possible-effect UNKNOWN preserved; source prefix original host22 assertions unchanged. openspec/changes/frade-p02-transactional-installer/evidence/p02-unavailable-error-checkpoint-20261010T103650479Z/actual-current.json. Task2.2 IN_PROGRESS,3/9; capabilities NOT_VERIFIED; all remaining Main/runtime/staging/journal/recovery/UI/fullverify/POST/archive obligations open; no P03.
+
+## Pre-volume strategy analysis
+
+2026-10-10T13:03:38.249Z: direct user instruction applied; assessment openspec/changes/frade-p02-transactional-installer/evidence/p02-strategy-analysis-20261010T130338249Z/analysis.md selects risk-first functional slices and reuse/check cadence within unchanged P02 acceptance criteria. Exact new root rule not located; source requested, no foreign state transfer. No production/test repair in this analysis. Tasks3/9;2.2IN_PROGRESS. Next S0 capability-bootstrap/lifecycle design and applicable automatic PRE Sol/xhigh before implementation; no historical PASS substitution, no check waiver, no P03.

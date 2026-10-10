@@ -1,3 +1,21 @@
+# Frade UI Design Contract — P02 strategy analysis
+
+Обновлено 2026-10-10T13:03:38.249Z. Owner codex/frade-ui-design-contract, C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade, common E:/dev/codex/frade/.git. Original baselines/full stage-task tables и raw evidence ниже сохранены. Guide v1.0; Routing независим.
+
+## Текущее действие
+
+По указанию пользователя перед объёмным runtime capability/Main исполнением выполнена оценка вариантов: openspec/changes/frade-p02-transactional-installer/evidence/p02-strategy-analysis-20261010T130338249Z/analysis.md. Выбрана C+G: risk-first → ранний реальный Main/runtime slice → install/journal/recovery → полный lifecycle → UI → cumulative closure. Срезы внутри P02, scope/модель/MUST не меняются.
+
+Measured current service full test64s/BDD67s versus targeted host26≈11s; это wall receipts, не обещание общего ускорения. Убираем лишние повторные широкие прогоны из локального цикла; mandatory full checks/STOP/independent gates сохраняются. Compiler caches/concurrency tuning отложены до замера.
+
+Новое точное root AGENTS правило пока не найдено в доступных worktrees; источник запрошен, анализ выполнен по прямому пользовательскому указанию. AGENTS/foreign files не перенесены. Strategy evidence COMPLETE; S0 exact capability/bootstrap/lifecycle PRE ещё NOT_RUN. До новых production edits сначала закрыть S0 design по approved contracts; material scope/spec decisions — человеку, PRE/POST автоматически Sol/xhigh.
+
+P02 tasks **3/9**,2.2 IN_PROGRESS. Последние реальныe component checks test226PASS/BDD226PASS/type/lint/build/boundaries/UIcompliance/strictPASS сохраняются, новых test runs не заявляем. Capabilities NOT_VERIFIED; factory/Main/dev initial/rebuild/start/journal/recovery/Extensions UI/full checks/verify/cumulative POST/archive открыты. READY_FOR_VERIFY:NO; STOP beforeP03.
+
+Последний опубликованный HEAD6f7efb1ebb9a14457d8b3b01441cfdbb7a5397e6. Strategy docs checkpoint publication PENDING; destination только authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract. Rightpanelqueued/visibilityunconfirmed; merge protection LOCAL_ONLY/NOT_CONFIGURED. Изменены только собственные analysis evidence/dashboard/tasks; product и historical evidence неизменны.
+
+## Предыдущие записи
+
 # Frade UI Design Contract — P02 current component checkpoint
 
 Обновлено 2026-10-10T10:36:50.479Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; guide v1.0. Original program/P02 baselines и full task tables ниже сохранены. P02 **3/9**,2.2 IN_PROGRESS; P03–P07/migration NOT_STARTED.
