@@ -1,34 +1,3 @@
-# UI Design Contract: P02 accepted planning —1/9; PRE preparation
-
-Обновлено 2026-10-10T00:27:12.100Z (Europe/Moscow). Owning branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Current checkpoint 0ecaf44938382bd8daa7d512887dda8a8ee9b372; original98f387f96b51b0ad139e3507c376ff1c3e8dec09 retained. Guide1.0/tokens1.0.0; Routing independent.
-
-| Этап | Статус |
-|---|---|
-| Foundation | ARCHIVED21/21 |
-| P01 | ARCHIVED10/10;3minor OPEN_ACCEPTED_DEFERRED/rawFAIL retained |
-| P02 transactional installer | ACCEPTED_PLAN_REFRESH;1/9; NO_IMPLEMENTATION |
-| P03–P07 | NOT_STARTED |
-
-| Задача P02 | Статус |
-|---|---|
-|1.1 predecessor/audit/baseline/scope | COMPLETE; actual P01 closed/published; exact integration scope accepted |
-|1.2 strict/automatic PRE | strict/apply/status/UIcompliance PASS; sealed 188-file gpt-6-sol/xhigh PRE packet PREPARING |
-|2.1 RED/ZIP/semver/fixtures | NOT_RUN; exact original sample preserved |
-|2.2 contracts/service/IPC | NOT_RUN |
-|2.3 journal/crash/recovery | NOT_RUN |
-|2.4 Extensions UI/fallback | NOT_RUN |
-|3.1 actual checks/a11y/visual | NOT_RUN |
-|3.2 verify/POST | NOT_RUN; selected gpt-6-sol/xhigh |
-|3.3 archive/publication | NOT_RUN; STOPbeforeP03 |
-
-Decisions: [exact scope/model acceptance](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-integration-scope-accepted-20261010T002712Z.json); proposed scope SHAe0821a4e7e1676e772a191061c94e3fc6384df2fd82cbfd62251ce6ffd33c947 unchanged. [Refreshed design](../../openspec/changes/frade-p02-transactional-installer/design.md), [planning proof](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-accepted-planning-20261010T002712Z/planning-update-proof.json). Three P01 defects remain open; no new P02 waiver. Candidate product/tests/dependencies untouched. No new app/screenshots; Extensions visual baseline NOT_APPROVED. Merge protection LOCAL_ONLY/NOT_CONFIGURED; backend/effort NOT_CONFIRMED.
-
-Next: current strict validation -> commit planning checkpoint -> prepare relevant immutable packet -> automatic independent PRE; freeze candidate/dashboard through review. No implementation before fresh PRE PASS.
-
-Git: prior audit4e224d94/metadata0ecaf449 published; accepted plan checkpoint publication PENDING. Authorized origin UI ref only. Right panel previously queued; visibility unconfirmed.
-
-## Предыдущие записи сохранены
-
 # UI Design Contract: P02 start — planning audit,0/9
 
 Обновлено 2026-10-09T23:46:28.418Z (Europe/Moscow: 10.10.2026, 02:46:28). Ветка codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Current P02 baseline d876a773282700abf515c9c4fbc14a0b219359af; original program baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09. Guide1.0/tokens1.0.0. Routing independent.
