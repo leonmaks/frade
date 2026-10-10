@@ -19,7 +19,7 @@
 
 [Raw current PRE](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T042033Z/output--result.md), [verified receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T042033Z/verification.json), [exact packet retention](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T042033Z/packet-retention.json).265files/89events/17raw. ExactCLI gpt-6-sol/xhigh; readonlyconfinement/source/packet/plan/request/twoaccepteddecisionsPASS, actualbackend/effortNOT_CONFIRMED. Blocker: phase publication does not choose existing-file replacement vs separate phase records or authoritative recovery order. Next: coherent exact journal protocol repair within accepted scope, strict and freshautomaticPRE. No new human decision currently required. No backend code/screenshots/newvisualapproval. Compiler metadata exists; actualnativebuild/dev/start/capability testsNOT_RUN.
 
-Git: planning65c084fc/sealed8432dece COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint publicationPENDING. Authorized UI origin/ref only; noforce. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. Dashboard updated afterunfreeze; earlier records remainbelow.
+Git: planning65c084fc/sealed8432dece COMMITTED/PUSHED remoteSHAverified; currentPRE receipt checkpoint 5f147d630f6d4df60b605a6b92fe6c2eaf379824 COMMITTED/PUSHED; remoteSHAverified; metadata receipt follows. Authorized UI origin/ref only; noforce. MergeprotectionLOCAL_ONLY/NOT_CONFIGURED; rightpanelqueued/visibilityunconfirmed. Dashboard updated afterunfreeze; earlier records remainbelow.
 
 ## Предыдущие записи сохранены
 
