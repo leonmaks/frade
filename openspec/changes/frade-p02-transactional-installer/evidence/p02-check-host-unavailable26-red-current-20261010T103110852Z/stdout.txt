@@ -1,0 +1,43 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/filesystem.transport.test.ts (26 tests | 4 failed) 7983ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > negotiates native clock/session capabilities without promoting NOT_VERIFIED and releases on dispose  346ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > serializes actual bounded writes, seal, publication and exact readback over owned stdio  407ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses source asset drift before root binding effects 9ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses executable asset drift before root binding effects 9ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses protocol asset drift before root binding effects 8ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses platform asset drift before root binding effects 10ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses bytes asset drift before root binding effects 8ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > refuses an invalid path locally and closes the session without a child effect  423ms
+   ✓ P02FS004/005: actual verified-asset closed host transport, no installer capability claim > rejects concurrent admission instead of queueing a second mutation 246ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed wrong-version instead of accepting a bind  430ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed wrong-session instead of accepting a bind  759ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed wrong-generation instead of accepting a bind  888ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed wrong-request instead of accepting a bind  465ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed negative-clock instead of accepting a bind  384ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed fractional-clock instead of accepting a bind  417ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed unknown-field instead of accepting a bind  432ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed noncanonical-body instead of accepting a bind  547ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed invalid-utf8 instead of accepting a bind  362ms
+   ✓ P02FS004: actual first-party malformed-reply child fixtures, not native security capability > invalidates malformed helper-exit instead of accepting a bind  390ms
+   ✓ refuses deadline-clock as a reply outside the admitted operation contract  504ms
+   ✓ refuses oversized-frame as a reply outside the admitted operation contract  389ms
+   ✓ refuses double-cr as a reply outside the admitted operation contract  508ms
+   × P02FS004/005: unavailable distribution is a typed pre-bind failure > returns BACKEND_UNAVAILABLE for missing-executable without root effects 17ms
+     → expected Error: ENOENT: no such file or directory,… { …(4) } to match object { …(3) }
+(4 matching properties omitted from actual)
+   × P02FS004/005: unavailable distribution is a typed pre-bind failure > returns BACKEND_UNAVAILABLE for missing-metadata without root effects 7ms
+     → expected Error: ENOENT: no such file or directory,… { …(4) } to match object { …(3) }
+(4 matching properties omitted from actual)
+   × P02FS004/005: unavailable distribution is a typed pre-bind failure > returns BACKEND_UNAVAILABLE for invalid-json without root effects 6ms
+     → expected SyntaxError: Expected property name or '}… to match object { …(3) }
+   × P02FS004/005: unavailable distribution is a typed pre-bind failure > returns BACKEND_UNAVAILABLE for invalid-utf8 without root effects 7ms
+     → expected TypeError: The encoded data was not valid… { code: '…' } to match object { …(3) }
+(1 matching property omitted from actual)
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 22 passed (26)
+   Start at  13:31:12
+   Duration  8.95s (transform 198ms, setup 0ms, collect 225ms, tests 7.98s, environment 0ms, prepare 381ms)
+

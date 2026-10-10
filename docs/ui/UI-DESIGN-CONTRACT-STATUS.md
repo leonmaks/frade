@@ -1,3 +1,19 @@
+# Frade UI Design Contract — P02 current component checkpoint
+
+Обновлено 2026-10-10T10:36:50.479Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; guide v1.0. Original program/P02 baselines и full task tables ниже сохранены. P02 **3/9**,2.2 IN_PROGRESS; P03–P07/migration NOT_STARTED.
+
+## Последняя фактическая проверка
+
+**Test226 PASS / BDD226 PASS**, targeted host26 PASS, affected typecheck/lint/production TS build, boundaries и UI compliance PASS. Archive59 + protocol43 + native89 + deployment9 + transport26. Original host22/native9 assertions сохранены; новая append-only четвёрка получила реальный RED22PASS/4FAIL до production repair.
+
+Исправлен только typed pre-bind отказ: missing helper/metadata и invalid JSON/UTF8 теперь BACKEND_UNAVAILABLE/NATIVE_BUILD_UNAVAILABLE; существующие drift checks/errors сохраняются. Command/bind/possible-effect UNKNOWN не переопределены. Evidence openspec/changes/frade-p02-transactional-installer/evidence/p02-unavailable-error-checkpoint-20261010T103650479Z/actual-current.json; previous raw FAIL/RCA сохраняются, не отменяются.
+
+Capabilities NOT_VERIFIED; factory/runtime capability/Main/dev initial/rebuild/start, staging/journal/recovery/IPC/Extensions UI и full root/general/P01/UI/verify/cumulative POST/archive ещё не готовы. READY_FOR_VERIFY: NO; STOP before P03. Required next PRE/POST по плану gpt-6-sol/xhigh, автоматически; no human relay. UI экраны/guide/tokens/brand/domain/routing не менялись, новых screenshots нет. Решений человека сейчас не требуется.
+
+Последний опубликованный transport checkpoint915d674fc6a8444de30ce625120caa3677d45204/metadata640eb33ac3be5c74f25c7bd86affb521c17fc22a. current transport/deployment checkpoint publication PENDING (typed unavailable repair). Только origin git@github.com:leonmaks/frade.git refs/heads/codex/frade-ui-design-contract; no force. Панель queued/visibility unconfirmed. Merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи
+
 # Frade UI Design Contract — P02 transport/deployment component
 
 Обновлено 2026-10-10T10:25:13.870Z. Branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Program origin98f387f96b51b0ad139e3507c376ff1c3e8dec09; P02 baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; guide v1.0. Routing независим.

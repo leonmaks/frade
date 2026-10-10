@@ -1,0 +1,91 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/filesystem.transport.test.ts > P02FS004/005: unavailable distribution is a typed pre-bind failure > returns BACKEND_UNAVAILABLE for missing-executable without root effects
+ FAIL  tests/filesystem.transport.test.ts > P02FS004/005: unavailable distribution is a typed pre-bind failure > returns BACKEND_UNAVAILABLE for missing-metadata without root effects
+AssertionError: expected Error: ENOENT: no such file or directory,… { …(4) } to match object { …(3) }
+(4 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "message": "NATIVE_BUILD_UNAVAILABLE",
+-   "name": "FilesystemTransportError",
+-   "status": "BACKEND_UNAVAILABLE",
++ Error {
++   "message": "ENOENT: no such file or directory, lstat 'C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-transport-vLzt7I\\distribution\\frade-filesystem.exe'",
++   "errno": -4058,
++   "code": "ENOENT",
++   "syscall": "lstat",
++   "path": "C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-p02-transport-vLzt7I\\distribution\\frade-filesystem.exe",
+  }
+
+ ❯ tests/filesystem.transport.test.ts:120:5
+    118|     else if (mode === 'invalid-json') await fs.writeFile(metadata, '{')
+    119|     else await fs.writeFile(metadata, Buffer.from([0xff]))
+    120|     await expect(f.connect()).rejects.toMatchObject({ name: 'Filesyste…
+       |     ^
+    121|     expect(await fs.readdir(f.root)).toEqual([])
+    122|   }))
+ ❯ ownedTransport tests/filesystem.transport.test.ts:24:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/filesystem.transport.test.ts > P02FS004/005: unavailable distribution is a typed pre-bind failure > returns BACKEND_UNAVAILABLE for invalid-json without root effects
+AssertionError: expected SyntaxError: Expected property name or '}… to match object { …(3) }
+
+- Expected
++ Received
+
+- {
+-   "message": "NATIVE_BUILD_UNAVAILABLE",
+-   "name": "FilesystemTransportError",
+-   "status": "BACKEND_UNAVAILABLE",
++ SyntaxError {
++   "message": "Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+  }
+
+ ❯ tests/filesystem.transport.test.ts:120:5
+    118|     else if (mode === 'invalid-json') await fs.writeFile(metadata, '{')
+    119|     else await fs.writeFile(metadata, Buffer.from([0xff]))
+    120|     await expect(f.connect()).rejects.toMatchObject({ name: 'Filesyste…
+       |     ^
+    121|     expect(await fs.readdir(f.root)).toEqual([])
+    122|   }))
+ ❯ ownedTransport tests/filesystem.transport.test.ts:24:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/filesystem.transport.test.ts > P02FS004/005: unavailable distribution is a typed pre-bind failure > returns BACKEND_UNAVAILABLE for invalid-utf8 without root effects
+AssertionError: expected TypeError: The encoded data was not valid… { code: '…' } to match object { …(3) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "message": "NATIVE_BUILD_UNAVAILABLE",
+-   "name": "FilesystemTransportError",
+-   "status": "BACKEND_UNAVAILABLE",
++ TypeError {
++   "message": "The encoded data was not valid for encoding utf-8",
++   "code": "ERR_ENCODING_INVALID_ENCODED_DATA",
+  }
+
+ ❯ tests/filesystem.transport.test.ts:120:5
+    118|     else if (mode === 'invalid-json') await fs.writeFile(metadata, '{')
+    119|     else await fs.writeFile(metadata, Buffer.from([0xff]))
+    120|     await expect(f.connect()).rejects.toMatchObject({ name: 'Filesyste…
+       |     ^
+    121|     expect(await fs.readdir(f.root)).toEqual([])
+    122|   }))
+ ❯ ownedTransport tests/filesystem.transport.test.ts:24:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

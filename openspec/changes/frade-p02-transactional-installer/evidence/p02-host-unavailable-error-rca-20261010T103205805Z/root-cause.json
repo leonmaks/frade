@@ -1,0 +1,9 @@
+{
+  "atUtc": "2026-10-10T10:32:05.805Z",
+  "classification": "INTEGRATION",
+  "RED": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-unavailable26-red-current-20261010T103110852Z",
+  "actual": "Four pre-bind missing/unparseable distribution cases leak raw fs/JSON/UTF8 errors;22 previous assertions PASS.",
+  "cause": "Asset verification executes asynchronous fs reads and parsers outside the typed transport failure boundary. No child has been spawned at this point.",
+  "repair": "Catch only asset verification; preserve existing typed drift errors unchanged, translate otherwise to FilesystemTransportError BACKEND_UNAVAILABLE/NATIVE_BUILD_UNAVAILABLE. No command/bind/UNKNOWN errors caught or reclassified, no fallback or relaxed integrity.",
+  "capabilities": "NOT_VERIFIED"
+}

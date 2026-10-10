@@ -1,0 +1,188 @@
+{
+  "atUtc": "2026-10-10T10:36:50.479Z",
+  "headBefore": "640eb33ac3be5c74f25c7bd86affb521c17fc22a",
+  "authority": "openspec/changes/frade-p02-transactional-installer/decisions/p02-ancestor-metadata-handoff-accepted-20261010T073434608Z.json",
+  "PRE": "openspec/changes/frade-p02-transactional-installer/evidence/p02-pre-received-20261010T080608Z",
+  "changes": [
+    {
+      "file": "packages/extension-service/src/filesystem/windows.ts",
+      "sha256": "c7a39d06b93f66caae2316e8477612f7e831566efbb3bfa574dc105a5823e443"
+    },
+    {
+      "file": "packages/extension-service/tests/filesystem.transport.test.ts",
+      "sha256": "5bb26632ade68f2d664303ba5bccf3e3274d530f984a47b7f55e76b9a7c8e495"
+    }
+  ],
+  "originalHost22PrefixByteIdentical": "421f8dc90209b90d7573cc0ed8bdfbd3e0252203893ea2836c816cd7c17f8859",
+  "RED": "openspec/changes/frade-p02-transactional-installer/evidence/p02-host-unavailable-error-red-20261010T103110606Z",
+  "RCA": "openspec/changes/frade-p02-transactional-installer/evidence/p02-host-unavailable-error-rca-20261010T103205805Z",
+  "tests": "226PASS",
+  "BDD": "226PASS",
+  "counts": {
+    "archive": 59,
+    "protocol": 43,
+    "native": 89,
+    "deployment": 9,
+    "transport": 26
+  },
+  "checks": [
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-host-unavailable26-green-current-20261010T103205887Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:32:16.656Z",
+        "label": "host-unavailable26-green-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "exec",
+          "vitest",
+          "run",
+          "tests/filesystem.transport.test.ts"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "5ab2dedfff0eb360cda350c4171846090cc2a4efc4d861c799ea583c396a6b77",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service226-unavailable-current-20261010T103256035Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:34:00.028Z",
+        "label": "service226-unavailable-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "test"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "0d9236ac14dc26a9e5177d8e43c7a5ac633bf08a696a5c99da828ab8fc1e193f",
+        "stderrSha256": "353492a78766087f035a399990ea1cefd2474288375b811541823639bfbe8c94"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service226-bdd-unavailable-current-20261010T103440103Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:35:46.922Z",
+        "label": "service226-bdd-unavailable-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "test:bdd"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e5f072e0175fb115fbea37936583121a41650065c9c99185d22a4df1834d6919",
+        "stderrSha256": "88551cf807283b50304c052418beb5da3d54ede71a7921939ee9ac5a5685c72b"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-type-host-unavailable-current-20261010T103251414Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:32:54.353Z",
+        "label": "type-host-unavailable-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "typecheck"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-lint-host-unavailable-current-20261010T103253651Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:32:58.948Z",
+        "label": "lint-host-unavailable-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "lint"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "f742f989be94e529cde1c75bc31645378f1840908710384b8406b93407d056d9"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-service-ts-build-unavailable-current-20261010T103539889Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:35:41.848Z",
+        "label": "service-ts-build-unavailable-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "exec",
+          "tsc",
+          "-p",
+          "tsconfig.build.json"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-boundaries-unavailable-current-20261010T103437159Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:34:38.150Z",
+        "label": "boundaries-unavailable-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+          "check:boundaries"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "20ac408d28f07f362b82b85bf66a093881846c9defb27aab466f3884ea0f8dc0",
+        "stderrSha256": "11689d4067818dbbb751832cc7eeb7ee1508995980b21d0d168ed0f300f4df1f"
+      }
+    },
+    {
+      "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-ui-compliance-unavailable-current-20261010T103434764Z",
+      "execution": {
+        "atUtc": "2026-10-10T10:35:03.152Z",
+        "label": "ui-compliance-unavailable-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:\\Users\\NVISEN\\AppData\\Local\\node\\corepack\\v1\\pnpm\\12.6.0\\bin\\pnpm.mjs",
+          "ui:compliance"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "ec97b9180311b2e6258f98d3a1e4bdcfb7d2de131193b3b33f259bf3f122c5f0",
+        "stderrSha256": "a9969ed6b164cf14846cf1d768ecbbd67bbb554e640c7722dbeffabde1402265"
+      }
+    }
+  ],
+  "capabilities": "NOT_VERIFIED",
+  "tasks": "3/9",
+  "POST": "NOT_RUN",
+  "READY_FOR_VERIFY": "NO"
+}

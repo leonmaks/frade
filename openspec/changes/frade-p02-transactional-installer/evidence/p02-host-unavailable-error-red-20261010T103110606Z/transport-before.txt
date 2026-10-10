@@ -108,16 +108,3 @@ for (const mode of ['deadline-clock', 'oversized-frame', 'double-cr']) it('refus
     if (accepted) await expect((accepted as WindowsFilesystemTransport).dispose()).rejects.toThrow('FILESYSTEM_HELPER_CLOSED')
   }
 }))
-
-
-describe('P02FS004/005: unavailable distribution is a typed pre-bind failure', () => {
-  for (const mode of ['missing-executable', 'missing-metadata', 'invalid-json', 'invalid-utf8']) it('returns BACKEND_UNAVAILABLE for ' + mode + ' without root effects', () => ownedTransport(async f => {
-    const metadata = path.join(f.distribution, 'integrity.json')
-    if (mode === 'missing-executable') await fs.unlink(path.join(f.distribution, 'frade-filesystem.exe'))
-    else if (mode === 'missing-metadata') await fs.unlink(metadata)
-    else if (mode === 'invalid-json') await fs.writeFile(metadata, '{')
-    else await fs.writeFile(metadata, Buffer.from([0xff]))
-    await expect(f.connect()).rejects.toMatchObject({ name: 'FilesystemTransportError', status: 'BACKEND_UNAVAILABLE', message: 'NATIVE_BUILD_UNAVAILABLE' })
-    expect(await fs.readdir(f.root)).toEqual([])
-  }))
-})

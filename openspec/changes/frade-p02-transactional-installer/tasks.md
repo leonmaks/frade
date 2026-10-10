@@ -105,3 +105,7 @@ Task2.1 complete: exact original/derived hashes and53 behavioral RED assertions 
 ## Transport/deployment component checkpoint
 
 2026-10-10T10:25:13.870Z: task2.2 remains IN_PROGRESS,3/9. Test and BDD each222PASS with exact unchanged selected files/assertions/timeouts, fileParallelism=false after preserved full221PASS/1FAIL and ENVIRONMENT RCA. Native89 + protocol43 + archive59 + deployment9 + host22. Current type/lint/build/strict/boundaries/UI compliance actual PASS; details openspec/changes/frade-p02-transactional-installer/evidence/p02-transport-deployment-checkpoint-20261010T102513870Z/actual-current.json. Capabilities NOT_VERIFIED; Main/dev initial/rebuild/start/factory/runtime proof, staging/journal/recovery/IPC/ExtensionsUI, full checks/verify/cumulative POST/archive remain open. No P03.
+
+## Typed pre-bind unavailable repair
+
+2026-10-10T10:36:50.479Z: missing executable/metadata and invalid JSON/UTF8 actualRED22PASS4FAIL then targeted26PASS; full test226PASS and BDD226PASS, type/lint/TSbuild/boundaries/UIcompliance PASS. Existing typed drift and possible-effect UNKNOWN preserved; source prefix original host22 assertions unchanged. openspec/changes/frade-p02-transactional-installer/evidence/p02-unavailable-error-checkpoint-20261010T103650479Z/actual-current.json. Task2.2 IN_PROGRESS,3/9; capabilities NOT_VERIFIED; all remaining Main/runtime/staging/journal/recovery/UI/fullverify/POST/archive obligations open; no P03.
