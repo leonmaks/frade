@@ -45,7 +45,7 @@
 
 ## Git и панель
 
-Guard decision/RED/checks checkpoint publicationPENDING. Публикация только в user-authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, безforce, с remote SHAverification. Rightpanelqueued/visibilityunconfirmed. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не заменяет approvals/raw evidence.
+Guard decision/RED/checks checkpoint 035bfdd48ae4886b8abd4d0edddb6eb9e35fadd0 COMMITTED/PUSHED remoteSHAverified; metadata receipt follows. Публикация только в user-authorized origin git@github.com:leonmaks/frade.git/ref refs/heads/codex/frade-ui-design-contract, безforce, с remote SHAverification. Rightpanelqueued/visibilityunconfirmed. Merge protectionLOCAL_ONLY/NOT_CONFIGURED. Dashboard не заменяет approvals/raw evidence.
 
 ## Предыдущие записи
 
