@@ -1,3 +1,13 @@
+# P02 — S2 recovery planning checkpoint опубликован; PRE PASS
+
+2026-10-13T15:04:45.893Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; origin98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
+
+Checkpoint **d92a85011b487e07053b318ba66b91347184d2ff** PUSHED_REMOTE_SHA_VERIFIED в origin/refs/heads/codex/frade-ui-design-contract; [publication](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-publication-20261013T150445893Z/publication.json). Этот docs commit записывает результат публикации. [Current accepted scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-accepted-plan-20261013T143031057Z/s2-scheme.md); [actual PRE](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-pre-received-20261013T145733514Z/output--result.md): **PASS**, requested gpt-6-sol/xhigh, actualbackend/effortNOT_CONFIRMED. StrictPASS, историческийformatFAIL и initialS2PREFAIL сохранены; production unchanged/99controls verified.
+
+P02 **3/9**, 2.2S2 /2.3recovery /2.4UI /3.1checksvisual /3.2verifyPOST /3.3archive неготовы. NewRED/GREEN/runtime/POSTNOT_RUN; fullREADY_FOR_VERIFY:NO. Next meaningful S2a RED по принятому плану. NoP03/Routingdependency. P02-D01 historicalFAIL causeNOT_PROVEN retained. RightpanelQUEUED/visibilityNOT_CONFIRMED; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
 # P02 — принятый S2 recovery план; PRE PASS; checkpoint publication pending
 
 2026-10-13T15:03:32.341Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
