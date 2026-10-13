@@ -22,7 +22,7 @@ One versioned JSON token source SHALL generate all builtin CSS/typed role output
 
 ### Requirement: Forced-colors precedence and exact adoption exception
 
-Generated CSS SHALL map every theme color role to its declared system keyword under forced-colors for root and inherited descendants with absent, System, Light, Dark and HC theme attributes under OS Light/Dark. The original input SHALL remain unchanged. Frade CSS adoption revision 1 SHALL permit only the exact single selector replacement `:root:not([data-frade-theme])` → `:root:where(:not([data-frade-theme]))` in the automatic Dark media block. Every other source CSS byte, palette value, role and token version SHALL remain equivalent. Drift checks MUST reject any additional discrepancy. Adoption revision/provenance SHALL be recorded separately from CSS bytes. Browser checks SHALL confirm requested media states and every role on root and an inherited child across the 20-state matrix; source named-pair checks alone MUST NOT claim cascade correctness.
+Generated CSS SHALL map every theme color role to its declared system keyword under forced-colors for root and inherited descendants with absent, System, Light, Dark and HC theme attributes under OS Light/Dark. The original input SHALL remain unchanged.
 
 #### Scenario: Automatic Dark with forced colors
 
@@ -38,6 +38,26 @@ Generated CSS SHALL map every theme color role to its declared system keyword un
 
 - **WHEN** generated CSS differs from the single-exception equivalence oracle in any other byte
 - **THEN** equivalence and drift checks fail without rewriting outputs or source evidence
+
+
+### Requirement: Exact single-selector CSS adoption boundary
+
+Frade CSS adoption revision 1 SHALL permit only the exact single selector replacement `:root:not([data-frade-theme])` → `:root:where(:not([data-frade-theme]))` in the automatic Dark media block. Every other source CSS byte, palette value, role and token version SHALL remain equivalent. Drift checks MUST reject any additional discrepancy.
+
+#### Scenario: Additional selector or token change is rejected
+
+- **WHEN** adopted generated CSS contains a discrepancy beyond the exact permitted selector replacement
+- **THEN** the unchanged equivalence and drift checks fail and preserve original source bytes
+
+
+### Requirement: Recorded adoption and actual cascade evidence
+
+Adoption revision/provenance SHALL be recorded separately from CSS bytes. Browser checks SHALL confirm requested media states and every role on root and an inherited child across the 20-state matrix; source named-pair checks alone MUST NOT claim cascade correctness.
+
+#### Scenario: Source contrast alone is insufficient for cascade acceptance
+
+- **WHEN** adoption provenance and browser cascade evidence are assessed
+- **THEN** provenance remains separate from CSS bytes and actual requested media states plus every root and inherited-child role are checked across the20-state matrix
 
 ### Requirement: Feature literals and explicit exceptions
 
@@ -64,7 +84,7 @@ UI compliance SHALL run in the real repository CI alongside retained project che
 
 ### Requirement: Fresh Git checkout preserves canonical LF bytes
 
-The root .gitattributes SHALL contain exactly the eight user-accepted logical entries in docs/ui/decisions/token-eol.gitattributes.proposed. A fresh Git checkout with temporary-repository core.autocrlf=true SHALL preserve all eight canonical artifact SHA256 hashes and LF bytes. The token checker and source-byte equivalence oracle MUST remain unchanged and MUST NOT normalize checked artifacts to hide CRLF drift. Only root configuration line separators may be normalized to compare its eight logical entries. Missing, extra, wildcard or CRLF-target rules MUST fail the checkout check. Controls SHALL execute in a verified OS-temp Git repository using existing Node/Git, retain actual exit/hash evidence and safely remove that isolated root. Missing Git or failed cleanup MUST NOT count as PASS or skipped coverage. Focused independent PRE MUST approve the added path before production implementation; prior review evidence MUST remain immutable.
+The root .gitattributes SHALL contain exactly the eight user-accepted logical entries in docs/ui/decisions/token-eol.gitattributes.proposed. A fresh Git checkout with temporary-repository core.autocrlf=true SHALL preserve all eight canonical artifact SHA256 hashes and LF bytes.
 
 #### Scenario: Windows-style checkout with accepted attributes
 
@@ -82,9 +102,39 @@ The root .gitattributes SHALL contain exactly the eight user-accepted logical en
 - **THEN** the checkout compliance check fails without changing the artifact byte oracle or automatically accepting new scope
 
 
+
+### Requirement: Checkout oracle and attribute scope stay strict
+
+The token checker and source-byte equivalence oracle MUST remain unchanged and MUST NOT normalize checked artifacts to hide CRLF drift. Only root configuration line separators may be normalized to compare its eight logical entries. Missing, extra, wildcard or CRLF-target rules MUST fail the checkout check.
+
+#### Scenario: Byte or attribute scope normalization is rejected
+
+- **WHEN** an artifact is normalized to hide CRLF drift or attribute entries are missing extra wildcard or CRLF-targeted
+- **THEN** the check fails while only root configuration line separators may be normalized for comparing eight logical entries
+
+
+### Requirement: Isolated checkout controls retain actual failures
+
+Controls SHALL execute in a verified OS-temp Git repository using existing Node/Git, retain actual exit/hash evidence and safely remove that isolated root. Missing Git or failed cleanup MUST NOT count as PASS or skipped coverage.
+
+#### Scenario: Git or fixture cleanup fails
+
+- **WHEN** the verified OS-temp checkout control cannot execute Git or cannot safely remove its owned root
+- **THEN** actual failure and exit/hash evidence remain recorded and coverage is neither skipped nor reported PASS
+
+
+### Requirement: Checkout implementation preserves independent review origin
+
+Focused independent PRE MUST approve the added path before production implementation; prior review evidence MUST remain immutable.
+
+#### Scenario: Checkout implementation path is introduced
+
+- **WHEN** the added checkout path is proposed for production implementation
+- **THEN** focused independent PRE precedes implementation and earlier review evidence remains immutable
+
 ### Requirement: UI compliance survives specification archival
 
-UI compliance SHALL read a stable canonical BDD contract independent of the active OpenSpec change directory. Archiving or removing the completed change artifact SHALL preserve successful binding/control execution. Missing or malformed canonical BDD MUST fail rather than fall back to an active/archive copy. Existing foundation assertions, explicit future boundaries, token/literal negatives and immutable historical evidence MUST remain strict. Owner instruction links SHALL point to durable documentation.
+UI compliance SHALL read a stable canonical BDD contract independent of the active OpenSpec change directory. Archiving or removing the completed change artifact SHALL preserve successful binding/control execution. Missing or malformed canonical BDD MUST fail rather than fall back to an active/archive copy.
 
 #### Scenario: Completed change is archived
 
@@ -100,3 +150,13 @@ UI compliance SHALL read a stable canonical BDD contract independent of the acti
 
 - **WHEN** canonical BDD is missing or malformed while a historical change copy still exists
 - **THEN** compliance fails without fallback, suppressed errors, skipped tests or a rewritten baseline
+
+
+### Requirement: Archive-safe compliance retains strict controls and durable links
+
+Existing foundation assertions, explicit future boundaries, token/literal negatives and immutable historical evidence MUST remain strict. Owner instruction links SHALL point to durable documentation.
+
+#### Scenario: Owner follows compliance instructions after archival
+
+- **WHEN** a completed change is archived and its compliance instructions are used
+- **THEN** links lead to durable documentation and foundation assertions future boundaries token/literal negatives and historical evidence remain strict and unchanged

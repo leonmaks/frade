@@ -25,8 +25,12 @@ These capabilities already exist in the supplier and are adopted into the recipi
 
 ### Modified Capabilities
 
-None; existing domain/routing/Repo Core contracts and supplier requirements are preserved.
+None; existing domain/routing/Repo Core contracts and supplier behavioral requirements are preserved; the accepted P01-MAIN-SPEC-STRUCTURE-01 splits only three overlong descriptions, preserving all original conditions/scenarios.
 
 ## Impact
 
 Exact proposed file list and raw SHA256 are in evidence/planning-20261013T2105Z/transfer-manifest.json. Product files remain unchanged before PRE. Main has unrelated dirty work: prepare in the isolated worktree, preserve original main paths/hashes, and finalize integration only through a reviewed preservation procedure. No force, reset, arbitrary stash, foreign source adoption, main push or remote-ref substitution. Need exact delivery preservation approval if a conflicting local file cannot be preserved through ordinary Git integration. Estimated8–16active hours, reassess after initial1–2h probe and at8h/16h; no quality waiver for the time target.
+
+## Accepted structural adoption
+
+P01-MAIN-SPEC-STRUCTURE-01 is directly accepted under decisions/p01-main-spec-structure-01/acceptance-20261014.json. Only ui-token-compliance canonical spec/delta receives the exact proposed structural bytes; source copies, archive, runtime, tests and tokens remain exact. Manifest v3 records original source hash separately from accepted output hash. Other capability requirements are unchanged.

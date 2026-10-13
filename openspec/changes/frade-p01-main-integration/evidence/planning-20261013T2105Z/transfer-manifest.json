@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "atUtc": "2026-10-13T21:14:46.981Z",
+  "version": 3,
+  "atUtc": "2026-10-13T21:21:47.113Z",
   "sourceCommit": "d876a773282700abf515c9c4fbc14a0b219359af",
   "targetBaseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
   "files": [
@@ -974,7 +974,17 @@
       "bytes": 7369,
       "sha256": "b78dc8d01512d10feef1245e84a1d15222ec8d4ac76614c78ee41edbaf846148",
       "reviewPath": "openspec/changes/frade-p01-main-integration/evidence/planning-20261013T2105Z/supplier/openspec/specs/ui-token-compliance/spec.md",
-      "apply": "EXACT_SUPPLIER_BYTES_AFTER_PRE"
+      "apply": "EXACT_ACCEPTED_STRUCTURAL_ADAPTATION_AFTER_PRE",
+      "applyPath": "openspec/changes/frade-p01-main-integration/decisions/p01-main-spec-structure-01/canonical.proposed.md",
+      "applySha256": "34e85b41c71f1be045a55d9bafc5152d4c30e9ea1202cc71fdfc7285340cda17",
+      "applyBytes": 9529,
+      "adaptation": {
+        "decision": "P01-MAIN-SPEC-STRUCTURE-01",
+        "acceptance": "openspec/changes/frade-p01-main-integration/decisions/p01-main-spec-structure-01/acceptance-20261014.json",
+        "proposalSha256": "9f74a218c88555cffdf94037970c648d75cb5ed35322fa9ad7dcc913fc22f141",
+        "supplierBytesPreserved": true,
+        "scope": "Structural description split only; full original conditions/scenarios retained"
+      }
     },
     {
       "path": "openspec/specs/workbench-visual-contract/spec.md",
@@ -1746,8 +1756,8 @@
   "excluded": "P02–P07, unrelated active planning, input-package copies, branch dashboards and bulk historical evidence; original supplier commit remains retained in published UI history",
   "historicalEvidence": "Exact required FUI control inputs retained; omitted historical evidence remains retrievable by sourceCommit/path, never rewritten or called current runtime evidence",
   "supersedes": {
-    "path": "openspec/changes/frade-p01-main-integration/evidence/planning-20261013T2105Z/transfer-manifest-v1.json",
-    "sha256": "a7c6ad438197a49ec0a7d191a35ab7982251ca0ad8a8a66476d463de814a1f16"
+    "path": "openspec/changes/frade-p01-main-integration/evidence/planning-20261013T2105Z/transfer-manifest-v2.json",
+    "sha256": "e081b4c522620f54a8cef4c694df4cfb9751b6561fef2606bddd0f09460657d1"
   },
   "compatibilityFixture": "One exact archived hardware fixture is also placed at the original test input path; no active P01 planning or product change is recreated. Original test and threshold stay exact."
 }
