@@ -1,0 +1,21 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/s2b-cleanup-liveness.windows.test.ts > P02 S2b actual locked cleanup liveness diagnostic > proves that a real Windows lock closes the old context, and a fresh full scan can close the same reserved outcome without retrying deletion
+FilesystemTransportError: WIN32_32
+ ❯ WindowsFilesystemTransport.reply src/filesystem/windows.ts:128:24
+    126|       if (reply.status !== 'ACK') {
+    127|         this.pending = null; clearTimeout(pending.timer); this.gate.co…
+    128|         pending.reject(new FilesystemTransportError(reply.status, repl…
+       |                        ^
+    129|       }
+    130|       if (!this.gate.complete(pending.command.requestId, true)) throw …
+ ❯ Socket.<anonymous> src/filesystem/windows.ts:67:58
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

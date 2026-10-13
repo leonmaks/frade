@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-10-13T18:09:43.524Z",
+  "classification": "TEST",
+  "source": "apps/desktop/tests/unit/p02-owned-presentation.windows.test.ts",
+  "sourceSha256": "92c9dd52407ef8d38ea3d7664e3b497fc950e94c2418d3e398ddb6e6d13853e3",
+  "failures": [
+    "TS2339: SettingsOutcome union must narrow ACK before reading durable",
+    "no-unsafe-finally: move existing checked-path cleanup to a named helper"
+  ],
+  "repair": "New P02 fixture only; preserve exact durable equality, add explicit ACK assertions and runtime guard; same cleanup path containment and deletion restrictions. No production/original regression/timeout changes."
+}

@@ -45,7 +45,25 @@ export interface SettingsOptions {
 export type SettingsOutcome =
   | { readonly status: 'ACK'; readonly durable: PresentationRecord }
   | { readonly status: 'REFUSED' | 'UNKNOWN'; readonly message: string }
+
+/** Main-only capability; never returned by the named renderer request protocol. */
+export interface PresentationCoordinatorLease {
+  readonly context: PresentationPhase
+}
+export interface MainPresentationCoordinator {
+  acquire(context: PresentationPhase): Promise<PresentationCoordinatorLease>
+  recover(records: readonly PresentationRecord[], consumedRevision: number): Promise<PresentationCoordinatorLease>
+  seed(owner: PresentationCoordinatorLease, records: readonly PresentationRecord[], consumedRevision: number): Promise<void>
+  highWater(owner: PresentationCoordinatorLease): Promise<number>
+  read(owner: PresentationCoordinatorLease): Promise<PresentationRecord>
+  reserve(owner: PresentationCoordinatorLease, selection: PresentationChoice): Promise<PresentationRecord>
+  write(owner: PresentationCoordinatorLease, target: PresentationRecord): Promise<SettingsOutcome>
+  release(owner: PresentationCoordinatorLease): Promise<void>
+}
+
+
 export interface PresentationSettings {
+  readonly coordinator: MainPresentationCoordinator
   initialize(): Promise<PresentationBoot>
   bootstrap(sender: PresentationSender): PresentationBoot
   announceIntent(requestId: string): Promise<{ generation: number }>
@@ -237,10 +255,187 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
     authoritative = readback
     return readback
   }
+
+  interface OwnedState {
+    readonly context: PresentationPhase
+    readonly recovery: boolean
+    reserved?: PresentationRecord
+    usable: boolean
+  }
+  const leases = new WeakMap<PresentationCoordinatorLease, OwnedState>()
+  let liveLease: PresentationCoordinatorLease | undefined, recoverySequence = 0,
+    coordinatedRecovery = false
+  const boundedRecord = (raw: string): PresentationRecord => {
+    if (Buffer.byteLength(raw, 'utf8') > PRESENTATION_MAX_BYTES)
+      throw Error('Oversized coordinator settings record')
+    return parsePresentationRecord(JSON.parse(raw))
+  }
+  const copiedRecords = (input: readonly PresentationRecord[], consumed: number) => {
+    if (!Array.isArray(input) || input.length < 1 || input.length > 64 ||
+        !Number.isSafeInteger(consumed) || consumed < 0) throw Error('Invalid coordinator record set')
+    const records = input.map(value => parsePresentationRecord(JSON.parse(JSON.stringify(value))))
+    const revisions = new Map<number, PresentationRecord>()
+    for (const value of records) {
+      const prior = revisions.get(value.revision) ?? known.get(value.revision) ?? candidates.get(value.revision)
+      if ((prior && !sameRecord(prior, value)) || value.revision > consumed)
+        throw Error('Conflicting coordinator record')
+      revisions.set(value.revision, value)
+    }
+    return records
+  }
+  const requireOwner = (owner: PresentationCoordinatorLease) => {
+    const state = leases.get(owner)
+    if (liveLease !== owner || !state || !state.usable || !current(state.context))
+      throw Error('Stale coordinator settings owner')
+    return state
+  }
+  const newLease = (context: PresentationPhase, recovery: boolean) => {
+    if (liveLease) throw Error('Coordinator settings already owned')
+    const owner = Object.freeze({ context: Object.freeze({ ...context }) })
+    leases.set(owner, { context: owner.context, recovery, usable: true })
+    liveLease = owner
+    return owner
+  }
+  const coordinator: MainPresentationCoordinator = Object.freeze({
+    acquire: (input: PresentationPhase) => queue(async () => {
+      requireInitialized()
+      const context = parsePresentationPhase(input)
+      if (!current(context)) throw Error('Stale coordinator acquisition')
+      return newLease(context, context.phase === 'rollback')
+    }),
+    recover: (input: readonly PresentationRecord[], consumed: number) => queue(async () => {
+      if (liveLease || (initialization && !boot)) throw Error('Coordinator recovery already owned')
+      const records = copiedRecords(input, consumed)
+      const raw = await files.read(target)
+      const actual = raw === undefined ? defaults : boundedRecord(raw)
+      if (!records.some(value => sameRecord(value, actual)))
+        throw Error('Unowned coordinator recovery settings')
+      const stagedRaw = await files.read(staged)
+      if (stagedRaw !== undefined && !records.some(value => sameRecord(value, boundedRecord(stagedRaw))))
+        throw Error('Unowned coordinator staged settings')
+      const generation = Math.max(acceptedGeneration, actual.generation) + 1
+      if (!Number.isSafeInteger(generation)) throw Error('Coordinator recovery generation limit')
+      const requestId = options.sessionId + '/recovery-' + (recoverySequence + 1)
+      const context = parsePresentationPhase({
+        version:1,sessionId:options.sessionId,requestId,transactionId:requestId,
+        generation,revision:actual.revision,membership:1,phase:'rollback',
+      })
+      // Trusted Main coordinator supplies only full journal-validated owned records.
+      // This method is deliberately absent from renderer DTO operations.
+      for (const value of records) remember(candidates, value)
+      maximumRevision = Math.max(maximumRevision, consumed)
+      remember(known, actual)
+      authoritative = actual; origin = raw; originProven = true
+      acceptedGeneration = generation; activeRequest = requestId; recoverySequence++
+      coordinatedRecovery = true
+      return newLease(context, true)
+    }),
+    seed: (owner: PresentationCoordinatorLease, input: readonly PresentationRecord[], consumed: number) => queue(async () => {
+      requireOwner(owner)
+      const records = copiedRecords(input, consumed)
+      const actual = await readAuthoritative()
+      requireOwner(owner)
+      if (consumed < maximumRevision || !records.some(value => sameRecord(value, actual)))
+        throw Error('Coordinator baseline or high-water conflict')
+      for (const value of records) remember(candidates, value)
+      maximumRevision = Math.max(maximumRevision, consumed)
+    }),
+    highWater: (owner: PresentationCoordinatorLease) => queue(async () => {
+      requireOwner(owner)
+      return maximumRevision
+    }),
+    read: (owner: PresentationCoordinatorLease) => queue(async () => {
+      requireOwner(owner)
+      const actual = await readAuthoritative()
+      requireOwner(owner)
+      return parsePresentationRecord(actual)
+    }),
+    reserve: (owner: PresentationCoordinatorLease, input: PresentationChoice) => queue(async () => {
+      const state = requireOwner(owner), selection = parsePresentationChoice(input)
+      if (state.reserved) {
+        if (!sameSelection(state.reserved.selection, selection)) throw Error('Coordinator reservation changed')
+        return state.reserved
+      }
+      const base = await readAuthoritative()
+      requireOwner(owner)
+      const record = parsePresentationRecord({
+        version:1,revision:Math.max(base.revision,maximumRevision)+1,
+        generation:state.context.generation,transactionId:state.context.transactionId,selection,
+      })
+      remember(candidates, record); state.reserved = record
+      return record
+    }),
+    write: (owner: PresentationCoordinatorLease, input: PresentationRecord) => queue(async () => {
+      let possibleEffect = false
+      let state: OwnedState | undefined
+      try {
+        state = requireOwner(owner)
+        const record = parsePresentationRecord(input), expected = candidates.get(record.revision) ?? known.get(record.revision)
+        if (!expected || !sameRecord(expected, record) ||
+            (!state.recovery && (!state.reserved || !sameRecord(state.reserved, record))))
+          throw Error('Unowned exact coordinator target')
+        const actual = await readAuthoritative()
+        requireOwner(owner)
+        if (record.revision < actual.revision) throw Error('Coordinator target revision regressed')
+        if (!state.recovery && !sameRecord(actual, authoritative))
+          throw Error('Coordinator authoritative CAS changed')
+        let stagedRaw = await files.read(staged)
+        requireOwner(owner)
+        if (stagedRaw !== undefined) {
+          const stagedRecord = boundedRecord(stagedRaw), stagedKnown = candidates.get(stagedRecord.revision) ?? known.get(stagedRecord.revision)
+          if (!stagedKnown || !sameRecord(stagedKnown, stagedRecord))
+            throw Error('Unowned coordinator staged settings')
+          if (!sameRecord(stagedRecord, record) || sameRecord(actual, record)) {
+            possibleEffect = true
+            await files.remove(staged)
+            requireOwner(owner)
+            stagedRaw = undefined
+          }
+        }
+        if (!sameRecord(actual, record)) {
+          if (stagedRaw === undefined) {
+            possibleEffect = true
+            await files.stage(staged, JSON.stringify(record) + '\n')
+            requireOwner(owner)
+          }
+          possibleEffect = true
+          await files.rename(staged, target)
+          requireOwner(owner)
+        }
+        const raw = await files.read(target)
+        if (raw === undefined && sameRecord(record, defaults) && originProven && origin === undefined) {
+          requireOwner(owner)
+          return { status:'ACK' as const, durable:record }
+        }
+        if (raw === undefined || !sameRecord(boundedRecord(raw), record))
+          throw Error('Exact coordinator readback mismatch')
+        requireOwner(owner)
+        remember(known, record); authoritative = record
+        return { status:'ACK' as const, durable:record }
+      } catch (error) {
+        if (possibleEffect && state) state.usable = false
+        return { status: possibleEffect ? 'UNKNOWN' as const : 'REFUSED' as const, message:errorText(error) }
+      }
+    }),
+    release: (owner: PresentationCoordinatorLease) => queue(async () => {
+      if (liveLease !== owner || !leases.has(owner)) throw Error('Unknown coordinator release')
+      liveLease = undefined; leases.delete(owner)
+    }),
+  })
+
+
   const store: PresentationSettings = {
+    coordinator,
     initialize: () => {
+      if (liveLease) return Promise.reject(Error('Coordinated settings ownership still open'))
       if (initialization) return initialization
       initialization = (async () => {
+        if (coordinatedRecovery) {
+          authoritative = await readAuthoritative()
+          if (await files.read(staged) !== undefined) throw Error('Coordinator staging not settled')
+          boot = cachedBoot([])
+          return boot
+        }
         const diagnostics: string[] = []
         try {
           origin = await files.read(target)
@@ -296,6 +491,7 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
           message: 'Invalid persistence phase or revision',
         })
       return queue(async () => {
+        if (liveLease) return { status: 'REFUSED', message: 'Coordinator settings ownership is active' }
         if (!current(phase) || expectedRevision !== authoritative.revision)
           return { status: 'REFUSED', message: 'Stale intent/CAS refused' }
         let renameAttempted = false
@@ -333,6 +529,7 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
       if (phase.phase !== 'rollback' || !expected || !sameRecord(published, expected))
         return Promise.reject(Error('Forged published settings revision'))
       return queue(async () => {
+        if (liveLease) throw Error('Coordinator settings ownership is active')
         if (!current(phase)) throw Error('Stale compensation owner')
         const actual = await readAuthoritative()
         if (!current(phase)) throw Error('Stale compensation owner after readback')

@@ -1,0 +1,14 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+stdout | tests/s2b-cleanup-liveness.windows.test.ts > P02 S2b actual locked cleanup liveness diagnostic > proves that a real Windows lock closes the old context, and a fresh full scan can close the same reserved outcome without retrying deletion
+{"scope":"DIAGNOSTIC_ONLY; production coordinator/owner/Main reconciliation NOT_IMPLEMENTED","nativeLock":"WIN32_32","oldContext":"CLOSED","sameContextClosing":"FAIL","freshScanSameEnvelope":"PASS","records":8,"prefixUnchanged":true,"candidateBytesUnchanged":true,"lockHeldDuringClosing":true,"durationMs":3213,"powerLoss":"NOT_PROVEN"}
+
+ ✓ tests/s2b-cleanup-liveness.windows.test.ts (1 test) 3246ms
+   ✓ P02 S2b actual locked cleanup liveness diagnostic > proves that a real Windows lock closes the old context, and a fresh full scan can close the same reserved outcome without retrying deletion  3243ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  21:07:40
+   Duration  5.52s (transform 342ms, setup 0ms, collect 459ms, tests 3.25s, environment 0ms, prepare 621ms)
+

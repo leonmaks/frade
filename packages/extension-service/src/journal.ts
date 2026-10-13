@@ -249,7 +249,8 @@ function validatePlan(v: unknown): asserts v is TransactionPlan {
       (e.previousSha256 && !v.versions.includes(e.previousSha256))
     )
       fail()
-  if (v.cleanup.some((h: string) => v.versions.includes(h))) fail()
+  // Finite potential cleanup refs may also be pre-commit version refs.
+  // The chosen outcome protects current/retained refs; an intent alone grants no deletion.
 }
 function recovery(v: unknown, p: TransactionPlan): asserts v is RecoveryInput {
   exact(v, ['observed', 'target', 'mode', 'owner', 'consumedRevision'])
@@ -787,7 +788,12 @@ function validateDisposition(d: any, a: ActiveTransaction, s: JournalScan): bool
   hashes(d.cleanupPending)
   if (
     d.consumedRevision !== s.consumedRevision ||
-    d.cleanupPending.some((h: string) => !a.plan.cleanup.includes(h))
+    d.cleanupPending.some((h: string) => !a.plan.cleanup.includes(h)) ||
+    d.cleanupPending.some((h: string) =>
+      (a.committedHash ? a.plan.newRegistry : a.plan.oldRegistry).entries.some(
+        (e) => e.archiveSha256 === h || e.previousSha256 === h,
+      ),
+    )
   )
     return false
   return a.committedHash

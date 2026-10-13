@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-10-13T17:51:05.531Z",
+  "classification": "STATE_TRANSITION",
+  "RED": [
+    "p02-check-s2b-rollback-owner-red-20261013T174823442Z",
+    "p02-check-s2b-lower-rewrite-red-20261013T175022495Z"
+  ],
+  "cause": "Runtime P01 rollback ownership was treated as ordinary reserved persist, and known historical record was incorrectly sufficient to lower actual revision.",
+  "repair": "Acquire preserves exact actual current P01 rollback context and applies only through bounded owned candidates; absolute lower-than-actual targets refuse before stage/delete/rename. Fresh owner still required; historical target does not grant stale lease.",
+  "unchanged": "Ordinary P01 reconcile generation/revision2/known checks, original tests, schema/timeout remain unchanged. NO_SETTINGS_WRITE already-equal old bytes and accepted reapply13 fromold9/new12 remain allowed."
+}

@@ -1,3 +1,31 @@
+# UI roadmap PAUSED — priority: release existing P01 themes
+
+2026-10-13T20:52:28.918Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; Guide1.0. [Pause and preservation](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-roadmap-pause-20261013T205228918Z/FREEZE.md). Previous published SHA 9e344a469c77d302efae94e2bf7983cf1b6fa4be; WIP freeze commit/push pending.
+
+| Stage | Current status |
+|---|---|
+| Foundation / P01 | ARCHIVED; disclosed exceptions preserved |
+| P02 | PAUSED_BY_USER; 3/9; S2b BLOCKED before pause; unfinished WIP preserved |
+| P03–P07 | PAUSED_BY_USER; implementation not started |
+| Five broad UI migrations | PAUSED_BY_USER; not closed |
+| Built-in themes quick win | PRIORITY_PLANNING; delivery target pending; proposed new change not yet created |
+
+Immediate tasks: [x] owning branch/change/WIP inventory; [x] exact P01 baseline identified d876a773282700abf515c9c4fbc14a0b219359af; [x] freeze manifest; [ ] WIP commit/push; [ ] target choice; [ ] bounded plan/reviewer assignment; [ ] isolated clean candidate/PRE; [ ] build+four-mode/persistence/System/real-screen checks; [ ] actual visuals/verification/POST/delivery. Forecast8–16working hours, reassess after initial1–2h probe and at8h/16h.
+
+No new product edits/tests/gates in this process checkpoint. P02 full READY_FOR_VERIFY:NO, original FAIL retained, native identity scope NOT_ACCEPTED. Routing independent. Resume roadmap only on direct user instruction; no automatic next stage. RightpanelQUEUED/visibilityNOT_CONFIRMED; merge protectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — root identity scope BLOCKED; diagnostic checkpoint published
+
+2026-10-13T19:19:47.899Z; branch codex/frade-ui-design-contract; owning C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; Guide1.0. Current diagnostic/proposal HEAD **9e344a469c77d302efae94e2bf7983cf1b6fa4be**, PUSHED_REMOTE_SHA_VERIFIED. [Publication receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-root-identity-port-probe-20261013T191228721Z/publication-after.json). This top entry and post-push receipt are local status updates for the next checkpoint.
+
+Accepted cleanup planning PRE **gpt-6-sol/xhigh PASS** preserved. Root ambiguity demonstrated in actual shipped-helper fixture (1 PASS); current service typecheck/lint PASS after fixture repair. Raw stdout/stderr/patch whitespace diagnostic FAIL retained without modifying evidence; authored-source diff check PASS. Current S2b production unchanged/uncommitted/excluded.
+
+Await exact [P02-S2-BOUND-ROOT-IDENTITY-01](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-bound-root-identity.proposed.md) decision, SHA256 68c0afc5944be4cec69620829a2b771ad4152928b8f61b6e88bd88bd1f8f702f; NOT_ACCEPTED / native implementation NOT_RUN / fresh PRE NOT_RUN / product POST NOT_RUN. After decision: reconcile → strict → automatic PRE per plan → meaningful RED/GREEN. P02 **3/9**, READY_FOR_VERIFY:NO; S2b/S2c/UI/fullkill/stress/cumulative verification/POST/archive open. Historical locked-child FAIL retained. Rightpanel QUEUED/visibility NOT_CONFIRMED; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
 # P02 — BLOCKED: original root identity cannot be proved by existing port
 
 2026-10-13T19:17:18.508Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; Guide1.0. Accepted cleanup planning checkpoint366fbc03d96544b533bdca583f2b4d7b69e4d228 PUSHED_REMOTE_SHA_VERIFIED. S2b product remains uncommitted/excluded.

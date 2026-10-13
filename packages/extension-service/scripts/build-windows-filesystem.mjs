@@ -47,7 +47,7 @@ if (process.platform !== 'win32') {
 }
 
 if (modes.length === 1) {
-  const files = ['tests/archive.bdd.test.ts', 'tests/filesystem.protocol.test.ts', 'tests/s2a.bdd.test.ts']
+  const files = ['tests/archive.bdd.test.ts', 'tests/filesystem.protocol.test.ts', 'tests/s2a.bdd.test.ts', 'tests/s2b.bdd.test.ts']
   if (process.platform === 'win32') files.push('tests/s2a.windows.test.ts', 'tests/filesystem.windows.test.ts', 'tests/filesystem.deployment.test.ts', 'tests/filesystem.transport.test.ts', 'tests/filesystem.cleanup.test.ts', 'tests/filesystem.factory.test.ts')
   else console.log(JSON.stringify({ status: 'WINDOWS_NATIVE_NOT_RUN', portable: 'RUNNING', mode: modes[0] }))
   const runner = createRequire(import.meta.url).resolve('vitest/vitest.mjs')

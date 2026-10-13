@@ -1,0 +1,317 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > P02 owned Main reservation and exact journal target > consumes max11 and writes reserved12 exactly, including request and generation, without allocating again
+AssertionError: expected { version: 1, revision: 10, …(3) } to deeply equal { version: 1, revision: 12, …(3) }
+
+- Expected
++ Received
+
+@@ -1,8 +1,8 @@
+  {
+    "generation": 11,
+-   "revision": 12,
++   "revision": 10,
+    "selection": {
+      "density": "compact",
+      "mode": "dark",
+      "preferred": {
+        "dark": "frade.builtin/dark",
+
+ ❯ tests/unit/p02-owned-presentation.test.ts:52:60
+     50|   expect(f.trace.filter(x=>x==='stage')).toHaveLength(0)
+     51|   const result=await f.port.write(owner,planned)
+     52|   expect(result.status).toBe('ACK');expect(result.durable).toEqual(pla…
+       |                                                            ^
+     53|  })
+     54|  it('refuses competing ordinary writes while the exact record is reser…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > P02 owned Main reservation and exact journal target > refuses competing ordinary writes while the exact record is reserved, with no stage effect
+AssertionError: expected 'ACK' to be 'REFUSED' // Object.is equality
+
+Expected: "REFUSED"
+Received: "ACK"
+
+ ❯ tests/unit/p02-owned-presentation.test.ts:58:69
+     56|   await f.port.seed(owner,[record(9)],11);await f.port.reserve(owner,c…
+     57|   const before=f.data.get(f.target),writes=f.trace.filter(x=>x==='stag…
+     58|   expect((await f.store.persist(context,choice('light'),9)).status).to…
+       |                                                                     ^
+     59|   expect(f.data.get(f.target)).toBe(before);expect(f.trace.filter(x=>x…
+     60|  })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > P02 owned Main reservation and exact journal target > refuses a second owner and reuses one reservation only for the identical selection
+AssertionError: promise resolved "{ context: { version: 1, …(7) }, …(1) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "consumed": 0,
++   "context": {
++     "generation": 11,
++     "membership": 1,
++     "phase": "apply",
++     "requestId": "window-1/intent-runtime",
++     "revision": 1,
++     "sessionId": "window-1",
++     "transactionId": "window-1/intent-runtime",
++     "version": 1,
++   },
+  }
+
+ ❯ tests/unit/p02-owned-presentation.test.ts:63:39
+     61|  it('refuses a second owner and reuses one reservation only for the id…
+     62|   const f=await fixture(),context=await f.context(),owner=await f.port…
+     63|   await expect(f.port.acquire(context)).rejects.toThrow()
+       |                                       ^
+     64|   await f.port.seed(owner,[record(9)],11)
+     65|   const first=await f.port.reserve(owner,choice('dark'))
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > P02 owned Main reservation and exact journal target > same-selection observed12 still writes the full pre-journalled13 rather than returning12
+AssertionError: expected { version: 1, revision: 12, …(3) } to deeply equal { version: 1, revision: 13, …(3) }
+
+- Expected
++ Received
+
+@@ -1,8 +1,8 @@
+  {
+    "generation": 10,
+-   "revision": 13,
++   "revision": 12,
+    "selection": {
+      "density": "compact",
+      "mode": "light",
+      "preferred": {
+        "dark": "frade.builtin/dark",
+
+ ❯ tests/unit/p02-owned-presentation.test.ts:80:60
+     78|    owner=await f.port.recover([old,observed,planned],13)
+     79|   const result=await f.port.write(owner,planned)
+     80|   expect(result.status).toBe('ACK');expect(result.durable).toEqual(pla…
+       |                                                            ^
+     81|  })
+     82|  it('restart registers journal-owned13 and reapplies it exactly; repea…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > P02 owned Main reservation and exact journal target > restart registers journal-owned13 and reapplies it exactly; repeated restore never allocates14
+Error: Forged published settings revision
+ ❯ Object.reconcile src/main/presentation-settings.ts:334:31
+    332|         expected = known.get(published.revision)
+    333|       if (phase.phase !== 'rollback' || !expected || !sameRecord(publi…
+    334|         return Promise.reject(Error('Forged published settings revisio…
+       |                               ^
+    335|       return queue(async () => {
+    336|         if (!current(phase)) throw Error('Stale compensation owner')
+ ❯ Object.write tests/unit/p02-owned-presentation.test.ts:38:132
+ ❯ tests/unit/p02-owned-presentation.test.ts:85:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > P02 owned Main reservation and exact journal target > unknown actual record blocks journal recovery before writes and preserves exact bytes
+AssertionError: promise resolved "{ context: { version: 1, …(7) }, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "consumed": 13,
++   "context": {
++     "generation": 11,
++     "membership": 1,
++     "phase": "rollback",
++     "requestId": "window-1/intent-recovery",
++     "revision": 1,
++     "sessionId": "window-1",
++     "transactionId": "window-1/intent-recovery",
++     "version": 1,
++   },
++   "records": [
++     {
++       "generation": 10,
++       "revision": 9,
++       "selection": {
++         "density": "compact",
++         "mode": "light",
++         "preferred": {
++           "dark": "frade.builtin/dark",
++           "high-contrast": "frade.builtin/high-contrast",
++           "light": "frade.builtin/light",
++         },
++       },
++       "transactionId": "window-1/intent-original",
++       "version": 1,
++     },
++     {
++       "generation": 10,
++       "revision": 12,
++       "selection": {
++         "density": "compact",
++         "mode": "dark",
++         "preferred": {
++           "dark": "frade.builtin/dark",
++           "high-contrast": "frade.builtin/high-contrast",
++           "light": "frade.builtin/light",
++         },
++       },
++       "transactionId": "window-1/intent-original",
++       "version": 1,
++     },
++     {
++       "generation": 10,
++       "revision": 13,
++       "selection": {
++         "density": "compact",
++         "mode": "light",
++         "preferred": {
++           "dark": "frade.builtin/dark",
++           "high-contrast": "frade.builtin/high-contrast",
++           "light": "frade.builtin/light",
++         },
++       },
++       "transactionId": "window-1/intent-original",
++       "version": 1,
++     },
++   ],
+  }
+
+ ❯ tests/unit/p02-owned-presentation.test.ts:98:75
+     96|  it('unknown actual record blocks journal recovery before writes and p…
+     97|   const f=await fixture(record(15,'dark')),before=f.data.get(f.target)
+     98|   await expect(f.port.recover([record(9),record(12,'dark'),record(13)]…
+       |                                                                           ^
+     99|   expect(f.data.get(f.target)).toBe(before);expect(f.trace.filter(x=>x…
+    100|  })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > P02 owned Main reservation and exact journal target > unknown staged bytes are preserved; startup does not blindly delete them before journal ownership
+AssertionError: promise resolved "{ context: { version: 1, …(7) }, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "consumed": 13,
++   "context": {
++     "generation": 11,
++     "membership": 1,
++     "phase": "rollback",
++     "requestId": "window-1/intent-recovery",
++     "revision": 1,
++     "sessionId": "window-1",
++     "transactionId": "window-1/intent-recovery",
++     "version": 1,
++   },
++   "records": [
++     {
++       "generation": 10,
++       "revision": 9,
++       "selection": {
++         "density": "compact",
++         "mode": "light",
++         "preferred": {
++           "dark": "frade.builtin/dark",
++           "high-contrast": "frade.builtin/high-contrast",
++           "light": "frade.builtin/light",
++         },
++       },
++       "transactionId": "window-1/intent-original",
++       "version": 1,
++     },
++     {
++       "generation": 10,
++       "revision": 12,
++       "selection": {
++         "density": "compact",
++         "mode": "dark",
++         "preferred": {
++           "dark": "frade.builtin/dark",
++           "high-contrast": "frade.builtin/high-contrast",
++           "light": "frade.builtin/light",
++         },
++       },
++       "transactionId": "window-1/intent-original",
++       "version": 1,
++     },
++     {
++       "generation": 10,
++       "revision": 13,
++       "selection": {
++         "density": "compact",
++         "mode": "light",
++         "preferred": {
++           "dark": "frade.builtin/dark",
++           "high-contrast": "frade.builtin/high-contrast",
++           "light": "frade.builtin/light",
++         },
++       },
++       "transactionId": "window-1/intent-original",
++       "version": 1,
++     },
++   ],
+  }
+
+ ❯ tests/unit/p02-owned-presentation.test.ts:103:75
+    101|  it('unknown staged bytes are preserved; startup does not blindly dele…
+    102|   const f=await fixture(record(12,'dark'),'unexpected-owned-by-nobody'…
+    103|   await expect(f.port.recover([record(9),record(12,'dark'),record(13)]…
+       |                                                                           ^
+    104|   expect(f.data.get(f.stage)).toBe('unexpected-owned-by-nobody');expec…
+    105|  })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > P02 owned Main reservation and exact journal target > forged target at a journal-known revision refuses without overwriting actual settings
+Error: Forged published settings revision
+ ❯ Object.reconcile src/main/presentation-settings.ts:334:31
+    332|         expected = known.get(published.revision)
+    333|       if (phase.phase !== 'rollback' || !expected || !sameRecord(publi…
+    334|         return Promise.reject(Error('Forged published settings revisio…
+       |                               ^
+    335|       return queue(async () => {
+    336|         if (!current(phase)) throw Error('Stale compensation owner')
+ ❯ Object.write tests/unit/p02-owned-presentation.test.ts:38:132
+ ❯ tests/unit/p02-owned-presentation.test.ts:109:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > P02 owned Main reservation and exact journal target > conflicting same-revision candidates and a 65th cached record are refused before effects
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected: 
+Error {
+  "message": "rejected promise",
+}
+
++ Received: 
+undefined
+
+ ❯ tests/unit/p02-owned-presentation.test.ts:114:88
+    112|  it('conflicting same-revision candidates and a 65th cached record are…
+    113|   const f=await fixture(),owner=await f.port.acquire(await f.context()…
+    114|   await expect(f.port.seed(owner,[record(9),{...record(9),selection:ch…
+       |                                                                                        ^
+    115|   await expect(f.port.seed(owner,Array.from({length:65},(_,i)=>record(…
+    116|   expect(f.data.get(f.target)).toBe(before);expect(f.trace.filter(x=>x…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

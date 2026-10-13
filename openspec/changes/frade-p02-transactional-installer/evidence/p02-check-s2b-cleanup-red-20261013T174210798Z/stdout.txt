@@ -1,0 +1,18 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/s2b.bdd.test.ts (4 tests | 4 failed) 166ms
+   × P02 S2b phase-specific cleanup intent and protected authority > admits removal intent for an old version needed before commit and cleanup-eligible after commit 102ms
+     → RECOVERY_BLOCKED
+   × P02 S2b phase-specific cleanup intent and protected authority > records a candidate as potential rollback cleanup while protecting it after a valid marker 1ms
+     → RECOVERY_BLOCKED
+   × P02 S2b phase-specific cleanup intent and protected authority > permits truthful locked candidate cleanupPending in the eight-record premarker rollback outcome 1ms
+     → RECOVERY_BLOCKED
+   × P02 S2b phase-specific cleanup intent and protected authority > never claims current old authority as rollback cleanupPending on a failed remove 61ms
+     → RECOVERY_BLOCKED
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  20:42:12
+   Duration  1.43s (transform 290ms, setup 0ms, collect 370ms, tests 166ms, environment 0ms, prepare 357ms)
+

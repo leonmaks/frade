@@ -1,0 +1,13 @@
+# S2b — стратегия перед объёмной работой
+
+2026-10-13T17:16:15.075Z; baseline add6975a4c8e0d7a168b3962aa99530dbc335b40.
+
+Цель: один serialized coordinator и recovery через verified checked root; фактическое Main settings exact-write/reservation и восстановление old9/new12→planned13; повторный restart использует13, следующий commit14. COMMITTED выбирает new, отсутствие marker — old semantic registry и exact planned compensation. Закрытие требует реальных readback, protected ZIP bytes и одной disposition в8 records. Original P01 tests, known/CAS/64-cache/timeouts не меняются.
+
+Варианты: (1) весь S2b/S2c/UI за один заход — прогноз несколько сессий, высокий риск смешать storage, lifecycle и transport; отказ от этой последовательности. (2) сначала private Main port и meaningful RED, затем coordinator/recovery и bounded actual NTFS, затем полный kill/stress — выбран; прогноз Main port 1–3 часа, весь S2b несколько сессий, токены и шанс успеха не измерены. (3) использовать ordinary reconcile/allocator — не подходит: переаллокация13→14, selection equality не доказывает exact target. (4) вторая mutable authority/другой journal/слабее assertions/native expansion — запрещены текущим контрактом. (5) reuse S2a exact unchanged coverage и targeted incremental runs до финального полного applicable batch — выбран; не заменяет actual новых требований. Параллельные writers исключены, независимые read-only проверки допустимы без общих output writes.
+
+Измерения: S2a318 test/BDD около67–70s каждый; final native probe0.77–1.17s; actual focused POST harness17m52s. Следующий focused review прогноз20–30min; это не hard timeout. Полная kill matrix и10k-volume/native budget стоимость пока UNKNOWN. Shared mandatory full integrity snapshots/canary сохраняются, fresh model role Sol/xhigh из current design.
+
+Bounded initial probe: new Main ownership/exact-write cases через реальный createPresentationSettings и task-owned files; затем один совместимый paired ZIP и pre/post-marker настоящая гибель child coordinator с новым process recovery. Фиксировать commands/bytes/readback/prefix/sentinel/duration; только после измерения выбирать batching полной матрицы. Reassess при новом FAIL/неизвестном ownership/недостающем port/дорогом scan/бюджете. Два неуспешных deterministic fixes → STOP/RCA. Не запускать дорогой полный stress до оценки малого; не считать helper/component kill доказательством full coordinator crash.
+
+Existing exact S2 PRE PASS governs this unchanged implementation scope; S2a POST PASS confirms supplier primitive. Fresh PRE обязателен при material scope/contract repair. No S2c production hook/IPC/UI change in this slice; Main private port уже разрешён accepted recovery decision. Full P02 3/9, READY_FOR_VERIFY:NO.
