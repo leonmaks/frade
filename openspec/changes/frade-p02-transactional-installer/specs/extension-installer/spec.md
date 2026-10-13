@@ -276,3 +276,48 @@ Main SHALL reserve the full owned candidate record before STAGING under serializ
 
 - **WHEN** authoritative revision is9 and maximum consumed revision is11
 - **THEN** admission reserves12 before STAGING, later persistence writes12 rather than13, and cancellation or uncertainty does not silently reuse consumed revisions
+
+## Current accepted monotonic recovery — exact scoped supersession
+
+2026-10-13T14:30:31.057Z: [exact acceptance](../../decisions/p02-s2-monotonic-recovery-accepted-20261013T143031057Z.json) binds P02-S2-MONOTONIC-RECOVERY-01 proposalSHA 5375face6d98b000d92b5e6e6439c47d41a7e1f5ca7f693fa26108307ecb9efa. Adopt [complete current S2 scheme](../../evidence/p02-s2-recovery-accepted-plan-20261013T143031057Z/s2-scheme.md) sections4–7/12 for remaining2.2/2.3. It supersedes ONLY prior exact-old PresentationRecord restoration, absent RecoveryPlan and premarker closure branch. Semantic old registry/selection before validCOMMITTED and new after it remain; premarker changed owned settings are restored by a full planned monotonic compensation record, never falsely labelled original old bytes. Original current hooks, path boundaries/security/package limits and all other contracts remain. Original prior scheme/PREFAIL are immutable history, not current approval.
+
+One immutable same-chain RecoveryPlan precedes any compensation write, binding full actual owned observed record/target/old registry/predecessor/consumed max/cleanup refs. Old9/reserved12/actual12→planned13→exactwrite13, restart reuses13 (no14); later mutation14. Exactold9 selects NO_SETTINGS_WRITE but consumed12 is not reused. ValidCOMMITTED always retainsnew12/no old plan. Unknown settings/ownership/fork blocks without overwrite. Reconstruct consumed max from all validated reservations/plans/closures, including cancelled outcomes; private Main recovery registers exact owned candidates without weakening schema/CAS/known maps/64cache or allowing stale callbacks. Original P01 standalone allocation/reconcile/fields/retries/timeouts/assertions unchanged, no extra hook or rendererrestore.
+
+Envelope stays8slots/8MiB: normal7phases+oneDisposition=8; confirmed premarker prefix≤5+oneRecoveryPlan+atmostoneCLEANUP+oneROLLED_BACKDisposition≤8. CLEANUP is same phase, now once for premarker physical cleanup after plan; RecoveryPlan bookkeeping is not new phase/journal. Settle valid marker vs absent/owned pending temp by full scan before branch; no conflictingordinal/extraACK/ninthrecord/duplicateclosure. Complete verified targetbytes+oldregistry/version bind closing disposition and nextboot/admission. IO/ENOSPC/flush uncertainty remains UNKNOWN/BLOCKED.
+
+Scope remains accepted P02 paths including ONLY three optional service.ts hooks, private Main owned ports and new P02 tests. No dependency/nativefield/op/domain/routing/Repo/vendor/Draw/token/brand/CI/shared-policy edit; original P01 tests/evidence freeze. Current3/9; S2production/RED/GREEN/actualkill NOT_RUN, fullREADY_FOR_VERIFY:NO. Earlier original/current PREFAIL and P02-D01causeNOT_PROVEN retained. New strict+automaticPRE gpt-6-sol/xhigh precede production; later applicablechecks/verify/POST/visual/archive remain mandatory. NoP03. Strategy alternatives/probe/reassessment/cost20–30minforecast and21min47smeasured priorPRE are in exact accepted proposal/current scheme; no duplicatefullS1 run without input change.
+
+## ADDED Requirements
+
+### Requirement: Journal-bound monotonic compensation
+
+Premarker recovery SHALL retain exact old registry and selection. A differing owned settings record MUST be restored through one immutable same-chain RecoveryPlan containing its full monotonic target before writing. Unowned records SHALL block.
+
+#### Scenario: Interrupted monotonic restoration
+
+- **WHEN** old9 and reserved12 are journal-known, settings12 were written and COMMITTED is confirmed absent
+- **THEN** RecoveryPlan13 precedes compensation, actual13 retains old selection/registry and crash/reopen reuses exact13 before ROLLED_BACK or any later admission
+
+#### Scenario: Exact old settings and later mutation
+
+- **WHEN** settings still equal exactold9 or recovery13 is complete
+- **THEN** NO_SETTINGS_WRITE preserves old bytes without reusing consumed12, and a later mutation after13 reserves14
+
+#### Scenario: Marker or unsafe recovery target
+
+- **WHEN** validCOMMITTED exists or settings/ownership cannot match a validated journal-owned record
+- **THEN** committed recovery retains new without an old plan, while unsafe recovery blocks and preserves bytes
+
+### Requirement: Bounded recovery closure branch
+
+RecoveryPlan SHALL be bookkeeping in the original journal, not another phase or authority. Premarker closure MUST fit the original eight-record/eight-MiB reserve and reuse confirmed records without duplicate allocation.
+
+#### Scenario: Maximum rollback branch
+
+- **WHEN** five phase finals precede a confirmed premarker failure
+- **THEN** one RecoveryPlan, at most one CLEANUP and one closing ROLLED_BACK use at most eight bounded records with identical original prefix
+
+#### Scenario: Repeated crash and pending marker
+
+- **WHEN** recovery repeats or a COMMITTED publication has an uncertain pending/final entry
+- **THEN** a full checked scan settles authority before rollback, known targets/records are reused and a ninth record, conflicting ordinal or duplicate plan blocks

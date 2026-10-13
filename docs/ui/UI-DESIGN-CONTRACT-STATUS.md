@@ -1,3 +1,57 @@
+# P02 — принятый S2 recovery план; PRE PASS; checkpoint publication pending
+
+2026-10-13T15:03:32.341Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
+
+[Accepted scope](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-monotonic-recovery-accepted-20261013T143031057Z.json), SHA5375face6d98b000d92b5e6e6439c47d41a7e1f5ca7f693fa26108307ecb9efa; [current scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-accepted-plan-20261013T143031057Z/s2-scheme.md); [PRE outcome](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-pre-outcome-20261013T145807989Z/REPORT.md). StrictPASS после сохранённого formatFAIL; свежий независимый PRE gpt-6-sol/xhigh **PASS**, 132 complete events; raw17 artifacts/source/packet/request integrity verified when verdictcomplete. Actualbackend/effortNOT_CONFIRMED. Production/test editsNONE;99controls unchanged. HistoricalinitialS2PREFAIL/S1FAIL/P02-D01 NOT_PROVEN preserved.
+
+P02 **3/9**.2.2S1готов, S2storage/journal/filepicker/bridge/hookreservation неготовы;2.3actualrecovery неготов;2.4UI неготов;3.1fullchecks/visual неготов;3.2verify/cumulativePOST неготов;3.3archive неготов. NewRED/GREEN/runtime/POSTNOT_RUN, fullREADY_FOR_VERIFY:NO. Next S2a meaningfulRED в следующем implementation шаге. NoP03/Routingdependency.
+
+This checkpoint commit/push PENDING; lastpublished f6f676de631ac3af5c0923d6e1b8b5f1f86fac45; source receipt openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-checkpoint-20261013T150332341Z/checkpoint.json. Authorized origin/ref only; actualremoteSHA to verify. RightpanelQUEUED/visibilityNOT_CONFIRMED; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — S2 scheme; independent PRE PASS
+
+2026-10-13T14:58:07.989Z; branch codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; checkpointf6f676de631ac3af5c0923d6e1b8b5f1f86fac45; Guide1.0.
+
+[S2 scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-accepted-plan-20261013T143031057Z/s2-scheme.md); [outcome](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-pre-outcome-20261013T145807989Z/REPORT.md); strictPASS; new automatic PRE gpt-6-sol/xhigh **PASS**, complete rawreceipt openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-pre-received-20261013T145733514Z; 132 events, reportSHA99af3ea73e32c68a3d4b7d57e3fd59ff2a830637c6c05f4817d9bbfb9c3d6178, actualbackend/effortNOT_CONFIRMED.99source controls unchanged; no product/test implementation. CurrentS1POSTPASS separate; originalFAIL/P02-D01causeNOT_PROVEN retained. OwnerpacketENOBUFS failure/repair and PowerShell parsing error preserved separately from UI/test failures.
+
+P02 remains3/9.2.2: S1complete, remainingS2storage/journal/filepicker/bridge.2.3:actualrecovery/rollbackmatrix unfinished.2.4:ExtensionsUI/fallback unfinished.3.1:fullchecks/P01/a11y/visual unfinished.3.2:fullverify/cumulativePOST unfinished.3.3:archive unfinished. S2RED/GREEN/runtimeprobe/POST NOT_RUN; fullREADY_FOR_VERIFY:NO.
+
+Next: S2a meaningful RED for checked blob storage, journal scan/publication/reservation, then GREEN; actual bounded NTFS probe and remaining S2 recovery/bridge checks required. NoP03/Routingdependency. Checkpoint NOT_COMMITTED/PUSHED; lastpublishedf6f676de631ac3af5c0923d6e1b8b5f1f86fac45; panelQUEUED/visibilityunconfirmed; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — accepted S2 monotonic recovery strict PASS; automatic PRE dispatch prepared
+
+2026-10-13T14:32:50.280Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; checkpointf6f676de631ac3af5c0923d6e1b8b5f1f86fac45; Guide1.0.
+
+S2 [scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-accepted-plan-20261013T143031057Z/s2-scheme.md) complete, production unchanged;99source controls verified. Strict PASS openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2-recovery-strict-20261013T143210237Z. Automatic PRE gpt-6-sol/xhigh PREPARED: 210files/2467554bytes; exact current design hash/role and selection saved. Candidate/status/index/HEAD frozen during review; update only after completion/unfreeze. Current S1POSTPASS/historicalFAIL/P02-D01 causeNOT_PROVEN preserved.
+
+P02 remains3/9;2.2storage/journal/bridge and2.3recovery NOT_IMPLEMENTED;2.4UI/fullchecks/verify/POST/visual/archive open. Runtime feasibility probe/newRED/GREEN NOT_RUN. Next receive fresh PRE and record exact gate. NoP03/Routingdependency. Planning NOT_COMMITTED/PUSHED, lastpublishedf6f676de631ac3af5c0923d6e1b8b5f1f86fac45; panelQUEUED/visibilityunconfirmed, mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — monotonic recovery принят; план согласован
+
+2026-10-13T14:30:31.057Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; published f6f676de631ac3af5c0923d6e1b8b5f1f86fac45; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
+
+[Acceptance](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-monotonic-recovery-accepted-20261013T143031057Z.json); [current scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-accepted-plan-20261013T143031057Z/s2-scheme.md). Четыре OpenSpec artifacts согласованы; new strict/PRE **NOT_RUN**. Механическое accounting≤8 записей подтверждено, это не runtimePASS. Production/test changes NONE;99 controls unchanged. Старые PREFAIL и P02-D01 NOT_PROVEN сохранены.
+
+| Задача | Фактическое состояние |
+|---|---|
+| 1.1/1.2/2.1 | Готовы; общий P02 **3/9** |
+| 2.2 | S1готов; S2storage/journal/filepicker/bridge/hooks/recoveryplan неготовы |
+| 2.3 | Actual crash/recovery/rollback неготовы |
+| 2.4 | ExtensionsUI/fallback неготовы |
+| 3.1 | Fullchecks/a11y/visual неготовы |
+| 3.2 | Fullverify/cumulativePOST неготовы |
+| 3.3 | Archive неготов |
+
+Next strict→fresh automaticPRE **gpt-6-sol/xhigh**; forecast20–30min, prior21min47smeasured. Runtime/RED/GREEN/POSTNOT_RUN; fullREADY_FOR_VERIFY:NO. NoP03/Routingdependency. PlanningNOT_COMMITTED/PUSHED; statuspanelQUEUED/visibleNOT_CONFIRMED; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
 # P02 — S2 hooks planning checkpoint опубликован; PRE FAIL
 
 2026-10-13T14:21:27.048Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; origin98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
