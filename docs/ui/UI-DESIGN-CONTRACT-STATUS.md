@@ -1,3 +1,15 @@
+# P02 — S2a завершён и опубликован; focused POST PASS
+
+2026-10-13T16:28:38.438Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; Guide 1.0. Исходные baseline сохранены ниже.
+
+Checkpoint **f20f4114870c14196d29901af0e1c86088b56b88** — PUSHED_REMOTE_SHA_VERIFIED в origin/refs/heads/codex/frade-ui-design-contract. [Publication](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-publication-20261013T162838438Z/publication.json). Этот docs commit фиксирует результат публикации.
+
+[x] meaningful RED; [x] GREEN 49 portable + 3 actual NTFS; [x] test 318/318 и BDD 318/318; [x] build/typecheck/lint/boundaries/21 boundary/UI compliance/strict; [x] focused verification; [x] independent POST gpt-6-sol / xhigh **PASS**; [x] source checkpoint commit/push. [Итоговый отчёт](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-post-outcome-20261013T162721385Z/REPORT.md); [raw POST](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-post-received-20261013T162555750Z/output--result.md). CLI selection доказана; backend/effort NOT_CONFIRMED.
+
+P02 **3/9**, task 2.2 partial. Не готовы S2b actual Main/recovery/cleanup/full kill matrix/native-budget stress; S2c bridge/bootstrap; 2.4 Extensions UI; 3.1 full checks/a11y/visual; 3.2 cumulative verification/POST; 3.3 archive. Full READY_FOR_VERIFY: NO. Следующий шаг S2b по принятому плану; P03 не начат. Routing dependency отсутствует. Новых экранов/screenshots нет. Historical FAIL, P02-D01 cause NOT_PROVEN и P01 accepted exceptions сохранены; merge protection LOCAL_ONLY/NOT_CONFIGURED; right panel QUEUED/visibility NOT_CONFIRMED.
+
+## Предыдущие записи — сохранены
+
 # P02 — S2a завершён; focused POST PASS; публикация checkpoint
 
 2026-10-13T16:27:36.449Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Guide 1.0; исходные baseline сохранены ниже.
