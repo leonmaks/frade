@@ -37,4 +37,4 @@
 - Три исторических P01 дефекта остаются OPEN_ACCEPTED_DEFERRED, исходные FAIL не становятся PASS. Новые/изменившиеся контексты требуют собственного решения.
 - Full history91kfiles/10.65GB остаётся в supplier commit; переносится необходимое с точными hashes. Никаких P02 installer/backend изменений.
 - Оценка8–16активных часов остаётся прогнозом, не сроком готовности; пауза ожидания решения в неё не включена.
-- Commit: planning checkpoint готовится; push NOT_RUN, разрешение нового ref не получено. READY_FOR_VERIFY: NO.
+- Commit: planning checkpoint ed790c0b07578a8932b4f5ac124d1abb5b1bda1c сохранён локально; push NOT_RUN, разрешение нового ref не получено. READY_FOR_VERIFY: NO.
