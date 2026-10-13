@@ -1,0 +1,87 @@
+# Design
+
+## Context
+
+See proposal.md for the authorized direct transfer. Recipient main baseline: 98f387f96b51b0ad139e3507c376ff1c3e8dec09; completed supplier Foundation/P01: d876a773282700abf515c9c4fbc14a0b219359af. Owning branch codex/frade-p01-main-integration, isolated worktree C:/Users/NVISEN/.codex/worktrees/p01-main-integration/frade. Original UI roadmap is paused at7991938e77548bb5344681600db6632b45924666. Main contains856 local dirty/untracked paths; these are not supplier inputs and must remain intact. Shared Git directory E:/dev/codex/frade/.git; published workflow v1.1 release a3ac63b52187e1f45f08b6d0beffcd67425c491d8ae1ac5d0d0efd3832e73fd0, policy SHA2566c6cf78fccfc4dac9e53c859715850db127f897e7eb79aa94957134bd1c1ffeb.
+
+The supplier already wires Main presentation settings, preload/renderer bootstrap, ThemeControllerProvider, settings/picker, participant transactions and UI consumers. No equivalent transfer is yet applied in this recipient. Source inventory, exact hashes and main overlap audit: evidence/planning-20261013T2105Z. Supplier copies inside that evidence directory are planning inputs, not live product implementation.
+
+## Goals / Non-Goals
+
+**Goals:** deliver the ready built-in Light/Dark/System/High Contrast modes to the normal desktop; preserve durable settings, atomic preview/apply/cancel, compact/comfortable density, editor/document/repository state and current controls. Adopt guide1.0 and its actual compliance dependencies with exact provenance. Keep historical limitations visible and obtain current consumer verification.
+
+**Non-Goals:** P02 installer/native filesystem helper, P03 import, P04 icons, P05 browser host, P06 native extensions, P07 registry/profiles/policy, broad new visual migration, new UI library, logo replacement, routing/domain behavior changes or executable VS Code extension compatibility. No application update/deployment mechanism is introduced. No main remote publication or merge-protection claim is inferred.
+
+## Decisions
+
+### Strategy and bounded cost
+
+Objective/acceptance: a verified main-compatible desktop using the ready four modes, with exact transferred source hashes, real runtime/persistence/editor preservation evidence, applicable static/unit/BDD/boundary/build/compliance checks and independent PRE/POST. Completion requires actual main integration preserving foreign work, not merely a second build.
+
+| Alternative | Expected work and resource cost | Risks / decision |
+| --- | --- | --- |
+| Merge all supplier history/files | Many hours,91k archive files/10.65GB evidence; review/snapshot cost dominated by unrelated diagnostics | Unnecessary future scaffolds and main collisions; rejected. |
+| Merge current UI branch | Includes unfinished P02 and native backend | Violates explicit exclusion; rejected. |
+| Reimplement theme switcher | Multiple days plus new RED/runtime review, duplicate reasoning and regressions | Duplicates existing tested service; rejected. |
+| Exact dependency-closed subset from completed P01 in isolated recipient | Forecast8–16active hours, initially172files/4.37MB plus only necessary authority evidence; one PRE and POST unless a blocker requires focused correction | Selected: avoids duplicate product work, preserves supplier evidence, exposes recipient integration risks. |
+| Work directly in dirty main | Similar nominal code cost; high risk to856foreign paths | Rejected for preparation; serialize final application only after verified candidate. |
+| Reuse historical results without current tests | Cheapest runtime, insufficient current evidence | Reuse only unchanged source-bound historical RED and accepted baselines, never replace current required build/runtime or PRE/POST. |
+
+These are forecasts/judgment, not measured success probabilities. Previous independent reviews measured roughly17–24min; forecast20–30min each, harness timeout is a separate hard limit. Read-only inventory and exact-EOL repair formed the bounded initial probe;806checkout-only CRLF conversions were byte-verified against HEAD and repaired solely in the newly created worktree. Reassess after2active hours if subset dependencies or main collision procedure expand, at8h if current checks remain blocked, and16h before another expensive attempt. Each deterministic defect gets at most two fixes before RCA. Preserve every interrupted/failed run. Do not spend time re-running equivalent completed checks on unchanged inputs; record precise coverage equivalence first. Parallel read-only inspection is useful; concurrent Electron suites or writers would interfere with focus/environment and are excluded. No algorithm changes are warranted for a byte-exact delivery.
+
+### Exact source authority and dependency closure
+
+The transfer manifest is the sole path/hash allowlist. After PRE, copy each selected Git blob exactly to its existing repository path, without cherry-picking later UI commits or copying current supplier working files. Preserve mode and raw bytes. All non-allowlisted tracked recipient paths remain baseline-identical; verify routing/domain/vendor and lockfile/dependency parity explicitly. Additional required historical authority or fixture inputs may be selected during planning with exact supplier hashes and a superseding manifest; any runtime scope change requires renewed validation/PRE. No copying of unrelated current main files into the reviewed product.
+
+The five canonical specs are absent in the recipient baseline. Adopt their existing full requirements as ADDED at the same capability names; retain supplier canonical bytes and accepted precedence. Historical narrative statuses, model assignments and relative evidence links inside supplier archives/spec preambles remain historical; they do not control this delivery's model or reopen already archived supplier work. This stage's current status is in P01-MAIN-INTEGRATION-STATUS.md. Archived evidence links resolve against source commit/path in the provenance index when bulk evidence is not locally retained. Required executable fixture paths stay present unchanged. New change archive must not duplicate/silently rewrite already adopted canonical requirements: use verified no-sync archive after exact canonical parity and OpenSpec verification, following actual CLI instructions.
+
+Shared rules: supplier AGENTS preserves baseline sections and adds UI/parallel/automatic review rules. Current explicit user instructions on stage-selected models and Strategy Before Expensive Work remain mandatory even if historical supplier AGENTS lacks their later numbering. Main's locally edited AGENTS is preserved on delivery; no overwrite or foreign uncommitted rule adoption is authorized by the source manifest.
+
+### Runtime integration and BDD/TDD
+
+Reuse the existing renderer bootstrap, Main settings/CAS and preload contract, UI context and settings/picker commands. Light and Dark ship together. System follows actual media/native environment; HC precedence and forced colors follow existing resolver. Cancel restores committed presentation; apply persists selection; theme/density changes must not reload/close editors or mutate domain data. UI diagram decoration remains separate from authored colors, routing and persisted semantics. No fabricated AI/provider or installer actions.
+
+Unchanged supplier tests and source-bound historical RED are adopted as regression-first origin; this is a delivery, not a new implementation to manufacture RED for. Before repairing any reproduced integration defect, save deterministic meaningful failing test/fixture, RCA and focused repair scope; no test skips, tolerance changes, new expected values or snapshot regeneration. If repair would break exact supplier parity, stop exact transfer and reconcile a bounded repair plan with fresh PRE as appropriate.
+
+### Required checks and applicability
+
+Run the actual repository commands on final candidate inputs, preserving stdout/stderr/exit and raw hashes:
+1. Exact transfer/dependency closure, eight raw-byte EOL anchors, domain/routing/vendor/lockfile unchanged; no P02 package/import/backend/build hooks.
+2. Frozen-lockfile dependency install in the owning worktree; no dependency upgrade. Root pnpm check (lint, typecheck, units, BDD, contract tests, build, boundaries, ui:compliance) and original Draw visual plus desktop E2E regression commands. Reuse component commands only when their exact inputs/arguments/environment and complete equivalent coverage are recorded; never hide a failing root command behind smaller green subsets.
+3. UI compliance retains generation drift,102named contrast checks, precise legacy literal exceptions, traceability, control negatives/positives and clean-checkout EOL controls. Keep isolated negative fixtures out of production and prove cleanup. FUI runtime fixture and control registry remain exact source-bound originals, not regenerated historical evidence.
+4. Actual desktop evidence for Light/Dark/HC xcompact/comfortable, System light/dark/environment transitions, startup/restart persistence, keyboard picker/settings, preview/cancel/apply, real native/Draw.io dirty editor preservation and original P01 applicable accessibility/runtime matrix. Capture current screenshots and command/viewport/media/font/scale context. Existing tests provide meaningful coverage; supplement only observable untested acceptance gaps. Environment failures remain separate from UI assertions.
+5. Current guide1.0 mapping: FDS003/004/005/006/007/008/009/010/014/015 and A11Y001–009 only within actually affected P01 surfaces/states, as bounded by source contracts and disclosed exceptions. FDS016/017 and future extension behavior are not implemented. Original visual acceptance372PNGs manifest06c79710f22631a87a1cf834181ca60fa8a4291a4b00c1cfcd1592f81a8a6c15 remains source history, never current screenshots. New or changed appearance requires human acceptance before closure; exact reused approved visuals still require current comparison evidence.
+6. OpenSpec strict validation and explicit requirement/task implementation verification precede fresh POST. Routing-specific gates are not supplier prerequisites for this presentation-only scope; general root/boundary/Draw regression requirements stay applicable. Any actual routing semantic change is forbidden here.
+
+The three supplier P01 minor deferrals remain exactly OPEN_ACCEPTED_DEFERRED historical defects, with original tests/raw FAIL unmodified. This transfer does not silently extend a P01-checkpoint-only exception to a new failure/context. A current recurrence is recorded FAIL and compared to the exact accepted assertion/context; any decision needed for consumer closure is presented with concrete evidence, never blanket waived. Missing/downstream NOT_REACHED coverage still blocks. No repair of those defects belongs to this quick-win scope.
+
+### Stage review assignment and authority
+
+Human authority is recorded in evidence/planning-20261013T2105Z/user-authority.json and latest direct instruction to transfer only necessary files. The approved new-stage pair is explicit:
+
+| Stage | Role | Model | Reasoning effort |
+| --- | --- | --- | --- |
+| P01 main integration | PRE | gpt-6-sol | xhigh |
+| P01 main integration | POST | gpt-6-sol | xhigh |
+
+Use the verified shared Git-common runner and immutable minimal relevant packet. Include current coherent artifacts, supplier source/contract/test inputs, necessary accepted exceptions/closure receipts, baseline integration context, explicit user authority and exact shared policy. Fresh technically verified packet-only read confinement/canary and full candidate/index/HEAD integrity are mandatory. Save complete events/report/exits/receipt before interpretation; exactly one unambiguous verdict. Requested pair is recorded; actual backend/effort remains NOT_CONFIRMED unless independently attested. Do not substitute a model or use an ordinary subagent instead of verified confinement. Freeze candidate including dashboard until receipt. No repeated human relay or review approval.
+
+## Risks / Trade-offs
+
+- Minimal subset can omit a test/evidence dependency → inspect executable references and validate dependency closure before PRE; missing input stops, never weaken original tests.
+- Historical supplier narrative/links may appear current → exact commit/path provenance and current dashboard explicitly separate history; retain relevant authority records locally and complete history in supplier commit.
+- Main dirty collision → serialize delivery with exact before/after hashes; do not stash/reset/overwrite/commit foreign work. Ordinary Git integration may refuse, which is a delivery blocker requiring a concrete preservation decision.
+- Electron focus/refresh/environment can affect original tests → preserve actual failures and diagnose within bounded probe, no arbitrary retries or weakened assertions.
+- Source-equivalent visuals do not ensure runtime equivalence → actual recipient screenshots and interaction/state evidence remain required.
+
+## Migration Plan
+
+Plan/strict → PRE PASS → exact import → meaningful regression/current checks/screenshots → OpenSpec verify → POST PASS → local checkpoint → serialized main delivery → final applicable smoke/hash validation → archive/publication checkpoint. If actual main baseline or candidate integration result changes, revalidate affected contracts and obtain fresh review before claiming POST applies.
+
+Before final delivery, read main HEAD/index/status and compare every audited dirty path hash, including untracked collisions. Produce exact merge/preservation plan and dry-run conflict inventory. Prefer ordinary fast-forward/merge only if Git can preserve all dirty work and approved effective bytes. If a tracked or untracked collision prevents that, stop delivery at a verified local candidate and ask a specific preservation decision; do not replace the main app by silently changing its launcher to this temporary worktree. This is not completion until main is integrated. Rollback, if needed, is a separate ordinary revert of only the integration checkpoint with user work preserved; no history rewriting or settings/data deletion.
+
+Commit only completed authorized owning checkpoints and inspect status/diff. Existing remote authorization covers only codex/frade-ui-design-contract; new integration-ref/main publication needs exact destination authorization after the result is concrete. P02–P07 and broad migrations remain paused after this stage. Final report gives files, guide version, real checks/screenshots, exact remaining defects, integration/commit/push state and READY_FOR_VERIFY without equating historical PASS to current PASS.
+
+## Planning closure: exact legacy fixture dependency
+
+Manifest v2 supersedes the retained v1 inventory before PRE. In addition to the original172files it includes small accepted-scope/cumulative/archive authority records. The unchanged performance test reads openspec/changes/frade-p01-theme-core/evidence/p01-benchmark-hardware-20261001T003100Z.json; provide an exact-byte compatibility fixture at that input path from its archived supplier Git blob, with sourcePath/hash recorded. No active P01 proposal/design/tasks are recreated, no test expectation/location code or hardware claim is altered. The canonical archived source stays preserved. Hardware compatibility is checked by the original test against the actual machine; a mismatch is an environment blocker, not a threshold exception.
