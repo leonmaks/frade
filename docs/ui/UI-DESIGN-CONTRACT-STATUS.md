@@ -1,3 +1,17 @@
+# P02 — S2 hooks planning checkpoint опубликован; PRE FAIL
+
+2026-10-13T14:21:27.048Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; origin98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
+
+Checkpoint **2fafe2ede4935f7994aae262d9be09604f2e8d74** PUSHED_REMOTE_SHA_VERIFIED в origin/refs/heads/codex/frade-ui-design-contract; [publication](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-hooks-publication-20261013T142127048Z/publication.json). Этот docs commit записывает результат публикации. [Current accepted scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-hooks-accepted-plan-20261013T134652732Z/s2-scheme.md); [actual PRE](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-hooks-pre-received-20261013T141308125Z/output--result.md): **FAIL**, requested gpt-6-sol/xhigh, actualbackend/effortNOT_CONFIRMED. StrictPASS, историческийformatFAIL и initialS2PREFAIL сохранены; production unchanged/99controls verified.
+
+P02 **3/9**, 2.2S2 /2.3recovery /2.4UI /3.1checksvisual /3.2verifyPOST /3.3archive неготовы. NewRED/GREEN/runtime/POSTNOT_RUN; fullREADY_FOR_VERIFY:NO. Next STOP на текущих findings. NoP03/Routingdependency. P02-D01 historicalFAIL causeNOT_PROVEN retained. RightpanelQUEUED/visibilityNOT_CONFIRMED; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+
+
+**Решение требуется:** [P02-S2-MONOTONIC-RECOVERY-01](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-monotonic-recovery.proposed.md), SHA256 5375face6d98b000d92b5e6e6439c47d41a7e1f5ca7f693fa26108307ecb9efa, NOT_ACCEPTED. Единственный PRE blocker: exact old record9 versus monotonic compensation13. Принятый hooks scope прямо требует отдельного решения при конфликте recovery; AGENTS§2/20 запрещают менять контракт автоматически. Next exact human decision → planning adoption/strict → fresh automaticPRE, production STOP.
+
+## Previous entries — preserved
+
 # P02 — принятый S2 hooks план; PRE FAIL; checkpoint publication pending
 
 2026-10-13T14:18:39.466Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
