@@ -238,3 +238,41 @@ Only the historical dev5s failure identified by accepted P02-DEV-TIMEOUT-DEFERRE
 ## Implementation traceability for existing S2 requirements
 
 2026-10-10T21:29:38.373Z: [S2 scheme](../../evidence/p02-s2-scheme-20261010T212938373Z/s2-scheme.md) maps the unchanged requirements/scenarios to immutable exact archive storage, existing checked commands, one reserved seven-phase journal/closing disposition, COMMITTED-only recovery and named bridge/P01 ports. No new or weakened normative requirement or scenario; all original spec text above remains byte-present. Current focused S1 POST PASS does not prove these S2 obligations, which remain NOT_IMPLEMENTED/NOT_RUN until meaningful RED/GREEN and applicable gates.
+
+## Current accepted S2 hooks plan — superseding failed integration only
+
+2026-10-13T13:46:52.732Z: exact human acceptance [P02-S2-PRESENTATION-HOOKS-01](../../decisions/p02-s2-presentation-hooks-accepted-20261013T134652732Z.json) binds unchanged proposed SHA256 a10ebe39ac088d32de8dbf27b331017e1a420a450a4346b0aabca347597e3dab. Adopt [complete revised S2 scheme](../../evidence/p02-s2-hooks-accepted-plan-20261013T134652732Z/s2-scheme.md), especially section6, as current controlling algorithm for remaining2.2/2.3. This supersedes the older S2 scheme's service.ts freeze, swap-inside-barrier and missing registry-only publication/late allocation mechanism ONLY. Original failed scheme/PRE and all other paths/security/storage/journal/recovery/domain requirements stay immutable and controlling. Add ONLY packages/ui-workspace/src/design/theme/service.ts for optional portable injected admit/beforeApply/beforePublish hooks/guards; no new native command/field/dependency/phase or routing/vendor/Repo/Draw/token/brand/CI/shared-policy change. Original P01 tests/controls remain frozen.
+
+Exact signatures: optional PresentationCoordinatorHooks methods admit/beforeApply/beforePublish(input: PresentationCoordinatorInput, signal: AbortSignal): Promise<void>; ServiceOptions.coordinatorHooks optional. Detached/frozen input carries existing PhaseContext, actual action/selection/snapshot/currentDurable, plus optional validated pendingDurable at beforePublish. admit after actual announceIntent, before prepare/cover/effects, separate60000ms; beforeApply AFTER painted barrier/check/changed=true BEFORE apply,2000ms; beforePublish AFTER all actual applyACKs and any original persist/durable validation BEFORE public state/reveal/success,5000ms. No hook state mutation/fabricated ACK or existing2s/5s/5000ms timeout/retry change. Registry-only finalizes PRESENTATION_ACK/readback/COMMITTED with identical settings/revision; commit writes exact privately reserved full record (base9/max11→12, not13) recorded beforeSTAGING. Exclusive Main owner prevents competing revision consumption. Before-marker compensate old, after-marker retain new covered/recoveryblocked; no genericrendererrestore or weakening known/schema/CAS/monotonic contracts. Actual recovery conflict requires separate decision.
+
+Current S1 focusedPOSTPASS is separate; prior S2PREFAIL remainsFAIL. Current3/9,2.2/2.3unchecked; S2 runtime/RED/GREEN/fullchecks/cumulativeverify/POST/visual/archive NOT_RUN. P02-D01 originalFAIL/causeNOT_PROVEN unchanged. Fresh strict+automatic independentPRE gpt-6-sol/xhigh required before implementation; noP03.
+
+## ADDED Requirements
+
+### Requirement: Optional awaited presentation coordinator hooks
+
+The presentation service SHALL expose only the accepted optional portable lifecycle hooks. Hooks MUST preserve standalone behavior, original validation and deadlines. Publication MUST await verified transaction authority.
+
+#### Scenario: Rejected provisional adoption
+
+- **WHEN** beforeApply adopts a registry and then rejects or ownership invalidates
+- **THEN** changed=true compensation restores old authority under cover or blocks safely without mixed reveal
+
+#### Scenario: Registry-only finalization before reveal
+
+- **WHEN** a registry change preserves presentation selection
+- **THEN** all participant ACKs and identical settings readback precede valid COMMITTED and every reveal or success, without settings write or revision increment
+
+#### Scenario: Marker uncertainty and hook-free operation
+
+- **WHEN** a valid COMMITTED reply is lost or hooks are absent
+- **THEN** committed uncertainty cannot restore old authority, while absent hooks preserve original operation order and all original assertions
+
+### Requirement: Complete presentation record reservation
+
+Main SHALL reserve the full owned candidate record before STAGING under serialized ownership. Persistence MUST use that exact record once, preserve schema/CAS/known-record protections and refuse stale competing writers.
+
+#### Scenario: Reserved revision is persisted exactly
+
+- **WHEN** authoritative revision is9 and maximum consumed revision is11
+- **THEN** admission reserves12 before STAGING, later persistence writes12 rather than13, and cancellation or uncertainty does not silently reuse consumed revisions
