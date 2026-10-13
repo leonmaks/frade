@@ -1,0 +1,7 @@
+GATE_STATUS: PASS
+
+Материальных блокеров **плана PRE** не найдено. Принятый [RecoveryPlan](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-13T14-33-37-584Z-daaef6d4-84de-4095-8317-3f66b278ca88/prepared/packet/openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-recovery-accepted-plan-20261013T143031057Z/s2-scheme.md:97) устраняет конфликт с фактическим повышением revision и обходом записи при совпадающем выборе в [presentation-settings.ts](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-13T14-33-37-584Z-daaef6d4-84de-4095-8317-3f66b278ca88/prepared/packet/apps/desktop/src/main/presentation-settings.ts:328), сохраняя исходный тест потерянного ACK. Для максимального premarker-префикса расчёт составляет ровно восемь записей.
+
+**Рекомендация для реализации:** проверять `COMMITTED` до первого старого rollback-эффекта в [service.ts](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-13T14-33-37-584Z-daaef6d4-84de-4095-8317-3f66b278ca88/prepared/packet/packages/ui-workspace/src/design/theme/service.ts:295) и направлять coordinated recovery к точному сохранённому target13, минуя обычный shortcut по выбору.
+
+Хэши всех 210 файлов манифеста совпали; зафиксированный strict validation — PASS. Это только оценка плана: S2 RED/GREEN и реальные NTFS kill/reopen — NOT_RUN. Внешние canary, привязку событий и фактические backend/effort должен подтвердить строгий receipt владельца; из пакета они не аттестуются.

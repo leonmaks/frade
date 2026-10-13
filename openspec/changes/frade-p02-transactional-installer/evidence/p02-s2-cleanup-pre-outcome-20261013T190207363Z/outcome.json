@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-10-13T19:02:07.363Z",
+  "status": "PASS",
+  "gate": "FOCUSED_PLANNING_PRE",
+  "acceptance": "openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-cleanup-recovery-rebind-accepted-20261013T182817200Z.json",
+  "proposal": "openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-cleanup-recovery-rebind.proposed.md",
+  "proposalSha256": "4d1ae25813e812089bb9bf5dec2b9d2a58db079e11a610f195d189cbad637d0d",
+  "scheme": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-cleanup-rebind-accepted-plan-20261013T182817200Z/s2-scheme.md",
+  "schemeSha256": "914e55d3b0140c7400f0d7d32abfd18912a2923ed5c50a97ba5f878ca9e60e0b",
+  "strict": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2-cleanup-rebind-strict-20261013T182823562Z",
+  "review": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-cleanup-pre-received-20261013T185311685Z",
+  "reportSha256": "6200fe9018075458a40b8ea1aa52228c8c35b030d1d7c3170225542128a1e554",
+  "rawArtifacts": 17,
+  "events": 61,
+  "requestedModel": "gpt-6-sol",
+  "requestedEffort": "xhigh",
+  "actualBackend": "NOT_CONFIRMED",
+  "actualEffort": "NOT_CONFIRMED",
+  "cliPairVerified": true,
+  "candidatePacketRequestPlanUnchanged": true,
+  "durationSeconds": 1226.776,
+  "productionUnchangedDuringAcceptanceAndPRE": true,
+  "productPOST": "NOT_RUN",
+  "fullP02": "3/9 READY_FOR_VERIFY:NO",
+  "implementationConditions": [
+    "Compare actual captured root, parent and cleanup-directory identities after replacement; exact ownership required",
+    "No delete before full fresh child inventory/identity/hash after lock release; unknown ownership blocks",
+    "Only one already-CLOSED pre-effect cleanup WIN32_32 rebind; no healthy budget rotation/midtransaction counter reset",
+    "Same original reserve/receipt/consumed13, no extra records/newSTAGING/reveal before settlement"
+  ],
+  "next": "Bounded root/parent identity-port feasibility probe then meaningful coordinator/recovery RED, GREEN/full required kill and stress/checks/verify/POST",
+  "publication": "NOT_COMMITTED_NOT_PUSHED"
+}

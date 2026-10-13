@@ -321,3 +321,38 @@ RecoveryPlan SHALL be bookkeeping in the original journal, not another phase or 
 
 - **WHEN** recovery repeats or a COMMITTED publication has an uncertain pending/final entry
 - **THEN** a full checked scan settles authority before rollback, known targets/records are reused and a ninth record, conflicting ordinal or duplicate plan blocks
+
+
+## Current accepted cleanup recovery exception
+
+2026-10-13T18:28:17.200Z: [exact acceptance](../../decisions/p02-s2-cleanup-recovery-rebind-accepted-20261013T182817200Z.json) binds unchanged proposal SHA256 4d1ae25813e812089bb9bf5dec2b9d2a58db079e11a610f195d189cbad637d0d. [Current scheme](../../evidence/p02-s2-cleanup-rebind-accepted-plan-20261013T182817200Z/s2-scheme.md) supersedes only the mid-transaction rebind prohibition for its finite live pre-effect cleanup sharing refusal, and mandatory descendant readback for non-deleting bookkeeping of that cleanup-only directory. Unknown/changed objects, protected archives and all other safety/closure rules remain. Earlier diagnostic FAIL is preserved, not a product PASS. Original requirements/scenarios remain except these precise accepted supersessions. Fresh strict/PRE Sol/xhigh precede implementation; P023/9/fullREADY_FOR_VERIFY:NO.
+
+## ADDED Requirements
+
+### Requirement: One-shot closed cleanup session recovery
+
+The coordinator SHALL replace an already CLOSED session only once per identified live pre-effect cleanup REFUSED/WIN32_32. Confirmed disposal MUST precede fresh bind. Full chain, actual settings, protected archives and original remaining reserve MUST be verified before closing.
+
+#### Scenario: Cleanup sharing refusal before or after marker
+
+- **WHEN** a journal-authorized identity-bound cleanup encounters the accepted sharing refusal after durable CLEANUP
+- **THEN** admission and reveal remain blocked, old lease disposal completes before a fresh verified owner, COMMITTED selects old or new, exact RecoveryPlan and consumed revision are reused, and only the missing reserved closing disposition may be published
+
+#### Scenario: Replacement safety or closure cannot be established
+
+- **WHEN** disposal, fresh proof, directory identity, protected bytes, actual settings, scan or closing verification fails, or another error or UNKNOWN occurs
+- **THEN** recovery remains BLOCKED with bytes and envelope retained, no overlapping owner, retry loop, new STAGING or budget reset
+
+### Requirement: Non-deleting cleanup-only pending bookkeeping
+
+A closing disposition SHALL report only finite validated cleanup refs outside current and retained sets. Accepted locked descendants MAY remain unverified only in the same ordinary cleanup-only directory with captured and revalidated identity. No child effect SHALL follow in that replacement session.
+
+#### Scenario: Locked cleanup-only contents stay unresolved
+
+- **WHEN** the accepted live cleanup refusal leaves child access unavailable but the checked directory identity matches and all protected authority checks pass
+- **THEN** closing records honest CLEANUP_PENDING and unavailable-content diagnostics, preserves bytes, and claims neither valid child inventory nor deletion nor trust in uninspected children
+
+#### Scenario: Safe later cleanup or ownership conflict
+
+- **WHEN** cleanup is retried after lock release or any unknown, changed, unsafe or protected entry is observed
+- **THEN** full ordinary inventory and actual identity/hash checks precede any removal, conflicts preserve bytes and block deletion, and retries append no records

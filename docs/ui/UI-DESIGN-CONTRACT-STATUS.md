@@ -1,3 +1,92 @@
+# P02 — accepted cleanup scope: strict/PRE PASS; planning publication pending
+
+2026-10-13T19:02:07.363Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; baseline add6975a4c8e0d7a168b3962aa99530dbc335b40; Guide1.0. Source S2b NOT_COMMITTED/PUSHED; planning checkpoint pending.
+
+[x] exact accepted scope; [x]4artifacts/newscheme; [x]strictPASS; [x]independentPRE **gpt-6-sol/xhigh PASS**; [x]17raw/61completeevents/296exactpacketfiles, CLI/canary/candidatepacketrequestplan checks; [ ] planningcommit/push. [Outcome](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-cleanup-pre-outcome-20261013T190207363Z/REPORT.md); [rawPRE](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-cleanup-pre-received-20261013T185311685Z/output--result.md). Actualbackend/effortNOT_CONFIRMED; measured20min26.776s. No production edits during acceptance/review; source unchanged from frozen exact input.
+
+Next [ ] bounded ROOT/PARENT/DIRECTORY identity-port feasibility probe (review obligation, NOT_RUN), then [ ] meaningful coordinator/recoveryRED→GREEN; [ ] actual fullkill/stress/currentchecks/verify/S2bPOST. PrivateMain47/staticPASS and S2aPOSTPASS separate; expanded locked-child diagnostic FAIL preserved. P023/9/fullREADY_FOR_VERIFY:NO, S2c/UI/cumulativeclosure open. Human actions:none for review/withinacceptedimplementation; material insufficient-port/scope finding will require exact decision. No routing/domain/nativeprotocol/visualchanges in this planning step. RightpanelQUEUED/visibilityNOT_CONFIRMED, mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — accepted cleanup recovery plan: strict PASS, automatic PRE prepared
+
+2026-10-13T18:31:42.964Z; UI branch codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; baseline add6975a4c8e0d7a168b3962aa99530dbc335b40; Guide1.0. Current S2b NOT_COMMITTED/PUSHED.
+
+[x] exact accepted cleanup scope SHA4d1ae25813e812089bb9bf5dec2b9d2a58db079e11a610f195d189cbad637d0d; [x] four-artifact reconciliation/new scheme; [x] [strict PASS](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2-cleanup-rebind-strict-20261013T182823562Z/execution.json); [ ] automatic PRE **gpt-6-sol/xhigh** PREPARED 296files/2624681bytes. [Prompt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-cleanup-rebind-accepted-plan-20261013T182817200Z/pre-prompt.md); [selection](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-cleanup-rebind-accepted-plan-20261013T182817200Z/pre-selection.json). Source/status/index/HEAD frozen during review; no edits until completion/unfreeze. Current Main47PASS/staticPASS and prior S2a focusedPOSTPASS separate; expanded locked-child diagnostic FAIL preserved. New coordinator/exception implementation NOT_IMPLEMENTED, productPOST NOT_RUN, P023/9/fullREADY_FOR_VERIFY:NO. No nativeprotocol/recordlimit/source/domain/routing/visual changes in planning. Next receive fresh exact PRE automatically; no human relay. RightpanelQUEUED/visibilityNOT_CONFIRMED; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — cleanup rebind scope accepted; coherent plan, strict/PRE pending
+
+2026-10-13T18:28:17.200Z; UI owning C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; branch codex/frade-ui-design-contract; common E:/dev/codex/frade/.git; baseline add6975a4c8e0d7a168b3962aa99530dbc335b40 lastpublished VERIFIED; Guide1.0. Current S2b NOT_COMMITTED/PUSHED.
+
+[x] exact human [acceptance](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-cleanup-recovery-rebind-accepted-20261013T182817200Z.json) SHA4d1ae25813e812089bb9bf5dec2b9d2a58db079e11a610f195d189cbad637d0d; [x] all4activeartifacts reconciled (original raw prefixes retained); [x] [new controlling S2 scheme](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2-cleanup-rebind-accepted-plan-20261013T182817200Z/s2-scheme.md); [ ] strict validation; [ ] automatic independent PRE **gpt-6-sol/xhigh**; [ ] coordinator implementation/checks/POST. Production unchanged during planning, previous Main47PASS/staticPASS retained. Expanded locked-child diagnostic remains FAIL, not erased or treated as feature PASS; exact accepted exception covers future live pending bookkeeping only. No new production before freshPRE PASS. No overlapping lease/nativefields/records/budget reset or routing changes. P023/9/fullREADY_FOR_VERIFY:NO; S2c/UI/fullkill/stress/cumulative closure open. Forecast remains recorded below, high uncertainty. Right panel queued/visibilityNOT_CONFIRMED.
+
+## Previous entries — preserved
+
+# P02 — S2b BLOCKED: cleanup liveness scope; current progress and forecast
+
+2026-10-13T18:20:00.915Z; owning branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; original98f387f96b51b0ad139e3507c376ff1c3e8dec09; P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; currentHEAD **add6975a4c8e0d7a168b3962aa99530dbc335b40**, last published remote SHA verified. Current S2b NOT_COMMITTED/NOT_PUSHED. Guide1.0.
+
+## Actual current work
+
+- [x] S1 Windows backend/runtime proof/Main bootstrap — completed focused checkpoint.
+- [x] S2a exact archive/journal/reservation — focused POST PASS, published.
+- [x] S2b private Main component — 24 new owned cases +4 actual NTFS +19 unchanged P01 = **47 PASS**, current p02-check-s2b-owned-main-static-green-20261013T181150119Z.
+- [x] Phase-specific cleanup intent — 4 new +49 unchanged S2a =53 PASS; source unchanged since that check.
+- [x] Current desktop type/lint PASS (p02-check-s2b-main-type-final-20261013T181141232Z / lint-final-20261013T181147255Z). Initial fixture static FAIL and binding-repair FAIL retained, no production patch for those errors. Current service type/lint **PASS** after expanded fixture: p02-check-s2b-service-type-after-probe-20261013T182038436Z / lint-after-probe-20261013T182032064Z.
+- [x] Actual NTFS liveness diagnosis: REFUSED/WIN32_32 closes old context; journal-only rebind/8th closing diagnostic PASS while lock held. Expanded full locked child inventory/readback is **FAIL**, p02-check-s2b-cleanup-identity-proof-20261013T181300951Z. Earlier PASS is not expanded PASS.
+- [ ] Exact scope decision: [P02-S2-CLEANUP-RECOVERY-REBIND-01](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-cleanup-recovery-rebind.proposed.md), SHA256 4d1ae25813e812089bb9bf5dec2b9d2a58db079e11a610f195d189cbad637d0d. PROPOSED/NOT_ACCEPTED, active plan unchanged; [RCA](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2b-work-20261013T171615075Z/cleanup-liveness-root-cause.json). No new production since this blocker.
+- [ ] Reconcile accepted delta → strict → automatic PRE gpt-6-sol/xhigh. New PRE NOT_RUN; historical S2 PRE is not approval for this proposal.
+- [ ] Coordinator/recovery service, actual Main/participant guards, full process-kill matrix and native budget stress.
+- [ ] S2b final applicable checks/verify/automatic POST/commit/push. POST NOT_RUN; full READY_FOR_VERIFY:NO.
+
+P02 tasks **3/9**; task2.2 is partial, this count is not a percentage of implementation effort. Tasks2.3/2.4/3.1/3.2/3.3 remain open. Scope is currently blocked; automatic review relay does not need human action, but this material scope delta needs a decision under AGENTS §2/20 and accepted S2 design.
+
+## Whole branch checkpoints and remaining forecasts
+
+7 numbered P01–P07 + Foundation +5 separately gated visual migrations = **13 major checkpoints**. Foundation and P01 archived. P01 covers portions of shared presentation/chrome, but does not close the five broader migration scopes. Remaining11 checkpoints include current P02. Count does not imply equal cost; compliance/CI is a Foundation obligation, not an extra numbered stage.
+
+| Checkpoint | Actual status | Remaining working-hour forecast |
+|---|---|---|
+| Foundation | ARCHIVED, 21/21 | complete |
+| P01 theme/resolver/preview | ARCHIVED; accepted exceptions retained | complete |
+| P02 installer | IN_PROGRESS3/9; S2b BLOCKED | 24–56h |
+| P03 VS Code theme import | NOT_STARTED implementation; preliminary planning only | 12–24h |
+| P04 icon registries | NOT_STARTED implementation | 16–32h |
+| P05 isolated browser host | NOT_STARTED implementation | 32–64h |
+| P06 native contribution APIs | NOT_STARTED implementation | 40–80h |
+| P07 registry/profiles/policy | NOT_STARTED implementation | 32–64h |
+| Shell/basic controls → tree/tabs → forms/tables/LoV → Draw/flow manager → AI | Five approved-scope/gate checkpoints not completed; future implementation scope needs confirmation | 80–160h combined |
+
+**Forecast total remaining:236–480 working hours, about30–60 eight-hour working days (6–12 working weeks). High uncertainty; no promised finish date.** Human approval/environment pauses excluded. Judgments, not measured durations. Future scopes/models/fixtures can change estimates. P02 remaining breakdown: S2b8–20h, S2c bridge/hooks/bootstrap8–16h, Extensions UI4–8h, full checks/verify/POST/archive4–12h =24–56h. Each remaining required review typically forecast20–30min; prior actual17–24min. Reassess after bounded S2b coordinator kill probe, then each numbered checkpoint. [Forecast record](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2b-work-20261013T171615075Z/forecast-20261013T1816.json).
+
+Historical FAIL/P02-D01 causeNOT_PROVEN/P01 minor exceptions remain; no new waiver. UI has no routing dependency; no routing/domain/vendor/Draw production changes or new screen/screenshots. Merge protection LOCAL_ONLY/NOT_CONFIGURED. Panel request queued/visibility NOT_CONFIRMED. Next step: exact scope decision; then automatic PRE and original required RED/GREEN/checks, STOP before P03.
+
+## Previous dashboard entries — preserved
+
+# P02 — S2b: private Main GREEN; coordinator/recovery дальше
+
+2026-10-13T17:56:04.541Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; baseline add6975a4c8e0d7a168b3962aa99530dbc335b40 PUSHED_REMOTE_SHA_VERIFIED. Current S2b changes NOT_COMMITTED/NOT_PUSHED; Guide1.0.
+
+[Стратегия](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2b-work-20261013T171615075Z/STRATEGY.md). [x] meaningful Main RED9FAIL/2PASS; [x] 24 current owned Main cases; [x] 4 actual NTFS cases; [x] 19 original P01 settings regressions unchanged. Latest47PASS; private exact12/13/repeated13/next14/NO_SETTINGS_WRITE/actual P01 rollback owner/lower-revision refusal checked. Actual Main NTFS probe0.24–0.83s latest; helper build/source unchanged. Это не full coordinator killed-process matrix.
+
+[x] reproduced cleanup overconstraint4RED; [x] phase-specific repair4GREEN +49 unchanged S2a=53PASS; original raw failures retained. [RCA](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2b-work-20261013T171615075Z/cleanup-root-cause.json). Main type/lint historicalPASS до latest source — current recheck pending. First high-water missing-method RED NOT_ACCEPTED_AS_MEANINGFUL; repaired fixture yielded actual9 vsconsumed11 genuineRED before production. [x] runtime-owner/lower-revision RED→GREEN.
+
+[ ] coordinator/recovery service; [ ] bounded actual coordinator child kill/reopen; [ ] fullphase/effect kills and native budget/stress; [ ] current final applicable checks/verification/focusedPOST Sol/xhigh; [ ] checkpoint commit/push. No completed S2b claim. P02 **3/9**,2.2partial; S2c named bridge/hooks/bootstrap,2.3 full actual recovery,2.4UI,3.1fullchecks/a11y/visual,3.2cumulativeverifyPOST,3.3archive open. Full READY_FOR_VERIFY:NO. No routing dependency/P03/new UI/screenshots. HistoricalFAIL/P02-D01 causeNOT_PROVEN/P01 exceptions retained; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED. RightpanelQUEUED/visibilityNOT_CONFIRMED. Human actions:none.
+
+## Предыдущие записи — сохранены
+
+# P02 — S2b: private Main ownership и recovery, подготовка RED
+
+2026-10-13T17:16:15.075Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; baseline **add6975a4c8e0d7a168b3962aa99530dbc335b40**, PUSHED_REMOTE_SHA_VERIFIED; Guide 1.0. Original/P02 baseline сохранены ниже.
+
+[Стратегия](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2b-work-20261013T171615075Z/STRATEGY.md). S2a completed/POST PASS. S2b: [x] owning audit/accepted scope and strategy; [ ] meaningful RED private Main exact reserve/write/ownership; [ ] GREEN; [ ] coordinator/recovery; [ ] bounded actual child kill/reopen; [ ] full phase/effect matrix and native budget/stress; [ ] applicable checks/verification/focused POST Sol/xhigh; [ ] checkpoint commit/push. Existing exact S2 PRE PASS applies to unchanged accepted plan; new scope requires fresh PRE.
+
+P02 **3/9**, task2.2 partial. S2c named bridge/hooks/bootstrap,2.4 UI,3.1 full checks/a11y/visual,3.2 cumulative verification/POST,3.3 archive remain open. Full READY_FOR_VERIFY:NO. No P03/Routing dependency/new visual migration. Historical FAIL/P02-D01 cause NOT_PROVEN/P01 exceptions retained. Current human actions:none. Panel opening QUEUED/visibility NOT_CONFIRMED; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи — сохранены
+
 # P02 — S2a завершён и опубликован; focused POST PASS
 
 2026-10-13T16:28:38.438Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; Guide 1.0. Исходные baseline сохранены ниже.

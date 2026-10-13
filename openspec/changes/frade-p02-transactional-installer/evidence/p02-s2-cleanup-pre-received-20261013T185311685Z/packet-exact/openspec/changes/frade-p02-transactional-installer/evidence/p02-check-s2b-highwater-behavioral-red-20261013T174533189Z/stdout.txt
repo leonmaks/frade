@@ -1,0 +1,33 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/p02-owned-presentation.test.ts (22 tests | 1 failed | 21 skipped) 19ms
+   ↓ P02 owned Main reservation and exact journal target > consumes max11 and writes reserved12 exactly, including request and generation, without allocating again
+   ↓ P02 owned Main reservation and exact journal target > refuses competing ordinary writes while the exact record is reserved, with no stage effect
+   ↓ P02 owned Main reservation and exact journal target > refuses a second owner and reuses one reservation only for the identical selection
+   ↓ P02 owned Main reservation and exact journal target > invalidates stale ownership before another settings effect
+   ↓ P02 owned Main reservation and exact journal target > same-selection observed12 still writes the full pre-journalled13 rather than returning12
+   ↓ P02 owned Main reservation and exact journal target > restart registers journal-owned13 and reapplies it exactly; repeated restore never allocates14
+   ↓ P02 owned Main reservation and exact journal target > NO_SETTINGS_WRITE preserves exact old9 bytes while cancelled consumed12 makes next reserve13
+   ↓ P02 owned Main reservation and exact journal target > unknown actual record blocks journal recovery before writes and preserves exact bytes
+   ↓ P02 owned Main reservation and exact journal target > unknown staged bytes are preserved; startup does not blindly delete them before journal ownership
+   ↓ P02 owned Main reservation and exact journal target > forged target at a journal-known revision refuses without overwriting actual settings
+   ↓ P02 owned Main reservation and exact journal target > conflicting same-revision candidates and a 65th cached record are refused before effects
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > reuses an exact known staged13 after restart without allocating or restaging
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > repeated completed13 readback does no settings effect and the next reservation is14
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > NO_SETTINGS_WRITE acknowledges exact old9 without creating a target or incrementing revision
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > possible-effect stage failure is UNKNOWN, preserves bytes and invalidates the owner
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > rename reply loss never reports ACK or retries the unusable owner; fresh recovery reuses exact13
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > intent invalidation after stage blocks rename and retains an honest UNKNOWN
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > a cloned capability is refused even with identical current context
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > planned record and nested selection are immutable detached values
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > renderer DTO cannot request the private recovery capability
+   ↓ P02 owned Main uncertainty, startup and capability boundaries > coordinated startup waits for release then publishes the verified exact target
+   × registry-only planning captures actual consumed11 even while exact durable record remains9 17ms
+     → expected 9 to be 11 // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 21 skipped (22)
+   Start at  20:45:34
+   Duration  1.38s (transform 219ms, setup 0ms, collect 269ms, tests 19ms, environment 0ms, prepare 223ms)
+

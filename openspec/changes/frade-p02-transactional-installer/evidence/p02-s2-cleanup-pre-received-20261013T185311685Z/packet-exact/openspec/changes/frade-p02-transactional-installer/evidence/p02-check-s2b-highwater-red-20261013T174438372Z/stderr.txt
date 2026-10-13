@@ -1,0 +1,20 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > registry-only planning captures actual consumed11 even while exact durable record remains9
+TypeError: f.port.highWater is not a function
+ ❯ tests/unit/p02-owned-presentation.test.ts:206:22
+    204|  await f.port.seed(owner,[record(9)],11)
+    205|  expect((await f.port.read(owner)).revision).toBe(9)
+    206|  expect(await f.port.highWater(owner)).toBe(11)
+       |                      ^
+    207|  expect(f.trace.filter(x=>x==='stage'||x==='rename')).toHaveLength(0)
+    208| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

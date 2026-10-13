@@ -1,0 +1,30 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop
+
+ ❯ tests/unit/p02-owned-presentation.test.ts (11 tests | 9 failed) 38ms
+   × P02 owned Main reservation and exact journal target > consumes max11 and writes reserved12 exactly, including request and generation, without allocating again 16ms
+     → expected { version: 1, revision: 10, …(3) } to deeply equal { version: 1, revision: 12, …(3) }
+   × P02 owned Main reservation and exact journal target > refuses competing ordinary writes while the exact record is reserved, with no stage effect 4ms
+     → expected 'ACK' to be 'REFUSED' // Object.is equality
+   × P02 owned Main reservation and exact journal target > refuses a second owner and reuses one reservation only for the identical selection 4ms
+     → promise resolved "{ context: { version: 1, …(7) }, …(1) }" instead of rejecting
+   ✓ P02 owned Main reservation and exact journal target > invalidates stale ownership before another settings effect 1ms
+   × P02 owned Main reservation and exact journal target > same-selection observed12 still writes the full pre-journalled13 rather than returning12 2ms
+     → expected { version: 1, revision: 12, …(3) } to deeply equal { version: 1, revision: 13, …(3) }
+   × P02 owned Main reservation and exact journal target > restart registers journal-owned13 and reapplies it exactly; repeated restore never allocates14 1ms
+     → Forged published settings revision
+   ✓ P02 owned Main reservation and exact journal target > NO_SETTINGS_WRITE preserves exact old9 bytes while cancelled consumed12 makes next reserve13 1ms
+   × P02 owned Main reservation and exact journal target > unknown actual record blocks journal recovery before writes and preserves exact bytes 3ms
+     → promise resolved "{ context: { version: 1, …(7) }, …(2) }" instead of rejecting
+   × P02 owned Main reservation and exact journal target > unknown staged bytes are preserved; startup does not blindly delete them before journal ownership 2ms
+     → promise resolved "{ context: { version: 1, …(7) }, …(2) }" instead of rejecting
+   × P02 owned Main reservation and exact journal target > forged target at a journal-known revision refuses without overwriting actual settings 1ms
+     → Forged published settings revision
+   × P02 owned Main reservation and exact journal target > conflicting same-revision candidates and a 65th cached record are refused before effects 1ms
+     → promise resolved "undefined" instead of rejecting
+
+ Test Files  1 failed (1)
+      Tests  9 failed | 2 passed (11)
+   Start at  20:20:01
+   Duration  2.68s (transform 720ms, setup 0ms, collect 752ms, tests 38ms, environment 0ms, prepare 919ms)
+

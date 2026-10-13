@@ -1,0 +1,12 @@
+{
+  "atUtc": "2026-10-13T17:22:52.930Z",
+  "classification": [
+    "STATE_TRANSITION",
+    "ABSTRACTION_BOUNDARY"
+  ],
+  "RED": "p02-check-s2b-owned-main-red-20261013T171957392Z",
+  "actualResult": "9 FAIL / 2 PASS",
+  "cause": "Ordinary P01 allocator/reconcile/initialize is not the accepted exact owned Main coordinator path. Reserved candidate/high-water not consumed, competing write allowed, selection equality not full target authority, unknown staged bytes removed before owned recovery.",
+  "repair": "Main-only bounded capability with serialized opaque leases, validated <=64 owned candidates/full exact write/readback and startup recovery; no new renderer DTO and ordinary hook-free paths retain original semantics.",
+  "unchanged": "Original tests/timeouts/native/protocol/domain/routing/P01 service unchanged; no weakened assertions"
+}

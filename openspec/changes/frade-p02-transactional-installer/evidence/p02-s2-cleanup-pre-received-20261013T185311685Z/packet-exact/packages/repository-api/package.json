@@ -1,0 +1,29 @@
+{
+  "name": "@frade/repository-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./protocol": "./src/protocol.ts",
+    "./http": "./src/http.ts",
+    "./workbench": "./src/workbench.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@frade/repository-domain": "workspace:*",
+    "@frade/repository-ports": "workspace:*",
+    "@frade/repository-application": "workspace:*",
+    "@frade/metamodel-domain": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vitest": "3.2.7",
+    "@types/node": "24.10.1"
+  }
+}

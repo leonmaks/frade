@@ -1,0 +1,76 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/s2b.bdd.test.ts > P02 S2b phase-specific cleanup intent and protected authority > admits removal intent for an old version needed before commit and cleanup-eligible after commit
+Error: RECOVERY_BLOCKED
+ ❯ fail src/journal.ts:110:9
+    108| }
+    109| function fail(code = 'RECOVERY_BLOCKED'): never {
+    110|   throw Error(code)
+       |         ^
+    111| }
+    112| const integer = (n: unknown): n is number =>
+ ❯ validatePlan src/journal.ts:252:62
+ ❯ src/journal.ts:692:7
+ ❯ InstallerJournal.exclusive src/journal.ts:402:20
+ ❯ InstallerJournal.begin src/journal.ts:687:17
+ ❯ tests/s2b.bdd.test.ts:16:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/s2b.bdd.test.ts > P02 S2b phase-specific cleanup intent and protected authority > records a candidate as potential rollback cleanup while protecting it after a valid marker
+Error: RECOVERY_BLOCKED
+ ❯ fail src/journal.ts:110:9
+    108| }
+    109| function fail(code = 'RECOVERY_BLOCKED'): never {
+    110|   throw Error(code)
+       |         ^
+    111| }
+    112| const integer = (n: unknown): n is number =>
+ ❯ validatePlan src/journal.ts:252:62
+ ❯ src/journal.ts:692:7
+ ❯ InstallerJournal.exclusive src/journal.ts:402:20
+ ❯ InstallerJournal.begin src/journal.ts:687:17
+ ❯ tests/s2b.bdd.test.ts:22:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/s2b.bdd.test.ts > P02 S2b phase-specific cleanup intent and protected authority > permits truthful locked candidate cleanupPending in the eight-record premarker rollback outcome
+Error: RECOVERY_BLOCKED
+ ❯ fail src/journal.ts:110:9
+    108| }
+    109| function fail(code = 'RECOVERY_BLOCKED'): never {
+    110|   throw Error(code)
+       |         ^
+    111| }
+    112| const integer = (n: unknown): n is number =>
+ ❯ validatePlan src/journal.ts:252:62
+ ❯ src/journal.ts:692:7
+ ❯ InstallerJournal.exclusive src/journal.ts:402:20
+ ❯ InstallerJournal.begin src/journal.ts:687:17
+ ❯ tests/s2b.bdd.test.ts:30:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/s2b.bdd.test.ts > P02 S2b phase-specific cleanup intent and protected authority > never claims current old authority as rollback cleanupPending on a failed remove
+Error: RECOVERY_BLOCKED
+ ❯ fail src/journal.ts:110:9
+    108| }
+    109| function fail(code = 'RECOVERY_BLOCKED'): never {
+    110|   throw Error(code)
+       |         ^
+    111| }
+    112| const integer = (n: unknown): n is number =>
+ ❯ validatePlan src/journal.ts:252:62
+ ❯ src/journal.ts:692:7
+ ❯ InstallerJournal.exclusive src/journal.ts:402:20
+ ❯ InstallerJournal.begin src/journal.ts:687:17
+ ❯ tests/s2b.bdd.test.ts:41:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

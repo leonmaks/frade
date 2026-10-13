@@ -1,0 +1,152 @@
+import { describe, expect, it, vi } from 'vitest'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import os from 'node:os'
+import { createHash } from 'node:crypto'
+import { fileURLToPath } from 'node:url'
+import * as service from '../src/index'
+import { WindowsFilesystemTransport } from '../src/filesystem/windows'
+import type { FilesystemPayload } from '../src/filesystem/windows'
+const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
+const probe = '.frade-runtime-probe'
+// Before implementation use the existing real bound transport as the behavioral baseline.
+// This exercises the lack of live proof/stale handling, rather than import-error-only RED.
+const create: any = Reflect.get(service, 'createVerifiedFilesystem') ?? ((options: any, ports: any) => ports.connect(options))
+async function fixture(run: (f: any) => Promise<void>, hook?: (port: WindowsFilesystemTransport, payload: FilesystemPayload, count: number, root: string) => Promise<void>, pageLimit?: number) {
+  if (process.platform !== 'win32' || process.arch !== 'x64') throw Error('WINDOWS_FACTORY_NOT_RUN_UNSUPPORTED_HOST')
+  const parent = await fs.realpath(os.tmpdir()), base = await fs.mkdtemp(path.join(parent, 'frade-p02-factory-')), root = path.join(base, 'extensions')
+  await fs.mkdir(root); await fs.writeFile(path.join(base, 'outside'), 'outside-original')
+  const sourceSha256 = sha(await fs.readFile(new URL('../native/windows-filesystem.cs', import.meta.url))), options = { installationRoot: root, distributionDirectory: fileURLToPath(new URL('../dist/native/', import.meta.url)), sourceSha256, generation: 7 }
+  const ports: WindowsFilesystemTransport[] = [], commands: FilesystemPayload[] = []
+  const connect = async (o: any) => {
+    const port = await WindowsFilesystemTransport.connect(o); ports.push(port)
+    return { get closed() { return port.closed }, dispose: () => port.dispose(), request: async (payload: FilesystemPayload) => {
+      const forwarded = pageLimit && payload.operation === 'list' ? { ...payload, limit: pageLimit } : payload
+      commands.push(forwarded); const reply = await port.request(forwarded)
+      if (hook) await hook(port, payload, commands.length, root)
+      return reply
+    } }
+  }
+  const cleanup = async () => {
+    for (const port of ports) await port.dispose()
+    expect(await fs.readFile(path.join(base, 'outside'), 'utf8')).toBe('outside-original')
+    const actual = await fs.realpath(base)
+    if (path.dirname(actual).toLowerCase() !== parent.toLowerCase() || !path.basename(actual).startsWith('frade-p02-factory-')) throw Error('UNSAFE_FACTORY_FIXTURE_CLEANUP')
+    await fs.rm(actual, { recursive: true })
+  }
+  try { await run({ root, base, options, commands, ports, create: (patch = {}, dependencies = {}) => create({ ...options, ...patch }, { connect, ...dependencies }) }) } finally { await cleanup() }
+}
+describe('P02 S1: actual volatile bounded bootstrap factory', () => {
+  it('proves live write/flush/publication/readback/cleanup before private VERIFIED and disposes once', () => fixture(async f => {
+    const context = await f.create()
+    expect(context.state).toBe('VERIFIED')
+    expect(context.capabilities).toMatchObject({ protocol: 1, checkedParents: true, exclusiveWrites: true, sameParentPublication: true, writeThroughFlush: true, unconditionalPowerLoss: 'NOT_PROVEN' })
+    expect((await context.request({ operation: 'capabilities' })).capabilities.runtimeProof).toBe('NOT_VERIFIED')
+    expect(await fs.readdir(f.root)).toEqual(['.coordinator.lock'])
+    expect(f.commands.filter((c: any) => c.operation === 'replace')).toHaveLength(1)
+    expect(f.commands.filter((c: any) => c.operation === 'remove')).toHaveLength(3)
+    for (const c of f.commands.filter((c: any) => c.operation === 'remove')) {
+      expect(c.expectedIdentity).toMatch(/^[a-f0-9]{24}$/)
+      if (c.kind === 'directory') expect(c.emptyOnly).toBe(true)
+    }
+    const close = context.dispose(); expect(context.dispose()).toBe(close); await close
+    expect(context.state).toBe('CLOSED')
+    await expect(context.request({ operation: 'capabilities' })).rejects.toThrow('FILESYSTEM_CONTEXT_CLOSED')
+    await fs.rename(f.root, f.root + '-released'); await fs.rename(f.root + '-released', f.root)
+  }))
+  it('preserves other root/package/state bytes and never writes an authoritative capability/journal', () => fixture(async f => {
+    await fs.writeFile(path.join(f.root, 'registry.json'), 'existing-registry')
+    const context = await f.create()
+    expect(context.state).toBe('VERIFIED'); expect(await fs.readFile(path.join(f.root, 'registry.json'), 'utf8')).toBe('existing-registry')
+    expect((await fs.readdir(f.root)).sort()).toEqual(['.coordinator.lock', 'registry.json'])
+    await context.dispose()
+  }))
+  for (const kind of ['directory', 'file']) it('blocks preexisting ' + kind + ' fixture without stale cleanup/reuse', () => fixture(async f => {
+    if (kind === 'directory') { await fs.mkdir(path.join(f.root, probe)); await fs.writeFile(path.join(f.root, probe, 'unknown'), 'stale-unknown') }
+    else await fs.writeFile(path.join(f.root, probe), 'stale-unknown')
+    await expect(f.create()).rejects.toThrow('BOOTSTRAP_RECOVERY_BLOCKED')
+    expect(await fs.readFile(kind === 'directory' ? path.join(f.root, probe, 'unknown') : path.join(f.root, probe), 'utf8')).toBe('stale-unknown')
+    expect(f.commands.some((c: any) => c.operation === 'remove' || c.operation === 'mkdir' || c.operation === 'write-open')).toBe(false)
+  }))
+  it('refuses a late genuine ordinary child without recursively deleting it or certifying', () => fixture(async f => {
+    await expect(f.create()).rejects.toThrow()
+    expect(await fs.readFile(path.join(f.root, probe, 'late-unknown'), 'utf8')).toBe('late-exact-bytes')
+  }, async (_port, payload, _count, root) => {
+    if (payload.operation === 'remove' && payload.kind === 'file' && payload.path.at(-1) === 'proof.json')
+      await fs.writeFile(path.join(root, probe, 'late-unknown'), 'late-exact-bytes', { flag: 'wx' })
+  }))
+  for (const phase of ['mkdir', 'owner-open', 'owner-write', 'owner-seal', 'proof-publish', 'owner-cleanup']) {
+    let reached = false
+    it('actual helper kill at ' + phase + ' preserves residue and blocks fresh restart', () => fixture(async f => {
+      await expect(f.create()).rejects.toThrow()
+      expect(reached).toBe(true); expect(await fs.readdir(f.root)).toContain(probe)
+      const residue = await fs.readdir(path.join(f.root, probe)), bytes = await Promise.all(residue.map((n: string) => fs.readFile(path.join(f.root, probe, n))))
+      await expect(f.create()).rejects.toThrow('BOOTSTRAP_RECOVERY_BLOCKED')
+      expect(await fs.readdir(path.join(f.root, probe))).toEqual(residue)
+      for (let i = 0; i < residue.length; i++) expect(await fs.readFile(path.join(f.root, probe, residue[i]))).toEqual(bytes[i])
+    }, async (port, payload) => {
+      const matches = phase === 'mkdir' ? payload.operation === 'mkdir' : phase === 'owner-open' ? payload.operation === 'write-open' && payload.path.at(-1) === 'owner.json' : phase === 'owner-write' ? payload.operation === 'write-chunk' : phase === 'owner-seal' ? payload.operation === 'write-close' : phase === 'proof-publish' ? payload.operation === 'replace' : payload.operation === 'remove' && payload.path.at(-1) === 'owner.json'
+      if (!reached && matches) {
+        const child = Reflect.get(port, 'child'); expect(child.pid).toBeGreaterThan(0)
+        const closed = new Promise<void>(resolve => child.once('close', () => resolve()))
+        expect(child.kill()).toBe(true); await closed; expect(port.closed).toBe(true); reached = true
+      }
+    }))
+  }
+  it('invalidates before further probe effects on an instrumented monotonic budget expiry', () => fixture(async f => {
+    let calls = 0
+    await expect(f.create({}, { now: () => ++calls < 7 ? 0 : 60_001 })).rejects.toThrow('BOOTSTRAP_BUDGET_EXCEEDED')
+    expect(f.commands.length).toBeLessThanOrEqual(48)
+  }))
+  it('rejects stale source assets before any probe effect', () => fixture(async f => {
+    await expect(f.create({ sourceSha256: '0'.repeat(64) })).rejects.toThrow('NATIVE_BUILD_DRIFT')
+    expect(await fs.readdir(f.root)).toEqual([])
+  }))
+})
+
+
+it('instrumented hard deadline settles a stalled pre-bind and disposes a late context without effects', async () => {
+  vi.useFakeTimers()
+  let open!: (port: any) => void, outcome = 'PENDING'
+  const late = { closed: false, request: vi.fn(), dispose: vi.fn(async () => {}) }
+  const pending = new Promise<any>(resolve => { open = resolve })
+  const work = create({ installationRoot: 'C:/unused', distributionDirectory: 'C:/unused', sourceSha256: 'a'.repeat(64), generation: 1 }, { connect: () => pending, now: () => 0 })
+    .then(() => { outcome = 'WRONGLY_VERIFIED' }, (error: Error) => { outcome = error.message })
+  const release = async () => { open(late); await work; await Promise.resolve(); vi.useRealTimers() }
+  try {
+    await vi.advanceTimersByTimeAsync(60_000)
+    expect(outcome).toBe('BOOTSTRAP_BUDGET_EXCEEDED')
+  } finally { await release() }
+  expect(late.dispose).toHaveBeenCalledTimes(1)
+  expect(late.request).not.toHaveBeenCalled()
+})
+
+it('actual bootstrap maximum48 counts bind and disposal with instrumented small-page native enumeration', () => fixture(async f => {
+  // Owned setup before bind; bounded below the existing10000-entry limit.
+  await Promise.all(Array.from({ length: 50 }, (_, n) => fs.writeFile(path.join(f.root, 'entry-' + n), Buffer.alloc(0))))
+  await expect(f.create()).rejects.toMatchObject({ message: 'BOOTSTRAP_BUDGET_EXCEEDED' })
+  expect(f.ports).toHaveLength(1)
+  // Internal ACK sequence observes real bind/requests/dispose; no production debug API.
+  expect(Reflect.get(f.ports[0], 'nextId') - 1).toBeLessThanOrEqual(48)
+  const names = await fs.readdir(f.root)
+  expect(names).toHaveLength(51); expect(names).not.toContain(probe)
+  for (const name of names.filter((name: string) => name !== '.coordinator.lock')) expect((await fs.stat(path.join(f.root, name))).size).toBe(0)
+}, undefined, 1))
+
+it('does not adopt and delete a genuine same-bytes replacement after owner seal', async () => {
+  let replaced = false
+  await fixture(async f => {
+    await expect(f.create()).rejects.toMatchObject({ message: 'BOOTSTRAP_IDENTITY_UNCERTAIN' })
+    expect(replaced).toBe(true)
+    const preserved = await fs.readFile(path.join(f.base, 'original-owner-bytes'))
+    expect(await fs.readFile(path.join(f.root, probe, 'owner.json'))).toEqual(preserved)
+  }, async (port, payload, _count, root) => {
+    if (payload.operation !== 'write-close' || payload.retainForPublication !== false || replaced) return
+    const file = path.join(root, probe, 'owner.json'), bytes = await fs.readFile(file)
+    const before = (await port.request({ operation: 'list', path: [probe], limit: 128, cursor: null })).entries.find((e: any) => e.name === 'owner.json').identity
+    await fs.writeFile(path.join(path.dirname(root), 'original-owner-bytes'), bytes)
+    await fs.unlink(file); await fs.writeFile(file, bytes)
+    const after = (await port.request({ operation: 'list', path: [probe], limit: 128, cursor: null })).entries.find((e: any) => e.name === 'owner.json').identity
+    expect(after).not.toBe(before); replaced = true
+  })
+})

@@ -1,0 +1,24 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > a fresh actual P01 rollback owner reapplies a pre-journalled target without replacing its context or reallocating
+AssertionError: expected 'REFUSED' to be 'ACK' // Object.is equality
+
+Expected: "ACK"
+Received: "REFUSED"
+
+ ❯ tests/unit/p02-owned-presentation.test.ts:216:24
+    214|  await f.port.seed(owner,[record(9),record(12,'dark'),planned],13)
+    215|  const result=await f.port.write(owner,planned)
+    216|  expect(result.status).toBe('ACK');expect(result.durable).toEqual(plan…
+       |                        ^
+    217|  expect(owner.context).toEqual(context);expect(await f.port.highWater(…
+    218| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

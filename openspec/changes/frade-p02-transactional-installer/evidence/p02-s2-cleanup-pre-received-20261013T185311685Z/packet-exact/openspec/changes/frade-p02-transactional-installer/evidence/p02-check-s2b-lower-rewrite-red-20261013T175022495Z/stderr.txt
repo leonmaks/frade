@@ -1,0 +1,24 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/p02-owned-presentation.test.ts > a known old9 never authorizes a lower-revision rewrite over actual12 during coordinated recovery
+AssertionError: expected 'ACK' to be 'REFUSED' // Object.is equality
+
+Expected: "REFUSED"
+Received: "ACK"
+
+ ❯ tests/unit/p02-owned-presentation.test.ts:223:55
+    221| it('a known old9 never authorizes a lower-revision rewrite over actual…
+    222|  const f=await fixture(record(12,'dark')),owner=await f.port.recover([…
+    223|  expect((await f.port.write(owner,record(9))).status).toBe('REFUSED')
+       |                                                       ^
+    224|  expect(f.data.get(f.target)).toBe(before);expect(f.trace.filter(x=>x=…
+    225| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

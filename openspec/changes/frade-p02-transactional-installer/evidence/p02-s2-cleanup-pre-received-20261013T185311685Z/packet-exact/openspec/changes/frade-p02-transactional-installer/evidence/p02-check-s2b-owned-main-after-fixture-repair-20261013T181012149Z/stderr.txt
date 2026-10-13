@@ -1,0 +1,30 @@
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/p02-owned-presentation.windows.test.ts [ tests/unit/p02-owned-presentation.windows.test.ts ]
+Error: Transform failed with 1 error:
+C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/tests/unit/p02-owned-presentation.windows.test.ts:61:9: ERROR: The symbol "written" has already been declared
+  Plugin: vite:esbuild
+  File: C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/apps/desktop/tests/unit/p02-owned-presentation.windows.test.ts:61:9
+  
+  The symbol "written" has already been declared
+  59 |     const second=await open(2),fresh=createPresentationSettings({userData:root,sessionId:'next-window',windowId:6}),
+  60 |      next=await fresh.coordinator.recover([record(9),record(12),planned],13)
+  61 |     const written=await fresh.coordinator.write(next,planned)
+     |           ^
+  62 |     expect(written.status).toBe('ACK');if(written.status!=='ACK')throw Error(written.message)
+  63 |     expect(written.durable).toEqual(planned)
+  
+ ❯ failureErrorWithLog ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:1476:15
+ ❯ ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:755:50
+ ❯ responseCallbacks.<computed> ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:622:9
+ ❯ handleIncomingPacket ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:677:12
+ ❯ Socket.readFromStdout ../../node_modules/.pnpm/esbuild@0.24.2/node_modules/esbuild/lib/main.js:600:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\apps\desktop
+

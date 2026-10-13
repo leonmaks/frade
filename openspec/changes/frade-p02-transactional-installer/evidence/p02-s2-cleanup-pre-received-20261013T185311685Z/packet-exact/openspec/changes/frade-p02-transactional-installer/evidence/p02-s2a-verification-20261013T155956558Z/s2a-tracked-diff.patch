@@ -1,0 +1,86 @@
+diff --git a/docs/ui/UI-DESIGN-CONTRACT-STATUS.md b/docs/ui/UI-DESIGN-CONTRACT-STATUS.md
+index 026c46b7..182dfa8e 100644
+--- a/docs/ui/UI-DESIGN-CONTRACT-STATUS.md
++++ b/docs/ui/UI-DESIGN-CONTRACT-STATUS.md
+@@ -1,3 +1,23 @@
++# P02 — S2a GREEN49; final checks in progress
++
++2026-10-13T15:51:31.076Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; checkpointe7c45f0714f485f22f912edafec476bc0d0fe6da PUSHED_REMOTE_SHA_VERIFIED. Original/P02 origin retained below; Guide1.0.
++
++S2a storage/journal/reservation implemented as host components. New portable49PASS; actual NTFS3PASS on previous closely-related source, final regression rerun pending after latest admission guards. Earlier fullpackage313test/313BDD PASS remain historical, not latest49-case input proof. Type/lint/boundaries/strict passed before latest guard edits; final revalidation running. [Strategy](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-work-20261013T151744236Z/STRATEGY.md), [reassessment](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-work-20261013T151744236Z/scan-strategy-reassessment.md), [mapping](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-work-20261013T151744236Z/TRACEABILITY.md). [x] RED; [x] componentGREEN; [x] boundedactualprobe; [ ] finalchecks; [ ] verification; [ ] independentPOST Sol/xhigh; [ ] commit/push.
++
++P023/9/task2.2partial; S2b/S2c and actual store recovery/fullkill/budgetstress remain open; task2.4UI and3.1–3.3fullclosure open. Full READY_FOR_VERIFY:NO. Historical FAIL/P02-D01causeNOT_PROVEN retained; no new acceptance waiver. No screenchange/screenshots; no routing dependency/P03. PanelQUEUED/visibilityNOT_CONFIRMED; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
++
++## Previous entries — preserved
++
++# P02 — S2a RED recorded; GREEN in progress
++
++2026-10-13T15:17:44.236Z; branch codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; checkpoint e7c45f0714f485f22f912edafec476bc0d0fe6da PUSHED_REMOTE_SHA_VERIFIED. Original/P02 origin retained below. Guide1.0.
++
++Current task2.2 slice S2a: [strategy](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-work-20261013T151744236Z/STRATEGY.md). [x] meaningful RED archive storage; [x] RED journal publisher/scan; [x] RED reservation/restart envelope; [ ] GREEN; [ ] bounded actual NTFS probe; [ ] applicable tests/type/lint/BDD; [ ] verification/focused automatic POST gpt-6-sol/xhigh; [ ] commit/push. Planning strict/PRE PASS remains exact accepted scope; 37 new cases FAIL_EXPECTED_RED preserved; GREEN/runtime/POST NOT_RUN. No current human decision.
++
++P02 3/9,2.2partial,2.3actual recovery,2.4UI,3.1fullchecks,3.2cumulativeverifyPOST,3.3archive open. Full READY_FOR_VERIFY:NO. Historical FAIL/P02-D01NOT_PROVEN and accepted P01 exceptions preserved. No routing dependency/no P03. RightpanelQUEUED/visibilityNOT_CONFIRMED.
++
++## Previous entries — preserved
++
+ # P02 — S2 recovery planning checkpoint опубликован; PRE PASS
+ 
+ 2026-10-13T15:04:45.893Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; origin98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
+diff --git a/docs/ui/bdd/p02-extension-installer.feature b/docs/ui/bdd/p02-extension-installer.feature
+index 61c649a8..cc9d5b0c 100644
+--- a/docs/ui/bdd/p02-extension-installer.feature
++++ b/docs/ui/bdd/p02-extension-installer.feature
+@@ -21,3 +21,19 @@ Feature: Native transactional declarative package installer
+   Scenario: P02PKG006 Corrupted transport
+     When CRC, local and central metadata, encryption, compression or sizes disagree
+     Then validation rejects with the actual cause
++  Scenario: P02S2A001 Durable-intent-owned archive storage
++    Given a validated durable STAGING and the exact chosen archive hash
++    When its privately detached bounded bytes are copied through the checked backend
++    Then readback preserves the exact ZIP and paired themes without registration or selection
++  Scenario: P02S2A002 Immutable journal and complete checked scan
++    When bounded canonical records are published through one held records parent
++    Then exact ordinal, predecessor, payload, filename, identity and full initial/final inventories agree before authority is returned
++    And a gap, fork, changed snapshot or unknown entry blocks without overwriting history
++  Scenario: P02S2A003 Complete outcome reservation
++    When admission checks the full phase, recovery-plan and disposition record sizes
++    Then eight slots and eight MiB are reserved before STAGING and seven slots or one byte less refuse
++    And recognized pending bytes consume their planned slot and no second admission spends the open reserve
++  Scenario: P02S2A004 Actual NTFS helper death and reopen
++    When the task-owned verified helper is killed before or after a valid COMMITTED record
++    Then fresh checked scan keeps the prefix and selects old or new journal authority respectively
++    And this component proof does not claim Main settings reconciliation or the full coordinator kill matrix
+diff --git a/packages/extension-service/scripts/build-windows-filesystem.mjs b/packages/extension-service/scripts/build-windows-filesystem.mjs
+index 044a8a96..62a74f48 100644
+--- a/packages/extension-service/scripts/build-windows-filesystem.mjs
++++ b/packages/extension-service/scripts/build-windows-filesystem.mjs
+@@ -47,8 +47,8 @@ if (process.platform !== 'win32') {
+ }
+ 
+ if (modes.length === 1) {
+-  const files = ['tests/archive.bdd.test.ts', 'tests/filesystem.protocol.test.ts']
+-  if (process.platform === 'win32') files.push('tests/filesystem.windows.test.ts', 'tests/filesystem.deployment.test.ts', 'tests/filesystem.transport.test.ts', 'tests/filesystem.cleanup.test.ts', 'tests/filesystem.factory.test.ts')
++  const files = ['tests/archive.bdd.test.ts', 'tests/filesystem.protocol.test.ts', 'tests/s2a.bdd.test.ts']
++  if (process.platform === 'win32') files.push('tests/s2a.windows.test.ts', 'tests/filesystem.windows.test.ts', 'tests/filesystem.deployment.test.ts', 'tests/filesystem.transport.test.ts', 'tests/filesystem.cleanup.test.ts', 'tests/filesystem.factory.test.ts')
+   else console.log(JSON.stringify({ status: 'WINDOWS_NATIVE_NOT_RUN', portable: 'RUNNING', mode: modes[0] }))
+   const runner = createRequire(import.meta.url).resolve('vitest/vitest.mjs')
+   const result = spawnSync(process.execPath, [runner, 'run', '--fileParallelism=false', ...files], { cwd: root, stdio: 'inherit', windowsHide: true, timeout: 240000 })
+diff --git a/packages/extension-service/src/index.ts b/packages/extension-service/src/index.ts
+index 4ef6126a..44c7944b 100644
+--- a/packages/extension-service/src/index.ts
++++ b/packages/extension-service/src/index.ts
+@@ -2,3 +2,14 @@ export { validatePackage } from './archive'
+ export type { ValidationOptions, PackageValidation } from './archive'
+ export { createVerifiedFilesystem, NATIVE_FILESYSTEM_SOURCE_SHA256 } from './filesystem/factory'
+ export type { VerifiedFilesystem } from './filesystem/factory'
++export { CheckedStorage } from './storage'
++export { InstallerJournal, JOURNAL_PHASES } from './journal'
++export type {
++  TransactionPlan,
++  RecoveryInput,
++  DispositionInput,
++  JournalScan,
++  JournalRegistry,
++  JournalPresentation,
++  PresentationSelection,
++} from './journal'
