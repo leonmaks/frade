@@ -1,0 +1,58 @@
+diff --git a/docs/ui/bdd/p02-extension-installer.feature b/docs/ui/bdd/p02-extension-installer.feature
+index 61c649a8..cc9d5b0c 100644
+--- a/docs/ui/bdd/p02-extension-installer.feature
++++ b/docs/ui/bdd/p02-extension-installer.feature
+@@ -21,3 +21,19 @@ Feature: Native transactional declarative package installer
+   Scenario: P02PKG006 Corrupted transport
+     When CRC, local and central metadata, encryption, compression or sizes disagree
+     Then validation rejects with the actual cause
++  Scenario: P02S2A001 Durable-intent-owned archive storage
++    Given a validated durable STAGING and the exact chosen archive hash
++    When its privately detached bounded bytes are copied through the checked backend
++    Then readback preserves the exact ZIP and paired themes without registration or selection
++  Scenario: P02S2A002 Immutable journal and complete checked scan
++    When bounded canonical records are published through one held records parent
++    Then exact ordinal, predecessor, payload, filename, identity and full initial/final inventories agree before authority is returned
++    And a gap, fork, changed snapshot or unknown entry blocks without overwriting history
++  Scenario: P02S2A003 Complete outcome reservation
++    When admission checks the full phase, recovery-plan and disposition record sizes
++    Then eight slots and eight MiB are reserved before STAGING and seven slots or one byte less refuse
++    And recognized pending bytes consume their planned slot and no second admission spends the open reserve
++  Scenario: P02S2A004 Actual NTFS helper death and reopen
++    When the task-owned verified helper is killed before or after a valid COMMITTED record
++    Then fresh checked scan keeps the prefix and selects old or new journal authority respectively
++    And this component proof does not claim Main settings reconciliation or the full coordinator kill matrix
+diff --git a/packages/extension-service/scripts/build-windows-filesystem.mjs b/packages/extension-service/scripts/build-windows-filesystem.mjs
+index 044a8a96..62a74f48 100644
+--- a/packages/extension-service/scripts/build-windows-filesystem.mjs
++++ b/packages/extension-service/scripts/build-windows-filesystem.mjs
+@@ -47,8 +47,8 @@ if (process.platform !== 'win32') {
+ }
+ 
+ if (modes.length === 1) {
+-  const files = ['tests/archive.bdd.test.ts', 'tests/filesystem.protocol.test.ts']
+-  if (process.platform === 'win32') files.push('tests/filesystem.windows.test.ts', 'tests/filesystem.deployment.test.ts', 'tests/filesystem.transport.test.ts', 'tests/filesystem.cleanup.test.ts', 'tests/filesystem.factory.test.ts')
++  const files = ['tests/archive.bdd.test.ts', 'tests/filesystem.protocol.test.ts', 'tests/s2a.bdd.test.ts']
++  if (process.platform === 'win32') files.push('tests/s2a.windows.test.ts', 'tests/filesystem.windows.test.ts', 'tests/filesystem.deployment.test.ts', 'tests/filesystem.transport.test.ts', 'tests/filesystem.cleanup.test.ts', 'tests/filesystem.factory.test.ts')
+   else console.log(JSON.stringify({ status: 'WINDOWS_NATIVE_NOT_RUN', portable: 'RUNNING', mode: modes[0] }))
+   const runner = createRequire(import.meta.url).resolve('vitest/vitest.mjs')
+   const result = spawnSync(process.execPath, [runner, 'run', '--fileParallelism=false', ...files], { cwd: root, stdio: 'inherit', windowsHide: true, timeout: 240000 })
+diff --git a/packages/extension-service/src/index.ts b/packages/extension-service/src/index.ts
+index 4ef6126a..44c7944b 100644
+--- a/packages/extension-service/src/index.ts
++++ b/packages/extension-service/src/index.ts
+@@ -2,3 +2,14 @@ export { validatePackage } from './archive'
+ export type { ValidationOptions, PackageValidation } from './archive'
+ export { createVerifiedFilesystem, NATIVE_FILESYSTEM_SOURCE_SHA256 } from './filesystem/factory'
+ export type { VerifiedFilesystem } from './filesystem/factory'
++export { CheckedStorage } from './storage'
++export { InstallerJournal, JOURNAL_PHASES } from './journal'
++export type {
++  TransactionPlan,
++  RecoveryInput,
++  DispositionInput,
++  JournalScan,
++  JournalRegistry,
++  JournalPresentation,
++  PresentationSelection,
++} from './journal'

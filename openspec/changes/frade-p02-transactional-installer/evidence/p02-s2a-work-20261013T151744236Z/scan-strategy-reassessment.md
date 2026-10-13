@@ -1,0 +1,7 @@
+# Scan strategy reassessment before a large-volume run
+
+2026-10-13T15:38:01.362Z. First actual native probes passed, each0.75–1.49s/218–354commands. Full package310tests PASS61.66s measured; historical evidence preserved. Inspection finds complete directory enumeration after every record read: at10000records this causes quadratic enumeration (~800000paged-list commands forecast, not measured). It risks closed-protocol request budget and unnecessarily repeats integrity work. No expensive capacity fixture launched yet.
+
+Alternatives: keep per-record full-list passes (small probe correct, worst-case cost unacceptable); omit identity checks (inapplicable); select one initial checked inventory, read/hash/validate every record, then one complete checked inventory comparison before returning any authority. Every initial entry identity/name/type/size and every actual record hash remains checked; changed/new/removed entry blocks. Closed handles/root/canary/reviews unchanged. Cost forecast linear record reads plus two inventories; actual bounded probe and meaningful late-entry/identity regressions before larger volume. Token/time cost unmeasured; no success probability.
+
+This is an implementation optimization of approved full checked scan, no contract or native API expansion. Prove deterministic RED for repeated enumeration and newly introduced unknown entry before production change, retain current positive/security/prefix assertions, then bounded actual NTFS probe and final package checks. Stop on any integrity loss or unsupported checked port.

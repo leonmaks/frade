@@ -1,0 +1,22 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+stdout | tests/s2a.windows.test.ts > P02FS003/S2a actual checked NTFS archive and journal proof > stores exact paired archive, completes eight records, reopens a fresh verified context with unchanged prefix
+{"scope":"S2a task-owned NTFS helper/archive/journal only; Main/store reconciliation/full kill matrix NOT_RUN","commands":311,"durationMs":1172,"outsideUnchanged":true,"sourceUnchanged":true,"powerLoss":"NOT_PROVEN"}
+
+stdout | tests/s2a.windows.test.ts > P02FS003/S2a actual checked NTFS archive and journal proof > kills the actual task-owned helper before valid COMMITTED; fresh scan selects the matching authority
+{"scope":"S2a task-owned NTFS helper/archive/journal only; Main/store reconciliation/full kill matrix NOT_RUN","commands":207,"durationMs":768,"outsideUnchanged":true,"sourceUnchanged":true,"powerLoss":"NOT_PROVEN"}
+
+stdout | tests/s2a.windows.test.ts > P02FS003/S2a actual checked NTFS archive and journal proof > kills the actual task-owned helper after valid COMMITTED; fresh scan selects the matching authority
+{"scope":"S2a task-owned NTFS helper/archive/journal only; Main/store reconciliation/full kill matrix NOT_RUN","commands":240,"durationMs":770,"outsideUnchanged":true,"sourceUnchanged":true,"powerLoss":"NOT_PROVEN"}
+
+ ✓ tests/s2a.windows.test.ts (3 tests) 2719ms
+   ✓ P02FS003/S2a actual checked NTFS archive and journal proof > stores exact paired archive, completes eight records, reopens a fresh verified context with unchanged prefix  1176ms
+   ✓ P02FS003/S2a actual checked NTFS archive and journal proof > kills the actual task-owned helper before valid COMMITTED; fresh scan selects the matching authority  770ms
+   ✓ P02FS003/S2a actual checked NTFS archive and journal proof > kills the actual task-owned helper after valid COMMITTED; fresh scan selects the matching authority  772ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  18:56:41
+   Duration  3.41s (transform 191ms, setup 0ms, collect 289ms, tests 2.72s, environment 0ms, prepare 165ms)
+

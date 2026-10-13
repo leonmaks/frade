@@ -1,0 +1,18 @@
+{
+  "atUtc": "2026-10-13T15:27:07.054Z",
+  "classification": "TEST; independent new INVARIANT reproduction",
+  "evidence": "p02-check-s2a-green1-20261013T152542095Z",
+  "passed": 33,
+  "failed": 4,
+  "findings": [
+    "noncanonical fixture reserialized already-sorted canonical record, now explicit whitespace makes actual invalid encoding",
+    "expected new registry accidentally used aaaaa hash instead of exact compatible fixture hash; assertion still exact full registry",
+    "RecoveryPlan fixture request now binds exact target transactionId per accepted owner algorithm",
+    "6000-entry fixture measured965947bytes, below1048576;7000actualentries makes real record overflow; same zero-write assertions",
+    "type guards add nonnull proof only; no weakened assertions"
+  ],
+  "beforeSha256": "953a63307eda9b84828c2913b37af82c249d5b835f34b631d295123a92de6762",
+  "afterSha256": "5fdf84e81451481ec9a28f9a20e7ac045784d6f432eab183eaacad17dea688e7",
+  "newReproduction": "exact regex separators currently wildcard due author-template escapes; two new attack assertions before fix",
+  "originalTestsChanged": false
+}

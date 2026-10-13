@@ -1,0 +1,30 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 full admission state validation before journal effects > refuses a forged nonfresh baseline in an empty journal before any creation
+AssertionError: expected [Function] to throw error including 'STATE_CONFLICT' but got 'JOURNAL_PUBLICATION_UNKNOWN'
+
+Expected: "STATE_CONFLICT"
+Received: "JOURNAL_PUBLICATION_UNKNOWN"
+
+ ❯ tests/s2a.bdd.test.ts:426:212
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 full admission state validation before journal effects > refuses reuse of a completed transaction UUID without appending a corrupt STAGING
+AssertionError: expected [Function] to throw error including 'TRANSACTION_REUSED' but got 'JOURNAL_PUBLICATION_UNKNOWN'
+
+Expected: "TRANSACTION_REUSED"
+Received: "JOURNAL_PUBLICATION_UNKNOWN"
+
+ ❯ tests/s2a.bdd.test.ts:427:689
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

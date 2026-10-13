@@ -1,0 +1,192 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 registry snapshot schema parity with stable archive identity > refuses a wildcard publisher/name separator before any STAGING write
+AssertionError: promise resolved "{ records: [ { …(4) } ], …(8) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "active": {
++     "bytes": 1219,
++     "committedHash": null,
++     "count": 1,
++     "lastPhase": "STAGING",
++     "plan": {
++       "cleanup": [],
++       "consumedRevision": 12,
++       "envelope": {
++         "bytes": 8388608,
++         "maxRecordBytes": 1048576,
++         "slots": 8,
++       },
++       "newPresentation": {
++         "generation": 12,
++         "revision": 12,
++         "selection": {
++           "density": "compact",
++           "mode": "dark",
++           "preferred": {
++             "dark": "frade.builtin/dark",
++             "high-contrast": "frade.builtin/high-contrast",
++             "light": "frade.builtin/light",
++           },
++         },
++         "transactionId": "window/intent-12",
++         "version": 1,
++       },
++       "newRegistry": {
++         "entries": [
++           {
++             "archiveSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++             "enabled": true,
++             "id": "frade_workshop",
++             "previousSha256": null,
++             "version": "1.0.0",
++           },
++         ],
++         "revision": 1,
++       },
++       "oldPresentation": {
++         "generation": 9,
++         "revision": 9,
++         "selection": {
++           "density": "compact",
++           "mode": "light",
++           "preferred": {
++             "dark": "frade.builtin/dark",
++             "high-contrast": "frade.builtin/high-contrast",
++             "light": "frade.builtin/light",
++           },
++         },
++         "transactionId": "window/intent-9",
++         "version": 1,
++       },
++       "oldRegistry": {
++         "entries": [],
++         "revision": 0,
++       },
++       "versions": [
++         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++       ],
++     },
++     "recovery": null,
++     "transactionId": "11111111-1111-4111-8111-111111111111",
++   },
++   "authority": {
++     "presentation": {
++       "generation": 9,
++       "revision": 9,
++       "selection": {
++         "density": "compact",
++         "mode": "light",
++         "preferred": {
++           "dark": "frade.builtin/dark",
++           "high-contrast": "frade.builtin/high-contrast",
++           "light": "frade.builtin/light",
++         },
++       },
++       "transactionId": "window/intent-9",
++       "version": 1,
++     },
++     "registry": {
++       "entries": [],
++       "revision": 0,
++     },
++   },
++   "consumedRevision": 12,
++   "pending": [],
++   "records": [
++     {
++       "bytes": 1219,
++       "name": "00000000000000000001.11111111-1111-4111-8111-111111111111.2fd7e3aef5dda87092e5b47ceaa943160b54308b231e3a55ba389fa8bdedde25.json",
++       "record": {
++         "expectedRegistryRevision": 0,
++         "kind": "PHASE",
++         "ordinal": 1,
++         "payload": {
++           "cleanup": [],
++           "consumedRevision": 12,
++           "envelope": {
++             "bytes": 8388608,
++             "maxRecordBytes": 1048576,
++             "slots": 8,
++           },
++           "newPresentation": {
++             "generation": 12,
++             "revision": 12,
++             "selection": {
++               "density": "compact",
++               "mode": "dark",
++               "preferred": {
++                 "dark": "frade.builtin/dark",
++                 "high-contrast": "frade.builtin/high-contrast",
++                 "light": "frade.builtin/light",
++               },
++             },
++             "transactionId": "window/intent-12",
++             "version": 1,
++           },
++           "newRegistry": {
++             "entries": [
++               {
++                 "archiveSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++                 "enabled": true,
++                 "id": "frade_workshop",
++                 "previousSha256": null,
++                 "version": "1.0.0",
++               },
++             ],
++             "revision": 1,
++           },
++           "oldPresentation": {
++             "generation": 9,
++             "revision": 9,
++             "selection": {
++               "density": "compact",
++               "mode": "light",
++               "preferred": {
++                 "dark": "frade.builtin/dark",
++                 "high-contrast": "frade.builtin/high-contrast",
++                 "light": "frade.builtin/light",
++               },
++             },
++             "transactionId": "window/intent-9",
++             "version": 1,
++           },
++           "oldRegistry": {
++             "entries": [],
++             "revision": 0,
++           },
++           "versions": [
++             "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++           ],
++         },
++         "payloadSHA256": "a09997d18400d614de2ce2064fceb0cb79069ea133a5f86337976d9fe2c0915e",
++         "phase": "STAGING",
++         "previousRecordSHA256": null,
++         "schemaVersion": 1,
++         "transactionId": "11111111-1111-4111-8111-111111111111",
++       },
++       "sha256": "2fd7e3aef5dda87092e5b47ceaa943160b54308b231e3a55ba389fa8bdedde25",
++     },
++   ],
++   "remainingBytes": 8387389,
++   "remainingSlots": 7,
++   "usedBytes": 1219,
++   "usedSlots": 1,
+  }
+
+ ❯ tests/s2a.bdd.test.ts:351:225
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

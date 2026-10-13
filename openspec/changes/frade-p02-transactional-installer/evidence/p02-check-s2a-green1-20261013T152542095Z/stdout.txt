@@ -1,0 +1,51 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/s2a.bdd.test.ts (37 tests | 4 failed) 1379ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > canonicalizes recursively independent of key insertion order 2ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 0 1ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 1 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 2 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 3 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 4 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 5 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses cycles without stack overflow 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > requires all eight slots, refusing seven 1ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > requires all eight MiB, refusing one byte less 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > cannot spend existing unspent recovery capacity 0ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > copies exact detached compressed bytes through checked chunks and rereads paired native themes 41ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > refuses copy without durable STAGING and makes no package writes 3ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > refuses incompatible original before any package effect, preserving its exact bytes 7ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > reuses only fully validated exact ordinary archive inventory, never overwrites corrupt bytes 10ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > rejects additional unknown contents in a preexisting version directory 9ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > rejects mismatched selected-byte SHA and actual compressed overflow before effects 2ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > publishes held same-parent pending to absent final, links exact prefix hashes and reserves before STAGING 29ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > does not admit a second transaction before the closing disposition 3ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks unknown or truncated final without deleting it: mystery 1ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks unknown or truncated final without deleting it: 00000000000000000001.11111111-1111-4111-8111-111111111111.0000000000000000000000000000000000000000000000000000000000000000.json 1ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks contradictory installed bytes with no authoritative journal 0ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: gap 5ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: fork 5ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: payload 4ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: transition 5ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: snapshots 5ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: revision 5ms
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: noncanonical 20ms
+     → promise resolved "{ …(9) }" instead of rejecting
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks duplicate ordinal even when both file hashes are internally valid 3ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > counts a recognized partial pending as one reserved slot, never authority 3ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks an unowned pending ordinal rather than treating it as cleanup 2ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > invalidates failed publication; restart settles actual marker, not reply: replace-before 19ms
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > invalidates failed publication; restart settles actual marker, not reply: replace-after 27ms
+     → expected { entries: [ { …(5) } ], revision: 1 } to deeply equal { revision: 1, entries: [ { …(5) } ] }
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > completes normal seven phases plus one disposition and repeated scan appends nothing 47ms
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > fits five-phase failure, one RecoveryPlan13, one CLEANUP and ROLLED_BACK in eight slots 16ms
+     → RECOVERY_BLOCKED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > rejects an oversized full outcome before STAGING and all filesystem creation 943ms
+     → promise resolved "{ records: [ { …(4) } ], …(8) }" instead of rejecting
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 33 passed (37)
+   Start at  18:25:43
+   Duration  2.68s (transform 200ms, setup 0ms, collect 760ms, tests 1.38s, environment 1ms, prepare 179ms)
+

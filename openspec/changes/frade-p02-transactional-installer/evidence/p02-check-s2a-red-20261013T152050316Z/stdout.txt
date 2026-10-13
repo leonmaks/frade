@@ -1,0 +1,84 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/s2a.bdd.test.ts (37 tests | 37 failed) 38ms
+   × P02 S2a canonical encoding and complete outcome reservation > canonicalizes recursively independent of key insertion order 10ms
+     → expected '{"z":1,"a":{"z":2,"a":3}}' to be '{"a":{"a":3,"z":2},"z":1}' // Object.is equality
+   × P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 0 3ms
+     → expected [Function] to throw an error
+   × P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 1 0ms
+     → expected [Function] to throw an error
+   × P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 2 2ms
+     → expected [Function] to throw error including 'INVALID_JOURNAL_DATA' but got 'The first argument must be of type st…'
+   × P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 3 1ms
+     → expected [Function] to throw an error
+   × P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 4 0ms
+     → expected [Function] to throw an error
+   × P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 5 0ms
+     → expected [Function] to throw an error
+   × P02 S2a canonical encoding and complete outcome reservation > refuses cycles without stack overflow 2ms
+     → expected [Function] to throw error including 'INVALID_JOURNAL_DATA' but got 'Converting circular structure to JSON…'
+   × P02 S2a canonical encoding and complete outcome reservation > requires all eight slots, refusing seven 1ms
+     → expected [Function] to throw an error
+   × P02 S2a canonical encoding and complete outcome reservation > requires all eight MiB, refusing one byte less 1ms
+     → expected [Function] to throw an error
+   × P02 S2a canonical encoding and complete outcome reservation > cannot spend existing unspent recovery capacity 0ms
+     → expected [Function] to throw an error
+   × P02PKG001/002/006 and durable STAGING-owned exact archive storage > copies exact detached compressed bytes through checked chunks and rereads paired native themes 1ms
+     → S2A_NOT_IMPLEMENTED
+   × P02PKG001/002/006 and durable STAGING-owned exact archive storage > refuses copy without durable STAGING and makes no package writes 1ms
+     → expected [Function] to throw error including 'STAGING_REQUIRED' but got 'S2A_NOT_IMPLEMENTED'
+   × P02PKG001/002/006 and durable STAGING-owned exact archive storage > refuses incompatible original before any package effect, preserving its exact bytes 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02PKG001/002/006 and durable STAGING-owned exact archive storage > reuses only fully validated exact ordinary archive inventory, never overwrites corrupt bytes 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02PKG001/002/006 and durable STAGING-owned exact archive storage > rejects additional unknown contents in a preexisting version directory 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02PKG001/002/006 and durable STAGING-owned exact archive storage > rejects mismatched selected-byte SHA and actual compressed overflow before effects 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > publishes held same-parent pending to absent final, links exact prefix hashes and reserves before STAGING 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > does not admit a second transaction before the closing disposition 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks unknown or truncated final without deleting it: mystery 3ms
+     → promise resolved "{ records: [], pending: [], …(7) }" instead of rejecting
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks unknown or truncated final without deleting it: 00000000000000000001.11111111-1111-4111-8111-111111111111.0000000000000000000000000000000000000000000000000000000000000000.json 1ms
+     → promise resolved "{ records: [], pending: [], …(7) }" instead of rejecting
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks contradictory installed bytes with no authoritative journal 1ms
+     → promise resolved "{ records: [], pending: [], …(7) }" instead of rejecting
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: gap 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: fork 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: payload 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: transition 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: snapshots 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: revision 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: noncanonical 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks duplicate ordinal even when both file hashes are internally valid 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > counts a recognized partial pending as one reserved slot, never authority 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks an unowned pending ordinal rather than treating it as cleanup 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > invalidates failed publication; restart settles actual marker, not reply: replace-before 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > invalidates failed publication; restart settles actual marker, not reply: replace-after 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > completes normal seven phases plus one disposition and repeated scan appends nothing 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > fits five-phase failure, one RecoveryPlan13, one CLEANUP and ROLLED_BACK in eight slots 0ms
+     → S2A_NOT_IMPLEMENTED
+   × P02TX004/FS003 immutable journal publication, full scan and restart reservation > rejects an oversized full outcome before STAGING and all filesystem creation 2ms
+     → expected [Function] to throw error including 'JOURNAL_RECORD_LIMIT' but got 'S2A_NOT_IMPLEMENTED'
+
+ Test Files  1 failed (1)
+      Tests  37 failed (37)
+   Start at  18:20:54
+   Duration  1.95s (transform 706ms, setup 0ms, collect 723ms, tests 38ms, environment 0ms, prepare 783ms)
+

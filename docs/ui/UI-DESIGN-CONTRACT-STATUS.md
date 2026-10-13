@@ -1,3 +1,57 @@
+# P02 — S2a завершён; focused POST PASS; публикация checkpoint
+
+2026-10-13T16:27:36.449Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git. Guide 1.0; исходные baseline сохранены ниже.
+
+S2a: [x] meaningful RED; [x] GREEN 49 portable + 3 NTFS; [x] test 318/318; [x] BDD 318/318; [x] build/typecheck/lint/boundaries/21 boundary tests/UI compliance/strict; [x] focused OpenSpec verification; [x] независимый POST gpt-6-sol / xhigh PASS; [ ] commit/push этого checkpoint.
+
+[Отчёт S2a](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-post-outcome-20261013T162721385Z/REPORT.md). [Raw POST](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-post-received-20261013T162555750Z/output--result.md), 78 событий, 17 raw artifacts; candidate/packet/request/control hashes неизменны. CLI pair подтверждена; actual backend/effort NOT_CONFIRMED. [Checkpoint receipt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-checkpoint-20261013T162736449Z/checkpoint.json).
+
+P02 **3/9**, task 2.2 частично выполнена. Открыты S2b coordinator/actual Main settings recovery/full kill matrix/native budget stress; S2c bridge/bootstrap; 2.4 UI; 3.1 full checks/a11y/visual; 3.2 cumulative verify/POST; 3.3 archive. Full READY_FOR_VERIFY: NO. Следующий шаг — S2b по принятому плану, только после checkpoint. P03 не начат. Routing dependency отсутствует; новые экраны и screenshots отсутствуют. Historical FAIL, P02-D01 cause NOT_PROVEN и принятые P01 исключения сохранены. Merge protection LOCAL_ONLY/NOT_CONFIGURED; right panel QUEUED, visibility NOT_CONFIRMED.
+
+Последний опубликованный checkpoint e7c45f0714f485f22f912edafec476bc0d0fe6da; текущий commit/push PENDING. Эта запись создаётся после unfreeze.
+
+## Предыдущие записи — сохранены
+
+# P02 — S2a focused POST PASS; checkpoint pending
+
+2026-10-13T16:27:21.385Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; Guide 1.0. Last published e7c45f0714f485f22f912edafec476bc0d0fe6da.
+
+[x] RED; [x] GREEN 49 portable + 3 NTFS; [x] test 318/318; [x] BDD 318/318; [x] build/type/lint/boundaries/21 boundary/UI compliance/strict; [x] focused OpenSpec verification; [x] independent POST gpt-6-sol / xhigh PASS; [ ] checkpoint commit/push. [Итоговый отчёт](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-post-outcome-20261013T162721385Z/REPORT.md); [raw POST](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-post-received-20261013T162555750Z/output--result.md). 78 complete events, 17 raw artifacts, 252 files; candidate/packet/request/control integrity verified. Actual backend/effort NOT_CONFIRMED. Review freeze снят после завершения harness и строгой проверки receipt.
+
+P02 **3/9**; 2.2 partial, S2b/S2c/actual Main recovery/full kill matrix/native stress/UI/full checks/cumulative POST/archive открыты. Full READY_FOR_VERIFY: NO. No P03/routing dependency/new UI/screenshots. Historical FAIL and P02-D01 cause NOT_PROVEN preserved. Next commit/push completed S2a checkpoint, then S2b по принятому плану. Right panel QUEUED/visibility NOT_CONFIRMED; merge protection LOCAL_ONLY/NOT_CONFIGURED.
+
+## Предыдущие записи — сохранены
+
+# P02 — S2a verified; independent focused POST prepared
+
+2026-10-13T16:02:42.761Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; checkpointe7c45f0714f485f22f912edafec476bc0d0fe6da PUSHED_REMOTE_SHA_VERIFIED; origin98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.
+
+[x] meaningfulRED; [x] GREEN49portable+3actualNTFS; [x] final318test/318BDD; [x] build/type/lint/boundaries/21boundary/UIcompliance/strict; [x] OpenSpec [verification](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-verification-20261013T155956558Z/REPORT.md); [ ] independentfocusedPOST Sol/xhigh; [ ] checkpointcommit/push. Current packet252files/2427909bytes. [Prompt](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-post-dispatch-20261013T160242761Z/post-prompt.md), [selection](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-post-dispatch-20261013T160242761Z/post-selection.json). Freeze source/status/index/HEAD during review; no changes until unfreeze. Lastbuilt exact nativeprobe passed, privatecapability lifetime only; OS/hardwarepowerlossNOT_PROVEN.96/99controls unchanged;3preciseauthorizedadditions and originalBDDprefix proven.
+
+FullP023/9:2.2S2b/S2c;2.3actualMain/recovery/fullkill/nativebudgetstress;2.4UI;3.1fullroot/a11y/visual;3.2cumulativeverifyPOST;3.3archive remainopen. FullREADY_FOR_VERIFY:NO. No new UI/screenshot or routing dependency/P03. Historical FAIL and P02-D01NOT_PROVEN remain; no newwaiver. RightpanelQUEUED/visibilityNOT_CONFIRMED, mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — S2a GREEN49; final checks in progress
+
+2026-10-13T15:51:31.076Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; checkpointe7c45f0714f485f22f912edafec476bc0d0fe6da PUSHED_REMOTE_SHA_VERIFIED. Original/P02 origin retained below; Guide1.0.
+
+S2a storage/journal/reservation implemented as host components. New portable49PASS; actual NTFS3PASS on previous closely-related source, final regression rerun pending after latest admission guards. Earlier fullpackage313test/313BDD PASS remain historical, not latest49-case input proof. Type/lint/boundaries/strict passed before latest guard edits; final revalidation running. [Strategy](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-work-20261013T151744236Z/STRATEGY.md), [reassessment](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-work-20261013T151744236Z/scan-strategy-reassessment.md), [mapping](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-work-20261013T151744236Z/TRACEABILITY.md). [x] RED; [x] componentGREEN; [x] boundedactualprobe; [ ] finalchecks; [ ] verification; [ ] independentPOST Sol/xhigh; [ ] commit/push.
+
+P023/9/task2.2partial; S2b/S2c and actual store recovery/fullkill/budgetstress remain open; task2.4UI and3.1–3.3fullclosure open. Full READY_FOR_VERIFY:NO. Historical FAIL/P02-D01causeNOT_PROVEN retained; no new acceptance waiver. No screenchange/screenshots; no routing dependency/P03. PanelQUEUED/visibilityNOT_CONFIRMED; mergeprotectionLOCAL_ONLY/NOT_CONFIGURED.
+
+## Previous entries — preserved
+
+# P02 — S2a RED recorded; GREEN in progress
+
+2026-10-13T15:17:44.236Z; branch codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; checkpoint e7c45f0714f485f22f912edafec476bc0d0fe6da PUSHED_REMOTE_SHA_VERIFIED. Original/P02 origin retained below. Guide1.0.
+
+Current task2.2 slice S2a: [strategy](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-work-20261013T151744236Z/STRATEGY.md). [x] meaningful RED archive storage; [x] RED journal publisher/scan; [x] RED reservation/restart envelope; [ ] GREEN; [ ] bounded actual NTFS probe; [ ] applicable tests/type/lint/BDD; [ ] verification/focused automatic POST gpt-6-sol/xhigh; [ ] commit/push. Planning strict/PRE PASS remains exact accepted scope; 37 new cases FAIL_EXPECTED_RED preserved; GREEN/runtime/POST NOT_RUN. No current human decision.
+
+P02 3/9,2.2partial,2.3actual recovery,2.4UI,3.1fullchecks,3.2cumulativeverifyPOST,3.3archive open. Full READY_FOR_VERIFY:NO. Historical FAIL/P02-D01NOT_PROVEN and accepted P01 exceptions preserved. No routing dependency/no P03. RightpanelQUEUED/visibilityNOT_CONFIRMED.
+
+## Previous entries — preserved
+
 # P02 — S2 recovery planning checkpoint опубликован; PRE PASS
 
 2026-10-13T15:04:45.893Z; codex/frade-ui-design-contract; C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; origin98f387f96b51b0ad139e3507c376ff1c3e8dec09/P02baseline0ecaf44938382bd8daa7d512887dda8a8ee9b372; Guide1.0.

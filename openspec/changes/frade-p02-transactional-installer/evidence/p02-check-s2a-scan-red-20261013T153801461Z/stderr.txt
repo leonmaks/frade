@@ -1,0 +1,206 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 complete snapshot scan before bulk-volume work > validates all eight records with bounded full inventory passes and unchanged bytes
+AssertionError: expected [ { operation: 'list', …(3) }, …(10) ] to have a length of 5 but got 11
+
+- Expected
++ Received
+
+- 5
++ 11
+
+ ❯ tests/s2a.bdd.test.ts:362:718
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 complete snapshot scan before bulk-volume work > blocks an unknown entry introduced during full scan before returning authority
+AssertionError: promise resolved "{ records: [ { …(4) } ], …(8) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "active": {
++     "bytes": 1226,
++     "committedHash": null,
++     "count": 1,
++     "lastPhase": "STAGING",
++     "plan": {
++       "cleanup": [],
++       "consumedRevision": 12,
++       "envelope": {
++         "bytes": 8388608,
++         "maxRecordBytes": 1048576,
++         "slots": 8,
++       },
++       "newPresentation": {
++         "generation": 12,
++         "revision": 12,
++         "selection": {
++           "density": "compact",
++           "mode": "dark",
++           "preferred": {
++             "dark": "frade.builtin/dark",
++             "high-contrast": "frade.builtin/high-contrast",
++             "light": "frade.builtin/light",
++           },
++         },
++         "transactionId": "window/intent-12",
++         "version": 1,
++       },
++       "newRegistry": {
++         "entries": [
++           {
++             "archiveSha256": "d04a72126c28321045dbaa0e600fbba9d6085fa15cddb3e4aaad1e57ff016926",
++             "enabled": true,
++             "id": "frade.workshop-themes",
++             "previousSha256": null,
++             "version": "1.0.0",
++           },
++         ],
++         "revision": 1,
++       },
++       "oldPresentation": {
++         "generation": 9,
++         "revision": 9,
++         "selection": {
++           "density": "compact",
++           "mode": "light",
++           "preferred": {
++             "dark": "frade.builtin/dark",
++             "high-contrast": "frade.builtin/high-contrast",
++             "light": "frade.builtin/light",
++           },
++         },
++         "transactionId": "window/intent-9",
++         "version": 1,
++       },
++       "oldRegistry": {
++         "entries": [],
++         "revision": 0,
++       },
++       "versions": [
++         "d04a72126c28321045dbaa0e600fbba9d6085fa15cddb3e4aaad1e57ff016926",
++       ],
++     },
++     "recovery": null,
++     "transactionId": "11111111-1111-4111-8111-111111111111",
++   },
++   "authority": {
++     "presentation": {
++       "generation": 9,
++       "revision": 9,
++       "selection": {
++         "density": "compact",
++         "mode": "light",
++         "preferred": {
++           "dark": "frade.builtin/dark",
++           "high-contrast": "frade.builtin/high-contrast",
++           "light": "frade.builtin/light",
++         },
++       },
++       "transactionId": "window/intent-9",
++       "version": 1,
++     },
++     "registry": {
++       "entries": [],
++       "revision": 0,
++     },
++   },
++   "consumedRevision": 12,
++   "pending": [],
++   "records": [
++     {
++       "bytes": 1226,
++       "name": "00000000000000000001.11111111-1111-4111-8111-111111111111.f892db9d41192aa155edcdd9f959099d53a99be3b4392829d00b242409f926d4.json",
++       "record": {
++         "expectedRegistryRevision": 0,
++         "kind": "PHASE",
++         "ordinal": 1,
++         "payload": {
++           "cleanup": [],
++           "consumedRevision": 12,
++           "envelope": {
++             "bytes": 8388608,
++             "maxRecordBytes": 1048576,
++             "slots": 8,
++           },
++           "newPresentation": {
++             "generation": 12,
++             "revision": 12,
++             "selection": {
++               "density": "compact",
++               "mode": "dark",
++               "preferred": {
++                 "dark": "frade.builtin/dark",
++                 "high-contrast": "frade.builtin/high-contrast",
++                 "light": "frade.builtin/light",
++               },
++             },
++             "transactionId": "window/intent-12",
++             "version": 1,
++           },
++           "newRegistry": {
++             "entries": [
++               {
++                 "archiveSha256": "d04a72126c28321045dbaa0e600fbba9d6085fa15cddb3e4aaad1e57ff016926",
++                 "enabled": true,
++                 "id": "frade.workshop-themes",
++                 "previousSha256": null,
++                 "version": "1.0.0",
++               },
++             ],
++             "revision": 1,
++           },
++           "oldPresentation": {
++             "generation": 9,
++             "revision": 9,
++             "selection": {
++               "density": "compact",
++               "mode": "light",
++               "preferred": {
++                 "dark": "frade.builtin/dark",
++                 "high-contrast": "frade.builtin/high-contrast",
++                 "light": "frade.builtin/light",
++               },
++             },
++             "transactionId": "window/intent-9",
++             "version": 1,
++           },
++           "oldRegistry": {
++             "entries": [],
++             "revision": 0,
++           },
++           "versions": [
++             "d04a72126c28321045dbaa0e600fbba9d6085fa15cddb3e4aaad1e57ff016926",
++           ],
++         },
++         "payloadSHA256": "abdf7da720c13bbab157fd60a082700074b4c4789a6399cd402fe32bb123ae28",
++         "phase": "STAGING",
++         "previousRecordSHA256": null,
++         "schemaVersion": 1,
++         "transactionId": "11111111-1111-4111-8111-111111111111",
++       },
++       "sha256": "f892db9d41192aa155edcdd9f959099d53a99be3b4392829d00b242409f926d4",
++     },
++   ],
++   "remainingBytes": 8387382,
++   "remainingSlots": 7,
++   "usedBytes": 1226,
++   "usedSlots": 1,
+  }
+
+ ❯ tests/s2a.bdd.test.ts:363:370
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

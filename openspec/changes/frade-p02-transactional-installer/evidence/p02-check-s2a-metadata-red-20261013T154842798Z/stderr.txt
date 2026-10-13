@@ -1,0 +1,30 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 interrupted nonauthoritative metadata establishment > recognizes an otherwise fresh root with an empty journal directory and no package effects
+Error: RECOVERY_BLOCKED
+ ❯ InstallerJournal.readScan src/journal.ts:645:13
+    643|     } catch (error) {
+    644|       if (error instanceof Error && error.message === 'JOURNAL_SESSION…
+    645|       throw Error('RECOVERY_BLOCKED', { cause: error })
+       |             ^
+    646|     }
+    647|   }
+ ❯ InstallerJournal.exclusive src/journal.ts:395:14
+ ❯ tests/s2a.bdd.test.ts:431:202
+
+Caused by: Error: MISSING_DIRECTORY
+ ❯ MemoryFilesystem.request tests/s2a-fixture.ts:97:39
+ ❯ CheckedFiles.ask src/storage.ts:33:37
+ ❯ CheckedFiles.list src/storage.ts:44:28
+ ❯ InstallerJournal.readScan src/journal.ts:635:62
+ ❯ InstallerJournal.exclusive src/journal.ts:395:14
+ ❯ tests/s2a.bdd.test.ts:431:202
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

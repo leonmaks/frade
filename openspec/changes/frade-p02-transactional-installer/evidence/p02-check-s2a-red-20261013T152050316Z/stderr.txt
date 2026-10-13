@@ -1,0 +1,391 @@
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 37 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > canonicalizes recursively independent of key insertion order
+AssertionError: expected '{"z":1,"a":{"z":2,"a":3}}' to be '{"a":{"a":3,"z":2},"z":1}' // Object.is equality
+
+Expected: "{"a":{"a":3,"z":2},"z":1}"
+Received: "{"z":1,"a":{"z":2,"a":3}}"
+
+ ❯ tests/s2a.bdd.test.ts:15:121
+     13| async function begun(){const f=new MemoryFilesystem(),j=new InstallerJ…
+     14| describe('P02 S2a canonical encoding and complete outcome reservation'…
+     15|  it('canonicalizes recursively independent of key insertion order',()=…
+       |                                                                                                                         ^
+     16|  it.each([NaN,Infinity,undefined,new Date(),{a:undefined},{a:()=>0}])(…
+     17|  it('refuses cycles without stack overflow',()=>{const value:any={};va…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 0
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 1
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 3
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 4
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 5
+AssertionError: expected [Function] to throw an error
+
+- Expected: 
+null
+
++ Received: 
+undefined
+
+ ❯ tests/s2a.bdd.test.ts:16:157
+     14| describe('P02 S2a canonical encoding and complete outcome reservation'…
+     15|  it('canonicalizes recursively independent of key insertion order',()=…
+     16|  it.each([NaN,Infinity,undefined,new Date(),{a:undefined},{a:()=>0}])(…
+       |                                                                                                                                                             ^
+     17|  it('refuses cycles without stack overflow',()=>{const value:any={};va…
+     18|  it('requires all eight slots, refusing seven',()=>{expect(()=>reserve…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 2
+AssertionError: expected [Function] to throw error including 'INVALID_JOURNAL_DATA' but got 'The first argument must be of type st…'
+
+Expected: "INVALID_JOURNAL_DATA"
+Received: "The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined"
+
+ ❯ tests/s2a.bdd.test.ts:16:157
+     14| describe('P02 S2a canonical encoding and complete outcome reservation'…
+     15|  it('canonicalizes recursively independent of key insertion order',()=…
+     16|  it.each([NaN,Infinity,undefined,new Date(),{a:undefined},{a:()=>0}])(…
+       |                                                                                                                                                             ^
+     17|  it('refuses cycles without stack overflow',()=>{const value:any={};va…
+     18|  it('requires all eight slots, refusing seven',()=>{expect(()=>reserve…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > refuses cycles without stack overflow
+AssertionError: expected [Function] to throw error including 'INVALID_JOURNAL_DATA' but got 'Converting circular structure to JSON…'
+
+- Expected
++ Received
+
+- INVALID_JOURNAL_DATA
++ Converting circular structure to JSON
++     --> starting at object with constructor 'Object'
++     --- property 'self' closes the circle
+
+ ❯ tests/s2a.bdd.test.ts:17:115
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > requires all eight slots, refusing seven
+AssertionError: expected [Function] to throw an error
+
+- Expected: 
+null
+
++ Received: 
+undefined
+
+ ❯ tests/s2a.bdd.test.ts:18:89
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > requires all eight MiB, refusing one byte less
+AssertionError: expected [Function] to throw an error
+
+- Expected: 
+null
+
++ Received: 
+undefined
+
+ ❯ tests/s2a.bdd.test.ts:19:110
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02 S2a canonical encoding and complete outcome reservation > cannot spend existing unspent recovery capacity
+AssertionError: expected [Function] to throw an error
+
+- Expected: 
+null
+
++ Received: 
+undefined
+
+ ❯ tests/s2a.bdd.test.ts:20:106
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02PKG001/002/006 and durable STAGING-owned exact archive storage > copies exact detached compressed bytes through checked chunks and rereads paired native themes
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:23:130
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02PKG001/002/006 and durable STAGING-owned exact archive storage > refuses copy without durable STAGING and makes no package writes
+AssertionError: expected [Function] to throw error including 'STAGING_REQUIRED' but got 'S2A_NOT_IMPLEMENTED'
+
+Expected: "STAGING_REQUIRED"
+Received: "S2A_NOT_IMPLEMENTED"
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02PKG001/002/006 and durable STAGING-owned exact archive storage > refuses incompatible original before any package effect, preserving its exact bytes
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:25:119
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02PKG001/002/006 and durable STAGING-owned exact archive storage > reuses only fully validated exact ordinary archive inventory, never overwrites corrupt bytes
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:26:128
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02PKG001/002/006 and durable STAGING-owned exact archive storage > rejects additional unknown contents in a preexisting version directory
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:27:106
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02PKG001/002/006 and durable STAGING-owned exact archive storage > rejects mismatched selected-byte SHA and actual compressed overflow before effects
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:28:118
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > publishes held same-parent pending to absent final, links exact prefix hashes and reserves before STAGING
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:31:143
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > does not admit a second transaction before the closing disposition
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:32:100
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks unknown or truncated final without deleting it: mystery
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks unknown or truncated final without deleting it: 00000000000000000001.11111111-1111-4111-8111-111111111111.0000000000000000000000000000000000000000000000000000000000000000.json
+AssertionError: promise resolved "{ records: [], pending: [], …(7) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "active": null,
++   "authority": null,
++   "consumedRevision": 0,
++   "pending": [],
++   "records": [],
++   "remainingBytes": 0,
++   "remainingSlots": 0,
++   "usedBytes": 0,
++   "usedSlots": 0,
+  }
+
+ ❯ tests/s2a.bdd.test.ts:33:275
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks contradictory installed bytes with no authoritative journal
+AssertionError: promise resolved "{ records: [], pending: [], …(7) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "active": null,
++   "authority": null,
++   "consumedRevision": 0,
++   "pending": [],
++   "records": [],
++   "remainingBytes": 0,
++   "remainingSlots": 0,
++   "usedBytes": 0,
++   "usedSlots": 0,
+  }
+
+ ❯ tests/s2a.bdd.test.ts:34:233
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: gap
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: fork
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: payload
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: transition
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: snapshots
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: revision
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: noncanonical
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:35:164
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks duplicate ordinal even when both file hashes are internally valid
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:36:108
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > counts a recognized partial pending as one reserved slot, never authority
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:37:109
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks an unowned pending ordinal rather than treating it as cleanup
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:38:102
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > invalidates failed publication; restart settles actual marker, not reply: replace-before
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > invalidates failed publication; restart settles actual marker, not reply: replace-after
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:39:165
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > completes normal seven phases plus one disposition and repeated scan appends nothing
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:40:122
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > fits five-phase failure, one RecoveryPlan13, one CLEANUP and ROLLED_BACK in eight slots
+Error: S2A_NOT_IMPLEMENTED
+ ❯ InstallerJournal.begin src/journal.ts:8:75
+      6|   constructor(readonly filesystem: VerifiedFilesystem, readonly genera…
+      7|   async scan(): Promise<any> { return { records: [], pending: [], used…
+      8|   async begin(_transaction: string, _plan: unknown): Promise<any> { th…
+       |                                                                           ^
+      9|   async phase(_transaction: string, _phase: string): Promise<any> { th…
+     10|   async recoveryPlan(_transaction: string, _recovery: unknown): Promis…
+ ❯ begun tests/s2a.bdd.test.ts:13:116
+ ❯ tests/s2a.bdd.test.ts:41:123
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/37]⎯
+
+ FAIL  tests/s2a.bdd.test.ts > P02TX004/FS003 immutable journal publication, full scan and restart reservation > rejects an oversized full outcome before STAGING and all filesystem creation
+AssertionError: expected [Function] to throw error including 'JOURNAL_RECORD_LIMIT' but got 'S2A_NOT_IMPLEMENTED'
+
+Expected: "JOURNAL_RECORD_LIMIT"
+Received: "S2A_NOT_IMPLEMENTED"
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/37]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in C:\Users\NVISEN\.codex\worktrees\ui-
+  │ design-contract\frade\packages\extension-service
+

@@ -1,0 +1,249 @@
+{
+  "atUtc": "2026-10-13T16:27:21.385Z",
+  "status": "PASS",
+  "scope": "S2a only",
+  "review": {
+    "dir": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-post-received-20261013T162555750Z",
+    "run": "E:/dev/codex/frade/.git/frade-workflow/runs/2026-10-13T16-07-20-811Z-a2f93ce8-833d-4811-9650-18a96ecbd37f",
+    "atUtc": "2026-10-13T16:25:56.624Z",
+    "status": "PASS",
+    "gateStatus": "PASS",
+    "rawArtifacts": 17,
+    "packetFiles": 252,
+    "eventCount": 78,
+    "threadId": "01a1360e-d001-7aa1-993b-d9d20aed7190",
+    "reportSha256": "e48832a775f7065893703d46073752da0702a986b1526f51584a14e4cb9f50bd",
+    "sourcePlanUnchanged": true,
+    "decisionUnchanged": true,
+    "candidateUnchanged": true,
+    "packetUnchanged": true,
+    "requestUnchanged": true,
+    "finalMessageEqualsReport": true,
+    "actualCliMatchesSelection": true,
+    "reviewPolicy": {
+      "stage": "P02 transactional installer",
+      "phase": "POST",
+      "model": "gpt-6-sol",
+      "reasoningEffort": "xhigh",
+      "source": {
+        "path": "openspec/changes/frade-p02-transactional-installer/design.md",
+        "sha256": "c7bd84e34ffb6216ed867252806e2fb1e8ef4f875cc26c0fc31f68fdca4ca539",
+        "excerpt": "| P02 transactional installer | POST | gpt-6-sol | xhigh |"
+      }
+    },
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "scope": "Focused S2a host-only checked archive/journal/scan/reservation implementation POST; P023/9, no cumulative closure/Main/store/IPC/UI integration claim"
+  },
+  "verification": "openspec/changes/frade-p02-transactional-installer/evidence/p02-s2a-verification-20261013T155956558Z",
+  "checks": [
+    {
+      "label": "s2a-final-test2",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-final-test2-20261013T155131187Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:52:44.129Z",
+        "label": "s2a-final-test2",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "test"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "b35e738cf14c20cd9173403529b9f2a0b2ad92125654c853b9a64eddd12f5ff4",
+        "stderrSha256": "353492a78766087f035a399990ea1cefd2474288375b811541823639bfbe8c94"
+      }
+    },
+    {
+      "label": "s2a-final-bdd2",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-final-bdd2-20261013T155308719Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:54:18.931Z",
+        "label": "s2a-final-bdd2",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "test:bdd"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "61e851766e3d9f4fed8607544a40755750a9a0b62aee8abc88fb73dca18be60c",
+        "stderrSha256": "88551cf807283b50304c052418beb5da3d54ede71a7921939ee9ac5a5685c72b"
+      }
+    },
+    {
+      "label": "s2a-build-current",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-build-current-20261013T155511031Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:55:13.803Z",
+        "label": "s2a-build-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "build"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "27518956cd5a38022ac6c9cf8eb04410b22e905eebe93a6dff3eb563acfa5124",
+        "stderrSha256": "b3cdf1dc29cbca402a8d746c96e93cf641497e4c3f30c8982f255f48fa26caed"
+      }
+    },
+    {
+      "label": "s2a-built-native-proof",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-built-native-proof-20261013T155640626Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:56:45.101Z",
+        "label": "s2a-built-native-proof",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "exec",
+          "vitest",
+          "run",
+          "--fileParallelism=false",
+          "tests/s2a.windows.test.ts"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "fc376aa02e8785dcd9c3ebd34238b18b936e39b22841338ba62cf19162e39449",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "s2a-type-current",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-type-current-20261013T155218584Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:52:22.587Z",
+        "label": "s2a-type-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "typecheck"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      }
+    },
+    {
+      "label": "s2a-lint-current",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-lint-current-20261013T155221588Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:52:28.767Z",
+        "label": "s2a-lint-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "--filter",
+          "@frade/extension-service",
+          "lint"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "f742f989be94e529cde1c75bc31645378f1840908710384b8406b93407d056d9"
+      }
+    },
+    {
+      "label": "s2a-ui-compliance",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-ui-compliance-20261013T155216369Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:52:47.095Z",
+        "label": "s2a-ui-compliance",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "ui:compliance"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "372589b388400f65ae1bddc41b1e3f47d07c3dd82966a2e50ec7b0caca449381",
+        "stderrSha256": "a9969ed6b164cf14846cf1d768ecbbd67bbb554e640c7722dbeffabde1402265"
+      }
+    },
+    {
+      "label": "s2a-boundary-tests",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-boundary-tests-20261013T155214312Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:52:15.058Z",
+        "label": "s2a-boundary-tests",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "test:boundaries"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "54a692d5da2a46ebebe1406fb6e931219f1e19d0e5dd6c08b3bfc1af5c27ba53",
+        "stderrSha256": "0cc6e049eeb8dfcbf2bb4e436b1ee42c123db77398b5ec582677dd2e68c4d24c"
+      }
+    },
+    {
+      "label": "s2a-boundaries-current",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-boundaries-current-20261013T155645197Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:56:45.891Z",
+        "label": "s2a-boundaries-current",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+          "check:boundaries"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "20ac408d28f07f362b82b85bf66a093881846c9defb27aab466f3884ea0f8dc0",
+        "stderrSha256": "11689d4067818dbbb751832cc7eeb7ee1508995980b21d0d168ed0f300f4df1f"
+      }
+    },
+    {
+      "label": "s2a-strict",
+      "path": "openspec/changes/frade-p02-transactional-installer/evidence/p02-check-s2a-strict-20261013T154215349Z",
+      "execution": {
+        "atUtc": "2026-10-13T15:42:16.534Z",
+        "label": "s2a-strict",
+        "status": "PASS",
+        "command": [
+          "E:/Program Files/nodejs/node.exe",
+          "E:/Users/NVISEN/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+          "validate",
+          "frade-p02-transactional-installer",
+          "--strict"
+        ],
+        "exitCode": 0,
+        "error": null,
+        "stdoutSha256": "a56f6a1542e7b2de16505408befecd7afe8e6deb4c5f252195344b158007a5df",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "progress": "3/9",
+  "readyForVerify": false,
+  "remaining": [
+    "2.2 S2b/S2c",
+    "2.3 actual recovery/full kill/stress",
+    "2.4 UI",
+    "3.1 full checks/visual",
+    "3.2 cumulative verify/POST",
+    "3.3 archive"
+  ]
+}

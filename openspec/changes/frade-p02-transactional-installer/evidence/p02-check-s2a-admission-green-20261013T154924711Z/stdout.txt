@@ -1,0 +1,60 @@
+
+ RUN  v3.2.7 C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade/packages/extension-service
+
+ ❯ tests/s2a.bdd.test.ts (49 tests | 1 failed) 1226ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > canonicalizes recursively independent of key insertion order 2ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 0 1ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 1 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 2 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 3 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 4 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses non-JSON/unsafe data before effects 5 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > refuses cycles without stack overflow 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > requires all eight slots, refusing seven 1ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > requires all eight MiB, refusing one byte less 0ms
+   ✓ P02 S2a canonical encoding and complete outcome reservation > cannot spend existing unspent recovery capacity 0ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > copies exact detached compressed bytes through checked chunks and rereads paired native themes 52ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > refuses copy without durable STAGING and makes no package writes 3ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > refuses incompatible original before any package effect, preserving its exact bytes 11ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > reuses only fully validated exact ordinary archive inventory, never overwrites corrupt bytes 16ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > rejects additional unknown contents in a preexisting version directory 16ms
+   ✓ P02PKG001/002/006 and durable STAGING-owned exact archive storage > rejects mismatched selected-byte SHA and actual compressed overflow before effects 6ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > publishes held same-parent pending to absent final, links exact prefix hashes and reserves before STAGING 50ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > does not admit a second transaction before the closing disposition 10ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks unknown or truncated final without deleting it: mystery 1ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks unknown or truncated final without deleting it: 00000000000000000001.11111111-1111-4111-8111-111111111111.0000000000000000000000000000000000000000000000000000000000000000.json 1ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks contradictory installed bytes with no authoritative journal 0ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: gap 21ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: fork 18ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: payload 14ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: transition 13ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: snapshots 15ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: revision 13ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks fully hashed but invalid chain: noncanonical 12ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks duplicate ordinal even when both file hashes are internally valid 9ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > counts a recognized partial pending as one reserved slot, never authority 9ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > blocks an unowned pending ordinal rather than treating it as cleanup 6ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > invalidates failed publication; restart settles actual marker, not reply: replace-before 34ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > invalidates failed publication; restart settles actual marker, not reply: replace-after 30ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > completes normal seven phases plus one disposition and repeated scan appends nothing 76ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > fits five-phase failure, one RecoveryPlan13, one CLEANUP and ROLLED_BACK in eight slots 60ms
+   ✓ P02TX004/FS003 immutable journal publication, full scan and restart reservation > rejects an oversized full outcome before STAGING and all filesystem creation 76ms
+   ✓ P02TX004 exact disjoint record and pending names > blocks a hashed final with invalid separators before authority selection 7ms
+   ✓ P02TX004 exact disjoint record and pending names > blocks a pending name that only resembles the reserved basename 3ms
+   ✓ P02 complete worst-case record preflight > rejects a plan whose phase fits but full closing disposition cannot, before STAGING  520ms
+   ✓ P02 registry snapshot schema parity with stable archive identity > refuses a wildcard publisher/name separator before any STAGING write 0ms
+   ✓ P02 complete snapshot scan before bulk-volume work > validates all eight records with bounded full inventory passes and unchanged bytes 46ms
+   ✓ P02 complete snapshot scan before bulk-volume work > blocks an unknown entry introduced during full scan before returning authority 6ms
+   ✓ P02 complete snapshot scan before bulk-volume work > blocks same-byte identity replacement during a full scan 6ms
+   ✓ P02 reserved revision and complete compensation feasibility > refuses changed registry entries under an unchanged registry revision before effects 0ms
+   ✓ P02 reserved revision and complete compensation feasibility > refuses a changed presentation at maximum safe revision because no monotonic compensation fits 0ms
+   ✓ P02 full admission state validation before journal effects > refuses a forged nonfresh baseline in an empty journal before any creation 1ms
+   ✓ P02 full admission state validation before journal effects > refuses reuse of a completed transaction UUID without appending a corrupt STAGING 46ms
+   × P02 interrupted nonauthoritative metadata establishment > recognizes an otherwise fresh root with an empty journal directory and no package effects 7ms
+     → RECOVERY_BLOCKED
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 48 passed (49)
+   Start at  18:49:25
+   Duration  2.09s (transform 191ms, setup 0ms, collect 292ms, tests 1.23s, environment 0ms, prepare 309ms)
+

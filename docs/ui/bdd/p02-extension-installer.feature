@@ -21,3 +21,19 @@ Feature: Native transactional declarative package installer
   Scenario: P02PKG006 Corrupted transport
     When CRC, local and central metadata, encryption, compression or sizes disagree
     Then validation rejects with the actual cause
+  Scenario: P02S2A001 Durable-intent-owned archive storage
+    Given a validated durable STAGING and the exact chosen archive hash
+    When its privately detached bounded bytes are copied through the checked backend
+    Then readback preserves the exact ZIP and paired themes without registration or selection
+  Scenario: P02S2A002 Immutable journal and complete checked scan
+    When bounded canonical records are published through one held records parent
+    Then exact ordinal, predecessor, payload, filename, identity and full initial/final inventories agree before authority is returned
+    And a gap, fork, changed snapshot or unknown entry blocks without overwriting history
+  Scenario: P02S2A003 Complete outcome reservation
+    When admission checks the full phase, recovery-plan and disposition record sizes
+    Then eight slots and eight MiB are reserved before STAGING and seven slots or one byte less refuse
+    And recognized pending bytes consume their planned slot and no second admission spends the open reserve
+  Scenario: P02S2A004 Actual NTFS helper death and reopen
+    When the task-owned verified helper is killed before or after a valid COMMITTED record
+    Then fresh checked scan keeps the prefix and selects old or new journal authority respectively
+    And this component proof does not claim Main settings reconciliation or the full coordinator kill matrix
