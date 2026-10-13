@@ -5,7 +5,7 @@ Scope: approved direct transfer of completed P01 only; roadmap PAUSED. Current a
 ## 1. Planning and independent PRE
 
 - [x] 1.1 Audit exact main/supplier commits, dirty main and isolated worktree; preserve source hashes and checkout-only EOL proof in planning evidence.
-- [x] 1.2 Record selected strategy, user authority, exact source manifest and all five supplier behavioral requirement deltas with the exact accepted spec-only structural split; verify source dependency paths including FUI controls and hardware fixture.
+- [x] 1.2 Record selected strategy, user authority, exact source manifest and all five supplier behavioral requirement deltas with the exact accepted spec-only structural split; verify source dependency paths including FUI controls, hardware fixture and the complete AST-resolved baseline import closure; original premature packet claim/PRE FAIL preserved.
 - [x] 1.3 Run strict OpenSpec validation and source/fixture/requirement closure audit; retain command exits and complete reports before PRE.
 - [ ] 1.4 Commit the authorized planning checkpoint and obtain fresh packet-confined automatic PRE gpt-6-sol/xhigh with unchanged candidate/request/control hashes and complete raw receipt.
 

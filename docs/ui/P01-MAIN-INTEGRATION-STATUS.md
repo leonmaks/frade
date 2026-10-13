@@ -1,6 +1,6 @@
 # P01 → основное приложение: статус
 
-Обновлено: 2026-10-13T21:18:05.054Z. Фаза: PRE_READY_CANDIDATE_FREEZE. Это текущий прогресс, не approval или историческое evidence.
+Обновлено: 2026-10-13T21:18:05.054Z. Фаза: PRE_FAIL_PACKET_REPAIR_DONE. Это текущий прогресс, не approval или историческое evidence.
 
 - Ветка: codex/frade-p01-main-integration; worktree: C:/Users/NVISEN/.codex/worktrees/p01-main-integration/frade.
 - Change: frade-p01-main-integration; main baseline: 98f387f96b51b0ad139e3507c376ff1c3e8dec09.
@@ -14,7 +14,8 @@
 | План | CREATED | Proposal/design/tasks/пять specs;193точных source/fixture/authority пути,4475555байт |
 | Strict validation активного плана | PASS | Принята точная структурная правка; current193source hashes/closure PASS, прежний FAIL сохранён |
 | Структурная правка | ACCEPTED_APPLIED | Только spec, exact output/hash/authority; исходные условия/scenarios сохранены |
-| Автоматический PRE | READY_FOR_AUTOMATIC_RUN | gpt-6-sol/xhigh; пакет подготовлен, dashboard/index/HEAD заморожены на время review |
+| Первый автоматический PRE | FAIL | Недостающий baseline helper в пакете;193source hashes подтверждены, полный raw report сохранён |
+| Исправление пакета | PASS |151модуль/174input,105baseline inputs; missing imports0; нужен свежий PRE |
 | Перенос live кода | NOT_STARTED | Только после PRE PASS; production пока baseline-identical |
 | Тесты / реальные экраны | NOT_RUN | Static/root/BDD/UI/Electron/screen evidence |
 | Verify / POST | NOT_RUN | После фактических checks |
@@ -40,3 +41,7 @@
 - Commit: planning checkpoint ed790c0b07578a8932b4f5ac124d1abb5b1bda1c сохранён локально; push NOT_RUN, разрешение нового ref не получено. READY_FOR_VERIFY: NO.
 
 Current strict PASS: openspec/changes/frade-p01-main-integration/evidence/accepted-structure-validation-20261013T212226266Z/execution.json. На время PRE статус не изменяется; результат будет записан после unfreeze.
+
+PRE1 FAIL: openspec/changes/frade-p01-main-integration/evidence/pre-received-20261013T213208354Z/output--result.md. Dependency closure: openspec/changes/frade-p01-main-integration/evidence/pre-dependency-repair-20261013T213615722Z/dependency-audit.json. Требуется fresh PRE; прошлый FAIL не переписан.
+
+Current strict PASS: openspec/changes/frade-p01-main-integration/evidence/accepted-structure-validation-20261013T213747415Z/execution.json. На время PRE статус не изменяется; результат будет записан после unfreeze.
