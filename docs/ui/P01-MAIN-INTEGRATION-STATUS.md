@@ -1,6 +1,6 @@
 # P01 → основное приложение: статус
 
-Обновлено: 2026-10-13T21:18:05.054Z. Фаза: PRE_FAIL_PACKET_REPAIR_DONE. Это текущий прогресс, не approval или историческое evidence.
+Обновлено: 2026-10-13T21:18:05.054Z. Фаза: PRE2_READY_CANDIDATE_FREEZE. Это текущий прогресс, не approval или историческое evidence.
 
 - Ветка: codex/frade-p01-main-integration; worktree: C:/Users/NVISEN/.codex/worktrees/p01-main-integration/frade.
 - Change: frade-p01-main-integration; main baseline: 98f387f96b51b0ad139e3507c376ff1c3e8dec09.
@@ -45,3 +45,5 @@ Current strict PASS: openspec/changes/frade-p01-main-integration/evidence/accept
 PRE1 FAIL: openspec/changes/frade-p01-main-integration/evidence/pre-received-20261013T213208354Z/output--result.md. Dependency closure: openspec/changes/frade-p01-main-integration/evidence/pre-dependency-repair-20261013T213615722Z/dependency-audit.json. Требуется fresh PRE; прошлый FAIL не переписан.
 
 Current strict PASS: openspec/changes/frade-p01-main-integration/evidence/accepted-structure-validation-20261013T213747415Z/execution.json. На время PRE статус не изменяется; результат будет записан после unfreeze.
+
+Fresh PRE2 READY:386релевантных файлов/6.66МБ, gpt-6-sol/xhigh; повторный strict PASS. На время запуска candidate/status/index/HEAD заморожены. PRE1 FAIL сохраняется.
