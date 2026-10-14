@@ -18,3 +18,5 @@ Openacceptedlimitations: original3P01defects and exactD01capturetimeout/D02Workb
 StagePRE/POSTmodelgpt-6-sol/xhigh per approveddesign; actualbackend/effortNOT_CONFIRMED. ExistingCIUIcompliance source present; authenticatedremoteprotectionUNVERIFIED/NOT_CONFIGURED. MainornewrefpushNOT_AUTHORIZED.
 
 Next:39originalcases with exact --list proof/workers1/unchangedassertions; currentMainRoot19/21/22rules retained. Applicable actualintegration revalidation/review before closure. No source fixes during gate. Currentmainstatuscommit is descendant of integration SHA; gitrev-parseHEAD gives exact latestSHA.
+
+Actualmainruntime39/39PASS in2.4min,67PNG;mainp95**120.9ms<=150**.193source/854foreign hashesPASS. Mainintegrationverification openspec/changes/frade-p01-main-integration/evidence/main-integration-verification-20261014T050817061Z/REPORT.md. Next automaticfocusedintegrationPOSTgpt-6-sol/xhigh on actualmain. Candidate/status/HEAD/index frozen until fullreceipt.
