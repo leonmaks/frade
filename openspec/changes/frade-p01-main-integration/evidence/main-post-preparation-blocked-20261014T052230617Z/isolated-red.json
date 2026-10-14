@@ -1,0 +1,19 @@
+{
+  "atUtc": "2026-10-14T05:22:31.913Z",
+  "scope": "Owned OS-temp fixture, no main/supplier/source changes",
+  "expected": "Snapshot must bind explicit tracked deletion with negative-presence/tombstone and unchanged HEAD/index, not read nonexistent bytes",
+  "actual": "Existing helper throws ENOENT before reviewer dispatch",
+  "error": {
+    "code": "ENOENT",
+    "message": "ENOENT: no such file or directory, realpath 'C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-review-tombstone-red-ou0a1j\\tracked.txt'"
+  },
+  "meaningfulRED": true,
+  "status": "RED_REPRODUCED",
+  "fixture": "C:/Users/NVISEN/AppData/Local/Temp/frade-review-tombstone-red-ou0a1j",
+  "head": "4c3f897ac7f5afa55a37177874ed05506b57f08b",
+  "indexBefore": "9dd8780a4e23c5ab5a723f3f310910d3879aca5c10d569c7b6f71dfc7c8ccb0f",
+  "indexAfter": "72f139b47790debd4bd2e408f970e1e14be3d37e869145f031464ac2ab51df86",
+  "indexUnchanged": false,
+  "additionalObservedDefect": "Existing helper git status mutates index stat cache during purported read-only snapshot; must use no-optional-locks and assert raw index integrity",
+  "fixtureRemoved": true
+}

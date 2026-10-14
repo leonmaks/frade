@@ -20,3 +20,7 @@ StagePRE/POSTmodelgpt-6-sol/xhigh per approveddesign; actualbackend/effortNOT_CO
 Next:39originalcases with exact --list proof/workers1/unchangedassertions; currentMainRoot19/21/22rules retained. Applicable actualintegration revalidation/review before closure. No source fixes during gate. Currentmainstatuscommit is descendant of integration SHA; gitrev-parseHEAD gives exact latestSHA.
 
 Actualmainruntime39/39PASS in2.4min,67PNG;mainp95**120.9ms<=150**.193source/854foreign hashesPASS. Mainintegrationverification openspec/changes/frade-p01-main-integration/evidence/main-integration-verification-20261014T050817061Z/REPORT.md. Next automaticfocusedintegrationPOSTgpt-6-sol/xhigh on actualmain. Candidate/status/HEAD/index frozen until fullreceipt.
+
+## Фактический результат 2026-10-14T05:31:11.063Z
+
+**Main integrated/built,39/39actualruntimePASS,p95120.9ms.** Source193/foreign854PASS. FormalclosureBLOCKED: actualmainreview preparation failed before model due explicittrackeddeletion; isolatedRED additionally provesindexcachemutation. Sharedcontrols unchanged, foreigndeletedfile remainsabsent.12/14tasks, archiveNOT_RUN. Exactscope openspec/changes/frade-p01-main-integration/decisions/p01-main-snapshot-absence-readonly-01/proposal.md SHAfd7b6a2938d11854440b20e41a15c70ecd90a14ae939cafa53d677929b302b59 PENDING_HUMAN_DECISION. FunctionalreportMain docs/ui/P01-MAIN-INTEGRATION-REPORT.md. RoadmapPAUSED.
