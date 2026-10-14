@@ -91,3 +91,19 @@ FirstmodelPASS/actualPREBLOCKED rawindexmutation preserved at openspec/changes/f
 ## Resume / bounded control PRE3 — 2026-10-14T22:21:25.104Z
 
 P01 themes and startup repair are already integrated in Main; latest UI evidence retained. Main final POST/archive BLOCKED by review controls; roadmap PAUSED. Control tasks 1/12. PRE2 FAIL received with 17 immutable raw files at openspec/changes/frade-review-snapshot-integrity/evidence/pre-received-20261014T221851318Z; raw index unchanged. RCA: execute resets GIT_CONFIG_COUNT. Corrected process-only parameters proven through actual child launcher (2 captures, 28.166sec PASS). Source controls/UI/global settings unchanged. One new PRE gpt-6-sol/xhigh after checkpoint/freeze; no duplicate UI full runs. Strategy openspec/changes/frade-review-snapshot-integrity/evidence/bootstrap-pre3-20261015/STRATEGY.md. Local commits only; Main/new branch push NOT_AUTHORIZED.
+
+## Control PRE PASS / meaningful RED started — 2026-10-14T22:27:45.198Z
+
+PRE3 actual PASS; 17 raw files, stream, plan/request/source/packet/full candidate and extra raw index verified at openspec/changes/frade-review-snapshot-integrity/evidence/pre-received-20261014T222559929Z. Control tasks 2/12. Original 7 controls saved before edits at openspec/changes/frade-review-snapshot-integrity/evidence/red-origin-20261015; original 15 tests retained. New deterministic Git/filesystem regressions added in authorized transport.test.mjs; production unchanged, RED next without bootstrap env. Main UI evidence reused only with exact protected parity; Main POST/archive still BLOCKED.
+
+## Snapshot checks / cost reassessment — 2026-10-14T22:34:38.198Z
+
+26/26 guards PASS incl all original15. First live snapshot timed out at120sec (BLOCKED, preserved); duplicate live-ancestor walks removed within authorized integrity.mjs, absent ancestor checks and all byte/index/race guards retained. Targeted checks and one bounded180sec probe next. Main UI unchanged; actual Main POST/archive pending, roadmap paused.
+
+## Control implementation checkpoint — 2026-10-14T22:43:53.271Z
+
+Control tasks5/12. Snapshot26/26 PASS (15 original guards exact), real C capture54.297sec PASS without bootstrap; 11312 live files/index/head/status stable. Publication meaningful RED UNREVIEWED_POST_TRANSPORT retained, GREEN22/22 incl positive upgrade +20 adversarial links. Pure5tool bytes/provenance exact against real old executor instance. Updated only8 authorized control paths (pins/bundle generation next); old global policy/release/Ui/domain/foreign bytes untouched. Final source tightening needs targeted checks; then verify/fresh supplier POST, reviewed install, actual Main POST/archive. No UI replay. Previous timeout/firstfixture/equivalence-contextFAIL retained. Push NOT_AUTHORIZED.
+
+## Supplier source verification / POST ready — 2026-10-14T23:06:45.555Z
+
+Control6/12; exact final51/51 PASS, syntax6/lint/4boundaries PASS, protected190 both roots and foreign854 Main exact. Same policy1.1; source-bound evidence package release6901c9b1c40c54ab29225c6718c4f5424707257c5c64dcf59b71dfa06d8bb7bd. No ninth root file, full UI runs0. Verification openspec/changes/frade-review-snapshot-integrity/evidence/IMPLEMENTATION-VERIFY-20261015.md: implementation READY_FOR_POST, archive NO. Supplier POST requested gpt-6-sol/xhigh next; candidate/head/index/tasks/dashboard frozen after checkpoint. Actual install/Main POST/archive NOT_RUN; P02-P07 PAUSED; push NOT_AUTHORIZED.
