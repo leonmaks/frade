@@ -37,3 +37,17 @@ Scope: approved direct transfer of completed P01 plus exact accepted public proc
 ## Accepted decision execution notes
 
 Both exact proposals accepted by direct human message2026-10-14; immutable acceptance records are in their decisions directories. Before marking3.1closed, obtain focused PRE, apply only approved process outputs, verify193manifestv4 hashes/product-test-input equivalence and retain D01/D02/raw command FAILs. Task3.3has an advisory blocker report as immutable origin; write a new current verification after accepted controls rather than editing that report. Task3.4requires cumulative independent POST on final candidate; neither human risk acceptance nor focused PRE substitutes for POST. Task4.2requires actual serialized main preservation/smoke and applicable review of changed integration inputs. Every original five-capability delta/canonical text remains source-bound unchanged; no later P02work.
+
+## R. Accepted startup repair before Main closure
+
+- [x] R.1 Record exact acceptance, coherent repair exception/spec mapping and strict validation; obtain fresh automatic PRE gpt-6-sol/xhigh.
+- [x] R.2 Add meaningful regression RED preserving exact failed startup revision assertion; retain original source/test hashes and full failures.
+- [x] R.3 Implement only approved owning-anchor/measured-geometry reversible lease; retain required ACKs and editor/domain semantics.
+- [x] R.4 Run affected checks, unchanged participant/service/parked regressions and new complete built/DEV theme-density/System/active-KA startup preservation coverage; save screenshots/results and narrow repair manifest.
+- [x] R.5 Verify actual requirements/scope and obtain fresh packet-confined POST gpt-6-sol/xhigh on frozen repaired preparation candidate.
+- [x] R.6 Serialize reviewed repair to Main preserving foreign work, rebuild and verify actual current startup/smoke/parity; update both owning statuses/checkpoints. ActualMainPOST/archive stays separatelyBLOCKED until independent snapshot-helper scope resolves.
+
+## J. Accepted join-churn extension
+
+- [x] J.1 Reconcile exact accepted join scope, strict validation and fresh confined PRE gpt-6-sol/xhigh.
+- [x] J.2 Meaningful unchanged-service RED, bounded join reprepare GREEN and complete new service regression; retain original guards/tests and failed runtime evidence.

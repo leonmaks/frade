@@ -42,3 +42,22 @@ READY_FOR_VERIFY:NO — mainintegrationreview/archiveblocked, functionalmainalre
 ## New startup defect — 2026-10-14
 
 The human reports the recovery curtain at DEV startup. Current status is OPEN, READY_FOR_VERIFY: NO; prior39casePASS remains scoped historical evidence. Two-pinned-frame restart reproduces exact reported message on built Main; direct-Vite DEV also fails required inactive-frame revision with a membership recovery message. Empty isolated DEV profile passes. Actual user profile/tabs UNKNOWN. Source193/foreign854 preserved. Diagnostic/setup failures and CLI default-profile caveat recorded in [RCA](../../openspec/changes/frade-p01-main-integration/evidence/startup-inactive-frame-20261014-02/RCA.md). Repair proposal openspec/changes/frade-p01-main-integration/decisions/p01-main-restored-frame-paint-01/proposal.md, SHA256 77e86453e7a106558e9615ebc2033d603df350db3646a936d57d03fc11042705, NOT_ACCEPTED/NOT_IMPLEMENTED. Fresh PRE/POST required before a repaired product claim.
+
+# Accepted startup repair final result — 2026-10-14T19:34:08.736Z
+
+CHANGE: frade-p01-main-integration; accepted P01-MAIN-RESTORED-FRAME-PAINT-01 + P01-MAIN-RESTORED-JOIN-CHURN-01.
+IMPLEMENTED: real owninggroup bounds for never-visible retainedDraw.io, reversible inertparkedframepaintlease under existingcover, boundedone register-join reprepare on verifiedunrelatedmembershipchurn withunchangedACK/2000msguards. RootcausefixesUIpresentation/state-transition only; no routing/domain/provider/installer/vendor/dependency/tokenchange.
+FILES CHANGED:
+- packages/ui-workspace/src/DiagramView.tsx — SHA256 608cd00ad7ef284e9495e11406c595b26fd201236803fc0f856c01f3585578af
+- packages/ui-workspace/src/Workbench.tsx — SHA256 82af3ce7fab3c63119d0c3165073c012f4656bd938fac9706e113fff0a163fb4
+- packages/ui-workspace/src/design/theme/service.ts — SHA256 ec8b1e4b203abcd409bdfea089c83148f0d8d9e4048d63e5f493046d841896e7
+- packages/ui-workspace/src/design/theme/parkedFrameSurface.ts — SHA256 2de8fb185ebd4b7679f1d3cb63eebd024a9cbeaf4df98b34d07a9585e8c651fb
+- packages/ui-workspace/tests/ui-contract/parked-frame-surface.test.ts — SHA256 1a2eb1f13719c19e101663d198fb61259c0d2a74a5f47353a1c73ee5abd95167
+- packages/ui-workspace/tests/ui-contract/restored-frame-membership.test.ts — SHA256 2fdece3c15002a0ff29c08dde217446dbe8d9ce678569b1a0e70e6bf401a341f
+- apps/desktop/tests/e2e/p01-main-startup-restoration.spec.ts — SHA256 a91b4685c93a551466ad827bcbe8a7a3bc5983ec7a2781dcd876bd35b7418b1f
+
+TESTS ADDED:15privategeometry/restoration cases,10deterministicjoin cases,32realbuilt/DEV Light/Dark/HC/System×compact/comfortable×activeDiagram/KA restoration cases. No oldtests/assertions/timeouts/thresholds weakened. OriginalmeaningfulRED and temporaryfixture/setup failures preserved.
+COMMANDS EXECUTED:see openspec/changes/frade-p01-main-integration/evidence/startup-reviewed-repair-delivery-20261014T192716522Z/after-checks.json, checks/*/execution.json, runtime/execution.json; pnpmUI/desktopunit/type/lint/build, UIcomplianceincludingnegativecolor/drift/EOLcontrols, boundaries; actualPlaywright9cases and prep32matrix; automaticindependentPRE/POST via reviewedsharedread-onlyharness.
+TEST RESULTS: Main8commandsPASS;246UI/128desktopunit;9/9MainruntimePASS, Mainp95124.1ms at60Hz; prep32/32matrixPASS, source7/190/foreign854PASS; combinedrepairPOSTGATE_STATUS:PASS. Guide1.0, applicableFDS003/004/006/008/009+A11Y001–003; actualkeyboard/focus/durable/XML/editoridentity/undo/preview/cancel/commit verified; fullnew145livecases/fullruntimea11ycertification/crossplatformCI NOT_RUN, branchprotectionUNVERIFIED_NOT_CONFIGURED, no newvisualbaselineapproval. 12actualMainPNGs: openspec/changes/frade-p01-main-integration/evidence/startup-reviewed-repair-delivery-20261014T192716522Z/SCREENSHOTS.md.
+KNOWN BLOCKERS: separateactualMaincumulativePOST/archive snapshothelperabsence/indexreadonly defect remainsBLOCKED/unaccepted; prior30HzperformanceFAIL remainshistorical and30Hzbudgetcompliance notclaimed; fiveacceptedP01/consumerdeferrals remainopen, causeswherepreviouslyNOT_PROVENstillNOT_PROVEN. Globalcredentials/settings/userprofileexcluded/notmodified. Actualreviewbackend/effortNOT_CONFIRMED, exactrequestedgpt-6-sol/xhighmetadata/planhash verified. RoadmapPAUSED; remotepushNOT_RUN_NOT_AUTHORIZED.
+READY_FOR_VERIFY: YES for deliveredstartuprepair(scopeverification+POSTcomplete+Mainchecked); NO for wholechangearchive/actualMaincumulativePOST pendingcontrolscope.

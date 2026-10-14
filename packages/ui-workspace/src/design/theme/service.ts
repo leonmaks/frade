@@ -639,44 +639,66 @@ export function createPresentationService(options: ServiceOptions): Presentation
         if (members.get(participant.id) !== member) return
         if (phase === 'RECOVERY_BLOCKED')
           throw new Error('Participant remains hidden: recovery required')
-        const owned = latest
-          ? await owner()
-          : {
-              sequence: 0,
-              requestId: options.sessionId + '/boot',
-              generation: durable.generation,
-              intent: Promise.resolve({ generation: durable.generation }),
-              action: 'preview' as const,
-              selection: durable.selection,
-              snapshot: current,
+        for (let attempt = 0; attempt < 2; attempt++) {
+          const owned = latest
+            ? await owner()
+            : {
+                sequence: 0,
+                requestId: options.sessionId + '/boot',
+                generation: durable.generation,
+                intent: Promise.resolve({ generation: durable.generation }),
+                action: 'preview' as const,
+                selection: durable.selection,
+                snapshot: current,
+              }
+          const expected = context(owned, 'join', current.revision),
+            signal = new AbortController().signal
+          let prepared: PreparedPresentation | undefined
+          const releasePrepared = () => {
+            const handle = prepared
+            prepared = undefined
+            handle?.dispose()
+          }
+          try {
+            prepared = await bounded(
+              participant.prepare(current, expected, signal),
+              2000,
+              'join prepare ' + participant.id,
+              (late) => late.dispose(),
+            )
+            if (participant.requiresPaintCover)
+              await bounded(options.barrier.paint(expected), 2000, 'join cover ' + participant.id)
+            if (members.get(participant.id) !== member) throw Error('Joining participant invalidated')
+            validateAck(
+              await bounded(prepared.apply(expected, signal), 2000, 'join paint ' + participant.id),
+              expected,
+              member,
+            )
+            // Cleanup must settle before accepting readiness; a failed cleanup cannot publish.
+            releasePrepared()
+            member.readyRevision = current.revision
+            participant.reveal()
+            if (participant.requiresPaintCover) options.barrier.reveal(expected)
+            return
+          } catch (error) {
+            let failure = error, cleanupFailed = false
+            try { releasePrepared() } catch (cleanupError) {
+              failure = cleanupError
+              cleanupFailed = true
             }
-        const expected = context(owned, 'join', current.revision),
-          signal = new AbortController().signal
-        let prepared: PreparedPresentation | undefined
-        try {
-          prepared = await bounded(
-            participant.prepare(current, expected, signal),
-            2000,
-            'join prepare ' + participant.id,
-            (late) => late.dispose(),
-          )
-          if (participant.requiresPaintCover)
-            await bounded(options.barrier.paint(expected), 2000, 'join cover ' + participant.id)
-          if (members.get(participant.id) !== member) throw Error('Joining participant invalidated')
-          validateAck(
-            await bounded(prepared.apply(expected, signal), 2000, 'join paint ' + participant.id),
-            expected,
-            member,
-          )
-          member.readyRevision = current.revision
-          participant.reveal()
-          if (participant.requiresPaintCover) options.barrier.reveal(expected)
-        } catch (error) {
-          block(error)
-          throw error
-        } finally {
-          prepared?.dispose()
+            // Only an otherwise exact paint ACK invalidated by another member can reprepare.
+            if (
+              !cleanupFailed && attempt === 0 &&
+              error instanceof Invalidated && error.reason === 'membership' &&
+              expected.membership !== membership && members.get(participant.id) === member
+            ) continue
+            block(failure)
+            throw failure
+          } finally {
+            releasePrepared()
+          }
         }
+        throw Error('Unreachable bounded join state')
       })
       return {
         ready,

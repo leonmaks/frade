@@ -1929,6 +1929,7 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
           const target =
             groups.find((g) => g.id === activeGroup && g.active === key) ??
             groups.find((g) => g.active === key)
+          const presentationGroup = target ?? groups.find((g) => g.tabs.includes(key))
           const objects: DiagramObject[] = [
             ...(root?.objects.map((o) => ({
               id: o.ref.objectId,
@@ -1948,6 +1949,9 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
               key={key + ':' + d.epoch}
               draft={d}
               target={target ? '[data-diagram-group="' + CSS.escape(target.id) + '"]' : null}
+              presentationTarget={presentationGroup
+                ? '[data-diagram-group="' + CSS.escape(presentationGroup.id) + '"]'
+                : undefined}
               objects={objects}
               flowRepository={
                 root

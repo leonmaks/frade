@@ -2,6 +2,7 @@ import { REPOSITORY_OBJECT_MIME } from '@frade/ui-navigator'
 import { useEffect, useRef, useState, useLayoutEffect, useId } from 'react'
 import { useThemeController, createFrameParticipant, afterPresentationPaint } from './design/theme'
 import { createPortal } from 'react-dom'
+import { acquireParkedFrameSurface } from './design/theme/parkedFrameSurface'
 import {
   defaultAppearance,
   drawioAppearance,
@@ -47,6 +48,8 @@ export interface DiagramViewProps {
   appearance?: ElementAppearance
   draft: DiagramDraft
   target: string | null
+  /** Existing owning group anchor used only for a retained frame's first covered paint. */
+  presentationTarget?: string
   objects: DiagramObject[]
   readOnly: boolean
   onBaseline(xml: string): void
@@ -371,32 +374,14 @@ export function DiagramView(props: DiagramViewProps) {
       id: 'frame/' + presentationId,
       generation: ++presentationGeneration.current,
       sessionId: presentation.sessionId,
-      paintSurface: () => {
-        const node = parking.current
-        if (!node || !node.contains(container) || !node.hidden) return () => {}
-        const bounds = lastVisibleBounds.current
-        if (!bounds) throw Error('Inactive editor paint bounds unavailable')
-        const originalStyle = node.getAttribute('style'),
-          originalInert = node.hasAttribute('inert')
-        // Same connected iframe, same last visible geometry, rendered only beneath the painted curtain.
-        node.hidden = false
-        node.setAttribute('inert', '')
-        Object.assign(node.style, {
-          position: 'fixed',
-          left: bounds.left + 'px',
-          top: bounds.top + 'px',
-          width: bounds.width + 'px',
-          height: bounds.height + 'px',
-          zIndex: '2147482000',
-          pointerEvents: 'none',
-        })
-        return () => {
-          node.hidden = true
-          if (originalStyle === null) node.removeAttribute('style')
-          else node.setAttribute('style', originalStyle)
-          if (!originalInert) node.removeAttribute('inert')
-        }
-      },
+      paintSurface: () => acquireParkedFrameSurface(
+        parking.current,
+        container,
+        lastVisibleBounds.current,
+        latest.current.presentationTarget
+          ? document.querySelector(latest.current.presentationTarget)
+          : null,
+      ),
       surfacePaint: () => {
         const node = parking.current
         return node?.contains(container) && !node.hidden && node.style.position === 'fixed'
