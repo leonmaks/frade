@@ -1,25 +1,6 @@
-# Main P01 integration status
+# Main P01 integration — current status
 
-Updated 2026-10-14T04:56:09.176Z; owning branch **main**, worktree **E:/dev/codex/frade**, change **frade-p01-main-integration**. Originalbaseline 98f387f96b51b0ad139e3507c376ff1c3e8dec09; verifiedsupplier candidate 9aa172a99acb2e8cc2441c483474e5ed4423034a from codex/frade-p01-main-integration / C:/Users/NVISEN/.codex/worktrees/p01-main-integration/frade. Preparation branch keeps its own independent dashboard at the same relative path.
-
-P01source integrated locally by ordinary merge **748d18c179628b4eb02618624b3b2112befac98b**, after exact2publicdoccheckpoint **9f6922e3f75a79e537d6bee2a511d9ee81c24c1e** and cumulative independentPOSTPASS. **P02-P07roadmapPAUSED. No remote publication.**
-
-| Tasks | Status | Evidence |
-| --- | --- | --- |
-| 1.1-3.4 | DONE_WITH_DISCLOSED_RISKS | Source/preparation/currentchecks/focusedPRE/cumulativePOSTPASS in supplier branch and merged evidence |
-| 4.1 | DONE | Main856beforehashes, exact2pathcheckpoint, read-treedryrunPASS,854foreign paths unchanged,193outputs exact |
-| 4.2 | IN_PROGRESS |9actualmaincommandsPASS; original39case runtime smoke next; finalsource/preservation proof required |
-| 4.3 | NOT_RUN | FinalMainreport/revalidation/archive/publication after actualsmoke |
-
-Progress12/14. Maincurrent frozenofflineinstall/affectedUIanddesktoplint/type/units/build/UIcompliancePASS; foreignlock unchanged. Mainnewdevdependencydrawfast-check4.10.2was retained; no foreign source adopted. Runtime not yet run on Main; no MainapplicationPASS claim.
-
-Openacceptedlimitations: original3P01defects and exactD01capturetimeout/D02Workbenchdiagnostic/secondaryreporter. Old commandsFAIL and causesNOT_PROVEN remain. Candidate135distinct cases have currentPASSobservations, not a passing fullworkercommand. New/recurrentMainFAILstops. Visual302/372rawexact,52frameownedrectsexact,18metadatatemporaryIDs; no newbaselines. Guide1.0, relevantFDS003/004/005/006/007/008/009/010/014/015 and A11Y001-009 onlyP01scope. No installer/import/extensions/AIprovider integration.
-
-StagePRE/POSTmodelgpt-6-sol/xhigh per approveddesign; actualbackend/effortNOT_CONFIRMED. ExistingCIUIcompliance source present; authenticatedremoteprotectionUNVERIFIED/NOT_CONFIGURED. MainornewrefpushNOT_AUTHORIZED.
-
-Next:39originalcases with exact --list proof/workers1/unchangedassertions; currentMainRoot19/21/22rules retained. Applicable actualintegration revalidation/review before closure. No source fixes during gate. Currentmainstatuscommit is descendant of integration SHA; gitrev-parseHEAD gives exact latestSHA.
-
-Actualmainruntime39/39PASS in2.4min,67PNG;mainp95**120.9ms<=150**.193source/854foreign hashesPASS. Mainintegrationverification openspec/changes/frade-p01-main-integration/evidence/main-integration-verification-20261014T050817061Z/REPORT.md. Next automaticfocusedintegrationPOSTgpt-6-sol/xhigh on actualmain. Candidate/status/HEAD/index frozen until fullreceipt.
+Updated 2026-10-14T22:21:25.105Z; branch main / E:/dev/codex/frade; original baseline 98f387f96b51b0ad139e3507c376ff1c3e8dec09. P01 four themes and reviewed startup repair integrated. Actual latest Main checks: 246 UI + 128 desktop unit tests and 9 runtime checks PASS; p95 124.1ms at 60Hz. Main tasks 20/22, final POST/archive blocked by supplier review-control repair (1/12 tasks). PRE2 supplier FAIL; child-launch correction probe PASS; fresh PRE3 next. No UI source change or repeat full run in this batch. P02-P07 PAUSED. Local checkpoint only; remote publication NOT_AUTHORIZED. Previous historical evidence/status follows unchanged.
 
 ## Фактический результат 2026-10-14T05:31:11.063Z
 
@@ -106,3 +87,7 @@ ExactscopeSHAfc3b1977b765fa9d63125e9b374d8d51a4cb00c42fa773fd72506bf77d6cf598/fo
 ## Bootstrap PRE2 — 2026-10-14T21:35:52.112Z
 
 FirstmodelPASS/actualPREBLOCKED rawindexmutation preserved at openspec/changes/frade-review-snapshot-integrity/evidence/pre-received-20261014T212654244Z. Cache-onlyprobe FAIL retained; readonlyownerGitprocess2snapshots PASS (rawindex/logical/head/digest). Strategy openspec/changes/frade-review-snapshot-integrity/evidence/bootstrap-pre2-20261015/STRATEGY.md. OnefreshPRE sameapprovedgpt-6-sol/xhigh/source80b... withprocess-onlynooptionalGit/longpaths/fsmonitor, no global/reviewerconfig changes, unchangedtrustedexecutor. Fulladditionalrawindexguard retained. Code/UI/pointerunchanged; newhelpertestswillrunwithoutbootstrapenv. Candidate/HEAD/index/dashboard freezeaftercheckpoint; no repair beforeactualPASS.
+
+## Resume / bounded control PRE3 — 2026-10-14T22:21:25.104Z
+
+P01 themes and startup repair are already integrated in Main; latest UI evidence retained. Main final POST/archive BLOCKED by review controls; roadmap PAUSED. Control tasks 1/12. PRE2 FAIL received with 17 immutable raw files at openspec/changes/frade-review-snapshot-integrity/evidence/pre-received-20261014T221851318Z; raw index unchanged. RCA: execute resets GIT_CONFIG_COUNT. Corrected process-only parameters proven through actual child launcher (2 captures, 28.166sec PASS). Source controls/UI/global settings unchanged. One new PRE gpt-6-sol/xhigh after checkpoint/freeze; no duplicate UI full runs. Strategy openspec/changes/frade-review-snapshot-integrity/evidence/bootstrap-pre3-20261015/STRATEGY.md. Local commits only; Main/new branch push NOT_AUTHORIZED.
