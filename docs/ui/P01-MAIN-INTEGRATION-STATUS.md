@@ -43,8 +43,12 @@
 
 После решений: согласовать точный plan/manifest → strict → focused automatic PRE gpt-6-sol/xhigh → разрешённая process-only adoption → reverify → cumulative POST → local main preservation checkpoint/обычная integration → main smoke/hashes → archive. Никаких повторов полного desktop suite без новой обоснованной необходимости; никаких silent waivers.
 Guide1.0; applicable FDS003/004/005/006/007/008/009/010/014/015 и A11Y001–009 только в утверждённых P01surfaces. Нет новых provider/installer/VSCode executable API обещаний. GitHub protection UNVERIFIED/NOT_CONFIGURED.
-Requested review pair gpt-6-sol/xhigh; actual backend/effort NOT_CONFIRMED. Правая панель: ранее queued/open requested, видимость не подтверждена.
+Requested review pair gpt-6-sol/xhigh; actual backend/effort NOT_CONFIRMED. Правая панель: повторный open_in_codex вернул queued; видимость не подтверждена.
 
 ## Commit / push
 
-Local HEAD aec7482d57d56f1177ae5c01396239a9f5404a14. Готовится локальный incomplete verification checkpoint, не gate approval. Main/new integration-ref publication NOT_RUN/NOT_AUTHORIZED; прежняя remote authority только codex/frade-ui-design-contract. P02roadmap остаётся PAUSED.
+Локальный source/evidence checkpoint **cd0e2d8e431e46ebd0aea0edc3e7915921c56258**:5560committed paths,193source raw bytes/modes verified, vendor/foreign main paths0. Это incomplete checkpoint, не POST/gate approval. Текущий status-receipt commit является его потомком; точный HEAD — git rev-parse HEAD. [Текущие Settings screenshots](../../openspec/changes/frade-p01-main-integration/evidence/current-verification-20261014T002208138Z/CURRENT-SCREENSHOTS.md).
+
+Main/new integration-ref publication NOT_RUN/NOT_AUTHORIZED; прежняя remote authority только codex/frade-ui-design-contract. P02roadmap остаётся PAUSED.
+
+Git diff --cached --check:exit2 на сохранённых supplier/historical whitespace, инспекция не задана как required gate. Исходные байты не менялись; stdout/stderr сохранены в openspec/changes/frade-p01-main-integration/evidence/local-checkpoint-20261014T004048428Z.
