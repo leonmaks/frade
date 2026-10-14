@@ -1,0 +1,212 @@
+{
+  "activeChange": "frade-ui-design-contract",
+  "phase": "ARCHIVED_CHECKPOINT_STOP",
+  "workspace": "C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade",
+  "branch": "codex/frade-ui-design-contract",
+  "baseline": "98f387f96b51b0ad139e3507c376ff1c3e8dec09",
+  "providerPrerequisites": [
+    "approved existing Draw/Repo public contracts"
+  ],
+  "visualContractTextStatus": "USER_ACCEPTED_FULL_WB001_REPLACEMENT_2026-09-30",
+  "visualSupersessionRecord": "decisions/wb001-acceptance-2026-09-30.md",
+  "independentUiPreStatus": "FAIL",
+  "routingImplementationPrerequisite": false,
+  "routingRepairPrerequisite": false,
+  "routingPreApprovalPrerequisite": false,
+  "ownOpenRequirements": [],
+  "routingGateApplicability": "NOT_APPLICABLE to independent UI foundation; routing-semantic/control edits excluded",
+  "generalChecksRetained": [
+    "typecheck",
+    "lint",
+    "tests/BDD",
+    "boundaries",
+    "build",
+    "existing CI"
+  ],
+  "consumerHandoff": "R04 tasks 6.1-6.4 in the original routing checkout",
+  "note": "Explicit execution record; not independent approval, technical gate installation or a CI enforcement claim.",
+  "repeatIndependentUiPreStatus": "PASS",
+  "pre01PlanningDecisionStatus": "USER_ACCEPTED_2026-09-30",
+  "cssAdoptionRevision": 1,
+  "pre01Decision": "decisions/token-css-adoption-2026-09-30.md",
+  "receivedPreReport": "evidence/pre-independent-received-2026-09-30T080933Z.txt",
+  "currentImplementationScope": "Exact foundation paths/operations in PRE-20260930T091121Z; runtime P01, feature migration, domain/routing/input/vendor changes excluded",
+  "currentIndependentPreReview": "PRE-20260930T091121Z",
+  "currentPreReport": "evidence/pre-repeat-received-PRE-20260930T091121Z.txt",
+  "currentBlocker": null,
+  "currentLocalCheckAll": {
+    "status": "PASS",
+    "exit": 0,
+    "drawTests": 215,
+    "desktopTests": 41,
+    "desktopIncludesStandaloneCascadeCases": 20,
+    "uiNodeTests": 26,
+    "standaloneCascadeTests": 20,
+    "environment": "Windows; fresh owned Draw server via existing FRADE_DRAW_E2E_PORT; valid unchanged-source Turbo caches used by package checks",
+    "log": "evidence/foundation-archive-check-all-2026-09-30.txt",
+    "record": "evidence/foundation-archive-check-all-2026-09-30.txt.json",
+    "cascadeLog": "evidence/foundation-archive-cascade-2026-09-30.txt",
+    "cascadeRecord": "evidence/foundation-archive-cascade-2026-09-30.txt.json"
+  },
+  "formalVerificationStatus": "VERIFIED_POST_PASS_ARCHIVED_POST_ARCHIVE_CHECKS_PASS",
+  "independentPostStatus": "PASS",
+  "archiveStatus": "PASS",
+  "focusedEolPreStatus": "PASS",
+  "eolProductionImplementationStatus": "IMPLEMENTED_LOCAL_CHECKS_PASS",
+  "candidateEolScope": {
+    "additionalRootFile": ".gitattributes",
+    "acceptedDraft": "docs/ui/decisions/token-eol.gitattributes.proposed",
+    "acceptedDraftSha256": "7aebd327f1c5a08490abc5ded3a7198db42e5ac7b34b35a7ad2f5197a8dbd960",
+    "logicalEntries": 8,
+    "existingToolingRoots": [
+      "scripts/ui/",
+      "tests/ui-contract/"
+    ],
+    "candidateFiles": [
+      "scripts/ui/checkout.mjs",
+      "tests/ui-contract/checkout.test.mjs"
+    ],
+    "priorPathsOnly": [
+      "package.json",
+      ".github/workflows/ci.yml",
+      "openspec/changes/frade-ui-design-contract/bdd/ui-contracts.feature",
+      "docs/ui/decisions/ui-contract-traceability.json"
+    ],
+    "requiresFocusedPre": true
+  },
+  "focusedEolPreReview": "PRE-EOL-20260930T120821Z",
+  "focusedEolPreReport": "openspec/changes/archive/2026-09-30-frade-ui-design-contract/evidence/pre-eol-received-PRE-EOL-20260930T120821Z.txt",
+  "resolvedBlockers": [
+    {
+      "id": "FOUNDATION-EOL-01",
+      "classification": "ENVIRONMENT",
+      "status": "RESOLVED_LOCAL_CHECKS_PASS",
+      "draft": "docs/ui/decisions/token-eol.gitattributes.proposed",
+      "scopeProposal": "docs/ui/decisions/token-eol-scope-proposal.md",
+      "evidence": "evidence/foundation-eol-reproduction-2026-09-30.json",
+      "productionAttributesApplied": true,
+      "acceptanceRecord": "decisions/token-eol-acceptance-2026-09-30.md",
+      "resolutionEvidence": "evidence/foundation-eol-check-all-2026-09-30.txt.json"
+    },
+    {
+      "id": "FOUNDATION-ARCHIVE-01",
+      "classification": "INTEGRATION",
+      "status": "RESOLVED_LOCAL_POST_REPAIR_CHECKS_PASS",
+      "evidence": "evidence/foundation-archive-path-reproduction-2026-09-30.json",
+      "scopeProposal": "docs/ui/decisions/bdd-archive-scope-proposal.md",
+      "productionRepairApplied": true,
+      "acceptanceRecord": "decisions/bdd-archive-acceptance-2026-09-30.md",
+      "resolutionEvidence": "evidence/foundation-archive-provenance-2026-09-30.json",
+      "fullCheckRecord": "evidence/foundation-archive-check-all-2026-09-30.txt.json"
+    }
+  ],
+  "archivePlanningDecisionStatus": "USER_ACCEPTED_2026-09-30",
+  "focusedArchivePreStatus": "PASS",
+  "archiveProductionImplementationStatus": "IMPLEMENTED_LOCAL_POST_REPAIR_CHECKS_PASS",
+  "postArchiveRepairCheckAllStatus": "PASS",
+  "candidateArchiveScope": {
+    "paths": [
+      "docs/ui/bdd/ui-contracts.feature",
+      "scripts/ui/traceability.mjs",
+      "scripts/ui/controls.mjs",
+      "tests/ui-contract/archive.test.mjs",
+      "docs/ui/decisions/ui-contract-traceability.json",
+      "openspec/changes/frade-ui-design-contract/bdd/ui-contracts.feature",
+      "docs/ui/decisions/branch-protection.md",
+      "docs/ui/adoption.md"
+    ],
+    "acceptedProposal": "docs/ui/decisions/bdd-archive-scope-proposal.md",
+    "acceptedProposalSha256": "0576c7a1547b4b7629e5ccc14b7deedbf1091b82d6cd7144a0b06d14d88574b4",
+    "newRootPath": false,
+    "newDependencies": false,
+    "attributeRules": 8,
+    "requiresFocusedPre": true
+  },
+  "focusedArchivePreReview": "PRE-ARCHIVE-20260930T134029Z",
+  "focusedArchivePreReport": "openspec/changes/archive/2026-09-30-frade-ui-design-contract/evidence/pre-archive-received-PRE-ARCHIVE-20260930T134029Z.txt",
+  "archiveRepairEvidence": "evidence/foundation-archive-provenance-2026-09-30.json",
+  "historicalPreArchiveLocalCheckAll": {
+    "status": "PASS",
+    "exit": 0,
+    "drawTests": 215,
+    "desktopTests": 41,
+    "environment": "Windows; fresh owned Draw server via existing FRADE_DRAW_E2E_PORT",
+    "log": "evidence/foundation-eol-check-all-2026-09-30.txt",
+    "record": "evidence/foundation-eol-check-all-2026-09-30.txt.json"
+  },
+  "formalVerificationReport": "evidence/foundation-archive-verification-2026-09-30.md",
+  "readyForIndependentPost": false,
+  "readyForArchive": false,
+  "independentPostReview": "POST-FOUNDATION-20260930T145619Z",
+  "independentPostReport": "openspec/changes/archive/2026-09-30-frade-ui-design-contract/evidence/post-foundation-received-POST-FOUNDATION-20260930T145619Z.txt",
+  "independentPostAcceptance": "evidence/foundation-post-acceptance-2026-09-30.json",
+  "reviewTransport": {
+    "mode": "AUTOMATIC_LOCAL_CODEX_CLI",
+    "runner": "C:/Users/NVISEN/.codex/review-automation/invoke-review.mjs",
+    "instructions": "C:/Users/NVISEN/.codex/review-automation/README.md",
+    "config": "C:/Users/NVISEN/.codex/review-automation/config.json",
+    "requestedModel": "gpt-6-astra",
+    "requestedEffort": "xhigh",
+    "actualBackend": "NOT_CONFIRMED",
+    "actualEffort": "NOT_CONFIRMED",
+    "freshIndependentSession": true,
+    "sandbox": "read-only",
+    "approvalPolicy": "never",
+    "resultsOutsideCandidate": true,
+    "rawManifestAndInventoryBeforeAfter": true,
+    "preparedPromptBytesPreserved": true,
+    "smoke": "PASS",
+    "smokeRecord": "C:/Users/NVISEN/.codex/review-automation/runs/2026-09-30T16-00-00.478Z-9d0dc20f-1793-4f3d-ae79-5f4db9235c7e/record.json",
+    "qualityProcessChanged": false,
+    "humanPromptTransferRequired": false,
+    "humanDecisionsPreserved": true,
+    "scope": "Local transport only, not product implementation or another foundation gate",
+    "manualPostAcceptedFirst": true
+  },
+  "archivedLocation": "openspec/changes/archive/2026-09-30-frade-ui-design-contract",
+  "taskCounts": {
+    "completed": 21,
+    "total": 21
+  },
+  "closureEvidence": "evidence/foundation-closure-report-2026-09-30.md",
+  "postArchiveCompliance": {
+    "status": "PASS",
+    "command": "pnpm ui:compliance",
+    "exit": 0,
+    "tests": 26,
+    "contrastPairs": 102,
+    "foundationBindings": 28,
+    "futureBoundariesNotExecuted": 23,
+    "durableLinks": 12,
+    "log": "evidence/foundation-post-archive-compliance-2026-09-30.txt",
+    "integrity": "evidence/foundation-post-archive-integrity-2026-09-30.json"
+  },
+  "nextCheckpoint": {
+    "change": "frade-p01-theme-core",
+    "status": "NOT_STARTED",
+    "requiresOwnScopePreAndImplementation": true,
+    "autoAdvance": false
+  },
+  "relocation": {
+    "originalRoot": "openspec/changes/frade-ui-design-contract",
+    "currentRoot": "openspec/changes/archive/2026-09-30-frade-ui-design-contract",
+    "historicalEvidencePathsPreserved": true,
+    "currentReferenceChanges": [
+      {
+        "field": "focusedEolPreReport",
+        "before": "openspec/changes/frade-ui-design-contract/evidence/pre-eol-received-PRE-EOL-20260930T120821Z.txt",
+        "after": "openspec/changes/archive/2026-09-30-frade-ui-design-contract/evidence/pre-eol-received-PRE-EOL-20260930T120821Z.txt"
+      },
+      {
+        "field": "focusedArchivePreReport",
+        "before": "openspec/changes/frade-ui-design-contract/evidence/pre-archive-received-PRE-ARCHIVE-20260930T134029Z.txt",
+        "after": "openspec/changes/archive/2026-09-30-frade-ui-design-contract/evidence/pre-archive-received-PRE-ARCHIVE-20260930T134029Z.txt"
+      },
+      {
+        "field": "independentPostReport",
+        "before": "openspec/changes/frade-ui-design-contract/evidence/post-foundation-received-POST-FOUNDATION-20260930T145619Z.txt",
+        "after": "openspec/changes/archive/2026-09-30-frade-ui-design-contract/evidence/post-foundation-received-POST-FOUNDATION-20260930T145619Z.txt"
+      }
+    ]
+  }
+}

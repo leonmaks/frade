@@ -1,0 +1,74 @@
+{
+  "atUtc": "2026-10-13T23:06:28.812Z",
+  "status": "CAUSE_NOT_PROVEN",
+  "classification": "ENVIRONMENT_CAPTURE_OR_INTEGRATION_NOT_PROVEN",
+  "sourceUnchanged": true,
+  "events": 93306,
+  "failingCall": {
+    "type": "before",
+    "callId": "pw:api@46672",
+    "stepId": "pw:api@46672",
+    "startTime": 2761299.635,
+    "class": "Test",
+    "method": "pw:api",
+    "title": "Screenshot",
+    "params": {
+      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\p01-main-integration\\frade\\apps\\desktop\\test-results\\ui-contract-theme-P01-UPPE-92594--media-raster-light-compact\\forced-coarse-reduced-text200-viewPanels-default-atlas.png",
+      "mask": "undefined",
+      "timeout": "30000",
+      "type": "png"
+    },
+    "stack": [
+      {
+        "file": "C:\\Users\\NVISEN\\.codex\\worktrees\\p01-main-integration\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+        "line": 3882,
+        "column": 26,
+        "function": "upperCalibrate"
+      }
+    ]
+  },
+  "after": {
+    "type": "after",
+    "callId": "pw:api@46672",
+    "endTime": 2791307.672,
+    "annotations": [],
+    "error": {
+      "name": "",
+      "message": "TimeoutError: page.screenshot: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n",
+      "stack": "TimeoutError: page.screenshot: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\n    at upperCalibrate (C:\\Users\\NVISEN\\.codex\\worktrees\\p01-main-integration\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3882:26)\n    at C:\\Users\\NVISEN\\.codex\\worktrees\\p01-main-integration\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:4107:43"
+    }
+  },
+  "failedStage": "forced-coarse-reduced-text200 / viewPanels default atlas",
+  "priorSuccessfulScreenshots": [
+    {
+      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\p01-main-integration\\frade\\apps\\desktop\\test-results\\ui-contract-theme-P01-UPPE-92594--media-raster-light-compact\\wide-insertFreehand-pressed-mixed-2.png",
+      "durationMs": 37.85000000009313
+    },
+    {
+      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\p01-main-integration\\frade\\apps\\desktop\\test-results\\ui-contract-theme-P01-UPPE-92594--media-raster-light-compact\\wide-insertFreehand-pressed-mixed-3.png",
+      "durationMs": 34.47099999990314
+    },
+    {
+      "path": "C:\\Users\\NVISEN\\.codex\\worktrees\\p01-main-integration\\frade\\apps\\desktop\\test-results\\ui-contract-theme-P01-UPPE-92594--media-raster-light-compact\\wide-insertFreehand-pressed-mixed-4.png",
+      "durationMs": 30.22499999962747
+    }
+  ],
+  "observed": "fonts loaded; screenshot operation timed out after30008ms, before pixel checks. Not a semantic/contrast assertion and not one of3deferrals. Root cause is unproven.",
+  "strategy": {
+    "objective": "Prove whether unchanged exact failing case completes in a fresh isolated worker, preserving full original scenario and source",
+    "selected": "One focused existing test unchanged; no instrumentation/timeout/assertion/source edits",
+    "alternatives": {
+      "fullRootRepeat": "Rejected: duplicates74currentPASS and46.7min processing",
+      "skipOrWaive": "Rejected: required new failure outside3deferrals",
+      "changeTimeoutOrFixture": "Rejected until cause proven and exact scope approved if needed",
+      "parallelElectron": "Rejected native focus/media shared machine"
+    },
+    "forecastMinutes": [
+      5,
+      10
+    ],
+    "hardOriginalCaseTimeoutMs": 600000,
+    "probeBudget": 1,
+    "stop": "On any failure; read-only RCA again before another attempt. No production fix authorized by capture error."
+  }
+}

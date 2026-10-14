@@ -1,0 +1,22 @@
+{
+  "atUtc": "2026-10-13T21:51:00.441Z",
+  "objective": "Current execution in the new checkout for affected packages; cached root execution alone does not prove fresh unit/build context.",
+  "observedRoot": {
+    "dir": "openspec/changes/frade-p01-main-integration/evidence/check-check-20261013T214717887Z",
+    "status": "PASS",
+    "durationMs": 133163,
+    "turboTasks": "CACHE_REPLAY",
+    "actualNonTurbo": "BDD/boundaries/UIcompliance"
+  },
+  "alternatives": {
+    "repeatFullRoot": "Repeats already current BDD/boundary/control batches, unnecessary",
+    "freshAffectedDirect": "Selected: direct lint/type/unit for three changed packages plus fresh desktop build, preserve all assertions; other cached packages unchanged from baseline",
+    "acceptCacheAlone": "Rejected: current root-relative package inputs/effects not fully declared in Turbo globalDependencies"
+  },
+  "forecastMs": [
+    60000,
+    240000
+  ],
+  "probe": "runtime-contracts batch first; reassess on first failure or after4minutes",
+  "productionChanges": false
+}

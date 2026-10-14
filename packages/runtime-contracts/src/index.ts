@@ -102,3 +102,5 @@ export function failure(requestId: string, error: ErrorCode): Response {
 export function healthRequest(requestId: string): Request {
   return { type: 'request', protocolVersion: 1, requestId, operation: 'health.get', payload: {} }
 }
+
+export * from './presentation'

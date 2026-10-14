@@ -7,6 +7,18 @@ async function dragObject(
   options: { name?: string; repositoryId?: string; sourceId?: string; x?: number; y?: number } = {},
 ) {
   const name = options.name ?? 'Маркетплейс'
+  const readyFrame = page.locator('.diagram-slot iframe')
+  if (await readyFrame.count()) {
+    await expect(readyFrame).toBeVisible()
+    await expect(readyFrame).toHaveAttribute('data-frade-revision', (await page.locator('html').getAttribute('data-frade-revision')) as string)
+    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+    await readyFrame.contentFrame().locator('.geDiagramContainer').evaluate(async () => {
+      await document.fonts.ready
+      await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
+    })
+    await expect(readyFrame).toHaveAttribute('data-frade-revision', (await page.locator('html').getAttribute('data-frade-revision')) as string)
+    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+  }
   await page.getByLabel('Поиск объектов', { exact: true }).fill(name)
   const source = page
     .locator(

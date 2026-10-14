@@ -6,6 +6,7 @@ import {
   type Page,
 } from '@playwright/test'
 import { readFile, cp, mkdir, rename, writeFile } from 'node:fs/promises'
+import { existsSync } from 'node:fs'
 import { resolve, join } from 'node:path'
 import { createNativeRepository } from '@frade/adapter-yaml'
 import { createKaFixture } from '../../../../scripts/ka-fixtures.mjs'
@@ -69,6 +70,7 @@ test('WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, w
     await page.getByRole('menuitem', { name: 'Переименовать корень' }).click()
     await page.getByLabel('Название корня').fill('KA A')
     await page.getByRole('button', { name: 'Переименовать', exact: true }).click()
+    await expect(page.getByRole('dialog', { name: 'Переименовать корень', exact: true })).toBeHidden()
     await card(page, A)
     await description(page).fill('A isolated description')
     await page.locator(`[role=treeitem][aria-level="1"][data-repository-id="${B}"]`).click()
@@ -138,6 +140,7 @@ test('WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, w
       })) as typeof dialog.showSaveDialog
     }, workspace)
     await command(page, 'Сохранить рабочее пространство как…')
+    await expect.poll(() => existsSync(workspace)).toBe(true)
     await expect
       .poll(async () => JSON.parse(await readFile(workspace, 'utf8')).roots[0].repositoryId)
       .toBe(B)
@@ -155,6 +158,7 @@ test('WB-006/007 real KA A+B and native: same IDs, active-card save, Save All, w
       })) as typeof dialog.showSaveDialog
     }, alternate)
     await command(page, 'Сохранить рабочее пространство как…')
+    await expect.poll(() => existsSync(alternate)).toBe(true)
     await expect
       .poll(async () => JSON.parse(await readFile(alternate, 'utf8')).roots.length)
       .toBe(3)
