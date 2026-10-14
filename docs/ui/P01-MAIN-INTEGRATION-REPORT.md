@@ -38,3 +38,7 @@ COMMANDS_EXECUTED:root/currentcandidatechecks;9maincommands;original39mainruntim
 TEST_RESULTS:UI/mainfunctionalchecksPASS;actualmainPOSTBLOCKED;archive/publicationNOT_RUN
 KNOWN_BLOCKERS:нуженexactsharedsnapshotcontrolscope для formalclosure
 READY_FOR_VERIFY:NO — mainintegrationreview/archiveblocked, functionalmainalreadyverified
+
+## New startup defect — 2026-10-14
+
+The human reports the recovery curtain at DEV startup. Current status is OPEN, READY_FOR_VERIFY: NO; prior39casePASS remains scoped historical evidence. Two-pinned-frame restart reproduces exact reported message on built Main; direct-Vite DEV also fails required inactive-frame revision with a membership recovery message. Empty isolated DEV profile passes. Actual user profile/tabs UNKNOWN. Source193/foreign854 preserved. Diagnostic/setup failures and CLI default-profile caveat recorded in [RCA](../../openspec/changes/frade-p01-main-integration/evidence/startup-inactive-frame-20261014-02/RCA.md). Repair proposal openspec/changes/frade-p01-main-integration/decisions/p01-main-restored-frame-paint-01/proposal.md, SHA256 77e86453e7a106558e9615ebc2033d603df350db3646a936d57d03fc11042705, NOT_ACCEPTED/NOT_IMPLEMENTED. Fresh PRE/POST required before a repaired product claim.

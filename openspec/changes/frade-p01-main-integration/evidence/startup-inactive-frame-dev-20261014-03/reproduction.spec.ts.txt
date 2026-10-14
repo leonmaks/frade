@@ -1,0 +1,46 @@
+import { test, expect, _electron as electron } from 'E:/dev/codex/frade/apps/desktop/node_modules/@playwright/test/index.mjs'
+import { createKaFixture } from 'E:/dev/codex/frade/scripts/ka-fixtures.mjs'
+import { mkdir, writeFile, readFile } from 'node:fs/promises'
+import { join, resolve } from 'node:path'
+test('restored never-visible required Draw.io frame paints current revision without recovery', async ({}, info) => {
+ test.setTimeout(90000)
+ const fixture=await createKaFixture(), folder=join(fixture.dataRoot,'_diagrams'), profile=join(fixture.destination,'startup-profile')
+ await mkdir(folder,{recursive:true})
+ const xml='<mxfile><diagram id="main" name="Restored"><mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/></root></mxGraphModel></diagram></mxfile>'
+ const files=['First.drawio','Second.drawio'].map(name=>join(folder,name))
+ for(const file of files) await writeFile(file,xml)
+ const launch=()=>electron.launch({args:[resolve('out/main/index.cjs')],env:{...process.env,FRADE_USER_DATA:profile,ELECTRON_RENDERER_URL:process.env.FRADE_DIAGNOSTIC_DEV_URL}})
+ let app=await launch(), page=await app.firstWindow(), restored=false, stage='initial', originalError, appStderr=''
+ app.process().stderr?.on('data',d=>appStderr+=d)
+ try {
+  await expect(page.locator('.wb-statusbar [role="status"]')).toHaveText('Backend: ready')
+  await app.evaluate(({dialog},paths)=>{let i=0;dialog.showOpenDialog=async()=>({canceled:false,filePaths:[paths[i++]]})},[fixture.dataRoot,fixture.metadataRoot])
+  await page.getByRole('button',{name:'Открыть KA',exact:true}).click()
+  await expect(page.locator('.status-message')).toContainText('138 объектов',{timeout:30000})
+  await page.getByRole('treeitem').filter({hasText:/^_diagrams$/}).click()
+  for(const name of ['First.drawio','Second.drawio']) {
+   await page.getByRole('treeitem').filter({hasText:new RegExp('^'+name.replace('.','\\.')+'$')}).dblclick()
+   await expect(page.getByRole('tab',{name,exact:true})).toBeVisible()
+   await expect(page.locator('[data-diagram-group] iframe')).toHaveAttribute('data-frade-revision',await page.locator('html').getAttribute('data-frade-revision'),{timeout:20000})
+   await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+  }
+  const before=await page.evaluate(()=>({editors:localStorage.getItem('frade.editors'),layout:localStorage.getItem('frade.layout')}))
+  await writeFile(info.outputPath('before-restart.json'),JSON.stringify(before,null,2))
+  stage='restart'; await app.close()
+  app=await launch(); app.process().stderr?.on('data',d=>appStderr+=d); page=await app.firstWindow(); restored=true
+  await expect(page.locator('.wb-statusbar [role="status"]')).toHaveText('Backend: ready')
+  await expect(page.locator('iframe')).toHaveCount(2,{timeout:30000})
+  await expect.poll(()=>page.evaluate(()=>({revision:document.documentElement.dataset.fradeRevision,frames:[...document.querySelectorAll('iframe')].map(f=>f.dataset.fradeRevision)})).then(s=>s.frames.every(r=>r===s.revision)),{timeout:10000}).toBe(true)
+  await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+  await expect(page.getByRole('tab',{name:'Second.drawio',exact:true})).toHaveAttribute('aria-selected','true')
+  for(const file of files) expect(await readFile(file,'utf8')).toBe(xml)
+ } catch(e) { originalError=String(e.stack??e); throw e } finally {
+  await writeFile(info.outputPath('primary-error.json'),JSON.stringify({restored,stage,profile,originalError,closed:page.isClosed(),appStderr},null,2))
+  if(!page.isClosed()) {
+   await writeFile(info.outputPath('observation.json'),JSON.stringify({restored,profile,state:await page.evaluate(()=>({revision:document.documentElement.dataset.fradeRevision,editors:localStorage.getItem('frade.editors'),barrier:document.querySelector('.frade-theme-commit-barrier')?.textContent,frames:[...document.querySelectorAll('iframe')].map(f=>({revision:f.dataset.fradeRevision,rect:{width:f.getBoundingClientRect().width,height:f.getBoundingClientRect().height},parked:f.closest('[hidden]')!==null}))}))},null,2))
+   await page.screenshot({path:info.outputPath('restored-startup.png')})
+   await app.evaluate(({app})=>{setTimeout(()=>app.exit(0),50)})
+   await app.close()
+  }
+ }
+})
