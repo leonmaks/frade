@@ -1,6 +1,10 @@
 # Main P01 integration — current status
 
-Updated 2026-10-14T22:21:25.105Z; branch main / E:/dev/codex/frade; original baseline 98f387f96b51b0ad139e3507c376ff1c3e8dec09. P01 four themes and reviewed startup repair integrated. Actual latest Main checks: 246 UI + 128 desktop unit tests and 9 runtime checks PASS; p95 124.1ms at 60Hz. Main tasks 20/22, final POST/archive blocked by supplier review-control repair (1/12 tasks). PRE2 supplier FAIL; child-launch correction probe PASS; fresh PRE3 next. No UI source change or repeat full run in this batch. P02-P07 PAUSED. Local checkpoint only; remote publication NOT_AUTHORIZED. Previous historical evidence/status follows unchanged.
+Updated 2026-10-14T23:37:31.510Z; branch main, worktree E:/dev/codex/frade, baseline 98f387f96b51b0ad139e3507c376ff1c3e8dec09; active frade-p01-main-integration.
+
+Main four themes/startup repair integrated; Main20/22. Control source6/12. Actual POST1 FAIL preserved; three gaps RED then28/28 GREEN, snapshot26 exact-input reuse:54distinct. Same eight paths, source190both/foreign854/policy/syntax/lint/newconfinement PASS. Fresh POST2 gpt-6-sol/xhigh next; install/MainPOST/archive NOT_RUN. Candidate stays frozen through strict publication; no raw receipt/status/index/HEAD edits in passing candidate. P02-P07 PAUSED. No remote publication authorized.
+
+Next: complete POST2 receipt -> strict common release install -> supplier verify/archive -> exact Main8/capability adoption -> actual Main POST -> no-sync archive. Earlier dated history/evidence retained below.
 
 ## Фактический результат 2026-10-14T05:31:11.063Z
 
@@ -107,3 +111,7 @@ Control tasks5/12. Snapshot26/26 PASS (15 original guards exact), real C capture
 ## Supplier source verification / POST ready — 2026-10-14T23:06:45.555Z
 
 Control6/12; exact final51/51 PASS, syntax6/lint/4boundaries PASS, protected190 both roots and foreign854 Main exact. Same policy1.1; source-bound evidence package release6901c9b1c40c54ab29225c6718c4f5424707257c5c64dcf59b71dfa06d8bb7bd. No ninth root file, full UI runs0. Verification openspec/changes/frade-review-snapshot-integrity/evidence/IMPLEMENTATION-VERIFY-20261015.md: implementation READY_FOR_POST, archive NO. Supplier POST requested gpt-6-sol/xhigh next; candidate/head/index/tasks/dashboard frozen after checkpoint. Actual install/Main POST/archive NOT_RUN; P02-P07 PAUSED; push NOT_AUTHORIZED.
+
+## Actual supplier POST FAIL / bounded repair — 2026-10-14T23:26:53.330Z
+
+Independent POST 79710f... FAIL: fresh full candidate and reviewed-index binding missing; owner-root branch bypasses required package pins. Full130 hashes/eight mirrors/17bundle entries/policy1.1/51tests confirmed, not closure. Release not installed; Main POST/archive blocked. Reopen2.3/2.4;4/12 complete. Same approved8paths; three targeted RED cases, then GREEN/newPOST. UI unchanged; fullUIruns0. RCA openspec/changes/frade-review-snapshot-integrity/evidence/post-publication-rca-20261015.md.
