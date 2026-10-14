@@ -1,10 +1,6 @@
 # Main P01 integration — current status
 
-Updated 2026-10-14T23:47:20.287Z; branch main, worktree E:/dev/codex/frade, baseline 98f387f96b51b0ad139e3507c376ff1c3e8dec09; active frade-p01-main-integration.
-
-Main four themes/startup repair integrated; Main20/22. Control source6/12. Actual POST1 FAIL preserved; three gaps RED then29/29 GREEN, snapshot26 exact-input reuse:55distinct. Same eight paths, source190both/foreign854/policy/syntax/lint/newconfinement PASS. Fresh POST3 gpt-6-sol/xhigh next; install/MainPOST/archive NOT_RUN. Candidate stays frozen through strict publication; no raw receipt/status/index/HEAD edits in passing candidate. P02-P07 PAUSED. No remote publication authorized.
-
-Next: complete POST3 receipt -> strict common release install -> supplier verify/archive -> exact Main8/capability adoption -> actual Main POST -> no-sync archive. Earlier dated history/evidence retained below.
+Updated 2026-10-14T23:58:53.268Z; main / E:/dev/codex/frade. Main four themes/startup repair integrated,20/22. Control6/12. POST1/2/3 FAIL preserved; full-current/index/prefix/membership repairs within8paths. Current33publication PASS +26exact snapshot reuse =59distinct; source190both/foreign854/syntax/lint/policy/newcanary PASS. POST4 gpt-6-sol/xhigh next; release/install/MainPOST/archive NOT_RUN. Full UI reruns0; P02-P07 PAUSED. Remote NOT_AUTHORIZED. Candidate remains frozen through passing receipt and strict publication.
 
 ## Фактический результат 2026-10-14T05:31:11.063Z
 
