@@ -102,3 +102,7 @@ New proposed P01-MAIN-SNAPSHOT-ABSENCE-READONLY-02: openspec/changes/frade-p01-m
 ## Scope02 accepted and supplier planning active — 2026-10-14T21:18:07.876Z
 
 ExactscopeSHAfc3b1977b765fa9d63125e9b374d8d51a4cb00c42fa773fd72506bf77d6cf598/fourdraftsaccepted. Isolatedsupplier frade-review-snapshot-integrity12tasks created, strictPASS; PREgpt-6-sol/xhighNEXT. MainUI unchanged; oldstartup8checks/9runtime/p95124.1msPASS preserved;20/22parenttasksstillincomplete. Sharedpointer/controlsourceunchanged. Consumerplanexplicitlyreconciled; actualMainPOST/archive remainBLOCKED until ownpostadoptiongate. Original01/FAILhistory retained; Routingindependent, broaderroadmapPAUSED, nopush.
+
+## Bootstrap PRE2 — 2026-10-14T21:35:52.112Z
+
+FirstmodelPASS/actualPREBLOCKED rawindexmutation preserved at openspec/changes/frade-review-snapshot-integrity/evidence/pre-received-20261014T212654244Z. Cache-onlyprobe FAIL retained; readonlyownerGitprocess2snapshots PASS (rawindex/logical/head/digest). Strategy openspec/changes/frade-review-snapshot-integrity/evidence/bootstrap-pre2-20261015/STRATEGY.md. OnefreshPRE sameapprovedgpt-6-sol/xhigh/source80b... withprocess-onlynooptionalGit/longpaths/fsmonitor, no global/reviewerconfig changes, unchangedtrustedexecutor. Fulladditionalrawindexguard retained. Code/UI/pointerunchanged; newhelpertestswillrunwithoutbootstrapenv. Candidate/HEAD/index/dashboard freezeaftercheckpoint; no repair beforeactualPASS.
