@@ -1,6 +1,6 @@
 # P01 → основное приложение: статус
 
-Обновлено: 2026-10-14T00:31:41.718Z (Москва+03:00). Фаза: WAITING_EXACT_DECISIONS.
+Обновлено: 2026-10-14T00:31:41.718Z (Москва+03:00). Фаза: FOCUSED_PRE_RUN.
 Ветка: codex/frade-p01-main-integration; worktree: C:/Users/NVISEN/.codex/worktrees/p01-main-integration/frade; change: frade-p01-main-integration.
 Оригинальный main baseline: 98f387f96b51b0ad139e3507c376ff1c3e8dec09; завершённый supplier P01: d876a773282700abf515c9c4fbc14a0b219359af.
 **P02–P07 и широкие миграции: PAUSED. Main: NOT_INTEGRATED.**
@@ -11,11 +11,11 @@
 | 2.1 | DONE | 193 manifest-approved файла/4.48MB, без P02 |
 | 2.2 | DONE | Frozen install, unit/BDD/boundaries/compliance; fresh build PASS |
 | 2.3 | DONE | Реальные4режима, оба density, preview/apply/cancel/restart и editor-state |
-| 3.1 | BLOCKED | Draw215PASS; desktop135/135cases имеют PASS, но2исходных batch FAIL не приняты |
+| 3.1 | BLOCKED | Draw215PASS; desktop135/135cases имеют PASS;2исходных batch FAIL приняты как точныеD01/D02, control revalidation после PRE |
 | 3.2 | DONE | 372пары:302exact/70different;52owned Frade targets exact;18metadata temporary IDs; ограничения сохранены |
 | 3.3 | DONE_WITH_BLOCKERS | OpenSpec verification:72requirements/145scenario mappings; текущий strict PASS; общий delivery не завершён |
 | 3.4 | BLOCKED | Финальный automatic POST gpt-6-sol/xhigh после точных решений/revalidation |
-| 4.1 | PENDING_DECISION | Два main process-doc collision; точный preservation proposal подготовлен |
+| 4.1 | PENDING_DRY_RUN | Два main process-doc collision; точный preservation proposal подготовлен |
 | 4.2 | NOT_RUN | Сериализованный main checkpoint/merge, preservation hashes и main smoke |
 | 4.3 | NOT_RUN | Итоговый report/archive/publication |
 
@@ -36,12 +36,12 @@
 -3исторических P01defекта OPEN_ACCEPTED_DEFERRED. Точные текущие B05/Darkpopup/Lightbodyfocus cases PASS; ремонт/закрытие истории не заявляется.
 - [OpenSpec verification](../../openspec/changes/frade-p01-main-integration/evidence/current-verification-20261014T002208138Z/REPORT.md):72/145mapped; strict actual PASS; POST/main smoke/delivery/archive ещё не выполнены.
 
-## Ожидаемые решения и дальнейший порядок
+## Принятые решения и дальнейший порядок
 
 1. [P01-MAIN-LOCAL-PROCESS-PRESERVATION-01](../../openspec/changes/frade-p01-main-integration/decisions/p01-main-local-process-preservation-01/proposal.md), SHA9213b6f44950152662b455284f3d2fe76b308e5657ffa3a241ac3ccbf8f51136: сохранить точные main AGENTS/parallel workflow правила, локальный двухфайловый checkpoint. Остальные854foreign paths и remote исключены. Main не изменён.
-2. [P01-MAIN-CURRENT-RUNTIME-EVIDENCE-01](../../openspec/changes/frade-p01-main-integration/decisions/p01-main-current-runtime-evidence-01/proposal.md), SHA8c10a0cbb7b02686050dddfb80766a9f08f421979876f9b36ef6c156a4c0ee5f: принять только2non-reproduced execution risks и полное unchanged135case split coverage. PROPOSED/NOT_ACCEPTED; исходные FAIL не становятся PASS.
+2. [P01-MAIN-CURRENT-RUNTIME-EVIDENCE-01](../../openspec/changes/frade-p01-main-integration/decisions/p01-main-current-runtime-evidence-01/proposal.md), SHA8c10a0cbb7b02686050dddfb80766a9f08f421979876f9b36ef6c156a4c0ee5f: принять только2non-reproduced execution risks и полное unchanged135case split coverage. ACCEPTED_EXACT_PROPOSAL; исходные FAIL не становятся PASS.
 
-После решений: согласовать точный plan/manifest → strict → focused automatic PRE gpt-6-sol/xhigh → разрешённая process-only adoption → reverify → cumulative POST → local main preservation checkpoint/обычная integration → main smoke/hashes → archive. Никаких повторов полного desktop suite без новой обоснованной необходимости; никаких silent waivers.
+После принятия решений: согласовать точный plan/manifest → strict → focused automatic PRE gpt-6-sol/xhigh → разрешённая process-only adoption → reverify → cumulative POST → local main preservation checkpoint/обычная integration → main smoke/hashes → archive. Никаких повторов полного desktop suite без новой обоснованной необходимости; никаких silent waivers.
 Guide1.0; applicable FDS003/004/005/006/007/008/009/010/014/015 и A11Y001–009 только в утверждённых P01surfaces. Нет новых provider/installer/VSCode executable API обещаний. GitHub protection UNVERIFIED/NOT_CONFIGURED.
 Requested review pair gpt-6-sol/xhigh; actual backend/effort NOT_CONFIRMED. Правая панель: повторный open_in_codex вернул queued; видимость не подтверждена.
 
@@ -52,3 +52,9 @@ Requested review pair gpt-6-sol/xhigh; actual backend/effort NOT_CONFIRMED. Пр
 Main/new integration-ref publication NOT_RUN/NOT_AUTHORIZED; прежняя remote authority только codex/frade-ui-design-contract. P02roadmap остаётся PAUSED.
 
 Git diff --cached --check:exit2 на сохранённых supplier/historical whitespace, инспекция не задана как required gate. Исходные байты не менялись; stdout/stderr сохранены в openspec/changes/frade-p01-main-integration/evidence/local-checkpoint-20261014T004048428Z.
+
+## Решения приняты 2026-10-14T03:58:06.116Z
+
+Оба exact proposals подтверждены прямым сообщением человека. План согласован; manifestv4: openspec/changes/frade-p01-main-integration/evidence/accepted-decisions-20261014T035806116Z/transfer-manifest-v4.json. RuntimeD01/D02 принятие не переименовывает исходные FAIL. Main сохранён. Следующий шаг: strict/hash parity и automatic focused PRE gpt-6-sol/xhigh; до PASS process outputs не применяются.
+
+Focused PRE запускается автоматически на текущем plan/source snapshot. Reviewer gpt-6-sol/xhigh; до полного immutable receipt candidate/dashboard/HEAD/index заморожены.
