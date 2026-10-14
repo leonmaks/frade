@@ -1,0 +1,44 @@
+{
+  "atUtc": "2026-10-13T22:09:10.013Z",
+  "objective": "Current unchanged original Draw visual (215 cases) and desktop (135 cases) coverage, real theme/settings/editor/accessibility screenshots, full assertions unchanged",
+  "alternatives": [
+    {
+      "choice": "Repeat desktop test:e2e build",
+      "cost": "36s measured fresh build already passed; duplicate identical inputs",
+      "selected": false
+    },
+    {
+      "choice": "Reuse old runtime PASS",
+      "cost": "low, insufficient current consumer evidence",
+      "selected": false
+    },
+    {
+      "choice": "Sequential original full test selection, direct Playwright after source-bound fresh desktop build; stop at first FAIL",
+      "selected": true,
+      "cost": "Forecast Draw 3-8 min; desktop 20-70 min, judgment; original individual timeouts retained",
+      "risks": "Current environment/focus/known historical defects may stop run; unreached cases stay NOT_RUN"
+    }
+  ],
+  "probe": "--list observed 215 Draw / 135 desktop tests in 12 files each; full selection, no grep/skip/assertion changes",
+  "reassessment": "At first FAIL; if Draw exceeds10min or desktop exceeds70min, reassess before another attempt",
+  "isolatedDrawPort": null,
+  "buildReuse": {
+    "evidence": "openspec/changes/frade-p01-main-integration/evidence/check-buildRetry-20261013T220126343Z",
+    "exactManifestSha256": "a8a37b458b47589db39ad3640dfec60836fc6103a29df82d6094560eba84fdd9",
+    "inputsUnchanged": true,
+    "fullSelection": true
+  },
+  "command": {
+    "cmd": "E:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+      "--filter",
+      "@frade/desktop",
+      "exec",
+      "playwright",
+      "test",
+      "--max-failures=1"
+    ]
+  },
+  "stopAfterFirstFailure": "Execution bound only; no failing result suppressed; not-run remaining preserved"
+}

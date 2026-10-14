@@ -1,0 +1,20 @@
+{
+  "atUtc": "2026-10-14T00:35:51.190Z",
+  "objective": "Preserve authorized exact source/evidence and branch progress in an honest local incomplete checkpoint while human decisions are pending",
+  "paths": 5812,
+  "bytes": 586794349,
+  "rawTraceFiles": 2,
+  "forecastMinutes": [
+    1,
+    3
+  ],
+  "forecastKind": "Judgment; measured runtime outputs561859961bytes",
+  "selected": "Explicit manifest193 + owning OpenSpec/evidence/status paths only; no vendor, foreign main, dependency upgrade or remote",
+  "alternatives": {
+    "allCheckout": "Reject1321vendorstatentries and any foreign/unrelated paths",
+    "bulkSupplierHistory": "Reject10.65GB/91karchive unrelated inputs",
+    "omitFailures": "Rejectevidenceintegrity",
+    "awaitCommitUntilDelivery": "Possible but delays a recoverable authorized checkpoint; this commit explicitly grants no gate"
+  },
+  "stop": "Any unauthorized staged path, changed source/manifest, index conflict, credential-shaped selected text or >100MB Git blob -> stop and preserve findings. No force or main writes."
+}

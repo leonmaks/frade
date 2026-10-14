@@ -2,7 +2,15 @@ import { startPointerDrag } from './pointerDrag'
 import { ElementAppearanceSettings } from './ElementAppearanceSettings'
 import { appearanceStorageKey, readAppearance } from './elementAppearance'
 import { sameDiagramContent } from './diagramContent'
-import { useEffect, useRef, useState, useCallback, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, useCallback, type ReactNode } from 'react'
+import {
+  useThemeController,
+  createManagedOverlays,
+  createShortcutRegistry,
+  registerThemeChord,
+} from './design/theme'
+import { ThemePicker, PresentationSettings } from './design/theme/ThemePicker'
+import type { ManagedOverlays } from './design/theme/overlays'
 import {
   DiagramView,
   type DiagramDraft,
@@ -60,6 +68,42 @@ type Prompt = { label: string; resolve: (choice: 'save' | 'discard' | 'cancel') 
 const errorText = (r: Result<unknown>) =>
   r.ok ? '' : r.error.issues.map((i) => i.message).join('\n') || r.error.code
 export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
+  const presentation = useThemeController(),
+    overlayHost = useRef<HTMLDivElement>(null),
+    workbenchRoot = useRef<HTMLDivElement>(null),
+    [presentationOpener, setPresentationOpener] = useState<HTMLElement | null>(null),
+    [pickerOpener, setPickerOpener] = useState<HTMLElement | null>(null),
+    cancelingPresentation = useRef<Promise<boolean>>(),
+    [overlays, setOverlays] = useState<ManagedOverlays>(),
+    [shortcuts] = useState(() => createShortcutRegistry()),
+    [presentationSettings, setPresentationSettings] = useState(false),
+    [themePicker, setThemePicker] = useState(false)
+  const openPresentationSettings = useCallback(() => {
+    if (!presentation) return
+    setPresentationOpener(
+      document.activeElement instanceof HTMLElement ? document.activeElement : null,
+    )
+    setPresentationSettings(true)
+  }, [presentation])
+  const openThemePicker = useCallback(
+    (opener?: HTMLElement) => {
+      if (!presentation) return
+      setPickerOpener(
+        opener ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null),
+      )
+      setThemePicker(true)
+    },
+    [presentation],
+  )
+  useLayoutEffect(() => {
+    const managed = presentation
+      ? presentation.mountHost(overlayHost.current!)
+      : createManagedOverlays(workbenchRoot.current!, overlayHost.current!)
+    setOverlays(managed)
+    return () => {
+      if (!presentation) managed.dispose()
+    }
+  }, [presentation])
   const [appearance, setAppearance] = useState(() =>
     readAppearance(localStorage.getItem(appearanceStorageKey)),
   )
@@ -975,6 +1019,12 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
     activeKey = current?.active,
     active = activeKey ? drafts.current[activeKey] : undefined
   const commandsList = [
+    ...(presentation
+      ? [
+          ['Настройки интерфейса', openPresentationSettings] as const,
+          ['Выбрать тему…', () => openThemePicker()] as const,
+        ]
+      : []),
     ['Добавить репозиторий KA', () => void host({ operation: 'add', adapterKind: 'sberea' })],
     ['Добавить native-репозиторий', () => void host({ operation: 'add', adapterKind: 'native' })],
     ['Открыть рабочее пространство', () => void openWorkspace()],
@@ -991,94 +1041,284 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
   ] as const
   const actionsRef = useRef({ save, saveAll, closeTab, guard, activeKey, activeGroup })
   actionsRef.current = { save, saveAll, closeTab, guard, activeKey, activeGroup }
-  useEffect(() => {
-    const key = (e: KeyboardEvent) => {
-      const a = actionsRef.current
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
-        e.preventDefault()
-        if (e.shiftKey) void a.saveAll()
-        else if (a.activeKey) void a.save(a.activeKey)
-      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'w') {
-        e.preventDefault()
-        if (a.activeKey) void a.closeTab(a.activeGroup, a.activeKey)
-      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
-        e.preventDefault()
-        setLayout((l) => ({ ...l, sidebarVisible: !l.sidebarVisible }))
-      } else if ((e.ctrlKey || e.metaKey) && e.key === 'Tab') {
-        e.preventDefault()
-        setGroups((gs) =>
-          gs.map((g) =>
-            g.id === a.activeGroup
-              ? {
-                  ...g,
-                  active:
-                    g.tabs[
-                      (g.tabs.indexOf(g.active ?? '') + (e.shiftKey ? g.tabs.length - 1 : 1)) %
-                        g.tabs.length
-                    ],
-                }
-              : g,
-          ),
-        )
-      } else if (
-        e.key === 'F1' ||
-        ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'p')
-      ) {
-        e.preventDefault()
-        setCommands(true)
-      } else if (e.key === 'Tab') {
-        const dialogs = [
-            ...document.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"]'),
-          ],
-          dialog = promptRef.current
-            ? document.querySelector<HTMLElement>('[aria-label="Несохранённые изменения"]')
-            : dialogs.at(-1)
-        if (dialog) {
-          const controls = [
-            ...dialog.querySelectorAll<HTMLElement>(
-              'button:not(:disabled),input:not(:disabled),textarea:not(:disabled),select:not(:disabled),[tabindex="0"]',
-            ),
-          ].filter((n) => n.getClientRects().length)
-          if (controls.length) {
-            const first = controls[0],
-              last = controls.at(-1)!
-            if (
-              e.shiftKey &&
-              (document.activeElement === first || !dialog.contains(document.activeElement))
-            ) {
-              e.preventDefault()
-              last.focus()
-            } else if (
-              !e.shiftKey &&
-              (document.activeElement === last || !dialog.contains(document.activeElement))
-            ) {
-              e.preventDefault()
-              first.focus()
-            }
-          }
-        }
-      } else if (e.key === 'Escape') {
-        if (promptRef.current) finishPrompt('cancel')
-        else {
+  const overlayActions = useRef({ cancelSettings, finishPrompt, overlays })
+  useLayoutEffect(() => {
+    overlayActions.current = { cancelSettings, finishPrompt, overlays }
+  })
+  const hasFileAction = !!fileAction,
+    hasSettings = !!settings,
+    hasRecovery = !!recovery,
+    hasRename = !!renameRoot,
+    hasPrompt = !!prompt
+  useLayoutEffect(() => {
+    if (!overlays) return
+    const items = [
+      {
+        id: 'file-menu',
+        selector: '.file-menu',
+        present: menu,
+        priority: 100,
+        modal: false,
+        cancel: () => {
           setMenu(false)
+          return true
+        },
+      },
+      {
+        id: 'commands',
+        selector: '.command-palette',
+        present: commands,
+        priority: 150,
+        modal: true,
+        cancel: () => {
           setCommands(false)
-          cancelSettings()
-          setRenameRoot(undefined)
+          return true
+        },
+      },
+      {
+        id: 'file-action',
+        selector: '[data-frade-overlay="file-action"]',
+        present: hasFileAction,
+        priority: 150,
+        modal: true,
+        cancel: () => {
+          setFileAction(undefined)
+          return true
+        },
+      },
+      {
+        id: 'repository-settings',
+        selector: '[data-frade-overlay="repository-settings"]',
+        present: hasSettings,
+        priority: 150,
+        modal: true,
+        cancel: () => {
+          overlayActions.current.cancelSettings()
+          return true
+        },
+      },
+      {
+        id: 'recovery',
+        selector: '[data-frade-overlay="recovery"]',
+        present: hasRecovery,
+        priority: 150,
+        modal: true,
+        cancel: () => {
           setRecovery(undefined)
+          return true
+        },
+      },
+      {
+        id: 'rename-root',
+        selector: '[data-frade-overlay="rename-root"]',
+        present: hasRename,
+        priority: 150,
+        modal: true,
+        cancel: () => {
+          setRenameRoot(undefined)
+          return true
+        },
+      },
+      {
+        id: 'dirty-guard',
+        selector: '[aria-label="Несохранённые изменения"]',
+        present: hasPrompt,
+        priority: 1000,
+        modal: true,
+        cancel: () => {
+          overlayActions.current.finishPrompt('cancel')
+          return true
+        },
+      },
+    ]
+    const disposers = items
+      .filter((item) => item.present)
+      .map((item) => {
+        const element = overlayHost.current!.querySelector<HTMLElement>(item.selector)
+        if (!element) throw Error('Owned overlay missing: ' + item.id)
+        return overlays.register({
+          id: item.id,
+          element,
+          priority: item.priority,
+          modal: item.modal,
+          outside: item.id === 'dirty-guard' ? 'retain' : 'cancel',
+          cancel: item.cancel,
+        })
+      })
+    return () => {
+      for (const off of disposers) off()
+    }
+  }, [overlays, menu, commands, hasFileAction, hasSettings, hasRecovery, hasRename, hasPrompt])
+  useEffect(() => {
+    if (!overlays) return
+    let deactivate = () => {}
+    const changed = () => {
+      deactivate()
+      const top = overlays.top()
+      deactivate = top ? shortcuts.activate('overlay', top.priority) : () => {}
+    }
+    changed()
+    const off = overlays.subscribe(changed)
+    return () => {
+      off()
+      deactivate()
+    }
+  }, [overlays, shortcuts])
+  useEffect(() => {
+    const modifier = (e: KeyboardEvent) => (e.ctrlKey || e.metaKey) && !e.altKey
+    const registrations = [
+      shortcuts.register({
+        id: 'workbench.save',
+        context: 'workbench',
+        priority: 50,
+        allowEditable: true,
+        match: (e) => modifier(e) && e.key.toLowerCase() === 's',
+        run: (e) => {
+          const a = actionsRef.current
+          if (e.shiftKey) void a.saveAll()
+          else if (a.activeKey) void a.save(a.activeKey)
+        },
+      }),
+      shortcuts.register({
+        id: 'workbench.close',
+        context: 'workbench',
+        priority: 50,
+        allowEditable: true,
+        match: (e) => modifier(e) && e.key.toLowerCase() === 'w',
+        run: () => {
+          const a = actionsRef.current
+          if (a.activeKey) void a.closeTab(a.activeGroup, a.activeKey)
+        },
+      }),
+      shortcuts.register({
+        id: 'workbench.sidebar',
+        context: 'workbench',
+        priority: 50,
+        allowEditable: true,
+        match: (e) => modifier(e) && e.key.toLowerCase() === 'b',
+        run: () => setLayout((l) => ({ ...l, sidebarVisible: !l.sidebarVisible })),
+      }),
+      shortcuts.register({
+        id: 'workbench.next-tab',
+        context: 'workbench',
+        priority: 50,
+        allowEditable: true,
+        match: (e) => modifier(e) && e.key === 'Tab',
+        run: (e) => {
+          const a = actionsRef.current
+          setGroups((gs) =>
+            gs.map((g) =>
+              g.id === a.activeGroup
+                ? {
+                    ...g,
+                    active:
+                      g.tabs[
+                        (g.tabs.indexOf(g.active ?? '') + (e.shiftKey ? g.tabs.length - 1 : 1)) %
+                          g.tabs.length
+                      ],
+                  }
+                : g,
+            ),
+          )
+        },
+      }),
+      shortcuts.register({
+        id: 'workbench.commands',
+        context: 'workbench',
+        priority: 50,
+        allowEditable: true,
+        match: (e) => e.key === 'F1' || (modifier(e) && e.shiftKey && e.key.toLowerCase() === 'p'),
+        run: () => setCommands(true),
+      }),
+      shortcuts.register({
+        id: 'overlay.keyboard',
+        context: 'overlay',
+        priority: 2000,
+        allowEditable: true,
+        match: (e) =>
+          e.key === 'Escape' ||
+          (e.key === 'Tab' &&
+            !e.ctrlKey &&
+            !e.metaKey &&
+            !!overlayActions.current.overlays?.top()?.modal),
+        run: (e) => {
+          overlayActions.current.overlays?.handleKey(e)
+        },
+      }),
+    ]
+    if (presentation) registrations.push(registerThemeChord(shortcuts, () => openThemePicker()))
+    const cancelOwner = () => {
+      if (!presentation) return Promise.resolve(true)
+      if (cancelingPresentation.current) return cancelingPresentation.current
+      const operation = (async () => {
+        const top = overlayActions.current.overlays?.top()
+        if (top && ['theme-picker', 'presentation-settings'].includes(top.id))
+          return await top.cancel()
+        const canceled = await presentation.cancel()
+        if (canceled.status !== 'CANCELED') return false
+        setThemePicker(false)
+        setPresentationSettings(false)
+        return true
+      })()
+      cancelingPresentation.current = operation
+      void operation.then(
+        () => {
+          cancelingPresentation.current = undefined
+        },
+        () => {
+          cancelingPresentation.current = undefined
+        },
+      )
+      return operation
+    }
+    const covered = () =>
+      !!overlayHost.current?.querySelector('.frade-theme-commit-barrier:not([hidden])')
+    const key = (e: KeyboardEvent) => {
+      if (e.defaultPrevented || e.isComposing || e.keyCode === 229) return
+      if (covered()) {
+        if (e.key === 'Escape') {
+          e.preventDefault()
+          void cancelOwner()
+        } else if (e.key === 'Tab') {
+          e.preventDefault()
+          overlayHost.current
+            ?.querySelector<HTMLElement>(
+              '.frade-theme-commit-barrier button:not([hidden]):not(:disabled)',
+            )
+            ?.focus()
         }
+        return
       }
+      shortcuts.dispatch(e)
+    }
+    const pointer = (e: PointerEvent) => {
+      if (
+        covered() &&
+        presentation?.state().phase !== 'RECOVERY_BLOCKED' &&
+        e.target instanceof Element &&
+        e.target.closest('.frade-theme-commit-barrier') &&
+        !e.target.closest('button')
+      )
+        void cancelOwner()
     }
     window.addEventListener('keydown', key)
+    window.addEventListener('pointerdown', pointer)
     const off = client.onCloseRequested?.(() => {
-      void actionsRef.current.guard(Object.keys(drafts.current)).then((ok) => {
-        if (ok) void client.command({ operation: 'approveClose' })
+      void cancelOwner().then((canceled) => {
+        if (!canceled) return
+        return actionsRef.current.guard(Object.keys(drafts.current)).then((ok) => {
+          if (ok) void client.command({ operation: 'approveClose' })
+        })
       })
     })
     return () => {
       window.removeEventListener('keydown', key)
+      window.removeEventListener('pointerdown', pointer)
       off?.()
+      for (const dispose of registrations) dispose()
     }
-  }, [client, cancelSettings])
+  }, [client, shortcuts, presentation, openThemePicker])
+
   useEffect(
     () => () => {
       for (const timer of validationTimers.current.values()) clearTimeout(timer)
@@ -1113,7 +1353,7 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
   )
   const activeRoot = roots.find((r) => r.root.repositoryId === active?.base.ref.repositoryId)
   return (
-    <div className="ka-workbench" data-revision={revision}>
+    <div ref={workbenchRoot} className="ka-workbench" data-revision={revision}>
       <header className="wb-titlebar">
         <span className="frade-mark">F</span>
         <button onClick={() => setMenu(!menu)} aria-label="Меню Файл">
@@ -1132,22 +1372,6 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
         </button>
         <span>Frade</span>
       </header>
-      {menu && (
-        <div className="context-menu file-menu" role="menu">
-          {commandsList.map(([label, action]) => (
-            <button
-              role="menuitem"
-              key={label}
-              onClick={() => {
-                setMenu(false)
-                action()
-              }}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-      )}
       <div className="wb-body">
         <nav className="activity-bar" aria-label="Разделы">
           <button
@@ -1771,382 +1995,423 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
             />
           )
         })}
-      {fileAction && (
-        <div className="wb-modal-backdrop">
-          <form
-            className="wb-dialog"
-            role="dialog"
-            aria-label="Файл диаграммы"
-            onSubmit={(e) => {
-              e.preventDefault()
-              void submitFileAction()
-            }}
-          >
-            <h2>
-              {fileAction.action === 'create'
-                ? 'Новая диаграмма'
-                : fileAction.action === 'folder'
-                  ? 'Новая папка'
-                  : 'Переименовать диаграмму'}
-            </h2>
-            {fileAction.action === 'create' && (
-              <label>
-                Формат
-                <select
-                  aria-label="Формат диаграммы"
-                  value={fileAction.name.endsWith('.frade') ? 'frade' : 'drawio'}
-                  onChange={(e) =>
-                    setFileAction({
-                      ...fileAction,
-                      name:
-                        fileAction.name.replace(/\.(drawio|frade)$/i, '') + '.' + e.target.value,
-                    })
-                  }
-                >
-                  <option value="drawio">Draw.io (.drawio)</option>
-                  <option value="frade">Frade Draw (.frade)</option>
-                </select>
-              </label>
-            )}
-            <label>
-              Имя
-              <input
-                autoFocus
-                aria-label="Имя файла или папки"
-                value={fileAction.name}
-                onChange={(e) => setFileAction({ ...fileAction, name: e.target.value })}
-              />
-            </label>
-            <div className="dialog-actions">
-              <button type="submit" disabled={!fileAction.name.trim()}>
-                Применить
-              </button>
-              <button type="button" onClick={() => setFileAction(undefined)}>
-                Отмена
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
-      {prompt && (
-        <div className="wb-modal-backdrop" style={{ zIndex: 100 }}>
-          <div
-            className="wb-dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Несохранённые изменения"
-          >
-            <h2>Сохранить изменения?</h2>
-            <p>{prompt.label}</p>
-            <div className="dialog-actions">
-              <button className="primary" autoFocus onClick={() => finishPrompt('save')}>
-                Сохранить
-              </button>
-              <button onClick={() => finishPrompt('discard')}>Не сохранять</button>
-              <button onClick={() => finishPrompt('cancel')}>Отмена</button>
-            </div>
-          </div>
-        </div>
-      )}
-      {commands && (
-        <div
-          className="command-palette"
-          role="dialog"
-          aria-label="Команды"
-          onKeyDown={(e) => {
-            if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
-              e.preventDefault()
-              const controls = [...e.currentTarget.querySelectorAll<HTMLElement>('input,button')],
-                index = controls.indexOf(document.activeElement as HTMLElement)
-              controls[
-                (index + (e.key === 'ArrowDown' ? 1 : controls.length - 1)) % controls.length
-              ]?.focus()
-            } else if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
-              e.preventDefault()
-              e.currentTarget.querySelector<HTMLButtonElement>('button')?.click()
-            }
-          }}
-        >
-          <input
-            autoFocus
-            aria-label="Найти команду"
-            value={commandSearch}
-            onChange={(e) => setCommandSearch(e.target.value)}
-            placeholder="> Введите команду"
-          />
-          {commandsList
-            .filter(([label]) =>
-              label.toLocaleLowerCase().includes(commandSearch.toLocaleLowerCase()),
-            )
-            .map(([label, action]) => (
+      <div id="frade-overlay-host" ref={overlayHost}>
+        {menu && (
+          <div className="context-menu file-menu" role="menu">
+            {commandsList.map(([label, action]) => (
               <button
+                role="menuitem"
                 key={label}
                 onClick={() => {
-                  setCommands(false)
+                  setMenu(false)
                   action()
                 }}
               >
                 {label}
               </button>
             ))}
-        </div>
-      )}
-      {recovery && (
-        <div className="wb-modal-backdrop">
-          <div
-            className="wb-dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Восстановление записи"
-          >
-            <h2>Проверка незавершённой записи</h2>
-            <p>Файл: {recovery.info.entry}</p>
-            <p>
-              {recovery.info.state === 'after'
-                ? 'Изменение уже находится в исходном файле.'
-                : recovery.info.state === 'before'
-                  ? 'Исходный файл остался в прежнем состоянии.'
-                  : 'Файл изменён извне. Автоматическое разрешение невозможно.'}
-            </p>
-            <p>
-              Подтверждение сохраняет журнал и временный файл как свидетельство операции. Исходный
-              YAML не переписывается.
-            </p>
-            <div className="dialog-actions">
-              <button
-                className="primary"
-                disabled={recovery.info.state === 'conflict'}
-                onClick={() => void resolveRecovery()}
-              >
-                Подтвердить состояние
-              </button>
-              <button onClick={() => setRecovery(undefined)}>Отмена</button>
+          </div>
+        )}
+        {fileAction && (
+          <div className="wb-modal-backdrop">
+            <form
+              className="wb-dialog"
+              data-frade-overlay="file-action"
+              role="dialog"
+              aria-label="Файл диаграммы"
+              onSubmit={(e) => {
+                e.preventDefault()
+                void submitFileAction()
+              }}
+            >
+              <h2>
+                {fileAction.action === 'create'
+                  ? 'Новая диаграмма'
+                  : fileAction.action === 'folder'
+                    ? 'Новая папка'
+                    : 'Переименовать диаграмму'}
+              </h2>
+              {fileAction.action === 'create' && (
+                <label>
+                  Формат
+                  <select
+                    aria-label="Формат диаграммы"
+                    value={fileAction.name.endsWith('.frade') ? 'frade' : 'drawio'}
+                    onChange={(e) =>
+                      setFileAction({
+                        ...fileAction,
+                        name:
+                          fileAction.name.replace(/\.(drawio|frade)$/i, '') + '.' + e.target.value,
+                      })
+                    }
+                  >
+                    <option value="drawio">Draw.io (.drawio)</option>
+                    <option value="frade">Frade Draw (.frade)</option>
+                  </select>
+                </label>
+              )}
+              <label>
+                Имя
+                <input
+                  autoFocus
+                  aria-label="Имя файла или папки"
+                  value={fileAction.name}
+                  onChange={(e) => setFileAction({ ...fileAction, name: e.target.value })}
+                />
+              </label>
+              <div className="dialog-actions">
+                <button type="submit" disabled={!fileAction.name.trim()}>
+                  Применить
+                </button>
+                <button type="button" onClick={() => setFileAction(undefined)}>
+                  Отмена
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+        {prompt && (
+          <div className="wb-modal-backdrop" style={{ zIndex: 100 }}>
+            <div
+              className="wb-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Несохранённые изменения"
+            >
+              <h2>Сохранить изменения?</h2>
+              <p>{prompt.label}</p>
+              <div className="dialog-actions">
+                <button className="primary" autoFocus onClick={() => finishPrompt('save')}>
+                  Сохранить
+                </button>
+                <button onClick={() => finishPrompt('discard')}>Не сохранять</button>
+                <button onClick={() => finishPrompt('cancel')}>Отмена</button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      {renameRoot && (
-        <div className="wb-modal-backdrop">
-          <form
-            className="wb-dialog"
+        )}
+        {commands && (
+          <div
+            className="command-palette"
             role="dialog"
-            aria-modal="true"
-            aria-label="Переименовать корень"
-            onSubmit={(e) => {
-              e.preventDefault()
-              void host({
-                operation: 'rename',
-                repositoryId: renameRoot.id,
-                label: renameRoot.label,
-              }).then((ok) => {
-                if (ok) setRenameRoot(undefined)
-              })
+            aria-label="Команды"
+            onKeyDown={(e) => {
+              if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+                e.preventDefault()
+                const controls = [...e.currentTarget.querySelectorAll<HTMLElement>('input,button')],
+                  index = controls.indexOf(document.activeElement as HTMLElement)
+                controls[
+                  (index + (e.key === 'ArrowDown' ? 1 : controls.length - 1)) % controls.length
+                ]?.focus()
+              } else if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
+                e.preventDefault()
+                e.currentTarget.querySelector<HTMLButtonElement>('button')?.click()
+              }
             }}
           >
-            <label>
-              Название корня
-              <input
-                autoFocus
-                aria-label="Название корня"
-                value={renameRoot.label}
-                onChange={(e) => setRenameRoot({ ...renameRoot, label: e.target.value })}
-              />
-            </label>
-            <div className="dialog-actions">
-              <button type="submit" disabled={!renameRoot.label.trim()}>
-                Переименовать
-              </button>
-              <button type="button" onClick={() => setRenameRoot(undefined)}>
-                Отмена
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
-      {settings && (
-        <div className="wb-modal-backdrop">
-          <div
-            className="wb-dialog settings-dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Метаописание репозитория"
-          >
-            <h2>Настройки: {roots.find((r) => r.root.repositoryId === settings.id)?.root.label}</h2>
-            <p>
-              Папка данных репозитория:{' '}
-              <code>{roots.find((r) => r.root.repositoryId === settings.id)?.root.dataRoot}</code>
-            </p>
-            <ElementAppearanceSettings
-              value={appearance}
-              onApply={(value) => {
-                localStorage.setItem(appearanceStorageKey, JSON.stringify(value))
-                setAppearance(value)
-              }}
+            <input
+              autoFocus
+              aria-label="Найти команду"
+              value={commandSearch}
+              onChange={(e) => setCommandSearch(e.target.value)}
+              placeholder="> Введите команду"
             />
-            <p>Для KA папка метаописания — _ecosystems_, содержащая схемы kadzo.</p>
-            <label>
-              Именованный набор
-              <select
-                aria-label="Именованный набор"
-                value={settings.set.id}
-                onChange={(e) => {
-                  const set = roots
-                    .find((r) => r.root.repositoryId === settings.id)
-                    ?.root.metadataSets.find((s) => s.id === e.target.value)
-                  if (set)
-                    setSettings({ ...settings, set: structuredClone(set), preview: undefined })
-                }}
-              >
-                {roots
-                  .find((r) => r.root.repositoryId === settings.id)
-                  ?.root.metadataSets.map((s) => (
-                    <option key={s.id} value={s.id}>
-                      {s.label}
-                    </option>
-                  ))}
-                {!roots
-                  .find((r) => r.root.repositoryId === settings.id)
-                  ?.root.metadataSets.some((s) => s.id === settings.set.id) && (
-                  <option value={settings.set.id}>{settings.set.label}</option>
-                )}
-              </select>
-            </label>
-            <button
-              onClick={() =>
-                setSettings({
-                  ...settings,
-                  set: { ...settings.set, id: crypto.randomUUID(), label: 'Новый набор' },
-                  preview: undefined,
-                })
-              }
+            {commandsList
+              .filter(([label]) =>
+                label.toLocaleLowerCase().includes(commandSearch.toLocaleLowerCase()),
+              )
+              .map(([label, action]) => (
+                <button
+                  key={label}
+                  onClick={() => {
+                    setCommands(false)
+                    action()
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+          </div>
+        )}
+        {recovery && (
+          <div className="wb-modal-backdrop">
+            <div
+              className="wb-dialog"
+              data-frade-overlay="recovery"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Восстановление записи"
             >
-              Добавить набор
-            </button>
-            <button
-              disabled={
-                roots.find((r) => r.root.repositoryId === settings.id)?.root.activeMetadataSet ===
-                settings.set.id
-              }
-              onClick={() =>
-                void host({
-                  operation: 'removeMetadataSet',
-                  repositoryId: settings.id,
-                  metadataSetId: settings.set.id,
-                }).then((ok) => {
-                  if (ok) rootSettings(settings.id)
-                })
-              }
-            >
-              Удалить неактивный набор
-            </button>
-            <label>
-              Название
-              <input
-                aria-label="Название набора"
-                value={settings.set.label}
-                onChange={(e) =>
-                  setSettings({
-                    ...settings,
-                    set: { ...settings.set, label: e.target.value },
-                    preview: undefined,
-                  })
-                }
-              />
-            </label>
-            <label>
-              Папка метаописания
-              <input
-                aria-label="Папка метаописания"
-                value={settings.set.folderPath}
-                onChange={(e) =>
-                  setSettings({
-                    ...settings,
-                    set: { ...settings.set, folderPath: e.target.value },
-                    preview: undefined,
-                  })
-                }
-              />
-            </label>
-            <button
-              onClick={() =>
-                void client
-                  .command({ operation: 'browseMetadata', repositoryId: settings.id })
-                  .then((r) => {
-                    if (r.ok)
-                      setSettings((s) =>
-                        s
-                          ? {
-                              ...s,
-                              set: { ...s.set, folderPath: String(r.value) },
-                              preview: undefined,
-                            }
-                          : s,
-                      )
-                  })
-              }
-            >
-              Обзор…
-            </button>
-            <label>
-              Файлы схем (по одному в строке)
-              <textarea
-                aria-label="Файлы схем"
-                value={settings.set.schemaEntries.join('\n')}
-                onChange={(e) =>
-                  setSettings({
-                    ...settings,
-                    set: {
-                      ...settings.set,
-                      schemaEntries: e.target.value.split(/\r?\n/).filter(Boolean),
-                    },
-                    preview: undefined,
-                  })
-                }
-              />
-            </label>
-            <label>
-              Файлы документации
-              <textarea
-                aria-label="Файлы документации"
-                value={settings.set.documentEntries.join('\n')}
-                onChange={(e) =>
-                  setSettings({
-                    ...settings,
-                    set: {
-                      ...settings.set,
-                      documentEntries: e.target.value.split(/\r?\n/).filter(Boolean),
-                    },
-                    preview: undefined,
-                  })
-                }
-              />
-            </label>
-            {settings.error && <p className="field-error">{settings.error}</p>}
-            {settings.preview && (
-              <div className="metadata-preview">
-                <strong>Совместимый набор</strong>
-                <p>
-                  {settings.preview.types.length} типов ·{' '}
-                  {settings.preview.changedTypes?.length ?? 0} изменённых определений ·{' '}
-                  {settings.preview.diagnostics.length} исходных диагностик
-                </p>
-                <code>{settings.preview.fingerprint}</code>
+              <h2>Проверка незавершённой записи</h2>
+              <p>Файл: {recovery.info.entry}</p>
+              <p>
+                {recovery.info.state === 'after'
+                  ? 'Изменение уже находится в исходном файле.'
+                  : recovery.info.state === 'before'
+                    ? 'Исходный файл остался в прежнем состоянии.'
+                    : 'Файл изменён извне. Автоматическое разрешение невозможно.'}
+              </p>
+              <p>
+                Подтверждение сохраняет журнал и временный файл как свидетельство операции. Исходный
+                YAML не переписывается.
+              </p>
+              <div className="dialog-actions">
+                <button
+                  className="primary"
+                  disabled={recovery.info.state === 'conflict'}
+                  onClick={() => void resolveRecovery()}
+                >
+                  Подтвердить состояние
+                </button>
+                <button onClick={() => setRecovery(undefined)}>Отмена</button>
               </div>
-            )}
-            <div className="dialog-actions">
-              <button onClick={() => void stageSettings()}>Проверить набор</button>
-              <button
-                className="primary"
-                disabled={!settings.preview}
-                onClick={() => void activateSettings()}
-              >
-                Применить
-              </button>
-              <button onClick={cancelSettings}>Отмена</button>
             </div>
           </div>
-        </div>
-      )}
+        )}
+        {renameRoot && (
+          <div className="wb-modal-backdrop">
+            <form
+              className="wb-dialog"
+              data-frade-overlay="rename-root"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Переименовать корень"
+              onSubmit={(e) => {
+                e.preventDefault()
+                void host({
+                  operation: 'rename',
+                  repositoryId: renameRoot.id,
+                  label: renameRoot.label,
+                }).then((ok) => {
+                  if (ok) setRenameRoot(undefined)
+                })
+              }}
+            >
+              <label>
+                Название корня
+                <input
+                  autoFocus
+                  aria-label="Название корня"
+                  value={renameRoot.label}
+                  onChange={(e) => setRenameRoot({ ...renameRoot, label: e.target.value })}
+                />
+              </label>
+              <div className="dialog-actions">
+                <button type="submit" disabled={!renameRoot.label.trim()}>
+                  Переименовать
+                </button>
+                <button type="button" onClick={() => setRenameRoot(undefined)}>
+                  Отмена
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+        {settings && (
+          <div className="wb-modal-backdrop">
+            <div
+              className="wb-dialog settings-dialog"
+              data-frade-overlay="repository-settings"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Метаописание репозитория"
+            >
+              <h2>
+                Настройки: {roots.find((r) => r.root.repositoryId === settings.id)?.root.label}
+              </h2>
+              <p>
+                Папка данных репозитория:{' '}
+                <code>{roots.find((r) => r.root.repositoryId === settings.id)?.root.dataRoot}</code>
+              </p>
+              <ElementAppearanceSettings
+                value={appearance}
+                onApply={(value) => {
+                  localStorage.setItem(appearanceStorageKey, JSON.stringify(value))
+                  setAppearance(value)
+                }}
+              />
+              <p>Для KA папка метаописания — _ecosystems_, содержащая схемы kadzo.</p>
+              <label>
+                Именованный набор
+                <select
+                  aria-label="Именованный набор"
+                  value={settings.set.id}
+                  onChange={(e) => {
+                    const set = roots
+                      .find((r) => r.root.repositoryId === settings.id)
+                      ?.root.metadataSets.find((s) => s.id === e.target.value)
+                    if (set)
+                      setSettings({ ...settings, set: structuredClone(set), preview: undefined })
+                  }}
+                >
+                  {roots
+                    .find((r) => r.root.repositoryId === settings.id)
+                    ?.root.metadataSets.map((s) => (
+                      <option key={s.id} value={s.id}>
+                        {s.label}
+                      </option>
+                    ))}
+                  {!roots
+                    .find((r) => r.root.repositoryId === settings.id)
+                    ?.root.metadataSets.some((s) => s.id === settings.set.id) && (
+                    <option value={settings.set.id}>{settings.set.label}</option>
+                  )}
+                </select>
+              </label>
+              <button
+                onClick={() =>
+                  setSettings({
+                    ...settings,
+                    set: { ...settings.set, id: crypto.randomUUID(), label: 'Новый набор' },
+                    preview: undefined,
+                  })
+                }
+              >
+                Добавить набор
+              </button>
+              <button
+                disabled={
+                  roots.find((r) => r.root.repositoryId === settings.id)?.root.activeMetadataSet ===
+                  settings.set.id
+                }
+                onClick={() =>
+                  void host({
+                    operation: 'removeMetadataSet',
+                    repositoryId: settings.id,
+                    metadataSetId: settings.set.id,
+                  }).then((ok) => {
+                    if (ok) rootSettings(settings.id)
+                  })
+                }
+              >
+                Удалить неактивный набор
+              </button>
+              <label>
+                Название
+                <input
+                  aria-label="Название набора"
+                  value={settings.set.label}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      set: { ...settings.set, label: e.target.value },
+                      preview: undefined,
+                    })
+                  }
+                />
+              </label>
+              <label>
+                Папка метаописания
+                <input
+                  aria-label="Папка метаописания"
+                  value={settings.set.folderPath}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      set: { ...settings.set, folderPath: e.target.value },
+                      preview: undefined,
+                    })
+                  }
+                />
+              </label>
+              <button
+                onClick={() =>
+                  void client
+                    .command({ operation: 'browseMetadata', repositoryId: settings.id })
+                    .then((r) => {
+                      if (r.ok)
+                        setSettings((s) =>
+                          s
+                            ? {
+                                ...s,
+                                set: { ...s.set, folderPath: String(r.value) },
+                                preview: undefined,
+                              }
+                            : s,
+                        )
+                    })
+                }
+              >
+                Обзор…
+              </button>
+              <label>
+                Файлы схем (по одному в строке)
+                <textarea
+                  aria-label="Файлы схем"
+                  value={settings.set.schemaEntries.join('\n')}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      set: {
+                        ...settings.set,
+                        schemaEntries: e.target.value.split(/\r?\n/).filter(Boolean),
+                      },
+                      preview: undefined,
+                    })
+                  }
+                />
+              </label>
+              <label>
+                Файлы документации
+                <textarea
+                  aria-label="Файлы документации"
+                  value={settings.set.documentEntries.join('\n')}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      set: {
+                        ...settings.set,
+                        documentEntries: e.target.value.split(/\r?\n/).filter(Boolean),
+                      },
+                      preview: undefined,
+                    })
+                  }
+                />
+              </label>
+              {settings.error && <p className="field-error">{settings.error}</p>}
+              {settings.preview && (
+                <div className="metadata-preview">
+                  <strong>Совместимый набор</strong>
+                  <p>
+                    {settings.preview.types.length} типов ·{' '}
+                    {settings.preview.changedTypes?.length ?? 0} изменённых определений ·{' '}
+                    {settings.preview.diagnostics.length} исходных диагностик
+                  </p>
+                  <code>{settings.preview.fingerprint}</code>
+                </div>
+              )}
+              <div className="dialog-actions">
+                <button onClick={() => void stageSettings()}>Проверить набор</button>
+                <button
+                  className="primary"
+                  disabled={!settings.preview}
+                  onClick={() => void activateSettings()}
+                >
+                  Применить
+                </button>
+                <button onClick={cancelSettings}>Отмена</button>
+              </div>
+            </div>
+          </div>
+        )}
+        {presentation && overlays && presentationSettings && (
+          <PresentationSettings
+            controller={presentation}
+            overlays={overlays}
+            opener={presentationOpener}
+            onClosed={() => setPresentationSettings(false)}
+            onOpenPicker={openThemePicker}
+          />
+        )}
+        {presentation && overlays && themePicker && (
+          <ThemePicker
+            controller={presentation}
+            overlays={overlays}
+            opener={pickerOpener}
+            onClosed={() => setThemePicker(false)}
+          />
+        )}
+      </div>
     </div>
   )
 }

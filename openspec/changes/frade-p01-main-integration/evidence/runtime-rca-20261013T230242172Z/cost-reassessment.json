@@ -1,0 +1,46 @@
+{
+  "atUtc": "2026-10-13T22:34:59.100Z",
+  "owningChange": "frade-p01-main-integration",
+  "runningEvidence": "openspec/changes/frade-p01-main-integration/evidence/runtime-desktopE2e-20261013T220910013Z",
+  "observation": {
+    "passed": 69,
+    "total": 135,
+    "canonicalGlyphLightCompactSeconds": 198,
+    "flowMatrixFradeSeconds": 180,
+    "flowMatrixDrawioSeconds": 186
+  },
+  "classification": "COST_REASSESSMENT",
+  "oldForecastMinutes": [
+    20,
+    70
+  ],
+  "revisedForecastMinutes": [
+    80,
+    110
+  ],
+  "forecastKind": "Judgment extrapolation from observed case durations, not measured total or hard timeout",
+  "alternatives": [
+    {
+      "strategy": "Continue one original full selection",
+      "selected": true,
+      "reason": "Required exact current coverage, no second complete run; fits authorized 8-16 active hour stage forecast"
+    },
+    {
+      "strategy": "Replace remaining glyph/media cases with source-bound historical results",
+      "selected": false,
+      "reason": "Same source proven but equivalence of current pixel/media/environment inputs not demonstrated; would require formal plan reconciliation first"
+    },
+    {
+      "strategy": "Increase workers/parallel Electron cases",
+      "selected": false,
+      "reason": "Native focus/window/media share machine state; original configuration workers=1 retained"
+    },
+    {
+      "strategy": "Stop and repeat later or run a reduced set",
+      "selected": false,
+      "reason": "Would repeat completed volume or leave required current cases unproven without equivalent coverage"
+    }
+  ],
+  "decision": "Continue current sole run with source/test/assertion/timeouts unchanged, stop first FAIL; reassess at110 minutes or new failure before another expensive attempt",
+  "historicalFailuresPreserved": true
+}

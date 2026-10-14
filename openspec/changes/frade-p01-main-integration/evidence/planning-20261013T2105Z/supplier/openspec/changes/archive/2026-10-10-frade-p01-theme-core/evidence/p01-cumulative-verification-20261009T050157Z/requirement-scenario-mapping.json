@@ -1,0 +1,1199 @@
+{
+  "atUtc": "2026-10-09T05:05:27.726Z",
+  "spec": "openspec/changes/frade-p01-theme-core/specs/theme-core/spec.md",
+  "specSha256": "3d843b2e471e93aa63fd4925ea7bdeb9f5176e3bcae63919e0fc680336ccc2ad",
+  "requirements": 49,
+  "scenarioOccurrences": 108,
+  "uniqueScenarioNames": 72,
+  "rows": [
+    {
+      "requirement": "Builtin themes and independent density",
+      "line": 12,
+      "scenarios": [
+        "Explicit Light and OS Dark"
+      ],
+      "group": "resolver",
+      "source": [
+        "packages/ui-workspace/src/design/theme/registry.ts",
+        "packages/ui-workspace/src/design/theme/resolver.ts",
+        "packages/ui-workspace/src/design/theme/contrast.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/resolver.test.ts",
+        "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx"
+      ],
+      "proof": "31 complete roles,34 fixed pairs; immutable data registry; reserved IDs, data-only validation, override order, ten-pass repair; property seed20260930/200runs. Root cached unit/BDD executed through unchanged-source cache, not newly rerun."
+    },
+    {
+      "requirement": "Deterministic complete resolution",
+      "line": 21,
+      "scenarios": [
+        "Low contrast theme"
+      ],
+      "group": "resolver",
+      "source": [
+        "packages/ui-workspace/src/design/theme/registry.ts",
+        "packages/ui-workspace/src/design/theme/resolver.ts",
+        "packages/ui-workspace/src/design/theme/contrast.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/resolver.test.ts",
+        "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx"
+      ],
+      "proof": "31 complete roles,34 fixed pairs; immutable data registry; reserved IDs, data-only validation, override order, ten-pass repair; property seed20260930/200runs. Root cached unit/BDD executed through unchanged-source cache, not newly rerun."
+    },
+    {
+      "requirement": "Atomic hot preview and commit",
+      "line": 30,
+      "scenarios": [
+        "Canvas preparation fails"
+      ],
+      "group": "transaction",
+      "source": [
+        "packages/ui-workspace/src/design/theme/service.ts",
+        "packages/ui-workspace/src/design/theme/index.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/service.test.ts",
+        "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Serialized intent,2s paint/5s durable bounds, one membership reprepare, covered reconciliation/recovery. Controlled tests assert durable/snapshot/draft/selection/undo state; original runtime dirty KA/parked frame/real obstruction/refusal/chord/close/performance pass. Current p95 nearest-rank126.4ms/100samples after20warmups; OS/display variability causal attribution NOT_PROVEN."
+    },
+    {
+      "requirement": "Measurable UI coverage",
+      "line": 39,
+      "scenarios": [
+        "Rapid A B C selection"
+      ],
+      "group": "transaction",
+      "source": [
+        "packages/ui-workspace/src/design/theme/service.ts",
+        "packages/ui-workspace/src/design/theme/index.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/service.test.ts",
+        "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Serialized intent,2s paint/5s durable bounds, one membership reprepare, covered reconciliation/recovery. Controlled tests assert durable/snapshot/draft/selection/undo state; original runtime dirty KA/parked frame/real obstruction/refusal/chord/close/performance pass. Current p95 nearest-rank126.4ms/100samples after20warmups; OS/display variability causal attribution NOT_PROVEN."
+    },
+    {
+      "requirement": "Presentation consumer isolation",
+      "line": 48,
+      "scenarios": [
+        "Native and embedded documents retain authored paint",
+        "Forged or stale frame acknowledgement"
+      ],
+      "group": "isolation",
+      "source": [
+        "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+        "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "View-only ports, authored image retains own options; source/origin/context/phase authenticated ACKs; poisoned forbidden APIs in bridge tests; real JSON/XML/preferences/selection/history/identity assertions. No routing/domain persisted APIs adopted."
+    },
+    {
+      "requirement": "Presentation consumer isolation - Authenticated frame acknowledgements",
+      "line": 60,
+      "scenarios": [
+        "Forged or stale frame acknowledgement"
+      ],
+      "group": "isolation",
+      "source": [
+        "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+        "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "View-only ports, authored image retains own options; source/origin/context/phase authenticated ACKs; poisoned forbidden APIs in bridge tests; real JSON/XML/preferences/selection/history/identity assertions. No routing/domain persisted APIs adopted."
+    },
+    {
+      "requirement": "Scoped durable presentation settings",
+      "line": 68,
+      "scenarios": [
+        "Commit and restart",
+        "Malformed persisted settings",
+        "Unauthorized persistence request",
+        "Persistence failure or unknown outcome"
+      ],
+      "group": "persistence",
+      "source": [
+        "apps/desktop/src/main/presentation-settings.ts",
+        "apps/desktop/src/main/index.ts",
+        "apps/desktop/src/preload/presentation-bridge.ts",
+        "apps/desktop/src/renderer/presentation-bootstrap.ts",
+        "packages/runtime-contracts/src/presentation.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/presentation-settings.test.ts",
+        "apps/desktop/tests/unit/presentation-bridge.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Fixed profile DTO/authorization/CAS/readback/staging/compensation, exact health-key isolation, synchronous boot before createRoot, dual-ready show; actual startup/restart/obstruction passed."
+    },
+    {
+      "requirement": "Scoped durable presentation settings - Validated first paint",
+      "line": 88,
+      "scenarios": [
+        "Commit and restart",
+        "Malformed persisted settings"
+      ],
+      "group": "persistence",
+      "source": [
+        "apps/desktop/src/main/presentation-settings.ts",
+        "apps/desktop/src/main/index.ts",
+        "apps/desktop/src/preload/presentation-bridge.ts",
+        "apps/desktop/src/renderer/presentation-bootstrap.ts",
+        "packages/runtime-contracts/src/presentation.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/presentation-settings.test.ts",
+        "apps/desktop/tests/unit/presentation-bridge.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Fixed profile DTO/authorization/CAS/readback/staging/compensation, exact health-key isolation, synchronous boot before createRoot, dual-ready show; actual startup/restart/obstruction passed."
+    },
+    {
+      "requirement": "Observable transaction lifecycle",
+      "line": 100,
+      "scenarios": [
+        "C arrives during A durable rename",
+        "Membership changes after preparation or during persistence",
+        "Required participant refuses rollback",
+        "Window close during preview"
+      ],
+      "group": "transaction",
+      "source": [
+        "packages/ui-workspace/src/design/theme/service.ts",
+        "packages/ui-workspace/src/design/theme/index.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/service.test.ts",
+        "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Serialized intent,2s paint/5s durable bounds, one membership reprepare, covered reconciliation/recovery. Controlled tests assert durable/snapshot/draft/selection/undo state; original runtime dirty KA/parked frame/real obstruction/refusal/chord/close/performance pass. Current p95 nearest-rank126.4ms/100samples after20warmups; OS/display variability causal attribution NOT_PROVEN."
+    },
+    {
+      "requirement": "Observable transaction lifecycle - Bounded membership and recovery",
+      "line": 120,
+      "scenarios": [
+        "Membership changes after preparation or during persistence",
+        "Required participant refuses rollback",
+        "Window close during preview"
+      ],
+      "group": "transaction",
+      "source": [
+        "packages/ui-workspace/src/design/theme/service.ts",
+        "packages/ui-workspace/src/design/theme/index.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/service.test.ts",
+        "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Serialized intent,2s paint/5s durable bounds, one membership reprepare, covered reconciliation/recovery. Controlled tests assert durable/snapshot/draft/selection/undo state; original runtime dirty KA/parked frame/real obstruction/refusal/chord/close/performance pass. Current p95 nearest-rank126.4ms/100samples after20warmups; OS/display variability causal attribution NOT_PROVEN."
+    },
+    {
+      "requirement": "Presentation Settings and contextual keyboard overlays",
+      "line": 136,
+      "scenarios": [
+        "Picker from presentation Settings",
+        "Keyboard contexts and dirty guard"
+      ],
+      "group": "keyboard",
+      "source": [
+        "packages/ui-workspace/src/design/theme/shortcuts.ts",
+        "packages/ui-workspace/src/design/theme/overlays.ts",
+        "packages/ui-workspace/src/design/theme/ThemePicker.tsx",
+        "packages/ui-workspace/src/design/theme/index.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/shortcuts.test.ts",
+        "packages/ui-workspace/tests/ui-contract/overlays.test.tsx",
+        "packages/ui-workspace/tests/ui-contract/picker.test.tsx",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Single contextual dispatch,1s chord, editing/IME guards, managed topmost inert/trap/focus return and dirty guard; actual Settings/Enter/Escape/outside/close/frame-forwarding and preservation cases pass."
+    },
+    {
+      "requirement": "Presentation Settings and contextual keyboard overlays - Managed overlays and frame forwarding",
+      "line": 148,
+      "scenarios": [
+        "Keyboard contexts and dirty guard"
+      ],
+      "group": "keyboard",
+      "source": [
+        "packages/ui-workspace/src/design/theme/shortcuts.ts",
+        "packages/ui-workspace/src/design/theme/overlays.ts",
+        "packages/ui-workspace/src/design/theme/ThemePicker.tsx",
+        "packages/ui-workspace/src/design/theme/index.ts"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/shortcuts.test.ts",
+        "packages/ui-workspace/tests/ui-contract/overlays.test.tsx",
+        "packages/ui-workspace/tests/ui-contract/picker.test.tsx",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Single contextual dispatch,1s chord, editing/IME guards, managed topmost inert/trap/focus return and dirty guard; actual Settings/Enter/Escape/outside/close/frame-forwarding and preservation cases pass."
+    },
+    {
+      "requirement": "Explicit scoped consumer adoption and temporary exceptions",
+      "line": 156,
+      "scenarios": [
+        "Six-theme-density current runtime coverage",
+        "Exact two-occurrence legacy transition",
+        "Missing visual or performance proof",
+        "Closed inherited metadata and flow colors"
+      ],
+      "group": "scope",
+      "source": [
+        "packages/ui-workspace/src/design/theme/theme-consumers.css",
+        "docs/ui/theme-core.md",
+        "docs/ui/decisions/legacy-colors.json"
+      ],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "1044 B02 matrix records/40731 contrast recomputations/visible focus and zero violations. Actual metadata pending has no loading indicator: no fabricated UI coverage. Other122legacy entries,2accepted transitions,6foundation pins exact. Retained shell/native/placement exceptions are explicit noncompliance, not A11Y PASS. Actual372PNG human acceptance separate from raw gallery creation status."
+    },
+    {
+      "requirement": "Explicit scoped consumer adoption and temporary exceptions - Retained shell geometry",
+      "line": 176,
+      "scenarios": [
+        "Six-theme-density current runtime coverage"
+      ],
+      "group": "scope",
+      "source": [
+        "packages/ui-workspace/src/design/theme/theme-consumers.css",
+        "docs/ui/theme-core.md",
+        "docs/ui/decisions/legacy-colors.json"
+      ],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "1044 B02 matrix records/40731 contrast recomputations/visible focus and zero violations. Actual metadata pending has no loading indicator: no fabricated UI coverage. Other122legacy entries,2accepted transitions,6foundation pins exact. Retained shell/native/placement exceptions are explicit noncompliance, not A11Y PASS. Actual372PNG human acceptance separate from raw gallery creation status."
+    },
+    {
+      "requirement": "Explicit scoped consumer adoption and temporary exceptions - Retained native chrome and portal placement",
+      "line": 184,
+      "scenarios": [
+        "Six-theme-density current runtime coverage"
+      ],
+      "group": "scope",
+      "source": [
+        "packages/ui-workspace/src/design/theme/theme-consumers.css",
+        "docs/ui/theme-core.md",
+        "docs/ui/decisions/legacy-colors.json"
+      ],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "1044 B02 matrix records/40731 contrast recomputations/visible focus and zero violations. Actual metadata pending has no loading indicator: no fabricated UI coverage. Other122legacy entries,2accepted transitions,6foundation pins exact. Retained shell/native/placement exceptions are explicit noncompliance, not A11Y PASS. Actual372PNG human acceptance separate from raw gallery creation status."
+    },
+    {
+      "requirement": "Explicit scoped consumer adoption and temporary exceptions - Exception limits and immutable assertions",
+      "line": 192,
+      "scenarios": [
+        "Six-theme-density current runtime coverage",
+        "Missing visual or performance proof",
+        "Closed inherited metadata and flow colors"
+      ],
+      "group": "scope",
+      "source": [
+        "packages/ui-workspace/src/design/theme/theme-consumers.css",
+        "docs/ui/theme-core.md",
+        "docs/ui/decisions/legacy-colors.json"
+      ],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "1044 B02 matrix records/40731 contrast recomputations/visible focus and zero violations. Actual metadata pending has no loading indicator: no fabricated UI coverage. Other122legacy entries,2accepted transitions,6foundation pins exact. Retained shell/native/placement exceptions are explicit noncompliance, not A11Y PASS. Actual372PNG human acceptance separate from raw gallery creation status."
+    },
+    {
+      "requirement": "Explicit scoped consumer adoption and temporary exceptions - Readonly evidence and visual acceptance",
+      "line": 208,
+      "scenarios": [
+        "Missing visual or performance proof"
+      ],
+      "group": "scope",
+      "source": [
+        "packages/ui-workspace/src/design/theme/theme-consumers.css",
+        "docs/ui/theme-core.md",
+        "docs/ui/decisions/legacy-colors.json"
+      ],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "1044 B02 matrix records/40731 contrast recomputations/visible focus and zero violations. Actual metadata pending has no loading indicator: no fabricated UI coverage. Other122legacy entries,2accepted transitions,6foundation pins exact. Retained shell/native/placement exceptions are explicit noncompliance, not A11Y PASS. Actual372PNG human acceptance separate from raw gallery creation status."
+    },
+    {
+      "requirement": "Accepted readonly state and fixture readiness",
+      "line": 216,
+      "scenarios": [
+        "Actual already-open manager becomes diagram readonly",
+        "Restored readonly workspace preserves editing protection",
+        "Existing inputs wait for actual presentation readiness"
+      ],
+      "group": "readonly",
+      "source": [
+        "packages/ui-workspace/src/design/theme/theme-consumers.css"
+      ],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+        "apps/desktop/tests/e2e/bundle-flows.spec.ts"
+      ],
+      "proof": "Original backend-gated already-open readonly manager native/frame, actual disabled/draft/member states, restored readonly editing protection and original compatibility handlers; read-only inspection follow-up is consumer-owned, no P01 dependency."
+    },
+    {
+      "requirement": "Accepted third compatibility fixture readiness",
+      "line": 232,
+      "scenarios": [
+        "Real reloaded bundle gesture is diagnosed before readiness repair",
+        "Targeted success does not waive remaining gates"
+      ],
+      "group": "bundle",
+      "source": [],
+      "tests": [
+        "apps/desktop/tests/e2e/bundle-flows.spec.ts"
+      ],
+      "proof": "Accepted E2E-07 only readiness/test diagnosis; unchanged meaningful original actions/tolerances; root actual lifecycle frade/drawio PASS. Source pins and original accepted bytes retained."
+    },
+    {
+      "requirement": "Accepted third compatibility fixture readiness - PRE and failure gates",
+      "line": 244,
+      "scenarios": [
+        "Targeted success does not waive remaining gates"
+      ],
+      "group": "bundle",
+      "source": [],
+      "tests": [
+        "apps/desktop/tests/e2e/bundle-flows.spec.ts"
+      ],
+      "proof": "Accepted E2E-07 only readiness/test diagnosis; unchanged meaningful original actions/tolerances; root actual lifecycle frade/drawio PASS. Source pins and original accepted bytes retained."
+    },
+    {
+      "requirement": "Accepted SaveAs published-file readiness",
+      "line": 252,
+      "scenarios": [
+        "Save As command completes before durable publication"
+      ],
+      "group": "saveas",
+      "source": [],
+      "tests": [
+        "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+      ],
+      "proof": "Exact existsSync import and two publication waits; original writer/DTO/actions/assertions retained; actual root WB006007 pass."
+    },
+    {
+      "requirement": "Accepted SaveAs published-file readiness - Accepted authority and PRE",
+      "line": 260,
+      "scenarios": [
+        "Save As command completes before durable publication"
+      ],
+      "group": "saveas",
+      "source": [],
+      "tests": [
+        "apps/desktop/tests/e2e/workbench-multiroot.spec.ts"
+      ],
+      "proof": "Exact existsSync import and two publication waits; original writer/DTO/actions/assertions retained; actual root WB006007 pass."
+    },
+    {
+      "requirement": "Complete owned lower frame chrome",
+      "line": 268,
+      "scenarios": [
+        "Lower page/status strip follows six theme and density states",
+        "Lower strip under media zoom and rollback",
+        "Repair does not waive closure gates"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Complete owned lower frame chrome - Target geometry and semantic isolation",
+      "line": 284,
+      "scenarios": [
+        "Lower page/status strip follows six theme and density states",
+        "Lower strip under media zoom and rollback"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Complete owned lower frame chrome - Regression-first evidence",
+      "line": 296,
+      "scenarios": [
+        "Repair does not waive closure gates"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Bounded lower frame keyboard accessibility",
+      "line": 306,
+      "scenarios": [
+        "Real lower focus entry and navigation",
+        "Original guarded lower action from keyboard",
+        "Lower accessibility ownership teardown"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Bounded lower frame keyboard accessibility - Context guards and teardown",
+      "line": 322,
+      "scenarios": [
+        "Lower accessibility ownership teardown"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Proven lower-origin popup keyboard ownership",
+      "line": 330,
+      "scenarios": [
+        "Complete original menu and submenu action path",
+        "Unowned menus retain their original behavior",
+        "Cancellation teardown and presentation preservation"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Proven lower-origin popup keyboard ownership - Feasible placement and ownership failure",
+      "line": 346,
+      "scenarios": [
+        "Unowned menus retain their original behavior",
+        "Cancellation teardown and presentation preservation"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Bounded owned lower popup reflow",
+      "line": 358,
+      "scenarios": [
+        "Original fitting overlaps or exceeds current viewport",
+        "Feasible original placement and unowned panels",
+        "Reflow restores exact ownership state"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Bounded owned lower popup reflow - Text and mutation boundaries",
+      "line": 374,
+      "scenarios": [
+        "Original fitting overlaps or exceeds current viewport",
+        "Feasible original placement and unowned panels"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Bounded owned lower popup reflow - Impossible bounds and restoration",
+      "line": 386,
+      "scenarios": [
+        "Reflow restores exact ownership state"
+      ],
+      "group": "lower",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact lower selectors, guarded original DOM gestures/names/state/F6/Tab/Arrow/menu cancellation; measured six-state/media/viewport/200% reflow and original action cases PASS. No forced hidden target, vendor fit call, semantic/model change. Exact prior65→0 style restoration FAIL remains OPEN_ACCEPTED_DEFERRED; no whole-case exemption."
+    },
+    {
+      "requirement": "Observable owned lower refusal after completed paint",
+      "line": 394,
+      "scenarios": [
+        "Impossible lower chain after settled apply",
+        "Feasible original reopen after refusal",
+        "Current ownership rejects late forged refusal",
+        "B05 gates preserve incomplete P01"
+      ],
+      "group": "refusal",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts",
+        "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+        "packages/ui-workspace/src/DiagramView.tsx"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Authenticated settled late diagnostic, live error and safe STOP; stale/duplicate/pending paths distinct. Full-root complete B05 PASS with4observations proves downstream sem/durable/retry assertions; separate diagnostic case57 FAIL/NOT_REACHED remains preserved and deferred only exactleft."
+    },
+    {
+      "requirement": "Observable owned lower refusal after completed paint - Transaction isolation and diagnostic exclusions",
+      "line": 414,
+      "scenarios": [
+        "Feasible original reopen after refusal",
+        "Current ownership rejects late forged refusal",
+        "B05 gates preserve incomplete P01"
+      ],
+      "group": "refusal",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts",
+        "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+        "packages/ui-workspace/src/DiagramView.tsx"
+      ],
+      "tests": [
+        "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Authenticated settled late diagnostic, live error and safe STOP; stale/duplicate/pending paths distinct. Full-root complete B05 PASS with4observations proves downstream sem/durable/retry assertions; separate diagnostic case57 FAIL/NOT_REACHED remains preserved and deferred only exactleft."
+    },
+    {
+      "requirement": "Exact three upper toolbar glyph paint ownership",
+      "line": 432,
+      "scenarios": [
+        "Proven original upper glyph follows active presentation",
+        "Changed excluded or late ownership receives no stale paint",
+        "Positive glyph proof cannot collapse to absence of prior failure",
+        "Upper glyph delta observes original gates and scope",
+        "Original active opacity remains measurable",
+        "Handle release retains the painted glyph lease",
+        "Glyph digest failure occurs only inside a pending paint operation",
+        "Actual target and underlying backgrounds are distinct",
+        "V6 reference completion precedes application inference"
+      ],
+      "group": "glyph",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Only3original SVG exact bytes/hashes; bounded digest/verified cache/current owner; original alpha/18px/opacity .75 retained. Current ordinary6+expanded6 V6 matrix PASS with full-raster minimum3:1 and same-Electron controls. Unknown/absent/unsupported state not counted numerical PASS."
+    },
+    {
+      "requirement": "Exact three upper toolbar glyph paint ownership - Unknown composition blocks closure",
+      "line": 473,
+      "scenarios": [
+        "Positive glyph proof cannot collapse to absence of prior failure"
+      ],
+      "group": "glyph",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Only3original SVG exact bytes/hashes; bounded digest/verified cache/current owner; original alpha/18px/opacity .75 retained. Current ordinary6+expanded6 V6 matrix PASS with full-raster minimum3:1 and same-Electron controls. Unknown/absent/unsupported state not counted numerical PASS."
+    },
+    {
+      "requirement": "Exact accepted upper glyph applicability and FUI control revalidation",
+      "line": 483,
+      "scenarios": [
+        "Original narrow controls are absent and recover without replacement",
+        "Original unavailable focus remains a P01 blocker",
+        "Fresh valid FUI controls follow the final assertion source",
+        "Applicability is not a general unknown-state waiver"
+      ],
+      "group": "fui",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts",
+        "docs/ui/decisions/p01-theme-traceability.json"
+      ],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+        "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx"
+      ],
+      "proof": "Original narrow Insert/Freehand remain NOT_RENDERED_ORIGINAL_RESPONSIVE with same-node wide restoration; disabled unavailable states no guessed PASS. Current source-bound FUI12, sole permitted binding literal,2positive/14negative controls and BDD111 retained. Original focus unavailable separate keyboard work implemented; two exactfocus assertion failures now user-deferred, other keyboard evidence required."
+    },
+    {
+      "requirement": "Exact accepted upper glyph applicability and FUI control revalidation - Source-bound FUI control refresh",
+      "line": 503,
+      "scenarios": [
+        "Fresh valid FUI controls follow the final assertion source"
+      ],
+      "group": "fui",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts",
+        "docs/ui/decisions/p01-theme-traceability.json"
+      ],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+        "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx"
+      ],
+      "proof": "Original narrow Insert/Freehand remain NOT_RENDERED_ORIGINAL_RESPONSIVE with same-node wide restoration; disabled unavailable states no guessed PASS. Current source-bound FUI12, sole permitted binding literal,2positive/14negative controls and BDD111 retained. Original focus unavailable separate keyboard work implemented; two exactfocus assertion failures now user-deferred, other keyboard evidence required."
+    },
+    {
+      "requirement": "Exact upper-three keyboard and proven popup ownership",
+      "line": 513,
+      "scenarios": [
+        "Exact enabled anchors expose truthful keyboard operation",
+        "Original menu transition proves both opener and instance",
+        "Deepest submenu and root cancellation preserve data",
+        "Ownership expiry restores only still-owned values",
+        "Original Freehand action retains its separate window boundary",
+        "Accepted keyboard scope does not waive cumulative gates"
+      ],
+      "group": "upper",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact proven anchors/menu instance, original gesture/capability, deep submenu/cancellation/Tab/teardown; actual6action+6keyboard executions pass. Freehand internals remain excluded, first-action effects explicitly tested; lower unaffected."
+    },
+    {
+      "requirement": "Exact upper-three keyboard and proven popup ownership - Bounded successor and lower preservation",
+      "line": 541,
+      "scenarios": [
+        "Deepest submenu and root cancellation preserve data",
+        "Ownership expiry restores only still-owned values",
+        "Original Freehand action retains its separate window boundary",
+        "Accepted keyboard scope does not waive cumulative gates"
+      ],
+      "group": "upper",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Exact proven anchors/menu instance, original gesture/capability, deep submenu/cancellation/Tab/teardown; actual6action+6keyboard executions pass. Freehand internals remain excluded, first-action effects explicitly tested; lower unaffected."
+    },
+    {
+      "requirement": "Exact unclipped focus decoration preserves original toolbar",
+      "line": 563,
+      "scenarios": [
+        "Focus escapes clipping without changing original layout",
+        "Visual ownership cannot cross menus modal or expired context",
+        "Complete real contour evidence retains historical blockers"
+      ],
+      "group": "focus",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Inert/aria-hidden pointer-transparent external contour,2px stroke+2px offset+<=1px backing,<=5px extent; immutable original toolbar. Current full body5/6 and popup5/6 with exact2deferred focus failures. Separate135-context12focusPASS supplies downstream focus/raster/media/preservation coverage; lifecycle worker1/context differs, not rootFAIL closure."
+    },
+    {
+      "requirement": "Accepted native resize fixture readiness preserves all invariants",
+      "line": 582,
+      "scenarios": [
+        "Native transition completion precedes the protected observation",
+        "Frozen original tests and all failure evidence remain authoritative"
+      ],
+      "group": "readiness",
+      "source": [],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Only2named lower-matrix/reflow native-settlement insertions, actual toggleShapesPanel completion before protected window; original186048-byte prefix and25callbacks retained as origin, exact authorized reverse proof. Assertions/actions/tolerances unchanged; source/current root original case PASS."
+    },
+    {
+      "requirement": "Accepted native resize fixture readiness preserves all invariants - Exact frozen-callback exception",
+      "line": 594,
+      "scenarios": [
+        "Frozen original tests and all failure evidence remain authoritative"
+      ],
+      "group": "readiness",
+      "source": [],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Only2named lower-matrix/reflow native-settlement insertions, actual toggleShapesPanel completion before protected window; original186048-byte prefix and25callbacks retained as origin, exact authorized reverse proof. Assertions/actions/tolerances unchanged; source/current root original case PASS."
+    },
+    {
+      "requirement": "Accepted native resize fixture readiness preserves all invariants - Two named readiness insertion sites",
+      "line": 602,
+      "scenarios": [
+        "Native transition completion precedes the protected observation"
+      ],
+      "group": "readiness",
+      "source": [],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Only2named lower-matrix/reflow native-settlement insertions, actual toggleShapesPanel completion before protected window; original186048-byte prefix and25callbacks retained as origin, exact authorized reverse proof. Assertions/actions/tolerances unchanged; source/current root original case PASS."
+    },
+    {
+      "requirement": "Accepted native resize fixture readiness preserves all invariants - Immutable tests and prohibited shortcuts",
+      "line": 610,
+      "scenarios": [
+        "Frozen original tests and all failure evidence remain authoritative"
+      ],
+      "group": "readiness",
+      "source": [],
+      "tests": [
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Only2named lower-matrix/reflow native-settlement insertions, actual toggleShapesPanel completion before protected window; original186048-byte prefix and25callbacks retained as origin, exact authorized reverse proof. Assertions/actions/tolerances unchanged; source/current root original case PASS."
+    },
+    {
+      "requirement": "Retained focus obeys existing live-anchor validity during pending prepare",
+      "line": 620,
+      "scenarios": [
+        "Independent focus invalidation ends the retained lease",
+        "Valid pending prepare is pure and current apply can restore focus"
+      ],
+      "group": "retained",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "Pending prepare cannot paint; invalid focus/disabled/menu/modal/window context removes only existing stale decoration. Current6pendingfocusPASS12observations after original READY; historical queueMicrotask purity claim withdrawn and retained."
+    },
+    {
+      "requirement": "Upper paint acknowledgement follows accepted projection ownership",
+      "line": 639,
+      "scenarios": [
+        "Unowned native resource changes during paint",
+        "An admitted source changes during paint"
+      ],
+      "group": "ack",
+      "source": [
+        "apps/desktop/src/main/drawio-theme-bridge.ts"
+      ],
+      "tests": [
+        "apps/desktop/tests/unit/drawio-theme.test.ts",
+        "apps/desktop/tests/e2e/ui-contract-theme.spec.ts"
+      ],
+      "proof": "beforePaint/afterPaint retains positively verified node/image/bytes/projection owner/class/private marker/all ownedproperty+priority. Unowned Fullscreen/Format changes ignore finalprojectiononly; bounds remain. Missing lease refuses with no digest/repaint; meaningful historical-source RED then85unitGREEN and actual B02native/frame/matrices PASS."
+    },
+    {
+      "requirement": "Explicit deferred P01 acceptance preserves raw outcomes",
+      "line": 688,
+      "scenarios": [
+        "Three accepted defects remain honest open limitations"
+      ],
+      "group": "acceptance",
+      "source": [
+        "openspec/changes/frade-p01-theme-core/decisions/p01-minor-deferral-20261009T040325Z.md"
+      ],
+      "tests": [],
+      "proof": "Direct user exact3authority; PRE repeatPASS; root/diagnosticFAIL retained, withdrawn optionalunit0/1 supplies no approval. New failures/missing coverage still block. RawNOT_REACHED never PASS; separately executed complete oracles are identified with dates and contexts."
+    },
+    {
+      "requirement": "Deferred acceptance cannot absorb unrelated missing evidence",
+      "line": 696,
+      "scenarios": [
+        "New failure or unreachable assertion is not waived"
+      ],
+      "group": "acceptance",
+      "source": [
+        "openspec/changes/frade-p01-theme-core/decisions/p01-minor-deferral-20261009T040325Z.md"
+      ],
+      "tests": [],
+      "proof": "Direct user exact3authority; PRE repeatPASS; root/diagnosticFAIL retained, withdrawn optionalunit0/1 supplies no approval. New failures/missing coverage still block. RawNOT_REACHED never PASS; separately executed complete oracles are identified with dates and contexts."
+    }
+  ],
+  "proofScope": "Owner verification by source/test review plus executed hash/oracle audit; independent POST NOT_RUN. Group proof applies to each named requirement and its original scenarios, not a generated test or substitute for execution.",
+  "evidence": {
+    "root": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z",
+    "rootExit": 1,
+    "rootFailures": [
+      "  x   96 tests\\e2e\\ui-contract-theme.spec.ts:5798:3 › P01-UPPER-028 actual owned popup foreground contrast and focus raster dark comfortable (14.2s)",
+      "  x  100 tests\\e2e\\ui-contract-theme.spec.ts:6038:3 › P01-UPPER-031 actual body focus bounds media neighbors and modal light comfortable (19.4s)"
+    ],
+    "diagnostic": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z",
+    "focusedCases": [
+      {
+        "ordinal": 93,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-028 actual owned popup foreground contrast and focus raster light compact",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 94,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-028 actual owned popup foreground contrast and focus raster light comfortable",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 95,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-028 actual owned popup foreground contrast and focus raster dark compact",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 96,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-028 actual owned popup foreground contrast and focus raster dark comfortable",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 97,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-028 actual owned popup foreground contrast and focus raster high-contrast compact",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 98,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-028 actual owned popup foreground contrast and focus raster high-contrast comfortable",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 99,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-031 actual body focus bounds media neighbors and modal light compact",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 100,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-031 actual body focus bounds media neighbors and modal light comfortable",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 101,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-031 actual body focus bounds media neighbors and modal dark compact",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 102,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-031 actual body focus bounds media neighbors and modal dark comfortable",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 103,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-031 actual body focus bounds media neighbors and modal high-contrast compact",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      },
+      {
+        "ordinal": 104,
+        "title": "P01-CONTEXT-DIAGNOSTIC P01-UPPER-031 actual body focus bounds media neighbors and modal high-contrast comfortable",
+        "status": "passed",
+        "worker": 1,
+        "retry": 0
+      }
+    ],
+    "originalTestSha256": "7c3e52a69c1b8346a78f4297774f5c2342a3ecdaeb05a2611465d2f09c546f43",
+    "focusAnalysis": "openspec/changes/frade-p01-theme-core/evidence/p01-focus-context-diagnostic-run-20261008T071630Z/focus-observation-analysis.json",
+    "b05": {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/desktop-artifacts/ui-contract-theme-P01-B05--452aa-its-original-feasible-retry/b05-observations.json",
+      "sha256": "9efdf92a8ec68dcd6432fe96a28c5515ddb20d8e9da37c8f3250b2f4a96cc18c",
+      "observations": [
+        {
+          "label": "actual-refusal",
+          "restored": {
+            "sameIdentity": true,
+            "menuGone": true,
+            "restored": true,
+            "vendorClassesPreserved": true,
+            "mismatches": [],
+            "roots": 2,
+            "focus": "Страницы"
+          }
+        },
+        {
+          "label": "failed-same-revision-publication",
+          "revision": "0",
+          "liveRetained": true
+        },
+        {
+          "label": "successful-authoritative-cancel-boundary",
+          "revision": "2",
+          "oldDiagnosticCleared": true
+        },
+        {
+          "label": "feasible-retry-and-authoritative-owner-boundary",
+          "semanticPreservation": true,
+          "durablePreservation": true
+        }
+      ]
+    },
+    "technicalAudit": "openspec/changes/frade-p01-theme-core/evidence/p01-cumulative-verification-20261009T050157Z/technical-evidence-audit.json",
+    "performance": {
+      "path": "openspec/changes/frade-p01-theme-core/evidence/p01-refresh-full-root-20261008T034000Z/desktop-artifacts/ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms/performance-result.json",
+      "sha256": "0b7321131fa42ca933457e154689abbe56da26c1bd4fe3c8febc281bf8a3656e",
+      "p95": 126.39999999850988,
+      "samples": 100,
+      "pinPaths": []
+    }
+  },
+  "sourcePins": [
+    {
+      "path": "packages/ui-workspace/src/design/theme/registry.ts",
+      "bytes": 5049,
+      "sha256": "d9d5706b0fb84f5d1f30765dd85ae06a4416e8577f62fe1fa05aa29947b7d74b"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/resolver.ts",
+      "bytes": 4551,
+      "sha256": "aaf7e6949c8384cf04921050d6aaeae904928a7aba100a42c46662ec67a05ba5"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/contrast.ts",
+      "bytes": 3226,
+      "sha256": "6c8f58cecc41159033890af8ffbff2837543c88ac5849625b51df63301c9279c"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/resolver.test.ts",
+      "bytes": 11592,
+      "sha256": "a82c75a954b70d1a87b1c03d316d540de2cf795bca14e9142115c86dfb06f63d"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx",
+      "bytes": 13950,
+      "sha256": "c25a1e58252dc2cedf598b9887967884be8b46e6958ff172b317452f421b4f77"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/service.ts",
+      "bytes": 24438,
+      "sha256": "e7d44a28ea2fa57a9130a2da6d042638fbb0546258b84cc238261dbd77ce33af"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/index.ts",
+      "bytes": 11429,
+      "sha256": "4488b35179d8df3f94f805a41fccd2339736eb4845eaa3ee2810aa0b280f9313"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/service.test.ts",
+      "bytes": 34042,
+      "sha256": "19952bcf556bc9960bc6a040f057b83dd40648b91a97e2899279d782112b00a4"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+      "bytes": 53060,
+      "sha256": "29f447a2ae78496105b20c9c38e4448e1a02a6fe348f7dff2d6a2dac00b83cb7"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "bytes": 279962,
+      "sha256": "7c3e52a69c1b8346a78f4297774f5c2342a3ecdaeb05a2611465d2f09c546f43"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+      "bytes": 4379,
+      "sha256": "119790d7fb96cd808c983285e3f119e009cd525974e84b7b89e2fb9018c10897"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+      "bytes": 13539,
+      "sha256": "e440c5fdb1c4ec1b3220fed13dd5e3e911c7bd5a150ec60d8a33e1a83594a740"
+    },
+    {
+      "path": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "bytes": 92771,
+      "sha256": "53901d117d50c9efc5abf3d4590f8e1ba699a28a042641f9bccdb070e64e218a"
+    },
+    {
+      "path": "apps/desktop/tests/unit/drawio-theme.test.ts",
+      "bytes": 95454,
+      "sha256": "0badcdf4e787d8c3bf148c397f16f5046c6bfc55196aa32fc60a7b6ca99eb2e4"
+    },
+    {
+      "path": "apps/desktop/src/main/presentation-settings.ts",
+      "bytes": 14914,
+      "sha256": "e639180b841481ff869034a7c355648be70f4fc752e2bb519d8aebbfdacfaeef"
+    },
+    {
+      "path": "apps/desktop/src/main/index.ts",
+      "bytes": 13942,
+      "sha256": "0dda036e508ed9e9f4f4cc86f9882d0e88be62778e23e32b2b5b12ddeb802ef2"
+    },
+    {
+      "path": "apps/desktop/src/preload/presentation-bridge.ts",
+      "bytes": 2382,
+      "sha256": "61c43eff0f418f02433c1b8971d338a0a913dcd31721165614e7059d29bafba9"
+    },
+    {
+      "path": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+      "bytes": 2901,
+      "sha256": "c3161f1b0ced4d2036e524c6ca9d779041ef41d6ceab8924cad11ce814f1227f"
+    },
+    {
+      "path": "packages/runtime-contracts/src/presentation.ts",
+      "bytes": 16731,
+      "sha256": "1dcbde50237d57baeaa3754bbad6f074623612f2f669b5cf4dc03d9828ea43cc"
+    },
+    {
+      "path": "apps/desktop/tests/unit/presentation-settings.test.ts",
+      "bytes": 19320,
+      "sha256": "405e44ba4f25ea60d47df04c25c19dc38dc55c461a6b6fcc7f7d9b367fef4c02"
+    },
+    {
+      "path": "apps/desktop/tests/unit/presentation-bridge.test.ts",
+      "bytes": 12864,
+      "sha256": "619d52ccd49e13ad267d5cfab91021b11113a1b7c80ba96249c269d152880d1a"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/shortcuts.ts",
+      "bytes": 5049,
+      "sha256": "2a7256aac6bde14d8c7f296b345a36bd23862d66fb22f07c6d1cf60a4d64bf64"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/overlays.ts",
+      "bytes": 8726,
+      "sha256": "1fcadbd0e7ba86c8864e3ba9e86c65aa3b5058de606bde26a9572f80e2e6cb5a"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/ThemePicker.tsx",
+      "bytes": 8764,
+      "sha256": "773264ef3d5fe1c89631d14cbeb8ca44628f8d50df0e8f81680a539d6ef0a4db"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/shortcuts.test.ts",
+      "bytes": 5597,
+      "sha256": "9635933d09dd2fa6c17380a8e8bcf4bb6b47368951f662e7a39397e6ba9eaa8f"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/overlays.test.tsx",
+      "bytes": 8242,
+      "sha256": "f189c780feff42765dc8a8350cb29e0c7c85d189e08d4fd775e9e61e1c804862"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/picker.test.tsx",
+      "bytes": 17284,
+      "sha256": "ce18a8542ccb8d0a6f46f3020d1b964fb93b6ec9d72364599603293f22d18694"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/theme-consumers.css",
+      "bytes": 9240,
+      "sha256": "23bfc0bcff1c0398cfb2a11a0054e9b3146185eb0d4b90fc57ece7d6a0bf006e"
+    },
+    {
+      "path": "docs/ui/theme-core.md",
+      "bytes": 33007,
+      "sha256": "a2319f552a05b94526b4bdc8fc94df34a6542cc086fa84f3668185b3a28739a8"
+    },
+    {
+      "path": "docs/ui/decisions/legacy-colors.json",
+      "bytes": 59908,
+      "sha256": "c5ac3f58e3a974ada34eb90118efc0bcbd32633821c000ec591a9df88fc83720"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/bundle-flows.spec.ts",
+      "bytes": 31283,
+      "sha256": "80a3fe5af430da2b513ddc2f46b5dda8f8d568bea5976e9a9ce29d588eeb9711"
+    },
+    {
+      "path": "apps/desktop/tests/e2e/workbench-multiroot.spec.ts",
+      "bytes": 16598,
+      "sha256": "b5da22905aac1d1a2583cf71e4942a2944893b407c1c26002d0e7d86b4028aed"
+    },
+    {
+      "path": "packages/ui-workspace/src/DiagramView.tsx",
+      "bytes": 26257,
+      "sha256": "2de4c308bd84cc045ea1c81521e5f62321fcddcd15c7d49b077f3d234eb252c9"
+    },
+    {
+      "path": "docs/ui/decisions/p01-theme-traceability.json",
+      "bytes": 62634,
+      "sha256": "ee1ce68f9dcbfa1e2bea2bd6fae45f50c41a810c5dadd1cca93b289bdbcba236"
+    },
+    {
+      "path": "openspec/changes/frade-p01-theme-core/decisions/p01-minor-deferral-20261009T040325Z.md",
+      "bytes": 4175,
+      "sha256": "b308ce5e4f1a58005c0105ea3dc3bcbe2574a988003b80f49110adf86bc920b1"
+    }
+  ],
+  "limitations": [
+    "Root exit1 remains FAIL; only exact3accepted assertions deferred.",
+    "Diagnostic focus instrumented original bodies, same original source restored; worker/context differs, no cause/repair/rootPASS.",
+    "Technicalaudit units[] intentionally not populated from old named-source reports; units/static covered by actual unchanged-source full root with Turbo cache disclosures.",
+    "Human approval covers exact372selectedPNG only.",
+    "Backend/model NOT_CONFIRMED despite exact approved CLI selection.",
+    "Branch protection LOCAL_ONLY/NOT_CONFIGURED.",
+    "POST/archive tasks remain process-pending; no P02."
+  ]
+}

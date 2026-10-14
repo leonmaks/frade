@@ -1,0 +1,14 @@
+{
+  "objective": "Current execution of exact fail-closed source/packet/control assertions not covered by root check",
+  "chosen": "One original Node --test transport.test.mjs with bounded owned fixture cleanup; no code changes, no review invocation, no network",
+  "forecastSeconds": [
+    1,
+    10
+  ],
+  "forecastType": "Judgment; synchronous deterministic local checks",
+  "stop": "Nonzero test or cleanup -> preserve FAIL and stop; no second full runtime attempt",
+  "alternatives": {
+    "historicalOnly": "Insufficient current coverage for transferred guard logic",
+    "fullIndependentReview": "Cannot replace these deterministic negative assertions; upcoming PRE/POST remains separate"
+  }
+}
