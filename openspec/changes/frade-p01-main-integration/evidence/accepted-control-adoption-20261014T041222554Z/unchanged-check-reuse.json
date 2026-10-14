@@ -1,0 +1,366 @@
+{
+  "atUtc": "2026-10-14T04:12:25.743Z",
+  "approval": "openspec/changes/frade-p01-main-integration/decisions/p01-main-current-runtime-evidence-01/acceptance-20261014.json",
+  "sourceManifest": "openspec/changes/frade-p01-main-integration/evidence/accepted-decisions-20261014T035806116Z/transfer-manifest-v4.json",
+  "soleChangedPath": "AGENTS.md",
+  "compiledRuntimeOrAssertionOrConfigurationChange": false,
+  "retainedChecks": {
+    "tokens": {
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/check-tokens-20261013T214546576Z",
+      "startedAtUtc": "2026-10-13T21:45:46.578Z",
+      "endedAtUtc": "2026-10-13T21:45:46.675Z",
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "scripts/ui/tokens.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "lockfileUnchanged": true,
+      "stdoutSha256": "ea352fa76f2e64e75e01e7e4cd6a1002ac81e569f14051dd12d69f139a7c2c23",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "install": {
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/check-install-20261013T214546791Z",
+      "startedAtUtc": "2026-10-13T21:45:46.792Z",
+      "endedAtUtc": "2026-10-13T21:45:58.658Z",
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "install",
+        "--offline",
+        "--frozen-lockfile"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "lockfileUnchanged": true,
+      "stdoutSha256": "758879423f17b5693d687dd684ceb0ed42cbfaa47bf640961612af04e76c94d2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "check": {
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/check-check-20261013T214717887Z",
+      "startedAtUtc": "2026-10-13T21:47:17.889Z",
+      "endedAtUtc": "2026-10-13T21:49:31.052Z",
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "lockfileUnchanged": true,
+      "stdoutSha256": "5daa94dd6687420e1450b3772674019bcfe9c83aa9b8e98f4112c18e291218ab",
+      "stderrSha256": "7fa9d1a71cd0fe6fa9ab3638595d8159d155b24e53b5c09ee2a8f3537d858263"
+    },
+    "freshAffected": {
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/fresh-affected-checks-20261013T215100440Z",
+      "status": "FAIL",
+      "results": [
+        {
+          "name": "runtime-contracts-lint",
+          "startedAtUtc": "2026-10-13T21:51:00.442Z",
+          "endedAtUtc": "2026-10-13T21:51:31.294Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/runtime-contracts",
+            "lint"
+          ],
+          "exitCode": 0,
+          "status": "PASS",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrSha256": "f742f989be94e529cde1c75bc31645378f1840908710384b8406b93407d056d9"
+        },
+        {
+          "name": "runtime-contracts-typecheck",
+          "startedAtUtc": "2026-10-13T21:51:31.299Z",
+          "endedAtUtc": "2026-10-13T21:51:35.670Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/runtime-contracts",
+            "typecheck"
+          ],
+          "exitCode": 0,
+          "status": "PASS",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+        },
+        {
+          "name": "runtime-contracts-test",
+          "startedAtUtc": "2026-10-13T21:51:35.673Z",
+          "endedAtUtc": "2026-10-13T21:51:38.796Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/runtime-contracts",
+            "test"
+          ],
+          "exitCode": 0,
+          "status": "PASS",
+          "stdoutSha256": "ed5d3d2f2d0a2b86aac573cf6368a9bf0a613f3c3e7511089f54b87b1e498ada",
+          "stderrSha256": "cb7efe2ed065b3202856f854f1645179984b659249d4ea99dde8467ed4a4b173"
+        },
+        {
+          "name": "ui-workspace-lint",
+          "startedAtUtc": "2026-10-13T21:51:38.799Z",
+          "endedAtUtc": "2026-10-13T21:51:46.235Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/ui-workspace",
+            "lint"
+          ],
+          "exitCode": 0,
+          "status": "PASS",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrSha256": "f742f989be94e529cde1c75bc31645378f1840908710384b8406b93407d056d9"
+        },
+        {
+          "name": "ui-workspace-typecheck",
+          "startedAtUtc": "2026-10-13T21:51:46.238Z",
+          "endedAtUtc": "2026-10-13T21:51:54.959Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/ui-workspace",
+            "typecheck"
+          ],
+          "exitCode": 0,
+          "status": "PASS",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+        },
+        {
+          "name": "ui-workspace-test",
+          "startedAtUtc": "2026-10-13T21:51:54.961Z",
+          "endedAtUtc": "2026-10-13T21:52:09.548Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/ui-workspace",
+            "test"
+          ],
+          "exitCode": 0,
+          "status": "PASS",
+          "stdoutSha256": "d6c091d6a897e8c855f6e0f2d82620fa60fb993b923ebe09379679b5eb3726f5",
+          "stderrSha256": "cb7efe2ed065b3202856f854f1645179984b659249d4ea99dde8467ed4a4b173"
+        },
+        {
+          "name": "desktop-lint",
+          "startedAtUtc": "2026-10-13T21:52:09.553Z",
+          "endedAtUtc": "2026-10-13T21:52:16.403Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/desktop",
+            "lint"
+          ],
+          "exitCode": 0,
+          "status": "PASS",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrSha256": "785b223160c30fda735920637fb1bfa85adcdae9e934f0483a3822ab1002f952"
+        },
+        {
+          "name": "desktop-typecheck",
+          "startedAtUtc": "2026-10-13T21:52:16.408Z",
+          "endedAtUtc": "2026-10-13T21:52:25.400Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/desktop",
+            "typecheck"
+          ],
+          "exitCode": 0,
+          "status": "PASS",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+        },
+        {
+          "name": "desktop-test",
+          "startedAtUtc": "2026-10-13T21:52:25.403Z",
+          "endedAtUtc": "2026-10-13T21:52:38.763Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/desktop",
+            "test"
+          ],
+          "exitCode": 0,
+          "status": "PASS",
+          "stdoutSha256": "7ac0fd2fab56e6c8c22960061f939da3f51ed0464b9cd7d494c06afe6e419c3f",
+          "stderrSha256": "dc5f1c789049423eeaf935d7aca00ad7deffb63dc39bba7b592d186c24df5014"
+        },
+        {
+          "name": "desktop-build",
+          "startedAtUtc": "2026-10-13T21:52:38.767Z",
+          "endedAtUtc": "2026-10-13T21:52:42.886Z",
+          "cmd": "E:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+            "--filter",
+            "@frade/desktop",
+            "build"
+          ],
+          "exitCode": 1,
+          "status": "FAIL",
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrSha256": "f807509532bdb3aafd9be74789927f7a3b46d469ca4730fab128678fba9f8042"
+        }
+      ]
+    },
+    "buildRetry": {
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/check-buildRetry-20261013T220126343Z",
+      "startedAtUtc": "2026-10-13T22:01:26.345Z",
+      "endedAtUtc": "2026-10-13T22:02:02.621Z",
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "build"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "lockfileUnchanged": true,
+      "stdoutSha256": "c401b1da91037fdc4d6046b6b615d67e5ab27e751f40ad5b835c066fad89ed15",
+      "stderrSha256": "1647d1b7d93874c73e4528c16805eb8a7381363a99797ff241dc00808c8a9a11"
+    },
+    "drawVisual": {
+      "kind": "drawVisual",
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/runtime-drawVisual-20261013T220535980Z",
+      "startedAtUtc": "2026-10-13T22:05:35.980Z",
+      "endedAtUtc": "2026-10-13T22:07:59.535Z",
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "test:e2e",
+        "--max-failures=1"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceUnchanged": true,
+      "outputs": 2,
+      "pngs": 1,
+      "stdoutSha256": "cc84e3623191b2d70fe558caf872b913009e8ecb7910d3aff920708a4447c360",
+      "stderrSha256": "05a3882991a40df2df86c13bed0824a92f56b264f759cab3a38996ed4440008a"
+    },
+    "desktopE2e": {
+      "kind": "desktopE2e",
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/runtime-desktopE2e-20261013T220910013Z",
+      "startedAtUtc": "2026-10-13T22:09:10.013Z",
+      "endedAtUtc": "2026-10-13T22:56:05.276Z",
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "exec",
+        "playwright",
+        "test",
+        "--max-failures=1"
+      ],
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceUnchanged": true,
+      "outputs": 2897,
+      "pngs": 2463,
+      "stdoutSha256": "bd9d11c9962d33cc6982ce0887ed69f3790f6dff732bfa5b2f3ba1c8ad9055fa",
+      "stderrSha256": "89dbd02a7101ed4722f209431e50c54e752c02e47de713d1335824147e62a151"
+    },
+    "expandedGlyphLightCompactProbe": {
+      "kind": "expandedGlyphLightCompactProbe",
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/runtime-expandedGlyphLightCompactProbe-20261013T230910312Z",
+      "startedAtUtc": "2026-10-13T23:09:10.312Z",
+      "endedAtUtc": "2026-10-13T23:14:21.022Z",
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "exec",
+        "playwright",
+        "test",
+        "ui-contract-theme.spec.ts",
+        "--grep",
+        "P01-UPPER-017 expanded real viewport text and media raster light compact$",
+        "--max-failures=1"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceUnchanged": true,
+      "outputs": 268,
+      "pngs": 126,
+      "stdoutSha256": "5ad8783a07456e153387fa15b2cf61731fdbe4bac0b2cd6e9eaed2713dfa8a16",
+      "stderrSha256": "286337bc8f37ecc1e0fd3fb43526134294bfa9bf8a04e03368daddff94e6c02d"
+    },
+    "remainingDesktopCases": {
+      "kind": "remainingDesktopCases",
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/runtime-remainingDesktopCases-20261013T231907391Z",
+      "startedAtUtc": "2026-10-13T23:19:07.391Z",
+      "endedAtUtc": "2026-10-13T23:56:14.490Z",
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "exec",
+        "playwright",
+        "test",
+        "--grep",
+        "P01-UPPER-017 expanded real viewport text and media raster light comfortable$|P01-UPPER-017 expanded real viewport text and media raster dark compact$|P01-UPPER-017 expanded real viewport text and media raster dark comfortable$|P01-UPPER-017 expanded real viewport text and media raster high-contrast compact$|P01-UPPER-017 expanded real viewport text and media raster high-contrast comfortable$|P01-UPPER-018 original actions and presentation ownership light compact$|P01-UPPER-018 original actions and presentation ownership light comfortable$|P01-UPPER-018 original actions and presentation ownership dark compact$|P01-UPPER-018 original actions and presentation ownership dark comfortable$|P01-UPPER-018 original actions and presentation ownership high-contrast compact$|P01-UPPER-018 original actions and presentation ownership high-contrast comfortable$|P01-UPPER-023 actual keyboard anchors and owned popup paths light compact$|P01-UPPER-023 actual keyboard anchors and owned popup paths light comfortable$|P01-UPPER-023 actual keyboard anchors and owned popup paths dark compact$|P01-UPPER-023 actual keyboard anchors and owned popup paths dark comfortable$|P01-UPPER-023 actual keyboard anchors and owned popup paths high-contrast compact$|P01-UPPER-023 actual keyboard anchors and owned popup paths high-contrast comfortable$|P01-UPPER-028 actual owned popup foreground contrast and focus raster light compact$|P01-UPPER-028 actual owned popup foreground contrast and focus raster light comfortable$|P01-UPPER-028 actual owned popup foreground contrast and focus raster dark compact$|P01-UPPER-028 actual owned popup foreground contrast and focus raster dark comfortable$|P01-UPPER-028 actual owned popup foreground contrast and focus raster high-contrast compact$|P01-UPPER-028 actual owned popup foreground contrast and focus raster high-contrast comfortable$|P01-UPPER-031 actual body focus bounds media neighbors and modal light compact$|P01-UPPER-031 actual body focus bounds media neighbors and modal light comfortable$|P01-UPPER-031 actual body focus bounds media neighbors and modal dark compact$|P01-UPPER-031 actual body focus bounds media neighbors and modal dark comfortable$|P01-UPPER-031 actual body focus bounds media neighbors and modal high-contrast compact$|P01-UPPER-031 actual body focus bounds media neighbors and modal high-contrast comfortable$|P01-UPPER-033 actual pending prepare focus lease light compact$|P01-UPPER-033 actual pending prepare focus lease light comfortable$|P01-UPPER-033 actual pending prepare focus lease dark compact$|P01-UPPER-033 actual pending prepare focus lease dark comfortable$|P01-UPPER-033 actual pending prepare focus lease high-contrast compact$|P01-UPPER-033 actual pending prepare focus lease high-contrast comfortable$|UI-CASCADE:light:absent:normal$|UI-CASCADE:light:system:normal$|UI-CASCADE:light:light:normal$|UI-CASCADE:light:dark:normal$|UI-CASCADE:light:high-contrast:normal$|UI-CASCADE:light:absent:forced$|UI-CASCADE:light:system:forced$|UI-CASCADE:light:light:forced$|UI-CASCADE:light:dark:forced$|UI-CASCADE:light:high-contrast:forced$|UI-CASCADE:dark:absent:normal$|UI-CASCADE:dark:system:normal$|UI-CASCADE:dark:light:normal$|UI-CASCADE:dark:dark:normal$|UI-CASCADE:dark:high-contrast:normal$|UI-CASCADE:dark:absent:forced$|UI-CASCADE:dark:system:forced$|UI-CASCADE:dark:light:forced$|UI-CASCADE:dark:dark:forced$|UI-CASCADE:dark:high-contrast:forced$|INS-001/004 real KA typed scalar, nested, reference edits; shared groups, external conflict, keyboard cancel and geometry$|WB-006/007 real KA A\\+B and native: same IDs, active-card save, Save All, workspace paths and dirty Remove/Cancel$|KM-006 real KA metadata relocation, dirty cancel, incompatible/missing candidates, preview cancellation and restart$|KA rejects swapped folders before persistence and repairs a restored metadata path through settings$|KA opens through UI, edits a card, saves original YAML and restores workspace$",
+        "--max-failures=1"
+      ],
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceUnchanged": true,
+      "outputs": 2015,
+      "pngs": 968,
+      "stdoutSha256": "bf474512a1e5119d0bc4b5028a749369aaa2ab687c134a08b63373b013f38e11",
+      "stderrSha256": "66ed0248d42a1da604373f727fe2ebf69145bbe54f867d476e158578ea25ec4d"
+    },
+    "workbenchPathsProbe": {
+      "kind": "workbenchPathsProbe",
+      "dir": "openspec/changes/frade-p01-main-integration/evidence/runtime-workbenchPathsProbe-20261014T000506173Z",
+      "startedAtUtc": "2026-10-14T00:05:06.173Z",
+      "endedAtUtc": "2026-10-14T00:05:29.215Z",
+      "cmd": "E:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/NVISEN/AppData/Local/node/corepack/v1/pnpm/12.6.0/bin/pnpm.mjs",
+        "--filter",
+        "@frade/desktop",
+        "exec",
+        "playwright",
+        "test",
+        "workbench-paths.spec.ts",
+        "workbench.spec.ts",
+        "--max-failures=1"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceUnchanged": true,
+      "outputs": 7,
+      "pngs": 3,
+      "stdoutSha256": "21870a33099cce840e86bf6d75629ba6f80780ddec74e9e255204470382a35b2",
+      "stderrSha256": "0ee042e8272cc618ebd1d70eebdb7b25c73b39111141e850fa800479b0e4cd9a"
+    }
+  },
+  "retainedDesktopCaseCoverage": "openspec/changes/frade-p01-main-integration/evidence/current-verification-20261014T002208138Z/desktop-case-coverage.json",
+  "coverage135": true,
+  "acceptedConsumerRisks": [
+    "P01-MAIN-D01",
+    "P01-MAIN-D02"
+  ],
+  "rawFailedCommandsRemainFAIL": true,
+  "unknownCauses": true,
+  "sourceInputsProof": "before.json and after.json; all191other manifest paths plus parallel output unchanged; current baseline input parity is separately required for final verification",
+  "noNewFailureAllowed": true
+}

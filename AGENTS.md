@@ -500,18 +500,15 @@ No whole UI merge, foreign uncommitted product files or silent baseline movement
 
 For every required PRE and POST automatically prepare a relevant authorized Frade
 source/contracts/tests/evidence packet, dispatch a fresh independent OpenAI Codex
-review using the exact model and reasoning effort assigned in the approved
-owning branch plan for its current stage and PRE/POST role, and receive the result. The
+review requesting gpt-6-astra with reasoning xhigh, and receive the result. The
 reviewer runs in technically verified read-only packet confinement: original
 checkout/other-worktrees/credentials/secrets/global settings/writes/network/apps
 are unavailable. Authenticated harness access stays outside reviewer commands.
 Do not ask the human to relay prompts/results or approve each authorized review.
 User authorization on1October2026 extends this workflow to all Frade worktrees;
 other repositories and sensitive data remain excluded. Do not silently substitute
-a model/effort or claim an unattested backend. There is no universal model/effort
-default. Missing, ambiguous or conflicting stage assignments, unavailable requested
-models/efforts or an unverified sandbox are BLOCKED for the actual decision/limitation.
-Record the selected stage/role and exact plan source hash/excerpt with the review.
+a model/effort or claim an unattested backend. If a required stronger/different
+review policy or working sandbox cannot be honored, report BLOCKED for decision.
 
 Approved coherent plan plus validation precedes PRE; PRE PASS precedes production.
 Actual required tests and OpenSpec verification precede POST; POST PASS precedes
@@ -540,3 +537,58 @@ Ask humans only for material scope/spec/permission/visual or blocked-environment
 decisions. Independent review findings cannot change the contract by themselves.
 The consumer owns necessary adoption/control revalidation; it cannot make an
 independent supplier wait for its routing/product gate or numbered completion.
+
+---
+
+## 21. Stage plan determines independent review model and effort
+
+This user-authorized correction supersedes only the universal gpt-6-astra/xhigh
+wording of section20 and the old shared handoff. For each stage/branch follow its
+approved plan's exact reviewer model and reasoning effort for PRE or POST.
+Automatic independent packet-confined read-only dispatch/reception stays mandatory.
+There is no universal default or silent upgrade/downgrade. Record stage/role and
+exact approved plan path/raw hash/excerpt; missing/ambiguous/conflicting assignment
+or unavailable exact model/runtime is BLOCKED for the actual decision/limitation.
+The shared current release implements this policy without account settings per
+branch. Request metadata does not approve a plan; preserve stricter owning gates,
+frozen origin, historical evidence and mandatory branch-local tracked status.
+Read docs/engineering/agent-workflow.md from the current Git-common release.
+
+---
+
+## 22. Strategy Before Expensive Work
+
+Before substantial implementation, an expensive review, bulk processing, or a long
+test run, analyze the feasible strategies for achieving the required result.
+Do not default to executing the largest procedure or repeatedly processing the
+same volume.
+
+Record and communicate before execution:
+
+1. The objective, acceptance criteria, and evidence needed to prove completion.
+2. All materially different feasible alternatives, including the existing
+   approach, removing duplicate work, incremental checks, safe reuse of verified
+   results, isolation or parallel execution, and algorithm or tool changes.
+   Explain why an alternative is inapplicable when relevant.
+3. For each viable alternative: expected time, resource and token cost, risks,
+   dependencies, and uncertainty. Distinguish measured durations from forecasts
+   and hard timeouts; label any success probability as measured or judgment.
+4. The selected strategy and why it offers the best expected path to the required
+   result while preserving correctness and the required evidence.
+5. A bounded initial probe when major costs are unknown, progress observations,
+   a reassessment point, and criteria for stopping or changing strategy.
+
+Optimize execution without weakening specifications, assertions, historical
+regressions, source binding, isolation, or independent review requirements.
+Run each required check on the exact applicable inputs; avoid duplicate complete
+runs when equivalent coverage can be demonstrated. Change a mandated procedure
+only within user-authorized scope and reconcile its formal contract first.
+
+If observed costs or failures invalidate the selected strategy, reassess before
+launching another expensive attempt. Preserve interrupted and failed evidence;
+never report an incomplete run as PASS. Already spent time or tokens are not a
+reason to continue an inferior strategy.
+
+Apply this analysis proportionately: routine low-impact edits do not require a
+large planning ceremony. Do not request another approval for actions the user
+has already authorized.

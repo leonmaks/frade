@@ -17,7 +17,7 @@ Scope: approved direct transfer of completed P01 plus exact accepted public proc
 
 ## 3. Cumulative integration verification
 
-- [ ] 3.1 Complete applicable root lint/typecheck/unit/BDD/boundary/build/UI compliance, Draw visual and desktop regression coverage on final exact inputs; retain original raw FAIL/NOT_RUN. Apply only accepted P01-MAIN-CURRENT-RUNTIME-EVIDENCE-01 split135case prerequisite/D01-D02 risks after fresh PRE/source revalidation; new FAILs remain blockers. Prove negative-fixture cleanup and unchanged-input equivalence before reuse.
+- [x] 3.1 Complete applicable root lint/typecheck/unit/BDD/boundary/build/UI compliance, Draw visual and desktop regression coverage on final exact inputs; retain original raw FAIL/NOT_RUN. Apply only accepted P01-MAIN-CURRENT-RUNTIME-EVIDENCE-01 split135case prerequisite/D01-D02 risks after fresh PRE/source revalidation; new FAILs remain blockers. Prove negative-fixture cleanup and unchanged-input equivalence before reuse.
 - [x] 3.2 Compare current visual/accessibility/semantic evidence with accepted P01 scope, exact prior defect contexts and baselines; retain three unresolved historical defects and obtain any required new human visual/exception decision using concrete evidence.
 - [x] 3.3 Run OpenSpec verification against all adopted requirements/tasks and exact transfer scope; save requirement-to-current-evidence mapping and actual source hashes.
 - [ ] 3.4 Obtain fresh automatic independent POST gpt-6-sol/xhigh after required checks/verification, save complete immutable review result/receipt, and commit the verified integration checkpoint.
