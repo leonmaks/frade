@@ -1,10 +1,10 @@
 # Main P01 integration — current status
 
-Updated 2026-10-14T23:37:31.510Z; branch main, worktree E:/dev/codex/frade, baseline 98f387f96b51b0ad139e3507c376ff1c3e8dec09; active frade-p01-main-integration.
+Updated 2026-10-14T23:47:20.287Z; branch main, worktree E:/dev/codex/frade, baseline 98f387f96b51b0ad139e3507c376ff1c3e8dec09; active frade-p01-main-integration.
 
-Main four themes/startup repair integrated; Main20/22. Control source6/12. Actual POST1 FAIL preserved; three gaps RED then28/28 GREEN, snapshot26 exact-input reuse:54distinct. Same eight paths, source190both/foreign854/policy/syntax/lint/newconfinement PASS. Fresh POST2 gpt-6-sol/xhigh next; install/MainPOST/archive NOT_RUN. Candidate stays frozen through strict publication; no raw receipt/status/index/HEAD edits in passing candidate. P02-P07 PAUSED. No remote publication authorized.
+Main four themes/startup repair integrated; Main20/22. Control source6/12. Actual POST1 FAIL preserved; three gaps RED then29/29 GREEN, snapshot26 exact-input reuse:55distinct. Same eight paths, source190both/foreign854/policy/syntax/lint/newconfinement PASS. Fresh POST3 gpt-6-sol/xhigh next; install/MainPOST/archive NOT_RUN. Candidate stays frozen through strict publication; no raw receipt/status/index/HEAD edits in passing candidate. P02-P07 PAUSED. No remote publication authorized.
 
-Next: complete POST2 receipt -> strict common release install -> supplier verify/archive -> exact Main8/capability adoption -> actual Main POST -> no-sync archive. Earlier dated history/evidence retained below.
+Next: complete POST3 receipt -> strict common release install -> supplier verify/archive -> exact Main8/capability adoption -> actual Main POST -> no-sync archive. Earlier dated history/evidence retained below.
 
 ## Фактический результат 2026-10-14T05:31:11.063Z
 
