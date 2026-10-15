@@ -1,6 +1,6 @@
 # Main P01 integration — current status
 
-Updated 2026-10-14T23:58:53.268Z; main / E:/dev/codex/frade. Main four themes/startup repair integrated,20/22. Control6/12. POST1/2/3 FAIL preserved; full-current/index/prefix/membership repairs within8paths. Current33publication PASS +26exact snapshot reuse =59distinct; source190both/foreign854/syntax/lint/policy/newcanary PASS. POST4 gpt-6-sol/xhigh next; release/install/MainPOST/archive NOT_RUN. Full UI reruns0; P02-P07 PAUSED. Remote NOT_AUTHORIZED. Candidate remains frozen through passing receipt and strict publication.
+Updated 2026-10-15T00:08:30.777Z; main / E:/dev/codex/frade. Main four themes/startup repair integrated,20/22. Control6/12. POST1/2/3/4 FAIL preserved; full-current/index/prefix/membership repairs within8paths. Current36publication PASS +26exact snapshot reuse =62distinct; source190both/foreign854/syntax/lint/policy/newcanary PASS. POST5 gpt-6-sol/xhigh next; release/install/MainPOST/archive NOT_RUN. Full UI reruns0; P02-P07 PAUSED. Remote NOT_AUTHORIZED. Candidate remains frozen through passing receipt and strict publication.
 
 ## Фактический результат 2026-10-14T05:31:11.063Z
 
