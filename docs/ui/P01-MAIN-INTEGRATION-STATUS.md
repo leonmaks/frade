@@ -111,3 +111,11 @@ Control6/12; exact final51/51 PASS, syntax6/lint/4boundaries PASS, protected190 
 ## Actual supplier POST FAIL / bounded repair — 2026-10-14T23:26:53.330Z
 
 Independent POST 79710f... FAIL: fresh full candidate and reviewed-index binding missing; owner-root branch bypasses required package pins. Full130 hashes/eight mirrors/17bundle entries/policy1.1/51tests confirmed, not closure. Release not installed; Main POST/archive blocked. Reopen2.3/2.4;4/12 complete. Same approved8paths; three targeted RED cases, then GREEN/newPOST. UI unchanged; fullUIruns0. RCA openspec/changes/frade-review-snapshot-integrity/evidence/post-publication-rca-20261015.md.
+
+## Real supplier POST and strict publication PASS — 2026-10-15T00:15:01.538Z
+
+Actual cumulative POST PASS 3105507598d6913cf1759a41c7b2c80ecfddce2d1b18a19622bda702c988e753; raw/complete stream/request/packet/source/index guards verified, no candidate writes before strict installation. New shared releasea6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5 installed with exact17files/policy1.1; previousa3ac... preserved. Source8only, no UI/domain/foreign write; owned8/12 tasks complete, supplierverify/archive next, then consumerMain ownPOST/archive. Independent supplier PASS does not grant Main closure. Actualreceipt/install openspec/changes/frade-review-snapshot-integrity/evidence/post-and-install-20261015T001501507Z. Root local handoff absent remains, use common service loader. RoadmapPAUSED, no remote publication.
+
+## Actual Main POST preparation — 2026-10-15T00:24:03.061Z
+
+Exact8controls+1capability adopted,62/62 actualMainchecksPASS; lint/parent+capabilitystrict/commonrunnerAVAILABLE. Protected190/foreign854exact incl deliberateabsence. ActualMain20/22; freshownPOST next. Sameapprovedgpt-6-sol/xhigh; packet1025files/52456832bytes retains originalcumulativecontext, noUIrun. Source/head/index/dashboard freezeaftercheckpoint. openspec/changes/frade-p01-main-integration/evidence/review-control-adoption-20261015T001733566Z/MAIN-VERIFY.md. Supplierarchived/gated/installed; MainclosureNOT_GRANTEDyet.

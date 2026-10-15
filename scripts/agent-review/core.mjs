@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url'
 export const COMMON = 'E:/dev/codex/frade/.git'
 export const sha = (value) => createHash('sha256').update(value).digest('hex')
 const git = (cwd, args) =>
-  execFileSync('git', ['-c', 'core.longpaths=true', ...args], {
+  execFileSync('git', ['--no-optional-locks', '-c', 'core.longpaths=true', '-c', 'core.fsmonitor=false', ...args], {
     cwd,
     encoding: 'utf8',
     maxBuffer: 32 * 1024 * 1024,
@@ -176,12 +176,10 @@ export function verifyRequestedPolicy(record, selection) {
     throw Error('INVOKED_POLICY_MISMATCH')
   return true
 }
-export async function instance(release, owner, run, authority, reviewPolicy) {
+// Internal deterministic materialization shared by instance creation and publication proof.
+export function materializeInstance(templates, provenance, releaseDigest, owner, run, authority, reviewPolicy) {
   validatePolicyParameters(reviewPolicy)
-  const directory = path.join(run, 'instance')
-  await fs.mkdir(directory)
-  const originals = path.join(release.root, 'scripts/agent-review/transport')
-  const provenance = JSON.parse(await fs.readFile(path.join(originals, 'provenance.json'), 'utf8'))
+  const files = []
   const mutations = []
   const edit = (file, text, old, replacement) => {
     mutations.push({ file, oldSha256: sha(old), newSha256: sha(replacement) })
@@ -194,7 +192,7 @@ export async function instance(release, owner, run, authority, reviewPolicy) {
     'invoke-review.mjs',
     'transport.test.mjs',
   ]) {
-    const original = await fs.readFile(path.join(originals, name)),
+    const original = templates[name],
       item = provenance.entries.find((x) => x.path === name)
     // Enforce exact origin bytes in addition to the reviewed bundle hashes.
     if (!item || item.sha256 !== sha(original)) throw Error('ORIGIN_DRIFT')
@@ -281,13 +279,23 @@ export async function instance(release, owner, run, authority, reviewPolicy) {
           JSON.stringify('model_reasoning_effort=' + JSON.stringify(reviewPolicy.reasoningEffort)) +
           '));',
       )
-    await fs.writeFile(path.join(directory, name), text, { flag: 'wx' })
+    files.push({ path: name, text })
   }
-  await fs.writeFile(
-    path.join(run, 'instance-provenance.json'),
-    JSON.stringify({ release: release.digest, owner, reviewPolicy, mutations }, null, 2) + '\n',
-    { flag: 'wx' },
-  )
+  return { files, provenance: { release: releaseDigest, owner, reviewPolicy, mutations } }
+}
+export async function instance(release, owner, run, authority, reviewPolicy) {
+  validatePolicyParameters(reviewPolicy)
+  const directory = path.join(run, 'instance')
+  await fs.mkdir(directory)
+  const originals = path.join(release.root, 'scripts/agent-review/transport')
+  const provenance = JSON.parse(await fs.readFile(path.join(originals, 'provenance.json'), 'utf8'))
+  const templates = {}
+  for (const name of ['integrity.mjs', 'policy.mjs', 'prepare-review.mjs', 'invoke-review.mjs', 'transport.test.mjs'])
+    templates[name] = await fs.readFile(path.join(originals, name))
+  const materialized = materializeInstance(templates, provenance, release.digest, owner, run, authority, reviewPolicy)
+  for (const item of materialized.files)
+    await fs.writeFile(path.join(directory, item.path), item.text, { flag: 'wx' })
+  await fs.writeFile(path.join(run, 'instance-provenance.json'), JSON.stringify(materialized.provenance, null, 2) + '\n', { flag: 'wx' })
   return directory
 }
 export async function execute(command, args, cwd) {

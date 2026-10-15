@@ -7,6 +7,7 @@ const paths = [
   'scripts/agent-review/core.mjs',
   'scripts/agent-review/cli.mjs',
   'scripts/agent-review/publish.mjs',
+  'scripts/agent-review/publication.test.mjs',
   'scripts/agent-review/make-bundle.mjs',
   'scripts/agent-review/AGENTS-common.fragment.md',
   'scripts/agent-review/AGENTS-stage-review.fragment.md',
