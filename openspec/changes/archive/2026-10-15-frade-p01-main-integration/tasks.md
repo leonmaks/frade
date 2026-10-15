@@ -25,8 +25,8 @@ Scope: approved direct transfer of completed P01 plus exact accepted public proc
 ## 4. Deliver into main without foreign changes
 
 - [x] 4.1 Refresh main HEAD/index/856dirty hashes and collision inventory; verify exact accepted two-path process preservation/ordinary integration safety. Fresh PRE covers the accepted process inputs/outputs; main process checkpoint stays after POST. Changed inputs/HEAD/index or additional collisions STOP.
-- [ ] 4.2 Serialize verified main integration preserving all foreign files; verify effective transferred source hashes and applicable main smoke checks, revalidating/reviewing any changed integration result.
-- [ ] 4.3 Update branch-local final status/report with actual main result, guide1.0, files/rules/checks/screenshots/open defects and commit/publication state; inspect git status/diff and verify no unrelated changes.
+- [x] 4.2 Serialize verified main integration preserving all foreign files; verify effective transferred source hashes and applicable main smoke checks, revalidating/reviewing any changed integration result.
+- [x] 4.3 Update branch-local final status/report with actual main result, guide1.0, files/rules/checks/screenshots/open defects and commit/publication state; inspect git status/diff and verify no unrelated changes.
 
 ## Workflow follow-up
 

@@ -1,6 +1,24 @@
 # Main P01 integration — current status
 
-Updated 2026-10-15T00:08:30.777Z; main / E:/dev/codex/frade. Main four themes/startup repair integrated,20/22. Control6/12. POST1/2/3/4 FAIL preserved; full-current/index/prefix/membership repairs within8paths. Current36publication PASS +26exact snapshot reuse =62distinct; source190both/foreign854/syntax/lint/policy/newcanary PASS. POST5 gpt-6-sol/xhigh next; release/install/MainPOST/archive NOT_RUN. Full UI reruns0; P02-P07 PAUSED. Remote NOT_AUTHORIZED. Candidate remains frozen through passing receipt and strict publication.
+Updated 2026-10-15T00:34:47.213Z; branch main / E:/dev/codex/frade; baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09.
+
+**Four built-in themes and startup repair integrated. Actual Main POST PASS; all22/22 implementation/delivery/report tasks complete. Main no-sync archive PASS.**
+
+| Stage | Status |
+| --- | --- |
+| Foundation/P01 theme resolver/preview | Previously completed; ready source transferred |
+| Main four-mode integration + accepted startup repair | DONE; actualMain9runtime,62controlchecks and independentPOSTPASS |
+| Review-tool repair | DONE; supplierPOST/install/archivePASS; Main8controls+newcapability adopted |
+| Main no-sync archive | DONE; canonical5UI + newcontrolspec preserved |
+| P02 installer roadmap | PAUSED |
+| P03–P07/import/icons/hosts/APIs/registry | NOT_STARTED / roadmapPAUSED |
+| Broad shell/tree/forms/Draw/AI migration | PAUSED |
+
+Checks:190protected/854foreign exact; Main62/62 Nodecontrol tests/lint/strict/sharedrunnerAVAILABLE PASS. Source-bound priorMain246UI+128desktopunits/8checkgroups/9runtime/p95124.1ms@60Hz retained and independently reviewed; no duplicateUIrun. Actual Main POST 268a160962cf65fc15d3a4567d7266eaa0f93203a9c7354b6e7390b0831c576d, all1025packetfiles/fullsource/nativeindex/request/plan/negativepresence/stream guardsPASS. Actualbackend/effortNOT_CONFIRMED; requestedgpt-6-sol/xhigh.
+
+Fiveacceptedhistorical risks remainOPEN, old30Hz/fullcommandFAIL/earlyprofileNOT_PROVEN unchanged. No futureinstaller/provider/executableVSCode compatibility claim. Guide1.0; originalFDS/A11Y applied scope preserved. Rootlocalbundle lacks historicnonadoptedhandoff, use Git-commonrelease a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5.
+
+Commit actualMainPOST candidate 7495e379fcb29c8afb98b36b5624a81557c1a8e6; localfinalcheckpoint pending. RemoteMain/newrefNOT_AUTHORIZED; no GitHubmergeprotection claim. Source/runtimeUIunchanged since own lastreviewedrepair. Earlier detailed dated progress follows.
 
 ## Фактический результат 2026-10-14T05:31:11.063Z
 
@@ -119,3 +137,11 @@ Actual cumulative POST PASS 3105507598d6913cf1759a41c7b2c80ecfddce2d1b18a19622bd
 ## Actual Main POST preparation — 2026-10-15T00:24:03.061Z
 
 Exact8controls+1capability adopted,62/62 actualMainchecksPASS; lint/parent+capabilitystrict/commonrunnerAVAILABLE. Protected190/foreign854exact incl deliberateabsence. ActualMain20/22; freshownPOST next. Sameapprovedgpt-6-sol/xhigh; packet1025files/52456832bytes retains originalcumulativecontext, noUIrun. Source/head/index/dashboard freezeaftercheckpoint. openspec/changes/frade-p01-main-integration/evidence/review-control-adoption-20261015T001733566Z/MAIN-VERIFY.md. Supplierarchived/gated/installed; MainclosureNOT_GRANTEDyet.
+
+## Actual Main cumulative POST PASS — 2026-10-15T00:32:50.843Z
+
+Complete17raw/stream/ownMainHEAD/request/plan/packet/fullcandidate/rawindex guards verified, deliberatetrackedabsence digest-bound andnotrestored. Actualrequestedgpt-6-sol/xhigh, backend/effortNOT_CONFIRMED. Receipt openspec/changes/frade-p01-main-integration/evidence/actual-main-post-received-20261015T003250681Z; result268a160962cf65fc15d3a4567d7266eaa0f93203a9c7354b6e7390b0831c576d. Main finalverify/no-syncarchive next; no nextroadmap orremote.
+
+## Main archived PASS — 2026-10-15T00:35:58.677Z
+
+openspec/changes/archive/2026-10-15-frade-p01-main-integration; Main22/22 actualownPOST/stream/index/negative/fullsourcePASS. 6105archivedfilesexact,190/854preserved. Postarchivewrapper oldpathENOENT recovered without replay. RoadmapP02-P07PAUSED. Localfinalcheckpointnext; remoteNOT_AUTHORIZED.

@@ -1,0 +1,7 @@
+The approved P01 POST row and design hash match the `main` candidate. I verified all 1,025 packet artifacts against their hashes, plus the 190 protected paths and nine adopted control and capability paths. The preservation records retain all 854 foreign paths, including the tracked file’s intentional absence. I found no new scope or source invariant blocker.
+
+The retained, source-bound evidence covers the four modes, both densities, preview/apply/cancel, persistence, editor and domain preservation, ACK deadlines, and current guide and accessibility checks. The nine actual Main runtime cases passed; p95 was 124.1 ms at 60 Hz. The old 30 Hz failure, original full-command failures, five accepted open risks, unknown human profile, and unproven early probe remain labeled as such. No new visual baseline or future capability is claimed.
+
+This is the independent review verdict. The receiver must verify the complete event stream, confinement, and unchanged candidate, index, request, source, controls, and packet before recording Main POST closure. The requested pair was `gpt-6-sol/xhigh`; actual backend and effort remain `NOT_CONFIRMED`. No archive or remote action is authorized by this verdict.
+
+GATE_STATUS: PASS
