@@ -16,3 +16,5 @@ READY_FOR_VERIFY: YES; finalverification/gateactualPASS, no-syncarchive below th
 Archive: PASS openspec/changes/archive/2026-10-15-frade-p01-main-integration; 6105filesexactbefore/aftermove, no-sync,5canonicalUIhashes/190protected/854foreign preserved. Actual archiveUTC2026-10-15T00:35:58.668Z; ownMainPOSTPASS above. Wrapperpostcheck ENOENT (oldmovedpath) separately recorded/recovered, no UI/source repair or archive replay.
 
 Actualgallery: openspec/changes/archive/2026-10-15-frade-p01-main-integration/evidence/startup-reviewed-repair-delivery-20261014T192716522Z/SCREENSHOTS.md. RawMainreceipt: openspec/changes/archive/2026-10-15-frade-p01-main-integration/evidence/actual-main-post-received-20261015T003250681Z. Localfinalcheckpointnext, no remote push.
+
+Final local implementation/archive checkpoint: f3d0aa9ac7dc3fb73ea147d38a8574d6b97c229e; all22tasks done, actualMainPOSTPASS, no-syncarchivePASS. Final remainingGitstatus:854preexistingforeign paths only, bytes/presence unchanged; stagedindexempty. No push toMain/newrefauthorized.

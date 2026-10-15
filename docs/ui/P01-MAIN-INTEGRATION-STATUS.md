@@ -18,7 +18,7 @@ Checks:190protected/854foreign exact; Main62/62 Nodecontrol tests/lint/strict/sh
 
 Fiveacceptedhistorical risks remainOPEN, old30Hz/fullcommandFAIL/earlyprofileNOT_PROVEN unchanged. No futureinstaller/provider/executableVSCode compatibility claim. Guide1.0; originalFDS/A11Y applied scope preserved. Rootlocalbundle lacks historicnonadoptedhandoff, use Git-commonrelease a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5.
 
-Commit actualMainPOST candidate 7495e379fcb29c8afb98b36b5624a81557c1a8e6; localfinalcheckpoint pending. RemoteMain/newrefNOT_AUTHORIZED; no GitHubmergeprotection claim. Source/runtimeUIunchanged since own lastreviewedrepair. Earlier detailed dated progress follows.
+Commit actualMainPOST candidate 7495e379fcb29c8afb98b36b5624a81557c1a8e6; local final implementation/archive checkpoint f3d0aa9ac7dc3fb73ea147d38a8574d6b97c229e. RemoteMain/newrefNOT_AUTHORIZED; no GitHubmergeprotection claim. Source/runtimeUIunchanged since own lastreviewedrepair. Earlier detailed dated progress follows.
 
 ## Фактический результат 2026-10-14T05:31:11.063Z
 
@@ -144,4 +144,4 @@ Complete17raw/stream/ownMainHEAD/request/plan/packet/fullcandidate/rawindex guar
 
 ## Main archived PASS — 2026-10-15T00:35:58.677Z
 
-openspec/changes/archive/2026-10-15-frade-p01-main-integration; Main22/22 actualownPOST/stream/index/negative/fullsourcePASS. 6105archivedfilesexact,190/854preserved. Postarchivewrapper oldpathENOENT recovered without replay. RoadmapP02-P07PAUSED. Localfinalcheckpointnext; remoteNOT_AUTHORIZED.
+openspec/changes/archive/2026-10-15-frade-p01-main-integration; Main22/22 actualownPOST/stream/index/negative/fullsourcePASS. 6105archivedfilesexact,190/854preserved. Postarchivewrapper oldpathENOENT recovered without replay. RoadmapP02-P07PAUSED. Implementation/archive checkpoint f3d0aa9ac7dc3fb73ea147d38a8574d6b97c229e; status checkpoint follows; remoteNOT_AUTHORIZED.
