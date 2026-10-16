@@ -1,3 +1,39 @@
+Checkpoint note: Git whitespace diagnostic FAIL is retained for exact copied annotations/draft terminal blank lines only; no normalization of source-bound bytes or prepared hashes. This is a planning checkpoint with active strict BLOCKED and PRE/POST NOT_RUN, not a release PASS.
+
+# P02 resumed — decision package ready; active strict BLOCKED
+
+Updated 2026-10-16T23:44:37.956Z; owner codex/frade-ui-design-contract / C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; checkpoint 7991938e77548bb5344681600db6632b45924666; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; Guide1.0. **P02 3/9; S2b BLOCKED_SCOPE_DECISION; READY_FOR_VERIFY:NO.** Main P01 completed/archived; P03–P07 not started, await numbered checkpoints.
+
+Exact [resume decision package](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-root-identity-resume-20261017.proposed.md) SHA256 76d3e99ee0dd9b91120c98b6279327d3e16bf6eea325ac8c54e0214894f34bb5: unchanged root identity scope plus two attached structural-only drafts; NOT_ACCEPTED. Original root proposal SHA68c0afc5944be4cec69620829a2b771ad4152928b8f61b6e88bd88bd1f8f702f retained. Active strict exit1: four delta-spec annotation headings are not carried by archive; isolated structural draft strictPASS, 25 requirements/43 scenarios byte-exact. Active proposal/design/spec/tasks and product/native/tests unchanged. Current audit protects130source/control files;119/120freeze entries unchanged, sole pre-existing status drift; native anchor and diagnostic source/raw receipts exact.
+
+Automatic review serviceAVAILABLE, releasea6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5/policy1.1 adopted as owning evidence. New PRE/POST **NOT_RUN_PENDING_EXACT_DECISION_AND_COHERENT_VALID_PLAN**; gpt-6-sol/xhigh per approved P02 table. No runtime test replay; no new productPASS. Old rawFAIL and accepted P02-D01 remain.
+
+Next exact scope/draft decision → coherent four artifacts/scheme → strict → automaticPRE → meaningfulRED/GREEN/currentchecks/verify → automaticPOST. No human prompt relay. UI checkpoint commit/push pending; only origin codex/frade-ui-design-contract authorized. Rightpanel requested separately, visibilityNOT_CONFIRMED.
+
+## Previous entries — preserved
+
+# P02 resumed — exact root identity decision ready
+
+Updated 2026-10-16T23:43:19.793Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; Git common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; current checkpoint 7991938e77548bb5344681600db6632b45924666; Guide1.0.
+
+Direct user instruction resumes the roadmap at P02. **P02 3/9; S2b BLOCKED_SCOPE_DECISION; READY_FOR_VERIFY:NO.** P01/Main four themes and startup repair are completed/archived in their own Main process; the older pending quick-win projections below are historical. P03–P07 NOT_STARTED, waiting for their predecessor and numbered authorization; broad UI migration not started by this checkpoint.
+
+[Current concrete decision and execution sequence](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-resume-root-identity-20261016T234312881Z/DECISION.md). Exact unchanged [P02-S2-BOUND-ROOT-IDENTITY-01](../../openspec/changes/frade-p02-transactional-installer/decisions/p02-s2-bound-root-identity.proposed.md) SHA256 68c0afc5944be4cec69620829a2b771ad4152928b8f61b6e88bd88bd1f8f702f; NOT_ACCEPTED / native repair NOT_IMPLEMENTED / new PRE and POST NOT_RUN. Existing cleanup design explicitly forbids native protocol fields; AGENTS2/20 require this material boundary decision. Review role remains gpt-6-sol/xhigh from approved P02 design. Authorized reviews are automatic after plan acceptance/validation; no human prompt relay.
+
+Resume checks: frozen product WIP/proposal/native anchor/retained diagnostic bytes and raw hashes verified; current strict exit1, shared runner status exit0 (see raw receipt, not an independent gate). No runtime rerun or new UI PASS claimed. Existing S1/S2a focused passes and original FAIL/P02-D01 remain unchanged; full S2b/S2c/ExtensionsUI/crash matrix/cumulative verify/POST/archive still open.
+
+Next: exact scope decision → coherent plan/scheme → strict → fresh automatic PRE → meaningful RED/GREEN → required checks/verify → automatic POST. Main and Routing sources unchanged. Commit/push for this planning checkpoint pending; authorized destination only origin refs/heads/codex/frade-ui-design-contract. Right panel request pending.
+
+## Previous entries — preserved
+
+## Текущий приоритет: прямой перенос готового P01 (14 октября2026)
+
+P02–P07 и широкая миграция PAUSED по решению пользователя. P01 переносится из d876a773 в отдельном worktree codex/frade-p01-main-integration без P02. Актуальный статус: [P01-MAIN-INTEGRATION-STATUS.md](C:/Users/NVISEN/.codex/worktrees/p01-main-integration/frade/docs/ui/P01-MAIN-INTEGRATION-STATUS.md). Текущий blocker нового этапа: требуется решение по точной структурной правке трёх старых требований для strict validation; production не переносился, PRE/POST NOT_RUN. P02 исходники/история не изменяются.
+
+# UI roadmap pause — checkpoint published
+
+2026-10-13T20:53:51.558Z; **7991938e77548bb5344681600db6632b45924666**, origin refs/heads/codex/frade-ui-design-contract, remote SHA VERIFIED. P02 WIP sources/tests/evidence preserved byte-for-byte; product POST NOT_RUN, READY_FOR_VERIFY:NO. Existing WIP whitespace diagnostic FAIL retained; no repair/normalization during pause. [Freeze record](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-roadmap-pause-20261013T205228918Z/FREEZE.md). P02–P07 and broad migrations PAUSED_BY_USER; built-in theme delivery planning has priority. Delivery target pending clarification; no new quick-win OpenSpec scope or reviewer assignment approved yet. This publication receipt/status projection will enter the next checkpoint.
+
 # UI roadmap PAUSED — priority: release existing P01 themes
 
 2026-10-13T20:52:28.918Z; branch codex/frade-ui-design-contract; worktree C:/Users/NVISEN/.codex/worktrees/ui-design-contract/frade; common E:/dev/codex/frade/.git; original baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09; Guide1.0. [Pause and preservation](../../openspec/changes/frade-p02-transactional-installer/evidence/p02-roadmap-pause-20261013T205228918Z/FREEZE.md). Previous published SHA 9e344a469c77d302efae94e2bf7983cf1b6fa4be; WIP freeze commit/push pending.

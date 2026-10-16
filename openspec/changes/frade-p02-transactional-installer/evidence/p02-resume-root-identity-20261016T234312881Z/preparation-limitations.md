@@ -1,0 +1,3 @@
+# Preparation limitations
+
+The first broad Git status command omitted process-local core.longpaths and produced truncated filename-too-long diagnostics; it is not integrity evidence. Corrected scoped Git operations use core.longpaths=true and --no-optional-locks without global config changes. The first audit script stopped before any file write because unscoped git ls-files exceeded its16MiB output buffer; corrected audit restricts the relevant source paths. These are environment/tool setup failures, not product RED or PASS. Actual active strict exit1 and exact output are retained in strict.*. The structural draft alone passes; no active artifact repair or new review has occurred.
