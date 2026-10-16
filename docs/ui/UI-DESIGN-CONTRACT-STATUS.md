@@ -1,3 +1,9 @@
+# P02 decision preparation — checkpoint published
+
+P02 resumed; **3/9, S2b BLOCKED_SCOPE_DECISION, READY_FOR_VERIFY:NO**. Exact decision package SHA76d3e99ee0dd9b91120c98b6279327d3e16bf6eea325ac8c54e0214894f34bb5 is prepared, NOT_ACCEPTED. Active strict BLOCKED(exit1); isolated structural draft strictPASS(25requirements/43scenarios byte-exact); no native/product/active-plan changes, no new PRE/POST. Common reviewer AVAILABLE; stage model gpt-6-sol/xhigh. Main P01 completed/archived and untouched.
+
+Planning checkpoint **e6c8a1805d17f575c66c939eaffe2b60a17056aa**, **PUSHED_REMOTE_SHA_VERIFIED**, origin refs/heads/codex/frade-ui-design-contract. First remote read connection drop retained in publication.json; one bounded read-only retry verified exact remote SHA. This publication receipt/status is a following metadata checkpoint; no release/gate PASS implied. Rightpanel QUEUED/visibilityNOT_CONFIRMED. Next: exact scope/drafts decision; then coherent plan/strict and automatic PRE. Previous detailed tasks/evidence and historical outcomes follow.
+
 Checkpoint note: Git whitespace diagnostic FAIL is retained for exact copied annotations/draft terminal blank lines only; no normalization of source-bound bytes or prepared hashes. This is a planning checkpoint with active strict BLOCKED and PRE/POST NOT_RUN, not a release PASS.
 
 # P02 resumed — decision package ready; active strict BLOCKED
