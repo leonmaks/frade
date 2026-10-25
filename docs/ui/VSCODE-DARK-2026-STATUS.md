@@ -1,3 +1,7 @@
+# PRE2 FAIL retained / exact discovery repaired / PRE3 prepared
+
+2026-10-25T16:52:45.134Z; ownercodex/vscode-dark-2026. PRE2 verifiedFAIL only for guessed new Electron test path/missing discovery config; original registry/inventory concerns independently resolved. Current plan binds actual tests/e2e and Playwright testDir/config, requires --list nonzero discovery, corrects guide IDs toA11Y001–010. StrictPASS. Source/oldtests/config unchanged;1/10tasks. Fresh PRE3gpt-6-sol/xhigh starts after checkpoint; frozen candidate not edited. No UI/runtime/POST PASS, new-ref/Main pushNOT_AUTHORIZED.
+
 # PRE1 FAIL retained / plan repaired / PRE2 prepared
 
 2026-10-25T16:43:59.088Z; ownercodex/vscode-dark-2026. PRE1 independentFAIL verified with complete stream/source/packet binding; two blockers were core-registry test conflict and missing packet inputs. Plan now preserves core3/injected-picker4 using a separate application factory in exact controller/Main hooks; no original tests change. Renderer CSS/inventories/fixture and actual assertion sources selected. Strict revalidation/PRE2 next, gpt-6-sol/xhigh; candidate freezes at dispatch. Production unchanged,1/10tasks. OldFAIL immutable, no gate/implementationPASS. Localcheckpoint only; pushNOT_AUTHORIZED.
