@@ -50,3 +50,16 @@ Reference selection SHALL preserve independent density, Frade built-in fallbacks
 
 - **WHEN** a dirty native and embedded diagram switches through reference, Light, Dark, HC and System in both densities
 - **THEN** data/identities remain equal, authored paint is preserved and non-reference appearance/metrics recover exactly
+
+### Requirement: Historical selector compatibility preserves evidence
+The implementation SHALL select built-in themes unambiguously and preserve exact historical evidence through the accepted pinned current/origin source proof.
+
+#### Scenario: Built-in and reference dark choices coexist
+- **GIVEN** both dark choices are available
+- **WHEN** historical regression coverage selects built-in Dark
+- **THEN** the exact built-in choice is selected and all original behavioral assertions remain enforced
+
+#### Scenario: Unexpected source changes fail historical replay
+- **GIVEN** the accepted current and original source hashes
+- **WHEN** an assertion or unapproved source byte changes
+- **THEN** the origin control fails and no historical execution is relabeled as current evidence

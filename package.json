@@ -32,8 +32,10 @@
     "ui:traceability:check": "node scripts/ui/traceability.mjs",
     "test:ui-contract": "node --test tests/ui-contract/*.test.mjs",
     "ui:controls": "node scripts/ui/controls.mjs",
-    "ui:compliance": "pnpm ui:tokens:check && pnpm ui:colors:check && pnpm ui:traceability:check && pnpm test:ui-contract && pnpm ui:controls && pnpm ui:checkout:check",
-    "ui:checkout:check": "node scripts/ui/checkout.mjs"
+    "ui:compliance": "pnpm ui:tokens:check && pnpm ui:vscode:check && pnpm ui:colors:check && pnpm ui:traceability:check && pnpm test:ui-contract && pnpm ui:controls && pnpm ui:checkout:check",
+    "ui:checkout:check": "node scripts/ui/checkout.mjs",
+    "ui:vscode:generate": "node scripts/ui/vscode-dark-2026.mjs --write",
+    "ui:vscode:check": "node scripts/ui/vscode-dark-2026.mjs"
   },
   "devDependencies": {
     "@eslint/js": "9.39.1",

@@ -1,0 +1,21 @@
+{
+  "atUtc": "2026-10-25T17:12:47.2581089Z",
+  "command": "node --test tests/ui-contract/vscode-dark-2026.test.mjs",
+  "exit": 1,
+  "classification": "TEST",
+  "status": "FAIL_RETAINED_EXPECTED_BLUE_CHANNEL_OFF_BY_ONE",
+  "independentOracle": {
+    "greenNumerator": 14416,
+    "expectedHex": "383939",
+    "redNumerator": 14195,
+    "denominator": 255,
+    "blueNumerator": 14637,
+    "roundedChannels": [
+      56,
+      57,
+      57
+    ]
+  },
+  "productionFixNeeded": false,
+  "note": "Independent exact-integer source-over arithmetic corrects a new test expectation, not implementation behavior or historical assertions."
+}

@@ -1,0 +1,16 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade-worktrees/vscode-dark-2026/packages/ui-workspace
+
+ ❯ tests/ui-contract/vscode-dark-2026.test.ts (3 tests | 3 failed) 24ms
+   × reference application wiring preserves the core registry while providing the exact offline choice 16ms
+     → expected undefined to be 'VS Code Dark 2026' // Object.is equality
+   × reference application resolution uses the pinned editor surface instead of builtin fallback 4ms
+     → expected 'frade.builtin/dark' to be 'frade.reference/vscode-dark-2026' // Object.is equality
+   × root projection scopes the reference preset and removes it when restoring a builtin 2ms
+     → expected undefined to be 'vscode-dark-2026' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  20:00:28
+   Duration  1.49s (transform 162ms, setup 0ms, collect 217ms, tests 24ms, environment 950ms, prepare 126ms)
+

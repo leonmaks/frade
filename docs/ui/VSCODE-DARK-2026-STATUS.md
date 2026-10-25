@@ -1,33 +1,40 @@
-# PRE2 FAIL retained / exact discovery repaired / PRE3 prepared
+# Scope accepted / fresh PRE preparing
 
-2026-10-25T16:52:45.134Z; ownercodex/vscode-dark-2026. PRE2 verifiedFAIL only for guessed new Electron test path/missing discovery config; original registry/inventory concerns independently resolved. Current plan binds actual tests/e2e and Playwright testDir/config, requires --list nonzero discovery, corrects guide IDs toA11Y001–010. StrictPASS. Source/oldtests/config unchanged;1/10tasks. Fresh PRE3gpt-6-sol/xhigh starts after checkpoint; frozen candidate not edited. No UI/runtime/POST PASS, new-ref/Main pushNOT_AUTHORIZED.
+2026-10-25T17:45:48.697Z: user accepted exact six drafts. Active plan reconciled; old controls not applied. Final token-corrected runtime6/6PASS. Strict and fresh PREgpt-6-sol/xhigh next; dashboard freezes during review.5/10tasks; old4FAIL remain open. No Main/push.
 
-# PRE1 FAIL retained / plan repaired / PRE2 prepared
+# VS Code Dark 2026 — текущий статус
 
-2026-10-25T16:43:59.088Z; ownercodex/vscode-dark-2026. PRE1 independentFAIL verified with complete stream/source/packet binding; two blockers were core-registry test conflict and missing packet inputs. Plan now preserves core3/injected-picker4 using a separate application factory in exact controller/Main hooks; no original tests change. Renderer CSS/inventories/fixture and actual assertion sources selected. Strict revalidation/PRE2 next, gpt-6-sol/xhigh; candidate freezes at dispatch. Production unchanged,1/10tasks. OldFAIL immutable, no gate/implementationPASS. Localcheckpoint only; pushNOT_AUTHORIZED.
+Обновлено: 2026-10-25T17:44:55.641Z. **BLOCKED: решение по старым селекторам. 5/10 задач закрыто.**
 
-# PRE prepared — candidate freeze at dispatch
+Ветка: codex/vscode-dark-2026. Worktree: E:/dev/codex/frade-worktrees/vscode-dark-2026. Change: frade-vscode-dark-2026. Baseline:90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d. Git-common:E:/dev/codex/frade/.git. Guide1.0.
 
-2026-10-25T16:32:14.979Z; branchcodex/vscode-dark-2026, baseline90710ac. Current strictPASS, four artifacts coherent, complete pinned JSONC/MIT closure and mapping/metric evidence retained. Productionunchanged. Automatic PREgpt-6-sol/xhigh prepared with95selected packet paths; candidate/HEAD/index/dashboard freeze during review. PRE NOT_RUN until actual dispatch/result; no implementation before verified PASS.1/10tasks complete; commit checkpoint preparing, new-ref/Main pushNOT_AUTHORIZED.
-
-# Mapping preflight completed
-
-2026-10-25T16:31:17.402Z: complete JSONC closure parsed;325effectivecolors,118retainedsyntax rules. Raw semantic mapping has10contrast violations; runtime repair and actual component checks required, no waiver. Pinned titlebar/activity/button witnesses recorded; exact tab-height referenceNOT_CONFIRMED and existing35px retained; tree/status sizes preserve A11Y/density. Source code unchanged. Plan strict revalidation and automatic PRE next; modelgpt-6-sol/xhigh. Shared runnerAVAILABLE; panelQUEUED.
-
-# VS Code Dark 2026 — branch status
-
-Owner codex/vscode-dark-2026; worktree E:/dev/codex/frade-worktrees/vscode-dark-2026; baseline90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d; commonE:/dev/codex/frade/.git; changefrade-vscode-dark-2026. Updated2026-10-25T16:28:37.725Z; Guide1.0.
-
-User approves geometry only with selected VS Code Dark 2026 and automatic PRE/POSTgpt-6-sol/xhigh. Full original theme/include/MIT bytes retained as planning evidence at upstreamcommit36e19389b8a2e64498d0d4d860c346424bf90a3a; copy to production NOT_RUN.
-
-| Stage | Status |
+| Этап | Фактический статус |
 |---|---|
-| User scope/model and isolated audit | DONE |
-| Proposal/design/specs/tasks | PREPARED; strict exit0 |
-| Detailed mapping/upstream metric completion | IN_PROGRESS; tab-height witness still needed |
-| Automatic PRE | NOT_RUN |
-| Meaningful RED / production / GREEN | NOT_RUN |
-| Actual runtime/screenshots/visual acceptance | NOT_RUN |
-| Verification / automatic POST / Main delivery / archive | NOT_RUN |
+|1.1 Аудит/источник/решения|DONE|
+|1.2 План/strict/независимый PRE|DONE; PRE3PASS, прежние PRE1/2FAIL сохранены|
+|2.1 Meaningful RED|DONE;3 поведенческих FAIL до кода|
+|2.2 Полный источник/генератор/negative controls|DONE;4JSONC+MIT;7/7 controls|
+|2.3 Registry/Main/bootstrap/preset/preview|DONE; core3/injected4 сохранены, новое приложение4+System; unit и реальный restart/cancel PASS|
+|2.4 Визуальная/A11Y матрица|IN_PROGRESS; выбранные экраны/две плотности/media/контраст PASS; общая приёмка не завершена|
+|3.1 Общие/исторические проверки|BLOCKED:4 старых runtime FAIL из-за неоднозначного /Dark/|
+|3.2 Screenshots/визуальное решение|Новые реальные screenshots готовы; human acceptance NOT_APPROVED|
+|3.3 Verify/POST|BLOCKED до закрытия applicable FAIL; POST NOT_RUN|
+|3.4 Main/archive/push|NOT_RUN; Main ещё без новой темы; push нового ref/Main NOT_AUTHORIZED|
 
-1/10tasks complete. No P02/installer/importer dependency; P02 root-identity decision remains separate and unresolved. Original themes/default selection and production unchanged. Worktree long-path/API reset/redirect limitations retained in evidence; no productPASS from diagnostics. Exact source manifest and strategy are in the change. Commit/push NOT_RUN; only old UI-ref destination is authorized, new-ref/Main publication not assumed. Next: complete exact geometry/mapping inventory, strict/current plan/PRE, then RED. Dashboard never changes while a review is frozen.
+## Текущий blocker и решение
+
+[Точное предложение](../../openspec/changes/frade-vscode-dark-2026/decisions/vscode-dark-2026-legacy-selectors-01/proposal.md): VSCODE-DARK-2026-LEGACY-SELECTORS-01, SHA5aaf9a614cfe6e2b576bb58c577b640b1fdf841d1e3f00178b7ba655b21d28ec. Шесть drafts, manifestc4b1ae4b4aa3110969802a5822960581171844495b7c106ba997885fdff62637. Четыре option selectors +один alternating selector; assertions/таймауты/допуски/исторические отчёты сохраняются. Новая привязка live/origin не выдаёт старое выполнение за новое. Draft-only positive1/negative3 smoke PASS; это не PRE и не принятие scope. Вопрос отправлен; старые файлы не изменены.
+
+## Проверки
+
+UI unit253/253, desktop unit128/128, UI BDD132/132, UI build и general boundary tests PASS до финального косметического снятия рамки. Последние typecheck/lint desktop PASS. Новый unit7/7, source controls7/7, ui:compliance и boundaries PASS. Последняя полная новая Electron matrix6/6PASS включала actual AA и reference p95110.2ms; после отказа scanner на transparent сделана токенизированная эквивалентная рамка и запущен привязанный повтор шести случаев — результат в token-corrected-runtime-20261025. Не переносить прежний PASS на новый вход без чтения execution.json.
+
+Первые checkout/build и5 исторических unit hash FAIL были ENVIRONMENT: core.autocrlf. Восстановлены только точные исходные Git-blob байты, ожидаемые hash и vendor manifest не менялись. Четыре текущих /Dark/ runtime FAIL — отдельный TEST/INTEGRATION blocker. Все предыдущие FAIL/evidence сохранены. Raw traces со сторонним KA fixture удерживаются вне checkout/packet с hash-locator; в новых screenshots только synthetic9 objects.
+
+## Следующий шаг
+
+Дождаться scope-решения; затем согласовать план, strict и автоматический независимый PRE **gpt-6-sol/xhigh**, применить только после PASS, закрыть прежние сценарии и source-bound controls, verify/POST, конкретная визуальная приёмка, затем перенос в Main. P02 остаётся отдельным заблокированным направлением; его scope/roadmap не возобновлялись.
+
+## Git/панель
+
+Локальный implementation checkpoint готовится с честным BLOCKED. Push не выполняется. Dashboard открыт в правую панель ранее как QUEUED; видимость не подтверждена.

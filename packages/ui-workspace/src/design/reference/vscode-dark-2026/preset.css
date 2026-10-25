@@ -1,0 +1,245 @@
+/* Trusted first-party reference preset. Color data lives in the checked generated token module. */
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] .ka-workbench {
+  --bg: var(--frade-vscode-editorBackground);
+  --side: var(--frade-vscode-panelBackground);
+  --border: var(--frade-vscode-subtleBorder);
+  --fg: var(--frade-vscode-panelForeground);
+  --muted: var(--frade-vscode-titleForeground);
+  --accent: var(--frade-action-primary);
+  --input: var(--frade-vscode-controlBackground);
+  background: var(--frade-vscode-editorBackground);
+  color: var(--frade-vscode-panelForeground);
+  font-family: var(--frade-font-ui);
+  font-size: var(--frade-font-body);
+  line-height: var(--frade-line-body);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] body {
+  background: var(--frade-vscode-editorBackground);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] .ka-workbench .wb-titlebar {
+  height: max(35px, var(--frade-size-target), calc(var(--frade-line-body) + 8px));
+  min-height: max(35px, var(--frade-size-target), calc(var(--frade-line-body) + 8px));
+  gap: 8px;
+  padding: 0 12px;
+  background: var(--frade-vscode-titleBackground);
+  color: var(--frade-vscode-titleForeground);
+  border-color: var(--frade-vscode-subtleBorder);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] .ka-workbench .activity-bar {
+  width: 48px;
+  min-width: 48px;
+  background: var(--frade-vscode-railBackground);
+  border-color: var(--frade-vscode-subtleBorder);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .activity-bar
+  button {
+  height: 48px;
+  min-height: 48px;
+  padding: 0;
+  border-radius: 0;
+  font-size: 24px;
+  background: var(--frade-vscode-railBackground);
+  color: var(--frade-vscode-railInactive) !important;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .activity-bar
+  button.active {
+  color: var(--frade-vscode-railForeground) !important;
+  border-color: var(--frade-vscode-railIndicator);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  :is(.wb-sidebar, .inspector, .field-group) {
+  background: var(--frade-vscode-panelBackground);
+  color: var(--frade-vscode-panelForeground);
+  border-color: var(--frade-vscode-subtleBorder);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] .ka-workbench .tree-row {
+  height: max(var(--frade-size-row), var(--frade-size-target), calc(var(--frade-line-body) + 4px));
+  min-height: max(
+    var(--frade-size-row),
+    var(--frade-size-target),
+    calc(var(--frade-line-body) + 4px)
+  );
+  color: var(--frade-vscode-panelForeground);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .tree-row:hover {
+  background: var(--frade-vscode-treeHover);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .tree-row.selected {
+  background: var(--frade-vscode-treeInactive);
+  color: var(--frade-vscode-treeSelectionForeground) !important;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .wb-sidebar:focus-within
+  .tree-row.selected {
+  background: var(--frade-vscode-treeSelection);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  :is(.tree-row:hover, .tree-row.selected)
+  .tree-count {
+  color: var(--frade-text-secondary);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] .ka-workbench .editor-tabs {
+  height: max(35px, var(--frade-size-target), calc(var(--frade-line-body) + 8px));
+  min-height: max(35px, var(--frade-size-target), calc(var(--frade-line-body) + 8px));
+  background: var(--frade-vscode-tabsBackground);
+  border-color: var(--frade-vscode-tabBorder);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] .ka-workbench .editor-tab {
+  background: var(--frade-vscode-tabInactive);
+  color: var(--frade-vscode-tabInactiveForeground);
+  border-color: var(--frade-vscode-tabBorder);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .editor-tab.active {
+  background: var(--frade-vscode-tabActive);
+  color: var(--frade-vscode-tabActiveForeground);
+  border-top-color: var(--frade-focus-ring);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  :is(button, input, select, textarea):not(.draw-host *) {
+  border-radius: 4px;
+  border-color: var(--frade-vscode-controlBorder);
+  min-width: var(--frade-size-target);
+  min-height: max(
+    var(--frade-size-control),
+    var(--frade-size-target),
+    calc(var(--frade-line-body) + 8px)
+  );
+  font-family: inherit;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  :is(input, select, textarea):not(.draw-host *) {
+  background: var(--frade-vscode-controlBackground);
+  color: var(--frade-vscode-controlForeground) !important;
+  padding: 4px 8px;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  :is(input, textarea)::placeholder {
+  color: var(--frade-vscode-placeholder);
+  opacity: 1;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  button:not(.draw-host *) {
+  padding: 4px 8px;
+  background: var(--frade-vscode-secondaryBackground);
+  color: var(--frade-vscode-secondaryForeground) !important;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  button:not(.draw-host *):hover:not(:disabled) {
+  background: var(--frade-vscode-treeHover);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  :is(.wb-titlebar, .editor-tabs, .wb-statusbar, .breadcrumbs, .activity-bar)
+  button {
+  background: inherit;
+  border-width: 0;
+  color: inherit !important;
+  border-radius: 0;
+  min-height: var(--frade-size-target);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .editor-tab
+  > button[role='tab'] {
+  border-width: 0;
+  padding: 0 6px 0 10px;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .editor-tab
+  .close-tab {
+  padding: 0;
+  width: var(--frade-size-target);
+  min-width: var(--frade-size-target);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .primary:not(.draw-host *) {
+  background: var(--frade-vscode-primaryBackground);
+  color: var(--frade-vscode-primaryForeground) !important;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .primary:not(.draw-host *):hover:not(:disabled) {
+  background: var(--frade-vscode-primaryHover);
+  color: var(--frade-vscode-primaryForeground) !important;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .reference-value {
+  background: var(--frade-vscode-controlBackground) !important;
+  border-color: var(--frade-vscode-controlBorder) !important;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  :is(.wb-dialog, .reference-picker, .command-palette) {
+  background: var(--frade-vscode-pickerBackground);
+  color: var(--frade-vscode-pickerForeground);
+  border-color: var(--frade-vscode-menuBorder);
+  border-radius: var(--frade-radius-overlay);
+  font-family: var(--frade-font-ui);
+  font-size: var(--frade-font-body);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] .context-menu {
+  background: var(--frade-vscode-menuBackground);
+  color: var(--frade-vscode-menuForeground);
+  border-color: var(--frade-vscode-menuBorder);
+  border-radius: 4px;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] .context-menu button {
+  background: var(--frade-vscode-menuBackground);
+  color: var(--frade-vscode-menuForeground) !important;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .context-menu
+  button:hover:not(:disabled) {
+  background: var(--frade-vscode-menuSelection);
+  color: var(--frade-vscode-menuSelectionForeground) !important;
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026'] .ka-workbench .wb-statusbar {
+  height: max(24px, var(--frade-size-target), calc(var(--frade-line-caption) + 4px));
+  min-height: max(24px, var(--frade-size-target), calc(var(--frade-line-caption) + 4px));
+  background: var(--frade-vscode-statusBackground);
+  color: var(--frade-vscode-statusForeground);
+  border-color: var(--frade-vscode-subtleBorder);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .wb-statusbar
+  > button {
+  padding: 0 8px;
+  min-height: var(--frade-size-target);
+  color: var(--frade-vscode-statusForeground) !important;
+}
+
+/* Reference activity indicator is a leading edge; keyboard outline stays in the shared focus layer. */
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .activity-bar
+  button {
+  border-width: 0;
+  border-left: 2px solid var(--frade-vscode-railBackground);
+}
+html[data-frade-runtime='1'][data-frade-reference='vscode-dark-2026']
+  .ka-workbench
+  .activity-bar
+  button.active {
+  border-left-color: var(--frade-vscode-railIndicator);
+}

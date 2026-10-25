@@ -1,0 +1,130 @@
+
+Running 8 tests using 1 worker
+
+  x  1 tests\e2e\ui-contract-theme-performance.spec.ts:217:1 › P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms (5.3s)
+  ok 2 tests\e2e\ui-contract-theme.spec.ts:9:1 › P01 real startup restores validated presentation before the visible window and keeps health API isolated (1.2s)
+  x  3 tests\e2e\ui-contract-theme.spec.ts:282:1 › P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history (2.8s)
+  x  4 tests\e2e\ui-contract-theme.spec.ts:344:1 › P01 embedded hot preview and cancellation preserve XML, authored paint, preferences, selection and editor identity (5.5s)
+  x  5 tests\e2e\ui-contract-theme.spec.ts:425:1 › P01 parked required frame acknowledges while dirty KA stays active and restores its same editor on return (4.3s)
+  ok 6 tests\e2e\ui-contract-theme.spec.ts:1103:1 › P01 real staged filesystem obstruction refuses commit and restores before retry and restart (4.3s)
+  ok 7 tests\e2e\ui-contract-theme.spec.ts:2354:1 › P01 actual restored readonly frame refuses navigator drop after exact presentation readiness without document writes (8.8s)
+  ok 8 tests\e2e\ui-contract-vscode-dark-2026.spec.ts:473:1 › reference p95: real root native frame 20 warmups and 100 durable alternating requests <=150ms (25.8s)
+
+
+  1) tests\e2e\ui-contract-theme-performance.spec.ts:217:1 › P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms 
+
+    Error: locator.focus: Error: strict mode violation: getByRole('option', { name: /Dark/ }) resolved to 2 elements:
+        1) <button type="button" role="option" tabindex="-1" aria-selected="false">Тёмная (Dark)</button> aka getByRole('option', { name: 'Тёмная (Dark)' })
+        2) <button type="button" role="option" tabindex="-1" aria-selected="false">VS Code Dark 2026</button> aka getByRole('option', { name: 'VS Code Dark' })
+
+    Call log:
+    [2m  - waiting for getByRole('option', { name: /Dark/ })[22m
+
+
+      337 |       await f.page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
+      338 |       const option = f.page.getByRole('option', { name: new RegExp(label) })
+    > 339 |       await option.focus()
+          |                    ^
+      340 |       await expect(option).toHaveAttribute('tabindex', '0')
+      341 |       const milliseconds = await option.evaluate(
+      342 |         (button) =>
+        at E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-theme-performance.spec.ts:339:20
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\legacy-and-reference-performance-20261025\artifacts\ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-vscode-dark-2026\evidence\legacy-and-reference-performance-20261025\artifacts\ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\ui-contract-theme.spec.ts:282:1 › P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history 
+
+    Error: locator.click: Error: strict mode violation: getByRole('option', { name: /Dark/ }) resolved to 2 elements:
+        1) <button type="button" role="option" tabindex="-1" aria-selected="false">Тёмная (Dark)</button> aka getByRole('option', { name: 'Тёмная (Dark)' })
+        2) <button type="button" role="option" tabindex="-1" aria-selected="false">VS Code Dark 2026</button> aka getByRole('option', { name: 'VS Code Dark' })
+
+    Call log:
+    [2m  - waiting for getByRole('option', { name: /Dark/ })[22m
+
+
+      263 |   await page.getByRole('button', { name: 'Меню Файл' }).click()
+      264 |   await page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
+    > 265 |   await page.getByRole('option', { name: /Dark/ }).click()
+          |                                                    ^
+      266 |   await expect(page.getByRole('status').filter({ hasText: 'Предпросмотр' })).toContainText(
+      267 |     'Предпросмотр',
+      268 |   )
+        at previewDark (E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:265:52)
+        at E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:295:5
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\legacy-and-reference-performance-20261025\artifacts\ui-contract-theme-P01-nati-b59ac--selection-and-undo-history\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-vscode-dark-2026\evidence\legacy-and-reference-performance-20261025\artifacts\ui-contract-theme-P01-nati-b59ac--selection-and-undo-history\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\e2e\ui-contract-theme.spec.ts:344:1 › P01 embedded hot preview and cancellation preserve XML, authored paint, preferences, selection and editor identity 
+
+    Error: locator.click: Error: strict mode violation: getByRole('option', { name: /Dark/ }) resolved to 2 elements:
+        1) <button type="button" role="option" tabindex="-1" aria-selected="false">Тёмная (Dark)</button> aka getByRole('option', { name: 'Тёмная (Dark)' })
+        2) <button type="button" role="option" tabindex="-1" aria-selected="false">VS Code Dark 2026</button> aka getByRole('option', { name: 'VS Code Dark' })
+
+    Call log:
+    [2m  - waiting for getByRole('option', { name: /Dark/ })[22m
+
+
+      263 |   await page.getByRole('button', { name: 'Меню Файл' }).click()
+      264 |   await page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
+    > 265 |   await page.getByRole('option', { name: /Dark/ }).click()
+          |                                                    ^
+      266 |   await expect(page.getByRole('status').filter({ hasText: 'Предпросмотр' })).toContainText(
+      267 |     'Предпросмотр',
+      268 |   )
+        at previewDark (E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:265:52)
+        at E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:351:5
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\legacy-and-reference-performance-20261025\artifacts\ui-contract-theme-P01-embe-d66d2-lection-and-editor-identity\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-vscode-dark-2026\evidence\legacy-and-reference-performance-20261025\artifacts\ui-contract-theme-P01-embe-d66d2-lection-and-editor-identity\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests\e2e\ui-contract-theme.spec.ts:425:1 › P01 parked required frame acknowledges while dirty KA stays active and restores its same editor on return 
+
+    Error: locator.click: Error: strict mode violation: getByRole('option', { name: /Dark/ }) resolved to 2 elements:
+        1) <button type="button" role="option" tabindex="-1" aria-selected="false">Тёмная (Dark)</button> aka getByRole('option', { name: 'Тёмная (Dark)' })
+        2) <button type="button" role="option" tabindex="-1" aria-selected="false">VS Code Dark 2026</button> aka getByRole('option', { name: 'VS Code Dark' })
+
+    Call log:
+    [2m  - waiting for getByRole('option', { name: /Dark/ })[22m
+
+
+      263 |   await page.getByRole('button', { name: 'Меню Файл' }).click()
+      264 |   await page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
+    > 265 |   await page.getByRole('option', { name: /Dark/ }).click()
+          |                                                    ^
+      266 |   await expect(page.getByRole('status').filter({ hasText: 'Предпросмотр' })).toContainText(
+      267 |     'Предпросмотр',
+      268 |   )
+        at previewDark (E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:265:52)
+        at E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-theme.spec.ts:425:5
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\legacy-and-reference-performance-20261025\artifacts\ui-contract-theme-P01-park-b7ec8-s-its-same-editor-on-return\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-vscode-dark-2026\evidence\legacy-and-reference-performance-20261025\artifacts\ui-contract-theme-P01-park-b7ec8-s-its-same-editor-on-return\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    tests\e2e\ui-contract-theme-performance.spec.ts:217:1 › P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms 
+    tests\e2e\ui-contract-theme.spec.ts:282:1 › P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history 
+    tests\e2e\ui-contract-theme.spec.ts:344:1 › P01 embedded hot preview and cancellation preserve XML, authored paint, preferences, selection and editor identity 
+    tests\e2e\ui-contract-theme.spec.ts:425:1 › P01 parked required frame acknowledges while dirty KA stays active and restores its same editor on return 
+  4 passed (1.1m)

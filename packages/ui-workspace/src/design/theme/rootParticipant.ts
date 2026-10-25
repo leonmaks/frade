@@ -1,3 +1,4 @@
+import { applyReferencePreset } from '../reference/vscode-dark-2026/profile'
 import type { ResolvedTheme } from './types'
 import { isHexColor, themeRoles } from './contrast'
 import type {
@@ -60,6 +61,7 @@ export function applyRootSnapshot(root: HTMLElement, snapshot: ResolvedTheme): v
   validatePresentationSnapshot(snapshot)
   for (const role of themeRoles)
     root.style.setProperty('--frade-' + role.replaceAll('.', '-'), snapshot.effectiveColors[role])
+  applyReferencePreset(root, snapshot)
   root.dataset.fradeRuntime = '1'
   root.dataset.fradeTheme = snapshot.kind
   root.dataset.fradeDensity = snapshot.density

@@ -24,3 +24,5 @@ The user requests an offline selectable VS Code Dark 2026 with the closest measu
 ## Impact
 
 Exact paths/purposes are in design.md. New source/generated data and preset CSS; bounded registry/root projection/style imports; new tests/generator/compliance hooks and docs only. No dependency additions, icons/brand replacement, vendor, routing/domain, diagram authored geometry, P02 implementation or old test/evidence edits. User geometry/model decisions are recorded in evidence/planning-20261025/user-authority.json.
+
+Accepted integration repair VSCODE-DARK-2026-LEGACY-SELECTORS-01 permits only six exact test/control drafts with reversible two-hash historical source preservation. Current old /Dark/ locator FAIL remains open until actual fresh execution. Product scope is unchanged.

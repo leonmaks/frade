@@ -1,3 +1,4 @@
+import { referenceTheme } from '../reference/vscode-dark-2026/generated'
 import { builtinTokens } from '../generated/tokens'
 import { isHexColor, themeRoles } from './contrast'
 import { freezeOwned } from './types'
@@ -139,4 +140,9 @@ export function createThemeRegistry(descriptors: readonly unknown[] = []): Theme
     get: (id: string) => entries.get(id),
     list: () => list,
   })
+}
+
+/** Application opt-in: the pure core registry's three-builtin contract stays unchanged. */
+export function createApplicationThemeRegistry(descriptors: readonly unknown[] = []): ThemeRegistry {
+  return createThemeRegistry([referenceTheme.descriptor, ...descriptors])
 }
