@@ -1,0 +1,59 @@
+{
+  "capturedAtUtc": "2026-10-25T22:59:02.902Z",
+  "clarification": "Earlier planning-checks preserved=true records requirement/scenario-name presence. This final check additionally compares complete logical scenario bodies; exactly two expected-paint scope bodies intentionally change under the accepted decision.",
+  "modifiedScenarios": [
+    {
+      "capability": "theme-core",
+      "title": "Canvas preparation fails",
+      "originalSha256": "830c48879f3001d7045294962b5eb78b2a52d463bcde3ec6319f136e44129d6d",
+      "deltaSha256": "830c48879f3001d7045294962b5eb78b2a52d463bcde3ec6319f136e44129d6d",
+      "change": "EXACT_LOGICAL_SCENARIO_PRESERVED"
+    },
+    {
+      "capability": "theme-core",
+      "title": "Scoped light editor shares global transaction",
+      "change": "ADDED_SCENARIO"
+    },
+    {
+      "capability": "theme-core",
+      "title": "Native and embedded documents retain authored paint",
+      "originalSha256": "cc36c2427e6d92fe1c642675ecc11575d4e12d4f3bd7d85fdc1ba036c50561bb",
+      "deltaSha256": "b49f813de3e757f6302d1ed841e34d518ebdb29344a0830ce811434c82693a5a",
+      "change": "ACCEPTED_EDITOR_SCOPE_EXPECTATION",
+      "original": "#### Scenario: Native and embedded documents retain authored paint\n- **WHEN** a dirty native and pinned embedded diagram with nondefault authored paint previews, commits, cancels and redraws under forced colors\n- **THEN** saved document bytes, settings storage, model/undo/selection/identities stay unchanged while only UI view projection follows the current theme",
+      "updated": "#### Scenario: Native and embedded documents retain authored paint\n- **WHEN** a dirty native and pinned embedded diagram with nondefault authored paint previews, commits, cancels and redraws under forced colors\n- **THEN** saved document bytes, settings storage, model/undo/selection/identities stay unchanged while only UI view projection follows its declared application or fixed-light editor scope, with forced colors retaining priority"
+    },
+    {
+      "capability": "theme-core",
+      "title": "Forged or stale frame acknowledgement",
+      "originalSha256": "ebe7a1e9f5179c7f685b7d36af0a00ef165f91c2ced9e96883158d3130815cc7",
+      "deltaSha256": "ebe7a1e9f5179c7f685b7d36af0a00ef165f91c2ced9e96883158d3130815cc7",
+      "change": "EXACT_LOGICAL_SCENARIO_PRESERVED"
+    },
+    {
+      "capability": "workbench-visual-contract",
+      "title": "User switches theme or density",
+      "originalSha256": "44bddb8c7ad9b7971449015ac9e1cb8650c56081dcf5bdacea91ab68674daab2",
+      "deltaSha256": "44bddb8c7ad9b7971449015ac9e1cb8650c56081dcf5bdacea91ab68674daab2",
+      "change": "EXACT_LOGICAL_SCENARIO_PRESERVED"
+    },
+    {
+      "capability": "workbench-visual-contract",
+      "title": "Reference shell around a light editor",
+      "change": "ADDED_SCENARIO"
+    },
+    {
+      "capability": "bundled-reference-themes",
+      "title": "Reference to built-in transition",
+      "originalSha256": "37951c51c6c4a32a39f3744054f21c3750ebac270e80652880a328a55bccaa89",
+      "deltaSha256": "ef8101d353664f1952b08f75391d8b78dc3c71a7c780cb2c6c2131295b205635",
+      "change": "ACCEPTED_EDITOR_SCOPE_EXPECTATION",
+      "original": "#### Scenario: Reference to built-in transition\n\n- **WHEN** a dirty native and embedded diagram switches through reference, Light, Dark, HC and System in both densities\n- **THEN** data/identities remain equal, authored paint is preserved and non-reference appearance/metrics recover exactly",
+      "updated": "#### Scenario: Reference to built-in transition\n\n- **WHEN** a dirty native and embedded diagram switches through reference, Light, Dark, HC and System in both densities\n- **THEN** data/identities remain equal, authored paint is preserved and external non-reference appearance/metrics recover exactly while diagram-owned UI retains the shared fixed light scope unless forced colors is active"
+    }
+  ],
+  "designSha256": "153db649b3cefb1a50a738e4eef3135b84d8d887530d982196a6a63ea4398d10",
+  "authoritySha256": "98204811a31adff4c202f8e5b28f8c259b37491dff663aa0f1892fcf100e9114",
+  "pre": "NOT_RUN",
+  "post": "NOT_RUN"
+}
