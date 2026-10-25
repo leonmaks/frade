@@ -1,5 +1,5 @@
 import { createContext, useContext, useSyncExternalStore } from 'react'
-import { createThemeRegistry } from './registry'
+import { createApplicationThemeRegistry } from './registry'
 import { resolveTheme } from './resolver'
 import { freezeOwned } from './types'
 import { createPresentationService } from './service'
@@ -56,7 +56,7 @@ export interface ThemeController {
   dispose(): void
 }
 export function createThemeController(options: ThemeControllerOptions): ThemeController {
-  const registry = options.registry ?? createThemeRegistry(),
+  const registry = options.registry ?? createApplicationThemeRegistry(),
     listeners = new Set<() => void>(),
     registrations = new Set<{ dispose(): void }>(),
     pending = new Set<Promise<void>>()

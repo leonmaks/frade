@@ -8,7 +8,7 @@ import {
   parsePresentationPhase,
   PRESENTATION_MAX_BYTES,
 } from '@frade/runtime-contracts'
-import { createThemeRegistry, BUILTIN_IDS } from '@frade/ui-workspace/design/theme/registry'
+import { createApplicationThemeRegistry, BUILTIN_IDS } from '@frade/ui-workspace/design/theme/registry'
 import { resolveTheme } from '@frade/ui-workspace/design/theme/resolver'
 import { authorizedSender } from './security'
 import type {
@@ -174,7 +174,7 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
   }
   const cachedBoot = (diagnostics: readonly string[]): PresentationBoot => {
     const snapshot = resolveTheme({
-      registry: createThemeRegistry(),
+      registry: createApplicationThemeRegistry(),
       selection: authoritative.selection,
       environment: options.environment,
       revision: authoritative.revision,

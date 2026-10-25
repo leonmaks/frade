@@ -80,6 +80,7 @@ import ts from 'typescript'
 type FuiPin = { file: string; sha256: string }
 type FuiBinding = { example: string; scope: string; assertion: FuiPin & { callbackPrefix: string; callbackSha256: string }; cases: string[]; execution: { command: FuiPin; report: FuiPin } }
 type FuiReportSuite = { suites?: FuiReportSuite[]; specs?: { title: string; file: string; tests: { status: string; results: { status: string; errors?: unknown[] }[] }[] }[] }
+import { historicalFuiOrigin } from './vscode-dark-2026-origin'
 const fuiSourceFile = 'apps/desktop/tests/e2e/ui-contract-theme.spec.ts'
 const fuiExplicitTitle = 'P01 real frame chord, Settings, System media and preview window-close preserve dirty KA and durable ownership'
 const fuiRequired = [
@@ -91,6 +92,8 @@ const fuiRequired = [
 ]
 const fuiDigest = (raw: Buffer | string) => createHash('sha256').update(raw).digest('hex')
 const fuiRead = (file: string, evidenceRoot = root) => {
+  // Historical source replay only; actual new executions bind the live file hash independently.
+  if (file === fuiSourceFile) return historicalFuiOrigin(readFileSync(resolve(root, file)))
   if (!file.startsWith('openspec/changes/')) return readFileSync(resolve(root, file))
   const match = /^openspec\/changes\/frade-p01-theme-core\/evidence\/(p01-fui-runtime-[0-9TZ]+\/(?:command\.json|runtime\.stdout\.json|control-valid-bindings\.json))$/.exec(file)
   if (!match) throw new Error('FUI_LOCATION_PATH')

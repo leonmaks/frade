@@ -23,10 +23,10 @@ Bounded initial probe: fresh read-only target/base/new-path/staged/foreign snaps
 ## Checks and completion
 
 - [x] Adopt committed plan/history and26future source files; validate strict before Main PRE. No production copy yet.
-- [ ] Fresh Main consumer PREgpt-6-sol/xhigh and verified full immutable receipt PASS.
-- [ ] Guarded exact26-file application; source/foreign integrity proof.
-- [ ] One Main-local UI/desktop typecheck/lint/unit/BDD/build; ui:compliance, source positives/negatives, boundary/general-contract checks, strict validation. No lock/install changes.
-- [ ] One actual Main Electron batch:8reference cases plus original21affected scenarios; preserve timeouts/assertions, separate reference p95 budget150. Original cases use their existing external fixture; keep raw business-media outside checkout/review and copy only audited generic reports/hardware/locators. No blind visual baseline replacement. Existing accepted19PNG/supplier source-bound details reused only where unchanged.
+- [x] Fresh Main consumer PREgpt-6-sol/xhigh and verified full immutable receipt PASS.
+- [x] Guarded exact26-file application; source/foreign integrity proof.
+- [x] One Main-local UI/desktop typecheck/lint/unit/BDD/build; ui:compliance, source positives/negatives, boundary/general-contract checks, strict validation. No lock/install changes.
+- [x] One actual Main Electron batch:8reference cases plus original21affected scenarios; preserve timeouts/assertions, separate reference p95 budget150. Original cases use their existing external fixture; keep raw business-media outside checkout/review and copy only audited generic reports/hardware/locators. No blind visual baseline replacement. Existing accepted19PNG/supplier source-bound details reused only where unchanged.
 - [ ] Main requirement verification; fresh independent Main POSTgpt-6-sol/xhigh PASS with clean complete stream, exact model request, candidate/packet/control/source guards.
 - [ ] Sync only two declared capabilities and archive through actual CLI after required gates; preserve all evidence/content/paths or explicit immutable locators. Verify foreign854paths unchanged, commit only owned paths, no new-ref/Main push authority assumed. Update supplier and Main-local status honestly.
 

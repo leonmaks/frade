@@ -1,0 +1,7 @@
+**Main consumer PRE: PASS for the exact 26-file transfer.** No correctness, architecture, scope, or test-integrity blocker was found in the prepared packet.
+
+The 26 prepared files match the [transfer manifest](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-25T21-02-09-105Z-aca7086c-ef71-47ab-b1a5-7dbad2d61519/prepared/packet/openspec/changes/frade-vscode-dark-2026/evidence/main-delivery-20261025/transfer-manifest.json): 11 existing targets match their original baseline hashes, and 15 new targets are absent. All six accepted 02 drafts match exactly. The recorded 854 foreign paths, including one deletion, have no overlap with the transfer. The supplier’s source-bound checks and meaningful `SOURCE_HASH` RED are present; its [POST receipt](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-25T21-02-09-105Z-aca7086c-ef71-47ab-b1a5-7dbad2d61519/prepared/packet/openspec/changes/frade-vscode-dark-2026/evidence/cumulative-post4-received-20261025/receipt.json) has a complete event stream and one PASS verdict. Prior FAIL/BLOCKED receipts remain unchanged.
+
+This PASS permits only the guarded transfer described in [main-delivery.md](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-25T21-02-09-105Z-aca7086c-ef71-47ab-b1a5-7dbad2d61519/prepared/packet/openspec/changes/frade-vscode-dark-2026/main-delivery.md). Main’s actual checks, verification, POST, and archive remain outstanding.
+
+GATE_STATUS: PASS

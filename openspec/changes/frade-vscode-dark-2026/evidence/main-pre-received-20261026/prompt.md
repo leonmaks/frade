@@ -1,0 +1,14 @@
+Independent PRE, Main consumer task3.4. Owner main E:/dev/codex/frade planningHEAD4cc45ddf8cf94fba6cee7a3eb96281f53bb29f96, original90710ac; supplier0764bd61. Read AGENTS/current shared policy, design/spec/tasks and main-delivery.md. This is approved exact delivery of an already implemented/reviewed theme, not a new feature scope or general P02/importer. Supplier full technical POST PASS313490e4 with clean verified receipt; exact19PNG now user-accepted (visual-acceptance.json). Preserve all prior FAIL/BLOCKED unchanged. Main product is still baseline:11old paths remain exact original Git blobs;15new absent.26future raw files exist ONLY under evidence/main-delivery-20261025/prepared-source, with explicit root-target mapping/before/afterSHA in transfer-manifest. Review their integration against current baseline, completeness/allowed scope, unchanged persistence/domain/brand/vendor/ACK contracts, frozen original tests except exact accepted02 six drafts. Follow main-delivery.md's guard/check plan; Main checks and POST are future required phases, not claimed completed. Foreign854objects include deletion; only metadata/hashes supplied, no foreign uncommitted source/dependency/process adoption. Owner classified draw package diff as only fast-check devDependency; no runtime export/dependency/script change. Root lock untouched; no install. Verify exact controls/integrity and meaningful supplier RED/actual checks through existing receipt/source-bound evidence; do not require reimplementation or repeat a supplier visual matrix whose identical result is explicitly accepted. Main still needs its one actual checks/runtime batch after transfer and its own POST. Bounded review: first inspect plan, manifests structurally, baseline-versus-prepared files, accepted02 controls and current supplier receipt/complete event validity; avoid dumping multi-MB candidate snapshots/historical events wholesale. Read necessary source ranges and validate relevant raw hashes. Do not execute writes, install/build/apps/network, access host roots/auth or change scope. A clean PRE is permission for exact transfer only, not Main runtime/POST/archive completion. Report concrete correctness/architecture/scope/test-integrity blockers, if any; otherwise explicitly bound the PASS. End with exactly one standalone GATE_STATUS: PASS or GATE_STATUS: FAIL.
+
+Approved owning stage selection (verify semantic plan approval; metadata is not approval):
+{
+  "stage": "VS Code Dark 2026 reference preset",
+  "phase": "PRE",
+  "model": "gpt-6-sol",
+  "reasoningEffort": "xhigh",
+  "source": {
+    "path": "openspec/changes/frade-vscode-dark-2026/design.md",
+    "sha256": "7cbcc21fb660f2abca577242593f8036e50709d44340120b5f9fa50a0d54d8e6",
+    "excerpt": "| VS Code Dark 2026 reference preset | PRE | gpt-6-sol | xhigh |"
+  }
+}
