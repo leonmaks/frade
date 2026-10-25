@@ -1,6 +1,17 @@
+# Публикация UI — PASS
+
+26 окт. 2026 г., 01:22:01 (Москва). Пользователь разрешил origin/main и origin/codex/vscode-dark-2026. Атомарный push без force завершён; git ls-remote подтвердил проверенные UI checkpoints:
+
+|Ref|Опубликованный UI checkpoint / подтверждённый remote SHA|
+|---|---|
+|origin/main|a9318b69ab9e1219ef024aab8b480bc5b31f9c34|
+|origin/codex/vscode-dark-2026|362b7ad4373547c1b1068e750cae19b5b7a659f8|
+
+Эти SHA фиксируют проверенные UI checkpoints на 2026-10-25T22:20:56.553Z; последующий status-only commit записывает этот результат поверх них. [Raw публикация](../../openspec/changes/archive/2026-10-26-frade-vscode-dark-2026/evidence/publication-20261026/publication.json). Код/тесты/исторические gates не изменялись; некоммиченные Routing/P02/прочие изменения исключены. Remote CI/merge protection NOT_VERIFIED.
+
 # VS Code Dark 2026 — final Main report
 
-CHANGE: frade-vscode-dark-2026; Main baseline90710ac, implementation98544a32; Guidev1.0; archive [2026-10-26-frade-vscode-dark-2026](../../openspec/changes/archive/2026-10-26-frade-vscode-dark-2026/proposal.md). All required Main engineering gates complete. Local archive checkpointe1c18d65f34bef71e019c558fe3922f8df20c4f3 and supplier checkpointcf131d22623772c5dbfa31dc0cea4888f2fd6e62 recorded; no Main/new-ref push performed.
+CHANGE: frade-vscode-dark-2026; Main baseline90710ac, implementation98544a32; Guidev1.0; archive [2026-10-26-frade-vscode-dark-2026](../../openspec/changes/archive/2026-10-26-frade-vscode-dark-2026/proposal.md). All required Main engineering gates complete. Local archive checkpointe1c18d65f34bef71e019c558fe3922f8df20c4f3 and supplier checkpointcf131d22623772c5dbfa31dc0cea4888f2fd6e62 recorded; Both authorized origin refs published and remote hashes verified.
 
 IMPLEMENTED: complete pinned Microsoft2026-dark → dark_modern → dark_plus → dark_vs JSONC+MIT under packages/ui-workspace/src/design/reference/vscode-dark-2026/upstream; exact label VS Code Dark 2026, ID frade.reference/vscode-dark-2026. Application factory adds offline reference while core exact3/injected-picker4 remain unchanged. Main/controller use same resolver. Existing preview/cancel/commit/restart/rollback, independent density and forced-colors precedence preserved. Geometry/colors opt in only for resolved reference ID; no persisted preset flag. No P02/VSIX/executableVSCode extension/provider integration claim.
 
@@ -38,7 +49,7 @@ Remaining disclosed adaptations: titlebar35/activity48/radius4/padding4×8 where
 
 Environment: Windows/i9-9880H/IntelUHD630+GTX1650; Node24.18.0,pnpm12.6.0,Electron44.4.5; viewport1280×850/narrow850×650. Syntheticreference fixture9objects; original benchmark separately uses actual identified fixture/hardware, no equivalence claim. Business-fixture media stays outside checkout/review; selectedreference screenshots synthetic. Generic existing NodeDEP0190 test-worker warning disclosed, no embedded data/stdout. Requested review model pair exact; actual backend/effortNOT_CONFIRMED per shared policy.
 
-Historical evidence preserved: old PRE/POSTFAIL/BLOCKED, owner receiver/config/discovery failures,0-case/discovery-only attempts are not PASS. Archive locator changes interpretation of historical paths only; original bytes remain. Global strict Routing warnings are independently owned and not relabeled as passing. KNOWN BLOCKERS: none for completed local Main delivery; remote publication/CI not performed. READY_FOR_VERIFY: YES. Main and supplier archived; all10tasks and checkpoints complete, no new numbered change started.
+Historical evidence preserved: old PRE/POSTFAIL/BLOCKED, owner receiver/config/discovery failures,0-case/discovery-only attempts are not PASS. Archive locator changes interpretation of historical paths only; original bytes remain. Global strict Routing warnings are independently owned and not relabeled as passing. KNOWN BLOCKERS: none for completed local Main delivery; Remote publication verified; remote CI not verified. READY_FOR_VERIFY: YES. Main and supplier archived; all10tasks and checkpoints complete, no new numbered change started.
 
 Launch from E:/dev/codex/frade with pnpm dev:desktop (or current built pnpm start:desktop). Ctrl+K,thenCtrl+T → VS Code Dark 2026 → Enter. Frade Light/Dark/High Contrast/System remain available.
 

@@ -1,7 +1,18 @@
+# Публикация UI — PASS
+
+26 окт. 2026 г., 01:22:01 (Москва). Пользователь разрешил origin/main и origin/codex/vscode-dark-2026. Атомарный push без force завершён; git ls-remote подтвердил проверенные UI checkpoints:
+
+|Ref|Опубликованный UI checkpoint / подтверждённый remote SHA|
+|---|---|
+|origin/main|a9318b69ab9e1219ef024aab8b480bc5b31f9c34|
+|origin/codex/vscode-dark-2026|362b7ad4373547c1b1068e750cae19b5b7a659f8|
+
+Эти SHA фиксируют проверенные UI checkpoints на 2026-10-25T22:20:56.553Z; последующий status-only commit записывает этот результат поверх них. [Raw публикация](../../openspec/changes/archive/2026-10-26-frade-vscode-dark-2026/evidence/publication-20261026/publication.json). Код/тесты/исторические gates не изменялись; некоммиченные Routing/P02/прочие изменения исключены. Remote CI/merge protection NOT_VERIFIED.
+
 <!-- Final completion event 2026-10-25T22:02:55.584Z; all10tasks and both archive commits actual. -->
 # VS Code Dark 2026 — Main: completed
 
-Updated 2026-10-25T21:54:39.567Z. **10/10 engineering tasks complete; Main PRE/POST PASS; specs synced; archived.** Owner main E:/dev/codex/frade, baseline90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d, common E:/dev/codex/frade/.git. Change frade-vscode-dark-2026; Guide1.0. Code checkpoint98544a324621ace4eb881359adf65c0ca82e3992; process089834f7. Archive checkpointe1c18d65f34bef71e019c558fe3922f8df20c4f3 complete; supplier archivecf131d22623772c5dbfa31dc0cea4888f2fd6e62 complete; pushNOT_RUN/NOT_AUTHORIZED forMain.
+Updated 2026-10-25T21:54:39.567Z. **10/10 engineering tasks complete; Main PRE/POST PASS; specs synced; archived.** Owner main E:/dev/codex/frade, baseline90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d, common E:/dev/codex/frade/.git. Change frade-vscode-dark-2026; Guide1.0. Code checkpoint98544a324621ace4eb881359adf65c0ca82e3992; process089834f7. Archive checkpointe1c18d65f34bef71e019c558fe3922f8df20c4f3 complete; supplier archivecf131d22623772c5dbfa31dc0cea4888f2fd6e62 complete; push PASS for both explicitly authorized origin refs; checkpoint hashes above.
 
 |Task|Actual result|
 |---|---|
