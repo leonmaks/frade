@@ -1,24 +1,26 @@
-# VS Code Dark 2026 — current status
+# VS Code Dark 2026 — статус ветки
 
-2026-10-25T18:28:53.260Z. **7/10 tasks complete. Technical verify ready; automatic POST preparing.**
+Обновлено 2026-10-25T19:27:31.084Z. **8/10 задач; независимый технический POST: PASS.**
 
-Branch codex/vscode-dark-2026; worktree E:/dev/codex/frade-worktrees/vscode-dark-2026; changefrade-vscode-dark-2026; baseline90710ac; commonE:/dev/codex/frade/.git; Guide1.0. Review pairgpt-6-sol/xhigh from current design.
+Ветка codex/vscode-dark-2026; worktree E:/dev/codex/frade-worktrees/vscode-dark-2026; change frade-vscode-dark-2026. Исходный commit 90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d; Git common E:/dev/codex/frade/.git. Guide v1.0. Независимые PRE/POST: gpt-6-sol/xhigh согласно design; фактический backend NOT_CONFIRMED.
 
-|Stage|Actual status|
+|Этап / задача|Статус|
 |---|---|
-|Audit/source/plan/PRE/meaningfulRED|DONE; old FAIL preserved|
-|Source generator/app registry/Main/root preset|DONE|
-|Affected visual/A11Y selected coverage|DONE; reference6/6 plus density/dirty/form2/2|
-|Exact02 legacy repair / affected checks|DONE; PREPASS; actual SOURCE_HASH RED; six exact drafts; UI260/260, original21/21PASS|
-|Technical OpenSpec verify|8/8requirements; no correctness blocker in supplier scope; archive not ready|
-|Independent cumulativePOST|PREPARING; freeze candidate/dashboard during review; no PASS yet|
-|Human visual acceptance|NOT_APPROVED; final gallery19PNG|
-|Main delivery/archive|NOT_RUN; main app still lacks new theme|
+|1.1 Audit, source/MIT, границы, стратегия|DONE|
+|1.2 Mapping, strict validation, независимый PRE|PASS|
+|2.1 Meaningful RED и отрицательные fixtures|DONE|
+|2.2 Полные upstream-исходники, generator/drift|DONE|
+|2.3 App registry/Main resolver, preview/cancel/commit|DONE|
+|2.4 Геометрия только reference ID, density/A11Y|DONE|
+|3.1 Принятый exact02 control repair, проверки|PASS; UI260, desktop128, BDD132, source7, original Electron21|
+|3.2 Electron reference8 cases, 19 screenshots / человек|Технические проверки PASS; визуальное принятие NOT_APPROVED|
+|3.3 OpenSpec technical verify / независимый POST|8/8 requirements; PASS|
+|3.4 Main delivery, consumer gates, archive|NOT_RUN; новое оформление ещё отсутствует в Main|
 
-[Gallery](../../openspec/changes/frade-vscode-dark-2026/evidence/final-visual-gallery-20261025/INDEX.md), manifest1f2aa40b9b15a8f213f9f1e20e4b543ea252147e4b2b39cb5c33e40eb496e2b5. [Verify](../../openspec/changes/frade-vscode-dark-2026/evidence/technical-verify-20261025/verification.md). [Report](VS-CODE-DARK-2026.md).
+[Галерея19PNG](../../openspec/changes/frade-vscode-dark-2026/evidence/final-visual-gallery-20261025/INDEX.md), manifest SHA256 1f2aa40b9b15a8f213f9f1e20e4b543ea252147e4b2b39cb5c33e40eb496e2b5. [Полный отчёт](VS-CODE-DARK-2026.md). [POST receipt](../../openspec/changes/frade-vscode-dark-2026/evidence/cumulative-post4-received-20261025/verification.json).
 
-Current tests: UI260, desktop128, BDD132, source7, originalruntime21 (FUI12+legacy+B05/diagnostic/p95), reference6+2PASS. Reference p9586.3ms; current original p95 in owner runtime artifact/record. build/type/lint/compliance/boundary checks actualPASS; new extra tests are tail-only, original production/new-reference case prefix unchanged, exact source equivalence recorded. Raw external-KA media outside checkout/packet; generic report has no embedded data. Root/view/app sources unchanged since source-bound runtime.
+Фактические проверки: UI260/260; desktop128/128; BDD132/132; source controls7/7; original Electron21/21 без skip/flaky; reference6/6 + targeted2/2. Reference p95 86.3ms, original current p95 116.7ms, budget150ms. Affected typecheck/lint/build/compliance/boundaries/general contracts/strict PASS. Не заявляется полный аудит AA или pixel-perfect всего приложения.
 
-Historical failures retained: incomplete PRE1/2, focused selectorPRE1FAIL then PRE2PASS; initial wrong-fixture and zero-test selection attempts were not counted as PASS/RED. No assertion/timeout/tolerance weakened. Exact Git-onlyM1716 byte proof is historical environment evidence, not a permission to alter foreign files.
+Исторические PRE/POST FAIL и transport BLOCKED сохранены неизменно. Missing desktop raw evidence закрыт свежим source-bound128/128. Предыдущий текстовый PASS с reconnect errors не принят. Два preparation CANDIDATE_CHANGED остаются историческими; источник изменения NOT_PROVEN. Последующий неизменённый trusted snapshot11504файлов PASS; диагностическая копия не использована как gate.
 
-Next: frozen automatic POSTgpt-6-sol/xhigh → receive/verify immutable receipt → human visual decision → isolated Main consumer delivery/checks/archive. No P02/routing dependency or advancement. Local checkpoints only; new-ref/Main pushNOT_AUTHORIZED. Dashboard right panel QUEUED, visibility NOT_CONFIRMED.
+Следующий шаг: получить точное визуальное принятие; затем изолированный перенос в Main с проверкой исходных файлов/посторонних изменений и consumer gates. P02/Routing не затрагиваются. Push новой ветки/Main NOT_AUTHORIZED; локальный implementation checkpoint8c047132, полный POST/evidence включён в локальный checkpoint «docs(ui): record verified VS Code Dark 2026 supplier POST». Открытие панели: QUEUED, видимость NOT_CONFIRMED.

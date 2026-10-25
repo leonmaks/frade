@@ -1,0 +1,5 @@
+GATE_STATUS: PASS
+
+The cumulative **supplier technical POST** has no remaining correctness, source, test, or packet coverage blocker. All 357 packet artifacts match their hashes. The new [desktop unit record](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-25T19-19-38-875Z-f61a065d-4e8b-4606-bdb7-5453a1ce9326/prepared/packet/openspec/changes/frade-vscode-dark-2026/evidence/desktop-unit-bound-20261025/execution.json) supplies raw exit-0 evidence for 128/128 tests, bound to identical 225-input manifests. The current plan, pinned upstream files, approved selector drafts, source bindings, and required command results are consistent.
+
+This verdict does **not** turn the prior FAIL or blocked attempts into approvals. The runner must still validate this attempt’s clean complete event stream and unchanged candidate and packet. Human acceptance of the [19-image gallery](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-25T19-19-38-875Z-f61a065d-4e8b-4606-bdb7-5453a1ce9326/prepared/packet/openspec/changes/frade-vscode-dark-2026/evidence/final-visual-gallery-20261025/INDEX.md) remains pending; Main delivery and archive are not ready.

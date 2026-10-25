@@ -1,0 +1,94 @@
+{
+  "at": "2026-10-25T19:13:42.883Z",
+  "status": "BLOCKED_NOT_PASS",
+  "reason": "Four Connection reset by peer/reconnect error events; terminal turn exists but unchanged policy forbids any error event",
+  "codeOrTestsChanged": false,
+  "candidateUnchanged": true,
+  "packetUnchanged": true,
+  "errors": [
+    {
+      "type": "error",
+      "message": "Reconnecting... 2/5 (stream disconnected before completion: Connection reset by peer (os error 104))"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 3/5 (stream disconnected before completion: Connection reset by peer (os error 104))"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 4/5 (stream disconnected before completion: Connection reset by peer (os error 104))"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 5/5 (stream disconnected before completion: Connection reset by peer (os error 104))"
+    }
+  ],
+  "measuredUsage": {
+    "input_tokens": 1936391,
+    "cached_input_tokens": 1806208,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 12764,
+    "reasoning_output_tokens": 4966
+  },
+  "measuredSeconds": 452.23,
+  "selectedStrategy": "One fresh independent same-model cumulative POST with minimal relevant packet: remove duplicate historical candidate/packet snapshots and superseded raw request/event duplication; retain current source, original execution evidence, approved decisions, positive PRE provenance, required raw checks, source binding, gallery, prior verdicts. No policy/model/effort/assertion weakening. Full omitted history stays immutable in branch.",
+  "forecast": "2–5min, judgment only; network failure remains uncertain",
+  "stop": "If next attempt repeats transport error, stop repeated full reviews and report environment blocker; do not accept raw PASS or modify strictReceipt",
+  "raw": [
+    {
+      "file": "receipt.json",
+      "sha256": "dd18e5ab71fd0b85dfaff3aef127095634a51e5895d6d1909a658f834b347dba",
+      "bytes": 1837
+    },
+    {
+      "file": "input.json",
+      "sha256": "2478374de67acb27d1def563035163fb8ce256e718fd500f52234576eadf2473",
+      "bytes": 43824
+    },
+    {
+      "file": "request.json",
+      "sha256": "a530b67fae9f8ba5b4f7271e12c877d8e2fbd116f2dad3cc5d469f0d99c558c2",
+      "bytes": 38394
+    },
+    {
+      "file": "prepare-execution.json",
+      "sha256": "60703e07b07807636cd1f2231964077c073bb23c986ccc5c9916eb1dcfa1064f",
+      "bytes": 769
+    },
+    {
+      "file": "invoke-execution.json",
+      "sha256": "54a12270af0e5a7f168fba354d8613ea905dc439da33e37b1c418c5ce609bc44",
+      "bytes": 695
+    },
+    {
+      "file": "instance-provenance.json",
+      "sha256": "437cd3ed56ec9351604aa2db8a56d615ea2e07efe4346118c1f06f8178770612",
+      "bytes": 3840
+    },
+    {
+      "file": "output/result.md",
+      "sha256": "ad38619910de2c47237a743f27232129e6e855f8a5e399943ac9c973e18865d0",
+      "bytes": 1061
+    },
+    {
+      "file": "output/record.json",
+      "sha256": "3e6d08207e1dcf003b15b75001eb6ed041f700021aa4e76d461e1e063275225d",
+      "bytes": 3709
+    },
+    {
+      "file": "output/events.jsonl",
+      "sha256": "8c4df5c7a0e0d4da24f989928b92f32730ab8c9648ea62b0821ac500c777e4a0",
+      "bytes": 575914
+    },
+    {
+      "file": "output/stderr.txt",
+      "sha256": "267aae16046c801296a2a1b3b156842ae87299429581da6d4eca105c393eb1d7",
+      "bytes": 1520
+    },
+    {
+      "file": "instance/offline-probe-b.json",
+      "sha256": "855467190d7c17c3e70097e8174560b264cb5757004d71df81dba3960f3e212d",
+      "bytes": 4588
+    }
+  ]
+}
