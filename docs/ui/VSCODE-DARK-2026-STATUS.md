@@ -1,19 +1,19 @@
-<!-- Main technical verify 2026-10-25T21:23:30.383Z; POST next. -->
-<!-- Main exact transfer 2026-10-25T21:10:41.821Z; checks next. -->
-<!-- Main planning checkpoint 2026-10-25T21:00:42.060Z; consumer PRE next. -->
-# VS Code Dark 2026 — Main consumer status
+# VS Code Dark 2026 — Main: completed
 
-Updated 2026-10-25T20:58:52.346Z. Owner main, E:/dev/codex/frade; baseline90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d, common E:/dev/codex/frade/.git. Active change frade-vscode-dark-2026 task3.4; supplier checkpoint0764bd61, technical POST PASS, human exact19PNG accepted. Guide1.0. PRE/POST gpt-6-sol/xhigh from this feature's design; backend NOT_CONFIRMED. Exact26source files applied after verified Main PRE; Main checks are next.
+Updated 2026-10-25T21:54:39.567Z. **10/10 engineering tasks complete; Main PRE/POST PASS; specs synced; archived.** Owner main E:/dev/codex/frade, baseline90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d, common E:/dev/codex/frade/.git. Change frade-vscode-dark-2026; Guide1.0. Code checkpoint98544a324621ace4eb881359adf65c0ca82e3992; process089834f7. Final archive/status checkpoint awaiting local commit; pushNOT_RUN/NOT_AUTHORIZED forMain.
 
-|Task|Main actual status|
+|Task|Actual result|
 |---|---|
-|Supplier tasks1.1–3.3|9/10DONE in supplier, immutable adopted evidence; not Main execution|
-|Fresh Main preflight|PASS;11exact baseline targets,15absent,854foreign paths/absence guarded; staged-empty|
-|Committed process/history/source-candidate adoption|DONE;26future files only inside evidence, product unchanged|
-|Strict validation / Main consumer PRE|Strict PASS; Main PRE PASS00fab3fa; source382/hash/stream verified|
-|Exact26file application|PASS; exact bytes,854foreign contents/absence/status unchanged|
-|Main static/unit/build/compliance/runtime checks|PASS:13Main checks +29/29Electron, content audit PASS (one disclosed Node warning); verify/POST next|
-|Main verify / independent POST|Verify8/8PASS; POST1FAIL evidence packet omission; source/tests PASS; application +854after proof repaired; fresh POST2 preparing|
-|Canonical sync/archive/local delivery commit|NOT_RUN|
+|Supplier source/plan/PRE/RED/implementation|DONE; full pinned4JSONC+MIT and exact26files|
+|User exact19PNG acceptance|PASS manifest1f2aa40b9b15a8f213f9f1e20e4b543ea252147e4b2b39cb5c33e40eb496e2b5|
+|Main PREgpt-6-sol/xhigh|PASS00fab3fa; clean stream/source/packet|
+|Exact transfer /854foreign preservation|PASS;11baseline+15new,1foreign deletion remains absent|
+|Main13checks|PASS; UI260/260,desktop128/128,BDD132/132; type/lint/build/compliance/boundary/general-contract/strict|
+|Main actual Electron|29/29PASS,0skip/flaky,299inputs+10bundles stable; refp9581.5/original112.3ms≤150|
+|Main verify / independent POST2|8/8requirements; PASS35f84bcd; all346sources/854after objects verified|
+|Canonical sync/archive|DONE;6new requirements+2existing-cap additions;795original files preserved on move|
+|Final local checkpoint / supplier status closure|IN_PROGRESS; no source changes, no next numbered stage|
 
-Next: fresh Main POSTgpt-6-sol/xhigh → sync/archive/checkpoint. Main checks13/13 and runtime29/29PASS; earlier owner helper errors preserved, no product repairs. No Routing/P02 writes or dependency. Existing foreign five content-diff paths plus all854status objects remain bytes/absence-identical; no discard/stash/reset/lockfile change. Commit only owned paths; Main/new-ref push NOT_AUTHORIZED. [Delivery plan](../../openspec/changes/frade-vscode-dark-2026/main-delivery.md), [Transfer manifest](../../openspec/changes/frade-vscode-dark-2026/evidence/main-delivery-20261025/transfer-manifest.json), [19PNG](../../openspec/changes/frade-vscode-dark-2026/evidence/final-visual-gallery-20261025/INDEX.md). Status tab QUEUED, visibility NOT_CONFIRMED. Historical FAIL/BLOCKED remain unchanged.
+[Report](VS-CODE-DARK-2026.md), [archive](../../openspec/changes/archive/2026-10-26-frade-vscode-dark-2026/proposal.md), [Main POST](../../openspec/changes/archive/2026-10-26-frade-vscode-dark-2026/evidence/main-post2-received-20261026/verification.json), [current Main screenshots](../../openspec/changes/archive/2026-10-26-frade-vscode-dark-2026/evidence/main-runtime-v3-20261026/selected-artifacts-manifest.json). Main14/19PNG byte-identical;4temporary-path text differences and1option-fill state variant retained; no rebaseline. Actual historical hover DOM stateNOT_RECORDED. Accepted geometry/A11Y adaptations remain.
+
+Historical FAIL/BLOCKED and owner harness errors retained; missing-packet POST1FAIL is resolved by fresh POST2, never rewritten. All-spec normal13/13PASS; affectedUIbothstrictPASS; globalstrictFAIL3unchangedRoutingcaps(long-text warnings), byte-identical90710ac. Routing owns those lint repairs; no dependency/writes introduced. RemoteCI/merge protectionNOT_VERIFIED; local verification only. Requested model pair from design, actual backendNOT_CONFIRMED. Status open queued, visibilityNOT_CONFIRMED. Next: finish local archive checkpoint and supplier's own branch status/archive; STOP, no P02/Routing continuation.
