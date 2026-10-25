@@ -45,3 +45,5 @@ KNOWN BLOCKERS: accepted six-file legacy selector/origin repair awaiting fresh P
 READY_FOR_VERIFY: NO
 
 Final token-corrected current build/discovery/runtime:6/6PASS; p95 86.30000000074506ms over100samples after20warmups, budget150ms. Final actual AA pairs/native+frame dirty state/media screenshots retained in token-corrected-runtime-20261025. All prior runtime FAIL remain immutable. Scope accepted; automatic focused PRE preparing, not yet run.
+
+Focused selector PRE01 FAIL36a5b7aaa1d8949269751edd70612f562a89e759a54664c4a137c0f7ad5d8199: missing4historical inputs and two missed genericDark option targets. Same-six-file exact replacement02 is proposed, NOT_ACCEPTED/NOT_APPLIED; all7targets inventoried byAST, draft1positive/3negativePASS, original historical inputs located. None of the original controls was edited. Gate repair and cumulativePOST remain blocked. Gallery13PNG is ready but human visual acceptance NOT_APPROVED.

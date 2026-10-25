@@ -1,40 +1,40 @@
-# Scope accepted / fresh PRE preparing
+# VS Code Dark 2026 — статус
 
-2026-10-25T17:45:48.697Z: user accepted exact six drafts. Active plan reconciled; old controls not applied. Final token-corrected runtime6/6PASS. Strict and fresh PREgpt-6-sol/xhigh next; dashboard freezes during review.5/10tasks; old4FAIL remain open. No Main/push.
+Обновлено 2026-10-25T17:57:00.521Z. **5/10 задач завершено. BLOCKED: точная замена legacy selector drafts02.**
 
-# VS Code Dark 2026 — текущий статус
+Ветка codex/vscode-dark-2026; worktree E:/dev/codex/frade-worktrees/vscode-dark-2026; OpenSpec frade-vscode-dark-2026; baseline90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d; Git-commonE:/dev/codex/frade/.git. Guide1.0. PRE/POST модельgpt-6-sol/xhigh по принятому плану.
 
-Обновлено: 2026-10-25T17:44:55.641Z. **BLOCKED: решение по старым селекторам. 5/10 задач закрыто.**
-
-Ветка: codex/vscode-dark-2026. Worktree: E:/dev/codex/frade-worktrees/vscode-dark-2026. Change: frade-vscode-dark-2026. Baseline:90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d. Git-common:E:/dev/codex/frade/.git. Guide1.0.
-
-| Этап | Фактический статус |
+|Задача|Статус|
 |---|---|
-|1.1 Аудит/источник/решения|DONE|
-|1.2 План/strict/независимый PRE|DONE; PRE3PASS, прежние PRE1/2FAIL сохранены|
-|2.1 Meaningful RED|DONE;3 поведенческих FAIL до кода|
-|2.2 Полный источник/генератор/negative controls|DONE;4JSONC+MIT;7/7 controls|
-|2.3 Registry/Main/bootstrap/preset/preview|DONE; core3/injected4 сохранены, новое приложение4+System; unit и реальный restart/cancel PASS|
-|2.4 Визуальная/A11Y матрица|IN_PROGRESS; выбранные экраны/две плотности/media/контраст PASS; общая приёмка не завершена|
-|3.1 Общие/исторические проверки|BLOCKED:4 старых runtime FAIL из-за неоднозначного /Dark/|
-|3.2 Screenshots/визуальное решение|Новые реальные screenshots готовы; human acceptance NOT_APPROVED|
-|3.3 Verify/POST|BLOCKED до закрытия applicable FAIL; POST NOT_RUN|
-|3.4 Main/archive/push|NOT_RUN; Main ещё без новой темы; push нового ref/Main NOT_AUTHORIZED|
+|1.1 Аудит/полный источник/решения|DONE|
+|1.2 План/strict/PRE3|DONE; PRE3PASS, PRE1/2FAIL сохранены|
+|2.1 Meaningful RED|DONE;3поведенческих FAIL до реализации|
+|2.2 JSONC/MIT/генератор/negative controls|DONE;7/7controls|
+|2.3 App registry/Main/root preset/preview/restart|DONE;7/7newunit и real transitions PASS|
+|2.4 Визуальная/A11Y матрица|IN_PROGRESS; выбранные surfaces/две плотности/media/AA6/6PASS, подробные пределы в отчёте|
+|3.1 Общие и исторические проверки|BLOCKED:4старыхruntime FAIL до assertions из-за /Dark/; остальные результаты ниже|
+|3.2 Галерея и human visual acceptance|13реальных PNG/manifest готовы; NOT_APPROVED|
+|3.3 Verify/POST|BLOCKED; POST NOT_RUN|
+|3.4 Main/archive/push|NOT_RUN; основное приложение ещё без новой темы|
 
-## Текущий blocker и решение
+## Последняя независимая проверка
 
-[Точное предложение](../../openspec/changes/frade-vscode-dark-2026/decisions/vscode-dark-2026-legacy-selectors-01/proposal.md): VSCODE-DARK-2026-LEGACY-SELECTORS-01, SHA5aaf9a614cfe6e2b576bb58c577b640b1fdf841d1e3f00178b7ba655b21d28ec. Шесть drafts, manifestc4b1ae4b4aa3110969802a5822960581171844495b7c106ba997885fdff62637. Четыре option selectors +один alternating selector; assertions/таймауты/допуски/исторические отчёты сохраняются. Новая привязка live/origin не выдаёт старое выполнение за новое. Draft-only positive1/negative3 smoke PASS; это не PRE и не принятие scope. Вопрос отправлен; старые файлы не изменены.
+Focused PRE accepted01: **FAIL**, полный result/receipt/hash/unchanged candidate+packet проверены; result36a5b7aaa1d8949269751edd70612f562a89e759a54664c4a137c0f7ad5d8199. Два blocker: отсутствовали4исторических packet inputs; оставались2неоднозначных selectors. Метод двух hash и сохранность assertions подтверждены, но это не PASS. Ни один из шести draft01 не применён.
 
-## Проверки
+AST-аудит всех option/radio во всех двух файлах нашёл5genericDark option +2constructed alternating regex. [Предложение02](../../openspec/changes/frade-vscode-dark-2026/decisions/vscode-dark-2026-legacy-selectors-02/proposal.md) исправляет все7; после drafts0unsafe. Те же6пути; exact replacement требует нового решения. SHAe7545cbeeb492461882718786f8b13f6825878ee39834db86b8cdf4ad1d9f9d2; manifest61e82b6ce19b72412e3c684a054c1b37bbe68aadc5f9adce3b5ec3b58c3f4655. Draft-only1positive/3negativePASS; oldactive tests/evidence неизменны. Недостающие originalFUI3+hardware1 найдены и проверены, runtime содержит12PASSбезembeddedbody/stdout. Вопрос пользователю отправлен.
 
-UI unit253/253, desktop unit128/128, UI BDD132/132, UI build и general boundary tests PASS до финального косметического снятия рамки. Последние typecheck/lint desktop PASS. Новый unit7/7, source controls7/7, ui:compliance и boundaries PASS. Последняя полная новая Electron matrix6/6PASS включала actual AA и reference p95110.2ms; после отказа scanner на transparent сделана токенизированная эквивалентная рамка и запущен привязанный повтор шести случаев — результат в token-corrected-runtime-20261025. Не переносить прежний PASS на новый вход без чтения execution.json.
+## Проверки и evidence
 
-Первые checkout/build и5 исторических unit hash FAIL были ENVIRONMENT: core.autocrlf. Восстановлены только точные исходные Git-blob байты, ожидаемые hash и vendor manifest не менялись. Четыре текущих /Dark/ runtime FAIL — отдельный TEST/INTEGRATION blocker. Все предыдущие FAIL/evidence сохранены. Raw traces со сторонним KA fixture удерживаются вне checkout/packet с hash-locator; в новых screenshots только synthetic9 objects.
+- UIunit253/253, desktopunit128/128, UIBDD132/132, typecheck/lint UI/desktop, UIbuild/general contracts/boundaries PASS. Последние source7/7 +ui:compliance/boundaries PASS.
+- Финальные desktopbuild/discovery/newElectron6/6PASS: preview/cancel/commit/restart, compact/comfortable, native/frame dirty/selection/undo/identity/disk, actualAA pairs, keyboard focus/media/coarse/text200, p95**86.3ms** из100samples после20warmups, budget150ms.
+- Исходные startup/persistence/restored-readonly3PASS; исходные native/embedded/parked/p954FAIL по ambiguouslocator, не сняты. Новые synthetic9-объектные p95 не заменяют старый138-объектный.
+- [Галерея13PNG](../../openspec/changes/frade-vscode-dark-2026/evidence/current-visual-gallery-20261025/INDEX.md), manifest4ae4c9e774441f43cc101f910e1af39ca735914fc259d2284a9f8435fd34d57b. [Полный отчёт](VS-CODE-DARK-2026.md). Синтаксис118rules/semantic4сохранён без editor consumer;47/325keys mapped,278retained-only.
+- ENVIRONMENT: checkout core.autocrlf испортил pinned bytes; восстановлены только exactGit blobs. Git-only M1716entries доказаны exactindexbytes, gitdiffempty; исходники/vendor/historical hashes не менялись. Все прежние FAIL сохранены. Raw external-KA traces исключены изpacket/commits, удерживаются по hash-locator внеcheckout.
 
 ## Следующий шаг
 
-Дождаться scope-решения; затем согласовать план, strict и автоматический независимый PRE **gpt-6-sol/xhigh**, применить только после PASS, закрыть прежние сценарии и source-bound controls, verify/POST, конкретная визуальная приёмка, затем перенос в Main. P02 остаётся отдельным заблокированным направлением; его scope/roadmap не возобновлялись.
+Получить точное решение02 → согласовать план/strict → автоматический PRE → после PASS meaningfulSOURCE_HASH RED и exactdrafts → полный affectedGREEN и21исходныйcase (19основных/FUI +B05/diagnostic) → verify/автоматическийPOST → конкретная humanvisualacceptance → проверенный перенос Main/archive. Никакого нового P02/routing/domain scope.
 
 ## Git/панель
 
-Локальный implementation checkpoint готовится с честным BLOCKED. Push не выполняется. Dashboard открыт в правую панель ранее как QUEUED; видимость не подтверждена.
+Локальные checkpoints29fd648c (реализация с открытыми gates), b4cd34dd (точные Gitblobs). Новыйcheckpoint по PREFAIL/02готовится. Push новогоref/Main NOT_AUTHORIZED, не выполнялся. Dashboard повторно отправлен в правую панель: QUEUED, видимость NOT_CONFIRMED.
