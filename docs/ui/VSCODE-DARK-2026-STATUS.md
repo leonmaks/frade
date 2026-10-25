@@ -33,8 +33,8 @@ AST-аудит всех option/radio во всех двух файлах наш�
 
 ## Следующий шаг
 
-Получить точное решение02 → согласовать план/strict → автоматический PRE → после PASS meaningfulSOURCE_HASH RED и exactdrafts → полный affectedGREEN и21исходныйcase (19основных/FUI +B05/diagnostic) → verify/автоматическийPOST → конкретная humanvisualacceptance → проверенный перенос Main/archive. Никакого нового P02/routing/domain scope.
+Получить точное решение02 → согласовать план/strict → автоматический PRE → после PASS meaningfulSOURCE_HASH RED и exactdrafts → полный affectedGREEN иFUI12/legacy/B05/diagnostic (точный набор подтвердить --list) → verify/автоматическийPOST → конкретная humanvisualacceptance → проверенный перенос Main/archive. Никакого нового P02/routing/domain scope.
 
 ## Git/панель
 
-Локальные checkpoints29fd648c (реализация с открытыми gates), b4cd34dd (точные Gitblobs). Новыйcheckpoint по PREFAIL/02готовится. Push новогоref/Main NOT_AUTHORIZED, не выполнялся. Dashboard повторно отправлен в правую панель: QUEUED, видимость NOT_CONFIRMED.
+Локальные checkpoints29fd648c (реализация с открытыми gates), b4cd34dd (точные Gitblobs). Checkpoint d6f280e9 сохраняет PREFAIL/полный AST/предложение02/галерею; после него contentdiff пустой. Последующая status-запись фиксирует публикацию этого локального checkpoint. Push новогоref/Main NOT_AUTHORIZED, не выполнялся. Dashboard повторно отправлен в правую панель: QUEUED, видимость NOT_CONFIRMED.
