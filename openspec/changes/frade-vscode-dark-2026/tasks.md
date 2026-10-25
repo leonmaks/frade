@@ -14,7 +14,7 @@
 
 ## 3. Actual verification and delivery
 
-- [ ] 3.1 After accepted exact legacy-selector control repair and fresh PRE PASS, apply only six drafts and prove origin negatives/current source-bound original/FUI12 replay. Run applicable affected/static/unit/BDD/build/root compliance and original P01 semantic/persistence/startup/performance regressions on final inputs; preserve all actual outcomes.
+- [ ] 3.1 After accepted exact02 legacy-selector control repair and fresh PRE PASS, apply only six drafts and prove origin negatives/current source-bound original/FUI12/B05/parked-diagnostic replay. Run applicable affected/static/unit/BDD/build/root compliance and original P01 semantic/persistence/startup/performance regressions on final inputs; preserve all actual outcomes.
 - [ ] 3.2 Run actual Electron reference transitions/restart/dirty preservation and visual/computed-style/geometry cases; publish honest compatibility/deviations/screenshots and obtain required human visual acceptance.
 - [ ] 3.3 Perform OpenSpec requirement verification and automatic independent POST gpt-6-sol/xhigh with immutable full receipt and source binding.
 - [ ] 3.4 Deliver reviewed result into Main through isolated consumer checks preserving foreign files; verify/report/archive only after required gates and visuals; commit checkpoints, push only authorized ref.

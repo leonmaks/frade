@@ -63,3 +63,8 @@ The implementation SHALL select built-in themes unambiguously and preserve exact
 - **GIVEN** the accepted current and original source hashes
 - **WHEN** an assertion or unapproved source byte changes
 - **THEN** the origin control fails and no historical execution is relabeled as current evidence
+
+#### Scenario: Complete option inventory rejects ambiguous replay
+- **GIVEN** both complete original regression files
+- **WHEN** their theme option locators are analyzed
+- **THEN** no generic Dark or constructed regex option selector remains and the live performance source matches its accepted pin

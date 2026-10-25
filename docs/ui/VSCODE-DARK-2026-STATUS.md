@@ -1,6 +1,10 @@
+# Accepted02 / fresh independent PRE preparing
+
+2026-10-25T17:58:59.803Z: exact replacement/drafts accepted, active plan reconciled, old controls unchanged.5/10tasks; old4FAIL remain open. Freeze dashboard/candidate during PRE; source/model binding below.
+
 # VS Code Dark 2026 — статус
 
-Обновлено 2026-10-25T17:57:00.521Z. **5/10 задач завершено. BLOCKED: точная замена legacy selector drafts02.**
+Обновлено 2026-10-25T17:57:00.521Z. **5/10 задач завершено. IN_PROGRESS: точная замена02 принята; согласование/strict/PRE.**
 
 Ветка codex/vscode-dark-2026; worktree E:/dev/codex/frade-worktrees/vscode-dark-2026; OpenSpec frade-vscode-dark-2026; baseline90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d; Git-commonE:/dev/codex/frade/.git. Guide1.0. PRE/POST модельgpt-6-sol/xhigh по принятому плану.
 
@@ -21,7 +25,7 @@
 
 Focused PRE accepted01: **FAIL**, полный result/receipt/hash/unchanged candidate+packet проверены; result36a5b7aaa1d8949269751edd70612f562a89e759a54664c4a137c0f7ad5d8199. Два blocker: отсутствовали4исторических packet inputs; оставались2неоднозначных selectors. Метод двух hash и сохранность assertions подтверждены, но это не PASS. Ни один из шести draft01 не применён.
 
-AST-аудит всех option/radio во всех двух файлах нашёл5genericDark option +2constructed alternating regex. [Предложение02](../../openspec/changes/frade-vscode-dark-2026/decisions/vscode-dark-2026-legacy-selectors-02/proposal.md) исправляет все7; после drafts0unsafe. Те же6пути; exact replacement требует нового решения. SHAe7545cbeeb492461882718786f8b13f6825878ee39834db86b8cdf4ad1d9f9d2; manifest61e82b6ce19b72412e3c684a054c1b37bbe68aadc5f9adce3b5ec3b58c3f4655. Draft-only1positive/3negativePASS; oldactive tests/evidence неизменны. Недостающие originalFUI3+hardware1 найдены и проверены, runtime содержит12PASSбезembeddedbody/stdout. Вопрос пользователю отправлен.
+AST-аудит всех option/radio во всех двух файлах нашёл5genericDark option +2constructed alternating regex. [Предложение02](../../openspec/changes/frade-vscode-dark-2026/decisions/vscode-dark-2026-legacy-selectors-02/proposal.md) исправляет все7; после drafts0unsafe. Те же6пути; exact replacement02 принят пользователем; новые controls пока не применены. SHAe7545cbeeb492461882718786f8b13f6825878ee39834db86b8cdf4ad1d9f9d2; manifest61e82b6ce19b72412e3c684a054c1b37bbe68aadc5f9adce3b5ec3b58c3f4655. Draft-only1positive/3negativePASS; oldactive tests/evidence неизменны. Недостающие originalFUI3+hardware1 найдены и проверены, runtime содержит12PASSбезembeddedbody/stdout. Точное решение02 получено; повторного подтверждения review не требуется.
 
 ## Проверки и evidence
 
