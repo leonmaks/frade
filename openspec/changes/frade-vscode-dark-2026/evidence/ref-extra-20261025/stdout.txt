@@ -1,0 +1,80 @@
+
+Running 2 tests using 1 worker
+
+  x  1 tests\e2e\ui-contract-vscode-dark-2026.spec.ts:610:3 › reference coverage compact: both dirty editors all modes and repository form (16.0s)
+  x  2 tests\e2e\ui-contract-vscode-dark-2026.spec.ts:610:3 › reference coverage comfortable: both dirty editors all modes and repository form (15.7s)
+
+
+  1) tests\e2e\ui-contract-vscode-dark-2026.spec.ts:610:3 › reference coverage compact: both dirty editors all modes and repository form 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('dialog', { name: 'Метаописание репозитория', exact: true }).locator('.field-error')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('dialog', { name: 'Метаописание репозитория', exact: true }).locator('.field-error')[22m
+
+
+      660 |           await input.fill(join(f.destination, 'missing-metadata'))
+      661 |           await dialog.getByRole('button', { name: 'Проверить набор', exact: true }).click()
+    > 662 |           await expect(dialog.locator('.field-error')).toBeVisible()
+          |                                                        ^
+      663 |           await page.screenshot({ path: info.outputPath(`repository-error-${density}.png`) })
+      664 |           await dialog.getByRole('button', { name: 'Отмена', exact: true }).click()
+      665 |           await expect(dialog).toBeHidden()
+        at E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-vscode-dark-2026.spec.ts:662:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\ref-extra-20261025\artifacts\ui-contract-vscode-dark-20-4dc65-l-modes-and-repository-form\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\ref-extra-20261025\artifacts\ui-contract-vscode-dark-20-4dc65-l-modes-and-repository-form\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-vscode-dark-2026\evidence\ref-extra-20261025\artifacts\ui-contract-vscode-dark-20-4dc65-l-modes-and-repository-form\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\ui-contract-vscode-dark-2026.spec.ts:610:3 › reference coverage comfortable: both dirty editors all modes and repository form 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('dialog', { name: 'Метаописание репозитория', exact: true }).locator('.field-error')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('dialog', { name: 'Метаописание репозитория', exact: true }).locator('.field-error')[22m
+
+
+      660 |           await input.fill(join(f.destination, 'missing-metadata'))
+      661 |           await dialog.getByRole('button', { name: 'Проверить набор', exact: true }).click()
+    > 662 |           await expect(dialog.locator('.field-error')).toBeVisible()
+          |                                                        ^
+      663 |           await page.screenshot({ path: info.outputPath(`repository-error-${density}.png`) })
+      664 |           await dialog.getByRole('button', { name: 'Отмена', exact: true }).click()
+      665 |           await expect(dialog).toBeHidden()
+        at E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-vscode-dark-2026.spec.ts:662:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\ref-extra-20261025\artifacts\ui-contract-vscode-dark-20-97963-l-modes-and-repository-form\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\ref-extra-20261025\artifacts\ui-contract-vscode-dark-20-97963-l-modes-and-repository-form\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-vscode-dark-2026\evidence\ref-extra-20261025\artifacts\ui-contract-vscode-dark-20-97963-l-modes-and-repository-form\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\ui-contract-vscode-dark-2026.spec.ts:610:3 › reference coverage compact: both dirty editors all modes and repository form 
+    tests\e2e\ui-contract-vscode-dark-2026.spec.ts:610:3 › reference coverage comfortable: both dirty editors all modes and repository form 

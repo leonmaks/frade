@@ -191,3 +191,39 @@ it('reference identity cannot be replaced by an application extension descriptor
   expect(registry.get(referenceId)?.kind).toBe('dark')
   expect(registry.issues.some((issue) => issue.code === 'DUPLICATE_ID')).toBe(true)
 })
+it('failed reference activation rolls back an already projected preset through the real controller', async () => {
+  const { controller, root, selection } = application()
+  const host = document.createElement('div')
+  document.body.append(host)
+  controller.mountHost(host)
+  await controller.whenReady()
+  let referenceWasProjected = false
+  const registration = controller.register({
+    id: 'reference-refusal', generation: 1, hide: () => {}, reveal: () => {},
+    prepare: async (snapshot) => {
+      const ack = (context: PhaseContext) => ({ ...context, participantId: 'reference-refusal', participantGeneration: 1, painted: true as const })
+      return {
+        apply: async (context) => {
+          if (snapshot.id === referenceId) {
+            referenceWasProjected = root.dataset.fradeReference === 'vscode-dark-2026'
+            throw Error('Controlled reference apply refusal')
+          }
+          return ack(context)
+        },
+        rollback: async (_previous, context) => ack(context), dispose: () => {},
+      }
+    },
+  })
+  await registration.ready
+  cleanups.push(() => registration.dispose())
+  const before = root.style.cssText
+  const result = await controller.preview({ ...selection, mode: 'dark', preferred: { ...selection.preferred, dark: referenceId } })
+  expect(referenceWasProjected).toBe(true)
+  expect(result.status).toBe('REFUSED')
+  expect(root.dataset.fradeTheme).toBe('light')
+  expect(root.hasAttribute('data-frade-reference')).toBe(false)
+  expect(root.style.getPropertyValue('--frade-vscode-editorBackground')).toBe('')
+  expect(root.style.cssText).toBe(before)
+  expect(controller.state().snapshot.id).toBe(BUILTIN_IDS.light)
+  expect(controller.state().durableSelection).toEqual(selection)
+})

@@ -262,7 +262,7 @@ async function finishDiagramFixture(app: ElectronApplication) {
 async function previewDark(page: Page) {
   await page.getByRole('button', { name: 'Меню Файл' }).click()
   await page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
-  await page.getByRole('option', { name: /Dark/ }).click()
+  await page.getByRole('option', { name: 'Тёмная (Dark)', exact: true }).click()
   await expect(page.getByRole('status').filter({ hasText: 'Предпросмотр' })).toContainText(
     'Предпросмотр',
   )
@@ -499,7 +499,7 @@ test('P01 real frame chord, Settings, System media and preview window-close pres
     await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
     expect(await readFile(settings, 'utf8')).toBe(durable)
     await dialog.getByRole('button', { name: 'Выбрать тему…' }).click()
-    await f.page.getByRole('option', { name: /Dark/ }).click()
+    await f.page.getByRole('option', { name: 'Тёмная (Dark)', exact: true }).click()
     await expect(root).toHaveAttribute('data-frade-theme', 'dark')
     await f.page.emulateMedia({
       colorScheme: 'light',
@@ -584,7 +584,7 @@ test('P01 actual required frame refusal restores prior presentation and exposes 
     })
     await f.page.getByRole('button', { name: 'Меню Файл' }).click()
     await f.page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
-    await f.page.getByRole('option', { name: /Dark/ }).click()
+    await f.page.getByRole('option', { name: 'Тёмная (Dark)', exact: true }).click()
     await expect(
       f.page.getByRole('dialog', { name: 'Выбор темы' }).getByRole('status'),
     ).toContainText('Controlled current frame refusal')
@@ -3445,7 +3445,7 @@ test('P01-B05 actual settled lower refusal stays live through failed publication
     await expect(live).toBeVisible() // feasible reopen is not an unauthenticated parent recovery ACK
     await f.page.keyboard.press('Escape');await expect(frame.locator('[data-frade-lower-menu]')).toHaveCount(0)
     await frame.locator('body').evaluate(()=>{(window as any).__p01RefuseDark=true})
-    await f.page.getByRole('button',{name:'Меню Файл'}).click();await f.page.getByRole('menuitem',{name:'Выбрать тему…'}).click();await f.page.getByRole('option',{name:/Dark/}).click()
+    await f.page.getByRole('button',{name:'Меню Файл'}).click();await f.page.getByRole('menuitem',{name:'Выбрать тему…'}).click();await f.page.getByRole('option',{name:'Тёмная (Dark)',exact:true}).click()
     await expect(f.page.getByRole('status').filter({hasText:'Controlled current frame refusal'})).toBeVisible()
     await expect(live).toBeVisible();await expect(host).toBeVisible()
     expect(await host.getAttribute('data-frade-revision')).toBe(revision)
@@ -3667,7 +3667,7 @@ for (const kind of ['native', 'frame'] as const) {
     await f.page.frameLocator('iframe').locator('body').evaluate(() => { (window as any).__p01RefuseDark = true })
     await f.page.getByRole('button', { name: 'Меню Файл' }).click()
     await f.page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
-    await f.page.getByRole('option', { name: /Dark/ }).focus()
+    await f.page.getByRole('option', { name: 'Тёмная (Dark)', exact: true }).focus()
     await f.page.keyboard.press('Enter')
     const dialog = f.page.getByRole('dialog', { name: 'Выбор темы' })
     await expect(dialog.getByRole('status')).toContainText('Controlled current frame refusal')

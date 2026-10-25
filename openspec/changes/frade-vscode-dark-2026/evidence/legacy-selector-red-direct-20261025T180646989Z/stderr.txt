@@ -1,0 +1,22 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/p01.bdd.test.tsx > P01 FUI actual fullRuntimeBindings require all seven examples independently of pending declarations
+Error: SOURCE_HASH
+ ❯ fuiDemand tests/ui-contract/p01.bdd.test.tsx:125:81
+    123|   return bytes
+    124| }
+    125| const fuiDemand = (condition: unknown, code: string) => { if (!conditi…
+       |                                                                                 ^
+    126| function checkFuiBindings(bindings: FuiBinding[], read: (file: string)…
+    127|   fuiDemand(Array.isArray(bindings) && bindings.length === 7, 'EXAMPLE…
+ ❯ checkFuiBindings tests/ui-contract/p01.bdd.test.tsx:146:5
+ ❯ tests/ui-contract/p01.bdd.test.tsx:175:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade-worktrees\vscode-dark-
+  │ 2026\packages\ui-workspace
+

@@ -566,3 +566,119 @@ test('reference p95: real root native frame 20 warmups and 100 durable alternati
     await app.close()
   }
 })
+for (const density of ['compact', 'comfortable'] as const) {
+  // eslint-disable-next-line no-empty-pattern
+  test(`reference coverage ${density}: both dirty editors all modes and repository form`, async ({}, info) => {
+    const f = await createFlowFixture(), profile = join(f.destination, 'profile')
+    await mkdir(profile)
+    await writeFile(join(profile, 'presentation-settings.json'), JSON.stringify({ version: 1, revision: 0,
+      generation: 0, transactionId: 'reference/coverage', selection: { mode: 'light', density,
+        preferred: { light: 'frade.builtin/light', dark: 'frade.builtin/dark', 'high-contrast': 'frade.builtin/high-contrast' } } }))
+    const paths = ['Flows.frade', 'Flows.drawio'].map(name => join(f.dataRoot, '_diagrams', name))
+    const filesBefore = await Promise.all(paths.map(p => readFile(p, 'utf8')))
+    const app = await electron.launch({ args: [resolve('out/main/index.cjs')], env: { ...process.env, FRADE_USER_DATA: profile } })
+    try {
+      const page = await app.firstWindow()
+      await page.emulateMedia({ colorScheme: 'light' })
+      await page.addInitScript(() => {
+        if (location.host !== 'drawio') return
+        window.addEventListener('message', event => {
+          let value
+          try { value = typeof event.data === 'string' ? JSON.parse(event.data) : undefined } catch { return }
+          const Editor = (window as any).EditorUi
+          if (value?.action !== 'configure' || !Editor || Editor.prototype.init.__coverage) return
+          const original = Editor.prototype.init
+          const capture = function(this: any, ...args: unknown[]) {
+            const result = original.apply(this, args)
+            ;(window as any).__coverageUi = this
+            ;(window as any).__coverageOriginal = this
+            return result
+          }
+          capture.__coverage = true
+          Editor.prototype.init = capture
+        })
+      })
+      await expect(page.locator('.wb-statusbar [role="status"]')).toHaveText('Backend: ready')
+      await app.evaluate(({ dialog }, paths) => { let i = 0; dialog.showOpenDialog = (async () => ({ canceled: false, filePaths: [paths[i++]] })) as typeof dialog.showOpenDialog }, [f.dataRoot, f.metadataRoot])
+      await page.getByRole('button', { name: 'Открыть KA', exact: true }).click()
+      await expect(page.locator('.status-message')).toContainText('9 объектов')
+      await picker(page)
+      await page.getByRole('option', { name: 'VS Code Dark 2026', exact: true }).click()
+      await page.getByRole('button', { name: 'Сохранить выбор', exact: true }).click()
+      await expect(page.getByRole('dialog', { name: 'Выбор темы' })).toBeHidden()
+          await page.getByRole('button', { name: 'Настройки выбранного корня', exact: true }).click()
+          const dialog = page.getByRole('dialog', { name: 'Метаописание репозитория', exact: true })
+          await expect(dialog).toBeVisible()
+          const input = dialog.getByLabel('Папка метаописания')
+          const style = await input.evaluate(el => { const s = getComputedStyle(el), r = el.getBoundingClientRect(); const hex = (v: string) => '#' + (v.match(/[0-9.]+/g) ?? []).slice(0, 3).map(n => Number(n).toString(16).padStart(2, '0')).join(''); return { fg: hex(s.color), bg: hex(s.backgroundColor), height: r.height } })
+          expect(style.height).toBeGreaterThanOrEqual(density === 'compact' ? 28 : 36)
+          expect(contrastRatio(style.fg, style.bg)).toBeGreaterThanOrEqual(4.5)
+          await page.screenshot({ path: info.outputPath(`repository-form-${density}.png`) })
+          await input.fill(join(f.destination, 'missing-metadata'))
+          await dialog.getByRole('button', { name: 'Проверить набор', exact: true }).click()
+          await expect(dialog.locator('.field-error')).toBeVisible()
+          await page.screenshot({ path: info.outputPath(`repository-error-${density}.png`) })
+          await dialog.getByRole('button', { name: 'Отмена', exact: true }).click()
+          await expect(dialog).toBeHidden()
+
+      expect(await Promise.all(paths.map(p => readFile(p, 'utf8')))).toEqual(filesBefore)
+      await picker(page)
+      await page.getByRole('option', { name: 'Светлая (Light)', exact: true }).click()
+      await page.getByRole('button', { name: 'Сохранить выбор', exact: true }).click()
+      await expect(page.getByRole('dialog', { name: 'Выбор темы' })).toBeHidden()
+      await page.getByRole('treeitem').filter({ hasText: /^_diagrams$/ }).click()
+      await page.getByRole('treeitem').filter({ hasText: /^Flows[.]frade$/ }).dblclick()
+      const node = page.locator('.x6-node[data-cell-id="node-A"]')
+      await expect(node).toBeVisible()
+      const box = (await node.boundingBox())!
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+      await page.mouse.down()
+      await page.mouse.move(box.x + box.width / 2 + 30, box.y + box.height / 2 + 20, { steps: 5 })
+      await page.mouse.up()
+      await expect(page.locator('.dirty-dot')).toHaveCount(1)
+      const transform = await node.getAttribute('transform')
+      await node.evaluate(el => { (window as any).__coverageNative = el })
+      await page.getByRole('treeitem').filter({ hasText: /^Flows[.]drawio$/ }).dblclick()
+      const frame = page.frameLocator('iframe')
+      await expect(frame.locator('.geDiagramContainer')).toBeVisible()
+      await expect.poll(() => frame.locator('body').evaluate(() => !!(window as any).__coverageUi)).toBe(true)
+      await frame.locator('body').evaluate(() => { const g = (window as any).__coverageUi.editor.graph; g.setSelectionCell(g.getModel().getCell('node-A')); g.moveCells(g.getSelectionCells(), 30, 20) })
+      await expect(page.locator('.dirty-dot')).toHaveCount(2)
+      const semantic = () => frame.locator('body').evaluate(() => {
+        const ui = (window as any).__coverageUi, graph = ui.editor.graph
+        return { cells: (window as any).mxUtils.getXml(ui.editor.getGraphXml().getElementsByTagName('root')[0]),
+          selection: graph.getSelectionCells().map((c: any) => c.id), history: ui.editor.undoManager.history.length,
+          cursor: ui.editor.undoManager.indexOfNextAdd, preferences: { ...localStorage }, same: ui === (window as any).__coverageOriginal }
+      })
+      await frame.locator('body').evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+      const baseline = await semantic()
+      const fullXml = () => frame.locator('body').evaluate(() => (window as any).mxUtils.getXml((window as any).__coverageUi.editor.getGraphXml()))
+      const initialXml = await fullXml(), observations = []
+      for (const name of ['VS Code Dark 2026', 'Светлая (Light)', 'Тёмная (Dark)', 'Контрастная (HC)', 'Системная (System)']) {
+        await picker(page)
+        await page.getByRole('option', { name, exact: true }).click()
+        await page.getByRole('button', { name: 'Сохранить выбор', exact: true }).click()
+        await expect(page.getByRole('dialog', { name: 'Выбор темы' })).toBeHidden()
+        await expect(page.locator('html')).toHaveAttribute('data-frade-density', density)
+        expect(await semantic()).toEqual(baseline)
+        expect(await node.getAttribute('transform')).toBe(transform)
+        expect(await node.evaluate(el => el === (window as any).__coverageNative)).toBe(true)
+        await expect(page.locator('.dirty-dot')).toHaveCount(2)
+        expect(await Promise.all(paths.map(p => readFile(p, 'utf8')))).toEqual(filesBefore)
+        await page.getByRole('tab', { name: /Flows[.]frade/ }).click()
+        await expect(node).toBeVisible()
+        expect(await node.getAttribute('transform')).toBe(transform)
+        await page.getByRole('tab', { name: /Flows[.]drawio/ }).click()
+        await expect(frame.locator('.geDiagramContainer')).toBeVisible()
+        expect(await semantic()).toEqual(baseline)
+        if (name === 'VS Code Dark 2026') {
+          await page.screenshot({ path: info.outputPath(`both-dirty-${density}.png`) })
+        } else await expect(page.locator('html')).not.toHaveAttribute('data-frade-reference', 'vscode-dark-2026')
+        observations.push({ name, density, cells: 'equal', nativeTransform: transform, dirty: 2 })
+      }
+      await expect.poll(fullXml).toBe(initialXml)
+      expect(await Promise.all(paths.map(p => readFile(p, 'utf8')))).toEqual(filesBefore)
+      await writeFile(info.outputPath('coverage.json'), JSON.stringify({ density, baseline, observations }, null, 2))
+    } finally { await app.evaluate(({ app }) => { setTimeout(() => app.exit(0), 50) }); await app.close() }
+  })
+}

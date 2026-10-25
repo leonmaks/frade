@@ -335,7 +335,7 @@ test('P01 pinned real root native frame hot commit: 20 warmups and 100 alternati
       expect(await root.getAttribute('data-frade-theme')).not.toBe(kind)
       await f.page.getByRole('button', { name: 'Меню Файл' }).click()
       await f.page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
-      const option = f.page.getByRole('option', { name: new RegExp(label) })
+      const option = f.page.getByRole('option', { name: label === 'Dark' ? 'Тёмная (Dark)' : 'Светлая (Light)', exact: true })
       await option.focus()
       await expect(option).toHaveAttribute('tabindex', '0')
       const milliseconds = await option.evaluate(
@@ -532,7 +532,8 @@ test('P01-diagnostic actual parked viewport and frame scheduling', async ({}, in
       await f.page.getByRole('button', { name: 'Меню Файл' }).click()
       await f.page.getByRole('menuitem', { name: 'Выбрать тему…' }).click()
       const option = f.page.getByRole('option', {
-        name: new RegExp(kind === 'dark' ? 'Dark' : 'Light'),
+        name: kind === 'dark' ? 'Тёмная (Dark)' : 'Светлая (Light)',
+        exact: true,
       })
       await option.focus()
       await expect(option).toHaveAttribute('tabindex', '0')
