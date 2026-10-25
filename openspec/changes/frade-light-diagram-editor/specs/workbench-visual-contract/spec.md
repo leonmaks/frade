@@ -14,4 +14,3 @@ Only the selected frade.reference/vscode-dark-2026 ID SHALL enable the first-par
 #### Scenario: Reference shell around a light editor
 - **WHEN** the reference theme is selected with either diagram editor
 - **THEN** reference geometry remains outside the editor-owned scope while comparable editor controls retain common Frade density and accessibility metrics
-
