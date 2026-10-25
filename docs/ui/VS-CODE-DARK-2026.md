@@ -1,6 +1,6 @@
 # VS Code Dark 2026 — реализация и compliance
 
-CHANGE: frade-vscode-dark-2026, branch codex/vscode-dark-2026, baseline90710ac; Guide1.0. Состояние на 2026-10-25T19:27:31.084Z: независимый технический POST PASS; Main delivery/визуальное принятие/архивирование ещё не завершены.
+CHANGE: frade-vscode-dark-2026, branch codex/vscode-dark-2026, baseline90710ac; Guide1.0. Состояние на 2026-10-25T19:27:31.084Z: независимый технический POST PASS; точный визуальный набор принят; Main delivery/архивирование ещё не завершены.
 
 IMPLEMENTED: полная закреплённая theme closure2026-dark → dark_modern → dark_plus → dark_vs и MIT notice; label VS Code Dark 2026, ID frade.reference/vscode-dark-2026. Отдельная application registry сохраняет core3 и injected-picker4; Main/controller используют одинаковый resolver. ID-derived цвета/геометрия применяются транзакционно с preview/cancel/commit/restart/rollback, снимаются для других ID/forced colors. Density независима. Нет P02/importer или обещания executable VS Code extensions.
 
@@ -24,7 +24,7 @@ TESTS ADDED:8reference UI cases плюс6origin positive/negative/AST controls;7
 |p95,100samples after20warmups,60Hz|Reference86.3ms; original116.7ms;150ms budget PASS|
 |OpenSpec technical requirement verification|8/8 mapped; technical-verify-20261025; later-phase completeness explicitly pending|
 |Automatic cumulative technical POST gpt-6-sol/xhigh|PASS; cumulative-post4-received-20261025, result SHA256 313490e4afd0c61f838013b43f71ee4a37f51d20b13932a79ba682d6668ede54; actual backend NOT_CONFIRMED|
-|Human visual / Main delivery / archive / new-ref push|NOT_APPROVED / NOT_RUN / NOT_READY / NOT_AUTHORIZED|
+|Human visual / Main delivery / archive / new-ref push|USER_ACCEPTED_EXACT19PNG / NOT_RUN / NOT_READY / NOT_AUTHORIZED|
 
 Принятый exact02 repair изменяет только7ambiguous option selectors и строгие historical-source controls. Исторические отчёты/receipts/hashes не переписаны: перед их чтением accepted current source проверяется и точно обращается к исходному hash. Свежие21Electron tests отдельно доказывают текущую реализацию. Assertions/timeouts/tolerances сохранены; zero-selected и старые FAIL не засчитаны как PASS.
 
@@ -32,8 +32,8 @@ Applicable rules: FDS001–010/014/015/017/018; A11Y001–010 по примен�
 
 Геометрия: source titlebar35/activity48/radius4/padding4×8, где есть counterpart; canonical28/36/coarse44/status≥24 имеют приоритет A11Y. Точный upstream default tab-height NOT_CONFIRMED: прежние35px сохранены. Frade logo/icons/layout и Draw vendor chrome сохранены. Белый authored diagram canvas/объектные цвета остаются domain data. Полное pixel-perfect соответствие всего приложения не заявляется.
 
-Visual candidate:19actual PNG, [галерея](../../openspec/changes/frade-vscode-dark-2026/evidence/final-visual-gallery-20261025/INDEX.md), manifest1f2aa40b9b15a8f213f9f1e20e4b543ea252147e4b2b39cb5c33e40eb496e2b5; human acceptance NOT_APPROVED. Старые screenshots/FAIL и полный отчёт до текущей корректировки сохранены отдельными immutable evidence.
+Visual candidate:19actual PNG, [галерея](../../openspec/changes/frade-vscode-dark-2026/evidence/final-visual-gallery-20261025/INDEX.md), manifest1f2aa40b9b15a8f213f9f1e20e4b543ea252147e4b2b39cb5c33e40eb496e2b5; human acceptance USER_ACCEPTED_EXACT_SET_WITH_DISCLOSED_ADAPTATIONS. Старые screenshots/FAIL и полный отчёт до текущей корректировки сохранены отдельными immutable evidence.
 
 Окружение: Windows/Node24.18.0/pnpm12.6.0/Electron44.4.5;2560×1440@60Hz; viewport1280×850/narrow850×650; i9-9880H/Intel UHD630+GTX1650. Electron dist используется process-locally из Main; global config не менялся. Checkout autocrlf породил vendor/historical-byte failures; восстановлены только точные Git/origin bytes, без новых ожидаемых hashes. Git-onlyM1716 proof исторический. Сырые external-business-fixture media исключены из review/commit; synthetic screenshots включены.
 
-KNOWN BLOCKERS: обязательное визуальное принятие и Main consumer delivery/checks/archive ещё впереди. Прежний POST FAIL из-за недостающего desktop execution закрыт128/128source-bound evidence; прежний rawPASS с4network errors остался BLOCKED. Строгие review guards не ослаблены. Merge protection/CI run не заявляются. READY_FOR_VERIFY: NO (весь change ещё не завершён); supplier technical verify выполнен; READY_FOR_ARCHIVE: NO.
+KNOWN BLOCKERS: Main consumer delivery/checks/archive ещё впереди; exact19PNG приняты пользователем. Прежний POST FAIL из-за недостающего desktop execution закрыт128/128source-bound evidence; прежний rawPASS с4network errors остался BLOCKED. Строгие review guards не ослаблены. Merge protection/CI run не заявляются. READY_FOR_VERIFY: NO (весь change ещё не завершён); supplier technical verify выполнен; READY_FOR_ARCHIVE: NO.

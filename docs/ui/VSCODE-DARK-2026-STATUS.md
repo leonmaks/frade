@@ -1,6 +1,7 @@
+<!-- Visual decision recorded 2026-10-25T20:57:54.663Z; task3.4 Main consumer preparation. -->
 # VS Code Dark 2026 — статус ветки
 
-Обновлено 2026-10-25T19:27:31.084Z. **8/10 задач; независимый технический POST: PASS.**
+Обновлено 2026-10-25T19:27:31.084Z. **9/10 задач; независимый технический POST: PASS.**
 
 Ветка codex/vscode-dark-2026; worktree E:/dev/codex/frade-worktrees/vscode-dark-2026; change frade-vscode-dark-2026. Исходный commit 90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d; Git common E:/dev/codex/frade/.git. Guide v1.0. Независимые PRE/POST: gpt-6-sol/xhigh согласно design; фактический backend NOT_CONFIRMED.
 
@@ -13,7 +14,7 @@
 |2.3 App registry/Main resolver, preview/cancel/commit|DONE|
 |2.4 Геометрия только reference ID, density/A11Y|DONE|
 |3.1 Принятый exact02 control repair, проверки|PASS; UI260, desktop128, BDD132, source7, original Electron21|
-|3.2 Electron reference8 cases, 19 screenshots / человек|Технические проверки PASS; визуальное принятие NOT_APPROVED|
+|3.2 Electron reference8 cases, 19 screenshots / человек|Технические проверки PASS; визуальное принятие PASS: exact19PNG manifest принят|
 |3.3 OpenSpec technical verify / независимый POST|8/8 requirements; PASS|
 |3.4 Main delivery, consumer gates, archive|NOT_RUN; новое оформление ещё отсутствует в Main|
 
@@ -23,4 +24,4 @@
 
 Исторические PRE/POST FAIL и transport BLOCKED сохранены неизменно. Missing desktop raw evidence закрыт свежим source-bound128/128. Предыдущий текстовый PASS с reconnect errors не принят. Два preparation CANDIDATE_CHANGED остаются историческими; источник изменения NOT_PROVEN. Последующий неизменённый trusted snapshot11504файлов PASS; диагностическая копия не использована как gate.
 
-Следующий шаг: получить точное визуальное принятие; затем изолированный перенос в Main с проверкой исходных файлов/посторонних изменений и consumer gates. P02/Routing не затрагиваются. Push новой ветки/Main NOT_AUTHORIZED; локальный implementation checkpoint8c047132, полный POST/evidence включён в локальный checkpoint «docs(ui): record verified VS Code Dark 2026 supplier POST». Открытие панели: QUEUED, видимость NOT_CONFIRMED.
+Следующий шаг: выполнить изолированный перенос в Main с проверкой исходных файлов/посторонних изменений и consumer gates. P02/Routing не затрагиваются. Push новой ветки/Main NOT_AUTHORIZED; локальный implementation checkpoint8c047132, полный POST/evidence включён в локальный checkpoint «docs(ui): record verified VS Code Dark 2026 supplier POST». Открытие панели: QUEUED, видимость NOT_CONFIRMED.
