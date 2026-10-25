@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-25T18:39:31.363Z",
+  "status": "BLOCKED_PREPARATION_NO_MODEL_REVIEW",
+  "classification": "ENVIRONMENT_OR_EXTERNAL_STATE_CHANGE",
+  "reason": "CANDIDATE_CHANGED during second guarded snapshot; no exact diff emitted by trusted runner",
+  "cause": "NOT_PROVEN; no unsupported root-cause claim",
+  "diagnostic": "Two complete read-only captures subsequently equal: contents/index identity/status all stable, no changed artifacts; nonauthoritative probe is not a gate",
+  "strategy": "Preserve blocked evidence, freeze writes and Main/Git preflight; settle index then rerun unchanged trusted snapshot as bounded probe, only then fresh unmodified shared POST. No control/spec/assertion relaxation and no expensive test repeat.",
+  "sourceOrRunnerModified": false,
+  "raw": [
+    {
+      "file": "receipt.json",
+      "sha256": "d8727c9060df825de52961cc109024907073d4a1d1ed5d977ab9ead928a2659f"
+    },
+    {
+      "file": "input.json",
+      "sha256": "844bf94cf50c0573771175da6c3b49792e1ca823eb365a5642c88861424d8a85"
+    },
+    {
+      "file": "request.json",
+      "sha256": "dee0a3998c82bc415aca2c26297170efc19bc2fae1cb11922b6e2fb3538ce90b"
+    },
+    {
+      "file": "prepare-execution.json",
+      "sha256": "9fcb9d2939555c790a8a860bb80e89b82308634974a60e1b057c6500442b4870"
+    },
+    {
+      "file": "instance-provenance.json",
+      "sha256": "61e706bacaf9bf3fe264c2a301755f3c3d0e38d82cfcbfed87c56816ef0c7bb4"
+    },
+    {
+      "file": "instance/offline-probe-b.json",
+      "sha256": "6d0aea88b55d269bf93c19b085e82b78a66bb1aab38b588c007fb0c4b4934ffb"
+    }
+  ]
+}

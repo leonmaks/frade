@@ -1,0 +1,88 @@
+$ vitest run
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/p01.bdd.test.tsx > P01 traceability fails closed on missing IDs, stale assertion hashes or premature runtime claims
+AssertionError: expected '18186160275695b22d05b654a96fe4d9323b2…' to be '4705fa82a2ffe2b9169a6846de70ca97f60a5…' // Object.is equality
+
+Expected: "4705fa82a2ffe2b9169a6846de70ca97f60a503e8ce887033ac1fa0f318f4343"
+Received: "18186160275695b22d05b654a96fe4d9323b2bcd7cd2b85e7fd2a87df26527b9"
+
+ ❯ tests/ui-contract/p01.bdd.test.tsx:67:63
+     65|     expect(binding.scope).toBe('PURE_RESOLVER_BDD')
+     66|     const source = readFileSync(resolve(root, binding.assertion.file))
+     67|     expect(createHash('sha256').update(source).digest('hex')).toBe(bin…
+       |                                                               ^
+     68|     expect(source.toString()).toContain("story('" + binding.id + "'")
+     69|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/ui-contract/p01.bdd.test.tsx > P01 FUI actual fullRuntimeBindings require all seven examples independently of pending declarations
+Error: EVIDENCE_HASH
+ ❯ fuiDemand tests/ui-contract/p01.bdd.test.tsx:125:81
+    123|   return bytes
+    124| }
+    125| const fuiDemand = (condition: unknown, code: string) => { if (!conditi…
+       |                                                                                 ^
+    126| function checkFuiBindings(bindings: FuiBinding[], read: (file: string)…
+    127|   fuiDemand(Array.isArray(bindings) && bindings.length === 7, 'EXAMPLE…
+ ❯ pin tests/ui-contract/p01.bdd.test.tsx:140:35
+ ❯ checkFuiBindings tests/ui-contract/p01.bdd.test.tsx:152:21
+ ❯ tests/ui-contract/p01.bdd.test.tsx:175:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/ui-contract/p01.bdd.test.tsx > P01 FUI valid actual source and named execution packet passes integrity only
+Error: EVIDENCE_HASH
+ ❯ fuiDemand tests/ui-contract/p01.bdd.test.tsx:125:81
+    123|   return bytes
+    124| }
+    125| const fuiDemand = (condition: unknown, code: string) => { if (!conditi…
+       |                                                                                 ^
+    126| function checkFuiBindings(bindings: FuiBinding[], read: (file: string)…
+    127|   fuiDemand(Array.isArray(bindings) && bindings.length === 7, 'EXAMPLE…
+ ❯ pin tests/ui-contract/p01.bdd.test.tsx:140:35
+ ❯ checkFuiBindings tests/ui-contract/p01.bdd.test.tsx:152:21
+ ❯ tests/ui-contract/p01.bdd.test.tsx:177:92
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/ui-contract/picker.test.tsx > component BDD bindings match all durable UI stories and their assertion source hash
+AssertionError: expected 'a455e92bfaaf9c39a6119848106453f52cae4…' to be 'ce18a8542ccb8d0a6f46f3020d1b964fb93b6…' // Object.is equality
+
+Expected: "ce18a8542ccb8d0a6f46f3020d1b964fb93b6ec9d72364599603293f22d18694"
+Received: "a455e92bfaaf9c39a6119848106453f52cae48555e6c1ac56b5bfd6c48772ac5"
+
+ ❯ tests/ui-contract/picker.test.tsx:382:7
+    380|         )
+    381|         .digest('hex'),
+    382|     ).toBe(binding.assertion.sha256)
+       |       ^
+    383|   }
+    384| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/ui-contract/service.test.ts > P01 service BDD traceability rejects stale assertion source and missing cases
+AssertionError: expected 'fcf5636356041795587096157847806895793…' to be '19952bcf556bc9960bc6a040f057b83dd4064…' // Object.is equality
+
+Expected: "19952bcf556bc9960bc6a040f057b83dd40648b91a97e2899279d782112b00a4"
+Received: "fcf5636356041795587096157847806895793f3061caa47011137737f2714085"
+
+ ❯ tests/ui-contract/service.test.ts:732:7
+    730|         .update(readFileSync(new URL('../../../../' + binding.assertio…
+    731|         .digest('hex'),
+    732|     ).toBe(binding.assertion.sha256)
+       |       ^
+    733|   }
+    734| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+[ELIFECYCLE] Test failed. See above for more details.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in E:\dev\codex\frade-worktrees\vscode-dark-
+  │ 2026\packages\ui-workspace
+

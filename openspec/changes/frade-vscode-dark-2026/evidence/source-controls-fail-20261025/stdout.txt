@@ -1,0 +1,41 @@
+✔ VS2026 positive source-bound generation passes without rewriting files (32.1132ms)
+✔ VS2026 generated drift and original-source drift are rejected (46.5432ms)
+✔ VS2026 missing inherited source fails without fallback (17.9149ms)
+✔ VS2026 JSONC include inheritance, cycles and traversal are explicit (0.9945ms)
+✖ VS2026 sRGB alpha composition uses the real backdrop (0.9758ms)
+✔ VS2026 exact generated exemption cannot conceal feature literals or generated tampering (66.7471ms)
+✔ VS2026 scoped raw-asset attributes preserve exact bytes under autocrlf checkout (695.1604ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1124.2676
+
+✖ failing tests:
+
+test at tests\ui-contract\vscode-dark-2026.test.mjs:72:1
+✖ VS2026 sRGB alpha composition uses the real backdrop (0.9758ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '#383939'
+  - '#38393A'
+           ^
+  
+      at TestContext.<anonymous> (file:///E:/dev/codex/frade-worktrees/vscode-dark-2026/tests/ui-contract/vscode-dark-2026.test.mjs:73:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '#383939',
+    expected: '#38393A',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

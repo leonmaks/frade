@@ -1,0 +1,54 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade-worktrees/vscode-dark-2026/packages/ui-workspace
+
+ ❯ tests/ui-contract/p01.bdd.test.tsx (43 tests | 1 failed | 42 skipped) 170ms
+   ↓ P01-RES-001 Offline Light Dark and HC are complete together
+   ↓ P01-RES-002 Explicit Light keeps independent comfortable density under OS Dark
+   ↓ P01-RES-003 Workspace overrides require opt-in and unknown roles stay diagnostic
+   ↓ P01-RES-004 Low contrast repairs deterministically without mutating source data
+   ↓ P01-RES-005 Forced system colors override an explicit palette without replacing HEX data
+   ↓ P01 traceability fails closed on missing IDs, stale assertion hashes or premature runtime claims
+   × P01 FUI actual fullRuntimeBindings require all seven examples independently of pending declarations 168ms
+     → SOURCE_HASH
+   ↓ P01 FUI valid actual source and named execution packet passes integrity only
+   ↓ P01 FUI negative control rejects missing-example
+   ↓ P01 FUI negative control rejects duplicate-example
+   ↓ P01 FUI negative control rejects stale-source
+   ↓ P01 FUI negative control rejects stale-callback
+   ↓ P01 FUI negative control rejects dropped-assertion
+   ↓ P01 FUI negative control rejects wrong-case
+   ↓ P01 FUI negative control rejects missing-kind
+   ↓ P01 FUI negative control rejects wrong-scope
+   ↓ P01 FUI negative control rejects unapproved-file
+   ↓ P01 FUI negative control rejects escaping-evidence
+   ↓ P01 FUI negative control rejects stale-evidence
+   ↓ P01 FUI negative control rejects forged-success
+   ↓ P01 FUI negative control rejects failed-record
+   ↓ P01 FUI negative control rejects wrong-record
+   ↓ P01-ARCHIVE-FS-001 active preserves exact fixture bytes for command.json
+   ↓ P01-ARCHIVE-FS-001 active preserves exact fixture bytes for runtime.stdout.json
+   ↓ P01-ARCHIVE-FS-001 active preserves exact fixture bytes for control-valid-bindings.json
+   ↓ P01-ARCHIVE-FS-001 archived preserves exact fixture bytes for command.json
+   ↓ P01-ARCHIVE-FS-001 archived preserves exact fixture bytes for runtime.stdout.json
+   ↓ P01-ARCHIVE-FS-001 archived preserves exact fixture bytes for control-valid-bindings.json
+   ↓ P01-ARCHIVE-FS-002 missing evidence fails explicitly
+   ↓ P01-ARCHIVE-FS-003 duplicate locations fail even for identical bytes
+   ↓ P01-ARCHIVE-FS-004 rejects unapproved evidence suffix ../command.json
+   ↓ P01-ARCHIVE-FS-004 rejects unapproved evidence suffix command.json/child
+   ↓ P01-ARCHIVE-FS-004 rejects unapproved evidence suffix runtime.other.json
+   ↓ P01-ARCHIVE-FS-004 rejects unapproved evidence suffix ..\command.json
+   ↓ P01-ARCHIVE-FS-004 rejects unapproved evidence suffix control-valid-bindings.json/..
+   ↓ P01-ARCHIVE-FS-005 physical archive path is not a permitted logical ID
+   ↓ P01-ARCHIVE-FS-006 rejects unsupported runtime directory
+   ↓ P01-ARCHIVE-FS-007 regular-file evidence required
+   ↓ P01-ARCHIVE-FS-008 rejects actual leaf link in active location
+   ↓ P01-ARCHIVE-FS-008 rejects actual ancestor link in active location
+   ↓ P01-ARCHIVE-FS-008 rejects actual leaf link in archived location
+   ↓ P01-ARCHIVE-FS-008 rejects actual ancestor link in archived location
+   ↓ P01-ARCHIVE-FS-009 rejects linked fixture root and escaped realpath
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 42 skipped (43)
+   Start at  21:06:47
+   Duration  1.58s (transform 149ms, setup 0ms, collect 598ms, tests 170ms, environment 0ms, prepare 462ms)
+

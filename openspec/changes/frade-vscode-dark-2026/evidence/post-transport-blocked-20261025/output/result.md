@@ -1,0 +1,5 @@
+GATE_STATUS: PASS
+
+The prior POST’s sole blocker is closed. The fresh [desktop execution record](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-25T18-58-15-979Z-d1db63ba-2400-45dd-8332-f9bdb87ee79e/prepared/packet/openspec/changes/frade-vscode-dark-2026/evidence/desktop-unit-bound-20261025/execution.json) binds an exit-0, 128/128 run to identical before/after 225-input manifests. The fresh UI build, boundary tests, and strict validation also pass. All 384 packet artifacts match their hashes; the previously reviewed product and test artifacts are unchanged. I found no remaining required supplier technical evidence gap or false source-equivalence claim.
+
+This is a **supplier technical POST only**. The prior FAIL remains a FAIL, and the earlier blocked preparation has no review verdict. Human acceptance of the 19-image gallery is still pending; Main delivery and archive are not ready. Retained upstream syntax data does not establish a rendering consumer, and the evidence does not establish universal pixel-perfect or accessibility parity.

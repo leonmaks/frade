@@ -1,0 +1,100 @@
+
+Running 2 tests using 1 worker
+
+  x  1 tests\e2e\ui-contract-vscode-dark-2026.spec.ts:152:3 › reference frame: authored document selection undo identity and dirty state survive preview (5.6s)
+  x  2 tests\e2e\ui-contract-vscode-dark-2026.spec.ts:305:1 › reference accessibility: keyboard focus media coarse targets and text reflow (32.5s)
+
+
+  1) tests\e2e\ui-contract-vscode-dark-2026.spec.ts:152:3 › reference frame: authored document selection undo identity and dirty state survive preview 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 1[39m
+    [31m+ Received  + 1[39m
+
+    [33m@@ -4,7 +4,7 @@[39m
+    [2m    "preferences": Object {},[22m
+    [2m    "same": true,[22m
+    [2m    "selection": Array [[22m
+    [2m      "node-A",[22m
+    [2m    ],[22m
+    [32m-   "xml": "<mxGraphModel dx=\"664\" dy=\"501\" grid=\"1\" gridSize=\"4\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"0\" pageScale=\"1\" pageWidth=\"850\" pageHeight=\"1100\" math=\"0\" shadow=\"0\"><root><mxCell id=\"0\"/><mxCell id=\"1\" parent=\"0\"/><UserObject label=\"A\" fradeObjectId=\"A\" id=\"node-A\"><mxCell parent=\"1\" style=\"rounded=0;whiteSpace=wrap;html=0;shape=rectangle;fillColor=#F9F7ED;strokeColor=#363939;strokeWidth=1;shadow=1;shadowColor=#000000;shadowOpacity=25;shadowOffsetX=2;shadowOffsetY=3;shadowBlur=2;\" vertex=\"1\"><mxGeometry height=\"75\" width=\"180\" x=\"70\" y=\"100\" as=\"geometry\"/></mxCell></UserObject><UserObject label=\"B\" fradeObjectId=\"B\" id=\"node-B\"><mxCell parent=\"1\" style=\"rounded=0;whiteSpace=wrap;html=0;shape=rectangle;fillColor=#F9F7ED;strokeColor=#363939;strokeWidth=1;shadow=1;shadowColor=#000000;shadowOpacity=25;shadowOffsetX=2;shadowOffsetY=3;shadowBlur=2;\" vertex=\"1\"><mxGeometry height=\"75\" width=\"180\" x=\"340\" y=\"80\" as=\"geometry\"/></mxCell></UserObject><UserObject label=\"C\" fradeObjectId=\"C\" id=\"node-C\"><mxCell parent=\"1\" style=\"rounded=0;whiteSpace=wrap;html=0;shape=rectangle;fillColor=#F9F7ED;strokeColor=#363939;strokeWidth=1;shadow=1;shadowColor=#000000;shadowOpacity=25;shadowOffsetX=2;shadowOffsetY=3;shadowBlur=2;\" vertex=\"1\"><mxGeometry height=\"75\" width=\"180\" x=\"40\" y=\"330\" as=\"geometry\"/></mxCell></UserObject><UserObject label=\"D\" fradeObjectId=\"D\" id=\"node-D\"><mxCell parent=\"1\" style=\"rounded=0;whiteSpace=wrap;html=0;shape=rectangle;fillColor=#F9F7ED;strokeColor=#363939;strokeWidth=1;shadow=1;shadowColor=#000000;shadowOpacity=25;shadowOffsetX=2;shadowOffsetY=3;shadowBlur=2;\" vertex=\"1\"><mxGeometry height=\"75\" width=\"180\" x=\"340\" y=\"330\" as=\"geometry\"/></mxCell></UserObject></root></mxGraphModel>",[39m
+    [31m+   "xml": "<mxGraphModel dx=\"664\" dy=\"498\" grid=\"1\" gridSize=\"4\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"0\" pageScale=\"1\" pageWidth=\"850\" pageHeight=\"1100\" math=\"0\" shadow=\"0\"><root><mxCell id=\"0\"/><mxCell id=\"1\" parent=\"0\"/><UserObject label=\"A\" fradeObjectId=\"A\" id=\"node-A\"><mxCell parent=\"1\" style=\"rounded=0;whiteSpace=wrap;html=0;shape=rectangle;fillColor=#F9F7ED;strokeColor=#363939;strokeWidth=1;shadow=1;shadowColor=#000000;shadowOpacity=25;shadowOffsetX=2;shadowOffsetY=3;shadowBlur=2;\" vertex=\"1\"><mxGeometry height=\"75\" width=\"180\" x=\"70\" y=\"100\" as=\"geometry\"/></mxCell></UserObject><UserObject label=\"B\" fradeObjectId=\"B\" id=\"node-B\"><mxCell parent=\"1\" style=\"rounded=0;whiteSpace=wrap;html=0;shape=rectangle;fillColor=#F9F7ED;strokeColor=#363939;strokeWidth=1;shadow=1;shadowColor=#000000;shadowOpacity=25;shadowOffsetX=2;shadowOffsetY=3;shadowBlur=2;\" vertex=\"1\"><mxGeometry height=\"75\" width=\"180\" x=\"340\" y=\"80\" as=\"geometry\"/></mxCell></UserObject><UserObject label=\"C\" fradeObjectId=\"C\" id=\"node-C\"><mxCell parent=\"1\" style=\"rounded=0;whiteSpace=wrap;html=0;shape=rectangle;fillColor=#F9F7ED;strokeColor=#363939;strokeWidth=1;shadow=1;shadowColor=#000000;shadowOpacity=25;shadowOffsetX=2;shadowOffsetY=3;shadowBlur=2;\" vertex=\"1\"><mxGeometry height=\"75\" width=\"180\" x=\"40\" y=\"330\" as=\"geometry\"/></mxCell></UserObject><UserObject label=\"D\" fradeObjectId=\"D\" id=\"node-D\"><mxCell parent=\"1\" style=\"rounded=0;whiteSpace=wrap;html=0;shape=rectangle;fillColor=#F9F7ED;strokeColor=#363939;strokeWidth=1;shadow=1;shadowColor=#000000;shadowOpacity=25;shadowOffsetX=2;shadowOffsetY=3;shadowBlur=2;\" vertex=\"1\"><mxGeometry height=\"75\" width=\"180\" x=\"340\" y=\"330\" as=\"geometry\"/></mxCell></UserObject></root></mxGraphModel>",[39m
+    [2m  }[22m
+
+      170 |         await page.getByRole('button', { name: 'Redo', exact: true }).click()
+      171 |         expect(await node.getAttribute('transform')).toBe(transform)
+    > 172 |       } else { expect(await frameState()).toEqual(semanticBefore) }
+          |                                           ^
+      173 |       expect(await readFile(file, 'utf8')).toBe(before)
+      174 |       await writeFile(info.outputPath('semantics.json'), JSON.stringify({ kind, semanticBefore, transform }, null, 2))
+      175 |     } finally {
+        at E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-vscode-dark-2026.spec.ts:172:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\electron-focused2-20261025\artifacts\ui-contract-vscode-dark-20-eeb56-dirty-state-survive-preview\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\electron-focused2-20261025\artifacts\ui-contract-vscode-dark-20-eeb56-dirty-state-survive-preview\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-vscode-dark-2026\evidence\electron-focused2-20261025\artifacts\ui-contract-vscode-dark-20-eeb56-dirty-state-survive-preview\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\e2e\ui-contract-vscode-dark-2026.spec.ts:305:1 › reference accessibility: keyboard focus media coarse targets and text reflow 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Меню Файл', exact: true })[22m
+    [2m    - locator resolved to <button aria-label="Меню Файл">Файл</button>[22m
+    [2m  - attempting click action[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="wb-modal-backdrop">…</div> from <div id="frade-overlay-host">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="wb-modal-backdrop">…</div> from <div id="frade-overlay-host">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m    57 × waiting for element to be visible, enabled and stable[22m
+    [2m       - element is visible, enabled and stable[22m
+    [2m       - scrolling into view if needed[22m
+    [2m       - done scrolling[22m
+    [2m       - <div class="wb-modal-backdrop">…</div> from <div id="frade-overlay-host">…</div> subtree intercepts pointer events[22m
+    [2m     - retrying click action[22m
+    [2m       - waiting 500ms[22m
+
+
+       6 | const id = 'frade.reference/vscode-dark-2026'
+       7 | async function picker(page: Page) {
+    >  8 |   await page.getByRole('button', { name: 'Меню Файл', exact: true }).click()
+         |                                                                      ^
+       9 |   await page.getByRole('menuitem', { name: 'Выбрать тему…', exact: true }).click()
+      10 |   await expect(page.getByRole('dialog', { name: 'Выбор темы' })).toBeVisible()
+      11 | }
+        at picker (E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-vscode-dark-2026.spec.ts:8:70)
+        at E:\dev\codex\frade-worktrees\vscode-dark-2026\apps\desktop\tests\e2e\ui-contract-vscode-dark-2026.spec.ts:217:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\electron-focused2-20261025\artifacts\ui-contract-vscode-dark-20-03813-rse-targets-and-text-reflow\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-vscode-dark-2026\evidence\electron-focused2-20261025\artifacts\ui-contract-vscode-dark-20-03813-rse-targets-and-text-reflow\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-vscode-dark-2026\evidence\electron-focused2-20261025\artifacts\ui-contract-vscode-dark-20-03813-rse-targets-and-text-reflow\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\e2e\ui-contract-vscode-dark-2026.spec.ts:152:3 › reference frame: authored document selection undo identity and dirty state survive preview 
+    tests\e2e\ui-contract-vscode-dark-2026.spec.ts:305:1 › reference accessibility: keyboard focus media coarse targets and text reflow 

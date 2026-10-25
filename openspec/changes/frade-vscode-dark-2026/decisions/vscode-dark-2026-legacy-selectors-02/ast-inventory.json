@@ -1,0 +1,100 @@
+{
+  "at": "2026-10-25T17:55:25.021Z",
+  "classification": [
+    "TEST",
+    "INTEGRATION"
+  ],
+  "rootCause": "Initial lexical inventory assumed spaced calls and missed compact/multiline calls; complete AST inventories every option/radio call. Same six paths, total seven option targets; radio/Light-only locators unchanged.",
+  "before": {
+    "file": [
+      {
+        "line": 265,
+        "name": "/Dark/",
+        "ambiguous": true
+      },
+      {
+        "line": 461,
+        "name": "/Light/",
+        "ambiguous": false
+      },
+      {
+        "line": 502,
+        "name": "/Dark/",
+        "ambiguous": true
+      },
+      {
+        "line": 587,
+        "name": "/Dark/",
+        "ambiguous": true
+      },
+      {
+        "line": 3448,
+        "name": "/Dark/",
+        "ambiguous": true
+      },
+      {
+        "line": 3670,
+        "name": "/Dark/",
+        "ambiguous": true
+      }
+    ],
+    "performance": [
+      {
+        "line": 338,
+        "name": "new RegExp(label)",
+        "ambiguous": true
+      },
+      {
+        "line": 534,
+        "name": "new RegExp(kind === 'dark' ? 'Dark' : 'Light')",
+        "ambiguous": true
+      }
+    ]
+  },
+  "after": {
+    "file": [
+      {
+        "line": 265,
+        "name": "'Тёмная (Dark)'",
+        "ambiguous": false
+      },
+      {
+        "line": 461,
+        "name": "/Light/",
+        "ambiguous": false
+      },
+      {
+        "line": 502,
+        "name": "'Тёмная (Dark)'",
+        "ambiguous": false
+      },
+      {
+        "line": 587,
+        "name": "'Тёмная (Dark)'",
+        "ambiguous": false
+      },
+      {
+        "line": 3448,
+        "name": "'Тёмная (Dark)'",
+        "ambiguous": false
+      },
+      {
+        "line": 3670,
+        "name": "'Тёмная (Dark)'",
+        "ambiguous": false
+      }
+    ],
+    "performance": [
+      {
+        "line": 338,
+        "name": "label === 'Dark' ? 'Тёмная (Dark)' : 'Светлая (Light)'",
+        "ambiguous": false
+      },
+      {
+        "line": 534,
+        "name": "kind === 'dark' ? 'Тёмная (Dark)' : 'Светлая (Light)'",
+        "ambiguous": false
+      }
+    ]
+  }
+}

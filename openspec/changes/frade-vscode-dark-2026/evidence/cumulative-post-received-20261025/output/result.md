@@ -1,0 +1,7 @@
+GATE_STATUS: FAIL
+
+The required desktop unit result is not independently verifiable from this packet. The [design](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-25T18-41-22-819Z-37756801-010d-48ee-b38a-51d5081d7beb/prepared/packet/openspec/changes/frade-vscode-dark-2026/design.md) requires a desktop unit run, and the [technical verification](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-25T18-41-22-819Z-37756801-010d-48ee-b38a-51d5081d7beb/prepared/packet/openspec/changes/frade-vscode-dark-2026/evidence/technical-verify-20261025/verification.md) reports 128/128, but the packet contains no raw desktop unit command, exit, and result record. This is an evidence gap, not a finding that those tests failed. The [packet manifest](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-25T18-41-22-819Z-37756801-010d-48ee-b38a-51d5081d7beb/prepared/packet/REVIEW-PACKET-MANIFEST.json) explicitly treats omitted required inputs as a review blocker.
+
+The 354 included artifacts passed size and hash checks. I found no source mismatch in the four JSONC files or MIT notice, and the reviewed registry, preset, selector controls, and source-bound runtime evidence support their stated technical scope. The earlier POST preparation stopped before model review at `CANDIDATE_CHANGED` and supplies no verdict.
+
+A fresh packet needs the desktop unit execution evidence bound to the reviewed inputs. Human visual acceptance, Main delivery, and archive remain pending.

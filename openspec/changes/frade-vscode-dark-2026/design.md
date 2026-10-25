@@ -1,0 +1,93 @@
+# Design
+
+## Context
+
+Owner codex/vscode-dark-2026, E:/dev/codex/frade-worktrees/vscode-dark-2026; baseline90710ac784ee6af2788fe96f7e6d2bbe67e1bf0d, commonE:/dev/codex/frade/.git. Main is dirty with independent Routing work; this clean worktree consumes only completed P01/Main. Original UI program baseline98f387f96b51b0ad139e3507c376ff1c3e8dec09 is retained as ancestry, not moved. Source archive and manifest are in evidence/planning-20261025. Root/scoped AGENTS and guide1.0 apply. This is a bundled first-party reference, not P02 installation or general P03 import.
+
+## Goals / Non-Goals
+
+Exact user label, complete upstream bytes, maximum evidenced color/geometry fidelity of actual comparable Frade surfaces, hot atomic selection and persistent identity. No blanket pixel-perfect whole-app claim; no new views/features, VS Code executable extensions, new UI library, icon family, branding, routing/domain/vendor or authored diagram changes. No dynamic external CSS.
+
+## Independent review assignment
+
+Authority: direct user request and geometry/model answers, preserved in evidence/planning-20261025/user-authority.json.
+
+| Stage | Role | Model | Reasoning |
+|---|---|---|---|
+| VS Code Dark 2026 reference preset | PRE | gpt-6-sol | xhigh |
+| VS Code Dark 2026 reference preset | POST | gpt-6-sol | xhigh |
+
+Automatic fresh packet-confined shared review, exact plan raw hash/excerpt and full receipt required. Requested pair does not attest actual backend. Coherent strict plan precedes PRE; PRE PASS precedes production; actual tests/verify precede POST; POST PASS and required human visuals precede archive/delivery. No universal model assignment or historical P02 gate reuse.
+
+## Decisions
+
+1. Preserve raw theme closure plus MIT notice and provenance under packages/ui-workspace/src/design/reference/vscode-dark-2026/upstream/. Source files are never rewritten to map Frade values. Generate a data-only native descriptor and detailed component color projection/compatibility from an explicit mapping; no general VSIX/importer API. Source closure has one fixed commit and bounded four JSON files.
+2. Reuse createThemeRegistry/resolveTheme/ThemePicker and Main authoritative settings. Keep the existing createThemeRegistry(descriptors=[]) core API and its exact three builtin default entries unchanged. Export a separate createApplicationThemeRegistry(descriptors=[]) that prepends the trusted bundled descriptor before optional external descriptors; first-wins duplicate validation prevents spoofing the reference ID. Use this application factory consistently in the controller default and Main settings owner; explicit injected core registries remain unchanged for original tests. Retain builtin reserved IDs/defaults. Main and renderer must see identical registration before first paint; no persisted schema change or migration.
+3. Keep the canonical31 HEX6 semantic roles and fixed contrast table. Compose required alpha against named surface backgrounds; preserve raw RGBA in original data. Detailed supplemental component tokens are generated trusted data, never feature color literals or a second resolver. A generated first-party data module supplies per-component values and compatibility entries. Apply accessible repaired role values for any essential text/boundary/focus pair; never bypass repair with a CSS override.
+4. Derive a data-frade-reference attribute from the resolved stable ID during root participant apply/rollback before its existing paint ACK. Do not persist another flag. Scoped trusted first-party CSS uses shared token/component patterns. Remove the attribute on every other ID including forced-colors fallback. Main restore and preview/cancel remain transactional. No global body geometry overrides; never target Draw vendor contents. Existing embedded/native UI role projection continues through P01; authored domain paint/geometry remains untouched.
+5. Existing shell/control targets: titlebar/command-center, activity rail/buttons, repository sidebar/header/tree/search, editor tabs/close/dirty markers, breadcrumbs/toolbars, statusbar, inspector/shared forms/buttons and managed dialog/picker/menu surfaces. Match font/spacing/borders/radius where declared and supported. Use pinned window35px titlebar, activity48px; statusbar upstream22px is a reference, not permission to violate Frade pointer floors. Tree/tabs target dimensions must have exact upstream declaration witnesses; absent base editorTabsControl declaration currently blocks claiming exact tab height until retrieved. Frade-specific forms/layout and absent counterparts remain explicit adaptations. Compare compact and comfortable independently; coarse44px and focus2px win over upstream visual differences. Fixed guide starting sizes may differ only in this user-authorized profile; all remaining FDS/A11Y rules remain binding.
+6. Source-bound generation check must run in existing ui:compliance/CI path. Any new generated TS/CSS exclusion is exact-path and coupled to drift/semantic validation plus isolated negative tests; no broad allowlist. Prefer generated JSON data and literal-free preset CSS to minimize checker change. Keep legacy exceptions and canonical builtin tokens/generator unchanged.
+
+## Exact allowed paths and purposes
+
+- packages/ui-workspace/src/design/reference/vscode-dark-2026/**: first-party source/manifest/MIT/mapping/generated data/literal-free preset CSS only.
+- packages/ui-workspace/src/design/theme/registry.ts: additive application factory only, existing core registry behavior unchanged. packages/ui-workspace/src/design/theme/index.ts: use application factory only when no explicit registry is injected. apps/desktop/src/main/presentation-settings.ts: use the same application factory for authoritative resolve/readback, no schema/CAS/lifecycle change. rootParticipant.ts: derived preset projection/rollback; no service algorithm/deadline/ACK change. theme-consumers.css and src/styles.css: import/consume scoped shared preset only; do not rewrite unrelated styles. ThemePicker.tsx only if needed for exact label/selection, not an installer.
+- scripts/ui/vscode-dark-2026.mjs (new generator/check), scripts/ui/colors.mjs only if strictly necessary for exact generated artifact recognition, package.json only named ui:vscode:generate/ui:vscode:check and ui:compliance invocation; no dependencies/lockfile changes.
+- packages/ui-workspace/tests/ui-contract/vscode-dark-2026*.test.ts[x], tests/ui-contract/vscode-dark-2026*.test.mjs, apps/desktop/tests/e2e/ui-contract-vscode-dark-2026.spec.ts: new meaningful tests only. Existing assertions, baselines and source files stay unchanged.
+- docs/ui/VSCODE-DARK-2026-STATUS.md, docs/ui/VS-CODE-DARK-2026.md, this change/decisions/evidence/specs and final canonical sync for declared capabilities. No old evidence edits.
+
+Any need to change another production path requires a scope repair before implementation. First bound probe must decide whether detailed color projection fits these paths; this plan does not silently authorize snapshot schema/native/frame protocol or arbitrary Draw bridge modifications.
+
+## Strategy before expensive work
+
+Alternatives: whole VS Code UI/embed (new application boundary/size/behavior, inapplicable); install/import through P02/P03 (unfinished dependencies and excessive scope); overwrite Frade global tokens/geometry (breaks explicit user choice); copy only visible colors (loses inheritance and full source); selected pinned closure plus native descriptor and ID-scoped shared preset. Incremental exact-source checks before full affected UI/desktop suites; safe old evidence reuse only for unchanged inputs, not new theme fidelity. Parallel writers are unnecessary; isolated checkout prevents Routing/P02 coupling.
+
+Forecast, judgment not measured guarantees: discovery/source/plan1–2h, implementation/tests4–10h, actual runtime/visual1–3h, each review20–40min based on prior measured Frade reviews around17–24min. No token estimate or success probability is measured. Source requests have20–30s caps; source integrity is checked before review. Probe after PRE: registry+one root preview/cancel+one control contrast/geometry case with exact source mapping. Stop/reassess on incomplete source, >2 deterministic unsuccessful fixes, inaccessible preset state/ACK, new regression, alpha/contrast ambiguities, missing critical upstream metrics or review isolation/model failure. Do not repeat full matrices while early probe fails.
+
+## Verification and evidence
+
+Applicable FDS001–010/014/015/017/018; A11Y001–010 as applicable, explicit mapping in report. Guide1.0 and Light/Dark/HC/System, both densities, forced colors/coarse/reduced motion, keyboard/focus,100/200percent text/resize, real loading/error/empty/dirty states only. Offline exact-source/closure/license/generation-drift positives/negatives; registry selection/labels, deterministic role mapping and alpha composition, root attribute rollback/failed activation; picker/restart persistence and unmodified builtins; native/embedded documents, undo, selection and identity. Exact source and computed metric/color comparison with repair/deviation inventory.
+
+Run source generator/check, affected UI lint/type/unit/BDD/build, desktop unit/type/lint/build, root ui:compliance/boundaries and relevant general contracts. New actual Electron tests cover reference preview/cancel/commit/restart, all mode transitions/both densities, screenshots and changed metrics; original P01 participant/service/startup/persistence/state/p95 regressions remain required. Run expensive batches only after bounded probe. Existing main p95124.1ms/60Hz is historical, not new preset PASS. Record hardware/rate/viewport/fonts/source and necessary new p95 evidence. Required NOT_RUN/BLOCKED prevents archive. No baseline auto-approval or fresh product claims from source inspection.
+
+## Risks / Trade-offs
+
+Frade exposes coarser semantic roles than VS Code; full source preservation does not guarantee every upstream scope renders. Real A11Y repair can differ from upstream. Syntax data has no consumer claim until verified. Geometry references live outside theme JSON and modern-UI flags must be recorded. Vendor-rendered Draw chrome remains under original accepted P01 contract, with deviations disclosed; changing it requires separate approval. Main adoption is a consumer checkpoint after reviewed implementation; no new branch/Main push permission is assumed from prior UI-ref authority.
+
+## Completed preflight mapping findings
+
+See evidence/planning-20261025/mapping-audit.json. Four source files are JSONC with comments/trailing commas, not strictJSON. Use the existing TypeScript JSONC parser dependency; no regex stripping or added package. Merged source has325color keys and retains118syntax rules/4semantic rules. Raw31role projection has10named contrast violations; this is observed planning evidence, not a waived failure. Existing runtime repair remains mandatory, and detailed component CSS must use equivalent repaired accessible pairs where applicable rather than bypassing it.
+
+The approved supplemental first-party data boundary will be generated TypeScript plus literal-free scoped CSS. If generated color strings are scanned, scripts/ui/colors.mjs may recognize exactly packages/ui-workspace/src/design/reference/vscode-dark-2026/generated.ts ONLY when the coupled generator/source drift check is mandatory in ui:compliance. Add meaningful negative controls proving manual edits and feature literals still fail. Canonical tokens/generator and existing exclusions remain exact. No JSON module/tsconfig/dependency expansion.
+
+Metric witnesses are recorded individually. Titlebar35/activity48/buttonradius4/padding4x8 have pinned source evidence. Upstream status22 is adapted to preserve mandatory Frade target/reflow requirements. Base tab-height getter acquisition remains unavailable; retain the existing35px band and mark exact default tab-height comparisonNOT_CONFIRMED, rather than invent a value or change that metric. Tree rows keep independent Frade density/accessibility floors; no unproven22px copied value. These two retained metrics are explicit fidelity limits, not permission to skip runtime checks. No blocked critical source needed for implemented adjustments remains. User requests maximum possible correspondence, not an unevidenced universal pixel-perfect claim.
+
+## PRE1 resolution and scope reconciliation
+
+Independent PRE1 FAIL is saved immutably in evidence/pre1-received-20261025. B01: core registry exact-three and injected picker exact-four are historical API guarantees, not tests to weaken. The separate additive application factory preserves both, while actual Main and controller bootstrap opt into the bundled reference through two precisely named existing integration points. These two hooks implement the already user-authorized theme, do not add a new product feature or alter service/persistence/domain contracts. Both remain subject to fresh PRE; production is unchanged. Add new regressions distinguishing core3/application4 and proving application Main/renderer equality.
+
+B02: fresh packet includes actual renderer style.css plus complete current legacy-color/UI/P01 traceability inventories, all named mapped assertion sources, canonical BDD files, original UI contract fixtures/tests and checkout attributes. Old missing guessed paths stay recorded; actual files are explicitly selected. A richer packet is required evidence, not a blanket repository upload.
+
+Cost reassessment: PRE1 actual started16:37:26.376Z, completed16:41:15.502Z (3min49s measured, plus preparation). One fresh PRE after strict/source completeness is justified by corrected inputs; no duplicate full runtime suite. Every old FAIL remains FAIL.
+
+## PRE2 discovery correction
+
+PRE2 FAIL and complete receipt remain immutable in evidence/pre2-received-20261025. Existing apps/desktop/playwright.config.ts declares testDir ./tests/e2e. The only new Electron spec is therefore apps/desktop/tests/e2e/ui-contract-vscode-dark-2026.spec.ts. No runner configuration or old test changes are authorized/needed. Run pnpm --filter @frade/desktop test:e2e -- ui-contract-vscode-dark-2026.spec.ts after build; independent discovery proof uses pnpm --filter @frade/desktop exec playwright test ui-contract-vscode-dark-2026.spec.ts --list and requires nonzero named cases (zero-discovery is FAIL). Preserve configured workers1/timeouts/assertions. Original regressions remain separate required cases, not replaced by the new suite.
+
+Correct guide rule range is A11Y001–010, with per-surface applicability reported rather than a fabricated A11Y011. No product requirement or accessibility threshold is weakened. Root cause classification INTEGRATION/TEST: the initial planned test path was guessed instead of bound to actual runner configuration; discovery configuration is now a mandatory packet input. Previous registry/inventory blockers remain resolved and no production changes occurred.
+
+Strategy reassessment: one fresh cumulative PRE focused on this exact discovery/ID-reference delta, reusing only source-bound unchanged PRE2 context, is cheaper and safer than executing tests that would discover zero cases. PRE2 measured16:45:20.870Z to16:50:45.728Z (5min25s), not a forecast or timeout. No full runtime suite has been run or repeated.
+
+## Accepted VSCODE-DARK-2026-LEGACY-SELECTORS-02
+
+User explicitly accepts exact replacement proposal e7545cbeeb492461882718786f8b13f6825878ee39834db86b8cdf4ad1d9f9d2 and six drafts manifest61e82b6ce19b72412e3c684a054c1b37bbe68aadc5f9adce3b5ec3b58c3f4655. Supersedes only01 draft hashes/counts;01 acceptance/PRE FAIL remain immutable and none of those drafts was applied. Same sole exception to original-test preservation and allowed paths: five exact builtin option selectors (four spaced, one compact) in apps/desktop/tests/e2e/ui-contract-theme.spec.ts; two exact alternating builtin selectors in ui-contract-theme-performance.spec.ts; historical-only fuiRead projection in packages/ui-workspace/tests/ui-contract/p01.bdd.test.tsx; five pure resolver BDD assertion hashes in docs/ui/decisions/p01-theme-traceability.json; new packages/ui-workspace/tests/ui-contract/vscode-dark-2026-origin.ts and vscode-dark-2026-origin.test.ts. Exact raw draft hashes govern; all other old test/assertion/config/evidence paths stay frozen.
+
+Complete original option/radio AST inventory identifies seven ambiguous option calls before and zero after. Radio and Light-only choices stay unchanged. New controls retain origin positive/three mutation negatives and add complete option AST rejection of generic Dark/constructed regex plus exact live performance source pin.
+
+Historical FUI replay requires exact accepted current source SHA, reverses exactly four spaced plus one compact selector substitutions, then requires exact original SHA before unchanged historical AST/execution checks. Old command/report/receipt/hashes stay immutable and never prove a new execution. Fresh FUI12, legacy semantic/parked/p95 and B05/parked diagnostic runs bind current files separately. No fake accessible name, hidden option, API monkeypatch, skip, timeout/tolerance change or blind rebaseline.
+
+Missing historical packet inputs are supplied byte-exact: archived p01-fui-runtime-20261007T221459Z command.json/runtime.stdout.json/control-valid-bindings.json and original p01-benchmark-hardware-20261001T003100Z.json. Owner inspected original runtime12PASS and no embedded bodies/stdout; raw external KA media/data remain excluded. See02 planning-smoke and original evidence locators.
+
+Current plan strict precedes fresh automatic PREgpt-6-sol/xhigh; prior focused FAIL is not approval. Only verified PASS permits exact02 drafts. Meaningful SOURCE_HASH RED after locator-only application precedes origin GREEN; full affected unit/BDD/static/compliance, live-source FUI12/legacy/B05/diagnostic/p95 are required before verify and cumulative POSTgpt-6-sol/xhigh. Reuse reference6/6 and final p9586.3ms only where exact product/new-test inputs are unchanged. Human visual acceptance still precedes Main delivery/archive. Stop for any additional path/assertion/protocol need or inadequate origin proof; independent findings cannot expand scope.
+
+Strategy reassessment: complete AST analysis replaces the failed lexical inventory; one fresh PRE with the missing four receipts is required. Previous focused PRE measured5min33.6s including preparation. Forecast1–2h for repair/checks/reviews remains uncertain; no success probability is claimed. Bounded source-origin RED/negative/zero-unsafe checks precede costly targeted replay, not another whole visual matrix.
