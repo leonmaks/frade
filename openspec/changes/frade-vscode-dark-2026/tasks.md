@@ -9,7 +9,7 @@
 
 - [ ] 2.1 Add meaningful RED for exact source/include/generation boundaries, missing registry theme, root preset restoration and alpha composition; preserve original tests.
 - [ ] 2.2 Copy exact upstream closure/MIT into approved source path; implement deterministic data/mapping/compatibility generation, drift checks and isolated negative fixtures.
-- [ ] 2.3 Register exact label/stable ID through existing default registry/Main bootstrap; implement ID-scoped root/CSS preset and preview/cancel/commit restoration, no schema/algorithm changes.
+- [ ] 2.3 Register exact label/stable ID through the separate application factory in controller/Main bootstrap; verify original core3/injected-picker4 and new application4 contracts without editing old tests; implement ID-scoped root/CSS preset and preview/cancel/commit restoration, no schema/algorithm changes.
 - [ ] 2.4 Apply evidenced component colors/metrics across allowed actual surfaces; verify A11Y repair and both densities, forced colors/coarse behavior and non-reference equivalence.
 
 ## 3. Actual verification and delivery

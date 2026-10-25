@@ -1,3 +1,7 @@
+# PRE1 FAIL retained / plan repaired / PRE2 prepared
+
+2026-10-25T16:43:59.088Z; ownercodex/vscode-dark-2026. PRE1 independentFAIL verified with complete stream/source/packet binding; two blockers were core-registry test conflict and missing packet inputs. Plan now preserves core3/injected-picker4 using a separate application factory in exact controller/Main hooks; no original tests change. Renderer CSS/inventories/fixture and actual assertion sources selected. Strict revalidation/PRE2 next, gpt-6-sol/xhigh; candidate freezes at dispatch. Production unchanged,1/10tasks. OldFAIL immutable, no gate/implementationPASS. Localcheckpoint only; pushNOT_AUTHORIZED.
+
 # PRE prepared — candidate freeze at dispatch
 
 2026-10-25T16:32:14.979Z; branchcodex/vscode-dark-2026, baseline90710ac. Current strictPASS, four artifacts coherent, complete pinned JSONC/MIT closure and mapping/metric evidence retained. Productionunchanged. Automatic PREgpt-6-sol/xhigh prepared with95selected packet paths; candidate/HEAD/index/dashboard freeze during review. PRE NOT_RUN until actual dispatch/result; no implementation before verified PASS.1/10tasks complete; commit checkpoint preparing, new-ref/Main pushNOT_AUTHORIZED.

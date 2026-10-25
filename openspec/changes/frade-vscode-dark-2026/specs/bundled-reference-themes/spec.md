@@ -17,7 +17,7 @@ The shipped VS Code Dark 2026 SHALL retain byte-identical 2026-dark.json and its
 
 ### Requirement: Existing hot selection and durable identity
 
-VS Code Dark 2026 SHALL be available offline by exact label and stable ID frade.reference/vscode-dark-2026 through the existing registry, picker, resolver and Main settings owner. Preview SHALL remain transient; commit and restart SHALL retain the ID. Default selection SHALL remain unchanged.
+VS Code Dark 2026 SHALL be available offline by exact label and stable ID frade.reference/vscode-dark-2026 through the existing registry, picker, resolver and Main settings owner. Preview SHALL remain transient; commit and restart SHALL retain the ID. Default selection SHALL remain unchanged. The core createThemeRegistry() exact-three contract and explicitly injected picker options MUST remain unchanged; only the application factory adds the bundled reference.
 
 #### Scenario: Preview cancel and restart
 
