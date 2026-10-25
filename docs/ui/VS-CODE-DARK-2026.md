@@ -1,3 +1,4 @@
+<!-- Main POST1 FAIL1e3a77a6: application receipt omitted from packet,854after proof now captured at actual current time; source/bundles unchanged; no tests rerun. POST2 required. -->
 # VS Code Dark 2026 — Main consumer report
 
 CHANGE: frade-vscode-dark-2026, Main E:/dev/codex/frade; original90710ac, planning4cc45ddf; Guide1.0. IMPLEMENTED: exact26reviewed source/test/control files, including complete4upstream JSONC+MIT, offline selection and ID-scoped geometry; no reimplementation.

@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-25T21:37:58.870Z",
+  "classification": "INTEGRATION_EVIDENCE_PACKET_COMPLETENESS",
+  "finding": "Existing application.json omitted from selected paths; before-only854foreign metadata insufficient for independent after comparison",
+  "productionOrTestChange": false,
+  "checksReused": "Source299 and all built bundles revalidated exact, no full reruns",
+  "alternatives": [
+    {
+      "strategy": "Repeat all tests",
+      "cost": "3–8min forecast plus unchanged outputs",
+      "risk": "Does not add missing foreign proof; unnecessary"
+    },
+    {
+      "strategy": "Upload entire history",
+      "cost": ">40MB plus duplicates; more model processing",
+      "risk": "Still needs actual854after snapshot"
+    },
+    {
+      "strategy": "Add immutable application + actual854after/source proofs + same-policy freshPOST",
+      "selected": true,
+      "cost": "1–2min preparation +6–9min outerreview forecast; last measured8m33s",
+      "risk": "Model/network/runtime uncertainty; no code/guard changes"
+    }
+  ],
+  "stop": "Any new actual source/foreign drift or review correctness blocker stops archive; preserve old FAIL; no waiver"
+}

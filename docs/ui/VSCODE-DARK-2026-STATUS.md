@@ -13,7 +13,7 @@ Updated 2026-10-25T20:58:52.346Z. Owner main, E:/dev/codex/frade; baseline90710a
 |Strict validation / Main consumer PRE|Strict PASS; Main PRE PASS00fab3fa; source382/hash/stream verified|
 |Exact26file application|PASS; exact bytes,854foreign contents/absence/status unchanged|
 |Main static/unit/build/compliance/runtime checks|PASS:13Main checks +29/29Electron, content audit PASS (one disclosed Node warning); verify/POST next|
-|Main verify / independent POST|Verify8/8PASS; POST preparing, no PASS yet|
+|Main verify / independent POST|Verify8/8PASS; POST1FAIL evidence packet omission; source/tests PASS; application +854after proof repaired; fresh POST2 preparing|
 |Canonical sync/archive/local delivery commit|NOT_RUN|
 
 Next: fresh Main POSTgpt-6-sol/xhigh → sync/archive/checkpoint. Main checks13/13 and runtime29/29PASS; earlier owner helper errors preserved, no product repairs. No Routing/P02 writes or dependency. Existing foreign five content-diff paths plus all854status objects remain bytes/absence-identical; no discard/stash/reset/lockfile change. Commit only owned paths; Main/new-ref push NOT_AUTHORIZED. [Delivery plan](../../openspec/changes/frade-vscode-dark-2026/main-delivery.md), [Transfer manifest](../../openspec/changes/frade-vscode-dark-2026/evidence/main-delivery-20261025/transfer-manifest.json), [19PNG](../../openspec/changes/frade-vscode-dark-2026/evidence/final-visual-gallery-20261025/INDEX.md). Status tab QUEUED, visibility NOT_CONFIRMED. Historical FAIL/BLOCKED remain unchanged.
