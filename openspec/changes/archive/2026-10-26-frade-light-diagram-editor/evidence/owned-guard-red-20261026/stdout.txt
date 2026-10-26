@@ -1,0 +1,38 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\e2e\ui-contract-light-diagram-editor.spec.ts:252:1 › LDE owned dirty guard uses the originating editor Light scope (2.1s)
+[31mTesting stopped early after 1 maximum allowed failures.[39m
+
+
+  1) tests\e2e\ui-contract-light-diagram-editor.spec.ts:252:1 › LDE owned dirty guard uses the originating editor Light scope 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m"rgb([7m255, 255, 255[27m)"[39m
+    Received: [31m"rgb([7m39, 43, 51[27m)"[39m
+
+      292 |     await f.page.screenshot({ path: info.outputPath('owned-guard.png') })
+      293 |     expect(appearance.appTheme).toBe('dark')
+    > 294 |     expect(appearance.background).toBe('rgb(255, 255, 255)')
+          |                                   ^
+      295 |     expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+      296 |   } finally {
+      297 |     if (await dialog.isVisible())
+        at E:\dev\codex\frade-worktrees\light-diagram-editor\apps\desktop\tests\e2e\ui-contract-light-diagram-editor.spec.ts:294:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-light-diagram-editor\evidence\owned-guard-red-20261026\artifacts\ui-contract-light-diagram--2bf00-ginating-editor-Light-scope\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-light-diagram-editor\evidence\owned-guard-red-20261026\artifacts\ui-contract-light-diagram--2bf00-ginating-editor-Light-scope\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-light-diagram-editor\evidence\owned-guard-red-20261026\artifacts\ui-contract-light-diagram--2bf00-ginating-editor-Light-scope\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-light-diagram-editor.spec.ts:252:1 › LDE owned dirty guard uses the originating editor Light scope 
+  1 error was not a part of any test, see above for details

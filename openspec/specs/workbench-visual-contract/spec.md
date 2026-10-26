@@ -32,12 +32,15 @@ Each affected surface SHALL have actual runtime screenshots and interaction/acce
 
 ### Requirement: Opt-in reference geometry and honest fidelity
 
-Only the selected frade.reference/vscode-dark-2026 ID SHALL enable the first-party reference geometry preset for existing comparable shell and controls. Density preference MUST remain independent. The scoped preset MAY replace guide initial band/radius/spacing defaults with pinned VS Code measurements; mandatory keyboard, focus, pointer target, contrast, reflow and semantic preservation rules remain. No other theme SHALL acquire reference geometry.
+Only frade.reference/vscode-dark-2026 SHALL enable reference geometry on comparable external workbench controls. External density stays independent. Mandatory accessibility and semantic preservation remain. Editor-owned UI SHALL use pinned upstream Light with fixed geometry and declared accessibility/system adaptations.
 
 #### Scenario: User switches theme or density
+- **WHEN** preview, commit, cancel or density changes occur
+- **THEN** external geometry follows its theme/density, editor geometry remains upstream and layout/documents stay unchanged
 
-- **WHEN** reference preview/commit/cancel and density changes occur
-- **THEN** scoped geometry follows the accepted reference revision, compact/comfortable remains independently selected, and leaving the reference restores original metrics without saved layout mutation
+#### Scenario: Reference shell around upstream editor
+- **WHEN** reference is selected with either engine
+- **THEN** external workbench alone uses reference geometry while editor controls use the common pinned source with disclosed adaptations
 
 ### Requirement: Measured reference comparison
 

@@ -1,0 +1,48 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/light-diagram-editor.test.tsx > LDE-007 invalid covered handle cannot reveal its parent before refusal
+AssertionError: expected '<section data-editor-identity="retain…' to be '<section data-editor-identity="retain…' // Object.is equality
+
+Expected: "<section data-editor-identity="retained" style="--unrelated-owner: kept; visibility: hidden;"><div style="visibility: hidden;"><path fill="#C14F71" stroke="#207D63" opacity="0.65" d="M 10 10 L 30 40"></path></div></section>"
+Received: "<section data-editor-identity="retained" style="--unrelated-owner: kept;"><div style=""><path fill="#C14F71" stroke="#207D63" opacity="0.65" d="M 10 10 L 30 40"></path></div></section>"
+
+ ❯ tests/ui-contract/light-diagram-editor.test.tsx:153:30
+    151|   abort.abort()
+    152|   await expect(handle.apply(phase(7), new AbortController().signal)).r…
+    153|   expect(f.editor.outerHTML).toBe(before)
+       |                              ^
+    154|   expect(paint).not.toHaveBeenCalled(); expect(f.graph.drawBackground)…
+    155|   handle.dispose(); participant.dispose()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/ui-contract/light-diagram-editor.test.tsx > LDE-003 late prepare after owner disposal is rejected and its acquired handle is disposed
+AssertionError: promise resolved "{ apply: [Function apply], …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "apply": [Function apply],
++   "dispose": [Function dispose],
++   "rollback": [Function rollback],
+  }
+
+ ❯ tests/ui-contract/light-diagram-editor.test.tsx:170:23
+    168|   await Promise.resolve()
+    169|   participant.dispose(); ready(child)
+    170|   await expect(pending).rejects.toThrow()
+       |                       ^
+    171|   expect(child.dispose).toHaveBeenCalledTimes(1)
+    172|   expect(child.apply).not.toHaveBeenCalled(); expect(child.rollback).n…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade-worktrees\light-
+  │ diagram-editor\packages\ui-workspace
+

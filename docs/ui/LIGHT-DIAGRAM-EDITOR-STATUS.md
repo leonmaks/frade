@@ -3,14 +3,14 @@
 Обновлено: 26 октября 2026 (MSK); evidence содержит фактические UTC timestamps.
 Ветка: `codex/frade-light-diagram-editor`
 Worktree: `E:/dev/codex/frade-worktrees/light-diagram-editor`
-Change: `frade-light-diagram-editor`
+Change: `frade-light-diagram-editor` (archived: `openspec/changes/archive/2026-10-26-frade-light-diagram-editor`)
 Исходный commit: `4244e5668e50f74b9b536c2f0ffc44c56279e945`
 Git common: `E:/dev/codex/frade/.git`
 Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5`.
 
 ## Текущая фаза
 
-POST01_FAIL_PRESERVED / MISSING_WITNESS_GREEN / PREPARING_POST02.7/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: NO until POST.
+POST02_PASS / ARCHIVED / MAIN_INTEGRATION_IN_PROGRESS.8/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: YES for implementation; final2.7 archive/Main operations pending.
 
 | Этап | Статус | Фактический результат |
 |---|---|---|
@@ -277,3 +277,13 @@ Shared runner AVAILABLE/v1.1. Packet998 selected files/~34.4MB; two large observ
 ## POST01 and exact witness repair —26October
 
 POST01 clean FAIL received with complete stream and unchanged candidate/packet. Sole blocker: missing simultaneous reference shell/owned Light popup capture. Prior18/19 corrected by new1/1 actual witness, not separate-state inference. Evidence post-01-received-20261026 and upstream-reference-popup-witness-20261026; old report/FAIL/gallery untouched. New11/11 binder and affected lint/typecheck/strict PASS. POST02 gpt-6-sol/xhigh pending; archive/Main still NOT_RUN.
+
+## Cumulative POST02 PASS —26October
+
+Checkpoint f1b05d7cb61d7043c6d5dec1003bdaea238e5b92; requested gpt-6-sol/xhigh. Complete successful execution, exactly one GATE_STATUS PASS; candidate/packet unchanged. Actual backend/effort NOT_CONFIRMED per shared policy. Raw receipt/result/events/provenance received before interpretation under post-02-received-20261026. No interruption: protective guard saw live events and refused cancellation; sandbox host-view lag was diagnostic only. Sole POST01 blocker closed with actual combined reference-popup witness. Current13requirements/19scenarios verified; LDE-D01 remains exact accepted historical FAIL, NOT_FIXED/NOT_PROVEN.
+
+Tasks8/9;2.6 DONE,2.7 archive/sync/Main IN_PROGRESS. Main baseline4244e566,854 foreign entries/no overlapping paths in read-only preflight; actual transfer/publication not yet run. Next: four-spec sync/strict, archive locator BDD, reviewed FF preserving all foreign bytes, authorized origin/main publication and remote SHA.
+
+## Archive/sync checkpoint —26October
+
+POST02 PASS preserved. Four canonical UI capabilities synchronized,13 exact delta blocks/previous scenario names verified;4/4 owned specs strict PASS and active change strict PASS before archive. Global specs strict10PASS/3pre-existing Routing FAIL (long descriptions) retained separately with unchanged-baseline hashes; no Routing changes. Node directory rename EPERM; native boundary-verified PowerShell Move succeeded; all2495 original file bytes verified afterward. New BDD archive locator11/11 PASS. Main/publication pending, task2.7 still IN_PROGRESS. No full runtime repeated.

@@ -1,0 +1,51 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade-worktrees/light-diagram-editor/packages/ui-workspace
+
+ ✓ tests/ui-contract/service.test.ts (35 tests) 95ms
+ ✓ tests/ui-contract/overlays.test.tsx (8 tests) 150ms
+ ❯ tests/ui-contract/light-diagram-editor.test.tsx (37 tests | 1 failed) 411ms
+   ✓ LDE-001 LDE-006 native scope under light/compact/forced=false preserves the app and authored state 27ms
+   ✓ LDE-001 LDE-006 native scope under light/compact/forced=true preserves the app and authored state 8ms
+   ✓ LDE-001 LDE-006 native scope under light/comfortable/forced=false preserves the app and authored state 6ms
+   ✓ LDE-001 LDE-006 native scope under light/comfortable/forced=true preserves the app and authored state 6ms
+   ✓ LDE-001 LDE-006 native scope under dark/compact/forced=false preserves the app and authored state 6ms
+   ✓ LDE-001 LDE-006 native scope under dark/compact/forced=true preserves the app and authored state 6ms
+   ✓ LDE-001 LDE-006 native scope under dark/comfortable/forced=false preserves the app and authored state 8ms
+   ✓ LDE-001 LDE-006 native scope under dark/comfortable/forced=true preserves the app and authored state 8ms
+   ✓ LDE-001 LDE-006 native scope under high-contrast/compact/forced=false preserves the app and authored state 5ms
+   ✓ LDE-001 LDE-006 native scope under high-contrast/compact/forced=true preserves the app and authored state 5ms
+   ✓ LDE-001 LDE-006 native scope under high-contrast/comfortable/forced=false preserves the app and authored state 4ms
+   ✓ LDE-001 LDE-006 native scope under high-contrast/comfortable/forced=true preserves the app and authored state 4ms
+   ✓ LDE-001 LDE-006 native scope under system-light/compact/forced=false preserves the app and authored state 4ms
+   ✓ LDE-001 LDE-006 native scope under system-light/compact/forced=true preserves the app and authored state 5ms
+   ✓ LDE-001 LDE-006 native scope under system-light/comfortable/forced=false preserves the app and authored state 4ms
+   ✓ LDE-001 LDE-006 native scope under system-light/comfortable/forced=true preserves the app and authored state 5ms
+   ✓ LDE-001 LDE-006 native scope under system-dark/compact/forced=false preserves the app and authored state 4ms
+   ✓ LDE-001 LDE-006 native scope under system-dark/compact/forced=true preserves the app and authored state 5ms
+   ✓ LDE-001 LDE-006 native scope under system-dark/comfortable/forced=false preserves the app and authored state 4ms
+   ✓ LDE-001 LDE-006 native scope under system-dark/comfortable/forced=true preserves the app and authored state 6ms
+   ✓ LDE-001 LDE-006 native scope under reference/compact/forced=false preserves the app and authored state 7ms
+   ✓ LDE-001 LDE-006 native scope under reference/compact/forced=true preserves the app and authored state 4ms
+   ✓ LDE-001 LDE-006 native scope under reference/comfortable/forced=false preserves the app and authored state 4ms
+   ✓ LDE-001 LDE-006 native scope under reference/comfortable/forced=true preserves the app and authored state 4ms
+   ✓ LDE-006 LDE-007 native forced-colors round trip and rollback retain author/settings/revision ownership 6ms
+   ✓ LDE-007 stale/aborted editor handle cannot paint either root or canvas 4ms
+   ✓ LDE-003 disposal restores owned root projections and preserves a later unrelated style owner 3ms
+   ✓ LDE-007 covered native join is paintable before ACK and retains reveal/disposal ownership 4ms
+   ✓ LDE-007 invalid covered handle cannot reveal its parent before refusal 2ms
+   ✓ LDE-003 late prepare after owner disposal is rejected and its acquired handle is disposed 1ms
+   ✓ LDE-001 LDE-007 frame prepares a validated Light DTO while keeping the authoritative Dark context 89ms
+   ✓ LDE-004 native dot diameter is shared view geometry and restores without changing grid semantics 7ms
+   ✓ LDE-003 managed editor overlay keeps focus/cancel semantics and isolates the global picker and second editor 91ms
+   ✓ LDE-003 LDE-006 owned overlay follows same-transaction forced-colors rollback without touching the second owner/global host 19ms
+   ✓ LDE-003 disposed/foreign/forged leases fail without rebinding or changing the active modal 22ms
+   ✓ LDE-003 initial owned popup projects the supplied visible snapshot before first participant paint 7ms
+   × LDE-007 dirty guard retains every original byte outside the exact accepted metadata call 6ms
+     → The URL must be of scheme file
+ ✓ tests/ui-contract/participants.test.ts (38 tests) 461ms
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  1 failed | 117 passed (118)
+   Start at  11:16:58
+   Duration  2.35s (transform 448ms, setup 0ms, collect 1.30s, tests 1.12s, environment 2.01s, prepare 773ms)
+
