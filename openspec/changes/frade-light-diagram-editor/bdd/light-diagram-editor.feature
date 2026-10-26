@@ -1,75 +1,64 @@
-Feature: Shared fixed light diagram editor
-  Editor presentation stays stable while application themes and system accessibility change.
-  These stage scenarios are planning contracts; executable bindings are not implemented yet.
+Feature: Pinned upstream Drawio Light editor integration
+  Fixed upstream styling coexists with workbench themes and protected documents.
 
   @LDE-001
-  Scenario Outline: Editor colors remain stable across application selections
-    Given a dirty <engine> diagram in <density> density
-    And Windows forced colors is inactive
-    When the application selects <theme>
-    Then the editor workspace and its panels use the common Light profile
-    And the external workbench uses the selected theme
-    And authored data and editor identity remain unchanged
-    Examples:
-      | engine | density     | theme             |
-      | Frade  | compact     | Dark              |
-      | Drawio | comfortable | VSCodeDark2026    |
-      | Frade  | comfortable | HighContrast      |
-      | Drawio | compact     | System            |
+  Scenario: Editors retain upstream Light across external choices
+    Given dirty native and embedded editors in a dark workbench
+    When external themes and System appearance change
+    Then editor UI retains pinned Drawio Light and external themes still work
+    And author data revisions and identities remain correct
 
   @LDE-002
-  Scenario: Comparable controls share metrics across engines
-    Given both editors show a supported button field and menu row
-    When density changes between compact and comfortable
-    Then comparable declared styles match the common editor tokens
-    And targets focus and text contrast meet the applicable accessibility contract
+  Scenario: Comparable controls derive fixed upstream metrics
+    Given native and iframe controls use the verified upstream adapter
+    When workbench compact and comfortable density change
+    Then editor metrics stay fixed with declared accessibility exceptions
+    And external preferences and authoritative metadata remain correct
 
   @LDE-003
-  Scenario: Ownership follows an editor popup into the shared host
-    Given two editors and the global theme picker exist in a dark workbench
-    When one editor opens a portaled dialog and is later disposed
-    Then the dialog uses the editor Light scope only while its owner is valid
-    And global overlays and the other editor retain their proper ownership
-    And modal focus and dismissal behavior remain unchanged
+  Scenario: Ownership survives portals and disposal
+    Given two editors and a global theme picker
+    When an owned dialog opens and its editor is disposed
+    Then style focus and dismissal follow the valid owner only
+    And other editors and global overlays retain their ownership
 
   @LDE-004
-  Scenario: Neutral grid does not overwrite authored page or snapping
-    Given supported documents have explicit colored and image-backed pages
-    When grid visibility pan zoom and application theme change
-    Then the neutral workspace and dots follow the shared editor profile
-    And authored page paint grid semantics snapping coordinates and export remain unchanged
+  Scenario: Workspace and grid preserve document semantics
+    Given default and supported authored backgrounds
+    When pan zoom grid visibility and external themes change
+    Then UI backing follows pinned presentation
+    And grid snapping transforms documents and export remain unchanged
 
   @LDE-005
-  Scenario: Style sample and canvas use the same supported appearance
-    Given an opaque or translucent supported style sample on a declared backdrop
-    When its attributes are applied to a canvas object
-    Then the sample and canvas use the same authored color opacity and supported style values
-    And no theme inversion tint or persisted default materialization occurs
+  Scenario: Author paint is independent from upstream chrome
+    Given supported opaque alpha inherited and Drawio page image or gradient content
+    When appearance preview commit and cancel occur
+    Then paint and sample values stay unchanged without inversion or materialized defaults
+    And unsupported native capabilities are disclosed
 
   @LDE-006
-  Scenario: Windows forced colors overrides the local Light scope
-    Given dirty native and embedded diagrams retain their original author values
-    When Windows forced colors is enabled and then disabled
-    Then active system colors take priority and the editor returns to Light afterward
+  Scenario: Forced colors overrides upstream Light
+    Given dirty native and embedded editors with owned UI
+    When forced colors enters and exits
+    Then UI uses system mapping while active and upstream Light afterward
     And documents and application preference remain unchanged
 
   @LDE-007
-  Scenario: Unchanged Light colors do not permit a stale acknowledgement
-    Given editor colors are equal across two authoritative application revisions
-    When an old frame acknowledgement arrives or the current adapter refuses
-    Then stale success is rejected and the existing rollback or recovery contract applies
-    And startup restore parked editors and restart retain their strict readiness guarantees
+  Scenario: Equal styles never bypass transaction guards
+    Given equal editor appearance across authoritative revisions
+    When an old acknowledgement arrives or an adapter refuses
+    Then original identity deadline refusal rollback and readiness contracts apply
 
   @LDE-008
-  Scenario: Keyboard focus and readonly state survive scoped presentation
-    Given each editor exposes its existing reachable menus dialogs and readonly controls
-    When keyboard navigation resize and 200 percent text zoom are exercised
-    Then labels focus modal return and disabled actions reflect real behavior
-    And global shortcuts and other editor ownership remain intact
+  Scenario: Keyboard focus and constrained interaction survive
+    Given reachable menus dialogs and readonly controls
+    When keyboard resize text zoom and coarse targets are exercised
+    Then labels focus return dismissal and disabled actions remain correct
+    And styles and shortcuts do not leak to another editor
 
   @LDE-009
-  Scenario: Unsupported cross-engine appearance is disclosed
-    Given a gradient font or image behavior has no supported equivalent
-    When cross-engine appearance results are reported
-    Then the specific capability is identified as unsupported or not applicable
-    And no universal pixel parity or invented integration is claimed
+  Scenario: Source closure rejects adapter tampering
+    Given pinned CSS resources and generated native adapter
+    When source output scope or a required artifact is altered
+    Then compliance fails and original history stays unchanged
+    And unsupported controls and accessibility adaptations are disclosed

@@ -1,32 +1,20 @@
-# Tasks
+# Tasks — accepted upstream replacement
 
-## 1. Planning and independent PRE
+Exactly two execution stages. Prior6/13 task text/raw hash and all old evidence remain preserved in evidence/drawio-upstream-planning-20261026/prior-manifest.json. Existing code is reused, not restarted or relabeled as upstream PASS.
 
-- [x] 1.1 Record user scope/model authority, isolated Main baseline, actual adapter/control inventory and shared-policy adoption; verify exact raw hashes and unchanged production files.
-- [x] 1.2 Complete strict validation and requirement-to-BDD/surface/control mapping; save actual CLI results and publish the branch-local planning checkpoint.
-- [x] 1.3 After a new apply request, prepare the exact immutable plan/source packet and receive automatic independent PRE gpt-6-sol/xhigh; require clean receipt and GATE_STATUS PASS before production.
+## 1. Contract and one PRE
 
-## 2. Shared scope and native editor
+- [x] 1.1 Record replacement authority, source pins and prior raw artifacts; reconcile proposal/design/specs/BDD/verification/status as one contract.
+- [ ] 1.2 Pass strict/source/BDD validation, commit the planning checkpoint and receive automatic independent PRE gpt-6-sol/xhigh on the complete frozen packet.
 
-- [x] 2.1 Execute meaningful RED for fixed light under Dark/reference/HC, input immutability, forced-colors entry/exit and unchanged revision/density; prove baseline fails the required behavior.
-- [x] 2.2 Implement shared role profile/projection and editor root participant composition; pass the new focused tests and existing participant/service regressions; document scope/precedence in the approved companion without changing the eight protected Guide/QA/Theme/token artifacts.
-- [x] 2.3 Wire the native retained editor container and X6 view projection; pass authored paint/identity/undo/grid tests plus one actual Dark/forced-colors native probe; update presentation documentation in this checkpoint.
+## 2. One implementation and acceptance cycle
 
-## 3. Draw.io, owned overlays and visual parity
+- [ ] 2.1 Use the30min initial probe for meaningful RED/current source inventory and representative native/iframe/system/isolation witnesses; retain proven unchanged preservation coverage.
+- [ ] 2.2 Implement pinned generation, scoped native/parent/portal adapter and iframe upstream Light with explicit accessibility/system/layout exceptions; preserve exact guard/actions/domain/transaction/content boundaries.
+- [ ] 2.3 Add executable BDD/compliance positive-negative controls and exact reversible visual/source mappings, including historical/performance origins and drift/tamper rejection.
+- [ ] 2.4 Pass focused GREEN and one final applicable root/runtime/performance/regression matrix; account for source/input-equivalent overlap instead of duplicate complete runs.
+- [ ] 2.5 Publish final dual-engine gallery/exceptions and obtain explicit human visual acceptance; prior25 PNG remain historical NOT_APPROVED.
+- [ ] 2.6 Complete OpenSpec scenario verification and one confined automatic POST gpt-6-sol/xhigh with clean complete receipts and no blocker.
+- [ ] 2.7 After all gates/visual acceptance, archive/sync this change and perform isolated reviewed Main consumer integration; commit checkpoints, push only authorized refs with remote SHA verification, and stop.
 
-- [ ] 3.1 Execute meaningful RED for Draw.io menu/dialog/sidebar/tooltip and portaled editor ownership, including global overlay/two-editor isolation and stale disposal; preserve original assertions/evidence.
-- [ ] 3.2 Apply the common projection through the existing frame/bridge without vendor or protocol changes; pass all bridge units, actual popup/keyboard/focus and author-style sample checks, then document supported/excluded content selectors.
-- [ ] 3.3 Apply explicit ownership to native/parent diagram panels and portaled overlays using the stable host; pass lifecycle/focus/readonly/reflow tests and compare common control metrics across both engines.
-- [ ] 3.4 Add the stage BDD runner/compliance test hook, isolated positive/negative profile/scope controls and immutable historical visual-expectation/source-binding map, including the two specifically approved origin controls and exact current -> pre-LDE -> historical hash chain; prove byte/assertion/transform tampering fails and run traceability/compliance without broad allowlists or source normalization.
-
-## 4. Current integration evidence and closure review
-
-- [ ] 4.1 Run the exact applicable command and runtime matrix in verification.md on final inputs; retain source hashes, exits, original failures, actual timings and supported author-style fidelity results.
-- [ ] 4.2 Deliver current dual-engine screenshots/gallery and measured deviations; obtain explicit human acceptance of this new visual set without treating historical baseline acceptance as current approval.
-- [ ] 4.3 Complete scenario-by-scenario OpenSpec verification with no correctness blocker and receive automatic independent POST gpt-6-sol/xhigh with immutable complete events, one verdict and unchanged candidate/packet/control hashes.
-
-## Workflow follow-up
-
-- Archive/sync only this change after all tracked tasks, required visual acceptance and gates are complete; verify archived links/specs without rewriting historical evidence.
-- Commit reviewed checkpoints and stop at this feature checkpoint. Transfer exact reviewed changes into Main only through an isolated consumer integration preserving foreign files; push only to an authorized destination/ref and verify actual remote SHA.
-- Keep LIGHT-DIAGRAM-EDITOR-STATUS.md current at each planning/task/check/review/blocker/visual/archive/publication event. PRE/POST freeze defers status writes until unfreeze.
+Internal tasks are not extra phases or approval steps. Status updates on actual scope/task/check/gate/blocker/publication; no frozen-candidate writes, no next numbered feature or unrelated migration.

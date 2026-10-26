@@ -2,100 +2,82 @@
 
 ## Purpose
 
-Provide a stable shared light editing environment for native and embedded diagrams while preserving authored appearance and system accessibility overrides.
+Use pinned Drawio Light as shared visual authority while preserving content, external workbench ownership and system access.
 
 ## ADDED Requirements
 
-### Requirement: Stable light editor environment
+### Requirement: Stable upstream Light environment
 
-Both diagram editors SHALL use the same fixed light presentation scope when Windows forced colors is inactive, independently of the selected application theme. External workbench surfaces SHALL retain the selected theme.
+Both editors SHALL use bundled pinned Drawio v31.5.2 Light presentation outside Windows forced colors, independently of external theme and density. Workbench SHALL retain its selected appearance/preferences.
 
-#### Scenario: All application selections
-- **GIVEN** a native and an embedded diagram are open
-- **WHEN** Light, Dark, System, High Contrast or VS Code Dark 2026 is selected with forced colors inactive
-- **THEN** both editor environments remain light while the external workbench follows its selection
+#### Scenario: Application selection changes
+- **WHEN** Light, Dark, System, High Contrast or reference is selected or OS preference changes
+- **THEN** editor UI stays upstream Light and external themes continue to work without editor replacement or preference mutation
 
-#### Scenario: System appearance changes
-- **WHEN** OS light/dark preference changes while application mode is System
-- **THEN** editor colors remain light without replacing editor instances or changing the global selection
+### Requirement: Source derived comparable controls
 
-### Requirement: Common editor surfaces and density
+Comparable editor controls SHALL derive palette, typography, spacing, borders and states from verified upstream styles through one scoped adapter. Necessary layout/accessibility/system exceptions SHALL be enumerated. Unsupported counterparts MUST NOT be invented.
 
-The editor scope SHALL include its canvas, toolbars, palettes, property/format/reference/flow panels, messages, tooltips, menus and application-rendered dialogs. Comparable controls SHALL share semantic styles and independent compact/comfortable/coarse accessibility minima.
+#### Scenario: Native controls share upstream values
+- **WHEN** native and iframe buttons, fields, panels, menus and dialogs are compared
+- **THEN** supported declared styles use the same upstream values and unavoidable integration differences are reported
 
-#### Scenario: Comparable controls in both engines
-- **WHEN** text fields, buttons, menu rows, selected items and dialogs are compared at the same density, fonts and scale
-- **THEN** their declared shared color, typography, spacing, border, focus and target-size values match the common editor contract
+#### Scenario: External density isolation
+- **WHEN** workbench compact/comfortable changes
+- **THEN** its preference/transaction metadata stay correct and editor retains fixed upstream geometry with required accessibility targets
 
-#### Scenario: Available and unavailable capabilities
-- **WHEN** a control exists in only one engine
-- **THEN** its actual state is verified without inventing an equivalent action in the other engine
+### Requirement: Verified local source closure
 
-### Requirement: Ownership survives portal placement
+Original upstream files/licenses SHALL stay unchanged. Generated adapter/data SHALL be deterministic, scoped and checked against pinned input/resource bytes. Unknown source/resource/output/scope drift MUST fail without broad exemptions.
 
-Editor-owned overlays SHALL inherit the editor presentation by explicit owner identity even outside its DOM subtree. Global overlays SHALL retain application presentation; stale, closed or reassigned ownership MUST NOT leak light styles.
+#### Scenario: Adapter tampering
+- **WHEN** source, resource or generated output changes or styles escape the editor
+- **THEN** drift/isolation checks fail and historical baselines are not silently moved
 
-#### Scenario: Owned popup outside editor root
-- **WHEN** a diagram opens a submenu, color picker or dialog in a shared portal or frame body
-- **THEN** that surface remains light and its existing keyboard, focus and dismissal behavior is preserved
+### Requirement: Explicit appearance ownership
 
-#### Scenario: Simultaneous global and editor overlays
-- **WHEN** a global theme picker and an editor-owned popup are exercised with two editor instances
-- **THEN** each surface retains its proper owner and disposing either editor does not restyle the other or the workbench
+Portaled UI SHALL use its explicit live editor lease. Global/stale/foreign/closed/reassigned ownership MUST NOT acquire editor styles. Modal ordering and existing actions SHALL remain unchanged.
 
-### Requirement: Neutral canvas and decorative dot grid
+#### Scenario: Portal and two editor lifecycle
+- **WHEN** an owned popup opens in the shared host and either editor is disposed
+- **THEN** local style/focus/dismissal follows its valid owner and the other editor/global picker is unaffected
 
-The neutral workspace SHALL use canvas color #F9FAFC and dot color #CDD3DC in both editors outside forced colors. Grid rendering SHALL preserve semantic grid size, origin, snapping and navigation transforms. Explicit authored page backgrounds and images SHALL remain authoritative.
+### Requirement: Grid and content isolation
 
-#### Scenario: Neutral workspace and authored page
-- **WHEN** default workspaces are opened in both editors and supported explicitly colored/image-backed pages are opened in Draw.io
-- **THEN** neutral workspace colors match, Draw.io authored page paint remains unchanged and export receives no UI grid or workspace-color injection
-- **AND** native page/image fields remain explicitly unsupported by the current schema, without invented parity or schema changes
+Supported default workspace/grid appearance SHALL follow pinned upstream presentation while preserving semantic grid size/visibility/origin, snapping, transforms, authored backgrounds/images/cells, documents and export. Presentation MUST NOT materialize author defaults or replace engines.
 
-#### Scenario: Pan zoom and grid visibility
-- **WHEN** the user pans, zooms or uses the existing grid toggle
-- **THEN** visible grid phase follows the existing transform and semantic coordinates, snap results and document settings remain unchanged
+#### Scenario: Default and authored backing
+- **WHEN** default workspaces and supported color/image backing are shown through external theme changes
+- **THEN** UI backing is source-derived, author paint/serialized bytes stay unchanged and unsupported native page/image/gradient fields are disclosed
 
-### Requirement: Authored appearance remains faithful
+#### Scenario: Grid navigation and undo
+- **WHEN** grid visibility, pan/zoom, themes and undo/redo change
+- **THEN** grid semantics, selection, identity and dirty behavior remain correct without theme-driven persisted writes
 
-Theme transitions SHALL preserve authored fill, stroke, text, opacity, gradients, images and appearance attributes without inversion or tinting. Palette/style samples and canvas objects SHALL use the same supported appearance values and comparable backdrops. UI selection decorations SHALL remain distinct from authored paint.
+### Requirement: Supported author appearance preservation
 
-#### Scenario: Palette to canvas fidelity
-- **WHEN** a supported opaque or translucent style is previewed and applied
-- **THEN** the palette reports the same attributes used on canvas, alpha is compared over a matching backdrop, and unsupported features are disclosed
+Opaque/alpha/inherited and supported gradient/image paint SHALL retain author attributes/effective values. UI styles MUST exclude content thumbnails/swatches and authored SVG/cell paints. Comparisons SHALL disclose capability and raster limitations.
 
-#### Scenario: Existing authored and inherited styles
-- **WHEN** documents with explicit and inherited styles pass through preview, commit, cancel, restart and editor switching
-- **THEN** no theme operation changes serialized attributes, domain-resolved paint, undo history or repository content
+#### Scenario: Existing sample and content round trip
+- **WHEN** supported content passes through preview, commit, cancel and editor switching
+- **THEN** no tint/inversion/default materialization occurs and unsupported behavior is not reported as exact parity
 
-### Requirement: Windows forced colors retains priority
+### Requirement: Accessible system and interaction boundary
 
-When Windows forced colors is active, editor UI and accessible rendering SHALL use the existing system-controlled mapping instead of the fixed light palette. Original authored values and the user's application theme preference SHALL remain unchanged.
+Forced colors SHALL take priority without changing author values/preferences. Required contrast, targets, names/states, keyboard/focus, readonly/modal return and applicable zoom/reflow SHALL remain valid through bounded accessibility/system exceptions to exact upstream visuals.
 
-#### Scenario: Enter and leave forced colors
-- **WHEN** forced colors is enabled and then disabled with dirty diagrams and open editor panels
-- **THEN** system mapping takes precedence while active and the light editor returns afterward without author-style or preference mutation
+#### Scenario: Forced colors round trip
+- **WHEN** forced-colors media enters/exits with dirty editors and owned UI
+- **THEN** UI uses system colors while active and upstream Light afterward with unchanged documents/preferences
 
-### Requirement: Shared appearance without engine replacement
+#### Scenario: Keyboard and constrained viewport
+- **WHEN** reachable menus/dialogs are exercised by keyboard and representative zoom/resize/coarse conditions
+- **THEN** actions/focus/dismissal/disabled state remain usable without cross-editor leakage
 
-Cross-engine parity SHALL cover declared common presentation roles and supported appearance fixtures. It MUST NOT require equal feature sets, universal raster identity or semantic conversion between diagram formats.
+### Requirement: Bounded current integration evidence
 
-#### Scenario: Unsupported gradient or font behavior
-- **WHEN** an appearance capability lacks equivalent support or rendering differs
-- **THEN** the report identifies the specific engine limitation and no exact-parity PASS is claimed for it
+Closure SHALL use verification.md representative matrix, unchanged applicable regressions and independent gates. Product-wide re-certification of unchanged upstream CSS across all external theme/density combinations SHALL NOT be required. History stays immutable and fresh visuals need explicit acceptance.
 
-### Requirement: Accessible editor interaction
-
-Keyboard access, real accessible names/states, visible unclipped focus, modal ownership, readonly behavior, text zoom and applicable reflow SHALL remain valid in the fixed light scope and forced colors. Existing document actions and shortcuts SHALL retain their meaning.
-
-#### Scenario: Keyboard and modal lifecycle
-- **WHEN** a user opens and dismisses editor menus/dialogs by keyboard, including after resize and 200 percent text zoom
-- **THEN** actions remain available, disabled actions stay inactive, focus remains visible and returns to the connected opener without trapping unrelated editors
-
-### Requirement: Evidence and acceptance are surface specific
-
-Closure SHALL require current screenshots and behavior evidence for both engines, external application themes, both densities and forced colors. Historical results SHALL remain immutable, and missing or unavailable coverage MUST NOT be reported as PASS. New visual baselines require human acceptance.
-
-#### Scenario: Historical baseline no longer describes editor colors
-- **WHEN** an approved light-editor expectation supersedes an older theme-colored editor screenshot
-- **THEN** the old source/result is retained, the exact changed expectation is mapped to this contract and the new actual screenshots are reviewed separately
+#### Scenario: Superseded visual obligation
+- **WHEN** an old FDS palette/density expectation is replaced by upstream appearance
+- **THEN** exact old/new expectation/source mapping is retained, unrelated assertions/timing stay exact and screenshots receive separate acceptance

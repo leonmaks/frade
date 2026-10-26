@@ -10,11 +10,24 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-INCREMENTAL_CURRENT_SOURCE_GREEN. PRE08 PASS. Approved owner metadata/lease implemented; exact guard delta preserved. Final combined14/14 new Electron cases PASS in41.0s on unchanged source/bundle;25 PNG NOT_APPROVED. Bridge87/87, affected lint/build/typecheck PASS. Stage6/13 tasks complete; full matrix/BDD/compliance/source replay/visual/POST pending. READY_FOR_VERIFY: NO.
+UPSTREAM_REPLACEMENT_STRICT_PASS_PRE_PENDING. User accepted pinned Drawio31.5.2 Light/source-derived native adapter and reduced matrix. All active planning artifacts reconciled; strict PASS after scenario-name repair (initial FAIL retained). Two execution stages, new tasks1/9. Production unchanged; old6/13 and14/14 runtime retained as historical profile. Fresh strict/source/BDD/pin checks PASS; PRE09 packet ready, then freeze/dispatch. READY_FOR_VERIFY: NO.
 
 Цель: общий светлый редактор Draw.io/Frade с авторскими цветами и исключением Windows forced colors. Внешний workbench сохраняет выбранную тему. PRE/POST: **gpt-6-sol / xhigh**; actual backend/effort в receipts NOT_CONFIRMED. Новые визуальные baselines ещё не приняты.
 
-## Этапы
+## Текущие два этапа — принятая замена
+
+| Этап | Статус | Осталось |
+|---|---|---|
+|1 Contract + automatic PRE|IN_PROGRESS|1.1 accepted source/plan/history DONE;1.2 source/BDD validation and automatic PRE pending|
+|2 One implementation/acceptance cycle|NOT_STARTED|Meaningful RED; upstream generator/native adapter/iframe; source controls/BDD; final matrix; visual decision; verify/POST; archive/Main|
+
+Новый план1/9 tasks; прежние6/13 и источники сохранены raw в evidence/drawio-upstream-planning-20261026/prior-manifest.json. Existing owner/transaction/content code reused with exact applicability; old visual PASS is not upstream approval.
+
+Прогноз6–10h active,1–2working days with reserve (judgment). Initial implementation probe30min. Reviewer gpt-6-sol/xhigh for PRE/POST, no per-control gates. Current changes planning/docs only. Scope/security/domain/credentials boundaries unchanged.
+
+Next: validate9-ID BDD/pins/prior hashes -> planning commit/freeze -> automatic PRE09. No production before PASS; no human question pending; no push/Main integration.
+
+## Предыдущие этапы — история до принятой замены
 
 | Этап | Статус | Фактический результат / следующий шаг |
 |---|---|---|
@@ -230,3 +243,11 @@ Forecast, not measured duration or completion commitment. Source checkpoint3ade1
 Base forecast approximately10–20 active hours. Reserve4–8 additional hours for failures/source-control adaptation/environment; calendar planning2–4 working days, excluding human visual acceptance wait. These are judgment estimates. Historical independent PRE was about9min, current14-case Electron batch41.0s, bridge87-case unit batch8.8s measured; those durations do not estimate unimplemented coverage. Full root/historical runtime matrix cost remains uncertain.
 
 No new implementation or checks performed for this status query. Code SHA remains3ade10f8; working tree verified clean with per-command longpaths before the status-only edit. Review/model policy unchanged; automatic POST gpt-6-sol/xhigh after required checks. P02–P07 and Routing are excluded from this estimate. No push.
+
+## LDE-DRAWIO-UPSTREAM-01 acceptance event
+
+26October user "Заменяй" accepted the proposed two-stage upstream contract. Original proposal/design/specs/tasks/BDD/verification/review prompts/status/companion and current new E2E source retained exactly with SHA256. Active planning replacement coherent; strict PASS after restoring mandatory historical scenario names; initial structural FAIL recorded separately. Product checkpoint3ade10f8, replacement baseline14408afc. Fresh PRE required; old PRE08/25 PNG not current approval. Updated estimate6–10active hours supersedes prior10–20 forecast for the replaced contract. New remote UI ref remains NOT_AUTHORIZED; push NOT_RUN.
+
+## Upstream PRE09 readiness
+
+Strict PASS;9 BDD ID/Scenario pairs,14 raw prior files and3 CSS source pins verified. Full2851 vendor manifest PASS. Production delta absent. Shared runner AVAILABLE; actual new run must prove confinement/completion. Source/policy/model packet prepared; candidate/index/HEAD/status freeze on dispatch. Reviewer gpt-6-sol/xhigh; current raw design hash bound by request. No full runtime build/test repetition during plan reconciliation.

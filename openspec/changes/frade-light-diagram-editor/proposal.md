@@ -2,31 +2,27 @@
 
 ## Why
 
-Diagram colors currently appear inside theme-dependent editing chrome, so changing the application theme can change the viewing context. The user approved one shared light editing environment for Draw.io and Frade, preserving authored paint and Windows forced-colors precedence.
+The user replaced custom Frade Light editor styling with pinned Drawio Light to reduce duplicate style work and visual checks. See accepted LDE-DRAWIO-UPSTREAM-01. Existing owner/transaction/content protection is reused; earlier visual PASS does not approve the new appearance.
 
 ## What Changes
 
-- Add a fixed, derived light presentation scope for both diagram editors: canvas, editor toolbars, palettes, format panels, flow/reference panels, menus, dialogs, tooltips and editor-owned overlays, including portals outside the editor DOM subtree.
-- Keep the external workbench, editor-group tabs, application Settings and global theme picker on the selected application theme. Both density choices remain independent.
-- Use one shared editor role projection from existing Frade Light tokens, with canvas `#F9FAFC` and decorative dot color `#CDD3DC`. Preserve authored page backgrounds/images over the neutral workspace.
-- Preserve exact authored fill/stroke/text/opacity/gradient attributes and their palette previews. No automatic inversion, tint, theme-driven attribute replacement or document rewrite. Windows forced colors is the explicit system-controlled display exception.
-- **BREAKING visual contract:** diagram-owned UI no longer follows Dark/HC/System/reference colors or the reference geometry preset when forced colors is inactive. Global theme identity and transaction revision remain unchanged.
-- Establish common appearance/interaction measurements for comparable controls in both engines without claiming support for identical feature sets or universal pixel parity.
+- Use bundled Drawio v31.5.2 original styles/resources as the single visual source. Preserve vendor bytes/licenses and do not upgrade/download upstream.
+- Restore stock Light chrome inside the iframe. Style comparable native Frade/parent/owned controls using one scoped source-derived adapter rather than manual approximations or a UI library.
+- Replace old #F9FAFC/#CDD3DC and editor compact/comfortable styling with supported upstream workspace/grid appearance and one fixed upstream geometry. External workbench theme/density and authoritative snapshot/preferences remain unchanged.
+- Preserve authored paints/data, grid size/snap/transforms, actions, opaque portal ownership, keyboard/focus, strict transaction ACK/rollback/deadlines, identities and Windows forced-colors priority. Necessary accessibility/system/layout adaptations are explicit exceptions.
+- Two execution stages only: coherent contract + automatic PRE; one implementation/acceptance cycle with a representative final matrix, automatic POST, archive and isolated Main integration. No per-control gate.
+- Keep applicable existing regressions and exact historical source chains; replace only superseded visual obligations through explicit mapping. No product-wide upstream CSS re-certification or theme-density screenshot cross-product.
 
 ## Capabilities
 
 ### New Capabilities
-
-- `diagram-editor-presentation`: stable light editing scope, ownership of nested/portaled surfaces, authored-paint fidelity and cross-engine presentation parity.
+- diagram-editor-presentation: pinned upstream Light and a scoped native adapter with content/owner/system boundaries.
 
 ### Modified Capabilities
-
-- `theme-core`: make local diagram presentation explicit while preserving atomic revision/ACK/rollback and document isolation.
-- `workbench-visual-contract`: delimit reference geometry to the external workbench and require shared light diagram-editor measurements.
-- `bundled-reference-themes`: disclose the local editor exception to reference fidelity and default-appearance restoration.
+- theme-core: fixed editor appearance within unchanged authoritative transactions.
+- workbench-visual-contract: upstream editor geometry independent from external density/reference geometry.
+- bundled-reference-themes: honest local upstream editor exception.
 
 ## Impact
 
-Planning owner: `codex/frade-light-diagram-editor`, clean baseline `4244e5668e50f74b9b536c2f0ffc44c56279e945`. Existing shared theme adapters, Draw.io bridge and native editor roots are the implementation boundaries; see design.md for the explicit allowlist. No new UI library, resolver, persisted setting or dependency is proposed. P02-P07, routing/domain/vendor sources, branding and historical evidence remain outside scope. PRE and POST use exactly `gpt-6-sol` / `xhigh`, automatically under the existing confined review service.
-
-This request authorizes planning only. Production remains unchanged until a subsequent apply request, strict validation and independent PRE PASS.
+Owner codex/frade-light-diagram-editor; original baseline4244e5668e50f74b9b536c2f0ffc44c56279e945, replacement baseline14408afc4808cc6de6a606d3e8926abe927a71c6. Prior artifacts/raw hashes are retained in evidence/drawio-upstream-planning-20261026/prior-manifest.json. Design enumerates authorized source/generated/test/control paths. No new dependencies, lockfile/schema/resolver, domain/routing/P02/vendor/security/brand or review-runner changes. PRE/POST gpt-6-sol/xhigh automatic. User "Заменяй" authorizes reconciliation and implementation after fresh strict/PRE PASS; future visuals/new remote refs are not approved.
