@@ -1,0 +1,9 @@
+The approved PRE assignment is `gpt-6-sol` / `xhigh` (`design.md:95`, `decisions/accepted-scope.md:11`). Fixed Light editor presentation, including under ordinary HC, with Windows forced colors taking priority is an authorized product decision. All 126 included artifacts match the packet manifest hashes. **PRE fails on plan and packet blockers:**
+
+- **BLOCKER — packet completeness.** `packages/ui-workspace/src/Workbench.tsx:12,2410` uses `ThemePicker.tsx`, and `packages/ui-workspace/package.json:25` requires `picker.test.tsx`; neither is in the packet. The global picker is a required negative witness for editor overlay ownership, so its existing behavior cannot be reviewed. Add both baseline files and hashes to a new immutable packet.
+- **BLOCKER — impossible native scenario.** `openspec/changes/frade-light-diagram-editor/specs/diagram-editor-presentation/spec.md:50-52` requires image backed pages in both editors, while `packages/draw/src/document/schema.ts:53-59` has no native page or image field. The design correctly treats these as unsupported (`design.md:53`). Amend the scenario to require Draw.io page and image witnesses and mark native coverage unsupported; revalidate the reconciled plan.
+- **BLOCKER — historical test binding and allowlist conflict.** Existing editor assertions expect Dark (`apps/desktop/tests/e2e/ui-contract-theme.spec.ts:296,352,426`) and must be reconciled with fixed Light. Any edit changes the live hash pinned by `packages/ui-workspace/tests/ui-contract/vscode-dark-2026-origin.ts:18-26`, yet that helper and its test are outside `design.md:70-75` allowed paths. Reconcile the authorized paths and source bound replay procedure while retaining the historical origin and negative controls, then rerun PRE.
+
+This review makes no implementation, runtime, or visual acceptance claim. Any ambiguous execution result remains for the receiving harness to mark BLOCKED.
+
+GATE_STATUS: FAIL
