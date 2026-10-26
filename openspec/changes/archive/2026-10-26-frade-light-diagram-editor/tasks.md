@@ -15,6 +15,6 @@ Exactly two execution stages. Prior6/13 task text/raw hash and all old evidence 
 - [x] 2.4 Pass focused GREEN and one final applicable root/runtime/performance/regression matrix; account for source/input-equivalent overlap instead of duplicate complete runs.
 - [x] 2.5 Publish final dual-engine gallery/exceptions and obtain explicit human visual acceptance; prior25 PNG remain historical NOT_APPROVED.
 - [x] 2.6 Complete OpenSpec scenario verification and one confined automatic POST gpt-6-sol/xhigh with clean complete receipts and no blocker.
-- [ ] 2.7 After all gates/visual acceptance, archive/sync this change and perform isolated reviewed Main consumer integration; commit checkpoints, push only authorized refs with remote SHA verification, and stop.
+- [x] 2.7 After all gates/visual acceptance, archive/sync this change and perform isolated reviewed Main consumer integration; commit checkpoints, push only authorized refs with remote SHA verification, and stop.
 
 Internal tasks are not extra phases or approval steps. Status updates on actual scope/task/check/gate/blocker/publication; no frozen-candidate writes, no next numbered feature or unrelated migration.

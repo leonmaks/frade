@@ -1,31 +1,33 @@
 # Светлый редактор диаграмм — статус
 
-Обновлено: 26 октября 2026 (MSK); evidence содержит фактические UTC timestamps.
-Ветка: `codex/frade-light-diagram-editor`
-Worktree: `E:/dev/codex/frade-worktrees/light-diagram-editor`
-Change: `frade-light-diagram-editor` (archived: `openspec/changes/archive/2026-10-26-frade-light-diagram-editor`)
-Исходный commit: `4244e5668e50f74b9b536c2f0ffc44c56279e945`
-Git common: `E:/dev/codex/frade/.git`
-Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5`.
+Обновлено:26 октября2026(MSK). Ветка-владелец: codex/frade-light-diagram-editor; worktree E:/dev/codex/frade-worktrees/light-diagram-editor. Потребитель: main, E:/dev/codex/frade. Исходный commit4244e5668e50f74b9b536c2f0ffc44c56279e945. Git common E:/dev/codex/frade/.git.
 
 ## Текущая фаза
 
-CUMULATIVE_REPAIR_POST_PASS / ARCHIVED / MAIN_ADOPTION_PENDING.8/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: YES for implementation; final2.7 archive/Main operations pending.
+COMPLETE. **9/9 задач выполнено.** Change архивирован: openspec/changes/archive/2026-10-26-frade-light-diagram-editor. Guide1.0; pinned Drawio31.5.2.
 
-| Этап | Статус | Фактический результат |
+|Этап/задачи|Статус|Фактический результат|
 |---|---|---|
-|1 Contract + automatic PRE|DONE|Accepted pinned upstream replacement; strict PASS; PRE09 gpt-6-sol/xhigh PASS|
-|2 Implementation / acceptance cycle|IN_PROGRESS, closing|2.1–2.5 DONE;2.6 scenario assessment/POST;2.7 archive/Main/publication pending|
+|1.1–1.2 Contract/PRE|DONE|Утверждённый scope, strict, независимый PRE PASS|
+|2.1–2.3 Implementation/controls|DONE|Scoped upstream Light/native adapter; meaningful RED/GREEN, source/history/isolation controls|
+|2.4 Checks|DONE|Root check PASS на финальном runtime; current metadata repair:8/8 Node,41/41 UI compliance,11/11 BDD, lint/typecheck/strict PASS|
+|2.5 Визуальное принятие|DONE|Точные17PNG приняты с раскрытыми адаптациями; manifest a6f6f36f162a59aa9a89d99b5b0c497ff2f7406b3262619f6132d2d00762d372|
+|2.6 Verify/POST|DONE|13requirements/19scenarios; current cumulative POST PASS, complete clean receipts|
+|2.7 Archive/Main/push|DONE|4canonical specs synced; archive raw-byte preservation; Main adapter PASS,3/3 actual smoke; origin/main SHA verified|
 
-Final root pnpm check PASS; final original performance20warmups+100samples p95=117.8ms<=150ms PASS; strict revalidation prepared. Source/compliance/boundary/BDD tests PASS. Representative56-case report retains55PASS/1historicalFAIL; exact LDE-D01 is ACCEPTED_DEFERRED_RISK, NOT_FIXED/NOT_PROVEN.2 unchanged+5 instrumented repeats PASS do not prove its cause. Any new failure still blocks.
+**Опубликованный код:**84aedf7db7d836bb1d67597d02d9843545845fa8 в origin/main. Push0 и реальный remote SHA сохранены в evidence/final-close-20261026. Итоговый документационный checkpoint добавляет эти receipts; исходники приложения в нём не меняются. Новая remote-ветка codex/frade-light-diagram-editor NOT_AUTHORIZED/NOT_PUSHED. Main сохранил854посторонних изменённых/untracked записи побайтово и по status; чистым Main не объявляется.
 
-All other actual discovered FAIL resolved with retained RED/GREEN: reference geometry leak; original24px target widths; runtime JSON import boundary; shared FlowManager helper/add-value contrast. Last repair is exactly two owned FlowManager declarations: original state matrix0violations +disposal2/2 PASS. Original startup/embedded/parked3PASS. No duplicate56-case run; explicit raw/data/selector equivalence binds prior named cases, source controls reject unknown drift.11 BDD binding/tamper/publication checks PASS.
+**Проверки:** Main Desktop build PASS; повторная сборка после metadata-only ремонта не нужна — runtime/package/lock inputs и все foreign bytes строго совпали. Main adapter PASS на настоящемLF manifest,3smoke без skip/flaky PASS. Current generation одинаков на2точныхLF/CRLF формах; третьяформа/мутация FAIL, fixtures удалены. GeneratedCSS/TS/profile byte-identical, полный runtime повторно не запускался. Performance100samples p95117.8ms<=150 на неизменном runtime.4owned specs strict PASS; общий specs strict сохраняет3исходных Routing FAIL по длинным описаниям — не UI PASS, не правились.
 
-Visual17-PNG manifesta6f6f36f162a59aa9a89d99b5b0c497ff2f7406b3262619f6132d2d00762d372 ACCEPTED_WITH_DISCLOSED_ADAPTATIONS; raw capture manifest unchanged, later human acceptance stored separately. Last two FlowManager-only declarations do not match accepted17 screens. Source Drawio31.5.2/Guide1.0;8 Foundation artifacts/vendor/brand/domain/routing unchanged. Forced colors tested through Chromium media emulation, native unsupported page/image/gradient and raster/layout differences remain disclosed.
+**Ограничения:** LDE-D01 ACCEPTED_DEFERRED_RISK, NOT_FIXED, причинаNOT_PROVEN; исходный aggregate55PASS/1FAIL сохранён, новых FAIL не принято. Native layout/icons/raster отличаются, native page/image/gradient unsupported. Forced colors проверены Chromium media emulation; полного vendor/system certification нет. CI/branch protection/required checks remote NOT_VERIFIED.
 
-Next: scenario verification/freeze -> confined automatic POST gpt-6-sol/xhigh -> archive/sync -> exact reviewed Main transfer. Current design records accepted LDE-D01; no product scope expansion. POST01 clean FAIL: one exact combined reference-workbench/owned-editor-popup capture missing; prior19/19 claim overstated, actual18/19 at POST01. One additive reference+owned-popup scenario now1/1 actual PASS, manually inspected combined PNG, model/file bytes unchanged, original test/helper prefix exact. New BDD11/11, scoped lint/typechecks/strict0. Current19/19 requires fresh cumulative POST02; production unchanged, no full suite repeated. No further human question pending. Main local/remote committed HEAD4244e566...equals original UI baseline (origin read verified via strict SSH443; port22 abort is ENVIRONMENT). Main has unrelated dirty Routing/package/lock files: preserve every foreign byte; transfer only non-overlapping reviewed UI commit using FF, never adopt/copy foreign uncommitted source. No Main writes/push yet; new UI remote branch remains NOT_AUTHORIZED; origin/main publication is authorized.
+**Review:** точный approved stage model gpt-6-sol/xhigh; автоматические packet-confined read-only PRE/POST, current release a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5. Успешное выполнение/полный event stream/единственный verdict/неизменность candidate+packet подтверждены. Actual backend/effort NOT_CONFIRMED по policy. Старые FAIL/REDS/архив-reopen сохранены.
 
-Implementation checkpoint7a4c4c45839cbe452680456b94969dc4d666dc35 committed. New binder-only publication portability RED/GREEN11/11; lint/typecheck/strict0. Exact187 predeclared checkout/published pairs, compiled-output proof and third-form/semantic mutation negatives; no production or historical control change. Metadata/control checkpoint pending; POST not yet started. Final author gradient/alpha/inheritance and semantic export projection actual fixture PASS; its lint/typecheck and final9-ID BDD/tamper PASS. Source/helper prefix preserved; prior diagnostic/oracle failures and paired vendor rebase proof retained. POST candidate freeze begins after this metadata checkpoint; dashboard immutable until the runner returns. Exact approved gpt-6-sol/xhigh, current design SHA256be7ff557371c068d6cc8483ede232e52ad06303795fd535b8cecd8174bd4f52c. External request C:/Users/NVISEN/AppData/Local/Temp/frade-lde-post-FipA0i/request.json. Right-panel requests QUEUED; visibility NOT_CONFIRMED.
+**Далее:** STOP этого checkpoint. P02/Routing/следующая feature автоматически не начинаются. Действий/решений пользователя для закрытия этой feature нет.
+
+## История
+
+Записи ниже отражают состояние в момент события; текущий статус выше.
 
 ## Предыдущие этапы — история до принятой замены
 
