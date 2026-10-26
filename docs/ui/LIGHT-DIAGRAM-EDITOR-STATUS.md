@@ -19,7 +19,7 @@ BLOCKED_SCOPE_DECISION — LDE-REFUSAL-PHASE-INTENT-01. PRE06 завершилс
 | Этап | Статус | Фактический результат / следующий шаг |
 |---|---|---|
 | Изоляция / read-only inventory | DONE | Baseline и 50 raw sources сохранены; benchmark checkout восстановлен точным baseline blob с отдельной provenance |
-| Proposal / specs / design / BDD | DONE_PLANNING | 4 delta specs, 9 Gherkin definitions; новое точное решение принято |
+| Proposal / specs / design / BDD | DONE_PLANNING | 4 delta specs, 9 Gherkin definitions; intent scope принят, phase/request replacement ожидает решения |
 | Strict / traceability / planning checkpoint | SYNTAX_PASS / BLOCKED_SCOPE | Fresh strict 1/1, но PRE06 correctness blocker и новое точное решение |
 | Независимый PRE | FAIL01–06 | Нужен принятый forward-phase/request scope перед fresh PRE |
 | Shared scope / native editor (2.1–2.3) | NOT_RUN | Meaningful RED, реализация и focused GREEN после PRE PASS |
@@ -49,13 +49,13 @@ Tracked tasks: 1/13; 1.2 переоткрыта: syntax PASS не закрыва
 
 ## Проверки, ограничения и следующее действие
 
-PASS: historical strict и Gherkin parsing (9 definitions); exact fixture reverse proof; 9/9 request-sequence probe; неизменные origin/pin tests 6/6. Probe НЕ является Electron/runtime PASS. Offline frozen install: 336 cache packages, 0 downloads, lockfile неизменен. PRE01–06 FAIL сохранены. NOT_RUN: новый UI typecheck/lint/BDD/runtime/a11y/screenshots/POST/verify. CI/branch protection: NOT_VERIFIED.
+PASS: historical strict и Gherkin parsing (9 definitions); exact fixture reverse proof; 16 phase checks / 6 real-service sequences с original-service parity; прежний 9/9 callback probe сохранил неполное покрытие; неизменные origin/pin tests 6/6. Probe НЕ является Electron/runtime PASS. Offline frozen install: 336 cache packages, 0 downloads, lockfile неизменен. PRE01–06 FAIL сохранены. NOT_RUN: новый UI typecheck/lint/BDD/runtime/a11y/screenshots/POST/verify. CI/branch protection: NOT_VERIFIED.
 
-Стратегия перед следующим review: использовать проверенную transitive closure и byte proof; не повторять неизменные unit tests и большие regressions до реализации. Fresh PRE обязателен из-за scope/design delta; предыдущие dispatch занимали примерно 6–7 минут (измерено), следующий интервал — прогноз, не timeout. Проверить completeness и hashes до freeze; при новом scope/correctness finding остановить реализацию и пересмотреть стратегию, а не повторять известный FAIL.
+Стратегия перед следующим review: использовать проверенную transitive closure и byte proof; не повторять неизменные unit tests и большие regressions до реализации. Fresh PRE обязателен из-за scope/design delta; ранние dispatch занимали примерно 6–7 минут, PRE06 9m14s (измерено); следующий интервал — прогноз, не timeout. Проверить completeness и hashes до freeze; при новом scope/correctness finding остановить реализацию и пересмотреть стратегию, а не повторять известный FAIL.
 
 Следующее действие: точное решение по phase/request fixture. До решения новый дорогой PRE не запускается. После принятия — только design, strict/checkpoint, автоматический cumulative PRE gpt-6-sol/xhigh; production только после PASS и RED.
 
-Локальный review candidate: `2102b2a54cad7ec5ef333c01401698748221d95f`; текущее обновление будет отдельным commit. Push NOT_RUN — новая remote-ветка не авторизована. Main/P02/Routing не менялись. Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
+Локальный review candidate: `2102b2a54cad7ec5ef333c01401698748221d95f`; результат/RCA checkpoint `df832214dd72f0ae2946798d5f4aa9d8ed4f36f2`; переносимые raw copies и финальная проекция фиксируются отдельно. Push NOT_RUN — новая remote-ветка не авторизована. Main/P02/Routing не менялись. Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
 
 ## История (состояния на момент события)
 
