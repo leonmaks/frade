@@ -1,0 +1,1242 @@
+{
+  "atUtc": "2026-10-26T05:57:34.535Z",
+  "status": "PASS",
+  "limits": "Real unchanged service/state transitions plus actual extracted/transpiled fixture callback; mocked paint/host transport, not Electron/IPC/rendering PASS",
+  "original": {
+    "priorPreview": true,
+    "membership": false,
+    "commit": false,
+    "project": false,
+    "previewStatus": "APPLIED",
+    "targetStatus": "REFUSED",
+    "phaseAfterTarget": "IDLE",
+    "currentRevisionAfterTarget": 0,
+    "previewAfterTarget": false,
+    "barrierAfterTarget": false,
+    "cancelStatus": "CANCELED",
+    "finalPhase": "PUBLISHED",
+    "persistCalls": 0,
+    "recoveryCalls": 0,
+    "durableUnchanged": true,
+    "trace": [
+      {
+        "participant": "frame",
+        "operation": "prepare",
+        "kind": "light",
+        "context": {
+          "version": 1,
+          "requestId": "probe/boot",
+          "sessionId": "probe",
+          "generation": 0,
+          "transactionId": "probe/boot",
+          "revision": 0,
+          "membership": 1,
+          "phase": "join"
+        },
+        "refused": false
+      },
+      {
+        "participant": "frame",
+        "operation": "apply",
+        "context": {
+          "version": 1,
+          "requestId": "probe/boot",
+          "sessionId": "probe",
+          "generation": 0,
+          "transactionId": "probe/boot",
+          "revision": 0,
+          "membership": 1,
+          "phase": "join"
+        }
+      },
+      {
+        "participant": "frame",
+        "operation": "prepare",
+        "kind": "dark",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-1",
+          "sessionId": "probe",
+          "generation": 1,
+          "transactionId": "probe/intent-1",
+          "revision": 1,
+          "membership": 1,
+          "phase": "prepare"
+        },
+        "refused": false
+      },
+      {
+        "participant": "frame",
+        "operation": "apply",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-1",
+          "sessionId": "probe",
+          "generation": 1,
+          "transactionId": "probe/intent-1",
+          "revision": 1,
+          "membership": 1,
+          "phase": "apply"
+        }
+      },
+      {
+        "participant": "frame",
+        "operation": "prepare",
+        "kind": "dark",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-2",
+          "sessionId": "probe",
+          "generation": 2,
+          "transactionId": "probe/intent-2",
+          "revision": 2,
+          "membership": 1,
+          "phase": "prepare"
+        },
+        "refused": true
+      },
+      {
+        "participant": "frame",
+        "operation": "prepare",
+        "kind": "light",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-2",
+          "sessionId": "probe",
+          "generation": 2,
+          "transactionId": "probe/intent-2",
+          "revision": 0,
+          "membership": 1,
+          "phase": "rollback"
+        },
+        "refused": false
+      },
+      {
+        "participant": "frame",
+        "operation": "apply",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-2",
+          "sessionId": "probe",
+          "generation": 2,
+          "transactionId": "probe/intent-2",
+          "revision": 0,
+          "membership": 1,
+          "phase": "rollback"
+        }
+      },
+      {
+        "participant": "frame",
+        "operation": "prepare",
+        "kind": "light",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-3",
+          "sessionId": "probe",
+          "generation": 3,
+          "transactionId": "probe/intent-3",
+          "revision": 0,
+          "membership": 1,
+          "phase": "prepare"
+        },
+        "refused": false
+      },
+      {
+        "participant": "frame",
+        "operation": "apply",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-3",
+          "sessionId": "probe",
+          "generation": 3,
+          "transactionId": "probe/intent-3",
+          "revision": 0,
+          "membership": 1,
+          "phase": "apply"
+        }
+      }
+    ]
+  },
+  "acceptedCounterexample": {
+    "priorPreview": true,
+    "membership": false,
+    "commit": false,
+    "project": true,
+    "previewStatus": "APPLIED",
+    "targetStatus": "RECOVERY_BLOCKED",
+    "phaseAfterTarget": "RECOVERY_BLOCKED",
+    "currentRevisionAfterTarget": 1,
+    "previewAfterTarget": true,
+    "barrierAfterTarget": true,
+    "cancelStatus": "RECOVERY_BLOCKED",
+    "finalPhase": "RECOVERY_BLOCKED",
+    "persistCalls": 0,
+    "recoveryCalls": 1,
+    "durableUnchanged": true,
+    "trace": [
+      {
+        "participant": "frame",
+        "operation": "prepare",
+        "kind": "light",
+        "context": {
+          "version": 1,
+          "requestId": "probe/boot",
+          "sessionId": "probe",
+          "generation": 0,
+          "transactionId": "probe/boot",
+          "revision": 0,
+          "membership": 1,
+          "phase": "join"
+        },
+        "refused": false
+      },
+      {
+        "participant": "frame",
+        "operation": "apply",
+        "context": {
+          "version": 1,
+          "requestId": "probe/boot",
+          "sessionId": "probe",
+          "generation": 0,
+          "transactionId": "probe/boot",
+          "revision": 0,
+          "membership": 1,
+          "phase": "join"
+        }
+      },
+      {
+        "participant": "frame",
+        "operation": "prepare",
+        "kind": "light",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-1",
+          "sessionId": "probe",
+          "generation": 1,
+          "transactionId": "probe/intent-1",
+          "revision": 1,
+          "membership": 1,
+          "phase": "prepare"
+        },
+        "refused": false
+      },
+      {
+        "participant": "frame",
+        "operation": "apply",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-1",
+          "sessionId": "probe",
+          "generation": 1,
+          "transactionId": "probe/intent-1",
+          "revision": 1,
+          "membership": 1,
+          "phase": "apply"
+        }
+      },
+      {
+        "participant": "frame",
+        "operation": "prepare",
+        "kind": "light",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-2",
+          "sessionId": "probe",
+          "generation": 2,
+          "transactionId": "probe/intent-2",
+          "revision": 2,
+          "membership": 1,
+          "phase": "prepare"
+        },
+        "refused": true
+      },
+      {
+        "participant": "frame",
+        "operation": "prepare",
+        "kind": "light",
+        "context": {
+          "version": 1,
+          "requestId": "probe/intent-2",
+          "sessionId": "probe",
+          "generation": 2,
+          "transactionId": "probe/intent-2",
+          "revision": 0,
+          "membership": 1,
+          "phase": "rollback"
+        },
+        "refused": true
+      }
+    ],
+    "status": "REPRODUCED_FAIL"
+  },
+  "phaseChecks": [
+    {
+      "name": "unarmed forward is allowed",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    },
+    {
+      "name": "boot join cannot capture target",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    },
+    {
+      "name": "compensation before forward cannot capture target",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    },
+    {
+      "name": "missing phase cannot capture target",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    },
+    {
+      "name": "wrong operation cannot capture target",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    },
+    {
+      "name": "wrong kind cannot capture target",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    },
+    {
+      "name": "target forward is refused",
+      "expectedRefused": true,
+      "refused": true,
+      "stopped": true
+    },
+    {
+      "name": "membership reprepare remains refused",
+      "expectedRefused": true,
+      "refused": true,
+      "stopped": true
+    },
+    {
+      "name": "same request compensation is allowed",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    },
+    {
+      "name": "same request join remains allowed",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    },
+    {
+      "name": "same target remains refused after rollback",
+      "expectedRefused": true,
+      "refused": true,
+      "stopped": true
+    },
+    {
+      "name": "distinct cancel is allowed",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    },
+    {
+      "name": "target remains refused after cancel",
+      "expectedRefused": true,
+      "refused": true,
+      "stopped": true
+    },
+    {
+      "name": "explicit rearm captures next target",
+      "expectedRefused": true,
+      "refused": true,
+      "stopped": true
+    },
+    {
+      "name": "disarm permits target",
+      "expectedRefused": false,
+      "refused": false,
+      "stopped": false
+    }
+  ],
+  "scenarios": [
+    {
+      "priorPreview": false,
+      "membership": false,
+      "commit": false,
+      "project": true,
+      "targetStatus": "REFUSED",
+      "phaseAfterTarget": "IDLE",
+      "currentRevisionAfterTarget": 0,
+      "previewAfterTarget": false,
+      "barrierAfterTarget": false,
+      "cancelStatus": "CANCELED",
+      "finalPhase": "PUBLISHED",
+      "persistCalls": 0,
+      "recoveryCalls": 0,
+      "durableUnchanged": true,
+      "trace": [
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": true
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 1,
+            "phase": "apply"
+          }
+        }
+      ]
+    },
+    {
+      "priorPreview": true,
+      "membership": false,
+      "commit": false,
+      "project": true,
+      "previewStatus": "APPLIED",
+      "targetStatus": "REFUSED",
+      "phaseAfterTarget": "IDLE",
+      "currentRevisionAfterTarget": 0,
+      "previewAfterTarget": false,
+      "barrierAfterTarget": false,
+      "cancelStatus": "CANCELED",
+      "finalPhase": "PUBLISHED",
+      "persistCalls": 0,
+      "recoveryCalls": 0,
+      "durableUnchanged": true,
+      "trace": [
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 1,
+            "phase": "apply"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 2,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": true
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 1,
+            "phase": "rollback"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 1,
+            "phase": "rollback"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-3",
+            "sessionId": "probe",
+            "generation": 3,
+            "transactionId": "probe/intent-3",
+            "revision": 0,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-3",
+            "sessionId": "probe",
+            "generation": 3,
+            "transactionId": "probe/intent-3",
+            "revision": 0,
+            "membership": 1,
+            "phase": "apply"
+          }
+        }
+      ]
+    },
+    {
+      "priorPreview": false,
+      "membership": false,
+      "commit": true,
+      "project": true,
+      "targetStatus": "REFUSED",
+      "phaseAfterTarget": "IDLE",
+      "currentRevisionAfterTarget": 0,
+      "previewAfterTarget": false,
+      "barrierAfterTarget": false,
+      "cancelStatus": "CANCELED",
+      "finalPhase": "PUBLISHED",
+      "persistCalls": 0,
+      "recoveryCalls": 0,
+      "durableUnchanged": true,
+      "trace": [
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": true
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 1,
+            "phase": "apply"
+          }
+        }
+      ]
+    },
+    {
+      "priorPreview": true,
+      "membership": false,
+      "commit": true,
+      "project": true,
+      "previewStatus": "APPLIED",
+      "targetStatus": "REFUSED",
+      "phaseAfterTarget": "IDLE",
+      "currentRevisionAfterTarget": 0,
+      "previewAfterTarget": false,
+      "barrierAfterTarget": false,
+      "cancelStatus": "CANCELED",
+      "finalPhase": "PUBLISHED",
+      "persistCalls": 0,
+      "recoveryCalls": 0,
+      "durableUnchanged": true,
+      "trace": [
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 1,
+            "phase": "apply"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 2,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": true
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 1,
+            "phase": "rollback"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 1,
+            "phase": "rollback"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-3",
+            "sessionId": "probe",
+            "generation": 3,
+            "transactionId": "probe/intent-3",
+            "revision": 0,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-3",
+            "sessionId": "probe",
+            "generation": 3,
+            "transactionId": "probe/intent-3",
+            "revision": 0,
+            "membership": 1,
+            "phase": "apply"
+          }
+        }
+      ]
+    },
+    {
+      "priorPreview": false,
+      "membership": true,
+      "commit": false,
+      "project": true,
+      "targetStatus": "REFUSED",
+      "phaseAfterTarget": "IDLE",
+      "currentRevisionAfterTarget": 0,
+      "previewAfterTarget": false,
+      "barrierAfterTarget": false,
+      "cancelStatus": "CANCELED",
+      "finalPhase": "PUBLISHED",
+      "join": {
+        "status": "READY"
+      },
+      "persistCalls": 0,
+      "recoveryCalls": 0,
+      "durableUnchanged": true,
+      "trace": [
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": true
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 2,
+            "phase": "prepare"
+          },
+          "refused": true
+        },
+        {
+          "participant": "extra",
+          "operation": "prepare",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 0,
+            "membership": 2,
+            "phase": "join"
+          },
+          "kind": "light"
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 2,
+            "phase": "prepare"
+          },
+          "refused": false
+        },
+        {
+          "participant": "extra",
+          "operation": "prepare",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 2,
+            "phase": "prepare"
+          },
+          "kind": "light"
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 2,
+            "phase": "apply"
+          }
+        }
+      ]
+    },
+    {
+      "priorPreview": true,
+      "membership": true,
+      "commit": false,
+      "project": true,
+      "previewStatus": "APPLIED",
+      "targetStatus": "REFUSED",
+      "phaseAfterTarget": "IDLE",
+      "currentRevisionAfterTarget": 0,
+      "previewAfterTarget": false,
+      "barrierAfterTarget": false,
+      "cancelStatus": "CANCELED",
+      "finalPhase": "PUBLISHED",
+      "join": {
+        "status": "READY"
+      },
+      "persistCalls": 0,
+      "recoveryCalls": 0,
+      "durableUnchanged": true,
+      "trace": [
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/boot",
+            "sessionId": "probe",
+            "generation": 0,
+            "transactionId": "probe/boot",
+            "revision": 0,
+            "membership": 1,
+            "phase": "join"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-1",
+            "sessionId": "probe",
+            "generation": 1,
+            "transactionId": "probe/intent-1",
+            "revision": 1,
+            "membership": 1,
+            "phase": "apply"
+          }
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 2,
+            "membership": 1,
+            "phase": "prepare"
+          },
+          "refused": true
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 2,
+            "phase": "rollback"
+          },
+          "refused": false
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 2,
+            "phase": "rollback"
+          }
+        },
+        {
+          "participant": "extra",
+          "operation": "prepare",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 2,
+            "phase": "rollback"
+          },
+          "kind": "light"
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 2,
+            "membership": 2,
+            "phase": "prepare"
+          },
+          "refused": true
+        },
+        {
+          "participant": "extra",
+          "operation": "prepare",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-2",
+            "sessionId": "probe",
+            "generation": 2,
+            "transactionId": "probe/intent-2",
+            "revision": 0,
+            "membership": 2,
+            "phase": "join"
+          },
+          "kind": "light"
+        },
+        {
+          "participant": "frame",
+          "operation": "prepare",
+          "kind": "light",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-3",
+            "sessionId": "probe",
+            "generation": 3,
+            "transactionId": "probe/intent-3",
+            "revision": 0,
+            "membership": 2,
+            "phase": "prepare"
+          },
+          "refused": false
+        },
+        {
+          "participant": "extra",
+          "operation": "prepare",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-3",
+            "sessionId": "probe",
+            "generation": 3,
+            "transactionId": "probe/intent-3",
+            "revision": 0,
+            "membership": 2,
+            "phase": "prepare"
+          },
+          "kind": "light"
+        },
+        {
+          "participant": "frame",
+          "operation": "apply",
+          "context": {
+            "version": 1,
+            "requestId": "probe/intent-3",
+            "sessionId": "probe",
+            "generation": 3,
+            "transactionId": "probe/intent-3",
+            "revision": 0,
+            "membership": 2,
+            "phase": "apply"
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "sha256": "3535fd97bbb5ad514abd7cc896e2dab750042a757afde459cd4be71984e367e9"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/service.ts",
+      "sha256": "6dd3e54cb9d4df5a8e9ef7409e05d6e7b175aa30cd48de7184b3eb11d666eaa6"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/types.ts",
+      "sha256": "43f5b93ccf6bc6d1c6016231e45d4e4c940cf9ba1f9193376f0e0d5eef05f05b"
+    }
+  ],
+  "candidateSha256": "6bef1cb0700d9adb7e7df5d52a18f82ddbaa50504264c6774c47b1f9528ae57f",
+  "probeSha256": "7f750f274e1bf92ad2385af52b77483d06ccd2c8cdb2d3a88f65af938c912db4"
+}

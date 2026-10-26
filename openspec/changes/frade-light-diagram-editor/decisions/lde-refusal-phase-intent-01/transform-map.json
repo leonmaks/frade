@@ -1,0 +1,19 @@
+{
+  "source": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+  "sourceSha256": "3535fd97bbb5ad514abd7cc896e2dab750042a757afde459cd4be71984e367e9",
+  "edits": [
+    {
+      "type": "insert-before",
+      "anchor": "    const tick = (now: number) => {",
+      "insert": "    let p01RefuseArmed = false, p01RefusedIntent: string | undefined\n    Object.defineProperty(window, '__p01RefuseDark', {\n      configurable: true, enumerable: true,\n      get: () => p01RefuseArmed,\n      set: (value: boolean) => { p01RefuseArmed = value; p01RefusedIntent = undefined },\n    })\n",
+      "count": 1
+    },
+    {
+      "type": "replace",
+      "before": "if (\n        data?.action === 'fradePresentation' &&\n        data.operation === 'prepare' &&\n        data.snapshot?.kind === 'dark' &&\n        (window as any).__p01RefuseDark\n      ) {\n        event.stopImmediatePropagation()\n        parent.postMessage(\n          JSON.stringify({\n            event: 'fradePresentation',\n            version: 1,\n            participantId: data.participantId,\n            participantGeneration: data.participantGeneration,\n            context: data.context,\n            operation: 'prepare',\n            status: 'REFUSED',\n            message: 'Controlled current frame refusal',\n          }),\n          'frade://app',\n        )\n      }",
+      "after": "if (\n        data?.action === 'fradePresentation' &&\n        data.operation === 'prepare' &&\n        data.context?.phase === 'prepare' &&\n        data.snapshot?.kind === 'light' &&\n        (window as any).__p01RefuseDark &&\n        typeof data.context?.requestId === 'string' &&\n        (p01RefusedIntent === undefined || p01RefusedIntent === data.context.requestId)\n      ) {\n        p01RefusedIntent = data.context.requestId\n        event.stopImmediatePropagation()\n        parent.postMessage(\n          JSON.stringify({\n            event: 'fradePresentation',\n            version: 1,\n            participantId: data.participantId,\n            participantGeneration: data.participantGeneration,\n            context: data.context,\n            operation: 'prepare',\n            status: 'REFUSED',\n            message: 'Controlled current frame refusal',\n          }),\n          'frade://app',\n        )\n      }",
+      "count": 1
+    }
+  ],
+  "exactReverseSha256": "3535fd97bbb5ad514abd7cc896e2dab750042a757afde459cd4be71984e367e9"
+}
