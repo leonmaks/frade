@@ -1,4 +1,5 @@
 import type { Graph } from '@frade/draw'
+import { createEditorPresentationParticipant } from './editorPresentationParticipant'
 import type { PresentationParticipant, PhaseContext } from './service'
 import type { ResolvedTheme } from './types'
 import { createRootParticipant, validatePresentationSnapshot } from './rootParticipant'
@@ -7,6 +8,7 @@ export type NativePresentationGraph = Pick<
   'options' | 'container' | 'drawBackground' | 'drawGrid'
 >
 export interface NativeParticipantOptions {
+  readonly editorRoot?: HTMLElement
   readonly id?: string
   readonly generation?: number
   readonly paint?: () => Promise<void>
@@ -45,7 +47,7 @@ export function createNativeParticipant(
       : { ...args, color: gridColor }
     graph.drawGrid({ ...grid, args: ownedGridArgs } as Parameters<Graph['drawGrid']>[0])
   }
-  return {
+  const participant: PresentationParticipant & { dispose(): void } = {
     id: root.id,
     generation: root.generation,
     hide: root.hide,
@@ -105,4 +107,7 @@ export function createNativeParticipant(
       }
     },
   }
+  return options.editorRoot
+    ? createEditorPresentationParticipant(options.editorRoot, participant, { paint: options.paint, contentRoot: graph.container })
+    : participant
 }

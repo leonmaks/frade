@@ -1,0 +1,53 @@
+{
+  "atUtc": "2026-10-26T06:34:29.499Z",
+  "tests": {
+    "command": "pnpm --filter @frade/ui-workspace exec vitest run tests/ui-contract/light-diagram-editor.test.tsx tests/ui-contract/participants.test.ts tests/ui-contract/service.test.ts",
+    "exit": 0,
+    "files": 3,
+    "passed": 103
+  },
+  "typecheck": {
+    "command": "pnpm --filter @frade/ui-workspace typecheck",
+    "exit": 0,
+    "note": "PowerShell stdout sink was not created for empty stdout; actual stderr is retained ($ tsc --noEmit). Original receipt exit0 retained; later Get-Content missing-empty-file was a reporting wrapper error, not compiler FAIL. No duplicate typecheck executed."
+  },
+  "lint": {
+    "command": "pnpm --filter @frade/ui-workspace exec eslint src/design/theme/editorPresentation.ts src/design/theme/editorPresentationParticipant.ts src/design/theme/nativeParticipant.ts tests/ui-contract/light-diagram-editor.test.tsx",
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "source": "Actually executed tool command after GREEN03; recorded without rerun"
+  },
+  "inputs": [
+    {
+      "path": "packages/ui-workspace/src/design/theme/editorPresentation.ts",
+      "sha256": "452ee37ad58fc754ddf199454de5fe30cfaa0754a5dc72886b62249067c3bfd2"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/editorPresentationParticipant.ts",
+      "sha256": "7ce77713e4bee08405eab8e49b55d5024be4b61441f2d9e89502e20b9126c4f4"
+    },
+    {
+      "path": "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+      "sha256": "f5e9119fd38061d209f73a98d212ed6e4378f42d640b71cdc008753d8044582e"
+    },
+    {
+      "path": "packages/ui-workspace/tokens/diagram-editor-presentation.json",
+      "sha256": "4c57312dacf59672d7e0296cfb903ae23080990e07a439a6814d1aa334836544"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/light-diagram-editor.test.tsx",
+      "sha256": "6670f0090c1c50a9504430f8b57ed5ebd9c3e9252b0925b73d6f2e16f495f5c2"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/participants.test.ts",
+      "sha256": "34b859c0858bfee680d2bc9b07cdba79d89730aa560e54a89d69a40e7554d420"
+    },
+    {
+      "path": "packages/ui-workspace/tests/ui-contract/service.test.ts",
+      "sha256": "19952bcf556bc9960bc6a040f057b83dd40648b91a97e2899279d782112b00a4"
+    }
+  ],
+  "productionIntegration": "NOT_WIRED; reusable opt-in adapter only",
+  "fullFeatureStatus": "IN_PROGRESS; NOT_READY_FOR_VERIFY"
+}

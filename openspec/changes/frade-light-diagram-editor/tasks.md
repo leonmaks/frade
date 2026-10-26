@@ -4,11 +4,11 @@
 
 - [x] 1.1 Record user scope/model authority, isolated Main baseline, actual adapter/control inventory and shared-policy adoption; verify exact raw hashes and unchanged production files.
 - [x] 1.2 Complete strict validation and requirement-to-BDD/surface/control mapping; save actual CLI results and publish the branch-local planning checkpoint.
-- [ ] 1.3 After a new apply request, prepare the exact immutable plan/source packet and receive automatic independent PRE gpt-6-sol/xhigh; require clean receipt and GATE_STATUS PASS before production.
+- [x] 1.3 After a new apply request, prepare the exact immutable plan/source packet and receive automatic independent PRE gpt-6-sol/xhigh; require clean receipt and GATE_STATUS PASS before production.
 
 ## 2. Shared scope and native editor
 
-- [ ] 2.1 Execute meaningful RED for fixed light under Dark/reference/HC, input immutability, forced-colors entry/exit and unchanged revision/density; prove baseline fails the required behavior.
+- [x] 2.1 Execute meaningful RED for fixed light under Dark/reference/HC, input immutability, forced-colors entry/exit and unchanged revision/density; prove baseline fails the required behavior.
 - [ ] 2.2 Implement shared role profile/projection and editor root participant composition; pass the new focused tests and existing participant/service regressions; document scope/precedence in the approved companion without changing the eight protected Guide/QA/Theme/token artifacts.
 - [ ] 2.3 Wire the native retained editor container and X6 view projection; pass authored paint/identity/undo/grid tests plus one actual Dark/forced-colors native probe; update presentation documentation in this checkpoint.
 

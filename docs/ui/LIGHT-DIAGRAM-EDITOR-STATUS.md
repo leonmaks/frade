@@ -10,7 +10,7 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-PRE07_READY_FOR_DISPATCH. Пользователь утвердил точный LDE-REFUSAL-PHASE-INTENT-01 и drafts. Применён только design3d746692…; live fixture3535fd97… и production неизменны. PRE01–06 raw FAIL сохранены; fresh PRE07 gpt-6-sol/xhigh ещё не завершён. Реальный service probe:16 checks /6 sequences PASS с original trace parity; это не Electron PASS. READY_FOR_VERIFY: NO.
+IMPLEMENTATION — shared/native opt-in foundation GREEN. PRE07 plan PASS сохранён. Meaningful RED27 failed/1 preservation passed выполнен до production. Новый Light profile/composition/native opt-in: targeted103/103 PASS; affected typecheck/lint PASS. Actual DiagramView/FradeDiagramView wiring, CSS, frame/overlays и Electron ещё НЕ выполнены. READY_FOR_VERIFY: NO.
 
 Цель: общий светлый редактор Draw.io/Frade с авторскими цветами и исключением Windows forced colors. Внешний workbench сохраняет выбранную тему. PRE/POST: **gpt-6-sol / xhigh**; actual backend/effort в receipts NOT_CONFIRMED. Новые визуальные baselines ещё не приняты.
 
@@ -21,8 +21,8 @@ PRE07_READY_FOR_DISPATCH. Пользователь утвердил точный
 | Изоляция / read-only inventory | DONE | Baseline и 50 raw sources сохранены; benchmark checkout восстановлен точным baseline blob с отдельной provenance |
 | Proposal / specs / design / BDD | DONE_PLANNING | 4 delta specs, 9 Gherkin definitions; phase/request replacement принят, точный design применён |
 | Strict / traceability / planning checkpoint | PASS | Fresh strict1/1, exact input reuse/proof hashes совпали |
-| Независимый PRE | FAIL01–06; PRE07_PENDING | Fresh cumulative review принятого forward-phase/request scope |
-| Shared scope / native editor (2.1–2.3) | NOT_RUN | Meaningful RED, реализация и focused GREEN после PRE PASS |
+| Независимый PRE | PRE07_PASS | Plan-only cumulative PASS; прежние FAIL сохранены |
+| Shared scope / native editor (2.1–2.3) | IN_PROGRESS_GREEN | 2.1 done; reusable profile/composition/native opt-in GREEN; app wiring ещё не выполнен |
 | Draw.io / owned overlays / parity (3.1–3.4) | NOT_RUN | Bridge, owner isolation, source replay и BDD/compliance |
 | Общие проверки / runtime (4.1) | NOT_RUN | Полная applicable matrix на финальном source |
 | Визуальное принятие (4.2) | NOT_RUN | Новая галерея двух движков |
@@ -44,10 +44,12 @@ PRE07_READY_FOR_DISPATCH. Пользователь утвердил точный
 - [x] После второго неудачного draft выполнить полный RCA/service transition probe; новый exact draft готов.
 - [x] Получить решение LDE-REFUSAL-PHASE-INTENT-01; применить только точный design.
 - [x] Fresh strict1/1; exact service proof/mapping reuse проверены.
-- [ ] Автоматический PRE07 PASS (pending).
-- [ ] После PASS выполнить meaningful RED и реализацию в разрешённых путях.
+- [x] Автоматический PRE07 PASS получен и принят по clean receipt.
+- [x] Meaningful native RED и lifecycle edge RED зафиксированы до соответствующей реализации.
+- [x] Shared Light profile/composition и native opt-in GREEN103/103; scoped typecheck/lint PASS.
+- [ ] Scoped CSS, actual native/frame retained-root wiring и bounded runtime probe.
 
-Tracked tasks: 2/13; planning1.1/1.2 выполнены после принятия scope и fresh validation;1.3 PRE pending. Ни один product task не объявлен готовым.
+Tracked tasks: 4/13;1.1–1.3 и2.1 выполнены. 2.2/2.3 IN_PROGRESS, весь этап не закрыт. Ни один product task не объявлен готовым.
 
 ## Проверки, ограничения и следующее действие
 
@@ -55,7 +57,7 @@ PASS: historical strict и Gherkin parsing (9 definitions); exact fixture revers
 
 Стратегия перед следующим review: использовать проверенную transitive closure и byte proof; не повторять неизменные unit tests и большие regressions до реализации. Fresh PRE обязателен из-за scope/design delta; ранние dispatch занимали примерно 6–7 минут, PRE06 9m14s (измерено); следующий интервал — прогноз, не timeout. Проверить completeness и hashes до freeze; при новом scope/correctness finding остановить реализацию и пересмотреть стратегию, а не повторять известный FAIL.
 
-Следующее действие: fresh strict/checkpoint, автоматический cumulative PRE07 gpt-6-sol/xhigh. Во время review candidate/dashboard/index/HEAD заморожены; production только после PASS и RED.
+Следующее действие: scoped CSS и actual native/frame retained-root wiring через существующие participants; frame/ownership RED до реализации. Затем bounded dual-engine runtime probe. Full runtime/visual/POST остаются обязательными.
 
 Локальный review candidate: `2102b2a54cad7ec5ef333c01401698748221d95f`; результат/RCA checkpoint `df832214dd72f0ae2946798d5f4aa9d8ed4f36f2`; переносимые raw copies и финальная проекция фиксируются отдельно. Push NOT_RUN — новая remote-ветка не авторизована. Main/P02/Routing не менялись. Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
 
@@ -140,3 +142,15 @@ PRE06 доказал новый blocker: same requestId используется
 ## LDE-REFUSAL-PHASE-INTENT-01 принято
 
 Прямой ответ пользователя: «Утверждаю точную замену и drafts». Proposal1879913c… / manifest27f36eb2… и все raw draft/probe hashes совпали. Active design3d746692fb184d5c08bd9bf6e73569cda37c17010326af53670320fab07a9172. Изменён только design и process/status; live fixture3535fd97… не менялась. После fresh strict — committed candidate и автоматический PRE07 с полным проверенным dependency packet. Не повторяем неизменные service probes/pin tests/полные regressions; их exact input hashes будут записаны для reuse. PRE01–06 остаются FAIL; READY_FOR_VERIFY:NO.
+
+## PRE07 cumulative PASS
+
+Run06:10:58Z–06:17:41Z (6m43s, measured), clean full receipt PASS/candidateUnchanged/packetUnchanged. Requested gpt-6-sol/xhigh; actual backend/effort NOT_CONFIRMED. Result SHA25685263c1695a96167af1c902d594d110c8e988b23b84592016a6ea7ec0603b61b. Raw result/events/execution/receipt/provenance и portable base64 сохранены до интерпретации в evidence/pre-07-received-20261026. 250/250 raw packet inputs проверены. План implementable; это НЕ product/Electron/visual/POST PASS. Теперь разрешён meaningful RED, затем implementation в design §6. Первый bounded native probe покрывает canvas/grid/root, app theme isolation, density/revision/forced colors и authored state без новых dependency/config/global settings.
+
+## Shared/native incremental GREEN checkpoint
+
+Baseline native RED27 failures/1 preserved guard PASS; новые edge RED2/2 до ремонта. Shared role profile/projection и composite participant сохраняют global selection/revision/density/system mapping; native opt-in использует только существующие view managers. 30 новых +38 original participant +35 original service =103 PASS. Affected UI typecheck exit0 и scoped eslint exit0. Изолированный JSON emit probe actual diagnostics[]/emitSkippedfalse; dependency/config изменений нет.
+
+GREEN01 batch100 pass/1 traceability FAIL: ENVIRONMENT CRLF checkout двух неизменных pinned tests. Восстановлены только exact baseline blobs p01.bdd/service; pins/assertions/logical sources НЕ менялись. До/после base64/provenance в evidence/unchanged-binding-checkout-restoration-20261026. Baseline-launch cmd wrapper ERROR/NOT_RUN и reporting missing-empty-stdout сохранены отдельно; это не UI/compiler FAIL. Все original FAIL/RED остаются. Companion docs/ui/diagram-editor-presentation.md опубликован как approved scoped contract; он не заявляет завершённый rollout.
+
+Production views НЕ подключены; CSS/frame/overlays/real runtime/BDD bindings/compliance/visual/POST пока NOT_RUN. Commit — честный промежуточный checkpoint, не закрытие feature. Main/P02/Routing не менялись; push не выполняется без новой destination authorization.
