@@ -1,0 +1,5 @@
+**BLOCKER — historical source pin conflicts with the required checks.** `packages/ui-workspace/tests/ui-contract/vscode-dark-2026-origin.test.ts:35` requires SHA `1bcd2e…` for the performance E2E source, but the packet’s verified source is `47badb…` (`REVIEW-PACKET-MANIFEST.json:44-46`). The required `pnpm check` runs this workspace test. The current replay plan covers a different E2E file and does not authorize changing the performance pin (`openspec/changes/frade-light-diagram-editor/design.md:71-72`). Reconcile this exact binding with source history and explicit scope authority, preserving the benchmark workload, budget, timeouts, assertions, and prior evidence; then revalidate and request fresh PRE.
+
+The 214 listed packet artifacts match their hashes. The accepted fixed Light and reference-geometry exceptions are product decisions, and the refusal draft changes only its approved armed predicate. This finding is a test-control plan issue, not a request to revisit those decisions. No implementation, runtime, or visual acceptance is claimed.
+
+GATE_STATUS: FAIL

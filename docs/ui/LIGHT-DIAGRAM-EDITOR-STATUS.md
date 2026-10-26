@@ -10,7 +10,7 @@ Guide: v1.0; общий workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4
 
 ## Текущая фаза
 
-PRE_04_PREPARATION — LDE-REFUSAL-FIXTURE-01 ACCEPTED. LDE-PRE-RECONCILIATION-01 остаётся ACCEPTED. Три автоматических PRE завершились FAIL; product implementation не начат. Активный change синтаксически valid, но correctness/scope blockers открыты. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
+PRE_04_FAIL_ENVIRONMENT; PRE_05_PREPARATION — LDE-REFUSAL-FIXTURE-01 ACCEPTED. LDE-PRE-RECONCILIATION-01 остаётся ACCEPTED. Три автоматических PRE завершились FAIL; product implementation не начат. Активный change синтаксически valid, но correctness/scope blockers открыты. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
 
 Пользователь подтвердил единый светлый редактор Draw.io/Frade, сохранение авторских цветов и приоритет Windows forced colors. PRE/POST этого этапа: **gpt-6-sol / xhigh**. Внешний workbench сохраняет выбранную тему; локальные панели/меню/диалоги редакторов используют общий светлый контракт. Новые visual baselines ещё не приняты.
 
@@ -111,3 +111,13 @@ FAIL, candidate/packet unchanged; model requested gpt-6-sol/xhigh, actual backen
 ## LDE-REFUSAL-FIXTURE-01 принято
 
 Пользователь утвердил точную fixture-правку и design draft. Proposal/manifest hashes проверены; применён только design `67de08fd4f868da84041eeab2e291e0d93ede567a9c86be4f5b8fd43f5d1508c`. Live E2E source остаётся `3535fd97bbb5ad514abd7cc896e2dab750042a757afde459cd4be71984e367e9`; guard и production не меняются до PRE PASS/RED. Fresh PRE 04 gpt-6-sol/xhigh использует bounded transitive dependency packet; raw предыдущих FAIL сохранены. Во время dispatch status заморожен.
+
+## PRE04 и точная environment-restoration
+
+FAIL: benchmark source pin ожидал `1bcd2e...`, checkout имел `47badb...`. RCA ENVIRONMENT: baseline Git blob LF = exact existing pin `1bcd2e294f145a7e18629bca4113f3d9f0f510a3e5a00f047e05313070135781`; checkout CRLF, logical source equal. Восстановлен только точный Git blob baseline; Git diff по benchmark EMPTY, pin/assertions/workload/timeouts/budget НЕ менялись. Raw before/canonical/provenance сохранены в evidence/benchmark-checkout-restoration-20261026; старый inventory/FAIL не переписаны. Другие источники не нормализуются.
+
+PRE04 raw result `6b15430cf929305e1c529eed730f080af40d2ade57fcd2a183c61f70a2f0639e`, source/packet unchanged, requested gpt-6-sol/xhigh, actual backend/effort NOT_CONFIRMED. Следующий PRE05 проверит те же контракты с exact canonical benchmark bytes; production и live refusal guard ещё не менялись.
+
+## PRE05 readiness
+
+Exact canonical benchmark bytes восстановлены без Git source diff и без изменения pin. Оригинальные origin/pin tests реально выполнены: 6/6 PASS (Vitest 1.43s). Offline frozen install: 336 cache packages, 0 downloads, 7.1s; lockfile/production unchanged. Исходный raw inventory сохранён: 49 raw sources совпадают, один benchmark восстановлен byte-for-byte из Git baseline с явной provenance и portable base64 before/after. Следующий fresh PRE05 получает эту доказательную цепочку; прежние FAIL сохраняются. Во время review status frozen.

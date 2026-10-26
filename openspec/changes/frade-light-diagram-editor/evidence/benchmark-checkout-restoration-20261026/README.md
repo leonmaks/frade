@@ -1,0 +1,3 @@
+# Benchmark checkout environment restoration
+
+PRE04 found a real required pin failure in this fresh checkout. The published baseline Git blob has exactly the already accepted pin; checkout had converted it to CRLF. Only that own-baseline blob was restored through git cat-file, without editing any line, test guard, pin, workload, budget or project/global Git setting. The pre-restoration raw file and canonical bytes are preserved. This is not a change to the benchmark or a new production/control path: Git source diff is empty. The original planning inventory remains immutable and truthfully records the earlier checkout drift. All future packets bind the restored exact canonical bytes and include this provenance; PRE04 FAIL remains unchanged. No other source is normalized.
