@@ -5,7 +5,7 @@ Exactly two execution stages. Prior6/13 task text/raw hash and all old evidence 
 ## 1. Contract and one PRE
 
 - [x] 1.1 Record replacement authority, source pins and prior raw artifacts; reconcile proposal/design/specs/BDD/verification/status as one contract.
-- [ ] 1.2 Pass strict/source/BDD validation, commit the planning checkpoint and receive automatic independent PRE gpt-6-sol/xhigh on the complete frozen packet.
+- [x] 1.2 Pass strict/source/BDD validation, commit the planning checkpoint and receive automatic independent PRE gpt-6-sol/xhigh on the complete frozen packet.
 
 ## 2. One implementation and acceptance cycle
 
