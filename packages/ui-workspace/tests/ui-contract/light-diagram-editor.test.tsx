@@ -351,3 +351,84 @@ it('LDE-003 late prepare after owner disposal is rejected and its acquired handl
   expect(child.apply).not.toHaveBeenCalled()
   expect(child.rollback).not.toHaveBeenCalled()
 })
+
+import { createFrameParticipant } from '../../src/design/theme/frameParticipant'
+it('LDE-001 LDE-007 frame prepares a validated Light DTO while keeping the authoritative Dark context', async () => {
+  const editor = document.createElement('section'),
+    frame = document.createElement('iframe')
+  editor.append(frame)
+  document.body.append(editor)
+  const input = value('reference', 'comfortable', false),
+    before = JSON.stringify(input)
+  const post = vi.spyOn(frame.contentWindow!, 'postMessage').mockImplementation((data) => {
+    const message = JSON.parse(String(data))
+    if (!['prepare', 'apply', 'rollback'].includes(message.operation)) return
+    queueMicrotask(() =>
+      window.dispatchEvent(
+        new MessageEvent('message', {
+          source: frame.contentWindow,
+          origin: 'frade://drawio',
+          data: JSON.stringify({
+            event: 'fradePresentation',
+            version: 1,
+            participantId: 'frame/lde',
+            participantGeneration: 4,
+            operation: message.operation,
+            context: message.context,
+            status: message.operation === 'prepare' ? 'READY' : 'PAINTED',
+          }),
+        }),
+      ),
+    )
+  })
+  const options = { id: 'frame/lde', generation: 4, sessionId: 'window-lde', editorRoot: editor }
+  const participant = createFrameParticipant(frame, options)
+  try {
+    const prepared = await participant.prepare(
+      input,
+      phase(7, 'prepare'),
+      new AbortController().signal,
+    )
+    const sent = JSON.parse(
+      String(
+        post.mock.calls.find((call) => JSON.parse(String(call[0])).operation === 'prepare')![0],
+      ),
+    )
+    expect(sent.context).toEqual(phase(7, 'prepare'))
+    expect(sent.snapshot.kind).toBe('light')
+    expect(sent.snapshot.id).toBe(BUILTIN_IDS.light)
+    expect(sent.snapshot.colors['diagram.grid']).toBe('#CDD3DC')
+    await prepared.apply(phase(7), new AbortController().signal)
+    expect(editor.dataset.fradeTheme).toBe('light')
+    expect(editor.dataset.fradeRevision).toBe('7')
+    expect(frame.dataset.fradeRevision).toBe('7')
+    expect(JSON.stringify(input)).toBe(before)
+    expect(input.kind).toBe('dark')
+    prepared.dispose()
+  } finally {
+    participant.dispose()
+    post.mockRestore()
+  }
+})
+
+it('LDE-004 native dot diameter is shared view geometry and restores without changing grid semantics', async () => {
+  const f = fixture()
+  f.graph.options.grid.args.thickness = 2
+  const original = { ...f.graph.options.grid.args },
+    options = { editorRoot: f.editor, paint: async () => {} }
+  const participant = createNativeParticipant(
+    f.graph as unknown as NativePresentationGraph,
+    options,
+  )
+  const handle = await participant.prepare(
+    value('dark', 'compact', false),
+    phase(7, 'prepare'),
+    new AbortController().signal,
+  )
+  await handle.apply(phase(7), new AbortController().signal)
+  expect(f.graph.options.grid.args.thickness).toBe(1.2)
+  expect(f.graph.options.grid.size).toBe(10)
+  expect(f.graph.options.grid.type).toBe('dot')
+  participant.dispose()
+  expect(f.graph.options.grid.args).toEqual(original)
+})

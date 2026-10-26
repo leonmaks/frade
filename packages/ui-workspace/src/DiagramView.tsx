@@ -75,6 +75,7 @@ export function DiagramView(props: DiagramViewProps) {
   const [container] = useState(() => {
     const node = document.createElement('div')
     node.className = 'repository-diagram'
+    if (presentation) node.dataset.fradeEditorPending = '1'
     return node
   })
   const parking = useRef<HTMLDivElement>(null),
@@ -372,6 +373,7 @@ export function DiagramView(props: DiagramViewProps) {
     }
     const participant = createFrameParticipant(frame.current, {
       id: 'frame/' + presentationId,
+      editorRoot: container,
       generation: ++presentationGeneration.current,
       sessionId: presentation.sessionId,
       paintSurface: () => acquireParkedFrameSurface(

@@ -1,0 +1,134 @@
+/* Shared editor-owned chrome only. Author SVG/cell/swatch paint is not selected. */
+[data-frade-editor-pending='1'] {
+  visibility: hidden;
+}
+[data-frade-editor='light'] {
+  --bg: var(--frade-surface-base);
+  --side: var(--frade-surface-panel);
+  --border: var(--frade-border-subtle);
+  --fg: var(--frade-text-primary);
+  --muted: var(--frade-text-secondary);
+  --accent: var(--frade-action-primary);
+  --input: var(--frade-surface-panel);
+  --error: var(--frade-status-error);
+  --editor-bg: var(--frade-diagram-canvas);
+  --wb-bg: var(--frade-surface-panel);
+  color: var(--frade-text-primary);
+  background-color: var(--frade-diagram-canvas);
+}
+/* Explicit local overrides beat inherited reference variables without changing
+   the selected workbench preset or any global overlay. */
+[data-frade-editor='light'] {
+  --frade-vscode-editorBackground: var(--frade-surface-base);
+  --frade-vscode-editorForeground: var(--frade-text-primary);
+  --frade-vscode-panelBackground: var(--frade-surface-panel);
+  --frade-vscode-panelForeground: var(--frade-text-primary);
+  --frade-vscode-railBackground: var(--frade-surface-rail);
+  --frade-vscode-railForeground: var(--frade-text-primary);
+  --frade-vscode-railInactive: var(--frade-text-secondary);
+  --frade-vscode-railIndicator: var(--frade-selection-indicator);
+  --frade-vscode-titleBackground: var(--frade-surface-panel);
+  --frade-vscode-titleForeground: var(--frade-text-secondary);
+  --frade-vscode-subtleBorder: var(--frade-border-subtle);
+  --frade-vscode-controlBackground: var(--frade-surface-panel);
+  --frade-vscode-controlForeground: var(--frade-text-primary);
+  --frade-vscode-controlBorder: var(--frade-border-control);
+  --frade-vscode-placeholder: var(--frade-text-secondary);
+  --frade-vscode-primaryBackground: var(--frade-action-primary);
+  --frade-vscode-primaryForeground: var(--frade-action-onPrimary);
+  --frade-vscode-primaryHover: var(--frade-action-primaryHover);
+  --frade-vscode-secondaryBackground: var(--frade-surface-panel);
+  --frade-vscode-secondaryForeground: var(--frade-text-primary);
+  --frade-vscode-treeHover: var(--frade-surface-hover);
+  --frade-vscode-treeSelection: var(--frade-selection-bg);
+  --frade-vscode-treeSelectionForeground: var(--frade-selection-fg);
+  --frade-vscode-treeInactive: var(--frade-selection-bg);
+  --frade-vscode-tabActive: var(--frade-surface-base);
+  --frade-vscode-tabInactive: var(--frade-surface-panel);
+  --frade-vscode-tabActiveForeground: var(--frade-text-primary);
+  --frade-vscode-tabInactiveForeground: var(--frade-text-secondary);
+  --frade-vscode-tabBorder: var(--frade-border-subtle);
+  --frade-vscode-tabsBackground: var(--frade-surface-panel);
+  --frade-vscode-menuBackground: var(--frade-surface-overlay);
+  --frade-vscode-menuForeground: var(--frade-text-primary);
+  --frade-vscode-menuBorder: var(--frade-border-subtle);
+  --frade-vscode-menuSelection: var(--frade-selection-bg);
+  --frade-vscode-menuSelectionForeground: var(--frade-selection-fg);
+  --frade-vscode-pickerBackground: var(--frade-surface-overlay);
+  --frade-vscode-pickerForeground: var(--frade-text-primary);
+  --frade-vscode-statusBackground: var(--frade-surface-panel);
+  --frade-vscode-statusForeground: var(--frade-text-primary);
+}
+html[data-frade-runtime='1']
+  .ka-workbench
+  [data-frade-editor='light'][data-frade-runtime='1']
+  :is(button, input, select, textarea):not(.draw-host *) {
+  box-sizing: border-box;
+  min-height: max(var(--frade-size-control), var(--frade-size-target));
+  min-width: var(--frade-size-target);
+  border: var(--frade-border-width) solid var(--frade-border-control);
+  border-radius: var(--frade-radius-control);
+  padding: var(--frade-space-1) var(--frade-space-3);
+  background-color: var(--frade-surface-panel);
+  color: var(--frade-text-primary) !important;
+  font-family: var(--frade-font-ui);
+  font-size: var(--frade-font-body);
+  line-height: var(--frade-line-body);
+}
+html[data-frade-runtime='1']
+  .ka-workbench
+  [data-frade-editor='light'][data-frade-runtime='1']
+  button:hover:not(:disabled):not(.draw-host *) {
+  background-color: var(--frade-surface-hover);
+}
+html[data-frade-runtime='1']
+  .ka-workbench
+  [data-frade-editor='light'][data-frade-runtime='1']
+  :is(button, input, select, textarea):disabled:not(.draw-host *) {
+  color: var(--frade-text-disabled) !important;
+}
+html[data-frade-runtime='1']
+  .ka-workbench
+  [data-frade-editor='light'][data-frade-runtime='1']
+  :is(.primary, .editor-actions > button:first-of-type):not(.draw-host *) {
+  background-color: var(--frade-action-primary);
+  color: var(--frade-action-onPrimary) !important;
+}
+html[data-frade-runtime='1']
+  .ka-workbench
+  [data-frade-editor='light'][data-frade-runtime='1']
+  :is(.primary, .editor-actions > button:first-of-type):hover:not(:disabled):not(.draw-host *) {
+  background-color: var(--frade-action-primaryHover);
+}
+html[data-frade-runtime='1']
+  .ka-workbench
+  [data-frade-editor='light'][data-frade-runtime='1']
+  :focus-visible {
+  outline: var(--frade-focus-width) solid var(--frade-focus-ring);
+  outline-offset: var(--frade-focus-offset);
+}
+[data-frade-editor='light']
+  :is(
+    .breadcrumbs,
+    .editor-actions,
+    .flow-manager,
+    .frade-canvas > main > header,
+    .frade-canvas > main > aside
+  ) {
+  background-color: var(--frade-surface-panel);
+  color: var(--frade-text-primary);
+  border-color: var(--frade-border-subtle);
+}
+[data-frade-editor='light'] .diagram-references > div {
+  background-color: var(--frade-surface-overlay);
+  color: var(--frade-text-primary);
+  border-color: var(--frade-border-control);
+}
+[data-frade-editor='light'] :is(.diagram-error, .frade-canvas .error) {
+  color: var(--frade-status-error);
+  background-color: var(--frade-status-errorBg);
+}
+[data-frade-editor='light'] .diagram-readonly {
+  color: var(--frade-status-warning);
+  background-color: var(--frade-status-warningBg);
+}

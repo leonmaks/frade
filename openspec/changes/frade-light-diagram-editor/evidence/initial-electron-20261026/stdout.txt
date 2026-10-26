@@ -1,0 +1,49 @@
+
+Running 4 tests using 1 worker
+
+Downloading Electron binary...
+  x  1 tests\e2e\ui-contract-light-diagram-editor.spec.ts:158:3 › LDE initial native/compact: actual Light surface and forced-colors round trip preserve content (15.4s)
+[31mTesting stopped early after 1 maximum allowed failures.[39m
+
+
+  1) tests\e2e\ui-contract-light-diagram-editor.spec.ts:158:3 › LDE initial native/compact: actual Light surface and forced-colors round trip preserve content 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('.dirty-dot')
+    Expected: [32m0[39m
+    Received: [31m1[39m
+    Timeout:  10000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 10000ms[22m
+    [2m  - waiting for locator('.dirty-dot')[22m
+    [2m    14 × locator resolved to 1 element[22m
+    [2m       - unexpected value "1"[22m
+
+
+      234 |         expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+      235 |         expect(await readFile(f.settings, 'utf8')).toBe(f.settingsBefore)
+    > 236 |         await expect(f.page.locator('.dirty-dot')).toHaveCount(0)
+          |                                                    ^
+      237 |         await f.page.screenshot({ path: info.outputPath('restored-light.png') })
+      238 |       } finally {
+      239 |         await writeFile(
+        at E:\dev\codex\frade-worktrees\light-diagram-editor\apps\desktop\tests\e2e\ui-contract-light-diagram-editor.spec.ts:236:52
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-light-diagram-editor\evidence\initial-electron-20261026\artifacts\ui-contract-light-diagram--e2288-round-trip-preserve-content\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-light-diagram-editor\evidence\initial-electron-20261026\artifacts\ui-contract-light-diagram--e2288-round-trip-preserve-content\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-light-diagram-editor\evidence\initial-electron-20261026\artifacts\ui-contract-light-diagram--e2288-round-trip-preserve-content\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-light-diagram-editor.spec.ts:158:3 › LDE initial native/compact: actual Light surface and forced-colors round trip preserve content 
+  3 did not run
+  1 error was not a part of any test, see above for details

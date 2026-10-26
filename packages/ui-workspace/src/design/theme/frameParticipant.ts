@@ -1,7 +1,9 @@
+import { createEditorPresentationParticipant } from './editorPresentationParticipant'
 import type { PresentationParticipant, PhaseContext, PaintAck } from './service'
 import type { ResolvedTheme } from './types'
 import { validatePresentationSnapshot } from './rootParticipant'
 export interface FrameParticipantOptions {
+  readonly editorRoot?: HTMLElement
   readonly id: string
   readonly generation: number
   readonly sessionId: string
@@ -307,7 +309,7 @@ export function createFrameParticipant(
   const navigateHandler = () => stop(true)
   view.addEventListener('message', message)
   frame.addEventListener('load', navigateHandler)
-  return {
+  const participant: PresentationParticipant & { dispose(): void } = {
     id: options.id,
     generation: options.generation,
     requiresPaintCover: true,
@@ -367,4 +369,5 @@ export function createFrameParticipant(
     },
     dispose: () => stop(false),
   }
+  return options.editorRoot ? createEditorPresentationParticipant(options.editorRoot, participant) : participant
 }

@@ -36,6 +36,8 @@ export function validateEditorPresentationProfile(value: unknown): EditorPresent
   })
 }
 export const editorPresentationProfile = validateEditorPresentationProfile(profileData)
+/** Scale-1 decorative dot diameter; grid spacing and snapping are not presentation data. */
+export const editorGridDotDiameter = 1.2
 /** Derived view only; application selection, registry, revision and author data are not written. */
 export function projectEditorPresentation(snapshot: ResolvedTheme): ResolvedTheme {
   validatePresentationSnapshot(snapshot)

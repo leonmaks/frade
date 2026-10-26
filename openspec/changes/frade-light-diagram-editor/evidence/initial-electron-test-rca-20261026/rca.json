@@ -1,0 +1,14 @@
+{
+  "atUtc": "2026-10-26T07:03:55.123Z",
+  "classification": "TEST",
+  "defect": "New probe assumed clean native fixture without establishing that precondition; initial pre-toggle screenshot already displays dirty-dot and unsaved changes message",
+  "beforeToggleScreenshot": {
+    "path": "openspec/changes/frade-light-diagram-editor/evidence/initial-electron-20261026/artifacts/ui-contract-light-diagram--e2288-round-trip-preserve-content/light-under-dark.png",
+    "sha256": "442a13cf1bc6c7c3ff32c892449a6c6153ed713b123b591836f3b4831b2b2bbe",
+    "inspection": "Actually viewed; tab dot and unsaved message visible before any emulateMedia call"
+  },
+  "specification": "Preserve dirty state across presentation transitions, not invent a clean initial-state guarantee for minimal synthetic fixture",
+  "correction": "Capture dirty count in initial witness and assert exact count preservation after roundtrip; dropped/added dirty markers still fail. Existing document/settings/author checks remain exact, no production/historical assertion changes.",
+  "previousRun": "FAIL retained; native normal/forced/restored paint and author/file/settings checks reached before bad final assumption; three contexts NOT_RUN",
+  "runtimeReuse": "Application source/bundle unchanged; rerun test only without duplicate build"
+}

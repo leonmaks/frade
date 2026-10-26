@@ -1,5 +1,6 @@
 import type { Graph } from '@frade/draw'
 import { createEditorPresentationParticipant } from './editorPresentationParticipant'
+import { editorGridDotDiameter } from './editorPresentation'
 import type { PresentationParticipant, PhaseContext } from './service'
 import type { ResolvedTheme } from './types'
 import { createRootParticipant, validatePresentationSnapshot } from './rootParticipant'
@@ -42,9 +43,10 @@ export function createNativeParticipant(
     }
     const grid = graph.options.grid,
       args = grid.args
+    const dot = options.editorRoot && (!('type' in grid) || grid.type === 'dot') ? { thickness: editorGridDotDiameter } : {}
     ownedGridArgs = Array.isArray(args)
-      ? args.map((arg) => ({ ...arg, color: gridColor }))
-      : { ...args, color: gridColor }
+      ? args.map((arg) => ({ ...arg, color: gridColor, ...dot }))
+      : { ...args, color: gridColor, ...dot }
     graph.drawGrid({ ...grid, args: ownedGridArgs } as Parameters<Graph['drawGrid']>[0])
   }
   const participant: PresentationParticipant & { dispose(): void } = {

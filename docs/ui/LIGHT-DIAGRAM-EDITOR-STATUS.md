@@ -10,7 +10,7 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-IMPLEMENTATION — shared/native opt-in foundation GREEN. PRE07 plan PASS сохранён. Meaningful RED27 failed/1 preservation passed выполнен до production. Новый Light profile/composition/native opt-in: targeted103/103 PASS; affected typecheck/lint PASS. Actual DiagramView/FradeDiagramView wiring, CSS, frame/overlays и Electron ещё НЕ выполнены. READY_FOR_VERIFY: NO.
+OWNED_GUARD_REPAIR_PRE08_READY_FOR_DISPATCH. Initial native/frame Light profile работает:105 targeted tests PASS, Desktop build/typecheck PASS, actual4-context Electron probe PASS. Новый actual owned-guard RED открыт: single-editor dialog получает global Dark. Пользователь принял точный LDE-OWNED-GUARD-METADATA-01; применён только design543fdf4a…; Workbench/guard неизменны до fresh PRE. READY_FOR_VERIFY: NO.
 
 Цель: общий светлый редактор Draw.io/Frade с авторскими цветами и исключением Windows forced colors. Внешний workbench сохраняет выбранную тему. PRE/POST: **gpt-6-sol / xhigh**; actual backend/effort в receipts NOT_CONFIRMED. Новые визуальные baselines ещё не приняты.
 
@@ -22,7 +22,7 @@ IMPLEMENTATION — shared/native opt-in foundation GREEN. PRE07 plan PASS сох
 | Proposal / specs / design / BDD | DONE_PLANNING | 4 delta specs, 9 Gherkin definitions; phase/request replacement принят, точный design применён |
 | Strict / traceability / planning checkpoint | PASS | Fresh strict1/1, exact input reuse/proof hashes совпали |
 | Независимый PRE | PRE07_PASS | Plan-only cumulative PASS; прежние FAIL сохранены |
-| Shared scope / native editor (2.1–2.3) | IN_PROGRESS_GREEN | 2.1 done; reusable profile/composition/native opt-in GREEN; app wiring ещё не выполнен |
+| Shared scope / native editor (2.1–2.3) | IN_PROGRESS_GREEN | 2.1 done; shared profile/CSS/composition и оба retained roots подключены; bounded Electron4/4 PASS; owned guard repair awaits PRE08 |
 | Draw.io / owned overlays / parity (3.1–3.4) | NOT_RUN | Bridge, owner isolation, source replay и BDD/compliance |
 | Общие проверки / runtime (4.1) | NOT_RUN | Полная applicable matrix на финальном source |
 | Визуальное принятие (4.2) | NOT_RUN | Новая галерея двух движков |
@@ -47,9 +47,13 @@ IMPLEMENTATION — shared/native opt-in foundation GREEN. PRE07 plan PASS сох
 - [x] Автоматический PRE07 PASS получен и принят по clean receipt.
 - [x] Meaningful native RED и lifecycle edge RED зафиксированы до соответствующей реализации.
 - [x] Shared Light profile/composition и native opt-in GREEN103/103; scoped typecheck/lint PASS.
-- [ ] Scoped CSS, actual native/frame retained-root wiring и bounded runtime probe.
+- [x] Scoped CSS + native/frame retained-root wiring; targeted105/105 и Desktop build/typecheck PASS.
+- [x] Bounded Electron4/4 PASS,14 initial PNG; visual acceptance NOT_APPROVED.
+- [x] Actual owned dirty guard RED + точное решение по read-only metadata принято.
+- [x] Fresh owner design strict1/1 и candidate/dependency evidence подготовлены.
+- [ ] Automatic PRE08 PASS before owner hook/lease implementation.
 
-Tracked tasks: 4/13;1.1–1.3 и2.1 выполнены. 2.2/2.3 IN_PROGRESS, весь этап не закрыт. Ни один product task не объявлен готовым.
+Tracked tasks: 5/13;1.1–1.3,2.1,2.2 выполнены. 2.3 runtime proof IN_PROGRESS; full feature не закрыт. Ни один product task не объявлен готовым.
 
 ## Проверки, ограничения и следующее действие
 
@@ -57,7 +61,7 @@ PASS: historical strict и Gherkin parsing (9 definitions); exact fixture revers
 
 Стратегия перед следующим review: использовать проверенную transitive closure и byte proof; не повторять неизменные unit tests и большие regressions до реализации. Fresh PRE обязателен из-за scope/design delta; ранние dispatch занимали примерно 6–7 минут, PRE06 9m14s (измерено); следующий интервал — прогноз, не timeout. Проверить completeness и hashes до freeze; при новом scope/correctness finding остановить реализацию и пересмотреть стратегию, а не повторять известный FAIL.
 
-Следующее действие: scoped CSS и actual native/frame retained-root wiring через существующие participants; frame/ownership RED до реализации. Затем bounded dual-engine runtime probe. Full runtime/visual/POST остаются обязательными.
+Следующее действие: fresh strict/checkpoint и автоматический PRE08 gpt-6-sol/xhigh для accepted owner-metadata delta. Current owned-guard FAIL нельзя снять принятием scope; после PRE нужны implementation/GREEN и сохранение global/two-editor/focus/cancel isolation. Full runtime/visual/POST обязательны.
 
 Локальный review candidate: `2102b2a54cad7ec5ef333c01401698748221d95f`; результат/RCA checkpoint `df832214dd72f0ae2946798d5f4aa9d8ed4f36f2`; переносимые raw copies и финальная проекция фиксируются отдельно. Push NOT_RUN — новая remote-ветка не авторизована. Main/P02/Routing не менялись. Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
 
@@ -154,3 +158,25 @@ Baseline native RED27 failures/1 preserved guard PASS; новые edge RED2/2 д
 GREEN01 batch100 pass/1 traceability FAIL: ENVIRONMENT CRLF checkout двух неизменных pinned tests. Восстановлены только exact baseline blobs p01.bdd/service; pins/assertions/logical sources НЕ менялись. До/после base64/provenance в evidence/unchanged-binding-checkout-restoration-20261026. Baseline-launch cmd wrapper ERROR/NOT_RUN и reporting missing-empty-stdout сохранены отдельно; это не UI/compiler FAIL. Все original FAIL/RED остаются. Companion docs/ui/diagram-editor-presentation.md опубликован как approved scoped contract; он не заявляет завершённый rollout.
 
 Production views НЕ подключены; CSS/frame/overlays/real runtime/BDD bindings/compliance/visual/POST пока NOT_RUN. Commit — честный промежуточный checkpoint, не закрытие feature. Main/P02/Routing не менялись; push не выполняется без новой destination authorization.
+
+## Retained-root wiring / runtime preparation
+
+Shared CSS scoped to editor owner; no authored SVG selectors. Native/frame roots use same composite registration and original contexts/paint barrier. Frame DTO RED показал original kindDark; scoped adapter GREEN. Native dot RED2->1.2 подтверждён до UI-only thickness projection, size/type/snap unchanged; optional GridOptions discriminant исправлен после actual Desktop typecheck FAIL. Targeted105/105 PASS; build03 PASS (реальные build/typecheck/vendor checker). Build01 FAIL_ENV vendor checkout, build02 FAIL_TYPE сохранены.
+
+ENV RCA:1321 vendor resources/115286792 bytes converted by checkout CRLF. All exact baseline raw blobs match pinned upstream SHA1/size;8 byte vectors incl nonUTF8/CRLF; bounded chunks verified every byte before any write; all2851 pins PASS. Manifest/checker/vendor semantics/.gitattributes/global settings unchanged. Initial64MiB and UTF8-only preparations failed safely before writes; byte-oriented solution/provenance retained. This is environment preparation, not feature PASS.
+
+Initial runtime uses only synthetic createFlowFixture; external KA data not read. One Desktop build serves both engines. Run capped180s/max failures1 inside initial45min probe; screenshots/actual media state/author/settings witnesses retained.
+
+## Initial actual runtime PASS / next owned-overlay blocker
+
+Initial probe завершён06:20:14Z–07:04:10Z, внутри45min. Actual Electron4/4 PASS за13.3s: native/frame ×compact/comfortable, appDark/editorLight, Chromium forced-colors media active/none, visible Draw.io menu, original author/file/settings/dirty state preserved.14 PNG + computed/media records: evidence/initial-electron-02-20261026/INDEX.md, visualApproval NOT_APPROVED. Windows OS settings не переключались; не заявляем OS-level HC certification. Первый runtime FAIL из-за ошибочно принятого clean fixture baseline сохранён; actual initial screenshot уже имел dirty1. Новая проверка сравнивает исходный/final dirty-state, не меняя historical assertions или продукт.
+
+Начальный shared/native checkpoint fb2bd67c. Current source: profile/strict composition/native+frame opt-in/retained roots/CSS;105 targeted tests PASS, Desktop build03/typecheck PASS; scoped lint exit0 с одним react-hooks container dependency warning, ещё не снятым. Реальных full-matrix/BDD/compliance/POST PASS нет. Source-bound proof/source-neutral distinctions сохранены.
+
+Remaining visual observations: native Comfortable inner toolbar имеет вертикальный overflow affordance; Draw.io inner visible canvas выглядит белым при outer roleF9 — выяснить авторскую/derived подложку и private grid layering до любых color changes. Эти наблюдения не приняты и не дают права менять author page/domain geometry.
+
+Next actual RED: single native editor node drag/close opens shared-host dirty dialog rgb39,43,51 instead of requiredLight255. Raw screenshot/trace/result в evidence/owned-guard-red-20261026. Новое LDE-OWNED-GUARD-METADATA-01 принято: exact one-line ask(label,dirty), read-only UI origin only; остальные guard decisions/keys/order/body frozen. Proposalee78852e… manifestdabce08e…; applied design543fdf4a49f18bb62ba180dd054bb8ea11d2a29dcdc14374c898e70f3c037723. Live Workbench/guard не менялись. Scope acceptance НЕ PASS: следующий fresh PRE08 автоматически, затем repair only after PASS.
+
+## Owner metadata PRE08 readiness
+
+Accepted design543fdf4a… strict1/1 PASS. Live guard/body remains exact SHA39533d42…; Workbench hook не реализован. Candidate содержит текущие частичные root/CSS changes и source-bound105 unit/4 initial Electron proof; actual owner RED открыт намеренно до approved repair. Raw images/results/negative evidence не переписываются. Prepared packet включает новые shared imports/profile/CSS/E2E/companion, all existing transitive source closure, accepted scope и текущую raw environment provenance. Scope revalidation автоматическая gpt-6-sol/xhigh; during freeze no source/dashboard/index/HEAD writes. Vendor stat-only flags сняты matching-content Git add per-command autocrlf=false после всех2851 raw pins, index до/после empty; source не менялся.

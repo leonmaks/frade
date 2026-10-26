@@ -148,6 +148,7 @@ export function FradeDiagramView(
   const [container] = useState(() => {
     const element = document.createElement('div')
     element.className = 'repository-diagram'
+    if (presentation) element.dataset.fradeEditorPending = '1'
     return element
   })
   const parking = useRef<HTMLDivElement>(null)
@@ -366,7 +367,7 @@ export function FradeDiagramView(
       annotate()
       const themeOwner = presentationRef.current
       const themeParticipant = themeOwner
-        ? createNativeParticipant(instance, { id: presentationId.current })
+        ? createNativeParticipant(instance, { id: presentationId.current, editorRoot: container })
         : undefined
       const themeRegistration = themeParticipant
         ? themeOwner!.register(themeParticipant)

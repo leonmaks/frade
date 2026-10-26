@@ -1,0 +1,24 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/light-diagram-editor.test.tsx > LDE-001 LDE-007 frame prepares a validated Light DTO while keeping the authoritative Dark context
+AssertionError: expected 'dark' to be 'light' // Object.is equality
+
+Expected: "light"
+Received: "dark"
+
+ ❯ tests/ui-contract/light-diagram-editor.test.tsx:377:32
+    375|     const sent = JSON.parse(String(post.mock.calls.find(call => JSON.p…
+    376|     expect(sent.context).toEqual(phase(7, 'prepare'))
+    377|     expect(sent.snapshot.kind).toBe('light'); expect(sent.snapshot.id)…
+       |                                ^
+    378|     expect(sent.snapshot.colors['diagram.grid']).toBe('#CDD3DC')
+    379|     await prepared.apply(phase(7), new AbortController().signal)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade-worktrees\light-
+  │ diagram-editor\packages\ui-workspace
+
