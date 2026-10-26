@@ -605,3 +605,76 @@ for (const paint of ['white-page', 'colored-page', 'image-background'] as const)
     },
   )
 }
+
+// eslint-disable-next-line no-empty-pattern
+test('LDE surface frame dialog tooltip and panels use owned Light chrome', async ({}, info) => {
+  const f = await openEditor('frame', 'compact')
+  const frame = f.page.frameLocator('iframe'),
+    body = frame.locator('body')
+  const observations: unknown[] = []
+  try {
+    const before = await body.evaluate(() => {
+      const ui = (window as any).__ldeUi
+      return (window as any).mxUtils.getXml(ui.editor.getGraphXml())
+    })
+    observations.push(
+      await body.evaluate(() =>
+        Array.from(
+          document.querySelectorAll(
+            '.geMenubarContainer,.geToolbarContainer,.geSidebarContainer,.geSidebar,.geFormatContainer,.geFooterContainer,.geTabContainer',
+          ),
+        ).map((node) => ({
+          class: node.className,
+          background: getComputedStyle(node).backgroundColor,
+          color: getComputedStyle(node).color,
+          bounds: node.getBoundingClientRect().toJSON(),
+        })),
+      ),
+    )
+    await body.evaluate(() => (window as any).__ldeUi.actions.get('editDiagram').funct())
+    const dialog = frame.locator('.geDialog:visible')
+    await expect(dialog).toBeVisible()
+    const dialogStyle = await dialog.evaluate((node) => ({
+      background: getComputedStyle(node).backgroundColor,
+      color: getComputedStyle(node).color,
+      controls: Array.from(node.querySelectorAll('button,input,textarea')).map((el) => ({
+        tag: el.tagName,
+        text: el.textContent?.slice(0, 50),
+        height: el.getBoundingClientRect().height,
+      })),
+    }))
+    observations.push({ phase: 'actual-editDiagram-command', dialogStyle })
+    await f.page.screenshot({ path: info.outputPath('frame-dialog.png') })
+    expect(dialogStyle.background).toBe('rgb(245, 246, 248)')
+    await dialog
+      .locator('button')
+      .filter({ hasText: /^(Cancel|Отмена)$/ })
+      .click()
+    await expect(dialog).toBeHidden()
+    await body.evaluate(() =>
+      (window as any).__ldeUi.editor.graph.tooltipHandler.show('LDE fixture tooltip', 40, 100),
+    )
+    const tooltip = frame.locator('.mxTooltip:visible')
+    await expect(tooltip).toBeVisible()
+    const tooltipStyle = await tooltip.evaluate((node) => ({
+      background: getComputedStyle(node).backgroundColor,
+      color: getComputedStyle(node).color,
+      border: getComputedStyle(node).borderColor,
+    }))
+    observations.push({ phase: 'existing-mxTooltip-widget-fixture', tooltipStyle })
+    await f.page.screenshot({ path: info.outputPath('frame-tooltip.png') })
+    await writeFile(info.outputPath('surfaces.json'), JSON.stringify(observations, null, 2))
+    expect(['rgb(255, 255, 255)', 'rgb(245, 246, 248)']).toContain(tooltipStyle.background)
+    await body.evaluate(() => (window as any).__ldeUi.editor.graph.tooltipHandler.hide())
+    const after = await body.evaluate(() => {
+      const ui = (window as any).__ldeUi
+      return (window as any).mxUtils.getXml(ui.editor.getGraphXml())
+    })
+    expect(after).toBe(before)
+    expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+    expect(await readFile(f.settings, 'utf8')).toBe(f.settingsBefore)
+  } finally {
+    await writeFile(info.outputPath('surfaces-final.json'), JSON.stringify(observations, null, 2))
+    await f.app.close()
+  }
+})

@@ -1,0 +1,38 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\e2e\ui-contract-light-diagram-editor.spec.ts:562:1 › LDE surface frame dialog tooltip and panels use owned Light chrome (3.6s)
+[31mTesting stopped early after 1 maximum allowed failures.[39m
+
+
+  1) tests\e2e\ui-contract-light-diagram-editor.spec.ts:562:1 › LDE surface frame dialog tooltip and panels use owned Light chrome 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m"rgb(241, 243, 244)"[39m
+    Received array: [31m["rgb(255, 255, 255)", "rgb(245, 246, 248)"][39m
+
+      634 |     await f.page.screenshot({path:info.outputPath('frame-tooltip.png')})
+      635 |     await writeFile(info.outputPath('surfaces.json'), JSON.stringify(observations,null,2))
+    > 636 |     expect(['rgb(255, 255, 255)','rgb(245, 246, 248)']).toContain(tooltipStyle.background)
+          |                                                         ^
+      637 |     await body.evaluate(() => (window as any).__ldeUi.editor.graph.tooltipHandler.hide())
+      638 |     const after=await body.evaluate(() => {const ui=(window as any).__ldeUi;return (window as any).mxUtils.getXml(ui.editor.getGraphXml())})
+      639 |     expect(after).toBe(before)
+        at E:\dev\codex\frade-worktrees\light-diagram-editor\apps\desktop\tests\e2e\ui-contract-light-diagram-editor.spec.ts:636:57
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-light-diagram-editor\evidence\surface-inventory-01-20261026\artifacts\ui-contract-light-diagram--37d66-nels-use-owned-Light-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-light-diagram-editor\evidence\surface-inventory-01-20261026\artifacts\ui-contract-light-diagram--37d66-nels-use-owned-Light-chrome\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-light-diagram-editor\evidence\surface-inventory-01-20261026\artifacts\ui-contract-light-diagram--37d66-nels-use-owned-Light-chrome\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-light-diagram-editor.spec.ts:562:1 › LDE surface frame dialog tooltip and panels use owned Light chrome 
+  1 error was not a part of any test, see above for details

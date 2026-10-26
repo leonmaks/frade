@@ -358,6 +358,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
         '.geFooterContainer',
         '.geDialog',
         '.mxPopupMenu',
+        '.mxTooltip',
       ],
       controls = chrome.flatMap((selector) =>
         ['button', 'input', 'select', 'textarea', 'a.geButton', 'a.geItem', 'a.geStatus'].map(

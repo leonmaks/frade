@@ -10,7 +10,7 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-GEOMETRY_BACKING_INCREMENTAL_GREEN. PRE08 PASS. Owner118 unit/5 Electron GREEN retained. Bridge87/87, affected lint/typecheck and Desktop build PASS; geometry5/5, author background/image page=0 and page=1 each3/3 Electron PASS. Full feature/POST/visual acceptance incomplete. READY_FOR_VERIFY: NO.
+INCREMENTAL_CURRENT_SOURCE_GREEN. PRE08 PASS. Approved owner metadata/lease implemented; exact guard delta preserved. Final combined14/14 new Electron cases PASS in41.0s on unchanged source/bundle;25 PNG NOT_APPROVED. Bridge87/87, affected lint/build/typecheck PASS. Stage6/13 tasks complete; full matrix/BDD/compliance/source replay/visual/POST pending. READY_FOR_VERIFY: NO.
 
 Цель: общий светлый редактор Draw.io/Frade с авторскими цветами и исключением Windows forced colors. Внешний workbench сохраняет выбранную тему. PRE/POST: **gpt-6-sol / xhigh**; actual backend/effort в receipts NOT_CONFIRMED. Новые визуальные baselines ещё не приняты.
 
@@ -73,7 +73,7 @@ PASS: historical strict и Gherkin parsing (9 definitions); exact fixture revers
 
 Стратегия перед следующим review: использовать проверенную transitive closure и byte proof; не повторять неизменные unit tests и большие regressions до реализации. Fresh PRE обязателен из-за scope/design delta; ранние dispatch занимали примерно 6–7 минут, PRE06 9m14s (измерено); следующий интервал — прогноз, не timeout. Проверить completeness и hashes до freeze; при новом scope/correctness finding остановить реализацию и пересмотреть стратегию, а не повторять известный FAIL.
 
-Следующее действие: отдельные measured visual/layout RED для раскрытых overflow/backdrop issues в approved scope. Current owned-guard RED закрыт actual GREEN; global/two-editor/focus/cancel/rollback/stale isolation проверены. Full runtime/visual/POST обязательны.
+Следующее действие: завершить оставшуюся surface/author/keyboard/zoom matrix и точную адаптацию исторических visual/source controls; добавить stage BDD/compliance. Owner/geometry/backing/tooltip RED закрыты source-bound incremental GREEN. Full runtime/visual/POST обязательны.
 
 Локальный review candidate: `2102b2a54cad7ec5ef333c01401698748221d95f`; результат/RCA checkpoint `df832214dd72f0ae2946798d5f4aa9d8ed4f36f2`; переносимые raw copies и финальная проекция фиксируются отдельно. Push NOT_RUN — новая remote-ветка не авторизована. Main/P02/Routing не менялись. Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
 
@@ -204,3 +204,11 @@ PRE08-authorized metadata/opaque lease repair выполнен. Guard every-othe
 118/118 targeted tests PASS, affected typecheck/lint0 warnings PASS. Original URL-in-JSDOM/DOM-state lint failures сохранены; NodeURL/DOM setAttribute исправлены без suppressions. Opaque owner matches unique same-Workbench root; two-editor/global picker isolation, forced rollback, disposed/foreign/forged/generation leases и focus/cancel проходят. Owner Desktop build +5 actual Electron contexts PASS: local modalLight, Cancel retains edited node/dirty/file/settings; globalPicker rgb39,43,51 remainsDark. Raw old owner RED сохранён, не переименован PASS.
 
 Task2.3 completed from native/root identity/undo/grid preservation units plus actual Dark/forced native witness and companion docs; final comprehensive dirty/undo/startup matrix still required by4.1. Pending nativeComfortable toolbar visible overflow, Drawio actual inner backdrop/private-grid layering, complete popup/style-fidelity/a11y/BDD/compliance/source replay/full regressions/visual acceptance/verify/POST. No Main/P02/Routing/vendor semantic change; no new remote push.
+
+## Current-source incremental checkpoint — 26 October
+
+Geometry checkpoint ad0436f4735ecc18811d35b31fa1de39bc7f3bd2 committed. Tooltip .mxTooltip added to existing scoped bridge after actual RED; dialog and widget GREEN. Final combined14/14 new Electron contexts PASS in41.0s;25 current PNG + unchanged source/bundle manifest: evidence/incremental-runtime-final-20261026/INDEX.md. Bridge87/87 (85 unchanged historical), lint/build/typecheck PASS. Guide v1.0, FDS/A11Y applicability and partial limitations recorded in evidence/geometry-readiness-20261026/assessment.md and tooltip-readiness-20261026/assessment.md. Windows forced colors uses Chromium emulation, not OS configuration certification.
+
+Full feature remains6/13. Task3.1–3.4 in progress: remaining distinct surfaces/control states, alpha/gradient/palette fidelity, keyboard/zoom/reflow; executable BDD/compliance and exact current→preLDE→historical source chain. Then task4.1 final required matrix/performance/general regressions,4.2 new visual acceptance,4.3 verify/automatic POST gpt-6-sol/xhigh. No POST/archive/Main/push yet. Earlier FAIL preserved; repaired old cases are superseded only by explicit new source-bound GREEN. No human action currently needed.
+
+Publication: local authorized checkpoint only. Remote codex/frade-light-diagram-editor NOT_AUTHORIZED; push NOT_RUN. Main/P02/Routing unchanged. Status right-panel OPEN_REQUEST_QUEUED; visibility NOT_CONFIRMED.
