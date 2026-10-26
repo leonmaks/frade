@@ -10,7 +10,7 @@ Guide: v1.0; общий workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4
 
 ## Текущая фаза
 
-PLAN_READY. Все четыре planning artifacts созданы, strict validation PASS. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
+PRE_PREPARATION. Apply авторизован прямым запросом пользователя. Все planning artifacts созданы, fresh strict validation PASS. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
 
 Пользователь подтвердил единый светлый редактор Draw.io/Frade, сохранение авторских цветов и приоритет Windows forced colors. PRE/POST этого этапа: **gpt-6-sol / xhigh**. Внешний workbench сохраняет выбранную тему; локальные панели/меню/диалоги редакторов используют общий светлый контракт. Новые visual baselines ещё не приняты.
 
@@ -22,7 +22,7 @@ PLAN_READY. Все четыре planning artifacts созданы, strict valida
 | Proposal / четыре delta specs / design / tasks | DONE | Все planning artifacts на месте |
 | BDD и стратегия / промпты PRE/POST | DONE_PLANNING | 9 определений Gherkin; bindings NOT_IMPLEMENTED |
 | Strict validation / связность scenarios | PASS | final-strict-validation.json без issues; 3 старых сценария точны, 2 ожидаемых scope-изменения записаны отдельно |
-| Независимый автоматический PRE | NOT_RUN | Runner discovery AVAILABLE; canary/model/runtime ещё не проверены реальным запуском |
+| Независимый автоматический PRE | PREPARING | gpt-6-sol/xhigh; 50 source hashes revalidated; candidate замораживается на время dispatch |
 | Meaningful RED / shared scope / native adapter | NOT_RUN | Группа 2 tasks.md |
 | Draw.io / overlays / authored parity | NOT_RUN | Группа 3 tasks.md |
 | Общие проверки / runtime / screenshots | NOT_RUN | verification.md, финальные исходники |
@@ -66,3 +66,7 @@ Tracked task progress: 2/13 (1.1 и 1.2); implementation tasks не отмече
 Planning checkpoint: LOCAL_COMMITTED `d375eac895688879334702f931c29b61147a2376`; последующее обновление статуса фиксируется отдельным локальным commit. Push: NOT_RUN; новая remote-ветка не авторизована. Main, P02 и Routing не изменены. Архивы Foundation/P01/P01 Main/VS Code Dark 2026 сохраняют свой отдельный статус; их PASS не является PASS этого change.
 
 Материалы: [proposal](../../openspec/changes/frade-light-diagram-editor/proposal.md), [design](../../openspec/changes/frade-light-diagram-editor/design.md), [tasks](../../openspec/changes/frade-light-diagram-editor/tasks.md), [verification](../../openspec/changes/frade-light-diagram-editor/verification.md), [planning evidence](../../openspec/changes/frade-light-diagram-editor/evidence/planning/).
+
+## Возобновление 26 октября 2026
+
+Текущий checkpoint до PRE: `948cf36bf370f6cecd8e0a3ba0198b3a8c842279`. Пользователь разрешил PRE и реализацию после PASS. Обнаруженные 50 исходников совпадают с planning inventory. Стратегия сохранена: общий derived scope, короткий bounded RED/native/frame/portal probe, затем финальные обязательные прогоны; повтор полного historical volume не планируется. PRE запускается автоматически; до получения чистого PASS production не меняется. Во время freeze dashboard не изменяется.
