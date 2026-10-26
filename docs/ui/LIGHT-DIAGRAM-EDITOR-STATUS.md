@@ -58,13 +58,13 @@ Tracked task progress: 1/13; 1.2 переоткрыта из-за доказан
 - NOT_RUN: typecheck/lint/unit/runtime/a11y/screenshots/PRE/POST — planning не меняет исходники и не заявляет эти проверки пройденными.
 - NOT_VERIFIED: remote CI/branch protection. Новых настроек защиты веток нет.
 
-Первый managed-worktree checkout: FAIL_ENVIRONMENT из-за длинных путей Windows. Отдельный обычный Git worktree создан с per-command `core.longpaths=true`; глобальные настройки не менялись. App attachment BLOCKED: этот checkout не managed worktree; продолжение использует явный путь. Продуктовых blocker не установлено; исходный код не изменён.
+Первый managed-worktree checkout: FAIL_ENVIRONMENT из-за длинных путей Windows. Отдельный обычный Git worktree создан с per-command `core.longpaths=true`; глобальные настройки не менялись. App attachment BLOCKED: этот checkout не managed worktree; продолжение использует явный путь. Текущие planning/scope blockers перечислены в PRE 02; исходный код не изменён.
 
 Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED. Dashboard — текущая проекция, не approval и не замена исторического evidence.
 
 ## Следующее действие и публикация
 
-В этом запросе подготовлено и локально закоммичено только planning. Следующий запрос «Продолжи» запускает apply-подготовку и автоматический PRE по выбранному плану; до PRE PASS production запрещён. Пользователь не переносит review-промпты/результаты вручную.
+В этом запросе автоматически выполнены PRE 01/02, оба FAIL. Текущий следующий шаг — решение по LDE-PRE-RECONCILIATION-01; после принятия применить ровно drafts и выполнить fresh PRE. До PRE PASS production запрещён. Пользователь не переносит review-промпты/результаты вручную.
 
 Planning checkpoint: LOCAL_COMMITTED `d375eac895688879334702f931c29b61147a2376`; последующее обновление статуса фиксируется отдельным локальным commit. Push: NOT_RUN; новая remote-ветка не авторизована. Main, P02 и Routing не изменены. Архивы Foundation/P01/P01 Main/VS Code Dark 2026 сохраняют свой отдельный статус; их PASS не является PASS этого change.
 
@@ -89,3 +89,7 @@ Blockers: добавить read-only baseline ThemePicker.tsx/picker.test.tsx в
 [Точный scope и четыре drafts](../../openspec/changes/frade-light-diagram-editor/decisions/lde-pre-reconciliation-01/proposal.md), proposal SHA256 `daa3d62400f26e78f7cdf736385e39abf327cd7dee614ebcb73fa9f4733029a1`, manifest SHA256 `19f50fa30b53341932701d07fc22ce204e8da08d82504e03fc3124714144f5a8`. Статус PROPOSED_NOT_ACCEPTED. Draft change + четыре merged main specs strict PASS (5/5) в изолированной fixture. Активные design/spec drafts НЕ применены; source/control code НЕ менялся. Новый PRE не запускается до решения, чтобы не повторять дорогое review известного blocker.
 
 Почему требуется человек: AGENTS §2 и текущий design §6 прямо запрещают два дополнительных control пути. Независимая модель не вправе расширить эту границу; автоматические reviews уже выполняются без ручной передачи. После принятия — применить ровно drafts, strict, fresh PRE gpt-6-sol/xhigh и только после PASS meaningful RED/implementation.
+
+## Checkpoint ожидания решения
+
+Локальный checkpoint: `fdbcfdcf596220b74765bbf4e5b53f253e71f550`. Полный diff от baseline ограничен этим change и dashboard; 50 baseline source hashes повторно совпали. Новая remote-ветка не публиковалась. Запрошено точное решение через UI; статусы FAIL не сняты. Правая панель повторно OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED. READY_FOR_VERIFY: NO.
