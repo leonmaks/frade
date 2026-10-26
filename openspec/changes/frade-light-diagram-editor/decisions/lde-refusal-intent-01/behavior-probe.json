@@ -1,0 +1,114 @@
+{
+  "atUtc": "2026-10-26T05:36:11.849Z",
+  "classification": "STATE_TRANSITION / ABSTRACTION_BOUNDARY",
+  "source": "Actual page.addInitScript callback extracted/transpiled from full source; deterministic mocked message boundary; actual Electron runtime NOT_RUN",
+  "original": {
+    "darkTarget": {
+      "refused": true,
+      "stopped": true,
+      "contextPreserved": true,
+      "messagePreserved": true
+    },
+    "cancel": {
+      "refused": false,
+      "stopped": false,
+      "contextPreserved": true,
+      "messagePreserved": true
+    }
+  },
+  "acceptedOneLineCounterexample": {
+    "target": {
+      "refused": true,
+      "stopped": true,
+      "contextPreserved": true,
+      "messagePreserved": true
+    },
+    "cancel": {
+      "refused": true,
+      "stopped": true,
+      "contextPreserved": true,
+      "messagePreserved": true
+    },
+    "status": "REPRODUCED_FAIL"
+  },
+  "candidate": {
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "unarmed Light is not refused",
+        "expectedRefused": false,
+        "refused": false,
+        "stopped": false,
+        "contextPreserved": true,
+        "messagePreserved": true
+      },
+      {
+        "name": "armed non-prepare does not latch",
+        "expectedRefused": false,
+        "refused": false,
+        "stopped": false,
+        "contextPreserved": true,
+        "messagePreserved": true
+      },
+      {
+        "name": "armed wrong kind does not latch",
+        "expectedRefused": false,
+        "refused": false,
+        "stopped": false,
+        "contextPreserved": true,
+        "messagePreserved": true
+      },
+      {
+        "name": "target prepare is refused",
+        "expectedRefused": true,
+        "refused": true,
+        "stopped": true,
+        "contextPreserved": true,
+        "messagePreserved": true
+      },
+      {
+        "name": "same intent reprepare remains refused",
+        "expectedRefused": true,
+        "refused": true,
+        "stopped": true,
+        "contextPreserved": true,
+        "messagePreserved": true
+      },
+      {
+        "name": "cancel new intent is allowed while flag stays armed",
+        "expectedRefused": false,
+        "refused": false,
+        "stopped": false,
+        "contextPreserved": true,
+        "messagePreserved": true
+      },
+      {
+        "name": "same target still refused after cancel observation",
+        "expectedRefused": true,
+        "refused": true,
+        "stopped": true,
+        "contextPreserved": true,
+        "messagePreserved": true
+      },
+      {
+        "name": "rearm without intermediate messages resets target",
+        "expectedRefused": true,
+        "refused": true,
+        "stopped": true,
+        "contextPreserved": true,
+        "messagePreserved": true
+      },
+      {
+        "name": "disarm allows previous target",
+        "expectedRefused": false,
+        "refused": false,
+        "stopped": false,
+        "contextPreserved": true,
+        "messagePreserved": true
+      }
+    ]
+  },
+  "exactReverseSha256": "3535fd97bbb5ad514abd7cc896e2dab750042a757afde459cd4be71984e367e9",
+  "sourceUnchanged": true,
+  "draftSha256": "a9c77f58d4bce130db999ca6e3cf3cb1cb7bc611fca32b68ad3beabcddcdcd34"
+}

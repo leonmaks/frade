@@ -1,0 +1,7 @@
+**High severity blocker — the approved refusal guard also rejects cancellation.** The exact `dark` → `light` predicate authorized in `decisions/lde-refusal-fixture-01/proposal.md:11-18` applies to every armed frame `prepare`. Under the fixed Light projection in `design.md:27-31`, both the intended Dark selection and the later cancellation send a Light editor snapshot. The flag remains armed when Escape is pressed in `apps/desktop/tests/e2e/ui-contract-theme.spec.ts:583-597` and `:3447-3459`. Cancellation calls `prepare` again (`packages/ui-workspace/src/design/theme/service.ts:414-415,628`), so the guard refuses it; the picker closes only after a successful cancellation (`packages/ui-workspace/src/design/theme/ThemePicker.tsx:65-68`). Both retained regressions would fail.
+
+This is a **test-control plan conflict**, not a challenge to the accepted fixed Light, reference-geometry, or Windows forced-colors product decisions. Correct it with an explicitly authorized, exact fixture rule that refuses the intended request while allowing the subsequent cancellation. Preserve the behavioral assertions, deadlines, benchmark, and current → pre-LDE → historical replay proof; then revalidate and request a fresh PRE.
+
+All 222 packet entries matched their recorded hashes. The restored benchmark bytes match the unchanged `1bcd2e…` pin; this resolves PRE04’s byte mismatch but does not resolve the refusal conflict. No implementation, runtime, or visual approval is claimed.
+
+GATE_STATUS: FAIL

@@ -10,7 +10,7 @@ Guide: v1.0; общий workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4
 
 ## Текущая фаза
 
-PRE_04_FAIL_ENVIRONMENT; PRE_05_PREPARATION — LDE-REFUSAL-FIXTURE-01 ACCEPTED. LDE-PRE-RECONCILIATION-01 остаётся ACCEPTED. Три автоматических PRE завершились FAIL; product implementation не начат. Активный change синтаксически valid, но correctness/scope blockers открыты. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
+BLOCKED_SCOPE_DECISION — LDE-REFUSAL-INTENT-01. Предыдущий exact one-line scope остаётся исторически ACCEPTED, но не реализован и доказанно непригоден для cancel. LDE-PRE-RECONCILIATION-01 остаётся ACCEPTED. Три автоматических PRE завершились FAIL; product implementation не начат. Активный change синтаксически valid, но correctness/scope blockers открыты. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
 
 Пользователь подтвердил единый светлый редактор Draw.io/Frade, сохранение авторских цветов и приоритет Windows forced colors. PRE/POST этого этапа: **gpt-6-sol / xhigh**. Внешний workbench сохраняет выбранную тему; локальные панели/меню/диалоги редакторов используют общий светлый контракт. Новые visual baselines ещё не приняты.
 
@@ -46,7 +46,7 @@ PRE_04_FAIL_ENVIRONMENT; PRE_05_PREPARATION — LDE-REFUSAL-FIXTURE-01 ACCEPTED.
 - [ ] Получить решение по расширению scope двумя историческими origin controls.
 - [ ] После нового запроса на выполнение — подготовить immutable packet и автоматически выполнить PRE.
 
-Tracked task progress: 2/13; точное fixture-решение принято, design draft применён. PRE 1.3 не завершена; implementation tasks не выполнены.
+Tracked task progress: 1/13; 1.2 переоткрыта из-за воспроизведённого fixture state-transition конфликта. PRE 1.3 не завершена; production не начат.
 
 ## Проверки и ограничения
 
@@ -121,3 +121,11 @@ PRE04 raw result `6b15430cf929305e1c529eed730f080af40d2ade57fcd2a183c61f70a2f063
 ## PRE05 readiness
 
 Exact canonical benchmark bytes восстановлены без Git source diff и без изменения pin. Оригинальные origin/pin tests реально выполнены: 6/6 PASS (Vitest 1.43s). Offline frozen install: 336 cache packages, 0 downloads, 7.1s; lockfile/production unchanged. Исходный raw inventory сохранён: 49 raw sources совпадают, один benchmark восстановлен byte-for-byte из Git baseline с явной provenance и portable base64 before/after. Следующий fresh PRE05 получает эту доказательную цепочку; прежние FAIL сохраняются. Во время review status frozen.
+
+## PRE05 — FAIL и проверенное intent-bound предложение
+
+PRE05 status FAIL; packet/candidate unchanged. Raw result SHA256 `39b5ea73c8894a6e623f475a18ae2bb744d1a49e353e0dbb1eb38f1bd372b98a`. Reviewer подтвердил устранение PRE04 benchmark mismatch, но нашёл ошибку владельца в предложенной one-line fixture: она отказывает cancel, поскольку оба снимка editor Light. Исходный live fixture не менялся. RCA: STATE_TRANSITION / ABSTRACTION_BOUNDARY.
+
+На полном исходном callback детерминированно воспроизведён cancel FAIL старого предложения и проверен новый request-bound draft: 9/9 checks PASS, включая повторный отказ того же intent и успешный cancel с новым requestId, rearm и disarm. Первый probe ERROR (отсутствовал mock performance.now) сохранён отдельно; actual Electron/runtime NOT_RUN. Все изменения draft точно обратимы к pre-LDE3535..., все assertions/actions/deadlines вне двух mapped edits byte-identical.
+
+[Точный LDE-REFUSAL-INTENT-01](../../openspec/changes/frade-light-diagram-editor/decisions/lde-refusal-intent-01/proposal.md), proposal SHA256 `5113e9c9e6ae259729c6dcea7b6fd03d7baa598a176db123c0377a7592162fde`, manifest `b75fb70e391ff79f8aca0ae4ba0991d4783ba0909931bb99ca69adc1608f2405`. PROPOSED_NOT_ACCEPTED; заменяет только ещё не реализованную one-line fixture policy. Ни design draft, ни live TS draft не применены. Нужен человек: AGENTS §6 и принятый точный scope разрешают лишь прежнюю одну строку, а новый initializer/request latch выходит за неё. После принятия — только design, fresh PRE gpt-6-sol/xhigh, meaningful RED/implementation после PASS. До решения не запускаем очередной review заведомо неверного плана. READY_FOR_VERIFY: NO.
