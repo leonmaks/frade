@@ -10,7 +10,7 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-BLOCKED_SCOPE_DECISION — LDE-REFUSAL-PHASE-INTENT-01. PRE06 завершился FAIL: intent-only draft блокирует same-request compensation phase rollback. Live fixture/production неизменны. Выполнен полный RCA phase graph и реальный service probe: 16 callback checks / 6 sequences PASS с exact original-service trace parity. Новый draft не принят и не применён. PRE01–06 raw FAIL сохранены. READY_FOR_VERIFY: NO.
+PRE07_READY_FOR_DISPATCH. Пользователь утвердил точный LDE-REFUSAL-PHASE-INTENT-01 и drafts. Применён только design3d746692…; live fixture3535fd97… и production неизменны. PRE01–06 raw FAIL сохранены; fresh PRE07 gpt-6-sol/xhigh ещё не завершён. Реальный service probe:16 checks /6 sequences PASS с original trace parity; это не Electron PASS. READY_FOR_VERIFY: NO.
 
 Цель: общий светлый редактор Draw.io/Frade с авторскими цветами и исключением Windows forced colors. Внешний workbench сохраняет выбранную тему. PRE/POST: **gpt-6-sol / xhigh**; actual backend/effort в receipts NOT_CONFIRMED. Новые визуальные baselines ещё не приняты.
 
@@ -19,9 +19,9 @@ BLOCKED_SCOPE_DECISION — LDE-REFUSAL-PHASE-INTENT-01. PRE06 завершилс
 | Этап | Статус | Фактический результат / следующий шаг |
 |---|---|---|
 | Изоляция / read-only inventory | DONE | Baseline и 50 raw sources сохранены; benchmark checkout восстановлен точным baseline blob с отдельной provenance |
-| Proposal / specs / design / BDD | DONE_PLANNING | 4 delta specs, 9 Gherkin definitions; intent scope принят, phase/request replacement ожидает решения |
-| Strict / traceability / planning checkpoint | SYNTAX_PASS / BLOCKED_SCOPE | Fresh strict 1/1, но PRE06 correctness blocker и новое точное решение |
-| Независимый PRE | FAIL01–06 | Нужен принятый forward-phase/request scope перед fresh PRE |
+| Proposal / specs / design / BDD | DONE_PLANNING | 4 delta specs, 9 Gherkin definitions; phase/request replacement принят, точный design применён |
+| Strict / traceability / planning checkpoint | PASS | Fresh strict1/1, exact input reuse/proof hashes совпали |
+| Независимый PRE | FAIL01–06; PRE07_PENDING | Fresh cumulative review принятого forward-phase/request scope |
 | Shared scope / native editor (2.1–2.3) | NOT_RUN | Meaningful RED, реализация и focused GREEN после PRE PASS |
 | Draw.io / owned overlays / parity (3.1–3.4) | NOT_RUN | Bridge, owner isolation, source replay и BDD/compliance |
 | Общие проверки / runtime (4.1) | NOT_RUN | Полная applicable matrix на финальном source |
@@ -42,10 +42,12 @@ BLOCKED_SCOPE_DECISION — LDE-REFUSAL-PHASE-INTENT-01. PRE06 завершилс
 - [x] Сохранить fresh strict/traceability; checkpoint фиксируется перед freeze.
 - [x] Подготовить полный packet и выполнить PRE06; FAIL сохранён.
 - [x] После второго неудачного draft выполнить полный RCA/service transition probe; новый exact draft готов.
-- [ ] Получить решение LDE-REFUSAL-PHASE-INTENT-01, согласовать design и выполнить fresh PRE.
+- [x] Получить решение LDE-REFUSAL-PHASE-INTENT-01; применить только точный design.
+- [x] Fresh strict1/1; exact service proof/mapping reuse проверены.
+- [ ] Автоматический PRE07 PASS (pending).
 - [ ] После PASS выполнить meaningful RED и реализацию в разрешённых путях.
 
-Tracked tasks: 1/13; 1.2 переоткрыта: syntax PASS не закрывает новый scope/correctness conflict. 1.3 PRE не завершена. Ни один product task не объявлен готовым.
+Tracked tasks: 2/13; planning1.1/1.2 выполнены после принятия scope и fresh validation;1.3 PRE pending. Ни один product task не объявлен готовым.
 
 ## Проверки, ограничения и следующее действие
 
@@ -53,7 +55,7 @@ PASS: historical strict и Gherkin parsing (9 definitions); exact fixture revers
 
 Стратегия перед следующим review: использовать проверенную transitive closure и byte proof; не повторять неизменные unit tests и большие regressions до реализации. Fresh PRE обязателен из-за scope/design delta; ранние dispatch занимали примерно 6–7 минут, PRE06 9m14s (измерено); следующий интервал — прогноз, не timeout. Проверить completeness и hashes до freeze; при новом scope/correctness finding остановить реализацию и пересмотреть стратегию, а не повторять известный FAIL.
 
-Следующее действие: точное решение по phase/request fixture. До решения новый дорогой PRE не запускается. После принятия — только design, strict/checkpoint, автоматический cumulative PRE gpt-6-sol/xhigh; production только после PASS и RED.
+Следующее действие: fresh strict/checkpoint, автоматический cumulative PRE07 gpt-6-sol/xhigh. Во время review candidate/dashboard/index/HEAD заморожены; production только после PASS и RED.
 
 Локальный review candidate: `2102b2a54cad7ec5ef333c01401698748221d95f`; результат/RCA checkpoint `df832214dd72f0ae2946798d5f4aa9d8ed4f36f2`; переносимые raw copies и финальная проекция фиксируются отдельно. Push NOT_RUN — новая remote-ветка не авторизована. Main/P02/Routing не менялись. Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
 
@@ -134,3 +136,7 @@ PRE06 доказал новый blocker: same requestId используется
 Выполнен сохранённый probe.cjs на настоящем неизменном service.ts/types.ts и полном извлечённом callback: 16 phase/operation/rearm checks + 6 service sequences PASS с exact trace/context/status parity исходного Dark поведения, исключая только projected kind. Предыдущий intent-only RECOVERY_BLOCKED воспроизведён. Corrected draft разрешает только forward phase prepare захватывать/отвергать target; join/rollback никогда не захватываются, same-target membership reprepare всё ещё REFUSED. Paint/host mocked — Electron/runtime/visual NOT_RUN. Начальный и расширенный probes сохранены отдельно.
 
 [Точная замена LDE-REFUSAL-PHASE-INTENT-01](../../openspec/changes/frade-light-diagram-editor/decisions/lde-refusal-phase-intent-01/proposal.md): proposal SHA256 1879913c2acdee076f7a136674004dfcdf288e26557776d0c8b19fa166d28d5c; manifest 27f36eb2ea197e4ff420309f6c852d98379ffc3ad91548027778891586aad764. PROPOSED_NOT_ACCEPTED. Полный live source остаётся3535fd97…, exact reverse proof PASS; original tests/assertions/actions/timeouts/REFUSED context и benchmark1bcd2e… сохраняются. До решения — BLOCKED_SCOPE_DECISION; без нового заведомо ошибочного review.
+
+## LDE-REFUSAL-PHASE-INTENT-01 принято
+
+Прямой ответ пользователя: «Утверждаю точную замену и drafts». Proposal1879913c… / manifest27f36eb2… и все raw draft/probe hashes совпали. Active design3d746692fb184d5c08bd9bf6e73569cda37c17010326af53670320fab07a9172. Изменён только design и process/status; live fixture3535fd97… не менялась. После fresh strict — committed candidate и автоматический PRE07 с полным проверенным dependency packet. Не повторяем неизменные service probes/pin tests/полные regressions; их exact input hashes будут записаны для reuse. PRE01–06 остаются FAIL; READY_FOR_VERIFY:NO.

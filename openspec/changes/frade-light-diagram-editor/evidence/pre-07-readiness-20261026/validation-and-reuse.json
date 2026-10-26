@@ -1,0 +1,63 @@
+{
+  "atUtc": "2026-10-26T06:10:32.306Z",
+  "strategy": {
+    "objective": "Clean cumulative independent PRE on exact accepted coherent plan before production",
+    "selected": "Reuse verified in-repository transitive dependency closure and immutable proofs; fresh full PRE only because accepted fixture scope/design changed",
+    "alternatives": {
+      "focusedOnly": "Cannot close cumulative PRE",
+      "repeatUnchangedUnitOrCallbackRuns": "Duplicate exact source/input coverage; hashes prove reuse",
+      "implementBeforePRE": "Forbidden by gate contract",
+      "anotherManualPartialPacket": "Rejected after earlier completeness failures"
+    },
+    "measuredPriorRun": "PRE06 9m14s total",
+    "forecast": "6–10 minutes total, uncertain, not a hard timeout or success probability",
+    "reassess": "Check actual process/receipt if beyond previous measured interval; no duplicate dispatch or candidate mutation; correctness findings stop implementation"
+  },
+  "strict": {
+    "command": "openspec validate frade-light-diagram-editor --strict --json",
+    "exit": 0,
+    "path": "openspec/changes/frade-light-diagram-editor/evidence/pre-07-readiness-20261026/strict-validation.json",
+    "sha256": "8aadeceb9e9039feb982f971025784c1f306f56686c7e74d40f3829162ea10fe",
+    "passed": 1,
+    "failed": 0
+  },
+  "reusedServiceProbe": {
+    "path": "openspec/changes/frade-light-diagram-editor/decisions/lde-refusal-phase-intent-01/behavior-service-probe.final.json",
+    "sha256": "21f665eed9d830c630ecc14e0d6b2de1c8c858bd6f08f1310e01f08a4c3b87d5",
+    "phaseChecks": 16,
+    "serviceSequences": 6,
+    "status": "PASS",
+    "sources": [
+      {
+        "path": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+        "sha256": "3535fd97bbb5ad514abd7cc896e2dab750042a757afde459cd4be71984e367e9"
+      },
+      {
+        "path": "packages/ui-workspace/src/design/theme/service.ts",
+        "sha256": "6dd3e54cb9d4df5a8e9ef7409e05d6e7b175aa30cd48de7184b3eb11d666eaa6"
+      },
+      {
+        "path": "packages/ui-workspace/src/design/theme/types.ts",
+        "sha256": "43f5b93ccf6bc6d1c6016231e45d4e4c940cf9ba1f9193376f0e0d5eef05f05b"
+      }
+    ],
+    "limits": "Real unchanged service/state transitions plus actual extracted/transpiled fixture callback; mocked paint/host transport, not Electron/IPC/rendering PASS"
+  },
+  "reusedMapping": [
+    {
+      "path": "openspec/changes/frade-light-diagram-editor/evidence/planning/final-scenario-integrity.json",
+      "sha256": "b36c0ad3c3b8b9548236c35af6e5a5f2d1d8db358b60bdc06aeb9bd6be355649"
+    },
+    {
+      "path": "openspec/changes/frade-light-diagram-editor/bdd/light-diagram-editor.feature",
+      "sha256": "78ede23958a4ea53562c35e4bbf92b4844d5694ba0a6a624dd6db13236d250b2"
+    },
+    {
+      "path": "openspec/changes/frade-light-diagram-editor/verification.md",
+      "sha256": "b083cb430694c45234905b8aa5c98bb9f98b6fc5e3c2e1071e83cea9818ebe10"
+    }
+  ],
+  "benchmarkSha256": "1bcd2e294f145a7e18629bca4113f3d9f0f510a3e5a00f047e05313070135781",
+  "production": "UNCHANGED",
+  "readyForVerify": false
+}
