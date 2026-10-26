@@ -1,10 +1,15 @@
+import { inflateSync } from 'node:zlib'
 import { test, expect, _electron as electron, type Page } from '@playwright/test'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { createFlowFixture } from '../../../../scripts/flow-fixtures.mjs'
 
 type Engine = 'native' | 'frame'
-async function openEditor(engine: Engine, density: 'compact' | 'comfortable') {
+async function openEditor(
+  engine: Engine,
+  density: 'compact' | 'comfortable',
+  frameAttributes?: string,
+) {
   const fixture = await createFlowFixture(),
     profile = join(fixture.destination, 'lde-profile')
   await mkdir(profile)
@@ -32,6 +37,16 @@ async function openEditor(engine: Engine, density: 'compact' | 'comfortable') {
     '_diagrams',
     engine === 'native' ? 'Flows.frade' : 'Flows.drawio',
   )
+  if (frameAttributes) {
+    if (engine !== 'frame') throw Error('Page/image fixture is Drawio-only')
+    const original = await readFile(file, 'utf8')
+    await writeFile(
+      file,
+      original
+        .replace('page="0"', 'page="1"')
+        .replace('<mxGraphModel ', '<mxGraphModel ' + frameAttributes + ' '),
+    )
+  }
   const bytes = await readFile(file, 'utf8'),
     settingsBefore = await readFile(settings, 'utf8')
   const app = await electron.launch({
@@ -323,3 +338,270 @@ test('LDE owned dirty guard uses the originating editor Light scope', async ({},
     await f.app.close()
   }
 })
+
+function ldeDecodePng(bytes: Buffer) {
+  let width = 0,
+    height = 0,
+    channels = 0
+  const blocks: Buffer[] = []
+  expect(bytes.subarray(0, 8)).toEqual(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
+  for (let at = 8; at < bytes.length;) {
+    const size = bytes.readUInt32BE(at),
+      type = bytes.toString('ascii', at + 4, at + 8),
+      data = bytes.subarray(at + 8, at + 8 + size)
+    if (type === 'IHDR') {
+      width = data.readUInt32BE(0)
+      height = data.readUInt32BE(4)
+      channels = data[9] === 6 ? 4 : data[9] === 2 ? 3 : 0
+      expect(data[8]).toBe(8)
+      expect(data[12]).toBe(0)
+      expect(channels).toBeGreaterThan(0)
+    }
+    if (type === 'IDAT') blocks.push(data)
+    at += size + 12
+  }
+  const input = inflateSync(Buffer.concat(blocks)),
+    stride = width * channels,
+    pixels = Buffer.alloc(stride * height)
+  let at = 0
+  for (let y = 0; y < height; y++) {
+    const filter = input[at++]
+    for (let x = 0; x < stride; x++) {
+      const i = y * stride + x,
+        left = x >= channels ? pixels[i - channels] : 0,
+        up = y > 0 ? pixels[i - stride] : 0,
+        diagonal = y > 0 && x >= channels ? pixels[i - stride - channels] : 0
+      let predictor = 0
+      if (filter === 1) predictor = left
+      else if (filter === 2) predictor = up
+      else if (filter === 3) predictor = Math.floor((left + up) / 2)
+      else if (filter === 4) {
+        const p = left + up - diagonal,
+          a = Math.abs(p - left),
+          b = Math.abs(p - up),
+          c = Math.abs(p - diagonal)
+        predictor = a <= b && a <= c ? left : b <= c ? up : diagonal
+      } else expect(filter).toBe(0)
+      pixels[i] = (input[at++] + predictor) & 255
+    }
+  }
+  expect(at).toBe(input.length)
+  return { width, height, channels, pixels }
+}
+
+for (const density of ['compact', 'comfortable'] as const)
+  for (const coarse of [false, true]) {
+    // eslint-disable-next-line no-empty-pattern
+    test(`LDE geometry native toolbar ${density}/coarse=${coarse} has no vertical clipping`, async ({}, info) => {
+      const f = await openEditor('native', density)
+      const session = await f.page.context().newCDPSession(f.page)
+      try {
+        if (coarse) {
+          await session.send('Emulation.setTouchEmulationEnabled', {
+            enabled: true,
+            maxTouchPoints: 1,
+          })
+          await expect
+            .poll(() => f.page.evaluate(() => matchMedia('(pointer: coarse)').matches))
+            .toBe(true)
+        }
+        const metrics = await f.page
+          .locator('.frade-canvas > main > header')
+          .evaluate((header) => ({
+            clientHeight: header.clientHeight,
+            scrollHeight: header.scrollHeight,
+            height: header.getBoundingClientRect().height,
+            padding: getComputedStyle(header).padding,
+            coarse: matchMedia('(pointer: coarse)').matches,
+            controls: Array.from(header.querySelectorAll('button')).map((button) => ({
+              text: button.textContent,
+              height: button.getBoundingClientRect().height,
+              top: button.getBoundingClientRect().top,
+              bottom: button.getBoundingClientRect().bottom,
+            })),
+          }))
+        await writeFile(info.outputPath('toolbar-metrics.json'), JSON.stringify(metrics, null, 2))
+        await f.page.screenshot({ path: info.outputPath('toolbar.png') })
+        expect(metrics.scrollHeight).toBeLessThanOrEqual(metrics.clientHeight)
+        for (const control of metrics.controls)
+          expect(control.height).toBeGreaterThanOrEqual(
+            coarse ? 44 : density === 'comfortable' ? 36 : 28,
+          )
+        expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+      } finally {
+        await session.detach()
+        await f.app.close()
+      }
+    })
+  }
+// eslint-disable-next-line no-empty-pattern
+test('LDE geometry frame implicit workspace is visibly neutral below authored cells', async ({}, info) => {
+  const f = await openEditor('frame', 'compact')
+  try {
+    const frame = f.page.frameLocator('iframe'),
+      container = frame.locator('.geDiagramContainer')
+    const layers = await container.evaluate((element) => {
+      const ui = (window as any).__ldeUi,
+        graph = ui.editor.graph,
+        view = graph.view
+      const summary = (node: Element | null | undefined) =>
+        node
+          ? {
+              tag: node.tagName,
+              class: node.getAttribute('class'),
+              style: node.getAttribute('style'),
+              fill: node.getAttribute('fill'),
+              background: getComputedStyle(node).backgroundColor,
+              bounds: node.getBoundingClientRect().toJSON(),
+            }
+          : null
+      return {
+        modelHeader: (window as any).mxUtils
+          .getXml(ui.editor.getGraphXml())
+          .match(/<mxGraphModel[^>]*>/)?.[0],
+        graphBackground: graph.background,
+        backgroundImage: graph.backgroundImage,
+        pageVisible: graph.pageVisible,
+        container: summary(element),
+        canvas: summary(view.canvas),
+        ownerSvg: summary(view.canvas?.ownerSVGElement),
+        backgroundPane: summary(view.backgroundPane),
+        backgroundChildren: Array.from(view.backgroundPane?.children ?? []).map((node) =>
+          summary(node as Element),
+        ),
+        backgroundPage: summary(view.backgroundPageShape?.node),
+        children: Array.from(element.children).map(summary),
+        privateGrid: summary(element.querySelector('[data-frade-private-grid]')),
+      }
+    })
+    const bytes = await container.screenshot({ path: info.outputPath('visible-workspace.png') }),
+      decoded = ldeDecodePng(bytes)
+    let neutral = 0
+    for (let y = 32; y < 48; y++)
+      for (let x = 32; x < 48; x++) {
+        const at = (y * decoded.width + x) * decoded.channels
+        if (
+          decoded.pixels[at] === 249 &&
+          decoded.pixels[at + 1] === 250 &&
+          decoded.pixels[at + 2] === 252
+        )
+          neutral++
+      }
+    await writeFile(
+      info.outputPath('backing-layers.json'),
+      JSON.stringify(
+        {
+          layers,
+          neutralPixelsInBlankPatch: neutral,
+          sampledPatch: { x: 32, y: 32, width: 16, height: 16 },
+          source: 'Actual PNG decode; no author node lies in the declared blank fixture patch',
+        },
+        null,
+        2,
+      ),
+    )
+    expect(layers.modelHeader).not.toContain('background=')
+    expect(neutral).toBeGreaterThan(0)
+    expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+  } finally {
+    await f.app.close()
+  }
+})
+
+for (const paint of ['white-page', 'colored-page', 'image-background'] as const) {
+  test(
+    'LDE author backing ' + paint + ' stays content-owned across forced colors',
+    // eslint-disable-next-line no-empty-pattern
+    async ({}, info) => {
+      const image = {
+          src:
+            'data:image/svg+xml,' +
+            encodeURIComponent(
+              '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><rect width="40" height="40" fill="#C83717"/></svg>',
+            ),
+          width: 40,
+          height: 40,
+        },
+        attributes =
+          paint === 'image-background'
+            ? 'backgroundImage="' +
+              JSON.stringify(image).replaceAll('&', '&amp;').replaceAll('"', '&quot;') +
+              '"'
+            : 'background="' + (paint === 'white-page' ? '#FFFFFF' : '#213752') + '"',
+        f = await openEditor('frame', 'comfortable', attributes)
+      try {
+        const container = f.page.frameLocator('iframe').locator('.geDiagramContainer')
+        const sample = () =>
+          container.evaluate(() => {
+            const ui = (window as any).__ldeUi,
+              graph = ui.editor.graph,
+              svg = graph.view.canvas.ownerSVGElement
+            return {
+              xml: (window as any).mxUtils.getXml(ui.editor.getGraphXml()),
+              background: graph.background,
+              image: graph.getBackgroundImageObject(graph.backgroundImage),
+              backing: svg.getAttribute('data-frade-presentation-workspace-backing'),
+              page: graph.pageVisible,
+              outerStyle: svg.getAttribute('style'),
+              authored: Array.from(graph.view.drawPane.querySelectorAll('[fill],[stroke]')).map(
+                (node: any) => ({
+                  fill: node.getAttribute('fill'),
+                  stroke: node.getAttribute('stroke'),
+                }),
+              ),
+            }
+          })
+        const before = await sample()
+        expect(before.backing).toBeNull()
+        expect(before.page).toBe(true)
+        if (paint === 'image-background') expect(before.image).toMatchObject(image)
+        else expect(before.background).toBe(paint === 'white-page' ? '#FFFFFF' : '#213752')
+        await container.screenshot({ path: info.outputPath('authored-backing.png') })
+        await f.page.emulateMedia({ forcedColors: 'active' })
+        await expect
+          .poll(() => f.page.evaluate(() => matchMedia('(forced-colors: active)').matches))
+          .toBe(true)
+        await expect
+          .poll(() =>
+            f.page
+              .locator('.repository-diagram')
+              .evaluate((root) =>
+                getComputedStyle(root).getPropertyValue('--frade-diagram-canvas').trim(),
+              ),
+          )
+          .toBe('Canvas')
+        const forced = await sample()
+        await f.page.emulateMedia({ forcedColors: 'none' })
+        await expect
+          .poll(() =>
+            f.page
+              .locator('.repository-diagram')
+              .evaluate((root) =>
+                getComputedStyle(root).getPropertyValue('--frade-diagram-canvas').trim(),
+              ),
+          )
+          .toBe('#F9FAFC')
+        const after = await sample()
+        for (const observed of [forced, after]) {
+          expect(observed.xml).toBe(before.xml)
+          expect(observed.background).toBe(before.background)
+          expect(observed.image).toEqual(before.image)
+          expect(observed.authored).toEqual(before.authored)
+          expect(observed.backing).toBeNull()
+        }
+        expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+        expect(await readFile(f.settings, 'utf8')).toBe(f.settingsBefore)
+        await writeFile(
+          info.outputPath('author-preservation.json'),
+          JSON.stringify(
+            { before, forced, after, nativeCapability: 'UNSUPPORTED page/image fields' },
+            null,
+            2,
+          ),
+        )
+      } finally {
+        await f.app.close()
+      }
+    },
+  )
+}

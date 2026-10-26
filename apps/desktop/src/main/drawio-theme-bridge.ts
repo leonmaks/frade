@@ -73,7 +73,8 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     observer: MutationObserver | undefined
   const attributes = new Map<string, string | null>(),
     properties = new Map<string, { value: string; priority: string }>(),
-    masks = new Map<Element, string | null>()
+    masks = new Map<Element, string | null>(),
+    backings = new Map<Element, string | null>()
   const identity = (value: unknown) =>
     typeof value === 'string' &&
     value.length > 0 &&
@@ -387,6 +388,8 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       '{background-color:var(--frade-frame-diagram-canvas)!important;}' +
       prefix('[data-frade-presentation-grid-layer]') +
       '{background-image:none!important;}' +
+      prefix('[data-frade-presentation-workspace-backing="1"]') +
+      '{background-color:transparent!important;}' +
       '@media(pointer:coarse){' +
       controls.join(',') +
       '{min-height:44px;min-width:44px;}' +
@@ -1535,6 +1538,22 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     const container = graph.container as HTMLElement,
       view = graph.view,
       canvas = view?.canvas as Element | undefined
+    // Only the implicit outer SVG backing is UI paint. Explicit backgrounds/images
+    // and the page/cell layers retain the vendor's authored paint unchanged.
+    const outer = canvas instanceof SVGElement ? canvas.ownerSVGElement : undefined,
+      implicit = outer && graph.background == null && graph.backgroundImage == null
+    for (const [element, previous] of backings) {
+      if (element === outer && implicit) continue
+      if (element.getAttribute('data-frade-presentation-workspace-backing') === '1') {
+        if (previous === null) element.removeAttribute('data-frade-presentation-workspace-backing')
+        else element.setAttribute('data-frade-presentation-workspace-backing', previous)
+      }
+      backings.delete(element)
+    }
+    if (implicit && !backings.has(outer)) {
+      backings.set(outer, outer.getAttribute('data-frade-presentation-workspace-backing'))
+      outer.setAttribute('data-frade-presentation-workspace-backing', '1')
+    }
     // The vendor stores grid background-image on paper DOM or the outer view SVG.
     // Mask only that grid image; keep all paper/background colors, images and cell paint unchanged.
     const layer = (view?.backgroundPageShape?.node ??
@@ -1605,6 +1624,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     for (const event of ['scale', 'translate', 'scaleAndTranslate'])
       graph.view?.addListener?.(event, viewChanged)
     ui.editor?.addListener?.('pageSelected', viewChanged)
+    ui.addListener?.('backgroundColorChanged', viewChanged)
     graph.container.addEventListener('scroll', viewChanged)
     observer = new MutationObserver((records) => {
       if (
@@ -1643,6 +1663,12 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       else element.setAttribute('data-frade-presentation-grid-layer', value)
     }
     masks.clear()
+    for (const [element, previous] of backings) {
+      if (element.getAttribute('data-frade-presentation-workspace-backing') !== '1') continue
+      if (previous === null) element.removeAttribute('data-frade-presentation-workspace-backing')
+      else element.setAttribute('data-frade-presentation-workspace-backing', previous)
+    }
+    backings.clear()
     for (const [name, value] of attributes) {
       if (value === null) root.removeAttribute(name)
       else root.setAttribute(name, value)
@@ -1878,6 +1904,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       document.removeEventListener(name, lowerMouse, true)
     graph?.view?.removeListener?.(viewChanged)
     ui?.editor?.removeListener?.(viewChanged)
+    ui?.removeListener?.(viewChanged)
     graph?.container?.removeEventListener('scroll', viewChanged)
     window.removeEventListener('message', receive)
     document.removeEventListener('keydown', keydown, true)

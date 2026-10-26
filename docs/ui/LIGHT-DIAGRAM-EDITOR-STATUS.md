@@ -10,7 +10,7 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-OWNER_SCOPE_INCREMENTAL_GREEN. PRE08 PASS; owner lease + exact guard metadata implemented.118/118 targeted tests, affected typecheck/lint, Desktop build and5/5 actual Electron cases PASS. Cancel retains dirty edits; global picker remains Dark. Full feature/POST not complete: nativeComfortable toolbar overflow and Drawio inner backdrop/grid need targeted repair/evidence. READY_FOR_VERIFY: NO.
+GEOMETRY_BACKING_INCREMENTAL_GREEN. PRE08 PASS. Owner118 unit/5 Electron GREEN retained. Bridge87/87, affected lint/typecheck and Desktop build PASS; geometry5/5, author background/image page=0 and page=1 each3/3 Electron PASS. Full feature/POST/visual acceptance incomplete. READY_FOR_VERIFY: NO.
 
 Цель: общий светлый редактор Draw.io/Frade с авторскими цветами и исключением Windows forced colors. Внешний workbench сохраняет выбранную тему. PRE/POST: **gpt-6-sol / xhigh**; actual backend/effort в receipts NOT_CONFIRMED. Новые визуальные baselines ещё не приняты.
 
@@ -21,9 +21,9 @@ OWNER_SCOPE_INCREMENTAL_GREEN. PRE08 PASS; owner lease + exact guard metadata im
 | Изоляция / read-only inventory | DONE | Baseline и 50 raw sources сохранены; benchmark checkout восстановлен точным baseline blob с отдельной provenance |
 | Proposal / specs / design / BDD | DONE_PLANNING | 4 delta specs, 9 Gherkin definitions; phase/request replacement принят, точный design применён |
 | Strict / traceability / planning checkpoint | PASS | Fresh strict1/1, exact input reuse/proof hashes совпали |
-| Независимый PRE | PRE07_PASS | Plan-only cumulative PASS; прежние FAIL сохранены |
-| Shared scope / native editor (2.1–2.3) | IN_PROGRESS_GREEN | 2.1 done; shared profile/CSS/composition и оба retained roots подключены; bounded Electron4/4 PASS; owned guard repair awaits PRE08 |
-| Draw.io / owned overlays / parity (3.1–3.4) | NOT_RUN | Bridge, owner isolation, source replay и BDD/compliance |
+| Независимый PRE | PRE08_PASS | Current owner metadata scope PASS; прежние FAIL сохранены |
+| Shared scope / native editor (2.1–2.3) | DONE_INCREMENTAL | Shared/native roots, forced colors, owner and native toolbar density/coarse GREEN |
+| Draw.io / owned overlays / parity (3.1–3.4) | IN_PROGRESS | Owner/backing/grid GREEN; full surfaces, BDD/compliance/source replay pending |
 | Общие проверки / runtime (4.1) | NOT_RUN | Полная applicable matrix на финальном source |
 | Визуальное принятие (4.2) | NOT_RUN | Новая галерея двух движков |
 | Verify / независимый POST (4.3) | NOT_RUN | После всех required checks |
@@ -53,11 +53,21 @@ OWNER_SCOPE_INCREMENTAL_GREEN. PRE08 PASS; owner lease + exact guard metadata im
 - [x] Fresh owner design strict1/1 и candidate/dependency evidence подготовлены.
 - [x] Automatic PRE08 PASS clean receipt received.
 - [x] Owner lease/metadata implementation + exact guard integrity:118 unit/5 Electron GREEN.
-- [ ] Targeted nativeComfortable overflow/Drawio backing-grid RED/GREEN, затем остальная матрица.
+- [x] Native density/coarse overflow + Drawio implicit backing RED/GREEN;87 unit/5 geometry Electron PASS.
+- [x] Explicit white/colored background/image page=0 and page=1:3+3 Electron PASS.
+- [ ] Remaining chrome/keyboard/zoom/author coverage, BDD/compliance/source replay and final matrix.
 
 Tracked tasks: 6/13;1.1–1.3,2.1–2.3 выполнены по unit/native actual evidence;3.1–3.3 IN_PROGRESS; full feature не закрыт. Ни один product task не объявлен готовым.
 
+## Checkpoint geometry/backing — 26 October
+
+Evidence: openspec/changes/frade-light-diagram-editor/evidence/geometry-readiness-20261026. Screenshots 11, NOT_APPROVED. Tasks6/13;3.1–3.4 continue.
+
+Next: remaining Drawio surfaces/author fidelity, stage BDD/compliance and origin controls, then final required matrix. No P02/Routing/domain work. New remote ref NOT_AUTHORIZED; no push/Main transfer.
+
 ## Проверки, ограничения и следующее действие
+
+Historical planning snapshot (implemented coverage superseded above, retained):
 
 PASS: historical strict и Gherkin parsing (9 definitions); exact fixture reverse proof; 16 phase checks / 6 real-service sequences с original-service parity; прежний 9/9 callback probe сохранил неполное покрытие; неизменные origin/pin tests 6/6. Probe НЕ является Electron/runtime PASS. Offline frozen install: 336 cache packages, 0 downloads, lockfile неизменен. PRE01–06 FAIL сохранены. NOT_RUN: новый UI typecheck/lint/BDD/runtime/a11y/screenshots/POST/verify. CI/branch protection: NOT_VERIFIED.
 

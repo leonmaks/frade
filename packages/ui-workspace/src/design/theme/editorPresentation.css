@@ -132,3 +132,19 @@ html[data-frade-runtime='1']
   color: var(--frade-status-warning);
   background-color: var(--frade-status-warningBg);
 }
+
+/* Keep ordinary toolbar geometry; coarse controls receive their required space. */
+[data-frade-editor='light'] .frade-canvas > main {
+  grid-template-rows:
+    max(
+      46px,
+      calc(
+        max(var(--frade-size-control), var(--frade-size-target)) + var(--frade-space-2) +
+          var(--frade-space-2) + var(--frade-border-width)
+      )
+    )
+    minmax(0, 1fr);
+}
+[data-frade-editor='light'] .frade-canvas > main > header {
+  padding-block: var(--frade-space-2);
+}
