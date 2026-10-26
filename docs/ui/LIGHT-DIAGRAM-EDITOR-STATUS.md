@@ -3,14 +3,14 @@
 Обновлено: 26 октября 2026 (MSK); evidence содержит фактические UTC timestamps.
 Ветка: `codex/frade-light-diagram-editor`
 Worktree: `E:/dev/codex/frade-worktrees/light-diagram-editor`
-Change: `frade-light-diagram-editor` (archived: `openspec/changes/archive/2026-10-26-frade-light-diagram-editor`)
+Change: `frade-light-diagram-editor` (reopened after Main consumer adapter FAIL)
 Исходный commit: `4244e5668e50f74b9b536c2f0ffc44c56279e945`
 Git common: `E:/dev/codex/frade/.git`
 Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5`.
 
 ## Текущая фаза
 
-POST02_PASS / ARCHIVED / MAIN_INTEGRATION_IN_PROGRESS.8/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: YES for implementation; final2.7 archive/Main operations pending.
+POST02_PASS_HISTORICAL / MAIN_ADAPTER_FAIL / REOPENED_FOR_APPROVED_GENERATOR_REPAIR.8/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: YES for implementation; final2.7 archive/Main operations pending.
 
 | Этап | Статус | Фактический результат |
 |---|---|---|
@@ -287,3 +287,7 @@ Tasks8/9;2.6 DONE,2.7 archive/sync/Main IN_PROGRESS. Main baseline4244e566,854 f
 ## Archive/sync checkpoint —26October
 
 POST02 PASS preserved. Four canonical UI capabilities synchronized,13 exact delta blocks/previous scenario names verified;4/4 owned specs strict PASS and active change strict PASS before archive. Global specs strict10PASS/3pre-existing Routing FAIL (long descriptions) retained separately with unchanged-baseline hashes; no Routing changes. Node directory rename EPERM; native boundary-verified PowerShell Move succeeded; all2495 original file bytes verified afterward. New BDD archive locator11/11 PASS. Main/publication pending, task2.7 still IN_PROGRESS. No full runtime repeated.
+
+## Main consumer adapter FAIL / reopen —26October
+
+Main build PASS; adapter source-manifest metadata FAIL due verifiedLF/CRLF JSON byte forms. Main smoke NOT_RUN after FAIL, no push. Main0964193c local transfer exact2535paths and854foreign bytes/status preserved. Existing2.7 stays incomplete; owning change reopened while historical archive receipt/POST02 remain unchanged. Approved generator-only repair plan repairs/main-manifest-portability.md; fresh PRE gpt-6-sol/xhigh before production. No CSS/TS/profile/runtime/vendor/domain/routing change authorized or applied.

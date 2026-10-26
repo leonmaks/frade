@@ -153,3 +153,27 @@ test('LDE-UPSTREAM deterministic source coverage, scoped selectors and namespace
     tree.walkAtRules(/keyframes$/, rule => assert(rule.params.startsWith('frade-drawio-')))
   })
 })
+
+test('LDE-UPSTREAM manifest LF and CRLF yield identical source-verified generated artifacts', async () => {
+  await fixture(async directory => {
+    const file = resolve(directory, manifestPath)
+    const lf = (await readFile(file, 'utf8')).replaceAll('\r\n', '\n')
+    await writeFile(file, lf)
+    const published = await generateDrawioEditor({ base: directory })
+    await writeFile(file, lf.replaceAll('\n', '\r\n'))
+    const checkout = await generateDrawioEditor({ base: directory })
+    assert.deepEqual(checkout.output, published.output)
+  })
+})
+test('LDE-UPSTREAM rejects unpinned third manifest byte form and metadata mutation', async () => {
+  await fixture(async directory => {
+    const file = resolve(directory, manifestPath)
+    const lf = (await readFile(file, 'utf8')).replaceAll('\r\n', '\n')
+    await writeFile(file, lf.replace('\n', '\r\n'))
+    await assert.rejects(generateDrawioEditor({ base: directory }), /UPSTREAM_MANIFEST_DRIFT/)
+    const mutated = JSON.parse(lf)
+    mutated.unauthorizedMetadata = true
+    await writeFile(file, JSON.stringify(mutated, null, 2) + '\n')
+    await assert.rejects(generateDrawioEditor({ base: directory }), /UPSTREAM_MANIFEST_DRIFT/)
+  })
+})
