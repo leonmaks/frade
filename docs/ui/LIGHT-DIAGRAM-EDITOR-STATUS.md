@@ -212,3 +212,21 @@ Geometry checkpoint ad0436f4735ecc18811d35b31fa1de39bc7f3bd2 committed. Tooltip 
 Full feature remains6/13. Task3.1–3.4 in progress: remaining distinct surfaces/control states, alpha/gradient/palette fidelity, keyboard/zoom/reflow; executable BDD/compliance and exact current→preLDE→historical source chain. Then task4.1 final required matrix/performance/general regressions,4.2 new visual acceptance,4.3 verify/automatic POST gpt-6-sol/xhigh. No POST/archive/Main/push yet. Earlier FAIL preserved; repaired old cases are superseded only by explicit new source-bound GREEN. No human action currently needed.
 
 Publication: local authorized checkpoint only. Remote codex/frade-light-diagram-editor NOT_AUTHORIZED; push NOT_RUN. Main/P02/Routing unchanged. Status right-panel OPEN_REQUEST_QUEUED; visibility NOT_CONFIRMED.
+
+## Remaining-work estimate — 26 October 2026
+
+Forecast, not measured duration or completion commitment. Source checkpoint3ade10f8780cf7f7ef0bab67e0ec7e39779d2a64;6/13 formal tasks complete, remaining items partly implemented.
+
+| Remaining scope | Status | Forecast active agent hours |
+|---|---|---|
+|3.1–3.2 remaining Drawio surfaces/author appearance fidelity | IN_PROGRESS |2–4|
+|3.3 keyboard/focus/readonly/reflow/zoom and common metrics | IN_PROGRESS |1–2|
+|3.4 executable BDD/compliance/negative fixtures/exact historical source chain | NOT_COMPLETE |3–6|
+|4.1 final applicable root/runtime/performance/regression matrix | NOT_RUN_AS_WHOLE |2–4|
+|4.2 final gallery and visual decision preparation | NOT_RUN |0.5–1 plus human waiting|
+|4.3 scenario verification and automatic independent POST | NOT_RUN |0.5–1.5|
+|Archive/sync and isolated Main integration | NOT_STARTED |0.5–1.5 after gates/visual acceptance|
+
+Base forecast approximately10–20 active hours. Reserve4–8 additional hours for failures/source-control adaptation/environment; calendar planning2–4 working days, excluding human visual acceptance wait. These are judgment estimates. Historical independent PRE was about9min, current14-case Electron batch41.0s, bridge87-case unit batch8.8s measured; those durations do not estimate unimplemented coverage. Full root/historical runtime matrix cost remains uncertain.
+
+No new implementation or checks performed for this status query. Code SHA remains3ade10f8; working tree verified clean with per-command longpaths before the status-only edit. Review/model policy unchanged; automatic POST gpt-6-sol/xhigh after required checks. P02–P07 and Routing are excluded from this estimate. No push.
