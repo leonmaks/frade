@@ -7,11 +7,11 @@ import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('../../../../', import.meta.url))
 const change = 'frade-light-diagram-editor'
 const prefix = 'openspec/changes/' + change + '/'
-const manifestPath = prefix + 'evidence/upstream-bdd-bindings-20261026/bindings-final.json'
-const manifestSha256 = 'c5c9b603e7793f798c4595a5a16c6af98272aa2c1c7f57028de97a896a229105'
+const manifestPath = prefix + 'evidence/upstream-bdd-bindings-20261026/bindings-publication.json'
+const manifestSha256 = '9f8a60eb2d2371330576103ed03fd800cbb16addb304d4ca14402d4449e4bf1b'
 const ids = Array.from({ length: 9 }, (_, i) => 'LDE-' + String(i + 1).padStart(3, '0'))
 const digest = (raw: Buffer) => createHash('sha256').update(raw).digest('hex')
-type Pin = { file: string; sha256: string }
+type Pin = { file: string; sha256: string; publishedSha256?: string }
 type Binding = { id: string; cases: { report: string; title: string }[] }
 type Manifest = { inputs: Pin[]; reports: Record<string, Pin & { format: 'playwright' | 'vitest' | 'tap' }>; bindings: Binding[] }
 type Case = { title: string; passed: boolean }
@@ -57,7 +57,10 @@ function verify(read = safeFile) {
   demand(digest(raw) === manifestSha256, 'MANIFEST_HASH')
   const manifest: Manifest = JSON.parse(raw.toString())
   demand(JSON.stringify(manifest.bindings.map(b => b.id)) === JSON.stringify(ids), 'BDD_IDS')
-  for (const pin of manifest.inputs) demand(digest(read(pin.file)) === pin.sha256, 'INPUT_HASH')
+  for (const pin of manifest.inputs) {
+    const actual = digest(read(pin.file))
+    demand(actual === pin.sha256 || actual === pin.publishedSha256, 'INPUT_HASH')
+  }
   const reports = new Map<string, Case[]>()
   for (const [id, pin] of Object.entries(manifest.reports)) {
     const report = read(pin.file)
@@ -83,4 +86,18 @@ it('LDE binding rejects source and report tampering without editing evidence', (
   const { manifest } = verify()
   for (const target of [manifest.inputs[0].file, Object.values(manifest.reports)[0].file]) expect(() => verify(file => file === target ? Buffer.concat([safeFile(file), Buffer.from('\nmutation')]) : safeFile(file))).toThrow(target === manifest.inputs[0].file ? 'INPUT_HASH' : 'REPORT_HASH')
   expect(() => verify(file => file === manifestPath ? Buffer.from('{}') : safeFile(file))).toThrow('MANIFEST_HASH')
+})
+
+it('LDE source publication accepts only the predeclared checkout and committed byte forms', () => {
+  const variantPath = prefix + 'evidence/upstream-source-publication-portability-20261026/variants.json'
+  const variants: { file: string; publishedBase64: string }[] = JSON.parse(safeFile(variantPath).toString()).variants
+  const published = new Map(variants.map(v => [v.file, Buffer.from(v.publishedBase64, 'base64')]))
+  expect(() => verify(file => published.get(file) ?? safeFile(file))).not.toThrow()
+  const target = variants.find(v => v.file.endsWith('DiagramView.tsx'))!
+  const original = safeFile(target.file)
+  const third = Buffer.from(original.toString().replace('\r\n', '\n'))
+  expect(digest(third)).not.toBe(digest(original))
+  expect(digest(third)).not.toBe(digest(published.get(target.file)!))
+  expect(() => verify(file => file === target.file ? third : safeFile(file))).toThrow('INPUT_HASH')
+  expect(() => verify(file => file === target.file ? Buffer.concat([published.get(file)!, Buffer.from('\nexport const unauthorized = true\n')]) : safeFile(file))).toThrow('INPUT_HASH')
 })

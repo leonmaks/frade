@@ -1,0 +1,27 @@
+{
+  "classification": "TEST / ENVIRONMENT",
+  "productionChanged": false,
+  "predecessor": {
+    "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-bdd-bindings-20261026/bindings-final.json",
+    "sha256": "c5c9b603e7793f798c4595a5a16c6af98272aa2c1c7f57028de97a896a229105"
+  },
+  "successor": {
+    "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-bdd-bindings-20261026/bindings-publication.json",
+    "sha256": "9f8a60eb2d2371330576103ed03fd800cbb16addb304d4ca14402d4449e4bf1b"
+  },
+  "variants": {
+    "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-source-publication-portability-20261026/variants.json",
+    "sha256": "551dcde172f139a25ef9e6add3ea300a41adb97b8368b4c4935ed7b1d17fd8be",
+    "count": 187
+  },
+  "limits": "Only new LDE binder accepts exact predeclared hash pairs. No normalization/discovery at verification. Original report hashes, historical source-chain and performance assertions unchanged. No source/evidence file rewritten. Compiled equivalence proof prepared before adoption; metadata EOL mapping exact. Negative third-form and semantic mutation must fail.",
+  "strategy": {
+    "alternatives": [
+      "Force raw blobs for all baseline files: unrelated source/index churn, rejected",
+      "Runtime normalization: weakens raw binding, rejected",
+      "Predeclared raw pairs with compiler proof: chosen"
+    ],
+    "forecastMinutes": "5-10, judgment",
+    "reassessment": "Any non-EOL or compiled mismatch stops; no runtime rerun on unchanged production"
+  }
+}
