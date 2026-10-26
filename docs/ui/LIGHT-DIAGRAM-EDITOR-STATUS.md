@@ -1,74 +1,63 @@
 # Светлый редактор диаграмм — статус
 
-Обновлено: 26 октября 2026 (MSK); machine timestamps — в evidence.
+Обновлено: 26 октября 2026 (MSK); evidence содержит фактические UTC timestamps.
 Ветка: `codex/frade-light-diagram-editor`
 Worktree: `E:/dev/codex/frade-worktrees/light-diagram-editor`
 Change: `frade-light-diagram-editor`
 Исходный commit: `4244e5668e50f74b9b536c2f0ffc44c56279e945`
 Git common: `E:/dev/codex/frade/.git`
-Guide: v1.0; общий workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5`.
+Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5`.
 
 ## Текущая фаза
 
-BLOCKED_SCOPE_DECISION — LDE-REFUSAL-INTENT-01. Предыдущий exact one-line scope остаётся исторически ACCEPTED, но не реализован и доказанно непригоден для cancel. LDE-PRE-RECONCILIATION-01 остаётся ACCEPTED. Три автоматических PRE завершились FAIL; product implementation не начат. Активный change синтаксически valid, но correctness/scope blockers открыты. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
+PRE06_READY_FOR_DISPATCH. LDE-REFUSAL-INTENT-01 принят: применён только точный design draft fb4e8b43…; live fixture и production не менялись. LDE-PRE-RECONCILIATION-01 принят и применён. Прежняя однострочная fixture policy принята исторически, но заменена новым решением до реализации. PRE01–05 = FAIL, raw evidence сохранено; нового PRE PASS ещё нет. READY_FOR_VERIFY: NO.
 
-Пользователь подтвердил единый светлый редактор Draw.io/Frade, сохранение авторских цветов и приоритет Windows forced colors. PRE/POST этого этапа: **gpt-6-sol / xhigh**. Внешний workbench сохраняет выбранную тему; локальные панели/меню/диалоги редакторов используют общий светлый контракт. Новые visual baselines ещё не приняты.
+Цель: общий светлый редактор Draw.io/Frade с авторскими цветами и исключением Windows forced colors. Внешний workbench сохраняет выбранную тему. PRE/POST: **gpt-6-sol / xhigh**; actual backend/effort в receipts NOT_CONFIRMED. Новые визуальные baselines ещё не приняты.
 
 ## Этапы
 
-| Этап | Статус | Доказательство / следующий результат |
+| Этап | Статус | Фактический результат / следующий шаг |
 |---|---|---|
-| Изоляция ветки и read-only inventory | DONE | 50 источников с raw hashes; tracked production diff пуст |
-| Proposal / четыре delta specs / design / tasks | DONE | Все planning artifacts на месте |
-| BDD и стратегия / промпты PRE/POST | DONE_PLANNING | 9 определений Gherkin; bindings NOT_IMPLEMENTED |
-| Strict validation / связность scenarios | ACTIVE_NOT_COHERENT; DRAFT_PASS | Active delta syntax PASS, но merged reference description FAIL и native scenario конфликтуют; 4 неприменённых drafts + все 4 merged specs strict PASS в fixture |
-| Независимый автоматический PRE | FAIL_01 / FAIL_02 / FAIL_03 | PRE03 закрыл прежние три finding, но выявил точный refusal-fixture conflict и недостающие workload inputs |
-| Meaningful RED / shared scope / native adapter | NOT_RUN | Группа 2 tasks.md |
-| Draw.io / overlays / authored parity | NOT_RUN | Группа 3 tasks.md |
-| Общие проверки / runtime / screenshots | NOT_RUN | verification.md, финальные исходники |
-| Новое визуальное принятие | NOT_RUN | Нужна отдельная фактическая галерея обоих движков |
-| Verify / независимый POST | NOT_RUN | Только после выполнения требований и проверок |
-| Archive / перенос в Main / push | NOT_STARTED | Отдельный проверенный checkpoint |
+| Изоляция / read-only inventory | DONE | Baseline и 50 raw sources сохранены; benchmark checkout восстановлен точным baseline blob с отдельной provenance |
+| Proposal / specs / design / BDD | DONE_PLANNING | 4 delta specs, 9 Gherkin definitions; новое точное решение принято |
+| Strict / traceability / planning checkpoint | PASS | Fresh strict 1/1; неизменная BDD/spec mapping reused по exact hashes |
+| Независимый PRE | FAIL01–05; PRE06_PENDING | Fresh review по согласованному request-bound scope |
+| Shared scope / native editor (2.1–2.3) | NOT_RUN | Meaningful RED, реализация и focused GREEN после PRE PASS |
+| Draw.io / owned overlays / parity (3.1–3.4) | NOT_RUN | Bridge, owner isolation, source replay и BDD/compliance |
+| Общие проверки / runtime (4.1) | NOT_RUN | Полная applicable matrix на финальном source |
+| Визуальное принятие (4.2) | NOT_RUN | Новая галерея двух движков |
+| Verify / независимый POST (4.3) | NOT_RUN | После всех required checks |
+| Archive / Main integration / push | NOT_STARTED | Только после gates; новая remote-ветка не авторизована |
 
 ## Детализация текущего этапа
 
-- [x] Отделить feature от Main/P02/Routing и сохранить исходный commit.
-- [x] Найти существующие participants, X6 view projection, Draw.io private bridge, retained roots, overlays и тестовые контроли.
-- [x] Создать change установленным OpenSpec CLI.
-- [x] Зафиксировать принятую границу и exact PRE/POST model/effort.
-- [x] Описать общий Light scope, авторские цвета/подложки и Windows forced colors.
-- [x] Записать явные delta к Theme Core, reference geometry и bundled-theme fidelity; исторические main specs не изменять в planning.
-- [x] Описать allowed paths, meaningful RED, матрицу и неизменность domain/routing/persistence.
-- [x] Сохранить 9 BDD сценариев, strict validation и source/policy hashes.
-- [x] Зафиксировать planning checkpoint локальным commit.
-- [x] Автоматически получить и сохранить PRE 01/02 FAIL с полным raw evidence.
-- [x] Подготовить точное LDE-PRE-RECONCILIATION-01 и проверить drafts/merged specs в fixture.
-- [ ] Получить решение по расширению scope двумя историческими origin controls.
-- [ ] После нового запроса на выполнение — подготовить immutable packet и автоматически выполнить PRE.
+- [x] Изолировать feature от Main/P02/Routing; сохранить исходники и policy.
+- [x] Описать scope, allowed paths, BDD, проверочную матрицу и стратегию.
+- [x] Автоматически получить PRE01–05 и сохранить raw FAIL/receipts без переписывания.
+- [x] Применить принятые planning drafts LDE-PRE-RECONCILIATION-01.
+- [x] Устранить ENVIRONMENT mismatch benchmark: точный baseline blob, pin и assertions неизменны.
+- [x] Реально выполнить неизменные origin/pin unit tests: 6/6 PASS.
+- [x] Воспроизвести cancel defect однострочного draft; новый intent-bound callback probe: 9/9 PASS.
+- [x] Получить точное решение LDE-REFUSAL-INTENT-01; применить только design.
+- [x] Сохранить fresh strict/traceability; checkpoint фиксируется перед freeze.
+- [ ] Подготовить полный dependency packet, выполнить PRE06 и получить чистый PASS.
+- [ ] После PASS выполнить meaningful RED и реализацию в разрешённых путях.
 
-Tracked task progress: 1/13; 1.2 переоткрыта из-за воспроизведённого fixture state-transition конфликта. PRE 1.3 не завершена; production не начат.
+Tracked tasks: 2/13; 1.1/1.2 выполнены, 1.3 PRE ещё не завершена. Ни один product task не объявлен готовым.
 
-## Проверки и ограничения
+## Проверки, ограничения и следующее действие
 
-- PASS: `openspec validate frade-light-diagram-editor --strict --json`, один change, zero issues.
-- PASS: Gherkin 35.1.0 разобрал 9 определений / уникальных LDE IDs. Использован read-only установленный parser из Main; executable bindings и продуктовые тесты не запускались.
-- PASS: четыре MODIFIED требования сохраняют все исходные scenario names; отдельный final-scenario-integrity.json доказывает сохранение трёх полных logical bodies и ровно два принятых изменения ожидаемого editor scope. Два новых сценария добавлены.
-- PASS: общий runner status AVAILABLE, policy release/hash записаны. Это НЕ PRE PASS, НЕ model/backend attestation и НЕ доказательство working canary.
-- Исправлено: первый `git diff --cached --check` отметил Markdown hard-break пробелы и пустую строку EOF; отдельный форматный delta устраняет их без изменения требований.
-- NOT_RUN: typecheck/lint/unit/runtime/a11y/screenshots/PRE/POST — planning не меняет исходники и не заявляет эти проверки пройденными.
-- NOT_VERIFIED: remote CI/branch protection. Новых настроек защиты веток нет.
+PASS: historical strict и Gherkin parsing (9 definitions); exact fixture reverse proof; 9/9 request-sequence probe; неизменные origin/pin tests 6/6. Probe НЕ является Electron/runtime PASS. Offline frozen install: 336 cache packages, 0 downloads, lockfile неизменен. PRE01–05 FAIL сохранены. NOT_RUN: новый UI typecheck/lint/BDD/runtime/a11y/screenshots/POST/verify. CI/branch protection: NOT_VERIFIED.
 
-Первый managed-worktree checkout: FAIL_ENVIRONMENT из-за длинных путей Windows. Отдельный обычный Git worktree создан с per-command `core.longpaths=true`; глобальные настройки не менялись. App attachment BLOCKED: этот checkout не managed worktree; продолжение использует явный путь. Текущие planning/scope blockers перечислены в PRE 02; исходный код не изменён.
+Стратегия перед следующим review: использовать проверенную transitive closure и byte proof; не повторять неизменные unit tests и большие regressions до реализации. Fresh PRE обязателен из-за scope/design delta; предыдущие dispatch занимали примерно 6–7 минут (измерено), следующий интервал — прогноз, не timeout. Проверить completeness и hashes до freeze; при новом scope/correctness finding остановить реализацию и пересмотреть стратегию, а не повторять известный FAIL.
 
-Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED. Dashboard — текущая проекция, не approval и не замена исторического evidence.
+Следующее действие: strict, checkpoint, автоматический PRE gpt-6-sol/xhigh. Во время review candidate/dashboard/index/HEAD заморожены. Само подтверждение fixture не разрешает production до PRE PASS.
 
-## Следующее действие и публикация
+Локальный предыдущий checkpoint: `fa3a3623f1e67b9529ebb6ddec21256ded64b4c9`; текущее обновление будет отдельным commit. Push NOT_RUN — новая remote-ветка не авторизована. Main/P02/Routing не менялись. Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
 
-В этом запросе автоматически выполнены PRE 01/02, оба FAIL. Текущий следующий шаг — решение по LDE-PRE-RECONCILIATION-01; после принятия применить ровно drafts и выполнить fresh PRE. До PRE PASS production запрещён. Пользователь не переносит review-промпты/результаты вручную.
+## История (состояния на момент события)
 
-Planning checkpoint: LOCAL_COMMITTED `d375eac895688879334702f931c29b61147a2376`; последующее обновление статуса фиксируется отдельным локальным commit. Push: NOT_RUN; новая remote-ветка не авторизована. Main, P02 и Routing не изменены. Архивы Foundation/P01/P01 Main/VS Code Dark 2026 сохраняют свой отдельный статус; их PASS не является PASS этого change.
-
-Материалы: [proposal](../../openspec/changes/frade-light-diagram-editor/proposal.md), [design](../../openspec/changes/frade-light-diagram-editor/design.md), [tasks](../../openspec/changes/frade-light-diagram-editor/tasks.md), [verification](../../openspec/changes/frade-light-diagram-editor/verification.md), [planning evidence](../../openspec/changes/frade-light-diagram-editor/evidence/planning/).
+Ниже сохранены прежние FAIL и решения в хронологическом порядке; текущий статус указан выше. Историческое PROPOSED_NOT_ACCEPTED не отменяет последующую запись принятия.
 
 ## Возобновление 26 октября 2026
 
@@ -129,3 +118,7 @@ PRE05 status FAIL; packet/candidate unchanged. Raw result SHA256 `39b5ea73c8894a
 На полном исходном callback детерминированно воспроизведён cancel FAIL старого предложения и проверен новый request-bound draft: 9/9 checks PASS, включая повторный отказ того же intent и успешный cancel с новым requestId, rearm и disarm. Первый probe ERROR (отсутствовал mock performance.now) сохранён отдельно; actual Electron/runtime NOT_RUN. Все изменения draft точно обратимы к pre-LDE3535..., все assertions/actions/deadlines вне двух mapped edits byte-identical.
 
 [Точный LDE-REFUSAL-INTENT-01](../../openspec/changes/frade-light-diagram-editor/decisions/lde-refusal-intent-01/proposal.md), proposal SHA256 `5113e9c9e6ae259729c6dcea7b6fd03d7baa598a176db123c0377a7592162fde`, manifest `b75fb70e391ff79f8aca0ae4ba0991d4783ba0909931bb99ca69adc1608f2405`. PROPOSED_NOT_ACCEPTED; заменяет только ещё не реализованную one-line fixture policy. Ни design draft, ни live TS draft не применены. Нужен человек: AGENTS §6 и принятый точный scope разрешают лишь прежнюю одну строку, а новый initializer/request latch выходит за неё. После принятия — только design, fresh PRE gpt-6-sol/xhigh, meaningful RED/implementation после PASS. До решения не запускаем очередной review заведомо неверного плана. READY_FOR_VERIFY: NO.
+
+## LDE-REFUSAL-INTENT-01 принято / PRE06 readiness
+
+Пользователь утвердил точную замену и drafts. Proposal 5113e9c9… / manifest b75fb70e… проверены; active design fb4e8b43…; fixture3535fd97… неизменна. Fresh strict 1/1 PASS; exact hash records подтверждают повторное использование неизменных BDD/spec mapping без нового parsing/runtime PASS. Согласованный candidate включает действующее request-bound решение; новый PRE получает полную in-repository dependency closure и все принятые scope records. Пять прежних FAIL остаются. До завершения review dashboard заморожен.
