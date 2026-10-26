@@ -9,7 +9,7 @@ Exactly two execution stages. Prior6/13 task text/raw hash and all old evidence 
 
 ## 2. One implementation and acceptance cycle
 
-- [ ] 2.1 Use the30min initial probe for meaningful RED/current source inventory and representative native/iframe/system/isolation witnesses; retain proven unchanged preservation coverage.
+- [x] 2.1 Use the30min initial probe for meaningful RED/current source inventory and representative native/iframe/system/isolation witnesses; retain proven unchanged preservation coverage.
 - [ ] 2.2 Implement pinned generation, scoped native/parent/portal adapter and iframe upstream Light with explicit accessibility/system/layout exceptions; preserve exact guard/actions/domain/transaction/content boundaries.
 - [ ] 2.3 Add executable BDD/compliance positive-negative controls and exact reversible visual/source mappings, including historical/performance origins and drift/tamper rejection.
 - [ ] 2.4 Pass focused GREEN and one final applicable root/runtime/performance/regression matrix; account for source/input-equivalent overlap instead of duplicate complete runs.

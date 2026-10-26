@@ -1,0 +1,3 @@
+# Source adapter implementation notes
+
+Derived renderer-only id frade.editor/drawio-light distinguishes the pinned local projection from generic legacy Light bridge consumers. It is never registered/offered/persisted as a global theme; authoritative identities/revision/context stay unchanged. Existing generic bridge consumers retain original behavior. Iframe uses verified existing dark=0 embed parameter; no runtime/document setter. Ordinary pinned source owns chrome/grid; existing positive upper/lower keyboard/glyph/focus leases remain explicit accessibility/layout exceptions, fixed compact minima independently from outer density. Forced projection preserves original strict system path.

@@ -5,7 +5,7 @@ import type { NativePresentationGraph } from '../../src/design/theme/nativeParti
 import { applyRootSnapshot } from '../../src/design/theme/rootParticipant'
 import { createApplicationThemeRegistry, BUILTIN_IDS } from '../../src/design/theme/registry'
 import { resolveTheme } from '../../src/design/theme/resolver'
-import { builtinTokens } from '../../src/design/generated/tokens'
+import { drawioEditor } from '../../src/design/generated/drawio-editor'
 import { referenceTheme } from '../../src/design/reference/vscode-dark-2026/generated'
 import type { PhaseContext } from '../../src/design/theme/service'
 import type { Density, ThemeMode } from '../../src/design/theme/types'
@@ -160,13 +160,17 @@ for (const choice of choices)
           participantGeneration: 4,
           painted: true,
         })
-        expect(f.graph.options.background.color).toBe(forcedColors ? 'Canvas' : '#F9FAFC')
-        expect(f.graph.options.grid.args.color).toBe(forcedColors ? 'CanvasText' : '#CDD3DC')
+        expect(f.graph.options.background.color).toBe(
+          forcedColors ? 'Canvas' : drawioEditor.colors['diagram.canvas'],
+        )
+        expect(majorGridInk(f.graph.options.grid.args)).toBe(
+          forcedColors ? 'CanvasText' : drawioEditor.colors['diagram.grid'],
+        )
         expect(f.editor.dataset.fradeTheme).toBe('light')
         expect(f.editor.dataset.fradeDensity).toBe(density)
         expect(f.editor.dataset.fradeRevision).toBe('7')
         expect(f.editor.style.getPropertyValue('--frade-text-primary')).toBe(
-          forcedColors ? 'CanvasText' : builtinTokens.themes.light['text.primary'],
+          forcedColors ? 'CanvasText' : drawioEditor.colors['text.primary'],
         )
         expect(f.editor.style.getPropertyValue('--unrelated-owner')).toBe('kept')
         expect(f.graph.options.grid.size).toBe(10)
@@ -197,8 +201,8 @@ it('LDE-006 LDE-007 native forced-colors round trip and rollback retain author/s
   await handle.apply(phase(7), new AbortController().signal)
   expect(f.graph.options.background.color).toBe('Canvas')
   await handle.rollback(off, phase(6, 'rollback'), new AbortController().signal)
-  expect(f.graph.options.background.color).toBe('#F9FAFC')
-  expect(f.graph.options.grid.args.color).toBe('#CDD3DC')
+  expect(f.graph.options.background.color).toBe(drawioEditor.colors['diagram.canvas'])
+  expect(majorGridInk(f.graph.options.grid.args)).toBe(drawioEditor.colors['diagram.grid'])
   expect(f.editor.dataset.fradeTheme).toBe('light')
   expect(f.editor.dataset.fradeRevision).toBe('6')
   expect(f.editor.dataset.fradeDensity).toBe('comfortable')
@@ -396,8 +400,8 @@ it('LDE-001 LDE-007 frame prepares a validated Light DTO while keeping the autho
     )
     expect(sent.context).toEqual(phase(7, 'prepare'))
     expect(sent.snapshot.kind).toBe('light')
-    expect(sent.snapshot.id).toBe(BUILTIN_IDS.light)
-    expect(sent.snapshot.colors['diagram.grid']).toBe('#CDD3DC')
+    expect(sent.snapshot.id).toBe('frade.editor/drawio-light')
+    expect(sent.snapshot.colors['diagram.grid']).toBe(drawioEditor.colors['diagram.grid'])
     await prepared.apply(phase(7), new AbortController().signal)
     expect(editor.dataset.fradeTheme).toBe('light')
     expect(editor.dataset.fradeRevision).toBe('7')
@@ -411,7 +415,7 @@ it('LDE-001 LDE-007 frame prepares a validated Light DTO while keeping the autho
   }
 })
 
-it('LDE-004 native dot diameter is shared view geometry and restores without changing grid semantics', async () => {
+it('LDE-004 upstream mesh stroke and major step restore without changing grid semantics', async () => {
   const f = fixture()
   f.graph.options.grid.args.thickness = 2
   const original = { ...f.graph.options.grid.args },
@@ -426,9 +430,17 @@ it('LDE-004 native dot diameter is shared view geometry and restores without cha
     new AbortController().signal,
   )
   await handle.apply(phase(7), new AbortController().signal)
-  expect(f.graph.options.grid.args.thickness).toBe(1.2)
+  const mesh = f.graph.options.grid.args as unknown as {
+    color: string
+    thickness: number
+    factor?: number
+  }[]
+  expect(mesh).toHaveLength(2)
+  expect(mesh[0].thickness).toBe(drawioEditor.grid.strokeWidth)
+  expect(mesh[1].thickness).toBe(drawioEditor.grid.strokeWidth)
+  expect(mesh[1].factor).toBe(drawioEditor.grid.majorSteps)
   expect(f.graph.options.grid.size).toBe(10)
-  expect(f.graph.options.grid.type).toBe('dot')
+  expect(f.graph.options.grid.type).toBe('doubleMesh')
   participant.dispose()
   expect(f.graph.options.grid.args).toEqual(original)
 })
@@ -439,6 +451,9 @@ import { createManagedOverlays } from '../../src/design/theme/overlays'
 import { readFileSync } from 'node:fs'
 import { URL as NodeURL } from 'node:url'
 import { createHash } from 'node:crypto'
+function majorGridInk(value: unknown): string {
+  return Array.isArray(value) ? value[value.length - 1].color : (value as { color: string }).color
+}
 function ownedDialog(host: HTMLElement, label: string) {
   const element = document.createElement('section'),
     button = document.createElement('button')
@@ -497,7 +512,7 @@ it('LDE-003 managed editor overlay keeps focus/cancel semantics and isolates the
   })
   expect(local.element.dataset.fradeTheme).toBe('light')
   expect(local.element.style.getPropertyValue('--frade-surface-overlay')).toBe(
-    builtinTokens.themes.light['surface.overlay'],
+    drawioEditor.colors['surface.overlay'],
   )
   expect(global.element.dataset.fradeEditor).toBeUndefined()
   expect(global.element.style.getPropertyValue('--frade-surface-overlay')).toBe('')
@@ -547,7 +562,7 @@ it('LDE-003 LDE-006 owned overlay follows same-transaction forced-colors rollbac
   expect(dialog.element.dataset.fradeDensity).toBe('comfortable')
   expect(dialog.element.dataset.fradeRevision).toBe('8')
   expect(b.editor.style.getPropertyValue('--frade-surface-overlay')).toBe(
-    builtinTokens.themes.light['surface.overlay'],
+    drawioEditor.colors['surface.overlay'],
   )
   expect(a.app.dataset.fradeTheme).toBe('dark')
   await h.rollback(
@@ -556,7 +571,7 @@ it('LDE-003 LDE-006 owned overlay follows same-transaction forced-colors rollbac
     new AbortController().signal,
   )
   expect(dialog.element.style.getPropertyValue('--frade-surface-overlay')).toBe(
-    builtinTokens.themes.light['surface.overlay'],
+    drawioEditor.colors['surface.overlay'],
   )
   expect(dialog.element.dataset.fradeRevision).toBe('7')
   expect(dialog.element.dataset.fradeDensity).toBe('compact')
@@ -713,4 +728,70 @@ it('LDE-007 dirty guard retains every original byte outside the exact accepted m
       'Unapproved dirty guard bytes',
     )
   }
+})
+
+it('LDE upstream contract uses pinned panel color without changing workbench or author state', async () => {
+  const css = readFileSync(
+      new NodeURL('../../../../apps/desktop/vendor/drawio/styles/grapheditor.css', import.meta.url),
+      'utf8',
+    ),
+    panel = css.match(/--ge-panel-color:\s*(#[0-9a-f]+);/i)?.[1]
+  expect(panel).toBeDefined()
+  const f = fixture(),
+    input = value('dark', 'comfortable', false),
+    beforeModel = JSON.stringify(f.model)
+  applyRootSnapshot(f.app, input)
+  const global = f.app.outerHTML,
+    participant = createNativeParticipant(f.graph as unknown as NativePresentationGraph, {
+      editorRoot: f.editor,
+      paint: async () => {},
+    })
+  try {
+    const handle = await participant.prepare(
+      input,
+      phase(7, 'prepare'),
+      new AbortController().signal,
+    )
+    await handle.apply(phase(7), new AbortController().signal)
+    expect(JSON.stringify(f.model)).toBe(beforeModel)
+    expect(f.app.style.getPropertyValue('--frade-surface-panel')).toBe(
+      input.effectiveColors['surface.panel'],
+    )
+    expect(f.editor.style.getPropertyValue('--frade-surface-panel').toUpperCase()).toBe(
+      panel!.toUpperCase(),
+    )
+    expect(f.app.outerHTML).not.toBe(global)
+    handle.dispose()
+  } finally {
+    participant.dispose()
+  }
+})
+
+it('LDE upstream grid uses existing double mesh view while keeping semantic grid and exact disposal', async () => {
+  const f = fixture(),
+    before = JSON.stringify(f.model),
+    originalType = f.graph.options.grid.type,
+    originalArgs = { ...f.graph.options.grid.args },
+    participant = createNativeParticipant(f.graph as unknown as NativePresentationGraph, {
+      editorRoot: f.editor,
+      paint: async () => {},
+    })
+  try {
+    const handle = await participant.prepare(
+      value('dark', 'comfortable', false),
+      phase(7, 'prepare'),
+      new AbortController().signal,
+    )
+    await handle.apply(phase(7), new AbortController().signal)
+    expect(f.graph.options.grid.type).toBe('doubleMesh')
+    expect(f.graph.options.grid.size).toBe(10)
+    expect(f.graph.options.grid.visible).toBe(true)
+    expect(JSON.stringify(f.model)).toBe(before)
+    expect(f.forbidden).not.toHaveBeenCalled()
+    handle.dispose()
+  } finally {
+    participant.dispose()
+  }
+  expect(f.graph.options.grid.type).toBe(originalType)
+  expect(f.graph.options.grid.args).toEqual(originalArgs)
 })

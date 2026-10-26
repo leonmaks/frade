@@ -42,7 +42,7 @@ export interface DrawioHandle {
 const origin = 'frade://drawio'
 const url =
   origin +
-  '/index.html?embed=1&proto=json&configure=1&offline=1&pwa=0&local=1&noSaveBtn=1&noExitBtn=1&saveAndExit=0&libs=1&libraries=1&lang=ru&plugins=0&stealth=1'
+  '/index.html?embed=1&proto=json&configure=1&offline=1&pwa=0&local=1&noSaveBtn=1&noExitBtn=1&saveAndExit=0&libs=1&libraries=1&lang=ru&plugins=0&stealth=1&dark=0'
 export interface DiagramViewProps {
   flowRepository?: import('./flowContracts').FlowRepository
   appearance?: ElementAppearance

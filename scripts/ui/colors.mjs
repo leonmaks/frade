@@ -1,10 +1,14 @@
+import { checkDrawioEditor, drawioGeneratedPaths } from './drawio-editor-style.mjs'
 import { createRequire } from 'node:module'
 import { readFile, readdir } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { resolve, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { root, themeRoles } from './tokens.mjs'
-import { checkReferenceFiles, generatedPath as referenceGeneratedPath } from './vscode-dark-2026.mjs'
+import {
+  checkReferenceFiles,
+  generatedPath as referenceGeneratedPath,
+} from './vscode-dark-2026.mjs'
 const require = createRequire(resolve(root, 'packages/ui-workspace/package.json'))
 const ts = require('typescript')
 const names =
@@ -141,6 +145,7 @@ export async function featureColorHits(base = root) {
           'packages/ui-workspace/src/design/generated/tokens.css',
           'packages/ui-workspace/src/design/generated/tokens.ts',
           referenceGeneratedPath,
+          ...drawioGeneratedPaths,
         ].includes(file)
       )
         result.push(...inspectColors(file, await readFile(resolve(base, file), 'utf8')))
@@ -157,12 +162,28 @@ export async function checkFeatureColors(base = root) {
     throw new Error('Invalid exception inventory version')
   const hits = await featureColorHits(base)
   const errors = applyExceptions(hits, inventory.occurrences)
+  let verifyDrawio = resolve(base) === resolve(root)
+  for (const file of [
+    ...drawioGeneratedPaths,
+    'packages/ui-workspace/tokens/drawio-editor-source.json',
+  ]) {
+    try {
+      await readFile(resolve(base, file))
+      verifyDrawio = true
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error
+    }
+  }
+  if (verifyDrawio) errors.push(...(await checkDrawioEditor({ base })))
+
   // The exact generated token exemption is valid only with source-bound regeneration.
   try {
     await readFile(resolve(base, referenceGeneratedPath))
     const reference = await checkReferenceFiles(base)
     errors.push(...reference.errors)
-  } catch (error) { if (error.code !== 'ENOENT') throw error }
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error
+  }
   return {
     status: errors.length ? 'FAIL' : 'PASS',
     occurrences: hits.length,

@@ -348,6 +348,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     }).finally(() => { if (timer !== undefined) clearTimeout(timer) })
   }
   function stylesheet(snapshot: any): HTMLStyleElement {
+    const upstream = snapshot.id === 'frade.editor/drawio-light', density = upstream ? 'compact' : snapshot.density
     const style = document.createElement('style')
     style.setAttribute('data-frade-private-theme', '1')
     const chrome = [
@@ -373,7 +374,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       ';}' +
       controls.join(',') +
       '{background-color:var(--frade-frame-surface-panel)!important;color:var(--frade-frame-text-primary)!important;border-color:var(--frade-frame-border-control)!important;min-height:' +
-      (snapshot.density === 'compact' ? 28 : 36) +
+      (density === 'compact' ? 28 : 36) +
       'px;min-width:24px;box-sizing:border-box;}' +
       controls.map((selector) => selector + ':hover').join(',') +
       '{background-color:var(--frade-frame-surface-hover)!important;}' +
@@ -383,7 +384,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
         ',',
       ) +
       '{min-height:' +
-      (snapshot.density === 'compact' ? 28 : 36) +
+      (density === 'compact' ? 28 : 36) +
       'px;}' +
       prefix('.geDiagramContainer') +
       '{background-color:var(--frade-frame-diagram-canvas)!important;}' +
@@ -398,9 +399,18 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
         ',',
       ) +
       '{min-height:44px;}}'
+    if (upstream && !snapshot.forcedColors) {
+      // Original pinned CSS owns ordinary chrome; retain only existing accessible
+      // upper/lower keyboard/glyph leases below and explicit system/target fixes.
+      style.textContent = prefix('.geEditor') + '{color-scheme:light!important;}' +
+        controls.join(',') + '{min-height:28px;}' +
+        controls.map(selector=>selector+':not(.geColorBtn):not(.geStyleBtn):not(.geItem)').join(',') + '{border-color:var(--frade-frame-border-control)!important;}' +
+        controls.map(selector => selector + ':focus-visible').join(',') + '{outline:2px solid var(--frade-frame-focus-ring)!important;outline-offset:2px;}' +
+        '@media(pointer:coarse){' + controls.join(',') + '{min-width:44px;min-height:44px;}}'
+    }
     const lower = prefix('.geTabContainer'),
       menu = prefix('[data-frade-lower-menu]'),
-      size = snapshot.density === 'compact' ? 28 : 36
+      size = density === 'compact' ? 28 : 36
     style.textContent +=
       lower +
       '{height:auto!important;min-height:' +
@@ -1536,6 +1546,23 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
   }
   function syncProjection(): void {
     if (!active || !graph?.container) return
+    if (active.snapshot.id === 'frade.editor/drawio-light' && !active.snapshot.forcedColors) {
+      // Reveal the original stock grid/backing without calling graph/model APIs.
+      overlay?.remove(); overlay = undefined
+      for (const [element, value] of masks) {
+        if (value === null) element.removeAttribute('data-frade-presentation-grid-layer')
+        else element.setAttribute('data-frade-presentation-grid-layer', value)
+      }
+      masks.clear()
+      for (const [element, value] of backings) {
+        if (element.getAttribute('data-frade-presentation-workspace-backing') !== '1') continue
+        if (value === null) element.removeAttribute('data-frade-presentation-workspace-backing')
+        else element.setAttribute('data-frade-presentation-workspace-backing', value)
+      }
+      backings.clear()
+      return
+    }
+
     const container = graph.container as HTMLElement,
       view = graph.view,
       canvas = view?.canvas as Element | undefined

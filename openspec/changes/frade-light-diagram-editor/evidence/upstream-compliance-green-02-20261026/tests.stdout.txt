@@ -1,0 +1,20 @@
+✔ LDE-UPSTREAM positive: source-verified generated styles pass without feature color exceptions (4288.1759ms)
+ℹ {"control":"POSITIVE","status":"PASS","errors":0}
+✔ LDE-UPSTREAM negative: generated literal or scope drift is FAIL, not a blanket generated exemption (4053.3115ms)
+ℹ {"control":"GENERATED_DRIFT","status":"FAIL","errors":["DRAWIO_OUTPUT_DRIFT: packages/ui-workspace/src/design/generated/drawio-editor.css"]}
+✔ LDE-UPSTREAM negative: forged source plus matching vendor manifest cannot bypass pinned CSS (2600.3001ms)
+ℹ {"control":"FORGED_SOURCE","status":"FAIL","errors":["UPSTREAM_SOURCE_DRIFT: styles/grapheditor.css"]}
+✔ LDE-UPSTREAM negative: missing generated TS or manifest fails closed (3907.9445ms)
+ℹ {"control":"MISSING_ARTIFACT","file":"packages/ui-workspace/src/design/generated/drawio-editor.ts","status":"FAIL"}
+ℹ {"control":"MISSING_ARTIFACT","file":"packages/ui-workspace/tokens/drawio-editor-source.json","status":"FAIL"}
+✔ LDE-UPSTREAM negative: ordinary feature literals cannot use the source exemption (3131.6026ms)
+ℹ {"control":"FEATURE_LITERAL","status":"FAIL","errors":["packages/ui-inspector/src/forbidden.ts:1: forbidden color #ABCDEF"]}
+✔ LDE-UPSTREAM deterministic source coverage, scoped selectors and namespaced animations (3184.4727ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21461.968

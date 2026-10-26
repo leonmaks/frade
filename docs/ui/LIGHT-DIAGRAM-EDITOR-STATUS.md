@@ -10,22 +10,20 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-UPSTREAM_PRE09_PASS_IMPLEMENTATION_START. Fresh automatic PRE09 PASS;359-file packet/candidate unchanged, complete events and one verdict. New contract2/9 tasks; entering single implementation/acceptance cycle with meaningful RED. Product still earlier profile until repair. READY_FOR_VERIFY: NO.
+UPSTREAM_ADAPTER_GREEN; итоговая совместимость и BDD — IN_PROGRESS. PRE09 PASS (gpt-6-sol/xhigh), raw receipt сохранён. Новый план:3/9 задач полностью завершены;2.2 и2.3 частично реализованы. READY_FOR_VERIFY: NO.
 
-Цель: общий светлый редактор Draw.io/Frade с авторскими цветами и исключением Windows forced colors. Внешний workbench сохраняет выбранную тему. PRE/POST: **gpt-6-sol / xhigh**; actual backend/effort в receipts NOT_CONFIRMED. Новые визуальные baselines ещё не приняты.
-
-## Текущие два этапа — принятая замена
-
-| Этап | Статус | Осталось |
+| Этап | Статус | Фактический результат / остаток |
 |---|---|---|
-|1 Contract + automatic PRE|IN_PROGRESS|1.1 accepted source/plan/history DONE;1.2 source/BDD validation and automatic PRE pending|
-|2 One implementation/acceptance cycle|NOT_STARTED|Meaningful RED; upstream generator/native adapter/iframe; source controls/BDD; final matrix; visual decision; verify/POST; archive/Main|
+|1 Contract + automatic PRE|DONE|Принята замена; source/strict PASS; независимый PRE09 PASS|
+|2 One implementation/acceptance cycle|IN_PROGRESS|Generator/adapter/iframe GREEN; исторические source mappings, BDD и итоговая матрица ещё не завершены|
 
-Новый план1/9 tasks; прежние6/13 и источники сохранены raw в evidence/drawio-upstream-planning-20261026/prior-manifest.json. Existing owner/transaction/content code reused with exact applicability; old visual PASS is not upstream approval.
+Реализованы: pinned Draw.io31.5.2 Light;591 scoped rules/4 generated artifacts; независимые от внешней темы фиксированные30px controls; исходные canvas/grid; renderer-only native doubleMesh; строгая проверка source/drift и узкое исключение generated literals. Внешние темы, density/settings, авторские значения и domain/routing сохраняются.
 
-Прогноз6–10h active,1–2working days with reserve (judgment). Initial implementation probe30min. Reviewer gpt-6-sol/xhigh for PRE/POST, no per-control gates. Current changes planning/docs only. Scope/security/domain/credentials boundaries unchanged.
+Фактические проверки (точные inputs/results — в evidence):120 UI units,88 bridge units,6 Node compliance;17 Electron stage cases;2 reference/System/density flows;2 dark forced-colors flows — PASS. Последний lint и generator --check PASS. Это incremental coverage, не общий POST/визуальное принятие. Старые RED/FAIL сохранены, закрыты соответствующими GREEN; старые baselines не утверждены автоматически.
 
-Next: validate9-ID BDD/pins/prior hashes -> planning commit/freeze -> automatic PRE09. No production before PASS; no human question pending; no push/Main integration.
+Следующее: точная обратимая адаптация исторических editor expectations/accepted refusal fixture и source controls; executable BDD; затем один итоговый applicable matrix, галерея/визуальное решение, verify/POST. Нет незакрытого запроса к человеку. Прогноз всего этапа6–10h active/1–2дня был judgment, не гарантия; фактические длительности сохранены по командам.
+
+Ветка/worktree/change/baseline указаны выше. Main/P02/Routing не менялись; новый remote ref NOT_AUTHORIZED, push NOT_RUN. PRE09 candidate aacf506b; последний committed checkpoint7f0095ba; следующий incremental checkpoint фиксирует реализацию с честным INCOMPLETE. Правая панель OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
 
 ## Предыдущие этапы — история до принятой замены
 
@@ -255,3 +253,9 @@ Strict PASS;9 BDD ID/Scenario pairs,14 raw prior files and3 CSS source pins veri
 ## Upstream PRE09 PASS
 
 Run11:34:13Z–11:40:09Z (5m56s total measured), candidateaacf506b unchanged,359/359 packet inputs. Requested gpt-6-sol/xhigh; backend/effort NOT_CONFIRMED. Raw16 files/events/receipt saved before interpretation at evidence/pre-09-received-20261026, resultSHA2782740103683d9a73be52a0181d6aa843e9ff2cccfb8e5b24aeac0eadfaa372. No prospective correctness/architecture blocker. Task1.2 complete; stage1 DONE. Stage2 begins with bounded30min meaningful RED; no new production modification yet.
+
+## Upstream initial probe GREEN
+
+Actual RED:1 new source-panel unit and2 Electron cases failed oldF5 vsupstreamF1 before production. Source witness initially confused transparent panel computed color with inherited backing (TEST), corrected to effective backdrop, then stock source witness PASS. Generator initial selector failure classified ABSTRACTION_BOUNDARY: keyframe steps are not selectors; preserved/namespaced animation names via parser. Generated4 artifacts from591 scoped source rules; regeneration check PASS. Desktop build/typecheck0; actual source-derived panel/button30px/forced-colors round-trip native+frame2/2 PASS in7.7s, file/settings/dirty/author values retained. Bound elapsed23.6min within30min. It is incremental proof, not final parity/POST.
+
+Stage2.2 ongoing: retire iframe competing overrides, align default grid view, complete source selector/resource/isolation negatives and legacy expectation maps. Stage2.3–2.7 pending. Existing old-profile tests need exact accepted visual mapping, not weakened behavior assertions. No new scope decision or human action pending.

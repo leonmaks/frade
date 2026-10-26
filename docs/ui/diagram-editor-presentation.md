@@ -10,4 +10,4 @@ Opaque leases govern portaled UI; global picker/other editors stay independent. 
 
 Windows forced colors is final. Verify original high-contrast CSS and narrow adapter inside Frade: upstream forced-color-adjust:none is not proof of compliance. Never tint/invert/materialize author values. Check source/resource/license pins, generated drift and global scope isolation.
 
-Implementation state: accepted replacement awaiting fresh PRE; current code/25 screenshots still reflect previous Frade Light profile. Prior artifacts are preserved in the change evidence directory and reused only for proven unchanged behavior. See LIGHT-DIAGRAM-EDITOR-STATUS.md. No new visual acceptance/POST/archive/Main delivery implied.
+Implementation state: fresh confined PRE09 PASS; pinned generator, scoped native/parent adapter, stock iframe Light and system/accessibility projections implemented with incremental unit/compliance/Electron GREEN. Historical source replay, executable BDD and final regression/visual/POST closure remain in progress. Earlier screenshots remain historical; no new visual acceptance/archive/Main delivery is implied. See LIGHT-DIAGRAM-EDITOR-STATUS.md.

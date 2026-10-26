@@ -1,6 +1,6 @@
 import type { Graph } from '@frade/draw'
 import { createEditorPresentationParticipant } from './editorPresentationParticipant'
-import { editorGridDotDiameter } from './editorPresentation'
+import { drawioEditor } from '../generated/drawio-editor'
 import type { PresentationParticipant, PhaseContext } from './service'
 import type { ResolvedTheme } from './types'
 import { createRootParticipant, validatePresentationSnapshot } from './rootParticipant'
@@ -28,10 +28,13 @@ export function createNativeParticipant(
     : initialArgs
       ? { ...initialArgs }
       : undefined
-  const hadArgs = Object.hasOwn(graph.options.grid, 'args')
+  const hadArgs = Object.hasOwn(graph.options.grid, 'args'),
+    hadType = Object.hasOwn(graph.options.grid, 'type'),
+    originalType = (graph.options.grid as { type?: unknown }).type
   let disposed = false,
     ownedBackground: Graph['options']['background'],
-    ownedGridArgs: Graph['options']['grid']['args']
+    ownedGridArgs: Graph['options']['grid']['args'],
+    ownedGridType: string | undefined
   function project(snapshot: ResolvedTheme) {
     validatePresentationSnapshot(snapshot)
     const color = snapshot.effectiveColors['diagram.canvas'],
@@ -44,11 +47,31 @@ export function createNativeParticipant(
     }
     const grid = graph.options.grid,
       args = grid.args
-    const dot = options.editorRoot && (!('type' in grid) || grid.type === 'dot') ? { thickness: editorGridDotDiameter } : {}
-    ownedGridArgs = Array.isArray(args)
-      ? args.map((arg) => ({ ...arg, color: gridColor, ...dot }))
-      : { ...args, color: gridColor, ...dot }
-    graph.drawGrid({ ...grid, args: ownedGridArgs } as Parameters<Graph['drawGrid']>[0])
+    if (options.editorRoot && snapshot.id === drawioEditor.id) {
+      const rgb = gridColor.startsWith('#')
+        ? [1, 3, 5].map((at) => parseInt(gridColor.slice(at, at + 2), 16))
+        : undefined
+      const minor = rgb
+        ? 'rgba(' + rgb.join(',') + ',' + drawioEditor.grid.minorOpacity + ')'
+        : gridColor
+      ownedGridType = 'doubleMesh'
+      ownedGridArgs = [
+        { color: minor, thickness: drawioEditor.grid.strokeWidth },
+        {
+          color: gridColor,
+          thickness: drawioEditor.grid.strokeWidth,
+          factor: drawioEditor.grid.majorSteps,
+        },
+      ]
+      graph.drawGrid({ ...grid, type: ownedGridType, args: ownedGridArgs } as Parameters<
+        Graph['drawGrid']
+      >[0])
+    } else {
+      ownedGridArgs = Array.isArray(args)
+        ? args.map((arg) => ({ ...arg, color: gridColor }))
+        : { ...args, color: gridColor }
+      graph.drawGrid({ ...grid, args: ownedGridArgs } as Parameters<Graph['drawGrid']>[0])
+    }
   }
   const participant: PresentationParticipant & { dispose(): void } = {
     id: root.id,
@@ -102,15 +125,30 @@ export function createNativeParticipant(
       root.reveal()
       if (ownedBackground && graph.options.background === ownedBackground)
         graph.drawBackground(background, true)
-      if (ownedGridArgs && graph.options.grid.args === ownedGridArgs) {
-        graph.drawGrid({ ...graph.options.grid, args: gridArgs } as Parameters<
-          Graph['drawGrid']
-        >[0])
+      if (
+        ownedGridArgs &&
+        graph.options.grid.args === ownedGridArgs &&
+        (!ownedGridType || (graph.options.grid as { type?: unknown }).type === ownedGridType)
+      ) {
+        const restored = { ...graph.options.grid, args: gridArgs } as unknown as Record<
+          string,
+          unknown
+        >
+        if (ownedGridType) {
+          if (hadType) restored.type = originalType
+          else delete restored.type
+        }
+        graph.drawGrid(restored as Parameters<Graph['drawGrid']>[0])
+        if (!hadType && ownedGridType) delete (graph.options.grid as { type?: unknown }).type
         if (!hadArgs) delete graph.options.grid.args
       }
     },
   }
   return options.editorRoot
-    ? createEditorPresentationParticipant(options.editorRoot, participant, { paint: options.paint, contentRoot: graph.container, initialSnapshot: options.editorRootSnapshot })
+    ? createEditorPresentationParticipant(options.editorRoot, participant, {
+        paint: options.paint,
+        contentRoot: graph.container,
+        initialSnapshot: options.editorRootSnapshot,
+      })
     : participant
 }

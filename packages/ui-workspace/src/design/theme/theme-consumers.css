@@ -29,33 +29,33 @@ html[data-frade-runtime='1'] .activity-bar {
   color: var(--frade-text-secondary);
   border-color: var(--frade-border-subtle);
 }
-html[data-frade-runtime='1'] .ka-workbench :is(button, input, select, textarea):not(.draw-host *) {
+html[data-frade-runtime='1'] .ka-workbench :is(button, input, select, textarea):not(.draw-host *):not([data-frade-editor='light'] *) {
   background-color: var(--frade-surface-panel);
   color: var(--frade-text-primary) !important;
   border-color: var(--frade-border-control);
 }
 html[data-frade-runtime='1']
   .ka-workbench
-  :is(button, input, select, textarea):not(.draw-host *):not(.wb-titlebar *):not(
+  :is(button, input, select, textarea):not(.draw-host *):not([data-frade-editor='light'] *):not(.wb-titlebar *):not(
     .wb-statusbar *
   ):not(.editor-tabs *):not(.breadcrumbs *) {
   min-height: var(--frade-size-control);
   min-width: var(--frade-size-target);
 }
-html[data-frade-runtime='1'] .ka-workbench button:not(.draw-host *):hover:not(:disabled) {
+html[data-frade-runtime='1'] .ka-workbench button:not(.draw-host *):not([data-frade-editor='light'] *):hover:not(:disabled) {
   background-color: var(--frade-surface-hover);
 }
 html[data-frade-runtime='1'] .ka-workbench :focus-visible {
   outline: var(--frade-focus-width) solid var(--frade-focus-ring);
   outline-offset: var(--frade-focus-offset);
 }
-html[data-frade-runtime='1'] .ka-workbench .primary:not(.draw-host *),
-html[data-frade-runtime='1'] .editor-actions > button:first-of-type {
+html[data-frade-runtime='1'] .ka-workbench .primary:not(.draw-host *):not([data-frade-editor='light'] *),
+html[data-frade-runtime='1'] .editor-actions > button:first-of-type:not([data-frade-editor='light'] *) {
   background-color: var(--frade-action-primary);
   color: var(--frade-action-onPrimary) !important;
 }
-html[data-frade-runtime='1'] .ka-workbench .primary:not(.draw-host *):hover:not(:disabled),
-html[data-frade-runtime='1'] .editor-actions > button:first-of-type:hover:not(:disabled) {
+html[data-frade-runtime='1'] .ka-workbench .primary:not(.draw-host *):not([data-frade-editor='light'] *):hover:not(:disabled),
+html[data-frade-runtime='1'] .editor-actions > button:first-of-type:not([data-frade-editor='light'] *):hover:not(:disabled) {
   background-color: var(--frade-action-primaryHover);
   color: var(--frade-action-onPrimary) !important;
 }
@@ -124,7 +124,7 @@ html[data-frade-runtime='1'] .backend-banner {
   color: var(--frade-status-warning);
   border-color: var(--frade-border-control);
 }
-html[data-frade-runtime='1'] :is(.repository-diagram, .diagram-frame) {
+html[data-frade-runtime='1'] :is(.repository-diagram, .diagram-frame):not([data-frade-editor='light']) {
   background-color: var(--frade-diagram-canvas);
 }
 /* Exact accepted P01-B02 color closure; geometry and opacity remain feature-owned. */
@@ -230,8 +230,8 @@ html[data-frade-runtime='1']
 /* These pairs already project to the user's Highlight/HighlightText system colors.
    Preserve that pair under glyphs instead of an incompatible UA Canvas backplate. */
 @media (forced-colors: active) {
-  html[data-frade-runtime='1'] .ka-workbench .primary:not(.draw-host *),
-  html[data-frade-runtime='1'] .editor-actions > button:first-of-type,
+  html[data-frade-runtime='1'] .ka-workbench .primary:not(.draw-host *):not([data-frade-editor='light'] *),
+  html[data-frade-runtime='1'] .editor-actions > button:first-of-type:not([data-frade-editor='light'] *),
   html[data-frade-runtime='1'] .tree-row.selected,
   html[data-frade-runtime='1'] .reference-picker [role='option'],
   html[data-frade-runtime='1'] .frade-theme-picker [role='option'][aria-selected='true'] {

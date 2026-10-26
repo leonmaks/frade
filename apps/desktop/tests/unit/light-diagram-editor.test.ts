@@ -236,3 +236,32 @@ it('image-backed SVG and later foreign backing metadata are never claimed or ove
   expect(svg.getAttribute('data-frade-presentation-workspace-backing')).toBe('foreign')
   f.assertSemantic()
 })
+
+import { projectEditorPresentation } from '../../../../packages/ui-workspace/src/design/theme/editorPresentation'
+it('upstream Light reveals original grid while forced rollback retains strict ACK and authored bytes', async () => {
+  const f = fixture(true),
+    ordinary = projectEditorPresentation(snapshot('dark', 1)),
+    force = projectEditorPresentation(snapshot('dark', 2, true))
+  f.send('prepare', context(), ordinary)
+  f.send('apply')
+  expect(f.replies().filter((reply) => reply.status === 'PAINTED')).toHaveLength(0)
+  await f.paint()
+  expect(document.querySelector('[data-frade-private-grid]')).toBeNull()
+  expect(f.paper.hasAttribute('data-frade-presentation-grid-layer')).toBe(false)
+  f.assertSemantic()
+  f.send('prepare', context('prepare', 2, 2), force)
+  f.send('apply', context('apply', 2, 2))
+  await f.paint()
+  expect(document.querySelector('[data-frade-private-grid] circle')?.getAttribute('fill')).toBe(
+    'CanvasText',
+  )
+  f.assertSemantic()
+  f.send('rollback', context('rollback', 1, 3), ordinary)
+  await f.paint()
+  expect(document.querySelector('[data-frade-private-grid]')).toBeNull()
+  expect(f.replies().at(-1)).toMatchObject({
+    status: 'PAINTED',
+    context: context('rollback', 1, 3),
+  })
+  f.assertSemantic()
+})

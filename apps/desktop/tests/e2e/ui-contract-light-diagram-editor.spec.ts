@@ -4,6 +4,17 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { createFlowFixture } from '../../../../scripts/flow-fixtures.mjs'
 
+
+import { readFileSync } from 'node:fs'
+const upstreamCss = readFileSync(resolve('vendor/drawio/styles/grapheditor.css'), 'utf8')
+function sourceColor(name: string) {
+  const value=upstreamCss.split(name+':')[1]?.split(';')[0].trim()
+  if(!value || !/^#[a-f0-9]{6}$/i.test(value))throw Error('Missing pinned color '+name)
+  const channels=[1,3,5].map(at=>parseInt(value.slice(at,at+2),16))
+  return {hex:value.toUpperCase(),rgb:'rgb('+channels.join(', ')+')',channels}
+}
+const stockUi={base:sourceColor('--field-color'),panel:sourceColor('--ge-panel-color'),dialog:sourceColor('--dialog-color'),workspace:sourceColor('--workspace-color'),strong:sourceColor('--strong-text-color'),buttonHeight:Number(upstreamCss.split('.geBtn {')[1].split('}')[0].split('height:')[1].split('px')[0].trim())}
+
 type Engine = 'native' | 'frame'
 async function openEditor(
   engine: Engine,
@@ -141,6 +152,8 @@ async function witness(page: Page, engine: Engine) {
       app: {
         theme: document.documentElement.dataset.fradeTheme,
         surface: getComputedStyle(document.querySelector('.ka-workbench')!).backgroundColor,
+        density: document.documentElement.dataset.fradeDensity,
+        controlHeight: document.querySelector('[aria-label="Поиск объектов"]')!.getBoundingClientRect().height,
       },
     }
   })
@@ -195,11 +208,14 @@ for (const engine of ['native', 'frame'] as const)
         expect(before.parent.theme).toBe('light')
         expect(before.parent.app.theme).toBe('dark')
         expect(before.parent.app.surface).not.toBe(before.parent.background)
-        expect(before.parent.background).toBe('rgb(249, 250, 252)')
-        expect(before.parent.panel).toBe('rgb(245, 246, 248)')
-        expect(before.content.background).toBe('rgb(249, 250, 252)')
+        expect(before.parent.background).toBe(stockUi.panel.rgb)
+        expect(before.parent.panel).toBe(stockUi.panel.rgb)
+        expect(before.content.background).toBe(engine === 'native' ? stockUi.base.rgb : stockUi.workspace.rgb)
         expect(before.content.theme).toBe('light')
-        expect(before.parent.control.height).toBeGreaterThanOrEqual(density === 'compact' ? 28 : 36)
+        expect(before.parent.app.controlHeight).toBeGreaterThanOrEqual(density === 'compact' ? 28 : 36)
+        expect(before.parent.density).toBe(density)
+        expect(before.parent.app.density).toBe(density)
+        expect(before.parent.control.height).toBe(stockUi.buttonHeight)
         await f.page.screenshot({ path: info.outputPath('light-under-dark.png') })
         if (engine === 'frame') {
           const frame = f.page.frameLocator('iframe')
@@ -211,7 +227,7 @@ for (const engine of ['native', 'frame'] as const)
             background: getComputedStyle(node).backgroundColor,
           }))
           observations.push({ phase: 'real-frame-menu', menu })
-          expect(menu.background).toBe('rgb(245, 246, 248)')
+          expect(menu.background).toBe(stockUi.panel.rgb)
           await f.page.screenshot({ path: info.outputPath('frame-light-menu.png') })
           await frame.locator('.geDiagramContainer').click({ position: { x: 80, y: 200 } })
         }
@@ -240,7 +256,7 @@ for (const engine of ['native', 'frame'] as const)
                 (root as HTMLElement).style.getPropertyValue('--frade-diagram-canvas'),
               ),
           )
-          .toBe('#F9FAFC')
+          .toBe(stockUi.base.hex)
         await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
         const restored = await witness(f.page, engine)
         observations.push({ phase: 'restored-light', ...restored })
@@ -270,7 +286,6 @@ for (const engine of ['native', 'frame'] as const)
       }
     })
   }
-
 // eslint-disable-next-line no-empty-pattern
 test('LDE owned dirty guard uses the originating editor Light scope', async ({}, info) => {
   const f = await openEditor('native', 'compact')
@@ -307,7 +322,7 @@ test('LDE owned dirty guard uses the originating editor Light scope', async ({},
     )
     await f.page.screenshot({ path: info.outputPath('owned-guard.png') })
     expect(appearance.appTheme).toBe('dark')
-    expect(appearance.background).toBe('rgb(255, 255, 255)')
+    expect(appearance.background).toBe(stockUi.dialog.rgb)
     expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
     expect(await readFile(f.settings, 'utf8')).toBe(f.settingsBefore)
     await dialog.getByRole('button', { name: 'Отмена', exact: true }).click()
@@ -423,10 +438,11 @@ for (const density of ['compact', 'comfortable'] as const)
         await writeFile(info.outputPath('toolbar-metrics.json'), JSON.stringify(metrics, null, 2))
         await f.page.screenshot({ path: info.outputPath('toolbar.png') })
         expect(metrics.scrollHeight).toBeLessThanOrEqual(metrics.clientHeight)
+        const outer=await f.page.getByLabel('Поиск объектов',{exact:true}).evaluate(node=>({height:node.getBoundingClientRect().height,density:document.documentElement.dataset.fradeDensity}))
+        expect(outer.height).toBeGreaterThanOrEqual(coarse ? 44 : density === 'comfortable' ? 36 : 28)
+        expect(outer.density).toBe(density)
         for (const control of metrics.controls)
-          expect(control.height).toBeGreaterThanOrEqual(
-            coarse ? 44 : density === 'comfortable' ? 36 : 28,
-          )
+          expect(control.height).toBeGreaterThanOrEqual(coarse ? 44 : stockUi.buttonHeight)
         expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
       } finally {
         await session.detach()
@@ -481,9 +497,9 @@ test('LDE geometry frame implicit workspace is visibly neutral below authored ce
       for (let x = 32; x < 48; x++) {
         const at = (y * decoded.width + x) * decoded.channels
         if (
-          decoded.pixels[at] === 249 &&
-          decoded.pixels[at + 1] === 250 &&
-          decoded.pixels[at + 2] === 252
+          decoded.pixels[at] === stockUi.base.channels[0] &&
+          decoded.pixels[at + 1] === stockUi.base.channels[1] &&
+          decoded.pixels[at + 2] === stockUi.base.channels[2]
         )
           neutral++
       }
@@ -580,7 +596,7 @@ for (const paint of ['white-page', 'colored-page', 'image-background'] as const)
                 getComputedStyle(root).getPropertyValue('--frade-diagram-canvas').trim(),
               ),
           )
-          .toBe('#F9FAFC')
+          .toBe(stockUi.base.hex)
         const after = await sample()
         for (const observed of [forced, after]) {
           expect(observed.xml).toBe(before.xml)
@@ -605,7 +621,6 @@ for (const paint of ['white-page', 'colored-page', 'image-background'] as const)
     },
   )
 }
-
 // eslint-disable-next-line no-empty-pattern
 test('LDE surface frame dialog tooltip and panels use owned Light chrome', async ({}, info) => {
   const f = await openEditor('frame', 'compact')
@@ -645,7 +660,7 @@ test('LDE surface frame dialog tooltip and panels use owned Light chrome', async
     }))
     observations.push({ phase: 'actual-editDiagram-command', dialogStyle })
     await f.page.screenshot({ path: info.outputPath('frame-dialog.png') })
-    expect(dialogStyle.background).toBe('rgb(245, 246, 248)')
+    expect(dialogStyle.background).toBe(stockUi.dialog.rgb)
     await dialog
       .locator('button')
       .filter({ hasText: /^(Cancel|Отмена)$/ })
@@ -664,7 +679,7 @@ test('LDE surface frame dialog tooltip and panels use owned Light chrome', async
     observations.push({ phase: 'existing-mxTooltip-widget-fixture', tooltipStyle })
     await f.page.screenshot({ path: info.outputPath('frame-tooltip.png') })
     await writeFile(info.outputPath('surfaces.json'), JSON.stringify(observations, null, 2))
-    expect(['rgb(255, 255, 255)', 'rgb(245, 246, 248)']).toContain(tooltipStyle.background)
+    expect(tooltipStyle.background).toBe(stockUi.panel.rgb)
     await body.evaluate(() => (window as any).__ldeUi.editor.graph.tooltipHandler.hide())
     const after = await body.evaluate(() => {
       const ui = (window as any).__ldeUi
@@ -678,3 +693,282 @@ test('LDE surface frame dialog tooltip and panels use owned Light chrome', async
     await f.app.close()
   }
 })
+
+for (const engine of ['native', 'frame'] as const) {
+  test(
+    'LDE upstream contract ' + engine + ' matches pinned Light panels and button geometry',
+    // eslint-disable-next-line no-empty-pattern
+    async ({}, info) => {
+      const css = await readFile(resolve('vendor/drawio/styles/grapheditor.css'), 'utf8'),
+        hex = css.match(/--ge-panel-color:\s*#([0-9a-f]{6});/i)![1],
+        panel =
+          'rgb(' + [0, 2, 4].map((at) => parseInt(hex.slice(at, at + 2), 16)).join(', ') + ')',
+        buttonHeight = Number(
+          css.match(/\.geBtn \{([\s\S]*?)\}/)![1].match(/height:\s*(\d+)px/)![1],
+        ),
+        f = await openEditor(engine, 'compact')
+      try {
+        const before = await witness(f.page, engine)
+        await writeFile(
+          info.outputPath('upstream-observation.json'),
+          JSON.stringify(
+            {
+              engine,
+              expected: { panel, buttonHeight },
+              actual: before,
+              source: 'Pinned unmodified grapheditor.css; application preference Dark',
+            },
+            null,
+            2,
+          ),
+        )
+        await f.page.screenshot({ path: info.outputPath('upstream-integration.png') })
+        expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+        expect(await readFile(f.settings, 'utf8')).toBe(f.settingsBefore)
+        expect(before.parent.panel).toBe(panel)
+      expect(before.parent.background).toBe(panel)
+        expect(before.parent.control.height).toBe(buttonHeight)
+        await f.page.emulateMedia({ forcedColors: 'active' })
+        await expect
+          .poll(() =>
+            f.page
+              .locator('.repository-diagram')
+              .evaluate((root) =>
+                (root as HTMLElement).style.getPropertyValue('--frade-diagram-canvas'),
+              ),
+          )
+          .toBe('Canvas')
+        await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+        const forced = await witness(f.page, engine)
+        expect(forced.content.author).toEqual(before.content.author)
+        await f.page.emulateMedia({ forcedColors: 'none' })
+        await expect
+          .poll(() =>
+            f.page
+              .locator('.repository-diagram')
+              .evaluate((root) =>
+                (root as HTMLElement).style.getPropertyValue('--frade-diagram-canvas'),
+              ),
+          )
+          .toBe('#FFFFFF')
+        await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+        const restored = await witness(f.page, engine)
+        expect(restored.parent.panel).toBe(panel)
+        expect(restored.parent.control.height).toBe(buttonHeight)
+        expect(restored.content.author).toEqual(before.content.author)
+        expect(restored.parent.dirty).toBe(before.parent.dirty)
+        expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+        expect(await readFile(f.settings, 'utf8')).toBe(f.settingsBefore)
+        await writeFile(
+          info.outputPath('upstream-system-roundtrip.json'),
+          JSON.stringify({ before, forced, restored, sourceUnchanged: true }, null, 2),
+        )
+      } finally {
+        await f.app.close()
+      }
+    },
+  )
+}
+// eslint-disable-next-line no-empty-pattern
+test('LDE upstream source witness records pinned unoverridden Light', async ({}, info) => {
+  const f = await openEditor('frame', 'compact'),
+    body = f.page.frameLocator('iframe').locator('body')
+  try {
+    const observed = await body.evaluate(() => {
+      document.querySelector('style[data-frade-private-theme]')?.remove()
+      const grid = document.querySelector<SVGSVGElement>('[data-frade-private-grid]')
+      if (grid) grid.style.display = 'none'
+      document.body.style.colorScheme = 'light'
+      const ui = (window as any).__ldeUi,
+        graph = ui.editor.graph,
+        view = graph.view,
+        style = (node: Element | null) => {
+          if (!node) return null
+          const s = getComputedStyle(node)
+          return {
+            class: node.className,
+            background: s.backgroundColor,
+            color: s.color,
+            border: s.borderColor,
+            font: s.font,
+            fontSize: s.fontSize,
+            height: s.height,
+            bounds: node.getBoundingClientRect().toJSON(),
+            backgroundImage: s.backgroundImage,
+          }
+        }
+      const panelNode = document.querySelector('.geSidebarContainer')
+      let panelBacking: Element | null = panelNode
+      while (panelBacking && getComputedStyle(panelBacking).backgroundColor === 'rgba(0, 0, 0, 0)')
+        panelBacking = panelBacking.parentElement
+      return {
+        effectivePanel: panelBacking ? getComputedStyle(panelBacking).backgroundColor : null,
+        bodyClass: document.body.className,
+        body: style(document.body),
+        container: style(graph.container),
+        svg: style(view.canvas.ownerSVGElement),
+        graphBackground: graph.background,
+        gridColor: graph.gridColor,
+        defaultGridColor: graph.defaultGridColor,
+        gridSize: graph.gridSize,
+        gridSteps: graph.gridSteps,
+        gridEnabled: graph.gridEnabled,
+        pageVisible: graph.pageVisible,
+        panel: style(document.querySelector('.geSidebarContainer')),
+        toolbar: style(document.querySelector('.geToolbarContainer')),
+        media: {
+          dark: matchMedia('(prefers-color-scheme:dark)').matches,
+          forced: matchMedia('(forced-colors:active)').matches,
+        },
+      }
+    })
+    await body.evaluate(() => (window as any).__ldeUi.actions.get('editDiagram').funct())
+    const dialog = f.page.frameLocator('iframe').locator('.geDialog:visible')
+    await expect(dialog).toBeVisible()
+    const controls = await dialog.evaluate((node) => {
+      const css = getComputedStyle(node)
+      return {
+        background: css.backgroundColor,
+        color: css.color,
+        buttons: Array.from(node.querySelectorAll('button')).map((button) => {
+          const c = getComputedStyle(button)
+          return {
+            text: button.textContent,
+            height: button.getBoundingClientRect().height,
+            background: c.backgroundColor,
+            color: c.color,
+            fontSize: c.fontSize,
+            border: c.border,
+            radius: c.borderRadius,
+            padding: c.padding,
+          }
+        }),
+      }
+    })
+    await writeFile(
+      info.outputPath('upstream-stock.json'),
+      JSON.stringify(
+        {
+          kind: 'TEST_ONLY_STYLESHEET_REMOVAL_SOURCE_WITNESS',
+          observed,
+          controls,
+          version: '31.5.2',
+          notProductionOrFullParityProof: true,
+        },
+        null,
+        2,
+      ),
+    )
+    await f.page.screenshot({ path: info.outputPath('upstream-stock.png') })
+    expect(observed.effectivePanel).toBe('rgb(241, 243, 244)')
+    expect(controls.buttons.every((button) => button.height === 30)).toBe(true)
+    await dialog
+      .locator('button')
+      .filter({ hasText: /^(Cancel|Отмена)$/ })
+      .click()
+    expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+    expect(await readFile(f.settings, 'utf8')).toBe(f.settingsBefore)
+  } finally {
+    await f.app.close()
+  }
+})
+for (const engine of ['native', 'frame'] as const) {
+  // eslint-disable-next-line no-empty-pattern
+  test('LDE upstream isolation '+engine+' keeps fixed metrics across reference System and outer density', async ({}, info) => {
+    const f=await openEditor(engine,'comfortable'), observations: unknown[]=[]
+    try {
+      const before=await witness(f.page,engine)
+      await f.page.getByRole('button',{name:'Меню Файл',exact:true}).click()
+      await f.page.getByRole('menuitem',{name:'Выбрать тему…',exact:true}).click()
+      const picker=f.page.getByRole('dialog',{name:'Выбор темы',exact:true})
+      for(const [label,kind] of [['VS Code Dark 2026','dark'],['Светлая (Light)','light'],['Контрастная (HC)','high-contrast'],['Системная (System)','light'],['Тёмная (Dark)','dark']]) {
+        if(label==='Системная (System)')await f.page.emulateMedia({colorScheme:'light'})
+        await picker.getByRole('option',{name:label,exact:true}).click()
+        await expect(f.page.locator('html')).toHaveAttribute('data-frade-theme',kind)
+        await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+        const state=await witness(f.page,engine)
+        observations.push({phase:label,state})
+        await writeFile(info.outputPath('isolation-observations.json'),JSON.stringify(observations,null,2))
+        expect(state.parent.control.height).toBe(stockUi.buttonHeight)
+        expect(state.parent.panel).toBe(stockUi.panel.rgb)
+        expect(state.parent.app.density).toBe('comfortable')
+        expect(state.parent.app.controlHeight).toBeGreaterThanOrEqual(36)
+        expect(await readFile(f.file,'utf8')).toBe(f.bytes)
+        expect(await readFile(f.settings,'utf8')).toBe(f.settingsBefore)
+        if(label==='Системная (System)') {
+          await f.page.emulateMedia({colorScheme:'dark'})
+          await expect(f.page.locator('html')).toHaveAttribute('data-frade-theme','dark')
+          const dark=await witness(f.page,engine)
+          observations.push({phase:'System OS Dark',state:dark})
+          expect(dark.parent.control.height).toBe(stockUi.buttonHeight)
+          expect(dark.parent.panel).toBe(stockUi.panel.rgb)
+        }
+      }
+      await f.page.keyboard.press('Escape')
+      await expect(picker).toBeHidden()
+      await f.page.getByRole('button',{name:'Меню Файл',exact:true}).click()
+      await f.page.getByRole('menuitem',{name:'Настройки интерфейса',exact:true}).click()
+      const settings=f.page.getByRole('dialog',{name:'Настройки интерфейса',exact:true})
+      for(const [label,density,minimum] of [['Компактная','compact',28],['Комфортная','comfortable',36]] as const){
+        await settings.getByRole('radio',{name:label,exact:true}).click()
+        await expect(f.page.locator('html')).toHaveAttribute('data-frade-density',density)
+        await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+        const state=await witness(f.page,engine)
+        observations.push({phase:'Outer density '+density,state})
+        expect(state.parent.density).toBe(density)
+        expect(state.parent.app.controlHeight).toBeGreaterThanOrEqual(minimum)
+        expect(state.parent.control.height).toBe(stockUi.buttonHeight)
+        expect(await readFile(f.settings,'utf8')).toBe(f.settingsBefore)
+      }
+      await settings.getByRole('button',{name:'Закрыть',exact:true}).click()
+      await expect(settings).toBeHidden()
+      const after=await witness(f.page,engine)
+      expect(after.content.author).toEqual(before.content.author)
+      expect(after.parent.dirty).toBe(before.parent.dirty)
+      expect(await readFile(f.file,'utf8')).toBe(f.bytes)
+      expect(await readFile(f.settings,'utf8')).toBe(f.settingsBefore)
+      await f.page.screenshot({path:info.outputPath('fixed-editor-after-roundtrip.png')})
+      await writeFile(info.outputPath('isolation-observations.json'),JSON.stringify({observations,before,after},null,2))
+    }finally{await f.app.close()}
+  })
+}
+for(const engine of ['native','frame'] as const){
+  // eslint-disable-next-line no-empty-pattern
+  test('LDE system '+engine+' respects dark forced colors on reachable controls',async({},info)=>{
+    const f=await openEditor(engine,'compact')
+    try{
+      const before=await witness(f.page,engine)
+      if(engine==='frame')await f.page.frameLocator('iframe').locator('body').evaluate(()=>(window as any).__ldeUi.actions.get('editDiagram').funct())
+      const target=engine==='native'?f.page.locator('.editor-actions > button').nth(1):f.page.frameLocator('iframe').locator('.geDialog:visible').getByRole('button',{name:'Отмена',exact:true})
+      await f.page.emulateMedia({forcedColors:'active',colorScheme:'dark'})
+      await expect.poll(()=>f.page.locator('.repository-diagram').evaluate(root=>(root as HTMLElement).style.getPropertyValue('--frade-diagram-canvas'))).toBe('Canvas')
+      await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+      const system=await target.evaluate(node=>{
+        const probe=document.createElement('span')
+        probe.style.cssText='color:CanvasText;background-color:Canvas;forced-color-adjust:none;color-scheme:light dark;position:fixed;left:-10000px;'
+        document.body.append(probe)
+        try{
+          const expected=getComputedStyle(probe),actual=getComputedStyle(node)
+          let ancestor:Element|null=node
+          while(ancestor&&getComputedStyle(ancestor).backgroundColor==='rgba(0, 0, 0, 0)')ancestor=ancestor.parentElement
+          return {forced:matchMedia('(forced-colors:active)').matches,dark:matchMedia('(prefers-color-scheme:dark)').matches,expected:{color:expected.color,background:expected.backgroundColor},actual:{color:actual.color,background:ancestor?getComputedStyle(ancestor).backgroundColor:null,border:actual.borderColor,scheme:actual.colorScheme,adjust:actual.forcedColorAdjust}}
+        }finally{probe.remove()}
+      })
+      await writeFile(info.outputPath('actual-system-colors.json'),JSON.stringify(system,null,2))
+      await f.page.screenshot({path:info.outputPath('dark-forced-control.png')})
+      expect(system.forced).toBe(true)
+      expect(system.dark).toBe(true)
+      expect(system.actual.color).toBe(system.expected.color)
+      expect(system.actual.background).toBe(system.expected.background)
+      expect(system.actual.border).toBe(system.expected.color)
+      if(engine==='frame')await target.click()
+      await f.page.emulateMedia({forcedColors:'none',colorScheme:'light'})
+      await expect.poll(()=>f.page.locator('.repository-diagram').evaluate(root=>(root as HTMLElement).style.getPropertyValue('--frade-diagram-canvas'))).toBe(stockUi.base.hex)
+      const after=await witness(f.page,engine)
+      expect(after.content.author).toEqual(before.content.author)
+      expect(after.parent.dirty).toBe(before.parent.dirty)
+      expect(await readFile(f.file,'utf8')).toBe(f.bytes)
+      expect(await readFile(f.settings,'utf8')).toBe(f.settingsBefore)
+    }finally{await f.app.close()}
+  })
+}

@@ -1,0 +1,50 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade-worktrees/light-diagram-editor/packages/ui-workspace
+
+ ❯ tests/ui-contract/light-diagram-editor.test.tsx (39 tests | 1 failed | 38 skipped) 26ms
+   ↓ LDE-001 LDE-006 native scope under light/compact/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under light/compact/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under light/comfortable/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under light/comfortable/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under dark/compact/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under dark/compact/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under dark/comfortable/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under dark/comfortable/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under high-contrast/compact/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under high-contrast/compact/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under high-contrast/comfortable/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under high-contrast/comfortable/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under system-light/compact/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under system-light/compact/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under system-light/comfortable/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under system-light/comfortable/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under system-dark/compact/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under system-dark/compact/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under system-dark/comfortable/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under system-dark/comfortable/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under reference/compact/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under reference/compact/forced=true preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under reference/comfortable/forced=false preserves the app and authored state
+   ↓ LDE-001 LDE-006 native scope under reference/comfortable/forced=true preserves the app and authored state
+   ↓ LDE-006 LDE-007 native forced-colors round trip and rollback retain author/settings/revision ownership
+   ↓ LDE-007 stale/aborted editor handle cannot paint either root or canvas
+   ↓ LDE-003 disposal restores owned root projections and preserves a later unrelated style owner
+   ↓ LDE-007 covered native join is paintable before ACK and retains reveal/disposal ownership
+   ↓ LDE-007 invalid covered handle cannot reveal its parent before refusal
+   ↓ LDE-003 late prepare after owner disposal is rejected and its acquired handle is disposed
+   ↓ LDE-001 LDE-007 frame prepares a validated Light DTO while keeping the authoritative Dark context
+   ↓ LDE-004 native dot diameter is shared view geometry and restores without changing grid semantics
+   ↓ LDE-003 managed editor overlay keeps focus/cancel semantics and isolates the global picker and second editor
+   ↓ LDE-003 LDE-006 owned overlay follows same-transaction forced-colors rollback without touching the second owner/global host
+   ↓ LDE-003 disposed/foreign/forged leases fail without rebinding or changing the active modal
+   ↓ LDE-003 initial owned popup projects the supplied visible snapshot before first participant paint
+   ↓ LDE-007 dirty guard retains every original byte outside the exact accepted metadata call
+   ↓ LDE upstream contract uses pinned panel color without changing workbench or author state
+   × LDE upstream grid uses existing double mesh view while keeping semantic grid and exact disposal 25ms
+     → expected 'dot' to be 'doubleMesh' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 38 skipped (39)
+   Start at  15:24:57
+   Duration  1.31s (transform 193ms, setup 0ms, collect 254ms, tests 26ms, environment 530ms, prepare 156ms)
+

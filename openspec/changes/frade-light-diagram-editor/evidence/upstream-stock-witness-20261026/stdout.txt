@@ -1,0 +1,38 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\e2e\ui-contract-light-diagram-editor.spec.ts:668:1 › LDE upstream source witness records pinned unoverridden Light (3.7s)
+[31mTesting stopped early after 1 maximum allowed failures.[39m
+
+
+  1) tests\e2e\ui-contract-light-diagram-editor.spec.ts:668:1 › LDE upstream source witness records pinned unoverridden Light 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m"rgb[7m(241, 243, 244[27m)"[39m
+    Received: [31m"rgb[7ma(0, 0, 0, 0[27m)"[39m
+
+      717 |     await writeFile(info.outputPath('upstream-stock.json'),JSON.stringify({kind:'TEST_ONLY_STYLESHEET_REMOVAL_SOURCE_WITNESS',observed,controls,version:'31.5.2',notProductionOrFullParityProof:true},null,2))
+      718 |     await f.page.screenshot({path:info.outputPath('upstream-stock.png')})
+    > 719 |     expect(observed.panel?.background).toBe('rgb(241, 243, 244)')
+          |                                        ^
+      720 |     expect(controls.buttons.every(button=>button.height===30)).toBe(true)
+      721 |     await dialog.locator('button').filter({hasText:/^(Cancel|Отмена)$/}).click()
+      722 |     expect(await readFile(f.file,'utf8')).toBe(f.bytes)
+        at E:\dev\codex\frade-worktrees\light-diagram-editor\apps\desktop\tests\e2e\ui-contract-light-diagram-editor.spec.ts:719:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-light-diagram-editor\evidence\upstream-stock-witness-20261026\artifacts\ui-contract-light-diagram--54c39-s-pinned-unoverridden-Light\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\openspec\changes\frade-light-diagram-editor\evidence\upstream-stock-witness-20261026\artifacts\ui-contract-light-diagram--54c39-s-pinned-unoverridden-Light\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace ..\..\openspec\changes\frade-light-diagram-editor\evidence\upstream-stock-witness-20261026\artifacts\ui-contract-light-diagram--54c39-s-pinned-unoverridden-Light\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\ui-contract-light-diagram-editor.spec.ts:668:1 › LDE upstream source witness records pinned unoverridden Light 
+  1 error was not a part of any test, see above for details

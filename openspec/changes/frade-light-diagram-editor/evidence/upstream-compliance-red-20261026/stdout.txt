@@ -1,0 +1,54 @@
+✖ LDE-UPSTREAM positive: source-verified generated styles pass without feature color exceptions (3437.6711ms)
+ℹ {"control":"POSITIVE","status":"FAIL","errors":384}
+✖ LDE-UPSTREAM negative: generated literal or scope drift is FAIL, not a blanket generated exemption (3259.5184ms)
+ℹ {"control":"GENERATED_DRIFT","status":"FAIL","errors":["DRAWIO_OUTPUT_DRIFT: packages/ui-workspace/src/design/generated/drawio-editor.css"]}
+✔ LDE-UPSTREAM negative: forged source plus matching vendor manifest cannot bypass pinned CSS (2375.1055ms)
+ℹ {"control":"FORGED_SOURCE","status":"FAIL","errors":["UPSTREAM_SOURCE_DRIFT: styles/grapheditor.css"]}
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9348.1126
+
+✖ failing tests:
+
+test at tests\ui-contract\light-diagram-editor.test.mjs:41:1
+✖ LDE-UPSTREAM positive: source-verified generated styles pass without feature color exceptions (3437.6711ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'FAIL' !== 'PASS'
+  
+      at file:///E:/dev/codex/frade-worktrees/light-diagram-editor/tests/ui-contract/light-diagram-editor.test.mjs:46:12
+      at async fixture (file:///E:/dev/codex/frade-worktrees/light-diagram-editor/tests/ui-contract/light-diagram-editor.test.mjs:31:5)
+      at async TestContext.<anonymous> (file:///E:/dev/codex/frade-worktrees/light-diagram-editor/tests/ui-contract/light-diagram-editor.test.mjs:42:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'FAIL',
+    expected: 'PASS',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\ui-contract\light-diagram-editor.test.mjs:50:1
+✖ LDE-UPSTREAM negative: generated literal or scope drift is FAIL, not a blanket generated exemption (3259.5184ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(colors.errors.some(v => v.includes('DRAWIO_OUTPUT_DRIFT')))
+  
+      at file:///E:/dev/codex/frade-worktrees/light-diagram-editor/tests/ui-contract/light-diagram-editor.test.mjs:58:5
+      at async fixture (file:///E:/dev/codex/frade-worktrees/light-diagram-editor/tests/ui-contract/light-diagram-editor.test.mjs:31:5)
+      at async TestContext.<anonymous> (file:///E:/dev/codex/frade-worktrees/light-diagram-editor/tests/ui-contract/light-diagram-editor.test.mjs:51:3)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
