@@ -9,7 +9,7 @@
 ## 2. Shared scope and native editor
 
 - [ ] 2.1 Execute meaningful RED for fixed light under Dark/reference/HC, input immutability, forced-colors entry/exit and unchanged revision/density; prove baseline fails the required behavior.
-- [ ] 2.2 Implement shared role profile/projection and editor root participant composition; pass the new focused tests and existing participant/service regressions; document scope/precedence with the additive Guide/Theme contract amendment.
+- [ ] 2.2 Implement shared role profile/projection and editor root participant composition; pass the new focused tests and existing participant/service regressions; document scope/precedence in the approved companion without changing the eight protected Guide/QA/Theme/token artifacts.
 - [ ] 2.3 Wire the native retained editor container and X6 view projection; pass authored paint/identity/undo/grid tests plus one actual Dark/forced-colors native probe; update presentation documentation in this checkpoint.
 
 ## 3. Draw.io, owned overlays and visual parity

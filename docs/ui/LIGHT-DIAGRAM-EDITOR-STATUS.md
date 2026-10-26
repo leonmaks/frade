@@ -10,7 +10,7 @@ Guide: v1.0; общий workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4
 
 ## Текущая фаза
 
-PRE_PREPARATION. Apply авторизован прямым запросом пользователя. Все planning artifacts созданы, fresh strict validation PASS. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
+PRE_01_FAIL_PACKET_COMPLETENESS; PRE_02_PREPARATION. Apply авторизован прямым запросом пользователя. Все planning artifacts созданы, fresh strict validation PASS. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
 
 Пользователь подтвердил единый светлый редактор Draw.io/Frade, сохранение авторских цветов и приоритет Windows forced colors. PRE/POST этого этапа: **gpt-6-sol / xhigh**. Внешний workbench сохраняет выбранную тему; локальные панели/меню/диалоги редакторов используют общий светлый контракт. Новые visual baselines ещё не приняты.
 
@@ -22,7 +22,7 @@ PRE_PREPARATION. Apply авторизован прямым запросом по
 | Proposal / четыре delta specs / design / tasks | DONE | Все planning artifacts на месте |
 | BDD и стратегия / промпты PRE/POST | DONE_PLANNING | 9 определений Gherkin; bindings NOT_IMPLEMENTED |
 | Strict validation / связность scenarios | PASS | final-strict-validation.json без issues; 3 старых сценария точны, 2 ожидаемых scope-изменения записаны отдельно |
-| Независимый автоматический PRE | PREPARING | gpt-6-sol/xhigh; 50 source hashes revalidated; candidate замораживается на время dispatch |
+| Независимый автоматический PRE | FAIL_01; PREPARING_02 | Первый пакет неполон; raw report/events/receipt сохранены; production не менялся |
 | Meaningful RED / shared scope / native adapter | NOT_RUN | Группа 2 tasks.md |
 | Draw.io / overlays / authored parity | NOT_RUN | Группа 3 tasks.md |
 | Общие проверки / runtime / screenshots | NOT_RUN | verification.md, финальные исходники |
@@ -70,3 +70,9 @@ Planning checkpoint: LOCAL_COMMITTED `d375eac895688879334702f931c29b61147a2376`;
 ## Возобновление 26 октября 2026
 
 Текущий checkpoint до PRE: `948cf36bf370f6cecd8e0a3ba0198b3a8c842279`. Пользователь разрешил PRE и реализацию после PASS. Обнаруженные 50 исходников совпадают с planning inventory. Стратегия сохранена: общий derived scope, короткий bounded RED/native/frame/portal probe, затем финальные обязательные прогоны; повтор полного historical volume не планируется. PRE запускается автоматически; до получения чистого PASS production не меняется. Во время freeze dashboard не изменяется.
+
+## PRE 01 — фактический результат
+
+FAIL: отсутствовали baseline color/reference/checkout controls и native schema/graph adapter. Receipt подтвердил candidateUnchanged/packetUnchanged и точную requested пару gpt-6-sol/xhigh; actual backend/effort NOT_CONFIRMED. Raw evidence сохранено в evidence/pre-01-received-20261026. Подготовка 94 файлов заняла примерно 86 секунд, весь dispatch 6 минут 14 секунд; это измеренные интервалы, не прогноз следующего review.
+
+При аудите недостающих controls найден raw-byte запрет изменения Guide/Checklist/Themes Spec. План уточнён в пределах существующего docs/ui/diagram-editor-presentation.md: companion и deltas документируют принятую политику, все восемь защищённых файлов/оракул остаются неизменными. Product scope и модель/effort не меняются. Native page/image/gradient отсутствуют в схеме: это существующая UNSUPPORTED capability, не обещание новой функции. Следующий шаг — полный исправленный packet и fresh PRE 02, без production до PASS.

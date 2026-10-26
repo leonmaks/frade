@@ -1,0 +1,9 @@
+The fixed Light editor, reference-geometry exception, and Windows forced-colors priority are **authorized product decisions**. This PRE review fails because required baseline inputs are missing from the packet. I verified the hashes of all 94 included artifacts and the design hash, but that does not establish packet completeness.
+
+- **BLOCKER — UI compliance controls cannot be reviewed.** `package.json:31-38` requires the color, reference-source, and checkout checks, while `scripts/ui/controls.mjs:8` and `tests/ui-contract/vscode-dark-2026.test.mjs:25-26` import checker files absent from the packet. The legacy-color and traceability decision files are absent too. Without them, the proposed profile’s literal exception, negative control, and historical source-binding integrity cannot be assessed. **Correction:** add those exact baseline files and hashes to a new immutable packet, then rerun PRE.
+
+- **BLOCKER — native authored-paint boundary cannot be reviewed.** `packages/draw/src/editor/DiagramEditor.tsx:4` and `packages/ui-workspace/src/FradeDiagramView.tsx:176` use the native document adapter, but its adapter and schema are absent. They are needed to assess the plan’s explicit/inherited paint and page-background preservation claims in `openspec/changes/frade-light-diagram-editor/design.md:51-53`, particularly because those files are outside the implementation allowlist. **Correction:** include the baseline adapter and schema with hashes and rerun PRE; reconcile the plan if they expose an unsupported requirement.
+
+These are packet-completeness findings, not claims about unimplemented code. No runtime or visual acceptance is inferred.
+
+GATE_STATUS: FAIL
