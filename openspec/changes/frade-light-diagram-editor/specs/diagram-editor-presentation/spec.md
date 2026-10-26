@@ -48,8 +48,9 @@ Editor-owned overlays SHALL inherit the editor presentation by explicit owner id
 The neutral workspace SHALL use canvas color #F9FAFC and dot color #CDD3DC in both editors outside forced colors. Grid rendering SHALL preserve semantic grid size, origin, snapping and navigation transforms. Explicit authored page backgrounds and images SHALL remain authoritative.
 
 #### Scenario: Neutral workspace and authored page
-- **WHEN** default and explicitly colored/image-backed pages are opened in both editors
-- **THEN** neutral workspace colors match while authored page paint remains unchanged and export receives no UI grid or workspace-color injection
+- **WHEN** default workspaces are opened in both editors and supported explicitly colored/image-backed pages are opened in Draw.io
+- **THEN** neutral workspace colors match, Draw.io authored page paint remains unchanged and export receives no UI grid or workspace-color injection
+- **AND** native page/image fields remain explicitly unsupported by the current schema, without invented parity or schema changes
 
 #### Scenario: Pan zoom and grid visibility
 - **WHEN** the user pans, zooms or uses the existing grid toggle

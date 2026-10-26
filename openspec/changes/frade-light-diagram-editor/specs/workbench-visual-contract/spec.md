@@ -4,7 +4,7 @@
 
 ### Requirement: Opt-in reference geometry and honest fidelity
 
-Only the selected frade.reference/vscode-dark-2026 ID SHALL enable the first-party reference geometry preset for existing comparable external workbench shell and controls. Diagram-owned controls SHALL retain the shared light-editor geometry. Density preference MUST remain independent. The scoped preset MAY replace guide initial band/radius/spacing defaults with pinned VS Code measurements; mandatory keyboard, focus, pointer target, contrast, reflow and semantic preservation rules remain. No other theme SHALL acquire reference geometry.
+Only the selected frade.reference/vscode-dark-2026 ID SHALL enable the first-party reference geometry preset for existing comparable external workbench shell and controls. Density preference MUST remain independent. The scoped preset MAY replace guide initial band/radius/spacing defaults with pinned VS Code measurements; mandatory keyboard, focus, pointer target, contrast, reflow and semantic preservation rules remain. No other theme SHALL acquire reference geometry.
 
 #### Scenario: User switches theme or density
 

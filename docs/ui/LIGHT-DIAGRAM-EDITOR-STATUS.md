@@ -10,7 +10,7 @@ Guide: v1.0; общий workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4
 
 ## Текущая фаза
 
-BLOCKED_SCOPE_DECISION — LDE-PRE-RECONCILIATION-01. Два автоматических PRE завершились FAIL; product implementation не начат. Активный change синтаксически valid, но correctness/scope blockers открыты. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
+PRE_03_PREPARATION — LDE-PRE-RECONCILIATION-01 ACCEPTED. Два автоматических PRE завершились FAIL; product implementation не начат. Активный change синтаксически valid, но correctness/scope blockers открыты. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
 
 Пользователь подтвердил единый светлый редактор Draw.io/Frade, сохранение авторских цветов и приоритет Windows forced colors. PRE/POST этого этапа: **gpt-6-sol / xhigh**. Внешний workbench сохраняет выбранную тему; локальные панели/меню/диалоги редакторов используют общий светлый контракт. Новые visual baselines ещё не приняты.
 
@@ -46,7 +46,7 @@ BLOCKED_SCOPE_DECISION — LDE-PRE-RECONCILIATION-01. Два автоматич�
 - [ ] Получить решение по расширению scope двумя историческими origin controls.
 - [ ] После нового запроса на выполнение — подготовить immutable packet и автоматически выполнить PRE.
 
-Tracked task progress: 1/13; 1.2 переоткрыта из-за доказанных planning blockers. PRE 1.3 не завершена; implementation tasks не выполнены.
+Tracked task progress: 2/13; точные drafts приняты и применены. PRE 1.3 не завершена; implementation tasks не выполнены.
 
 ## Проверки и ограничения
 
@@ -93,3 +93,7 @@ Blockers: добавить read-only baseline ThemePicker.tsx/picker.test.tsx в
 ## Checkpoint ожидания решения
 
 Локальный checkpoint: `fdbcfdcf596220b74765bbf4e5b53f253e71f550`. Полный diff от baseline ограничен этим change и dashboard; 50 baseline source hashes повторно совпали. Новая remote-ветка не публиковалась. Запрошено точное решение через UI; статусы FAIL не сняты. Правая панель повторно OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED. READY_FOR_VERIFY: NO.
+
+## Точное решение принято
+
+Пользователь утвердил LDE-PRE-RECONCILIATION-01 и четыре drafts с manifest `19f50fa30b53341932701d07fc22ce204e8da08d82504e03fc3124714144f5a8`. Проверены исходные hashes, применены только четыре planning drafts; acceptance.json сохранён. Два дополнительных origin-control пути теперь входят в разрешённый scope; код этих controls пока НЕ менялся. Исторические PRE 01/02 FAIL сохраняются. Текущий следующий шаг — fresh PRE 03 gpt-6-sol/xhigh с baseline picker и полным согласованным планом; до PASS production запрещён. Во время review status заморожен.
