@@ -3,14 +3,14 @@
 Обновлено: 26 октября 2026 (MSK); evidence содержит фактические UTC timestamps.
 Ветка: `codex/frade-light-diagram-editor`
 Worktree: `E:/dev/codex/frade-worktrees/light-diagram-editor`
-Change: `frade-light-diagram-editor` (reopened after Main consumer adapter FAIL)
+Change: `frade-light-diagram-editor` (archived: `openspec/changes/archive/2026-10-26-frade-light-diagram-editor`)
 Исходный commit: `4244e5668e50f74b9b536c2f0ffc44c56279e945`
 Git common: `E:/dev/codex/frade/.git`
 Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5`.
 
 ## Текущая фаза
 
-MANIFEST_REPAIR_PRE_PASS / GREEN / PREPARING_CUMULATIVE_REPAIR_POST.8/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: YES for implementation; final2.7 archive/Main operations pending.
+CUMULATIVE_REPAIR_POST_PASS / ARCHIVED / MAIN_ADOPTION_PENDING.8/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: YES for implementation; final2.7 archive/Main operations pending.
 
 | Этап | Статус | Фактический результат |
 |---|---|---|
@@ -295,3 +295,11 @@ Main build PASS; adapter source-manifest metadata FAIL due verifiedLF/CRLF JSON 
 ## Manifest repair GREEN —26October
 
 Existing2.7 repair PRE PASS received complete, immutable, requestedgpt-6-sol/xhigh; actualbackend/effort NOT_CONFIRMED. Exact generator draft applied only after PASS. Node controls8/8 TAP, full CI UI compliance41/41 and positive/negative/checkout checks exit0, BDD11/11, affected lint/typecheck/strict0. CSS/TS/profile and all UI runtime sources byte-identical to POST02 candidate. Source metadata now one canonical published identity with exactly2known raw manifest forms; unknown3rd and mutation fail. Previous Main adapter FAIL retained; Main remains local0964193c, no fix adoption/push until fresh cumulative repair POST. No new visual acceptance or full runtime needed for unchanged runtime.
+
+## Cumulative repair POST PASS —26October
+
+Exact68af9531 candidate; complete clean gpt-6-sol/xhigh requested POST, exactly one PASS, candidate/packet unchanged; raw received under main-manifest-post-received-20261026 before interpretation. Actual backend/effort NOT_CONFIRMED.236BDD inputs/8reports and112bound cases reviewed; all prior source/runtime/visual/risk contracts retained. Archive2 and Main consumer checks/push pending;8/9 tasks,2.7 still IN_PROGRESS.
+
+## Archive2 complete —26October
+
+2594 raw original files preserved exactly; all4 canonical capabilities already match accepted deltas. Current archive-locator BDD11/11 PASS. Fresh cumulative repair POST PASS, previous archive/reopen/FAIL records retained. Main repair adoption/adapter/3case smoke/publication still pending;2.7 remains unchecked.
