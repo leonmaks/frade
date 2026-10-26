@@ -1,0 +1,470 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\playwright.config.ts",
+    "rootDir": "E:/dev/codex/frade-worktrees/light-diagram-editor/apps/desktop/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 180000,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 2,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade-worktrees/light-diagram-editor/openspec/changes/frade-light-diagram-editor/evidence/upstream-historical-fui-01-20261026/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade-worktrees/light-diagram-editor/apps/desktop/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ui-contract-theme.spec.ts",
+      "file": "ui-contract-theme.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3369,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:5260) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-26T13:31:25.741Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-487e24ebe989ae895c05",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 295,
+          "column": 1
+        },
+        {
+          "title": "P01 real frame chord, Settings, System media and preview window-close preserve dirty KA and durable ownership",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8347,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T13:31:29.146Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-73462109c6c4d69dedc4",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 496,
+          "column": 1
+        },
+        {
+          "title": "P01-FUI005 light native",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3893,
+                  "error": {
+                    "message": "TypeError: Cannot convert undefined or null to object",
+                    "stack": "TypeError: Cannot convert undefined or null to object\n    at fuiRevisionAndPalette (E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3595:28)\n    at E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3629:28",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                      "column": 28,
+                      "line": 3595
+                    },
+                    "snippet": "  3593 |     const style = getComputedStyle(node), prefix = input.kind === 'native' ? '--frade-' : '--frade-frame-'\n  3594 |     return input.roles.map(([role, wanted]) => ({ role, wanted, actual: style.getPropertyValue(prefix + role.replaceAll('.', '-')).trim() }))\n> 3595 |   }, { kind, roles: Object.entries(drawioEditor.palette) })\n       |                            ^\n  3596 |   expect(required).toHaveLength(31)\n  3597 |   for (const role of required) expect(role.actual.toUpperCase()).toBe(role.wanted)\n  3598 |   return { revision, projected, required }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                        "column": 28,
+                        "line": 3595
+                      },
+                      "message": "TypeError: Cannot convert undefined or null to object\n\n  3593 |     const style = getComputedStyle(node), prefix = input.kind === 'native' ? '--frade-' : '--frade-frame-'\n  3594 |     return input.roles.map(([role, wanted]) => ({ role, wanted, actual: style.getPropertyValue(prefix + role.replaceAll('.', '-')).trim() }))\n> 3595 |   }, { kind, roles: Object.entries(drawioEditor.palette) })\n       |                            ^\n  3596 |   expect(required).toHaveLength(31)\n  3597 |   for (const role of required) expect(role.actual.toUpperCase()).toBe(role.wanted)\n  3598 |   return { revision, projected, required }\n    at fuiRevisionAndPalette (E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3595:28)\n    at E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3629:28"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T13:31:37.514Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\openspec\\changes\\frade-light-diagram-editor\\evidence\\upstream-historical-fui-01-20261026\\artifacts\\ui-contract-theme-P01-FUI005-light-native\\test-failed-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\openspec\\changes\\frade-light-diagram-editor\\evidence\\upstream-historical-fui-01-20261026\\artifacts\\ui-contract-theme-P01-FUI005-light-native\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                    "column": 28,
+                    "line": 3595
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-7e13f2e297bd51fea5fb",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 3995,
+          "column": 3
+        },
+        {
+          "title": "P01-FUI005 light frame",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6843,
+                  "error": {
+                    "message": "TypeError: Cannot convert undefined or null to object",
+                    "stack": "TypeError: Cannot convert undefined or null to object\n    at fuiRevisionAndPalette (E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3595:28)\n    at E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3629:28",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                      "column": 28,
+                      "line": 3595
+                    },
+                    "snippet": "  3593 |     const style = getComputedStyle(node), prefix = input.kind === 'native' ? '--frade-' : '--frade-frame-'\n  3594 |     return input.roles.map(([role, wanted]) => ({ role, wanted, actual: style.getPropertyValue(prefix + role.replaceAll('.', '-')).trim() }))\n> 3595 |   }, { kind, roles: Object.entries(drawioEditor.palette) })\n       |                            ^\n  3596 |   expect(required).toHaveLength(31)\n  3597 |   for (const role of required) expect(role.actual.toUpperCase()).toBe(role.wanted)\n  3598 |   return { revision, projected, required }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                        "column": 28,
+                        "line": 3595
+                      },
+                      "message": "TypeError: Cannot convert undefined or null to object\n\n  3593 |     const style = getComputedStyle(node), prefix = input.kind === 'native' ? '--frade-' : '--frade-frame-'\n  3594 |     return input.roles.map(([role, wanted]) => ({ role, wanted, actual: style.getPropertyValue(prefix + role.replaceAll('.', '-')).trim() }))\n> 3595 |   }, { kind, roles: Object.entries(drawioEditor.palette) })\n       |                            ^\n  3596 |   expect(required).toHaveLength(31)\n  3597 |   for (const role of required) expect(role.actual.toUpperCase()).toBe(role.wanted)\n  3598 |   return { revision, projected, required }\n    at fuiRevisionAndPalette (E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3595:28)\n    at E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts:3629:28"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:26320) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-26T13:31:42.644Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\openspec\\changes\\frade-light-diagram-editor\\evidence\\upstream-historical-fui-01-20261026\\artifacts\\ui-contract-theme-P01-FUI005-light-frame\\test-failed-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\openspec\\changes\\frade-light-diagram-editor\\evidence\\upstream-historical-fui-01-20261026\\artifacts\\ui-contract-theme-P01-FUI005-light-frame\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\ui-contract-theme.spec.ts",
+                    "column": 28,
+                    "line": 3595
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-33e0f82f2627092fc3a7",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 3995,
+          "column": 3
+        },
+        {
+          "title": "P01-FUI005 dark native",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-b708a9ac4c3e01dd4c3d",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 3995,
+          "column": 3
+        },
+        {
+          "title": "P01-FUI005 dark frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-5b8f332779d28e8b72ca",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 3995,
+          "column": 3
+        },
+        {
+          "title": "P01-FUI005 high-contrast native",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-e5ff2f7366fb6e7f8317",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 3995,
+          "column": 3
+        },
+        {
+          "title": "P01-FUI005 high-contrast frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-d2dd4df83da75285408f",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 3995,
+          "column": 3
+        },
+        {
+          "title": "P01-FUI006 native",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-873cd14d4a5e8dbf0533",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 4053,
+          "column": 3
+        },
+        {
+          "title": "P01-FUI006 frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-e33c9d92b07661f20bde",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 4053,
+          "column": 3
+        },
+        {
+          "title": "P01-FUI007 required frame preparation refuses direct durable commit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-ef635d57af6912d5cdb2",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 4102,
+          "column": 1
+        },
+        {
+          "title": "P01-FUI009 dark comfortable selected and restored native",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-799917788ef138ee27ba",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 4196,
+          "column": 3
+        },
+        {
+          "title": "P01-FUI009 dark comfortable selected and restored frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2e7220d18f4f72c44a51-fb96a5660d18f3107b1d",
+          "file": "ui-contract-theme.spec.ts",
+          "line": 4196,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 2 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-26T13:31:23.570Z",
+    "duration": 25982.951999999997,
+    "expected": 2,
+    "skipped": 9,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

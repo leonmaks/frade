@@ -1,0 +1,272 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\playwright.config.ts",
+    "rootDir": "E:/dev/codex/frade-worktrees/light-diagram-editor/apps/desktop/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 90000,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 2,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade-worktrees/light-diagram-editor/openspec/changes/frade-light-diagram-editor/evidence/upstream-native-drag-instrumented-02-20261026/artifacts",
+        "repeatEach": 5,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade-worktrees/light-diagram-editor/apps/desktop/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fixtures\\light-diagram-editor\\drag-probe.spec.ts",
+      "file": "fixtures/light-diagram-editor/drag-probe.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3003,
+                  "error": {
+                    "message": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined",
+                    "stack": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined\n    at E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts:331:11",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts",
+                      "column": 11,
+                      "line": 331
+                    },
+                    "snippet": "  329 |     await f.page.screenshot({ path: info.outputPath('native-dark-authored.png') })\n  330 |   } finally {\n> 331 |     await writeFile(info.outputPath('drag-probe.json'), JSON.stringify(await f.page.evaluate(() => (window as any).__ldeDragProbe), null, 2))\n      |           ^\n  332 |     await finishDiagramFixture(f.app)\n  333 |   }\n  334 | })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts",
+                        "column": 11,
+                        "line": 331
+                      },
+                      "message": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined\n\n  329 |     await f.page.screenshot({ path: info.outputPath('native-dark-authored.png') })\n  330 |   } finally {\n> 331 |     await writeFile(info.outputPath('drag-probe.json'), JSON.stringify(await f.page.evaluate(() => (window as any).__ldeDragProbe), null, 2))\n      |           ^\n  332 |     await finishDiagramFixture(f.app)\n  333 |   }\n  334 | })\n    at E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts:331:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:9960) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-26T13:56:22.718Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\openspec\\changes\\frade-light-diagram-editor\\evidence\\upstream-native-drag-instrumented-02-20261026\\artifacts\\fixtures-light-diagram-edi-0ed06--selection-and-undo-history\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts",
+                    "column": 11,
+                    "line": 331
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6eacae74cbaca6972794-8e1c0957374fb7a006a4",
+          "file": "fixtures/light-diagram-editor/drag-probe.spec.ts",
+          "line": 334,
+          "column": 1
+        },
+        {
+          "title": "P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2830,
+                  "error": {
+                    "message": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined",
+                    "stack": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined\n    at E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts:331:11",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts",
+                      "column": 11,
+                      "line": 331
+                    },
+                    "snippet": "  329 |     await f.page.screenshot({ path: info.outputPath('native-dark-authored.png') })\n  330 |   } finally {\n> 331 |     await writeFile(info.outputPath('drag-probe.json'), JSON.stringify(await f.page.evaluate(() => (window as any).__ldeDragProbe), null, 2))\n      |           ^\n  332 |     await finishDiagramFixture(f.app)\n  333 |   }\n  334 | })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts",
+                        "column": 11,
+                        "line": 331
+                      },
+                      "message": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined\n\n  329 |     await f.page.screenshot({ path: info.outputPath('native-dark-authored.png') })\n  330 |   } finally {\n> 331 |     await writeFile(info.outputPath('drag-probe.json'), JSON.stringify(await f.page.evaluate(() => (window as any).__ldeDragProbe), null, 2))\n      |           ^\n  332 |     await finishDiagramFixture(f.app)\n  333 |   }\n  334 | })\n    at E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts:331:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:35828) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-26T13:56:26.856Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\openspec\\changes\\frade-light-diagram-editor\\evidence\\upstream-native-drag-instrumented-02-20261026\\artifacts\\fixtures-light-diagram-edi-0ed06--selection-and-undo-history-repeat1\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade-worktrees\\light-diagram-editor\\apps\\desktop\\tests\\e2e\\fixtures\\light-diagram-editor\\drag-probe.spec.ts",
+                    "column": 11,
+                    "line": 331
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6eacae74cbaca6972794-d01204331ecc7b84b93d",
+          "file": "fixtures/light-diagram-editor/drag-probe.spec.ts",
+          "line": 334,
+          "column": 1
+        },
+        {
+          "title": "P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6eacae74cbaca6972794-befa64f8a167cad1067f",
+          "file": "fixtures/light-diagram-editor/drag-probe.spec.ts",
+          "line": 334,
+          "column": 1
+        },
+        {
+          "title": "P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6eacae74cbaca6972794-fa9efca8b2148ce73e41",
+          "file": "fixtures/light-diagram-editor/drag-probe.spec.ts",
+          "line": 334,
+          "column": 1
+        },
+        {
+          "title": "P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6eacae74cbaca6972794-5c94805938a17c345ab6",
+          "file": "fixtures/light-diagram-editor/drag-probe.spec.ts",
+          "line": 334,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 2 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-26T13:56:20.957Z",
+    "duration": 8769.807999999999,
+    "expected": 0,
+    "skipped": 3,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

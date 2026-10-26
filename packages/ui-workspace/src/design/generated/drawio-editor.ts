@@ -258,3 +258,11 @@ export const drawioEditor = {
     }
   ]
 } as const
+export const drawioEditorProfile = {
+  "version": "2.0.0",
+  "base": "drawio/31.5.2/light",
+  "roles": {
+    "diagram.canvas": "#FFFFFF",
+    "diagram.grid": "#E6E6E6"
+  }
+} as const

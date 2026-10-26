@@ -93,3 +93,9 @@ Stage1: coherent artifacts -> strict/source/BDD validation -> planning commit ->
 ## Migration Plan
 
 Reuse current code/history. Only after fresh strict/PRE PASS implement source closure, scoped adapter and iframe Light. Current final gallery needs new acceptance. Required tests/scenario assessment/POST precede archive/sync. Transfer exact reviewed changes into Main through isolated consumer integration preserving foreign paths; new remote codex/frade-light-diagram-editor remains NOT_AUTHORIZED. Existing main publication permissions require verified gates/actual remote SHA. Stop at this change; no P02/Routing/next feature. Roll back only reviewed feature commits, never reset/clean/discard user documents.
+
+## Accepted exact closure risk — LDE-D01
+
+On26October2026 the human accepted exactly decisions/lde-native-drag-deferred-risk-01/proposal.md, SHA25614f8ddc62b27791a603d88e50eae98395b5710ad8be3efc3f7f398cf6c07a491. Retain the original initial-native-drag FAIL as an accepted deferred risk, not PASS/fixed; cause NOT_PROVEN. Two unchanged and five instrumented passes do not prove its cause. Only that historical observation is excepted from blocking closure; any new required failure blocks. No source/fixture/assertion/action/tolerance/timeout change is authorized. Native first-interaction deterministic investigation remains owned follow-up. See acceptance.json.
+
+The exact17-PNG visual manifest a6f6f36f162a59aa9a89d99b5b0c497ff2f7406b3262619f6132d2d00762d372 is accepted with its disclosed native/accessibility/system adaptations, separately from technical gates. No production scope expansion follows either decision. Strict revalidation and fresh automatic POST use this current plan/hash; PRE09 authorized the unchanged implementation scope, and no new production follows this verification-only risk decision. Historical plans/reviews remain immutable.

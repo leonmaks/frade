@@ -380,15 +380,18 @@ export async function generateDrawioEditor({ base = root } = {}) {
     },
     exceptions,
   }
-  const ts =
-    '// Generated from pinned Draw.io v31.5.2; Apache-2.0 vendor LICENSE retained.\nexport const drawioEditor = ' +
-    JSON.stringify(data, null, 2) +
-    ' as const\n'
-  const profile = json({
+  const profileData = {
     version: '2.0.0',
     base: 'drawio/31.5.2/light',
     roles: { 'diagram.canvas': colors['diagram.canvas'], 'diagram.grid': colors['diagram.grid'] },
-  })
+  }
+  const ts =
+    '// Generated from pinned Draw.io v31.5.2; Apache-2.0 vendor LICENSE retained.\nexport const drawioEditor = ' +
+    JSON.stringify(data, null, 2) +
+    ' as const\nexport const drawioEditorProfile = ' +
+    JSON.stringify(profileData, null, 2) +
+    ' as const\n'
+  const profile = json(profileData)
   const output = { [cssPath]: css, [tsPath]: ts, [profilePath]: profile }
   const source = {
     version,

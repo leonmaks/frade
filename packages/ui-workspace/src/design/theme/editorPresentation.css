@@ -107,3 +107,12 @@
   font-family: var(--frade-font-ui);
   font-size: var(--frade-font-body);
 }
+
+/* Native accessibility exception: remove legacy faded IDs and dark-only button
+   ink inside the shared Flow Manager; use the pinned upstream primary text. */
+[data-frade-editor='light'] .flow-manager td small {
+  opacity: 1;
+}
+[data-frade-editor='light'] .flow-manager .add-value {
+  color: var(--frade-text-primary) !important;
+}

@@ -1,0 +1,36 @@
+$ pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries && pnpm ui:compliance
+$ turbo lint
+• turbo 2.11.2
+$ turbo typecheck
+• turbo 2.11.2
+$ turbo test --concurrency=2
+• turbo 2.11.2
+ WARNING  no output files found for task @frade/adapter-sberea-yaml#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/adapter-yaml#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/desktop#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/draw#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/local-index#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/metamodel-compiler#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/metamodel-config#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/metamodel-domain#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/repository-api#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/repository-application#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/repository-bridge#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/repository-domain#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/repository-ports#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/runtime-contracts#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/runtime-electron#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/runtime-node#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/ui-inspector#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/ui-navigator#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/ui-workspace#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/versioning-git#test. Please check your `outputs` key in `turbo.json`
+$ pnpm --filter @frade/draw test:bdd && pnpm --filter @frade/metamodel-domain test:bdd && pnpm --filter @frade/metamodel-compiler test:bdd && node scripts/check-repo-traceability.mjs && pnpm --filter @frade/repository-application test:bdd && node scripts/check-ka-traceability.mjs && pnpm --filter @frade/ui-workspace test:bdd
+$ vitest run tests/unit/bdd-mapping.test.ts tests/unit/bdd-contract.test.ts
+$ vitest run tests/bdd
+$ vitest run tests/bdd
+$ vitest run tests/acceptance tests/bdd
+$ vitest run tests/bundle-flows.bdd.test.tsx tests/ui-contract/p01.bdd.test.tsx tests/ui-contract/service.test.ts tests/ui-contract/picker.test.tsx tests/ui-contract/light-diagram-editor.bdd.test.tsx
+$ node --test tests/contract/*.test.mjs
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.

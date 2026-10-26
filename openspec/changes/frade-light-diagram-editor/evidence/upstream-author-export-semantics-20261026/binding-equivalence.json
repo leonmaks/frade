@@ -1,0 +1,15 @@
+{
+  "atUtc": "2026-10-26T15:28:50.020Z",
+  "changed": [
+    {
+      "file": "apps/desktop/tests/e2e/ui-contract-light-diagram-editor.spec.ts",
+      "before": "3a586342d8c7546b96b7953963bc2884e33196e14b48f751380916395f998edd",
+      "after": "f191745602d0baf4d37ded6aa0e6fcfe1641d120e00a605ff5f1326518031efc"
+    }
+  ],
+  "existingTestsAndHelperRawPrefixIdentical": true,
+  "newTail": "One actual Drawio gradient/alpha/inheritance case; no module-load production side effect",
+  "newEvidence": "Exact raw model codec XML, other export attributes, serialized/view effective projection, physical bounds, paint attributes and computed gradient stops across reference preview/cancel, forced roundtrip and Light commit; file bytes unchanged",
+  "oracle": "Upstream getGraphXml appends live dxdy. Measured paired translate/scroll rebasing leaves net(64,-44), model hash6eff1069 and physical bounds exact. Raw exports/render retained, no string normalization/tolerance/expected-value regeneration.",
+  "productionChanged": false
+}

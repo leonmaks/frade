@@ -31,3 +31,7 @@ Once final production settles:
 - Scenario OpenSpec assessment/verify workflow, current gallery/human acceptance and automatic confined POST gpt-6-sol/xhigh. All gates/visual decision precede archive/sync/Main integration.
 
 Save command/cwd/input hashes/stdout/stderr/exits, failures, real timings/media/environment, source/PNG/exception manifests. PASS/FAIL/BLOCKED/NOT_RUN per applicable check. Isolated negative fixtures have verified ownership/path cleanup. Original2851 asset check, canonical Foundation/raw/token/reference controls and exact historical source chains stay required. Generated styles are strictly verified data, not a broad allowlist. CI/protection NOT_VERIFIED unless inspected; no protection change authorized. Human wait is outside forecasts.
+
+## Exact human decisions at closure
+
+LDE-D01 is ACCEPTED_DEFERRED_RISK under the exact signed proposal/acceptance above: the original55/56 runtime report stays FAIL, only its one historical initial-native-drag observation is excepted; NOT_FIXED/NOT_PROVEN and follow-up ownership remain. Any new required failure blocks; no test/workload/retry/timing changes. The17-PNG manifest a6f6f36f162a59aa9a89d99b5b0c497ff2f7406b3262619f6132d2d00762d372 is visually ACCEPTED_WITH_DISCLOSED_ADAPTATIONS. Old gallery records keep their capture-time status, with later immutable acceptance separately linked. Current root check/strict/performance PASS and data-only import equivalence are actual evidence, not a replacement for required automatic POST.

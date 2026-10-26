@@ -1,0 +1,1483 @@
+{
+  "version": 1,
+  "atUtc": "2026-10-26T14:02:42.093Z",
+  "scope": "Exact-source named executed case bindings only; NOT cumulative gate or visual approval",
+  "runtimeSummary": {
+    "passed": 55,
+    "failed": 1
+  },
+  "knownBlockers": [
+    {
+      "test": "P01 native hot preview and commit preserve authored JSON, graph identity, selection and undo history",
+      "status": "ACCEPTED_DEFERRED_RISK_LDE_D01_NOT_FIXED",
+      "diagnostics": "2 unchanged repeats PASS +5 instrumented PASS; original cause NOT_PROVEN; no source repair/waiver inferred"
+    }
+  ],
+  "limitations": [
+    "Windows forced colors is Chromium media emulation, not OS-settings certification",
+    "Native page/image/gradient unsupported; unit authored alpha DOM invariants are not native rendering capability",
+    "No P02/Routing/Main work or human visual approval"
+  ],
+  "inputs": [
+    {
+      "file": "apps/desktop/electron.vite.config.ts",
+      "sha256": "c33a9770bef1e1bd075fa32d013463516643c1eecb816def7f7164addfd30b28"
+    },
+    {
+      "file": "apps/desktop/package.json",
+      "sha256": "ac8276d3e40562f8939e3ac82c9cf5f73fbe4ea521b2c73f0dec874e1affac61"
+    },
+    {
+      "file": "apps/desktop/playwright.config.ts",
+      "sha256": "07256af32ea304e07a366c4bd9aa564d61b2780a2ef9d0af7e140034a6ec600f"
+    },
+    {
+      "file": "apps/desktop/src/main/drawio-bridge.ts",
+      "sha256": "d3c5d5237ffd3df5ac3ce1091b4942a77a5a1e1b3bd59dd1ec7fb25127671795"
+    },
+    {
+      "file": "apps/desktop/src/main/drawio-flow-bridge.ts",
+      "sha256": "ffef42df800b437f801b3c0538ab3949795391adbd12efe23fd9249d9a8d22cb"
+    },
+    {
+      "file": "apps/desktop/src/main/drawio-theme-bridge.ts",
+      "sha256": "8affa21bcbf7e6755d742a625298fa1e8ccf7f9e4a29a2641837f21e959a11f6"
+    },
+    {
+      "file": "apps/desktop/src/main/index.ts",
+      "sha256": "48c39c802ceed1ce215e5d345c5e99af69a2e526301f3a43b87e649dd8a02818"
+    },
+    {
+      "file": "apps/desktop/src/main/presentation-settings.ts",
+      "sha256": "1242ea444e45da73f886075a7a4a3a0a5a6670b68a882fd15cdff7ff0422d0ba"
+    },
+    {
+      "file": "apps/desktop/src/main/repository.ts",
+      "sha256": "b0490281cb23995208df893bdfa134ccf7457f53fa4ac9f28b3aafa77abab9e5"
+    },
+    {
+      "file": "apps/desktop/src/main/security.ts",
+      "sha256": "7ffb6b4c8529c5ebb5b89d99ca118a5148bdf332e83ae6a2105cea8837fc72c1"
+    },
+    {
+      "file": "apps/desktop/src/main/workbench.ts",
+      "sha256": "1d4bd4ac404666336075b076e40547cb8ff45e4b56d92fd493e34bb73196b4af"
+    },
+    {
+      "file": "apps/desktop/src/preload/bridge.ts",
+      "sha256": "bcf4368df28a3a20ad92c2f4a2093d5c0a981e7cf731809b67d1a91ac17cc832"
+    },
+    {
+      "file": "apps/desktop/src/preload/index.ts",
+      "sha256": "2438c8f5cd99ed96ee0b49f369e09bca94777a9657664e3b06bfafbda0b29b23"
+    },
+    {
+      "file": "apps/desktop/src/preload/presentation-bridge.ts",
+      "sha256": "9a1128cced05bb4d93a5d7b6925d1b252e6c41c665a82a7b890e83fec4b4eb2f"
+    },
+    {
+      "file": "apps/desktop/src/renderer/index.html",
+      "sha256": "e1596a7d4e24b7f88844a3e6fdedffecf4fcf2e55f2026a1d33df4b83b639ef8"
+    },
+    {
+      "file": "apps/desktop/src/renderer/main.tsx",
+      "sha256": "da536024ee9e8416fdfb1d9aa39d83744770fca602d2112ea74bd7b70a9f01f0"
+    },
+    {
+      "file": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+      "sha256": "f956753f39fbfedadc7ff4cdfe71040891930677f49fcb723c2e32d240acdcc1"
+    },
+    {
+      "file": "apps/desktop/src/renderer/style.css",
+      "sha256": "d0fc4000f5e90075477ba2f1121475166a1a1ee9201a0dc861a7cfa6f8c803f7"
+    },
+    {
+      "file": "apps/desktop/src/utility/index.ts",
+      "sha256": "6a34b4c7e31343838a2346bd3a671b955f88add40394304d5d018d8a43af1040"
+    },
+    {
+      "file": "apps/desktop/tests/e2e/ui-contract-light-diagram-editor.spec.ts",
+      "sha256": "f191745602d0baf4d37ded6aa0e6fcfe1641d120e00a605ff5f1326518031efc"
+    },
+    {
+      "file": "apps/desktop/tests/e2e/ui-contract-theme-performance.spec.ts",
+      "sha256": "1bcd2e294f145a7e18629bca4113f3d9f0f510a3e5a00f047e05313070135781"
+    },
+    {
+      "file": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "sha256": "f9b08ca17f6eddcaa932de360e96d72a813532ff32d478d884dd3af30130dbd7"
+    },
+    {
+      "file": "apps/desktop/tests/e2e/ui-contract-vscode-dark-2026.spec.ts",
+      "sha256": "af8a52368f079cec6a0693cb08d6916300d2a9253a596c63dce3b6ae3bf0334b"
+    },
+    {
+      "file": "apps/desktop/vendor/drawio-manifest.json",
+      "sha256": "ac75989a8b586d9f5651f14965b5494b905d8398f666cceccc86394ae333c889"
+    },
+    {
+      "file": "apps/desktop/vendor/drawio/js/app.min.js",
+      "sha256": "0a0152fccee4c6d826435f0dd5b14e38f17257e132918850f20ef45e6821a899"
+    },
+    {
+      "file": "apps/desktop/vendor/drawio/mxgraph/css/common.css",
+      "sha256": "080278000f2a3bdba6d29f426f24654b5041539d3c4868a9434028e141db92a7"
+    },
+    {
+      "file": "apps/desktop/vendor/drawio/styles/grapheditor.css",
+      "sha256": "b660bcd355fdb3257635c95c23445e24a49b54875805b662f63a15354bba4989"
+    },
+    {
+      "file": "apps/desktop/vendor/drawio/styles/high-contrast.css",
+      "sha256": "06173c9ab9d1715004f6040beb3d75b7fcec4a3029e3304b0c32c0baeb1732b5"
+    },
+    {
+      "file": "package.json",
+      "sha256": "fe61df93f8b2edde1ae4ea1b606fc7435a20be21817b7e7a0d49d12f44aa84c4"
+    },
+    {
+      "file": "packages/adapter-sberea-yaml/src/adapter.ts",
+      "sha256": "323551c905fe9cd7ccf03817e0cc0e13b772abdd829d282a3d148de3fd79f9e9"
+    },
+    {
+      "file": "packages/adapter-sberea-yaml/src/files.ts",
+      "sha256": "1f9b1657fc80f59bd82f4aa3664fe24e064c0196b21f3b4eeeb419b5e3f1b801"
+    },
+    {
+      "file": "packages/adapter-sberea-yaml/src/index.ts",
+      "sha256": "6fba226e516df36b446dfef54b39124f5887836066e4c49f4492bf08c2eb1a97"
+    },
+    {
+      "file": "packages/adapter-sberea-yaml/src/model.ts",
+      "sha256": "7bc7cc8ab662f9a8deb3b6ca0af64b88136ad837b710d57458660924ff87d9f9"
+    },
+    {
+      "file": "packages/adapter-sberea-yaml/src/preserve.ts",
+      "sha256": "cc055027272c7e3a5227b1c9c1e66f7dec7387be23c7c4675a91464ed92047e4"
+    },
+    {
+      "file": "packages/adapter-sberea-yaml/src/read.ts",
+      "sha256": "b18d8f3c5e811a075f35b9478bac253e770b5ea7574b814219d2a966f32051fe"
+    },
+    {
+      "file": "packages/adapter-sberea-yaml/src/writer.ts",
+      "sha256": "b0e5290a200fe2c8f60b05615e9006d0c152696e51de778b3dbb270ed574af7b"
+    },
+    {
+      "file": "packages/adapter-yaml/src/discovery.ts",
+      "sha256": "5cd0d072543095369ba6f315762ef4d459bdb180f1a93614f072065554d3d536"
+    },
+    {
+      "file": "packages/adapter-yaml/src/index.ts",
+      "sha256": "0c87f92543e7173e0f4a4cfe271cf6bbe37a7bc73140b3315583a208445d955c"
+    },
+    {
+      "file": "packages/adapter-yaml/src/native.ts",
+      "sha256": "ff5fc665027e76f20a04a44ce9bfa9ed5d95ddd837b4dc7b5856b2c97bb2045e"
+    },
+    {
+      "file": "packages/adapter-yaml/src/paged.ts",
+      "sha256": "2adb119c815cf67fe8eb2b1bf0b923d5e6d7e6bde2f356423b676eaad1856186"
+    },
+    {
+      "file": "packages/adapter-yaml/src/sample.ts",
+      "sha256": "7b0ad1694dddc524697bc57567586fef91f085a9d0cdfbe920672522845d7155"
+    },
+    {
+      "file": "packages/draw/src/connections/connectionStateMachine.ts",
+      "sha256": "172e39fa3dfb551ee0dde76f345eb9ace010901b4d496a0b142833cd9799e151"
+    },
+    {
+      "file": "packages/draw/src/connections/connectionTool.ts",
+      "sha256": "82798de60ef65ba61da404725c6190d0ad914b15396a9dcc87877ed502c086e6"
+    },
+    {
+      "file": "packages/draw/src/connections/previewRoute.ts",
+      "sha256": "6845c6ad4759398cc89256d48c56ea83864ed7a4986cd0039e03ecbd3f148444"
+    },
+    {
+      "file": "packages/draw/src/document/fileAdapter.ts",
+      "sha256": "ec41c4867a47af91acb4d866998069bc946ea864f8595e15e285656f1bf23a4c"
+    },
+    {
+      "file": "packages/draw/src/document/graphAdapter.ts",
+      "sha256": "867e1c278c649c0833dd1e00aec97c755038064e8ff76d73d855268f10916c1d"
+    },
+    {
+      "file": "packages/draw/src/document/schema.ts",
+      "sha256": "6f77f57e5e874d00a8086a19266ff29e3251a148ec3fcae814a5c25e2adacc7c"
+    },
+    {
+      "file": "packages/draw/src/document/serialize.ts",
+      "sha256": "f44f864ece9a4679bd24c80eb26d4ef752f2ef51b8e28a4f741c58274cf4d3dc"
+    },
+    {
+      "file": "packages/draw/src/editor-visual-entry.ts",
+      "sha256": "94b8acbc8dbca77b1f7111bef3d9fa9a39b7bcbb55098aa91b5b78d5d10dc344"
+    },
+    {
+      "file": "packages/draw/src/editor/DiagramEditor.tsx",
+      "sha256": "30a861c950977a967e5cba7afd227b0658b1046e898f4635592e9b64d0de5f75"
+    },
+    {
+      "file": "packages/draw/src/editor/createGraph.ts",
+      "sha256": "275e7ca908b0ca05d0ce5b804fd796ba4a606f7fa89be3abd12626fbf025eb12"
+    },
+    {
+      "file": "packages/draw/src/geometry/normalizeRoute.ts",
+      "sha256": "d94a93dbfa41fb2fbec83fadda70192a7932c8b82cf8b4d9e0ea837fe07c8a41"
+    },
+    {
+      "file": "packages/draw/src/geometry/routeSnapshot.ts",
+      "sha256": "8a7ff32dd20f0dc5555f80864d59d7c669699ea350f9af4244f7a09381e1f2ce"
+    },
+    {
+      "file": "packages/draw/src/geometry/validateManhattanRoute.ts",
+      "sha256": "7b036300d909e916dc984864362b0a2d0551250c029b546678434ad2d44beed9"
+    },
+    {
+      "file": "packages/draw/src/index.ts",
+      "sha256": "d3d1bb79e4b345ff9c3214335e4b9388aa1a3e26da80cf08aa5f1a1b929a003e"
+    },
+    {
+      "file": "packages/draw/src/main.tsx",
+      "sha256": "5f51163cf8e04ad5bb6e72b4d568c085ee1c56fe1437429431321dfe6571d83a"
+    },
+    {
+      "file": "packages/draw/src/routing/AGENTS.md",
+      "sha256": "d93eca39d515a9192ca7d1dfe763e200bb5a9017558d7ec8c8137ee52ad62150"
+    },
+    {
+      "file": "packages/draw/src/routing/floatingAttachment.ts",
+      "sha256": "bc2371841cfeec4e4137e0438276c67252a5d31f828e35c03e1854d87faec49d"
+    },
+    {
+      "file": "packages/draw/src/routing/floatingRoute.ts",
+      "sha256": "1d36cc683c1d8e05e472f5a7f32d540b1786c27ac7c93fa4cec2800265ab88ab"
+    },
+    {
+      "file": "packages/draw/src/routing/geometry/index.ts",
+      "sha256": "49d2323ca3da8012fad1b22ac26c4e0249183a83b81587f101ee38f66f4fa7cc"
+    },
+    {
+      "file": "packages/draw/src/routing/geometry/normalization.ts",
+      "sha256": "7d892d12b5d04193dd098c26b1a94eef34a6348107c9135191eea041a8b00230"
+    },
+    {
+      "file": "packages/draw/src/routing/geometry/numbers.ts",
+      "sha256": "75274b99e1018b29396bf30cf54bad379ca2f2886c3b4513034b8a1ffce5fc52"
+    },
+    {
+      "file": "packages/draw/src/routing/geometry/rectangles.ts",
+      "sha256": "63e214262d5eb9a0a6dd6421d73c9170a7e5c95bfdfbbbec4add5966acb10b8c"
+    },
+    {
+      "file": "packages/draw/src/routing/geometry/segments.ts",
+      "sha256": "56e57f0a2814ebb0d6a378295f19cdc60a66ce7b4b22027b5c78390ccdcc772f"
+    },
+    {
+      "file": "packages/draw/src/routing/geometry/transforms.ts",
+      "sha256": "808b24d782683d7efd9c7dae37d38f057c32153cf36de8ce48dcc5c571efc894"
+    },
+    {
+      "file": "packages/draw/src/routing/geometry/validation.ts",
+      "sha256": "8952933af82a7b3913928407ee94d6b81baf407060c9f1838ddbe6763ffd75f3"
+    },
+    {
+      "file": "packages/draw/src/routing/manhattanRoute.ts",
+      "sha256": "c17ea6f298f4c38036983999796398c80080668837b34487b5cc65970bb25fd3"
+    },
+    {
+      "file": "packages/draw/src/routing/model/index.ts",
+      "sha256": "4d561626651cec155746e71fcc2dbeb5b2407f06d2d60cb336a86d3f2b449ebf"
+    },
+    {
+      "file": "packages/draw/src/routing/model/primitives.ts",
+      "sha256": "308f101ad862bb2eb7c91006275bee809c873c9240a6121cbbd2c3976ceded76"
+    },
+    {
+      "file": "packages/draw/src/routing/model/spaces.ts",
+      "sha256": "c200f02559e025e91fa41a13448e55edfa322948e1c310bdd5808bbceb5c2663"
+    },
+    {
+      "file": "packages/draw/src/routing/model/validation.ts",
+      "sha256": "d5b8215113b5a4ba24db812410d43cc279a132af85c7f99b759e1e3135f23656"
+    },
+    {
+      "file": "packages/draw/src/routing/model/vocabulary.ts",
+      "sha256": "9c2b6eaf1d45b99f19d6780dc72b81c3937547937feb353af75c5ca3b12b154d"
+    },
+    {
+      "file": "packages/draw/src/routing/movingRectangleRoute.ts",
+      "sha256": "655f496f67201e6691752f2058edc559606a56f5e75f6453a72a7463d15f336c"
+    },
+    {
+      "file": "packages/draw/src/routing/orthogonal/direction/README.md",
+      "sha256": "a3ff939c88d616319d7cb06ccf5ffdff07e844d0cff1e5401603a23ec741d879"
+    },
+    {
+      "file": "packages/draw/src/routing/orthogonal/direction/contracts.ts",
+      "sha256": "a05d18a54a3e28be0e00bf986fdcec12076f1d7dafea0189b25571d4067f574b"
+    },
+    {
+      "file": "packages/draw/src/routing/orthogonal/direction/index.ts",
+      "sha256": "c9a908c2fa14f4b0cd5f36b2539898bd31abe4c38ee41bac005f18f06a61920c"
+    },
+    {
+      "file": "packages/draw/src/routing/orthogonal/direction/preferences.ts",
+      "sha256": "42d6f6c3a22dfe5d798571353e091fc50c6846842f4e6e397cfb9f03efa87cdd"
+    },
+    {
+      "file": "packages/draw/src/routing/orthogonal/direction/relative.ts",
+      "sha256": "643ad9c8e0b43369e04f8d1ce6bdf973802bd3484599dc7da897ad2fc2525540"
+    },
+    {
+      "file": "packages/draw/src/routing/orthogonal/direction/resolve.ts",
+      "sha256": "ea6d4735925ce90a855433eb0f7113e24a51cd027adc0cb57315be79f1b8e22f"
+    },
+    {
+      "file": "packages/draw/src/routing/perimeter/contracts.ts",
+      "sha256": "22ac47294b88dedb87f0d1c7e37e0c45268e510c428f65342eed1e533c46e3cf"
+    },
+    {
+      "file": "packages/draw/src/routing/perimeter/ellipse.ts",
+      "sha256": "84b4e52d06b439ef8b220fb56777f39cfba013b496baa5673dddb27ec1903a40"
+    },
+    {
+      "file": "packages/draw/src/routing/perimeter/index.ts",
+      "sha256": "9ec99e06374fb2d4008d05135cae599ede0b68fdbba988901da2a4ffb6b4171a"
+    },
+    {
+      "file": "packages/draw/src/routing/perimeter/intersection.ts",
+      "sha256": "8c9f5bad2ecc2164ec9e77547773b851aef8a9b09f6acdcaabf21c8dfefda55a"
+    },
+    {
+      "file": "packages/draw/src/routing/perimeter/rectangle.ts",
+      "sha256": "320a7d68bda4228f8603bc46bb7de80b32f670081c89b74ee5626e7cb37d4668"
+    },
+    {
+      "file": "packages/draw/src/routing/perimeter/validation.ts",
+      "sha256": "ca318a512180031f21e14ae769e525f0378358be2f29e3491752dd918cd8411c"
+    },
+    {
+      "file": "packages/draw/src/routing/roundedConnector.ts",
+      "sha256": "a7814528b2ac23335511cc4e6e8a032084d1f6d577c52e82f37fa455de595c1f"
+    },
+    {
+      "file": "packages/draw/src/routing/terminal/README.md",
+      "sha256": "57fb5edb24ffe47d8c211f80a2775d14dbb1b34386b6d49f0d0f40cc89557a13"
+    },
+    {
+      "file": "packages/draw/src/routing/terminal/contracts.ts",
+      "sha256": "b876956909d84dcfc1c8ba5aab2ec8e319cebed304465c798de87ccb19591276"
+    },
+    {
+      "file": "packages/draw/src/routing/terminal/fixed.ts",
+      "sha256": "38280db249fcc4f23d3d09ebb27b5b068e1baf6f7f43ef65a9781ef834909f4f"
+    },
+    {
+      "file": "packages/draw/src/routing/terminal/floating.ts",
+      "sha256": "6d3c792a7628849bf5fe28ff5854dfecd8b64bbf5b153248d9ebae08830ae416"
+    },
+    {
+      "file": "packages/draw/src/routing/terminal/index.ts",
+      "sha256": "73fbd657d9a75394bafca67f7607c7a43893d3b34cc9940e3264287873578f0b"
+    },
+    {
+      "file": "packages/draw/src/routing/terminalPolicy.ts",
+      "sha256": "866cc32938c6ffb2ee88ba21fc373adab8dd1efa413834d6ad97a78654ae6f92"
+    },
+    {
+      "file": "packages/draw/src/routing/x6RoutingAdapter.ts",
+      "sha256": "c1fd4ead68e555d8e2c47160e0a214fb3f88c72714ee7f42ab3d90e5f81b57ed"
+    },
+    {
+      "file": "packages/draw/src/segment-editing/dragSession.ts",
+      "sha256": "85a2bd35f96916af671d7315c4342fcbb520e9c7779784563c36a6feee17fb5e"
+    },
+    {
+      "file": "packages/draw/src/segment-editing/floatingSegments.ts",
+      "sha256": "19057fa4b1599ac734f1561bf019e196f1391d0fc6e33447bbcffc1940d98538"
+    },
+    {
+      "file": "packages/draw/src/segment-editing/resolveSegmentDrag.ts",
+      "sha256": "c9b84aefe3c0d752325a651ccdf1ed0128760a1faf1263ed1f17bd631b8ec230"
+    },
+    {
+      "file": "packages/draw/src/segment-editing/segmentDragController.ts",
+      "sha256": "d6729cfee5ea5b4b058410c3c73fc19ea1ab3801337b0bd2cd022d08df4d37c5"
+    },
+    {
+      "file": "packages/draw/src/segment-editing/segments.ts",
+      "sha256": "b6615aa316d154f63881f3d2a9bcb8ca734c6e7f7df1a0b9b576ef090359f7f2"
+    },
+    {
+      "file": "packages/draw/src/segment-editing/x6Adapter.ts",
+      "sha256": "3b124a37b6935b3c8f742ee4e2f9cb1f6029ae52cbab1166032d7d400fe0061e"
+    },
+    {
+      "file": "packages/draw/src/spike.ts",
+      "sha256": "37f3c64395e2e0ae42de0bf61eb164ddf708cb3b7f5471e75d3aefec85816847"
+    },
+    {
+      "file": "packages/draw/src/style.css",
+      "sha256": "a4836ed22c0979145c141ed59da8a0030059fe6599f0dd1dc408c8d725d57347"
+    },
+    {
+      "file": "packages/draw/src/visual-entry.ts",
+      "sha256": "a6daa5004445ca800e74947d8d45d383a203fadee46540ed19ef1ef3b1adf09f"
+    },
+    {
+      "file": "packages/draw/src/visual/api.ts",
+      "sha256": "c8108b7e56aefb22928c0b052442e3bd3f5cb0cebf0e7e5c7fbfe874866e066f"
+    },
+    {
+      "file": "packages/local-index/src/index.ts",
+      "sha256": "88b6e8a301f931cad0cb24540355539007eba2a2a3d72b52ebabd582e4c8f677"
+    },
+    {
+      "file": "packages/local-index/src/paged.ts",
+      "sha256": "b7513640b2949a4b124dc4d2370ada9f69631ce9530790353ca62e1f39ccc9f5"
+    },
+    {
+      "file": "packages/metamodel-compiler/src/common.ts",
+      "sha256": "e391a7b022c55a130b96c0dd211b43329cba81522e29dc554935a56befadf33c"
+    },
+    {
+      "file": "packages/metamodel-compiler/src/compile.ts",
+      "sha256": "4a9c602f1e0ce32f4262dee2bfd795cd7b94e583ffc621b259095a827811e57b"
+    },
+    {
+      "file": "packages/metamodel-compiler/src/compose.ts",
+      "sha256": "8f41193ff89ccf15d9d25c574a909f7e34541491b9b5d498a9db9d86afc8a593"
+    },
+    {
+      "file": "packages/metamodel-compiler/src/constraints.ts",
+      "sha256": "73f01883c77abf03d4c26df330e70cd08076f144bf3c032031136131b707093a"
+    },
+    {
+      "file": "packages/metamodel-compiler/src/impact.ts",
+      "sha256": "c55b4f1b663ce7e5b1b0f1e120565a2e5c5d7ce51d492df99c24319ed1360fce"
+    },
+    {
+      "file": "packages/metamodel-compiler/src/index.ts",
+      "sha256": "198e209ecfc397a4c56a1e20a8e603b900a55331820f47a661e23c993b617dec"
+    },
+    {
+      "file": "packages/metamodel-compiler/src/source.ts",
+      "sha256": "b0ac37e25a0d2156dabed052bd5a3cc96d58735964edb42590f98a64f0c90413"
+    },
+    {
+      "file": "packages/metamodel-compiler/src/types.ts",
+      "sha256": "3313f4aeda25c6b0a2f86d20ee1ed4bdf19ab72b01adf91d55b5d2856d1c803b"
+    },
+    {
+      "file": "packages/metamodel-config/src/documentation.ts",
+      "sha256": "bba97876688204334d6361fc29915fbdbdeddea3c7fdfcfbacdeb28e42eae8d8"
+    },
+    {
+      "file": "packages/metamodel-config/src/index.ts",
+      "sha256": "c326410ba3a8d1336f8bfc5855d42ce0dbcaffc9a8ad865403527192d7f396cb"
+    },
+    {
+      "file": "packages/metamodel-domain/src/attributes.ts",
+      "sha256": "00dda3ca9e9c82b00d9cb2f2397198e2dcdf50337155f040229eab61d867c71d"
+    },
+    {
+      "file": "packages/metamodel-domain/src/constraints.ts",
+      "sha256": "a5cb7a1f0cfdcaa0befff6d61d3f446885c034857c022f67b30fa28062a4723c"
+    },
+    {
+      "file": "packages/metamodel-domain/src/definitions.ts",
+      "sha256": "afc5f3537a318bbda75658817183943c5d142d4e8f2ceb95c86962596335ee1a"
+    },
+    {
+      "file": "packages/metamodel-domain/src/diagnostics.ts",
+      "sha256": "1aaa284a3c6045c9f3982c070490a01c28ac85590d7e57332e76f19f8114b715"
+    },
+    {
+      "file": "packages/metamodel-domain/src/index.ts",
+      "sha256": "bf506f71419f2a987002efc4bcf2d8da3fac5f1d981cb477b0b91901c63b6e5c"
+    },
+    {
+      "file": "packages/metamodel-domain/src/inheritance.ts",
+      "sha256": "c17ce612eff841b216bc6c82c010405cdbcbdaad6b4152c328adf3a2fb101253"
+    },
+    {
+      "file": "packages/metamodel-domain/src/matching.ts",
+      "sha256": "6735e6c92ce54c78f36b5b510482bbba79c67e4ff776e84ed945ffea4d016b02"
+    },
+    {
+      "file": "packages/metamodel-domain/src/relations.ts",
+      "sha256": "0844078c4a027ab9b38b736ab0286519cc8155255b989e6a933e0629b1916746"
+    },
+    {
+      "file": "packages/metamodel-domain/src/types.ts",
+      "sha256": "b531155803f78d9b53a10a3fd9a8a66631b601a68d4fb5d19ec5057ff89bc999"
+    },
+    {
+      "file": "packages/metamodel-domain/src/value-engine.ts",
+      "sha256": "7f1033e7ff3d2e1e99eed4c491dca8b3cd565d0d86996ba894aecb1a9997639a"
+    },
+    {
+      "file": "packages/repository-api/src/http.ts",
+      "sha256": "69bea34b6ec94f519b85d6775cc1ab6b54ed82cff33a01a440420ed33af495de"
+    },
+    {
+      "file": "packages/repository-api/src/index.ts",
+      "sha256": "b3e139a5eca7c503771eed5d253c5140603286cfee8d2c0294e9cc87301dd2b3"
+    },
+    {
+      "file": "packages/repository-api/src/protocol.ts",
+      "sha256": "fe6d52796880bd5ed06f67dc8f846ccd135ccd6834c88808314e258f2bfa413a"
+    },
+    {
+      "file": "packages/repository-api/src/service.ts",
+      "sha256": "7639dfbd384f5e31abc31c2ffeee8b3a2099230b33185e34c3b9ef3870ae92ee"
+    },
+    {
+      "file": "packages/repository-api/src/workbench.ts",
+      "sha256": "fa7175662d7910cc9c374b0812584da247bc622b90b3070c89d57206acb70ca1"
+    },
+    {
+      "file": "packages/repository-application/src/cancellation.ts",
+      "sha256": "4fc202ae9286d53091314c6c13c3d629467ff5a3d5fd552d9412a815d0781f0b"
+    },
+    {
+      "file": "packages/repository-application/src/commands.ts",
+      "sha256": "6cd62ef09e49c49598c50e407e53df9260c5625d0f2cacb347e4787b8d5eb818"
+    },
+    {
+      "file": "packages/repository-application/src/extensions.ts",
+      "sha256": "2e74723e8154a151b944e78d4a9f67b1f74e29507f82b9b81fa2cb64e9e42add"
+    },
+    {
+      "file": "packages/repository-application/src/index.ts",
+      "sha256": "9cfef3746522c609e857504dfebec659bae05af79f5a60dd4bac45801a818657"
+    },
+    {
+      "file": "packages/repository-application/src/integration-flows.ts",
+      "sha256": "d03d2edc9ab2a83c8859acb0620838e23daa04ee433dba8ed39ee575e28af656"
+    },
+    {
+      "file": "packages/repository-application/src/session.ts",
+      "sha256": "963a29428de440d4edb86b0e4cfc763811689e564af2b8d4d2e36d4bad645e0a"
+    },
+    {
+      "file": "packages/repository-bridge/src/index.ts",
+      "sha256": "004741bd189892cd3c33b8d7422d8628e28244b05ff06b74c4b7f8849043359f"
+    },
+    {
+      "file": "packages/repository-domain/src/codec.ts",
+      "sha256": "1ccc7a37e875b70a0fa461da7b3b064abcb0e8e14b068b82f469ca17ec3c4bd0"
+    },
+    {
+      "file": "packages/repository-domain/src/flow-labels.ts",
+      "sha256": "19af34ad2666f6df1daf03ef84b8272af46cd4caeb417c88b102ec4b268f608c"
+    },
+    {
+      "file": "packages/repository-domain/src/index.ts",
+      "sha256": "1b307ac35095022283a66b68e370d7be3ea192eba60328107aec1ff7d832a76f"
+    },
+    {
+      "file": "packages/repository-domain/src/integration-flows.ts",
+      "sha256": "81516339f3a80a23ed974a00c9eebf07628e3009f4cead389b4deaf63084b181"
+    },
+    {
+      "file": "packages/repository-domain/src/policies.ts",
+      "sha256": "c6c5da50393ba6a8fb7f8ca16df4f235458c9bc3618df927fbfb50ecc2c29bd2"
+    },
+    {
+      "file": "packages/repository-domain/src/query.ts",
+      "sha256": "6462d56115c8a2b5b30678755d1e1ce53a43a6b3a40f9fb260be19be985ee71b"
+    },
+    {
+      "file": "packages/repository-domain/src/repair.ts",
+      "sha256": "f30b2f61de8fce191352c6da503bcbdfca79ffab7675f1444e9983a2a66c0aaa"
+    },
+    {
+      "file": "packages/repository-domain/src/stream-validation.ts",
+      "sha256": "961dc62c06be43ab497180b3a542609d7ee442c81403a51c46e488fde9a4a919"
+    },
+    {
+      "file": "packages/repository-domain/src/types.ts",
+      "sha256": "7ceca14904c61ffda91109fe59379f2e668d53d21067b6a80f78d89ee5bf9cb5"
+    },
+    {
+      "file": "packages/repository-ports/src/contracts.ts",
+      "sha256": "b3009482bb0bc39ba6f208299e8c5e410d164238829e3b4a80a4dc77ae1d94b4"
+    },
+    {
+      "file": "packages/repository-ports/src/extensions.ts",
+      "sha256": "0d7a684c0e7f39c4ddeb543d40e21cd6a844467220949f0a7c10d856c829c3db"
+    },
+    {
+      "file": "packages/repository-ports/src/index.ts",
+      "sha256": "f26d334109c2f40761f07f9c4832fbc519dad05ece67b38739de7ad91a640ced"
+    },
+    {
+      "file": "packages/repository-ports/src/profile.ts",
+      "sha256": "158fd5d5df355851eb18edf1d49adca77eb4b8e860248c109705b99fc26b63df"
+    },
+    {
+      "file": "packages/runtime-contracts/src/index.ts",
+      "sha256": "bc82ffd141aa4f6571b9c7efc34b7ff6de111b145c01666174be9272c80f4d9d"
+    },
+    {
+      "file": "packages/runtime-contracts/src/presentation.ts",
+      "sha256": "8a4080c5981cb27a7b47f628c109ef95a13fd915c0272515243e2a6131a00ab9"
+    },
+    {
+      "file": "packages/runtime-electron/src/index.ts",
+      "sha256": "a96b197e79c53d44eaaf1423c4a7c65f568c0f87da39907aab05b8d2e1f1be46"
+    },
+    {
+      "file": "packages/runtime-node/src/adapters.ts",
+      "sha256": "d58766fdb4708494484de651c946927c04ad14c2beec090084da866d6844d0b9"
+    },
+    {
+      "file": "packages/runtime-node/src/diagram-files.ts",
+      "sha256": "efd45a96e12ca83639cb12c7547cd101ade73c8b8425eed331190244bbe7674a"
+    },
+    {
+      "file": "packages/runtime-node/src/index.ts",
+      "sha256": "07618fdc9ca25d4f3961edde972d7070139baff37b4f1201d7afe3dd20e4884f"
+    },
+    {
+      "file": "packages/runtime-node/src/native-session.ts",
+      "sha256": "df25648eddb45b8679b7183e94820176231819af4acf21b57c5a0121cfa70113"
+    },
+    {
+      "file": "packages/runtime-node/src/repositories.ts",
+      "sha256": "9b691c1ff4bc6fbcd69f88f236364716a52151963991a4bc59d8de46ff9fc066"
+    },
+    {
+      "file": "packages/ui-inspector/src/Inspector.tsx",
+      "sha256": "7a1d975cb64f538a70c7bc39777829dc5c6a0d2e7fdf71ac948a06493baac616"
+    },
+    {
+      "file": "packages/ui-inspector/src/index.ts",
+      "sha256": "5df6d07326deb28211b684a9f55e0a0a2fe9052a1b57ec99f6a61d8d637833d8"
+    },
+    {
+      "file": "packages/ui-navigator/src/Navigator.tsx",
+      "sha256": "8cffe9742a3c61d61e33174f674e9c5b14791bdf38ec19cdb56f01576ceff9e8"
+    },
+    {
+      "file": "packages/ui-navigator/src/drag.ts",
+      "sha256": "a748837e5fb31351746be457ec8aac2a6441d2656861c3284659a35a5c600a1c"
+    },
+    {
+      "file": "packages/ui-navigator/src/index.ts",
+      "sha256": "db28d9f8efed713fbcda0b91ed4635f897ec69c150195c4cdbed9ee7a49e314c"
+    },
+    {
+      "file": "packages/ui-workspace/src/DiagramReferences.tsx",
+      "sha256": "3e6f893249ba22dfb8abc79baa285f984ee614e49983b48ec855df653d88e887"
+    },
+    {
+      "file": "packages/ui-workspace/src/DiagramView.tsx",
+      "sha256": "5537ac4747d6180d8f3beb370cafc9f0c7ab2e6379f0019e9e8145efc9db336e"
+    },
+    {
+      "file": "packages/ui-workspace/src/ElementAppearanceSettings.tsx",
+      "sha256": "7e1293d5754f057171d4e901269dad041a6a6ab8f21a23b5f7ea9583f20c15c8"
+    },
+    {
+      "file": "packages/ui-workspace/src/FlowManager.tsx",
+      "sha256": "9aaab9cd8d927c7019b8e808cc6ae1962d0778b301d97d71edffbcce128f9f6e"
+    },
+    {
+      "file": "packages/ui-workspace/src/FradeDiagramView.tsx",
+      "sha256": "5aeeb47b5a94068aff8ba89638ce185dfbd2fa03a4a77ac8bcfa77a69fae9a93"
+    },
+    {
+      "file": "packages/ui-workspace/src/Workbench.tsx",
+      "sha256": "b8547358585ac1847f2394636ecd68d3395c54aa5ef820100def073710308578"
+    },
+    {
+      "file": "packages/ui-workspace/src/codicon.ttf",
+      "sha256": "a832273ce3a515050017a0ffb36b1b8cbd9c9cfa11b025cdd9dfc0d456940225"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/generated/drawio-editor.css",
+      "sha256": "39b5da0917ed2a0243007c79749c647008d61077c0b856f7b5021aec5947809a"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/generated/drawio-editor.ts",
+      "sha256": "caee5a6bf8fc0bc4314d486e865da18521ad65ea2f09d947024abac002d0999e"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/generated/tokens.css",
+      "sha256": "6a6b47b12f5090a66231ee2541387ada31a2435d76f245c6631ad4285ac784a4"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/generated/tokens.ts",
+      "sha256": "fbe1ced2cbb112f8073de4a5f8c612811ef087165514304f3820862c929fb63e"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/reference/vscode-dark-2026/generated.ts",
+      "sha256": "0e7edeaba17901295888c20ae68035c595eab4f9d2711373c5e1384c30b6ecf9"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/reference/vscode-dark-2026/preset.css",
+      "sha256": "dbf81300f76c28ed7e88011348f4bc6e521fd79875075f35dace9d95ea059af2"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/reference/vscode-dark-2026/profile.ts",
+      "sha256": "0c255389372c9d7220b8f16dfea2e10faffcc490757602537c9b1098b8899887"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/reference/vscode-dark-2026/upstream/2026-dark.json",
+      "sha256": "d102252dee12fb56400fa4c4c573435d866a234ec7678fbc525483a5c1b05acf"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/reference/vscode-dark-2026/upstream/LICENSE.txt",
+      "sha256": "9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/reference/vscode-dark-2026/upstream/dark_modern.json",
+      "sha256": "664f109c88bddc72358d6e25f0fdcb2cc49bc8fc43b01b4374cef8a54f9942e5"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/reference/vscode-dark-2026/upstream/dark_plus.json",
+      "sha256": "409f33088a5cfd6589384900ef80627787c568d367c25b12f31bc7940936e573"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/reference/vscode-dark-2026/upstream/dark_vs.json",
+      "sha256": "a2b2a99947e5e68e318d10942f969cd54d445cdaf93634e8246932745de4b62e"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/ThemePicker.tsx",
+      "sha256": "b766d6a8e8be9280f8da9f01ced554364f834f817284068faa102461d5a2500e"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/contrast.ts",
+      "sha256": "16a7a7de57215887936a316ccc86f7fbce554f2b3ecb616c0b6a2da4d09b06b6"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/editorPresentation.css",
+      "sha256": "3c8da0e2a514711ea0537cf11aa3f9634ff34b97802197590f0200463dd2120f"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/editorPresentation.ts",
+      "sha256": "bf74147bb162ee070324a048719927d59d29f29b6c14d646b54178fb908a0239"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/editorPresentationParticipant.ts",
+      "sha256": "9a65619149719312c8d58c5e5dbe9d7d1ec8977e757594a0b9457f0776d7a0cb"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/frameParticipant.ts",
+      "sha256": "9522203428ac85c965fac62ede6271622f8bd5beda181c548870daf1047fdcd6"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/index.ts",
+      "sha256": "ed174f6d91f63cd658a2173259a4f1665b2181c9dc31069c372392c76038f961"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/nativeParticipant.ts",
+      "sha256": "6d3367c3aa0849744243a86fabac70d9613612207ae67e0dda2893972cde0631"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/overlays.ts",
+      "sha256": "91e23eb5fe058355a23e4bf7a861fbb225395a750378a5bf09c95724b9082050"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/parkedFrameSurface.ts",
+      "sha256": "64764dcd51a25b808ea26e1366bb6a52ba47ed38320396f9d8873158c9cf9436"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/registry.ts",
+      "sha256": "0f74e1369a2968292e62a4b83e26b1a67cf60b170cc518111caeef0ef24b6bdd"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/resolver.ts",
+      "sha256": "205e46fbbc58d8e66c7bdc8f52c9b2e8003a8d8b3410e4488771005ed6aacb29"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/rootParticipant.ts",
+      "sha256": "8ed852da9c675c92b95e60ca5b8ec0e80610be2b1ca06938adb24c6af307b208"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/service.ts",
+      "sha256": "6dd3e54cb9d4df5a8e9ef7409e05d6e7b175aa30cd48de7184b3eb11d666eaa6"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/shortcuts.ts",
+      "sha256": "2b894d61cde7a9a325566edbcd9135bf6035da0cfcae61fab7602242774b4654"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/theme-consumers.css",
+      "sha256": "a710cd1d307c192e8fe85561c6d818d6ceb1bebc6a7ba658ee93e507dc7ea59c"
+    },
+    {
+      "file": "packages/ui-workspace/src/design/theme/types.ts",
+      "sha256": "43f5b93ccf6bc6d1c6016231e45d4e4c940cf9ba1f9193376f0e0d5eef05f05b"
+    },
+    {
+      "file": "packages/ui-workspace/src/diagramContent.ts",
+      "sha256": "bb7bf237e8aafede7fb7ca380bbd99c60f8cbb9721f500b8b03d4ad127a83b5c"
+    },
+    {
+      "file": "packages/ui-workspace/src/elementAppearance.ts",
+      "sha256": "5d32680c12eeae8c210b6471f45258fdc8ef87fdcd704dc79b498b02e74ee39c"
+    },
+    {
+      "file": "packages/ui-workspace/src/flowContracts.ts",
+      "sha256": "19f1515030d66a8e43748385d99d5f4b106c71ce55e7b37e57eb39799b8a465b"
+    },
+    {
+      "file": "packages/ui-workspace/src/index.ts",
+      "sha256": "d05f6dbade9e7d043d9f0c9c789b77221cb488eea0506e31f854d445d0b107d9"
+    },
+    {
+      "file": "packages/ui-workspace/src/pointerDrag.ts",
+      "sha256": "a7198b54a94a5246ac23083b763958709665e27b6f4077a533107c264f27ec9a"
+    },
+    {
+      "file": "packages/ui-workspace/src/repositoryBundles.ts",
+      "sha256": "eff5e57a5e3c7023e0834c644aad9e681cfa514bdcaac205d77fa882378a3771"
+    },
+    {
+      "file": "packages/ui-workspace/src/repositoryDrop.ts",
+      "sha256": "0f7dc37bb34c9a1882477e3539ca87f3bf6e67d345565fc7445edca275105088"
+    },
+    {
+      "file": "packages/ui-workspace/src/state.ts",
+      "sha256": "af4e1c8a753f79cffe9c29e8654b0d98bd68fcdbf8f914e052c37b6d02099a01"
+    },
+    {
+      "file": "packages/ui-workspace/src/styles.css",
+      "sha256": "6a156874f161d81bc5bd24fa05272b86c386aedd3c47f53ed636f909c585c2ee"
+    },
+    {
+      "file": "packages/ui-workspace/src/useBundleManager.tsx",
+      "sha256": "1e1d2f8db22d1f257c73301d5c690d2d4874d97da5ae8eebca74aa5b618ade38"
+    },
+    {
+      "file": "packages/ui-workspace/tokens/diagram-editor-presentation.json",
+      "sha256": "f558c91883ae4d81d9ed448c27a839d7d0490f1a66ea68f0f253fa9461d7a137"
+    },
+    {
+      "file": "packages/ui-workspace/tokens/drawio-editor-source.json",
+      "sha256": "0fc2557b60bbb34decb9368c1214434342a3d00dbfc48d00f64397adddb37e89"
+    },
+    {
+      "file": "packages/ui-workspace/tokens/theme.schema.json",
+      "sha256": "d0967fe506f13bbc506e48d92a8ff68c07cdcdcc119b6a15862c65b89d28d9f3"
+    },
+    {
+      "file": "packages/ui-workspace/tokens/tokens.json",
+      "sha256": "d02e342cd54dc98807778fcdf10e386080f5b97a5c0a8dc1245b0ee9191e2764"
+    },
+    {
+      "file": "packages/versioning-git/src/index.ts",
+      "sha256": "e4ea3c7302f746e61b4b5a2dc4c3afdd6479aeeb57c4443e0f4f00ebc56d6475"
+    },
+    {
+      "file": "pnpm-lock.yaml",
+      "sha256": "755f06619fb8269a345412512c1a44c30cd41887e2d499e4236c262b624d95c0"
+    },
+    {
+      "file": "scripts/ui/checkout.mjs",
+      "sha256": "66a1d79db3d98ae5868fa6e8b1980333e6b573ad36ba808b87f7767bb7f48be5"
+    },
+    {
+      "file": "scripts/ui/colors.mjs",
+      "sha256": "c9be9b96a52be2615b9ea74f7c32949a439134abff949ad781bd4946cebdbae3"
+    },
+    {
+      "file": "scripts/ui/controls.mjs",
+      "sha256": "94c142c95b23760b67d2a1aca7d2868553093a27ea816cd9509836f086d4ba34"
+    },
+    {
+      "file": "scripts/ui/drawio-editor-style.mjs",
+      "sha256": "9857e672082fc79c2a13823c955bc5922a171cf3a81945cb24ca49bac823a1d4"
+    },
+    {
+      "file": "scripts/ui/tokens.mjs",
+      "sha256": "ee42c9cbbc660283ca240db6f637af01e73675837493186110c304629f081943"
+    },
+    {
+      "file": "scripts/ui/traceability.mjs",
+      "sha256": "f4d39427453452fe3deec8909b67396117492a69da3dc0d226125f033d385400"
+    },
+    {
+      "file": "scripts/ui/vscode-dark-2026.mjs",
+      "sha256": "2344f0e575ad967f7c9b53f49a4a92f58901279ea54207ab66c3e19d628dcfb7"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/light-diagram-editor.test.tsx",
+      "sha256": "0ba94ccad30eec73864786aa8b9f13cb69da5d15aaa33ca4b449d8e84a921396"
+    },
+    {
+      "file": "apps/desktop/tests/unit/light-diagram-editor.test.ts",
+      "sha256": "fc5a4c1e2d1bf5e581799af388c45c4d806b4e992a4f977b84692117f7dc3056"
+    },
+    {
+      "file": "tests/ui-contract/light-diagram-editor.test.mjs",
+      "sha256": "7e11100e8bb7491381cfd65f61258364b3e864a5c74577ef89e479afb783b1b5"
+    },
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/vscode-dark-2026-origin.ts",
+      "sha256": "c66bac4cd543d2bdd8f9b92d662d73b15f5281f4cc9696ee96fe5aa54a4c5ce5"
+    },
+    {
+      "file": "openspec/changes/frade-light-diagram-editor/bdd/light-diagram-editor.feature",
+      "sha256": "1e143e06ce61df58ead581dff11dd0f1059c91b47500cc0e8c20819f23ee9af1"
+    },
+    {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-runtime-profile-boundary-20261026/binding-equivalence.json",
+      "sha256": "8c0a9d3bbf1709e9a4557376b65bbe230dc8677dde2e6663fd1bfff589bfd92a"
+    },
+    {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-flow-contrast-repair-20261026/binding-equivalence.json",
+      "sha256": "93d8cb5dd7b79dde7a926d1c5dd6d4bb10f3e82e5661260a310a648616e82fe5"
+    },
+    {
+      "file": "openspec/changes/frade-light-diagram-editor/decisions/lde-native-drag-deferred-risk-01/acceptance.json",
+      "sha256": "b0d301c633d757e13d0874a6f1fa333d9ac1abb956af5854ef26601d679a6bf4"
+    },
+    {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-visual-acceptance-20261026/acceptance.json",
+      "sha256": "c3c18cd7df8de22b76b265d5d0fe3f84c250cef6fab7a8794c08a52b7f8c5801"
+    },
+    {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-author-export-semantics-20261026/binding-equivalence.json",
+      "sha256": "695d1eedc1e1f91551e1c79b5f492d863dc489d754380e57cd6aac51beb54a8f"
+    }
+  ],
+  "reports": {
+    "runtime": {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-final-runtime-20261026/report.json",
+      "format": "playwright",
+      "sha256": "028ef9540fac1ac2449983927464e7d1f49532ec96cb581e66a8307d01d37bca"
+    },
+    "unit": {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-runtime-profile-boundary-20261026/ui.report.json",
+      "format": "vitest",
+      "sha256": "233c1f2aa52287b953ddfa2e2f9fd42a07bfebf96704c3881a18944a3027146b"
+    },
+    "bridge": {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-bdd-unit-20261026/bridge.report.json",
+      "format": "vitest",
+      "sha256": "e4ae7bad89ed76aaa091d0afb2eb10a95b15aa07c76546c9cf7a0e3cb0f94e01"
+    },
+    "compliance": {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-boundary-source-compliance-20261026/report.tap",
+      "format": "tap",
+      "sha256": "3621654dd2dc18b36d4bcb331c12ee4d4e13b4cc355938a2e87c53626b903f16"
+    },
+    "projection": {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-runtime-profile-boundary-20261026/runtime.report.json",
+      "format": "playwright",
+      "sha256": "60865ab872be98d31a6caa3d49f0e6dea3d53f0031143e27738d210aef3e8ed9"
+    },
+    "flow": {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-flow-contrast-repair-20261026/report.json",
+      "format": "playwright",
+      "sha256": "e46d7687e3ef81fdc451aee72f42c9984473afd5a5a50c7e8588bb5b59a75767"
+    },
+    "author": {
+      "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-author-export-semantics-20261026/report.json",
+      "format": "playwright",
+      "sha256": "01b0d099b8f597856bd1017f45421decc99924f61f6777a6a5c36e39ba5c5532"
+    }
+  },
+  "bindings": [
+    {
+      "id": "LDE-001",
+      "cases": [
+        {
+          "report": "runtime",
+          "title": "LDE upstream isolation native keeps fixed metrics across reference System and outer density"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE upstream isolation frame keeps fixed metrics across reference System and outer density"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under light/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under light/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under light/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under light/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under dark/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under dark/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under dark/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under dark/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under high-contrast/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under high-contrast/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under high-contrast/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under high-contrast/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-light/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-light/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-light/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-light/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-dark/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-dark/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-dark/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-dark/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under reference/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under reference/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under reference/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under reference/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-007 frame prepares a validated Light DTO while keeping the authoritative Dark context"
+        }
+      ]
+    },
+    {
+      "id": "LDE-002",
+      "cases": [
+        {
+          "report": "runtime",
+          "title": "LDE geometry native toolbar compact/coarse=false has no vertical clipping"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE geometry native toolbar compact/coarse=true has no vertical clipping"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE geometry native toolbar comfortable/coarse=false has no vertical clipping"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE geometry native toolbar comfortable/coarse=true has no vertical clipping"
+        },
+        {
+          "report": "projection",
+          "title": "LDE upstream contract native matches pinned Light panels and button geometry"
+        },
+        {
+          "report": "projection",
+          "title": "LDE upstream contract frame matches pinned Light panels and button geometry"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE upstream isolation native keeps fixed metrics across reference System and outer density"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE upstream isolation frame keeps fixed metrics across reference System and outer density"
+        }
+      ]
+    },
+    {
+      "id": "LDE-003",
+      "cases": [
+        {
+          "report": "unit",
+          "title": "LDE-003 disposal restores owned root projections and preserves a later unrelated style owner"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-003 late prepare after owner disposal is rejected and its acquired handle is disposed"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-003 managed editor overlay keeps focus/cancel semantics and isolates the global picker and second editor"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-003 LDE-006 owned overlay follows same-transaction forced-colors rollback without touching the second owner/global host"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-003 disposed/foreign/forged leases fail without rebinding or changing the active modal"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-003 initial owned popup projects the supplied visible snapshot before first participant paint"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE owned dirty guard uses the originating editor Light scope"
+        }
+      ]
+    },
+    {
+      "id": "LDE-004",
+      "cases": [
+        {
+          "report": "unit",
+          "title": "LDE-004 upstream mesh stroke and major step restore without changing grid semantics"
+        },
+        {
+          "report": "unit",
+          "title": "LDE upstream grid uses existing double mesh view while keeping semantic grid and exact disposal"
+        },
+        {
+          "report": "bridge",
+          "title": "implicit backing follows author ownership and restores exactly without semantic writes"
+        },
+        {
+          "report": "bridge",
+          "title": "image-backed SVG and later foreign backing metadata are never claimed or overwritten"
+        },
+        {
+          "report": "bridge",
+          "title": "upstream Light reveals original grid while forced rollback retains strict ACK and authored bytes"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE geometry frame implicit workspace is visibly neutral below authored cells"
+        }
+      ]
+    },
+    {
+      "id": "LDE-005",
+      "cases": [
+        {
+          "report": "runtime",
+          "title": "LDE author backing white-page stays content-owned across forced colors"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE author backing colored-page stays content-owned across forced colors"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE author backing image-background stays content-owned across forced colors"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under light/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under light/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under light/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under light/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under dark/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under dark/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under dark/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under dark/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under high-contrast/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under high-contrast/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under high-contrast/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under high-contrast/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-light/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-light/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-light/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-light/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-dark/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-dark/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-dark/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under system-dark/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under reference/compact/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under reference/compact/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under reference/comfortable/forced=false preserves the app and authored state"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-006 native scope under reference/comfortable/forced=true preserves the app and authored state"
+        },
+        {
+          "report": "author",
+          "title": "LDE author gradient alpha and inherited paint survive actual preview cancel commit and forced colors"
+        }
+      ]
+    },
+    {
+      "id": "LDE-006",
+      "cases": [
+        {
+          "report": "runtime",
+          "title": "LDE initial native/compact: actual Light surface and forced-colors round trip preserve content"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE initial native/comfortable: actual Light surface and forced-colors round trip preserve content"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE initial frame/compact: actual Light surface and forced-colors round trip preserve content"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE initial frame/comfortable: actual Light surface and forced-colors round trip preserve content"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE system native respects dark forced colors on reachable controls"
+        },
+        {
+          "report": "runtime",
+          "title": "LDE system frame respects dark forced colors on reachable controls"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-006 LDE-007 native forced-colors round trip and rollback retain author/settings/revision ownership"
+        }
+      ]
+    },
+    {
+      "id": "LDE-007",
+      "cases": [
+        {
+          "report": "unit",
+          "title": "LDE-007 stale/aborted editor handle cannot paint either root or canvas"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-007 covered native join is paintable before ACK and retains reveal/disposal ownership"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-007 invalid covered handle cannot reveal its parent before refusal"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-001 LDE-007 frame prepares a validated Light DTO while keeping the authoritative Dark context"
+        },
+        {
+          "report": "unit",
+          "title": "LDE-007 dirty guard retains every original byte outside the exact accepted metadata call"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-FUI007 required frame preparation refuses direct durable commit"
+        }
+      ]
+    },
+    {
+      "id": "LDE-008",
+      "cases": [
+        {
+          "report": "runtime",
+          "title": "P01-responsive-media native actual viewports zoom forced coarse reduced across six theme/density states"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-responsive-media frame actual viewports zoom forced coarse reduced across six theme/density states"
+        },
+        {
+          "report": "runtime",
+          "title": "P01 actual restored readonly frame refuses navigator drop after exact presentation readiness without document writes"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-LOWER actual canvas F6 entry preserves document, selection, undo and viewport"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-LOWER original keyboard page menu duplicate rename move remove, submenu and cancellation"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-REFLOW actual open chain reconciles resize and media without observer churn or semantic actions"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-UPPER-023 actual keyboard anchors and owned popup paths light compact"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-UPPER-023 actual keyboard anchors and owned popup paths light comfortable"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-UPPER-023 actual keyboard anchors and owned popup paths dark compact"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-UPPER-023 actual keyboard anchors and owned popup paths dark comfortable"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-UPPER-023 actual keyboard anchors and owned popup paths high-contrast compact"
+        },
+        {
+          "report": "runtime",
+          "title": "P01-UPPER-023 actual keyboard anchors and owned popup paths high-contrast comfortable"
+        },
+        {
+          "report": "flow",
+          "title": "P01-B02 actual flow manager states frade across six themes and forced colors"
+        },
+        {
+          "report": "flow",
+          "title": "P01 actual frame close and reopen disposes removed participants without renderer errors or document writes"
+        }
+      ]
+    },
+    {
+      "id": "LDE-009",
+      "cases": [
+        {
+          "report": "compliance",
+          "title": "LDE-UPSTREAM positive: source-verified generated styles pass without feature color exceptions"
+        },
+        {
+          "report": "compliance",
+          "title": "LDE-UPSTREAM negative: generated literal or scope drift is FAIL, not a blanket generated exemption"
+        },
+        {
+          "report": "compliance",
+          "title": "LDE-UPSTREAM negative: forged source plus matching vendor manifest cannot bypass pinned CSS"
+        },
+        {
+          "report": "compliance",
+          "title": "LDE-UPSTREAM negative: missing generated TS or manifest fails closed"
+        },
+        {
+          "report": "compliance",
+          "title": "LDE-UPSTREAM negative: ordinary feature literals cannot use the source exemption"
+        },
+        {
+          "report": "compliance",
+          "title": "LDE-UPSTREAM deterministic source coverage, scoped selectors and namespaced animations"
+        }
+      ]
+    }
+  ],
+  "sourceEquivalence": {
+    "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-runtime-profile-boundary-20261026/binding-equivalence.json",
+    "priorManifestSha256": "857ccf55c349d941aceb45bd91b8bb672b8a783405055e0bbf4351e080fb5d02"
+  },
+  "sourceEquivalenceFlow": {
+    "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-flow-contrast-repair-20261026/binding-equivalence.json",
+    "priorManifestSha256": "ea805e18d122f2a66b553b023e1c9bde46b98a6db744646aa0c5e513854248ac"
+  },
+  "sourceEquivalenceAuthor": {
+    "file": "openspec/changes/frade-light-diagram-editor/evidence/upstream-author-export-semantics-20261026/binding-equivalence.json",
+    "priorManifestSha256": "f7a5e078876244229c7b62add8ad28bffc97ae4655375c4532325bc614a3bf85"
+  }
+}

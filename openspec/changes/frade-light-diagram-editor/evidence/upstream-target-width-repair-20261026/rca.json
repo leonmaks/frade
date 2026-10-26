@@ -1,0 +1,15 @@
+{
+  "classification": "INTEGRATION",
+  "defect": "Ordinary upstream bridge branch removed old minimum target width; stock checkbox13px and geStatus16px violate retained24px requirement",
+  "red": "upstream-accessibility-regression-01-20261026",
+  "cases": {
+    "passed": 12,
+    "failed": 1
+  },
+  "violations": 90,
+  "unique": "Six checkbox classes plus geStatus; native0 violations",
+  "beforeSha256": "e2276a131d7ec7564bc75b3347e61d4ac9d47d4364ae95a4c2469623913fa2c0",
+  "before": "controls.join(',') + '{min-height:28px;}'",
+  "after": "controls.join(',') + '{min-height:28px;min-width:24px;}'",
+  "scope": "Existing narrow accessibility exception; min24 normal and44coarse; vendor/actions/assertions unchanged"
+}

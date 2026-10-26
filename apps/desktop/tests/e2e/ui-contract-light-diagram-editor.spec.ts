@@ -972,3 +972,76 @@ for(const engine of ['native','frame'] as const){
     }finally{await f.app.close()}
   })
 }
+
+for (const engine of ['frame'] as const) {
+  // eslint-disable-next-line no-empty-pattern
+  test('LDE author gradient alpha and inherited paint survive actual preview cancel commit and forced colors', async ({}, info) => {
+    const f = await openEditor(engine, 'compact')
+    const body = f.page.frameLocator('iframe').locator('body')
+    const probes: unknown[] = []
+    try {
+      await body.evaluate(() => {
+        const ui = (window as any).__ldeUi, graph = ui.editor.graph, model = graph.getModel()
+        const a = model.getCell('node-A'), b = model.getCell('node-B')
+        if (!a || !b) throw Error('Missing synthetic authored cells')
+        ;(window as any).__ldeAuthorGraph = graph
+        model.beginUpdate()
+        try {
+          model.setStyle(a, model.getStyle(a) + ';fillColor=#77AADD;gradientColor=#CC6688;gradientDirection=east;opacity=65;fillOpacity=60;strokeOpacity=80;textOpacity=70;')
+          model.setStyle(b, model.getStyle(b) + ';fillColor=inherit;strokeColor=inherit;fontColor=inherit;')
+        } finally { model.endUpdate() }
+      })
+      const sample = async () => { const measured = await body.evaluate(() => {
+        const ui = (window as any).__ldeUi, graph = ui.editor.graph, model = graph.getModel()
+        const svg = graph.view.canvas.ownerSVGElement
+        const exported = ui.editor.getGraphXml()
+        const value = {
+          xml: (window as any).mxUtils.getXml(new (window as any).mxCodec().encode(model)),
+          exportAttributes: [...exported.attributes].filter((attr: Attr) => !['dx', 'dy'].includes(attr.name)).map((attr: Attr) => [attr.name, attr.value]),
+          projection: { scale: graph.view.scale, x: graph.view.translate.x - graph.container.scrollLeft / graph.view.scale, y: graph.view.translate.y - graph.container.scrollTop / graph.view.scale },
+          exportProjection: { scale: graph.view.scale, x: Number(exported.getAttribute('dx') || 0) - graph.container.scrollLeft / graph.view.scale, y: Number(exported.getAttribute('dy') || 0) - graph.container.scrollTop / graph.view.scale },
+          identity: graph === (window as any).__ldeAuthorGraph,
+          styles: ['node-A', 'node-B'].map(id => {
+            const cell = model.getCell(id), state = graph.view.getState(cell), node = state.shape.node
+            return { model: model.getStyle(cell), resolved: graph.getCellStyle(cell), render: { bounds: node.getBoundingClientRect().toJSON(), paint: [node, ...node.querySelectorAll('*')].map((element: Element) => ({ tag: element.tagName, attributes: [...element.attributes].filter(attr => !['x', 'y'].includes(attr.name)).map(attr => [attr.name, attr.value]) })) } }
+          }),
+          gradients: [...svg.querySelectorAll('linearGradient')].map((node: Element) => ({ markup: node.outerHTML, stops: [...node.querySelectorAll('stop')].map(stop => ({ color: getComputedStyle(stop).stopColor, opacity: getComputedStyle(stop).stopOpacity })) })),
+        }
+        return { value, diagnostic: { exportXml: (window as any).mxUtils.getXml(exported), rawRender: ['node-A', 'node-B'].map(id => graph.view.getState(model.getCell(id)).shape.node.outerHTML), modelXml: (window as any).mxUtils.getXml(new (window as any).mxCodec().encode(model)), scale: graph.view.scale, translate: { ...graph.view.translate }, scroll: { left: graph.container.scrollLeft, top: graph.container.scrollTop }, container: graph.container.getBoundingClientRect().toJSON(), cells: ['node-A', 'node-B'].map(id => ({ geometry: model.getGeometry(model.getCell(id)), rect: graph.view.getState(model.getCell(id)).shape.node.getBoundingClientRect().toJSON() })) } }
+      }); probes.push({ ...measured, host: await f.page.locator('iframe').boundingBox() }); return measured.value }
+
+      await body.evaluate(async () => { await document.fonts.ready; await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))) })
+      const before = await sample(), dirty = await f.page.locator('.dirty-dot').count()
+      expect(before.xml).toContain('gradientColor=#CC6688')
+      expect(before.xml).toContain('opacity=65')
+      expect(before.styles[1].model).toContain('fillColor=inherit')
+      expect(before.gradients.length).toBeGreaterThan(0)
+      await f.page.getByRole('button', { name: 'Меню Файл', exact: true }).click()
+      await f.page.getByRole('menuitem', { name: 'Выбрать тему…', exact: true }).click()
+      await f.page.getByRole('option', { name: 'VS Code Dark 2026', exact: true }).click()
+      await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+      expect(await sample()).toEqual(before)
+      await f.page.keyboard.press('Escape')
+      await expect(f.page.getByRole('dialog', { name: 'Выбор темы' })).toBeHidden()
+      await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+      expect(await sample()).toEqual(before)
+      for (const forcedColors of ['active', 'none'] as const) {
+        await f.page.emulateMedia({ forcedColors })
+        await expect.poll(() => f.page.locator('.repository-diagram').evaluate(node => (node as HTMLElement).style.getPropertyValue('--frade-diagram-canvas'))).toBe(forcedColors === 'active' ? 'Canvas' : stockUi.base.hex)
+        await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+        expect(await sample()).toEqual(before)
+      }
+      await f.page.getByRole('button', { name: 'Меню Файл', exact: true }).click()
+      await f.page.getByRole('menuitem', { name: 'Выбрать тему…', exact: true }).click()
+      await f.page.getByRole('option', { name: 'Светлая (Light)', exact: true }).click()
+      await f.page.getByRole('button', { name: 'Сохранить выбор', exact: true }).click()
+      await expect(f.page.getByRole('dialog', { name: 'Выбор темы' })).toBeHidden()
+      expect(await sample()).toEqual(before)
+      expect(await f.page.locator('.dirty-dot').count()).toBe(dirty)
+      expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+      expect(JSON.parse(await readFile(f.settings, 'utf8')).selection.mode).toBe('light')
+      await writeFile(info.outputPath('author-gradient-alpha.json'), JSON.stringify({ before, after: await sample(), source: 'Synthetic author styles applied through existing model API before baseline; no theme setter/setup inside measured transitions', nativeGradient: 'UNSUPPORTED' }, null, 2))
+      await f.page.screenshot({ path: info.outputPath('author-gradient-alpha.png') })
+    } finally { try { await writeFile(info.outputPath('author-probes.json'), JSON.stringify(probes, null, 2)) } finally { await f.app.close() } }
+  })
+}

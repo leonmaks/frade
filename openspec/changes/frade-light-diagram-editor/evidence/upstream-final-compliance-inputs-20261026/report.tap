@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: LDE-UPSTREAM positive: source-verified generated styles pass without feature color exceptions
+ok 1 - LDE-UPSTREAM positive: source-verified generated styles pass without feature color exceptions
+  ---
+  duration_ms: 10104.8662
+  type: 'test'
+  ...
+# {"control":"POSITIVE","status":"PASS","errors":0}
+# Subtest: LDE-UPSTREAM negative: generated literal or scope drift is FAIL, not a blanket generated exemption
+ok 2 - LDE-UPSTREAM negative: generated literal or scope drift is FAIL, not a blanket generated exemption
+  ---
+  duration_ms: 7917.525
+  type: 'test'
+  ...
+# {"control":"GENERATED_DRIFT","status":"FAIL","errors":["DRAWIO_OUTPUT_DRIFT: packages/ui-workspace/src/design/generated/drawio-editor.css"]}
+# Subtest: LDE-UPSTREAM negative: forged source plus matching vendor manifest cannot bypass pinned CSS
+ok 3 - LDE-UPSTREAM negative: forged source plus matching vendor manifest cannot bypass pinned CSS
+  ---
+  duration_ms: 4956.0446
+  type: 'test'
+  ...
+# {"control":"FORGED_SOURCE","status":"FAIL","errors":["UPSTREAM_SOURCE_DRIFT: styles/grapheditor.css"]}
+# Subtest: LDE-UPSTREAM negative: missing generated TS or manifest fails closed
+ok 4 - LDE-UPSTREAM negative: missing generated TS or manifest fails closed
+  ---
+  duration_ms: 6554.2367
+  type: 'test'
+  ...
+# {"control":"MISSING_ARTIFACT","file":"packages/ui-workspace/src/design/generated/drawio-editor.ts","status":"FAIL"}
+# {"control":"MISSING_ARTIFACT","file":"packages/ui-workspace/tokens/drawio-editor-source.json","status":"FAIL"}
+# Subtest: LDE-UPSTREAM negative: ordinary feature literals cannot use the source exemption
+ok 5 - LDE-UPSTREAM negative: ordinary feature literals cannot use the source exemption
+  ---
+  duration_ms: 5844.2974
+  type: 'test'
+  ...
+# {"control":"FEATURE_LITERAL","status":"FAIL","errors":["packages/ui-inspector/src/forbidden.ts:1: forbidden color \#ABCDEF"]}
+# Subtest: LDE-UPSTREAM deterministic source coverage, scoped selectors and namespaced animations
+ok 6 - LDE-UPSTREAM deterministic source coverage, scoped selectors and namespaced animations
+  ---
+  duration_ms: 5926.7743
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 41875.5247

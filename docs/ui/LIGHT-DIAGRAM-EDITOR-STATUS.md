@@ -10,20 +10,22 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-UPSTREAM_ADAPTER_GREEN; итоговая совместимость и BDD — IN_PROGRESS. PRE09 PASS (gpt-6-sol/xhigh), raw receipt сохранён. Новый план:3/9 задач полностью завершены;2.2 и2.3 частично реализованы. READY_FOR_VERIFY: NO.
+IMPLEMENTATION_VERIFIED / PREPARING_AUTOMATIC_POST.7/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: NO until POST.
 
-| Этап | Статус | Фактический результат / остаток |
+| Этап | Статус | Фактический результат |
 |---|---|---|
-|1 Contract + automatic PRE|DONE|Принята замена; source/strict PASS; независимый PRE09 PASS|
-|2 One implementation/acceptance cycle|IN_PROGRESS|Generator/adapter/iframe GREEN; исторические source mappings, BDD и итоговая матрица ещё не завершены|
+|1 Contract + automatic PRE|DONE|Accepted pinned upstream replacement; strict PASS; PRE09 gpt-6-sol/xhigh PASS|
+|2 Implementation / acceptance cycle|IN_PROGRESS, closing|2.1–2.5 DONE;2.6 scenario assessment/POST;2.7 archive/Main/publication pending|
 
-Реализованы: pinned Draw.io31.5.2 Light;591 scoped rules/4 generated artifacts; независимые от внешней темы фиксированные30px controls; исходные canvas/grid; renderer-only native doubleMesh; строгая проверка source/drift и узкое исключение generated literals. Внешние темы, density/settings, авторские значения и domain/routing сохраняются.
+Final root pnpm check PASS; final original performance20warmups+100samples p95=117.8ms<=150ms PASS; strict revalidation prepared. Source/compliance/boundary/BDD tests PASS. Representative56-case report retains55PASS/1historicalFAIL; exact LDE-D01 is ACCEPTED_DEFERRED_RISK, NOT_FIXED/NOT_PROVEN.2 unchanged+5 instrumented repeats PASS do not prove its cause. Any new failure still blocks.
 
-Фактические проверки (точные inputs/results — в evidence):120 UI units,88 bridge units,6 Node compliance;17 Electron stage cases;2 reference/System/density flows;2 dark forced-colors flows — PASS. Последний lint и generator --check PASS. Это incremental coverage, не общий POST/визуальное принятие. Старые RED/FAIL сохранены, закрыты соответствующими GREEN; старые baselines не утверждены автоматически.
+All other actual discovered FAIL resolved with retained RED/GREEN: reference geometry leak; original24px target widths; runtime JSON import boundary; shared FlowManager helper/add-value contrast. Last repair is exactly two owned FlowManager declarations: original state matrix0violations +disposal2/2 PASS. Original startup/embedded/parked3PASS. No duplicate56-case run; explicit raw/data/selector equivalence binds prior named cases, source controls reject unknown drift.10 BDD binding/tamper checks PASS.
 
-Следующее: точная обратимая адаптация исторических editor expectations/accepted refusal fixture и source controls; executable BDD; затем один итоговый applicable matrix, галерея/визуальное решение, verify/POST. Нет незакрытого запроса к человеку. Прогноз всего этапа6–10h active/1–2дня был judgment, не гарантия; фактические длительности сохранены по командам.
+Visual17-PNG manifesta6f6f36f162a59aa9a89d99b5b0c497ff2f7406b3262619f6132d2d00762d372 ACCEPTED_WITH_DISCLOSED_ADAPTATIONS; raw capture manifest unchanged, later human acceptance stored separately. Last two FlowManager-only declarations do not match accepted17 screens. Source Drawio31.5.2/Guide1.0;8 Foundation artifacts/vendor/brand/domain/routing unchanged. Forced colors tested through Chromium media emulation, native unsupported page/image/gradient and raster/layout differences remain disclosed.
 
-Ветка/worktree/change/baseline указаны выше. Main/P02/Routing не менялись; новый remote ref NOT_AUTHORIZED, push NOT_RUN. PRE09 candidate aacf506b; последний committed checkpoint7f0095ba; следующий incremental checkpoint фиксирует реализацию с честным INCOMPLETE. Правая панель OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
+Next: scenario verification/freeze -> confined automatic POST gpt-6-sol/xhigh -> archive/sync -> exact reviewed Main transfer. Current design records accepted LDE-D01; no product scope expansion. No further human question pending. Main local/remote committed HEAD4244e566...equals original UI baseline (origin read verified via strict SSH443; port22 abort is ENVIRONMENT). Main has unrelated dirty Routing/package/lock files: preserve every foreign byte; transfer only non-overlapping reviewed UI commit using FF, never adopt/copy foreign uncommitted source. No Main writes/push yet; new UI remote branch remains NOT_AUTHORIZED; origin/main publication is authorized.
+
+Latest committed checkpoint e30de677; full tested implementation/decisions/evidence will be committed before POST freeze. During freeze this dashboard is immutable. Right-panel requests QUEUED; visibility NOT_CONFIRMED.
 
 ## Предыдущие этапы — история до принятой замены
 
@@ -259,3 +261,11 @@ Run11:34:13Z–11:40:09Z (5m56s total measured), candidateaacf506b unchanged,359
 Actual RED:1 new source-panel unit and2 Electron cases failed oldF5 vsupstreamF1 before production. Source witness initially confused transparent panel computed color with inherited backing (TEST), corrected to effective backdrop, then stock source witness PASS. Generator initial selector failure classified ABSTRACTION_BOUNDARY: keyframe steps are not selectors; preserved/namespaced animation names via parser. Generated4 artifacts from591 scoped source rules; regeneration check PASS. Desktop build/typecheck0; actual source-derived panel/button30px/forced-colors round-trip native+frame2/2 PASS in7.7s, file/settings/dirty/author values retained. Bound elapsed23.6min within30min. It is incremental proof, not final parity/POST.
 
 Stage2.2 ongoing: retire iframe competing overrides, align default grid view, complete source selector/resource/isolation negatives and legacy expectation maps. Stage2.3–2.7 pending. Existing old-profile tests need exact accepted visual mapping, not weakened behavior assertions. No new scope decision or human action pending.
+
+## Завершённый check batch —26 October2026,14:22UTC
+
+Root check02 exit0; original performance exit0/p95=114.2ms; active strict exit0. Прежние root boundary FAIL и native drag FAIL сохранены; только boundary закрыт доказанным GREEN. Source/input equivalence позволяет повторно использовать named runtime coverage, не объявляет весь56-case report PASS. Галерея17 PNG готова, visual NOT_APPROVED. Требуются два человеческих решения: точный LDE-D01 и внешний вид; automatic review prompts/results человек не переносит. Политика/guide v1.0/доменные контракты/8 Foundation artifacts сохраняются. CI действительно вызывает pnpm check и ui:compliance; branch protection NOT_VERIFIED. Main/P02/Routing и remote не менялись.
+
+## Точные решения и закрытие потребителей —26 October2026
+
+Human accepted LDE-D01 proposal14f8ddc... and17-PNG manifesta6f6f36f...; immutable risk/visual acceptance records written. Existing historical FAIL remains NOT_FIXED/NOT_PROVEN. Additional unique shared FlowManager regression found362 contrast violations in two old native styles; one scoped repair (helper opacity1 +generated text.primary for add-value) gives0violations, original full shared-panel state matrix and disposal2/2 PASS. Three original startup/embedded/parked cases also PASS. Original remaining-consumer FAIL preserved.9-ID BDD binding/tamper10/10 PASS after exact one-file/two-selector source-equivalence proof. Final root check currently finishing; no further product change planned. Main committed HEAD equals UI baseline4244e566..., but Main has unrelated dirty Routing/package/lock files: preserve them; never copy them into UI or review. Main consumer must use exact committed baseline/verified UI payload and non-overlapping fast-forward only, with foreign-byte preservation check. No Main write/push performed.

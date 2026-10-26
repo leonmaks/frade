@@ -1,0 +1,46 @@
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-001 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-002 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-003 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-004 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-005 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-006 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-007 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-008 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-009 exact-source executable evidence binding
+Error: EVIDENCE_LOCATION
+ ❯ demand tests/ui-contract/light-diagram-editor.bdd.test.tsx:19:21
+     17| type Case = { title: string; passed: boolean }
+     18| function demand(value: unknown, error: string): asserts value {
+     19|   if (!value) throw Error(error)
+       |                     ^
+     20| }
+     21| function safeFile(file: string): Buffer {
+ ❯ safeFile tests/ui-contract/light-diagram-editor.bdd.test.tsx:28:5
+ ❯ verify tests/ui-contract/light-diagram-editor.bdd.test.tsx:56:15
+ ❯ tests/ui-contract/light-diagram-editor.bdd.test.tsx:71:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE binding rejects source and report tampering without editing evidence
+Error: EVIDENCE_LOCATION
+ ❯ demand tests/ui-contract/light-diagram-editor.bdd.test.tsx:19:21
+     17| type Case = { title: string; passed: boolean }
+     18| function demand(value: unknown, error: string): asserts value {
+     19|   if (!value) throw Error(error)
+       |                     ^
+     20| }
+     21| function safeFile(file: string): Buffer {
+ ❯ safeFile tests/ui-contract/light-diagram-editor.bdd.test.tsx:28:5
+ ❯ verify tests/ui-contract/light-diagram-editor.bdd.test.tsx:56:15
+ ❯ tests/ui-contract/light-diagram-editor.bdd.test.tsx:83:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade-worktrees\light-
+  │ diagram-editor\packages\ui-workspace
+

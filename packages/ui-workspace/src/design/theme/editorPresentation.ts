@@ -1,5 +1,4 @@
-import profileData from '../../../tokens/diagram-editor-presentation.json'
-import { drawioEditor } from '../generated/drawio-editor'
+import { drawioEditor, drawioEditorProfile as profileData } from '../generated/drawio-editor'
 import { isHexColor } from './contrast'
 import { isDataRecord } from './registry'
 import { validatePresentationSnapshot } from './rootParticipant'

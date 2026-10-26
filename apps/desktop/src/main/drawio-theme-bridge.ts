@@ -403,7 +403,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       // Original pinned CSS owns ordinary chrome; retain only existing accessible
       // upper/lower keyboard/glyph leases below and explicit system/target fixes.
       style.textContent = prefix('.geEditor') + '{color-scheme:light!important;}' +
-        controls.join(',') + '{min-height:28px;}' +
+        controls.join(',') + '{min-height:28px;min-width:24px;}' +
         controls.map(selector=>selector+':not(.geColorBtn):not(.geStyleBtn):not(.geItem)').join(',') + '{border-color:var(--frade-frame-border-control)!important;}' +
         controls.map(selector => selector + ':focus-visible').join(',') + '{outline:2px solid var(--frade-frame-focus-ring)!important;outline-offset:2px;}' +
         '@media(pointer:coarse){' + controls.join(',') + '{min-width:44px;min-height:44px;}}'

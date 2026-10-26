@@ -146,6 +146,12 @@ async function diagramFixture(
       paints: [] as number[],
       visibility: [] as unknown[],
     })
+    let p01RefuseArmed = false, p01RefusedIntent: string | undefined
+    Object.defineProperty(window, '__p01RefuseDark', {
+      configurable: true, enumerable: true,
+      get: () => p01RefuseArmed,
+      set: (value: boolean) => { p01RefuseArmed = value; p01RefusedIntent = undefined },
+    })
     const tick = (now: number) => {
       if (telemetry.paints.length > 999) telemetry.paints.shift()
       telemetry.paints.push(now)
@@ -165,9 +171,13 @@ async function diagramFixture(
       if (
         data?.action === 'fradePresentation' &&
         data.operation === 'prepare' &&
-        data.snapshot?.kind === 'dark' &&
-        (window as any).__p01RefuseDark
+        data.context?.phase === 'prepare' &&
+        data.snapshot?.kind === 'light' &&
+        (window as any).__p01RefuseDark &&
+        typeof data.context?.requestId === 'string' &&
+        (p01RefusedIntent === undefined || p01RefusedIntent === data.context.requestId)
       ) {
+        p01RefusedIntent = data.context.requestId
         event.stopImmediatePropagation()
         parent.postMessage(
           JSON.stringify({
@@ -293,7 +303,7 @@ test('P01 native hot preview and commit preserve authored JSON, graph identity, 
     })
     const selected = await f.page.locator('.frade-canvas .x6-widget-selection-box').count()
     await previewDark(f.page)
-    await expect(canvas).toHaveAttribute('data-frade-theme', 'dark')
+    await expect(canvas).toHaveAttribute('data-frade-theme', 'light')
     expect(await canvas.evaluate((el) => el === (window as any).__p01NativeCanvas)).toBe(true)
     expect(await f.page.locator('.frade-canvas .x6-widget-selection-box').count()).toBe(selected)
     expect(await node.getAttribute('transform')).toBe(moved)
@@ -349,7 +359,7 @@ test('P01 embedded hot preview and cancellation preserve XML, authored paint, pr
     const before = await snapshot(),
       disk = await readFile(f.file, 'utf8')
     await previewDark(f.page)
-    await expect(chrome).toHaveAttribute('data-frade-frame-theme', 'dark')
+    await expect(chrome).toHaveAttribute('data-frade-frame-theme', 'light')
     expect(await snapshot()).toEqual(before)
     expect(
       await frame
@@ -423,7 +433,7 @@ test('P01 parked required frame acknowledges while dirty KA stays active and res
     await expect(f.page.locator('iframe')).toBeHidden()
     await expect(f.page.locator('.dirty-dot')).toHaveCount(1)
     await previewDark(f.page)
-    await expect(chrome).toHaveAttribute('data-frade-frame-theme', 'dark')
+    await expect(chrome).toHaveAttribute('data-frade-frame-theme', 'light')
     await f.page.keyboard.press('Escape')
     await expect(f.page.getByRole('dialog', { name: 'Выбор темы' })).toHaveCount(0)
     await expect(description).toHaveValue('P01 unsaved KA ownership')
@@ -652,6 +662,7 @@ async function readUiConsumers(body: ReturnType<Page['locator']>, scope: 'root' 
         : node
       return [
         {
+          editorOwned: scope === 'frame' || !!node.closest('[data-frade-editor=light]'),
           tag: node.tagName,
           role: node.getAttribute('role'),
           class: node.className,
@@ -709,7 +720,7 @@ for (const mode of ['light', 'dark', 'high-contrast'] as const)
             if (
               consumer.control &&
               !consumer.exception &&
-              consumer.target.height < (density === 'compact' ? 28 : 36)
+              consumer.target.height < (consumer.editorOwned ? 28 : density === 'compact' ? 28 : 36)
             )
               violations.push({ label, scope, rule: 'FDS-DENSITY', consumer })
             if (consumer.control && !consumer.exception && consumer.target.width < 24)
@@ -2850,7 +2861,7 @@ for (const mode of ['light', 'dark', 'high-contrast'] as const)
               for (const control of record.controls) {
                 if (control.disabled === 'true' || (popupLayer && control.layer === 'lower'))
                   continue
-                const minimum = record.media.coarse ? 44 : density === 'compact' ? 28 : 36
+                const minimum = record.media.coarse ? 44 : 28
                 if (
                   control.box.height < minimum ||
                   control.box.width < (record.media.coarse ? 44 : 24)
@@ -2991,7 +3002,7 @@ for (const mode of ['light', 'dark', 'high-contrast'] as const)
                   continue
                 if (
                   control.box.height <
-                    (record.media.coarse ? 44 : density === 'compact' ? 28 : 36) ||
+                    (record.media.coarse ? 44 : 28) ||
                   control.box.width < (record.media.coarse ? 44 : 24)
                 )
                   violations.push({ label, rule: 'A11Y-004/FDS-DENSITY', control })
@@ -3325,7 +3336,7 @@ test('P01-REFLOW actual open chain reconciles resize and media without observer 
       for (const group of record.targets) for (const target of group) { const b=target.box
         expect(target.hit).toBe(true);expect(target.label).toBeTruthy();expect(b.left-4).toBeGreaterThanOrEqual(0);expect(b.top-4).toBeGreaterThanOrEqual(0)
         expect(b.right+4).toBeLessThanOrEqual(record.viewport.width);expect(b.bottom+4).toBeLessThanOrEqual(record.viewport.height)
-        expect(b.height).toBeGreaterThanOrEqual(record.media.coarse?44:36);expect(b.width).toBeGreaterThanOrEqual(record.media.coarse?44:24) }
+        expect(b.height).toBeGreaterThanOrEqual(record.media.coarse?44:28);expect(b.width).toBeGreaterThanOrEqual(record.media.coarse?44:24) }
       for (const a of record.targets[0]) for (const b of record.targets[1])
         expect(a.box.right+8<=b.box.left || b.box.right+8<=a.box.left || a.box.bottom+8<=b.box.top || b.box.bottom+8<=a.box.top).toBe(true)
       expect(await semantics()).toEqual(before);expect(await readFile(f.file,'utf8')).toBe(fileBefore)
@@ -3470,6 +3481,7 @@ test('P01-B05 actual settled lower refusal stays live through failed publication
 // P01 FUI coverage: original callsites above remain exact historical assertions.
 import { createHash } from 'node:crypto'
 import { builtinTokens } from '@frade/ui-workspace/design/tokens'
+import { drawioEditor } from '../../../../packages/ui-workspace/src/design/generated/drawio-editor'
 type FuiFixture = Awaited<ReturnType<typeof diagramFixture>>
 type FuiKind = 'native' | 'frame'
 const fuiHash = (bytes: Buffer | string) => createHash('sha256').update(bytes).digest('hex')
@@ -3575,12 +3587,12 @@ async function fuiRevisionAndPalette(f: FuiFixture, kind: FuiKind, mode: 'light'
   expect(projected.roles).toHaveLength(31)
   for (const role of projected.roles) { expect(role.root.toUpperCase()).toBe(role.wanted); expect(role.portal.toUpperCase()).toBe(role.wanted) }
   const requiredRoot = kind === 'native' ? participant : f.page.frameLocator('iframe').locator('html')
-  await expect(requiredRoot).toHaveAttribute(kind === 'native' ? 'data-frade-theme' : 'data-frade-frame-theme', mode)
+  await expect(requiredRoot).toHaveAttribute(kind === 'native' ? 'data-frade-theme' : 'data-frade-frame-theme', 'light')
   await expect(requiredRoot).toHaveAttribute(kind === 'native' ? 'data-frade-revision' : 'data-frade-frame-revision', revision)
   const required = await requiredRoot.evaluate((node, input) => {
     const style = getComputedStyle(node), prefix = input.kind === 'native' ? '--frade-' : '--frade-frame-'
     return input.roles.map(([role, wanted]) => ({ role, wanted, actual: style.getPropertyValue(prefix + role.replaceAll('.', '-')).trim() }))
-  }, { kind, roles })
+  }, { kind, roles: Object.entries(drawioEditor.colors) })
   expect(required).toHaveLength(31)
   for (const role of required) expect(role.actual.toUpperCase()).toBe(role.wanted)
   return { revision, projected, required }
@@ -3642,7 +3654,7 @@ for (const kind of ['native', 'frame'] as const) {
       expect(before.selection).toEqual(activeSetup.selection)
       await previewDark(f.page)
       await expect(f.page.locator('html')).toHaveAttribute('data-frade-theme', 'dark')
-      await expect(kind === 'native' ? f.page.locator('.frade-canvas .canvas') : f.page.frameLocator('iframe').locator('html')).toHaveAttribute(kind === 'native' ? 'data-frade-theme' : 'data-frade-frame-theme', 'dark')
+      await expect(kind === 'native' ? f.page.locator('.frade-canvas .canvas') : f.page.frameLocator('iframe').locator('html')).toHaveAttribute(kind === 'native' ? 'data-frade-theme' : 'data-frade-frame-theme', 'light')
       expect(await readFile(fuiSettings(f, kind), 'utf8')).toBe(durable)
       await f.page.keyboard.press('Escape')
       await expect(f.page.getByRole('dialog', { name: 'Выбор темы' })).toHaveCount(0)
@@ -4022,7 +4034,7 @@ for (const mode of ['light','dark','high-contrast'] as const) for (const density
           await f.page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'})
           mediaSession = await f.page.context().newCDPSession(f.page.frames().find(frame=>frame.url().startsWith('frade://drawio/'))!)
           await mediaSession.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1})
-          await expect.poll(()=>frame.locator('html').evaluate(node=>({forced:matchMedia('(forced-colors:active)').matches,coarse:matchMedia('(pointer:coarse)').matches,reduced:matchMedia('(prefers-reduced-motion:reduce)').matches,theme:node.getAttribute('data-frade-frame-theme')}))).toEqual({forced:true,coarse:true,reduced:true,theme:mode})
+          await expect.poll(()=>frame.locator('html').evaluate(node=>({forced:matchMedia('(forced-colors:active)').matches,coarse:matchMedia('(pointer:coarse)').matches,reduced:matchMedia('(prefers-reduced-motion:reduce)').matches,theme:node.getAttribute('data-frade-frame-theme')}))).toEqual({forced:true,coarse:true,reduced:true,theme:'light'})
           await expect.poll(()=>frame.locator('html').getAttribute('data-frade-frame-revision')).not.toBe(previousRevision)
           await expect.poll(()=>frame.locator('html').evaluate(node=>getComputedStyle(node).getPropertyValue('--frade-frame-text-primary').trim())).toBe('CanvasText')
           await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
@@ -4173,7 +4185,7 @@ for (const mode of ['light','dark','high-contrast'] as const) for (const density
       const open=async()=>{await f.page.getByRole('button',{name:'Меню Файл'}).click();await f.page.getByRole('menuitem',{name:'Настройки интерфейса'}).click();return f.page.getByRole('dialog',{name:'Настройки интерфейса'})}
       const capture=async(name:string,wanted:typeof mode)=>{
         await expect(f.page.locator('html')).toHaveAttribute('data-frade-theme',wanted)
-        await expect(frame.locator('html')).toHaveAttribute('data-frade-frame-theme',wanted)
+        await expect(frame.locator('html')).toHaveAttribute('data-frade-frame-theme','light')
         await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
         expect(await upperTargets(f)).toEqual(targets)
         const glyphs=[]
@@ -4217,7 +4229,7 @@ for (const mode of ['light','dark','high-contrast'] as const) for (const density
       for(const key of ['viewPanels','insert']) {
         const opener=locate(key);await opener.focus()
         const ring=await opener.evaluate(node=>{const c=getComputedStyle(node);return {focused:document.activeElement===node,focusVisible:node.matches(':focus-visible'),width:c.outlineWidth,style:c.outlineStyle,color:c.outlineColor,opacity:c.opacity,rect:{width:node.getBoundingClientRect().width,height:node.getBoundingClientRect().height}}})
-        expect(ring.focused).toBe(true);expect(ring.focusVisible).toBe(true);expect(parseFloat(ring.width)).toBeGreaterThanOrEqual(2);expect(ring.style).toBe('solid');expect(ring.rect).toEqual({width:28,height:density==='compact'?28:36})
+        expect(ring.focused).toBe(true);expect(ring.focusVisible).toBe(true);expect(parseFloat(ring.width)).toBeGreaterThanOrEqual(2);expect(ring.style).toBe('solid');expect(ring.rect).toEqual({width:28,height:28})
         await f.page.screenshot({path:info.outputPath(key+'-keyboard-focus.png')})
         await f.page.keyboard.press('ArrowDown')
         const roots=frame.locator('div[data-frade-upper-menu="1"]');await expect(roots).toHaveCount(1)
