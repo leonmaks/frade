@@ -7,8 +7,8 @@ import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('../../../../', import.meta.url))
 const change = 'frade-light-diagram-editor'
 const prefix = 'openspec/changes/' + change + '/'
-const manifestPath = prefix + 'evidence/upstream-bdd-bindings-20261026/bindings-publication.json'
-const manifestSha256 = '9f8a60eb2d2371330576103ed03fd800cbb16addb304d4ca14402d4449e4bf1b'
+const manifestPath = prefix + 'evidence/upstream-bdd-bindings-20261026/bindings-reference-popup.json'
+const manifestSha256 = 'ca574b2b7065eb509ab3d887aa9b30e4195d1a79aac9c5ef3b5f3a8a938b438c'
 const ids = Array.from({ length: 9 }, (_, i) => 'LDE-' + String(i + 1).padStart(3, '0'))
 const digest = (raw: Buffer) => createHash('sha256').update(raw).digest('hex')
 type Pin = { file: string; sha256: string; publishedSha256?: string }

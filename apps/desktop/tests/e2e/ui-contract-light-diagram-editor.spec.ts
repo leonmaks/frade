@@ -1045,3 +1045,36 @@ for (const engine of ['frame'] as const) {
     } finally { try { await writeFile(info.outputPath('author-probes.json'), JSON.stringify(probes, null, 2)) } finally { await f.app.close() } }
   })
 }
+
+// eslint-disable-next-line no-empty-pattern
+test('LDE reference workbench captures an owned upstream Light editor popup', async ({}, info) => {
+  const f = await openEditor('frame', 'compact')
+  const body = f.page.frameLocator('iframe').locator('body')
+  try {
+    const before = await body.evaluate(() => (window as any).mxUtils.getXml(new (window as any).mxCodec().encode((window as any).__ldeUi.editor.graph.getModel())))
+    await f.page.getByRole('button', { name: 'Меню Файл', exact: true }).click()
+    await f.page.getByRole('menuitem', { name: 'Выбрать тему…', exact: true }).click()
+    const picker = f.page.getByRole('dialog', { name: 'Выбор темы', exact: true })
+    await picker.getByRole('option', { name: 'VS Code Dark 2026', exact: true }).click()
+    await expect(f.page.locator('html')).toHaveAttribute('data-frade-reference', 'vscode-dark-2026')
+    await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+    await picker.getByRole('button', { name: 'Сохранить выбор', exact: true }).click()
+    await expect(picker).toBeHidden()
+    await expect(f.page.locator('html')).toHaveAttribute('data-frade-reference', 'vscode-dark-2026')
+    await body.evaluate(() => (window as any).__ldeUi.actions.get('editDiagram').funct())
+    const popup = f.page.frameLocator('iframe').locator('.geDialog:visible')
+    await expect(popup).toBeVisible()
+    const appearance = await popup.evaluate(root => ({ background: getComputedStyle(root).backgroundColor, color: getComputedStyle(root).color, frameTheme: document.documentElement.dataset.fradeTheme, frameLight: document.body.classList.contains('geEditor'), owner: 'Actual editDiagram action in this editor iframe' }))
+    expect(appearance.background).toBe(stockUi.dialog.rgb)
+    await expect(f.page.locator('.repository-diagram')).toHaveAttribute('data-frade-editor', 'light')
+    await expect(f.page.locator('html')).toHaveAttribute('data-frade-reference', 'vscode-dark-2026')
+    await f.page.screenshot({ path: info.outputPath('reference-with-owned-popup.png') })
+    await writeFile(info.outputPath('reference-with-owned-popup.json'), JSON.stringify({ appearance, external: await f.page.locator('html').evaluate(root => ({ theme: root.dataset.fradeTheme, reference: root.dataset.fradeReference })), upstream: stockUi.dialog, fixture: 'Actual application reference commit plus existing editor action; one simultaneous capture', visualStatus: 'TECHNICAL_SCENARIO_WITNESS; existing accepted17-image manifest unchanged' }, null, 2))
+    await popup.getByRole('button', { name: 'Отмена', exact: true }).click()
+    await expect(popup).toBeHidden()
+    const after = await body.evaluate(() => (window as any).mxUtils.getXml(new (window as any).mxCodec().encode((window as any).__ldeUi.editor.graph.getModel())))
+    expect(after).toBe(before)
+    expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+    expect(JSON.parse(await readFile(f.settings, 'utf8')).selection.preferred.dark).toBe('frade.reference/vscode-dark-2026')
+  } finally { await f.app.close() }
+})
