@@ -10,7 +10,7 @@ Guide: v1.0; общий workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4
 
 ## Текущая фаза
 
-PRE_03_PREPARATION — LDE-PRE-RECONCILIATION-01 ACCEPTED. Два автоматических PRE завершились FAIL; product implementation не начат. Активный change синтаксически valid, но correctness/scope blockers открыты. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
+BLOCKED_SCOPE_DECISION — LDE-REFUSAL-FIXTURE-01. LDE-PRE-RECONCILIATION-01 остаётся ACCEPTED. Три автоматических PRE завершились FAIL; product implementation не начат. Активный change синтаксически valid, но correctness/scope blockers открыты. Реализация НЕ начата; READY_FOR_VERIFY: NO. Флаг OpenSpec isPlanningComplete/isComplete означает наличие planning artifacts, а не готовность продукта или прохождение PRE.
 
 Пользователь подтвердил единый светлый редактор Draw.io/Frade, сохранение авторских цветов и приоритет Windows forced colors. PRE/POST этого этапа: **gpt-6-sol / xhigh**. Внешний workbench сохраняет выбранную тему; локальные панели/меню/диалоги редакторов используют общий светлый контракт. Новые visual baselines ещё не приняты.
 
@@ -22,7 +22,7 @@ PRE_03_PREPARATION — LDE-PRE-RECONCILIATION-01 ACCEPTED. Два автомат
 | Proposal / четыре delta specs / design / tasks | DONE | Все planning artifacts на месте |
 | BDD и стратегия / промпты PRE/POST | DONE_PLANNING | 9 определений Gherkin; bindings NOT_IMPLEMENTED |
 | Strict validation / связность scenarios | ACTIVE_NOT_COHERENT; DRAFT_PASS | Active delta syntax PASS, но merged reference description FAIL и native scenario конфликтуют; 4 неприменённых drafts + все 4 merged specs strict PASS в fixture |
-| Независимый автоматический PRE | FAIL_01 / FAIL_02 | Чистые immutable receipts; production не менялся. Требуется решение по двум origin-control путям |
+| Независимый автоматический PRE | FAIL_01 / FAIL_02 / FAIL_03 | PRE03 закрыл прежние три finding, но выявил точный refusal-fixture conflict и недостающие workload inputs |
 | Meaningful RED / shared scope / native adapter | NOT_RUN | Группа 2 tasks.md |
 | Draw.io / overlays / authored parity | NOT_RUN | Группа 3 tasks.md |
 | Общие проверки / runtime / screenshots | NOT_RUN | verification.md, финальные исходники |
@@ -46,7 +46,7 @@ PRE_03_PREPARATION — LDE-PRE-RECONCILIATION-01 ACCEPTED. Два автомат
 - [ ] Получить решение по расширению scope двумя историческими origin controls.
 - [ ] После нового запроса на выполнение — подготовить immutable packet и автоматически выполнить PRE.
 
-Tracked task progress: 2/13; точные drafts приняты и применены. PRE 1.3 не завершена; implementation tasks не выполнены.
+Tracked task progress: 1/13; 1.2 переоткрыта до точного решения по refusal fixture. PRE 1.3 не завершена; implementation tasks не выполнены.
 
 ## Проверки и ограничения
 
@@ -97,3 +97,13 @@ Blockers: добавить read-only baseline ThemePicker.tsx/picker.test.tsx в
 ## Точное решение принято
 
 Пользователь утвердил LDE-PRE-RECONCILIATION-01 и четыре drafts с manifest `19f50fa30b53341932701d07fc22ce204e8da08d82504e03fc3124714144f5a8`. Проверены исходные hashes, применены только четыре planning drafts; acceptance.json сохранён. Два дополнительных origin-control пути теперь входят в разрешённый scope; код этих controls пока НЕ менялся. Исторические PRE 01/02 FAIL сохраняются. Текущий следующий шаг — fresh PRE 03 gpt-6-sol/xhigh с baseline picker и полным согласованным планом; до PASS production запрещён. Во время review status заморожен.
+
+## PRE 03 — фактический результат и новое точное решение
+
+FAIL, candidate/packet unchanged; model requested gpt-6-sol/xhigh, actual backend/effort NOT_CONFIRMED. Dispatch 05:05:32Z после 04:59:52Z (примерно 5 минут 40 секунд, измерено). Result SHA256 `ab78ed12bd98bc9e934d8cfdb1a95c6e5bd494e077c3846e137d4dfce5fe25ff`, raw evidence/pre-03-received-20261026. Прежние три PRE02 findings устранены.
+
+Открыто: один существующий refusal-helper перехватывает prepare только при snapshot.kind dark, тогда как принятая локальная проекция должна посылать light. Текущий scope разрешает visual expectations, но не эту тестовую predicate-правку. Подготовлен [LDE-REFUSAL-FIXTURE-01](../../openspec/changes/frade-light-diagram-editor/decisions/lde-refusal-fixture-01/proposal.md), SHA256 `7e913c69ddd51efbfe016ec82070d8b25fe22ac8e151ee5d42a5437a1c7056aa`, manifest `260587d9d3ee547c56a9d7127305c47dccf4df8a2b6ae61224caebaabc622ce6`. Статус PROPOSED_NOT_ACCEPTED. Одна строка guard dark -> light, остальные bytes/assertions/actions/deadlines сохранены; синтаксис draft PASS и точный reverse восстанавливает pre-LDE source SHA. Design draft не применён, live тест не изменён.
+
+Второй finding — недостающие scripts/ka-fixtures.mjs, scripts/flow-fixtures.mjs и benchmark hardware JSON. Вместо ручного списка выполнен bounded AST import/file preflight: 204 существующих файла / 2,370,747 bytes, все named inputs включены. Три unresolved — создаваемые negative fixtures, две external declarations — недоступные review внешние корни, не копируются. Подробности packet-dependency-preflight.json и packet-preflight-notes.md. Это не PRE PASS и не runtime certification.
+
+Следующее действие: получить точное решение по одной fixture predicate; затем применить только design draft, составить полный packet по closure и выполнить fresh PRE gpt-6-sol/xhigh. Саму fixture-правку и production — только после PRE PASS и meaningful RED. Новый дорогой PRE не запускается на заведомо запрещённой predicate. Глобальные настройки, Main/P02/Routing, source/controls и все 50 baseline hashes сохраняются. READY_FOR_VERIFY: NO.
