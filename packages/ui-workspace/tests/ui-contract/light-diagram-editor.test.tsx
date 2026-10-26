@@ -432,3 +432,285 @@ it('LDE-004 native dot diameter is shared view geometry and restores without cha
   participant.dispose()
   expect(f.graph.options.grid.args).toEqual(original)
 })
+
+import { getEditorAppearanceOwner } from '../../src/design/theme/editorPresentationParticipant'
+import type { EditorAppearanceOwner } from '../../src/design/theme/editorPresentationParticipant'
+import { createManagedOverlays } from '../../src/design/theme/overlays'
+import { readFileSync } from 'node:fs'
+import { URL as NodeURL } from 'node:url'
+import { createHash } from 'node:crypto'
+function ownedDialog(host: HTMLElement, label: string) {
+  const element = document.createElement('section'),
+    button = document.createElement('button')
+  element.setAttribute('role', 'dialog')
+  element.setAttribute('aria-label', label)
+  button.textContent = 'Cancel'
+  element.append(button)
+  host.append(element)
+  return { element, button }
+}
+async function readyOwner(f: ReturnType<typeof fixture>, density: Density = 'compact') {
+  const options = { editorRoot: f.editor, paint: async () => {} }
+  const participant = createNativeParticipant(
+    f.graph as unknown as NativePresentationGraph,
+    options,
+  )
+  const h = await participant.prepare(
+    value('dark', density, false),
+    phase(7, 'prepare'),
+    new AbortController().signal,
+  )
+  await h.apply(phase(7), new AbortController().signal)
+  h.dispose()
+  return { participant, lease: getEditorAppearanceOwner(f.editor)! }
+}
+it('LDE-003 managed editor overlay keeps focus/cancel semantics and isolates the global picker and second editor', async () => {
+  const a = fixture(),
+    b = fixture(),
+    host = document.createElement('div')
+  a.app.append(b.editor, host)
+  b.app.remove()
+  applyRootSnapshot(a.app, value('dark', 'compact', false))
+  const first = await readyOwner(a),
+    second = await readyOwner(b, 'comfortable'),
+    manager = createManagedOverlays(a.app, host)
+  const global = ownedDialog(host, 'Global picker'),
+    local = ownedDialog(host, 'Editor A'),
+    cancel = vi.fn(() => true)
+  const offGlobal = manager.register({
+    id: 'global',
+    element: global.element,
+    priority: 100,
+    modal: true,
+    outside: 'cancel',
+    cancel: () => true,
+  })
+  const offLocal = manager.register({
+    id: 'local',
+    element: local.element,
+    priority: 200,
+    modal: true,
+    opener: global.button,
+    outside: 'retain',
+    cancel,
+    appearanceOwner: first.lease,
+  })
+  expect(local.element.dataset.fradeTheme).toBe('light')
+  expect(local.element.style.getPropertyValue('--frade-surface-overlay')).toBe(
+    builtinTokens.themes.light['surface.overlay'],
+  )
+  expect(global.element.dataset.fradeEditor).toBeUndefined()
+  expect(global.element.style.getPropertyValue('--frade-surface-overlay')).toBe('')
+  expect(a.app.dataset.fradeTheme).toBe('dark')
+  expect(b.editor.dataset.fradeDensity).toBe('comfortable')
+  expect(document.activeElement).toBe(local.button)
+  expect(manager.handleKey(new KeyboardEvent('keydown', { key: 'Escape', cancelable: true }))).toBe(
+    true,
+  )
+  await Promise.resolve()
+  expect(cancel).toHaveBeenCalledTimes(1)
+  offLocal()
+  expect(document.activeElement).toBe(global.button)
+  expect(local.element.dataset.fradeEditor).toBeUndefined()
+  offGlobal()
+  manager.dispose()
+  first.participant.dispose()
+  second.participant.dispose()
+})
+it('LDE-003 LDE-006 owned overlay follows same-transaction forced-colors rollback without touching the second owner/global host', async () => {
+  const a = fixture(),
+    b = fixture(),
+    host = document.createElement('div')
+  a.app.append(b.editor, host)
+  b.app.remove()
+  applyRootSnapshot(a.app, value('dark', 'compact', false))
+  const first = await readyOwner(a),
+    second = await readyOwner(b),
+    manager = createManagedOverlays(a.app, host),
+    dialog = ownedDialog(host, 'A')
+  const off = manager.register({
+    id: 'a',
+    element: dialog.element,
+    priority: 100,
+    modal: true,
+    outside: 'retain',
+    cancel: () => true,
+    appearanceOwner: first.lease,
+  })
+  const h = await first.participant.prepare(
+    value('reference', 'comfortable', true, 8),
+    phase(8, 'prepare'),
+    new AbortController().signal,
+  )
+  await h.apply(phase(8), new AbortController().signal)
+  expect(dialog.element.style.getPropertyValue('--frade-surface-overlay')).toBe('Canvas')
+  expect(dialog.element.dataset.fradeDensity).toBe('comfortable')
+  expect(dialog.element.dataset.fradeRevision).toBe('8')
+  expect(b.editor.style.getPropertyValue('--frade-surface-overlay')).toBe(
+    builtinTokens.themes.light['surface.overlay'],
+  )
+  expect(a.app.dataset.fradeTheme).toBe('dark')
+  await h.rollback(
+    value('dark', 'compact', false, 7),
+    phase(7, 'rollback'),
+    new AbortController().signal,
+  )
+  expect(dialog.element.style.getPropertyValue('--frade-surface-overlay')).toBe(
+    builtinTokens.themes.light['surface.overlay'],
+  )
+  expect(dialog.element.dataset.fradeRevision).toBe('7')
+  expect(dialog.element.dataset.fradeDensity).toBe('compact')
+  expect(document.activeElement).toBe(dialog.button)
+  h.dispose()
+  off()
+  manager.dispose()
+  first.participant.dispose()
+  second.participant.dispose()
+})
+it('LDE-003 disposed/foreign/forged leases fail without rebinding or changing the active modal', async () => {
+  const a = fixture(),
+    b = fixture(),
+    host = document.createElement('div')
+  a.app.append(host)
+  const first = await readyOwner(a),
+    foreign = await readyOwner(b),
+    manager = createManagedOverlays(a.app, host)
+  const current = ownedDialog(host, 'A'),
+    candidate = ownedDialog(host, 'B')
+  const off = manager.register({
+    id: 'current',
+    element: current.element,
+    priority: 100,
+    modal: true,
+    outside: 'retain',
+    cancel: () => true,
+    appearanceOwner: first.lease,
+  })
+  const prior = candidate.element.outerHTML
+  for (const lease of [foreign.lease, Object.freeze({}) as EditorAppearanceOwner])
+    expect(() =>
+      manager.register({
+        id: 'invalid',
+        element: candidate.element,
+        priority: 200,
+        modal: true,
+        outside: 'retain',
+        cancel: () => true,
+        appearanceOwner: lease,
+      }),
+    ).toThrow('appearance owner unavailable')
+  expect(candidate.element.outerHTML).toBe(prior)
+  expect(manager.top()?.id).toBe('current')
+  first.participant.dispose()
+  expect(current.element.dataset.fradeEditor).toBeUndefined()
+  expect(current.element.style.getPropertyValue('--frade-surface-overlay')).toBe('')
+  expect(() =>
+    manager.register({
+      id: 'stale',
+      element: candidate.element,
+      priority: 200,
+      modal: true,
+      outside: 'retain',
+      cancel: () => true,
+      appearanceOwner: first.lease,
+    }),
+  ).toThrow('appearance owner unavailable')
+  const replacement = await readyOwner(a)
+  expect(replacement.lease).not.toBe(first.lease)
+  expect(() =>
+    manager.register({
+      id: 'old-generation',
+      element: candidate.element,
+      priority: 200,
+      modal: true,
+      outside: 'retain',
+      cancel: () => true,
+      appearanceOwner: first.lease,
+    }),
+  ).toThrow()
+  const offNext = manager.register({
+    id: 'next',
+    element: candidate.element,
+    priority: 200,
+    modal: true,
+    outside: 'retain',
+    cancel: () => true,
+    appearanceOwner: replacement.lease,
+  })
+  expect(candidate.element.dataset.fradeTheme).toBe('light')
+  off()
+  expect(candidate.element.dataset.fradeTheme).toBe('light')
+  offNext()
+  manager.dispose()
+  replacement.participant.dispose()
+  foreign.participant.dispose()
+})
+it('LDE-003 initial owned popup projects the supplied visible snapshot before first participant paint', () => {
+  const f = fixture(),
+    host = document.createElement('div')
+  f.app.append(host)
+  const input = value('dark', 'comfortable', true),
+    before = JSON.stringify(input),
+    options = { editorRoot: f.editor, editorRootSnapshot: input, paint: async () => {} }
+  const participant = createNativeParticipant(
+      f.graph as unknown as NativePresentationGraph,
+      options,
+    ),
+    manager = createManagedOverlays(f.app, host),
+    popup = ownedDialog(host, 'Before paint')
+  const lease = getEditorAppearanceOwner(f.editor)!
+  const off = manager.register({
+    id: 'early',
+    element: popup.element,
+    priority: 100,
+    modal: true,
+    outside: 'retain',
+    cancel: () => true,
+    appearanceOwner: lease,
+  })
+  expect(popup.element.style.getPropertyValue('--frade-surface-overlay')).toBe('Canvas')
+  expect(popup.element.dataset.fradeDensity).toBe('comfortable')
+  expect(f.graph.drawBackground).not.toHaveBeenCalled()
+  expect(f.graph.drawGrid).not.toHaveBeenCalled()
+  expect(JSON.stringify(input)).toBe(before)
+  off()
+  manager.dispose()
+  participant.dispose()
+})
+it('LDE-007 dirty guard retains every original byte outside the exact accepted metadata call', () => {
+  const approved = JSON.parse(
+    readFileSync(
+      new NodeURL('./light-diagram-editor/accepted-guard-transform.json', import.meta.url),
+      'utf8',
+    ),
+  )
+  const published = JSON.parse(
+    readFileSync(
+      new NodeURL('./light-diagram-editor/published-git-guard-transform.json', import.meta.url),
+      'utf8',
+    ),
+  )
+  const sha = (text: string | Buffer) => createHash('sha256').update(text).digest('hex')
+  const verify = (guard: string) => {
+    const record = [approved, published].find((item) => item.guardProposedSha256 === sha(guard))
+    if (!record || guard.split(record.afterCall).length !== 2)
+      throw Error('Unapproved dirty guard bytes')
+    const reversed = guard.replace(record.afterCall, record.beforeCall)
+    expect(Buffer.from(reversed)).toEqual(Buffer.from(record.guardBeforeBase64, 'base64'))
+    expect(sha(reversed)).toBe(record.guardBeforeSha256)
+  }
+  const source = readFileSync(new NodeURL('../../src/Workbench.tsx', import.meta.url), 'utf8'),
+    start = source.indexOf('  const guard = async (keys: string[]) => {'),
+    end = source.indexOf('  const closeTab = async', start)
+  verify(source.slice(start, end))
+  for (const raw of [approved, published]) {
+    const guard = Buffer.from(raw.guardProposedBase64, 'base64').toString('utf8')
+    verify(guard)
+    expect(() => verify(guard.replace('return false', 'return true'))).toThrow(
+      'Unapproved dirty guard bytes',
+    )
+    expect(() => verify(guard.replace(raw.afterCall, raw.beforeCall))).toThrow(
+      'Unapproved dirty guard bytes',
+    )
+  }
+})

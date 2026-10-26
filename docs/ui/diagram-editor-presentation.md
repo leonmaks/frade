@@ -58,3 +58,10 @@ Partial unit GREEN is not application integration or visual approval. Required
 runtime, performance, accessibility, unchanged-document/undo, source replay and
 independent POST checks remain in the owning verification.md. Preserve historic
 FAILs and existing origin pins. New baselines need explicit visual acceptance.
+
+The implemented owner boundary uses opaque instance leases and the originating
+dirty-diagram key as read-only UI metadata. Shared host modal priority, focus and
+save/discard/cancel behavior remain unchanged. A current controller snapshot
+provides the initial owned popup palette before the editor first paints.
+Published-Git and Windows-checkout guard controls retain exact pinned raw bytes;
+no runtime source normalization or hash discovery is permitted.

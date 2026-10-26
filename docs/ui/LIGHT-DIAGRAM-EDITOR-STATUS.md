@@ -10,7 +10,7 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-OWNED_GUARD_REPAIR_PRE08_READY_FOR_DISPATCH. Initial native/frame Light profile работает:105 targeted tests PASS, Desktop build/typecheck PASS, actual4-context Electron probe PASS. Новый actual owned-guard RED открыт: single-editor dialog получает global Dark. Пользователь принял точный LDE-OWNED-GUARD-METADATA-01; применён только design543fdf4a…; Workbench/guard неизменны до fresh PRE. READY_FOR_VERIFY: NO.
+OWNER_SCOPE_INCREMENTAL_GREEN. PRE08 PASS; owner lease + exact guard metadata implemented.118/118 targeted tests, affected typecheck/lint, Desktop build and5/5 actual Electron cases PASS. Cancel retains dirty edits; global picker remains Dark. Full feature/POST not complete: nativeComfortable toolbar overflow and Drawio inner backdrop/grid need targeted repair/evidence. READY_FOR_VERIFY: NO.
 
 Цель: общий светлый редактор Draw.io/Frade с авторскими цветами и исключением Windows forced colors. Внешний workbench сохраняет выбранную тему. PRE/POST: **gpt-6-sol / xhigh**; actual backend/effort в receipts NOT_CONFIRMED. Новые визуальные baselines ещё не приняты.
 
@@ -51,9 +51,11 @@ OWNED_GUARD_REPAIR_PRE08_READY_FOR_DISPATCH. Initial native/frame Light profile 
 - [x] Bounded Electron4/4 PASS,14 initial PNG; visual acceptance NOT_APPROVED.
 - [x] Actual owned dirty guard RED + точное решение по read-only metadata принято.
 - [x] Fresh owner design strict1/1 и candidate/dependency evidence подготовлены.
-- [ ] Automatic PRE08 PASS before owner hook/lease implementation.
+- [x] Automatic PRE08 PASS clean receipt received.
+- [x] Owner lease/metadata implementation + exact guard integrity:118 unit/5 Electron GREEN.
+- [ ] Targeted nativeComfortable overflow/Drawio backing-grid RED/GREEN, затем остальная матрица.
 
-Tracked tasks: 5/13;1.1–1.3,2.1,2.2 выполнены. 2.3 runtime proof IN_PROGRESS; full feature не закрыт. Ни один product task не объявлен готовым.
+Tracked tasks: 6/13;1.1–1.3,2.1–2.3 выполнены по unit/native actual evidence;3.1–3.3 IN_PROGRESS; full feature не закрыт. Ни один product task не объявлен готовым.
 
 ## Проверки, ограничения и следующее действие
 
@@ -61,7 +63,7 @@ PASS: historical strict и Gherkin parsing (9 definitions); exact fixture revers
 
 Стратегия перед следующим review: использовать проверенную transitive closure и byte proof; не повторять неизменные unit tests и большие regressions до реализации. Fresh PRE обязателен из-за scope/design delta; ранние dispatch занимали примерно 6–7 минут, PRE06 9m14s (измерено); следующий интервал — прогноз, не timeout. Проверить completeness и hashes до freeze; при новом scope/correctness finding остановить реализацию и пересмотреть стратегию, а не повторять известный FAIL.
 
-Следующее действие: fresh strict/checkpoint и автоматический PRE08 gpt-6-sol/xhigh для accepted owner-metadata delta. Current owned-guard FAIL нельзя снять принятием scope; после PRE нужны implementation/GREEN и сохранение global/two-editor/focus/cancel isolation. Full runtime/visual/POST обязательны.
+Следующее действие: отдельные measured visual/layout RED для раскрытых overflow/backdrop issues в approved scope. Current owned-guard RED закрыт actual GREEN; global/two-editor/focus/cancel/rollback/stale isolation проверены. Full runtime/visual/POST обязательны.
 
 Локальный review candidate: `2102b2a54cad7ec5ef333c01401698748221d95f`; результат/RCA checkpoint `df832214dd72f0ae2946798d5f4aa9d8ed4f36f2`; переносимые raw copies и финальная проекция фиксируются отдельно. Push NOT_RUN — новая remote-ветка не авторизована. Main/P02/Routing не менялись. Правая панель: OPEN_REQUEST_QUEUED, видимость NOT_CONFIRMED.
 
@@ -180,3 +182,15 @@ Next actual RED: single native editor node drag/close opens shared-host dirty di
 ## Owner metadata PRE08 readiness
 
 Accepted design543fdf4a… strict1/1 PASS. Live guard/body remains exact SHA39533d42…; Workbench hook не реализован. Candidate содержит текущие частичные root/CSS changes и source-bound105 unit/4 initial Electron proof; actual owner RED открыт намеренно до approved repair. Raw images/results/negative evidence не переписываются. Prepared packet включает новые shared imports/profile/CSS/E2E/companion, all existing transitive source closure, accepted scope и текущую raw environment provenance. Scope revalidation автоматическая gpt-6-sol/xhigh; during freeze no source/dashboard/index/HEAD writes. Vendor stat-only flags сняты matching-content Git add per-command autocrlf=false после всех2851 raw pins, index до/после empty; source не менялся.
+
+## PRE08 PASS / owned guard repair execution
+
+Run07:39:09Z–07:48:15Z (9m06s, measured), clean candidate/packet unchanged and full events.321/321 inputs match. Requested gpt-6-sol/xhigh; actual backend/effort NOT_CONFIRMED. Raw result SHA4d6387390fb2e8504bca620595367889839ccce25f03fe5b2cc954759f40f459 received immutably before interpretation in evidence/pre-08-received-20261026. Plan-only PASS authorizes exact repair; actual owned-guard RED stays FAIL until GREEN. Comfortable toolbar/backdrop parity/full matrix/visual/POST remain open.
+
+## Owner scope incremental GREEN
+
+PRE08-authorized metadata/opaque lease repair выполнен. Guard every-other-byte integrity PASS с точным one-call delta; saved working-origin record не переписан. Дополнительно pinned exact published Git LF guard для Linux CI и approved Windows checkout raw form; runtime выбирает только exact digest и сравнивает полный reverse, без normalization/self-updating pins. Owner snapshot поступает из существующего controller; separate initial-popup RED доказал ранний attach и исправлен pure initial projection без DOM writes в prepare.
+
+118/118 targeted tests PASS, affected typecheck/lint0 warnings PASS. Original URL-in-JSDOM/DOM-state lint failures сохранены; NodeURL/DOM setAttribute исправлены без suppressions. Opaque owner matches unique same-Workbench root; two-editor/global picker isolation, forced rollback, disposed/foreign/forged/generation leases и focus/cancel проходят. Owner Desktop build +5 actual Electron contexts PASS: local modalLight, Cancel retains edited node/dirty/file/settings; globalPicker rgb39,43,51 remainsDark. Raw old owner RED сохранён, не переименован PASS.
+
+Task2.3 completed from native/root identity/undo/grid preservation units plus actual Dark/forced native witness and companion docs; final comprehensive dirty/undo/startup matrix still required by4.1. Pending nativeComfortable toolbar visible overflow, Drawio actual inner backdrop/private-grid layering, complete popup/style-fidelity/a11y/BDD/compliance/source replay/full regressions/visual acceptance/verify/POST. No Main/P02/Routing/vendor semantic change; no new remote push.

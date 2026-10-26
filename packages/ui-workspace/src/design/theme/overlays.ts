@@ -1,4 +1,7 @@
+import { attachEditorPresentationOverlay } from './editorPresentationParticipant'
+import type { EditorAppearanceOwner } from './editorPresentationParticipant'
 export interface OverlayOptions {
+  readonly appearanceOwner?: EditorAppearanceOwner
   readonly id: string
   readonly element: HTMLElement
   readonly priority: number
@@ -20,6 +23,7 @@ export interface ManagedOverlays {
 export function createManagedOverlays(owner: HTMLElement, host: HTMLElement): ManagedOverlays {
   if (!owner.contains(host)) throw Error('Overlay host must belong to its Workbench')
   type Entry = {
+    releaseAppearance?: () => void
     options: OverlayOptions
     sequence: number
     opener: HTMLElement | null
@@ -168,7 +172,11 @@ export function createManagedOverlays(owner: HTMLElement, host: HTMLElement): Ma
         !Number.isFinite(options.priority)
       )
         throw Error('Invalid/duplicate managed overlay: ' + options.id)
+      const releaseAppearance = options.appearanceOwner
+        ? attachEditorPresentationOverlay(options.appearanceOwner, options.element, owner)
+        : undefined
       const entry: Entry = {
+        releaseAppearance,
         options,
         sequence: ++sequence,
         opener:
@@ -183,6 +191,7 @@ export function createManagedOverlays(owner: HTMLElement, host: HTMLElement): Ma
         if (entries.get(options.id) !== entry) return
         const wasTop = top() === entry
         entries.delete(options.id)
+        entry.releaseAppearance?.()
         entry.failure?.remove()
         if (entry.modal === null) options.element.removeAttribute('aria-modal')
         else options.element.setAttribute('aria-modal', entry.modal)
@@ -235,6 +244,7 @@ export function createManagedOverlays(owner: HTMLElement, host: HTMLElement): Ma
       doc.removeEventListener('focusin', focusIn, true)
       restoreInert()
       for (const entry of entries.values()) {
+        entry.releaseAppearance?.()
         const element = entry.options.element
         entry.failure?.remove()
         if (entry.modal === null) element.removeAttribute('aria-modal')

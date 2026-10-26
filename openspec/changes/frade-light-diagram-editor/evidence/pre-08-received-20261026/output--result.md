@@ -1,0 +1,9 @@
+**PRE08 finding: no blocking plan defects.** The accepted fixed Light editor is an explicit product decision. The plan keeps Windows forced colors final, leaves reference geometry on the external workbench, and preserves the existing resolver, transaction revision, painted ACK, rollback, first paint, and persistence boundaries (`openspec/changes/frade-light-diagram-editor/design.md:25-45`).
+
+The guard repair is implementable within the approved paths. The pinned transform matches the unchanged Workbench source and changes exactly one call from `ask(label)` to `ask(label, dirty)` (`decisions/lde-owned-guard-metadata-01/guard-call-transform.json:2-11`; `packages/ui-workspace/src/Workbench.tsx:833-865`). The accepted boundary requires a unique live diagram origin, an opaque valid lease, synchronous owned overlay projection, and exact teardown. It permits no change to guard decisions or actions (`design.md:45,61-76`).
+
+**Pending implementation evidence, not PRE blockers:** the actual dirty-guard RED confirms a single native editor’s modal is still Dark; the native comfortable toolbar overflow and Draw.io inner backdrop/grid layering still need inspection and correction within the approved presentation scope (`evidence/initial-electron-02-20261026/INDEX.md:41-43`). The four Electron contexts and 14 PNGs are partial evidence; visual acceptance and the final matrix remain pending.
+
+All 321 packet artifacts matched their recorded bytes and hashes. The active design matches the accepted draft hash; the corrected CSS hash matches the packet manifest. The benchmark and historical source pins remain strict. The request specifies `gpt-6-sol` / `xhigh`; actual backend and effort are **NOT_CONFIRMED**. This verdict does not claim implementation, runtime, or visual PASS; the receiving harness must mark unavailable or ambiguous execution BLOCKED.
+
+GATE_STATUS: PASS

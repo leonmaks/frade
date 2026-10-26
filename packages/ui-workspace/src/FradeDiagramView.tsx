@@ -149,8 +149,14 @@ export function FradeDiagramView(
     const element = document.createElement('div')
     element.className = 'repository-diagram'
     if (presentation) element.dataset.fradeEditorPending = '1'
+    element.dataset.fradeEditorRepository = props.draft.repositoryId
+    element.dataset.fradeEditorPath = props.draft.path
     return element
   })
+  useLayoutEffect(() => {
+    container.setAttribute('data-frade-editor-repository', props.draft.repositoryId)
+    container.setAttribute('data-frade-editor-path', props.draft.path)
+  }, [container, props.draft.repositoryId, props.draft.path])
   const parking = useRef<HTMLDivElement>(null)
   const [ready, setReady] = useState(false),
     [references, setReferences] = useState<
@@ -367,7 +373,7 @@ export function FradeDiagramView(
       annotate()
       const themeOwner = presentationRef.current
       const themeParticipant = themeOwner
-        ? createNativeParticipant(instance, { id: presentationId.current, editorRoot: container })
+        ? createNativeParticipant(instance, { id: presentationId.current, editorRoot: container, editorRootSnapshot: themeOwner!.state().snapshot })
         : undefined
       const themeRegistration = themeParticipant
         ? themeOwner!.register(themeParticipant)
@@ -401,7 +407,7 @@ export function FradeDiagramView(
         graph.current = undefined
       }
     },
-    [emit],
+    [emit, container],
   )
   useEffect(() => {
     const instance = graph.current

@@ -76,8 +76,14 @@ export function DiagramView(props: DiagramViewProps) {
     const node = document.createElement('div')
     node.className = 'repository-diagram'
     if (presentation) node.dataset.fradeEditorPending = '1'
+    node.dataset.fradeEditorRepository = props.draft.repositoryId
+    node.dataset.fradeEditorPath = props.draft.path
     return node
   })
+  useLayoutEffect(() => {
+    container.setAttribute('data-frade-editor-repository', props.draft.repositoryId)
+    container.setAttribute('data-frade-editor-path', props.draft.path)
+  }, [container, props.draft.repositoryId, props.draft.path])
   const parking = useRef<HTMLDivElement>(null),
     lastVisibleBounds = useRef<{ left: number; top: number; width: number; height: number }>(),
     frame = useRef<HTMLIFrameElement>(null)
@@ -374,6 +380,7 @@ export function DiagramView(props: DiagramViewProps) {
     const participant = createFrameParticipant(frame.current, {
       id: 'frame/' + presentationId,
       editorRoot: container,
+      editorRootSnapshot: presentation.state().snapshot,
       generation: ++presentationGeneration.current,
       sessionId: presentation.sessionId,
       paintSurface: () => acquireParkedFrameSurface(

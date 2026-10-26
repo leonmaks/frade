@@ -1,3 +1,5 @@
+import { getEditorAppearanceOwner } from './design/theme/editorPresentationParticipant'
+import type { EditorAppearanceOwner } from './design/theme/editorPresentationParticipant'
 import { startPointerDrag } from './pointerDrag'
 import { ElementAppearanceSettings } from './ElementAppearanceSettings'
 import { appearanceStorageKey, readAppearance } from './elementAppearance'
@@ -64,7 +66,7 @@ export interface WorkbenchProps {
   draw?: ReactNode
   onDiagramEvent?: (event: FradeDiagramEvent) => void
 }
-type Prompt = { label: string; resolve: (choice: 'save' | 'discard' | 'cancel') => void }
+type Prompt = { label: string; resolve: (choice: 'save' | 'discard' | 'cancel') => void; appearanceOwner?: EditorAppearanceOwner }
 const errorText = (r: Result<unknown>) =>
   r.ok ? '' : r.error.issues.map((i) => i.message).join('\n') || r.error.code
 export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
@@ -817,10 +819,15 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
       notifyDraft()
     } else setNotice('Исход операции пока неизвестен. Автоматического повтора не будет.')
   }
-  const ask = (label: string) =>
+  const ask = (label: string, ownerKeys: readonly string[] = []) =>
     new Promise<'save' | 'discard' | 'cancel'>((resolve) => {
       focused.current = document.activeElement as HTMLElement
-      const p = { label, resolve }
+      const keys = [...new Set(ownerKeys)]
+      const draft = keys.length === 1 ? diagrams.current[keys[0]] : undefined
+      const candidates = draft ? [...(workbenchRoot.current?.querySelectorAll<HTMLElement>('[data-frade-editor-repository][data-frade-editor-path]') ?? [])].filter(root =>
+        root.dataset.fradeEditorRepository === draft.repositoryId && root.dataset.fradeEditorPath === draft.path) : []
+      const appearanceOwner = candidates.length === 1 ? getEditorAppearanceOwner(candidates[0]) : undefined
+      const p = { label, resolve, appearanceOwner }
       promptRef.current = p
       setPrompt(p)
     })
@@ -839,7 +846,7 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
     }
     const dirty = keys.filter(dirtyKey)
     if (!dirty.length) return true
-    const choice = await ask(`Есть несохранённые изменения (${dirty.length}).`)
+    const choice = await ask(`Есть несохранённые изменения (${dirty.length}).`, dirty)
     if (choice === 'cancel') return false
     if (choice === 'save') {
       for (const key of dirty) if (!(await save(key))) return false
@@ -1138,6 +1145,7 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
         if (!element) throw Error('Owned overlay missing: ' + item.id)
         return overlays.register({
           id: item.id,
+          appearanceOwner: item.id === 'dirty-guard' ? prompt?.appearanceOwner : undefined,
           element,
           priority: item.priority,
           modal: item.modal,
@@ -1148,7 +1156,7 @@ export function Workbench({ client, health, onDiagramEvent }: WorkbenchProps) {
     return () => {
       for (const off of disposers) off()
     }
-  }, [overlays, menu, commands, hasFileAction, hasSettings, hasRecovery, hasRename, hasPrompt])
+  }, [overlays, menu, commands, hasFileAction, hasSettings, hasRecovery, hasRename, hasPrompt, prompt?.appearanceOwner])
   useEffect(() => {
     if (!overlays) return
     let deactivate = () => {}

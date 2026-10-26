@@ -3,6 +3,7 @@ import type { PresentationParticipant, PhaseContext, PaintAck } from './service'
 import type { ResolvedTheme } from './types'
 import { validatePresentationSnapshot } from './rootParticipant'
 export interface FrameParticipantOptions {
+  readonly editorRootSnapshot?: ResolvedTheme
   readonly editorRoot?: HTMLElement
   readonly id: string
   readonly generation: number
@@ -369,5 +370,5 @@ export function createFrameParticipant(
     },
     dispose: () => stop(false),
   }
-  return options.editorRoot ? createEditorPresentationParticipant(options.editorRoot, participant) : participant
+  return options.editorRoot ? createEditorPresentationParticipant(options.editorRoot, participant, { initialSnapshot: options.editorRootSnapshot }) : participant
 }

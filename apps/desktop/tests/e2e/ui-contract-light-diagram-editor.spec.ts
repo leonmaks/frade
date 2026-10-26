@@ -268,6 +268,7 @@ test('LDE owned dirty guard uses the originating editor Light scope', async ({},
     await f.page.mouse.move(box.x + box.width / 2 + 20, box.y + box.height / 2 + 10, { steps: 3 })
     await f.page.mouse.up()
     await expect(f.page.locator('.dirty-dot')).toHaveCount(1)
+    const editedTransform = await node.getAttribute('transform')
     await f.page.locator('.editor-tab .close-tab').click()
     await expect(dialog).toBeVisible()
     const appearance = await dialog.evaluate((root) => ({
@@ -293,6 +294,29 @@ test('LDE owned dirty guard uses the originating editor Light scope', async ({},
     expect(appearance.appTheme).toBe('dark')
     expect(appearance.background).toBe('rgb(255, 255, 255)')
     expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+    expect(await readFile(f.settings, 'utf8')).toBe(f.settingsBefore)
+    await dialog.getByRole('button', { name: 'Отмена', exact: true }).click()
+    await expect(dialog).toBeHidden()
+    await expect(node).toHaveAttribute('transform', editedTransform!)
+    await expect(f.page.locator('.dirty-dot')).toHaveCount(1)
+    await f.page.getByRole('button', { name: 'Меню Файл', exact: true }).click()
+    await f.page.getByRole('menuitem', { name: 'Выбрать тему…', exact: true }).click()
+    const globalPicker = f.page.getByRole('dialog', { name: 'Выбор темы', exact: true })
+    await expect(globalPicker).toBeVisible()
+    const globalAppearance = await globalPicker.evaluate((root) => ({
+      background: getComputedStyle(root).backgroundColor,
+      editor: (root as HTMLElement).dataset.fradeEditor ?? null,
+    }))
+    expect(globalAppearance.background).toBe('rgb(39, 43, 51)')
+    expect(globalAppearance.editor).toBeNull()
+    await writeFile(
+      info.outputPath('global-picker-isolation.json'),
+      JSON.stringify(globalAppearance, null, 2),
+    )
+    await f.page.keyboard.press('Escape')
+    await expect(globalPicker).toBeHidden()
+    expect(await readFile(f.file, 'utf8')).toBe(f.bytes)
+    expect(await readFile(f.settings, 'utf8')).toBe(f.settingsBefore)
   } finally {
     if (await dialog.isVisible())
       await dialog.getByRole('button', { name: 'Отмена', exact: true }).click()

@@ -1,15 +1,89 @@
 import { referenceTheme } from '../reference/vscode-dark-2026/generated'
 import { themeRoles } from './contrast'
 import { projectEditorPresentation } from './editorPresentation'
-import { createRootParticipant } from './rootParticipant'
+import { createRootParticipant, applyRootSnapshot } from './rootParticipant'
+import type { ResolvedTheme } from './types'
 import type { PresentationParticipant, PreparedPresentation } from './service'
 
 type DisposableParticipant = PresentationParticipant & { dispose(): void }
 interface EditorParticipantOptions {
+  readonly initialSnapshot?: ResolvedTheme
   readonly paint?: () => Promise<void>
   readonly contentRoot?: HTMLElement
 }
-const owners = new WeakMap<HTMLElement, symbol>()
+declare const appearanceOwnerBrand: unique symbol
+/** Opaque, instance-bound presentation authority; no document or persistence capability. */
+export interface EditorAppearanceOwner {
+  readonly [appearanceOwnerBrand]: true
+}
+interface AppearanceState {
+  readonly root: HTMLElement
+  readonly lease: EditorAppearanceOwner
+  readonly overlays: Map<HTMLElement, OverlayProjection>
+  snapshot?: ResolvedTheme
+  active: boolean
+}
+interface OverlayProjection {
+  readonly element: HTMLElement
+  readonly tracker: ReturnType<typeof trackProjection>
+  release(): void
+}
+const owners = new WeakMap<HTMLElement, AppearanceState>()
+const leases = new WeakMap<EditorAppearanceOwner, AppearanceState>()
+const overlayOwners = new WeakMap<HTMLElement, OverlayProjection>()
+export function getEditorAppearanceOwner(root: HTMLElement): EditorAppearanceOwner | undefined {
+  const state = owners.get(root)
+  return state?.active ? state.lease : undefined
+}
+function applyOverlayProjection(entry: OverlayProjection, snapshot: ResolvedTheme) {
+  if (overlayOwners.get(entry.element) !== entry) return
+  const before = entry.tracker.read()
+  applyRootSnapshot(entry.element, snapshot)
+  entry.element.dataset.fradeEditor = 'light'
+  entry.tracker.record(before)
+}
+/** Called by the existing managed host; a supplied stale/foreign lease never rebinds. */
+export function attachEditorPresentationOverlay(
+  lease: EditorAppearanceOwner,
+  element: HTMLElement,
+  workbench: HTMLElement,
+): () => void {
+  const state = leases.get(lease)
+  if (
+    !state?.active ||
+    owners.get(state.root) !== state ||
+    !state.snapshot ||
+    !workbench.contains(state.root) ||
+    !workbench.contains(element) ||
+    state.root.ownerDocument !== element.ownerDocument ||
+    !state.root.isConnected ||
+    overlayOwners.has(element)
+  )
+    throw Error('Editor overlay appearance owner unavailable')
+  let released = false
+  const entry: OverlayProjection = {
+    element,
+    tracker: trackProjection(element),
+    release: () => {
+      if (released) return
+      released = true
+      state.overlays.delete(element)
+      if (overlayOwners.get(element) === entry) {
+        overlayOwners.delete(element)
+        entry.tracker.restore()
+      }
+    },
+  }
+  state.overlays.set(element, entry)
+  overlayOwners.set(element, entry)
+  try {
+    applyOverlayProjection(entry, state.snapshot)
+  } catch (error) {
+    entry.release()
+    throw error
+  }
+  return entry.release
+}
 const phaseKeys = [
   'version',
   'requestId',
@@ -93,8 +167,25 @@ export function createEditorPresentationParticipant(
     delegate.dispose()
     throw Error('Diagram editor presentation root already owned or detached')
   }
-  const lease = Symbol(delegate.id)
-  owners.set(editor, lease)
+  let initialSnapshot: ResolvedTheme | undefined
+  try {
+    initialSnapshot = options.initialSnapshot
+      ? projectEditorPresentation(options.initialSnapshot)
+      : undefined
+  } catch (error) {
+    delegate.dispose()
+    throw error
+  }
+  const lease = Object.freeze({}) as EditorAppearanceOwner
+  const appearance: AppearanceState = {
+    root: editor,
+    lease,
+    overlays: new Map(),
+    active: true,
+    snapshot: initialSnapshot,
+  }
+  owners.set(editor, appearance)
+  leases.set(lease, appearance)
   const root = createRootParticipant(editor, {
     id: delegate.id,
     generation: delegate.generation,
@@ -108,7 +199,7 @@ export function createEditorPresentationParticipant(
   let disposed = false,
     contentVisibility: { value: string; priority: string } | undefined
   const valid = () => {
-    if (disposed || owners.get(editor) !== lease)
+    if (disposed || owners.get(editor) !== appearance)
       throw Error('Diagram editor presentation owner disposed')
   }
   return {
@@ -176,12 +267,16 @@ export function createEditorPresentationParticipant(
           (!previous && phaseKeys.some((key) => key !== 'phase' && next[key] !== context[key]))
         )
           throw Error('Diagram editor presentation phase mismatch')
+        const localSnapshot = previous ? projectEditorPresentation(previous) : projected
         const before = projections.map((projection) => projection.read())
+        appearance.snapshot = localSnapshot
         editor.dataset.fradeEditor = 'light'
         editor.removeAttribute('data-frade-editor-pending')
         const parentPaint = previous
-          ? parent.rollback(projectEditorPresentation(previous), next, nextSignal)
+          ? parent.rollback(localSnapshot, next, nextSignal)
           : parent.apply(next, nextSignal)
+        for (const entry of appearance.overlays.values())
+          applyOverlayProjection(entry, localSnapshot)
         // Only a service-painted neutral cover permits this path. Do not leave an iframe
         // under visibility:hidden while waiting for its own RAF/PAINTED acknowledgement.
         root.reveal()
@@ -199,7 +294,7 @@ export function createEditorPresentationParticipant(
           else options.contentRoot.style.removeProperty('visibility')
         }
         const childPaint = previous
-          ? child.rollback(projectEditorPresentation(previous), next, nextSignal)
+          ? child.rollback(localSnapshot, next, nextSignal)
           : child.apply(next, nextSignal)
         for (const [index, projection] of projections.entries()) projection.record(before[index])
         const settled = await Promise.allSettled([parentPaint, childPaint])
@@ -229,11 +324,14 @@ export function createEditorPresentationParticipant(
     dispose: () => {
       if (disposed) return
       disposed = true
+      appearance.active = false
+      for (const entry of [...appearance.overlays.values()]) entry.release()
+      leases.delete(lease)
       for (const handle of [...handles]) handle.dispose()
       delegate.dispose()
       root.reveal()
       for (const projection of projections) projection.restore()
-      if (owners.get(editor) === lease) owners.delete(editor)
+      if (owners.get(editor) === appearance) owners.delete(editor)
     },
   }
 }

@@ -1,0 +1,22 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/light-diagram-editor.test.tsx > LDE-003 initial owned popup projects the supplied visible snapshot before first participant paint
+Error: Editor overlay appearance owner unavailable
+ ❯ attachEditorPresentationOverlay src/design/theme/editorPresentationParticipant.ts:61:11
+     59|     overlayOwners.has(element)
+     60|   )
+     61|     throw Error('Editor overlay appearance owner unavailable')
+       |           ^
+     62|   let released = false
+     63|   const entry: OverlayProjection = {
+ ❯ Object.register src/design/theme/overlays.ts:176:11
+ ❯ tests/ui-contract/light-diagram-editor.test.tsx:515:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade-worktrees\light-
+  │ diagram-editor\packages\ui-workspace
+

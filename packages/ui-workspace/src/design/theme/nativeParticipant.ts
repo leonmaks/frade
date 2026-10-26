@@ -9,6 +9,7 @@ export type NativePresentationGraph = Pick<
   'options' | 'container' | 'drawBackground' | 'drawGrid'
 >
 export interface NativeParticipantOptions {
+  readonly editorRootSnapshot?: ResolvedTheme
   readonly editorRoot?: HTMLElement
   readonly id?: string
   readonly generation?: number
@@ -110,6 +111,6 @@ export function createNativeParticipant(
     },
   }
   return options.editorRoot
-    ? createEditorPresentationParticipant(options.editorRoot, participant, { paint: options.paint, contentRoot: graph.container })
+    ? createEditorPresentationParticipant(options.editorRoot, participant, { paint: options.paint, contentRoot: graph.container, initialSnapshot: options.editorRootSnapshot })
     : participant
 }
