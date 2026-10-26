@@ -12,6 +12,10 @@ const pins = {
   'styles/high-contrast.css': '06173c9ab9d1715004f6040beb3d75b7fcec4a3029e3304b0c32c0baeb1732b5',
   'mxgraph/css/common.css': '080278000f2a3bdba6d29f426f24654b5041539d3c4868a9434028e141db92a7',
 }
+const sourceManifestPins = Object.freeze([
+  '8080d47ef23325de33a56f08a945b0e4eacec5cf64a8acf01622904ab92adefd',
+  'ac75989a8b586d9f5651f14965b5494b905d8398f666cceccc86394ae333c889',
+])
 const hash = (value) => createHash('sha256').update(value).digest('hex')
 const json = (value) => JSON.stringify(value, null, 2) + '\n'
 const cssPath = 'packages/ui-workspace/src/design/generated/drawio-editor.css'
@@ -132,6 +136,7 @@ export async function generateDrawioEditor({ base = root } = {}) {
     inputs.push({ path: vendor + file, bytes: bytes.length, sha256: hash(bytes), gitBlob: blob })
     sources.set(file, postcss.parse(bytes.toString(), { from: file }))
   }
+  if (!sourceManifestPins.includes(hash(manifestBytes))) throw Error('UPSTREAM_MANIFEST_DRIFT')
   const properties = {}
   sources.get('styles/grapheditor.css').walkRules(':root', (rule) =>
     rule.walkDecls((decl) => {
@@ -396,7 +401,8 @@ export async function generateDrawioEditor({ base = root } = {}) {
   const source = {
     version,
     inputs,
-    sourceManifestSha256: hash(manifestBytes),
+    sourceManifestSha256: sourceManifestPins[0],
+    sourceManifestAcceptedSha256: sourceManifestPins,
     aliases,
     root: owner,
     contentBoundary: ['.canvas', '.draw-host', 'iframe', 'svg'],

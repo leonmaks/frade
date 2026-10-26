@@ -1,0 +1,9 @@
+# Main manifest portability — current verification
+
+Existing stage2.7; repair PRE gpt-6-sol/xhigh PASS and exact draft applied. Actual Main build previously PASS but adapter failed because current physical JSON raw identity differed; original FAIL retained, Main not yet repaired/published. Current owner GREEN8/8 TAP (6original assertion bodies unchanged +2new regressions), current source-bound BDD11/11, full CI pnpm ui:compliance exit0 including41/41 Node controls, targeted lint/typecheck/active strict exit0.
+
+Exact generator proposal applied. CSS/TS/profile output hashes unchanged; all other metadata fields unchanged. No runtime source difference from independently POST02-approved f1b05d7c. Two exact predeclared LF/CRLF vendor manifest forms produce identical output; unknown third raw form and metadata mutation reject. Existing forgedCSS+manifest test still fails first at original CSS pins. Vendor/manifests/licenses remain untouched. Historical original/current/performance source controls unchanged. Current binder admits only exact old/new inputs under explicit metadata-only equivalence and preserves predecessor reports.
+
+13requirements/19scenarios remain supplied by prior actual source-scoped evidence plus POST02 combined witness; no duplicate full runtime/performance justified for byte-identical runtime. Prior p95117.8ms remains evidence on identical runtime, not a new run. LDE-D01 remains exact ACCEPTED_DEFERRED_RISK historicalFAIL/NOT_FIXED/NOT_PROVEN. Eight protected artifacts/root policy remain exact. Global unrelated3Routing strict FAIL recorded unchanged; no routing work here.
+
+Correctness/coherence of this metadata repair verified on affected checks; fresh cumulative repair POST required. Task8/9;2.7 rearchive/Main adoption/adapter3case smoke/publication pending. No source repair beyond accepted generator/control/metadata paths. READY_FOR_POST YES; READY_FOR_PUBLICATION NO until POST and Main consumer checks.

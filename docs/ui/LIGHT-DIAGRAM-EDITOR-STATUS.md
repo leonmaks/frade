@@ -10,7 +10,7 @@ Guide: v1.0; workflow v1.1 / release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a7
 
 ## Текущая фаза
 
-POST02_PASS_HISTORICAL / MAIN_ADAPTER_FAIL / REOPENED_FOR_APPROVED_GENERATOR_REPAIR.8/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: YES for implementation; final2.7 archive/Main operations pending.
+MANIFEST_REPAIR_PRE_PASS / GREEN / PREPARING_CUMULATIVE_REPAIR_POST.8/9 tasks complete; remaining2.6 POST and2.7 archive/Main are closing operations. READY_FOR_VERIFY: YES (implementation); READY_FOR_ARCHIVE: YES for implementation; final2.7 archive/Main operations pending.
 
 | Этап | Статус | Фактический результат |
 |---|---|---|
@@ -291,3 +291,7 @@ POST02 PASS preserved. Four canonical UI capabilities synchronized,13 exact delt
 ## Main consumer adapter FAIL / reopen —26October
 
 Main build PASS; adapter source-manifest metadata FAIL due verifiedLF/CRLF JSON byte forms. Main smoke NOT_RUN after FAIL, no push. Main0964193c local transfer exact2535paths and854foreign bytes/status preserved. Existing2.7 stays incomplete; owning change reopened while historical archive receipt/POST02 remain unchanged. Approved generator-only repair plan repairs/main-manifest-portability.md; fresh PRE gpt-6-sol/xhigh before production. No CSS/TS/profile/runtime/vendor/domain/routing change authorized or applied.
+
+## Manifest repair GREEN —26October
+
+Existing2.7 repair PRE PASS received complete, immutable, requestedgpt-6-sol/xhigh; actualbackend/effort NOT_CONFIRMED. Exact generator draft applied only after PASS. Node controls8/8 TAP, full CI UI compliance41/41 and positive/negative/checkout checks exit0, BDD11/11, affected lint/typecheck/strict0. CSS/TS/profile and all UI runtime sources byte-identical to POST02 candidate. Source metadata now one canonical published identity with exactly2known raw manifest forms; unknown3rd and mutation fail. Previous Main adapter FAIL retained; Main remains local0964193c, no fix adoption/push until fresh cumulative repair POST. No new visual acceptance or full runtime needed for unchanged runtime.
