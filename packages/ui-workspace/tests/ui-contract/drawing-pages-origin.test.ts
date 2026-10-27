@@ -1,3 +1,6 @@
+import { fileURLToPath } from 'node:url'
+import { drawingPagesAdoptionManifestSha256 } from './drawing-pages-adoption-pin'
+import { canonicalPublicationBytes } from '../../../../tests/ui-contract/drawing-pages-adoption.mjs'
 import { afterEach, describe, expect, it } from 'vitest'
 import { createHash } from 'node:crypto'
 import {
@@ -68,6 +71,35 @@ describe('closed drawing-page adoption preserves historical proof and rejects un
       read = createDrawingPagesOriginReader(f.options)
     expect(read(f.file, f.live)).toEqual(f.original)
     expect(read(f.file + '.other', f.live)).toEqual(f.live)
+    // This additive replay keeps the historical manifest/bytes fixed. Only this reviewed hunk may differ.
+    const root = fileURLToPath(new URL('../../../../', import.meta.url))
+    const owner = locateDrawingPagesOriginOwner(root)
+    const file = 'packages/ui-workspace/src/DiagramView.tsx'
+    const manifest = readFileSync(join(root, owner, 'evidence/source-adoption-manifest.json'))
+    const original = readFileSync(join(root, owner, 'evidence/origin/source', file))
+    const hunk = JSON.parse(
+      readFileSync(new URL('./drawing-pages-focus-adoption.json', import.meta.url), 'utf8'),
+    ) as { before: string; after: string }
+    const predecessor = canonicalPublicationBytes(original).toString()
+    expect(predecessor.split(hunk.before)).toHaveLength(2)
+    const approved = predecessor.replace(hunk.before, hunk.after)
+    const replay = createDrawingPagesOriginReader({
+      root,
+      owner,
+      manifest,
+      expectedSha256: drawingPagesAdoptionManifestSha256,
+    })
+    for (const text of [approved, approved.replaceAll('\n', '\r\n')])
+      expect(replay(file, Buffer.from(text))).toEqual(original)
+    for (const text of [
+      approved + '!',
+      approved.replace('frame.current?.focus()', 'frame.current?.blur()'),
+      approved + hunk.after,
+      approved.replace('if (!ready || props.readOnly)', 'if (!ready)'),
+      approved.replace('\n', '\r\n'),
+    ])
+      expect(() => replay(file, Buffer.from(text))).toThrow('ADOPTED_SOURCE_HASH')
+    expect(replay(file + '.other', Buffer.from(approved))).toEqual(Buffer.from(approved))
   })
   it('rejects a one-byte live edit before exposing the historical origin', () => {
     const f = fixture()
@@ -308,24 +340,65 @@ it('admits an individually pinned mixed checkout without accepting any other mix
   )
 })
 
-function desktopBridgeFixture(){
-  const f=fixture(),file='apps/desktop/src/main/drawio-theme-bridge.ts',originalFile=prefix+'/evidence/origin/source/'+file,
-    manifest={...f.manifest,entries:[{...f.manifest.entries[0],file,originalFile}]},bytes=Buffer.from(JSON.stringify(manifest))
-  mkdirSync(dirname(join(f.root,originalFile)),{recursive:true});writeFileSync(join(f.root,originalFile),f.original)
-  return {...f,file,originalFile,bytes,manifest,options:{root:f.root,manifest:bytes,expectedSha256:sha(bytes)}}
+function desktopBridgeFixture() {
+  const f = fixture(),
+    file = 'apps/desktop/src/main/drawio-theme-bridge.ts',
+    originalFile = prefix + '/evidence/origin/source/' + file,
+    manifest = { ...f.manifest, entries: [{ ...f.manifest.entries[0], file, originalFile }] },
+    bytes = Buffer.from(JSON.stringify(manifest))
+  mkdirSync(dirname(join(f.root, originalFile)), { recursive: true })
+  writeFileSync(join(f.root, originalFile), f.original)
+  return {
+    ...f,
+    file,
+    originalFile,
+    bytes,
+    manifest,
+    options: { root: f.root, manifest: bytes, expectedSha256: sha(bytes) },
+  }
 }
-it('replays only the exactly registered desktop theme bridge and rejects changed live bytes',()=>{
-  const f=desktopBridgeFixture(),read=createDrawingPagesOriginReader(f.options)
-  expect(read(f.file,f.live)).toEqual(f.original)
-  expect(()=>read(f.file,Buffer.concat([f.live,Buffer.from('mutation')]))).toThrow('ADOPTED_SOURCE_HASH')
+it('replays only the exactly registered desktop theme bridge and rejects changed live bytes', () => {
+  const f = desktopBridgeFixture(),
+    read = createDrawingPagesOriginReader(f.options)
+  expect(read(f.file, f.live)).toEqual(f.original)
+  expect(() => read(f.file, Buffer.concat([f.live, Buffer.from('mutation')]))).toThrow(
+    'ADOPTED_SOURCE_HASH',
+  )
 })
-it('desktop bridge replay rejects changed origin and manifest pins',()=>{
-  const f=desktopBridgeFixture(),read=createDrawingPagesOriginReader(f.options)
-  writeFileSync(join(f.root,f.originalFile),Buffer.concat([f.original,Buffer.from('mutation')]))
-  expect(()=>read(f.file,f.live)).toThrow('ORIGIN_SOURCE_HASH')
-  expect(()=>createDrawingPagesOriginReader({...f.options,manifest:Buffer.concat([f.bytes,Buffer.from(' ')] )})).toThrow('MANIFEST_HASH')
+it('desktop bridge replay rejects changed origin and manifest pins', () => {
+  const f = desktopBridgeFixture(),
+    read = createDrawingPagesOriginReader(f.options)
+  writeFileSync(join(f.root, f.originalFile), Buffer.concat([f.original, Buffer.from('mutation')]))
+  expect(() => read(f.file, f.live)).toThrow('ORIGIN_SOURCE_HASH')
+  expect(() =>
+    createDrawingPagesOriginReader({
+      ...f.options,
+      manifest: Buffer.concat([f.bytes, Buffer.from(' ')]),
+    }),
+  ).toThrow('MANIFEST_HASH')
 })
-it.each(['apps/desktop/src/main/drawio-theme-bridge.ts.backup','apps/desktop/src/main/drawio-theme-bridge.ts/child','apps/desktop/src/main/drawio-theme-bridge-extra.ts','apps/desktop/src/main/other.ts','apps/desktop/src/preload/drawio-theme-bridge.ts','apps/other/src/main/drawio-theme-bridge.ts'])('exact desktop bridge adoption does not admit %s',file=>{
-  const f=desktopBridgeFixture(),bytes=Buffer.from(JSON.stringify({...f.manifest,entries:[{...f.manifest.entries[0],file,originalFile:prefix+'/evidence/origin/source/'+file}]}))
-  expect(()=>createDrawingPagesOriginReader({...f.options,manifest:bytes,expectedSha256:sha(bytes)})).toThrow('ADOPTION_FILE_SCOPE')
+it.each([
+  'apps/desktop/src/main/drawio-theme-bridge.ts.backup',
+  'apps/desktop/src/main/drawio-theme-bridge.ts/child',
+  'apps/desktop/src/main/drawio-theme-bridge-extra.ts',
+  'apps/desktop/src/main/other.ts',
+  'apps/desktop/src/preload/drawio-theme-bridge.ts',
+  'apps/other/src/main/drawio-theme-bridge.ts',
+])('exact desktop bridge adoption does not admit %s', (file) => {
+  const f = desktopBridgeFixture(),
+    bytes = Buffer.from(
+      JSON.stringify({
+        ...f.manifest,
+        entries: [
+          {
+            ...f.manifest.entries[0],
+            file,
+            originalFile: prefix + '/evidence/origin/source/' + file,
+          },
+        ],
+      }),
+    )
+  expect(() =>
+    createDrawingPagesOriginReader({ ...f.options, manifest: bytes, expectedSha256: sha(bytes) }),
+  ).toThrow('ADOPTION_FILE_SCOPE')
 })

@@ -1,0 +1,51 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/apps/desktop
+
+ ❯ tests/unit/drawio-focus.test.ts (4 tests | 2 failed) 21ms
+   × a queued passive typing refresh cannot take host-search keyboard focus 16ms
+     → expected 'typing-shim' to be 'host-search' // Object.is equality
+   ✓ an owned editor keeps the original typing-shim receiver, arguments and return value 2ms
+   × only a trusted configure installs one focus-ownership wrapper 2ms
+     → expected [Function spy] not to be [Function spy] // Object.is equality
+   ✓ upstream typing failures still propagate when the editor owns focus 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawio-focus.test.ts > a queued passive typing refresh cannot take host-search keyboard focus
+AssertionError: expected 'typing-shim' to be 'host-search' // Object.is equality
+
+Expected: "host-search"
+Received: "typing-shim"
+
+ ❯ tests/unit/drawio-focus.test.ts:33:21
+     31|   const f = setup(); f.configure()
+     32|   await Promise.resolve().then(() => f.prototype.showTypingShim())
+     33|   expect(f.owner()).toBe('host-search')
+       |                     ^
+     34|   expect(f.show).not.toHaveBeenCalled()
+     35| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/drawio-focus.test.ts > only a trusted configure installs one focus-ownership wrapper
+AssertionError: expected [Function spy] not to be [Function spy] // Object.is equality
+ ❯ tests/unit/drawio-focus.test.ts:50:25
+     48|   f.configure('frade://app', {}); expect(f.prototype.showTypingShim).t…
+     49|   f.configure(); const installed = f.prototype.showTypingShim
+     50|   expect(installed).not.toBe(f.show)
+       |                         ^
+     51|   f.configure(); expect(f.prototype.showTypingShim).toBe(installed)
+     52|   f.focus(); f.prototype.showTypingShim(); expect(f.show).toHaveBeenCa…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 2 passed (4)
+   Start at  21:28:25
+   Duration  948ms (transform 120ms, setup 0ms, collect 120ms, tests 21ms, environment 1ms, prepare 297ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\apps\desktop
+

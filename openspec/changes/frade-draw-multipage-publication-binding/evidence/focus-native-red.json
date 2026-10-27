@@ -1,0 +1,145 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade\\.worktrees\\multipage-publication-clean-3\\apps\\desktop\\playwright.config.ts",
+    "rootDir": "E:/dev/codex/frade/.worktrees/multipage-publication-clean-3/apps/desktop/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade/.worktrees/multipage-publication-clean-3/apps/desktop/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade/.worktrees/multipage-publication-clean-3/apps/desktop/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "diagrams.spec.ts",
+      "file": "diagrams.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "empty bundle native gesture, undo and persistence: drawio",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16107,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Поиск объектов', { exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Поиск объектов', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input aria-label=\"Поиск объектов\" placeholder=\"Поиск объектов…\" value=\"host focus regression\"/>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Поиск объектов', { exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Поиск объектов', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input aria-label=\"Поиск объектов\" placeholder=\"Поиск объектов…\" value=\"host focus regression\"/>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at E:\\dev\\codex\\frade\\.worktrees\\multipage-publication-clean-3\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:944:30",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade\\.worktrees\\multipage-publication-clean-3\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                      "column": 30,
+                      "line": 944
+                    },
+                    "snippet": "  942 |           ui.updateTypingShim()\n  943 |         })\n> 944 |         await expect(search).toBeFocused()\n      |                              ^\n  945 |         await expect(search).toHaveValue('host focus regression')\n  946 |         await expect(label('Маркетплейс')).toBeVisible()\n  947 |         await expect(label('CRM')).toBeVisible()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\.worktrees\\multipage-publication-clean-3\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 30,
+                        "line": 944
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Поиск объектов', { exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Поиск объектов', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input aria-label=\"Поиск объектов\" placeholder=\"Поиск объектов…\" value=\"host focus regression\"/>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  942 |           ui.updateTypingShim()\n  943 |         })\n> 944 |         await expect(search).toBeFocused()\n      |                              ^\n  945 |         await expect(search).toHaveValue('host focus regression')\n  946 |         await expect(label('Маркетплейс')).toBeVisible()\n  947 |         await expect(label('CRM')).toBeVisible()\n    at E:\\dev\\codex\\frade\\.worktrees\\multipage-publication-clean-3\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:944:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:47928) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T18:29:29.185Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\multipage-publication-clean-3\\apps\\desktop\\test-results\\diagrams-empty-bundle-nati-ddc0b-undo-and-persistence-drawio\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade\\.worktrees\\multipage-publication-clean-3\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                    "column": 30,
+                    "line": 944
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-9fbdce43b1362795a1c6",
+          "file": "diagrams.spec.ts",
+          "line": 1019,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T18:29:27.690Z",
+    "duration": 17650.203,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\multipage-
+  │ publication-clean-3\apps\desktop
+

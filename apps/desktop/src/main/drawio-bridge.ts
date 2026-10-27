@@ -39,6 +39,7 @@ export function drawioRepositoryBridge(parentOrigin: string) {
   type Ui = {
     editor: { graph: Graph; addListener(name: string, callback: () => void): void }
     init(...args: unknown[]): unknown
+    showTypingShim?(...args: unknown[]): unknown
   }
   const globals = window as unknown as { EditorUi?: { prototype: Ui } }
   let graph: Graph | undefined,
@@ -160,6 +161,12 @@ export function drawioRepositoryBridge(parentOrigin: string) {
       hooked = true
       const prototype = globals.EditorUi.prototype,
         original = prototype.init
+      const showTypingShim = prototype.showTypingShim
+      if (showTypingShim)
+        prototype.showTypingShim = function (...args: unknown[]) {
+          // Selection timers must not reclaim keyboard focus from host inputs.
+          if (document.hasFocus()) return showTypingShim.apply(this, args)
+        }
       prototype.init = function (...args: unknown[]) {
         const result = original.apply(this, args)
         graph = this.editor.graph

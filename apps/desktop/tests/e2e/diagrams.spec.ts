@@ -606,9 +606,30 @@ for (const format of ['drawio', 'frade']) {
       const save = () =>
         page.locator('.diagram-slot').getByRole('button', { name: 'Сохранить', exact: true })
       await expect(save()).toBeEnabled()
+      const observeDropFocus = async () => {
+        if (format === 'drawio')
+          await page.locator('.diagram-slot iframe').evaluate((element) => {
+            const frame = element as HTMLIFrameElement,
+              focus = frame.focus
+            frame.dataset.fradeDropFocusCalls = '0'
+            frame.focus = function (options?: FocusOptions) {
+              frame.dataset.fradeDropFocusCalls = String(
+                Number(frame.dataset.fradeDropFocusCalls) + 1,
+              )
+              focus.call(this, options)
+              frame.dataset.fradeDropFocusGranted = String(document.activeElement === frame)
+            }
+          })
+      }
+      await observeDropFocus()
       await expect(page.locator('.diagram-objects')).toHaveCount(0)
       await dragObject(page, { repositoryId: 'B' })
       await expect(page.locator('.diagram-error')).toContainText('другому репозиторию')
+      if (format === 'drawio')
+        await expect(page.locator('.diagram-slot iframe')).toHaveAttribute(
+          'data-frade-drop-focus-calls',
+          '0',
+        )
       await expect(page.locator('.dirty-dot')).toHaveCount(0)
       const catalogPath = join(a.destination, 'services.json')
       await writeFile(
@@ -631,6 +652,16 @@ for (const format of ['drawio', 'frade']) {
         .click({ button: 'right' })
       await page.getByRole('menuitem', { name: 'Подключить внешний каталог…' }).click()
       await dragObject(page, { repositoryId: 'A', sourceId: 'services', name: 'External service' })
+      if (format === 'drawio') {
+        await expect(page.locator('.diagram-slot iframe')).toHaveAttribute(
+          'data-frade-drop-focus-calls',
+          '1',
+        )
+        await expect(page.locator('.diagram-slot iframe')).toHaveAttribute(
+          'data-frade-drop-focus-granted',
+          'true',
+        )
+      }
       await expect(page.locator('.diagram-references summary')).toContainText('(1)')
       await save().click()
       await expect(page.locator('.dirty-dot')).toHaveCount(0)
@@ -695,10 +726,16 @@ for (const format of ['drawio', 'frade']) {
       await expect(page.locator('.status-message')).toContainText('276 объектов')
       await expect(page.locator('.diagram-references summary')).toContainText('(2)')
       await expect(save()).toBeDisabled()
+      await observeDropFocus()
       await dragObject(page, { repositoryId: 'A' })
       await expect(page.locator('.diagram-references summary')).toContainText('(2)')
       await expect(page.locator('.dirty-dot')).toHaveCount(0)
       expect(await readFile(file, 'utf8')).toBe(saved)
+      if (format === 'drawio')
+        await expect(page.locator('.diagram-slot iframe')).toHaveAttribute(
+          'data-frade-drop-focus-calls',
+          '0',
+        )
     } finally {
       await app.close().catch(() => {})
     }
@@ -913,6 +950,24 @@ for (const format of ['frade', 'drawio'] as const) {
           .locator('.diagram-slot .editor-actions')
           .getByRole('button', { name: 'Сохранить', exact: true })
       await expect(save()).toBeEnabled({ timeout: 20000 })
+      if (format === 'drawio')
+        await page
+          .locator('.diagram-slot iframe')
+          .contentFrame()
+          .locator('body')
+          .evaluate(() => {
+            type Ui = { updateTypingShim(...args: unknown[]): unknown }
+            const globals = window as unknown as {
+              EditorUi: { prototype: Ui }
+              fradeFocusRegressionUi?: Ui
+            }
+            const prototype = globals.EditorUi.prototype,
+              original = prototype.updateTypingShim
+            prototype.updateTypingShim = function (...args: unknown[]) {
+              globals.fradeFocusRegressionUi = this
+              return original.apply(this, args)
+            }
+          })
       await dragObject(page, { name: 'Маркетплейс', x: 80, y: 120 })
       await dragObject(page, { name: 'CRM', x: 400, y: 300 })
       const canvas = () =>
@@ -923,6 +978,22 @@ for (const format of ['frade', 'drawio'] as const) {
       const a = await label('Маркетплейс').boundingBox(),
         b = await label('CRM').boundingBox()
       if (!a || !b) throw Error('System labels unavailable')
+      if (format === 'drawio') {
+        const search = page.getByLabel('Поиск объектов', { exact: true })
+        await search.fill('host focus regression')
+        await canvas().evaluate(() => {
+          const ui = (
+            window as unknown as { fradeFocusRegressionUi?: { updateTypingShim(): void } }
+          ).fradeFocusRegressionUi
+          if (!ui) throw Error('Actual Draw.io typing-shim receiver was not captured')
+          ui.updateTypingShim()
+        })
+        await expect(search).toBeFocused()
+        await expect(search).toHaveValue('host focus regression')
+        await expect(label('Маркетплейс')).toBeVisible()
+        await expect(label('CRM')).toBeVisible()
+        await search.fill('')
+      }
       const source = { x: a.x + a.width / 2, y: a.y + a.height / 2 },
         target = { x: b.x + b.width / 2, y: b.y + b.height / 2 }
       await page.mouse.move(source.x, source.y)

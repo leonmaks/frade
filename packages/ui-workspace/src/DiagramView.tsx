@@ -611,13 +611,14 @@ export function DiagramView(props: DiagramViewProps) {
                   onDrop={(event) => {
                     event.preventDefault()
                     setDragging(false)
-                    if (!ready) return
+                    if (!ready || props.readOnly) return
                     const object = droppedObject(
                       event.dataTransfer.getData(REPOSITORY_OBJECT_MIME),
                       latest.current,
                     )
                     const rect = frame.current?.getBoundingClientRect()
-                    if (object && rect)
+                    if (object && rect) {
+                      frame.current?.focus()
                       send({
                         action: 'fradeRepositoryInsert',
                         object: { id: object.id, name: object.name, sourceId: object.sourceId },
@@ -631,6 +632,7 @@ export function DiagramView(props: DiagramViewProps) {
                         clientX: event.clientX - rect.left,
                         clientY: event.clientY - rect.top,
                       })
+                    }
                   }}
                 />
               )}

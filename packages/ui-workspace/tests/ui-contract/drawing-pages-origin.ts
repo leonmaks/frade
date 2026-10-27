@@ -3,9 +3,17 @@ import { existsSync, lstatSync, readFileSync, realpathSync, readdirSync } from '
 import { isAbsolute, relative, resolve } from 'node:path'
 import { drawingPagesAdoptionManifestSha256 } from './drawing-pages-adoption-pin'
 import { canonicalPublicationBytes } from '../../../../tests/ui-contract/drawing-pages-adoption.mjs'
+import {
+  readDrawingPagesPublication,
+  verifyPublicationInput,
+  type PublicationInput,
+} from '../../../../tests/ui-contract/drawing-pages-publication.mjs'
 const owner = 'openspec/changes/frade-draw-multipage'
 const manifestName = '/evidence/source-adoption-manifest.json'
 const baseline = 'e54cf0c1e4e70ed833398c673ea3140b6f10469e'
+const focusHunk = JSON.parse(
+  readFileSync(new URL('./drawing-pages-focus-adoption.json', import.meta.url), 'utf8'),
+) as { before: string; after: string }
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
 function demand(value: unknown, error: string): asserts value {
   if (!value) throw Error(error)
@@ -64,9 +72,28 @@ type Entry = {
   canonicalSha256?: string
   checkoutSha256?: string
 }
-type Options = { root: string; owner?: string; manifest: Buffer; expectedSha256: string }
+type Options = {
+  root: string
+  owner?: string
+  manifest: Buffer
+  expectedSha256: string
+  publicationInput?: PublicationInput
+}
+/** Reverse only the reviewed focus hunk, then require the immutable predecessor digest. */
+function isFocusAdoption(file: string, live: Buffer, entry: Entry) {
+  if (file !== 'packages/ui-workspace/src/DiagramView.tsx') return false
+  const canonical = canonicalPublicationBytes(live)
+  const checkout = Buffer.from(canonical.toString('latin1').replaceAll('\n', '\r\n'), 'latin1')
+  if (!live.equals(canonical) && !live.equals(checkout)) return false
+  const text = canonical.toString()
+  if (text.split(focusHunk.after).length !== 2) return false
+  const predecessor = Buffer.from(text.replace(focusHunk.after, focusHunk.before))
+  return sha(predecessor) === (entry.canonicalSha256 ?? entry.adoptedSha256)
+}
 /** Historical replay only. Current execution evidence is checked separately. */
 export function createDrawingPagesOriginReader(options: Options) {
+  if (options.publicationInput)
+    demand(options.publicationInput.file === 'pnpm-lock.yaml', 'PUBLICATION_LOCK_SCOPE')
   demand(sha(options.manifest) === options.expectedSha256, 'MANIFEST_HASH')
   const value = JSON.parse(options.manifest.toString()) as {
     version?: number
@@ -94,7 +121,7 @@ export function createDrawingPagesOriginReader(options: Options) {
     safeRelative(entry.originalFile)
     demand(
       entry.file === 'pnpm-lock.yaml' ||
-      entry.file === 'apps/desktop/src/main/drawio-theme-bridge.ts' ||
+        entry.file === 'apps/desktop/src/main/drawio-theme-bridge.ts' ||
         /^(packages\/|scripts\/ui\/|tests\/ui-contract\/)/.test(entry.file),
       'ADOPTION_FILE_SCOPE',
     )
@@ -113,11 +140,14 @@ export function createDrawingPagesOriginReader(options: Options) {
     safeRelative(file)
     const entry = entries.get(file)
     if (!entry) return live
-    demand(
-      [entry.adoptedSha256, entry.canonicalSha256, entry.checkoutSha256].includes(sha(live)),
-      'ADOPTED_SOURCE_HASH:' + file,
+    const legacy = [entry.adoptedSha256, entry.canonicalSha256, entry.checkoutSha256].includes(
+      sha(live),
     )
-    if (entry.canonicalSha256)
+    if (!legacy && !isFocusAdoption(file, live, entry)) {
+      demand(file === 'pnpm-lock.yaml' && !!options.publicationInput, 'ADOPTED_SOURCE_HASH:' + file)
+      verifyPublicationInput(options.publicationInput, live)
+    }
+    if (legacy && entry.canonicalSha256)
       demand(
         sha(canonicalPublicationBytes(live)) === entry.canonicalSha256,
         'ADOPTED_PUBLICATION_EQUIVALENCE:' + file,
@@ -135,5 +165,11 @@ export function readDrawingPagesOrigin(root: string, file: string, live: Buffer)
     owner: physicalOwner,
     manifest,
     expectedSha256: drawingPagesAdoptionManifestSha256,
+    publicationInput:
+      file === 'pnpm-lock.yaml'
+        ? readDrawingPagesPublication(root).manifest.currentInputs.find(
+            (input) => input.file === file,
+          )
+        : undefined,
   })(file, live)
 }

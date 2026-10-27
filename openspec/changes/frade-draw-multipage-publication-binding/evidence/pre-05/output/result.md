@@ -1,0 +1,5 @@
+GATE_STATUS: PASS
+
+The fresh PRE approves the bounded **plan**, not the repair or publication. The [design](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-27T16-18-21-023Z-9ff3b4d5-588a-47ed-a2c9-30e2b47d366d/prepared/packet/openspec/changes/frade-draw-multipage-publication-binding/design.md) confines the change to one nested `-text` rule, one additive source input, and recovery of five stored Git blobs to their existing upstream pins. All 159 packet artifacts matched their recorded hashes. For each of the five supplied files, I verified the raw expected blob ID and confirmed that CRLF-to-LF conversion reproduces its recorded old ID. The checkout regression records the expected RED result.
+
+Before implementation, rerun strict validation on the refined plan and make task 2.3 explicit that the **five stored Git blob IDs change** while the upstream pins and other 2,846 blobs stay fixed. The failed clean build remains a failure; fresh clean and working builds, all seven roles per profile, general gates, preservation audits, and POST are still required. Requested reviewer profile: gpt-6-sol/high; actual backend and effort: NOT_CONFIRMED.

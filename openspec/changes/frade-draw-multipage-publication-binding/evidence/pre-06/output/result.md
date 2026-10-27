@@ -1,0 +1,7 @@
+GATE_STATUS: FAIL
+
+The proposed controls for raw source binding, User32 before/after probes, strict `DEFAULT_COMPLETE` reuse, fresh schema 2 executions, and preservation of failed evidence are sound as a plan. They do not resolve the acceptance question.
+
+The [design](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-27T17-24-32-545Z-5343d0bc-cd5a-42ff-a1ef-d7db9bcc16a9/prepared/packet/openspec/changes/frade-draw-multipage-publication-binding/design.md:76) would count the native tests on a private desktop after the applicable Default run missed a CRM drop. External focus interference is plausible, but unproven. The proposed before/after probes establish an inherited desktop context; they do not establish why the drop was missed or that the tested Electron process stayed in that context. A private PASS therefore cannot yet discharge the Default FAIL merely because the unchanged test passes there.
+
+**Actionable blocker:** Establish with a bounded, source-bound diagnostic that external desktop interference caused the missed input, including the target process context and relevant focus or pointer-cancellation evidence. If that cannot be established, obtain a human decision approving the private desktop as the native test’s acceptance environment, or resolve the applicable Default failure. Keep the 154.6 ms private performance FAIL as an unsuccessful setup result; it must not be relabelled or used to relax the 150 ms contract.

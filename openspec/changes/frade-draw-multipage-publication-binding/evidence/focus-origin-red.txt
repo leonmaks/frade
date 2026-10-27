@@ -1,0 +1,63 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/packages/ui-workspace
+
+ ❯ tests/ui-contract/drawing-pages-origin.test.ts (31 tests | 1 failed) 513ms
+   × closed drawing-page adoption preserves historical proof and rejects unknown drift > returns exact original raw bytes only for the exact adopted file and live hash 37ms
+     → ADOPTED_SOURCE_HASH:packages/ui-workspace/src/DiagramView.tsx
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects a one-byte live edit before exposing the historical origin 12ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects original byte/EOL mutation, missing originals and does not normalize them 14ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects mutated manifest bytes and unsupported manifest schema 11ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects duplicate entries and snapshot path redirection even in a trusted test manifest 11ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source ../outside 10ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source packages//file.ts 23ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source C:/outside.ts 13ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source packages/../outside.ts 12ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source packages\outside.ts 9ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > keeps undeclared mutations visible to the unchanged downstream original verifier 10ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects leaf links without reading an outside original 14ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > finds exactly one active or archived owner and rejects ambiguous evidence locations 54ms
+   ✓ accepts only preregistered publication EOL forms with the same canonical bytes 21ms
+   ✓ does not accept semantic edits disguised as an explicitly named checkout form 11ms
+   ✓ replays the exact explicitly registered root lockfile and rejects a one-byte live edit 19ms
+   ✓ rejects changed root-lock origins and manifest bytes before historical replay 17ms
+   ✓ does not broaden root-file adoption to package.json 17ms
+   ✓ does not broaden root-file adoption to pnpm-workspace.yaml 14ms
+   ✓ does not broaden root-file adoption to pnpm-lock.yaml.backup 10ms
+   ✓ does not broaden root-file adoption to pnpm-lock.yaml/child 10ms
+   ✓ does not broaden root-file adoption to docs/example.json 8ms
+   ✓ admits an individually pinned mixed checkout without accepting any other mixed form 16ms
+   ✓ replays only the exactly registered desktop theme bridge and rejects changed live bytes 19ms
+   ✓ desktop bridge replay rejects changed origin and manifest pins 28ms
+   ✓ exact desktop bridge adoption does not admit apps/desktop/src/main/drawio-theme-bridge.ts.backup 18ms
+   ✓ exact desktop bridge adoption does not admit apps/desktop/src/main/drawio-theme-bridge.ts/child 19ms
+   ✓ exact desktop bridge adoption does not admit apps/desktop/src/main/drawio-theme-bridge-extra.ts 15ms
+   ✓ exact desktop bridge adoption does not admit apps/desktop/src/main/other.ts 14ms
+   ✓ exact desktop bridge adoption does not admit apps/desktop/src/preload/drawio-theme-bridge.ts 13ms
+   ✓ exact desktop bridge adoption does not admit apps/other/src/main/drawio-theme-bridge.ts 13ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/drawing-pages-origin.test.ts > closed drawing-page adoption preserves historical proof and rejects unknown drift > returns exact original raw bytes only for the exact adopted file and live hash
+Error: ADOPTED_SOURCE_HASH:packages/ui-workspace/src/DiagramView.tsx
+ ❯ demand tests/ui-contract/drawing-pages-origin.ts:16:21
+     14| const sha = (bytes: Buffer) => createHash('sha256').update(bytes).dige…
+     15| function demand(value: unknown, error: string): asserts value {
+     16|   if (!value) throw Error(error)
+       |                     ^
+     17| }
+     18| function safeRelative(file: string) {
+ ❯ tests/ui-contract/drawing-pages-origin.ts:133:7
+ ❯ tests/ui-contract/drawing-pages-origin.test.ts:86:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 30 passed (31)
+   Start at  21:28:28
+   Duration  2.19s (transform 255ms, setup 0ms, collect 773ms, tests 513ms, environment 0ms, prepare 324ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\packages\ui-workspace
+

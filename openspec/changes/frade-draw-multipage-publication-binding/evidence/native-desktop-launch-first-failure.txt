@@ -1,0 +1,1 @@
+First isolated launcher failed before a usable probe: PowerShell interpreted 0xffffffff as -1 and refused UInt32 wait; finally released desktop before child initialization. No native test PASS claimed. Child PID confirmed exited. Fix own local instrumentation to [uint32]::MaxValue, preserve desktop until child exit; no product/test changes.

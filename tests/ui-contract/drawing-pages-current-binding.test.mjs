@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { existsSync, readdirSync } from 'node:fs'
+import { readDrawingPagesPublication } from './drawing-pages-publication.mjs'
 import {
   evidenceOwner,
   safeBytes,
@@ -26,7 +27,8 @@ function fixture() {
     .toString()
     .match(/drawingPagesAdoptionManifestSha256\s*=\s*'([a-f0-9]{64})'/)?.[1]
   assert.equal(sha256(raw), pin, 'closed adoption manifest hash')
-  return { manifest: JSON.parse(raw), read }
+  const publication = readDrawingPagesPublication(root)
+  return { manifest: publication.manifest, read: publication.read }
 }
 test('current multipage runtime reports bind the exact adopted closure and all 50 presentation cases', () => {
   const { manifest, read } = fixture()

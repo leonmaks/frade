@@ -89,6 +89,7 @@ export function currentInputFiles(root) {
     'packages/draw/src/editor/generated/.gitattributes',
     'packages/ui-workspace/tokens/.gitattributes',
     'apps/desktop/vendor/drawio-manifest.json',
+    'apps/desktop/vendor/.gitattributes',
     'docs/ui/decisions/legacy-colors.json',
     evidenceOwner + 'presentation-execution-plan.json',
   )
