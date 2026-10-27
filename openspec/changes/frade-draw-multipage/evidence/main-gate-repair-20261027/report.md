@@ -14,3 +14,5 @@ RCA: exact runtime/data/window/bundle identity confirmed; CPU profiles and IPC s
 Live Frade: production build reopened with preserved isolated profile, actual saved Проверка страниц.frade both tabs restored; manual switch to Архитектура verified, jgraph/drawio icon/link absent. App window3805806 left open. Final screenshot/accessibility/launch records retained. Existing blank dev-server window untouched. Right-panel dashboard request QUEUED, visibility unconfirmed.
 
 Verification:27/30 tasks; M4/M5/E2 incomplete,19 requirements25 scenarios mapped. See verification.md, ui-compliance-report.md, verification-final-blocked/record.json. No archive/push/next feature. This local checkpoint preserves completed authorised fixes with honest incomplete closure.
+
+Local source/evidence checkpoint: e80a2c2afbfdf3301b1d3a64497d2fa5cd6f0ed4. Exact user5+849 raw preservation checked after commit and PASS; source711/hash140a19af... unchanged. This records incomplete status, not engineering closure.

@@ -24,3 +24,5 @@ Shared policyv1.1 a6829c6d... /6c6cf78f... adopted. Review plan exact PRE/POST g
 Next: resolve actual presentation-latency performance failure in a separately coherent reviewed repair retaining cover/paint/revision/durability safeguards or obtain an actual suitable benchmark environment, then rerun unchanged performance once justified, publish complete current proof, run pnpm check, implementation verify and automatic cumulative POST. No performance budget/assertion/geometry/baseline weakening authorised.
 
 KNOWN BLOCKERS: required performance p95167>150ms; final current publication/general/POST incomplete. READY_FOR_VERIFY: NO.
+
+Local authorised incomplete checkpoint published: e80a2c2afbfdf3301b1d3a64497d2fa5cd6f0ed4. Original user files excluded; post-commit raw preservation audit PASS (preservation-after-checkpoint.json), source140a19af... unchanged. No push. Cumulative gate remains BLOCKED by performance, no POST PASS claimed.
