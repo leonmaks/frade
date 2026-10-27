@@ -1,0 +1,800 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade\\apps\\desktop\\playwright.config.ts",
+    "rootDir": "E:/dev/codex/frade/apps/desktop/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade/apps/desktop/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade/apps/desktop/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "diagrams.spec.ts",
+      "file": "diagrams.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "repository diagram opens in ordinary tabs, edits native XML and saves",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 803,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 15,
+                        "line": 101
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=40328\u001b[22m\n\u001b[2m  - [pid=40328][out]\u001b[22m\n\u001b[2m  - [pid=40328] <kill>\u001b[22m\n\u001b[2m  - [pid=40328] <will force kill>\u001b[22m\n\u001b[2m  - [pid=40328] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=40328] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=40328] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=40328] finished temporary directories cleanup\u001b[22m\n\n\n   99 |   test.setTimeout(120000)\n  100 |   const fixture = await createKaFixture()\n> 101 |   const app = await electron.launch({\n      |               ^\n  102 |     args: [resolve('out/main/index.cjs')],\n  103 |     env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'diagram-profile') },\n  104 |   })\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:101:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:41284) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:33.143Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-repository-diagra-8f8cb--edits-native-XML-and-saves\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-450d407178f2d0f804b7",
+          "file": "diagrams.spec.ts",
+          "line": 83,
+          "column": 1
+        },
+        {
+          "title": "Frade native diagram preserves bindings and responds to repository events in NRT",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 876,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 11,
+                        "line": 202
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=25112\u001b[22m\n\u001b[2m  - [pid=25112][out]\u001b[22m\n\u001b[2m  - [pid=25112] <kill>\u001b[22m\n\u001b[2m  - [pid=25112] <will force kill>\u001b[22m\n\u001b[2m  - [pid=25112] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=25112] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=25112] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=25112] finished temporary directories cleanup\u001b[22m\n\n\n  200 |   test.setTimeout(120000)\n  201 |   const fixture = await createKaFixture(),\n> 202 |     app = await electron.launch({\n      |           ^\n  203 |       args: [resolve('out/main/index.cjs')],\n  204 |       env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'frade-diagram-profile') },\n  205 |     })\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:202:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:40984) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:35.991Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-Frade-native-diag-38907-to-repository-events-in-NRT\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-70a023b8f4cdeecd6e35",
+          "file": "diagrams.spec.ts",
+          "line": 222,
+          "column": 1
+        },
+        {
+          "title": "native Draw.io compressed pages, layers, groups and custom cell metadata survive an actual editor roundtrip",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 752,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 15,
+                        "line": 361
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=17256\u001b[22m\n\u001b[2m  - [pid=17256][out]\u001b[22m\n\u001b[2m  - [pid=17256] <kill>\u001b[22m\n\u001b[2m  - [pid=17256] <will force kill>\u001b[22m\n\u001b[2m  - [pid=17256] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=17256] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=17256] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=17256] finished temporary directories cleanup\u001b[22m\n\n\n  359 |   const path = join(folder, 'Imported.drawio')\n  360 |   await writeFile(path, xml)\n> 361 |   const app = await electron.launch({\n      |               ^\n  362 |     args: [resolve('out/main/index.cjs')],\n  363 |     env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'roundtrip-profile') },\n  364 |   })\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:361:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:26356) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:38.830Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-native-Draw-io-co-bd9dc--an-actual-editor-roundtrip\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-96ba1724dbb19f9ed949",
+          "file": "diagrams.spec.ts",
+          "line": 400,
+          "column": 1
+        },
+        {
+          "title": "mixed diagram tabs share Save All, keep live editor state, reorder, discard and restore",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 585,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 13,
+                        "line": 460
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=27492\u001b[22m\n\u001b[2m  - [pid=27492][out]\u001b[22m\n\u001b[2m  - [pid=27492] <kill>\u001b[22m\n\u001b[2m  - [pid=27492] <will force kill>\u001b[22m\n\u001b[2m  - [pid=27492] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=27492] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=27492] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=27492] finished temporary directories cleanup\u001b[22m\n\n\n  458 |   )\n  459 |   const env = { ...process.env, FRADE_USER_DATA: profile }\n> 460 |   let app = await electron.launch({ args: [resolve('out/main/index.cjs')], env })\n      |             ^\n  461 |   try {\n  462 |     let page = await app.firstWindow()\n  463 |     await expect(page.getByRole('status')).toHaveText('Backend: ready')\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:460:13"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:16616) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:41.024Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-mixed-diagram-tab-2d850-reorder-discard-and-restore\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-deb2323cb66096b1cb53",
+          "file": "diagrams.spec.ts",
+          "line": 504,
+          "column": 1
+        },
+        {
+          "title": "drawio navigator drop: catalogs, owning root, undo, transformed coordinates and read-only",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 890,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 15,
+                        "line": 593
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=8436\u001b[22m\n\u001b[2m  - [pid=8436][out]\u001b[22m\n\u001b[2m  - [pid=8436] <kill>\u001b[22m\n\u001b[2m  - [pid=8436] <will force kill>\u001b[22m\n\u001b[2m  - [pid=8436] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=8436] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=8436] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=8436] finished temporary directories cleanup\u001b[22m\n\n\n  591 |     await writeFile(profilePath, JSON.stringify(profile))\n  592 |     const env = { ...process.env, FRADE_USER_DATA: profileFolder }\n> 593 |     let app = await electron.launch({ args: [resolve('out/main/index.cjs')], env })\n      |               ^\n  594 |     try {\n  595 |       let page = await app.firstWindow()\n  596 |       await expect(page.locator('.status-message')).toContainText('276 объектов')\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:593:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:34988) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:43.176Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-drawio-navigator--3079d-d-coordinates-and-read-only\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-bfa79a8dcee9b4fc8213",
+          "file": "diagrams.spec.ts",
+          "line": 621,
+          "column": 3
+        },
+        {
+          "title": "frade navigator drop: catalogs, owning root, undo, transformed coordinates and read-only",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 894,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 15,
+                        "line": 593
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=16760\u001b[22m\n\u001b[2m  - [pid=16760][out]\u001b[22m\n\u001b[2m  - [pid=16760] <kill>\u001b[22m\n\u001b[2m  - [pid=16760] <will force kill>\u001b[22m\n\u001b[2m  - [pid=16760] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=16760] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=16760] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=16760] finished temporary directories cleanup\u001b[22m\n\n\n  591 |     await writeFile(profilePath, JSON.stringify(profile))\n  592 |     const env = { ...process.env, FRADE_USER_DATA: profileFolder }\n> 593 |     let app = await electron.launch({ args: [resolve('out/main/index.cjs')], env })\n      |               ^\n  594 |     try {\n  595 |       let page = await app.firstWindow()\n  596 |       await expect(page.locator('.status-message')).toContainText('276 объектов')\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:593:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:41336) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:45.728Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-frade-navigator-d-fcc28-d-coordinates-and-read-only\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-11679859a3014b7771de",
+          "file": "diagrams.spec.ts",
+          "line": 621,
+          "column": 3
+        },
+        {
+          "title": "system notation, card NRT and persisted settings: frade",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 606,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 15,
+                        "line": 719
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=39592\u001b[22m\n\u001b[2m  - [pid=39592][out]\u001b[22m\n\u001b[2m  - [pid=39592] <kill>\u001b[22m\n\u001b[2m  - [pid=39592] <will force kill>\u001b[22m\n\u001b[2m  - [pid=39592] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=39592] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=39592] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=39592] finished temporary directories cleanup\u001b[22m\n\n\n  717 |         env: { ...process.env, FRADE_USER_DATA: profile },\n  718 |       })\n> 719 |     let app = await launch()\n      |               ^\n  720 |     try {\n  721 |       let page = await app.firstWindow()\n  722 |       const errors: string[] = []\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:719:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:37388) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:48.069Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-system-notation-c-d17fa-nd-persisted-settings-frade\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-b1b7cb8a6b9da48e3411",
+          "file": "diagrams.spec.ts",
+          "line": 796,
+          "column": 3
+        },
+        {
+          "title": "system notation, card NRT and persisted settings: drawio",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 643,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 15,
+                        "line": 719
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=39148\u001b[22m\n\u001b[2m  - [pid=39148][out]\u001b[22m\n\u001b[2m  - [pid=39148] <kill>\u001b[22m\n\u001b[2m  - [pid=39148] <will force kill>\u001b[22m\n\u001b[2m  - [pid=39148] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=39148] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=39148] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=39148] finished temporary directories cleanup\u001b[22m\n\n\n  717 |         env: { ...process.env, FRADE_USER_DATA: profile },\n  718 |       })\n> 719 |     let app = await launch()\n      |               ^\n  720 |     try {\n  721 |       let page = await app.firstWindow()\n  722 |       const errors: string[] = []\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:719:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:19428) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:50.665Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-system-notation-c-274b2-d-persisted-settings-drawio\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-24735c0a0f405ac22ca4",
+          "file": "diagrams.spec.ts",
+          "line": 796,
+          "column": 3
+        },
+        {
+          "title": "empty bundle native gesture, undo and persistence: frade",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 666,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 13,
+                        "line": 880
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=19480\u001b[22m\n\u001b[2m  - [pid=19480][out]\u001b[22m\n\u001b[2m  - [pid=19480] <kill>\u001b[22m\n\u001b[2m  - [pid=19480] <will force kill>\u001b[22m\n\u001b[2m  - [pid=19480] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=19480] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=19480] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=19480] finished temporary directories cleanup\u001b[22m\n\n\n  878 |     test.setTimeout(120000)\n  879 |     const fixture = await createKaFixture(),\n> 880 |       app = await electron.launch({\n      |             ^\n  881 |         args: [resolve('out/main/index.cjs')],\n  882 |         env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'bundles-' + format) },\n  883 |       })\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:880:13"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:27436) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:53.113Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-empty-bundle-nati-9a77c--undo-and-persistence-frade\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-7ffeca891d7998892d46",
+          "file": "diagrams.spec.ts",
+          "line": 1019,
+          "column": 3
+        },
+        {
+          "title": "empty bundle native gesture, undo and persistence: drawio",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 575,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 13,
+                        "line": 880
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=836\u001b[22m\n\u001b[2m  - [pid=836][out]\u001b[22m\n\u001b[2m  - [pid=836] <kill>\u001b[22m\n\u001b[2m  - [pid=836] <will force kill>\u001b[22m\n\u001b[2m  - [pid=836] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=836] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=836] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=836] finished temporary directories cleanup\u001b[22m\n\n\n  878 |     test.setTimeout(120000)\n  879 |     const fixture = await createKaFixture(),\n> 880 |       app = await electron.launch({\n      |             ^\n  881 |         args: [resolve('out/main/index.cjs')],\n  882 |         env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'bundles-' + format) },\n  883 |       })\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:880:13"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:41856) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:55.366Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-empty-bundle-nati-ddc0b-undo-and-persistence-drawio\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-9fbdce43b1362795a1c6",
+          "file": "diagrams.spec.ts",
+          "line": 1019,
+          "column": 3
+        },
+        {
+          "title": "native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 538,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 13,
+                        "line": 1024
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=29040\u001b[22m\n\u001b[2m  - [pid=29040][out]\u001b[22m\n\u001b[2m  - [pid=29040] <kill>\u001b[22m\n\u001b[2m  - [pid=29040] <will force kill>\u001b[22m\n\u001b[2m  - [pid=29040] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=29040] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=29040] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=29040] finished temporary directories cleanup\u001b[22m\n\n\n  1022 |   )\n  1023 |   const env = { ...process.env, FRADE_USER_DATA: profile }\n> 1024 |   let app = await electron.launch({\n       |             ^\n  1025 |     args: [resolve('out/main/index.cjs')],\n  1026 |     env,\n  1027 |   })\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:1024:13"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:25556) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:57.474Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\diagrams-native-multipage--339bc-estores-readonly-navigation\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-9c2d4f883f2106b88695",
+          "file": "diagrams.spec.ts",
+          "line": 1189,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "drawing-pages-parking.spec.ts",
+      "file": "drawing-pages-parking.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "native drawing retains authored node identity and content while an object tab is edited",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 563,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    },
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\drawing-pages-parking.spec.ts",
+                        "column": 15,
+                        "line": 57
+                      },
+                      "message": "Error: electron.launch: Process failed to launch!\nCall log:\n\u001b[2m  - <launching> \"E:\\dev\\codex\\frade\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe\" \"-r\" \"E:\\dev\\codex\\frade\\node_modules\\.pnpm\\playwright-core@1.57.0\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js\" \"--inspect=0\" \"--remote-debugging-port=0\" \"E:\\dev\\codex\\frade\\apps\\desktop\\out\\main\\index.cjs\"\u001b[22m\n\u001b[2m  - <launched> pid=39564\u001b[22m\n\u001b[2m  - [pid=39564][out]\u001b[22m\n\u001b[2m  - [pid=39564] <kill>\u001b[22m\n\u001b[2m  - [pid=39564] <will force kill>\u001b[22m\n\u001b[2m  - [pid=39564] taskkill stderr: ERROR: The user name or password is incorrect.\u001b[22m\n\u001b[2m  - [pid=39564] <process did exit: exitCode=2147483651, signal=null>\u001b[22m\n\u001b[2m  - [pid=39564] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=39564] finished temporary directories cleanup\u001b[22m\n\n\n  55 |     }),\n  56 |   )\n> 57 |   const app = await electron.launch({\n     |               ^\n  58 |     args: [resolve('out/main/index.cjs')],\n  59 |     env: { ...process.env, FRADE_USER_DATA: profile },\n  60 |   })\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\drawing-pages-parking.spec.ts:57:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:34044) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T07:57:59.652Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\drawing-pages-parking-nati-3002d-ile-an-object-tab-is-edited\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "78459a44d7801c189585-b7141e4b59c54f8766d9",
+          "file": "drawing-pages-parking.spec.ts",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T07:57:30.396Z",
+    "duration": 29947.398999999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 12,
+    "flaky": 0
+  }
+}

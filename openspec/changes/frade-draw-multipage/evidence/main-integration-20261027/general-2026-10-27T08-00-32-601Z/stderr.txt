@@ -1,0 +1,14 @@
+$ pnpm lint && pnpm typecheck && pnpm test && pnpm test:bdd && pnpm test:boundaries && pnpm build && pnpm check:boundaries && pnpm ui:compliance
+$ turbo lint
+• turbo 2.11.2
+$ turbo typecheck
+• turbo 2.11.2
+$ turbo test --concurrency=2
+• turbo 2.11.2
+@frade/ui-workspace#test:  ERROR  command (E:\dev\codex\frade\packages\ui-workspace) C:\Users\NVISEN\AppData\Local\pnpm\bin\pnpm.cmd run test exited (1)
+ WARNING  no output files found for task @frade/draw#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/repository-bridge#test. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @frade/runtime-node#test. Please check your `outputs` key in `turbo.json`
+ ERROR  run failed: command  exited (1)
+[ELIFECYCLE] Test failed. See above for more details.
+[ELIFECYCLE] Command failed with exit code 1.
