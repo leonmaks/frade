@@ -1,0 +1,225 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade\\apps\\desktop\\playwright.config.ts",
+    "rootDir": "E:/dev/codex/frade/apps/desktop/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade/apps/desktop/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade/apps/desktop/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ui-contract-theme-performance.spec.ts",
+      "file": "ui-contract-theme-performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 52519,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m150\u001b[39m\nReceived:    \u001b[31m170.5\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m150\u001b[39m\nReceived:    \u001b[31m170.5\u001b[39m\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme-performance.spec.ts:439:17",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme-performance.spec.ts",
+                      "column": 17,
+                      "line": 439
+                    },
+                    "snippet": "  437 |     expect(hash(await readFile(nativeFile))).toBe(hash(nativeBefore))\n  438 |     expect(hash(await readFile(f.file))).toBe(hash(frameBefore))\n> 439 |     expect(p95).toBeLessThanOrEqual(150)\n      |                 ^\n  440 |   } finally {\n  441 |     await finishDiagramFixture(f.app)\n  442 |   }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme-performance.spec.ts",
+                        "column": 17,
+                        "line": 439
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m150\u001b[39m\nReceived:    \u001b[31m170.5\u001b[39m\n\n  437 |     expect(hash(await readFile(nativeFile))).toBe(hash(nativeBefore))\n  438 |     expect(hash(await readFile(f.file))).toBe(hash(frameBefore))\n> 439 |     expect(p95).toBeLessThanOrEqual(150)\n      |                 ^\n  440 |   } finally {\n  441 |     await finishDiagramFixture(f.app)\n  442 |   }\n    at E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme-performance.spec.ts:439:17"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:41344) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T10:22:46.997Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms\\test-failed-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\apps\\desktop\\test-results\\ui-contract-theme-performa-c8cfa-ernating-requests-p95-150ms\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade\\apps\\desktop\\tests\\e2e\\ui-contract-theme-performance.spec.ts",
+                    "column": 17,
+                    "line": 439
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed32021d47f9d55679e8-370dd60687fb15548c75",
+          "file": "ui-contract-theme-performance.spec.ts",
+          "line": 217,
+          "column": 1
+        },
+        {
+          "title": "P01-diagnostic actual parked viewport and frame scheduling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11044,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:41116) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T10:23:41.248Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed32021d47f9d55679e8-4d3ce48d36d9beb51506",
+          "file": "ui-contract-theme-performance.spec.ts",
+          "line": 445,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ui-contract-vscode-dark-2026.spec.ts",
+      "file": "ui-contract-vscode-dark-2026.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reference p95: real root native frame 20 warmups and 100 durable alternating requests <=150ms",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 42524,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T10:23:52.354Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fa2992acaf49f2725537-43f6ee7a2dfd7be8c34c",
+          "file": "ui-contract-vscode-dark-2026.spec.ts",
+          "line": 489,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T10:22:45.606Z",
+    "duration": 109335.902,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

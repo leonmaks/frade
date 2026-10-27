@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: current source closure binds the exact generated inventory checkout rule
+ok 1 - current source closure binds the exact generated inventory checkout rule
+  ---
+  duration_ms: 18.9814
+  type: 'test'
+  ...
+# Subtest: generated inventory checkout preserves exact LF with core.autocrlf=true
+ok 2 - generated inventory checkout preserves exact LF with core.autocrlf=true
+  ---
+  duration_ms: 2357.8796
+  type: 'test'
+  ...
+# Subtest: generated inventory checkout preserves exact LF with core.autocrlf=false
+ok 3 - generated inventory checkout preserves exact LF with core.autocrlf=false
+  ---
+  duration_ms: 2140.501
+  type: 'test'
+  ...
+# Subtest: closed current binding accepts an actual successful complete case set and exact publication forms
+ok 4 - closed current binding accepts an actual successful complete case set and exact publication forms
+  ---
+  duration_ms: 1.0731
+  type: 'test'
+  ...
+# Subtest: closed current binding rejects historical inputs, source changes during execution and nonzero exits
+ok 5 - closed current binding rejects historical inputs, source changes during execution and nonzero exits
+  ---
+  duration_ms: 0.5828
+  type: 'test'
+  ...
+# Subtest: closed current binding rejects lost named cases even if aggregate success is retained
+ok 6 - closed current binding rejects lost named cases even if aggregate success is retained
+  ---
+  duration_ms: 0.2014
+  type: 'test'
+  ...
+# Subtest: closed current binding rejects skipped, failed and fabricated empty unit reports
+ok 7 - closed current binding rejects skipped, failed and fabricated empty unit reports
+  ---
+  duration_ms: 0.2992
+  type: 'test'
+  ...
+# Subtest: closed current binding rejects browser retries, flaky/skip results and missing executions
+ok 8 - closed current binding rejects browser retries, flaky/skip results and missing executions
+  ---
+  duration_ms: 0.7229
+  type: 'test'
+  ...
+# Subtest: closed current binding rejects unknown mixed EOL and semantic edits despite canonical resemblance
+ok 9 - closed current binding rejects unknown mixed EOL and semantic edits despite canonical resemblance
+  ---
+  duration_ms: 0.6524
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4999.5301

@@ -1,0 +1,66 @@
+✖ current source closure binds the exact generated inventory checkout rule (18.6386ms)
+✖ generated inventory checkout preserves exact LF with core.autocrlf=true (5.152ms)
+✖ generated inventory checkout preserves exact LF with core.autocrlf=false (1.0218ms)
+✔ closed current binding accepts an actual successful complete case set and exact publication forms (1.2019ms)
+✔ closed current binding rejects historical inputs, source changes during execution and nonzero exits (0.476ms)
+✔ closed current binding rejects lost named cases even if aggregate success is retained (0.1618ms)
+✔ closed current binding rejects skipped, failed and fabricated empty unit reports (0.2446ms)
+✔ closed current binding rejects browser retries, flaky/skip results and missing executions (0.3892ms)
+✔ closed current binding rejects unknown mixed EOL and semantic edits despite canonical resemblance (0.2912ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 6
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 354.963
+
+✖ failing tests:
+
+test at tests\ui-contract\drawing-pages-current.test.mjs:15:1
+✖ current source closure binds the exact generated inventory checkout rule (18.6386ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(currentInputFiles(checkoutRoot).includes(checkoutRule))
+  
+      at TestContext.<anonymous> (file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.test.mjs:16:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\ui-contract\drawing-pages-current.test.mjs:19:3
+✖ generated inventory checkout preserves exact LF with core.autocrlf=true (5.152ms)
+  Error: ENOENT: no such file or directory, open 'E:\dev\codex\frade\packages\ui-workspace\tokens\.gitattributes'
+      at async open (node:internal/fs/promises:640:25)
+      at async readFile (node:internal/fs/promises:1290:14)
+      at async TestContext.<anonymous> (file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.test.mjs:20:24)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'E:\\dev\\codex\\frade\\packages\\ui-workspace\\tokens\\.gitattributes'
+  }
+
+test at tests\ui-contract\drawing-pages-current.test.mjs:19:3
+✖ generated inventory checkout preserves exact LF with core.autocrlf=false (1.0218ms)
+  Error: ENOENT: no such file or directory, open 'E:\dev\codex\frade\packages\ui-workspace\tokens\.gitattributes'
+      at async open (node:internal/fs/promises:640:25)
+      at async readFile (node:internal/fs/promises:1290:14)
+      at async TestContext.<anonymous> (file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.test.mjs:20:24)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'E:\\dev\\codex\\frade\\packages\\ui-workspace\\tokens\\.gitattributes'
+  }

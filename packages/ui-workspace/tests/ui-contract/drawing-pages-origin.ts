@@ -93,7 +93,8 @@ export function createDrawingPagesOriginReader(options: Options) {
     safeRelative(entry.file)
     safeRelative(entry.originalFile)
     demand(
-      /^(packages\/|scripts\/ui\/|tests\/ui-contract\/)/.test(entry.file),
+      entry.file === 'pnpm-lock.yaml' ||
+        /^(packages\/|scripts\/ui\/|tests\/ui-contract\/)/.test(entry.file),
       'ADOPTION_FILE_SCOPE',
     )
     demand(entry.originalFile === owner + '/evidence/origin/source/' + entry.file, 'ORIGIN_PATH')

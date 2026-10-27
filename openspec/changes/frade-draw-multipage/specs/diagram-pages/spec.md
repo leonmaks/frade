@@ -123,7 +123,7 @@ Tabs SHALL scroll horizontally under overflow and a page-list control SHALL keep
 
 - **WHEN** a user opens the context menu on an inactive tab
 - **THEN** its actions target that tab and the named page remains reachable under overflow
-- **AND** overflow scroll chevrons, active menu glyphs, label truncation and the trailing pinned-source attribution link retain the reference geometry; the attribution identifies jgraph/drawio honestly rather than implying Frade authorship
+- **AND** overflow scroll chevrons, active menu glyphs and label truncation retain the reference geometry; the native footer omits the jgraph/drawio icon and external attribution link as explicitly requested by the user on27 October2026, while repository source/license provenance is retained
 
 ### Requirement: Existing editor theme ownership
 
@@ -178,6 +178,21 @@ Fresh current executions SHALL independently bind adopted/new product and test b
 
 - **WHEN** adopted source is verified
 - **THEN** new exact-input executions provide current evidence independently of the retained historical proof
+
+#### Scenario: Preserve current main edits and historical assertion strength
+
+- **WHEN** main contains the preserved dependency changes and different source checkout line endings
+- **THEN** individually hash-bound historical origins replay exact original bytes without changing the11 LDE assertions, all current inputs bind fresh actual executions, undeclared live/origin/report drift is rejected, and the user's tracked/untracked bytes remain unchanged
+
+#### Scenario: Native footer without external branding
+
+- **WHEN** the native editor renders its footer in normal, overflow, readonly or accessible presentation states
+- **THEN** no jgraph/drawio icon, link or branding focus stop is present and page controls, keyboard navigation, persistence and accepted accessibility behavior remain available
+
+#### Scenario: Exact generated inventory after Git checkout
+
+- **WHEN** the generated Draw.io source inventory is checked out with core.autocrlf true or false
+- **THEN** its one-file nested attribute restores exact generated LF bytes, other token files retain their existing rules, the attribute participates in current input binding, and semantic or unregistered raw drift still fails the unchanged generator/source checks
 
 ### Requirement: Exact legacy color coordinate adoption
 

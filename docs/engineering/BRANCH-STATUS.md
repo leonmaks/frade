@@ -1,28 +1,26 @@
-# Frade Draw multipage — main integration status
+# Frade Draw main repair — current status
 
-Updated2026-10-27 UTC. Owner main, E:/dev/codex/frade; common E:/dev/codex/frade/.git. Active scope frade-draw-multipage integration/build/launch/native verification, explicitly requested by the user. Original main e54cf0c1e4e70ed833398c673ea3140b6f10469e. Reviewed supplier checkpoint e823cf4496bd818d62ff5adcd3a67ca849ac3f7b (source b0e5d7c9f1a1d1b0631ef87c26d1a9c97e423ffd, closure af65306062c3a9d2e360f0968c74f809ea3dde88).
+Owner main, E:/dev/codex/frade; common E:/dev/codex/frade/.git. Updated2026-10-27 UTC. Active change frade-draw-multipage. Original repair baseline f76a590ae1c32f3db5bd6594e1ef5fc962217fc2; cumulative feature origin e54cf0c1. Exact final source711 inputs,140a19af537286131fca1ebaf0473025c609eb82a28701f4205ed1a4570cb0d6. Previous dashboard chronology preserved in evidence/main-gate-repair-20261027/branch-status-before-final-projection.md; historical failures/receipts remain immutable.
 
-Requested main merge/build/launch/native smoke COMPLETE. Combined-main engineering closure BLOCKED by actual general-check failure; no cumulative PASS/archive/next feature. No new production/control changes. Main fast-forward completed07:51:03Z. Five dirty tracked paths preserved by exact bytes/deletion after build/tests/UI;849 original untracked files present. User changes unstaged, no stash/discard/push. Backup/patch: .worktrees/requests/main-draw-pages-integration-20261027. Previous feature dashboard retained in evidence/main-integration-20261027/feature-branch-status-before-main.md; all original dated FAIL/PASS receipts untouched.
+Requested LDE repair and native branding removal IMPLEMENTED. Overall gate NOT COMPLETE. All11 unchanged LDE cases+23 origin cases PASS on actual final main;9 real Git/current regressions and unchanged exact generator PASS. Original5 dirty tracked paths/deletion and849 untracked files remain byte-identical and deliberately unstaged. No stash/discard/push/force/archive/next feature.
 
-| Phase / applicability | Actual state |
+| Phase / contract | Actual evidence |
 | --- | --- |
-| Supplier implementation | COMPLETE23/23 tasks;19 requirements22 scenarios; PRE03/04c/07/09 PASS; human accepted appearance and explicit AA exceptions |
-| Supplier verification/POST | Historical PASS08 at07:07:44Z;877 bound cases/root/strict/build, sourceSet9ed81736... and manifestfec205e7... retained. Not current main validation |
-| Main strategy/merge/preservation | PASS, bounded integration plan and exact before/after hashes |
-| Main desktop build | PASS exit0,07:56:19–07:56:53Z, includes typecheck;10 actual output hashes; exact source set stable |
-| Main desktop diagrams/parking | PASS12,07:58:36–08:00:20Z; zero unexpected/skipped/flaky. Initial restricted Windows launch failed before scenarios, retained separately |
-| Main visible native UI | PASS production frade://app/index.html; real .frade footer add/rename/switch, distinct objects, Save, close/reopen and both pages restored. Page menu observed; Escape closed it |
-| Main general check | FAIL exit1,08:00:33–08:02:30Z. Lint/typecheck completed; workspace319 PASS/11 historical LDE binding FAIL; later && phases NOT_RUN |
-| Main source adoption | NOT_RUN/BLOCKED:653 supplier vs710 main inputs; exactly two preserved devDependency files differ canonically,57 pre-existing untracked routing inputs added; all other supplier semantic inputs identical |
-| Main new review/archive | NOT_RUN; no repaired production/control candidate. Cumulative POST preconditions unmet; supplier reviews remain historical evidence |
-| Publication | Main FF complete; integration evidence/status checkpoint prepared for local commit with honest blocker; unrelated changes excluded. No push/archive |
+| PRE | PRE01 FAIL retained; corrected planning, PRE02 PASS08:58:05Z; focused EOL PRE03 PASS09:39:07Z. Exact sol/high requested; backend/effort NOT_CONFIRMED; verified confined packet/candidate unchanged |
+| Original11 LDE assertions | PASS11/11 final-native-lde-origin-report.json; test file unchanged; original historical pins retained,3 exact origins added, root lock admission bounded |
+| New origin+checkout regressions | PASS23 origin; PASS9 Node current/Git; new meaningful cases8+3, no existing assertion weakened |
+| Native footer | Branding anchor/CSS removed; actual rendered add/rename/overflow1280/480/320 PASS;239 browser cases PASS; saved live screenshot final-live-pages.jpg |
+| Final-source runtime/build | Build10 output hashes; Draw237/runtime21/workspace327/browser239/desktop12/presentation47 PASS, all source140a19... |
+| Final-source performance | FAIL2/3; root/native/frame20+100 p95172.3ms,170.5ms; bounded post-RCA/external-load-change confirmation167ms, unchanged150ms limit. Raw all retained; no further blind reruns |
+| RCA / environment | User declines pausing current workload. Exact bundles/data/runtime/window equal old PASS;8-switch geometry/CPU/IPC diagnostics retained. IPC intent<0.6ms, persist18–29ms; no proven incorrect product decision. No priority/settings/other-process mutation or paint/durability waiver |
+| General pnpm check | Last actual root09:22:04–09:24:24Z FAIL at raw generated inventory CRLF after all11 LDE PASS. Permanent one-file LF control now generator/Git PASS. Final general rerun BLOCKED by required performance/current publication prerequisites; no fresh root PASS |
+| Current binding publication | Prior710-input manifest4a398fd.../886 successful cases preserved as prior evidence;711-input final manifest NOT PUBLISHED because required current performance fails. No stale proof relabelled |
+| OpenSpec / POST | Strict/status/apply captured final-blocked; M4/E2/M5 remain incomplete. Implementation verification includes actual failure. Cumulative POST BLOCKED/NOT_RUN under required-check-before-POST rule |
+| Visible application | Current built Frade reopened with isolated live-profile; real .frade both saved tabs restored, manual switch verified, no icon/link; window3805806 left open. Old blank dev session untouched |
+| Architecture applicability | No routing/domain/vendor algorithm edits. Routing-owner gates not applicable to this independent UI/test-control repair; general/current/presentation checks remain applicable |
 
-Blockers: historical LDE pins reject preserved pnpm-lock.yaml and pre-existing mixed-EOL ellipse.ts (canonical bytes identical to supplier). Another negative-publication test assumes DiagramView.tsx contains a CRLF; its LF-checkout mutation is unchanged. Read-only diagnostics retained; no assertion weakening, broad exemption, baseline movement, repin, source rewrite or routing process repair. Main source set3f40dfaca287e6cbafffeeb04b75bef594dab6a6e98dceb18a535558252649ca stayed stable through all three command batches.
+Shared policyv1.1 a6829c6d... /6c6cf78f... adopted. Review plan exact PRE/POST gpt-6-sol/high. Main checkpoint to preserve completed authorised fixes with honest incomplete gate status; local only, publication SHA recorded after commit. Right-panel request will be reported queued vs visible exactly.
 
-UI evidence/report: openspec/changes/frade-draw-multipage/evidence/main-integration-20261027/report.md, live-frade-pages.jpg/accessibility and automated native/read-only PNGs. Actual process16664 confirmed from ordinary user context; app left open on Архитектура with both tabs and clean saved state. Separate live-profile preserves old blank dev-server session; no force kill. Manual injected Ctrl+S had no observed save; persistence verified using Save button; no manual shortcut PASS or inferred product root cause. Full theme/density/AT matrix NOT_RUN again here; accepted supplier evidence remains separately bound.
+Next: resolve actual presentation-latency performance failure in a separately coherent reviewed repair retaining cover/paint/revision/durability safeguards or obtain an actual suitable benchmark environment, then rerun unchanged performance once justified, publish complete current proof, run pnpm check, implementation verify and automatic cumulative POST. No performance budget/assertion/geometry/baseline weakening authorised.
 
-Windows/Node24.18.0/Electron44.4.5 production build in main. Shared policyv1.1 releasea6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5 unchanged. Approved review pair PRE/POST gpt-6-sol/high; historical actual backend/effort NOT_CONFIRMED. Right-panel open request QUEUED, visibility unconfirmed.
-
-Next: deliver the running verified panel and evidence. Full combined-main closure needs bounded consumer control-compatibility revalidation preserving dirty/untracked routing ownership and immutable origins. No archive/next feature/green combined gate claimed. READY_FOR_VERIFY: NO for combined-main engineering closure.
-
-Checkpoint publication: integration evidence/report and current blocker committed locally as 707fbd3031ae8962ddd4dbf165dd77745b32bbb8 on main. Git status after commit contains only the original five unrelated tracked changes; they were excluded from the commit. This final status update records that publication; no push/archive/cumulative gate progression.
+KNOWN BLOCKERS: required performance p95167>150ms; final current publication/general/POST incomplete. READY_FOR_VERIFY: NO.

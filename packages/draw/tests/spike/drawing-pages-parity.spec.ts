@@ -501,3 +501,44 @@ test('page chrome remains pinned Light under dark system preference without sema
     before,
   )
 })
+
+test('native footer omits external branding while page actions and overflow remain usable', async ({
+  page,
+}, info) => {
+  await page.goto('/pages-visual.html')
+  const footer = page.locator('.frade-page-strip')
+  await expect(footer.getByRole('link')).toHaveCount(0)
+  await expect(footer.locator('[title="jgraph/drawio"],.frade-page-attribution')).toHaveCount(0)
+  await footer.getByRole('button', { name: 'Добавить страницу', exact: true }).click()
+  await footer.getByRole('tab', { name: 'Страница-2', exact: true }).dblclick()
+  await page.getByRole('textbox', { name: 'Имя страницы' }).fill('Без логотипа')
+  await page.getByRole('button', { name: 'Переименовать', exact: true }).click()
+  await expect(footer.getByRole('tab', { name: 'Без логотипа', exact: true })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  )
+  for (let i = 0; i < 10; i++)
+    await footer.getByRole('button', { name: 'Добавить страницу', exact: true }).click()
+  for (const [width, target] of [
+    [1280, 'Без логотипа'],
+    [480, 'Страница-1'],
+    [320, 'Без логотипа'],
+  ] as const) {
+    await page.setViewportSize({ width, height: 720 })
+    await expect(footer.getByRole('link')).toHaveCount(0)
+    await footer.getByRole('button', { name: 'Страницы', exact: true }).click()
+    // The active page opens its reference submenu; choose an inactive page to navigate.
+    await page.getByRole('menuitem', { name: target, exact: true }).click()
+    await expect(page.getByRole('menu')).toHaveCount(0)
+    await expect(footer.getByRole('tab', { name: target, exact: true })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    )
+    await expect(
+      footer.getByRole('button', { name: 'Добавить страницу', exact: true }),
+    ).toBeVisible()
+    const bounds = await footer.boundingBox()
+    expect(bounds!.width).toBeLessThanOrEqual(width)
+  }
+  await page.screenshot({ path: info.outputPath('native-footer-no-branding.png') })
+})

@@ -1,0 +1,88 @@
+# Page snapshot
+
+```yaml
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - strong [ref=e5]: Frade Draw
+    - button "New" [ref=e6] [cursor=pointer]
+    - button "Save" [ref=e7] [cursor=pointer]
+    - button "Save As" [ref=e8] [cursor=pointer]
+    - button "Open" [ref=e9] [cursor=pointer]
+    - button "Delete" [disabled] [ref=e10]
+    - button "Undo" [ref=e11] [cursor=pointer]
+    - button "Redo" [ref=e12] [cursor=pointer]
+    - button "Zoom +" [ref=e13] [cursor=pointer]
+    - button "Zoom −" [ref=e14] [cursor=pointer]
+    - button "Fit" [ref=e15] [cursor=pointer]
+    - button "Grid" [ref=e16] [cursor=pointer]
+    - button "SVG" [ref=e17] [cursor=pointer]
+    - button "PNG" [ref=e18] [cursor=pointer]
+  - complementary [ref=e19]:
+    - button "rect" [ref=e20] [cursor=pointer]
+    - button "rounded-rect" [ref=e21] [cursor=pointer]
+    - button "ellipse" [ref=e22] [cursor=pointer]
+    - button "diamond" [ref=e23] [cursor=pointer]
+    - button "text" [ref=e24] [cursor=pointer]
+  - tabpanel "Без логотипа" [ref=e25]:
+    - img [ref=e28]
+  - generic [ref=e29]:
+    - generic [ref=e30]:
+      - button "Добавить страницу" [ref=e31]
+      - button "Страницы" [expanded] [ref=e33]
+      - tablist "Страницы" [ref=e35]:
+        - generic "Страница-1 (1fd5adc5-0033-4dc0-b811-7a906d027e58/page-1) [1]" [ref=e36]:
+          - tab "Страница-1" [ref=e37]
+        - generic "Без логотипа (4a59ce2a-630d-49e8-afe4-e749a8b321ec) [2]" [ref=e38]:
+          - tab "Без логотипа" [selected] [ref=e39]
+          - button "Без логотипа — Параметры" [ref=e40] [cursor=pointer]
+        - generic "Страница-3 (c27120c5-9e8c-46fe-8615-fee611be3e16) [3]" [ref=e41]:
+          - tab "Страница-3" [ref=e42]
+        - generic "Страница-4 (17311375-65f8-4c54-901a-a29f9bcc9b76) [4]" [ref=e43]:
+          - tab "Страница-4" [ref=e44]
+        - generic "Страница-5 (a2139370-9390-442b-9437-0135bfdb1de1) [5]" [ref=e45]:
+          - tab "Страница-5" [ref=e46]
+        - generic "Страница-6 (6a6252fc-dbc6-4726-9aee-699bd778d544) [6]" [ref=e47]:
+          - tab "Страница-6" [ref=e48]
+        - generic "Страница-7 (7e5b0a1a-8f27-4270-bbd8-f1293b9d89e1) [7]" [ref=e49]:
+          - tab "Страница-7" [ref=e50]
+        - generic "Страница-8 (2b93c52b-8ad6-4aa7-817f-1940293c08a0) [8]" [ref=e51]:
+          - tab "Страница-8" [ref=e52]
+        - generic "Страница-9 (4f4aa7fd-95b5-4c4e-b10f-2f1420be51ac) [9]" [ref=e53]:
+          - tab "Страница-9" [ref=e54]
+        - generic "Страница-10 (9a11148f-382a-4eb3-939a-ac9f8a0ee1f0) [10]" [ref=e55]:
+          - tab "Страница-10" [ref=e56]
+        - generic "Страница-11 (9c64ce59-1049-46e5-b2b1-f0f4191b8f44) [11]" [ref=e57]:
+          - tab "Страница-11" [ref=e58]
+        - generic "Страница-12 (7239b1cc-fc38-4d92-9796-35e321a3ae03) [12]" [ref=e59]:
+          - tab "Страница-12" [ref=e60]
+      - button "Предыдущая страница" [ref=e61]
+      - button "Следующая страница" [ref=e63]
+    - menu [ref=e66]:
+      - menuitem "Добавить страницу" [ref=e67] [cursor=pointer]
+      - separator [ref=e68]:
+        - separator [ref=e69]
+      - menuitem "Страница-1" [ref=e70] [cursor=pointer]
+      - menuitem "Без логотипа" [expanded] [ref=e71] [cursor=pointer]: Без логотипа
+      - menuitem "Страница-3" [ref=e74] [cursor=pointer]
+      - menuitem "Страница-4" [ref=e75] [cursor=pointer]
+      - menuitem "Страница-5" [ref=e76] [cursor=pointer]
+      - menuitem "Страница-6" [ref=e77] [cursor=pointer]
+      - menuitem "Страница-7" [ref=e78] [cursor=pointer]
+      - menuitem "Страница-8" [ref=e79] [cursor=pointer]
+      - menuitem "Страница-9" [ref=e80] [cursor=pointer]
+      - menuitem "Страница-10" [ref=e81] [cursor=pointer]
+      - menuitem "Страница-11" [ref=e82] [cursor=pointer]
+      - menuitem "Страница-12" [ref=e83] [cursor=pointer]
+      - separator [ref=e84]:
+        - separator [ref=e85]
+      - menuitem "Сортировать страницы" [ref=e86] [cursor=pointer]
+      - menuitem "Удалить всё" [ref=e87] [cursor=pointer]
+    - menu [ref=e89]:
+      - menuitem "Переименовать Страница..." [active] [ref=e90] [cursor=pointer]
+      - menuitem "Удалить Страница" [ref=e91] [cursor=pointer]
+      - menuitem "Переместить" [ref=e92] [cursor=pointer]: Переместить
+      - separator [ref=e94]:
+        - separator [ref=e95]
+      - menuitem "Дублировать Страница" [ref=e96] [cursor=pointer]
+      - menuitem "Открыть в новом окне" [ref=e97] [cursor=pointer]
+```

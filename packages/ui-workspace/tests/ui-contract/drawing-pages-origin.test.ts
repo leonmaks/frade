@@ -209,3 +209,101 @@ it('does not accept semantic edits disguised as an explicitly named checkout for
     ),
   ).toThrow('ADOPTED_PUBLICATION_EQUIVALENCE')
 })
+
+function lockFixture() {
+  const f = fixture(),
+    file = 'pnpm-lock.yaml',
+    originalFile = prefix + '/evidence/origin/source/' + file,
+    live = Buffer.from('lockfileVersion: 9\nimporters:\n  packages/draw: {}\n'),
+    manifest = {
+      ...f.manifest,
+      entries: [{ file, originalFile, originalSha256: sha(f.original), adoptedSha256: sha(live) }],
+    },
+    bytes = Buffer.from(JSON.stringify(manifest))
+  writeFileSync(join(f.root, originalFile), f.original)
+  return {
+    ...f,
+    file,
+    originalFile,
+    live,
+    manifest,
+    bytes,
+    options: { root: f.root, manifest: bytes, expectedSha256: sha(bytes) },
+  }
+}
+it('replays the exact explicitly registered root lockfile and rejects a one-byte live edit', () => {
+  const f = lockFixture(),
+    read = createDrawingPagesOriginReader(f.options)
+  expect(read(f.file, f.live)).toEqual(f.original)
+  expect(() => read(f.file, Buffer.concat([f.live, Buffer.from(' ')]))).toThrow(
+    'ADOPTED_SOURCE_HASH',
+  )
+  expect(read(f.file + '.undeclared', f.live)).toEqual(f.live)
+})
+it('rejects changed root-lock origins and manifest bytes before historical replay', () => {
+  const f = lockFixture(),
+    read = createDrawingPagesOriginReader(f.options)
+  writeFileSync(join(f.root, f.originalFile), Buffer.concat([f.original, Buffer.from('mutation')]))
+  expect(() => read(f.file, f.live)).toThrow('ORIGIN_SOURCE_HASH')
+  expect(() =>
+    createDrawingPagesOriginReader({
+      ...f.options,
+      manifest: Buffer.concat([f.bytes, Buffer.from(' ')]),
+    }),
+  ).toThrow('MANIFEST_HASH')
+})
+it.each([
+  'package.json',
+  'pnpm-workspace.yaml',
+  'pnpm-lock.yaml.backup',
+  'pnpm-lock.yaml/child',
+  'docs/example.json',
+])('does not broaden root-file adoption to %s', (file) => {
+  const f = lockFixture(),
+    bytes = Buffer.from(
+      JSON.stringify({
+        ...f.manifest,
+        entries: [
+          {
+            ...f.manifest.entries[0],
+            file,
+            originalFile: prefix + '/evidence/origin/source/' + file,
+          },
+        ],
+      }),
+    )
+  expect(() =>
+    createDrawingPagesOriginReader({ ...f.options, manifest: bytes, expectedSha256: sha(bytes) }),
+  ).toThrow('ADOPTION_FILE_SCOPE')
+})
+it('admits an individually pinned mixed checkout without accepting any other mixed form', () => {
+  const f = fixture(),
+    canonical = Buffer.from('one\ntwo\nthree\n'),
+    checkout = Buffer.from('one\r\ntwo\r\nthree\r\n'),
+    mixed = Buffer.from('one\r\ntwo\nthree\n'),
+    otherMixed = Buffer.from('one\ntwo\r\nthree\n'),
+    bytes = Buffer.from(
+      JSON.stringify({
+        ...f.manifest,
+        entries: [
+          {
+            ...f.manifest.entries[0],
+            adoptedSha256: sha(mixed),
+            canonicalSha256: sha(canonical),
+            checkoutSha256: sha(checkout),
+          },
+        ],
+      }),
+    ),
+    read = createDrawingPagesOriginReader({
+      ...f.options,
+      manifest: bytes,
+      expectedSha256: sha(bytes),
+    })
+  for (const allowed of [canonical, checkout, mixed])
+    expect(read(f.file, allowed)).toEqual(f.original)
+  expect(() => read(f.file, otherMixed)).toThrow('ADOPTED_SOURCE_HASH')
+  expect(() => read(f.file, Buffer.concat([canonical, Buffer.from('mutation')]))).toThrow(
+    'ADOPTED_SOURCE_HASH',
+  )
+})

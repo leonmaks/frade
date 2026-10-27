@@ -1,0 +1,59 @@
+✔ current source closure binds the exact generated inventory checkout rule (58.1039ms)
+✖ generated inventory checkout preserves exact LF with core.autocrlf=true (4528.1158ms)
+✖ generated inventory checkout preserves exact LF with core.autocrlf=false (4204.9786ms)
+✔ closed current binding accepts an actual successful complete case set and exact publication forms (1.2714ms)
+✔ closed current binding rejects historical inputs, source changes during execution and nonzero exits (0.8139ms)
+✔ closed current binding rejects lost named cases even if aggregate success is retained (0.2396ms)
+✔ closed current binding rejects skipped, failed and fabricated empty unit reports (0.3274ms)
+✔ closed current binding rejects browser retries, flaky/skip results and missing executions (0.5125ms)
+✔ closed current binding rejects unknown mixed EOL and semantic edits despite canonical resemblance (0.3521ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 7
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9493.6306
+
+✖ failing tests:
+
+test at tests\ui-contract\drawing-pages-current.test.mjs:24:3
+✖ generated inventory checkout preserves exact LF with core.autocrlf=true (4528.1158ms)
+  AssertionError [ERR_ASSERTION]: error: could not write config file C:/Users/NVISEN/AppData/Local/Packages/sandbox.{d408c194-e57e-4fc0-8ef9-f5ce563100ae}/AC/Temp/frade-draw-pages-checkout-1bICD9/.git/config: Permission denied
+  fatal: could not set 'core.repositoryformatversion' to '0'
+  
+  
+  128 !== 0
+  
+      at git (file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.test.mjs:57:16)
+      at TestContext.<anonymous> (file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.test.mjs:64:9)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 128,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\ui-contract\drawing-pages-current.test.mjs:24:3
+✖ generated inventory checkout preserves exact LF with core.autocrlf=false (4204.9786ms)
+  AssertionError [ERR_ASSERTION]: error: could not write config file C:/Users/NVISEN/AppData/Local/Packages/sandbox.{d408c194-e57e-4fc0-8ef9-f5ce563100ae}/AC/Temp/frade-draw-pages-checkout-yTllPE/.git/config: Permission denied
+  fatal: could not set 'core.repositoryformatversion' to '0'
+  
+  
+  128 !== 0
+  
+      at git (file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.test.mjs:57:16)
+      at TestContext.<anonymous> (file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.test.mjs:64:9)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 128,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

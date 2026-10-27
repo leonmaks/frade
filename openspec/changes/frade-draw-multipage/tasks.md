@@ -48,3 +48,16 @@
 
 - [x] D1 Validate the explicit facade-only boundary plan and receive focused independent PRE PASS; retain the static-boundary and failed root-UI-import runtime evidence.
 - [x] D2 Keep positive/exact-subpath/private/deeper/escape/dependency negatives, authorize only the existing pure source facade for ui-workspace, restore pure comparator imports and run full required current checks/bindings.
+
+## Main gate repair and requested footer branding removal
+
+- [x] M1 Preserve exact user dirty/untracked bytes, reconstruct the3 additional historical raw pins, validate coherent repair scope/spec and receive fresh independent PRE PASS.
+- [x] M2 Add meaningful RED/GREEN exact-lock/root-scope/publication-form regressions; extend only bounded origin-reader root-lock admission; keep all11 existing LDE assertions and14 original origins unchanged.
+- [x] M3 Add rendered absence/working-page-controls RED, remove the native attribution anchor/CSS and verify unchanged page behavior/geometry under the explicitly requested branding exception.
+- [ ] M4 Execute fresh complete current runtime/build records, publish source-bound17-origin manifest with preserved parent and independently reviewed bootstrap, pass all11 LDE cases/full workspace and actual general gate without exclusions.
+- [ ] M5 Complete OpenSpec verification/UI compliance and fresh independent cumulative POST PASS, verify user-byte preservation and commit only authorized source/evidence/status checkpoint; no next feature or unapproved push/archive.
+
+## Generated inventory checkout follow-up
+
+- [x] E1 Preserve the actual root EOL failure, validate exact one-file checkout plan and receive focused independent PRE PASS before control edits.
+- [ ] E2 Add real-Git autocrlf true/false RED/GREEN without changing existing assertions, bind the narrow attribute, restore only approved generated LF bytes, refresh the complete actual input/execution set and pass the unchanged general gate before cumulative POST.

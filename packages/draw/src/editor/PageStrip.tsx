@@ -472,16 +472,6 @@ export function PageStrip({
             )}
           </>
         )}
-        <a
-          className="frade-page-attribution"
-          href="https://github.com/jgraph/drawio"
-          target="_blank"
-          rel="noreferrer"
-          title="jgraph/drawio"
-          aria-label="jgraph/drawio"
-        >
-          <span aria-hidden="true" />
-        </a>
       </div>
       {menus.map((info, index) => {
         const content = (

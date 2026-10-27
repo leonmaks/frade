@@ -87,6 +87,7 @@ export function currentInputFiles(root) {
     'tsconfig.base.json',
     '.gitattributes',
     'packages/draw/src/editor/generated/.gitattributes',
+    'packages/ui-workspace/tokens/.gitattributes',
     'apps/desktop/vendor/drawio-manifest.json',
     'docs/ui/decisions/legacy-colors.json',
     evidenceOwner + 'presentation-execution-plan.json',

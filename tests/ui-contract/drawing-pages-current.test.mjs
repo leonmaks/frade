@@ -1,7 +1,92 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { reportCases, validateExecution, verifyInputBytes } from './drawing-pages-current.mjs'
+import {
+  reportCases,
+  validateExecution,
+  verifyInputBytes,
+  currentInputFiles,
+} from './drawing-pages-current.mjs'
 import { publicationByteForms } from './drawing-pages-adoption.mjs'
+import { mkdtemp, mkdir, readFile, writeFile, realpath, stat, unlink, rm } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { spawnSync } from 'node:child_process'
+import { generateDrawioEditor } from '../../scripts/ui/drawio-editor-style.mjs'
+
+const checkoutRule = 'packages/ui-workspace/tokens/.gitattributes'
+const generatedInventory = 'packages/ui-workspace/tokens/drawio-editor-source.json'
+const checkoutRoot = fileURLToPath(new URL('../../', import.meta.url))
+test('current source closure binds the exact generated inventory checkout rule', () => {
+  assert.ok(currentInputFiles(checkoutRoot).includes(checkoutRule))
+})
+for (const autocrlf of ['true', 'false']) {
+  test(
+    'generated inventory checkout preserves exact LF with core.autocrlf=' + autocrlf,
+    async () => {
+      const attributes = await readFile(join(checkoutRoot, checkoutRule))
+      assert.equal(
+        attributes.toString().replaceAll('\r\n', '\n'),
+        'drawio-editor-source.json text eol=lf\n',
+      )
+      const { output } = await generateDrawioEditor()
+      const expected = Buffer.from(output[generatedInventory])
+      const parent = await realpath(tmpdir())
+      const directory = await realpath(await mkdtemp(join(parent, 'frade-draw-pages-checkout-')))
+      const identity = await stat(directory, { bigint: true })
+      const environment = Object.fromEntries(
+        Object.entries(process.env).filter(([key]) => !key.startsWith('GIT_')),
+      )
+      environment.GIT_CONFIG_NOSYSTEM = '1'
+      environment.GIT_CONFIG_GLOBAL = process.platform === 'win32' ? 'NUL' : '/dev/null'
+      const git = (args) => {
+        const result = spawnSync(
+          'git',
+          [
+            '-C',
+            directory,
+            '-c',
+            'core.fsmonitor=false',
+            '-c',
+            'core.attributesfile=' + environment.GIT_CONFIG_GLOBAL,
+            ...args,
+          ],
+          { env: environment, encoding: 'utf8' },
+        )
+        if (result.error) throw result.error
+        assert.equal(result.status, 0, result.stderr)
+        return result.stdout
+      }
+      try {
+        await mkdir(dirname(join(directory, checkoutRule)), { recursive: true })
+        await writeFile(join(directory, checkoutRule), attributes)
+        await writeFile(join(directory, generatedInventory), expected)
+        git(['init', '--quiet'])
+        git(['config', 'core.autocrlf', autocrlf])
+        git(['add', '--', checkoutRule, generatedInventory])
+        await unlink(join(directory, generatedInventory))
+        git(['checkout-index', '--all', '--force'])
+        assert.deepEqual(await readFile(join(directory, generatedInventory)), expected)
+        assert.match(git(['check-attr', 'eol', '--', generatedInventory]), /: eol: lf\r?\n$/)
+        assert.match(
+          git(['check-attr', 'eol', '--', 'packages/ui-workspace/tokens/unrelated.json']),
+          /: eol: unspecified\r?\n$/,
+        )
+      } finally {
+        const current = await stat(directory, { bigint: true })
+        if (
+          (await realpath(directory)) !== directory ||
+          dirname(directory) !== parent ||
+          !directory.includes('frade-draw-pages-checkout-') ||
+          current.dev !== identity.dev ||
+          current.ino !== identity.ino
+        )
+          throw Error('UNVERIFIED_CHECKOUT_FIXTURE_CLEANUP')
+        await rm(directory, { recursive: true, force: true })
+      }
+    },
+  )
+}
 const report = () => ({
   success: true,
   numTotalTests: 1,
