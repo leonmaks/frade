@@ -1,14 +1,14 @@
-# OpenSpec implementation verification — candidate ready for POST
+# OpenSpec implementation verification — complete
 
 Using openspec-verify-change, frade-draw-multipage, schema spec-driven. Owner main, baseline e4980846bd5e0b15c0e974ff7c9661929ebf405b; original feature e54cf0c1. Current source713/hash87658e65ffb3b05993ab1a09df9319eb2d3cb8e2b06693dc06f03df84c2a0dfa; current19-origin manifestc9c06d7b1a13da36a282d24bf2ed465dfdab91f0711970ec8dc3052673c4b309. PRE04 PASS12:30:24Z raw receipt/events/candidate/packet/exits unchanged. Approved pair sol/high, actual backend/effort NOT_CONFIRMED per sharedv1.1; reviewer cannot add an unattested-backend claim.
 
 | Dimension | Actual verdict |
 | --- | --- |
-| Completeness |32/34 tasks complete;20 ADDED requirements/26 scenarios mapped. M5/P4 are two CRITICAL remaining process prerequisites: receive current cumulative POST PASS and publish checkpoint. No missing implementation. No archive before these are done |
+| Completeness |34/34 tasks complete;20 ADDED requirements/26 scenarios mapped. Current cumulative POST PASS and authorised implementation checkpoint published; no missing implementation or remaining process blocker |
 | Correctness |20/20 requirement implementations and26/26 scenario coverage mapped; fresh897 selected runtime cases+root aggregate PASS; new idempotence/tamper/priority/CSSOM/paint cases actual RED/GREEN; unchanged11 LDE cases pass twice in general/unit-BDD |
 | Coherence | Approved existing root/adapter boundaries, exactly2 production paths; no scheduling/host protocol/domain/routing/vendor/palette change. No snapshot-only shortcut: live priority/metadata/CSSOM/media/disabled/cascade integrity checked |
 
-No REMOVED/RENAMED requirements. All schema-defined spec/design/implementation-pattern checks ran; no missing or unreadable artifacts and no product correctness or architecture blockers. Task completion remains explicitly partial only for the imminent POST/checkpoint and prevents archive. Manual AT/cross-OS are recorded UI certification limits, not claimed PASS. No baseline automatically approved.
+No REMOVED/RENAMED requirements. All schema-defined spec/design/implementation-pattern checks ran; no missing or unreadable artifacts and no product correctness or architecture blockers. Task completion is complete after the actual POST and implementation checkpoint. Manual AT/cross-OS are recorded UI certification limits, not claimed PASS. No baseline automatically approved.
 
 Original implementation and scenario mapping (unchanged paths revalidated by fresh records):
 
@@ -46,10 +46,14 @@ Actual evidence:
 - All5 original dirty paths/deletion+849 untracked files remain raw exact and unstaged. Narrow source audit4 changed inputs+2 new tests. RootParticipant same-file LF publication normalisation accounted for by canonical diff; no undeclared file drift or related test weakening.
 - Built application relaunched with existing clean profile, actual2-page .frade restored, first/second-page content and clean saved state verified; live-pages.jpg/accessibility/launch. Footer has no jgraph/drawio link/icon. Old blank dev window untouched. No user workloads/settings/priorities stopped/changed.
 
-Issues: CRITICAL process M5 and P4 only — finish the mandatory current POST/checkpoint; no product correctness finding. No warning/suggestion changes requested. READY_FOR_POST:YES. READY_FOR_ARCHIVE:NO, archive not requested. Complete final CLI captures and POST before changing these statuses.
+Issues: no remaining critical issues, warnings or suggestions in completed scoped checks. Original pre-POST task prerequisites were completed after actual PASS and implementation publication. Required local gates complete; archive not performed/requested. READY_FOR_VERIFY:YES.
 
 Final pre-POST CLI captures: verification-pre-post-native/record.json PASS, strict/status/apply all exit0, plan/spec/tasks unchanged through calls. The preceding verification-pre-post is preserved ENVIRONMENT FAIL: sandbox PowerShell AuthorizationManager rejected the OpenSpec shim before reading the project. Same commands/inputs ordinary Windows PASS, no source/contract edit. Current32/34 process state confirmed.
 
 POST01 BLOCKED (strict transport2 error events) retained immutably; its untrusted final text exposed a real missing PRE03 receipt in the packet, independently verified and corrected with exact mandatory PRE02/03/04 receipt/result/provenance/plan/hash prerequisites and omission negatives. No product/source/check result changed. Fresh POST02 is required; POST01 never accepted as PASS. See post-01-rca.md and blocked-post-preservation.json.
 
-Fresh cumulative POST02 actual PASS at13:24:14UTC, raw post-02-20261027T132414Z receipt/report/events/exits/provenance saved and verified:0 transport errors, terminal turn.completed, candidate+packet unchanged. Product correctness/coherence/required gates complete; M5/P4 remain pending only actual local checkpoint, then34/34 bookkeeping. No source change since897/root PASS.
+Historical pre-checkpoint transition: fresh cumulative POST02 actual PASS at13:24:14UTC, raw post-02-20261027T132414Z receipt/report/events/exits/provenance saved and verified:0 transport errors, terminal turn.completed, candidate+packet unchanged. Product correctness/coherence/required gates complete; M5/P4 remain pending only actual local checkpoint, then34/34 bookkeeping. No source change since897/root PASS.
+
+Final publication: implementation/evidence checkpoint 2b828059a6ec1aa2848e1ef6334279836068341f. M5/P4 marked done only after this actual checkpoint;34/34. Reviewed pre-POST assessment preserved byte-exact separately. Final strict/status/apply record follows; production713-source/hash87658e65... and manifestc9c06d... unchanged after review/publication.
+
+Final OpenSpec verification-final/record.json PASS: strict/status/apply all exit0, inputs unchanged during commands,34/34 tasks/all_done. All required local engineering gates complete, no remaining correctness/architecture/process blocker. READY_FOR_VERIFY:YES.
