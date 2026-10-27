@@ -13,6 +13,6 @@ Completed change: [2026-10-27-frade-draw-multipage](../../openspec/changes/archi
 | Archive consumer regression | PASS349 workspace incl11 LDE+58 root UI contracts, no changed assertion/skip |
 | Existing implementation gates | Prior actual general pnpm check/POST02 PASS remain valid for identical bytes; p95120.8ms<=150 preserved. No new runtime PASS or review claimed |
 | User work | PASS fresh5 dirty tracked paths/deletion+849 untracked files byte/path exact, none staged |
-| Publication | Local archive/spec/status checkpoint pending actual commit; no push/new feature |
+| Publication | Local archive/spec/status checkpoint 15729d7832361f8af926ce945f001aa308ce8a8d committed; post-commit preservation/proof PASS; no push/new feature |
 
 [Archive checkpoint report](evidence/frade-draw-multipage-archive-20261027/report.md). Previous detailed status preserved in that evidence directory. Manual AT/cross-OS/backend attestation limits unchanged from implementation reports; no required local blocker. READY_FOR_VERIFY:YES. No subsequent numbered change started. Right-panel request queued/visibility unconfirmed.

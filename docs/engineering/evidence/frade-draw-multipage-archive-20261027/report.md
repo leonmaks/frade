@@ -10,3 +10,5 @@ KNOWN BLOCKERS: none for this archive checkpoint. Manual AT/cross-OS/backend att
 READY_FOR_VERIFY: YES.
 
 User protection: fresh baseline5 dirty tracked paths/deletion+849 untracked files captured and checked, bytes/path/deletion state preserved; none staged. Current original user edits remain live. Local commit publication follows only these authorised archive/spec/status paths; final commit SHA recorded after actual publication.
+
+Actual local archive/spec/status commit: 15729d7832361f8af926ce945f001aa308ce8a8d. Post-commit user5+849/raw1977 history/current713-input897-case proof PASS; publication.json records actual SHA. No push. Final status-only bookkeeping checkpoint follows.
