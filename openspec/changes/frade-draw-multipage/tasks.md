@@ -30,7 +30,7 @@
 
 - [x] 5.1 Compare actual native strip with unmodified local bundled 31.5.2 at matching platform/font/viewport/labels/states; retain DOM metrics/screenshots, enumerate exceptions, verify light/dark/HC outer themes, both densities, coarse/forced-colors/text zoom/resize and report actual UI compliance statuses.
 - [x] 5.2 Run required affected package unit/BDD/typecheck/lint/build, relevant browser/desktop regressions, consumer/boundary and root UI closure checks on exact candidate; retain commands/results and resolve applicable failures before progression.
-- [ ] 5.3 Run OpenSpec implementation verification, inspect git status/diff, dispatch independent POST with exact approved model/effort and receive PASS; record blockers/visual acceptance honestly, update tracked dashboard and commit authorized checkpoint.
+- [x] 5.3 Run OpenSpec implementation verification, inspect git status/diff, dispatch independent POST with exact approved model/effort and receive PASS; record blockers/visual acceptance honestly, update tracked dashboard and commit authorized checkpoint.
 
 ## Workflow follow-up
 
@@ -42,7 +42,7 @@
 - [x] C1 Validate the bounded origin/legacy-coordinate adoption plan and receive independent PRE PASS before control code/inventory edits.
 - [x] C2 Add failing fail-closed origin/current-source/report integrity tests, implement exact historical replay without pin/assertion changes, and bind fresh current executions.
 - [x] C3 Prove and migrate only existing legacy-color spans, retain old bytes/mapping and run unchanged negative controls.
-- [ ] C4 Run complete affected workspace/root compliance and general regressions on the adopted candidate; retain historical FAILs, perform OpenSpec verify and independent POST before archive.
+- [x] C4 Run complete affected workspace/root compliance and general regressions on the adopted candidate; retain historical FAILs, perform OpenSpec verify and independent POST before archive.
 
 ## Pure document facade boundary correction
 
