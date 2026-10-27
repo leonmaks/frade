@@ -14,7 +14,7 @@ Implemented: v1-compatible/v2 all-page files; stable-X6 chronological graph/page
 | Current runtime/build | PASS877 cases:237 Draw,21 Runtime,319 workspace,238 browser,12 desktop diagrams,47 presentation,3 performance;9 build outputs |
 | Root/general/source/control | PASS actual pnpm check exit0,06:27:59.389–06:31:16.408Z; old assertions/pins and meaningful negative/checkout controls retained |
 | UI | PASS applicable automated/default visual checks; human accepted explicit AA deltas; default native images byte identical. HC9 one-step gray border raster pixels recorded, no full-raster/AT/cross-OS claim |
-| OpenSpec | Implementation mapping19req22scenarios complete; strict03 actual openspec.cmd1.14.3 exit0/all4 hashes unchanged;21/23 process boxes pending receipt/closure |
+| OpenSpec | Implementation mapping19req22scenarios complete; strict03 and closure04 actual PASS; all23/23 task boxes complete, no pending process step |
 | Independent final POST | PASS08 actual2026-10-27T07:07:44.010Z;918 required hashes, candidate/packet unchanged, raw events/receipt retained |
 | Commit/publication | Verified source committedb0e5d7c9; closure evidence committed af65306062c3a9d2e360f0968c74f809ea3dde88; no push/merge/archive |
 
