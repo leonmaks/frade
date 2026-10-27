@@ -12,6 +12,8 @@
 - [x] 2.3 Resolve reproduced vendor checkout blocker after fresh PRE revalidation: exact nested -text rule and additive input binding, five stored Git blob IDs restored to existing upstream-pinned raw bytes, other2846 blobs fixed; real Git LF/CRLF RED/GREEN, root eight rules, manifest pins and main raw bytes unchanged.
 - [x] 2.4 Fresh PRE gpt-6-sol/high for superseding Default focus repair; deterministic unit/native RED then narrow embedding adapter GREEN. Withdraw private/schema2 proposal; keep original native actions/assertions and150ms.
 
+- [x] 2.5 Fresh PRE and RED/GREEN for exact bridge-origin supplement; all236 historical inputs and11 frozen LDE callbacks preflight before new expensive profiles.
+
 ## 3. Exact snapshot evidence and verification
 
 - [x] 3.1 Create clean isolated snapshot from committed base plus explicit owned transfers; frozen dependency install and transferred path/hash audit prove no WIP source publication.

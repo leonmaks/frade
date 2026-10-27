@@ -100,6 +100,53 @@ describe('closed drawing-page adoption preserves historical proof and rejects un
     ])
       expect(() => replay(file, Buffer.from(text))).toThrow('ADOPTED_SOURCE_HASH')
     expect(replay(file + '.other', Buffer.from(approved))).toEqual(Buffer.from(approved))
+    const bridge = JSON.parse(
+      readFileSync(new URL('./drawing-pages-focus-adoption.json', import.meta.url), 'utf8'),
+    ).bridge as {
+      file: string
+      manifest: { file: string; sha256: string }
+      predecessor: { source: string; publishedSha256: string }
+      adoptedCanonicalSha256: string
+      hunks: { before: string; after: string }[]
+    }
+    const bridgeOriginal = Buffer.from(bridge.predecessor.source)
+    expect(sha(bridgeOriginal)).toBe(bridge.predecessor.publishedSha256)
+    let bridgeCurrent = bridge.predecessor.source
+    for (const part of bridge.hunks) {
+      expect(bridgeCurrent.split(part.before)).toHaveLength(2)
+      bridgeCurrent = bridgeCurrent.replace(part.before, part.after)
+    }
+    expect(sha(Buffer.from(bridgeCurrent))).toBe(bridge.adoptedCanonicalSha256)
+    expect(Buffer.from(bridgeCurrent)).toEqual(
+      canonicalPublicationBytes(readFileSync(join(root, bridge.file))),
+    )
+    for (const text of [bridgeCurrent, bridgeCurrent.replaceAll('\n', '\r\n')])
+      expect(replay(bridge.file, Buffer.from(text))).toEqual(bridgeOriginal)
+    for (const text of [
+      bridge.predecessor.source,
+      bridge.predecessor.source.replaceAll('\n', '\r\n'),
+    ])
+      expect(replay(bridge.file, Buffer.from(text))).toEqual(Buffer.from(text))
+    for (const text of [
+      bridgeCurrent + '!',
+      bridgeCurrent.replace(bridge.hunks[0].after, bridge.hunks[0].before),
+      bridgeCurrent + bridge.hunks[1].after,
+      bridgeCurrent.replace('\n', '\r\n'),
+    ])
+      expect(() => replay(bridge.file, Buffer.from(text))).toThrow('ADOPTED_SOURCE_HASH')
+    expect(replay(bridge.file + '.other', Buffer.from(bridgeCurrent))).toEqual(
+      Buffer.from(bridgeCurrent),
+    )
+    const authorityFixture = fixture(),
+      authorityPath = join(authorityFixture.root, bridge.manifest.file)
+    mkdirSync(dirname(authorityPath), { recursive: true })
+    writeFileSync(authorityPath, readFileSync(join(root, bridge.manifest.file)))
+    const authorityReader = createDrawingPagesOriginReader(authorityFixture.options)
+    expect(authorityReader(bridge.file, Buffer.from(bridgeCurrent))).toEqual(bridgeOriginal)
+    writeFileSync(authorityPath, Buffer.from('{}'))
+    expect(() => authorityReader(bridge.file, Buffer.from(bridgeCurrent))).toThrow(
+      'FOCUS_ORIGIN_MANIFEST',
+    )
   })
   it('rejects a one-byte live edit before exposing the historical origin', () => {
     const f = fixture()

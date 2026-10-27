@@ -51,3 +51,21 @@ Uniform private desktop setup FAIL: p95154.6>150 retained,2/3 performance cases 
 
 
 2026-10-27 PRE08 PASS (sol/high requested, backend NOT_CONFIRMED, unchanged packet/candidate). Default focus RCA proved; unit/native/origin RED retained before narrow adapter fix. GREEN: focus/appearance7, origin37, controls28, desktop typecheck/build, native2/2 including unchanged gesture/undo/persistence and added host focus/drop ownership checks. Full fresh clean/working runtime proof/root gates/POST still pending. Original854 WIP and1977 archive bytes preserved; only own392 checkpoint reconstruction with backup/public raw hashes is authorized, no original feature commit rewrite. Not pushed.
+
+2026-10-27 clean15222dac exact Git audit:665 inputs, canonical source0771cc951f66cd5eb24c90a7bd68bed01391303a5629fe5ef68ebd572075007c. Offline frozen install and73-file local Electron audit PASS. Fresh Default build/performance3 (p95=140.1ms,100 samples)/draw237/runtime21/workspace344 PASS; visual/native/presentation and both general gates/POST pending. Historical private154.6 FAIL retained. No push.
+
+2026-10-27 clean15222dac full batch FAIL: all roles through native12 PASS, presentation46/47; P01-FUI005 high-contrast frame initial geometry did not move. Performance140.1 PASS preserved, not cumulative closure. Full failed profile and presentation artifacts copied byte-exact to failed-clean-fui005. Publication/root gates/POST stopped for RCA, no source repair attempted for this new defect. Default retained; WIP preserved.
+
+2026-10-27 uninstrumented clean control PASS:665 exact Git source inputs,7 executions/903 cases,50-case presentation plan, p95=131.8ms. First FUI005 FAIL remains in failed-clean-fui005; bounded diagnostics/reassessment retained, no causal fix for that secondary unexplained incident claimed. Source15222dac unchanged. Full fresh working profile and both pnpm check/verification/POST still pending, no push.
+
+
+2026-10-27 BOTH fresh runtime profiles PASS: clean665 and working722, each7 execution roles/903 cases/full50-case presentation plan, source/runtime/build before-after strict equality. Default p95 clean131.8ms and working143.3ms, original150ms unchanged. Both manifests separately pinned in existing reviewed bootstrap; only owned proof metadata/pin transferred to clean, no product/WIP overlays. General pnpm check, implementation verification and cumulative POST pending. Original854 WIP/archive1977 byte-exact, no push.
+
+
+2026-10-27 clean general gate FAIL: lint/typecheck PASS, UI345/355 with10 INPUT_HASH failures. Exact diagnostic235/236 inputs match; only new drawio-bridge focus patch lacks historical adoption. Prepared closed two-hunk predecessor proof against immutable LDE2bec ledger; no helper implementation yet. Fresh PRE revalidation required. Both prior runtime profiles remain historical PASS but cannot be reused after control repair. FUI005 first FAIL preserved, later uninstrumented control and working presentation PASS; no causal fix/blanket risk waiver claimed. No POST/push.
+
+
+2026-10-27 PRE09 reviewer plan PASS but existing focus-adoption JSON omitted; owner blocks implementation for completeness and dispatches focused fresh PRE including it. Raw PRE09 retained unchanged. Frozen original11 callbacks replay RED10/1 completed with exit1; no BDD predicate edit, synthetic preflight not a general gate.
+
+
+2026-10-27 PRE10 full narrow plan PASS (c0b08c9a, sol/high requested, backend NOT_CONFIRMED), raw receipt/candidate/packet stable. Exact bridge-origin supplement implemented after actual unit RED. GREEN37 origin/lock, UI typecheck/lint PASS. Source-exact frozen callback preflight (synthetic unchanged prior pinned lock data, NOT general gate) completed exit0:236 inputs/8 reports/11 callbacks PASS. C9 original19 and LDE2bec pins unchanged. Old665/722 runtime profiles + clean general FAIL moved byte-exact to pre-bridge-adoption, no old current-proof reuse. New committed source snapshot/full8-role profiles/both pnpm check/verification/POST/push pending.

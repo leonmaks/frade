@@ -18,3 +18,6 @@ No diagram pages/domain/routing/geometry/token/theme semantics change.
 
 ## Impact
 Proof selection/producer/tests, origin compatibility, separately reviewed bootstrap pin, desktop drawio-bridge, DiagramView accepted-drop handler and additive regressions/evidence/status. Vendor byte-preservation fix already approved PRE05; all2851 pinned raw assets remain identical. No dependency edits, private desktop acceptance, schema2 or test weakening. New raw review streams remain immutable locally with public hashes/receipts, since they may quote WIP bodies. Only our related unpushed392 checkpoint may be reconstructed on515 with backup; original feature history/archive and all foreign branches remain intact.
+
+
+Additional required closure repair: exact two-hunk bridge focus adoption anchored in immutable236-input LDE ledger, preserving all19 original multipage origin rows and all unchanged BDD predicates. No new product behavior; complete fresh profiles/general gates after changed controls, prior FAIL/PASS evidence retained.

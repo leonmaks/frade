@@ -13,7 +13,17 @@ const manifestName = '/evidence/source-adoption-manifest.json'
 const baseline = 'e54cf0c1e4e70ed833398c673ea3140b6f10469e'
 const focusHunk = JSON.parse(
   readFileSync(new URL('./drawing-pages-focus-adoption.json', import.meta.url), 'utf8'),
-) as { before: string; after: string }
+) as {
+  before: string
+  after: string
+  bridge: {
+    file: string
+    manifest: { file: string; sha256: string }
+    predecessor: { sha256: string; publishedSha256: string; source: string }
+    adoptedCanonicalSha256: string
+    hunks: { before: string; after: string }[]
+  }
+}
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
 function demand(value: unknown, error: string): asserts value {
   if (!value) throw Error(error)
@@ -90,6 +100,47 @@ function isFocusAdoption(file: string, live: Buffer, entry: Entry) {
   const predecessor = Buffer.from(text.replace(focusHunk.after, focusHunk.before))
   return sha(predecessor) === (entry.canonicalSha256 ?? entry.adoptedSha256)
 }
+/** The new bridge has no multipage origin row; its separate LDE authority stays immutable. */
+function readBridgeFocusOrigin(root: string, file: string, live: Buffer): Buffer | undefined {
+  if (file !== 'apps/desktop/src/main/drawio-bridge.ts') return
+  const bridge = focusHunk.bridge
+  demand(bridge?.file === file, 'FOCUS_ORIGIN_SCOPE')
+  const authority = safeRead(root, bridge.manifest.file)
+  const authoritySha256 = '2bec063e00f7d6589f3e1f7c60c1f9ee98659aefca8d3434cd66f41ef64e1b21'
+  demand(
+    sha(authority) === authoritySha256 && bridge.manifest.sha256 === authoritySha256,
+    'FOCUS_ORIGIN_MANIFEST',
+  )
+  type LdePin = { file: string; sha256: string; publishedSha256?: string }
+  const inputs = (JSON.parse(authority.toString()) as { inputs: LdePin[] }).inputs
+  demand(Array.isArray(inputs), 'FOCUS_ORIGIN_MANIFEST')
+  const matches = inputs.filter((input) => input.file === file)
+  const pin = matches[0]
+  demand(
+    matches.length === 1 &&
+      pin.sha256 === bridge.predecessor.sha256 &&
+      pin.publishedSha256 === bridge.predecessor.publishedSha256 &&
+      sha(Buffer.from(bridge.predecessor.source)) === pin.publishedSha256,
+    'FOCUS_ORIGIN_PIN',
+  )
+  if ([pin.sha256, pin.publishedSha256].includes(sha(live))) return live
+  const canonical = canonicalPublicationBytes(live)
+  const checkout = Buffer.from(canonical.toString('latin1').replaceAll('\n', '\r\n'), 'latin1')
+  demand(
+    (live.equals(canonical) || live.equals(checkout)) &&
+      sha(canonical) === bridge.adoptedCanonicalSha256 &&
+      bridge.hunks.length === 2,
+    'ADOPTED_SOURCE_HASH:' + file,
+  )
+  let text = canonical.toString()
+  for (const hunk of bridge.hunks) {
+    demand(text.split(hunk.after).length === 2, 'ADOPTED_SOURCE_HASH:' + file)
+    text = text.replace(hunk.after, hunk.before)
+  }
+  const predecessor = Buffer.from(text)
+  demand(sha(predecessor) === pin.publishedSha256, 'ADOPTED_SOURCE_HASH:' + file)
+  return predecessor
+}
 /** Historical replay only. Current execution evidence is checked separately. */
 export function createDrawingPagesOriginReader(options: Options) {
   if (options.publicationInput)
@@ -139,7 +190,7 @@ export function createDrawingPagesOriginReader(options: Options) {
   return (file: string, live: Buffer): Buffer => {
     safeRelative(file)
     const entry = entries.get(file)
-    if (!entry) return live
+    if (!entry) return readBridgeFocusOrigin(options.root, file, live) ?? live
     const legacy = [entry.adoptedSha256, entry.canonicalSha256, entry.checkoutSha256].includes(
       sha(live),
     )
