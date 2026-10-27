@@ -54,10 +54,17 @@
 - [x] M1 Preserve exact user dirty/untracked bytes, reconstruct the3 additional historical raw pins, validate coherent repair scope/spec and receive fresh independent PRE PASS.
 - [x] M2 Add meaningful RED/GREEN exact-lock/root-scope/publication-form regressions; extend only bounded origin-reader root-lock admission; keep all11 existing LDE assertions and14 original origins unchanged.
 - [x] M3 Add rendered absence/working-page-controls RED, remove the native attribution anchor/CSS and verify unchanged page behavior/geometry under the explicitly requested branding exception.
-- [ ] M4 Execute fresh complete current runtime/build records, publish source-bound17-origin manifest with preserved parent and independently reviewed bootstrap, pass all11 LDE cases/full workspace and actual general gate without exclusions.
+- [x] M4 Execute fresh complete current runtime/build records, publish source-bound17-origin manifest with preserved parent and independently reviewed bootstrap, pass all11 LDE cases/full workspace and actual general gate without exclusions.
 - [ ] M5 Complete OpenSpec verification/UI compliance and fresh independent cumulative POST PASS, verify user-byte preservation and commit only authorized source/evidence/status checkpoint; no next feature or unapproved push/archive.
 
 ## Generated inventory checkout follow-up
 
 - [x] E1 Preserve the actual root EOL failure, validate exact one-file checkout plan and receive focused independent PRE PASS before control edits.
-- [ ] E2 Add real-Git autocrlf true/false RED/GREEN without changing existing assertions, bind the narrow attribute, restore only approved generated LF bytes, refresh the complete actual input/execution set and pass the unchanged general gate before cumulative POST.
+- [x] E2 Add real-Git autocrlf true/false RED/GREEN without changing existing assertions, bind the narrow attribute, restore only approved generated LF bytes, refresh the complete actual input/execution set and pass the unchanged general gate before cumulative POST.
+
+## Presentation latency repair under current workload
+
+- [x] P1 Preserve failed gates/user bytes and bounded traced diagnostics, validate the exact idempotent-projection plan and receive automatic independent PRE PASS.
+- [x] P2 Add independent RED regressions for idempotence/invalidation/ownership/two-RAF semantics and exact bridge-scope origin guard; implement only the approved projection repair and verify targeted GREEN without changing old assertions.
+- [x] P3 Execute fresh build/all7 current roles plus desktop units on exact source; pass original150ms20+100 gate, publish19-origin proof retaining17 old rows, pass actual general gate and unchanged11 LDE assertions.
+- [ ] P4 Complete OpenSpec verification/UI compliance and automatic cumulative POST PASS, preserve user bytes and publish local checkpoint; no next feature or unapproved push/archive.

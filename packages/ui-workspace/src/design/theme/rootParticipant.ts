@@ -59,18 +59,24 @@ export function validatePresentationSnapshot(snapshot: ResolvedTheme): void {
 }
 export function applyRootSnapshot(root: HTMLElement, snapshot: ResolvedTheme): void {
   validatePresentationSnapshot(snapshot)
+  const property = (name: string, value: string) => {
+    if (root.style.getPropertyValue(name) !== value || root.style.getPropertyPriority(name))
+      root.style.setProperty(name, value)
+  }
+  const attribute = (name: string, value: string) => {
+    if (root.getAttribute(name) !== value) root.setAttribute(name, value)
+  }
   for (const role of themeRoles)
-    root.style.setProperty('--frade-' + role.replaceAll('.', '-'), snapshot.effectiveColors[role])
+    property('--frade-' + role.replaceAll('.', '-'), snapshot.effectiveColors[role])
   applyReferencePreset(root, snapshot)
-  root.dataset.fradeRuntime = '1'
-  root.dataset.fradeTheme = snapshot.kind
-  root.dataset.fradeDensity = snapshot.density
-  root.dataset.fradeRevision = String(snapshot.revision)
-  root.style.colorScheme = snapshot.forcedColors
-    ? 'light dark'
-    : snapshot.kind === 'light'
-      ? 'light'
-      : 'dark'
+  attribute('data-frade-runtime', '1')
+  attribute('data-frade-theme', snapshot.kind)
+  attribute('data-frade-density', snapshot.density)
+  attribute('data-frade-revision', String(snapshot.revision))
+  property(
+    'color-scheme',
+    snapshot.forcedColors ? 'light dark' : snapshot.kind === 'light' ? 'light' : 'dark',
+  )
 }
 export function createRootParticipant(
   root: HTMLElement,

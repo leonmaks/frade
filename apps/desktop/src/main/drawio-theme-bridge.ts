@@ -473,9 +473,29 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
       prefix('[data-frade-upper-menu="1"] [aria-disabled="true"]') + '{color:var(--frade-frame-text-disabled)!important;}'
     return style
   }
+  // This transient rule snapshot validates the live CSSOM before avoiding stylesheet churn.
+  let installedRules: readonly string[] | undefined
+  const sheetRules = (style: HTMLStyleElement): readonly string[] | undefined => {
+    try {
+      return style.sheet ? Array.from(style.sheet.cssRules, rule => rule.cssText) : undefined
+    } catch {
+      // An unreadable sheet is never reused; install the newly generated projection.
+      return undefined
+    }
+  }
+  const reusableStyle = (next: HTMLStyleElement): boolean => {
+    if (!installedStyle || !installedRules || installedStyle.parentNode !== document.head ||
+        installedStyle.nextSibling || installedStyle.textContent !== next.textContent ||
+        installedStyle.attributes.length !== 1 || installedStyle.getAttribute('data-frade-private-theme') !== '1' ||
+        installedStyle.disabled || installedStyle.media || !installedStyle.sheet ||
+        installedStyle.sheet.disabled || installedStyle.sheet.media?.mediaText) return false
+    const current = sheetRules(installedStyle)
+    return !!current && current.length === installedRules.length &&
+      current.every((rule, index) => rule === installedRules![index])
+  }
   const ownAttribute = (name: string, value: string) => {
     if (!attributes.has(name)) attributes.set(name, root.getAttribute(name))
-    root.setAttribute(name, value)
+    if (root.getAttribute(name) !== value) root.setAttribute(name, value)
   }
   const ownProperty = (name: string, value: string) => {
     if (!properties.has(name))
@@ -483,7 +503,8 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
         value: root.style.getPropertyValue(name),
         priority: root.style.getPropertyPriority(name),
       })
-    root.style.setProperty(name, value)
+    if (root.style.getPropertyValue(name) !== value || root.style.getPropertyPriority(name))
+      root.style.setProperty(name, value)
   }
   // Accessibility ownership is local to the actual lower strip and menus it opened.
   // Vendor nodes, callbacks and model APIs are never replaced or invoked as actions.
@@ -1684,6 +1705,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
     clearLower()
     installedStyle?.remove()
     installedStyle = undefined
+    installedRules = undefined
     overlay?.remove()
     overlay = undefined
     for (const [element, value] of masks) {
@@ -1714,9 +1736,12 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
   }
   async function apply(request: any, snapshot: any, style: HTMLStyleElement) {
     const token = ++epoch
-    installedStyle?.remove()
-    installedStyle = style
-    document.head.append(style)
+    if (!reusableStyle(style)) {
+      installedStyle?.remove()
+      installedStyle = style
+      document.head.append(style)
+      installedRules = sheetRules(style)
+    }
     ownAttribute('data-frade-frame-runtime', '1')
     ownAttribute('data-frade-frame-theme', snapshot.kind)
     ownAttribute('data-frade-frame-density', snapshot.density)

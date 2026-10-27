@@ -202,3 +202,12 @@ Any legacy color coordinate migration SHALL require proof that all literal value
 
 - **WHEN** surrounding authorized edits shift an unchanged existing color declaration
 - **THEN** exact old/new coordinate proof preserves its original classification, while any added color or changed declaration context fails the existing gate
+
+### Requirement: Idempotent presentation publication
+
+Repeated equal editor appearance SHALL avoid redundant owned DOM/style mutations while validating and repairing actual altered values, priorities or missing/changed owned stylesheet. Every revision SHALL still satisfy the existing parent/frame paint barriers, opacity, ownership, semantic preservation and durable publication contracts within the unchanged150ms hot-commit budget.
+
+#### Scenario: Reapply equal appearance and repair changed projection
+
+- **WHEN** a new transaction uses equal editor appearance, or an owned property/priority/stylesheet was changed or detached
+- **THEN** equal owned values and connected byte-identical stylesheet are retained, actual drift is repaired, the exact new revision waits for both original paint boundaries and durable readback, and existing diagram semantics/preferences remain unchanged

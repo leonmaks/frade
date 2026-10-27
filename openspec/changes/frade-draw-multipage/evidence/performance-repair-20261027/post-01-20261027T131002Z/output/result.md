@@ -1,0 +1,3 @@
+GATE_STATUS: FAIL
+
+Blocker: The packet contains the EOL repair’s [PRE03 review packet](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-27T13-02-07-893Z-6675afba-af5b-4d06-819e-76eb60766d7c/prepared/packet/openspec/changes/frade-draw-multipage/evidence/main-gate-repair-20261027/review-pre-03-packet.json), but no PRE03 receipt or result. The claim that this required pre-edit review passed cannot be verified. Supply its immutable receipt, result, provenance, and unchanged packet/candidate hashes for review. The pending self-POST and checkpoint are not blockers at this pre-POST stage.

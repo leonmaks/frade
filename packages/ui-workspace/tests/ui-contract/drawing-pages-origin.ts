@@ -94,6 +94,7 @@ export function createDrawingPagesOriginReader(options: Options) {
     safeRelative(entry.originalFile)
     demand(
       entry.file === 'pnpm-lock.yaml' ||
+      entry.file === 'apps/desktop/src/main/drawio-theme-bridge.ts' ||
         /^(packages\/|scripts\/ui\/|tests\/ui-contract\/)/.test(entry.file),
       'ADOPTION_FILE_SCOPE',
     )

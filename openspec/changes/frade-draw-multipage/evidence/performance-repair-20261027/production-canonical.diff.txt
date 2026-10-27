@@ -1,0 +1,108 @@
+diff --git a/apps/desktop/src/main/drawio-theme-bridge.ts b/apps/desktop/src/main/drawio-theme-bridge.ts
+index 44e0c409..fa4148c8 100644
+--- a/apps/desktop/src/main/drawio-theme-bridge.ts
++++ b/apps/desktop/src/main/drawio-theme-bridge.ts
+@@ -473,9 +473,29 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
+       prefix('[data-frade-upper-menu="1"] [aria-disabled="true"]') + '{color:var(--frade-frame-text-disabled)!important;}'
+     return style
+   }
++  // This transient rule snapshot validates the live CSSOM before avoiding stylesheet churn.
++  let installedRules: readonly string[] | undefined
++  const sheetRules = (style: HTMLStyleElement): readonly string[] | undefined => {
++    try {
++      return style.sheet ? Array.from(style.sheet.cssRules, rule => rule.cssText) : undefined
++    } catch {
++      // An unreadable sheet is never reused; install the newly generated projection.
++      return undefined
++    }
++  }
++  const reusableStyle = (next: HTMLStyleElement): boolean => {
++    if (!installedStyle || !installedRules || installedStyle.parentNode !== document.head ||
++        installedStyle.nextSibling || installedStyle.textContent !== next.textContent ||
++        installedStyle.attributes.length !== 1 || installedStyle.getAttribute('data-frade-private-theme') !== '1' ||
++        installedStyle.disabled || installedStyle.media || !installedStyle.sheet ||
++        installedStyle.sheet.disabled || installedStyle.sheet.media?.mediaText) return false
++    const current = sheetRules(installedStyle)
++    return !!current && current.length === installedRules.length &&
++      current.every((rule, index) => rule === installedRules![index])
++  }
+   const ownAttribute = (name: string, value: string) => {
+     if (!attributes.has(name)) attributes.set(name, root.getAttribute(name))
+-    root.setAttribute(name, value)
++    if (root.getAttribute(name) !== value) root.setAttribute(name, value)
+   }
+   const ownProperty = (name: string, value: string) => {
+     if (!properties.has(name))
+@@ -483,7 +503,8 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
+         value: root.style.getPropertyValue(name),
+         priority: root.style.getPropertyPriority(name),
+       })
+-    root.style.setProperty(name, value)
++    if (root.style.getPropertyValue(name) !== value || root.style.getPropertyPriority(name))
++      root.style.setProperty(name, value)
+   }
+   // Accessibility ownership is local to the actual lower strip and menus it opened.
+   // Vendor nodes, callbacks and model APIs are never replaced or invoked as actions.
+@@ -1684,6 +1705,7 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
+     clearLower()
+     installedStyle?.remove()
+     installedStyle = undefined
++    installedRules = undefined
+     overlay?.remove()
+     overlay = undefined
+     for (const [element, value] of masks) {
+@@ -1714,9 +1736,12 @@ export function drawioThemeBridge(parentOrigin: string): () => void {
+   }
+   async function apply(request: any, snapshot: any, style: HTMLStyleElement) {
+     const token = ++epoch
+-    installedStyle?.remove()
+-    installedStyle = style
+-    document.head.append(style)
++    if (!reusableStyle(style)) {
++      installedStyle?.remove()
++      installedStyle = style
++      document.head.append(style)
++      installedRules = sheetRules(style)
++    }
+     ownAttribute('data-frade-frame-runtime', '1')
+     ownAttribute('data-frade-frame-theme', snapshot.kind)
+     ownAttribute('data-frade-frame-density', snapshot.density)
+diff --git a/packages/ui-workspace/src/design/theme/rootParticipant.ts b/packages/ui-workspace/src/design/theme/rootParticipant.ts
+index 5da347cc..b441b905 100644
+--- a/packages/ui-workspace/src/design/theme/rootParticipant.ts
++++ b/packages/ui-workspace/src/design/theme/rootParticipant.ts
+@@ -59,18 +59,24 @@ export function validatePresentationSnapshot(snapshot: ResolvedTheme): void {
+ }
+ export function applyRootSnapshot(root: HTMLElement, snapshot: ResolvedTheme): void {
+   validatePresentationSnapshot(snapshot)
++  const property = (name: string, value: string) => {
++    if (root.style.getPropertyValue(name) !== value || root.style.getPropertyPriority(name))
++      root.style.setProperty(name, value)
++  }
++  const attribute = (name: string, value: string) => {
++    if (root.getAttribute(name) !== value) root.setAttribute(name, value)
++  }
+   for (const role of themeRoles)
+-    root.style.setProperty('--frade-' + role.replaceAll('.', '-'), snapshot.effectiveColors[role])
++    property('--frade-' + role.replaceAll('.', '-'), snapshot.effectiveColors[role])
+   applyReferencePreset(root, snapshot)
+-  root.dataset.fradeRuntime = '1'
+-  root.dataset.fradeTheme = snapshot.kind
+-  root.dataset.fradeDensity = snapshot.density
+-  root.dataset.fradeRevision = String(snapshot.revision)
+-  root.style.colorScheme = snapshot.forcedColors
+-    ? 'light dark'
+-    : snapshot.kind === 'light'
+-      ? 'light'
+-      : 'dark'
++  attribute('data-frade-runtime', '1')
++  attribute('data-frade-theme', snapshot.kind)
++  attribute('data-frade-density', snapshot.density)
++  attribute('data-frade-revision', String(snapshot.revision))
++  property(
++    'color-scheme',
++    snapshot.forcedColors ? 'light dark' : snapshot.kind === 'light' ? 'light' : 'dark',
++  )
+ }
+ export function createRootParticipant(
+   root: HTMLElement,

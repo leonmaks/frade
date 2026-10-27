@@ -307,3 +307,25 @@ it('admits an individually pinned mixed checkout without accepting any other mix
     'ADOPTED_SOURCE_HASH',
   )
 })
+
+function desktopBridgeFixture(){
+  const f=fixture(),file='apps/desktop/src/main/drawio-theme-bridge.ts',originalFile=prefix+'/evidence/origin/source/'+file,
+    manifest={...f.manifest,entries:[{...f.manifest.entries[0],file,originalFile}]},bytes=Buffer.from(JSON.stringify(manifest))
+  mkdirSync(dirname(join(f.root,originalFile)),{recursive:true});writeFileSync(join(f.root,originalFile),f.original)
+  return {...f,file,originalFile,bytes,manifest,options:{root:f.root,manifest:bytes,expectedSha256:sha(bytes)}}
+}
+it('replays only the exactly registered desktop theme bridge and rejects changed live bytes',()=>{
+  const f=desktopBridgeFixture(),read=createDrawingPagesOriginReader(f.options)
+  expect(read(f.file,f.live)).toEqual(f.original)
+  expect(()=>read(f.file,Buffer.concat([f.live,Buffer.from('mutation')]))).toThrow('ADOPTED_SOURCE_HASH')
+})
+it('desktop bridge replay rejects changed origin and manifest pins',()=>{
+  const f=desktopBridgeFixture(),read=createDrawingPagesOriginReader(f.options)
+  writeFileSync(join(f.root,f.originalFile),Buffer.concat([f.original,Buffer.from('mutation')]))
+  expect(()=>read(f.file,f.live)).toThrow('ORIGIN_SOURCE_HASH')
+  expect(()=>createDrawingPagesOriginReader({...f.options,manifest:Buffer.concat([f.bytes,Buffer.from(' ')] )})).toThrow('MANIFEST_HASH')
+})
+it.each(['apps/desktop/src/main/drawio-theme-bridge.ts.backup','apps/desktop/src/main/drawio-theme-bridge.ts/child','apps/desktop/src/main/drawio-theme-bridge-extra.ts','apps/desktop/src/main/other.ts','apps/desktop/src/preload/drawio-theme-bridge.ts','apps/other/src/main/drawio-theme-bridge.ts'])('exact desktop bridge adoption does not admit %s',file=>{
+  const f=desktopBridgeFixture(),bytes=Buffer.from(JSON.stringify({...f.manifest,entries:[{...f.manifest.entries[0],file,originalFile:prefix+'/evidence/origin/source/'+file}]}))
+  expect(()=>createDrawingPagesOriginReader({...f.options,manifest:bytes,expectedSha256:sha(bytes)})).toThrow('ADOPTION_FILE_SCOPE')
+})

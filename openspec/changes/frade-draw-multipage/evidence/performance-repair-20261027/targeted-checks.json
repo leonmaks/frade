@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-27T12:40:17.667Z",
+  "sourceSet": "87658e65ffb3b05993ab1a09df9319eb2d3cb8e2b06693dc06f03df84c2a0dfa",
+  "checks": [
+    {
+      "command": "pnpm --filter @frade/desktop lint",
+      "actualExit": 0,
+      "stdout": "desktop-lint-stdout.txt",
+      "stderr": "desktop-lint-stderr.txt"
+    },
+    {
+      "command": "pnpm --filter @frade/ui-workspace lint",
+      "actualExit": 0,
+      "stdout": "workspace-lint-stdout.txt",
+      "stderr": "workspace-lint-stderr.txt"
+    },
+    {
+      "command": "pnpm --filter @frade/ui-workspace typecheck",
+      "actualExit": 0,
+      "stdout": "workspace-typecheck-stdout.txt",
+      "stderr": "workspace-typecheck-stderr.txt"
+    }
+  ],
+  "targetedGreen": {
+    "frame": 96,
+    "rootOriginParticipants": 72
+  },
+  "limits": "Targeted GREEN preceded formatting/new unused-import removal; full role/root execute final exact source"
+}
