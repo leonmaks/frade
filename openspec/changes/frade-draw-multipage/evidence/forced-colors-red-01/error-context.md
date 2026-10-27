@@ -1,0 +1,47 @@
+# Page snapshot
+
+```yaml
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - strong [ref=e5]: Frade Draw
+    - button "New" [ref=e6] [cursor=pointer]
+    - button "Save" [ref=e7] [cursor=pointer]
+    - button "Save As" [ref=e8] [cursor=pointer]
+    - button "Open" [ref=e9] [cursor=pointer]
+    - button "Delete" [disabled] [ref=e10]
+    - button "Undo" [disabled] [ref=e11]
+    - button "Redo" [disabled] [ref=e12]
+    - button "Zoom +" [ref=e13] [cursor=pointer]
+    - button "Zoom −" [ref=e14] [cursor=pointer]
+    - button "Fit" [ref=e15] [cursor=pointer]
+    - button "Grid" [ref=e16] [cursor=pointer]
+    - button "SVG" [ref=e17] [cursor=pointer]
+    - button "PNG" [ref=e18] [cursor=pointer]
+  - complementary [ref=e19]:
+    - button "rect" [ref=e20] [cursor=pointer]
+    - button "rounded-rect" [ref=e21] [cursor=pointer]
+    - button "ellipse" [ref=e22] [cursor=pointer]
+    - button "diamond" [ref=e23] [cursor=pointer]
+    - button "text" [ref=e24] [cursor=pointer]
+  - tabpanel "Страница-1" [ref=e25]:
+    - img [ref=e28]
+  - generic [ref=e29]:
+    - generic [ref=e30]:
+      - button "Добавить страницу" [ref=e31]
+      - button "Страницы" [ref=e33]
+      - tablist "Страницы" [ref=e35]:
+        - generic "Страница-1 (1b4e30e3-ef8b-4c6a-9d69-2234c6c962b6/page-1) [1]" [ref=e36]:
+          - tab "Страница-1" [selected] [ref=e37]
+          - button "Страница-1 — Параметры" [expanded] [ref=e38] [cursor=pointer]
+      - link "jgraph/drawio" [ref=e39] [cursor=pointer]:
+        - /url: https://github.com/jgraph/drawio
+    - menu [ref=e42]:
+      - menuitem "Открыть в новом окне" [active] [ref=e43] [cursor=pointer]
+      - separator [ref=e44]:
+        - separator [ref=e45]
+      - menuitem "Дублировать Страница" [ref=e46] [cursor=pointer]
+      - separator [ref=e47]:
+        - separator [ref=e48]
+      - menuitem "Удалить Страница" [ref=e49] [cursor=pointer]
+      - menuitem "Переименовать Страница..." [ref=e50] [cursor=pointer]
+```

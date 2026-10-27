@@ -1,5 +1,14 @@
 ## ADDED Requirements
 
+### Requirement: Pure native semantic facade
+
+The workspace native-document comparator SHALL consume the existing declared @frade/draw/document pure facade without initializing React, X6 or DOM UI. Its source boundary SHALL authorize only that exact additional public entry for ui-workspace; dependency permissions and other private, deeper, escaping or privileged imports SHALL remain rejected.
+
+#### Scenario: Validate semantic consumer imports
+
+- **WHEN** the workspace comparator imports the pure document facade
+- **THEN** the exact public entry passes the boundary, undeclared/private/deeper entries fail, no new package dependency is granted, and pure codec/comparator tests execute without UI initialization
+
 ### Requirement: Multipage document compatibility
 
 Frade Draw SHALL represent an ordered, nonempty collection of pages with stable unique page IDs and nonempty names. Each page SHALL own its graph and optional viewport. Version-1 Frade Draw/Designer documents SHALL open losslessly as one page. Version-2 documents SHALL preserve every page through standalone and repository Save/Open/Save As/Discard.
@@ -55,6 +64,24 @@ Reordering SHALL work by drag and by a Move menu listing destination pages. Page
 - **WHEN** the user chooses another page in the active page's Move submenu
 - **THEN** the active page moves to that destination's index and all graph data remain unchanged
 
+### Requirement: Page list commands
+
+The page-list menu SHALL provide Insert, all pages with active indicator, Sort Pages and Delete All in pinned-source order. Sort SHALL use natural case-insensitive comparison in the explicitly selected editor locale, preserving relative order of equal names and the active page. Delete All SHALL replace all pages with one empty first page. Each command SHALL be a single undoable operation and SHALL be disabled in readonly mode.
+
+#### Scenario: Sort and clear all
+
+- **WHEN** pages named Page-10, Page-2 and Page-1 are sorted and then Delete All is invoked
+- **THEN** sorting produces Page-1, Page-2, Page-10, clearing leaves one empty first page, and two Undo operations restore the original pages, order and content
+
+### Requirement: Standalone page extraction
+
+The standalone page menu SHALL provide Open in New Window as the pinned source does outside embed mode. It SHALL open an independently editable copy of the selected page in the same application, retaining supported authored content and references without write-back to the source drawing. The embedded page menu SHALL omit this item as the pinned embedded source does.
+
+#### Scenario: Open a page separately
+
+- **WHEN** a standalone user chooses Open in New Window and edits the new drawing
+- **THEN** only the selected page is copied, both drawings remain independently editable, and the source drawing is unchanged
+
 ### Requirement: Unified reversible history
 
 Insert, duplicate, rename, remove and reorder SHALL each be one reversible action in the same chronological undo/redo sequence as committed graph edits. Switching pages SHALL neither clear history nor add an undo action. Undo/redo SHALL restore the relevant page and its graph without leaking commands into other documents. New/Open/Discard SHALL reset the session history. A canceled or rejected page operation SHALL leave content, history and dirty state unchanged.
@@ -96,6 +123,7 @@ Tabs SHALL scroll horizontally under overflow and a page-list control SHALL keep
 
 - **WHEN** a user opens the context menu on an inactive tab
 - **THEN** its actions target that tab and the named page remains reachable under overflow
+- **AND** overflow scroll chevrons, active menu glyphs, label truncation and the trailing pinned-source attribution link retain the reference geometry; the attribution identifies jgraph/drawio honestly rather than implying Frade authorship
 
 ### Requirement: Existing editor theme ownership
 
@@ -132,3 +160,30 @@ Loading/error/dirty states SHALL preserve every page; repository-bound save SHAL
 
 - **WHEN** pages with repository objects are changed, saved, changed again and discarded
 - **THEN** all saved pages return with their references intact, later unsaved pages disappear, stale flow panels close, and page navigation does not write repository objects
+
+### Requirement: Scoped cumulative control adoption
+
+Necessary shared-file changes SHALL preserve historical source/execution evidence through an explicit reviewed original-to-adopted mapping. Historical verification SHALL validate exact adopted live bytes before reading exact original bytes, retaining original manifests, report pins and meaningful assertions. Unknown drift or missing evidence SHALL fail closed.
+
+#### Scenario: Validate cumulative source adoption
+
+- **WHEN** an independent feature necessarily changes an input of an archived exact-source proof
+- **THEN** the closed mapping validates both original and adopted bytes, historical proof remains immutable, fresh current tests execute, and a one-byte undeclared/live/origin mutation fails
+
+### Requirement: Fresh current execution binding
+
+Fresh current executions SHALL independently bind adopted/new product and test bytes to actual results. Historical runtime PASS SHALL NOT be relabeled as current-candidate runtime PASS.
+
+#### Scenario: Check the adopted implementation
+
+- **WHEN** adopted source is verified
+- **THEN** new exact-input executions provide current evidence independently of the retained historical proof
+
+### Requirement: Exact legacy color coordinate adoption
+
+Any legacy color coordinate migration SHALL require proof that all literal values, declaration contexts, count and classifications remain unchanged.
+
+#### Scenario: Preserve legacy color boundaries
+
+- **WHEN** surrounding authorized edits shift an unchanged existing color declaration
+- **THEN** exact old/new coordinate proof preserves its original classification, while any added color or changed declaration context fails the existing gate

@@ -1,0 +1,99 @@
+
+Running 1 test using 1 worker
+
+(node:42004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42004) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\diagrams.spec.ts:1159:1 › native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation (32.4s)
+
+
+  1) tests\e2e\diagrams.spec.ts:1159:1 › native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.diagram-slot .frade-page-strip').getByRole('tab', { name: 'Страница-1', exact: true })[22m
+    [2m    - locator resolved to <span role="tab" tabindex="-1" aria-selected="false" class="frade-page-label" aria-controls="frade-drawing-r1-canvas" id="frade-drawing-r1-page-pages%2Fpage-1">Страница-1</span>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="geTabContainer geTabItem">…</div> intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div aria-hidden="true" class="geButton frade-page-glyph frade-page-menu"></div> from <div tabindex="0" role="button" title="Страницы" aria-haspopup="menu" aria-label="Страницы" aria-disabled="false" aria-expanded="false" class="geTab geControlTab">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="geTabContainer geTabItem">…</div> intercepts pointer events[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div aria-hidden="true" class="geButton frade-page-glyph frade-page-left"></div> from <div tabindex="0" role="button" aria-disabled="false" class="geTab geControlTab" title="Предыдущая страница" aria-label="Предыдущая страница">…</div> subtree intercepts pointer events[22m
+    [2m  14 × retrying click action[22m
+    [2m       - waiting 500ms[22m
+    [2m       - waiting for element to be visible, enabled and stable[22m
+    [2m       - element is visible, enabled and stable[22m
+    [2m       - scrolling into view if needed[22m
+    [2m       - done scrolling[22m
+    [2m       - <div aria-hidden="true" class="geButton frade-page-glyph frade-page-menu"></div> from <div tabindex="0" role="button" title="Страницы" aria-haspopup="menu" aria-label="Страницы" aria-disabled="false" aria-expanded="false" class="geTab geControlTab">…</div> subtree intercepts pointer events[22m
+    [2m     - retrying click action[22m
+    [2m       - waiting 500ms[22m
+    [2m       - waiting for element to be visible, enabled and stable[22m
+    [2m       - element is visible, enabled and stable[22m
+    [2m       - scrolling into view if needed[22m
+    [2m       - done scrolling[22m
+    [2m       - <div class="geTabContainer geTabItem">…</div> intercepts pointer events[22m
+    [2m     - retrying click action[22m
+    [2m       - waiting 500ms[22m
+    [2m       - waiting for element to be visible, enabled and stable[22m
+    [2m       - element is visible, enabled and stable[22m
+    [2m       - scrolling into view if needed[22m
+    [2m       - done scrolling[22m
+    [2m       - <div aria-hidden="true" class="geButton frade-page-glyph frade-page-left"></div> from <div tabindex="0" role="button" aria-disabled="false" class="geTab geControlTab" title="Предыдущая страница" aria-label="Предыдущая страница">…</div> subtree intercepts pointer events[22m
+    [2m     - retrying click action[22m
+    [2m       - waiting 500ms[22m
+    [2m       - waiting for element to be visible, enabled and stable[22m
+    [2m       - element is visible, enabled and stable[22m
+    [2m       - scrolling into view if needed[22m
+    [2m       - done scrolling[22m
+    [2m       - <div aria-hidden="true" class="geButton frade-page-glyph frade-page-left"></div> from <div tabindex="0" role="button" aria-disabled="false" class="geTab geControlTab" title="Предыдущая страница" aria-label="Предыдущая страница">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+
+
+       996 |     expect(document.pages[0].graph.nodes[0].repositoryRef.objectId).toBeTruthy()
+       997 |     expect(document.pages[1].graph.nodes.some((n: { repositoryRef?: { objectId: string } }) => n.repositoryRef?.objectId)).toBe(true)
+    >  998 |     await strip().getByRole('tab', { name: 'Страница-1', exact: true }).click()
+           |                                                                         ^
+       999 |     await expect(page.locator('.dirty-dot')).toHaveCount(0)
+      1000 |     await expect(page.locator('.diagram-slot .x6-node')).toHaveCount(1)
+      1001 |     await expect(page.locator('.diagram-references summary')).toContainText('(1)')
+        at E:\dev\codex\frade\.worktrees\draw-pages\apps\desktop\tests\e2e\diagrams.spec.ts:998:73
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\diagrams-native-multipage--339bc-estores-readonly-navigation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\diagrams-native-multipage--339bc-estores-readonly-navigation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\diagrams.spec.ts:1159:1 › native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\apps\desktop
+

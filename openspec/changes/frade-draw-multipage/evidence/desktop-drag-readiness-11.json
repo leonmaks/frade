@@ -1,0 +1,174 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\playwright.config.ts",
+    "rootDir": "E:/dev/codex/frade/.worktrees/draw-pages/apps/desktop/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade/.worktrees/draw-pages/apps/desktop/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade/.worktrees/draw-pages/apps/desktop/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "diagrams.spec.ts",
+      "file": "diagrams.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "frade navigator drop: catalogs, owning root, undo, transformed coordinates and read-only",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5284,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:40528) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T02:19:57.886Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-11679859a3014b7771de",
+          "file": "diagrams.spec.ts",
+          "line": 621,
+          "column": 3
+        },
+        {
+          "title": "native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12508,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.diagram-slot .frade-page-strip').getByRole('tab', { name: 'Страница-1', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.diagram-slot .frade-page-strip').getByRole('tab', { name: 'Страница-1', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <span role=\"tab\" tabindex=\"0\" aria-selected=\"true\" class=\"frade-page-label\" aria-controls=\"frade-drawing-r1-canvas\" id=\"frade-drawing-r1-page-pages%2Fpage-1\">Страница-1</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.diagram-slot .frade-page-strip').getByRole('tab', { name: 'Страница-1', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.diagram-slot .frade-page-strip').getByRole('tab', { name: 'Страница-1', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <span role=\"tab\" tabindex=\"0\" aria-selected=\"true\" class=\"frade-page-label\" aria-controls=\"frade-drawing-r1-canvas\" id=\"frade-drawing-r1-page-pages%2Fpage-1\">Страница-1</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:1098:81",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                      "column": 81,
+                      "line": 1098
+                    },
+                    "snippet": "  1096 |     expect(await readFile(file, 'utf8')).toBe(saved)\n  1097 |     await page.keyboard.press('Escape')\n> 1098 |     await expect(strip().getByRole('tab', { name: 'Страница-1', exact: true })).toBeFocused()\n       |                                                                                 ^\n  1099 |     await action('Отменить изменения').click()\n  1100 |     await expect(page.locator('.dirty-dot')).toHaveCount(0)\n  1101 |     await expect(page.locator('.diagram-slot .x6-node')).toHaveCount(1)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                        "column": 81,
+                        "line": 1098
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.diagram-slot .frade-page-strip').getByRole('tab', { name: 'Страница-1', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.diagram-slot .frade-page-strip').getByRole('tab', { name: 'Страница-1', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <span role=\"tab\" tabindex=\"0\" aria-selected=\"true\" class=\"frade-page-label\" aria-controls=\"frade-drawing-r1-canvas\" id=\"frade-drawing-r1-page-pages%2Fpage-1\">Страница-1</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  1096 |     expect(await readFile(file, 'utf8')).toBe(saved)\n  1097 |     await page.keyboard.press('Escape')\n> 1098 |     await expect(strip().getByRole('tab', { name: 'Страница-1', exact: true })).toBeFocused()\n       |                                                                                 ^\n  1099 |     await action('Отменить изменения').click()\n  1100 |     await expect(page.locator('.dirty-dot')).toHaveCount(0)\n  1101 |     await expect(page.locator('.diagram-slot .x6-node')).toHaveCount(1)\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts:1098:81"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T02:20:03.190Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\test-results\\diagrams-native-multipage--339bc-estores-readonly-navigation\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\tests\\e2e\\diagrams.spec.ts",
+                    "column": 81,
+                    "line": 1098
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b4a0a8ff3bb5e03cf142-9c2d4f883f2106b88695",
+          "file": "diagrams.spec.ts",
+          "line": 1189,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T02:19:56.603Z",
+    "duration": 19142.718,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

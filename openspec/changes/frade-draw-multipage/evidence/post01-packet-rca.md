@@ -1,0 +1,7 @@
+# POST01 evidence omission RCA
+
+Actual independent FAIL045052Z retained verbatim in post-01-20261027T045052Z. Reviewer verified807 selected hashes and exact sol/high assignment but could not assess current completeness/binding/UI acceptance/root validation: seven required top-level closure records were absent. No product defect established.
+
+Classification INTEGRATION. The ad hoc directory walker was called with an evidence path ending slash, then joined another slash; slicing left a leading slash in each immediate filename, so the root-file predicate classified it as nested and omitted it. Runtime directories/source closure survived separate explicit selection. This was a packet-assembly defect, not test failure. No production/test/control or archived proof change.
+
+Repair: select root evidence by direct readdirFileTypes iteration rather than inferred relative slash count; normalize every selected relative path, reject duplicates/noncanonical/missing. Add explicit required closure list including all seven reviewer-identified records, raw strict validation outputs, source/bootstrap/plan and root raw log. Validate selection+raw hashes and a negative deletion for EACH required record before dispatch. Recheck exact source bindings (no runtime rerun: source unchanged). Fresh whole POST uses same complete product closure plus corrected evidence, not a focused product waiver. Prior measured POST duration6m21 including2m27 preparation; forecast5–8min. Stop on missing-input or mutation, no PASS inference from request metadata.

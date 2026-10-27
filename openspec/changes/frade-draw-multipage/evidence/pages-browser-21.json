@@ -1,0 +1,676 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\playwright.config.ts",
+    "rootDir": "E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/tests/spike",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/tests/spike",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 2,
+    "webServer": {
+      "command": "pnpm exec vite --host 127.0.0.1 --port 5186 --strictPort",
+      "url": "http://127.0.0.1:5186",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "drawing-pages-parity.spec.ts",
+      "file": "drawing-pages-parity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6122,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:15.708Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "footer-metrics.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJleHBlY3RlZCI6IHsKICAgICJib3VuZHMiOiB7CiAgICAgICJ4IjogMCwKICAgICAgInkiOiA2ODgsCiAgICAgICJ3aWR0aCI6IDEyODAsCiAgICAgICJoZWlnaHQiOiAzMgogICAgfSwKICAgICJzdHlsZSI6IHsKICAgICAgImZvbnQiOiAiLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBcIlNlZ29lIFVJIFZhcmlhYmxlXCIsIFwiU2Vnb2UgVUlcIiwgc3lzdGVtLXVpLCB1aS1zYW5zLXNlcmlmLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmLCBcIkFwcGxlIENvbG9yIEVtb2ppXCIsIFwiU2Vnb2UgVUkgRW1vamlcIiIsCiAgICAgICJmb250U2l6ZSI6ICIxNHB4IiwKICAgICAgImNvbG9yIjogInJnYig2MywgNjMsIDYzKSIsCiAgICAgICJiYWNrZ3JvdW5kIjogInJnYmEoMCwgMCwgMCwgMCkiLAogICAgICAiYm9yZGVyVG9wIjogIjFweCBzb2xpZCByZ2IoMjE4LCAyMTgsIDIxOCkiLAogICAgICAicGFkZGluZ0xlZnQiOiAiMTJweCIsCiAgICAgICJwYWRkaW5nUmlnaHQiOiAiMjBweCIKICAgIH0sCiAgICAiY29udHJvbHMiOiBbCiAgICAgIHsKICAgICAgICAiYm91bmRzIjogewogICAgICAgICAgIngiOiAxNiwKICAgICAgICAgICJ5IjogNjg5LAogICAgICAgICAgIndpZHRoIjogMzAsCiAgICAgICAgICAiaGVpZ2h0IjogMzEKICAgICAgICB9LAogICAgICAgICJzdHlsZSI6IHsKICAgICAgICAgICJmb250IjogIi1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgXCJTZWdvZSBVSSBWYXJpYWJsZVwiLCBcIlNlZ29lIFVJXCIsIHN5c3RlbS11aSwgdWktc2Fucy1zZXJpZiwgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiwgXCJBcHBsZSBDb2xvciBFbW9qaVwiLCBcIlNlZ29lIFVJIEVtb2ppXCIiLAogICAgICAgICAgImZvbnRTaXplIjogIjEzcHgiLAogICAgICAgICAgImNvbG9yIjogInJnYig2MywgNjMsIDYzKSIsCiAgICAgICAgICAiYmFja2dyb3VuZCI6ICJyZ2JhKDAsIDAsIDAsIDApIiwKICAgICAgICAgICJib3JkZXJUb3AiOiAiMHB4IG5vbmUgcmdiKDIxOCwgMjE4LCAyMTgpIiwKICAgICAgICAgICJwYWRkaW5nTGVmdCI6ICIwcHgiLAogICAgICAgICAgInBhZGRpbmdSaWdodCI6ICIwcHgiCiAgICAgICAgfQogICAgICB9LAogICAgICB7CiAgICAgICAgImJvdW5kcyI6IHsKICAgICAgICAgICJ4IjogNTQsCiAgICAgICAgICAieSI6IDY4OSwKICAgICAgICAgICJ3aWR0aCI6IDMwLAogICAgICAgICAgImhlaWdodCI6IDMxCiAgICAgICAgfSwKICAgICAgICAic3R5bGUiOiB7CiAgICAgICAgICAiZm9udCI6ICItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFwiU2Vnb2UgVUkgVmFyaWFibGVcIiwgXCJTZWdvZSBVSVwiLCBzeXN0ZW0tdWksIHVpLXNhbnMtc2VyaWYsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYsIFwiQXBwbGUgQ29sb3IgRW1vamlcIiwgXCJTZWdvZSBVSSBFbW9qaVwiIiwKICAgICAgICAgICJmb250U2l6ZSI6ICIxM3B4IiwKICAgICAgICAgICJjb2xvciI6ICJyZ2IoNjMsIDYzLCA2MykiLAogICAgICAgICAgImJhY2tncm91bmQiOiAicmdiYSgwLCAwLCAwLCAwKSIsCiAgICAgICAgICAiYm9yZGVyVG9wIjogIjBweCBub25lIHJnYigyMTgsIDIxOCwgMjE4KSIsCiAgICAgICAgICAicGFkZGluZ0xlZnQiOiAiMHB4IiwKICAgICAgICAgICJwYWRkaW5nUmlnaHQiOiAiMHB4IgogICAgICAgIH0KICAgICAgfSwKICAgICAgewogICAgICAgICJib3VuZHMiOiB7CiAgICAgICAgICAieCI6IDAsCiAgICAgICAgICAieSI6IDAsCiAgICAgICAgICAid2lkdGgiOiAwLAogICAgICAgICAgImhlaWdodCI6IDAKICAgICAgICB9LAogICAgICAgICJzdHlsZSI6IHsKICAgICAgICAgICJmb250IjogIi1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgXCJTZWdvZSBVSSBWYXJpYWJsZVwiLCBcIlNlZ29lIFVJXCIsIHN5c3RlbS11aSwgdWktc2Fucy1zZXJpZiwgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiwgXCJBcHBsZSBDb2xvciBFbW9qaVwiLCBcIlNlZ29lIFVJIEVtb2ppXCIiLAogICAgICAgICAgImZvbnRTaXplIjogIjEzcHgiLAogICAgICAgICAgImNvbG9yIjogInJnYig2MywgNjMsIDYzKSIsCiAgICAgICAgICAiYmFja2dyb3VuZCI6ICJyZ2JhKDAsIDAsIDAsIDApIiwKICAgICAgICAgICJib3JkZXJUb3AiOiAiMHB4IG5vbmUgcmdiKDIxOCwgMjE4LCAyMTgpIiwKICAgICAgICAgICJwYWRkaW5nTGVmdCI6ICIwcHgiLAogICAgICAgICAgInBhZGRpbmdSaWdodCI6ICIwcHgiCiAgICAgICAgfQogICAgICB9LAogICAgICB7CiAgICAgICAgImJvdW5kcyI6IHsKICAgICAgICAgICJ4IjogMCwKICAgICAgICAgICJ5IjogMCwKICAgICAgICAgICJ3aWR0aCI6IDAsCiAgICAgICAgICAiaGVpZ2h0IjogMAogICAgICAgIH0sCiAgICAgICAgInN0eWxlIjogewogICAgICAgICAgImZvbnQiOiAiLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBcIlNlZ29lIFVJIFZhcmlhYmxlXCIsIFwiU2Vnb2UgVUlcIiwgc3lzdGVtLXVpLCB1aS1zYW5zLXNlcmlmLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmLCBcIkFwcGxlIENvbG9yIEVtb2ppXCIsIFwiU2Vnb2UgVUkgRW1vamlcIiIsCiAgICAgICAgICAiZm9udFNpemUiOiAiMTNweCIsCiAgICAgICAgICAiY29sb3IiOiAicmdiKDYzLCA2MywgNjMpIiwKICAgICAgICAgICJiYWNrZ3JvdW5kIjogInJnYmEoMCwgMCwgMCwgMCkiLAogICAgICAgICAgImJvcmRlclRvcCI6ICIwcHggbm9uZSByZ2IoMjE4LCAyMTgsIDIxOCkiLAogICAgICAgICAgInBhZGRpbmdMZWZ0IjogIjBweCIsCiAgICAgICAgICAicGFkZGluZ1JpZ2h0IjogIjBweCIKICAgICAgICB9CiAgICAgIH0KICAgIF0sCiAgICAicGFnZXMiOiBbCiAgICAgIHsKICAgICAgICAidGV4dCI6ICLQodGC0YDQsNC90LjRhtCwLTEiLAogICAgICAgICJib3VuZHMiOiB7CiAgICAgICAgICAieCI6IDk2LAogICAgICAgICAgInkiOiA2ODksCiAgICAgICAgICAid2lkdGgiOiAxMDEuMzI4MTI1LAogICAgICAgICAgImhlaWdodCI6IDMxCiAgICAgICAgfSwKICAgICAgICAic3R5bGUiOiB7CiAgICAgICAgICAiZm9udCI6ICItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFwiU2Vnb2UgVUkgVmFyaWFibGVcIiwgXCJTZWdvZSBVSVwiLCBzeXN0ZW0tdWksIHVpLXNhbnMtc2VyaWYsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYsIFwiQXBwbGUgQ29sb3IgRW1vamlcIiwgXCJTZWdvZSBVSSBFbW9qaVwiIiwKICAgICAgICAgICJmb250U2l6ZSI6ICIxM3B4IiwKICAgICAgICAgICJjb2xvciI6ICJyZ2IoNjMsIDYzLCA2MykiLAogICAgICAgICAgImJhY2tncm91bmQiOiAicmdiYSgwLCAwLCAwLCAwKSIsCiAgICAgICAgICAiYm9yZGVyVG9wIjogIjBweCBub25lIHJnYigyMTgsIDIxOCwgMjE4KSIsCiAgICAgICAgICAicGFkZGluZ0xlZnQiOiAiMTZweCIsCiAgICAgICAgICAicGFkZGluZ1JpZ2h0IjogIjE2cHgiCiAgICAgICAgfSwKICAgICAgICAibGFiZWwiOiB7CiAgICAgICAgICAieCI6IDExMiwKICAgICAgICAgICJ5IjogNjk2LAogICAgICAgICAgIndpZHRoIjogNjkuMzI4MTI1LAogICAgICAgICAgImhlaWdodCI6IDE3CiAgICAgICAgfSwKICAgICAgICAiYnV0dG9uIjogewogICAgICAgICAgImJvdW5kcyI6IHsKICAgICAgICAgICAgIngiOiAwLAogICAgICAgICAgICAieSI6IDAsCiAgICAgICAgICAgICJ3aWR0aCI6IDAsCiAgICAgICAgICAgICJoZWlnaHQiOiAwCiAgICAgICAgICB9LAogICAgICAgICAgIndpZHRoIjogIjIwcHgiLAogICAgICAgICAgIm1pbldpZHRoIjogIjBweCIsCiAgICAgICAgICAiYm94U2l6aW5nIjogImJvcmRlci1ib3giLAogICAgICAgICAgIm1hcmdpbiI6ICIycHggMnB4IDJweCAwcHgiLAogICAgICAgICAgInBhZGRpbmciOiAiMnB4IiwKICAgICAgICAgICJib3JkZXIiOiAiMHB4IG5vbmUgcmdiKDIxOCwgMjE4LCAyMTgpIgogICAgICAgIH0sCiAgICAgICAgImdseXBoIjogewogICAgICAgICAgIngiOiAxMTIsCiAgICAgICAgICAieSI6IDY5NiwKICAgICAgICAgICJ3aWR0aCI6IDY5LjMyODEyNSwKICAgICAgICAgICJoZWlnaHQiOiAxNwogICAgICAgIH0KICAgICAgfSwKICAgICAgewogICAgICAgICJ0ZXh0IjogItCh0YLRgNCw0L3QuNGG0LAtMiIsCiAgICAgICAgImJvdW5kcyI6IHsKICAgICAgICAgICJ4IjogMTk3LjMyODEyNSwKICAgICAgICAgICJ5IjogNjg5LAogICAgICAgICAgIndpZHRoIjogMTAxLjMyODEyNSwKICAgICAgICAgICJoZWlnaHQiOiAzMQogICAgICAgIH0sCiAgICAgICAgInN0eWxlIjogewogICAgICAgICAgImZvbnQiOiAiLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBcIlNlZ29lIFVJIFZhcmlhYmxlXCIsIFwiU2Vnb2UgVUlcIiwgc3lzdGVtLXVpLCB1aS1zYW5zLXNlcmlmLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmLCBcIkFwcGxlIENvbG9yIEVtb2ppXCIsIFwiU2Vnb2UgVUkgRW1vamlcIiIsCiAgICAgICAgICAiZm9udFNpemUiOiAiMTNweCIsCiAgICAgICAgICAiY29sb3IiOiAicmdiKDYzLCA2MywgNjMpIiwKICAgICAgICAgICJiYWNrZ3JvdW5kIjogInJnYmEoMCwgMCwgMCwgMCkiLAogICAgICAgICAgImJvcmRlclRvcCI6ICIwcHggbm9uZSByZ2IoMjE4LCAyMTgsIDIxOCkiLAogICAgICAgICAgInBhZGRpbmdMZWZ0IjogIjE2cHgiLAogICAgICAgICAgInBhZGRpbmdSaWdodCI6ICIxNnB4IgogICAgICAgIH0sCiAgICAgICAgImxhYmVsIjogewogICAgICAgICAgIngiOiAyMTMuMzI4MTI1LAogICAgICAgICAgInkiOiA2OTYsCiAgICAgICAgICAid2lkdGgiOiA2OS4zMjgxMjUsCiAgICAgICAgICAiaGVpZ2h0IjogMTcKICAgICAgICB9LAogICAgICAgICJidXR0b24iOiB7CiAgICAgICAgICAiYm91bmRzIjogewogICAgICAgICAgICAieCI6IDAsCiAgICAgICAgICAgICJ5IjogMCwKICAgICAgICAgICAgIndpZHRoIjogMCwKICAgICAgICAgICAgImhlaWdodCI6IDAKICAgICAgICAgIH0sCiAgICAgICAgICAid2lkdGgiOiAiMjBweCIsCiAgICAgICAgICAibWluV2lkdGgiOiAiMHB4IiwKICAgICAgICAgICJib3hTaXppbmciOiAiYm9yZGVyLWJveCIsCiAgICAgICAgICAibWFyZ2luIjogIjJweCAycHggMnB4IDBweCIsCiAgICAgICAgICAicGFkZGluZyI6ICIycHgiLAogICAgICAgICAgImJvcmRlciI6ICIwcHggbm9uZSByZ2IoMjE4LCAyMTgsIDIxOCkiCiAgICAgICAgfSwKICAgICAgICAiZ2x5cGgiOiB7CiAgICAgICAgICAieCI6IDIxMy4zMjgxMjUsCiAgICAgICAgICAieSI6IDY5NiwKICAgICAgICAgICJ3aWR0aCI6IDY5LjMyODEyNSwKICAgICAgICAgICJoZWlnaHQiOiAxNwogICAgICAgIH0KICAgICAgfSwKICAgICAgewogICAgICAgICJ0ZXh0IjogItCh0YLRgNCw0L3QuNGG0LAtMyIsCiAgICAgICAgImJvdW5kcyI6IHsKICAgICAgICAgICJ4IjogMjk4LjY1NjI1LAogICAgICAgICAgInkiOiA2ODksCiAgICAgICAgICAid2lkdGgiOiAxMDcuMzI4MTI1LAogICAgICAgICAgImhlaWdodCI6IDMxCiAgICAgICAgfSwKICAgICAgICAic3R5bGUiOiB7CiAgICAgICAgICAiZm9udCI6ICItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFwiU2Vnb2UgVUkgVmFyaWFibGVcIiwgXCJTZWdvZSBVSVwiLCBzeXN0ZW0tdWksIHVpLXNhbnMtc2VyaWYsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYsIFwiQXBwbGUgQ29sb3IgRW1vamlcIiwgXCJTZWdvZSBVSSBFbW9qaVwiIiwKICAgICAgICAgICJmb250U2l6ZSI6ICIxM3B4IiwKICAgICAgICAgICJjb2xvciI6ICJyZ2IoMTEsIDg3LCAyMDgpIiwKICAgICAgICAgICJiYWNrZ3JvdW5kIjogInJnYigyMjUsIDIzMywgMjQ3KSIsCiAgICAgICAgICAiYm9yZGVyVG9wIjogIjBweCBub25lIHJnYigyMTgsIDIxOCwgMjE4KSIsCiAgICAgICAgICAicGFkZGluZ0xlZnQiOiAiMTZweCIsCiAgICAgICAgICAicGFkZGluZ1JpZ2h0IjogIjBweCIKICAgICAgICB9LAogICAgICAgICJsYWJlbCI6IHsKICAgICAgICAgICJ4IjogMzE0LjY1NjI1LAogICAgICAgICAgInkiOiA2OTYsCiAgICAgICAgICAid2lkdGgiOiA2OS4zMjgxMjUsCiAgICAgICAgICAiaGVpZ2h0IjogMTcKICAgICAgICB9LAogICAgICAgICJidXR0b24iOiB7CiAgICAgICAgICAiYm91bmRzIjogewogICAgICAgICAgICAieCI6IDM4My45ODQzNzUsCiAgICAgICAgICAgICJ5IjogNjkwLjUsCiAgICAgICAgICAgICJ3aWR0aCI6IDIwLAogICAgICAgICAgICAiaGVpZ2h0IjogMjgKICAgICAgICAgIH0sCiAgICAgICAgICAid2lkdGgiOiAiMjBweCIsCiAgICAgICAgICAibWluV2lkdGgiOiAiYXV0byIsCiAgICAgICAgICAiYm94U2l6aW5nIjogImJvcmRlci1ib3giLAogICAgICAgICAgIm1hcmdpbiI6ICIycHggMnB4IDJweCAwcHgiLAogICAgICAgICAgInBhZGRpbmciOiAiMnB4IiwKICAgICAgICAgICJib3JkZXIiOiAiMHB4IG5vbmUgcmdiKDIxOCwgMjE4LCAyMTgpIgogICAgICAgIH0sCiAgICAgICAgImdseXBoIjogewogICAgICAgICAgIngiOiAzMTQuNjU2MjUsCiAgICAgICAgICAieSI6IDY5NiwKICAgICAgICAgICJ3aWR0aCI6IDY5LjMyODEyNSwKICAgICAgICAgICJoZWlnaHQiOiAxNwogICAgICAgIH0KICAgICAgfQogICAgXQogIH0sCiAgImFjdHVhbCI6IHsKICAgICJib3VuZHMiOiB7CiAgICAgICJ4IjogMCwKICAgICAgInkiOiA2ODgsCiAgICAgICJ3aWR0aCI6IDEyODAsCiAgICAgICJoZWlnaHQiOiAzMgogICAgfSwKICAgICJzdHlsZSI6IHsKICAgICAgImZvbnQiOiAiLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBcIlNlZ29lIFVJIFZhcmlhYmxlXCIsIFwiU2Vnb2UgVUlcIiwgc3lzdGVtLXVpLCB1aS1zYW5zLXNlcmlmLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmLCBcIkFwcGxlIENvbG9yIEVtb2ppXCIsIFwiU2Vnb2UgVUkgRW1vamlcIiIsCiAgICAgICJmb250U2l6ZSI6ICIxNHB4IiwKICAgICAgImNvbG9yIjogInJnYig2MywgNjMsIDYzKSIsCiAgICAgICJiYWNrZ3JvdW5kIjogInJnYmEoMCwgMCwgMCwgMCkiLAogICAgICAiYm9yZGVyVG9wIjogIjFweCBzb2xpZCByZ2IoMjE4LCAyMTgsIDIxOCkiLAogICAgICAicGFkZGluZ0xlZnQiOiAiMTJweCIsCiAgICAgICJwYWRkaW5nUmlnaHQiOiAiMjBweCIKICAgIH0sCiAgICAiY29udHJvbHMiOiBbCiAgICAgIHsKICAgICAgICAiYm91bmRzIjogewogICAgICAgICAgIngiOiAxNiwKICAgICAgICAgICJ5IjogNjg5LAogICAgICAgICAgIndpZHRoIjogMzAsCiAgICAgICAgICAiaGVpZ2h0IjogMzEKICAgICAgICB9LAogICAgICAgICJzdHlsZSI6IHsKICAgICAgICAgICJmb250IjogIi1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgXCJTZWdvZSBVSSBWYXJpYWJsZVwiLCBcIlNlZ29lIFVJXCIsIHN5c3RlbS11aSwgdWktc2Fucy1zZXJpZiwgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiwgXCJBcHBsZSBDb2xvciBFbW9qaVwiLCBcIlNlZ29lIFVJIEVtb2ppXCIiLAogICAgICAgICAgImZvbnRTaXplIjogIjEzcHgiLAogICAgICAgICAgImNvbG9yIjogInJnYig2MywgNjMsIDYzKSIsCiAgICAgICAgICAiYmFja2dyb3VuZCI6ICJyZ2JhKDAsIDAsIDAsIDApIiwKICAgICAgICAgICJib3JkZXJUb3AiOiAiMHB4IG5vbmUgcmdiKDIxOCwgMjE4LCAyMTgpIiwKICAgICAgICAgICJwYWRkaW5nTGVmdCI6ICIwcHgiLAogICAgICAgICAgInBhZGRpbmdSaWdodCI6ICIwcHgiCiAgICAgICAgfQogICAgICB9LAogICAgICB7CiAgICAgICAgImJvdW5kcyI6IHsKICAgICAgICAgICJ4IjogNTQsCiAgICAgICAgICAieSI6IDY4OSwKICAgICAgICAgICJ3aWR0aCI6IDMwLAogICAgICAgICAgImhlaWdodCI6IDMxCiAgICAgICAgfSwKICAgICAgICAic3R5bGUiOiB7CiAgICAgICAgICAiZm9udCI6ICItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFwiU2Vnb2UgVUkgVmFyaWFibGVcIiwgXCJTZWdvZSBVSVwiLCBzeXN0ZW0tdWksIHVpLXNhbnMtc2VyaWYsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYsIFwiQXBwbGUgQ29sb3IgRW1vamlcIiwgXCJTZWdvZSBVSSBFbW9qaVwiIiwKICAgICAgICAgICJmb250U2l6ZSI6ICIxM3B4IiwKICAgICAgICAgICJjb2xvciI6ICJyZ2IoNjMsIDYzLCA2MykiLAogICAgICAgICAgImJhY2tncm91bmQiOiAicmdiYSgwLCAwLCAwLCAwKSIsCiAgICAgICAgICAiYm9yZGVyVG9wIjogIjBweCBub25lIHJnYigyMTgsIDIxOCwgMjE4KSIsCiAgICAgICAgICAicGFkZGluZ0xlZnQiOiAiMHB4IiwKICAgICAgICAgICJwYWRkaW5nUmlnaHQiOiAiMHB4IgogICAgICAgIH0KICAgICAgfQogICAgXSwKICAgICJwYWdlcyI6IFsKICAgICAgewogICAgICAgICJ0ZXh0IjogItCh0YLRgNCw0L3QuNGG0LAtMSIsCiAgICAgICAgImJvdW5kcyI6IHsKICAgICAgICAgICJ4IjogOTYsCiAgICAgICAgICAieSI6IDY4OSwKICAgICAgICAgICJ3aWR0aCI6IDEwMS4zMjgxMjUsCiAgICAgICAgICAiaGVpZ2h0IjogMzEKICAgICAgICB9LAogICAgICAgICJzdHlsZSI6IHsKICAgICAgICAgICJmb250IjogIi1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgXCJTZWdvZSBVSSBWYXJpYWJsZVwiLCBcIlNlZ29lIFVJXCIsIHN5c3RlbS11aSwgdWktc2Fucy1zZXJpZiwgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiwgXCJBcHBsZSBDb2xvciBFbW9qaVwiLCBcIlNlZ29lIFVJIEVtb2ppXCIiLAogICAgICAgICAgImZvbnRTaXplIjogIjEzcHgiLAogICAgICAgICAgImNvbG9yIjogInJnYig2MywgNjMsIDYzKSIsCiAgICAgICAgICAiYmFja2dyb3VuZCI6ICJyZ2JhKDAsIDAsIDAsIDApIiwKICAgICAgICAgICJib3JkZXJUb3AiOiAiMHB4IG5vbmUgcmdiKDIxOCwgMjE4LCAyMTgpIiwKICAgICAgICAgICJwYWRkaW5nTGVmdCI6ICIxNnB4IiwKICAgICAgICAgICJwYWRkaW5nUmlnaHQiOiAiMTZweCIKICAgICAgICB9LAogICAgICAgICJsYWJlbCI6IHsKICAgICAgICAgICJ4IjogMTEyLAogICAgICAgICAgInkiOiA2ODksCiAgICAgICAgICAid2lkdGgiOiA2OS4zMjgxMjUsCiAgICAgICAgICAiaGVpZ2h0IjogMzEKICAgICAgICB9LAogICAgICAgICJidXR0b24iOiB7CiAgICAgICAgICAiYm91bmRzIjogewogICAgICAgICAgICAieCI6IDAsCiAgICAgICAgICAgICJ5IjogMCwKICAgICAgICAgICAgIndpZHRoIjogMCwKICAgICAgICAgICAgImhlaWdodCI6IDAKICAgICAgICAgIH0sCiAgICAgICAgICAid2lkdGgiOiAiMjBweCIsCiAgICAgICAgICAibWluV2lkdGgiOiAiMjRweCIsCiAgICAgICAgICAiYm94U2l6aW5nIjogImJvcmRlci1ib3giLAogICAgICAgICAgIm1hcmdpbiI6ICIycHggMnB4IDJweCAwcHgiLAogICAgICAgICAgInBhZGRpbmciOiAiMnB4IiwKICAgICAgICAgICJib3JkZXIiOiAiMHB4IG5vbmUgcmdiKDIxOCwgMjE4LCAyMTgpIgogICAgICAgIH0sCiAgICAgICAgImdseXBoIjogewogICAgICAgICAgIngiOiAxMTIsCiAgICAgICAgICAieSI6IDY5NiwKICAgICAgICAgICJ3aWR0aCI6IDY5LjMyODEyNSwKICAgICAgICAgICJoZWlnaHQiOiAxNwogICAgICAgIH0KICAgICAgfSwKICAgICAgewogICAgICAgICJ0ZXh0IjogItCh0YLRgNCw0L3QuNGG0LAtMiIsCiAgICAgICAgImJvdW5kcyI6IHsKICAgICAgICAgICJ4IjogMTk3LjMyODEyNSwKICAgICAgICAgICJ5IjogNjg5LAogICAgICAgICAgIndpZHRoIjogMTAxLjMyODEyNSwKICAgICAgICAgICJoZWlnaHQiOiAzMQogICAgICAgIH0sCiAgICAgICAgInN0eWxlIjogewogICAgICAgICAgImZvbnQiOiAiLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBcIlNlZ29lIFVJIFZhcmlhYmxlXCIsIFwiU2Vnb2UgVUlcIiwgc3lzdGVtLXVpLCB1aS1zYW5zLXNlcmlmLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmLCBcIkFwcGxlIENvbG9yIEVtb2ppXCIsIFwiU2Vnb2UgVUkgRW1vamlcIiIsCiAgICAgICAgICAiZm9udFNpemUiOiAiMTNweCIsCiAgICAgICAgICAiY29sb3IiOiAicmdiKDYzLCA2MywgNjMpIiwKICAgICAgICAgICJiYWNrZ3JvdW5kIjogInJnYmEoMCwgMCwgMCwgMCkiLAogICAgICAgICAgImJvcmRlclRvcCI6ICIwcHggbm9uZSByZ2IoMjE4LCAyMTgsIDIxOCkiLAogICAgICAgICAgInBhZGRpbmdMZWZ0IjogIjE2cHgiLAogICAgICAgICAgInBhZGRpbmdSaWdodCI6ICIxNnB4IgogICAgICAgIH0sCiAgICAgICAgImxhYmVsIjogewogICAgICAgICAgIngiOiAyMTMuMzI4MTI1LAogICAgICAgICAgInkiOiA2ODksCiAgICAgICAgICAid2lkdGgiOiA2OS4zMjgxMjUsCiAgICAgICAgICAiaGVpZ2h0IjogMzEKICAgICAgICB9LAogICAgICAgICJidXR0b24iOiB7CiAgICAgICAgICAiYm91bmRzIjogewogICAgICAgICAgICAieCI6IDAsCiAgICAgICAgICAgICJ5IjogMCwKICAgICAgICAgICAgIndpZHRoIjogMCwKICAgICAgICAgICAgImhlaWdodCI6IDAKICAgICAgICAgIH0sCiAgICAgICAgICAid2lkdGgiOiAiMjBweCIsCiAgICAgICAgICAibWluV2lkdGgiOiAiMjRweCIsCiAgICAgICAgICAiYm94U2l6aW5nIjogImJvcmRlci1ib3giLAogICAgICAgICAgIm1hcmdpbiI6ICIycHggMnB4IDJweCAwcHgiLAogICAgICAgICAgInBhZGRpbmciOiAiMnB4IiwKICAgICAgICAgICJib3JkZXIiOiAiMHB4IG5vbmUgcmdiKDIxOCwgMjE4LCAyMTgpIgogICAgICAgIH0sCiAgICAgICAgImdseXBoIjogewogICAgICAgICAgIngiOiAyMTMuMzI4MTI1LAogICAgICAgICAgInkiOiA2OTYsCiAgICAgICAgICAid2lkdGgiOiA2OS4zMjgxMjUsCiAgICAgICAgICAiaGVpZ2h0IjogMTcKICAgICAgICB9CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidGV4dCI6ICLQodGC0YDQsNC90LjRhtCwLTMiLAogICAgICAgICJib3VuZHMiOiB7CiAgICAgICAgICAieCI6IDI5OC42NTYyNSwKICAgICAgICAgICJ5IjogNjg5LAogICAgICAgICAgIndpZHRoIjogMTExLjMyODEyNSwKICAgICAgICAgICJoZWlnaHQiOiAzMQogICAgICAgIH0sCiAgICAgICAgInN0eWxlIjogewogICAgICAgICAgImZvbnQiOiAiLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBcIlNlZ29lIFVJIFZhcmlhYmxlXCIsIFwiU2Vnb2UgVUlcIiwgc3lzdGVtLXVpLCB1aS1zYW5zLXNlcmlmLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmLCBcIkFwcGxlIENvbG9yIEVtb2ppXCIsIFwiU2Vnb2UgVUkgRW1vamlcIiIsCiAgICAgICAgICAiZm9udFNpemUiOiAiMTNweCIsCiAgICAgICAgICAiY29sb3IiOiAicmdiKDExLCA4NywgMjA4KSIsCiAgICAgICAgICAiYmFja2dyb3VuZCI6ICJyZ2IoMjI1LCAyMzMsIDI0NykiLAogICAgICAgICAgImJvcmRlclRvcCI6ICIwcHggbm9uZSByZ2IoMjE4LCAyMTgsIDIxOCkiLAogICAgICAgICAgInBhZGRpbmdMZWZ0IjogIjE2cHgiLAogICAgICAgICAgInBhZGRpbmdSaWdodCI6ICIwcHgiCiAgICAgICAgfSwKICAgICAgICAibGFiZWwiOiB7CiAgICAgICAgICAieCI6IDMxNC42NTYyNSwKICAgICAgICAgICJ5IjogNjg5LAogICAgICAgICAgIndpZHRoIjogNjkuMzI4MTI1LAogICAgICAgICAgImhlaWdodCI6IDMxCiAgICAgICAgfSwKICAgICAgICAiYnV0dG9uIjogewogICAgICAgICAgImJvdW5kcyI6IHsKICAgICAgICAgICAgIngiOiAzODMuOTg0Mzc1LAogICAgICAgICAgICAieSI6IDY5MC41LAogICAgICAgICAgICAid2lkdGgiOiAyNCwKICAgICAgICAgICAgImhlaWdodCI6IDI4CiAgICAgICAgICB9LAogICAgICAgICAgIndpZHRoIjogIjI0cHgiLAogICAgICAgICAgIm1pbldpZHRoIjogIjI0cHgiLAogICAgICAgICAgImJveFNpemluZyI6ICJib3JkZXItYm94IiwKICAgICAgICAgICJtYXJnaW4iOiAiMnB4IDJweCAycHggMHB4IiwKICAgICAgICAgICJwYWRkaW5nIjogIjJweCIsCiAgICAgICAgICAiYm9yZGVyIjogIjBweCBub25lIHJnYigyMTgsIDIxOCwgMjE4KSIKICAgICAgICB9LAogICAgICAgICJnbHlwaCI6IHsKICAgICAgICAgICJ4IjogMzE0LjY1NjI1LAogICAgICAgICAgInkiOiA2OTYsCiAgICAgICAgICAid2lkdGgiOiA2OS4zMjgxMjUsCiAgICAgICAgICAiaGVpZ2h0IjogMTcKICAgICAgICB9CiAgICAgIH0KICAgIF0KICB9LAogICJleGNlcHRpb24iOiAiQWN0aXZlIG5hdGl2ZSBvcHRpb25zIHRhcmdldCAyNHB4IGluc3RlYWQgb2Ygc291cmNlIDIwcHggKCs0cHggYWN0aXZlIHRhYiwgQTExWS0wMDQpLiBBbGwgZWFybGllciBpbmFjdGl2ZSB0YWJzIG11c3QgcmVtYWluIGV4YWN0LiIKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cec950ed20a05009493e-fb3d73041e81973e61bf",
+          "file": "drawing-pages-parity.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "forced-colors dark preserves system contrast in tabs, menus and dialog",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 980,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:22.019Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cec950ed20a05009493e-f4ad6c8bdca6f28fa4c6",
+          "file": "drawing-pages-parity.spec.ts",
+          "line": 342,
+          "column": 1
+        },
+        {
+          "title": "320px, 200 percent text, coarse targets, Unicode labels and Tab remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1068,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:23.021Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cec950ed20a05009493e-bef4578c6605970992a1",
+          "file": "drawing-pages-parity.spec.ts",
+          "line": 393,
+          "column": 1
+        },
+        {
+          "title": "coarse pointer enlarges actual targets while keeping the panel within a narrow editor",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 762,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:24.112Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cec950ed20a05009493e-2cc6e2d3ad7042cf1f95",
+          "file": "drawing-pages-parity.spec.ts",
+          "line": 450,
+          "column": 1
+        },
+        {
+          "title": "page chrome remains pinned Light under dark system preference without semantic changes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:24.890Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cec950ed20a05009493e-55ef9055fc65ff896706",
+          "file": "drawing-pages-parity.spec.ts",
+          "line": 493,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "drawing-pages-ui.spec.ts",
+      "file": "drawing-pages-ui.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "hosted rename belongs to managed overlays and cannot escape the presentation barrier",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1018,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:15.707Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c3107d965d912b352a9-9727099905a46bf05423",
+          "file": "drawing-pages-ui.spec.ts",
+          "line": 2,
+          "column": 1
+        },
+        {
+          "title": "nested page-list menus report expanded state and readonly modal cancellation restores tab focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 853,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:16.871Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c3107d965d912b352a9-e46eec32aa468aa75548",
+          "file": "drawing-pages-ui.spec.ts",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "native page strip edits, reorders, clears and round-trips every page through real files",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1695,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:17.739Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c3107d965d912b352a9-839d5bcc3f5c7ec91c49",
+          "file": "drawing-pages-ui.spec.ts",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "overflow readonly tabs remain keyboard reachable while every mutation is blocked",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 763,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:19.448Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c3107d965d912b352a9-baf7b377079ce9cdb44b",
+          "file": "drawing-pages-ui.spec.ts",
+          "line": 176,
+          "column": 1
+        },
+        {
+          "title": "standalone opens only the selected page independently and cleans its transfer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1116,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:20.230Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c3107d965d912b352a9-58eb654c19ea8de86478",
+          "file": "drawing-pages-ui.spec.ts",
+          "line": 224,
+          "column": 1
+        },
+        {
+          "title": "native pointer reorder, Escape drag cancellation and final-page removal are reversible",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1110,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:21.367Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c3107d965d912b352a9-454d3b283ef816edb8eb",
+          "file": "drawing-pages-ui.spec.ts",
+          "line": 262,
+          "column": 1
+        },
+        {
+          "title": "Save As cancel and invalid inactive-page Open preserve the complete drawing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1024,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:22.493Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c3107d965d912b352a9-7072c55232852e875114",
+          "file": "drawing-pages-ui.spec.ts",
+          "line": 311,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "drawing-session.spec.ts",
+      "file": "drawing-session.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "page and native graph batches share chronological undo across navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 555,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:23.570Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d871120caedf967ac96-3f7e933738e829fa351e",
+          "file": "drawing-session.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "page viewports are independent and malformed inactive content preserves graph/history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 551,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:24.143Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d871120caedf967ac96-a41563802331c1d4d671",
+          "file": "drawing-session.spec.ts",
+          "line": 112,
+          "column": 1
+        },
+        {
+          "title": "readonly permits navigation but rejects every page/history mutation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 623,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:24.712Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d871120caedf967ac96-ae5d3a1fdc33e4eb0889",
+          "file": "drawing-session.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "canceled native gesture and rejected page command preserve semantic content and history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 581,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:25.353Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d871120caedf967ac96-d235f6ff6f6b456ead78",
+          "file": "drawing-session.spec.ts",
+          "line": 235,
+          "column": 1
+        },
+        {
+          "title": "extracted v2 page preserves identity, graph, viewport and references with a new document identity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 464,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T01:53:25.948Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d871120caedf967ac96-7ebf616d04a40d66a9e3",
+          "file": "drawing-session.spec.ts",
+          "line": 285,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T01:53:13.310Z",
+    "duration": 13420.777,
+    "expected": 17,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

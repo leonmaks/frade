@@ -1,0 +1,40 @@
+✖ workspace may use only the declared pure Draw document facade, without granting new dependencies (2.8755ms)
+✔ pilot public exports and package boundaries exist and remain inward-only (37.7995ms)
+✔ adapter-sberea-yaml rejects privileged, private and escaping dependencies (0.7998ms)
+✔ metamodel-config rejects privileged, private and escaping dependencies (0.1815ms)
+✔ ui-navigator rejects privileged, private and escaping dependencies (0.1865ms)
+✔ ui-inspector rejects privileged, private and escaping dependencies (0.1485ms)
+✔ ui-workspace rejects privileged, private and escaping dependencies (0.1628ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 137.7449
+
+✖ failing tests:
+
+test at tests\contract\workbench-boundaries.test.mjs:12:1
+✖ workspace may use only the declared pure Draw document facade, without granting new dependencies (2.8755ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\ui-workspace\\src\\diagramContent.ts: forbidden import @frade/draw/document'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///E:/dev/codex/frade/.worktrees/draw-pages/tests/contract/workbench-boundaries.test.mjs:14:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\ui-workspace\\src\\diagramContent.ts: forbidden import @frade/draw/document' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

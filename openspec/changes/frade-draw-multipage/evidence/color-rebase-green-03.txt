@@ -1,0 +1,46 @@
+✔ drawing pages coordinate adoption moves only exact UTF16 spans, retaining metadata and contexts (7.2737ms)
+✔ drawing pages rebase rejects added literals and changed literal/declaration context (1.2252ms)
+✖ drawing pages rebase rejects moving an old color into a different selector owner (1.0358ms)
+✔ drawing pages rebase rejects classifying a new exception, deleting an entry or changing baseline (1.7083ms)
+✔ drawing pages rebase refuses an already stale original inventory (0.4121ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 355.6716
+
+✖ failing tests:
+
+test at tests\ui-contract\drawing-pages-adoption.test.mjs:10:1
+✖ drawing pages rebase rejects moving an old color into a different selector owner (1.0358ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /COLOR_OWNER_CHANGED/. Input:
+  
+  'Error: COLOR_SEQUENCE_CHANGED'
+  
+      at TestContext.<anonymous> (file:///E:/dev/codex/frade/.worktrees/draw-pages/tests/ui-contract/drawing-pages-adoption.test.mjs:10:101)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: COLOR_SEQUENCE_CHANGED
+        at demand (file:///E:/dev/codex/frade/.worktrees/draw-pages/tests/ui-contract/drawing-pages-adoption.mjs:9:46)
+        at rebaseLegacyColors (file:///E:/dev/codex/frade/.worktrees/draw-pages/tests/ui-contract/drawing-pages-adoption.mjs:33:58)
+        at file:///E:/dev/codex/frade/.worktrees/draw-pages/tests/ui-contract/drawing-pages-adoption.test.mjs:10:112
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///E:/dev/codex/frade/.worktrees/draw-pages/tests/ui-contract/drawing-pages-adoption.test.mjs:10:101)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1325:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+        at Test.postRun (node:internal/test_runner/test:1465:19),
+    expected: /COLOR_OWNER_CHANGED/,
+    operator: 'throws',
+    diff: 'simple'
+  }

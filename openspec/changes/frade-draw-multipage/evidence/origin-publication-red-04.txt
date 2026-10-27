@@ -1,0 +1,60 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/.worktrees/draw-pages/packages/ui-workspace
+
+ ❯ tests/ui-contract/drawing-pages-origin.test.ts (15 tests | 2 failed) 145ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > returns exact original raw bytes only for the exact adopted file and live hash 14ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects a one-byte live edit before exposing the historical origin 8ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects original byte/EOL mutation, missing originals and does not normalize them 10ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects mutated manifest bytes and unsupported manifest schema 7ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects duplicate entries and snapshot path redirection even in a trusted test manifest 7ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source ../outside 7ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source packages//file.ts 8ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source C:/outside.ts 6ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source packages/../outside.ts 6ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source packages\outside.ts 6ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > keeps undeclared mutations visible to the unchanged downstream original verifier 6ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects leaf links without reading an outside original 10ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > finds exactly one active or archived owner and rejects ambiguous evidence locations 24ms
+   × accepts only preregistered publication EOL forms with the same canonical bytes 14ms
+     → ADOPTED_SOURCE_HASH:packages/draw/src/example.ts
+   × does not accept semantic edits disguised as an explicitly named checkout form 13ms
+     → expected [Function] to throw error including 'ADOPTED_PUBLICATION_EQUIVALENCE' but got 'ADOPTED_SOURCE_HASH:packages/draw/src…'
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/drawing-pages-origin.test.ts > accepts only preregistered publication EOL forms with the same canonical bytes
+Error: ADOPTED_SOURCE_HASH:packages/draw/src/example.ts
+ ❯ demand tests/ui-contract/drawing-pages-origin.ts:9:83
+      7| const baseline = 'e54cf0c1e4e70ed833398c673ea3140b6f10469e'
+      8| const sha = (bytes: Buffer) => createHash('sha256').update(bytes).dige…
+      9| function demand(value: unknown, error: string): asserts value { if (!v…
+       |                                                                                   ^
+     10| function safeRelative(file: string) {
+     11|   demand(typeof file === 'string' && !!file && !isAbsolute(file) && !f…
+ ❯ tests/ui-contract/drawing-pages-origin.ts:58:5
+ ❯ tests/ui-contract/drawing-pages-origin.test.ts:37:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/ui-contract/drawing-pages-origin.test.ts > does not accept semantic edits disguised as an explicitly named checkout form
+AssertionError: expected [Function] to throw error including 'ADOPTED_PUBLICATION_EQUIVALENCE' but got 'ADOPTED_SOURCE_HASH:packages/draw/src…'
+
+Expected: "ADOPTED_PUBLICATION_EQUIVALENCE"
+Received: "ADOPTED_SOURCE_HASH:packages/draw/src/example.ts"
+
+ ❯ tests/ui-contract/drawing-pages-origin.test.ts:42:115
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 13 passed (15)
+   Start at  04:34:53
+   Duration  723ms (transform 70ms, setup 0ms, collect 80ms, tests 145ms, environment 0ms, prepare 190ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\ui-workspace
+

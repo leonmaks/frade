@@ -1,3 +1,4 @@
+@import './editor/pages.css';
 html,
 body,
 #root,
@@ -20,7 +21,7 @@ main {
   overflow: hidden;
   display: grid;
   grid-template-columns: 150px minmax(0, 1fr);
-  grid-template-rows: 48px minmax(0, 1fr);
+  grid-template-rows: 48px minmax(0, 1fr) max-content;
 }
 header {
   grid-column: 1/3;

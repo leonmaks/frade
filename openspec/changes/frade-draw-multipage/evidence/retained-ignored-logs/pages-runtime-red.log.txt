@@ -1,0 +1,97 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/.worktrees/draw-pages/packages/runtime-node
+
+ ❯ tests/diagram-files.test.ts (6 tests | 4 failed) 87ms
+   × repository diagram files > creates ordinary nested files, saves atomically and guards concurrent writes 36ms
+     → expected false to be true // Object.is equality
+   × repository diagram files > rejects escaping paths, symlinks, read-only writes and invalid XML 7ms
+     → EPERM: operation not permitted, symlink 'C:\Users\NVISEN\AppData\Local\Packages\sandbox.{5d6b3ec1-e8c0-4d77-82b6-76c604a0294e}\AC\Temp\frade-outside-LIhkoZ' -> 'C:\Users\NVISEN\AppData\Local\Packages\sandbox.{5d6b3ec1-e8c0-4d77-82b6-76c604a0294e}\AC\Temp\frade-diagrams-RwAFwD\_diagrams\link'
+   × repository diagram files > renames without overwriting and detects external disk edits 17ms
+     → expected false to be true // Object.is equality
+   ✓ repository diagram files > stores .frade as JSON and refuses implicit format conversion 11ms
+   ✓ repository diagram files > accepts native compressed multi-page XML and rejects entity declarations 10ms
+   × repository diagram files > stores every native v2 page and preserves atomic revision/validation controls 3ms
+     → expected false to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/diagram-files.test.ts > repository diagram files > creates ordinary nested files, saves atomically and guards concurrent writes
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/diagram-files.test.ts:24:95
+     22|     const base = created.value as { revision: string }
+     23|     const xml = EMPTY_DIAGRAM.replace('Page-1', 'Edited')
+     24|     expect((await files.execute({ action: 'write', path, xml, revision…
+       |                                                                                               ^
+     25|       true,
+     26|     )
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/diagram-files.test.ts > repository diagram files > rejects escaping paths, symlinks, read-only writes and invalid XML
+Error: EPERM: operation not permitted, symlink 'C:\Users\NVISEN\AppData\Local\Packages\sandbox.{5d6b3ec1-e8c0-4d77-82b6-76c604a0294e}\AC\Temp\frade-outside-LIhkoZ' -> 'C:\Users\NVISEN\AppData\Local\Packages\sandbox.{5d6b3ec1-e8c0-4d77-82b6-76c604a0294e}\AC\Temp\frade-diagrams-RwAFwD\_diagrams\link'
+ ❯ tests/diagram-files.test.ts:56:7
+     54|     try {
+     55|       await mkdir(join(root, '_diagrams'))
+     56|       await symlink(outside, join(root, '_diagrams', 'link'), 'junctio…
+       |       ^
+     57|       expect(
+     58|         (await files.execute({ action: 'create', path: '_diagrams/link…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/diagram-files.test.ts > repository diagram files > renames without overwriting and detects external disk edits
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/diagram-files.test.ts:77:7
+     75|       (await files.execute({ action: 'rename', path, destination: '_di…
+     76|         .ok,
+     77|     ).toBe(true)
+       |       ^
+     78|     await writeFile(join(root, '_diagrams/new name'), EMPTY_DIAGRAM.re…
+     79|     expect(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/diagram-files.test.ts > repository diagram files > stores every native v2 page and preserves atomic revision/validation controls
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/diagram-files.test.ts:138:24
+    136|     ]}
+    137|     const created=await files.execute({action:'create',path,xml:JSON.s…
+    138|     expect(created.ok).toBe(true)
+       |                        ^
+    139|     if(!created.ok)throw Error('v2 create rejected')
+    140|     const original=created.value as {xml:string;revision:string}
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 2 passed (6)
+   Start at  01:57:28
+   Duration  1.84s (transform 489ms, setup 0ms, collect 685ms, tests 87ms, environment 0ms, prepare 493ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\runtime-node
+

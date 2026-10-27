@@ -1,0 +1,7 @@
+The bounded control-adoption algorithm preserves the archived proof while requiring exact live-byte checks and separate current execution. The 87 packet artifacts match their hashes, all 14 origin blobs match archived pins, and the PRE05 documentation gaps are repaired.
+
+**PRE06 fails on matrix coverage.** [Matrix row 7](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-27T00-30-34-596Z-405d7893-d388-4ba8-910f-cf34c871d514/prepared/packet/openspec/changes/frade-draw-multipage/evidence/matrix-applicability.md:15) promises the staged filesystem obstruction regression, but the [47-case execution map](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-27T00-30-34-596Z-405d7893-d388-4ba8-910f-cf34c871d514/prepared/packet/openspec/changes/frade-draw-multipage/evidence/presentation-execution-plan.json:6) omits its [named test](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-27T00-30-34-596Z-405d7893-d388-4ba8-910f-cf34c871d514/prepared/packet/apps/desktop/tests/e2e/ui-contract-theme.spec.ts:1033). The selected frame-preparation refusal tests a different failure path. The map also omits the frame responsive-media test covering the archived matrix’s editor zoom, constrained viewport, and coarse-pointer path. Neither the root check nor the separately planned `diagrams.spec.ts` runs those omitted named tests.
+
+Add current execution and result binding for those unique paths, then reassess the plan. The collected 125-case list is not execution evidence.
+
+GATE_STATUS: FAIL

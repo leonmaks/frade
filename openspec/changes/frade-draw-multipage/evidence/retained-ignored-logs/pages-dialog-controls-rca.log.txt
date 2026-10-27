@@ -1,0 +1,67 @@
+[WebServer] (node:30976) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:25432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-parity.spec.ts:96:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation (5.4s)
+
+
+  1) tests\spike\drawing-pages-parity.spec.ts:96:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 1[39m
+    [31m+ Received  + 1[39m
+
+    [33m@@ -15,11 +15,11 @@[39m
+    [2m      "Удалить Страница",[22m
+    [2m      "Переименовать Страница...",[22m
+    [2m    ],[22m
+    [2m    "rows": Array [[22m
+    [2m      Object {[22m
+    [32m-       "background": "rgba(0, 0, 0, 0)",[39m
+    [31m+       "background": "rgb(226, 226, 226)",[39m
+    [2m        "color": "rgb(63, 63, 63)",[22m
+    [2m      },[22m
+    [2m      Object {[22m
+    [2m        "background": "rgba(0, 0, 0, 0)",[22m
+    [2m        "color": "rgb(63, 63, 63)",[22m
+
+      271 |     labels: value.labels,
+      272 |   })
+    > 273 |   expect(comparable(menus.actual)).toEqual(comparable(menus.expected))
+          |                                    ^
+      274 |   expect(comparable(hovered.actual)).toEqual(comparable(hovered.expected))
+      275 |   expect(dialogs.actual.bounds).toEqual(dialogs.expected.bounds)
+      276 |   await stock.close()
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:273:36
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\spike\drawing-pages-parity.spec.ts:96:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

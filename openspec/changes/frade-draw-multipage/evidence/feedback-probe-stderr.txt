@@ -1,0 +1,18 @@
+file:///E:/dev/codex/frade/.worktrees/draw-pages/openspec/changes/frade-draw-multipage/evidence/feedback-probe.config.ts:1
+import { defineConfig } from '../../../../packages/draw/node_modules/@playwright/test/index.js';
+         ^^^^^^^^^^^^
+SyntaxError: Named export 'defineConfig' not found. The requested module '../../../../packages/draw/node_modules/@playwright/test/index.js' is a CommonJS module, which may not support all module.exports as named exports.
+CommonJS modules can always be imported via the default export, for example using:
+
+import pkg from '../../../../packages/draw/node_modules/@playwright/test/index.js';
+const { defineConfig } = pkg;
+
+    at ModuleJob.#asyncInstantiate (node:internal/modules/esm/module_job:327:21)
+    at ModuleJob.run (node:internal/modules/esm/module_job:431:5)
+    at node:internal/modules/esm/loader:643:26
+    at requireOrImport (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\playwright@1.57.0\node_modules\playwright\lib\transform\transform.js:214:12)
+    at loadUserConfig (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\playwright@1.57.0\node_modules\playwright\lib\common\configLoader.js:107:46)
+    at loadConfig (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\playwright@1.57.0\node_modules\playwright\lib\common\configLoader.js:119:22)
+    at loadConfigFromFile (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\playwright@1.57.0\node_modules\playwright\lib\common\configLoader.js:331:10)
+    at runTests (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\playwright@1.57.0\node_modules\playwright\lib\program.js:197:18)
+    at r.<anonymous> (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\playwright@1.57.0\node_modules\playwright\lib\program.js:70:7)

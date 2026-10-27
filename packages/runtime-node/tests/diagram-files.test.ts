@@ -14,16 +14,26 @@ describe('repository diagram files', () => {
     await rm(root, { recursive: true, force: true })
   })
   it('creates ordinary nested files, saves atomically and guards concurrent writes', async () => {
-    expect(await files.execute({ action: 'list' })).toEqual({ ok: true, value: { entries: [] } })
+    expect(await files.execute({ action: 'list' })).toEqual({
+      ok: true,
+      value: { entries: [] },
+    })
     const path = '_diagrams/Проект 2026/Обзор.drawio'
     const created = await files.execute({ action: 'create', path })
     expect(created.ok).toBe(true)
     if (!created.ok) return
     const base = created.value as { revision: string }
     const xml = EMPTY_DIAGRAM.replace('Page-1', 'Edited')
-    expect((await files.execute({ action: 'write', path, xml, revision: base.revision })).ok).toBe(
-      true,
-    )
+    expect(
+      (
+        await files.execute({
+          action: 'write',
+          path,
+          xml,
+          revision: base.revision,
+        })
+      ).ok,
+    ).toBe(true)
     expect(await readFile(join(root, path), 'utf8')).toBe(xml)
     const conflict = await files.execute({
       action: 'write',
@@ -45,17 +55,33 @@ describe('repository diagram files', () => {
     ])
       expect((await files.execute({ action: 'create', path })).ok).toBe(false)
     expect(
-      (await new DiagramFiles(root, true).execute({ action: 'create', path: '_diagrams/a' })).ok,
+      (
+        await new DiagramFiles(root, true).execute({
+          action: 'create',
+          path: '_diagrams/a',
+        })
+      ).ok,
     ).toBe(false)
     expect(
-      (await files.execute({ action: 'create', path: '_diagrams/a', xml: '<not-a-diagram/>' })).ok,
+      (
+        await files.execute({
+          action: 'create',
+          path: '_diagrams/a',
+          xml: '<not-a-diagram/>',
+        })
+      ).ok,
     ).toBe(false)
     const outside = await mkdtemp(join(tmpdir(), 'frade-outside-'))
     try {
       await mkdir(join(root, '_diagrams'))
       await symlink(outside, join(root, '_diagrams', 'link'), 'junction')
       expect(
-        (await files.execute({ action: 'create', path: '_diagrams/link/escape.drawio' })).ok,
+        (
+          await files.execute({
+            action: 'create',
+            path: '_diagrams/link/escape.drawio',
+          })
+        ).ok,
       ).toBe(false)
     } finally {
       await rm(outside, { recursive: true, force: true })
@@ -68,12 +94,24 @@ describe('repository diagram files', () => {
     const revision = (created.value as { revision: string }).revision
     await files.execute({ action: 'create', path: '_diagrams/b.drawio' })
     expect(
-      (await files.execute({ action: 'rename', path, destination: '_diagrams/b.drawio', revision }))
-        .ok,
+      (
+        await files.execute({
+          action: 'rename',
+          path,
+          destination: '_diagrams/b.drawio',
+          revision,
+        })
+      ).ok,
     ).toBe(false)
     expect(
-      (await files.execute({ action: 'rename', path, destination: '_diagrams/new name', revision }))
-        .ok,
+      (
+        await files.execute({
+          action: 'rename',
+          path,
+          destination: '_diagrams/new name',
+          revision,
+        })
+      ).ok,
     ).toBe(true)
     await writeFile(join(root, '_diagrams/new name'), EMPTY_DIAGRAM.replace('Page-1', 'External'))
     expect(
@@ -93,7 +131,10 @@ describe('repository diagram files', () => {
     expect(created.ok).toBe(true)
     if (!created.ok) return
     const doc = created.value as { xml: string; revision: string }
-    expect(JSON.parse(doc.xml)).toMatchObject({ format: 'frade-draw', version: 1 })
+    expect(JSON.parse(doc.xml)).toMatchObject({
+      format: 'frade-draw',
+      version: 1,
+    })
     expect((await files.execute({ action: 'read', path })).ok).toBe(true)
     expect(
       (
@@ -106,8 +147,14 @@ describe('repository diagram files', () => {
       ).ok,
     ).toBe(false)
     expect(
-      (await files.execute({ action: 'write', path, xml: EMPTY_DIAGRAM, revision: doc.revision }))
-        .ok,
+      (
+        await files.execute({
+          action: 'write',
+          path,
+          xml: EMPTY_DIAGRAM,
+          revision: doc.revision,
+        })
+      ).ok,
     ).toBe(false)
   })
   it('accepts native compressed multi-page XML and rejects entity declarations', () => {
@@ -127,5 +174,82 @@ describe('repository diagram files', () => {
     expect(() =>
       validateDiagram('<mxfile><diagram>bad compressed data</diagram></mxfile>'),
     ).toThrow()
+  })
+  it('stores every native v2 page and preserves atomic revision/validation controls', async () => {
+    const path = '_diagrams/Pages.frade'
+    const model = {
+      format: 'frade-draw',
+      version: 2,
+      metadata: { id: 'pages', name: 'Pages' },
+      pages: [
+        { id: 'a', name: 'A', graph: { nodes: [], edges: [] } },
+        {
+          id: 'b',
+          name: 'B',
+          graph: {
+            nodes: [
+              {
+                id: 'n',
+                shape: 'rect',
+                x: 10,
+                y: 20,
+                width: 100,
+                height: 60,
+                label: 'Inactive content',
+              },
+            ],
+            edges: [],
+          },
+        },
+      ],
+    }
+    const created = await files.execute({
+      action: 'create',
+      path,
+      xml: JSON.stringify(model),
+    })
+    expect(created.ok).toBe(true)
+    if (!created.ok) throw Error('v2 create rejected')
+    const original = created.value as { xml: string; revision: string }
+    expect(JSON.parse(original.xml)).toEqual(model)
+    const updated = structuredClone(model)
+    updated.pages[1].name = 'Renamed inactive page'
+    const saved = await files.execute({
+      action: 'write',
+      path,
+      xml: JSON.stringify(updated),
+      revision: original.revision,
+    })
+    expect(saved.ok).toBe(true)
+    if (!saved.ok) throw Error('v2 write rejected')
+    const valid = saved.value as { xml: string; revision: string }
+    const read = await files.execute({ action: 'read', path })
+    expect(read).toMatchObject({
+      ok: true,
+      value: { xml: JSON.stringify(updated), revision: valid.revision },
+    })
+    const invalid = structuredClone(updated)
+    invalid.pages[1].graph.nodes[0].width = 0
+    expect(
+      (
+        await files.execute({
+          action: 'write',
+          path,
+          xml: JSON.stringify(invalid),
+          revision: valid.revision,
+        })
+      ).ok,
+    ).toBe(false)
+    expect(
+      (
+        await files.execute({
+          action: 'write',
+          path,
+          xml: original.xml,
+          revision: original.revision,
+        })
+      ).ok,
+    ).toBe(false)
+    expect(await readFile(join(root, path), 'utf8')).toBe(valid.xml)
   })
 })

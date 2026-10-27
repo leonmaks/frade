@@ -1,0 +1,37 @@
+packages/draw lint$ eslint src tests *.ts
+packages/draw lint: 
+packages/draw lint: E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\src\editor\PageStrip.tsx
+packages/draw lint:   569:3  error  Error: Cannot access refs during render
+packages/draw lint: 
+packages/draw lint: React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+packages/draw lint: 
+packages/draw lint: E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\src\editor\PageStrip.tsx:569:3
+packages/draw lint:   567 |   const [hover, setHover] = useState(-1)
+packages/draw lint:   568 |   const closeRef = useRef(close)
+packages/draw lint: > 569 |   closeRef.current = close
+packages/draw lint:       |   ^^^^^^^^^^^^^^^^ Cannot update ref during render
+packages/draw lint:   570 |   useLayoutEffect(() => {
+packages/draw lint:   571 |     if (!overlays || !root.current) return
+packages/draw lint:   572 |     return overlays.register(root.current, {  react-hooks/refs
+packages/draw lint:   731:3  error  Error: Cannot access refs during render
+packages/draw lint: 
+packages/draw lint: React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+packages/draw lint: 
+packages/draw lint: E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\src\editor\PageStrip.tsx:731:3
+packages/draw lint:   729 |   const [value, setValue] = useState(name)
+packages/draw lint:   730 |   const closeRef = useRef(close)
+packages/draw lint: > 731 |   closeRef.current = close
+packages/draw lint:       |   ^^^^^^^^^^^^^^^^ Cannot update ref during render
+packages/draw lint:   732 |   useLayoutEffect(() => {
+packages/draw lint:   733 |     const node = dialog.current!
+packages/draw lint:   734 |     if (!overlays) node.showModal()                   react-hooks/refs
+packages/draw lint: 
+packages/draw lint: ✖ 2 problems (2 errors, 0 warnings)
+packages/draw lint: 
+packages/draw lint: Failed
+[ELIFECYCLE] Command failed with exit code 1.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

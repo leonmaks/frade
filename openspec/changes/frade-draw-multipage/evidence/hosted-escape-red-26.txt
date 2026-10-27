@@ -1,0 +1,53 @@
+[WebServer] (node:12724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:28200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-ui.spec.ts:2:1 › hosted rename belongs to managed overlays and cannot escape the presentation barrier (6.0s)
+
+
+  1) tests\spike\drawing-pages-ui.spec.ts:2:1 › hosted rename belongs to managed overlays and cannot escape the presentation barrier 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  getByRole('dialog', { name: 'Переименовать', exact: true })
+    Expected: [32m0[39m
+    Received: [31m1[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('dialog', { name: 'Переименовать', exact: true })[22m
+    [2m    9 × locator resolved to 1 element[22m
+    [2m      - unexpected value "1"[22m
+
+
+      22 |   await modal.locator('input').focus()
+      23 |   await page.keyboard.press('Escape')
+    > 24 |   await expect(modal).toHaveCount(0)
+         |                       ^
+      25 |   await expect(tab).toBeFocused()
+      26 |   expect(await page.evaluate(() => window.pageFixture.overlayTop())).toBe(false)
+      27 | })
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:24:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-hosted-re-9a001-pe-the-presentation-barrier\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-ui-hosted-re-9a001-pe-the-presentation-barrier\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-hosted-re-9a001-pe-the-presentation-barrier\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\drawing-pages-ui-hosted-re-9a001-pe-the-presentation-barrier\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\spike\drawing-pages-ui.spec.ts:2:1 › hosted rename belongs to managed overlays and cannot escape the presentation barrier 

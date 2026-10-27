@@ -1,0 +1,44 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/.worktrees/draw-pages/packages/runtime-node
+
+ ❯ tests/diagram-files.test.ts (6 tests | 1 failed) 76ms
+   ✓ repository diagram files > creates ordinary nested files, saves atomically and guards concurrent writes 29ms
+   ✓ repository diagram files > rejects escaping paths, symlinks, read-only writes and invalid XML 6ms
+   ✓ repository diagram files > renames without overwriting and detects external disk edits 16ms
+   ✓ repository diagram files > stores .frade as JSON and refuses implicit format conversion 8ms
+   ✓ repository diagram files > accepts native compressed multi-page XML and rejects entity declarations 10ms
+   × repository diagram files > stores every native v2 page and preserves atomic revision/validation controls 6ms
+     → expected false to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/diagram-files.test.ts > repository diagram files > stores every native v2 page and preserves atomic revision/validation controls
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/diagram-files.test.ts:138:24
+    136|     ]}
+    137|     const created=await files.execute({action:'create',path,xml:JSON.s…
+    138|     expect(created.ok).toBe(true)
+       |                        ^
+    139|     if(!created.ok)throw Error('v2 create rejected')
+    140|     const original=created.value as {xml:string;revision:string}
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  01:57:52
+   Duration  1.12s (transform 263ms, setup 0ms, collect 372ms, tests 76ms, environment 0ms, prepare 247ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\runtime-node
+

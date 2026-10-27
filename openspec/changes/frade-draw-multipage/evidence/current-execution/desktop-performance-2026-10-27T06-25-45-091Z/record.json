@@ -1,0 +1,45 @@
+{
+  "role": "desktop-performance",
+  "runner": "playwright",
+  "cwd": "apps/desktop",
+  "executable": "E:\\Program Files\\nodejs\\node.exe",
+  "nodeVersion": "v24.18.0",
+  "args": [
+    "apps/desktop/node_modules/@playwright/test/cli.js",
+    "test",
+    "tests/e2e/ui-contract-theme-performance.spec.ts",
+    "tests/e2e/ui-contract-vscode-dark-2026.spec.ts",
+    "--workers=1",
+    "--grep",
+    "(?:P01 pinned real root native frame hot commit: 20 warmups and 100 alternating requests p95 <=150ms|P01-diagnostic actual parked viewport and frame scheduling|reference p95: real root native frame 20 warmups and 100 durable alternating requests <=150ms)$",
+    "--reporter=json"
+  ],
+  "startedAt": "2026-10-27T06:25:45.824Z",
+  "finishedAt": "2026-10-27T06:26:52.202Z",
+  "exitCode": 0,
+  "sourceSetBefore": "9ed81736b1b42124664f59403513c1624b2ab1ea847596b1f4683ff728b97c31",
+  "sourceSetAfter": "9ed81736b1b42124664f59403513c1624b2ab1ea847596b1f4683ff728b97c31",
+  "before": {
+    "file": "openspec/changes/frade-draw-multipage/evidence/current-execution/desktop-performance-2026-10-27T06-25-45-091Z/before.json",
+    "sha256": "d6cbf1b59d5456f1ad56c2918c266e11825e446f1ea4edbd2684cb20dee42876"
+  },
+  "after": {
+    "file": "openspec/changes/frade-draw-multipage/evidence/current-execution/desktop-performance-2026-10-27T06-25-45-091Z/after.json",
+    "sha256": "d6cbf1b59d5456f1ad56c2918c266e11825e446f1ea4edbd2684cb20dee42876"
+  },
+  "report": {
+    "file": "openspec/changes/frade-draw-multipage/evidence/current-execution/desktop-performance-2026-10-27T06-25-45-091Z/report.json",
+    "sha256": "41fbd34de6b5c056390fdee0ee549d2e3538688c069584c1fe98bb0d1b949b25"
+  },
+  "stdout": {
+    "file": "openspec/changes/frade-draw-multipage/evidence/current-execution/desktop-performance-2026-10-27T06-25-45-091Z/stdout.txt",
+    "sha256": "41fbd34de6b5c056390fdee0ee549d2e3538688c069584c1fe98bb0d1b949b25"
+  },
+  "stderr": {
+    "file": "openspec/changes/frade-draw-multipage/evidence/current-execution/desktop-performance-2026-10-27T06-25-45-091Z/stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "buildSha256": "a35022eea21a8a414a6453eb28f8ad7ac426d5d0404d73056a5a32ca93dff4a3",
+  "bundlesBefore": "b3ff870063ded5cdb8a4e9f5fc3d89c3d02cded393757e0a0a4abd17b7dbaaa0",
+  "bundlesAfter": "b3ff870063ded5cdb8a4e9f5fc3d89c3d02cded393757e0a0a4abd17b7dbaaa0"
+}

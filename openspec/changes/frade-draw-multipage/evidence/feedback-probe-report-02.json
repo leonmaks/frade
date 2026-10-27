@@ -1,0 +1,225 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.config.ts",
+    "rootDir": "E:/dev/codex/frade/.worktrees/draw-pages/openspec/changes/frade-draw-multipage/evidence",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade/.worktrees/draw-pages/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade/.worktrees/draw-pages/openspec/changes/frade-draw-multipage/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "feedback-probe.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": {
+      "command": "pnpm exec vite --host 127.0.0.1 --port 5191 --strictPort",
+      "url": "http://127.0.0.1:5191",
+      "reuseExistingServer": false,
+      "cwd": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw"
+    }
+  },
+  "suites": [
+    {
+      "title": "feedback-probe.spec.ts",
+      "file": "feedback-probe.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real Undo reports rejected capture without uncaught error",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5831,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts:7:40",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts",
+                      "column": 40,
+                      "line": 7
+                    },
+                    "snippet": "  5 |  await page.evaluate(async()=>{const url='/src/document/graphAdapter.ts', {nodeToCell}=await import(url),{graph,session}=window.pageFixture;graph.addNode(nodeToCell({id:'feedback',shape:'rect',x:10,y:20,width:100,height:60}));graph.getCellById('feedback').position(30,40);session.undo();graph.addEdge({id:'pending',source:{cell:'feedback'},target:{x:300,y:100}})});\n  6 |  await page.getByRole('button',{name:action,exact:true}).click();\n> 7 |  await expect(page.getByRole('alert')).toBeVisible();expect(uncaught).toEqual([]);\n    |                                        ^\n  8 | })\n  9 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts",
+                        "column": 40,
+                        "line": 7
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n\n  5 |  await page.evaluate(async()=>{const url='/src/document/graphAdapter.ts', {nodeToCell}=await import(url),{graph,session}=window.pageFixture;graph.addNode(nodeToCell({id:'feedback',shape:'rect',x:10,y:20,width:100,height:60}));graph.getCellById('feedback').position(30,40);session.undo();graph.addEdge({id:'pending',source:{cell:'feedback'},target:{x:300,y:100}})});\n  6 |  await page.getByRole('button',{name:action,exact:true}).click();\n> 7 |  await expect(page.getByRole('alert')).toBeVisible();expect(uncaught).toEqual([]);\n    |                                        ^\n  8 | })\n  9 |\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts:7:40"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T06:07:48.493Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\test-results\\feedback-probe-real-Undo-r-9dbaa-ture-without-uncaught-error\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\test-results\\feedback-probe-real-Undo-r-9dbaa-ture-without-uncaught-error\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\test-results\\feedback-probe-real-Undo-r-9dbaa-ture-without-uncaught-error\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts",
+                    "column": 40,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "44d5c0835a56518406e9-544f227904dab33f347e",
+          "file": "feedback-probe.spec.ts",
+          "line": 2,
+          "column": 40
+        },
+        {
+          "title": "real Redo reports rejected capture without uncaught error",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5651,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts:7:40",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts",
+                      "column": 40,
+                      "line": 7
+                    },
+                    "snippet": "  5 |  await page.evaluate(async()=>{const url='/src/document/graphAdapter.ts', {nodeToCell}=await import(url),{graph,session}=window.pageFixture;graph.addNode(nodeToCell({id:'feedback',shape:'rect',x:10,y:20,width:100,height:60}));graph.getCellById('feedback').position(30,40);session.undo();graph.addEdge({id:'pending',source:{cell:'feedback'},target:{x:300,y:100}})});\n  6 |  await page.getByRole('button',{name:action,exact:true}).click();\n> 7 |  await expect(page.getByRole('alert')).toBeVisible();expect(uncaught).toEqual([]);\n    |                                        ^\n  8 | })\n  9 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts",
+                        "column": 40,
+                        "line": 7
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n\n  5 |  await page.evaluate(async()=>{const url='/src/document/graphAdapter.ts', {nodeToCell}=await import(url),{graph,session}=window.pageFixture;graph.addNode(nodeToCell({id:'feedback',shape:'rect',x:10,y:20,width:100,height:60}));graph.getCellById('feedback').position(30,40);session.undo();graph.addEdge({id:'pending',source:{cell:'feedback'},target:{x:300,y:100}})});\n  6 |  await page.getByRole('button',{name:action,exact:true}).click();\n> 7 |  await expect(page.getByRole('alert')).toBeVisible();expect(uncaught).toEqual([]);\n    |                                        ^\n  8 | })\n  9 |\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts:7:40"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T06:07:55.549Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\test-results\\feedback-probe-real-Redo-r-2b30c-ture-without-uncaught-error\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\test-results\\feedback-probe-real-Redo-r-2b30c-ture-without-uncaught-error\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\test-results\\feedback-probe-real-Redo-r-2b30c-ture-without-uncaught-error\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\openspec\\changes\\frade-draw-multipage\\evidence\\feedback-probe.spec.ts",
+                    "column": 40,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "44d5c0835a56518406e9-5736eefb7ffd041e9fd2",
+          "file": "feedback-probe.spec.ts",
+          "line": 2,
+          "column": 40
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T06:07:46.598Z",
+    "duration": 15010.106,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

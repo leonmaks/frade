@@ -1,0 +1,7 @@
+# POST03 preparation BLOCKED — ignored evidence
+
+045650Z actual BLOCKED before reviewer. Own-index lease succeeded: exact raw hash unchanged for whole run (index-lease.json). Guard then correctly rejected SOURCE_NOT_IN_FULL_CANDIDATE baseline-targeted.log. Packet root-file enumeration included ignored historical .log files, whereas candidateSnapshot intentionally contains tracked+nonignored files only. No change to source/tests/gates, no product verdict.
+
+Classification INTEGRATION. Correct packet preflight must establish BOTH filesystem existence/required record hashes AND actual tracked/nonignored candidate eligibility, not existence alone. Filter only ignored optional historic logs from dispatch; retain them locally and list exact omissions. Mandatory17 records and653 current source inputs may never be filtered: missing/ignored mandatory input fails preflight. No forced add, ignore policy change or evidence deletion. Generate explicit current POST04 selection, reject required deletion17x and synthetic ignored path; source bindings rechecked. Preserve previous plans as historical attempts, not current dispatch plans. Continue exact same reviewed runtime with proven own-index read lease and all integrity guards intact.
+
+Measured POST03 blocked prepare63s, no expensive reviewer invoked. Bounded eligibility/record preflight first (<10s forecast); only then fresh full POST forecast5–8min. Do not repeat873 runtime/sourcechecks because no source edit; check exact binding once.

@@ -1,0 +1,44 @@
+[WebServer] (node:37388) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:24616) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24616) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-session.spec.ts:79:1 › semantic undo and redo complete their target views before returning (588ms)
+
+
+  1) tests\spike\drawing-session.spec.ts:79:1 › semantic undo and redo complete their target views before returning 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      78 |     return {before,asynchronous,undo,redo}
+      79 |   })
+    > 80 |   expect(result.undo.present).toBe(true)
+         |                               ^
+      81 |   expect(result.undo.snapshot).toBe(result.before)
+      82 |   expect(result.redo.present).toBe(true)
+      83 |   expect(result.redo.position).toEqual({x:80,y:100})
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-session.spec.ts:80:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-session-semantic-u-0401f-rget-views-before-returning\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-session-semantic-u-0401f-rget-views-before-returning\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-session-semantic-u-0401f-rget-views-before-returning\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\drawing-session-semantic-u-0401f-rget-views-before-returning\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\spike\drawing-session.spec.ts:79:1 › semantic undo and redo complete their target views before returning 

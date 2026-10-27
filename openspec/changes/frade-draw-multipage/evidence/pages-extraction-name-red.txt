@@ -1,0 +1,60 @@
+[WebServer] (node:42424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:26960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-ui.spec.ts:196:1 › standalone opens only the selected page independently and cleans its transfer (6.3s)
+
+
+  1) tests\spike\drawing-pages-ui.spec.ts:196:1 › standalone opens only the selected page independently and cleans its transfer 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('tab', { name: 'Страница-2', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('tab', { name: 'Страница-2', exact: true })[22m
+
+
+      84 |   await expect(popup.locator('.x6-node')).toHaveCount(1)
+      85 |   await expect(popup.getByRole('tab')).toHaveCount(1)
+    > 86 |   await expect(popup.getByRole('tab',{name:'Страница-2',exact:true})).toBeVisible()
+         |                                                                       ^
+      87 |   await popup.getByRole('button',{name:'rect',exact:true}).click()
+      88 |   await expect(popup.locator('.x6-node')).toHaveCount(2)
+      89 |   await expect(page.locator('.x6-node')).toHaveCount(1)
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:86:71
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\spike\drawing-pages-ui.spec.ts:196:1 › standalone opens only the selected page independently and cleans its transfer 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

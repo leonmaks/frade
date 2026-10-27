@@ -1,0 +1,89 @@
+[WebServer] (node:11988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:32824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-parity.spec.ts:83:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation (4.2s)
+(node:35136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\spike\drawing-pages-ui.spec.ts:234:1 › native pointer reorder, Escape drag cancellation and final-page removal are reversible (968ms)
+
+
+  1) tests\spike\drawing-pages-parity.spec.ts:83:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m109.328125[39m
+    Received: [31m111.328125[39m
+
+      55 |     expect(actual.pages[i].bounds.y).toBe(expected.pages[i].bounds.y)
+      56 |     expect(actual.pages[i].bounds.height).toBe(expected.pages[i].bounds.height)
+    > 57 |     expect(actual.pages[i].bounds.width).toBe(expected.pages[i].bounds.width+(i===2?2:0))
+         |                                          ^
+      58 |     expect(actual.pages[i].label).toEqual({...expected.pages[i].label,y:expected.pages[i].bounds.y,height:31})
+      59 |     expect(actual.pages[i].glyph).toEqual(expected.pages[i].glyph)
+      60 |   }
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:57:42
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\spike\drawing-pages-ui.spec.ts:234:1 › native pointer reorder, Escape drag cancellation and final-page removal are reversible 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m"{\"format\":\"frade-draw\",\"version\":2,\"metadata\":{\"id\":\"b1273bc5-0373-4235-a677-34e4bc337271\",\"name\":\"diagram\"},\"pages\":[{\"id\":\"b[7mfe4a025-bfe1-4b10-809b-5acb836d72ce[27m\",\"name\":\"Страница-[7m2[27m\",\"graph\":{\"nodes\":[],\"edges\":[]},\"viewport\":{\"zoom\":1,\"pan\":{\"x\":0,\"y\":0}}},{\"id\":\"b[7m1273bc5-0373-4235-a677-34e4bc337271/page-1[27m\",\"name\":\"Страница-[7m1[27m\",\"graph\":{\"nodes\":[],\"edges\":[]},\"viewport\":{\"zoom\":1,\"pan\":{\"x\":0,\"y\":0}}}]}"[39m
+    Received: [31m"{\"format\":\"frade-draw\",\"version\":2,\"metadata\":{\"id\":\"b1273bc5-0373-4235-a677-34e4bc337271\",\"name\":\"diagram\"},\"pages\":[{\"id\":\"b[7m1273bc5-0373-4235-a677-34e4bc337271/page-1[27m\",\"name\":\"Страница-[7m1[27m\",\"graph\":{\"nodes\":[],\"edges\":[]},\"viewport\":{\"zoom\":1,\"pan\":{\"x\":0,\"y\":0}}},{\"id\":\"b[7mfe4a025-bfe1-4b10-809b-5acb836d72ce[27m\",\"name\":\"Страница-[7m2[27m\",\"graph\":{\"nodes\":[],\"edges\":[]},\"viewport\":{\"zoom\":1,\"pan\":{\"x\":0,\"y\":0}}}]}"[39m
+
+      101 |   await page.locator('.frade-page-strip').press('Escape')
+      102 |   await page.locator('.gePageTab').nth(1).dispatchEvent('drop',{dataTransfer:drag})
+    > 103 |   expect(await page.evaluate(()=>JSON.stringify(window.pageFixture.session.snapshot()))).toBe(before)
+          |                                                                                          ^
+      104 |   await openMenu(page,'Страница-1')
+      105 |   await page.getByRole('menuitem',{name:'Удалить Страница',exact:true}).click()
+      106 |   await expect(page.getByRole('tab')).toHaveCount(1)
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:103:90
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-native-po-3366d-page-removal-are-reversible\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-ui-native-po-3366d-page-removal-are-reversible\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-native-po-3366d-page-removal-are-reversible\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-ui-native-po-3366d-page-removal-are-reversible\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\spike\drawing-pages-parity.spec.ts:83:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+    tests\spike\drawing-pages-ui.spec.ts:234:1 › native pointer reorder, Escape drag cancellation and final-page removal are reversible 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

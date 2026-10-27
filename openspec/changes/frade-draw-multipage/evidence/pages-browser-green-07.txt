@@ -1,0 +1,104 @@
+[WebServer] (node:42496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:9560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:9560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   1 tests\spike\drawing-pages-parity.spec.ts:83:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation (4.1s)
+(node:34532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:34532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  2 tests\spike\drawing-pages-parity.spec.ts:167:1 › forced-colors dark preserves system contrast in tabs, menus and dialog (798ms)
+  ok  3 tests\spike\drawing-pages-parity.spec.ts:218:1 › 320px, 200 percent text, coarse targets, Unicode labels and Tab remain usable (1.1s)
+  ok  4 tests\spike\drawing-pages-ui.spec.ts:10:1 › nested page-list menus report expanded state and readonly modal cancellation restores tab focus (712ms)
+  ok  5 tests\spike\drawing-pages-ui.spec.ts:44:1 › native page strip edits, reorders, clears and round-trips every page through real files (1.6s)
+  ok  6 tests\spike\drawing-pages-ui.spec.ts:148:1 › overflow readonly tabs remain keyboard reachable while every mutation is blocked (712ms)
+  ok  7 tests\spike\drawing-pages-ui.spec.ts:196:1 › standalone opens only the selected page independently and cleans its transfer (1.1s)
+  ok  8 tests\spike\drawing-session.spec.ts:37:1 › page and native graph batches share chronological undo across navigation (607ms)
+  ok  9 tests\spike\drawing-session.spec.ts:112:1 › page viewports are independent and malformed inactive content preserves graph/history (517ms)
+  ok 10 tests\spike\drawing-session.spec.ts:201:1 › readonly permits navigation but rejects every page/history mutation (607ms)
+  x  11 tests\spike\drawing-session.spec.ts:235:1 › canceled native gesture and rejected page command preserve semantic content and history (565ms)
+(node:8212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 12 tests\spike\drawing-session.spec.ts:279:1 › extracted v2 page preserves identity, graph, viewport and references with a new document identity (822ms)
+
+
+  1) tests\spike\drawing-pages-parity.spec.ts:83:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m109.328125[39m
+    Received: [31m111.328125[39m
+
+      55 |     expect(actual.pages[i].bounds.y).toBe(expected.pages[i].bounds.y)
+      56 |     expect(actual.pages[i].bounds.height).toBe(expected.pages[i].bounds.height)
+    > 57 |     expect(actual.pages[i].bounds.width).toBe(expected.pages[i].bounds.width+(i===2?2:0))
+         |                                          ^
+      58 |     expect(actual.pages[i].label).toEqual({...expected.pages[i].label,y:expected.pages[i].bounds.y,height:31})
+      59 |     expect(actual.pages[i].glyph).toEqual(expected.pages[i].glyph)
+      60 |   }
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:57:42
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\spike\drawing-session.spec.ts:235:1 › canceled native gesture and rejected page command preserve semantic content and history 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m"{\"format\":\"frade-draw\",\"version\":1,\"metadata\":{\"id\":\"probe\",\"name\":\"Probe\"},\"graph\":{\"nodes\":[{\"id\":\"a\",\"shape\":\"rect\",\"x\":10,\"y\":20,\"width\":100,\"height\":60,\"label\":\"\"}],\"edges\":[]},\"viewport\":{\"zoom\":1,\"pan\":{\"x\":0,\"y\":0}}}"[39m
+    Received: [31m"{\"format\":\"frade-draw\",\"version\":1,\"metadata\":{\"id\":\"probe\",\"name\":\"Probe\"},\"graph\":{\"nodes\":[{\"id\":\"a\",\"shape\":\"rect\",\"x\":10,\"y\":20,\"width\":100,\"height\":60,\"label\":\"\"[7m,\"style\":{\"fill\":\"#ffffff\",\"stroke\":\"#334155\",\"strokeWidth\":1.5}[27m}],\"edges\":[]},\"viewport\":{\"zoom\":1,\"pan\":{\"x\":0,\"y\":0}}}"[39m
+
+      107 |   expect(result.after).toBe(result.before)
+      108 |   expect(result.undone).toEqual({nodes:0,canUndo:false})
+    > 109 |   expect(result.restored).toBe(result.before)
+          |                           ^
+      110 | })
+      111 | test('extracted v2 page preserves identity, graph, viewport and references with a new document identity',async({page})=>{
+      112 |   await probe(page)
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-session.spec.ts:109:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-session-canceled-n-f0c85-emantic-content-and-history\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-session-canceled-n-f0c85-emantic-content-and-history\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-session-canceled-n-f0c85-emantic-content-and-history\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-session-canceled-n-f0c85-emantic-content-and-history\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\spike\drawing-pages-parity.spec.ts:83:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+    tests\spike\drawing-session.spec.ts:235:1 › canceled native gesture and rejected page command preserve semantic content and history 
+  10 passed (18.9s)
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

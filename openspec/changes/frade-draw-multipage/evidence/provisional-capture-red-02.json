@@ -1,0 +1,222 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\playwright.config.ts",
+    "rootDir": "E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/tests/spike",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/tests/spike",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": {
+      "command": "pnpm exec vite --host 127.0.0.1 --port 5191 --strictPort",
+      "url": "http://127.0.0.1:5191",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "drawing-session.spec.ts",
+      "file": "drawing-session.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "incomplete source rejects every capture transition without losing graph or history",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1046,
+                  "error": {
+                    "message": "Error: page.evaluate: Error: Page no longer exists\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30",
+                    "stack": "Error: page.evaluate: Error: Page no longer exists\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts:347:31",
+                    "location": {
+                      "file": "http://127.0.0.1:5191/src/editor/drawingSession.ts",
+                      "column": 61,
+                      "line": 195
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "http://127.0.0.1:5191/src/editor/drawingSession.ts",
+                        "column": 61,
+                        "line": 195
+                      },
+                      "message": "Error: page.evaluate: Error: Page no longer exists\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts:347:31"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:22:56.653Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-16eeb-out-losing-graph-or-history\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-16eeb-out-losing-graph-or-history\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-16eeb-out-losing-graph-or-history\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "http://127.0.0.1:5191/src/editor/drawingSession.ts",
+                    "column": 61,
+                    "line": 195
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4d871120caedf967ac96-68ab7e066f2bd709fe7c",
+          "file": "drawing-session.spec.ts",
+          "line": 422,
+          "column": 45
+        },
+        {
+          "title": "incomplete target rejects every capture transition without losing graph or history",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 592,
+                  "error": {
+                    "message": "Error: page.evaluate: Error: Page no longer exists\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30",
+                    "stack": "Error: page.evaluate: Error: Page no longer exists\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts:347:31",
+                    "location": {
+                      "file": "http://127.0.0.1:5191/src/editor/drawingSession.ts",
+                      "column": 61,
+                      "line": 195
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "http://127.0.0.1:5191/src/editor/drawingSession.ts",
+                        "column": 61,
+                        "line": 195
+                      },
+                      "message": "Error: page.evaluate: Error: Page no longer exists\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30\n    at Object.select (http://127.0.0.1:5191/src/editor/drawingSession.ts:195:61)\n    at eval (eval at evaluate (:290:30), <anonymous>:82:13)\n    at async <anonymous>:316:30\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts:347:31"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:22:59.033Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-6a3f5-out-losing-graph-or-history\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-6a3f5-out-losing-graph-or-history\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-6a3f5-out-losing-graph-or-history\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "http://127.0.0.1:5191/src/editor/drawingSession.ts",
+                    "column": 61,
+                    "line": 195
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4d871120caedf967ac96-4ccbc161ebe487993cbf",
+          "file": "drawing-session.spec.ts",
+          "line": 422,
+          "column": 45
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T05:22:54.515Z",
+    "duration": 5542.279,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

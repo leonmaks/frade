@@ -1,0 +1,39 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/.worktrees/draw-pages/packages/ui-workspace
+
+ ❯ tests/ui-contract/drawing-pages-origin.test.ts (13 tests | 1 failed) 115ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > returns exact original raw bytes only for the exact adopted file and live hash 13ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects a one-byte live edit before exposing the historical origin 7ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects original byte/EOL mutation, missing originals and does not normalize them 11ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects mutated manifest bytes and unsupported manifest schema 7ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects duplicate entries and snapshot path redirection even in a trusted test manifest 7ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source ../outside 6ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source packages//file.ts 6ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source C:/outside.ts 8ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source packages/../outside.ts 6ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects unsafe logical source packages\outside.ts 7ms
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > keeps undeclared mutations visible to the unchanged downstream original verifier 6ms
+   × closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects leaf links without reading an outside original 11ms
+     → EPERM: operation not permitted, symlink 'C:\Users\NVISEN\AppData\Local\Temp\frade-draw-pages-origin-1PyLOa\outside.ts' -> 'C:\Users\NVISEN\AppData\Local\Temp\frade-draw-pages-origin-1PyLOa\openspec\changes\frade-draw-multipage\evidence\origin\source\packages\draw\src\example.ts'
+   ✓ closed drawing-page adoption preserves historical proof and rejects unknown drift > finds exactly one active or archived owner and rejects ambiguous evidence locations 18ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/drawing-pages-origin.test.ts > closed drawing-page adoption preserves historical proof and rejects unknown drift > rejects leaf links without reading an outside original
+Error: EPERM: operation not permitted, symlink 'C:\Users\NVISEN\AppData\Local\Temp\frade-draw-pages-origin-1PyLOa\outside.ts' -> 'C:\Users\NVISEN\AppData\Local\Temp\frade-draw-pages-origin-1PyLOa\openspec\changes\frade-draw-multipage\evidence\origin\source\packages\draw\src\example.ts'
+ ❯ tests/ui-contract/drawing-pages-origin.test.ts:29:176
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 12 passed (13)
+   Start at  03:56:41
+   Duration  701ms (transform 69ms, setup 0ms, collect 79ms, tests 115ms, environment 0ms, prepare 174ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\ui-workspace
+

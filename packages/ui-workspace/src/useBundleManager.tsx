@@ -32,6 +32,20 @@ export function useBundleManager(
     callbacks.current = { change, badge }
   })
   const tail = useRef<Promise<void>>(Promise.resolve())
+  const contextGeneration = useRef(0)
+  const [contextRevision, setContextRevision] = useState(0)
+  const reset = () => {
+    contextGeneration.current++
+    current.current = undefined
+    opened.current = false
+    setBundle(undefined)
+    setOpen(false)
+    setHint(false)
+    setCount(undefined)
+    setNewFlow(false)
+    setAnnotations([])
+    setContextRevision((value) => value + 1)
+  }
   const removed = (id: string) => {
     if (current.current?.id === id) {
       setOpen(false)
@@ -69,6 +83,7 @@ export function useBundleManager(
   const annotationKey = JSON.stringify(annotations)
   useEffect(() => {
     let stopped = false
+    const generation = contextGeneration.current
     const repo = latest.current.flowRepository
     if (!repo?.available) return
     for (const b of JSON.parse(annotationKey) as BundleState[]) {
@@ -83,7 +98,7 @@ export function useBundleManager(
           } as unknown as JsonValue,
         })
         .then((result) => {
-          if (!stopped && result.ok)
+          if (!stopped && generation === contextGeneration.current && result.ok)
             callbacks.current.badge?.(b.id, description(result.value as FlowPage))
         })
     }
@@ -95,6 +110,7 @@ export function useBundleManager(
     capabilityKey,
     props.flowRepository?.revision,
     props.flowRepository?.available,
+    contextRevision,
   ])
   const bundleKey = bundle ? JSON.stringify(bundle) : ''
   useEffect(() => {
@@ -102,6 +118,7 @@ export function useBundleManager(
     const active = JSON.parse(bundleKey) as BundleState
     const repo = latest.current.flowRepository
     let stopped = false
+    const generation = contextGeneration.current
     if (!repo?.available || !active.endpointA || !active.endpointB) return
     void repo
       .request('integrationFlows', {
@@ -113,7 +130,7 @@ export function useBundleManager(
         } as unknown as JsonValue,
       })
       .then((result) => {
-        if (stopped) return
+        if (stopped || generation !== contextGeneration.current) return
         if (result.ok) {
           const data = result.value as FlowPage
           setCount(data.totalEligible)
@@ -123,9 +140,17 @@ export function useBundleManager(
     return () => {
       stopped = true
     }
-  }, [bundleKey, capabilityKey, props.flowRepository?.revision, props.flowRepository?.available])
+  }, [
+    bundleKey,
+    capabilityKey,
+    props.flowRepository?.revision,
+    props.flowRepository?.available,
+    contextRevision,
+  ])
   const onMembers = (refs: ObjectRef[]) => {
+    const generation = contextGeneration.current
     const work = tail.current.then(async () => {
+      if (generation !== contextGeneration.current) throw Error('Контекст диаграммы изменился')
       const b = current.current
       if (!b || latest.current.readOnly) throw Error('Диаграмма недоступна для изменения')
       const added = refs.filter((r) => !b.members.some((old) => flowRefKey(old) === flowRefKey(r)))
@@ -143,6 +168,7 @@ export function useBundleManager(
         if (!result.ok || (result.value as FlowPage).members.some((m) => m.state !== 'valid'))
           throw Error('Поток не соответствует системам жгута')
       }
+      if (generation !== contextGeneration.current) throw Error('Контекст диаграммы изменился')
       await change(b, refs)
     })
     tail.current = work.catch(() => {})
@@ -155,6 +181,7 @@ export function useBundleManager(
       : '?'
   return {
     isOpen: open,
+    reset,
     annotate,
     update,
     removed,

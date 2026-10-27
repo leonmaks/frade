@@ -10,16 +10,60 @@ async function dragObject(
   const readyFrame = page.locator('.diagram-slot iframe')
   if (await readyFrame.count()) {
     await expect(readyFrame).toBeVisible()
-    await expect(readyFrame).toHaveAttribute('data-frade-revision', (await page.locator('html').getAttribute('data-frade-revision')) as string)
+    await expect(readyFrame).toHaveAttribute(
+      'data-frade-revision',
+      (await page.locator('html').getAttribute('data-frade-revision')) as string,
+    )
     await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
-    await readyFrame.contentFrame().locator('.geDiagramContainer').evaluate(async () => {
+    await readyFrame
+      .contentFrame()
+      .locator('.geDiagramContainer')
+      .evaluate(async () => {
+        await document.fonts.ready
+        await new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        )
+      })
+    await expect(readyFrame).toHaveAttribute(
+      'data-frade-revision',
+      (await page.locator('html').getAttribute('data-frade-revision')) as string,
+    )
+    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+  } else {
+    // Save readiness precedes the initial presentation paint acknowledgement.
+    // Native drag needs the same settled appearance precondition as the iframe branch.
+    const editor = page.locator('.diagram-slot .repository-diagram')
+    await expect(editor).not.toHaveAttribute('data-frade-editor-pending', '1')
+    await expect(editor).toHaveAttribute(
+      'data-frade-revision',
+      (await page.locator('html').getAttribute('data-frade-revision')) as string,
+    )
+    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+    await page.locator('.diagram-slot .x6-graph').evaluate(async () => {
       await document.fonts.ready
-      await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
+      await new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      )
     })
-    await expect(readyFrame).toHaveAttribute('data-frade-revision', (await page.locator('html').getAttribute('data-frade-revision')) as string)
     await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
   }
+  const dragReadiness = async () =>
+    page.evaluate(() => ({
+      value: document.querySelector<HTMLInputElement>('[aria-label="Поиск объектов"]')?.value,
+      focus: document.activeElement?.outerHTML.slice(0, 250),
+      inputInert: !!document.querySelector('[aria-label="Поиск объектов"]')?.closest('[inert]'),
+      rootRevision: document.documentElement.dataset.fradeRevision,
+      editor: [...document.querySelectorAll<HTMLElement>('.repository-diagram')].map((el) => ({
+        revision: el.dataset.fradeRevision,
+        pending: el.dataset.fradeEditorPending,
+      })),
+      barriers: [...document.querySelectorAll<HTMLElement>('.frade-theme-commit-barrier')].map(
+        (el) => ({ hidden: el.hidden, display: getComputedStyle(el).display }),
+      ),
+    }))
   await page.getByLabel('Поиск объектов', { exact: true }).fill(name)
+  if (process.env.FRADE_DRAG_DIAGNOSTIC)
+    console.log('DRAG AFTER', JSON.stringify(await dragReadiness()))
   const source = page
     .locator(
       '[role=treeitem][data-object-id]' +
@@ -487,7 +531,7 @@ test('mixed diagram tabs share Save All, keep live editor state, reorder, discar
     app = await electron.launch({ args: [resolve('out/main/index.cjs')], env })
     page = await app.firstWindow()
     await expect(page.getByRole('status')).toHaveText('Backend: ready')
-    await expect(page.getByRole('tab')).toHaveCount(2)
+    await expect(page.locator('.editor-tabs').getByRole('tab')).toHaveCount(2)
     await expect(page.getByRole('tab').first()).toHaveText('Two.frade')
     await expect(page.getByRole('tab', { name: 'One.drawio', exact: true })).toBeVisible()
   } finally {
@@ -950,3 +994,171 @@ for (const format of ['frade', 'drawio'] as const) {
     }
   })
 }
+// eslint-disable-next-line no-empty-pattern
+test('native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation', async ({}, info) => {
+  test.setTimeout(150000)
+  const fixture = await createKaFixture()
+  const folder = join(fixture.dataRoot, '_diagrams')
+  const profile = join(fixture.destination, 'native-pages-profile')
+  const file = join(folder, 'Pages.frade')
+  await mkdir(folder)
+  await writeFile(
+    file,
+    JSON.stringify({
+      format: 'frade-draw',
+      version: 1,
+      metadata: { id: 'pages', name: 'Pages' },
+      graph: { nodes: [], edges: [] },
+    }),
+  )
+  await writeFile(
+    join(folder, 'Other.frade'),
+    JSON.stringify({
+      format: 'frade-draw',
+      version: 1,
+      metadata: { id: 'other', name: 'Other' },
+      graph: { nodes: [], edges: [] },
+    }),
+  )
+  const env = { ...process.env, FRADE_USER_DATA: profile }
+  let app = await electron.launch({
+    args: [resolve('out/main/index.cjs')],
+    env,
+  })
+  try {
+    let page = await app.firstWindow()
+    await expect(page.getByRole('status')).toHaveText('Backend: ready')
+    await app.evaluate(
+      ({ dialog }, paths) => {
+        let i = 0
+        dialog.showOpenDialog = (async () => ({
+          canceled: false,
+          filePaths: [paths[i++]],
+        })) as typeof dialog.showOpenDialog
+      },
+      [fixture.dataRoot, fixture.metadataRoot],
+    )
+    await page.getByRole('button', { name: 'Открыть KA', exact: true }).click()
+    await expect(page.locator('.status-message')).toContainText('138 объектов')
+    await page
+      .getByRole('treeitem')
+      .filter({ hasText: /^_diagrams$/ })
+      .click()
+    await page
+      .getByRole('treeitem')
+      .filter({ hasText: /^Pages.frade$/ })
+      .dblclick()
+    const strip = () => page.locator('.diagram-slot .frade-page-strip')
+    const action = (name: string) =>
+      page.locator('.diagram-slot').getByRole('button', { name, exact: true })
+    await expect(strip()).toBeVisible()
+    expect(
+      await strip()
+        .locator('.geTabContainer')
+        .evaluate((el) => el.getBoundingClientRect().height),
+    ).toBe(32)
+    const bounds = await strip().boundingBox(),
+      frameBounds = await page.locator('.diagram-slot .frade-canvas').boundingBox()
+    expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(frameBounds!.y + frameBounds!.height)
+    try {
+      await dragObject(page)
+    } catch (error) {
+      await page.screenshot({
+        path: info.outputPath('navigator-diagnostic.png'),
+      })
+      await info.attach('navigator-diagnostic.json', {
+        body: JSON.stringify(
+          await page
+            .locator('[role=treeitem]')
+            .evaluateAll((nodes) => nodes.map((n) => ({ text: n.textContent, html: n.outerHTML }))),
+          null,
+          2,
+        ),
+        contentType: 'application/json',
+      })
+      throw error
+    }
+    await strip().getByRole('button', { name: 'Добавить страницу', exact: true }).click()
+    await action('rect').click()
+    await dragObject(page)
+    await action('Сохранить').click()
+    await expect(page.locator('.dirty-dot')).toHaveCount(0)
+    const saved = await readFile(file, 'utf8')
+    const document = JSON.parse(saved)
+    expect(document.version).toBe(2)
+    expect(
+      document.pages.map((p: { graph: { nodes: unknown[] } }) => p.graph.nodes.length),
+    ).toEqual([1, 2])
+    expect(document.pages[0].graph.nodes[0].repositoryRef.objectId).toBeTruthy()
+    expect(
+      document.pages[1].graph.nodes.some(
+        (n: { repositoryRef?: { objectId: string } }) => n.repositoryRef?.objectId,
+      ),
+    ).toBe(true)
+    await strip().getByRole('tab', { name: 'Страница-1', exact: true }).click()
+    await expect(page.locator('.dirty-dot')).toHaveCount(0)
+    await expect(page.locator('.diagram-slot .x6-node')).toHaveCount(1)
+    await expect(page.locator('.diagram-references summary')).toContainText('(1)')
+    await action('ellipse').click()
+    await expect(page.locator('.dirty-dot')).toHaveCount(1)
+    await strip().getByRole('tab', { name: 'Страница-1', exact: true }).dblclick()
+    await expect(
+      page
+        .locator('#frade-overlay-host')
+        .getByRole('dialog', { name: 'Переименовать', exact: true }),
+    ).toBeVisible()
+    expect(
+      await page
+        .getByRole('dialog', { name: 'Переименовать', exact: true })
+        .evaluate((el) => el.matches(':modal')),
+    ).toBe(false)
+    await page.getByRole('textbox', { name: 'Имя страницы' }).fill('Canceled rename')
+    await page.keyboard.press('Control+s')
+    await expect(page.getByRole('dialog', { name: 'Переименовать', exact: true })).toBeVisible()
+    await expect(page.locator('.dirty-dot')).toHaveCount(1)
+    expect(await readFile(file, 'utf8')).toBe(saved)
+    await page.keyboard.press('Escape')
+    await expect(strip().getByRole('tab', { name: 'Страница-1', exact: true })).toBeFocused()
+    await action('Отменить изменения').click()
+    await expect(page.locator('.dirty-dot')).toHaveCount(0)
+    await expect(page.locator('.diagram-slot .x6-node')).toHaveCount(1)
+    await strip().getByRole('tab', { name: 'Страница-2', exact: true }).click()
+    await expect(page.locator('.diagram-slot .x6-node')).toHaveCount(2)
+    await page
+      .getByRole('treeitem')
+      .filter({ hasText: /^Other.frade$/ })
+      .dblclick()
+    await page.getByRole('tab', { name: 'Pages.frade', exact: true }).click()
+    await expect(strip().getByRole('tab', { name: 'Страница-2', exact: true })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    )
+    await expect(page.locator('.diagram-slot .x6-node')).toHaveCount(2)
+    await page.screenshot({ path: info.outputPath('native-pages.png') })
+    await app.close()
+    const statePath = join(profile, 'frade-workspace.json')
+    const state = JSON.parse(await readFile(statePath, 'utf8'))
+    state.roots[0].readOnly = true
+    await writeFile(statePath, JSON.stringify(state))
+    app = await electron.launch({ args: [resolve('out/main/index.cjs')], env })
+    page = await app.firstWindow()
+    await expect(page.getByRole('status')).toHaveText('Backend: ready')
+    await expect(strip().getByRole('tab')).toHaveCount(2)
+    await expect(action('Сохранить')).toBeDisabled()
+    await expect(
+      strip().getByRole('button', { name: 'Добавить страницу', exact: true }),
+    ).toBeDisabled()
+    await strip().getByRole('tab', { name: 'Страница-2', exact: true }).click()
+    await expect(page.locator('.diagram-slot .x6-node')).toHaveCount(2)
+    await strip().getByRole('tab', { name: 'Страница-1', exact: true }).press('Enter')
+    await expect(page.locator('.diagram-slot .x6-node')).toHaveCount(1)
+    await strip().getByRole('tab', { name: 'Страница-1', exact: true }).press('Delete')
+    expect(await readFile(file, 'utf8')).toBe(saved)
+    await page.screenshot({
+      path: info.outputPath('native-pages-readonly.png'),
+    })
+  } finally {
+    await app.evaluate(({ app }) => app.exit(0)).catch(() => {})
+    await app.close().catch(() => {})
+  }
+})

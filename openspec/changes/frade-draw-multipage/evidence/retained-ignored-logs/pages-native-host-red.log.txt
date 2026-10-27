@@ -1,0 +1,91 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/.worktrees/draw-pages/packages/ui-workspace
+
+stderr | tests/frade-pages-host.test.tsx > loads/flushes the complete drawing, reports only semantic changes and supplies readonly to the native editor
+Error: Uncaught [Error: Unsupported document version]
+    at reportException (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\helpers\runtime-script-errors.js:66:24)
+    at innerInvokeEventListeners (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:353:9)
+    at invokeEventListeners (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:4213:16)
+    at invokeGuardedCallback (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:4277:31)
+    at beginWork$1 (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:27490:7)
+    at performUnitOfWork (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:26599:12) Error: Unsupported document version
+    at parseDocument (E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\src\document\schema.ts:113:34)
+    at deserializeDocument (E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\src\document\serialize.ts:5:54)
+    at FradeDiagramView (E:\dev\codex\frade\.worktrees\draw-pages\packages\ui-workspace\src\FradeDiagramView.tsx:51:23)
+    at renderWithHooks (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:15486:18)
+    at mountIndeterminateComponent (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:20103:13)
+    at beginWork (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:21626:16)
+    at HTMLUnknownElement.callCallback (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:4164:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
+    at innerInvokeEventListeners (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:350:25)
+    at invokeEventListeners (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+Error: Uncaught [Error: Unsupported document version]
+    at reportException (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\helpers\runtime-script-errors.js:66:24)
+    at innerInvokeEventListeners (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:353:9)
+    at invokeEventListeners (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:4213:16)
+    at invokeGuardedCallback (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:4277:31)
+    at beginWork$1 (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:27490:7)
+    at performUnitOfWork (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:26599:12) Error: Unsupported document version
+    at parseDocument (E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\src\document\schema.ts:113:34)
+    at deserializeDocument (E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\src\document\serialize.ts:5:54)
+    at FradeDiagramView (E:\dev\codex\frade\.worktrees\draw-pages\packages\ui-workspace\src\FradeDiagramView.tsx:51:23)
+    at renderWithHooks (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:15486:18)
+    at mountIndeterminateComponent (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:20103:13)
+    at beginWork (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:21626:16)
+    at HTMLUnknownElement.callCallback (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\react-dom@18.3.1_react@18.3.1\node_modules\react-dom\cjs\react-dom.development.js:4164:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
+    at innerInvokeEventListeners (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:350:25)
+    at invokeEventListeners (E:\dev\codex\frade\.worktrees\draw-pages\node_modules\.pnpm\jsdom@26.0.0_supports-color@7.2.0\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+The above error occurred in the <FradeDiagramView> component:
+
+    at FradeDiagramView (E:\dev\codex\frade\.worktrees\draw-pages\packages\ui-workspace\src\FradeDiagramView.tsx:20:68)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+ ❯ tests/frade-pages-host.test.tsx (1 test | 1 failed) 834ms
+   × loads/flushes the complete drawing, reports only semantic changes and supplies readonly to the native editor 833ms
+     → Unsupported document version
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/frade-pages-host.test.tsx > loads/flushes the complete drawing, reports only semantic changes and supplies readonly to the native editor
+Error: Unsupported document version
+ ❯ parseDocument ../draw/src/document/schema.ts:113:34
+    111|   if (input.format !== 'frade-draw' && input.format !== 'frade-designe…
+    112|     throw new Error('Unsupported document format')
+    113|   if (input.version !== 1) throw new Error('Unsupported document versi…
+       |                                  ^
+    114|   const metadata = record(input.metadata, 'Invalid document structure')
+    115|   const graph = record(input.graph, 'Invalid document structure')
+ ❯ deserializeDocument ../draw/src/document/serialize.ts:5:54
+ ❯ FradeDiagramView src/FradeDiagramView.tsx:51:23
+ ❯ renderWithHooks ../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:15486:18
+ ❯ mountIndeterminateComponent ../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:20103:13
+ ❯ beginWork ../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21626:16
+ ❯ beginWork$1 ../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27465:14
+ ❯ performUnitOfWork ../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26599:12
+ ❯ workLoopSync ../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26505:5
+ ❯ renderRootSync ../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26473:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  02:02:27
+   Duration  3.74s (transform 619ms, setup 0ms, collect 491ms, tests 834ms, environment 1.47s, prepare 451ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\ui-workspace
+

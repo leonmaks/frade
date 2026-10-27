@@ -1,0 +1,393 @@
+import { test, expect, _electron as electron, type Page, type ElectronApplication } from '@playwright/test'
+import {mkdir,writeFile,readFile} from 'node:fs/promises'
+import {resolve,join} from 'node:path'
+import {createKaFixture} from '../../../../scripts/ka-fixtures.mjs'
+import {createHash} from 'node:crypto'
+import {builtinTokens} from '@frade/ui-workspace/design/tokens'
+import {drawioEditor} from '../../../../packages/ui-workspace/src/design/generated/drawio-editor'
+type FuiFixture=Awaited<ReturnType<typeof diagramFixture>>
+type FuiKind='native'|'frame'
+const fuiHash=(bytes:Buffer|string)=>createHash('sha256').update(bytes).digest('hex')
+const fuiSettings=(f:FuiFixture,kind:FuiKind)=>join(f.fixture.destination,'p01-'+kind+'-profile','presentation-settings.json')
+const mode='light' as 'light'|'dark'|'high-contrast',kind='native' as const
+async function diagramFixture(
+  kind: 'native' | 'frame',
+  presentation?: { mode: 'light' | 'dark' | 'high-contrast'; density: 'compact' | 'comfortable' },
+  welcome?: (page: Page) => Promise<void>,
+) {
+  const fixture = await createKaFixture(),
+    folder = join(fixture.dataRoot, '_diagrams')
+  await mkdir(folder, { recursive: true })
+  const name = kind === 'native' ? 'Workshop.frade' : 'Workshop.drawio'
+  const authoredDocument =
+    kind === 'native'
+      ? JSON.stringify(
+          {
+            format: 'frade-draw',
+            version: 1,
+            metadata: { id: 'p01-authored', name: 'Workshop' },
+            graph: {
+              nodes: [
+                {
+                  id: 'authored',
+                  shape: 'rect',
+                  x: 140,
+                  y: 120,
+                  width: 180,
+                  height: 80,
+                  label: 'Authored paint',
+                  style: { fill: '#77AADD', stroke: '#334455' },
+                  labelStyle: { fill: '#112244' },
+                },
+              ],
+              edges: [],
+            },
+            viewport: { zoom: 1, pan: { x: 0, y: 0 } },
+          },
+          null,
+          2,
+        )
+      : '<mxfile><diagram id="main" name="Workshop"><mxGraphModel grid="1" gridSize="10" background="#F7E2C2" gridColor="#112233" page="1" pageWidth="700" pageHeight="500"><root><mxCell id="0"/><mxCell id="1" parent="0"/><mxCell id="authored" value="Authored paint" style="rounded=0;fillColor=#77AADD;strokeColor=#334455;fontColor=#112244;" vertex="1" parent="1"><mxGeometry x="140" y="120" width="180" height="80" as="geometry"/></mxCell></root></mxGraphModel></diagram></mxfile>'
+  const file = join(folder, name)
+  await writeFile(file, authoredDocument)
+  if (presentation) {
+    const profile = join(fixture.destination, 'p01-' + kind + '-profile')
+    await mkdir(profile, { recursive: true })
+    await writeFile(
+      join(profile, 'presentation-settings.json'),
+      JSON.stringify({
+        version: 1,
+        revision: 0,
+        generation: 0,
+        transactionId: 'matrix/boot',
+        selection: {
+          ...presentation,
+          preferred: {
+            light: 'frade.builtin/light',
+            dark: 'frade.builtin/dark',
+            'high-contrast': 'frade.builtin/high-contrast',
+          },
+        },
+      }),
+    )
+  }
+  const app = await electron.launch({
+    args: [resolve('out/main/index.cjs')],
+    env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'p01-' + kind + '-profile') },
+  })
+  const page = await app.firstWindow()
+  await page.addInitScript(() => {
+    const telemetry = ((window as any).__p01Telemetry = {
+      messages: [] as unknown[],
+      paints: [] as number[],
+      visibility: [] as unknown[],
+    })
+    let p01RefuseArmed = false, p01RefusedIntent: string | undefined
+    Object.defineProperty(window, '__p01RefuseDark', {
+      configurable: true, enumerable: true,
+      get: () => p01RefuseArmed,
+      set: (value: boolean) => { p01RefuseArmed = value; p01RefusedIntent = undefined },
+    })
+    const tick = (now: number) => {
+      if (telemetry.paints.length > 999) telemetry.paints.shift()
+      telemetry.paints.push(now)
+      requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+    document.addEventListener('visibilitychange', () =>
+      telemetry.visibility.push({ time: performance.now(), state: document.visibilityState }),
+    )
+    window.addEventListener('message', (event) => {
+      let data
+      try {
+        data = typeof event.data === 'string' ? JSON.parse(event.data) : undefined
+      } catch {
+        return
+      }
+      if (
+        data?.action === 'fradePresentation' &&
+        data.operation === 'prepare' &&
+        data.context?.phase === 'prepare' &&
+        data.snapshot?.kind === 'light' &&
+        (window as any).__p01RefuseDark &&
+        typeof data.context?.requestId === 'string' &&
+        (p01RefusedIntent === undefined || p01RefusedIntent === data.context.requestId)
+      ) {
+        p01RefusedIntent = data.context.requestId
+        event.stopImmediatePropagation()
+        parent.postMessage(
+          JSON.stringify({
+            event: 'fradePresentation',
+            version: 1,
+            participantId: data.participantId,
+            participantGeneration: data.participantGeneration,
+            context: data.context,
+            operation: 'prepare',
+            status: 'REFUSED',
+            message: 'Controlled current frame refusal',
+          }),
+          'frade://app',
+        )
+      }
+      if (data?.action === 'fradePresentation' || data?.event === 'fradePresentation')
+        telemetry.messages.push({ time: performance.now(), data })
+    })
+    if (location.host !== 'drawio') return
+    window.addEventListener('message', (event) => {
+      let value
+      try {
+        value = typeof event.data === 'string' ? JSON.parse(event.data) : undefined
+      } catch {
+        return
+      }
+      const Editor = (window as any).EditorUi
+      if (value?.action !== 'configure' || !Editor || Editor.prototype.init.__p01Capture) return
+      const original = Editor.prototype.init
+      const capture = function (this: any, ...args: unknown[]) {
+        const result = original.apply(this, args)
+        ;(window as any).__p01Ui = this
+        return result
+      }
+      capture.__p01Capture = true
+      Editor.prototype.init = capture
+    })
+  })
+  await expect(page.locator('.wb-statusbar [role="status"]')).toHaveText('Backend: ready')
+  if (welcome) await welcome(page)
+  await app.evaluate(
+    ({ dialog }, paths) => {
+      let index = 0
+      dialog.showOpenDialog = (async () => ({
+        canceled: false,
+        filePaths: [paths[index++]],
+      })) as typeof dialog.showOpenDialog
+    },
+    [fixture.dataRoot, fixture.metadataRoot],
+  )
+  await page.getByRole('button', { name: 'Открыть KA', exact: true }).click()
+  await expect(page.locator('.status-message')).toContainText('138 объектов', { timeout: 30000 })
+  const diagrams = page.getByRole('treeitem').filter({ hasText: /^_diagrams$/ })
+  await diagrams.click()
+  await page
+    .getByRole('treeitem')
+    .filter({ hasText: new RegExp('^' + name.replace('.', '\\.') + '$') })
+    .dblclick()
+  await expect(
+    page
+      .locator('.repository-diagram .editor-actions')
+      .getByRole('button', { name: 'Сохранить', exact: true }),
+  ).toBeEnabled({ timeout: 20000 })
+  if (kind === 'frame') {
+    await expect(page.locator('iframe')).toHaveAttribute(
+      'data-frade-revision',
+      (await page.locator('html').getAttribute('data-frade-revision')) as string,
+    )
+    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+    await expect(page.locator('iframe')).toBeVisible()
+    await page
+      .frameLocator('iframe')
+      .locator('body')
+      .evaluate(async () => {
+        await document.fonts.ready
+        await new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        )
+      })
+    await expect(page.locator('.diagram-error')).toHaveCount(0)
+  }
+  return { fixture, app, page, file, name }
+}
+
+async function finishDiagramFixture(app: ElectronApplication) {
+  // A deliberately blocked recovery must not leak this test's isolated Electron process.
+  // Explicit window-close/dirty-guard scenarios use the normal close path separately.
+  await app.evaluate(({ app }) => {
+    setTimeout(() => app.exit(0), 50)
+  })
+  await app.close()
+}
+
+async function applyActualPresentation(
+  page: Page,
+  mode: 'light' | 'dark' | 'high-contrast',
+  density: 'compact' | 'comfortable',
+) {
+  await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+  await page.getByRole('button', { name: 'Меню Файл' }).focus()
+  await page.keyboard.press('F1')
+  await page
+    .getByRole('dialog', { name: 'Команды' })
+    .getByRole('button', { name: 'Настройки интерфейса', exact: true })
+    .click()
+  const dialog = page.getByRole('dialog', { name: 'Настройки интерфейса' })
+  await dialog
+    .getByRole('radio', { name: mode === 'light' ? /Light/ : mode === 'dark' ? /Dark/ : /HC/ })
+    .click()
+  await dialog
+    .getByRole('radio', { name: density === 'compact' ? 'Компактная' : 'Комфортная', exact: true })
+    .click()
+  await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+  await dialog.getByRole('button', { name: 'Применить', exact: true }).click()
+  await expect(dialog.getByRole('status')).toHaveText('Сохранено')
+  await dialog.getByRole('button', { name: 'Закрыть', exact: true }).click()
+  await expect(dialog).toHaveCount(0)
+  await expect(page.locator('html')).toHaveAttribute('data-frade-theme', mode)
+  await expect(page.locator('html')).toHaveAttribute('data-frade-density', density)
+}
+
+async function fuiFiles(f: FuiFixture) {
+  const records: Record<string, string> = {}
+  for (const file of f.fixture.manifest.files.filter((file: { path: string }) => file.path.startsWith('KA/')))
+    records[file.path] = fuiHash(await readFile(join(f.fixture.destination, file.path)))
+  records.diagram = fuiHash(await readFile(f.file))
+  expect(Object.keys(records).length).toBeGreaterThan(1)
+  return records
+}
+
+async function fuiSemantics(f: FuiFixture, kind: FuiKind) {
+  if (kind === 'native')
+    return f.page.locator('.frade-canvas .canvas').evaluate((canvas) => {
+      const node = canvas.querySelector<SVGGElement>('.x6-node[data-cell-id="authored"]')!
+      const rect = node.querySelector('rect')!
+      return {
+        geometry: node.getAttribute('transform'),
+        fill: rect.getAttribute('fill'), stroke: rect.getAttribute('stroke'),
+        selection: canvas.querySelectorAll('.x6-widget-selection-box').length,
+        canvasIdentity: canvas === (window as any).__fuiCanvas,
+        nodeIdentity: node === (window as any).__fuiNode,
+      }
+    })
+  return f.page.frameLocator('iframe').locator('body').evaluate(() => {
+    const ui = (window as any).__p01Ui, graph = ui.editor.graph,
+      geometry = graph.getModel().getCell('authored').geometry,
+      container = graph.container
+    return {
+      geometry: { x: geometry.x, y: geometry.y, width: geometry.width, height: geometry.height },
+      xml: (window as any).mxUtils.getXml(ui.editor.getGraphXml()),
+      selection: graph.getSelectionCells().map((cell: any) => cell.id),
+      history: ui.editor.undoManager.history.length, cursor: ui.editor.undoManager.indexOfNextAdd,
+      preferences: { ...localStorage }, page: ui.currentPage.id,
+      background: graph.background, gridColor: graph.gridColor, gridEnabled: graph.gridEnabled,
+      scale: graph.view.scale, translate: { x: graph.view.translate.x, y: graph.view.translate.y },
+      scroll: { left: container.scrollLeft, top: container.scrollTop },
+      uiIdentity: ui === (window as any).__fuiUi, graphIdentity: graph === (window as any).__fuiGraph,
+    }
+  })
+}
+
+async function fuiMove(f: FuiFixture, kind: FuiKind) {
+  let box: { x: number; y: number; width: number; height: number }
+  if (kind === 'native') {
+    const canvas = f.page.locator('.frade-canvas .canvas'), node = canvas.locator('.x6-node[data-cell-id="authored"]')
+    await expect(node).toBeVisible()
+    await canvas.evaluate((canvas) => {
+      ;(window as any).__fuiCanvas = canvas
+      ;(window as any).__fuiNode = canvas.querySelector('.x6-node[data-cell-id="authored"]')
+    })
+    box = (await node.boundingBox())!
+  } else {
+    const body = f.page.frameLocator('iframe').locator('body')
+    await expect.poll(() => body.evaluate(() => !!(window as any).__p01Ui)).toBe(true)
+    const inner = await body.evaluate(() => {
+      const ui = (window as any).__p01Ui, graph = ui.editor.graph
+      ;(window as any).__fuiUi = ui
+      ;(window as any).__fuiGraph = graph
+      return graph.view.getState(graph.getModel().getCell('authored')).shape.node.getBoundingClientRect().toJSON()
+    })
+    const outer = (await f.page.locator('iframe').boundingBox())!
+    box = { ...inner, x: outer.x + inner.x, y: outer.y + inner.y }
+  }
+  const before = (await fuiSemantics(f, kind)).geometry
+  expect(box.width).toBeGreaterThan(0); expect(box.height).toBeGreaterThan(0)
+  await f.page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+  await f.page.mouse.down()
+  await f.page.mouse.move(box.x + box.width / 2 + 30, box.y + box.height / 2 + 20, { steps: 5 })
+  await f.page.mouse.up()
+  await expect.poll(async () => (await fuiSemantics(f, kind)).geometry).not.toEqual(before)
+  await expect(f.page.locator('.dirty-dot')).toHaveCount(1)
+  const after = await fuiSemantics(f, kind)
+  if (kind === 'frame') expect((after as any).history).toBeGreaterThan(0)
+  return { before, moved: after.geometry }
+}
+
+async function fuiDirtyObject(f: FuiFixture, text: string) {
+  await f.page.getByLabel('Поиск объектов', { exact: true }).fill('ecogroup.berezka.systems.berezka')
+  await f.page.locator('[data-object-id="ecogroup.berezka.systems.berezka"]').dblclick()
+  const editor = f.page.locator('.field[data-field-path="description"] textarea')
+  await editor.fill(text)
+  await editor.evaluate((node) => { (window as any).__fuiDirtyEditor = node })
+  await expect(f.page.locator('.dirty-dot')).toHaveCount(2)
+  await f.page.evaluate(async () => { await new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r()))) })
+  return editor
+}
+
+async function fuiRevisionAndPalette(f: FuiFixture, kind: FuiKind, mode: 'light' | 'dark' | 'high-contrast') {
+  const root = f.page.locator('html'), revision = (await root.getAttribute('data-frade-revision'))!
+  await expect(root).toHaveAttribute('data-frade-theme', mode)
+  await expect(f.page.locator('.frade-theme-commit-barrier')).toBeHidden()
+  const participant = kind === 'native' ? f.page.locator('.frade-canvas .canvas') : f.page.locator('iframe')
+  await expect(participant).toHaveAttribute('data-frade-revision', revision)
+  const roles = Object.entries(builtinTokens.themes[mode])
+  const projected = await f.page.getByRole('dialog', { name: 'Настройки интерфейса' }).evaluate((dialog, roles) => {
+    const root = getComputedStyle(document.documentElement), portal = getComputedStyle(dialog)
+    return { managed: !!dialog.closest('#frade-overlay-host'), roles: roles.map(([role, color]) => {
+      const variable = '--frade-' + role.replaceAll('.', '-')
+      return { role, wanted: color, root: root.getPropertyValue(variable).trim(), portal: portal.getPropertyValue(variable).trim() }
+    }) }
+  }, roles)
+  expect(projected.managed).toBe(true)
+  expect(projected.roles).toHaveLength(31)
+  for (const role of projected.roles) { expect(role.root.toUpperCase()).toBe(role.wanted); expect(role.portal.toUpperCase()).toBe(role.wanted) }
+  const requiredRoot = kind === 'native' ? participant : f.page.frameLocator('iframe').locator('html')
+  await expect(requiredRoot).toHaveAttribute(kind === 'native' ? 'data-frade-theme' : 'data-frade-frame-theme', 'light')
+  await expect(requiredRoot).toHaveAttribute(kind === 'native' ? 'data-frade-revision' : 'data-frade-frame-revision', revision)
+  const required = await requiredRoot.evaluate((node, input) => {
+    const style = getComputedStyle(node), prefix = input.kind === 'native' ? '--frade-' : '--frade-frame-'
+    return input.roles.map(([role, wanted]) => ({ role, wanted, actual: style.getPropertyValue(prefix + role.replaceAll('.', '-')).trim() }))
+  }, { kind, roles: Object.entries(drawioEditor.colors) })
+  expect(required).toHaveLength(31)
+  for (const role of required) expect(role.actual.toUpperCase()).toBe(role.wanted)
+  return { revision, projected, required }
+}
+
+async function fuiUndoRedo(f: FuiFixture, kind: FuiKind, movement: Awaited<ReturnType<typeof fuiMove>>) {
+  const diagramTab = f.page.getByRole('tab').filter({ hasText: f.name })
+  await expect(diagramTab).toHaveCount(1)
+  await diagramTab.click()
+  if (kind === 'native') await f.page.getByRole('button', { name: 'Undo', exact: true }).click()
+  else {
+    await f.page.frameLocator('iframe').locator('.geDiagramContainer').click({ position: { x: 30, y: 30 } })
+    await f.page.keyboard.press('Control+z')
+  }
+  await expect.poll(async () => (await fuiSemantics(f, kind)).geometry).toEqual(movement.before)
+  if (kind === 'native') await f.page.getByRole('button', { name: 'Redo', exact: true }).click()
+  else await f.page.keyboard.press('Control+y')
+  await expect.poll(async () => (await fuiSemantics(f, kind)).geometry).toEqual(movement.moved)
+}
+test('P01-FUI005 ' + mode + ' ' + kind, async ({}, info) => {
+      test.setTimeout(120000)
+      const f = await diagramFixture(kind, { mode: mode === 'light' ? 'dark' : 'light', density: 'compact' })
+      try {
+        await f.page.evaluate(() => { const events: unknown[]=[]; Reflect.set(window,'__historyDiagnostic',events);const original=JSON.stringify;JSON.stringify=function(...args:unknown[]){const value=args[0] as {format?:string;graph?:{nodes?:unknown[]};nodes?:unknown[];edges?:unknown[]}|undefined;const graph=value?.graph??(Array.isArray(value?.nodes)&&Array.isArray(value?.edges)?value:undefined);if(Array.isArray(graph?.nodes))events.push({nodes:graph.nodes,stack:new Error().stack});return Reflect.apply(original,JSON,args)} });
+const movement = await fuiMove(f, kind), activeSetup = await fuiSemantics(f, kind), files = await fuiFiles(f),
+          editor = await fuiDirtyObject(f, 'FUI005 unsaved ' + mode + ' ' + kind), before = await fuiSemantics(f, kind)
+        expect(before.geometry).toEqual(activeSetup.geometry)
+        expect(before.selection).toEqual(activeSetup.selection)
+        await applyActualPresentation(f.page, mode, 'compact')
+        // Keep an actual managed portal open while checking inherited complete snapshot.
+        await f.page.getByRole('button', { name: 'Меню Файл' }).click()
+        await f.page.getByRole('menuitem', { name: 'Настройки интерфейса' }).click()
+        const projection = await fuiRevisionAndPalette(f, kind, mode)
+        expect(JSON.parse(await readFile(fuiSettings(f, kind), 'utf8')).selection.mode).toBe(mode)
+        expect(await fuiSemantics(f, kind)).toEqual(before)
+        expect(await fuiFiles(f)).toEqual(files)
+        await expect(editor).toHaveValue('FUI005 unsaved ' + mode + ' ' + kind)
+        expect(await editor.evaluate((node) => node === (window as any).__fuiDirtyEditor)).toBe(true)
+        await expect(f.page.locator('.dirty-dot')).toHaveCount(2)
+        await f.page.getByRole('button', { name: 'Закрыть', exact: true }).click()
+        await fuiUndoRedo(f, kind, movement)
+        expect(await fuiFiles(f)).toEqual(files)
+        await writeFile(info.outputPath('fui-observations.json'), JSON.stringify({ id: 'FUI-005/' + mode, kind, projection, meaningfulUndoRedo: true, noThemeSetup: { active: activeSetup, parked: before }, retained: before, fileHashes: files, visualApproval: 'NOT_APPROVED' }, null, 2))
+        await f.page.screenshot({ path: info.outputPath('fui005-' + mode + '-' + kind + '.png') })
+      } finally { await writeFile(info.outputPath('history-diagnostic.json'),JSON.stringify(await f.page.evaluate(()=>({events:Reflect.get(window,'__historyDiagnostic'),nodeIds:[...document.querySelectorAll('.x6-node')].map(n=>n.getAttribute('data-cell-id')),errors:[...document.querySelectorAll('[role=alert]')].map(n=>n.textContent)})),null,2));await finishDiagramFixture(f.app) }
+    })

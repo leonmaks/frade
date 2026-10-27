@@ -1,0 +1,36 @@
+# Bounded cumulative control adoption — proposed PRE scope
+
+## Objective and observed blockers
+
+The feature's latest 16 browser cases passed, including exact local 31.5.2 strip and page-menu geometry/typography/border/shadow, AA exceptions, true drag/cancel, history and popup independence. Three real Electron native/mixed/save/discard/readonly regressions passed. Full Draw232 unit and runtime-node21 tests passed. Full workspace after proven historical EOL restoration and normal filesystem permissions is304 PASS /11 FAIL, solely LDE historical INPUT_HASH. Root tokens/vscode/drawio source closure PASS; color gate FAIL for19 moved legacy-coordinate entries, with unchanged124 occurrences. Current evidence remains FAIL until repaired and rerun; no historical PASS is assigned to this candidate.
+
+The archived LDE manifest binds >200 input/report files, including14 files necessarily modified here. It is valid immutable proof of the accepted LDE origin, but cannot be silently repinned to a later feature. AGENTS18 and20 require this consumer's explicit origin-preserving control adoption and revalidation. The existing presentation spec also requires bounded current integration evidence, exact old/new mapping, unchanged assertions and separate fresh visual acceptance.
+
+## Alternatives and costs (forecasts except stated measurements)
+
+- Replacing old pins with current hashes: low effort, invalidates historical execution binding; forbidden.
+- Broad path/feature allowlist or excluding failing tests: cheap, loses unknown-drift rejection; forbidden.
+- Repeat the entire closed upstream program and replace its history: forecast20–60min+ with uncertain matrix cost, duplicated unrelated evidence and still wrong origin ownership; do not replace history. Current workspace full run measured19.14s; latest current 16 browser cases 20.9s; three desktop cases19.2s.
+- Exact bounded original→adopted replay plus fresh current executions: forecast45–90min implementation/checks and4–8min independent PRE. Select this: retain all original manifests/report/assertions, reject unknown current/source/origin drift, execute current direct presentation/feature contracts and relevant runtime regressions. No success probability measured.
+
+## Proposed algorithm and authorized boundary
+
+1. Copy only the necessary original source bytes from this owning branch's baseline Git objects to this change's evidence/origin/ tree. Verify each against the archived LDE manifest's original/published hash before writing. No foreign worktree artifacts, pin edits or archived evidence edits.
+2. A closed adoption manifest enumerates exact file path, original hash/snapshot, adopted live raw hash and approved change/baseline. It includes each genuinely changed LDE input (currently14; the legacy inventory separately retains original bytes/mapping and belongs to the fresh current gate inputs). No prefix/wildcard/version fallback. Its raw hash is fixed in the narrowly scoped reader.
+3. Add a test-only reader at packages/ui-workspace/tests/ui-contract/drawing-pages-origin.ts and a bounded call in existing light-diagram-editor.bdd.test.tsx after its unchanged safe-path/no-link guards. For a declared changed file, require exact adopted live hash, read only its exact safe original artifact, require original raw hash, return original bytes to the existing historical verifier. For any undeclared file return live bytes as before. Unknown live edits, missing/mutated manifest/origin, path escape and links fail closed. Preserve every original manifest/report pin and existing meaningful assertion/mutation negative test. This is historical-origin verification after live adoption validation, never evidence that old runtime executions ran on the new source.
+4. Add deterministic negative regressions for live/source/manifest/origin tamper, missing origin, undeclared drift and path/link boundaries. Keep original publication-form/tamper checks whole. Fresh current source-binding tests separately bind exact adopted/new product/test bytes to actual newly executed unit/browser/desktop/direct-presentation reports, expected named cases and zero failed/skipped/flaky cases. Avoid circularly requiring a full workspace report before that workspace can execute; current runtime reports are generated from independent direct suites first, then the complete workspace/root checks run. Review the bootstrap reader/pin/report-checker code in the independent packet; do not claim it cryptographically attests itself.
+5. Rebase only existing legacy-color coordinates in docs/ui/decisions/legacy-colors.json after proving the complete per-file occurrence sequence, literal values and exact declaration contexts are unchanged from the current approved baseline. Preserve classification/reason/stage, count124 and original baseline. Retain exact old→new spans, input hashes and old inventory bytes in this change's evidence. No new exception, literal or changed color context is authorized. Existing added-literal/stale-exception negative controls must still fail.
+6. Run actual fresh affected tests, direct old presentation contracts, pinned browser comparison, desktop native/Light isolation matrix, root UI/source/color/negative controls and general package/boundary checks. Record exact commands, reports and selected input raw hashes; any failure stops closure. Full OpenSpec verification and exact assigned POST follow only when required checks pass. Human fresh-visual acceptance stays pending, never inferred from machine PASS.
+
+Authorized additional paths: the one historical-reader call, new test-only reader/regressions/current-binding tests; the existing legacy-colors inventory's exact coordinate metadata; this change's origin/mapping/execution evidence and planning/dashboard. No production domain/routing source, archived program state, global policy, broader checker bypass or UI migration.
+
+## Bounded probe and stop/reassess
+
+First verify the14 exact original blobs and one malformed/live-tamper negative before expanding to all entries; inspect fresh source/report integrity. Stop on unexpected origin/hash or color-context changes, ambiguous mapping, missing mandatory evidence or reviewer FAIL. Do not keep adding exceptions. Preserve failed evidence and re-evaluate the abstraction after two deterministic unsuccessful fixes. PRE on this plan precedes control code/inventory edits; no such edits have started.
+
+
+## PRE05 repair and exact matrix applicability
+
+PRE05 FAIL is preserved at pre-05-20261027T001841Z (candidate/packet unchanged). Corrected the stale15-case/16.5s references to the supplied latest 16-case/20.9s run; the earlier15-case run remains separately preserved history. The exact mandatory matrix and its prior Foundation mapping are supplied directly, hashed in matrix-applicability.md. The collected explicit named current execution map is presentation-execution-plan.json; collection is NOT execution/PASS. No control implementation has begun.
+
+PRE06 FAIL and root-cause reassessment are preserved in control-review-rca.md. Current plan is50-of125 explicit named cases, including both original responsive-media engine workloads and exact staged-filesystem rollback. Executable plan validation and three deletion negatives precede the next PRE; no production/control/inventory edits before PASS.

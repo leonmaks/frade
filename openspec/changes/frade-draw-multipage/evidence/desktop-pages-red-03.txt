@@ -1,0 +1,49 @@
+
+Running 1 test using 1 worker
+
+(node:26432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26432) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\diagrams.spec.ts:1159:1 › native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation (13.5s)
+
+
+  1) tests\e2e\diagrams.spec.ts:1159:1 › native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('dialog', { name: 'Переименовать', exact: true })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('dialog', { name: 'Переименовать', exact: true })[22m
+
+
+      1005 |     await page.getByRole('textbox', { name: 'Имя страницы' }).fill('Canceled rename')
+      1006 |     await page.keyboard.press('Control+s')
+    > 1007 |     await expect(page.getByRole('dialog', { name: 'Переименовать', exact: true })).toBeVisible()
+           |                                                                                    ^
+      1008 |     await expect(page.locator('.dirty-dot')).toHaveCount(1)
+      1009 |     expect(await readFile(file, 'utf8')).toBe(saved)
+      1010 |     await page.keyboard.press('Escape')
+        at E:\dev\codex\frade\.worktrees\draw-pages\apps\desktop\tests\e2e\diagrams.spec.ts:1007:84
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\diagrams-native-multipage--339bc-estores-readonly-navigation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\diagrams-native-multipage--339bc-estores-readonly-navigation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\diagrams.spec.ts:1159:1 › native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\apps\desktop
+

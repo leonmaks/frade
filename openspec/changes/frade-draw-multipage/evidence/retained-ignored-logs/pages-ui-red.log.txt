@@ -1,0 +1,127 @@
+[WebServer] (node:39048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:37960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:37960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-ui.spec.ts:10:1 › native page strip edits, reorders, clears and round-trips every page through real files (10.1s)
+(node:30384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:30384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\spike\drawing-pages-ui.spec.ts:114:1 › overflow readonly tabs remain keyboard reachable while every mutation is blocked (10.1s)
+(node:36176) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36176) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 tests\spike\drawing-pages-ui.spec.ts:162:1 › standalone opens only the selected page independently and cleans its transfer (10.1s)
+
+
+  1) tests\spike\drawing-pages-ui.spec.ts:10:1 › native page strip edits, reorders, clears and round-trips every page through real files 
+
+    [31mTest timeout of 10000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Добавить страницу', exact: true })[22m
+
+
+      4 |   await page.goto('/pages-visual.html')
+      5 |   await page.getByRole('button',{name:'rect',exact:true}).click()
+    > 6 |   await page.getByRole('button',{name:'Добавить страницу',exact:true}).click()
+        |                                                                        ^
+      7 |   await page.getByRole('button',{name:'ellipse',exact:true}).click()
+      8 |   await page.getByRole('tab',{name:'Страница-2',exact:true}).dblclick()
+      9 |   const dialog=page.getByRole('dialog',{name:'Переименовать'})
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:6:72
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-native-pa-46c36-ery-page-through-real-files\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-ui-native-pa-46c36-ery-page-through-real-files\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-native-pa-46c36-ery-page-through-real-files\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-ui-native-pa-46c36-ery-page-through-real-files\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\spike\drawing-pages-ui.spec.ts:114:1 › overflow readonly tabs remain keyboard reachable while every mutation is blocked 
+
+    [31mTest timeout of 10000ms exceeded.[39m
+
+    Error: locator.focus: Test timeout of 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('tab', { name: 'Страница-1', exact: true })[22m
+
+
+      45 |   await page.goto('/pages-visual.html?seed&readonly&embed')
+      46 |   const first=page.getByRole('tab',{name:'Страница-1',exact:true})
+    > 47 |   await first.focus();await first.press('End');await page.getByRole('tab',{name:'Страница-20',exact:true}).press('Enter')
+         |               ^
+      48 |   await expect(page.getByRole('tab',{name:'Страница-20',exact:true})).toHaveAttribute('aria-selected','true')
+      49 |   await expect(page.getByRole('button',{name:'Добавить страницу',exact:true})).toBeDisabled()
+      50 |   await page.getByRole('button',{name:'Страницы',exact:true}).click()
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:47:15
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-overflow--66fad-e-every-mutation-is-blocked\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-ui-overflow--66fad-e-every-mutation-is-blocked\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-overflow--66fad-e-every-mutation-is-blocked\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-ui-overflow--66fad-e-every-mutation-is-blocked\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\spike\drawing-pages-ui.spec.ts:162:1 › standalone opens only the selected page independently and cleans its transfer 
+
+    [31mTest timeout of 10000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 10000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Добавить страницу', exact: true })[22m
+
+
+      61 |   await page.goto('/pages-visual.html')
+      62 |   await page.getByRole('button',{name:'rect',exact:true}).click()
+    > 63 |   await page.getByRole('button',{name:'Добавить страницу',exact:true}).click()
+         |                                                                        ^
+      64 |   await page.getByRole('button',{name:'ellipse',exact:true}).click()
+      65 |   await openMenu(page,'Страница-2')
+      66 |   const popupEvent=page.waitForEvent('popup')
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:63:72
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests\spike\drawing-pages-ui.spec.ts:10:1 › native page strip edits, reorders, clears and round-trips every page through real files 
+    tests\spike\drawing-pages-ui.spec.ts:114:1 › overflow readonly tabs remain keyboard reachable while every mutation is blocked 
+    tests\spike\drawing-pages-ui.spec.ts:162:1 › standalone opens only the selected page independently and cleans its transfer 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

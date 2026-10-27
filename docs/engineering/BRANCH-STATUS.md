@@ -1,19 +1,27 @@
-# Frade Draw multipage branch status
+# Frade Draw multipage — branch status
 
-- Date: 27 October 2026 (Europe/Moscow); evidence timestamps use UTC.
-- Branch: `codex/frade-draw-pages`.
-- Worktree: `E:/dev/codex/frade/.worktrees/draw-pages`.
-- Git common: `E:/dev/codex/frade/.git`.
-- Change: `frade-draw-multipage`.
-- Original baseline: `e54cf0c1e4e70ed833398c673ea3140b6f10469e`.
-- Phase: research/planning; production NOT_STARTED.
-- Stages: research/plan → strict validation/PRE → BDD/RED → model/session → strip/local files → host integration → verification/UI → POST → accepted visual/archive checkpoint.
-- Active tasks: 1.1/1.2 research/planning complete; 1.3 strict validation and fresh independent PRE pending. All implementation tasks remain open in the change's tasks.md.
-- Review assignment: user selected PRE `gpt-6-sol/high`, POST `gpt-6-sol/high` in this chat. Source: change design.md; raw hash is bound per request.
-- Common workflow: v1.1 release `a6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5`; exact policy adopted in evidence/shared-policy.md. Initial main service status AVAILABLE. Owning-worktree confinement probe NOT_RUN.
-- Actual checks: reference source inspection/live UI observation DONE; strict validation PASS after preserving/fixing initial long-requirement warnings; scoped whitespace PASS; exact frozen-lock offline dependency installation PASS (336 reused, zero downloads). PRE NOT_RUN; production tests/typecheck/build/BDD/visual/POST NOT_RUN. Earlier environment/validation failures retained in evidence/planning-validation.md.
-- Setup: managed-worktree creation failed on Windows long paths. Recovered via one-command `git -c core.longpaths=true worktree add`, without persistent config changes, then moved into writable root with verified absolute paths. App attachment rejected this ordinary Git worktree as unmanaged; all commands use explicit workdir. Dashboard opening is attempted separately; attachment is not claimed.
-- Unrelated main dirt: existing routing tasks/source/tests, Draw package/lockfile changes, UI planning artifacts and deleted prompt were observed and not copied or modified.
-- Blockers/decisions: no current model decision pending; fresh PRE/confinement and full reference/native visual comparison required. UI closure also needs explicit human visual acceptance.
-- Next: minimal complete packet and automatic PRE; no production before PASS. Dashboard open result QUEUED, visibility not confirmed.
-- Commit/push: planning checkpoint not yet committed; no destination/ref authorized for push; no merge to main.
+Updated2026-10-27 UTC. Owner codex/frade-draw-pages; worktree E:/dev/codex/frade/.worktrees/draw-pages; Git common E:/dev/codex/frade/.git. Active change frade-draw-multipage. Original baseline e54cf0c1e4e70ed833398c673ea3140b6f10469e; planning commit543ea0fe1a88bb12abd9c4dfea673857902cf283. Main unrelated routing/package/lock changes untouched.
+
+Current phase: product implementation, required current checks and OpenSpec implementation verification complete. Ready to commit verified implementation checkpoint with final independent POST explicitly PENDING; task boxes21/23,5.3/C4 include POST/checkpoint process. Archive/push/merge NOT_RUN; no next feature authorized. No unresolved product correctness blocker. Dashboard right-panel requests return QUEUED; visibility unconfirmed.
+
+Implemented: v1-compatible/v2 all-page files; stable-X6 chronological graph/page Undo/Redo; complete standalone/runtime/repository save/open/discard/dirty/readonly; page insert/rename/duplicate/remove/drag/Move/sort/clear/overflow/keyboard and standalone extraction; source-derived Draw.io31.5.2 footer/menu/Rename; managed overlays/appearance ownership; stale-generation guards; exact pure facade permission and fail-closed historical/current control adoption. No routing kernel/contract or vendor source edits.
+
+| Phase | Current state |
+| --- | --- |
+| Research/spec/strategy | COMPLETE, approved PRE/POST gpt-6-sol/high; design raw1e782232115fbd027190f2d9a0d5572f5bb8b4ad0642995fb34ae7dd8eb3e450 |
+| Required PRE | PASS03 product,04c extraction,07 controls,09 facade; exact receipts/raw events retained |
+| Implementation and regression-first repairs | COMPLETE; invalid capture validated before state/history, native history errors delivered through existing reporter; APIs without reporter still throw |
+| Current runtime/build | PASS877 cases:237 Draw,21 Runtime,319 workspace,238 browser,12 desktop diagrams,47 presentation,3 performance;9 build outputs |
+| Root/general/source/control | PASS actual pnpm check exit0,06:27:59.389–06:31:16.408Z; old assertions/pins and meaningful negative/checkout controls retained |
+| UI | PASS applicable automated/default visual checks; human accepted explicit AA deltas; default native images byte identical. HC9 one-step gray border raster pixels recorded, no full-raster/AT/cross-OS claim |
+| OpenSpec | Implementation mapping19req22scenarios complete; strict03 actual openspec.cmd1.14.3 exit0/all4 hashes unchanged;21/23 process boxes pending receipt/closure |
+| Independent final POST | PENDING, fresh complete08 after current verified source checkpoint; exact build/execution hash-reference closure, no stale folder selection |
+| Commit/publication | Verified source checkpoint prepared; no push/merge/archive |
+
+Current sourceSet9ed81736b1b42124664f59403513c1624b2ab1ea847596b1f4683ff728b97c31; manifestfec205e7f9f53fa4bfb15ebfab02fb452cea73b9a0e6d665a9733d770ec338c1.653 inputs,7 new exact runtime records; current build tied to every desktop execution. P95117.30/86.10ms under unchanged150ms budgets,20 warmups/100 requests. Revalidation03 explicitly guards old4478... and exact2-source delta; prior873/875-case candidates and all14 immutable origins retained separately. Trusted bootstrap pin is explicitly independently reviewed, excluded from selfdigest.
+
+History: PRE01/02/05/06/08 FAIL and preparation BLOCKED preserved; POST01/04 evidence FAIL,02/03 preparation BLOCKED,05 capture correctness FAIL then RED/GREEN repair,06 missing current build proof FAIL then exact-reference preflight repair. POST07 prepared NOT_DISPATCHED after own real UI-feedback RED; permanent2 toolbar cases and all11 session/UI GREEN, plus full877 checks. No historical FAIL relabeled. Prior chronological dashboard retained in evidence/branch-status-before-final-checkpoint.md; raw reports/receipts/evidence are authoritative.
+
+Environment Windows/Node24.18.0/Chromium/Electron44.4.5 local build with same-version binary override. Shared policyv1.1 releasea6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5; requested review pair sol/high, actual backend/effort NOT_CONFIRMED. Own-index read lease proved read-allowed/write-sharing-violation, finally released after each review; no global settings/foreign-process changes or guard relaxation.
+
+Next: commit honest checked-source checkpoint, rebuild current08 packet after commit metadata update, freeze candidate/index and receive actual independent cumulative PASS/FAIL/BLOCKED. Only actual PASS permits closing task boxes and archival checkpoint. Push/main merge require explicit destination authorization.

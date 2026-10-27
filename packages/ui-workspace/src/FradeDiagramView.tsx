@@ -1,15 +1,16 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, useId } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, useId, useMemo } from 'react'
 import { useThemeController, createNativeParticipant } from './design/theme'
+import { getEditorAppearanceOwner } from './design/theme/editorPresentationParticipant'
 import { createPortal } from 'react-dom'
 import {
   DiagramEditor,
-  deserializeDocument,
-  serializeDocument,
-  graphToDocument,
-  loadDocument,
+  serializeDrawingDocument,
   nodeToCell,
   type Graph,
   type RepositoryNodeReference,
+  type DrawingSession,
+  type DrawingSessionEvent,
+  type DiagramEditorProps,
 } from '@frade/draw'
 import type { DiagramViewProps, DiagramObject } from './DiagramView'
 import { REPOSITORY_OBJECT_MIME } from '@frade/ui-navigator'
@@ -48,7 +49,8 @@ export function FradeDiagramView(
   const appearanceSignatures = useRef(new WeakMap<object, string>())
   const bundles = useRef<ReturnType<typeof installRepositoryBundles>>()
   const graph = useRef<Graph>(),
-    metadata = useRef(deserializeDocument(props.draft.current).metadata)
+    drawing = useRef<DrawingSession>()
+  const [pageRevision, setPageRevision] = useState(0)
   const manager = useBundleManager(
     props,
     async (bundle, members) => {
@@ -57,7 +59,10 @@ export function FradeDiagramView(
       if (!instance || !edge?.isEdge() || edge.getProp('repositoryBundle')?.kind !== 'empty')
         throw Error('Жгут больше не существует')
       instance.batchUpdate('bundle-membership', () =>
-        edge.setProp('repositoryBundle', { kind: 'empty', integrationFlowRefs: members }),
+        edge.setProp('repositoryBundle', {
+          kind: 'empty',
+          integrationFlowRefs: members,
+        }),
       )
     },
     (id, text) => {
@@ -126,7 +131,10 @@ export function FradeDiagramView(
       const node = source ? edge.getSourceCell() : edge.getTargetCell()
       const ref = node?.getProp('repositoryRef') as RepositoryNodeReference | undefined
       return ref && !ref.sourceId
-        ? { repositoryId: latest.current.draft.repositoryId, objectId: ref.objectId }
+        ? {
+            repositoryId: latest.current.draft.repositoryId,
+            objectId: ref.objectId,
+          }
         : undefined
     }
     return {
@@ -158,10 +166,37 @@ export function FradeDiagramView(
     container.setAttribute('data-frade-editor-path', props.draft.path)
   }, [container, props.draft.repositoryId, props.draft.path])
   const parking = useRef<HTMLDivElement>(null)
+  const overlaySequence = useRef(0)
   const [ready, setReady] = useState(false),
     [references, setReferences] = useState<
       { cellId: string; ref: RepositoryNodeReference; name: string }[]
     >([])
+  const pageOverlays = useMemo<DiagramEditorProps['pageOverlays']>(() => {
+    if (!ready || !presentation) return undefined
+    const host = container
+      .closest('.ka-workbench')
+      ?.querySelector<HTMLElement>('#frade-overlay-host')
+    if (!host) return undefined
+    const managed = presentation.mountHost(host)
+    return {
+      host,
+      register: (element, options) =>
+        managed.register({
+          id: presentationId.current + '/pages/' + ++overlaySequence.current,
+          element,
+          priority: 50,
+          modal: options.modal,
+          opener: options.opener,
+          initialFocus: options.initialFocus,
+          outside: 'retain',
+          appearanceOwner: getEditorAppearanceOwner(container),
+          cancel: () => {
+            options.cancel()
+            return true
+          },
+        }),
+    }
+  }, [ready, presentation, container])
   const emit = useCallback(
     (type: FradeDiagramEvent['type'], cellId?: string, reference?: RepositoryNodeReference) =>
       latest.current.onEvent?.({
@@ -179,10 +214,10 @@ export function FradeDiagramView(
   }, [container, props.target])
   useEffect(() => () => container.remove(), [container])
   const readyGraph = useCallback(
-    (instance: Graph) => {
+    (instance: Graph, session: DrawingSession) => {
       graph.current = instance
-      const model = loadDocument(instance, JSON.parse(latest.current.draft.current))
-      metadata.current = model.metadata
+      drawing.current = session
+      session.load(JSON.parse(latest.current.draft.current))
       const bundleIntegration = installRepositoryBundles(instance, () => latest.current)
       const originalValidate = instance.options.connecting.validateEdge
       instance.options.connecting.validateEdge = function (args) {
@@ -242,12 +277,22 @@ export function FradeDiagramView(
                   .map((m) => m.ref),
                 count = members.length - valid.length
               if (count)
-                setReconnect({ edgeId: edge.id, source, target, members: valid, count, expected })
+                setReconnect({
+                  edgeId: edge.id,
+                  source,
+                  target,
+                  members: valid,
+                  count,
+                  expected,
+                })
               else
                 instance.batchUpdate('bundle-reconnect', () => {
                   edge.setSource(source)
                   edge.setTarget(target)
-                  edge.setProp('repositoryBundle', { kind: 'empty', integrationFlowRefs: valid })
+                  edge.setProp('repositoryBundle', {
+                    kind: 'empty',
+                    integrationFlowRefs: valid,
+                  })
                   instance.trigger('edge:connected', { edge, isNew: false })
                 })
             })
@@ -255,21 +300,19 @@ export function FradeDiagramView(
         return false
       }
       bundles.current = bundleIntegration
-      const snapshot = () => {
-        const { tx, ty } = instance.translate()
-        return serializeDocument(
-          graphToDocument(instance, metadata.current, {
-            zoom: instance.zoom(),
-            pan: { x: tx, y: ty },
-          }),
-        )
-      }
+      const snapshot = () => serializeDrawingDocument(session.snapshot())
       const refs = () =>
         setReferences(
           instance.getNodes().flatMap((node) => {
             const ref = node.getProp('repositoryRef') as RepositoryNodeReference | undefined
             return ref
-              ? [{ cellId: node.id, ref, name: String(node.attr('label/text') ?? ref.objectId) }]
+              ? [
+                  {
+                    cellId: node.id,
+                    ref,
+                    name: String(node.attr('label/text') ?? ref.objectId),
+                  },
+                ]
               : []
           }),
         )
@@ -280,11 +323,20 @@ export function FradeDiagramView(
             .filter((edge) => edge.getProp('repositoryBundle'))
             .map(bundleState),
         )
-      const changed = () => {
+      const changed = (event: DrawingSessionEvent) => {
+        if (event === 'readonly') return
         try {
+          if (event === 'page' || event === 'load') {
+            managerRef.current.reset()
+            setReconnect(undefined)
+            setContextMenu(undefined)
+            appearanceSignatures.current = new WeakMap()
+            setPageRevision((value) => value + 1)
+          }
           annotate()
-          latest.current.onChange(snapshot())
           refs()
+          if (event !== 'change') return
+          latest.current.onChange(snapshot())
           emit('document-changed')
           const bundle = managerRef.current.current.current
           if (bundle) {
@@ -292,8 +344,8 @@ export function FradeDiagramView(
             if (edge?.isEdge()) managerRef.current.update(bundleState(edge))
             else managerRef.current.removed(bundle.id)
           }
-        } catch {
-          /* In-progress connection geometry is validated on flush. */
+        } catch (error) {
+          latest.current.onError(error instanceof Error ? error.message : String(error))
         }
       }
       const activated = ({ node }: { node: ReturnType<Graph['getNodes']>[number] }) => {
@@ -320,8 +372,7 @@ export function FradeDiagramView(
           cell?.getProp('repositoryRef') as RepositoryNodeReference | undefined,
         )
       }
-      for (const event of ['cell:added', 'cell:removed', 'cell:changed'] as const)
-        instance.on(event, changed)
+      const unsubscribe = session.subscribe(changed)
       instance.on('node:dblclick', activated)
       instance.on('selection:changed', selected)
       const openBundle = ({ edge }: { edge: ReturnType<Graph['getEdges']>[number] }) => {
@@ -373,7 +424,11 @@ export function FradeDiagramView(
       annotate()
       const themeOwner = presentationRef.current
       const themeParticipant = themeOwner
-        ? createNativeParticipant(instance, { id: presentationId.current, editorRoot: container, editorRootSnapshot: themeOwner!.state().snapshot })
+        ? createNativeParticipant(instance, {
+            id: presentationId.current,
+            editorRoot: container,
+            editorRootSnapshot: themeOwner!.state().snapshot,
+          })
         : undefined
       const themeRegistration = themeParticipant
         ? themeOwner!.register(themeParticipant)
@@ -382,16 +437,13 @@ export function FradeDiagramView(
       latest.current.register({
         flush: async () => snapshot(),
         load: (xml) => {
-          loadDocument(instance, JSON.parse(xml))
-          refs()
-          annotate()
+          session.load(JSON.parse(xml))
         },
       })
       return () => {
         themeRegistration?.dispose()
         themeParticipant?.dispose()
-        for (const event of ['cell:added', 'cell:removed', 'cell:changed'] as const)
-          instance.off(event, changed)
+        unsubscribe()
         instance.off('node:dblclick', activated)
         instance.off('selection:changed', selected)
         instance.container.removeEventListener('dblclick', captureDoubleClick, true)
@@ -405,6 +457,7 @@ export function FradeDiagramView(
         instance.options.connecting.validateEdge = originalValidate
         bundles.current = undefined
         graph.current = undefined
+        drawing.current = undefined
       }
     },
     [emit, container],
@@ -469,7 +522,7 @@ export function FradeDiagramView(
         emit('object-updated', node.id, ref)
       }
     }
-  }, [props.objects, props.appearance, props.readOnly, ready, emit])
+  }, [props.objects, props.appearance, props.readOnly, ready, emit, pageRevision])
   const insert = (object: DiagramObject, point: { x: number; y: number }) => {
     const style = systemAppearance(object, latest.current.appearance ?? defaultAppearance)
     const node = graph.current?.addNode(
@@ -567,7 +620,12 @@ export function FradeDiagramView(
                 if (object) insert(object, instance.clientToLocal(event.clientX, event.clientY))
               }}
             >
-              <DiagramEditor embedded onGraphReady={readyGraph} />
+              <DiagramEditor
+                embedded
+                readOnly={props.readOnly}
+                onGraphReady={readyGraph}
+                pageOverlays={pageOverlays}
+              />
               <div className="diagram-readonly">Редактирование временно недоступно</div>
             </div>
             {manager.panel}
@@ -616,7 +674,10 @@ export function FradeDiagramView(
                           kind: 'empty',
                           integrationFlowRefs: reconnect.members,
                         })
-                        instance.trigger('edge:connected', { edge, isNew: false })
+                        instance.trigger('edge:connected', {
+                          edge,
+                          isNew: false,
+                        })
                       })
                     setReconnect(undefined)
                   }}

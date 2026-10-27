@@ -33,6 +33,8 @@ export const workbenchPolicies = {
 }
 export function inspectWorkbenchSource(file, text, scope, name) {
   const allowed = [...workbenchPolicies[name]]
+  // Existing public pure facade; this source grant adds no package dependency permission.
+  if (name === 'ui-workspace') allowed.push('@frade/draw/document')
   if (name === 'adapter-sberea-yaml')
     allowed.push(...builtinModules.flatMap((n) => [n, 'node:' + n]))
   if (name.startsWith('ui-'))

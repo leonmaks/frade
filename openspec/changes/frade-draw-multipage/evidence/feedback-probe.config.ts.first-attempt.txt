@@ -1,0 +1,6 @@
+import { defineConfig } from '../../../../packages/draw/node_modules/@playwright/test/index.js'
+import base from '../../../../packages/draw/playwright.config'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+const folder=dirname(fileURLToPath(import.meta.url))
+export default defineConfig({...base,testDir:folder,testMatch:'feedback-probe.spec.ts',workers:1,webServer:{...base.webServer,cwd:resolve(folder,'../../../../packages/draw')}})

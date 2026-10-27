@@ -1,0 +1,7 @@
+**The cumulative POST gate fails on a session correctness blocker.** The current packet’s 805 required files match their recorded hashes; the four required PRE receipts and result digests check out. The seven current executions report 873 passing cases with unchanged source bindings, and the rendered comparisons and human acceptance are present.
+
+In [drawingSession.ts](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-27T05-09-16-788Z-1caf9705-2ef9-475c-9dd6-469c10c97d79/prepared/packet/packages/draw/src/editor/drawingSession.ts:51), `capture()` stores the active graph without validating it. `select()` and page mutations then use that state. During a provisional connection with an incomplete terminal, inserting or switching pages can preserve an invalid page and replace the live graph. A later snapshot fails validation, and Undo cannot restore that page. This conflicts with the design’s explicit requirement to reject navigation and mutation during incomplete graph operations without losing content. The existing tests do not exercise that transition.
+
+Requested reviewer selection: `gpt-6-sol/high`; actual backend identity is unconfirmed. No files were modified.
+
+GATE_STATUS: FAIL

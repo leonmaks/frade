@@ -1,0 +1,43 @@
+
+Running 1 test using 1 worker
+
+(node:42420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42420) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+  x  1 tests\e2e\diagrams.spec.ts:1159:1 › native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation (32.0s)
+
+
+  1) tests\e2e\diagrams.spec.ts:1159:1 › native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation 
+
+    TimeoutError: locator.boundingBox: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[role=treeitem][data-object-id]:not([data-source-id])').filter({ hasText: 'Маркетплейс' }).first()[22m
+
+
+      35 |     ? iframe.contentFrame().locator('.geDiagramContainer')
+      36 |     : page.locator('.diagram-slot .x6-graph')
+    > 37 |   const from = await source.boundingBox(),
+         |                             ^
+      38 |     to = await target.boundingBox()
+      39 |   if (!from || !to) throw Error('Drag surfaces unavailable')
+      40 |   await page.mouse.move(from.x + from.width / 2, from.y + from.height / 2)
+        at dragObject (E:\dev\codex\frade\.worktrees\draw-pages\apps\desktop\tests\e2e\diagrams.spec.ts:37:29)
+        at E:\dev\codex\frade\.worktrees\draw-pages\apps\desktop\tests\e2e\diagrams.spec.ts:979:11
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\diagrams-native-multipage--339bc-estores-readonly-navigation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\diagrams-native-multipage--339bc-estores-readonly-navigation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\diagrams.spec.ts:1159:1 › native multipage saves inactive content, isolates modal keys, discards and restores readonly navigation 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\apps\desktop
+

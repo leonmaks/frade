@@ -1,0 +1,119 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/.worktrees/draw-pages/packages/ui-workspace
+
+ ✓ tests/ui-contract/vscode-dark-2026-origin.test.ts (6 tests) 182ms
+ ✓ tests/ui-contract/service.test.ts (35 tests) 114ms
+ ❯ tests/ui-contract/light-diagram-editor.bdd.test.tsx (11 tests | 11 failed) 495ms
+   × LDE-001 exact-source executable evidence binding 56ms
+     → INPUT_HASH
+   × LDE-002 exact-source executable evidence binding 43ms
+     → INPUT_HASH
+   × LDE-003 exact-source executable evidence binding 41ms
+     → INPUT_HASH
+   × LDE-004 exact-source executable evidence binding 42ms
+     → INPUT_HASH
+   × LDE-005 exact-source executable evidence binding 41ms
+     → INPUT_HASH
+   × LDE-006 exact-source executable evidence binding 44ms
+     → INPUT_HASH
+   × LDE-007 exact-source executable evidence binding 42ms
+     → INPUT_HASH
+   × LDE-008 exact-source executable evidence binding 45ms
+     → INPUT_HASH
+   × LDE-009 exact-source executable evidence binding 46ms
+     → INPUT_HASH
+   × LDE binding rejects source and report tampering without editing evidence 41ms
+     → INPUT_HASH
+   × LDE source publication accepts only the predeclared checkout and committed byte forms 52ms
+     → expected [Function] to not throw an error but 'Error: INPUT_HASH' was thrown
+ ✓ tests/ui-contract/p01.bdd.test.tsx (43 tests) 1797ms
+ ✓ tests/ui-contract/resolver.test.ts (13 tests) 285ms
+ ✓ tests/ui-contract/restored-frame-membership.test.ts (10 tests) 24ms
+ ✓ tests/elementAppearance.test.ts (16 tests) 9ms
+ ✓ tests/state.test.ts (3 tests) 5ms
+ ✓ tests/repositoryDrop.test.ts (1 test) 4ms
+ ✓ tests/ui-contract/picker.test.tsx (9 tests) 1025ms
+ ✓ tests/ui-contract/participants.test.ts (38 tests) 545ms
+ ✓ tests/ui-contract/light-diagram-editor.test.tsx (39 tests) 387ms
+ ✓ tests/FlowManager.test.tsx (3 tests) 349ms
+ ✓ tests/bundle-flows.bdd.test.tsx (45 tests) 6841ms
+   ✓ BF-17 Empty pair  1026ms
+   ✓ BF-33 Repository query failure  1049ms
+   ✓ BF-40 Large repository  1442ms
+ ✓ tests/frade-pages-host.test.tsx (1 test) 262ms
+ ✓ tests/ui-contract/parked-frame-surface.test.ts (15 tests) 279ms
+ ✓ tests/ui-contract/overlays.test.tsx (8 tests) 207ms
+ ✓ tests/ui-contract/vscode-dark-2026.test.ts (8 tests) 96ms
+ ✓ tests/pointerDrag.test.ts (1 test) 81ms
+ ✓ tests/ui-contract/shortcuts.test.ts (6 tests) 29ms
+ ✓ tests/bundle-page-generation.test.tsx (1 test) 37ms
+ ✓ tests/diagram-content-pages.test.ts (3 tests) 24ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-001 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-002 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-003 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-004 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-005 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-006 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-007 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-008 exact-source executable evidence binding
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE-009 exact-source executable evidence binding
+Error: INPUT_HASH
+ ❯ demand tests/ui-contract/light-diagram-editor.bdd.test.tsx:19:21
+     17| type Case = { title: string; passed: boolean }
+     18| function demand(value: unknown, error: string): asserts value {
+     19|   if (!value) throw Error(error)
+       |                     ^
+     20| }
+     21| function safeFile(file: string): Buffer {
+ ❯ verify tests/ui-contract/light-diagram-editor.bdd.test.tsx:62:5
+ ❯ tests/ui-contract/light-diagram-editor.bdd.test.tsx:74:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE binding rejects source and report tampering without editing evidence
+Error: INPUT_HASH
+ ❯ demand tests/ui-contract/light-diagram-editor.bdd.test.tsx:19:21
+     17| type Case = { title: string; passed: boolean }
+     18| function demand(value: unknown, error: string): asserts value {
+     19|   if (!value) throw Error(error)
+       |                     ^
+     20| }
+     21| function safeFile(file: string): Buffer {
+ ❯ verify tests/ui-contract/light-diagram-editor.bdd.test.tsx:62:5
+ ❯ tests/ui-contract/light-diagram-editor.bdd.test.tsx:86:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  tests/ui-contract/light-diagram-editor.bdd.test.tsx > LDE source publication accepts only the predeclared checkout and committed byte forms
+AssertionError: expected [Function] to not throw an error but 'Error: INPUT_HASH' was thrown
+
+- Expected: 
+undefined
+
++ Received: 
+"Error: INPUT_HASH"
+
+ ❯ tests/ui-contract/light-diagram-editor.bdd.test.tsx:95:75
+     93|   const variants: { file: string; publishedBase64: string }[] = JSON.p…
+     94|   const published = new Map(variants.map(v => [v.file, Buffer.from(v.p…
+     95|   expect(() => verify(file => published.get(file) ?? safeFile(file))).…
+       |                                                                           ^
+     96|   const target = variants.find(v => v.file.endsWith('DiagramView.tsx')…
+     97|   const original = safeFile(target.file)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+
+ Test Files  1 failed | 21 passed (22)
+      Tests  11 failed | 304 passed (315)
+   Start at  02:51:41
+   Duration  19.14s (transform 1.21s, setup 0ms, collect 4.42s, tests 13.08s, environment 10.52s, prepare 2.81s)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\ui-workspace
+

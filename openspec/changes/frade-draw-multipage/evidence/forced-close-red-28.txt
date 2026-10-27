@@ -1,0 +1,43 @@
+[WebServer] (node:18784) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:17316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-parity.spec.ts:358:1 › forced-colors dark preserves system contrast in tabs, menus and dialog (834ms)
+
+
+  1) tests\spike\drawing-pages-parity.spec.ts:358:1 › forced-colors dark preserves system contrast in tabs, menus and dialog 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mnot[2m.[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: not [32m"none"[39m
+
+      398 |     return result
+      399 |   })
+    > 400 |   expect(closeGlyph.mask).not.toBe('none')
+          |                               ^
+      401 |   expect(closeGlyph.color).toBe(closeGlyph.system)
+      402 |   await page.screenshot({ path: info.outputPath('forced-colors-dark.png') })
+      403 | })
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:400:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\spike\drawing-pages-parity.spec.ts:358:1 › forced-colors dark preserves system contrast in tabs, menus and dialog 

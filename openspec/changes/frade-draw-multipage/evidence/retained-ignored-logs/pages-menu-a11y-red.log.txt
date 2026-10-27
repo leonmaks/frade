@@ -1,0 +1,58 @@
+[WebServer] (node:21984) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:18960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:18960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-ui.spec.ts:10:1 › nested page-list menus report expanded state and readonly modal cancellation restores tab focus (5.7s)
+
+
+  1) tests\spike\drawing-pages-ui.spec.ts:10:1 › nested page-list menus report expanded state and readonly modal cancellation restores tab focus 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveAttribute[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  getByRole('menuitem', { name: 'Страница-1', exact: true })
+    Expected: [32m"true"[39m
+    Received: [31m""[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveAttribute" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('menuitem', { name: 'Страница-1', exact: true })[22m
+    [2m    9 × locator resolved to <tr tabindex="-1" role="menuitem" aria-haspopup="menu" aria-disabled="false" aria-label="Страница-1" class="mxPopupMenuItemHover">…</tr>[22m
+    [2m      - unexpected value "null"[22m
+
+
+       6 |   const current=page.getByRole('menuitem',{name:'Страница-1',exact:true})
+       7 |   await current.press('ArrowRight')
+    >  8 |   await expect(current).toHaveAttribute('aria-expanded','true')
+         |                         ^
+       9 |   await expect(page.getByRole('button',{name:'Страницы',exact:true})).toHaveAttribute('aria-expanded','true')
+      10 |   await page.getByRole('menuitem',{name:'Переименовать Страница...',exact:true}).press('Enter')
+      11 |   await page.getByRole('textbox',{name:'Имя страницы'}).fill('Discard this name')
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:8:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-nested-pa-a3ca5-ellation-restores-tab-focus\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-ui-nested-pa-a3ca5-ellation-restores-tab-focus\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-nested-pa-a3ca5-ellation-restores-tab-focus\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-ui-nested-pa-a3ca5-ellation-restores-tab-focus\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\spike\drawing-pages-ui.spec.ts:10:1 › nested page-list menus report expanded state and readonly modal cancellation restores tab focus 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

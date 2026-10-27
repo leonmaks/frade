@@ -1,0 +1,115 @@
+[WebServer] (node:23172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:42420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-session.spec.ts:37:1 › page and native graph batches share chronological undo across navigation (1.0s)
+(node:42228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\spike\drawing-session.spec.ts:112:1 › page viewports are independent and malformed inactive content preserves graph/history (479ms)
+(node:22084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 tests\spike\drawing-session.spec.ts:201:1 › readonly permits navigation but rejects every page/history mutation (470ms)
+
+
+  1) tests\spike\drawing-session.spec.ts:37:1 › page and native graph batches share chronological undo across navigation 
+
+    Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8321/src/editor/drawingSession.ts
+
+       6 | async function probe(page: Page) {
+       7 |   await page.goto('/editor-visual.html')
+    >  8 |   await page.evaluate(async () => {
+         |              ^
+       9 |     const graphUrl='/src/editor/createGraph.ts', sessionUrl='/src/editor/drawingSession.ts'
+      10 |     const {createGraph}=await import(graphUrl), {createDrawingSession}=await import(sessionUrl)
+      11 |     const host=document.createElement('div')
+        at probe (E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-session.spec.ts:8:14)
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-session.spec.ts:21:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-session-page-and-n-5b73a-ical-undo-across-navigation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-session-page-and-n-5b73a-ical-undo-across-navigation\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-session-page-and-n-5b73a-ical-undo-across-navigation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-session-page-and-n-5b73a-ical-undo-across-navigation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\spike\drawing-session.spec.ts:112:1 › page viewports are independent and malformed inactive content preserves graph/history 
+
+    Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8321/src/editor/drawingSession.ts
+
+       6 | async function probe(page: Page) {
+       7 |   await page.goto('/editor-visual.html')
+    >  8 |   await page.evaluate(async () => {
+         |              ^
+       9 |     const graphUrl='/src/editor/createGraph.ts', sessionUrl='/src/editor/drawingSession.ts'
+      10 |     const {createGraph}=await import(graphUrl), {createDrawingSession}=await import(sessionUrl)
+      11 |     const host=document.createElement('div')
+        at probe (E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-session.spec.ts:8:14)
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-session.spec.ts:49:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-session-page-viewp-9f21f-ent-preserves-graph-history\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-session-page-viewp-9f21f-ent-preserves-graph-history\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-session-page-viewp-9f21f-ent-preserves-graph-history\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-session-page-viewp-9f21f-ent-preserves-graph-history\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\spike\drawing-session.spec.ts:201:1 › readonly permits navigation but rejects every page/history mutation 
+
+    Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:8321/src/editor/drawingSession.ts
+
+       6 | async function probe(page: Page) {
+       7 |   await page.goto('/editor-visual.html')
+    >  8 |   await page.evaluate(async () => {
+         |              ^
+       9 |     const graphUrl='/src/editor/createGraph.ts', sessionUrl='/src/editor/drawingSession.ts'
+      10 |     const {createGraph}=await import(graphUrl), {createDrawingSession}=await import(sessionUrl)
+      11 |     const host=document.createElement('div')
+        at probe (E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-session.spec.ts:8:14)
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-session.spec.ts:74:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-session-readonly-p-29586-every-page-history-mutation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-session-readonly-p-29586-every-page-history-mutation\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-session-readonly-p-29586-every-page-history-mutation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-session-readonly-p-29586-every-page-history-mutation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests\spike\drawing-session.spec.ts:37:1 › page and native graph batches share chronological undo across navigation 
+    tests\spike\drawing-session.spec.ts:112:1 › page viewports are independent and malformed inactive content preserves graph/history 
+    tests\spike\drawing-session.spec.ts:201:1 › readonly permits navigation but rejects every page/history mutation 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

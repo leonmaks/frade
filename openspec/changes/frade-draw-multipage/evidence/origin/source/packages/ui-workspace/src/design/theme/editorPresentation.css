@@ -1,0 +1,118 @@
+@import '../generated/drawio-editor.css';
+/* Shared editor-owned chrome only. Author SVG/cell/swatch paint is not selected. */
+[data-frade-editor-pending='1'] {
+  visibility: hidden;
+}
+[data-frade-editor='light'] {
+  --bg: var(--frade-surface-base);
+  --side: var(--frade-surface-panel);
+  --border: var(--frade-border-subtle);
+  --fg: var(--frade-text-primary);
+  --muted: var(--frade-text-secondary);
+  --accent: var(--frade-action-primary);
+  --input: var(--frade-surface-panel);
+  --error: var(--frade-status-error);
+  --editor-bg: var(--frade-diagram-canvas);
+  --wb-bg: var(--frade-surface-panel);
+  color: var(--frade-text-primary);
+  background-color: var(--frade-diagram-canvas);
+}
+/* Explicit local overrides beat inherited reference variables without changing
+   the selected workbench preset or any global overlay. */
+[data-frade-editor='light'] {
+  --frade-vscode-editorBackground: var(--frade-surface-base);
+  --frade-vscode-editorForeground: var(--frade-text-primary);
+  --frade-vscode-panelBackground: var(--frade-surface-panel);
+  --frade-vscode-panelForeground: var(--frade-text-primary);
+  --frade-vscode-railBackground: var(--frade-surface-rail);
+  --frade-vscode-railForeground: var(--frade-text-primary);
+  --frade-vscode-railInactive: var(--frade-text-secondary);
+  --frade-vscode-railIndicator: var(--frade-selection-indicator);
+  --frade-vscode-titleBackground: var(--frade-surface-panel);
+  --frade-vscode-titleForeground: var(--frade-text-secondary);
+  --frade-vscode-subtleBorder: var(--frade-border-subtle);
+  --frade-vscode-controlBackground: var(--frade-surface-panel);
+  --frade-vscode-controlForeground: var(--frade-text-primary);
+  --frade-vscode-controlBorder: var(--frade-border-control);
+  --frade-vscode-placeholder: var(--frade-text-secondary);
+  --frade-vscode-primaryBackground: var(--frade-action-primary);
+  --frade-vscode-primaryForeground: var(--frade-action-onPrimary);
+  --frade-vscode-primaryHover: var(--frade-action-primaryHover);
+  --frade-vscode-secondaryBackground: var(--frade-surface-panel);
+  --frade-vscode-secondaryForeground: var(--frade-text-primary);
+  --frade-vscode-treeHover: var(--frade-surface-hover);
+  --frade-vscode-treeSelection: var(--frade-selection-bg);
+  --frade-vscode-treeSelectionForeground: var(--frade-selection-fg);
+  --frade-vscode-treeInactive: var(--frade-selection-bg);
+  --frade-vscode-tabActive: var(--frade-surface-base);
+  --frade-vscode-tabInactive: var(--frade-surface-panel);
+  --frade-vscode-tabActiveForeground: var(--frade-text-primary);
+  --frade-vscode-tabInactiveForeground: var(--frade-text-secondary);
+  --frade-vscode-tabBorder: var(--frade-border-subtle);
+  --frade-vscode-tabsBackground: var(--frade-surface-panel);
+  --frade-vscode-menuBackground: var(--frade-surface-overlay);
+  --frade-vscode-menuForeground: var(--frade-text-primary);
+  --frade-vscode-menuBorder: var(--frade-border-subtle);
+  --frade-vscode-menuSelection: var(--frade-selection-bg);
+  --frade-vscode-menuSelectionForeground: var(--frade-selection-fg);
+  --frade-vscode-pickerBackground: var(--frade-surface-overlay);
+  --frade-vscode-pickerForeground: var(--frade-text-primary);
+  --frade-vscode-statusBackground: var(--frade-surface-panel);
+  --frade-vscode-statusForeground: var(--frade-text-primary);
+}
+[data-frade-editor='light']
+  :is(
+    .breadcrumbs,
+    .editor-actions,
+    .flow-manager,
+    .frade-canvas > main > header,
+    .frade-canvas > main > aside
+  ) {
+  background-color: var(--frade-surface-panel);
+  color: var(--frade-text-primary);
+  border-color: var(--frade-border-subtle);
+}
+[data-frade-editor='light'] .diagram-references > div {
+  background-color: var(--frade-surface-overlay);
+  color: var(--frade-text-primary);
+  border-color: var(--frade-border-control);
+}
+[data-frade-editor='light'] :is(.diagram-error, .frade-canvas .error) {
+  color: var(--frade-status-error);
+  background-color: var(--frade-status-errorBg);
+}
+[data-frade-editor='light'] .diagram-readonly {
+  color: var(--frade-status-warning);
+  background-color: var(--frade-status-warningBg);
+}
+
+/* Keep ordinary toolbar geometry; coarse controls receive their required space. */
+[data-frade-editor='light'] .frade-canvas > main {
+  grid-template-rows:
+    max(
+      46px,
+      calc(
+        max(var(--frade-drawio-button-height), var(--frade-size-target)) + var(--frade-space-2) +
+          var(--frade-space-2) + var(--frade-border-width)
+      )
+    )
+    minmax(0, 1fr);
+}
+[data-frade-editor='light'] .frade-canvas > main > header {
+  padding-block: var(--frade-space-2);
+}
+
+/* Preserve authored canvas inheritance; only editor chrome adopts upstream UI font. */
+[data-frade-editor='light'] .canvas {
+  font-family: var(--frade-font-ui);
+  font-size: var(--frade-font-body);
+}
+
+/* Native accessibility exception: remove legacy faded IDs and dark-only button
+   ink inside the shared Flow Manager; use the pinned upstream primary text. */
+[data-frade-editor='light'] .flow-manager td small {
+  opacity: 1;
+}
+[data-frade-editor='light'] .flow-manager .add-value {
+  color: var(--frade-text-primary) !important;
+}

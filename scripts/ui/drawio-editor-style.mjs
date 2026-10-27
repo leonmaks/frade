@@ -3,6 +3,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { dirname, resolve, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createHash } from 'node:crypto'
+import { generatePageStrip, pageCssPath, pageTsPath } from './drawio-pages-style.mjs'
 
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const version = '31.5.2'
@@ -22,7 +23,7 @@ const cssPath = 'packages/ui-workspace/src/design/generated/drawio-editor.css'
 const tsPath = 'packages/ui-workspace/src/design/generated/drawio-editor.ts'
 const profilePath = 'packages/ui-workspace/tokens/diagram-editor-presentation.json'
 const manifestPath = 'packages/ui-workspace/tokens/drawio-editor-source.json'
-export const drawioGeneratedPaths = Object.freeze([cssPath, tsPath])
+export const drawioGeneratedPaths = Object.freeze([cssPath, tsPath, pageCssPath, pageTsPath])
 const owner = "[data-frade-editor='light']"
 const layout = new Set([
   'position',
@@ -50,7 +51,7 @@ const aliases = {
   mxPopupMenuItem: ['.mxPopupMenuItem', '[role="menuitem"]'],
   mxTooltip: ['.mxTooltip', '[role="tooltip"]'],
 }
-function rewrite(selector, compiler) {
+function rewrite(selector, compiler, { preserveSourceRoots = false } = {}) {
   const parse = (text) => {
     const found = []
     compiler.transform({
@@ -70,6 +71,7 @@ function rewrite(selector, compiler) {
   const visit = (value) => {
     let list = value
     if (
+      !preserveSourceRoots &&
       list[0]?.type === 'type' &&
       list[0].name === 'html' &&
       list[1]?.type === 'combinator' &&
@@ -90,12 +92,21 @@ function rewrite(selector, compiler) {
         node = { type: 'pseudo-class', kind: 'scope' }
         if (out.at(-1)?.type === 'pseudo-class' && out.at(-1).kind === 'scope') continue
       } else if (node.type === 'class' && mapped[node.name])
-        node = { type: 'pseudo-class', kind: 'is', selectors: mapped[node.name] }
+        node = {
+          type: 'pseudo-class',
+          kind: 'is',
+          selectors: mapped[node.name],
+        }
       out.push(node)
     }
     return out
   }
-  const prefix = [{ type: 'pseudo-class', kind: 'scope' }, ...parse(owner)[0], ...parse(owner)[0], ...parse(owner)[0]]
+  const prefix = [
+    { type: 'pseudo-class', kind: 'scope' },
+    ...parse(owner)[0],
+    ...parse(owner)[0],
+    ...parse(owner)[0],
+  ]
   const output = compiler.transform({
     filename: 'selector.css',
     code: Buffer.from(selector + '{--frade-selector:0}'),
@@ -104,7 +115,7 @@ function rewrite(selector, compiler) {
       Selector(value) {
         const adapted = visit(value)
         if (adapted[0]?.type === 'pseudo-class' && adapted[0].kind === 'scope')
-          return [...prefix, ...adapted.slice(1)]
+          return [...prefix, ...adapted.slice(preserveSourceRoots ? 0 : 1)]
         const descendant = [...prefix, { type: 'combinator', value: 'descendant' }, ...adapted]
         return ['class', 'attribute', 'pseudo-class'].includes(adapted[0]?.type)
           ? [descendant, [...prefix, ...adapted]]
@@ -133,7 +144,12 @@ export async function generateDrawioEditor({ base = root } = {}) {
       .digest('hex')
     if (hash(bytes) !== expected || !pin || pin.size !== bytes.length || pin.sha !== blob)
       throw Error('UPSTREAM_SOURCE_DRIFT: ' + file)
-    inputs.push({ path: vendor + file, bytes: bytes.length, sha256: hash(bytes), gitBlob: blob })
+    inputs.push({
+      path: vendor + file,
+      bytes: bytes.length,
+      sha256: hash(bytes),
+      gitBlob: blob,
+    })
     sources.set(file, postcss.parse(bytes.toString(), { from: file }))
   }
   if (!sourceManifestPins.includes(hash(manifestBytes))) throw Error('UPSTREAM_MANIFEST_DRIFT')
@@ -346,7 +362,8 @@ export async function generateDrawioEditor({ base = root } = {}) {
     }),
   )
   if (!buttonHeight || !fontSize || !fontFamily) throw Error('UPSTREAM_METRIC_MISSING')
-  const aaScope = ":scope[data-frade-editor='light'][data-frade-editor='light'][data-frade-editor='light']"
+  const aaScope =
+    ":scope[data-frade-editor='light'][data-frade-editor='light'][data-frade-editor='light']"
   const accessibility = `\n@scope (${owner}) to (.canvas, .draw-host, iframe, svg) {
     :scope { color-scheme: light; --frade-drawio-button-height:${buttonHeight}; }
     :scope :is(button,input,select,textarea,[role=menuitem]) { min-height:28px; }
@@ -363,9 +380,13 @@ export async function generateDrawioEditor({ base = root } = {}) {
   exceptions.push(
     { reason: 'FIXED_LIGHT_SCHEME_PRESERVES_WORKBENCH_SELECTION' },
     { reason: 'REQUIRED_ACCESSIBLE_TARGETS_28_NORMAL_44_COARSE' },
-    { reason: 'REQUIRED_CONTROL_BORDER_CONTRAST_USES_UPSTREAM_STRONG_TEXT_COLOR' },
+    {
+      reason: 'REQUIRED_CONTROL_BORDER_CONTRAST_USES_UPSTREAM_STRONG_TEXT_COLOR',
+    },
     { reason: 'REQUIRED_VISIBLE_FOCUS_2PX_USES_UPSTREAM_FOCUS_COLOR' },
-    { reason: 'WINDOWS_SYSTEM_COLORS_OVERRIDE_UPSTREAM_FORCED_COLOR_SUPPRESSION' },
+    {
+      reason: 'WINDOWS_SYSTEM_COLORS_OVERRIDE_UPSTREAM_FORCED_COLOR_SUPPRESSION',
+    },
   )
   const header =
     '/* Derived from Draw.io v31.5.2, Apache-2.0; original vendor LICENSE retained. Generated; do not edit. */\n'
@@ -388,7 +409,10 @@ export async function generateDrawioEditor({ base = root } = {}) {
   const profileData = {
     version: '2.0.0',
     base: 'drawio/31.5.2/light',
-    roles: { 'diagram.canvas': colors['diagram.canvas'], 'diagram.grid': colors['diagram.grid'] },
+    roles: {
+      'diagram.canvas': colors['diagram.canvas'],
+      'diagram.grid': colors['diagram.grid'],
+    },
   }
   const ts =
     '// Generated from pinned Draw.io v31.5.2; Apache-2.0 vendor LICENSE retained.\nexport const drawioEditor = ' +
@@ -398,6 +422,17 @@ export async function generateDrawioEditor({ base = root } = {}) {
     ' as const\n'
   const profile = json(profileData)
   const output = { [cssPath]: css, [tsPath]: ts, [profilePath]: profile }
+  const pages = await generatePageStrip({
+    base,
+    manifest,
+    sources,
+    app,
+    rewrite,
+    layout,
+    selectors,
+  })
+  inputs.push(...pages.inputs)
+  Object.assign(output, pages.output)
   const source = {
     version,
     inputs,
@@ -407,9 +442,13 @@ export async function generateDrawioEditor({ base = root } = {}) {
     root: owner,
     contentBoundary: ['.canvas', '.draw-host', 'iframe', 'svg'],
     rules,
+    pageStripRules: pages.rules,
     roleSources,
     exceptions,
-    outputs: Object.entries(output).map(([path, value]) => ({ path, sha256: hash(value) })),
+    outputs: Object.entries(output).map(([path, value]) => ({
+      path,
+      sha256: hash(value),
+    })),
   }
   output[manifestPath] = json(source)
   return { output, source, data }

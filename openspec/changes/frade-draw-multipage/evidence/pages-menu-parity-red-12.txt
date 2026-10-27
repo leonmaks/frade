@@ -1,0 +1,79 @@
+[WebServer] (node:22520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:38788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:38788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-parity.spec.ts:96:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation (4.6s)
+
+
+  1) tests\spike\drawing-pages-parity.spec.ts:96:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 6[39m
+    [31m+ Received  + 6[39m
+
+    [2m  Object {[22m
+    [32m-   "border": "1px solid rgb(211, 211, 211)",[39m
+    [31m+   "border": "1px solid rgb(0, 0, 0)",[39m
+    [2m    "bounds": Object {[22m
+    [32m-     "height": 134.3125,[39m
+    [32m-     "width": 285.65625,[39m
+    [32m-     "x": 328.640625,[39m
+    [32m-     "y": 586,[39m
+    [31m+     "height": 142.625,[39m
+    [31m+     "width": 253.65625,[39m
+    [31m+     "x": 328,[39m
+    [31m+     "y": 561.375,[39m
+    [2m    },[22m
+    [2m    "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI Variable\", \"Segoe UI\", system-ui, ui-sans-serif, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",[22m
+    [2m    "fontSize": "14px",[22m
+    [2m    "labels": Array [[22m
+    [2m      "Открыть в новом окне",[22m
+    [2m      "Дублировать Страница",[22m
+    [2m      "Переместить",[22m
+    [2m      "Удалить Страница",[22m
+    [2m      "Переименовать Страница...",[22m
+    [2m    ],[22m
+    [32m-   "shadow": "rgb(192, 192, 192) 0px 0px 2px 0px",[39m
+    [31m+   "shadow": "rgb(192, 192, 192) 3px 3px 12px 0px",[39m
+    [2m  }[22m
+
+      70 |   await stock.screenshot({path:info.outputPath('pinned-page-menu.png')})
+      71 |   await page.screenshot({path:info.outputPath('native-page-menu.png')})
+    > 72 |   expect(menus.actual).toEqual(menus.expected)
+         |                        ^
+      73 |   await stock.close()
+      74 | })
+      75 | test('forced-colors dark preserves system contrast in tabs, menus and dialog',async({page},info)=>{
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:72:24
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\spike\drawing-pages-parity.spec.ts:96:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

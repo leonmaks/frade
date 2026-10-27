@@ -1,0 +1,44 @@
+{
+  "phase": "PRE",
+  "change": "frade-draw-multipage",
+  "scope": "Focused PRE revalidation of extraction representation correction only: selected page must retain identity/name in independent one-page v2 envelope; original full PRE03 PASS remains historical, full implementation POST still required.",
+  "reviewPolicy": {
+    "stage": "frade-draw-multipage",
+    "phase": "PRE",
+    "model": "gpt-6-sol",
+    "reasoningEffort": "high",
+    "source": {
+      "path": "openspec/changes/frade-draw-multipage/design.md",
+      "sha256": "e7ff2506909e6049dba8234df982d8c77484be518615a86b2ea9558b5c6c275e",
+      "excerpt": "PRE: gpt-6-sol / high; POST: gpt-6-sol / high"
+    }
+  },
+  "policyArtifact": "openspec/changes/frade-draw-multipage/evidence/shared-policy.md",
+  "paths": [
+    "AGENTS.md",
+    "openspec/changes/frade-draw-multipage/design.md",
+    "openspec/changes/frade-draw-multipage/proposal.md",
+    "openspec/changes/frade-draw-multipage/specs/diagram-pages/spec.md",
+    "openspec/changes/frade-draw-multipage/tasks.md",
+    "openspec/changes/frade-draw-multipage/evidence/shared-policy.md",
+    "openspec/changes/frade-draw-multipage/evidence/extraction-name-rca.md",
+    "openspec/changes/frade-draw-multipage/evidence/pages-extraction-name-red.txt",
+    "openspec/changes/frade-draw-multipage/evidence/pre-03-20261026T221715Z/receipt.json",
+    "openspec/changes/frade-draw-multipage/evidence/pre-03-20261026T221715Z/result.md",
+    "packages/draw/src/document/drawing.ts",
+    "packages/draw/src/document/schema.ts",
+    "packages/draw/src/document/graphAdapter.ts",
+    "packages/draw/src/document/serialize.ts",
+    "packages/draw/src/document/fileAdapter.ts",
+    "packages/draw/src/editor/drawingSession.ts",
+    "packages/draw/src/editor/pageTransfer.ts",
+    "packages/draw/src/editor/DiagramEditor.tsx",
+    "packages/draw/src/editor/PageStrip.tsx",
+    "packages/draw/src/editor/generated/drawio-pages.ts",
+    "packages/draw/src/editor/createGraph.ts",
+    "packages/draw/tests/spike/drawing-pages-ui.spec.ts",
+    "packages/draw/tests/spike/drawing-session.spec.ts",
+    "packages/draw/tests/pages-entry.tsx"
+  ],
+  "prompt": "Fresh independent focused PRE revalidation, exact user-approved sol/high. Read extraction-name-rca.md and final design correction. Earlier full PRE03 PASS/receipt supplied and immutable; implementation began only afterward. Actual popup RED proves old v1 representation loses page name. Review proposed one-page v2 extraction against normative spec and codec/session/transfer lifecycle: preserve selected page name/id/graph/viewport, independent top-level ID, no other pages or mutation of source. Production extract is intentionally still old v1 pending your PRE. Evaluate plan repair, not claim final feature implementation PASS; full POST pending all tests/verify. No new capability/routing/UI redesign. Other files contain ongoing feature implementation for context. Packet includes actual dependent document/session/UI/transfer sources and popup fixture/tests. Missing necessary source is a blocker; do not infer. Read only confined packet, no network/apps/writes. End with exactly one standalone GATE_STATUS: PASS or GATE_STATUS: FAIL."
+}

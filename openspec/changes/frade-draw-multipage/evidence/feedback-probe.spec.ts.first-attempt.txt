@@ -1,0 +1,8 @@
+import { test, expect } from '../../../../packages/draw/node_modules/@playwright/test/index.js'
+for(const action of ['Undo','Redo']) test('real '+action+' reports rejected capture without uncaught error',async({page})=>{
+ const uncaught:string[]=[];page.on('pageerror',error=>uncaught.push(error.message));
+ await page.goto('/pages-visual.html');await expect.poll(()=>page.evaluate(()=>!!window.pageFixture)).toBe(true);
+ await page.evaluate(async()=>{const url='/src/document/graphAdapter.ts', {nodeToCell}=await import(url),{graph,session}=window.pageFixture;graph.addNode(nodeToCell({id:'feedback',shape:'rect',x:10,y:20,width:100,height:60}));graph.getCellById('feedback').position(30,40);session.undo();graph.addEdge({id:'pending',source:{cell:'feedback'},target:{x:300,y:100}})});
+ await page.getByRole('button',{name:action,exact:true}).click();
+ await expect(page.getByRole('alert')).toBeVisible();expect(uncaught).toEqual([]);
+})

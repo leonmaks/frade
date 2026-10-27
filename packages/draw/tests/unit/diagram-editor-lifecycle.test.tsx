@@ -3,6 +3,28 @@ import { createRoot } from 'react-dom/client'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
 const instance = {
+  options: { interacting: {} },
+  getNodes: vi.fn(() => []),
+  getEdges: vi.fn(() => []),
+  getCells: vi.fn(() => []),
+  getSelectedCells: vi.fn(() => []),
+  getCellById: vi.fn(),
+  select: vi.fn(),
+  zoom: vi.fn(() => 1),
+  zoomTo: vi.fn(),
+  translate: vi.fn(() => ({ tx: 0, ty: 0 })),
+  isHistoryEnabled: vi.fn(() => true),
+  disableHistory: vi.fn(),
+  enableHistory: vi.fn(),
+  cleanHistory: vi.fn(),
+  cleanSelection: vi.fn(),
+  resetCells: vi.fn(),
+  enableKeyboard: vi.fn(),
+  disableKeyboard: vi.fn(),
+  clearTransformWidgets: vi.fn(),
+  off: vi.fn(),
+  canUndo: vi.fn(() => false),
+  canRedo: vi.fn(() => false),
   on: vi.fn(),
   dispose: vi.fn(),
   addNode: vi.fn(),
@@ -14,6 +36,11 @@ const instance = {
 const createGraph = vi.fn(() => instance)
 vi.mock('../../src/editor/createGraph', () => ({ createGraph }))
 const hosts: HTMLDivElement[] = []
+// jsdom has no layout/scroll implementation; browser suites exercise actual tab scrolling.
+Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
+  configurable: true,
+  value: vi.fn(),
+})
 afterEach(() => {
   hosts.splice(0).forEach((host) => host.remove())
   vi.clearAllMocks()

@@ -1,0 +1,149 @@
+[WebServer] (node:22440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:1808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-parity.spec.ts:78:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation (5.2s)
+(node:37560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:37560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\spike\drawing-pages-parity.spec.ts:139:1 › forced-colors dark preserves system contrast in tabs, menus and dialog (820ms)
+(node:42856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 tests\spike\drawing-pages-parity.spec.ts:182:1 › 320px, 200 percent text, coarse targets, Unicode labels and Tab remain usable (5.8s)
+
+
+  1) tests\spike\drawing-pages-parity.spec.ts:78:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 2[39m
+    [31m+ Received  + 2[39m
+
+    [2m  Object {[22m
+    [32m-   "height": 17,[39m
+    [31m+   "height": 31,[39m
+    [2m    "width": 69.328125,[22m
+    [2m    "x": 112,[22m
+    [32m-   "y": 696,[39m
+    [31m+   "y": 689,[39m
+    [2m  }[22m
+
+      51 |     expect(actual.pages[i].bounds.height).toBe(expected.pages[i].bounds.height)
+      52 |     expect(actual.pages[i].bounds.width).toBe(expected.pages[i].bounds.width+(i===2?2:0))
+    > 53 |     expect(actual.pages[i].label).toEqual(expected.pages[i].label)
+         |                                   ^
+      54 |   }
+      55 |   await stock.close()
+      56 | })
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:53:35
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\spike\drawing-pages-parity.spec.ts:139:1 › forced-colors dark preserves system contrast in tabs, menus and dialog 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 1[39m
+    [31m+ Received  + 1[39m
+
+    [2m  Object {[22m
+    [32m-   "background": "rgb(0, 0, 0)",[39m
+    [31m+   "background": "rgba(0, 0, 0, 0)",[39m
+    [2m    "color": "rgb(255, 255, 255)",[22m
+    [2m  }[22m
+
+      62 |   const row=page.getByRole('menuitem',{name:'Переименовать Страница...',exact:true})
+      63 |   const colors=await row.evaluate(el=>{const c=getComputedStyle(el.querySelector('td.mxPopupMenuItem')!);const sample=document.createElement('div');sample.style.cssText='color:CanvasText;background:Canvas;forced-color-adjust:none';document.body.append(sample);const s=getComputedStyle(sample);const result={actual:{color:c.color,background:getComputedStyle(el.closest('.frade-page-popup')!).backgroundColor},system:{color:s.color,background:s.backgroundColor}};sample.remove();return result})
+    > 64 |   expect(colors.actual).toEqual(colors.system)
+         |                         ^
+      65 |   await row.press('Enter')
+      66 |   await expect(page.getByRole('dialog')).toBeVisible()
+      67 |   await page.screenshot({path:info.outputPath('forced-colors-dark.png')})
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:64:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\spike\drawing-pages-parity.spec.ts:182:1 › 320px, 200 percent text, coarse targets, Unicode labels and Tab remain usable 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveAttribute[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  getByRole('tab', { name: 'Страница-20', exact: true })
+    Expected: [32m"[7mtru[27me"[39m
+    Received: [31m"[7mfals[27me"[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveAttribute" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('tab', { name: 'Страница-20', exact: true })[22m
+    [2m    9 × locator resolved to <span role="tab" tabindex="-1" aria-selected="false" class="frade-page-label" id="frade-drawing-r0-page-page-19" aria-controls="frade-drawing-r0-canvas">Страница-20</span>[22m
+    [2m      - unexpected value "false"[22m
+
+
+      73 |   const tab=page.getByRole('tab',{name:'Страница-1',exact:true})
+      74 |   await tab.focus();await tab.press('End');await page.keyboard.press('Enter')
+    > 75 |   await expect(page.getByRole('tab',{name:'Страница-20',exact:true})).toHaveAttribute('aria-selected','true')
+         |                                                                       ^
+      76 |   await page.getByRole('tab',{name:'Страница-20',exact:true}).dblclick()
+      77 |   await page.getByRole('textbox',{name:'Имя страницы'}).fill('Архитектура — 東京 / 🧭 '.repeat(20))
+      78 |   await page.getByRole('button',{name:'Переименовать',exact:true}).click()
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:75:71
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-320px-c3c24-abels-and-Tab-remain-usable\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-320px-c3c24-abels-and-Tab-remain-usable\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-320px-c3c24-abels-and-Tab-remain-usable\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-parity-320px-c3c24-abels-and-Tab-remain-usable\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests\spike\drawing-pages-parity.spec.ts:78:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+    tests\spike\drawing-pages-parity.spec.ts:139:1 › forced-colors dark preserves system contrast in tabs, menus and dialog 
+    tests\spike\drawing-pages-parity.spec.ts:182:1 › 320px, 200 percent text, coarse targets, Unicode labels and Tab remain usable 
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

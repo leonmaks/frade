@@ -1,7 +1,14 @@
-/** Draw.io exports canvas dimensions on every read; resizing is not a document edit. */
+import { drawingContentKey } from '@frade/draw/document'
+/** Both editors export navigation dimensions; navigation/formatting is not a semantic edit. */
 export function sameDiagramContent(path: string, left: string, right: string): boolean {
   if (left === right) return true
-  if (path.toLowerCase().endsWith('.frade')) return false
+  if (path.toLowerCase().endsWith('.frade')) {
+    try {
+      return drawingContentKey(left) === drawingContentKey(right)
+    } catch {
+      return false
+    } // Invalid drawings are never equivalent to different input bytes.
+  }
   const parse = (xml: string) => {
     const doc = new DOMParser().parseFromString(xml, 'text/xml')
     if (doc.querySelector('parsererror')) return

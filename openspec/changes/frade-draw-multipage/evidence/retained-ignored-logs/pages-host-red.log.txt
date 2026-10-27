@@ -1,0 +1,84 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/.worktrees/draw-pages/packages/ui-workspace
+
+ ❯ tests/diagram-content-pages.test.ts (3 tests | 2 failed) 16ms
+   × native complete-drawing dirty comparison > ignores formatting, object key order and all page viewport navigation 12ms
+     → expected false to be true // Object.is equality
+   ✓ native complete-drawing dirty comparison > keeps page content, identity, order, names and metadata semantic 1ms
+   × native complete-drawing dirty comparison > ignores only the legacy viewport and retains malformed-input/XML behavior 1ms
+     → expected false to be true // Object.is equality
+stderr | tests/bundle-page-generation.test.tsx > invalidates queued membership and late annotations before another page reuses a cell ID
+Promise returned by `expect(actual).rejects.toThrow(expected)` was not awaited. Vitest currently auto-awaits hanging assertions at the end of the test, but this will cause the test to fail in Vitest 3. Please remember to await the assertion.
+    at E:/dev/codex/frade/.worktrees/draw-pages/packages/ui-workspace/tests/bundle-page-generation.test.tsx:23:30
+
+ ❯ tests/bundle-page-generation.test.tsx (1 test | 1 failed) 44ms
+   × invalidates queued membership and late annotations before another page reuses a cell ID 42ms
+     → result.current.reset is not a function
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/bundle-page-generation.test.tsx > invalidates queued membership and late annotations before another page reuses a cell ID
+TypeError: result.current.reset is not a function
+ ❯ tests/bundle-page-generation.test.tsx:24:26
+     22|   await act(async()=>{work=panel.props.onMembers([{repositoryId:'repo'…
+     23|   const rejected=expect(work!).rejects.toThrow('Контекст диаграммы изм…
+     24|   act(()=>result.current.reset())
+       |                          ^
+     25|   await act(async()=>{
+     26|     for(const resolve of pending)resolve({ok:true,value:{members:[{ref…
+ ❯ ../../node_modules/.pnpm/@testing-library+react@16.3_9fb514849e95f8c45d13275cfa29e50b/node_modules/@testing-library/react/dist/act-compat.js:48:24
+ ❯ act ../../node_modules/.pnpm/react@18.3.1/node_modules/react/cjs/react.development.js:2512:16
+ ❯ ../../node_modules/.pnpm/@testing-library+react@16.3_9fb514849e95f8c45d13275cfa29e50b/node_modules/@testing-library/react/dist/act-compat.js:47:25
+ ❯ tests/bundle-page-generation.test.tsx:24:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/diagram-content-pages.test.ts > native complete-drawing dirty comparison > ignores formatting, object key order and all page viewport navigation
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/diagram-content-pages.test.ts:15:103
+     13|     other.pages[0].viewport={zoom:2,pan:{x:300,y:400}}
+     14|     other.pages[0].graph.nodes[0].style={stroke:'#000000',fill:'#fffff…
+     15|     expect(sameDiagramContent('Drawing.frade',JSON.stringify(document)…
+       |                                                                                                       ^
+     16|   })
+     17|   it('keeps page content, identity, order, names and metadata semantic…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/diagram-content-pages.test.ts > native complete-drawing dirty comparison > ignores only the legacy viewport and retains malformed-input/XML behavior
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/diagram-content-pages.test.ts:28:72
+     26|   it('ignores only the legacy viewport and retains malformed-input/XML…
+     27|     const legacy={format:'frade-draw',version:1,metadata:document.meta…
+     28|     expect(same(legacy,{...legacy,viewport:{zoom:2,pan:{x:10,y:20}}}))…
+       |                                                                        ^
+     29|     expect(sameDiagramContent('d.frade','{bad','{}')).toBe(false)
+     30|     expect(same(document,{...document,pages:[...document.pages,{id:'ba…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  3 failed | 1 passed (4)
+   Start at  01:57:23
+   Duration  3.66s (transform 559ms, setup 0ms, collect 1.18s, tests 60ms, environment 3.01s, prepare 868ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\ui-workspace
+

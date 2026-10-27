@@ -1,0 +1,129 @@
+[WebServer] (node:35316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:7296) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7296) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-parity.spec.ts:78:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation (4.9s)
+(node:17520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\spike\drawing-pages-parity.spec.ts:135:1 › forced-colors dark preserves system contrast in tabs, menus and dialog (892ms)
+(node:19116) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:19116) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 tests\spike\drawing-pages-parity.spec.ts:178:1 › 320px, 200 percent text, coarse targets, Unicode labels and Tab remain usable (1.2s)
+
+
+  1) tests\spike\drawing-pages-parity.spec.ts:78:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 2[39m
+    [31m+ Received  + 2[39m
+
+    [33m@@ -6,11 +6,11 @@[39m
+    [2m        "x": 16,[22m
+    [2m        "y": 689,[22m
+    [2m      },[22m
+    [2m      "style": Object {[22m
+    [2m        "background": "rgba(0, 0, 0, 0)",[22m
+    [32m-       "borderTop": "0px none rgb(218, 218, 218)",[39m
+    [31m+       "borderTop": "0px none rgb(63, 63, 63)",[39m
+    [2m        "color": "rgb(63, 63, 63)",[22m
+    [2m        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI Variable\", \"Segoe UI\", system-ui, ui-sans-serif, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",[22m
+    [2m        "fontSize": "13px",[22m
+    [2m        "paddingLeft": "0px",[22m
+    [2m        "paddingRight": "0px",[22m
+    [33m@@ -23,11 +23,11 @@[39m
+    [2m        "x": 54,[22m
+    [2m        "y": 689,[22m
+    [2m      },[22m
+    [2m      "style": Object {[22m
+    [2m        "background": "rgba(0, 0, 0, 0)",[22m
+    [32m-       "borderTop": "0px none rgb(218, 218, 218)",[39m
+    [31m+       "borderTop": "0px none rgb(63, 63, 63)",[39m
+    [2m        "color": "rgb(63, 63, 63)",[22m
+    [2m        "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI Variable\", \"Segoe UI\", system-ui, ui-sans-serif, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",[22m
+    [2m        "fontSize": "13px",[22m
+    [2m        "paddingLeft": "0px",[22m
+    [2m        "paddingRight": "0px",[22m
+
+      42 |   await page.screenshot({path:info.outputPath('native-three-pages.png')})
+      43 |   expect(actual.bounds).toEqual(expected.bounds)
+    > 44 |   expect(actual.controls.slice(0,2)).toEqual(expected.controls.slice(0,2))
+         |                                      ^
+      45 |   expect(actual.pages.map(p=>p.text)).toEqual(expected.pages.map(p=>p.text))
+      46 |   for(let i=0;i<3;i++){
+      47 |     expect(actual.pages[i].style).toEqual(expected.pages[i].style)
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:44:38
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\spike\drawing-pages-parity.spec.ts:135:1 › forced-colors dark preserves system contrast in tabs, menus and dialog 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 2[39m
+    [31m+ Received  + 2[39m
+
+    [2m  Object {[22m
+    [32m-   "background": "rgb(0, 0, 0)",[39m
+    [32m-   "color": "rgb(255, 255, 255)",[39m
+    [31m+   "background": "rgba(0, 0, 0, 0)",[39m
+    [31m+   "color": "rgb(0, 0, 0)",[39m
+    [2m  }[22m
+
+      61 |   const row=page.getByRole('menuitem',{name:'Переименовать Страница...',exact:true})
+      62 |   const colors=await row.evaluate(el=>{const c=getComputedStyle(el.querySelector('td.mxPopupMenuItem')!);const sample=document.createElement('div');sample.style.cssText='color:CanvasText;background:Canvas;forced-color-adjust:none';document.body.append(sample);const s=getComputedStyle(sample);const result={actual:{color:c.color,background:getComputedStyle(el.closest('.mxPopupMenu')!).backgroundColor},system:{color:s.color,background:s.backgroundColor}};sample.remove();return result})
+    > 63 |   expect(colors.actual).toEqual(colors.system)
+         |                         ^
+      64 |   await row.press('Enter')
+      65 |   await expect(page.getByRole('dialog')).toBeVisible()
+      66 |   await page.screenshot({path:info.outputPath('forced-colors-dark.png')})
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:63:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-parity-force-14011-st-in-tabs-menus-and-dialog\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\spike\drawing-pages-parity.spec.ts:78:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+    tests\spike\drawing-pages-parity.spec.ts:135:1 › forced-colors dark preserves system contrast in tabs, menus and dialog 
+  1 passed (12.9s)
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

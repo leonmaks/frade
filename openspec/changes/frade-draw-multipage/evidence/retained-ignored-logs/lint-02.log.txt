@@ -1,0 +1,29 @@
+packages/draw lint$ eslint src tests *.ts
+packages/draw lint: 
+packages/draw lint: E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\src\editor\PageStrip.tsx
+packages/draw lint:   156:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+packages/draw lint: 
+packages/draw lint: Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+packages/draw lint: * Update external systems with the latest state from React.
+packages/draw lint: * Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+packages/draw lint: 
+packages/draw lint: Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+packages/draw lint: 
+packages/draw lint: E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\src\editor\PageStrip.tsx:156:5
+packages/draw lint:   154 |     const node=root.current!
+packages/draw lint:   155 |     const b=node.getBoundingClientRect()
+packages/draw lint: > 156 |     setPosition({left:Math.max(4,menu.parent&&menu.x+b.width>innerWidth-4?menu.opener.getBoundingClientRect().left-b.width:Math.min(menu.x,innerWidth-b.width-4)),top:Math.max(4,menu.parent?Math.min(menu.y,innerHeight-b.height-4):menu.y-b.height)})
+packages/draw lint:       |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+packages/draw lint:   157 |     node.querySelector<HTMLElement>('[role="menuitem"]:not([aria-disabled="true"])')?.focus()
+packages/draw lint:   158 |   },[menu])
+packages/draw lint:   159 |   useEffect(()=>{  react-hooks/set-state-in-effect
+packages/draw lint: 
+packages/draw lint: ✖ 1 problem (1 error, 0 warnings)
+packages/draw lint: 
+packages/draw lint: Failed
+[ELIFECYCLE] Command failed with exit code 1.
+Error: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL
+
+  × "pnpm recursive run" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

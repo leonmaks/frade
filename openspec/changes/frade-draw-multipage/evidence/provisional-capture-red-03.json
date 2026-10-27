@@ -1,0 +1,224 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\playwright.config.ts",
+    "rootDir": "E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/tests/spike",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/tests/spike",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": {
+      "command": "pnpm exec vite --host 127.0.0.1 --port 5191 --strictPort",
+      "url": "http://127.0.0.1:5191",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "drawing-session.spec.ts",
+      "file": "drawing-session.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "incomplete source rejects every capture transition without losing graph or history",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 736,
+                  "error": {
+                    "message": "Error: select\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"\"\u001b[39m",
+                    "stack": "Error: select\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"\"\u001b[39m\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts:419:58",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts",
+                      "column": 58,
+                      "line": 419
+                    },
+                    "snippet": "  417 |     }, missing)\n  418 |     for (const transition of result.transitions) {\n> 419 |       expect(transition.error, transition.operation).not.toBe('')\n      |                                                          ^\n  420 |       expect(transition.view, transition.operation).toEqual(result.view)\n  421 |       expect(transition.generation, transition.operation).toBe(result.generation)\n  422 |       expect(transition.nodeRetained, transition.operation).toBe(true)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts",
+                        "column": 58,
+                        "line": 419
+                      },
+                      "message": "Error: select\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"\"\u001b[39m\n\n  417 |     }, missing)\n  418 |     for (const transition of result.transitions) {\n> 419 |       expect(transition.error, transition.operation).not.toBe('')\n      |                                                          ^\n  420 |       expect(transition.view, transition.operation).toEqual(result.view)\n  421 |       expect(transition.generation, transition.operation).toBe(result.generation)\n  422 |       expect(transition.nodeRetained, transition.operation).toBe(true)\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts:419:58"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:23:48.180Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-16eeb-out-losing-graph-or-history\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-16eeb-out-losing-graph-or-history\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-16eeb-out-losing-graph-or-history\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts",
+                    "column": 58,
+                    "line": 419
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4d871120caedf967ac96-68ab7e066f2bd709fe7c",
+          "file": "drawing-session.spec.ts",
+          "line": 422,
+          "column": 45
+        },
+        {
+          "title": "incomplete target rejects every capture transition without losing graph or history",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 656,
+                  "error": {
+                    "message": "Error: select\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"\"\u001b[39m",
+                    "stack": "Error: select\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"\"\u001b[39m\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts:419:58",
+                    "location": {
+                      "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts",
+                      "column": 58,
+                      "line": 419
+                    },
+                    "snippet": "  417 |     }, missing)\n  418 |     for (const transition of result.transitions) {\n> 419 |       expect(transition.error, transition.operation).not.toBe('')\n      |                                                          ^\n  420 |       expect(transition.view, transition.operation).toEqual(result.view)\n  421 |       expect(transition.generation, transition.operation).toBe(result.generation)\n  422 |       expect(transition.nodeRetained, transition.operation).toBe(true)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts",
+                        "column": 58,
+                        "line": 419
+                      },
+                      "message": "Error: select\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"\"\u001b[39m\n\n  417 |     }, missing)\n  418 |     for (const transition of result.transitions) {\n> 419 |       expect(transition.error, transition.operation).not.toBe('')\n      |                                                          ^\n  420 |       expect(transition.view, transition.operation).toEqual(result.view)\n  421 |       expect(transition.generation, transition.operation).toBe(result.generation)\n  422 |       expect(transition.nodeRetained, transition.operation).toBe(true)\n    at E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts:419:58"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:23:50.127Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-6a3f5-out-losing-graph-or-history\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-6a3f5-out-losing-graph-or-history\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\test-results\\drawing-session-incomplete-6a3f5-out-losing-graph-or-history\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\packages\\draw\\tests\\spike\\drawing-session.spec.ts",
+                    "column": 58,
+                    "line": 419
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4d871120caedf967ac96-4ccbc161ebe487993cbf",
+          "file": "drawing-session.spec.ts",
+          "line": 422,
+          "column": 45
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T05:23:46.017Z",
+    "duration": 5301.023999999999,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

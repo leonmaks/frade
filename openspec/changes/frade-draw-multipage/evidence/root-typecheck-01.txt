@@ -1,0 +1,52 @@
+$ turbo typecheck
+• turbo 2.11.2
+
+   • Packages in scope: @frade/adapter-sberea-yaml, @frade/adapter-yaml, @frade/desktop, @frade/draw, @frade/local-index, @frade/metamodel-compiler, @frade/metamodel-config, @frade/metamodel-domain, @frade/repository-api, @frade/repository-application, @frade/repository-bridge, @frade/repository-domain, @frade/repository-ports, @frade/runtime-contracts, @frade/runtime-electron, @frade/runtime-node, @frade/ui-inspector, @frade/ui-navigator, @frade/ui-workspace, @frade/versioning-git
+   • Running typecheck in 20 packages
+   • Remote caching disabled, using shared worktree cache
+
+@frade/draw:typecheck: cache miss, executing 815b81d360a9824f
+@frade/metamodel-domain:typecheck: cache hit, replaying logs c9dc8fb5b6f7125d
+@frade/runtime-contracts:typecheck: cache hit, replaying logs f6e67c24f9906bb3
+@frade/runtime-contracts:typecheck: $ tsc --noEmit
+@frade/metamodel-domain:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/runtime-electron:typecheck: cache hit, replaying logs a89afb506d943dee
+@frade/metamodel-compiler:typecheck: cache hit, replaying logs 79f7da6e34840a12
+@frade/runtime-electron:typecheck: $ tsc --noEmit
+@frade/metamodel-compiler:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/repository-domain:typecheck: cache hit, replaying logs 586e6781ec0fc8ee
+@frade/metamodel-config:typecheck: cache hit, replaying logs 6da02c00004db82b
+@frade/metamodel-config:typecheck: $ tsc --noEmit
+@frade/repository-domain:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/repository-ports:typecheck: cache hit, replaying logs 4f145bc10fa7cb5c
+@frade/repository-ports:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/repository-application:typecheck: cache hit, replaying logs 8d4e6af550870afb
+@frade/versioning-git:typecheck: cache hit, replaying logs 8ceb2d731d6e49c2
+@frade/local-index:typecheck: cache hit, replaying logs fe08f097743d29b9
+@frade/repository-application:typecheck: $ tsc --noEmit && tsc -p tests/consumer/tsconfig.json --noEmit
+@frade/local-index:typecheck: $ tsc --noEmit
+@frade/versioning-git:typecheck: $ tsc --noEmit
+@frade/repository-api:typecheck: cache hit, replaying logs 67f4a96718f0a11b
+@frade/adapter-yaml:typecheck: cache hit, replaying logs 11ad22c022b0328d
+@frade/repository-api:typecheck: $ tsc --noEmit
+@frade/adapter-sberea-yaml:typecheck: cache hit, replaying logs 1b460da61867efe1
+@frade/adapter-yaml:typecheck: $ tsc --noEmit
+@frade/adapter-sberea-yaml:typecheck: $ tsc --noEmit
+@frade/ui-inspector:typecheck: cache hit, replaying logs 384d8d484b6446a9
+@frade/ui-inspector:typecheck: $ tsc --noEmit
+@frade/ui-navigator:typecheck: cache hit, replaying logs c5749ce42b53653a
+@frade/ui-navigator:typecheck: $ tsc --noEmit
+@frade/draw:typecheck: $ tsc --noEmit --pretty false
+@frade/runtime-node:typecheck: cache miss, executing 376de7d14a0dde85
+@frade/repository-bridge:typecheck: cache miss, executing 5d09ea13b05b7158
+@frade/ui-workspace:typecheck: cache miss, executing 5e6eb6489ccd7d2e
+@frade/repository-bridge:typecheck: $ tsc --noEmit
+@frade/runtime-node:typecheck: $ tsc --noEmit
+@frade/ui-workspace:typecheck: $ tsc --noEmit
+@frade/desktop:typecheck: cache miss, executing 5cb105953289030e
+@frade/desktop:typecheck: $ tsc --noEmit
+
+ Tasks:    20 successful, 20 total
+Cached:    15 cached, 20 total
+  Time:    49.262s 
+

@@ -39,7 +39,11 @@ async function fixture(run) {
     await mkdir(resolve(directory, 'docs/ui/decisions'), { recursive: true })
     await writeFile(
       resolve(directory, 'docs/ui/decisions/legacy-colors.json'),
-      JSON.stringify({ version: 1, normalization: 'LF UTF16 logical spans', occurrences: [] }),
+      JSON.stringify({
+        version: 1,
+        normalization: 'LF UTF16 logical spans',
+        occurrences: [],
+      }),
     )
     const generated = await generateDrawioEditor({ base: directory })
     for (const [file, bytes] of Object.entries(generated.output)) {
@@ -62,10 +66,22 @@ test('LDE-UPSTREAM positive: source-verified generated styles pass without featu
     assert.deepEqual(await checkDrawioEditor({ base: directory }), [])
     const result = await checkFeatureColors(directory)
     t.diagnostic(
-      JSON.stringify({ control: 'POSITIVE', status: result.status, errors: result.errors.length }),
+      JSON.stringify({
+        control: 'POSITIVE',
+        status: result.status,
+        errors: result.errors.length,
+      }),
     )
     assert.equal(result.status, 'PASS')
     assert.equal(result.legacyExceptions, 0)
+  })
+})
+test('PAGES source closure includes the reusable strip and rejects its output drift', async () => {
+  await fixture(async (directory, generated) => {
+    const file = 'packages/draw/src/editor/generated/drawio-pages.css'
+    assert.equal(typeof generated.output[file], 'string')
+    await writeFile(resolve(directory, file), generated.output[file] + '\nbody{display:none}\n')
+    assert((await checkDrawioEditor({ base: directory })).includes('DRAWIO_OUTPUT_DRIFT: ' + file))
   })
 })
 test('LDE-UPSTREAM negative: generated literal or scope drift is FAIL, not a blanket generated exemption', async (t) => {
@@ -77,7 +93,13 @@ test('LDE-UPSTREAM negative: generated literal or scope drift is FAIL, not a bla
     const errors = await checkDrawioEditor({ base: directory })
     assert(errors.some((v) => v.includes('DRAWIO_OUTPUT_DRIFT')))
     const colors = await checkFeatureColors(directory)
-    t.diagnostic(JSON.stringify({ control: 'GENERATED_DRIFT', status: colors.status, errors }))
+    t.diagnostic(
+      JSON.stringify({
+        control: 'GENERATED_DRIFT',
+        status: colors.status,
+        errors,
+      }),
+    )
     assert.equal(colors.status, 'FAIL')
     assert(colors.errors.some((v) => v.includes('DRAWIO_OUTPUT_DRIFT')))
   })
@@ -103,30 +125,49 @@ test('LDE-UPSTREAM negative: forged source plus matching vendor manifest cannot 
     await writeFile(resolve(directory, manifestPath), JSON.stringify(manifest))
     const errors = await checkDrawioEditor({ base: directory })
     t.diagnostic(
-      JSON.stringify({ control: 'FORGED_SOURCE', status: errors.length ? 'FAIL' : 'PASS', errors }),
+      JSON.stringify({
+        control: 'FORGED_SOURCE',
+        status: errors.length ? 'FAIL' : 'PASS',
+        errors,
+      }),
     )
     assert(errors.some((v) => v.includes('UPSTREAM_SOURCE_DRIFT')))
   })
 })
-test('LDE-UPSTREAM negative: missing generated TS or manifest fails closed', async t => {
-  await fixture(async directory => {
+test('LDE-UPSTREAM negative: missing generated TS or manifest fails closed', async (t) => {
+  await fixture(async (directory) => {
     for (const file of [ts, source]) {
       const original = await readFile(resolve(directory, file))
       await unlink(resolve(directory, file))
       const errors = await checkDrawioEditor({ base: directory })
-      t.diagnostic(JSON.stringify({ control: 'MISSING_ARTIFACT', file, status: errors.length ? 'FAIL' : 'PASS' }))
-      assert(errors.some(v => v.includes('DRAWIO_OUTPUT_MISSING: ' + file)))
+      t.diagnostic(
+        JSON.stringify({
+          control: 'MISSING_ARTIFACT',
+          file,
+          status: errors.length ? 'FAIL' : 'PASS',
+        }),
+      )
+      assert(errors.some((v) => v.includes('DRAWIO_OUTPUT_MISSING: ' + file)))
       await writeFile(resolve(directory, file), original)
     }
   })
 })
-test('LDE-UPSTREAM negative: ordinary feature literals cannot use the source exemption', async t => {
-  await fixture(async directory => {
-    await writeFile(resolve(directory, 'packages/ui-inspector/src/forbidden.ts'), "export const color = '#ABCDEF'\n")
+test('LDE-UPSTREAM negative: ordinary feature literals cannot use the source exemption', async (t) => {
+  await fixture(async (directory) => {
+    await writeFile(
+      resolve(directory, 'packages/ui-inspector/src/forbidden.ts'),
+      "export const color = '#ABCDEF'\n",
+    )
     const result = await checkFeatureColors(directory)
-    t.diagnostic(JSON.stringify({ control: 'FEATURE_LITERAL', status: result.status, errors: result.errors }))
+    t.diagnostic(
+      JSON.stringify({
+        control: 'FEATURE_LITERAL',
+        status: result.status,
+        errors: result.errors,
+      }),
+    )
     assert.equal(result.status, 'FAIL')
-    assert(result.errors.some(v => v.includes('forbidden color #ABCDEF')))
+    assert(result.errors.some((v) => v.includes('forbidden color #ABCDEF')))
   })
 })
 test('LDE-UPSTREAM deterministic source coverage, scoped selectors and namespaced animations', async () => {
@@ -136,13 +177,19 @@ test('LDE-UPSTREAM deterministic source coverage, scoped selectors and namespace
     const inventory = JSON.parse(await readFile(resolve(directory, source), 'utf8'))
     const { createRequire } = await import('node:module')
     const require = createRequire(resolve(root, 'apps/desktop/package.json'))
-    const postcss = require(require.resolve('postcss', { paths: [dirname(require.resolve('vite/package.json'))] }))
+    const postcss = require(
+      require.resolve('postcss', {
+        paths: [dirname(require.resolve('vite/package.json'))],
+      }),
+    )
     let originalRules = 0
-    for (const input of inventory.inputs.filter(v => v.path.endsWith('.css')))
-      postcss.parse(await readFile(resolve(directory, input.path), 'utf8')).walkRules(() => originalRules++)
+    for (const input of inventory.inputs.filter((v) => v.path.endsWith('.css')))
+      postcss
+        .parse(await readFile(resolve(directory, input.path), 'utf8'))
+        .walkRules(() => originalRules++)
     assert.equal(inventory.rules.length, originalRules)
     const tree = postcss.parse(await readFile(resolve(directory, css), 'utf8'))
-    tree.walkRules(rule => {
+    tree.walkRules((rule) => {
       let scope = rule.parent
       while (scope && !(scope.type === 'atrule' && scope.name === 'scope')) scope = scope.parent
       assert(scope, 'Unscoped rule: ' + rule.selector)
@@ -150,12 +197,12 @@ test('LDE-UPSTREAM deterministic source coverage, scoped selectors and namespace
       assert(scope.params.includes('.canvas'))
       assert(scope.params.includes('svg'))
     })
-    tree.walkAtRules(/keyframes$/, rule => assert(rule.params.startsWith('frade-drawio-')))
+    tree.walkAtRules(/keyframes$/, (rule) => assert(rule.params.startsWith('frade-drawio-')))
   })
 })
 
 test('LDE-UPSTREAM manifest LF and CRLF yield identical source-verified generated artifacts', async () => {
-  await fixture(async directory => {
+  await fixture(async (directory) => {
     const file = resolve(directory, manifestPath)
     const lf = (await readFile(file, 'utf8')).replaceAll('\r\n', '\n')
     await writeFile(file, lf)
@@ -166,7 +213,7 @@ test('LDE-UPSTREAM manifest LF and CRLF yield identical source-verified generate
   })
 })
 test('LDE-UPSTREAM rejects unpinned third manifest byte form and metadata mutation', async () => {
-  await fixture(async directory => {
+  await fixture(async (directory) => {
     const file = resolve(directory, manifestPath)
     const lf = (await readFile(file, 'utf8')).replaceAll('\r\n', '\n')
     await writeFile(file, lf.replace('\n', '\r\n'))

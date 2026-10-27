@@ -1,0 +1,134 @@
+{
+  "config": {
+    "configFile": "E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\fui-diagnostic.config.ts",
+    "rootDir": "E:/dev/codex/frade/.worktrees/draw-pages/apps/desktop/tests/diagnostics",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/dev/codex/frade/.worktrees/draw-pages/apps/desktop/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/dev/codex/frade/.worktrees/draw-pages/apps/desktop/tests/diagnostics",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fui-native-history.spec.ts",
+      "file": "fui-native-history.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P01-FUI005 light native",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3795,
+                  "error": {
+                    "message": "Error: locator.evaluate: TypeError: Cannot read properties of null (reading 'querySelector')\n    at eval (eval at evaluate (:290:30), <anonymous>:3:23)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+                    "stack": "Error: locator.evaluate: TypeError: Cannot read properties of null (reading 'querySelector')\n    at eval (eval at evaluate (:290:30), <anonymous>:3:23)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:290:30), <anonymous>:3:23)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at fuiSemantics (E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\tests\\diagnostics\\fui-native-history.spec.ts:249:52)\n    at Object.generator (E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\tests\\diagnostics\\fui-native-history.spec.ts:362:40)",
+                    "location": {
+                      "file": "eval at evaluate (:290:30), <anonymous>",
+                      "column": 23,
+                      "line": 3
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "eval at evaluate (:290:30), <anonymous>",
+                        "column": 23,
+                        "line": 3
+                      },
+                      "message": "Error: locator.evaluate: TypeError: Cannot read properties of null (reading 'querySelector')\n    at eval (eval at evaluate (:290:30), <anonymous>:3:23)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:290:30), <anonymous>:3:23)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at fuiSemantics (E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\tests\\diagnostics\\fui-native-history.spec.ts:249:52)\n    at Object.generator (E:\\dev\\codex\\frade\\.worktrees\\draw-pages\\apps\\desktop\\tests\\diagnostics\\fui-native-history.spec.ts:362:40)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:40940) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T03:42:27.631Z",
+                  "annotations": [],
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "eval at evaluate (:290:30), <anonymous>",
+                    "column": 23,
+                    "line": 3
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "17d9dcb53995c5a9ec43-54d677caff4819efc3eb",
+          "file": "fui-native-history.spec.ts",
+          "line": 453,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T03:42:26.733Z",
+    "duration": 4753.297,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

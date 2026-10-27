@@ -1,0 +1,5 @@
+The cumulative gate **fails on incomplete essential evidence**. The current manifest references a fresh desktop build record and stdout/stderr at `05:30:38.868Z`, but all three are absent from the confined packet. [POST06’s packet plan](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-27T05-50-51-611Z-5308eed6-b9a6-403a-b4e6-6dafa4d47bcc/prepared/packet/openspec/changes/frade-draw-multipage/evidence/post-packet-plan-06.json:111) instead selects the earlier `03:59:48.897Z` build, whose recorded source set differs from the current one. The fresh desktop results therefore cannot be independently tied to the claimed nine build outputs from this packet.
+
+I verified the selected preflight hashes, all 653 current input bytes, and the seven passing execution reports. Those checks do not replace the missing current build proof.
+
+GATE_STATUS: FAIL

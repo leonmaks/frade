@@ -1,0 +1,18 @@
+{
+  "baseline": "e54cf0c1e4e70ed833398c673ea3140b6f10469e",
+  "outputs": [
+    {
+      "file": "packages/ui-workspace/src/design/generated/drawio-editor.css",
+      "originalSha256": "39b5da0917ed2a0243007c79749c647008d61077c0b856f7b5021aec5947809a",
+      "currentSha256": "39b5da0917ed2a0243007c79749c647008d61077c0b856f7b5021aec5947809a",
+      "byteIdentical": true
+    },
+    {
+      "file": "packages/ui-workspace/src/design/generated/drawio-editor.ts",
+      "originalSha256": "caee5a6bf8fc0bc4314d486e865da18521ad65ea2f09d947024abac002d0999e",
+      "currentSha256": "caee5a6bf8fc0bc4314d486e865da18521ad65ea2f09d947024abac002d0999e",
+      "byteIdentical": true
+    }
+  ],
+  "nativeOnlyHostLayoutDiff": "diff --git a/packages/ui-workspace/src/styles.css b/packages/ui-workspace/src/styles.css\nindex 90560666..9a709c2f 100644\n--- a/packages/ui-workspace/src/styles.css\n+++ b/packages/ui-workspace/src/styles.css\n@@ -1073,7 +1073,7 @@\n   width: 100%;\n   height: 100%;\n   grid-template-columns: 115px minmax(0, 1fr);\n-  grid-template-rows: 46px minmax(0, 1fr);\n+  grid-template-rows: 46px minmax(0, 1fr) max-content;\n   overflow: hidden;\n }\n .frade-canvas > main > header {\n@@ -1101,7 +1101,11 @@\n   overflow: hidden;\n }\n .frade-canvas.readonly > main {\n+  cursor: default;\n+}\n+.frade-canvas.readonly .diagram-readonly {\n   pointer-events: none;\n+  inset: 0 0 auto;\n }\n .frade-canvas .error {\n   color: #ffaaaa;\n"
+}

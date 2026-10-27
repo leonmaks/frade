@@ -1,0 +1,52 @@
+# Page snapshot
+
+```yaml
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - strong [ref=e5]: Frade Draw
+    - button "New" [ref=e6] [cursor=pointer]
+    - button "Save" [ref=e7] [cursor=pointer]
+    - button "Save As" [ref=e8] [cursor=pointer]
+    - button "Open" [ref=e9] [cursor=pointer]
+    - button "Delete" [disabled] [ref=e10]
+    - button "Undo" [ref=e11] [cursor=pointer]
+    - button "Redo" [disabled] [ref=e12]
+    - button "Zoom +" [ref=e13] [cursor=pointer]
+    - button "Zoom −" [ref=e14] [cursor=pointer]
+    - button "Fit" [ref=e15] [cursor=pointer]
+    - button "Grid" [ref=e16] [cursor=pointer]
+    - button "SVG" [ref=e17] [cursor=pointer]
+    - button "PNG" [ref=e18] [cursor=pointer]
+  - complementary [ref=e19]:
+    - button "rect" [ref=e20] [cursor=pointer]
+    - button "rounded-rect" [ref=e21] [cursor=pointer]
+    - button "ellipse" [ref=e22] [cursor=pointer]
+    - button "diamond" [ref=e23] [cursor=pointer]
+    - button "text" [ref=e24] [cursor=pointer]
+  - tabpanel "Страница-3" [ref=e25]:
+    - img [ref=e28]
+  - generic [ref=e29]:
+    - generic [ref=e30]:
+      - button "Добавить страницу" [ref=e31]
+      - button "Страницы" [ref=e33]
+      - tablist "Страницы" [ref=e35]:
+        - generic "Страница-1 (9e73b327-45da-4d08-91db-9473835fce32/page-1) [1]" [ref=e36]:
+          - tab "Страница-1" [ref=e37]
+        - generic "Страница-2 (7334d883-2439-49de-bb9d-37090ed607a8) [2]" [ref=e38]:
+          - tab "Страница-2" [ref=e39]
+        - generic "Страница-3 (b2ab998c-dcdc-4ea8-b276-e7337adce5cf) [3]" [ref=e40]:
+          - tab "Страница-3" [selected] [ref=e41]
+          - button "Страница-3 — Параметры" [expanded] [ref=e42] [cursor=pointer]
+      - link "jgraph/drawio" [ref=e43] [cursor=pointer]:
+        - /url: https://github.com/jgraph/drawio
+    - menu [ref=e46]:
+      - menuitem "Открыть в новом окне" [active] [ref=e47] [cursor=pointer]
+      - separator [ref=e48]:
+        - separator [ref=e49]
+      - menuitem "Дублировать Страница" [ref=e50] [cursor=pointer]
+      - separator [ref=e51]:
+        - separator [ref=e52]
+      - menuitem "Переместить" [ref=e53] [cursor=pointer]: Переместить
+      - menuitem "Удалить Страница" [ref=e55] [cursor=pointer]
+      - menuitem "Переименовать Страница..." [ref=e56] [cursor=pointer]
+```

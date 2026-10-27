@@ -29,6 +29,24 @@
       "sha256": "0a0152fccee4c6d826435f0dd5b14e38f17257e132918850f20ef45e6821a899",
       "gitBlob": "2c77496df445f78e669b5b3fb7f33f32e44a4512",
       "purpose": "Exact unique grid style constants only; no runtime execution"
+    },
+    {
+      "path": "apps/desktop/vendor/drawio/images/github-logo.svg",
+      "bytes": 5268,
+      "sha256": "b88f1122c7f5d3ccba71a64754493e764caecde79481b81449999847548d3d84",
+      "gitBlob": "1f883261b243111b00d932d6033a8b538b1ecae7"
+    },
+    {
+      "path": "apps/desktop/vendor/drawio/resources/dia.txt",
+      "bytes": 85635,
+      "sha256": "477d7f141291739325ee02e6eb7444d1f19ee2b83694033ac280dad6db27fbd4",
+      "gitBlob": "885374ef36d2212764adb59d1899c28dee8d746b"
+    },
+    {
+      "path": "apps/desktop/vendor/drawio/resources/dia_ru.txt",
+      "bytes": 151137,
+      "sha256": "25d5ea81286f6e80e61cca6ad67678876b54000830bdf4686ea345099e693341",
+      "gitBlob": "fefabb0c76a32bcfc17c5226b84345322aabe986"
     }
   ],
   "sourceManifestSha256": "8080d47ef23325de33a56f08a945b0e4eacec5cf64a8acf01622904ab92adefd",
@@ -4210,6 +4228,906 @@
       "purpose": "SCOPED_UPSTREAM_RULE_NO_INVENTED_NATIVE_FEATURE"
     }
   ],
+  "pageStripRules": [
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1,
+      "original": ":root",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 73,
+      "original": ".geEditor *",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope *"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 77,
+      "original": ".geEditor",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 91,
+      "original": "html:has(.geFullscreen),\n.geEditor,\n.mxWindow,\n.geDialogTitle,\n.geShapePicker,\n.geDialogFooter,\n.geSidebarTooltip",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope:has(.geFullscreen), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .mxWindow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].mxWindow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDialogTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDialogTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geShapePicker, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geShapePicker, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDialogFooter, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDialogFooter, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSidebarTooltip, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSidebarTooltip"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 216,
+      "original": ".geEditor>.geTabContainer",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope > .geTabContainer"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 278,
+      "original": ".geEditor,\n.geEditor tr.mxPopupMenuItemHover,\n.geEditor tr.mxPopupMenuItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope tr.mxPopupMenuItemHover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope tr:is(.mxPopupMenuItem, [role=\"menuitem\"])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 284,
+      "original": ":where(.geEditor *):not(svg *, .mxCellEditor *, .mxRubberband)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :where(:scope *):not(svg *, .mxCellEditor *, .mxRubberband), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:where(:scope *):not(svg *, .mxCellEditor *, .mxRubberband)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 288,
+      "original": ":where(.geEditor button):not(svg *),\n:where(.geEditor select):not(svg *),\n:where(.geEditor input):not(svg *),\n:where(.geEditor textarea):not(svg *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :where(:scope button):not(svg *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:where(:scope button):not(svg *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :where(:scope select):not(svg *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:where(:scope select):not(svg *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :where(:scope input):not(svg *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:where(:scope input):not(svg *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :where(:scope textarea):not(svg *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:where(:scope textarea):not(svg *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 299,
+      "original": ".geEditor input:not(svg *, .geButton)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope input:not(svg *, .geButton)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 315,
+      "original": ".geDialog .geToolbarContainer,\n.geSketch .geToolbarContainer:not(.mxWindow *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) .geToolbarContainer, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) .geToolbarContainer, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .geToolbarContainer:not(.mxWindow *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .geToolbarContainer:not(.mxWindow *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 320,
+      "original": ".geSketch .geHsplit,\n.geSketch .geTabContainer",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .geHsplit, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .geHsplit, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .geTabContainer, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .geTabContainer"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 325,
+      "original": ".geSketch .geToolbarContainer:not(.geDialog *, .mxWindow *),\n.geSketch .mxWindow,\n.geEditor.geMinimal .mxPopupMenu,\n.geMinimal .mxWindow,\n.geMinimal .geTabItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .geToolbarContainer:not(:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) *, .mxWindow *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .geToolbarContainer:not(:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) *, .mxWindow *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .mxWindow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .mxWindow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope.geMinimal :is(.mxPopupMenu, [role=\"menu\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geMinimal .mxWindow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geMinimal .mxWindow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geMinimal .geTabItem, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geMinimal .geTabItem"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 361,
+      "original": ".geButton,\n.geHelpIcon:not(.geTitle *),\n.mxPopupMenuItem>div:not(:has(img)),\n.geTitle,\n.geBtnStepper>div",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geHelpIcon:not(.geTitle *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geHelpIcon:not(.geTitle *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.mxPopupMenuItem, [role=\"menuitem\"]) > div:not(:has(img)), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.mxPopupMenuItem, [role=\"menuitem\"]) > div:not(:has(img)), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geBtnStepper > div, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geBtnStepper > div"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 374,
+      "original": ".geDarkMode .geButton,\n.geDarkMode .geHelpIcon:not(.geTitle *),\n.geDarkMode .mxPopupMenuItem>div:not(:has(img)),\n.geDarkMode .geButtonContainer .geButton.geRoundButton img:not(.geAdaptiveAsset),\n.geDarkMode .geAdaptiveAsset,\n.geDarkMode .geTitle,\n.geDarkMode .geBtnStepper>div,\n.geDarkMode .geColorDropper,\n.geDarkMode .geStyleMenuItem,\n.geDarkMode .gePropHeader,\n.geDarkMode .geStyleBtn .geAdaptiveAsset.geArrow,\n.geAtlas .geMenubar .geButtonContainer .geButton:empty,\n.geAtlas .geMenubar .geButtonContainer .geButton:has(> span.geCommentsBadge:only-child),\n.geAtlas .geMenubar .geButtonContainer .geButton .geAdaptiveAsset:not(.geDarkMode *),\n.geAtlas .geMenubar .geButtonContainer .geButton img:last-child",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geHelpIcon:not(.geTitle *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geHelpIcon:not(.geTitle *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode :is(.mxPopupMenuItem, [role=\"menuitem\"]) > div:not(:has(img)), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode :is(.mxPopupMenuItem, [role=\"menuitem\"]) > div:not(:has(img)), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geButtonContainer .geButton.geRoundButton img:not(.geAdaptiveAsset), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geButtonContainer .geButton.geRoundButton img:not(.geAdaptiveAsset), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geAdaptiveAsset, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geAdaptiveAsset, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geBtnStepper > div, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geBtnStepper > div, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geColorDropper, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geColorDropper, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geStyleMenuItem, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geStyleMenuItem, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .gePropHeader, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .gePropHeader, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geStyleBtn .geAdaptiveAsset.geArrow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geStyleBtn .geAdaptiveAsset.geArrow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas .geMenubar .geButtonContainer .geButton:empty, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas .geMenubar .geButtonContainer .geButton:empty, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas .geMenubar .geButtonContainer .geButton:has( > span.geCommentsBadge:only-child), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas .geMenubar .geButtonContainer .geButton:has( > span.geCommentsBadge:only-child), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas .geMenubar .geButtonContainer .geButton .geAdaptiveAsset:not(.geDarkMode *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas .geMenubar .geButtonContainer .geButton .geAdaptiveAsset:not(.geDarkMode *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas .geMenubar .geButtonContainer .geButton img:last-child, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas .geMenubar .geButtonContainer .geButton img:last-child"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 402,
+      "original": ".geDarkMode .geButtonContainer .geButton.geRoundButton img:last-child",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode .geButtonContainer .geButton.geRoundButton img:last-child, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode .geButtonContainer .geButton.geRoundButton img:last-child"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 406,
+      "original": ".geMinimal .geButtonContainer .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geMinimal .geButtonContainer .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geMinimal .geButtonContainer .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 410,
+      "original": ".gePrimaryBtn",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 466,
+      "original": ".gePageTab>div.geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .gePageTab > div.geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].gePageTab > div.geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 470,
+      "original": ".gePageTab:hover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .gePageTab:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].gePageTab:hover"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 480,
+      "original": "div.geActivePage",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] div.geActivePage"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 485,
+      "original": "div.geActivePage:hover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] div.geActivePage:hover"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 529,
+      "original": ".mxPopupMenuIcon img,\n.geStyleBtn .geAdaptiveAsset,\n.geGraphStylePreview:active",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .mxPopupMenuIcon img, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].mxPopupMenuIcon img, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geStyleBtn .geAdaptiveAsset, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geStyleBtn .geAdaptiveAsset, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geGraphStylePreview:active, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geGraphStylePreview:active"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 557,
+      "original": ".geSidebarFooter .gePrimaryBtn",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSidebarFooter :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSidebarFooter :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 562,
+      "original": ".geSidebarFooter .gePrimaryBtn span",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSidebarFooter :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type) span, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSidebarFooter :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type) span"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 567,
+      "original": "html body.geEditor .gePrimaryBtn:hover:not([disabled])",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type):hover:not([disabled])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 594,
+      "original": ".geButtonGroup .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButtonGroup .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButtonGroup .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 599,
+      "original": ".geTabItem.geTabZoom",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTabItem.geTabZoom, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTabItem.geTabZoom"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 616,
+      "original": ".geButton>span",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton > span, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton > span"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 637,
+      "original": ".geSimple .geBtn button",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSimple :is(.geBtn, button) button, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSimple :is(.geBtn, button) button"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 641,
+      "original": ".geSimple div.geToolbarContainer a.geButton:not(.geSketch *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSimple div.geToolbarContainer a.geButton:not(.geSketch *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSimple div.geToolbarContainer a.geButton:not(.geSketch *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 679,
+      "original": "html body div.mxPopupMenu",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope div:is(.mxPopupMenu, [role=\"menu\"])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 686,
+      "original": "html table.mxPopupMenu td.mxPopupMenuItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope table:is(.mxPopupMenu, [role=\"menu\"]) td:is(.mxPopupMenuItem, [role=\"menuitem\"])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 692,
+      "original": "html tr.mxPopupMenuItem,\nhtml td.mxPopupMenuItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope tr:is(.mxPopupMenuItem, [role=\"menuitem\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope td:is(.mxPopupMenuItem, [role=\"menuitem\"])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 710,
+      "original": "html body.geDarkMode.geEditor div.mxPopupMenu",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope.geDarkMode:scope div:is(.mxPopupMenu, [role=\"menu\"])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 715,
+      "original": "html body.geDarkMode.geEditor div.mxPopupMenu.geToolbarMenu",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope.geDarkMode:scope div:is(.mxPopupMenu, [role=\"menu\"]).geToolbarMenu"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 719,
+      "original": ".geTabContainer",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTabContainer, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTabContainer"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 724,
+      "original": "html body.geDarkMode.geEditor div.mxPopupMenu hr",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope.geDarkMode:scope div:is(.mxPopupMenu, [role=\"menu\"]) hr"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 806,
+      "original": ".geBtn.geGenerateDiagramButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button).geGenerateDiagramButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button).geGenerateDiagramButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 818,
+      "original": ".geEditor .geTemplate .geButton.geRoundButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geTemplate .geButton.geRoundButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 830,
+      "original": ".geTemplate .geGenerateDiagramForm .geButton.geRoundButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTemplate .geGenerateDiagramForm .geButton.geRoundButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTemplate .geGenerateDiagramForm .geButton.geRoundButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 886,
+      "original": "html body.geDarkMode.geEditor table.mxPopupMenu tr.mxPopupMenuItemHover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope.geDarkMode:scope table:is(.mxPopupMenu, [role=\"menu\"]) tr.mxPopupMenuItemHover"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 898,
+      "original": "html body.geDarkMode table.mxPopupMenu hr",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope.geDarkMode table:is(.mxPopupMenu, [role=\"menu\"]) hr"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 903,
+      "original": "html body.geDarkMode .geDialog,\nhtml body.geDarkMode div.mxWindow,\nhtml body div.mxWindow.geDarkMode",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope.geDarkMode :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope.geDarkMode div.mxWindow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope div.mxWindow.geDarkMode"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 915,
+      "original": ".geDialog,\nhtml div.mxWindow,\n.geSketch .geToolbarContainer:not(.geDialog *, .mxWindow *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope div.mxWindow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .geToolbarContainer:not(:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) *, .mxWindow *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .geToolbarContainer:not(:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) *, .mxWindow *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 922,
+      "original": ".geSketch .geToolbarContainer:not(.geDialog *, .mxWindow *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .geToolbarContainer:not(:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) *, .mxWindow *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .geToolbarContainer:not(:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) *, .mxWindow *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 967,
+      "original": ".geDialog,\n.geBackground,\n.geEditor .picker-dialog,\n.geEditor .picker-dialog-bg",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geBackground, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geBackground, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .picker-dialog, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .picker-dialog-bg"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 974,
+      "original": ".geEditor input[type=text]::-ms-clear",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope input[type=\"text\"]::-ms-clear"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 994,
+      "original": ".geButtonContainer .gePrimaryBtn:not(.geEmbedBtn)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButtonContainer :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type):not(.geEmbedBtn), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButtonContainer :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type):not(.geEmbedBtn)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1000,
+      "original": ".geButtonContainer .gePrimaryBtn .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButtonContainer :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type) .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButtonContainer :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type) .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1006,
+      "original": ".geEditor .geTabItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geTabItem"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1029,
+      "original": ".geSimpleMainMenu .geButton:not(.geZoomInput)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSimpleMainMenu .geButton:not(.geZoomInput), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSimpleMainMenu .geButton:not(.geZoomInput)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1033,
+      "original": ".geSketch .geToolbarContainer .geButton:not(.geZoomInput, .gePageMenu, .geFooterToolbar *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .geToolbarContainer .geButton:not(.geZoomInput, .gePageMenu, .geFooterToolbar *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .geToolbarContainer .geButton:not(.geZoomInput, .gePageMenu, .geFooterToolbar *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1205,
+      "original": "html body div.geBtn.geSmallBanner",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope div:is(.geBtn, button).geSmallBanner"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1266,
+      "original": ".geBtn",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1282,
+      "original": ".geBtn.geBanner",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button).geBanner, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button).geBanner"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1298,
+      "original": ".geBtn:hover:not([disabled]),\n.geBtn:focus",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button):hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button):hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button):focus, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button):focus"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1387,
+      "original": "td.mxPopupMenuIcon .geStyleMenuItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] td.mxPopupMenuIcon .geStyleMenuItem"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1391,
+      "original": "td.mxPopupMenuIcon .geStyleMenuItem>div",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] td.mxPopupMenuIcon .geStyleMenuItem > div"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1424,
+      "original": ".geBtn[disabled],\n.geButton[disabled]",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button)[disabled], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button)[disabled], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton[disabled], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton[disabled]"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1429,
+      "original": ".geButton.gePageMenu",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton.gePageMenu, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton.gePageMenu"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1435,
+      "original": ".geButton.gePageMenu>span",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton.gePageMenu > span, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton.gePageMenu > span"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1442,
+      "original": ".geSimple .geButton.geZoomInput:not(.geSketch *, .geMinimal *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSimple .geButton.geZoomInput:not(.geSketch *, .geMinimal *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSimple .geButton.geZoomInput:not(.geSketch *, .geMinimal *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1447,
+      "original": ".geButton.geZoomInput",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton.geZoomInput, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton.geZoomInput"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1459,
+      "original": ".geClassic .geZoomInput",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geClassic .geZoomInput, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geClassic .geZoomInput"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1463,
+      "original": ".geSimple .geButton.geZoomInput",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSimple .geButton.geZoomInput, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSimple .geButton.geZoomInput"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1467,
+      "original": ".geSketch .geZoomInput",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .geZoomInput, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .geZoomInput"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1483,
+      "original": ".geEditor .geItem:active:not(.mxDisabled, [disabled]):not(.geStatus),\n.geEditor .geBtn:active:not([disabled]),\n.geEditor .geStatus:has(div[data-action]:not(.mxDisabled, [disabled])):active,\n.geEditor .geTitle:active,\n.geEditor .geButton:active:not(.mxDisabled, .mxDisabled *, [disabled], .geBtn *),\n.geEditor .geHelpIcon:active,\n.geEditor button:active:not([disabled], .geBigButton, .geShareBtn),\n.geEditor .geFormatTitle:active,\n.geEditor .geBtnStepper>div:active,\n.geEditor .geTab:active:not(.mxDisabled, [disabled]),\n.geDarkMode .mxPopupMenuItem>div:not(:has(img)),\n.geTitle,\n.geBtnStepper>div,\n.geHelpIcon,\n.geStatus>div:not(.geStatusAlert)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geItem:active:not(.mxDisabled, [disabled]):not(.geStatus), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :is(.geBtn, button):active:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geStatus:has(div[data-action]:not(.mxDisabled, [disabled])):active, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geTitle:active, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geButton:active:not(.mxDisabled, .mxDisabled *, [disabled], :is(.geBtn, button) *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geHelpIcon:active, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope button:active:not([disabled], .geBigButton, .geShareBtn), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geFormatTitle:active, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geBtnStepper > div:active, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geTab:active:not(.mxDisabled, [disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geDarkMode :is(.mxPopupMenuItem, [role=\"menuitem\"]) > div:not(:has(img)), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geDarkMode :is(.mxPopupMenuItem, [role=\"menuitem\"]) > div:not(:has(img)), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geBtnStepper > div, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geBtnStepper > div, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geHelpIcon, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geHelpIcon, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geStatus > div:not(.geStatusAlert), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geStatus > div:not(.geStatusAlert)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1501,
+      "original": ".geEditor .geButton:not(.mxDisabled, .mxDisabled *, [disabled])",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope .geButton:not(.mxDisabled, .mxDisabled *, [disabled])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1505,
+      "original": ".geItem:hover:not(.mxDisabled, [disabled]),\n.geBtn:hover:not([disabled]),\n.geBtnStepper>div:hover,\n.geHelpIcon:hover,\n.geColorDropper:hover,\n.geTitle>div>img:hover,\n.geFormatTitle.geActiveFormatTitle,\n.geHint img:hover,\n.geGraphStylePreview:hover,\n.geActiveItem:not(.geButton *, .geButton *),\n.gePageTab .geButton:hover:not([disabled]),\n.geButtonGroup .geButton:hover:not([disabled]),\nbutton:hover:not([disabled], .geBigButton, .geShareBtn),\nselect:hover:not([disabled]),\n.geColorBtn:hover:not([disabled]),\n.geStyleBtn:hover:not([disabled]),\ntable.mxPopupMenu tr.mxPopupMenuItemHover,\n.geTitle:hover,\n.geButton:hover:not(.mxDisabled, .mxDisabled *, [disabled], .gePageTab *, .geSimpleMainMenu *, .geBtn *, .geButtonGroup *, .geAdaptiveAsset, .gePrimaryBtn)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geItem:hover:not(.mxDisabled, [disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geItem:hover:not(.mxDisabled, [disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button):hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button):hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geBtnStepper > div:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geBtnStepper > div:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geHelpIcon:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geHelpIcon:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geColorDropper:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geColorDropper:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle > div > img:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle > div > img:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geFormatTitle.geActiveFormatTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geFormatTitle.geActiveFormatTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geHint img:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geHint img:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geGraphStylePreview:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geGraphStylePreview:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geActiveItem:not(.geButton *, .geButton *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geActiveItem:not(.geButton *, .geButton *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .gePageTab .geButton:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].gePageTab .geButton:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButtonGroup .geButton:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButtonGroup .geButton:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] button:hover:not([disabled], .geBigButton, .geShareBtn), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] select:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geColorBtn:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geColorBtn:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geStyleBtn:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geStyleBtn:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] table:is(.mxPopupMenu, [role=\"menu\"]) tr.mxPopupMenuItemHover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton:hover:not(.mxDisabled, .mxDisabled *, [disabled], .gePageTab *, .geSimpleMainMenu *, :is(.geBtn, button) *, .geButtonGroup *, .geAdaptiveAsset, :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type)), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton:hover:not(.mxDisabled, .mxDisabled *, [disabled], .gePageTab *, .geSimpleMainMenu *, :is(.geBtn, button) *, .geButtonGroup *, .geAdaptiveAsset, :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type))"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1536,
+      "original": ".gePageTab.gePageTabDragPlaceholder",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .gePageTab.gePageTabDragPlaceholder, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].gePageTab.gePageTabDragPlaceholder"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1540,
+      "original": "button:hover:not([disabled], .geBigButton, .geShareBtn),\nselect:hover:not([disabled]),\n.geColorBtn:hover:not([disabled]),\n.geStyleBtn:hover:not([disabled]),\ntable.mxPopupMenu tr.mxPopupMenuItemHover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] button:hover:not([disabled], .geBigButton, .geShareBtn), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] select:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geColorBtn:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geColorBtn:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geStyleBtn:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geStyleBtn:hover:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] table:is(.mxPopupMenu, [role=\"menu\"]) tr.mxPopupMenuItemHover"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1548,
+      "original": ".geTitle:hover,\n.geButton:hover:not(.mxDisabled, .mxDisabled *, [disabled], .gePageTab *, .geSimpleMainMenu *, .geBtn *, .geButtonGroup *, .geAdaptiveAsset, .gePrimaryBtn)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton:hover:not(.mxDisabled, .mxDisabled *, [disabled], .gePageTab *, .geSimpleMainMenu *, :is(.geBtn, button) *, .geButtonGroup *, .geAdaptiveAsset, :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type)), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton:hover:not(.mxDisabled, .mxDisabled *, [disabled], .gePageTab *, .geSimpleMainMenu *, :is(.geBtn, button) *, .geButtonGroup *, .geAdaptiveAsset, :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type))"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1558,
+      "original": ".geActiveItem:not(.geButton *, .geButton *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geActiveItem:not(.geButton *, .geButton *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geActiveItem:not(.geButton *, .geButton *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1562,
+      "original": ".mxDisabled:hover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .mxDisabled:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].mxDisabled:hover"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1629,
+      "original": ".geVerticalToolbar>.geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geVerticalToolbar > .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geVerticalToolbar > .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1651,
+      "original": ".geButton>div:not(.geShortcutKey)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton > div:not(.geShortcutKey), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton > div:not(.geShortcutKey)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1661,
+      "original": ".geButton,\n.geTitle,\n.geItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geItem, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geItem"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1679,
+      "original": ".geButton,\n.geTitle",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1698,
+      "original": ".geButton:not([disabled], .geZoomInput),\n.geTitle:not([disabled]),\n.geItem:not([disabled])",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton:not([disabled], .geZoomInput), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton:not([disabled], .geZoomInput), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geItem:not([disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geItem:not([disabled])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1704,
+      "original": ".geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1710,
+      "original": ".mxPopupMenuItem:empty:has(+ .mxPopupMenuItem:empty),\n.mxPopupMenuItem:empty + .mxPopupMenuItem:empty",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.mxPopupMenuItem, [role=\"menuitem\"]):empty:has( + :is(.mxPopupMenuItem, [role=\"menuitem\"]):empty), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.mxPopupMenuItem, [role=\"menuitem\"]):empty:has( + :is(.mxPopupMenuItem, [role=\"menuitem\"]):empty), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.mxPopupMenuItem, [role=\"menuitem\"]):empty + :is(.mxPopupMenuItem, [role=\"menuitem\"]):empty, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.mxPopupMenuItem, [role=\"menuitem\"]):empty + :is(.mxPopupMenuItem, [role=\"menuitem\"]):empty"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1715,
+      "original": ".mxPopupMenuIcon>img.geButton:empty",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .mxPopupMenuIcon > img.geButton:empty, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].mxPopupMenuIcon > img.geButton:empty"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1719,
+      "original": ".geButton:empty:not(.geVerticalToolbar *, .geZoomInput, .geTemplate *, .geSidebarTooltip *),\n.geButton:has(> span.geCommentsBadge:only-child):not(.geVerticalToolbar *, .geZoomInput, .geTemplate *, .geSidebarTooltip *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton:empty:not(.geVerticalToolbar *, .geZoomInput, .geTemplate *, .geSidebarTooltip *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton:empty:not(.geVerticalToolbar *, .geZoomInput, .geTemplate *, .geSidebarTooltip *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton:has( > span.geCommentsBadge:only-child):not(.geVerticalToolbar *, .geZoomInput, .geTemplate *, .geSidebarTooltip *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton:has( > span.geCommentsBadge:only-child):not(.geVerticalToolbar *, .geZoomInput, .geTemplate *, .geSidebarTooltip *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1724,
+      "original": ".geButton[disabled]",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton[disabled], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton[disabled]"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1735,
+      "original": ".geButton.geRoundButton:not(.geEmbed.geCompactMode .geButtonContainer .geButton)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton.geRoundButton:not(.geEmbed.geCompactMode .geButtonContainer .geButton), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton.geRoundButton:not(.geEmbed.geCompactMode .geButtonContainer .geButton)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1743,
+      "original": ".geSketch .geButton.geRoundButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSketch .geButton.geRoundButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSketch .geButton.geRoundButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1757,
+      "original": ".geButton.geRoundButton > .geUserAvatar",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton.geRoundButton > .geUserAvatar, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton.geRoundButton > .geUserAvatar"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1769,
+      "original": ".geButton.geRoundButton > .geUserPhoto",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geButton.geRoundButton > .geUserPhoto, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geButton.geRoundButton > .geUserPhoto"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1944,
+      "original": ".geTabContainer",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTabContainer, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTabContainer"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1954,
+      "original": ".geMinimal .geTabContainer .geZoomInput",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geMinimal .geTabContainer .geZoomInput, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geMinimal .geTabContainer .geZoomInput"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1958,
+      "original": ".geTabContainer .geZoomInput",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTabContainer .geZoomInput, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTabContainer .geZoomInput"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1964,
+      "original": ".geTabScroller",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTabScroller, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTabScroller"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1976,
+      "original": ".geTab .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTab .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTab .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1981,
+      "original": ".gePageTab:not(.geActivePage) .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .gePageTab:not(.geActivePage) .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].gePageTab:not(.geActivePage) .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1985,
+      "original": ".gePageTab:not(.geActivePage)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .gePageTab:not(.geActivePage), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].gePageTab:not(.geActivePage)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1989,
+      "original": ".gePageTab",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .gePageTab, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].gePageTab"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1993,
+      "original": ".geControlTab",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geControlTab, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geControlTab"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 1998,
+      "original": ".geTab",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTab, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTab"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2077,
+      "original": ".geTitle .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2083,
+      "original": ".geTitle .geButton:hover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle .geButton:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle .geButton:hover"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2111,
+      "original": ".geSidebarTooltip .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSidebarTooltip .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSidebarTooltip .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2121,
+      "original": ".geDialog",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2139,
+      "original": ".geDialog > :first-child",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) > :first-child, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) > :first-child"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2145,
+      "original": ".geDialog > .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) > .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) > .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2158,
+      "original": ".geDialog > .geButton:hover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) > .geButton:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) > .geButton:hover"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2163,
+      "original": ".geDialog input[type=\"text\"],\n.geDialog input[type=\"number\"],\n.geDialog textarea,\n.geDialog select",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"text\"], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"text\"], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"number\"], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"number\"], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) textarea, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) textarea, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) select, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) select"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2176,
+      "original": ".geDialog input[type=\"text\"]:focus,\n.geDialog input[type=\"number\"]:focus,\n.geDialog textarea:focus,\n.geDialog select:focus",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"text\"]:focus, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"text\"]:focus, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"number\"]:focus, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"number\"]:focus, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) textarea:focus, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) textarea:focus, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) select:focus, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) select:focus"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2186,
+      "original": ".geDialog select",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) select, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) select"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2192,
+      "original": ".geDialog h3",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) h3, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) h3"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2310,
+      "original": ".geDialog .geCollapsibleTitle",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) .geCollapsibleTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) .geCollapsibleTitle"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2325,
+      "original": ".geDialog.geInlineDialog",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]).geInlineDialog, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]).geInlineDialog"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2496,
+      "original": ".geEditor div.mxPopupMenu",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope div:is(.mxPopupMenu, [role=\"menu\"])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2507,
+      "original": ".geEditor div.mxPopupMenu.geToolbarMenu",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope div:is(.mxPopupMenu, [role=\"menu\"]).geToolbarMenu"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2514,
+      "original": ".geToolbarMenu tr.mxPopupMenuItemHover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geToolbarMenu tr.mxPopupMenuItemHover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geToolbarMenu tr.mxPopupMenuItemHover"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2548,
+      "original": "html table.mxPopupMenu",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope table:is(.mxPopupMenu, [role=\"menu\"])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2553,
+      "original": "html td.mxPopupMenuItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope td:is(.mxPopupMenuItem, [role=\"menuitem\"])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2558,
+      "original": "html td.mxPopupMenuIcon",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope td.mxPopupMenuIcon"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2563,
+      "original": "table.mxPopupMenu tr",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] table:is(.mxPopupMenu, [role=\"menu\"]) tr"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 2567,
+      "original": "table.mxPopupMenu hr",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] table:is(.mxPopupMenu, [role=\"menu\"]) hr"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 3641,
+      "original": ".geAtlas .geMenubarContainer:not(.geDarkMode *),\n.geAtlas .gePrimaryBtn.geEmbedBtn:not(.geDarkMode *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas .geMenubarContainer:not(.geDarkMode *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas .geMenubarContainer:not(.geDarkMode *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type).geEmbedBtn:not(.geDarkMode *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type).geEmbedBtn:not(.geDarkMode *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 3647,
+      "original": ".geAtlas .gePrimaryBtn.geEmbedBtn:not(.geDarkMode *)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type).geEmbedBtn:not(.geDarkMode *), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type).geEmbedBtn:not(.geDarkMode *)"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 3651,
+      "original": ".geAtlas .gePrimaryBtn.geEmbedBtn:hover:not(.geDarkMode *, [disabled])",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type).geEmbedBtn:hover:not(.geDarkMode *, [disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type).geEmbedBtn:hover:not(.geDarkMode *, [disabled])"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 3668,
+      "original": ".geAtlas .geMenubar .geButtonContainer .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas .geMenubar .geButtonContainer .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas .geMenubar .geButtonContainer .geButton"
+    },
+    {
+      "file": "styles/grapheditor.css",
+      "line": 3673,
+      "original": ".geAtlas .geMenubar .geButtonContainer .geButton:hover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geAtlas .geMenubar .geButtonContainer .geButton:hover, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geAtlas .geMenubar .geButtonContainer .geButton:hover"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 1,
+      "original": ":root",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 12,
+      "original": ".geSidebar *:not(svg *, .mxDisabled, [disabled]),\n.geToolbar *:not(svg *, .mxDisabled, [disabled])",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSidebar :not(svg *, .mxDisabled, [disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSidebar :not(svg *, .mxDisabled, [disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geToolbar :not(svg *, .mxDisabled, [disabled]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geToolbar :not(svg *, .mxDisabled, [disabled])"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 17,
+      "original": "*:not(svg *, .mxDisabled, [disabled], .spinner *, .geBackground, .geDragPreview, .geButton)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :not(svg *, .mxDisabled, [disabled], .spinner *, .geBackground, .geDragPreview, .geButton)"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 21,
+      "original": "button, .geBtn, *::-webkit-scrollbar-thumb",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] button, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] ::-webkit-scrollbar-thumb"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 26,
+      "original": "button, .geBtn",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] button, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button)"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 36,
+      "original": "button:not(:hover), .geBtn:not(:hover)",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] button:not(:hover), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geBtn, button):not(:hover), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geBtn, button):not(:hover)"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 40,
+      "original": ".gePrimaryBtn",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.gePrimaryBtn, .primary, .editor-actions > button:first-of-type)"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 44,
+      "original": ".geActivePage, .geActiveFormatTitle",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geActivePage, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geActivePage, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geActiveFormatTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geActiveFormatTitle"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 48,
+      "original": ".geActivePage",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geActivePage, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geActivePage"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 58,
+      "original": ".geEditor,\n.geTitle,\n.geFormatTitle",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geFormatTitle, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geFormatTitle"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 64,
+      "original": ".geTab,\n.geFormatContainer,\n.geSearchSidebar input,\n.geSpinnerStatus",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geTab, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geTab, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geFormatContainer, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geFormatContainer, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSearchSidebar input, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSearchSidebar input, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .geSpinnerStatus, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].geSpinnerStatus"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 81,
+      "original": ".geDialog",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"])"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 87,
+      "original": "html body.geDarkMode .geDialog,\nhtml body.geDarkMode div.mxWindow,\nhtml body div.mxWindow.geDarkMode",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope.geDarkMode :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope.geDarkMode div.mxWindow, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope :scope div.mxWindow.geDarkMode"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 95,
+      "original": ".geDialog,\nhtml div.mxWindow",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]), :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:scope div.mxWindow"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 108,
+      "original": ".geDialog > .geButton",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) > .geButton, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) > .geButton"
+    },
+    {
+      "file": "styles/high-contrast.css",
+      "line": 122,
+      "original": ".geDialog input[type=\"text\"],\n.geDialog input[type=\"number\"],\n.geDialog textarea,\n.geDialog select",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"text\"], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"text\"], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"number\"], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) input[type=\"number\"], :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) textarea, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) textarea, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] :is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) select, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"]:is(.geDialog, [role=\"dialog\"], [role=\"alertdialog\"]) select"
+    },
+    {
+      "file": "mxgraph/css/common.css",
+      "line": 110,
+      "original": "div.mxPopupMenu",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] div:is(.mxPopupMenu, [role=\"menu\"])"
+    },
+    {
+      "file": "mxgraph/css/common.css",
+      "line": 120,
+      "original": "table.mxPopupMenu",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] table:is(.mxPopupMenu, [role=\"menu\"])"
+    },
+    {
+      "file": "mxgraph/css/common.css",
+      "line": 125,
+      "original": "tr.mxPopupMenuItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] tr:is(.mxPopupMenuItem, [role=\"menuitem\"])"
+    },
+    {
+      "file": "mxgraph/css/common.css",
+      "line": 129,
+      "original": "tr.mxPopupMenuItemHover",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] tr.mxPopupMenuItemHover"
+    },
+    {
+      "file": "mxgraph/css/common.css",
+      "line": 134,
+      "original": "td.mxPopupMenuItem",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] td:is(.mxPopupMenuItem, [role=\"menuitem\"])"
+    },
+    {
+      "file": "mxgraph/css/common.css",
+      "line": 140,
+      "original": "td.mxPopupMenuIcon",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] td.mxPopupMenuIcon"
+    },
+    {
+      "file": "mxgraph/css/common.css",
+      "line": 144,
+      "original": ".mxDisabled",
+      "adapted": ":scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"] .mxDisabled, :scope[data-frade-editor=\"light\"][data-frade-editor=\"light\"][data-frade-editor=\"light\"].mxDisabled"
+    },
+    {
+      "file": "js/app.min.js",
+      "offset": 9657650,
+      "original": ".showDialog(g.container,300,80,!0,!0)",
+      "adapted": "--frade-pages-dialog-width / height",
+      "purpose": "renamePage dialog content dimensions",
+      "width": "300",
+      "height": "80"
+    },
+    {
+      "file": "js/app.min.js",
+      "offset": 1084194,
+      "original": "FilenameDialog source grid and label styles",
+      "adapted": "--frade-pages-filename-*",
+      "headerSha256": "3e402d5bc9d0c6fe95bb594b69c0a8baa280aca4787e2123289e1f034de2b18f"
+    }
+  ],
   "roleSources": {
     "surface.base": {
       "property": "--field-color",
@@ -4492,6 +5410,14 @@
     {
       "path": "packages/ui-workspace/tokens/diagram-editor-presentation.json",
       "sha256": "f558c91883ae4d81d9ed448c27a839d7d0490f1a66ea68f0f253fa9461d7a137"
+    },
+    {
+      "path": "packages/draw/src/editor/generated/drawio-pages.css",
+      "sha256": "bc64393c7cc09130a8274a5f418eea24eaeac5c9be49fa896684b81ac79fd308"
+    },
+    {
+      "path": "packages/draw/src/editor/generated/drawio-pages.ts",
+      "sha256": "e449997c76cf4ebe7cae4485b7ec1822dd6a0cd4836ed8b214d5a5be4abf7575"
     }
   ]
 }

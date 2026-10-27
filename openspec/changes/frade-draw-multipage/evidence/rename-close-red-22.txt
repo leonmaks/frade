@@ -1,0 +1,57 @@
+[WebServer] (node:19200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:32228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-parity.spec.ts:96:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation (5.4s)
+
+
+  1) tests\spike\drawing-pages-parity.spec.ts:96:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 2[39m
+    [31m+ Received  + 2[39m
+
+    [2m  Object {[22m
+    [2m    "height": 24,[22m
+    [2m    "width": 28,[22m
+    [32m-   "x": 776,[39m
+    [32m-   "y": 306,[39m
+    [31m+   "x": 484,[39m
+    [31m+   "y": 409,[39m
+    [2m  }[22m
+
+      332 |     else if (i === 3) box.height = 24
+      333 |     else box.y += 3
+    > 334 |     expect(native.box).toEqual(box)
+          |                        ^
+      335 |     for (const key of ['font', 'color', 'margin', 'padding', 'backgroundSize', 'opacity'] as const)
+      336 |       expect(native[key]).toEqual(source[key])
+      337 |   }
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-parity.spec.ts:334:24
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\drawing-pages-parity-pinne-8fbad-y-and-computed-presentation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\spike\drawing-pages-parity.spec.ts:96:1 › pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation 

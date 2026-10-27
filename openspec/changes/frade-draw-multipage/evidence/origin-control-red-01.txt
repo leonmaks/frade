@@ -1,0 +1,32 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/.worktrees/draw-pages/packages/ui-workspace
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ui-contract/drawing-pages-origin.test.ts [ tests/ui-contract/drawing-pages-origin.test.ts ]
+Error: Cannot find module './drawing-pages-origin' imported from 'E:/dev/codex/frade/.worktrees/draw-pages/packages/ui-workspace/tests/ui-contract/drawing-pages-origin.test.ts'
+ ❯ tests/ui-contract/drawing-pages-origin.test.ts:6:1
+      4| import { tmpdir } from 'node:os'
+      5| import { join, dirname, resolve, sep } from 'node:path'
+      6| import { createDrawingPagesOriginReader, locateDrawingPagesOriginOwner…
+       | ^
+      7| const prefix='openspec/changes/frade-draw-multipage'
+      8| const sha=(bytes:Buffer)=>createHash('sha256').update(bytes).digest('h…
+
+Caused by: Error: Failed to load url ./drawing-pages-origin (resolved id: ./drawing-pages-origin) in E:/dev/codex/frade/.worktrees/draw-pages/packages/ui-workspace/tests/ui-contract/drawing-pages-origin.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:41295:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  03:54:57
+   Duration  1.01s (transform 110ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 416ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\ui-workspace
+

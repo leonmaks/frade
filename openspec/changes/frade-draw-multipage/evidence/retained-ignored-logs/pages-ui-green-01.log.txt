@@ -1,0 +1,243 @@
+[WebServer] (node:42928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:34660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:34660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\spike\drawing-pages-ui.spec.ts:10:1 › native page strip edits, reorders, clears and round-trips every page through real files (20.2s)
+(node:4040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 tests\spike\drawing-pages-ui.spec.ts:114:1 › overflow readonly tabs remain keyboard reachable while every mutation is blocked (980ms)
+  x  3 tests\spike\drawing-pages-ui.spec.ts:162:1 › standalone opens only the selected page independently and cleans its transfer (20.1s)
+(node:35940) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35940) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 tests\spike\drawing-session.spec.ts:37:1 › page and native graph batches share chronological undo across navigation (715ms)
+  ok 5 tests\spike\drawing-session.spec.ts:112:1 › page viewports are independent and malformed inactive content preserves graph/history (639ms)
+  ok 6 tests\spike\drawing-session.spec.ts:201:1 › readonly permits navigation but rejects every page/history mutation (540ms)
+
+
+  1) tests\spike\drawing-pages-ui.spec.ts:10:1 › native page strip edits, reorders, clears and round-trips every page through real files 
+
+    [31mTest timeout of 20000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 20000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('menuitem', { name: 'Дублировать Страница', exact: true })[22m
+    [2m    - locator resolved to <tr tabindex="-1" role="menuitem" aria-disabled="false" class="mxPopupMenuItem" aria-label="Дублировать Страница">…</tr>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <span role="tab" tabindex="0" aria-selected="true" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-b78877be-9887-4f92-b7dd-3adcc559e73d">Детали</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <span role="tab" tabindex="-1" aria-selected="false" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-d7b796ef-9174-49fd-bd1a-28def31b0a1a%2Fpage-1">Страница-1</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <span role="tab" tabindex="0" aria-selected="true" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-b78877be-9887-4f92-b7dd-3adcc559e73d">Детали</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <svg width="100%" height="100%" class="x6-graph-svg" xmlns:xlink="http://www.w3.org/1999/xlink">…</svg> from <div tabindex="-1" role="tabpanel" class="canvas x6-graph" id="frade-drawing-r0-canvas" aria-labelledby="frade-drawing-r0-page-b78877be-9887-4f92-b7dd-3adcc559e73d">…</div> subtree intercepts pointer events[22m
+    [2m  9 × retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <span role="tab" tabindex="-1" aria-selected="false" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-d7b796ef-9174-49fd-bd1a-28def31b0a1a%2Fpage-1">Страница-1</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <span role="tab" tabindex="0" aria-selected="true" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-b78877be-9887-4f92-b7dd-3adcc559e73d">Детали</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <svg width="100%" height="100%" class="x6-graph-svg" xmlns:xlink="http://www.w3.org/1999/xlink">…</svg> from <div tabindex="-1" role="tabpanel" class="canvas x6-graph" id="frade-drawing-r0-canvas" aria-labelledby="frade-drawing-r0-page-b78877be-9887-4f92-b7dd-3adcc559e73d">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <svg width="100%" height="100%" class="x6-graph-svg" xmlns:xlink="http://www.w3.org/1999/xlink">…</svg> from <div tabindex="-1" role="tabpanel" class="canvas x6-graph" id="frade-drawing-r0-canvas" aria-labelledby="frade-drawing-r0-page-b78877be-9887-4f92-b7dd-3adcc559e73d">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+
+
+      12 |   await dialog.getByRole('button',{name:'Переименовать',exact:true}).click()
+      13 |   await openMenu(page,'Детали')
+    > 14 |   await page.getByRole('menuitem',{name:'Дублировать Страница',exact:true}).click()
+         |                                                                             ^
+      15 |   await expect(page.getByRole('tab',{name:'Копия Детали',exact:true})).toHaveAttribute('aria-selected','true')
+      16 |   await expect(page.locator('.x6-node')).toHaveCount(1)
+      17 |   await page.getByRole('button',{name:'Undo',exact:true}).click()
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:14:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-native-pa-46c36-ery-page-through-real-files\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-ui-native-pa-46c36-ery-page-through-real-files\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-native-pa-46c36-ery-page-through-real-files\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-ui-native-pa-46c36-ery-page-through-real-files\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\spike\drawing-pages-ui.spec.ts:162:1 › standalone opens only the selected page independently and cleans its transfer 
+
+    [31mTest timeout of 20000ms exceeded.[39m
+
+    Error: page.waitForEvent: Test timeout of 20000ms exceeded.
+    =========================== logs ===========================
+    waiting for event "popup"
+    ============================================================
+
+      64 |   await page.getByRole('button',{name:'ellipse',exact:true}).click()
+      65 |   await openMenu(page,'Страница-2')
+    > 66 |   const popupEvent=page.waitForEvent('popup')
+         |                         ^
+      67 |   await page.getByRole('menuitem',{name:'Открыть в новом окне',exact:true}).click()
+      68 |   const popup=await popupEvent
+      69 |   await expect(popup.locator('.x6-node')).toHaveCount(1)
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:66:25
+
+    Error: locator.click: Test timeout of 20000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('menuitem', { name: 'Открыть в новом окне', exact: true })[22m
+    [2m    - locator resolved to <tr tabindex="-1" role="menuitem" aria-disabled="false" class="mxPopupMenuItemHover" aria-label="Открыть в новом окне">…</tr>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <span role="tab" tabindex="0" aria-selected="true" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-175212b7-05d1-48fd-bb62-6e5b6d713ee2">Страница-2</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <span role="tab" tabindex="-1" aria-selected="false" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-d4c141a6-500b-42fd-96be-d59ca0cd8e21%2Fpage-1">Страница-1</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <span role="tab" tabindex="0" aria-selected="true" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-175212b7-05d1-48fd-bb62-6e5b6d713ee2">Страница-2</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <svg width="100%" height="100%" class="x6-graph-svg" xmlns:xlink="http://www.w3.org/1999/xlink">…</svg> from <div tabindex="-1" role="tabpanel" class="canvas x6-graph" id="frade-drawing-r0-canvas" aria-labelledby="frade-drawing-r0-page-175212b7-05d1-48fd-bb62-6e5b6d713ee2">…</div> subtree intercepts pointer events[22m
+    [2m  3 × retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <span role="tab" tabindex="-1" aria-selected="false" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-d4c141a6-500b-42fd-96be-d59ca0cd8e21%2Fpage-1">Страница-1</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <span role="tab" tabindex="0" aria-selected="true" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-175212b7-05d1-48fd-bb62-6e5b6d713ee2">Страница-2</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <svg width="100%" height="100%" class="x6-graph-svg" xmlns:xlink="http://www.w3.org/1999/xlink">…</svg> from <div tabindex="-1" role="tabpanel" class="canvas x6-graph" id="frade-drawing-r0-canvas" aria-labelledby="frade-drawing-r0-page-175212b7-05d1-48fd-bb62-6e5b6d713ee2">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <svg width="100%" height="100%" class="x6-graph-svg" xmlns:xlink="http://www.w3.org/1999/xlink">…</svg> from <div tabindex="-1" role="tabpanel" class="canvas x6-graph" id="frade-drawing-r0-canvas" aria-labelledby="frade-drawing-r0-page-175212b7-05d1-48fd-bb62-6e5b6d713ee2">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <span role="tab" tabindex="-1" aria-selected="false" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-d4c141a6-500b-42fd-96be-d59ca0cd8e21%2Fpage-1">Страница-1</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <span role="tab" tabindex="0" aria-selected="true" class="frade-page-label" aria-controls="frade-drawing-r0-canvas" id="frade-drawing-r0-page-175212b7-05d1-48fd-bb62-6e5b6d713ee2">Страница-2</span> from <div class="geTabContainer geTabItem">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+    [2m  - element was detached from the DOM, retrying[22m
+    [2m    - waiting for" http://127.0.0.1:8321/pages-visual.html" navigation to finish...[22m
+    [2m    - navigated to "http://127.0.0.1:8321/pages-visual.html"[22m
+
+
+      65 |   await openMenu(page,'Страница-2')
+      66 |   const popupEvent=page.waitForEvent('popup')
+    > 67 |   await page.getByRole('menuitem',{name:'Открыть в новом окне',exact:true}).click()
+         |                                                                             ^
+      68 |   const popup=await popupEvent
+      69 |   await expect(popup.locator('.x6-node')).toHaveCount(1)
+      70 |   await expect(popup.getByRole('tab')).toHaveCount(1)
+        at E:\dev\codex\frade\.worktrees\draw-pages\packages\draw\tests\spike\drawing-pages-ui.spec.ts:67:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\drawing-pages-ui-standalon-a13e7-tly-and-cleans-its-transfer\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\spike\drawing-pages-ui.spec.ts:10:1 › native page strip edits, reorders, clears and round-trips every page through real files 
+    tests\spike\drawing-pages-ui.spec.ts:162:1 › standalone opens only the selected page independently and cleans its transfer 
+  4 passed (48.4s)
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

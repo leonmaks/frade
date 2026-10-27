@@ -1,0 +1,303 @@
+@import './generated/drawio-pages.css';
+/* Host placement and enumerated keyboard/coarse/text-zoom exceptions to pinned chrome. */
+.frade-drawing-editor > .canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+.frade-page-strip {
+  grid-column: 1/-1;
+  min-width: 0;
+}
+.frade-page-strip .geTabContainer {
+  height: max(var(--frade-pages-strip-height), 2rem) !important;
+}
+.frade-page-strip .geTabScroller {
+  min-width: 0;
+}
+.frade-page-strip .geControlTab {
+  flex-shrink: 0;
+}
+.frade-page-strip .geTab {
+  font-size: max(var(--frade-pages-tab-font-size), var(--frade-pages-tab-font-rem)) !important;
+}
+.frade-page-strip .frade-page-label {
+  max-width: 160px;
+  min-width: 24px;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-flex;
+  align-items: center;
+  outline-offset: -2px;
+}
+.frade-page-strip .frade-page-options {
+  box-sizing: border-box !important;
+  min-width: 24px;
+  min-height: 24px;
+}
+.frade-page-insert {
+  background-image: var(--frade-pages-insert-image);
+}
+.frade-page-menu {
+  background-image: var(--frade-pages-menu-image);
+}
+.frade-page-options {
+  background-image: var(--frade-pages-options-image);
+}
+.frade-page-left {
+  background-image: var(--frade-pages-left-image);
+}
+.frade-page-right {
+  background-image: var(--frade-pages-right-image);
+}
+.frade-page-attribution {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.frade-page-attribution span {
+  width: 18px;
+  height: 18px;
+  background-image: var(--frade-pages-github-image);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.frade-page-attribution:hover {
+  opacity: 1;
+}
+[data-frade-page-surface] :focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: -2px;
+}
+.frade-page-overlay {
+  position: fixed;
+  z-index: 10020;
+  max-height: calc(100vh - 8px);
+  overflow: auto;
+  max-width: calc(100vw - 8px);
+}
+.frade-page-overlay .frade-page-popup {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+}
+.frade-page-overlay .mxPopupMenuItem {
+  font-size: max(14px, 0.875rem) !important;
+}
+.frade-page-overlay .frade-page-submenu-cell {
+  padding-right: 6px !important;
+  text-align: right;
+}
+.frade-page-check,
+.frade-page-submenu-glyph {
+  position: absolute !important;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px auto;
+  height: 22px;
+  width: 22px;
+}
+.frade-page-check {
+  background-image: var(--frade-pages-checked-image);
+  margin-top: -2px;
+  left: 6px;
+}
+.frade-page-submenu-glyph {
+  background-image: var(--frade-pages-submenu-image);
+  margin-left: -18px;
+  margin-top: -11px;
+}
+.frade-page-overlay .frade-page-separator-icon,
+.frade-page-overlay .frade-page-separator-rule {
+  padding: 0 !important;
+}
+.frade-page-dialog.geDialog {
+  position: fixed !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  width: calc(var(--frade-pages-dialog-width) + 2 * var(--frade-pages-dialog-padding)) !important;
+  height: max(
+    calc(var(--frade-pages-dialog-height) + 2 * var(--frade-pages-dialog-padding)),
+    8rem
+  ) !important;
+  min-height: 0;
+  max-width: calc(100vw - 20px) !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  color: inherit;
+  line-height: max(1em, 0.875rem);
+}
+.frade-page-dialog input {
+  flex-grow: 1;
+  width: auto;
+  min-width: 0;
+  min-height: 24px;
+  font-size: max(10pt, 0.833333333rem);
+  box-sizing: border-box;
+}
+.frade-filename-grid {
+  width: 100%;
+  display: grid;
+  gap: var(--frade-pages-filename-gap);
+  grid-auto-columns: auto 1fr;
+  box-sizing: border-box;
+  padding: var(--frade-pages-filename-padding);
+}
+.frade-filename-caption {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+.frade-filename-caption label {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: max(var(--frade-pages-filename-label-font), 0.833333333rem);
+  padding: 2px 0;
+}
+.frade-filename-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.frade-page-dialog-actions {
+  grid-column: 1 / span 2;
+  padding-top: var(--frade-pages-filename-action-padding);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.frade-page-dialog .geBtn {
+  font-size: max(14px, 0.875rem) !important;
+  height: max(30px, 1.875rem) !important;
+}
+.frade-page-dialog > .frade-page-close {
+  /* Upstream assigns position:absolute inline; preserve it against scoped .geButton. */
+  position: absolute !important;
+  min-height: 24px;
+  background-image: var(--frade-pages-close-image);
+  background-position: center calc(50% - 2px) !important;
+}
+.frade-page-dialog::backdrop,
+.frade-page-modal-backdrop {
+  background: var(--frade-pages-dialog-backdrop);
+  opacity: var(--frade-pages-dialog-backdrop-opacity);
+  backdrop-filter: var(--frade-pages-dialog-backdrop-filter);
+}
+.frade-page-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+}
+.frade-page-dialog {
+  z-index: 10010;
+}
+@media (max-width: 480px) {
+  .frade-filename-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .frade-page-dialog-actions {
+    grid-column: 1;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .frade-filename-caption {
+    justify-content: flex-start;
+  }
+}
+@media (pointer: coarse) {
+  .frade-page-strip .geTabContainer {
+    height: max(var(--frade-pages-strip-height), 45px, 2rem) !important;
+  }
+  .frade-page-strip .geControlTab {
+    width: 44px !important;
+  }
+  .frade-page-strip .geButton,
+  .frade-page-strip .frade-page-label,
+  .frade-page-attribution {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .frade-page-overlay td.mxPopupMenuItem {
+    padding-block: 14px !important;
+  }
+  .frade-page-dialog .geBtn {
+    min-width: 44px;
+    min-height: 44px;
+    height: max(44px, 1.875rem) !important;
+  }
+  .frade-page-dialog input {
+    min-height: 44px;
+  }
+  .frade-page-dialog > .frade-page-close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+@media (forced-colors: active) {
+  [data-frade-page-surface],
+  [data-frade-page-surface] * {
+    forced-color-adjust: auto !important;
+  }
+  [data-frade-page-surface] {
+    color-scheme: light dark !important;
+    color: CanvasText !important;
+    background-color: Canvas !important;
+  }
+  [data-frade-page-surface] :focus-visible {
+    outline-color: Highlight;
+  }
+  .frade-page-strip .geTabContainer,
+  .frade-page-strip .gePageTab {
+    background-color: Canvas !important;
+    color: CanvasText !important;
+  }
+  .frade-page-strip .geActivePage {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .frade-page-glyph,
+  .frade-page-close {
+    forced-color-adjust: none !important;
+    background-color: ButtonText !important;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-image: none !important;
+  }
+  .frade-page-insert {
+    mask-image: var(--frade-pages-insert-image);
+  }
+  .frade-page-menu {
+    mask-image: var(--frade-pages-menu-image);
+  }
+  .frade-page-options {
+    mask-image: var(--frade-pages-options-image);
+  }
+  .frade-page-left {
+    mask-image: var(--frade-pages-left-image);
+  }
+  .frade-page-right {
+    mask-image: var(--frade-pages-right-image);
+  }
+  .frade-page-close {
+    mask-image: var(--frade-pages-close-image);
+    mask-size: 10px;
+    mask-position: center calc(50% - 2px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-frade-page-surface] * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -5,6 +5,20 @@ import { AstBuilder, GherkinClassicTokenMatcher, Parser } from '@cucumber/gherki
 import { IdGenerator } from '@cucumber/messages'
 
 const stepEvidence: Record<string, string> = {
+  'a legacy drawing with connected repository nodes': 'drawing-pages.test.ts',
+  'another drawing page is inserted': 'drawing-pages.test.ts',
+  'both pages survive a complete file round trip': 'drawing-pages.test.ts',
+  'the drawing page is duplicated': 'drawing-pages.test.ts',
+  'copied terminals and references are correct and the original is unchanged':
+    'drawing-pages.test.ts',
+  'the only drawing page is removed': 'drawing-pages.test.ts',
+  'one new empty first page remains': 'drawing-pages.test.ts',
+  'drawing pages named Page-10, Page-2 and Page-1': 'drawing-pages.test.ts',
+  'drawing pages are sorted and cleared': 'drawing-pages.test.ts',
+  'sorting is natural and clearing retains one empty page': 'drawing-pages.test.ts',
+  'a drawing whose inactive page has a dangling connection': 'drawing-pages.test.ts',
+  'the complete drawing is parsed': 'drawing-pages.test.ts',
+  'the invalid drawing is rejected': 'drawing-pages.test.ts',
   'a styled diagram with all shapes and an edited route is open':
     '../spike/document-roundtrip.spec.ts',
   'the diagram is downloaded and reopened': '../spike/document-roundtrip.spec.ts',

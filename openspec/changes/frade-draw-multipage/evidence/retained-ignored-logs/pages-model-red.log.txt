@@ -1,0 +1,38 @@
+
+ RUN  v3.2.7 E:/dev/codex/frade/.worktrees/draw-pages/packages/draw
+
+ ✓ tests/unit/bdd-contract.test.ts (2 tests) 14ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/drawing-pages.test.ts [ tests/unit/drawing-pages.test.ts ]
+Error: Failed to resolve import "../../src/document/drawing" from "tests/unit/drawing-pages.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: E:/dev/codex/frade/.worktrees/draw-pages/packages/draw/tests/unit/drawing-pages.test.ts:11:7
+  17 |    clearDrawingPages,
+  18 |    nextPageName
+  19 |  } from "../../src/document/drawing";
+     |          ^
+  20 |  const legacy = {
+  21 |    format: "frade-draw",
+ ❯ TransformPluginContext._formatLog ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:47802:41
+ ❯ TransformPluginContext.error ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:47799:16
+ ❯ normalizeUrl ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:45942:23
+ ❯ ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:46061:37
+ ❯ TransformPluginContext.transform ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:45988:7
+ ❯ EnvironmentPluginContainer.transform ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:47597:18
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@6.1.0_@types+node@24.1_e3078f8745bbe9a8af5fcf03aceeeac0/node_modules/vite/dist/node/chunks/dep-CfG9u7Cn.js:41305:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  2 passed (2)
+   Start at  01:19:22
+   Duration  2.38s (transform 96ms, setup 48ms, collect 212ms, tests 14ms, environment 2.55s, prepare 747ms)
+
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in E:\dev\codex\frade\.worktrees\draw-
+  │ pages\packages\draw
+

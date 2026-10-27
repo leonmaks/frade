@@ -12,7 +12,7 @@ import {
 } from 'node:fs/promises'
 import { join } from 'node:path'
 import { inflateRawSync } from 'node:zlib'
-import { deserializeDocument } from '@frade/draw/document'
+import { deserializeDrawingDocument } from '@frade/draw/document'
 import { SaxesParser } from 'saxes'
 import {
   failure,
@@ -124,7 +124,7 @@ export class DiagramFiles {
       stat = await lstat(path)
     if (!stat.isFile() || stat.size > limit) fail('INVALID_DIAGRAM')
     const xml = await readFile(path, 'utf8')
-    if (entry.toLowerCase().endsWith('.frade')) deserializeDocument(xml)
+    if (entry.toLowerCase().endsWith('.frade')) deserializeDrawingDocument(xml)
     else validateDiagram(xml)
     return { path: entry, xml, revision: hash(xml) }
   }
@@ -222,7 +222,7 @@ export class DiagramFiles {
     if (Buffer.byteLength(xml) > limit) fail('INVALID_DIAGRAM')
     if (entry.toLowerCase().endsWith('.frade')) {
       try {
-        deserializeDocument(xml)
+        deserializeDrawingDocument(xml)
       } catch {
         fail('INVALID_DIAGRAM')
       }
