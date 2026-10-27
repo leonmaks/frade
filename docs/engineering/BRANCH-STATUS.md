@@ -1,4 +1,8 @@
-# Frade Draw multipage — archived; publication blocked
+# Frade Draw multipage — archived; publication repair in progress
+
+<!-- PUBLICATION-CURRENT-START -->
+Current owner: main / E:/dev/codex/frade / common .git; change frade-draw-multipage-publication-binding, original baseline515f5887. Latest PRE13 PASS (plan c3ca70b0, sol/high requested, backend NOT_CONFIRMED); candidate/packet/index stable. Exact20 origin dispatch and Windows native realpath implemented after meaningful RED. GREEN37 origin/lock +29 controls, UI typecheck/lint, synthetic historical11 callbacks (NOT normal general gate). Frozen5000ms/150ms/assertions unchanged. Both complete4ec runtime PASS profiles903/50/p95128.1/135.6 plus clean general timeout FAIL moved byte-exact to pre-native-path-resolution. New source checkpoint/full clean+working profiles/both normal gates/verification/POST pending. No push; original854 user paths preserved.
+<!-- PUBLICATION-CURRENT-END -->
 
 ## Publication revalidation — 2026-10-27
 
@@ -69,3 +73,21 @@ Uniform private desktop setup FAIL: p95154.6>150 retained,2/3 performance cases 
 
 
 2026-10-27 PRE10 full narrow plan PASS (c0b08c9a, sol/high requested, backend NOT_CONFIRMED), raw receipt/candidate/packet stable. Exact bridge-origin supplement implemented after actual unit RED. GREEN37 origin/lock, UI typecheck/lint PASS. Source-exact frozen callback preflight (synthetic unchanged prior pinned lock data, NOT general gate) completed exit0:236 inputs/8 reports/11 callbacks PASS. C9 original19 and LDE2bec pins unchanged. Old665/722 runtime profiles + clean general FAIL moved byte-exact to pre-bridge-adoption, no old current-proof reuse. New committed source snapshot/full8-role profiles/both pnpm check/verification/POST/push pending.
+
+2026-10-27 canonical4ec90b4c:665 exact Git inputs, source97e25728dc344e59ce4b7d2ec2d4c499b7ffc27c9c4d95d3acc3d992471fe0aa, no product source overlay. Both working/clean synthetic historical preflights exit0:236 inputs/8 reports/11 original callbacks PASS; normal global gates still pending. Fresh clean build/performance3 p95=128.1ms/draw237/runtime21/workspace344 PASS; visual/native/presentation pending. No push.
+
+2026-10-27 new4ec90b4c clean full8-role PASS:665 source97e25728...,7 executions/903 cases/50 presentation plan, p95=128.1ms. Historical236/11 preflight completed natural exit0 in clean and working. New working profile/general gates/verification/POST/push pending; original user/archive/vendor bytes preserved.
+
+2026-10-27 new4ec working profile FAIL at performance:150.199999988ms >150,2/3 cases PASS, sourcea42037a3... unchanged. Whole failed profile preserved byte-exact in failed-working-performance-1502. No retry/rounding/threshold or test relaxation. New clean665 runtime PASS128.1 retained but not full closure; general/POST/publication stopped for exact phase RCA. User WIP retained.
+
+2026-10-28 performance150.2 bounded RCA: built clean/working runtime JS/CSS semantics equal after asset-name/EOL normalization;28-request diagnostic identifies mandatory paint/scheduling variability, lower observer mean0.178ms rules out proposed redundant-reconcile cause. No production patch or acceptance retry. Preparing fresh PRE judgment on ONE complete unchanged working control; FAIL remains, no waiver/cause-fixed claim, no push/general/POST PASS.
+
+2026-10-28 PRE11 FAIL (packet completeness only): proposed one-control route defensible in principle, but actual original performance/reference fixtures and built JS/CSS omitted. No test run authorized/performed. Added exact fixtures/dependencies and6 renderer build copies pinned to actual build records; fresh PRE12 pending. Entire raw FAIL immutable, no product/test changes, no push.
+
+2026-10-28 PRE12 PASS, complete packet/stream, candidate and packet unchanged (plan15777b55, sol/high requested, backend NOT_CONFIRMED). Exactly one unchanged complete Default working control authorized; another failure stops this route. PRE11 FAIL preserved. No deterministic performance fix claimed, no publication approval. Original854 user paths/archive1977/vendor2851 audit PASS; both normal gates/verification/POST pending.
+
+2026-10-28 PRE12 one full unchanged Default working control PASS:722 sourcea42037a3, all8 roles/903 cases/50 presentation cases, p95=135.599999994ms. Clean665 source97e25728 runtime PASS128.1 unchanged and independent. All reports/failures retained; no cause-fixed claim. Fresh pair separately pinned and transferred proof/bootstrap only;854 user paths/1977 archive exact. Both normal pnpm check, verification and cumulative POST still pending; no push.
+
+2026-10-28 both current runtime profiles903 PASS pinned; clean normal pnpm check FAIL with2 of355 UI tests timing out at original5000ms (LDE0018144ms and tamper7437ms). No INPUT_HASH failures remain, other353 pass; clean full raw failure copied byte-exact. No timeout/assertion change; working normal gate/POST/publication stopped for origin-reader cost RCA.
+
+2026-10-28 timeout RCA measured8472 lstat/2900 realpath;4.3s native path resolution dominates. Native-only and memo/duplicate-read probes insufficient (>5s tamper); selected exact20 dispatch + Windows native probe1742ms first/3490ms tamper with all11 assertions. No implementation yet. New spec/plan/RED scope regression prepared; prior4ec runtime proofs superseded by test changes and retained. Fresh PRE13 required, all timeouts/150ms/frozen authorities unchanged.

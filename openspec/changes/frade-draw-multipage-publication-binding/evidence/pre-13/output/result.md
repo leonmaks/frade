@@ -1,0 +1,5 @@
+GATE_STATUS: PASS
+
+The proposed dispatch contains exactly the 19 paths in the pinned origin manifest plus the Draw.io bridge. For other paths, it returns the same live Buffer after path validation; the unchanged LDE verifier still reads and hashes all 236 inputs and 8 reports. The proposed Windows resolver change preserves the existing containment checks. No source drift or verifier coverage gap was found in the reviewed scope.
+
+This is a **PRE design decision**, not implementation acceptance. The existing normal check still fails its unchanged 5000 ms deadline, and the prospective timings are diagnostic only. After implementation, both source profiles require fresh full Default runs, both normal checks, verification, and cumulative POST. The requested reviewer backend remains **NOT_CONFIRMED**.

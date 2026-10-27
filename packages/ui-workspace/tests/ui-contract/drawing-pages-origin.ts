@@ -8,6 +8,31 @@ import {
   verifyPublicationInput,
   type PublicationInput,
 } from '../../../../tests/ui-contract/drawing-pages-publication.mjs'
+const resolveRealpath = process.platform === 'win32' ? realpathSync.native : realpathSync
+/** Dispatch only; the original manifest/bytes remain the adoption authority. */
+export const drawingPagesOriginScope: readonly string[] = Object.freeze([
+  "apps/desktop/src/main/drawio-bridge.ts",
+  "apps/desktop/src/main/drawio-theme-bridge.ts",
+  "packages/draw/src/document/fileAdapter.ts",
+  "packages/draw/src/document/serialize.ts",
+  "packages/draw/src/editor/DiagramEditor.tsx",
+  "packages/draw/src/index.ts",
+  "packages/draw/src/routing/perimeter/ellipse.ts",
+  "packages/draw/src/style.css",
+  "packages/runtime-node/src/diagram-files.ts",
+  "packages/ui-workspace/src/DiagramView.tsx",
+  "packages/ui-workspace/src/FradeDiagramView.tsx",
+  "packages/ui-workspace/src/design/theme/editorPresentation.css",
+  "packages/ui-workspace/src/design/theme/rootParticipant.ts",
+  "packages/ui-workspace/src/diagramContent.ts",
+  "packages/ui-workspace/src/styles.css",
+  "packages/ui-workspace/src/useBundleManager.tsx",
+  "packages/ui-workspace/tokens/drawio-editor-source.json",
+  "pnpm-lock.yaml",
+  "scripts/ui/drawio-editor-style.mjs",
+  "tests/ui-contract/light-diagram-editor.test.mjs"
+])
+const originScope = new Set(drawingPagesOriginScope)
 const owner = 'openspec/changes/frade-draw-multipage'
 const manifestName = '/evidence/source-adoption-manifest.json'
 const baseline = 'e54cf0c1e4e70ed833398c673ea3140b6f10469e'
@@ -42,13 +67,13 @@ function safeRelative(file: string) {
 function safePath(root: string, file: string) {
   safeRelative(file)
   const base = resolve(root)
-  demand(!lstatSync(base).isSymbolicLink() && realpathSync(base) === base, 'UNSAFE_ROOT')
+  demand(!lstatSync(base).isSymbolicLink() && resolveRealpath(base) === base, 'UNSAFE_ROOT')
   let current = base
   for (const part of file.split('/')) {
     current = resolve(current, part)
     demand(!lstatSync(current).isSymbolicLink(), 'UNSAFE_LINK')
   }
-  const child = relative(base, realpathSync(current))
+  const child = relative(base, resolveRealpath(current))
   demand(child && !child.startsWith('..') && !isAbsolute(child), 'UNSAFE_FILE')
   return current
 }
@@ -209,6 +234,8 @@ export function createDrawingPagesOriginReader(options: Options) {
   }
 }
 export function readDrawingPagesOrigin(root: string, file: string, live: Buffer) {
+  safeRelative(file)
+  if (!originScope.has(file)) return live
   const physicalOwner = locateDrawingPagesOriginOwner(root)
   const manifest = safeRead(root, physicalOwner + manifestName)
   return createDrawingPagesOriginReader({

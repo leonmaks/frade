@@ -1,4 +1,4 @@
 // Trusted bootstrap pin: reviewed separately; not included in its own source digest.
 export const drawingPagesAdoptionManifestSha256 = 'c9c06d7b1a13da36a282d24bf2ed465dfdab91f0711970ec8dc3052673c4b309'
-export const drawingPagesCleanPublicationManifestSha256 = 'e4fd5064a86d4c0ddccd7e6038425f5713ce35e77d4e2262a4f0c9086bf29ed4'
-export const drawingPagesWorkingPublicationManifestSha256 = '627186c7ee8c2067650bbb8a8605cc111be0d26e0ccc8354ce43aef093962bca'
+export const drawingPagesCleanPublicationManifestSha256 = '0adc790dd004d318e3b8133da8f740dda8611032fc994cd98cd3c6cf707466dc'
+export const drawingPagesWorkingPublicationManifestSha256 = '9ed5491ec2e786236c7f778749ba6eb5dd23d7db915baef35635f9af3fc31914'

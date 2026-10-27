@@ -19,6 +19,7 @@ import { join, dirname, resolve, sep } from 'node:path'
 import {
   createDrawingPagesOriginReader,
   locateDrawingPagesOriginOwner,
+  readDrawingPagesOrigin,
 } from './drawing-pages-origin'
 const prefix = 'openspec/changes/frade-draw-multipage'
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
@@ -213,6 +214,24 @@ describe('closed drawing-page adoption preserves historical proof and rejects un
       if (sha(read(file, live)) !== sha(f.original)) throw Error('ORIGINAL_SOURCE_DRIFT')
     }
     expect(() => verify(f.file + '.unknown', f.live)).toThrow('ORIGINAL_SOURCE_DRIFT')
+    // Unowned bytes never consume adoption authority; downstream hashes still reject drift.
+    const authority = readFileSync(new URL('../../../../openspec/changes/archive/2026-10-27-frade-draw-multipage/evidence/source-adoption-manifest.json', import.meta.url))
+    expect(sha(authority)).toBe(drawingPagesAdoptionManifestSha256)
+    const owned = new Set<string>([...JSON.parse(authority.toString()).entries.map((entry: {file:string}) => entry.file), 'apps/desktop/src/main/drawio-bridge.ts'])
+    for (const file of owned)
+      if (file === 'pnpm-lock.yaml')
+        expect(() => readDrawingPagesOrigin(f.root, file, f.live)).toThrow(/ENOENT/)
+      else expect(() => readDrawingPagesOrigin(f.root, file, f.live)).toThrow('MANIFEST_HASH')
+    const lde = JSON.parse(readFileSync(new URL('../../../../openspec/changes/archive/2026-10-26-frade-light-diagram-editor/evidence/upstream-bdd-bindings-20261026/bindings-manifest-portability.json', import.meta.url), 'utf8'))
+    const unowned = [...lde.inputs.map((input:{file:string})=>input.file), ...Object.values(lde.reports).map((report: unknown)=>(report as {file:string}).file), ...[...owned].map(file=>file+'.unknown')].filter(file=>!owned.has(file))
+    for (const file of unowned) {
+      const actual = readDrawingPagesOrigin(f.root, file, f.live)
+      expect(actual).toBe(f.live)
+      expect(() => { if (sha(actual) !== sha(f.original)) throw Error('ORIGINAL_SOURCE_DRIFT') }).toThrow('ORIGINAL_SOURCE_DRIFT')
+    }
+    for (const file of ['../outside', 'packages//source.ts', 'C:/outside', 'packages\\outside.ts'])
+      expect(() => readDrawingPagesOrigin(f.root, file, f.live)).toThrow('UNSAFE_PATH')
+
   })
   it('rejects leaf links without reading an outside original', () => {
     const f = fixture()

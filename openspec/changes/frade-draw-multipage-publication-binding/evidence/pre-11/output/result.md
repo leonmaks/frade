@@ -1,0 +1,7 @@
+GATE_STATUS: FAIL
+
+**One unchanged Default working control is a defensible bounded revalidation in principle.** The preserved 100 request result is an actual failure: p95 was 150.199999988 ms against 150 ms. The 28 request phase probe and separate observer probe support a scheduling variability hypothesis; they do not prove a product fix or require a speculative source patch.
+
+This PRE cannot authorize that run because the packet omits the **original performance fixture** and reference fixture named in the failed report. Their hashes show the clean and working fixtures match, but the actual assertions and measurement path cannot be inspected as requested. The packet also omits the built renderer JS/CSS needed to independently verify the claimed normalized equivalence. The packet manifest treats omitted review inputs as a blocker.
+
+The next bounded step is to supply those exact, hash pinned fixture and build bytes for a confined PRE review. If that review passes, run **one** complete unchanged working control; another failure stops this route. The historical FUI005 incident and current performance instability remain unresolved risks for normal gates and cumulative POST. This PRE is not final closure.

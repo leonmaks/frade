@@ -1,0 +1,5 @@
+GATE_STATUS: PASS
+
+**PRE accepts one complete, unchanged Default working control** before the original normal gates and cumulative POST. The 150.199999988 ms result remains an actual failure. The pinned build copies show equivalent renderer JS, CSS and HTML after the stated normalization, with matching main and preload hashes. The bounded probes show substantial paint and scheduling latency while the measured observer work is tiny. They support a revalidation decision; they do not establish a deterministic product cause or a fix.
+
+Run the original full profile once, with its unchanged 150 ms threshold, 20 warmups and 100 samples. Keep the failed report and the clean profile independent; use the clean proof only while its exact source and control bytes remain unchanged. **If the working control fails again, stop this route** and investigate that failure before another acceptance run. Normal gates and cumulative POST must still assess both the performance instability and the unresolved historical FUI005 incident. This PRE is not publication or final closure.

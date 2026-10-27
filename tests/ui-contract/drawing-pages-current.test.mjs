@@ -5,14 +5,37 @@ import {
   validateExecution,
   verifyInputBytes,
   currentInputFiles,
+  safeBytes,
 } from './drawing-pages-current.mjs'
 import { publicationByteForms } from './drawing-pages-adoption.mjs'
-import { mkdtemp, mkdir, readFile, writeFile, realpath, stat, unlink, rm } from 'node:fs/promises'
+import { mkdtemp, mkdir, readFile, writeFile, realpath, stat, unlink, rm, rename, symlink } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { spawnSync } from 'node:child_process'
 import { generateDrawioEditor } from '../../scripts/ui/drawio-editor-style.mjs'
+
+test('current safe reads observe changed bytes and reject a newly linked Unicode ancestor', async () => {
+  const parent = await realpath(tmpdir())
+  const directory = await realpath(await mkdtemp(join(parent, 'frade-current-safe-')))
+  try {
+    const folder = join(directory, 'nested space Ω'), retained = join(directory, 'retained')
+    await mkdir(folder)
+    const file = 'nested space Ω/source.txt'
+    await writeFile(join(directory, file), 'before')
+    assert.equal(safeBytes(directory, file).toString(), 'before')
+    await writeFile(join(directory, file), 'after')
+    assert.equal(safeBytes(directory, file).toString(), 'after')
+    assert.throws(() => safeBytes(directory, '../outside'), /CURRENT_UNSAFE_PATH/)
+    await rename(folder, retained)
+    await symlink(retained, folder, process.platform === 'win32' ? 'junction' : 'dir')
+    assert.throws(() => safeBytes(directory, file), /CURRENT_UNSAFE_LINK/)
+  } finally {
+    if (await realpath(directory) !== directory || dirname(directory) !== parent || !directory.startsWith(join(parent, 'frade-current-safe-')))
+      throw Error('Unverified safe-read fixture cleanup')
+    await rm(directory, {recursive:true, force:true})
+  }
+})
 
 const checkoutRule = 'packages/ui-workspace/tokens/.gitattributes'
 const generatedInventory = 'packages/ui-workspace/tokens/drawio-editor-source.json'

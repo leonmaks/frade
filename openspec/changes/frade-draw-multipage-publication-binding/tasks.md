@@ -14,6 +14,8 @@
 
 - [x] 2.5 Fresh PRE and RED/GREEN for exact bridge-origin supplement; all236 historical inputs and11 frozen LDE callbacks preflight before new expensive profiles.
 
+- [x] 2.6 Fresh PRE and regression-first exact20 adoption dispatch / Windows native path-resolution repair; preserve every path/link/hash assertion and frozen5000ms callbacks.
+
 ## 3. Exact snapshot evidence and verification
 
 - [x] 3.1 Create clean isolated snapshot from committed base plus explicit owned transfers; frozen dependency install and transferred path/hash audit prove no WIP source publication.

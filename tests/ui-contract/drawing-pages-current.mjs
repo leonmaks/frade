@@ -3,6 +3,8 @@ import { resolve, sep } from 'node:path'
 import { createHash } from 'node:crypto'
 import { publicationByteForms, canonicalPublicationBytes } from './drawing-pages-adoption.mjs'
 
+const resolveRealpath = process.platform === 'win32' ? realpathSync.native : realpathSync
+
 export const evidenceOwner = 'openspec/changes/frade-draw-multipage/evidence/'
 export const bootstrapPin = 'packages/ui-workspace/tests/ui-contract/drawing-pages-adoption-pin.ts'
 export const executionRoles = [
@@ -32,7 +34,7 @@ export function safeBytes(root, file) {
     path = resolve(path, part)
     demand(!lstatSync(path).isSymbolicLink(), 'CURRENT_UNSAFE_LINK')
   }
-  demand(realpathSync(path).startsWith(realpathSync(root) + sep), 'CURRENT_PATH_ESCAPE')
+  demand(resolveRealpath(path).startsWith(resolveRealpath(root) + sep), 'CURRENT_PATH_ESCAPE')
   return readFileSync(path)
 }
 /** Exact authored/runtime/test closure, excluding only the separately reviewed bootstrap pin. */
