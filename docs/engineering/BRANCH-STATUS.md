@@ -24,3 +24,5 @@ UI evidence/report: openspec/changes/frade-draw-multipage/evidence/main-integrat
 Windows/Node24.18.0/Electron44.4.5 production build in main. Shared policyv1.1 releasea6829c6d731b73a23dce8ada25f89d4aa2fb37a1a75e568314e956fa647b3da5 unchanged. Approved review pair PRE/POST gpt-6-sol/high; historical actual backend/effort NOT_CONFIRMED. Right-panel open request QUEUED, visibility unconfirmed.
 
 Next: deliver the running verified panel and evidence. Full combined-main closure needs bounded consumer control-compatibility revalidation preserving dirty/untracked routing ownership and immutable origins. No archive/next feature/green combined gate claimed. READY_FOR_VERIFY: NO for combined-main engineering closure.
+
+Checkpoint publication: integration evidence/report and current blocker committed locally as 707fbd3031ae8962ddd4dbf165dd77745b32bbb8 on main. Git status after commit contains only the original five unrelated tracked changes; they were excluded from the commit. This final status update records that publication; no push/archive/cumulative gate progression.
