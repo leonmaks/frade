@@ -1,0 +1,763 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'async function diagramFixture(\r\n' +
++   '  kind                    ,\r\n' +
++   '  presentation                                                                                   ,\r\n' +
++   '  welcome                                ,\r\n' +
++   ') {\r\n' +
++   '  const fixture = await createKaFixture(),\r\n' +
++   "    folder = join(fixture.dataRoot, '_diagrams')\r\n" +
++   '  await mkdir(folder, { recursive: true })\r\n' +
++   "  const name = kind === 'native' ? 'Workshop.frade' : 'Workshop.drawio'\r\n" +
++   '  const authoredDocument =\r\n' +
++   "    kind === 'native'\r\n" +
++   '      ? JSON.stringify(\r\n' +
++   '          {\r\n' +
++   "            format: 'frade-draw',\r\n" +
++   '            version: 1,\r\n' +
++   "            metadata: { id: 'p01-authored', name: 'Workshop' },\r\n" +
++   '            graph: {\r\n' +
++   '              nodes: [\r\n' +
++   '                {\r\n' +
++   "                  id: 'authored',\r\n" +
++   "                  shape: 'rect',\r\n" +
++   '                  x: 140,\r\n' +
++   '                  y: 120,\r\n' +
++   '                  width: 180,\r\n' +
++   '                  height: 80,\r\n' +
++   "                  label: 'Authored paint',\r\n" +
++   "                  style: { fill: '#77AADD', stroke: '#334455' },\r\n" +
++   "                  labelStyle: { fill: '#112244' },\r\n" +
++   '                },\r\n' +
++   '              ],\r\n' +
++   '              edges: [],\r\n' +
++   '            },\r\n' +
++   '            viewport: { zoom: 1, pan: { x: 0, y: 0 } },\r\n' +
++   '          },\r\n' +
++   '          null,\r\n' +
++   '          2,\r\n' +
++   '        )\r\n' +
++   `      : '<mxfile><diagram id="main" name="Workshop"><mxGraphModel grid="1" gridSize="10" background="#F7E2C2" gridColor="#112233" page="1" pageWidth="700" pageHeight="500"><root><mxCell id="0"/><mxCell id="1" parent="0"/><mxCell id="authored" value="Authored paint" style="rounded=0;fillColor=#77AADD;strokeColor=#334455;fontColor=#112244;" vertex="1" parent="1"><mxGeometry x="140" y="120" width="180" height="80" as="geometry"/></mxCell></root></mxGraphModel></diagram></mxfile>'\r\n` +
++   '  const file = join(folder, name)\r\n' +
++   '  await writeFile(file, authoredDocument)\r\n' +
++   '  if (presentation) {\r\n' +
++   "    const profile = join(fixture.destination, 'p01-' + kind + '-profile')\r\n" +
++   '    await mkdir(profile, { recursive: true })\r\n' +
++   '    await writeFile(\r\n' +
++   "      join(profile, 'presentation-settings.json'),\r\n" +
++   '      JSON.stringify({\r\n' +
++   '        version: 1,\r\n' +
++   '        revision: 0,\r\n' +
++   '        generation: 0,\r\n' +
++   "        transactionId: 'matrix/boot',\r\n" +
++   '        selection: {\r\n' +
++   '          ...presentation,\r\n' +
++   '          preferred: {\r\n' +
++   "            light: 'frade.builtin/light',\r\n" +
++   "            dark: 'frade.builtin/dark',\r\n" +
++   "            'high-contrast': 'frade.builtin/high-contrast',\r\n" +
++   '          },\r\n' +
++   '        },\r\n' +
++   '      }),\r\n' +
++   '    )\r\n' +
++   '  }\r\n' +
++   '  const app = await electron.launch({\r\n' +
++   "    args: [resolve('out/main/index.cjs')],\r\n" +
++   "    env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'p01-' + kind + '-profile') },\r\n" +
++   '  })\r\n' +
++   '  const page = await app.firstWindow()\r\n' +
++   '  await page.addInitScript(() => {\r\n' +
++   '    const telemetry = ((window       ).__p01Telemetry = {\r\n' +
++   '      messages: []             ,\r\n' +
++   '      paints: []            ,\r\n' +
++   '      visibility: []             ,\r\n' +
++   '    })\r\n' +
++   '    let p01RefuseArmed = false, p01RefusedIntent                    \r\n' +
++   "    Object.defineProperty(window, '__p01RefuseDark', {\r\n" +
++   '      configurable: true, enumerable: true,\r\n' +
++   '      get: () => p01RefuseArmed,\r\n' +
++   '      set: (value         ) => { p01RefuseArmed = value; p01RefusedIntent = undefined },\r\n' +
++   '    })\r\n' +
++   '    const tick = (now        ) => {\r\n' +
++   '      if (telemetry.paints.length > 999) telemetry.paints.shift()\r\n' +
++   '      telemetry.paints.push(now)\r\n' +
++   '      requestAnimationFrame(tick)\r\n' +
++   '    }\r\n' +
++   '    requestAnimationFrame(tick)\r\n' +
++   "    document.addEventListener('visibilitychange', () =>\r\n" +
++   '      telemetry.visibility.push({ time: performance.now(), state: document.visibilityState }),\r\n' +
++   '    )\r\n' +
++   "    window.addEventListener('message', (event) => {\r\n" +
++   '      let data\r\n' +
++   '      try {\r\n' +
++   "        data = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\r\n" +
++   '      } catch {\r\n' +
++   '        return\r\n' +
++   '      }\r\n' +
++   '      if (\r\n' +
++   "        data?.action === 'fradePresentation' &&\r\n" +
++   "        data.operation === 'prepare' &&\r\n" +
++   "        data.context?.phase === 'prepare' &&\r\n" +
++   "        data.snapshot?.kind === 'light' &&\r\n" +
++   '        (window       ).__p01RefuseDark &&\r\n' +
++   "        typeof data.context?.requestId === 'string' &&\r\n" +
++   '        (p01RefusedIntent === undefined || p01RefusedIntent === data.context.requestId)\r\n' +
++   '      ) {\r\n' +
++   '        p01RefusedIntent = data.context.requestId\r\n' +
++   '        event.stopImmediatePropagation()\r\n' +
++   '        parent.postMessage(\r\n' +
++   '          JSON.stringify({\r\n' +
++   "            event: 'fradePresentation',\r\n" +
++   '            version: 1,\r\n' +
++   '            participantId: data.participantId,\r\n' +
++   '            participantGeneration: data.participantGeneration,\r\n' +
++   '            context: data.context,\r\n' +
++   "            operation: 'prepare',\r\n" +
++   "            status: 'REFUSED',\r\n" +
++   "            message: 'Controlled current frame refusal',\r\n" +
++   '          }),\r\n' +
++   "          'frade://app',\r\n" +
++   '        )\r\n' +
++   '      }\r\n' +
++   "      if (data?.action === 'fradePresentation' || data?.event === 'fradePresentation')\r\n" +
++   '        telemetry.messages.push({ time: performance.now(), data })\r\n' +
++   '    })\r\n' +
++   "    if (location.host !== 'drawio') return\r\n" +
++   "    window.addEventListener('message', (event) => {\r\n" +
++   '      let value\r\n' +
++   '      try {\r\n' +
++   "        value = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\r\n" +
++   '      } catch {\r\n' +
++   '        return\r\n' +
++   '      }\r\n' +
++   '      const Editor = (window       ).EditorUi\r\n' +
++   "      if (value?.action !== 'configure' || !Editor || Editor.prototype.init.__p01Capture) return\r\n" +
++   '      const original = Editor.prototype.init\r\n' +
++   '      const capture = function (           ...args           ) {\r\n' +
++   '        const result = original.apply(this, args)\r\n' +
++   '        ;(window       ).__p01Ui = this\r\n' +
++   '        return result\r\n' +
++   '      }\r\n' +
++   '      capture.__p01Capture = true\r\n' +
++   '      Editor.prototype.init = capture\r\n' +
++   '    })\r\n' +
++   '  })\r\n' +
++   `  await expect(page.locator('.wb-statusbar [role="status"]')).toHaveText('Backend: ready')\r\n` +
++   '  if (welcome) await welcome(page)\r\n' +
++   '  await app.evaluate(\r\n' +
++   '    ({ dialog }, paths) => {\r\n' +
++   '      let index = 0\r\n' +
++   '      dialog.showOpenDialog = (async () => ({\r\n' +
++   '        canceled: false,\r\n' +
++   '        filePaths: [paths[index++]],\r\n' +
++   '      }))                                \r\n' +
++   '    },\r\n' +
++   '    [fixture.dataRoot, fixture.metadataRoot],\r\n' +
++   '  )\r\n' +
++   "  await page.getByRole('button', { name: 'Открыть KA', exact: true }).click()\r\n" +
++   "  await expect(page.locator('.status-message')).toContainText('138 объектов', { timeout: 30000 })\r\n" +
++   "  const diagrams = page.getByRole('treeitem').filter({ hasText: /^_diagrams$/ })\r\n" +
++   '  await diagrams.click()\r\n' +
++   '  await page\r\n' +
++   "    .getByRole('treeitem')\r\n" +
++   "    .filter({ hasText: new RegExp('^' + name.replace('.', '\\\\.') + '$') })\r\n" +
++   '    .dblclick()\r\n' +
++   '  await expect(\r\n' +
++   '    page\r\n' +
++   "      .locator('.repository-diagram .editor-actions')\r\n" +
++   "      .getByRole('button', { name: 'Сохранить', exact: true }),\r\n" +
++   '  ).toBeEnabled({ timeout: 20000 })\r\n' +
++   "  if (kind === 'frame') {\r\n" +
++   "    await expect(page.locator('iframe')).toHaveAttribute(\r\n" +
++   "      'data-frade-revision',\r\n" +
++   "      (await page.locator('html').getAttribute('data-frade-revision'))          ,\r\n" +
++   '    )\r\n' +
++   "    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()\r\n" +
++   "    await expect(page.locator('iframe')).toBeVisible()\r\n" +
++   '    await page\r\n' +
++   "      .frameLocator('iframe')\r\n" +
++   "      .locator('body')\r\n" +
++   '      .evaluate(async () => {\r\n' +
++   '        await document.fonts.ready\r\n' +
++   '        await new Promise      ((resolve) =>\r\n' +
++   '          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),\r\n' +
++   '        )\r\n' +
++   '      })\r\n' +
++   "    await expect(page.locator('.diagram-error')).toHaveCount(0)\r\n" +
++   '  }\r\n' +
++   '  return { fixture, app, page, file, name }\r\n' +
+- 'async function diagramFixture(\n' +
+-   '  kind                    ,\n' +
+-   '  presentation                                                                                   ,\n' +
+-   '  welcome                                ,\n' +
+-   ') {\n' +
+-   '  const fixture = await createKaFixture(),\n' +
+-   "    folder = join(fixture.dataRoot, '_diagrams')\n" +
+-   '  await mkdir(folder, { recursive: true })\n' +
+-   "  const name = kind === 'native' ? 'Workshop.frade' : 'Workshop.drawio'\n" +
+-   '  const authoredDocument =\n' +
+-   "    kind === 'native'\n" +
+-   '      ? JSON.stringify(\n' +
+-   '          {\n' +
+-   "            format: 'frade-draw',\n" +
+-   '            version: 1,\n' +
+-   "            metadata: { id: 'p01-authored', name: 'Workshop' },\n" +
+-   '            graph: {\n' +
+-   '              nodes: [\n' +
+-   '                {\n' +
+-   "                  id: 'authored',\n" +
+-   "                  shape: 'rect',\n" +
+-   '                  x: 140,\n' +
+-   '                  y: 120,\n' +
+-   '                  width: 180,\n' +
+-   '                  height: 80,\n' +
+-   "                  label: 'Authored paint',\n" +
+-   "                  style: { fill: '#77AADD', stroke: '#334455' },\n" +
+-   "                  labelStyle: { fill: '#112244' },\n" +
+-   '                },\n' +
+-   '              ],\n' +
+-   '              edges: [],\n' +
+-   '            },\n' +
+-   '            viewport: { zoom: 1, pan: { x: 0, y: 0 } },\n' +
+-   '          },\n' +
+-   '          null,\n' +
+-   '          2,\n' +
+-   '        )\n' +
+-   `      : '<mxfile><diagram id="main" name="Workshop"><mxGraphModel grid="1" gridSize="10" background="#F7E2C2" gridColor="#112233" page="1" pageWidth="700" pageHeight="500"><root><mxCell id="0"/><mxCell id="1" parent="0"/><mxCell id="authored" value="Authored paint" style="rounded=0;fillColor=#77AADD;strokeColor=#334455;fontColor=#112244;" vertex="1" parent="1"><mxGeometry x="140" y="120" width="180" height="80" as="geometry"/></mxCell></root></mxGraphModel></diagram></mxfile>'\n` +
+-   '  const file = join(folder, name)\n' +
+-   '  await writeFile(file, authoredDocument)\n' +
+-   '  if (presentation) {\n' +
+-   "    const profile = join(fixture.destination, 'p01-' + kind + '-profile')\n" +
+-   '    await mkdir(profile, { recursive: true })\n' +
+-   '    await writeFile(\n' +
+-   "      join(profile, 'presentation-settings.json'),\n" +
+-   '      JSON.stringify({\n' +
+-   '        version: 1,\n' +
+-   '        revision: 0,\n' +
+-   '        generation: 0,\n' +
+-   "        transactionId: 'matrix/boot',\n" +
+-   '        selection: {\n' +
+-   '          ...presentation,\n' +
+-   '          preferred: {\n' +
+-   "            light: 'frade.builtin/light',\n" +
+-   "            dark: 'frade.builtin/dark',\n" +
+-   "            'high-contrast': 'frade.builtin/high-contrast',\n" +
+-   '          },\n' +
+-   '        },\n' +
+-   '      }),\n' +
+-   '    )\n' +
+-   '  }\n' +
+-   '  const app = await electron.launch({\n' +
+-   "    args: [resolve('out/main/index.cjs')],\n" +
+-   "    env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'p01-' + kind + '-profile') },\n" +
+-   '  })\n' +
+-   '  const page = await app.firstWindow()\n' +
+-   '  await page.addInitScript(() => {\n' +
+-   '    const telemetry = ((window       ).__p01Telemetry = {\n' +
+-   '      messages: []             ,\n' +
+-   '      paints: []            ,\n' +
+-   '      visibility: []             ,\n' +
+-   '    })\n' +
+-   '    let p01RefuseArmed = false, p01RefusedIntent                    \n' +
+-   "    Object.defineProperty(window, '__p01RefuseDark', {\n" +
+-   '      configurable: true, enumerable: true,\n' +
+-   '      get: () => p01RefuseArmed,\n' +
+-   '      set: (value         ) => { p01RefuseArmed = value; p01RefusedIntent = undefined },\n' +
+-   '    })\n' +
+-   '    const tick = (now        ) => {\n' +
+-   '      if (telemetry.paints.length > 999) telemetry.paints.shift()\n' +
+-   '      telemetry.paints.push(now)\n' +
+-   '      requestAnimationFrame(tick)\n' +
+-   '    }\n' +
+-   '    requestAnimationFrame(tick)\n' +
+-   "    document.addEventListener('visibilitychange', () =>\n" +
+-   '      telemetry.visibility.push({ time: performance.now(), state: document.visibilityState }),\n' +
+-   '    )\n' +
+-   "    window.addEventListener('message', (event) => {\n" +
+-   '      let data\n' +
+-   '      try {\n' +
+-   "        data = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\n" +
+-   '      } catch {\n' +
+-   '        return\n' +
+-   '      }\n' +
+-   '      if (\n' +
+-   "        data?.action === 'fradePresentation' &&\n" +
+-   "        data.operation === 'prepare' &&\n" +
+-   "        data.context?.phase === 'prepare' &&\n" +
+-   "        data.snapshot?.kind === 'light' &&\n" +
+-   '        (window       ).__p01RefuseDark &&\n' +
+-   "        typeof data.context?.requestId === 'string' &&\n" +
+-   '        (p01RefusedIntent === undefined || p01RefusedIntent === data.context.requestId)\n' +
+-   '      ) {\n' +
+-   '        p01RefusedIntent = data.context.requestId\n' +
+-   '        event.stopImmediatePropagation()\n' +
+-   '        parent.postMessage(\n' +
+-   '          JSON.stringify({\n' +
+-   "            event: 'fradePresentation',\n" +
+-   '            version: 1,\n' +
+-   '            participantId: data.participantId,\n' +
+-   '            participantGeneration: data.participantGeneration,\n' +
+-   '            context: data.context,\n' +
+-   "            operation: 'prepare',\n" +
+-   "            status: 'REFUSED',\n" +
+-   "            message: 'Controlled current frame refusal',\n" +
+-   '          }),\n' +
+-   "          'frade://app',\n" +
+-   '        )\n' +
+-   '      }\n' +
+-   "      if (data?.action === 'fradePresentation' || data?.event === 'fradePresentation')\n" +
+-   '        telemetry.messages.push({ time: performance.now(), data })\n' +
+-   '    })\n' +
+-   "    if (location.host !== 'drawio') return\n" +
+-   "    window.addEventListener('message', (event) => {\n" +
+-   '      let value\n' +
+-   '      try {\n' +
+-   "        value = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\n" +
+-   '      } catch {\n' +
+-   '        return\n' +
+-   '      }\n' +
+-   '      const Editor = (window       ).EditorUi\n' +
+-   "      if (value?.action !== 'configure' || !Editor || Editor.prototype.init.__p01Capture) return\n" +
+-   '      const original = Editor.prototype.init\n' +
+-   '      const capture = function (           ...args           ) {\n' +
+-   '        const result = original.apply(this, args)\n' +
+-   '        ;(window       ).__p01Ui = this\n' +
+-   '        return result\n' +
+-   '      }\n' +
+-   '      capture.__p01Capture = true\n' +
+-   '      Editor.prototype.init = capture\n' +
+-   '    })\n' +
+-   '  })\n' +
+-   `  await expect(page.locator('.wb-statusbar [role="status"]')).toHaveText('Backend: ready')\n` +
+-   '  if (welcome) await welcome(page)\n' +
+-   '  await app.evaluate(\n' +
+-   '    ({ dialog }, paths) => {\n' +
+-   '      let index = 0\n' +
+-   '      dialog.showOpenDialog = (async () => ({\n' +
+-   '        canceled: false,\n' +
+-   '        filePaths: [paths[index++]],\n' +
+-   '      }))                                \n' +
+-   '    },\n' +
+-   '    [fixture.dataRoot, fixture.metadataRoot],\n' +
+-   '  )\n' +
+-   "  await page.getByRole('button', { name: 'Открыть KA', exact: true }).click()\n" +
+-   "  await expect(page.locator('.status-message')).toContainText('138 объектов', { timeout: 30000 })\n" +
+-   "  const diagrams = page.getByRole('treeitem').filter({ hasText: /^_diagrams$/ })\n" +
+-   '  await diagrams.click()\n' +
+-   '  await page\n' +
+-   "    .getByRole('treeitem')\n" +
+-   "    .filter({ hasText: new RegExp('^' + name.replace('.', '\\\\.') + '$') })\n" +
+-   '    .dblclick()\n' +
+-   '  await expect(\n' +
+-   '    page\n' +
+-   "      .locator('.repository-diagram .editor-actions')\n" +
+-   "      .getByRole('button', { name: 'Сохранить', exact: true }),\n" +
+-   '  ).toBeEnabled({ timeout: 20000 })\n' +
+-   "  if (kind === 'frame') {\n" +
+-   "    await expect(page.locator('iframe')).toHaveAttribute(\n" +
+-   "      'data-frade-revision',\n" +
+-   "      (await page.locator('html').getAttribute('data-frade-revision'))          ,\n" +
+-   '    )\n' +
+-   "    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()\n" +
+-   "    await expect(page.locator('iframe')).toBeVisible()\n" +
+-   '    await page\n' +
+-   "      .frameLocator('iframe')\n" +
+-   "      .locator('body')\n" +
+-   '      .evaluate(async () => {\n' +
+-   '        await document.fonts.ready\n' +
+-   '        await new Promise      ((resolve) =>\n' +
+-   '          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),\n' +
+-   '        )\n' +
+-   '      })\n' +
+-   "    await expect(page.locator('.diagram-error')).toHaveCount(0)\n" +
+-   '  }\n' +
+-   '  return { fixture, app, page, file, name }\n' +
+    '}'
+
+    at file:///E:/dev/codex/frade/openspec/changes/frade-draw-multipage-publication-binding/evidence/native-readiness-regression-check.mjs:18:39 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'async function diagramFixture(\r\n' +
+    '  kind                    ,\r\n' +
+    '  presentation                                                                                   ,\r\n' +
+    '  welcome                                ,\r\n' +
+    ') {\r\n' +
+    '  const fixture = await createKaFixture(),\r\n' +
+    "    folder = join(fixture.dataRoot, '_diagrams')\r\n" +
+    '  await mkdir(folder, { recursive: true })\r\n' +
+    "  const name = kind === 'native' ? 'Workshop.frade' : 'Workshop.drawio'\r\n" +
+    '  const authoredDocument =\r\n' +
+    "    kind === 'native'\r\n" +
+    '      ? JSON.stringify(\r\n' +
+    '          {\r\n' +
+    "            format: 'frade-draw',\r\n" +
+    '            version: 1,\r\n' +
+    "            metadata: { id: 'p01-authored', name: 'Workshop' },\r\n" +
+    '            graph: {\r\n' +
+    '              nodes: [\r\n' +
+    '                {\r\n' +
+    "                  id: 'authored',\r\n" +
+    "                  shape: 'rect',\r\n" +
+    '                  x: 140,\r\n' +
+    '                  y: 120,\r\n' +
+    '                  width: 180,\r\n' +
+    '                  height: 80,\r\n' +
+    "                  label: 'Authored paint',\r\n" +
+    "                  style: { fill: '#77AADD', stroke: '#334455' },\r\n" +
+    "                  labelStyle: { fill: '#112244' },\r\n" +
+    '                },\r\n' +
+    '              ],\r\n' +
+    '              edges: [],\r\n' +
+    '            },\r\n' +
+    '            viewport: { zoom: 1, pan: { x: 0, y: 0 } },\r\n' +
+    '          },\r\n' +
+    '          null,\r\n' +
+    '          2,\r\n' +
+    '        )\r\n' +
+    `      : '<mxfile><diagram id="main" name="Workshop"><mxGraphModel grid="1" gridSize="10" background="#F7E2C2" gridColor="#112233" page="1" pageWidth="700" pageHeight="500"><root><mxCell id="0"/><mxCell id="1" parent="0"/><mxCell id="authored" value="Authored paint" style="rounded=0;fillColor=#77AADD;strokeColor=#334455;fontColor=#112244;" vertex="1" parent="1"><mxGeometry x="140" y="120" width="180" height="80" as="geometry"/></mxCell></root></mxGraphModel></diagram></mxfile>'\r\n` +
+    '  const file = join(folder, name)\r\n' +
+    '  await writeFile(file, authoredDocument)\r\n' +
+    '  if (presentation) {\r\n' +
+    "    const profile = join(fixture.destination, 'p01-' + kind + '-profile')\r\n" +
+    '    await mkdir(profile, { recursive: true })\r\n' +
+    '    await writeFile(\r\n' +
+    "      join(profile, 'presentation-settings.json'),\r\n" +
+    '      JSON.stringify({\r\n' +
+    '        version: 1,\r\n' +
+    '        revision: 0,\r\n' +
+    '        generation: 0,\r\n' +
+    "        transactionId: 'matrix/boot',\r\n" +
+    '        selection: {\r\n' +
+    '          ...presentation,\r\n' +
+    '          preferred: {\r\n' +
+    "            light: 'frade.builtin/light',\r\n" +
+    "            dark: 'frade.builtin/dark',\r\n" +
+    "            'high-contrast': 'frade.builtin/high-contrast',\r\n" +
+    '          },\r\n' +
+    '        },\r\n' +
+    '      }),\r\n' +
+    '    )\r\n' +
+    '  }\r\n' +
+    '  const app = await electron.launch({\r\n' +
+    "    args: [resolve('out/main/index.cjs')],\r\n" +
+    "    env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'p01-' + kind + '-profile') },\r\n" +
+    '  })\r\n' +
+    '  const page = await app.firstWindow()\r\n' +
+    '  await page.addInitScript(() => {\r\n' +
+    '    const telemetry = ((window       ).__p01Telemetry = {\r\n' +
+    '      messages: []             ,\r\n' +
+    '      paints: []            ,\r\n' +
+    '      visibility: []             ,\r\n' +
+    '    })\r\n' +
+    '    let p01RefuseArmed = false, p01RefusedIntent                    \r\n' +
+    "    Object.defineProperty(window, '__p01RefuseDark', {\r\n" +
+    '      configurable: true, enumerable: true,\r\n' +
+    '      get: () => p01RefuseArmed,\r\n' +
+    '      set: (value         ) => { p01RefuseArmed = value; p01RefusedIntent = undefined },\r\n' +
+    '    })\r\n' +
+    '    const tick = (now        ) => {\r\n' +
+    '      if (telemetry.paints.length > 999) telemetry.paints.shift()\r\n' +
+    '      telemetry.paints.push(now)\r\n' +
+    '      requestAnimationFrame(tick)\r\n' +
+    '    }\r\n' +
+    '    requestAnimationFrame(tick)\r\n' +
+    "    document.addEventListener('visibilitychange', () =>\r\n" +
+    '      telemetry.visibility.push({ time: performance.now(), state: document.visibilityState }),\r\n' +
+    '    )\r\n' +
+    "    window.addEventListener('message', (event) => {\r\n" +
+    '      let data\r\n' +
+    '      try {\r\n' +
+    "        data = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\r\n" +
+    '      } catch {\r\n' +
+    '        return\r\n' +
+    '      }\r\n' +
+    '      if (\r\n' +
+    "        data?.action === 'fradePresentation' &&\r\n" +
+    "        data.operation === 'prepare' &&\r\n" +
+    "        data.context?.phase === 'prepare' &&\r\n" +
+    "        data.snapshot?.kind === 'light' &&\r\n" +
+    '        (window       ).__p01RefuseDark &&\r\n' +
+    "        typeof data.context?.requestId === 'string' &&\r\n" +
+    '        (p01RefusedIntent === undefined || p01RefusedIntent === data.context.requestId)\r\n' +
+    '      ) {\r\n' +
+    '        p01RefusedIntent = data.context.requestId\r\n' +
+    '        event.stopImmediatePropagation()\r\n' +
+    '        parent.postMessage(\r\n' +
+    '          JSON.stringify({\r\n' +
+    "            event: 'fradePresentation',\r\n" +
+    '            version: 1,\r\n' +
+    '            participantId: data.participantId,\r\n' +
+    '            participantGeneration: data.participantGeneration,\r\n' +
+    '            context: data.context,\r\n' +
+    "            operation: 'prepare',\r\n" +
+    "            status: 'REFUSED',\r\n" +
+    "            message: 'Controlled current frame refusal',\r\n" +
+    '          }),\r\n' +
+    "          'frade://app',\r\n" +
+    '        )\r\n' +
+    '      }\r\n' +
+    "      if (data?.action === 'fradePresentation' || data?.event === 'fradePresentation')\r\n" +
+    '        telemetry.messages.push({ time: performance.now(), data })\r\n' +
+    '    })\r\n' +
+    "    if (location.host !== 'drawio') return\r\n" +
+    "    window.addEventListener('message', (event) => {\r\n" +
+    '      let value\r\n' +
+    '      try {\r\n' +
+    "        value = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\r\n" +
+    '      } catch {\r\n' +
+    '        return\r\n' +
+    '      }\r\n' +
+    '      const Editor = (window       ).EditorUi\r\n' +
+    "      if (value?.action !== 'configure' || !Editor || Editor.prototype.init.__p01Capture) return\r\n" +
+    '      const original = Editor.prototype.init\r\n' +
+    '      const capture = function (           ...args           ) {\r\n' +
+    '        const result = original.apply(this, args)\r\n' +
+    '        ;(window       ).__p01Ui = this\r\n' +
+    '        return result\r\n' +
+    '      }\r\n' +
+    '      capture.__p01Capture = true\r\n' +
+    '      Editor.prototype.init = capture\r\n' +
+    '    })\r\n' +
+    '  })\r\n' +
+    `  await expect(page.locator('.wb-statusbar [role="status"]')).toHaveText('Backend: ready')\r\n` +
+    '  if (welcome) await welcome(page)\r\n' +
+    '  await app.evaluate(\r\n' +
+    '    ({ dialog }, paths) => {\r\n' +
+    '      let index = 0\r\n' +
+    '      dialog.showOpenDialog = (async () => ({\r\n' +
+    '        canceled: false,\r\n' +
+    '        filePaths: [paths[index++]],\r\n' +
+    '      }))                                \r\n' +
+    '    },\r\n' +
+    '    [fixture.dataRoot, fixture.metadataRoot],\r\n' +
+    '  )\r\n' +
+    "  await page.getByRole('button', { name: 'Открыть KA', exact: true }).click()\r\n" +
+    "  await expect(page.locator('.status-message')).toContainText('138 объектов', { timeout: 30000 })\r\n" +
+    "  const diagrams = page.getByRole('treeitem').filter({ hasText: /^_diagrams$/ })\r\n" +
+    '  await diagrams.click()\r\n' +
+    '  await page\r\n' +
+    "    .getByRole('treeitem')\r\n" +
+    "    .filter({ hasText: new RegExp('^' + name.replace('.', '\\\\.') + '$') })\r\n" +
+    '    .dblclick()\r\n' +
+    '  await expect(\r\n' +
+    '    page\r\n' +
+    "      .locator('.repository-diagram .editor-actions')\r\n" +
+    "      .getByRole('button', { name: 'Сохранить', exact: true }),\r\n" +
+    '  ).toBeEnabled({ timeout: 20000 })\r\n' +
+    "  if (kind === 'frame') {\r\n" +
+    "    await expect(page.locator('iframe')).toHaveAttribute(\r\n" +
+    "      'data-frade-revision',\r\n" +
+    "      (await page.locator('html').getAttribute('data-frade-revision'))          ,\r\n" +
+    '    )\r\n' +
+    "    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()\r\n" +
+    "    await expect(page.locator('iframe')).toBeVisible()\r\n" +
+    '    await page\r\n' +
+    "      .frameLocator('iframe')\r\n" +
+    "      .locator('body')\r\n" +
+    '      .evaluate(async () => {\r\n' +
+    '        await document.fonts.ready\r\n' +
+    '        await new Promise      ((resolve) =>\r\n' +
+    '          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),\r\n' +
+    '        )\r\n' +
+    '      })\r\n' +
+    "    await expect(page.locator('.diagram-error')).toHaveCount(0)\r\n" +
+    '  }\r\n' +
+    '  return { fixture, app, page, file, name }\r\n' +
+    '}',
+  expected: 'async function diagramFixture(\n' +
+    '  kind                    ,\n' +
+    '  presentation                                                                                   ,\n' +
+    '  welcome                                ,\n' +
+    ') {\n' +
+    '  const fixture = await createKaFixture(),\n' +
+    "    folder = join(fixture.dataRoot, '_diagrams')\n" +
+    '  await mkdir(folder, { recursive: true })\n' +
+    "  const name = kind === 'native' ? 'Workshop.frade' : 'Workshop.drawio'\n" +
+    '  const authoredDocument =\n' +
+    "    kind === 'native'\n" +
+    '      ? JSON.stringify(\n' +
+    '          {\n' +
+    "            format: 'frade-draw',\n" +
+    '            version: 1,\n' +
+    "            metadata: { id: 'p01-authored', name: 'Workshop' },\n" +
+    '            graph: {\n' +
+    '              nodes: [\n' +
+    '                {\n' +
+    "                  id: 'authored',\n" +
+    "                  shape: 'rect',\n" +
+    '                  x: 140,\n' +
+    '                  y: 120,\n' +
+    '                  width: 180,\n' +
+    '                  height: 80,\n' +
+    "                  label: 'Authored paint',\n" +
+    "                  style: { fill: '#77AADD', stroke: '#334455' },\n" +
+    "                  labelStyle: { fill: '#112244' },\n" +
+    '                },\n' +
+    '              ],\n' +
+    '              edges: [],\n' +
+    '            },\n' +
+    '            viewport: { zoom: 1, pan: { x: 0, y: 0 } },\n' +
+    '          },\n' +
+    '          null,\n' +
+    '          2,\n' +
+    '        )\n' +
+    `      : '<mxfile><diagram id="main" name="Workshop"><mxGraphModel grid="1" gridSize="10" background="#F7E2C2" gridColor="#112233" page="1" pageWidth="700" pageHeight="500"><root><mxCell id="0"/><mxCell id="1" parent="0"/><mxCell id="authored" value="Authored paint" style="rounded=0;fillColor=#77AADD;strokeColor=#334455;fontColor=#112244;" vertex="1" parent="1"><mxGeometry x="140" y="120" width="180" height="80" as="geometry"/></mxCell></root></mxGraphModel></diagram></mxfile>'\n` +
+    '  const file = join(folder, name)\n' +
+    '  await writeFile(file, authoredDocument)\n' +
+    '  if (presentation) {\n' +
+    "    const profile = join(fixture.destination, 'p01-' + kind + '-profile')\n" +
+    '    await mkdir(profile, { recursive: true })\n' +
+    '    await writeFile(\n' +
+    "      join(profile, 'presentation-settings.json'),\n" +
+    '      JSON.stringify({\n' +
+    '        version: 1,\n' +
+    '        revision: 0,\n' +
+    '        generation: 0,\n' +
+    "        transactionId: 'matrix/boot',\n" +
+    '        selection: {\n' +
+    '          ...presentation,\n' +
+    '          preferred: {\n' +
+    "            light: 'frade.builtin/light',\n" +
+    "            dark: 'frade.builtin/dark',\n" +
+    "            'high-contrast': 'frade.builtin/high-contrast',\n" +
+    '          },\n' +
+    '        },\n' +
+    '      }),\n' +
+    '    )\n' +
+    '  }\n' +
+    '  const app = await electron.launch({\n' +
+    "    args: [resolve('out/main/index.cjs')],\n" +
+    "    env: { ...process.env, FRADE_USER_DATA: join(fixture.destination, 'p01-' + kind + '-profile') },\n" +
+    '  })\n' +
+    '  const page = await app.firstWindow()\n' +
+    '  await page.addInitScript(() => {\n' +
+    '    const telemetry = ((window       ).__p01Telemetry = {\n' +
+    '      messages: []             ,\n' +
+    '      paints: []            ,\n' +
+    '      visibility: []             ,\n' +
+    '    })\n' +
+    '    let p01RefuseArmed = false, p01RefusedIntent                    \n' +
+    "    Object.defineProperty(window, '__p01RefuseDark', {\n" +
+    '      configurable: true, enumerable: true,\n' +
+    '      get: () => p01RefuseArmed,\n' +
+    '      set: (value         ) => { p01RefuseArmed = value; p01RefusedIntent = undefined },\n' +
+    '    })\n' +
+    '    const tick = (now        ) => {\n' +
+    '      if (telemetry.paints.length > 999) telemetry.paints.shift()\n' +
+    '      telemetry.paints.push(now)\n' +
+    '      requestAnimationFrame(tick)\n' +
+    '    }\n' +
+    '    requestAnimationFrame(tick)\n' +
+    "    document.addEventListener('visibilitychange', () =>\n" +
+    '      telemetry.visibility.push({ time: performance.now(), state: document.visibilityState }),\n' +
+    '    )\n' +
+    "    window.addEventListener('message', (event) => {\n" +
+    '      let data\n' +
+    '      try {\n' +
+    "        data = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\n" +
+    '      } catch {\n' +
+    '        return\n' +
+    '      }\n' +
+    '      if (\n' +
+    "        data?.action === 'fradePresentation' &&\n" +
+    "        data.operation === 'prepare' &&\n" +
+    "        data.context?.phase === 'prepare' &&\n" +
+    "        data.snapshot?.kind === 'light' &&\n" +
+    '        (window       ).__p01RefuseDark &&\n' +
+    "        typeof data.context?.requestId === 'string' &&\n" +
+    '        (p01RefusedIntent === undefined || p01RefusedIntent === data.context.requestId)\n' +
+    '      ) {\n' +
+    '        p01RefusedIntent = data.context.requestId\n' +
+    '        event.stopImmediatePropagation()\n' +
+    '        parent.postMessage(\n' +
+    '          JSON.stringify({\n' +
+    "            event: 'fradePresentation',\n" +
+    '            version: 1,\n' +
+    '            participantId: data.participantId,\n' +
+    '            participantGeneration: data.participantGeneration,\n' +
+    '            context: data.context,\n' +
+    "            operation: 'prepare',\n" +
+    "            status: 'REFUSED',\n" +
+    "            message: 'Controlled current frame refusal',\n" +
+    '          }),\n' +
+    "          'frade://app',\n" +
+    '        )\n' +
+    '      }\n' +
+    "      if (data?.action === 'fradePresentation' || data?.event === 'fradePresentation')\n" +
+    '        telemetry.messages.push({ time: performance.now(), data })\n' +
+    '    })\n' +
+    "    if (location.host !== 'drawio') return\n" +
+    "    window.addEventListener('message', (event) => {\n" +
+    '      let value\n' +
+    '      try {\n' +
+    "        value = typeof event.data === 'string' ? JSON.parse(event.data) : undefined\n" +
+    '      } catch {\n' +
+    '        return\n' +
+    '      }\n' +
+    '      const Editor = (window       ).EditorUi\n' +
+    "      if (value?.action !== 'configure' || !Editor || Editor.prototype.init.__p01Capture) return\n" +
+    '      const original = Editor.prototype.init\n' +
+    '      const capture = function (           ...args           ) {\n' +
+    '        const result = original.apply(this, args)\n' +
+    '        ;(window       ).__p01Ui = this\n' +
+    '        return result\n' +
+    '      }\n' +
+    '      capture.__p01Capture = true\n' +
+    '      Editor.prototype.init = capture\n' +
+    '    })\n' +
+    '  })\n' +
+    `  await expect(page.locator('.wb-statusbar [role="status"]')).toHaveText('Backend: ready')\n` +
+    '  if (welcome) await welcome(page)\n' +
+    '  await app.evaluate(\n' +
+    '    ({ dialog }, paths) => {\n' +
+    '      let index = 0\n' +
+    '      dialog.showOpenDialog = (async () => ({\n' +
+    '        canceled: false,\n' +
+    '        filePaths: [paths[index++]],\n' +
+    '      }))                                \n' +
+    '    },\n' +
+    '    [fixture.dataRoot, fixture.metadataRoot],\n' +
+    '  )\n' +
+    "  await page.getByRole('button', { name: 'Открыть KA', exact: true }).click()\n" +
+    "  await expect(page.locator('.status-message')).toContainText('138 объектов', { timeout: 30000 })\n" +
+    "  const diagrams = page.getByRole('treeitem').filter({ hasText: /^_diagrams$/ })\n" +
+    '  await diagrams.click()\n' +
+    '  await page\n' +
+    "    .getByRole('treeitem')\n" +
+    "    .filter({ hasText: new RegExp('^' + name.replace('.', '\\\\.') + '$') })\n" +
+    '    .dblclick()\n' +
+    '  await expect(\n' +
+    '    page\n' +
+    "      .locator('.repository-diagram .editor-actions')\n" +
+    "      .getByRole('button', { name: 'Сохранить', exact: true }),\n" +
+    '  ).toBeEnabled({ timeout: 20000 })\n' +
+    "  if (kind === 'frame') {\n" +
+    "    await expect(page.locator('iframe')).toHaveAttribute(\n" +
+    "      'data-frade-revision',\n" +
+    "      (await page.locator('html').getAttribute('data-frade-revision'))          ,\n" +
+    '    )\n' +
+    "    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()\n" +
+    "    await expect(page.locator('iframe')).toBeVisible()\n" +
+    '    await page\n' +
+    "      .frameLocator('iframe')\n" +
+    "      .locator('body')\n" +
+    '      .evaluate(async () => {\n' +
+    '        await document.fonts.ready\n' +
+    '        await new Promise      ((resolve) =>\n' +
+    '          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),\n' +
+    '        )\n' +
+    '      })\n' +
+    "    await expect(page.locator('.diagram-error')).toHaveCount(0)\n" +
+    '  }\n' +
+    '  return { fixture, app, page, file, name }\n' +
+    '}',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0

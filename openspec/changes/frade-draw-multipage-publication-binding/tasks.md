@@ -28,10 +28,10 @@
 
 ## 3. Exact snapshot evidence and verification
 
-- [ ] 3.1 Refresh the clean isolated snapshot from the final repaired committed source; retain prior c2aeace2/675-source audit, frozen install/runtime, and prove all final source Git blobs and no WIP overlays.
-- [ ] 3.2 Execute fresh build and all7 roles per profile, retain every historical named case and50 presentation cases, unchanged150ms benchmark; record raw reports/exits/source/bundle before+after hashes.
-- [ ] 3.3 Pin separate complete manifests; run strict current/origin checks and full pnpm check in both clean and working snapshots, preserving all required assertions and failures.
-- [ ] 3.4 Produce implementation verification, gate applicability/evidence report and preservation/archive audits; strict OpenSpec validation PASS.
+- [x] 3.1 Refresh the clean isolated snapshot from the final repaired committed source; retain prior c2aeace2/675-source audit, frozen install/runtime, and prove all final source Git blobs and no WIP overlays.
+- [x] 3.2 Execute fresh build and all7 roles per profile, retain every historical named case and50 presentation cases, unchanged150ms benchmark; record raw reports/exits/source/bundle before+after hashes.
+- [x] 3.3 Pin separate complete manifests; run strict current/origin checks and full pnpm check in both clean and working snapshots, preserving all required assertions and failures.
+- [x] 3.4 Produce implementation verification, gate applicability/evidence report and preservation/archive audits; strict OpenSpec validation PASS.
 
 ## 4. Independent POST and checkpoint
 

@@ -1,0 +1,106 @@
+{
+  "changeName": "frade-draw-multipage-publication-binding",
+  "schemaName": "spec-driven",
+  "planningHome": {
+    "kind": "repo",
+    "root": "E:\\dev\\codex\\frade",
+    "changesDir": "E:\\dev\\codex\\frade\\openspec\\changes",
+    "defaultSchema": "spec-driven"
+  },
+  "changeRoot": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding",
+  "artifactPaths": {
+    "proposal": {
+      "outputPath": "proposal.md",
+      "resolvedOutputPath": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\proposal.md",
+      "existingOutputPaths": [
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\proposal.md"
+      ]
+    },
+    "specs": {
+      "outputPath": "specs/**/*.md",
+      "resolvedOutputPath": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\specs\\**\\*.md",
+      "existingOutputPaths": [
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\specs\\embedded-focus\\spec.md",
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\specs\\proof-read-boundaries\\spec.md",
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\specs\\staged-presentation-commit\\spec.md"
+      ]
+    },
+    "design": {
+      "outputPath": "design.md",
+      "resolvedOutputPath": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\design.md",
+      "existingOutputPaths": [
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\design.md"
+      ]
+    },
+    "tasks": {
+      "outputPath": "tasks.md",
+      "resolvedOutputPath": "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\tasks.md",
+      "existingOutputPaths": [
+        "E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage-publication-binding\\tasks.md"
+      ]
+    }
+  },
+  "isPlanningComplete": true,
+  "isComplete": true,
+  "applyRequires": [
+    "tasks"
+  ],
+  "nextSteps": [
+    "All planning artifacts are complete. Run openspec instructions apply --change \"frade-draw-multipage-publication-binding\" --json to inspect implementation progress."
+  ],
+  "actionContext": {
+    "mode": "repo-local",
+    "sourceOfTruth": "repo",
+    "planningArtifacts": [
+      "proposal",
+      "specs",
+      "design",
+      "tasks"
+    ],
+    "linkedContext": [],
+    "allowedEditRoots": [
+      "E:\\dev\\codex\\frade"
+    ],
+    "requiresAffectedAreaSelection": false,
+    "constraints": [
+      "Repo-local change artifacts and implementation edits are scoped to this project."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "proposal",
+      "outputPath": "proposal.md",
+      "status": "done",
+      "requires": []
+    },
+    {
+      "id": "specs",
+      "outputPath": "specs/**/*.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "design",
+      "outputPath": "design.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "tasks",
+      "outputPath": "tasks.md",
+      "status": "done",
+      "requires": [
+        "specs",
+        "design"
+      ]
+    }
+  ],
+  "root": {
+    "path": "E:\\dev\\codex\\frade",
+    "source": "nearest"
+  }
+}
