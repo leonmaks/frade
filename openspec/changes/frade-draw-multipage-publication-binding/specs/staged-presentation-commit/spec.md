@@ -35,3 +35,16 @@ The authorized top-level presentation channel SHALL bind strict bounded stage DT
 - **THEN** preview, cancel and refresh perform no settings staging
 - **AND** a legacy commit retains all original applied-paint-before-persist assertions
 - **AND** intent alone performs no filesystem mutation and required compensation of an earlier in-flight commit remains available
+
+#### Scenario: A foreign staging entry prevents creation
+- **GIVEN** an existing foreign file or directory occupies the temporary staging path
+- **WHEN** the trusted filesystem adapter proves exclusive creation failed before a candidate was created
+- **THEN** staging refuses without deleting or changing that foreign entry
+- **AND** compensation may reveal the restored participants only after fresh owned authoritative readback proves the last published selection
+- **AND** a possible partial creation or unresolved prior cleanup obligation still requires cleanup and retains UNKNOWN/recovery blocking when it cannot be proven
+
+#### Scenario: Native bootstrap exposes the exact approved channel
+- **GIVEN** the approved staging-capable native preload
+- **WHEN** startup checks the public presentation method inventory
+- **THEN** it contains exactly getBoot, announceIntent, stage, persist, reconcile and ready, with stage callable
+- **AND** the separate health API remains exactly runtime/events with runtime.getHealth and no Node require exposure

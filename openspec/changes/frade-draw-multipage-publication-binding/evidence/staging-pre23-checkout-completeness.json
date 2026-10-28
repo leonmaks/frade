@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-28T20:08:58.063Z",
+  "previous": "pre-22/output/result.md",
+  "previousStatus": "FAIL_PACKET_COMPLETENESS",
+  "engineeringReview": "No ownership-state defect found;12+2 hunks and4ee7 exact inverse verified",
+  "productionModified": false,
+  "planSha256": "d580b352d9e74e16261ebb06eb83701af1f3b769e9f251501af5cbe300bcf0de",
+  "baselineRules": [
+    {
+      "file": "packages/ui-workspace/tests/ui-contract/.gitattributes",
+      "bytes": 47,
+      "sha256": "bc7a36a083efae16638a70704267bda78ba2994fd007e99320791390f5221edd",
+      "text": "presentation-staging-adoption.json text eol=lf\n"
+    },
+    {
+      "file": "tests/ui-contract/.gitattributes",
+      "bytes": 44,
+      "sha256": "29ca640be20626f0b5233d15b4e67c544688844c320d1b52c5651903288d7eca",
+      "text": "presentation-staging-cases.json text eol=lf\n"
+    }
+  ],
+  "proposedChange": "Append only presentation-staging-refusal-adoption.json text eol=lf to existing UI rule; root case rule remains byte-exact",
+  "checkoutDependencyClosure": [
+    ".gitattributes",
+    "packages/ui-workspace/tests/ui-contract/.gitattributes",
+    "tests/ui-contract/.gitattributes",
+    "packages/ui-workspace/tests/ui-contract/presentation-staging-adoption.json",
+    "tests/ui-contract/presentation-staging-cases.json",
+    "tests/ui-contract/presentation-staging-checkout.test.mjs"
+  ],
+  "checks": "Both real Git fixture-derived rule paths are now explicitly selected with raw pins; current closure already requires them."
+}

@@ -20,9 +20,11 @@
 
 - [x] 2.8 Fresh PRE for exact two metadata checkout rules after actual Windows raw-hash RED; add only filename-scoped nested eol=lf and both explicit closure inputs, retain root eight rules and unrelated sibling behavior, actual Git LF/CRLF GREEN.
 
+- [x] 2.9 Fresh PRE for the two deterministic native failures: distinguish trusted pre-creation refusal from a possible owned staging cleanup obligation, preserve foreign file/directory and strict UNKNOWN behavior, retain real-filesystem RED/GREEN and all original obstruction assertions. Adopt the exact six-method native API contract with added stage type assertion. Preserve original5/19/236 authorities via one fixed two-file inverse supplement, exact26 dispatch, four additional closed origin cases and real Git filename-scoped raw metadata protection. No full-control retry substitutes for this repair.
+
 ## 3. Exact snapshot evidence and verification
 
-- [x] 3.1 Create clean isolated snapshot from committed base plus explicit owned transfers; frozen dependency install and transferred path/hash audit prove no WIP source publication.
+- [ ] 3.1 Refresh the clean isolated snapshot from the final repaired committed source; retain prior c2aeace2/675-source audit, frozen install/runtime, and prove all final source Git blobs and no WIP overlays.
 - [ ] 3.2 Execute fresh build and all7 roles per profile, retain every historical named case and50 presentation cases, unchanged150ms benchmark; record raw reports/exits/source/bundle before+after hashes.
 - [ ] 3.3 Pin separate complete manifests; run strict current/origin checks and full pnpm check in both clean and working snapshots, preserving all required assertions and failures.
 - [ ] 3.4 Produce implementation verification, gate applicability/evidence report and preservation/archive audits; strict OpenSpec validation PASS.

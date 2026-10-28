@@ -1,0 +1,5 @@
+**One complete, unchanged clean 8-role control is justified.** The first performance warmup failed at the 2000 ms paint barrier and 5000 ms publication observer, so it produced no p95. The later 134.5, 138.6, and 107.3 ms runs are diagnostics, not gate results. They support one bounded revalidation on the same source; they do not establish a cause or justify a source or window-policy change. I verified all 257 packet artifact hashes, including the nine copies against the failed build record.
+
+Keep the failure unresolved and preserved. Any failure in the new control stops progression for measured RCA. A complete pass permits the unchanged working profile and remaining ordinary gates, verification, UI report, and independent POST; it grants no waiver or publication. The packet does not confirm the reviewer backend, so runtime provenance must confirm it before this review counts as the required PRE.
+
+GATE_STATUS: PASS

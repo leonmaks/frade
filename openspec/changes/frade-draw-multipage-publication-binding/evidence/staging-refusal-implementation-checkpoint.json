@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-28T21:03:04.521Z",
+  "implementation": "TARGETED_GREEN_FULL_GATES_PENDING",
+  "approvedPlans": {
+    "runtime": "pre-23/receipt.json",
+    "codec": "pre-24/receipt.json"
+  },
+  "requestedReview": "gpt-6-sol/high",
+  "actualBackend": "NOT_CONFIRMED",
+  "desktop": 42,
+  "native": 2,
+  "origin": 45,
+  "nodeIsolated": 27,
+  "desktopTypecheckExit": 0,
+  "workspaceTypecheckExit": 0,
+  "desktopLintExit": 0,
+  "workspaceLintExit": 0,
+  "checks": [
+    {
+      "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-refusal-final-checks/desktop-typecheck.txt",
+      "sha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "bytes": 16
+    },
+    {
+      "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-refusal-final-checks/workspace-typecheck.txt",
+      "sha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "bytes": 16
+    },
+    {
+      "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-refusal-final-checks/desktop-lint.txt",
+      "sha256": "c51bf6bb6dc0459a9b561596c7365047d2d2ec8fd8c53eed5c9b7496b4952c25",
+      "bytes": 25
+    },
+    {
+      "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-refusal-final-checks/workspace-lint.txt",
+      "sha256": "fab8cf2aaf310a1606f5432b02cd42f1aea2ea2600e5583614331fc21f6ac435",
+      "bytes": 20
+    },
+    {
+      "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-refusal-final-checks/synthetic-lde-preflight.json",
+      "sha256": "ce226b2a499d36c0705041dabdce1d0f17af6deba6042ba9f8170708e7b86862",
+      "bytes": 2392
+    }
+  ],
+  "workingInputs": 735,
+  "expectedCleanInputs": 678,
+  "expectedRuntimeCases": 919,
+  "presentationCases": 50,
+  "performanceBudgetMs": 150,
+  "allPriorFailuresRetained": true,
+  "liveBindingChecks": {
+    "actualPriorRun": "staging-refusal-node-controls-green.tap",
+    "passed": 27,
+    "failed": 2,
+    "reason": "Missing complete current clean profile; still mandatory after producing both exact fresh profiles, not waived or NA"
+  },
+  "syntheticLde": {
+    "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-refusal-final-checks/synthetic-lde-preflight.json",
+    "classification": "HISTORICAL_COMPATIBILITY_ONLY_NOT_CURRENT_GENERAL_GATE",
+    "originalAssertionsChanged": 0
+  },
+  "assertionCost": {
+    "beforeStandaloneMs": 4418.298,
+    "beforeCombinedFailedMs": 5199.6412,
+    "afterStrictNodeByteEqualityMs": 350.84809999999993,
+    "timeoutMs": 5000,
+    "allByteAndTypeEqualityPreserved": true
+  },
+  "next": "Commit owned source/evidence excluding854 WIP/new raw review bodies; exact678 Git snapshot and fresh clean+working profiles, normal gates/verify/UIreport/POST, then authorized push."
+}

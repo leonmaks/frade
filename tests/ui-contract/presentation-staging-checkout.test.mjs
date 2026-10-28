@@ -9,9 +9,11 @@ import { createHash } from 'node:crypto'
 const root = fileURLToPath(new URL('../../', import.meta.url))
 const pins = [
   {file:'packages/ui-workspace/tests/ui-contract/presentation-staging-adoption.json',sha256:'eef8c989136106b41029ce82e0f0ee89d7627056da6e62f27355ef0b5b1f4c7b'},
-  {file:'tests/ui-contract/presentation-staging-cases.json',sha256:'3926794a759715b4d4b7cce189704bafb4243a3aea12bd5e28b7a5ad715b0ed2'},
+  {file:'tests/ui-contract/presentation-staging-cases.json',sha256:'271f51c1618b1e1b5303fb70aeabe5d64a8c606f2bd3ffd55f5c25e12386f2a5'},
+  {file:'packages/ui-workspace/tests/ui-contract/presentation-staging-refusal-adoption.json',sha256:'d8d83986c291434682b5083283cee1202ee12f9623a4f7eb687e6bc0f44aac78'},
 ]
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
+const expectedRule = file => pins.filter(pin => dirname(pin.file) === dirname(file)).map(pin => pin.file.split('/').at(-1)+' text eol=lf\n').join('')
 for (const autocrlf of [false,true]) test('staging metadata raw pins survive real Git checkout autocrlf='+autocrlf,()=>{
   const parent=fs.realpathSync(tmpdir()),directory=fs.realpathSync(fs.mkdtempSync(join(parent,'frade-staging-checkout-'))),identity=fs.statSync(directory,{bigint:true})
   const env=Object.fromEntries(Object.entries(process.env).filter(([key])=>!key.startsWith('GIT_')))
@@ -28,7 +30,7 @@ for (const autocrlf of [false,true]) test('staging metadata raw pins survive rea
       const rule=dirname(pin.file)+'/.gitattributes'
       if(fs.existsSync(join(root,rule))){
         const rawRule=fs.readFileSync(join(root,rule))
-        assert.deepEqual(rawRule,Buffer.from(pin.file.split('/').at(-1)+' text eol=lf\n'))
+        assert.deepEqual(rawRule,Buffer.from(expectedRule(pin.file)))
         put(rule,rawRule);files.push(rule)
       }
       const outside=dirname(pin.file)+'/unrelated.json';put(outside,'{}\n');files.push(outside)
@@ -39,7 +41,7 @@ for (const autocrlf of [false,true]) test('staging metadata raw pins survive rea
     for(const pin of pins){
       assert.equal(sha(fs.readFileSync(join(directory,pin.file))),pin.sha256)
       const rule=dirname(pin.file)+'/.gitattributes'
-      assert.equal(fs.readFileSync(join(directory,rule),'utf8').replaceAll('\r\n','\n'),pin.file.split('/').at(-1)+' text eol=lf\n')
+      assert.equal(fs.readFileSync(join(directory,rule),'utf8').replaceAll('\r\n','\n'),expectedRule(pin.file))
       assert.match(git(['check-attr','eol','--',pin.file]),/: eol: lf\r?\n$/)
       assert.match(git(['check-attr','eol','--',dirname(pin.file)+'/unrelated.json']),/: eol: unspecified\r?\n$/)
     }

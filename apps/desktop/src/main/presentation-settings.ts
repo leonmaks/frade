@@ -74,6 +74,12 @@ const errorText = (error: unknown): string =>
   (error instanceof Error ? error.message : String(error)).slice(0, 480)
 const missing = (error: unknown) =>
   !!error && typeof error === 'object' && (error as NodeJS.ErrnoException).code === 'ENOENT'
+// Only this trusted adapter can prove that no candidate file was created.
+class StagingNotStarted extends Error {
+  constructor(error: unknown) {
+    super('Presentation staging not started: ' + errorText(error))
+  }
+}
 function defaultFiles(): PresentationFiles {
   return {
     read: async (path) => {
@@ -91,8 +97,13 @@ function defaultFiles(): PresentationFiles {
       }
     },
     stage: async (path, contents) => {
-      await mkdir(dirname(path), { recursive: true })
-      const file = await open(path, 'wx', 0o600)
+      let file: Awaited<ReturnType<typeof open>>
+      try {
+        await mkdir(dirname(path), { recursive: true })
+        file = await open(path, 'wx', 0o600)
+      } catch (error) {
+        throw new StagingNotStarted(error)
+      }
       try {
         await file.writeFile(contents, 'utf8')
         await file.sync()
@@ -153,7 +164,8 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
   let acceptedGeneration = 0,
     activeRequest = '',
     tail: Promise<unknown> = Promise.resolve(),
-    maximumRevision = 0
+    maximumRevision = 0,
+    stagingCleanupPending = false
   let prepared:
     | {
         context: PresentationPhase
@@ -225,6 +237,22 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
       throw Error('Unowned authoritative settings revision')
     return value
   }
+  async function createStagingFile(contents: string): Promise<void> {
+    const previousObligation = stagingCleanupPending
+    stagingCleanupPending = true
+    try {
+      await files.stage(staged, contents)
+    } catch (error) {
+      if (error instanceof StagingNotStarted && !previousObligation)
+        stagingCleanupPending = false
+      throw error
+    }
+  }
+  async function clearStaging(): Promise<void> {
+    if (!stagingCleanupPending) return
+    await files.remove(staged)
+    stagingCleanupPending = false
+  }
   async function write(
     context: PresentationPhase,
     selection: PresentationChoice,
@@ -243,7 +271,7 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
         selection,
       })
     remember(candidates, record)
-    if (!stagedRecord) await files.stage(staged, JSON.stringify(record) + '\n')
+    if (!stagedRecord) await createStagingFile(JSON.stringify(record) + '\n')
     if (!current(context)) throw Error('Stale presentation intent before rename')
     onRename?.()
     await files.rename(staged, target)
@@ -312,7 +340,7 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
       )
         return Promise.resolve({ status: 'REFUSED', message: 'Invalid staging phase or revision' })
       return queue(async () => {
-        if (!current(phase) || expectedRevision !== authoritative.revision || prepared)
+        if (!current(phase) || expectedRevision !== authoritative.revision || prepared || stagingCleanupPending)
           return { status: 'REFUSED', message: 'Stale intent/CAS or existing preparation refused' }
         try {
           const base = await readAuthoritative()
@@ -326,14 +354,14 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
             selection: choice,
           })
           remember(candidates, record)
-          await files.stage(staged, JSON.stringify(record) + '\n')
+          await createStagingFile(JSON.stringify(record) + '\n')
           if (!current(phase)) throw Error('Stale presentation preparation')
           prepared = { context: phase, record, expectedRevision }
           return { status: 'STAGED' }
         } catch (error) {
           prepared = undefined
           try {
-            await files.remove(staged)
+            await clearStaging()
           } catch (cleanup) {
             return {
               status: 'UNKNOWN',
@@ -360,6 +388,8 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
       return queue(async () => {
         if (!current(phase) || expectedRevision !== authoritative.revision)
           return { status: 'REFUSED', message: 'Stale intent/CAS refused' }
+        if (!prepared && stagingCleanupPending)
+          return { status: 'REFUSED', message: 'Unreconciled staging cleanup required' }
         let renameAttempted = false
         let outcome: SettingsOutcome
         // Before OS rename, refusal can prove no durable write. After it, reconcile ownership.
@@ -396,7 +426,7 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
         }
         try {
           prepared = undefined
-          await files.remove(staged)
+          await clearStaging()
         } catch (error) {
           return {
             status: 'UNKNOWN',
@@ -418,7 +448,7 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
         const actual = await readAuthoritative()
         if (!current(phase)) throw Error('Stale compensation owner after readback')
         prepared = undefined
-        await files.remove(staged)
+        await clearStaging()
         if (!current(phase)) throw Error('Stale compensation owner after staging cleanup')
         if (sameSelection(actual.selection, published.selection)) {
           remember(known, actual)
@@ -428,7 +458,7 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
         try {
           return await write(phase, published.selection, actual)
         } finally {
-          await files.remove(staged)
+          await clearStaging()
         }
       })
     },

@@ -1,0 +1,2 @@
+import {defineConfig} from 'E:/dev/codex/frade/.worktrees/multipage-publication-clean-4/apps/desktop/node_modules/@playwright/test/index.mjs'
+export default defineConfig({testDir:'.',workers:1,timeout:45000,expect:{timeout:10000},reporter:'json',use:{trace:'retain-on-failure',screenshot:'only-on-failure'},outputDir:'E:/dev/codex/frade/.worktrees/requests/staging-barrier-crossprocess-default-v2-20261028/results'})

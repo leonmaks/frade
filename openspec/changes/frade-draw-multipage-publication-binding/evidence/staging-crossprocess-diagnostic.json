@@ -1,0 +1,138 @@
+{
+  "at": "2026-10-28T18:47:55.305Z",
+  "classification": "DIAGNOSTIC_NOT_ACCEPTANCE",
+  "sourceCheckpoint": "c2aeace20b7a571ccdaaec95d7f045a28533c7bb",
+  "p95Ms": 107.30000001192093,
+  "budgetMs": 150,
+  "samples": 100,
+  "warmups": 20,
+  "originalAssertionsChanged": 0,
+  "productionChanges": 0,
+  "backgroundThrottlingChanges": 0,
+  "windowEvents": [
+    {
+      "at": 1793213023573.7107,
+      "event": "installed",
+      "focused": false,
+      "visible": false,
+      "minimized": false,
+      "throttling": true
+    },
+    {
+      "at": 1793213024016.5154,
+      "event": "show",
+      "focused": true,
+      "visible": true,
+      "minimized": false,
+      "throttling": true
+    },
+    {
+      "at": 1793213024017.9182,
+      "event": "focus",
+      "focused": true,
+      "visible": true,
+      "minimized": false,
+      "throttling": true
+    },
+    {
+      "at": 1793213028955.1533,
+      "event": "blur",
+      "focused": false,
+      "visible": true,
+      "minimized": false,
+      "throttling": true
+    },
+    {
+      "at": 1793213057493.07,
+      "event": "focus",
+      "focused": true,
+      "visible": true,
+      "minimized": false,
+      "throttling": true
+    }
+  ],
+  "visibilityEvents": [
+    {
+      "at": 1793213028552.9,
+      "visible": "visible",
+      "focus": true
+    }
+  ],
+  "rafCallbacks": 1440,
+  "maxRafDelayMs": 33.59999996423721,
+  "inventory": [
+    {
+      "file": "cover.cjs",
+      "sha256": "bd30aa69e77cc779d6f64b85ea31aeba074083ccfb89884b31458107363a6d2b",
+      "bytes": 451,
+      "localOnly": false
+    },
+    {
+      "file": "instrumented.spec.ts",
+      "sha256": "1e4d2b28919df94977c3b67d093174a6096b870c79341aa46f9c035f56df3490",
+      "bytes": 27850,
+      "localOnly": false
+    },
+    {
+      "file": "playwright.config.ts",
+      "sha256": "0b81054af03464b3f5cd48f6c81ba307f0a1ca9cec123b532953547f485102f4",
+      "bytes": 417,
+      "localOnly": false
+    },
+    {
+      "file": "report.json",
+      "sha256": "c29a892c22788da2fc80669519e363fc5b4e68a7df37cbce0ce8e1672066eb2b",
+      "bytes": 3143,
+      "localOnly": false
+    },
+    {
+      "file": "results/.last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45,
+      "localOnly": false
+    },
+    {
+      "file": "results/instrumented-P01-pinned-re-245f9-ernating-requests-p95-150ms/actual-hardware-before-measurement.json",
+      "sha256": "e5f36c20ee926516a885caa501931974228a2b920a1b174c914b9a987d6cf68e",
+      "bytes": 407,
+      "localOnly": false
+    },
+    {
+      "file": "results/instrumented-P01-pinned-re-245f9-ernating-requests-p95-150ms/all-observations.ndjson",
+      "sha256": "44b1d6b60678c9d3c55f247d373536d32f678a865c4e91cee046a6dd655683d8",
+      "bytes": 140499,
+      "localOnly": false
+    },
+    {
+      "file": "results/instrumented-P01-pinned-re-245f9-ernating-requests-p95-150ms/critical-path-observations.json",
+      "sha256": "a79eee448a2baecd2c6193ffe0cafc02ccd75a98593d6b6b049383f058b06479",
+      "bytes": 818664,
+      "localOnly": false
+    },
+    {
+      "file": "results/instrumented-P01-pinned-re-245f9-ernating-requests-p95-150ms/critical-path.trace.json",
+      "sha256": "deeb1180148f6d71fcfc7dbe6e5a447cf21db11b1f52b2ebe58143dbe5cb8003",
+      "bytes": 138523569,
+      "localOnly": true
+    },
+    {
+      "file": "results/instrumented-P01-pinned-re-245f9-ernating-requests-p95-150ms/dataset-hardware-pin.json",
+      "sha256": "fc253dbe034d1f253fd89b6d83ea7168212347dedb31ecfd0c1fb55b5002df1d",
+      "bytes": 13436,
+      "localOnly": false
+    },
+    {
+      "file": "results/instrumented-P01-pinned-re-245f9-ernating-requests-p95-150ms/performance-result.json",
+      "sha256": "e9cf5be3adb9d0f14e40dff05ffe8ade999ba0739eac4f104002a7c4f455b62d",
+      "bytes": 15130,
+      "localOnly": false
+    },
+    {
+      "file": "stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "localOnly": false
+    }
+  ],
+  "conclusion": "Separate owned Electron process caused actual blur; all120 requests still completed. Focus loss alone does not reproduce required barrier2000ms failure; no backgroundThrottling fix justified. Original failure remains unresolved, not waived."
+}

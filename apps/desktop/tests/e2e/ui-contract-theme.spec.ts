@@ -45,6 +45,7 @@ test('P01 real startup restores validated presentation before the visible window
         typeof window.fradePresentation === 'undefined'
           ? []
           : Object.keys(window.fradePresentation),
+      stage: typeof window.fradePresentation?.stage,
       theme: document.documentElement.dataset.fradeTheme,
       density: document.documentElement.dataset.fradeDensity,
       revision: document.documentElement.dataset.fradeRevision,
@@ -53,7 +54,8 @@ test('P01 real startup restores validated presentation before the visible window
     expect(state).toEqual({
       api: ['runtime', 'events'],
       runtime: ['getHealth'],
-      presentation: ['getBoot', 'announceIntent', 'persist', 'reconcile', 'ready'],
+      presentation: ['getBoot', 'announceIntent', 'stage', 'persist', 'reconcile', 'ready'],
+      stage: 'function',
       theme: 'dark',
       density: 'comfortable',
       revision: '7',

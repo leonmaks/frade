@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-28T19:50:32.032Z",
+  "classification": [
+    "STATE_TRANSITION",
+    "ABSTRACTION_BOUNDARY",
+    "SPEC_CONFLICT_NATIVE_API_INVENTORY"
+  ],
+  "productionModified": false,
+  "red": "staging-obstruction-unit-red-final.json",
+  "nativeFailure": "staging-pre21-native-failure-preservation.json",
+  "proposedSupplementSha256": "4ee7e11ed2ec7573d23e41a690723935ff119f3860d2089a6c7a8d33b4c206ab",
+  "scope": [
+    {
+      "file": "apps/desktop/src/main/presentation-settings.ts",
+      "hunks": 12,
+      "predecessor": {
+        "gitOid": "0ee1691ad54935411d7bfab95ba7e69dc52d1155",
+        "sha256": "a4cc5703f68b895018a3f66068ad87df905477b452d7bf1e051643b2cf63bad3",
+        "canonicalSha256": "307f742a2d8a96d322435e9bd9ab74827ec490246971345c1d86db9c5ee3df7d",
+        "form": "CRLF"
+      },
+      "adoptedCanonicalSha256": "3207b2403a8da32233afff656e1ff728ec78b8fb8fd165d7ef0ac9b7ae51feae"
+    },
+    {
+      "file": "apps/desktop/tests/e2e/ui-contract-theme.spec.ts",
+      "hunks": 2,
+      "predecessor": {
+        "gitOid": "e49114ee39c604c6e29b619134ce2a1f1b885686",
+        "sha256": "f9b08ca17f6eddcaa932de360e96d72a813532ff32d478d884dd3af30130dbd7",
+        "canonicalSha256": "fa67a5fbc9ca20faf56aa967382506db19695d6993d3c50ac59adb15fc29c2d8",
+        "form": "CRLF"
+      },
+      "adoptedCanonicalSha256": "29f07938ccbf3a6a7e8315fe7371ce71b928006d1c95151cedc8126f0574b370"
+    }
+  ],
+  "oldAuthoritiesUnchanged": true,
+  "sourceExpected": {
+    "clean": 678,
+    "working": 735,
+    "runtime": 919,
+    "presentation": 50
+  },
+  "currentProfile": "FAIL",
+  "next": "Strict validation then fresh independent PRE22 before implementation",
+  "unitRevisionFixtureDecision": "theme-core.md requires monotonic advance and ACK equality, not contiguous candidate allocation; corrected before production, both original failures remain RED"
+}

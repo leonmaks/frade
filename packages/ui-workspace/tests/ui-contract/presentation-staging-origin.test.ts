@@ -57,10 +57,25 @@ function fixture() {
   const raw = readFileSync(join(repository, supplement)),
     adoption = JSON.parse(raw.toString()) as Adoption
   put(supplement, raw)
+  const refusalSupplement = 'packages/ui-workspace/tests/ui-contract/presentation-staging-refusal-adoption.json'
+  put(refusalSupplement, readFileSync(join(repository, refusalSupplement)))
   put(adoption.authority.file, readFileSync(join(repository, adoption.authority.file)))
   put(manifestFile, manifest)
-  const live = (entry: Entry) =>
-    readFileSync(join(repository, entry.file)).toString().replaceAll('\r\n', '\n')
+  const live = (entry: Entry) => {
+    let text = readFileSync(join(repository, entry.file)).toString().replaceAll('\r\n', '\n')
+    if (entry.file === 'apps/desktop/src/main/presentation-settings.ts') {
+      const repairRaw = readFileSync(join(repository, 'packages/ui-workspace/tests/ui-contract/presentation-staging-refusal-adoption.json'))
+      expect(sha(repairRaw)).toBe('d8d83986c291434682b5083283cee1202ee12f9623a4f7eb687e6bc0f44aac78')
+      const repair = (JSON.parse(repairRaw.toString()) as { entries: Entry[] }).entries.find(candidate => candidate.file === entry.file)!
+      expect(sha(Buffer.from(text))).toBe(repair.adoptedCanonicalSha256)
+      for (const hunk of [...repair.hunks].reverse()) {
+        expect(text.split(hunk.after)).toHaveLength(2)
+        text = text.replace(hunk.after, hunk.before)
+      }
+      expect(sha(Buffer.from(text))).toBe(entry.adoptedCanonicalSha256)
+    }
+    return text
+  }
   for (const entry of adoption.entries) put(entry.file, live(entry))
   const read = createDrawingPagesOriginReader({
     root,
@@ -128,8 +143,8 @@ it('staging dispatch preserves all unowned source and report verification', () =
       inputs: Array<{ file: string; sha256: string }>
       reports: Record<string, { file: string; sha256: string }>
     }
-  expect(drawingPagesOriginScope).toHaveLength(25)
-  expect(new Set(drawingPagesOriginScope).size).toBe(25)
+  expect(drawingPagesOriginScope).toHaveLength(26)
+  expect(new Set(drawingPagesOriginScope).size).toBe(26)
   for (const input of [...ledger.inputs, ...Object.values(ledger.reports)].filter(
     (x) => !drawingPagesOriginScope.includes(x.file),
   )) {

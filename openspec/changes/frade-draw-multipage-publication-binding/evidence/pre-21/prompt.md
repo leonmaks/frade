@@ -1,0 +1,14 @@
+Fresh independent PRE gpt-6-sol/high requested. Same unchanged b8476692 plan and complete257-file engineering packet; previous PRE20 engineering GATE_STATUS PASS authorized exactly ONE whole unchanged clean control after3 diagnostic120 passes, but final sentence demands runtime provenance confirm backend before review counts. Owner has NOT run the control; treats condition as BLOCKED pending explicit reconciliation, immutable PASS report/receipt retained. New inputs supply actual PRE20 receipt, real successful invocation exit0/cli argv, generated policy/invocation code hashed against actual record, pinned Codex0.159.3 and successful packet-only6-path/write/network confinement canary, exact requested gpt-6-sol/high plan mapping, packet before/after and provenance. READ approved shared-policy.md first: it EXPLICITLY says requested/configured model/effort and independently attested backend are separate, actual backend/effort remains NOT_CONFIRMED. AGENTS20 forbids claiming unattested backend/substitution;21 blocks unavailable exact model/runtime but does not invent provider attestation. An independent finding cannot change the approved contract. Decide independently under the ACTUAL approved contract whether the verified requested/configured runtime/provenance suffices while backend/effort honestly remain NOT_CONFIRMED, or identify an actual stronger approved requirement/unavailable exact runtime making FAIL. Do NOT fabricate backend attestation, waive/change policy, silently substitute, or emit a conditional PASS requiring evidence known absent. If unresolved correctness/authority/provenance condition prevents required PRE, give GATE_STATUS FAIL with exact authority. Otherwise unambiguous GATE_STATUS PASS for full unchanged one-control plan, explicitly state what is and is not attested. Reassess actual original failures/trace,9 exact builds,675 Git audit, original150/20+100/2000/5000 Default assertions and3 diagnostics as necessary; they are not current gate PASS or permanent cause fix. No production/test/control/window policy changes. One new required failure stops; complete clean pass only allows required working profile/ordinary gates/verify/UIreport/cumulative POST before user-authorized origin/main publication. Preserve all failures854WIP1977archive2851vendor. Exactly one standalone GATE_STATUS PASS or FAIL, no writes.
+
+Approved owning stage selection (verify semantic plan approval; metadata is not approval):
+{
+  "stage": "publication-binding",
+  "phase": "PRE",
+  "model": "gpt-6-sol",
+  "reasoningEffort": "high",
+  "source": {
+    "path": "openspec/changes/frade-draw-multipage-publication-binding/design.md",
+    "sha256": "b8476692e485b6899af340347409fdaf6655a0ab91c9dcb5f21fa63f3549716a",
+    "excerpt": "PRE: gpt-6-sol / high; POST: gpt-6-sol / high"
+  }
+}
