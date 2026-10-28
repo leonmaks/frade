@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-28T22:04:58.520Z",
+  "classification": "TEST_STATE_TRANSITION_READINESS",
+  "actualFailure": {
+    "head": "c8bd9ce16efb7b970d8fcc5ffb6da5d283b106ba",
+    "case": "P01-FUI006 native",
+    "passed": 46,
+    "total": 47,
+    "geometry": "translate(140,120)",
+    "causeInOriginalTrace": "DOM input target not recorded; direct attribution cannot be proven from original trace alone"
+  },
+  "deterministicReproduction": {
+    "latencyMs": 100,
+    "originalMovementBodySha256": "b8769434c93055d942c0479d02b9c674f0e90fdf710489174182ae3cea709426",
+    "oldFixture": "FAIL same original10000ms geometry assertion; pointerdown/mousedown targets visible commit barrier",
+    "readyControl": "PASS translate170,140; same latency/original movement and focus, target authored node",
+    "naturalControls": "2/2 PASS; not cumulative profile evidence"
+  },
+  "productionChange": false,
+  "proposedNativeFixtureOnly": true,
+  "additionalAssertions": [
+    "native data-frade-revision equals current root revision",
+    "commit barrier hidden before returning fixture"
+  ],
+  "originalCallbacksActionsAssertionsTimeoutsUnchanged": true,
+  "sidecar": {
+    "version": 4,
+    "sha256": "941a3600115482a895c437b0ab0786d4eac60239f46155850910facf33a4d28a",
+    "files": 3,
+    "scope": 27,
+    "hunks": {
+      "main": 12,
+      "api": 3,
+      "fui": 2
+    },
+    "legacyAuthoritiesUnchanged": true
+  },
+  "next": "Focused PRE before modifying fixture or strict inverse consumers; actual delayed-join RED/GREEN then full fresh profiles/gates/verify/POST, no favourable retry"
+}

@@ -65,7 +65,7 @@ function fixture() {
     let text = readFileSync(join(repository, entry.file)).toString().replaceAll('\r\n', '\n')
     if (entry.file === 'apps/desktop/src/main/presentation-settings.ts') {
       const repairRaw = readFileSync(join(repository, 'packages/ui-workspace/tests/ui-contract/presentation-staging-refusal-adoption.json'))
-      expect(sha(repairRaw)).toBe('e302b2da3ec9679dc656120958658891dae486a76c90a321e0ab5b2f3e813c6b')
+      expect(sha(repairRaw)).toBe('941a3600115482a895c437b0ab0786d4eac60239f46155850910facf33a4d28a')
       const repair = (JSON.parse(repairRaw.toString()) as { entries: Entry[] }).entries.find(candidate => candidate.file === entry.file)!
       expect(sha(Buffer.from(text))).toBe(repair.adoptedCanonicalSha256)
       for (const hunk of [...repair.hunks].reverse()) {

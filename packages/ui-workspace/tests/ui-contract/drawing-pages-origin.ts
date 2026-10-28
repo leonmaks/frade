@@ -243,7 +243,7 @@ function readStagingRefusalOrigin(root: string, file: string, live: Buffer): Buf
   if (!refusalFiles.includes(file)) return
   demand(safeRead(root, file).equals(live), 'ADOPTED_SOURCE_HASH:' + file)
   const raw = safeRead(root, 'packages/ui-workspace/tests/ui-contract/presentation-staging-refusal-adoption.json')
-  demand(sha(raw) === 'e302b2da3ec9679dc656120958658891dae486a76c90a321e0ab5b2f3e813c6b', 'REFUSAL_ORIGIN_MANIFEST')
+  demand(sha(raw) === '941a3600115482a895c437b0ab0786d4eac60239f46155850910facf33a4d28a', 'REFUSAL_ORIGIN_MANIFEST')
   type RefusalEntry = {
     file: string
     predecessor: { gitOid: string; sha256: string; canonicalSha256: string; form: 'LF' | 'CRLF' | 'RAW_BASE64'; sourceBase64?: string }
@@ -261,7 +261,7 @@ function readStagingRefusalOrigin(root: string, file: string, live: Buffer): Buf
   const legacyPin = '2bec063e00f7d6589f3e1f7c60c1f9ee98659aefca8d3434cd66f41ef64e1b21'
   const previousFile = 'packages/ui-workspace/tests/ui-contract/presentation-staging-adoption.json'
   const previousPin = 'eef8c989136106b41029ce82e0f0ee89d7627056da6e62f27355ef0b5b1f4c7b'
-  demand(adoption.version === 3 && adoption.baselineCommit === 'c2aeace20b7a571ccdaaec95d7f045a28533c7bb' &&
+  demand(adoption.version === 4 && adoption.baselineCommit === 'c2aeace20b7a571ccdaaec95d7f045a28533c7bb' &&
     JSON.stringify(adoption.entries.map(entry => entry.file).sort()) === JSON.stringify([...refusalFiles].sort()), 'REFUSAL_ORIGIN_SCOPE')
   demand(adoption.authority.file === legacyFile && adoption.authority.sha256 === legacyPin &&
     adoption.previousStaging.file === previousFile && adoption.previousStaging.sha256 === previousPin, 'REFUSAL_ORIGIN_AUTHORITY')
@@ -277,7 +277,7 @@ function readStagingRefusalOrigin(root: string, file: string, live: Buffer): Buf
   demand(mainPins.length === 1 && main.predecessor.canonicalSha256 === mainPins[0].adoptedCanonicalSha256 &&
     apiPins.length === 1 && api.predecessor.sha256 === apiPins[0].sha256 &&
     fuiPins.length === 1 && fui.predecessor.sha256 === fuiPins[0].sha256 &&
-    main.hunks.length === 12 && api.hunks.length === 2 && fui.hunks.length === 2, 'REFUSAL_ORIGIN_PIN')
+    main.hunks.length === 12 && api.hunks.length === 3 && fui.hunks.length === 2, 'REFUSAL_ORIGIN_PIN')
   const entry = adoption.entries.find(entry => entry.file === file)!
   const canonical = canonicalPublicationBytes(live), text = canonical.toString()
   const exactLegacy = sha(live) === entry.predecessor.sha256

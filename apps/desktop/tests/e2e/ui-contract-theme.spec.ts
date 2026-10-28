@@ -243,6 +243,13 @@ async function diagramFixture(
       .locator('.repository-diagram .editor-actions')
       .getByRole('button', { name: 'Сохранить', exact: true }),
   ).toBeEnabled({ timeout: 20000 })
+  if (kind === 'native') {
+    await expect(page.locator('.frade-canvas .canvas')).toHaveAttribute(
+      'data-frade-revision',
+      (await page.locator('html').getAttribute('data-frade-revision')) as string,
+    )
+    await expect(page.locator('.frade-theme-commit-barrier')).toBeHidden()
+  }
   if (kind === 'frame') {
     await expect(page.locator('iframe')).toHaveAttribute(
       'data-frade-revision',

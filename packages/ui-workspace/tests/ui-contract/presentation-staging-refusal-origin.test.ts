@@ -28,7 +28,7 @@ function fixture() {
   roots.push({ root, ino: identity.ino, dev: identity.dev })
   const put = (name: string, bytes: Buffer | string) => { const target = join(root, name); mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, bytes) }
   const raw = readFileSync(join(repository, file)), adoption = JSON.parse(raw.toString()) as Adoption
-  expect(sha(raw)).toBe('e302b2da3ec9679dc656120958658891dae486a76c90a321e0ab5b2f3e813c6b')
+  expect(sha(raw)).toBe('941a3600115482a895c437b0ab0786d4eac60239f46155850910facf33a4d28a')
   put(file, raw)
   for (const name of [adoption.authority.file, oldFile, manifestFile]) put(name, readFileSync(join(repository, name)))
   const old = JSON.parse(readFileSync(join(repository, oldFile), 'utf8')) as { entries: Array<{ file: string; predecessor: { sourceBase64: string; sha256: string } }> }

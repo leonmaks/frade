@@ -55,3 +55,12 @@ The three staged-commit JSON metadata files SHALL retain their exact reviewed ra
 #### Scenario: Windows checkout of exact metadata
 - **WHEN** real Git adds and checks out all three JSON files with either autocrlf setting
 - **THEN** all three raw hashes remain exact and sibling JSON files receive no new rule
+
+### Requirement: Native input fixture respects applied readiness
+The native acceptance fixture SHALL establish exact participant/root revision and a hidden presentation cover before returning an editable native diagram. All original movement, dirty, undo, preview and persistence assertions and deadlines SHALL remain unchanged.
+
+#### Scenario: Visible content awaits its covered paint acknowledgement
+- **GIVEN** native content becomes visible under the required cover before its applied paint acknowledgement
+- **WHEN** initial paint is delayed within the original budget
+- **THEN** the fixture waits for exact native readiness and hidden cover before initial input
+- **AND** the original initial drag still proves meaningful geometry change and dirty state without retry

@@ -1,0 +1,18 @@
+node:fs:1710
+  const stats = binding.lstat(
+                        ^
+
+Error: ENOENT: no such file or directory, lstat 'E:\dev\codex\frade\openspec\changes\frade-draw-multipage'
+    at lstatSync (node:fs:1710:25)
+    at safeBytes (file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.mjs:35:13)
+    at file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.mjs:123:29
+    at Array.map (<anonymous>)
+    at currentInputs (file:///E:/dev/codex/frade/tests/ui-contract/drawing-pages-current.mjs:121:34)
+    at file:///E:/dev/codex/frade/.worktrees/requests/run-readiness-native-targeted.mjs:8:14 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'lstat',
+  path: 'E:\\dev\\codex\\frade\\openspec\\changes\\frade-draw-multipage'
+}
+
+Node.js v24.18.0

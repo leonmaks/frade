@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-28T22:26:25.436Z",
+  "scopeUnchanged": true,
+  "productionCodeChanges": false,
+  "fixedDelayProbe": {
+    "result": "NOT_REPRODUCED_IN_POSTFIX_CONTROL",
+    "actual": "both100ms variants moved, so strict regression wrapper exited1; all observations preserved",
+    "reason": "fixed latency alone does not deterministically place predicate polling within visibility-before-cover-reveal window"
+  },
+  "eventGatedProbe": {
+    "result": "PASS",
+    "actual": "exactC8 fixture returns with covered visible content; original mousedown hits cover and unchanged10000ms geometry predicate fails. Actual fixed fixture remains pending at same explicit gate, then original drag passes after release.",
+    "originalBodySha256": "b8769434c93055d942c0479d02b9c674f0e90fdf710489174182ae3cea709426",
+    "originalTraceTarget": "NOT_RECORDED; cannot retrospectively attest exact original target",
+    "noTimeoutOrInputWeakening": true
+  },
+  "targetedHarness": {
+    "first": "NOT_RUN source capture lacked explicit logical archive mapping; setup failed before native execution",
+    "second": "NOT_RUN no tests found because anchored grep did not include Playwright full-title prefix;0 cases, report preserved",
+    "third": "PASS exactly original P01-FUI006native;1 expected/0skipped/0flaky;735source beforeafter equal; compiled outputs unchanged, not fresh-profile proof"
+  },
+  "portableHelperPreflight": {
+    "status": "REFUSED_NO_NATIVE_RUN",
+    "reason": "all-main-vs-clean9 compiled equivalence assertion rejected10 main outputs including existingopen-ka.mjs and different renderer asset bytes; no equivalence, source transfer, deletion or new script was claimed",
+    "next": "Preserve existing ignored main output tree before fresh working build. Use new exact own source/runtime/bundle whole profiles; current gated evidence binds actualC8 clean runtime."
+  },
+  "network": {
+    "status": "CURRENT_REMOTE_UNVERIFIED",
+    "attempts": [
+      {
+        "transport": "origin SSH22",
+        "result": "connection abort before banner"
+      },
+      {
+        "transport": "same GitHub SSH443 command-local existing host-key alias",
+        "result": "connection reset before banner"
+      },
+      {
+        "transport": "same GitHub repository HTTPS noninteractive read-only ls-remote",
+        "result": "connection reset"
+      }
+    ],
+    "lastKnownOriginMain": "e54cf0c1e4e70ed833398c673ea3140b6f10469e",
+    "publicationPerformed": false,
+    "next": "Complete independent checks locally; require fresh remote ancestry and actual remote SHA before normal push. No change to global settings/remotes or credentials."
+  }
+}

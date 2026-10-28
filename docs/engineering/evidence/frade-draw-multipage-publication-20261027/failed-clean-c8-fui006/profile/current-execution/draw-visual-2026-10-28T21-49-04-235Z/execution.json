@@ -1,0 +1,977 @@
+{
+  "role": "draw-visual",
+  "record": {
+    "file": "openspec/changes/frade-draw-multipage/evidence/current-execution/draw-visual-2026-10-28T21-49-04-235Z/record.json",
+    "sha256": "93074dcbc39e9d29a6c41ed73981bc44985dc8ef78b76b92f67d7323fce15dd1"
+  },
+  "report": {
+    "file": "openspec/changes/frade-draw-multipage/evidence/current-execution/draw-visual-2026-10-28T21-49-04-235Z/report.json",
+    "sha256": "4709066aba489db2d33eff523f3ec74147a821908747a25ca209ec6d3a734eda"
+  },
+  "stdout": {
+    "file": "openspec/changes/frade-draw-multipage/evidence/current-execution/draw-visual-2026-10-28T21-49-04-235Z/stdout.txt",
+    "sha256": "4709066aba489db2d33eff523f3ec74147a821908747a25ca209ec6d3a734eda"
+  },
+  "stderr": {
+    "file": "openspec/changes/frade-draw-multipage/evidence/current-execution/draw-visual-2026-10-28T21-49-04-235Z/stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "cases": [
+    {
+      "file": "document-roundtrip.spec.ts",
+      "title": "@APP-101 Preserve a styled diagram through real files"
+    },
+    {
+      "file": "document-roundtrip.spec.ts",
+      "title": "@APP-102 Reject an invalid file without losing work"
+    },
+    {
+      "file": "document-roundtrip.spec.ts",
+      "title": "@APP-103 Save As retains identity and updates the name"
+    },
+    {
+      "file": "document-roundtrip.spec.ts",
+      "title": "@APP-104 New clears the previous document and history"
+    },
+    {
+      "file": "document-roundtrip.spec.ts",
+      "title": "invalid documents and cancelled Save As preserve the current graph"
+    },
+    {
+      "file": "document-roundtrip.spec.ts",
+      "title": "New invalidates a file read that completes later"
+    },
+    {
+      "file": "document-roundtrip.spec.ts",
+      "title": "legacy version-one documents remain readable with deterministic routes and ports"
+    },
+    {
+      "file": "drawing-pages-parity.spec.ts",
+      "title": "pinned 31.5.2 and native footer have matching fine-pointer geometry and computed presentation"
+    },
+    {
+      "file": "drawing-pages-parity.spec.ts",
+      "title": "forced-colors dark preserves system contrast in tabs, menus and dialog"
+    },
+    {
+      "file": "drawing-pages-parity.spec.ts",
+      "title": "320px, 200 percent text, coarse targets, Unicode labels and Tab remain usable"
+    },
+    {
+      "file": "drawing-pages-parity.spec.ts",
+      "title": "coarse pointer enlarges actual targets while keeping the panel within a narrow editor"
+    },
+    {
+      "file": "drawing-pages-parity.spec.ts",
+      "title": "page chrome remains pinned Light under dark system preference without semantic changes"
+    },
+    {
+      "file": "drawing-pages-parity.spec.ts",
+      "title": "native footer omits external branding while page actions and overflow remain usable"
+    },
+    {
+      "file": "drawing-pages-ui.spec.ts",
+      "title": "hosted rename belongs to managed overlays and cannot escape the presentation barrier"
+    },
+    {
+      "file": "drawing-pages-ui.spec.ts",
+      "title": "nested page-list menus report expanded state and readonly modal cancellation restores tab focus"
+    },
+    {
+      "file": "drawing-pages-ui.spec.ts",
+      "title": "native page strip edits, reorders, clears and round-trips every page through real files"
+    },
+    {
+      "file": "drawing-pages-ui.spec.ts",
+      "title": "overflow readonly tabs remain keyboard reachable while every mutation is blocked"
+    },
+    {
+      "file": "drawing-pages-ui.spec.ts",
+      "title": "standalone opens only the selected page independently and cleans its transfer"
+    },
+    {
+      "file": "drawing-pages-ui.spec.ts",
+      "title": "native pointer reorder, Escape drag cancellation and final-page removal are reversible"
+    },
+    {
+      "file": "drawing-pages-ui.spec.ts",
+      "title": "Save As cancel and invalid inactive-page Open preserve the complete drawing"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "parking a native drawing preserves live node DOM, all pages and undo history"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "semantic undo and redo complete their target views before returning"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "page and native graph batches share chronological undo across navigation"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "page viewports are independent and malformed inactive content preserves graph/history"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "readonly permits navigation but rejects every page/history mutation"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "canceled native gesture and rejected page command preserve semantic content and history"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "incomplete source rejects every capture transition without losing graph or history"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "incomplete target rejects every capture transition without losing graph or history"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "native Undo reports rejected capture without losing graph or history"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "native Redo reports rejected capture without losing graph or history"
+    },
+    {
+      "file": "drawing-session.spec.ts",
+      "title": "extracted v2 page preserves identity, graph, viewport and references with a new document identity"
+    },
+    {
+      "file": "floating-cross-terminal.spec.ts",
+      "title": "horizontal corridor crosses target height continuously (releaseY=null)"
+    },
+    {
+      "file": "floating-cross-terminal.spec.ts",
+      "title": "horizontal corridor crosses target height continuously (releaseY=270)"
+    },
+    {
+      "file": "floating-cross-terminal.spec.ts",
+      "title": "horizontal corridor crosses target height continuously (releaseY=280)"
+    },
+    {
+      "file": "floating-horizontal-entry.spec.ts",
+      "title": "horizontal source segment switches to top"
+    },
+    {
+      "file": "floating-horizontal-entry.spec.ts",
+      "title": "horizontal source segment switches to bottom"
+    },
+    {
+      "file": "floating-horizontal-entry.spec.ts",
+      "title": "horizontal target segment switches to top"
+    },
+    {
+      "file": "floating-horizontal-entry.spec.ts",
+      "title": "horizontal target segment switches to bottom"
+    },
+    {
+      "file": "floating-magnet-click.spec.ts",
+      "title": "magnet click preserves existing edge state=initial clicked=a"
+    },
+    {
+      "file": "floating-magnet-click.spec.ts",
+      "title": "magnet click preserves existing edge state=initial clicked=b"
+    },
+    {
+      "file": "floating-magnet-click.spec.ts",
+      "title": "magnet click preserves existing edge state=moved clicked=a"
+    },
+    {
+      "file": "floating-magnet-click.spec.ts",
+      "title": "magnet click preserves existing edge state=moved clicked=b"
+    },
+    {
+      "file": "floating-magnet-click.spec.ts",
+      "title": "magnet click preserves existing edge state=edited clicked=a"
+    },
+    {
+      "file": "floating-magnet-click.spec.ts",
+      "title": "magnet click preserves existing edge state=edited clicked=b"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-a--1-A-B-edited=false"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-a--1-A-B-edited=true"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-a--1-B-A-edited=false"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-a--1-B-A-edited=true"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-a-1-A-B-edited=false"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-a-1-A-B-edited=true"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-a-1-B-A-edited=false"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-a-1-B-A-edited=true"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-b--1-A-B-edited=false"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-b--1-A-B-edited=true"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-b--1-B-A-edited=false"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-b--1-B-A-edited=true"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-b-1-A-B-edited=false"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-b-1-A-B-edited=true"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-b-1-B-A-edited=false"
+    },
+    {
+      "file": "floating-orbit.spec.ts",
+      "title": "ORBIT-b-1-B-A-edited=true"
+    },
+    {
+      "file": "floating-placement.spec.ts",
+      "title": "unrelated figure placement preserves edge moved=false placement=near"
+    },
+    {
+      "file": "floating-placement.spec.ts",
+      "title": "unrelated figure placement preserves edge moved=false placement=over"
+    },
+    {
+      "file": "floating-placement.spec.ts",
+      "title": "unrelated figure placement preserves edge moved=true placement=near"
+    },
+    {
+      "file": "floating-placement.spec.ts",
+      "title": "unrelated figure placement preserves edge moved=true placement=over"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-A-B-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y0-B-A-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-A-B-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x0-y1-B-A-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-A-B-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y0-B-A-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-A-B-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-horizontal-x1-y1-B-A-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-A-B-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y0-B-A-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-A-B-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x0-y1-B-A-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-A-B-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y0-B-A-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-A-B-aligned-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-central--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-central-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-terminal-a--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-terminal-a-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-terminal-b--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-terminal-b-1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-cross-reselect-false"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-cross-reselect-true"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-aligned--1"
+    },
+    {
+      "file": "floating-symmetry.spec.ts",
+      "title": "MATRIX-transpose-x1-y1-B-A-aligned-1"
+    },
+    {
+      "file": "floating-top-entry.spec.ts",
+      "title": "drag vertical corridor left switches floating sides without reversal"
+    },
+    {
+      "file": "floating-top-entry.spec.ts",
+      "title": "drag vertical corridor right switches floating sides without reversal"
+    },
+    {
+      "file": "palette-placement.spec.ts",
+      "title": "rect button preserves existing nodes and mouse-created connection"
+    },
+    {
+      "file": "palette-placement.spec.ts",
+      "title": "rounded-rect button preserves existing nodes and mouse-created connection"
+    },
+    {
+      "file": "palette-placement.spec.ts",
+      "title": "ellipse button preserves existing nodes and mouse-created connection"
+    },
+    {
+      "file": "palette-placement.spec.ts",
+      "title": "diamond button preserves existing nodes and mouse-created connection"
+    },
+    {
+      "file": "palette-placement.spec.ts",
+      "title": "text button preserves existing nodes and mouse-created connection"
+    },
+    {
+      "file": "production-visual.spec.ts",
+      "title": "production visual API reads real X6 SVG"
+    },
+    {
+      "file": "production-visual.spec.ts",
+      "title": "selected real edge keeps SVG visible while a segment handle is dragged"
+    },
+    {
+      "file": "production-visual.spec.ts",
+      "title": "production route remains rendered after node move and resize"
+    },
+    {
+      "file": "production-visual.spec.ts",
+      "title": "fixture loading is deterministic and exposes logical segments"
+    },
+    {
+      "file": "production-visual.spec.ts",
+      "title": "floating attachments cross unrelated figures and survive move, resize, and reconnect"
+    },
+    {
+      "file": "production-visual.spec.ts",
+      "title": "approved visual baseline matrix covers selection, hover, drag, obstacle, and legacy edge"
+    },
+    {
+      "file": "routing-independence.spec.ts",
+      "title": "unrelated shapes never change routing; circular handles track every pointer sample and undo atomically"
+    },
+    {
+      "file": "x6-segments.spec.ts",
+      "title": "X6 3.1.8 exposes floating boundary edge and native segments in SVG"
+    }
+  ]
+}

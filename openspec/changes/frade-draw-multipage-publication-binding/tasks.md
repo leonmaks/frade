@@ -24,6 +24,8 @@
 
 - [x] 2.10 Fresh focused PRE for the separate FUI consumer: compose the closed native API predecessor projection before unchanged original FUI hash/offset/selector inverse; keep all current mutation and P01 actual-binding assertions. Add only the fixed FUI adapter as third inverse entry/exact27 path; old Main/API entries and22-case catalog remain. Full360-case workspace and frozen11 compatibility preflights before new committed snapshot/profiles.
 
+- [x] 2.11 Fresh PRE for native fixture readiness after preserved C8 FUI006 FAIL; deterministic covered-paint RED/GREEN, add exact revision/hidden-cover assertions, retain all original callback actions/assertions/deadlines. Extend only API inverse to third fixture hunk/V4 pin; preserve other entries/authorities/22 cases/27 paths.
+
 ## 3. Exact snapshot evidence and verification
 
 - [ ] 3.1 Refresh the clean isolated snapshot from the final repaired committed source; retain prior c2aeace2/675-source audit, frozen install/runtime, and prove all final source Git blobs and no WIP overlays.
