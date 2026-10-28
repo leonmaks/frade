@@ -1,0 +1,3 @@
+import {defineConfig} from 'E:/dev/codex/frade/.worktrees/multipage-publication-clean-4/packages/draw/node_modules/@playwright/test/index.mjs'
+import original from 'E:/dev/codex/frade/.worktrees/multipage-publication-clean-4/packages/draw/playwright.config.ts'
+export default defineConfig({...original,testDir:'.',testMatch:'diagnostic.spec.ts',outputDir:'E:/dev/codex/frade/.worktrees/requests/staging-visual-transport-probe-20261028/results',reporter:'json',webServer:{...(original.webServer as object),cwd:'E:/dev/codex/frade/.worktrees/multipage-publication-clean-4/packages/draw',reuseExistingServer:false}})

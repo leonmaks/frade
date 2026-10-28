@@ -1,0 +1,211 @@
+{
+  "zip": "docs/engineering/evidence/frade-draw-multipage-publication-20261027/failed-clean-staging-visual-startup/draw-artifacts/floating-symmetry-MATRIX-horizontal-x1-y0-B-A-aligned--1/trace.zip",
+  "entries": [
+    {
+      "name": "resources/src@46599945b277b3c28afffd68bed4c6c85c92fb00.txt",
+      "bytes": 9145
+    },
+    {
+      "name": "resources/eb53560b87546e072a1dad97506bba97e96b4d32",
+      "bytes": 4275
+    },
+    {
+      "name": "test.trace",
+      "bytes": 7162
+    },
+    {
+      "name": "0-trace.trace",
+      "bytes": 5093
+    },
+    {
+      "name": "0-trace.network",
+      "bytes": 7666
+    },
+    {
+      "name": "resources/page@16c49a12ddf7752f57c93183a52ad71a-1793208590735.jpeg",
+      "bytes": 2450
+    },
+    {
+      "name": "resources/page@16c49a12ddf7752f57c93183a52ad71a-1793208590745.jpeg",
+      "bytes": 2450
+    },
+    {
+      "name": "resources/1372075ed47cecc5f8c4a6b17d9ab9423ad17f15.html",
+      "bytes": 417
+    },
+    {
+      "name": "0-trace.stacks",
+      "bytes": 249
+    }
+  ],
+  "selected": [
+    {
+      "file": "test.trace",
+      "type": "after",
+      "callId": "pw:api@31",
+      "endTime": 93706.323,
+      "annotations": [],
+      "error": {
+        "name": "",
+        "message": "Error: page.waitForFunction: Test timeout of 30000ms exceeded.",
+        "stack": "Error: page.waitForFunction: Test timeout of 30000ms exceeded.\n    at Interaction.load (E:\\dev\\codex\\frade\\.worktrees\\multipage-publication-clean-4\\packages\\draw\\tests\\spike\\floating-symmetry.spec.ts:33:21)\n    at E:\\dev\\codex\\frade\\.worktrees\\multipage-publication-clean-4\\packages\\draw\\tests\\spike\\floating-symmetry.spec.ts:224:9"
+      }
+    },
+    {
+      "file": "0-trace.trace",
+      "type": "before",
+      "callId": "call@5095",
+      "startTime": 63645.249,
+      "class": "Frame",
+      "method": "goto",
+      "params": {
+        "url": "/visual.html",
+        "timeout": 0,
+        "waitUntil": "load"
+      },
+      "stepId": "pw:api@30",
+      "pageId": "page@16c49a12ddf7752f57c93183a52ad71a",
+      "beforeSnapshot": "before@call@5095"
+    },
+    {
+      "file": "0-trace.trace",
+      "type": "console",
+      "messageType": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_FAILED",
+      "args": [],
+      "location": {
+        "url": "http://127.0.0.1:5187/src/visual-entry.ts",
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "time": 63667.264,
+      "pageId": "page@16c49a12ddf7752f57c93183a52ad71a"
+    },
+    {
+      "file": "0-trace.trace",
+      "type": "console",
+      "messageType": "debug",
+      "text": "[vite] connecting...",
+      "args": [
+        {
+          "preview": "[vite] connecting...",
+          "value": "[vite] connecting..."
+        }
+      ],
+      "location": {
+        "url": "http://127.0.0.1:5187/@vite/client",
+        "lineNumber": 741,
+        "columnNumber": 8
+      },
+      "time": 63695.66,
+      "pageId": "page@16c49a12ddf7752f57c93183a52ad71a"
+    },
+    {
+      "file": "0-trace.trace",
+      "type": "before",
+      "callId": "call@5097",
+      "startTime": 63702.239,
+      "class": "Frame",
+      "method": "waitForFunction",
+      "params": {
+        "expression": "() => Boolean(window.FRADE_VISUAL_TEST)",
+        "isFunction": true,
+        "arg": {
+          "value": {
+            "v": "undefined"
+          },
+          "handles": []
+        },
+        "timeout": 0
+      },
+      "stepId": "pw:api@31",
+      "pageId": "page@16c49a12ddf7752f57c93183a52ad71a",
+      "beforeSnapshot": "before@call@5097"
+    },
+    {
+      "file": "0-trace.trace",
+      "type": "console",
+      "messageType": "debug",
+      "text": "[vite] connected.",
+      "args": [
+        {
+          "preview": "[vite] connected.",
+          "value": "[vite] connected."
+        }
+      ],
+      "location": {
+        "url": "http://127.0.0.1:5187/@vite/client",
+        "lineNumber": 864,
+        "columnNumber": 14
+      },
+      "time": 63703.01,
+      "pageId": "page@16c49a12ddf7752f57c93183a52ad71a"
+    },
+    {
+      "file": "0-trace.network",
+      "type": "resource-snapshot",
+      "request": {
+        "method": "GET",
+        "url": "http://127.0.0.1:5187/src/visual-entry.ts",
+        "httpVersion": "HTTP/1.1",
+        "cookies": [],
+        "headers": [
+          {
+            "name": "Origin",
+            "value": "http://127.0.0.1:5187"
+          },
+          {
+            "name": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "name": "Referer",
+            "value": "http://127.0.0.1:5187/visual.html"
+          },
+          {
+            "name": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+          },
+          {
+            "name": "sec-ch-ua",
+            "value": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+          },
+          {
+            "name": "Accept-Language",
+            "value": "en-US"
+          },
+          {
+            "name": "sec-ch-ua-mobile",
+            "value": "?0"
+          }
+        ],
+        "queryString": [],
+        "headersSize": -1,
+        "bodySize": 0
+      },
+      "response": {
+        "status": -1,
+        "statusText": "",
+        "httpVersion": "HTTP/1.1",
+        "cookies": [],
+        "headers": [],
+        "content": {
+          "size": -1,
+          "mimeType": "x-unknown"
+        },
+        "headersSize": -1,
+        "bodySize": -1,
+        "redirectURL": "",
+        "_transferSize": -1,
+        "_failureText": "net::ERR_CONNECTION_FAILED"
+      },
+      "status": -1,
+      "time": "2026-10-28T17:29:50.728Z",
+      "timings": {
+        "send": -1,
+        "wait": -1,
+        "receive": -1
+      }
+    }
+  ]
+}

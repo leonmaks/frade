@@ -22,7 +22,7 @@
 
 ## 3. Exact snapshot evidence and verification
 
-- [ ] 3.1 Create clean isolated snapshot from committed base plus explicit owned transfers; frozen dependency install and transferred path/hash audit prove no WIP source publication.
+- [x] 3.1 Create clean isolated snapshot from committed base plus explicit owned transfers; frozen dependency install and transferred path/hash audit prove no WIP source publication.
 - [ ] 3.2 Execute fresh build and all7 roles per profile, retain every historical named case and50 presentation cases, unchanged150ms benchmark; record raw reports/exits/source/bundle before+after hashes.
 - [ ] 3.3 Pin separate complete manifests; run strict current/origin checks and full pnpm check in both clean and working snapshots, preserving all required assertions and failures.
 - [ ] 3.4 Produce implementation verification, gate applicability/evidence report and preservation/archive audits; strict OpenSpec validation PASS.

@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-28T17:41:39.933Z",
+  "classification": "ENVIRONMENT_LOCALHOST_TRANSPORT_BEFORE_FIXTURE",
+  "requiredFailure": {
+    "profile": "FAIL",
+    "passedVisual": 238,
+    "failedVisual": 1,
+    "error": "net::ERR_CONNECTION_FAILED on http://127.0.0.1:5187/src/visual-entry.ts, response status -1 before FRADE_VISUAL_TEST installation; neutral blank page, original30000ms wait"
+  },
+  "systemObservation": {
+    "provider": "Tcpip",
+    "id": 4266,
+    "atUtc": "2026-10-28T17:30:06.0480611Z",
+    "message": "UDP ephemeral port allocation failed because all ports in use",
+    "tcpCauseProven": false,
+    "subsequentUdpEndpointAggregate": 90
+  },
+  "boundedProbe": {
+    "classification": "DIAGNOSTIC_NOT_GATE",
+    "originalFailedCase": "MATRIX-horizontal-x1-y0-B-A-aligned--1",
+    "repetitions": 8,
+    "workers": 4,
+    "unchangedAssertions": true,
+    "unchanged30000ms": true,
+    "requestPageConsoleErrors": 0,
+    "durationMs": 16886.275999999998
+  },
+  "source": {
+    "head": "c2aeace20b7a571ccdaaec95d7f045a28533c7bb",
+    "gitInputsExact": 675,
+    "sourceSetSha256": "ae381ef539bb7db6d9fd7a2e9c515fcea7ae0fefaece588e615762fa95ae2a3e",
+    "sourceChanges": 0
+  },
+  "decision": "Exactly ONE fresh complete unchanged clean8-role profile from build, original239 visual/4workers/timeouts and20+100/150 retained. No failed-role resume/partial reuse. Another required failure stops for RCA.",
+  "productionFixForNetworkClaimed": false,
+  "appOrRoutingModification": false,
+  "operatingSystemOrUserProcessesChanged": false
+}
