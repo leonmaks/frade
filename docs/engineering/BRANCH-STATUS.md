@@ -1,11 +1,13 @@
 # Frade Draw multipage — archived; publication repair in progress
 
 <!-- PUBLICATION-CURRENT-START -->
-Owner main E:/dev/codex/frade, common .git. Source024096c5; verified metadata checkpoint6a4c813c. Independent cumulative POST post-01 PASS, exact requested gpt-6-sol/high, unchanged candidate/packet and complete immutable receipt/events/exits/provenance. Actual backend/effort NOT_CONFIRMED/NOT_CONFIRMED per reviewed policy.
+COMPLETE — frade-draw-multipage feature/archive/publication repair is published to origin/main. Verified remote reviewed checkpoint: 3f9498e9dda7f95c3ad6c020c7e52f653aacdf13; normal24-commit fast-forward frome54cf0c1e4e70ed833398c673ea3140b6f10469e, no force. Product/test source024096c5; reviewed metadata6a4c813c. This final tracked status is a metadata-only follow-up; its enclosing commit is verified separately to avoid self-referential SHA text.
 
-Both fresh whole profiles919/919 and50 presentation cases PASS; clean678/p95112.6ms, working735/p95116.2ms against unchanged150ms/20+100. Both original pnpm check PASS including all11 LDE/5000ms. Exact current raw source/build/runtime bindings,9req18scenarios/19tasks and UI compliance complete. Source unchanged after review. Original854 WIP paths,1977 archive and2851 vendor pins preserved; local raw streams and9 working compiled bodies excluded from publication. Historical FAILs/attribution limits retained.
+PASS: clean678 and working735 exact full profiles,919/919 each and all50 original presentation cases. p95112.6/116.2ms under unchanged150ms/20+100. Both original pnpm check, original11LDE/5000ms, strict OpenSpec9requirements/18scenarios/19tasks, UI compliance and independent cumulative POST PASS. Exact requested gpt-6-sol/high; actual backend/effort NOT_CONFIRMED per shared policy/PRE21. No product source changes after review.
 
-Next: metadata-only closing checkpoint, fresh same-origin ancestry check, normal authorized origin/main push, verify actual remote SHA and record publication. NO real push yet. Existing10 ignored output files remain in two private backups. Shared releasea6829c6d/policy6c6cf78f unchanged. No subsequent feature or repair archive started.
+PRESERVED / EXCLUDED: all854 original user paths (5 tracked changes/deletion,849 untracked); all1977 archived multipage files and2851 raw vendor pins. All24 outgoing trees audited with no WIP/raw review bodies/working-only build copies.24 raw review streams and9 compiled working packet bodies remain locally unpublished. Original10 ignored output files are kept in two local backups. All historical FAILs and stated attribution/environment limits remain intact.
+
+No implementation/publication blocker. Manual AT/cross-OS not run. No later numbered change or binding-repair archive started. Owner main E:/dev/codex/frade; common .git; approved designa465972e, releasea6829c6d/policy6c6cf78f. Final follow-up publication log: .worktrees/requests/publication-closing-status.json (local only).
 <!-- PUBLICATION-CURRENT-END -->
 
 ## Publication revalidation — 2026-10-27

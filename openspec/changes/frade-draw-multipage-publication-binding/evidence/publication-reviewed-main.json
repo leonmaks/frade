@@ -1,0 +1,155 @@
+{
+  "startedAt": "2026-10-28T23:37:47.475Z",
+  "status": "PASS",
+  "destination": "origin/main",
+  "commands": [
+    {
+      "args": [
+        "symbolic-ref",
+        "--short",
+        "HEAD"
+      ],
+      "startedAt": "2026-10-28T23:37:47.476Z",
+      "finishedAt": "2026-10-28T23:37:47.542Z",
+      "exitCode": 0,
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "startedAt": "2026-10-28T23:37:47.542Z",
+      "finishedAt": "2026-10-28T23:37:47.606Z",
+      "exitCode": 0,
+      "stdout": "3f9498e9dda7f95c3ad6c020c7e52f653aacdf13\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "config",
+        "--get",
+        "remote.origin.url"
+      ],
+      "startedAt": "2026-10-28T23:37:47.606Z",
+      "finishedAt": "2026-10-28T23:37:47.692Z",
+      "exitCode": 0,
+      "stdout": "git@github.com:leonmaks/frade.git\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "startedAt": "2026-10-28T23:37:47.692Z",
+      "finishedAt": "2026-10-28T23:37:47.767Z",
+      "exitCode": 0,
+      "stdout": "https://github.com/leonmaks/frade.git\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "diff",
+        "--cached",
+        "--quiet"
+      ],
+      "startedAt": "2026-10-28T23:37:47.767Z",
+      "finishedAt": "2026-10-28T23:37:47.837Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "startedAt": "2026-10-28T23:37:48.815Z",
+      "finishedAt": "2026-10-28T23:37:49.946Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "From https://github.com/leonmaks/frade\n * branch              main       -> FETCH_HEAD\n"
+    },
+    {
+      "args": [
+        "rev-parse",
+        "origin/main"
+      ],
+      "startedAt": "2026-10-28T23:37:49.946Z",
+      "finishedAt": "2026-10-28T23:37:50.032Z",
+      "exitCode": 0,
+      "stdout": "e54cf0c1e4e70ed833398c673ea3140b6f10469e\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "merge-base",
+        "--is-ancestor",
+        "origin/main",
+        "HEAD"
+      ],
+      "startedAt": "2026-10-28T23:37:50.032Z",
+      "finishedAt": "2026-10-28T23:37:50.119Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "rev-list",
+        "--left-right",
+        "--count",
+        "origin/main...HEAD"
+      ],
+      "startedAt": "2026-10-28T23:37:50.119Z",
+      "finishedAt": "2026-10-28T23:37:50.198Z",
+      "exitCode": 0,
+      "stdout": "0\t24\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "push",
+        "origin",
+        "HEAD:refs/heads/main"
+      ],
+      "startedAt": "2026-10-28T23:37:50.198Z",
+      "finishedAt": "2026-10-28T23:38:04.556Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "To https://github.com/leonmaks/frade.git\n   e54cf0c1..3f9498e9  HEAD -> main\n"
+    },
+    {
+      "args": [
+        "ls-remote",
+        "origin",
+        "refs/heads/main"
+      ],
+      "startedAt": "2026-10-28T23:38:04.556Z",
+      "finishedAt": "2026-10-28T23:38:05.560Z",
+      "exitCode": 0,
+      "stdout": "3f9498e9dda7f95c3ad6c020c7e52f653aacdf13\trefs/heads/main\n",
+      "stderr": ""
+    }
+  ],
+  "head": "3f9498e9dda7f95c3ad6c020c7e52f653aacdf13",
+  "liveWorkingBinding": {
+    "status": "PASS",
+    "sourceFiles": 735,
+    "executions": 7,
+    "tests": 919,
+    "presentationCases": 50
+  },
+  "remoteBefore": "e54cf0c1e4e70ed833398c673ea3140b6f10469e",
+  "outgoing": "0\t24",
+  "remoteAfter": "3f9498e9dda7f95c3ad6c020c7e52f653aacdf13",
+  "remoteShaVerified": true,
+  "noForce": true,
+  "userWipNotStagedOrPublished": true,
+  "sourceCommit": "024096c518ae9ebc34a5e96e165d9d0485b01f51",
+  "finishedAt": "2026-10-28T23:38:05.561Z"
+}
