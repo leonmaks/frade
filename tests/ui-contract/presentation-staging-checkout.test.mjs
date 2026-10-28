@@ -10,7 +10,7 @@ const root = fileURLToPath(new URL('../../', import.meta.url))
 const pins = [
   {file:'packages/ui-workspace/tests/ui-contract/presentation-staging-adoption.json',sha256:'eef8c989136106b41029ce82e0f0ee89d7627056da6e62f27355ef0b5b1f4c7b'},
   {file:'tests/ui-contract/presentation-staging-cases.json',sha256:'271f51c1618b1e1b5303fb70aeabe5d64a8c606f2bd3ffd55f5c25e12386f2a5'},
-  {file:'packages/ui-workspace/tests/ui-contract/presentation-staging-refusal-adoption.json',sha256:'d8d83986c291434682b5083283cee1202ee12f9623a4f7eb687e6bc0f44aac78'},
+  {file:'packages/ui-workspace/tests/ui-contract/presentation-staging-refusal-adoption.json',sha256:'e302b2da3ec9679dc656120958658891dae486a76c90a321e0ab5b2f3e813c6b'},
 ]
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 const expectedRule = file => pins.filter(pin => dirname(pin.file) === dirname(file)).map(pin => pin.file.split('/').at(-1)+' text eol=lf\n').join('')

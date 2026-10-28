@@ -28,7 +28,7 @@ function fixture() {
   roots.push({ root, ino: identity.ino, dev: identity.dev })
   const put = (name: string, bytes: Buffer | string) => { const target = join(root, name); mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, bytes) }
   const raw = readFileSync(join(repository, file)), adoption = JSON.parse(raw.toString()) as Adoption
-  expect(sha(raw)).toBe('d8d83986c291434682b5083283cee1202ee12f9623a4f7eb687e6bc0f44aac78')
+  expect(sha(raw)).toBe('e302b2da3ec9679dc656120958658891dae486a76c90a321e0ab5b2f3e813c6b')
   put(file, raw)
   for (const name of [adoption.authority.file, oldFile, manifestFile]) put(name, readFileSync(join(repository, name)))
   const old = JSON.parse(readFileSync(join(repository, oldFile), 'utf8')) as { entries: Array<{ file: string; predecessor: { sourceBase64: string; sha256: string } }> }
@@ -42,9 +42,9 @@ function fixture() {
 
 it('staging refusal origin composes the exact repair with both immutable historical authorities', () => {
   const f = fixture()
-  expect(f.adoption.entries.map(entry => entry.file)).toEqual(['apps/desktop/src/main/presentation-settings.ts', 'apps/desktop/tests/e2e/ui-contract-theme.spec.ts'])
-  expect(drawingPagesOriginScope).toHaveLength(26)
-  expect(new Set(drawingPagesOriginScope).size).toBe(26)
+  expect(f.adoption.entries.map(entry => entry.file)).toEqual(['apps/desktop/src/main/presentation-settings.ts', 'apps/desktop/tests/e2e/ui-contract-theme.spec.ts', 'packages/ui-workspace/tests/ui-contract/vscode-dark-2026-origin.ts'])
+  expect(drawingPagesOriginScope).toHaveLength(27)
+  expect(new Set(drawingPagesOriginScope).size).toBe(27)
   for (const entry of f.adoption.entries) {
     const live = f.live(entry)
     expect(sha(Buffer.from(live))).toBe(entry.adoptedCanonicalSha256)

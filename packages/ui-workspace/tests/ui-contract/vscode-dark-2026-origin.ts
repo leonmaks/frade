@@ -1,4 +1,6 @@
 import { createHash } from 'node:crypto'
+import { fileURLToPath } from 'node:url'
+import { readDrawingPagesOrigin } from './drawing-pages-origin'
 const originSha256 = '7c3e52a69c1b8346a78f4297774f5c2342a3ecdaeb05a2611465d2f09c546f43'
 const liveSha256 = 'f9b08ca17f6eddcaa932de360e96d72a813532ff32d478d884dd3af30130dbd7'
 const preLdeSha256 = '3535fd97bbb5ad514abd7cc896e2dab750042a757afde459cd4be71984e367e9'
@@ -164,6 +166,14 @@ const patches = [
 const digest = (raw: Buffer | string) => createHash('sha256').update(raw).digest('hex')
 /** Historical-only original source projection; fresh runs bind the current live source separately. */
 export function historicalFuiOrigin(live: Buffer): Buffer {
+  if (digest(live) !== liveSha256) {
+    try {
+      const root = fileURLToPath(new URL('../../../../', import.meta.url))
+      live = readDrawingPagesOrigin(root, 'apps/desktop/tests/e2e/ui-contract-theme.spec.ts', live)
+    } catch (cause) {
+      throw new Error('FUI_CURRENT_SOURCE_DRIFT', { cause })
+    }
+  }
   if (digest(live) !== liveSha256) throw Error('FUI_CURRENT_SOURCE_DRIFT')
   let source = live.toString('utf8')
   for (const patch of [...editorPatches].reverse()) {

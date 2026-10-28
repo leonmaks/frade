@@ -65,7 +65,7 @@ function fixture() {
     let text = readFileSync(join(repository, entry.file)).toString().replaceAll('\r\n', '\n')
     if (entry.file === 'apps/desktop/src/main/presentation-settings.ts') {
       const repairRaw = readFileSync(join(repository, 'packages/ui-workspace/tests/ui-contract/presentation-staging-refusal-adoption.json'))
-      expect(sha(repairRaw)).toBe('d8d83986c291434682b5083283cee1202ee12f9623a4f7eb687e6bc0f44aac78')
+      expect(sha(repairRaw)).toBe('e302b2da3ec9679dc656120958658891dae486a76c90a321e0ab5b2f3e813c6b')
       const repair = (JSON.parse(repairRaw.toString()) as { entries: Entry[] }).entries.find(candidate => candidate.file === entry.file)!
       expect(sha(Buffer.from(text))).toBe(repair.adoptedCanonicalSha256)
       for (const hunk of [...repair.hunks].reverse()) {
@@ -143,8 +143,8 @@ it('staging dispatch preserves all unowned source and report verification', () =
       inputs: Array<{ file: string; sha256: string }>
       reports: Record<string, { file: string; sha256: string }>
     }
-  expect(drawingPagesOriginScope).toHaveLength(26)
-  expect(new Set(drawingPagesOriginScope).size).toBe(26)
+  expect(drawingPagesOriginScope).toHaveLength(27)
+  expect(new Set(drawingPagesOriginScope).size).toBe(27)
   for (const input of [...ledger.inputs, ...Object.values(ledger.reports)].filter(
     (x) => !drawingPagesOriginScope.includes(x.file),
   )) {

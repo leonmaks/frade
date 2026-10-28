@@ -33,6 +33,7 @@ export const drawingPagesOriginScope: readonly string[] = Object.freeze([
   "packages/ui-workspace/src/diagramContent.ts",
   "packages/ui-workspace/src/styles.css",
   "packages/ui-workspace/src/useBundleManager.tsx",
+  "packages/ui-workspace/tests/ui-contract/vscode-dark-2026-origin.ts",
   "packages/ui-workspace/tokens/drawio-editor-source.json",
   "pnpm-lock.yaml",
   "scripts/ui/drawio-editor-style.mjs",
@@ -236,12 +237,13 @@ function readStagingOrigin(root: string, file: string, live: Buffer): Buffer | u
 const refusalFiles = [
   'apps/desktop/src/main/presentation-settings.ts',
   'apps/desktop/tests/e2e/ui-contract-theme.spec.ts',
+  'packages/ui-workspace/tests/ui-contract/vscode-dark-2026-origin.ts',
 ]
 function readStagingRefusalOrigin(root: string, file: string, live: Buffer): Buffer | undefined {
   if (!refusalFiles.includes(file)) return
   demand(safeRead(root, file).equals(live), 'ADOPTED_SOURCE_HASH:' + file)
   const raw = safeRead(root, 'packages/ui-workspace/tests/ui-contract/presentation-staging-refusal-adoption.json')
-  demand(sha(raw) === 'd8d83986c291434682b5083283cee1202ee12f9623a4f7eb687e6bc0f44aac78', 'REFUSAL_ORIGIN_MANIFEST')
+  demand(sha(raw) === 'e302b2da3ec9679dc656120958658891dae486a76c90a321e0ab5b2f3e813c6b', 'REFUSAL_ORIGIN_MANIFEST')
   type RefusalEntry = {
     file: string
     predecessor: { gitOid: string; sha256: string; canonicalSha256: string; form: 'LF' | 'CRLF' | 'RAW_BASE64'; sourceBase64?: string }
@@ -259,7 +261,7 @@ function readStagingRefusalOrigin(root: string, file: string, live: Buffer): Buf
   const legacyPin = '2bec063e00f7d6589f3e1f7c60c1f9ee98659aefca8d3434cd66f41ef64e1b21'
   const previousFile = 'packages/ui-workspace/tests/ui-contract/presentation-staging-adoption.json'
   const previousPin = 'eef8c989136106b41029ce82e0f0ee89d7627056da6e62f27355ef0b5b1f4c7b'
-  demand(adoption.version === 2 && adoption.baselineCommit === 'c2aeace20b7a571ccdaaec95d7f045a28533c7bb' &&
+  demand(adoption.version === 3 && adoption.baselineCommit === 'c2aeace20b7a571ccdaaec95d7f045a28533c7bb' &&
     JSON.stringify(adoption.entries.map(entry => entry.file).sort()) === JSON.stringify([...refusalFiles].sort()), 'REFUSAL_ORIGIN_SCOPE')
   demand(adoption.authority.file === legacyFile && adoption.authority.sha256 === legacyPin &&
     adoption.previousStaging.file === previousFile && adoption.previousStaging.sha256 === previousPin, 'REFUSAL_ORIGIN_AUTHORITY')
@@ -269,9 +271,13 @@ function readStagingRefusalOrigin(root: string, file: string, live: Buffer): Buf
   const oldStages = (JSON.parse(previous.toString()) as { entries: { file: string; adoptedCanonicalSha256: string }[] }).entries
   const main = adoption.entries.find(entry => entry.file === refusalFiles[0])!
   const api = adoption.entries.find(entry => entry.file === refusalFiles[1])!
+  const fui = adoption.entries.find(entry => entry.file === refusalFiles[2])!
+  const fuiPins = pins.filter(entry => entry.file === fui.file)
   const mainPins = oldStages.filter(entry => entry.file === main.file), apiPins = pins.filter(entry => entry.file === api.file)
   demand(mainPins.length === 1 && main.predecessor.canonicalSha256 === mainPins[0].adoptedCanonicalSha256 &&
-    apiPins.length === 1 && api.predecessor.sha256 === apiPins[0].sha256 && main.hunks.length === 12 && api.hunks.length === 2, 'REFUSAL_ORIGIN_PIN')
+    apiPins.length === 1 && api.predecessor.sha256 === apiPins[0].sha256 &&
+    fuiPins.length === 1 && fui.predecessor.sha256 === fuiPins[0].sha256 &&
+    main.hunks.length === 12 && api.hunks.length === 2 && fui.hunks.length === 2, 'REFUSAL_ORIGIN_PIN')
   const entry = adoption.entries.find(entry => entry.file === file)!
   const canonical = canonicalPublicationBytes(live), text = canonical.toString()
   const exactLegacy = sha(live) === entry.predecessor.sha256
@@ -288,7 +294,7 @@ function readStagingRefusalOrigin(root: string, file: string, live: Buffer): Buf
     ['LF', 'CRLF', 'RAW_BASE64'].includes(entry.predecessor.form), 'REFUSAL_ORIGIN_PREDECESSOR')
   let predecessor: Buffer
   if (entry.predecessor.form === 'RAW_BASE64') {
-    demand(file === refusalFiles[1] && typeof entry.predecessor.sourceBase64 === 'string', 'REFUSAL_ORIGIN_PREDECESSOR')
+    demand((file === refusalFiles[1] || file === refusalFiles[2]) && typeof entry.predecessor.sourceBase64 === 'string', 'REFUSAL_ORIGIN_PREDECESSOR')
     const source = entry.predecessor.sourceBase64!
     predecessor = Buffer.from(source, 'base64')
     demand(predecessor.toString('base64') === source, 'REFUSAL_ORIGIN_PREDECESSOR')
@@ -348,7 +354,7 @@ export function createDrawingPagesOriginReader(options: Options) {
     safeRelative(file)
     const entry = entries.get(file)
     if (!entry) return readStagingOrigin(options.root, file, live) ??
-      (file === refusalFiles[1] ? readStagingRefusalOrigin(options.root, file, live) : undefined) ??
+      (refusalFiles.includes(file) ? readStagingRefusalOrigin(options.root, file, live) : undefined) ??
       readBridgeFocusOrigin(options.root, file, live) ?? live
     const legacy = [entry.adoptedSha256, entry.canonicalSha256, entry.checkoutSha256].includes(
       sha(live),

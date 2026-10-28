@@ -22,6 +22,8 @@
 
 - [x] 2.9 Fresh PRE for the two deterministic native failures: distinguish trusted pre-creation refusal from a possible owned staging cleanup obligation, preserve foreign file/directory and strict UNKNOWN behavior, retain real-filesystem RED/GREEN and all original obstruction assertions. Adopt the exact six-method native API contract with added stage type assertion. Preserve original5/19/236 authorities via one fixed two-file inverse supplement, exact26 dispatch, four additional closed origin cases and real Git filename-scoped raw metadata protection. No full-control retry substitutes for this repair.
 
+- [x] 2.10 Fresh focused PRE for the separate FUI consumer: compose the closed native API predecessor projection before unchanged original FUI hash/offset/selector inverse; keep all current mutation and P01 actual-binding assertions. Add only the fixed FUI adapter as third inverse entry/exact27 path; old Main/API entries and22-case catalog remain. Full360-case workspace and frozen11 compatibility preflights before new committed snapshot/profiles.
+
 ## 3. Exact snapshot evidence and verification
 
 - [ ] 3.1 Refresh the clean isolated snapshot from the final repaired committed source; retain prior c2aeace2/675-source audit, frozen install/runtime, and prove all final source Git blobs and no WIP overlays.

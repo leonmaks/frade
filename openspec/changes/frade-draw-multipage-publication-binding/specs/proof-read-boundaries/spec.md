@@ -1,32 +1,40 @@
 ## ADDED Requirements
 
 ### Requirement: Historical adoption dispatch preserves complete verification
-The proof adapter SHALL dispatch historical transformation only for the exact nineteen immutable c9 origin paths, separately pinned Draw.io bridge, five separately pinned staged-commit files and the pinned native bootstrap API test; unowned live bytes SHALL remain unchanged for complete downstream verification.
+The proof adapter SHALL dispatch historical transformation only for the exact nineteen immutable c9 origin paths, separately pinned Draw.io bridge, five separately pinned staged-commit files, the pinned native bootstrap API test and its pinned FUI historical adapter; unowned live bytes SHALL remain unchanged for complete downstream verification.
 
 #### Scenario: Unowned source or report changes
-- **GIVEN** an input outside those twenty-six paths
+- **GIVEN** an input outside those twenty-seven paths
 - **WHEN** the adapter receives its live bytes
 - **THEN** it returns those exact bytes without consulting unrelated adoption authority
 - **AND** the original complete input/report verifier still rejects any hash mutation
 
 #### Scenario: Owned source consumes fresh authority
-- **GIVEN** one of those twenty-six paths
+- **GIVEN** one of those twenty-seven paths
 - **WHEN** its source, manifest, snapshot or path ownership changes
 - **THEN** all original fresh authority, link, byte-form and hash guards remain required and reject unauthorized changes
 
 ### Requirement: Staging-refusal inverse composes immutable authorities
-The staging-refusal repair SHALL use only a separately pinned exact two-file inverse supplement, composed with the unchanged prior staging and legacy authorities. Full live source, whole byte form, unique complete hunks and exact predecessor hashes SHALL be verified before returning historical bytes.
+The staging-refusal repair SHALL use only a separately pinned exact three-file inverse supplement, composed with the unchanged prior staging and legacy authorities. Full live source, whole byte form, unique complete hunks and exact predecessor hashes SHALL be verified before returning historical bytes.
 
 #### Scenario: Exact host and native API deltas
-- **GIVEN** the repaired apps/desktop/src/main/presentation-settings.ts or apps/desktop/tests/e2e/ui-contract-theme.spec.ts
+- **GIVEN** the repaired apps/desktop/src/main/presentation-settings.ts, apps/desktop/tests/e2e/ui-contract-theme.spec.ts or packages/ui-workspace/tests/ui-contract/vscode-dark-2026-origin.ts
 - **WHEN** either contains an extra, partial, duplicated or unowned edit
 - **THEN** historical restoration fails closed without changing the immutable five-file staging manifest or original LDE pins
 
 #### Scenario: Legacy predecessor has mixed line endings
 - **GIVEN** the exact immutable native API predecessor contains both LF and CRLF
-- **WHEN** version2 metadata stores its original raw bytes as canonical base64
+- **WHEN** versioned metadata stores its original raw bytes as canonical base64
 - **THEN** restoration verifies the same raw SHA256 and Git blob ID and canonical bytes equal the complete inverse-hunk predecessor
 - **AND** only those exact legacy raw bytes may bypass the whole-file LF/CRLF input rule; arbitrary mixed current bytes remain rejected
+
+### Requirement: FUI historical consumer composes the exact native projection
+The FUI historical adapter SHALL first restore the exact owned native API predecessor when receiving its approved new source. It SHALL retain all original FUI source hashes, patch offsets, selectors and output checks. Any unapproved source or projection failure SHALL still be refused with its cause retained.
+
+#### Scenario: Existing actual FUI bindings consume the new startup test
+- **WHEN** unchanged actual FUI binding tests read the approved six-method startup source
+- **THEN** the closed native inverse restores the exact f9 predecessor before the original FUI inverse
+- **AND** current source mutations and dropped-assertion controls remain rejected without changing callback assertions
 
 ### Requirement: Windows path resolution preserves safety and deadlines
 Proof readers SHALL retain every path/link/containment and live-byte check while using the documented native realpath API on Windows and the existing API on other platforms; original test deadlines SHALL remain unchanged.
