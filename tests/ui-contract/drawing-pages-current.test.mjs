@@ -42,6 +42,8 @@ const generatedInventory = 'packages/ui-workspace/tokens/drawio-editor-source.js
 const checkoutRoot = fileURLToPath(new URL('../../', import.meta.url))
 test('current source closure binds the exact generated inventory checkout rule', () => {
   assert.ok(currentInputFiles(checkoutRoot).includes(checkoutRule))
+  for (const rule of ['packages/ui-workspace/tests/ui-contract/.gitattributes', 'tests/ui-contract/.gitattributes'])
+    assert.ok(currentInputFiles(checkoutRoot).includes(rule), 'Missing staged metadata checkout input: ' + rule)
 })
 for (const autocrlf of ['true', 'false']) {
   test(

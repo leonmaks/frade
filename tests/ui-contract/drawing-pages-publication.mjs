@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import {
   safeBytes,
   currentInputFiles,
@@ -18,6 +19,14 @@ const demand = (value, code) => {
 }
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b)
 const digest = (value) => /^[a-f0-9]{64}$/.test(value)
+const caseCatalogRaw = readFileSync(new URL('./presentation-staging-cases.json', import.meta.url))
+demand(sha256(caseCatalogRaw) === '3926794a759715b4d4b7cce189704bafb4243a3aea12bd5e28b7a5ad715b0ed2', 'PUBLICATION_CASE_CATALOG')
+const caseCatalog = JSON.parse(caseCatalogRaw)
+demand(caseCatalog.version === 1 && caseCatalog.role === 'workspace-direct' && caseCatalog.cases.length === 18, 'PUBLICATION_CASE_CATALOG')
+export const publicationAddedCases = Object.freeze(caseCatalog.cases.map(item => Object.freeze({ ...item })))
+const additionalKey = item => item.file + '\0' + item.title
+const addedCaseKeys = new Set(publicationAddedCases.map(additionalKey))
+demand(addedCaseKeys.size === 18, 'PUBLICATION_CASE_CATALOG')
 export const publicationPhysical = (profile, file) => {
   demand(['clean', 'working'].includes(profile), 'PUBLICATION_PROFILE_NAME')
   return file.startsWith(evidenceOwner)
@@ -228,20 +237,24 @@ export function verifyPublicationControls(manifest, read, legacy) {
   for (const previous of legacy.executions) {
     const current = manifest.executions.find((x) => x.role === previous.role),
       keys = new Set(current.cases.map(key))
+    demand(keys.size === current.cases.length, 'PUBLICATION_NEW_CASE_SCOPE')
     demand(
       previous.cases.every((item) => keys.has(key(item))),
       'PUBLICATION_HISTORICAL_CASE',
     )
     const old = new Set(previous.cases.map(key)),
       added = current.cases.filter((item) => !old.has(key(item)))
-    demand(
-      added.every(
-        (item) =>
-          previous.role === 'workspace-direct' &&
-          item.file.replaceAll('\\', '/').endsWith('/publication-lock-origin.test.ts'),
-      ),
-      'PUBLICATION_NEW_CASE_SCOPE',
-    )
+    if (previous.role !== 'workspace-direct') demand(added.length === 0, 'PUBLICATION_NEW_CASE_SCOPE')
+    else {
+      const prefix = control.snapshotRoot.replaceAll('\\', '/') + '/'
+      const actual = added.map(item => {
+        const file = item.file.replaceAll('\\', '/')
+        demand(file.startsWith(prefix), 'PUBLICATION_NEW_CASE_SCOPE')
+        return additionalKey({file: file.slice(prefix.length), title: item.title})
+      })
+      demand(actual.length === 18 && new Set(actual).size === 18 &&
+        actual.every(value => addedCaseKeys.has(value)), 'PUBLICATION_NEW_CASE_SCOPE')
+    }
   }
   return records.length
 }

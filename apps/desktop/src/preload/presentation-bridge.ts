@@ -8,6 +8,7 @@ import type {
   PresentationRequest,
   PresentationOutcome,
   PresentationRecord,
+  PresentationStagingOutcome,
 } from '@frade/runtime-contracts'
 /** A separate capability object. Bootstrap is cached data, never a renderer filesystem call. */
 export function createPresentationApi(
@@ -36,6 +37,14 @@ export function createPresentationApi(
       acceptedGeneration = response.generation
       return response
     },
+    stage: async (context, selection, expectedRevision) =>
+      (await request({
+        version: 1,
+        sessionId: boot.sessionId,
+        requestId: context.requestId,
+        operation: 'stage',
+        payload: { context, selection, expectedRevision },
+      })) as PresentationStagingOutcome,
     persist: async (context, selection, expectedRevision) =>
       (await request({
         version: 1,

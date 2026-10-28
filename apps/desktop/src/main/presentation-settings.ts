@@ -8,7 +8,10 @@ import {
   parsePresentationPhase,
   PRESENTATION_MAX_BYTES,
 } from '@frade/runtime-contracts'
-import { createApplicationThemeRegistry, BUILTIN_IDS } from '@frade/ui-workspace/design/theme/registry'
+import {
+  createApplicationThemeRegistry,
+  BUILTIN_IDS,
+} from '@frade/ui-workspace/design/theme/registry'
 import { resolveTheme } from '@frade/ui-workspace/design/theme/resolver'
 import { authorizedSender } from './security'
 import type {
@@ -17,6 +20,7 @@ import type {
   PresentationChoice,
   PresentationPhase,
   PresentationRequest,
+  PresentationStagingOutcome,
 } from '@frade/runtime-contracts'
 export interface PresentationFiles {
   read(path: string): Promise<string | undefined>
@@ -49,6 +53,11 @@ export interface PresentationSettings {
   initialize(): Promise<PresentationBoot>
   bootstrap(sender: PresentationSender): PresentationBoot
   announceIntent(requestId: string): Promise<{ generation: number }>
+  stage(
+    context: PresentationPhase,
+    selection: PresentationChoice,
+    expectedRevision: number,
+  ): Promise<PresentationStagingOutcome>
   persist(
     context: PresentationPhase,
     selection: PresentationChoice,
@@ -145,6 +154,13 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
     activeRequest = '',
     tail: Promise<unknown> = Promise.resolve(),
     maximumRevision = 0
+  let prepared:
+    | {
+        context: PresentationPhase
+        record: PresentationRecord
+        expectedRevision: number
+      }
+    | undefined
   const known = new Map<number, PresentationRecord>(),
     candidates = new Map<number, PresentationRecord>()
   const remember = (map: Map<number, PresentationRecord>, value: PresentationRecord) => {
@@ -214,17 +230,20 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
     selection: PresentationChoice,
     base: PresentationRecord,
     onRename?: () => void,
+    stagedRecord?: PresentationRecord,
   ): Promise<PresentationRecord> {
     if (!current(context)) throw Error('Stale presentation intent')
-    const record = parsePresentationRecord({
-      version: 1,
-      revision: Math.max(base.revision, maximumRevision) + 1,
-      generation: context.generation,
-      transactionId: context.transactionId,
-      selection,
-    })
+    const record =
+      stagedRecord ??
+      parsePresentationRecord({
+        version: 1,
+        revision: Math.max(base.revision, maximumRevision) + 1,
+        generation: context.generation,
+        transactionId: context.transactionId,
+        selection,
+      })
     remember(candidates, record)
-    await files.stage(staged, JSON.stringify(record) + '\n')
+    if (!stagedRecord) await files.stage(staged, JSON.stringify(record) + '\n')
     if (!current(context)) throw Error('Stale presentation intent before rename')
     onRename?.()
     await files.rename(staged, target)
@@ -282,6 +301,49 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
       activeRequest = requestId
       return Object.freeze({ generation: ++acceptedGeneration })
     },
+    stage: (context, selection, expectedRevision) => {
+      requireInitialized()
+      const phase = parsePresentationPhase(context),
+        choice = parsePresentationChoice(selection)
+      if (
+        phase.phase !== 'prepare' ||
+        !Number.isSafeInteger(expectedRevision) ||
+        expectedRevision < 0
+      )
+        return Promise.resolve({ status: 'REFUSED', message: 'Invalid staging phase or revision' })
+      return queue(async () => {
+        if (!current(phase) || expectedRevision !== authoritative.revision || prepared)
+          return { status: 'REFUSED', message: 'Stale intent/CAS or existing preparation refused' }
+        try {
+          const base = await readAuthoritative()
+          if (!current(phase) || base.revision !== expectedRevision)
+            return { status: 'REFUSED', message: 'Authoritative staging CAS refused' }
+          const record = parsePresentationRecord({
+            version: 1,
+            revision: Math.max(base.revision, maximumRevision) + 1,
+            generation: phase.generation,
+            transactionId: phase.transactionId,
+            selection: choice,
+          })
+          remember(candidates, record)
+          await files.stage(staged, JSON.stringify(record) + '\n')
+          if (!current(phase)) throw Error('Stale presentation preparation')
+          prepared = { context: phase, record, expectedRevision }
+          return { status: 'STAGED' }
+        } catch (error) {
+          prepared = undefined
+          try {
+            await files.remove(staged)
+          } catch (cleanup) {
+            return {
+              status: 'UNKNOWN',
+              message: 'Staging cleanup outcome unknown: ' + errorText(cleanup),
+            }
+          }
+          return { status: 'REFUSED', message: errorText(error) }
+        }
+      })
+    },
     persist: (context, selection, expectedRevision) => {
       requireInitialized()
       const phase = parsePresentationPhase(context),
@@ -305,16 +367,35 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
           const base = await readAuthoritative()
           if (!current(phase) || base.revision !== expectedRevision)
             outcome = { status: 'REFUSED', message: 'Authoritative CAS refused' }
+          else if (
+            prepared &&
+            (prepared.expectedRevision !== expectedRevision ||
+              !sameSelection(prepared.record.selection, choice) ||
+              Object.keys(prepared.context).some(
+                (key) =>
+                  key !== 'phase' &&
+                  prepared!.context[key as keyof PresentationPhase] !==
+                    phase[key as keyof PresentationPhase],
+              ))
+          )
+            outcome = { status: 'REFUSED', message: 'Prepared presentation identity mismatch' }
           else {
-            const durable = await write(phase, choice, base, () => {
-              renameAttempted = true
-            })
+            const durable = await write(
+              phase,
+              choice,
+              base,
+              () => {
+                renameAttempted = true
+              },
+              prepared?.record,
+            )
             outcome = { status: 'ACK', durable }
           }
         } catch (error) {
           outcome = { status: renameAttempted ? 'UNKNOWN' : 'REFUSED', message: errorText(error) }
         }
         try {
+          prepared = undefined
           await files.remove(staged)
         } catch (error) {
           return {
@@ -336,6 +417,9 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
         if (!current(phase)) throw Error('Stale compensation owner')
         const actual = await readAuthoritative()
         if (!current(phase)) throw Error('Stale compensation owner after readback')
+        prepared = undefined
+        await files.remove(staged)
+        if (!current(phase)) throw Error('Stale compensation owner after staging cleanup')
         if (sameSelection(actual.selection, published.selection)) {
           remember(known, actual)
           authoritative = actual
@@ -358,6 +442,12 @@ export function createPresentationSettings(options: SettingsOptions): Presentati
           return store.announceIntent(request.requestId)
         case 'persist':
           return store.persist(
+            request.payload.context,
+            request.payload.selection,
+            request.payload.expectedRevision,
+          )
+        case 'stage':
+          return store.stage(
             request.payload.context,
             request.payload.selection,
             request.payload.expectedRevision,

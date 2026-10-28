@@ -8,6 +8,7 @@ import {
   verifyPublicationControls,
   publicationInvocation,
   publicationProducer,
+  publicationAddedCases,
 } from './drawing-pages-publication.mjs'
 
 function profiles() {
@@ -143,6 +144,9 @@ function controls() {
       })
   }
   const legacy = { executions: structuredClone(manifest.executions) }
+  manifest.executions.find(item => item.role === 'workspace-direct').cases.push(
+    ...publicationAddedCases.map(item => ({ ...item, file: root + '/' + item.file })),
+  )
   return {
     manifest,
     legacy,
@@ -222,4 +226,32 @@ test('publication controls reject producer substitution and lost historical case
     () => verifyPublicationControls(lost.manifest, lost.read, lost.legacy),
     /PUBLICATION_HISTORICAL_CASE/,
   )
+})
+
+test('closed staging inventory rejects arbitrary lock-origin replacement titles', () => {
+  const f = controls()
+  f.manifest.executions.find(item => item.role === 'workspace-direct').cases.push({
+    file: 'E:/snapshot/packages/ui-workspace/tests/ui-contract/publication-lock-origin.test.ts',
+    title: 'invented replacement for a missing required lock-origin case',
+  })
+  assert.throws(() => verifyPublicationControls(f.manifest, f.read, f.legacy), /PUBLICATION_NEW_CASE_SCOPE/)
+})
+
+test('closed staging inventory requires all eighteen exact cases without loss duplication or foreign paths', () => {
+  for (let index = 0; index < publicationAddedCases.length; index++) {
+    for (const kind of ['missing', 'duplicate', 'title', 'sibling', 'outside', 'role']) {
+      const f = controls(), cases = f.manifest.executions.find(item => item.role === 'workspace-direct').cases
+      const at = index + 1, original = { ...cases[at] }
+      if (kind === 'missing') cases.splice(at, 1)
+      if (kind === 'duplicate') cases.push({ ...original })
+      if (kind === 'title') cases[at].title += ' replaced'
+      if (kind === 'sibling') cases[at].file = original.file.replace('/ui-contract/', '/sibling/')
+      if (kind === 'outside') cases[at].file = original.file.replace('E:/snapshot/', 'E:/other/')
+      if (kind === 'role') {
+        cases.splice(at, 1)
+        f.manifest.executions.find(item => item.role === 'draw-unit').cases.push(original)
+      }
+      assert.throws(() => verifyPublicationControls(f.manifest, f.read, f.legacy), /PUBLICATION_NEW_CASE_SCOPE/)
+    }
+  }
 })

@@ -34,6 +34,7 @@ export function bootstrapPresentation(
     paint: options.paint,
     host: {
       announceIntent: (requestId) => api.announceIntent(requestId),
+      ...(api.stage ? { stage: api.stage.bind(api) } : {}),
       persist: (context, selection, expectedRevision) =>
         api.persist(context, selection, expectedRevision),
       reconcile: (context, lastPublished) =>

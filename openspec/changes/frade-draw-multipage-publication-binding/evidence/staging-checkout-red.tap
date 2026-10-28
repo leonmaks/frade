@@ -1,0 +1,50 @@
+✖ staging metadata raw pins survive real Git checkout autocrlf=false (559.3443ms)
+✖ staging metadata raw pins survive real Git checkout autocrlf=true (586.9724ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1285.3079
+
+✖ failing tests:
+
+test at tests\ui-contract\presentation-staging-checkout.test.mjs:15:38
+✖ staging metadata raw pins survive real Git checkout autocrlf=false (559.3443ms)
+  Error: ENOENT: no such file or directory, open 'C:\Users\NVISEN\AppData\Local\Temp\frade-staging-checkout-Yh57sL\packages\ui-workspace\tests\ui-contract\.gitattributes'
+      at Object.readFileSync (node:fs:441:20)
+      at TestContext.<anonymous> (file:///E:/dev/codex/frade/tests/ui-contract/presentation-staging-checkout.test.mjs:38:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'C:\\Users\\NVISEN\\AppData\\Local\\Temp\\frade-staging-checkout-Yh57sL\\packages\\ui-workspace\\tests\\ui-contract\\.gitattributes'
+  }
+
+test at tests\ui-contract\presentation-staging-checkout.test.mjs:15:38
+✖ staging metadata raw pins survive real Git checkout autocrlf=true (586.9724ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'c6330c5c19c6317dc1435c68954efd78f9c5bb5a6a869ebd446b74b4124e565e'
+  - 'eef8c989136106b41029ce82e0f0ee89d7627056da6e62f27355ef0b5b1f4c7b'
+  
+      at TestContext.<anonymous> (file:///E:/dev/codex/frade/tests/ui-contract/presentation-staging-checkout.test.mjs:36:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'c6330c5c19c6317dc1435c68954efd78f9c5bb5a6a869ebd446b74b4124e565e',
+    expected: 'eef8c989136106b41029ce82e0f0ee89d7627056da6e62f27355ef0b5b1f4c7b',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

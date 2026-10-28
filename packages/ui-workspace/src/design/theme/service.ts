@@ -54,8 +54,16 @@ export interface DurablePresentation {
 export type PersistenceOutcome =
   | { readonly status: 'ACK'; readonly durable: DurablePresentation }
   | { readonly status: 'REFUSED' | 'UNKNOWN'; readonly message: string }
+export type StagingOutcome =
+  | { readonly status: 'STAGED' }
+  | { readonly status: 'REFUSED' | 'UNKNOWN'; readonly message: string }
 export interface PresentationHost {
   announceIntent(requestId: string): Promise<{ readonly generation: number }>
+  stage?(
+    context: PhaseContext,
+    selection: PresentationSelection,
+    expectedRevision: number,
+  ): Promise<StagingOutcome>
   persist(
     context: PhaseContext,
     selection: PresentationSelection,
@@ -394,6 +402,7 @@ export function createPresentationService(options: ServiceOptions): Presentation
         handles: Handle[] = []
       let changed = false,
         persistenceAttempted = false
+      let staged: Promise<StagingOutcome> | undefined, hostDeadline: number | undefined
       controller = new AbortController()
       const signal = controller.signal
       try {
@@ -421,6 +430,21 @@ export function createPresentationService(options: ServiceOptions): Presentation
         }
         phase = 'READY'
         check(work, capturedMembership)
+        if (work.action === 'commit' && options.host.stage) {
+          persistenceAttempted = true
+          hostDeadline = performance.now() + 5000
+          staged = bounded(
+            options.host.stage(
+              context(work, 'prepare', work.snapshot.revision, capturedMembership),
+              work.selection,
+              durable.revision,
+            ),
+            5000,
+            'host write/readback',
+          )
+          // Paint proceeds independently; rejection is observed even if paint later fails.
+          void staged.catch(() => {})
+        }
         phase = 'BARRIER_AWAIT_PAINT'
         await bounded(
           options.barrier.paint(context(work, 'apply', work.snapshot.revision, capturedMembership)),
@@ -461,9 +485,16 @@ export function createPresentationService(options: ServiceOptions): Presentation
           phase = 'PERSISTING'
           persistenceAttempted = true
           const expected = context(work, 'apply', work.snapshot.revision, capturedMembership)
+          if (staged) {
+            const preparation = await staged
+            check(work, capturedMembership)
+            if (preparation.status !== 'STAGED') throw new Error(preparation.message)
+          }
+          const remaining = hostDeadline === undefined ? 5000 : hostDeadline - performance.now()
+          if (remaining <= 0) throw new Error('host write/readback deadline exceeded (5000ms)')
           const outcome = await bounded(
             options.host.persist(expected, work.selection, durable.revision),
-            5000,
+            remaining,
             'host write/readback',
           )
           check(work, capturedMembership)

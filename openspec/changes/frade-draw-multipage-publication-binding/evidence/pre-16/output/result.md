@@ -1,0 +1,5 @@
+PRE16 closes the PRE15 packet blocker. The packet includes the actual `publication-lock-origin.test.ts` source; its six test titles match the [18-case catalog](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-28T16-45-02-087Z-a48e0445-3a4d-4599-8485-0920e1f8c128/prepared/packet/openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-closed-case-catalog.json) exactly. I verified all 131 packet artifact hashes.
+
+The [corrected design](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-28T16-45-02-087Z-a48e0445-3a4d-4599-8485-0920e1f8c128/prepared/packet/openspec/changes/frade-draw-multipage-publication-binding/design.md:70) keeps authoritative rename and readback behind every exact paint ACK, ownership check and CAS. It closes the added-case inventory and strict API inventory conflicts without weakening the stated historical checks. I found no remaining **plan** blocker in the selected sources. The performance probes remain diagnostic; implementation, fresh required gates, and POST review are still pending. No files were changed.
+
+GATE_STATUS: PASS

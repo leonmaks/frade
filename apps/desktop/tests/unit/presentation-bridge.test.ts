@@ -54,7 +54,8 @@ it('validated cached boot is synchronous, immutable, owned and never calls trans
   expect(api.getBoot().diagnostics).toEqual([])
   expect(Object.isFrozen(api.getBoot().snapshot.colors)).toBe(true)
   expect(invoke).not.toHaveBeenCalled()
-  expect(Object.keys(api)).toEqual(['getBoot', 'announceIntent', 'persist', 'reconcile', 'ready'])
+  expect(Object.keys(api)).toEqual(['getBoot', 'announceIntent', 'stage', 'persist', 'reconcile', 'ready'])
+  expect(typeof api.stage).toBe('function')
   const health = createDesktopApi(
     async () => ({}),
     () => () => {},

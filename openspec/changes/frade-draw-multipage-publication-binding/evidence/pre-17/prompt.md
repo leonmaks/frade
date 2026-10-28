@@ -1,0 +1,14 @@
+Fresh independent PRE gpt-6-sol/high requested, backend NOT_CONFIRMED. Read FINAL design section PRE17 bounded metadata checkout closure and updated proof-read-boundaries. Production five-file staging repair and exact18/25 controls were authorized by complete PRE16 PASS dfc891cc, capsule included, targeted service8/origin41/desktop/protocol/legacy GREEN after meaningfulRED; no full runtime/gate/POST/push PASS yet. This PRE scope ONLY two NEW nested .gitattributes each with exactly one filename text eol=lf (staging-adoption JSON under packages/ui-workspace/tests/ui-contract; case catalog under tests/ui-contract), and two explicit extra filenames in currentInputFiles final list, plus existing current enumeration stronger assertion. Both new rules do NOT exist yet. Real Git autocrlf=true RED proves pinned adopted JSON eef8... becomes c633...; false fails missing required rule; current enumeration RED proves both new closure paths omitted. Actual new checkout regression source/results included. Require actualfalse/true hashes unchanged, sibling eol unspecified; keep root8 rules/vendor2851/assets/path/link/livehash/authorities exactly. Updated active spec wording reconciles already PRE16-authorized25 origin paths; no arbitrary new adoption. Original19c9 and LDE2bec immutable. Reject raw-hash normalization/loosening, wildcard/root/global attribute edits or inputs omission. Existing pin JSON is raw LF fixed; exact local eol=lf is chosen over accepting alternate metadata or canonical-only clone workaround. No production runtime change authorized by this PRE, all existing5 runtime/strictAPI/case controls supplied as context only. All current targeted tests source actual+originalsettings/bridge/service/protocol cases included; explicitObject.keys addsstage only, no old assertions removed. Existing/new JSON/raw hashes remain literal pinned and full input closure including rule files. Full finalsource clean+working8roles/50presentation/original20+100/150/5000LDE normal gates, verify/UI report, cumulative POST required before authorized normal origin/main. WIP854/archive1977 preserved, no push. Assess exact rule scope, realGitfixture integrity, spec reconciliation and complete source bindings. Exactly one standalone GATE_STATUS: PASS or FAIL; no writes.
+
+Approved owning stage selection (verify semantic plan approval; metadata is not approval):
+{
+  "stage": "publication-binding",
+  "phase": "PRE",
+  "model": "gpt-6-sol",
+  "reasoningEffort": "high",
+  "source": {
+    "path": "openspec/changes/frade-draw-multipage-publication-binding/design.md",
+    "sha256": "bc0d41c6277160819607ef38633f9160313f7903c65446cd64eaa20e5d923d9c",
+    "excerpt": "PRE: gpt-6-sol / high; POST: gpt-6-sol / high"
+  }
+}

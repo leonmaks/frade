@@ -1,0 +1,7 @@
+The staged commit boundary is coherent: temporary write, fsync and close can overlap paint, while final rename and readback remain behind exact paint ACKs, ownership and CAS. I found one **PRE blocker** in the publication proof.
+
+The [12-case catalog](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-28T16-19-01-147Z-b9a7b22c-5520-49c6-bc4a-da97d1d60729/prepared/packet/openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-case-catalog.json) omits the six earlier publication-lock-origin additions. The current [publication verifier](/mnt/e/dev/codex/frade/.git/frade-workflow/runs/2026-10-28T16-19-01-147Z-b9a7b22c-5520-49c6-bc4a-da97d1d60729/prepared/packet/tests/ui-contract/drawing-pages-publication.mjs:227) identifies cases by basename and title, then allows any new title in that lock-origin file. It therefore cannot prove the promised retention of those six exact cases. Before production, bind their exact full file paths and titles to an immutable inventory alongside the new twelve, and reject missing, replacement, duplicate and unknown entries.
+
+The supplied OpenSpec validation reports PASS, but it does not close this proof gap. No files were changed. The 105.3 ms prototype remains diagnostic; the required clean benchmark and fresh gates remain pending.
+
+GATE_STATUS: FAIL

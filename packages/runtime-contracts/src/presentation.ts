@@ -98,7 +98,7 @@ export type PresentationRequest = {
 } & (
   | { readonly operation: 'intent'; readonly payload: Record<string, never> }
   | {
-      readonly operation: 'persist'
+      readonly operation: 'stage' | 'persist'
       readonly payload: {
         readonly context: PresentationPhase
         readonly selection: PresentationChoice
@@ -393,6 +393,7 @@ export function parsePresentationRequest(value: unknown): PresentationRequest {
     case 'intent':
       fields(object.payload, [])
       break
+    case 'stage':
     case 'persist': {
       const payload = fields(object.payload, ['context', 'selection', 'expectedRevision'])
       phase(payload.context)
@@ -402,7 +403,7 @@ export function parsePresentationRequest(value: unknown): PresentationRequest {
       if (
         context.sessionId !== object.sessionId ||
         context.requestId !== object.requestId ||
-        context.phase !== 'apply'
+        context.phase !== (object.operation === 'stage' ? 'prepare' : 'apply')
       )
         invalid()
       break
@@ -436,9 +437,17 @@ export function parsePresentationRequest(value: unknown): PresentationRequest {
 export type PresentationOutcome =
   | { readonly status: 'ACK'; readonly durable: PresentationRecord }
   | { readonly status: 'REFUSED' | 'UNKNOWN'; readonly message: string }
+export type PresentationStagingOutcome =
+  | { readonly status: 'STAGED' }
+  | { readonly status: 'REFUSED' | 'UNKNOWN'; readonly message: string }
 export interface PresentationApi {
   getBoot(): PresentationBoot
   announceIntent(requestId: string): Promise<{ readonly generation: number }>
+  stage?(
+    context: PresentationPhase,
+    selection: PresentationChoice,
+    expectedRevision: number,
+  ): Promise<PresentationStagingOutcome>
   persist(
     context: PresentationPhase,
     selection: PresentationChoice,
@@ -453,6 +462,7 @@ export interface PresentationApi {
 export type PresentationResponse =
   | { readonly generation: number }
   | PresentationOutcome
+  | PresentationStagingOutcome
   | PresentationRecord
   | { readonly version: 1; readonly ready: true }
 function sameChoice(a: PresentationChoice, b: PresentationChoice): boolean {
@@ -473,6 +483,15 @@ export function parsePresentationResponse(
       const response = fields(value, ['generation'])
       integer(response.generation)
       if (response.generation === 0) invalid()
+      break
+    }
+    case 'stage': {
+      const response = fields(value, ['status'], ['message'])
+      if (response.status === 'STAGED') fields(value, ['status'])
+      else if (response.status === 'REFUSED' || response.status === 'UNKNOWN') {
+        fields(value, ['status', 'message'])
+        text(response.message, 512)
+      } else invalid()
       break
     }
     case 'persist': {

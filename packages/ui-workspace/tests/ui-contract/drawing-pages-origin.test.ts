@@ -217,7 +217,9 @@ describe('closed drawing-page adoption preserves historical proof and rejects un
     // Unowned bytes never consume adoption authority; downstream hashes still reject drift.
     const authority = readFileSync(new URL('../../../../openspec/changes/archive/2026-10-27-frade-draw-multipage/evidence/source-adoption-manifest.json', import.meta.url))
     expect(sha(authority)).toBe(drawingPagesAdoptionManifestSha256)
-    const owned = new Set<string>([...JSON.parse(authority.toString()).entries.map((entry: {file:string}) => entry.file), 'apps/desktop/src/main/drawio-bridge.ts'])
+      const stagingRaw = readFileSync(new URL('./presentation-staging-adoption.json', import.meta.url))
+      expect(sha(stagingRaw)).toBe('eef8c989136106b41029ce82e0f0ee89d7627056da6e62f27355ef0b5b1f4c7b')
+      const owned = new Set<string>([...JSON.parse(authority.toString()).entries.map((entry: {file:string}) => entry.file), 'apps/desktop/src/main/drawio-bridge.ts', ...JSON.parse(stagingRaw.toString()).entries.map((entry:{file:string})=>entry.file)])
     for (const file of owned)
       if (file === 'pnpm-lock.yaml')
         expect(() => readDrawingPagesOrigin(f.root, file, f.live)).toThrow(/ENOENT/)

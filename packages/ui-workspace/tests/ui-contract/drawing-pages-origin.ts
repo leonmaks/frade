@@ -13,6 +13,9 @@ const resolveRealpath = process.platform === 'win32' ? realpathSync.native : rea
 export const drawingPagesOriginScope: readonly string[] = Object.freeze([
   "apps/desktop/src/main/drawio-bridge.ts",
   "apps/desktop/src/main/drawio-theme-bridge.ts",
+  "apps/desktop/src/main/presentation-settings.ts",
+  "apps/desktop/src/preload/presentation-bridge.ts",
+  "apps/desktop/src/renderer/presentation-bootstrap.ts",
   "packages/draw/src/document/fileAdapter.ts",
   "packages/draw/src/document/serialize.ts",
   "packages/draw/src/editor/DiagramEditor.tsx",
@@ -20,10 +23,12 @@ export const drawingPagesOriginScope: readonly string[] = Object.freeze([
   "packages/draw/src/routing/perimeter/ellipse.ts",
   "packages/draw/src/style.css",
   "packages/runtime-node/src/diagram-files.ts",
+  "packages/runtime-contracts/src/presentation.ts",
   "packages/ui-workspace/src/DiagramView.tsx",
   "packages/ui-workspace/src/FradeDiagramView.tsx",
   "packages/ui-workspace/src/design/theme/editorPresentation.css",
   "packages/ui-workspace/src/design/theme/rootParticipant.ts",
+  "packages/ui-workspace/src/design/theme/service.ts",
   "packages/ui-workspace/src/diagramContent.ts",
   "packages/ui-workspace/src/styles.css",
   "packages/ui-workspace/src/useBundleManager.tsx",
@@ -166,6 +171,63 @@ function readBridgeFocusOrigin(root: string, file: string, live: Buffer): Buffer
   demand(sha(predecessor) === pin.publishedSha256, 'ADOPTED_SOURCE_HASH:' + file)
   return predecessor
 }
+const stagingFiles = [
+  'apps/desktop/src/main/presentation-settings.ts',
+  'apps/desktop/src/preload/presentation-bridge.ts',
+  'apps/desktop/src/renderer/presentation-bootstrap.ts',
+  'packages/runtime-contracts/src/presentation.ts',
+  'packages/ui-workspace/src/design/theme/service.ts',
+]
+/** Exact reviewed deltas; the original LDE authority and predecessor bytes stay immutable. */
+function readStagingOrigin(root: string, file: string, live: Buffer): Buffer | undefined {
+  if (!stagingFiles.includes(file)) return
+  const raw = safeRead(root, 'packages/ui-workspace/tests/ui-contract/presentation-staging-adoption.json')
+  demand(sha(raw) === 'eef8c989136106b41029ce82e0f0ee89d7627056da6e62f27355ef0b5b1f4c7b', 'STAGING_ORIGIN_MANIFEST')
+  type StagingEntry = {
+    file: string
+    predecessor: { sourceBase64: string; sha256: string; canonicalSha256: string }
+    adoptedCanonicalSha256: string
+    hunks: { before: string; after: string }[]
+  }
+  const adoption = JSON.parse(raw.toString()) as {
+    version: number
+    baselineCommit: string
+    authority: { file: string; sha256: string }
+    entries: StagingEntry[]
+  }
+  demand(
+    adoption.version === 1 && adoption.baselineCommit === '93b612c3dc332cbf33a2e2b8b35098676f495291' &&
+    JSON.stringify(adoption.entries.map(entry => entry.file).sort()) === JSON.stringify([...stagingFiles].sort()),
+    'STAGING_ORIGIN_SCOPE',
+  )
+  demand(
+    adoption.authority.file === 'openspec/changes/archive/2026-10-26-frade-light-diagram-editor/evidence/upstream-bdd-bindings-20261026/bindings-manifest-portability.json' &&
+    adoption.authority.sha256 === '2bec063e00f7d6589f3e1f7c60c1f9ee98659aefca8d3434cd66f41ef64e1b21',
+    'STAGING_ORIGIN_AUTHORITY',
+  )
+  const authority = safeRead(root, adoption.authority.file)
+  demand(sha(authority) === adoption.authority.sha256, 'STAGING_ORIGIN_AUTHORITY')
+  const pins = (JSON.parse(authority.toString()) as { inputs: { file: string; sha256: string; publishedSha256?: string }[] }).inputs
+  const entry = adoption.entries.find(candidate => candidate.file === file)!
+  const matches = pins.filter(pin => pin.file === file), predecessor = Buffer.from(entry.predecessor.sourceBase64, 'base64')
+  demand(matches.length === 1 &&
+    [matches[0].sha256, matches[0].publishedSha256].includes(entry.predecessor.sha256) &&
+    sha(predecessor) === entry.predecessor.sha256 &&
+    sha(canonicalPublicationBytes(predecessor)) === entry.predecessor.canonicalSha256,
+    'STAGING_ORIGIN_PIN')
+  const canonical = canonicalPublicationBytes(live), text = canonical.toString()
+  demand(safeRead(root, file).equals(live) &&
+    (live.equals(canonical) || live.equals(Buffer.from(text.replaceAll('\n', '\r\n')))) &&
+    sha(canonical) === entry.adoptedCanonicalSha256 && entry.hunks.length > 0,
+    'ADOPTED_SOURCE_HASH:' + file)
+  let restored = text
+  for (const hunk of entry.hunks) {
+    demand(!!hunk.after && restored.split(hunk.after).length === 2, 'ADOPTED_SOURCE_HASH:' + file)
+    restored = restored.replace(hunk.after, hunk.before)
+  }
+  demand(sha(Buffer.from(restored)) === entry.predecessor.canonicalSha256, 'ADOPTED_SOURCE_HASH:' + file)
+  return predecessor
+}
 /** Historical replay only. Current execution evidence is checked separately. */
 export function createDrawingPagesOriginReader(options: Options) {
   if (options.publicationInput)
@@ -215,7 +277,7 @@ export function createDrawingPagesOriginReader(options: Options) {
   return (file: string, live: Buffer): Buffer => {
     safeRelative(file)
     const entry = entries.get(file)
-    if (!entry) return readBridgeFocusOrigin(options.root, file, live) ?? live
+    if (!entry) return readStagingOrigin(options.root, file, live) ?? readBridgeFocusOrigin(options.root, file, live) ?? live
     const legacy = [entry.adoptedSha256, entry.canonicalSha256, entry.checkoutSha256].includes(
       sha(live),
     )

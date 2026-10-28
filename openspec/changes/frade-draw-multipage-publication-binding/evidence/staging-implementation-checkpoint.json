@@ -1,0 +1,68 @@
+{
+  "atUtc": "2026-10-28T17:22:14.447Z",
+  "change": "frade-draw-multipage-publication-binding",
+  "implementation": "Commit-only real temporary write/fsync overlaps existing covered applied paint; authoritative CAS/rename/readback and success wait for exact ACKs and preparation. Combined original5000ms budget; failures serialize cleanup/reconcile; preview/legacy behavior retained.",
+  "sourceFiles": [
+    {
+      "file": "packages/ui-workspace/src/design/theme/service.ts",
+      "rawSha256": "62778bed05478ad6b3216da6f93a2ff7b14cc3a5ac109faf9c9fcc9119fc1ece"
+    },
+    {
+      "file": "packages/runtime-contracts/src/presentation.ts",
+      "rawSha256": "2d7d7cb8d91244dc14d1226bdd6d2e9598eab6841d8e9c8a830316056ab25b03"
+    },
+    {
+      "file": "apps/desktop/src/main/presentation-settings.ts",
+      "rawSha256": "a4cc5703f68b895018a3f66068ad87df905477b452d7bf1e051643b2cf63bad3"
+    },
+    {
+      "file": "apps/desktop/src/preload/presentation-bridge.ts",
+      "rawSha256": "d5cfd6e8a868e3a4fab7c86da96b4d9bae76bf0afd9cef73c0989926c11c7a26"
+    },
+    {
+      "file": "apps/desktop/src/renderer/presentation-bootstrap.ts",
+      "rawSha256": "9dcb7e5966428c4113124b038245b7149144627d8fdc3232a1dcf2ff49f9dfc7"
+    }
+  ],
+  "reviews": {
+    "PRE16": "PASS dfc891cc, five product files and strict API/origin/case extension",
+    "PRE18": "PASS bc0d41c6, exact two filename checkout rules and closure",
+    "PRE17": "Owner BLOCKED interrupted before invoke after incomplete preparation; not approval",
+    "modelRequested": "gpt-6-sol",
+    "reasoningRequested": "high",
+    "backend": "NOT_CONFIRMED"
+  },
+  "unitResults": [
+    {
+      "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-ui-final-targeted.json",
+      "sha256": "14721f481bc6c2975a17d136ac4068028031839943505337a39b883120d762b3",
+      "passed": 97
+    },
+    {
+      "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-desktop-final-targeted.json",
+      "sha256": "3a0be43985568d5a3251921f8da563c5fb4c8573a3b01cf79094bdb8aa5ad1f0",
+      "passed": 40
+    },
+    {
+      "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-contract-green-01.json",
+      "sha256": "413d0e060eb7534788af4dc7384c29371a2d081335eed5acd51e2dd56dde2e52",
+      "passed": 20
+    }
+  ],
+  "controls": {
+    "passed": 27,
+    "failed": 0,
+    "file": "openspec/changes/frade-draw-multipage-publication-binding/evidence/staging-all-controls-final-green.tap"
+  },
+  "static": {
+    "affectedTypecheck": "runtime-contracts/ui-workspace/desktop PASS",
+    "affectedLint": "PASS; new checkout no-unsafe-finally fixed by equivalent assert guard, final lint PASS"
+  },
+  "knownBlockers": [
+    "Fresh final-source clean/working full8-role profiles NOT_RUN",
+    "Both normal pnpm check gates NOT_RUN",
+    "Implementation verification/UI report and cumulative POST NOT_RUN",
+    "No origin/main push"
+  ],
+  "readyForVerify": false
+}
