@@ -35,8 +35,8 @@
 
 ## 4. Independent POST and checkpoint
 
-- [ ] 4.1 Dispatch fresh confined cumulative POST gpt-6-sol/high on exact verified candidate; retain complete immutable events/results/receipt and require PASS.
-- [ ] 4.2 Commit only owned repair/status/evidence files; verify Git diff, original WIP hashes/path set and staged path exclusions.
+- [x] 4.1 Dispatch fresh confined cumulative POST gpt-6-sol/high on exact verified candidate; retain complete immutable events/results/receipt and require PASS.
+- [x] 4.2 Commit only owned repair/status/evidence files; verify Git diff, original WIP hashes/path set and staged path exclusions.
 
 ## Workflow follow-up
 
